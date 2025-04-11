@@ -680,6 +680,24 @@
 																},
 																"type": "object"
 															},
+															"block_page": {
+																"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+																"properties": {
+																	"include_context": {
+																		"description": "If true, context information will be passed as query parameters",
+																		"type": "boolean"
+																	},
+																	"target_uri": {
+																		"description": "URI to which the user will be redirected",
+																		"format": "uri",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"target_uri"
+																],
+																"type": "object"
+															},
 															"block_page_enabled": {
 																"description": "Enable the custom block page.",
 																"example": true,
@@ -840,6 +858,10 @@
 																"properties": {
 																	"enabled": {
 																		"description": "Set notification on",
+																		"type": "boolean"
+																	},
+																	"include_context": {
+																		"description": "If true, context information will be passed as query parameters",
 																		"type": "boolean"
 																	},
 																	"msg": {
@@ -1415,6 +1437,24 @@
 																		},
 																		"type": "object"
 																	},
+																	"block_page": {
+																		"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+																		"properties": {
+																			"include_context": {
+																				"description": "If true, context information will be passed as query parameters",
+																				"type": "boolean"
+																			},
+																			"target_uri": {
+																				"description": "URI to which the user will be redirected",
+																				"format": "uri",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"target_uri"
+																		],
+																		"type": "object"
+																	},
 																	"block_page_enabled": {
 																		"description": "Enable the custom block page.",
 																		"example": true,
@@ -1575,6 +1615,10 @@
 																		"properties": {
 																			"enabled": {
 																				"description": "Set notification on",
+																				"type": "boolean"
+																			},
+																			"include_context": {
+																				"description": "If true, context information will be passed as query parameters",
 																				"type": "boolean"
 																			},
 																			"msg": {
@@ -2247,6 +2291,24 @@
 															},
 															"type": "object"
 														},
+														"block_page": {
+															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+															"properties": {
+																"include_context": {
+																	"description": "If true, context information will be passed as query parameters",
+																	"type": "boolean"
+																},
+																"target_uri": {
+																	"description": "URI to which the user will be redirected",
+																	"format": "uri",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"target_uri"
+															],
+															"type": "object"
+														},
 														"block_page_enabled": {
 															"description": "Enable the custom block page.",
 															"example": true,
@@ -2407,6 +2469,10 @@
 															"properties": {
 																"enabled": {
 																	"description": "Set notification on",
+																	"type": "boolean"
+																},
+																"include_context": {
+																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
 																"msg": {
@@ -2950,6 +3016,24 @@
 																	},
 																	"type": "object"
 																},
+																"block_page": {
+																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+																	"properties": {
+																		"include_context": {
+																			"description": "If true, context information will be passed as query parameters",
+																			"type": "boolean"
+																		},
+																		"target_uri": {
+																			"description": "URI to which the user will be redirected",
+																			"format": "uri",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"target_uri"
+																	],
+																	"type": "object"
+																},
 																"block_page_enabled": {
 																	"description": "Enable the custom block page.",
 																	"example": true,
@@ -3110,6 +3194,10 @@
 																	"properties": {
 																		"enabled": {
 																			"description": "Set notification on",
+																			"type": "boolean"
+																		},
+																		"include_context": {
+																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
 																		"msg": {
@@ -3679,6 +3767,24 @@
 										},
 										"type": "object"
 									},
+									"block_page": {
+										"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+										"properties": {
+											"include_context": {
+												"description": "If true, context information will be passed as query parameters",
+												"type": "boolean"
+											},
+											"target_uri": {
+												"description": "URI to which the user will be redirected",
+												"format": "uri",
+												"type": "string"
+											}
+										},
+										"required": [
+											"target_uri"
+										],
+										"type": "object"
+									},
 									"block_page_enabled": {
 										"description": "Enable the custom block page.",
 										"example": true,
@@ -3839,6 +3945,10 @@
 										"properties": {
 											"enabled": {
 												"description": "Set notification on",
+												"type": "boolean"
+											},
+											"include_context": {
+												"description": "If true, context information will be passed as query parameters",
 												"type": "boolean"
 											},
 											"msg": {
@@ -4366,6 +4476,24 @@
 															},
 															"type": "object"
 														},
+														"block_page": {
+															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+															"properties": {
+																"include_context": {
+																	"description": "If true, context information will be passed as query parameters",
+																	"type": "boolean"
+																},
+																"target_uri": {
+																	"description": "URI to which the user will be redirected",
+																	"format": "uri",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"target_uri"
+															],
+															"type": "object"
+														},
 														"block_page_enabled": {
 															"description": "Enable the custom block page.",
 															"example": true,
@@ -4526,6 +4654,10 @@
 															"properties": {
 																"enabled": {
 																	"description": "Set notification on",
+																	"type": "boolean"
+																},
+																"include_context": {
+																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
 																"msg": {
@@ -5069,6 +5201,24 @@
 																	},
 																	"type": "object"
 																},
+																"block_page": {
+																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+																	"properties": {
+																		"include_context": {
+																			"description": "If true, context information will be passed as query parameters",
+																			"type": "boolean"
+																		},
+																		"target_uri": {
+																			"description": "URI to which the user will be redirected",
+																			"format": "uri",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"target_uri"
+																	],
+																	"type": "object"
+																},
 																"block_page_enabled": {
 																	"description": "Enable the custom block page.",
 																	"example": true,
@@ -5229,6 +5379,10 @@
 																	"properties": {
 																		"enabled": {
 																			"description": "Set notification on",
+																			"type": "boolean"
+																		},
+																		"include_context": {
+																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
 																		"msg": {
@@ -5898,6 +6052,24 @@
 															},
 															"type": "object"
 														},
+														"block_page": {
+															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+															"properties": {
+																"include_context": {
+																	"description": "If true, context information will be passed as query parameters",
+																	"type": "boolean"
+																},
+																"target_uri": {
+																	"description": "URI to which the user will be redirected",
+																	"format": "uri",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"target_uri"
+															],
+															"type": "object"
+														},
 														"block_page_enabled": {
 															"description": "Enable the custom block page.",
 															"example": true,
@@ -6058,6 +6230,10 @@
 															"properties": {
 																"enabled": {
 																	"description": "Set notification on",
+																	"type": "boolean"
+																},
+																"include_context": {
+																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
 																"msg": {
@@ -6598,6 +6774,24 @@
 																	},
 																	"type": "object"
 																},
+																"block_page": {
+																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+																	"properties": {
+																		"include_context": {
+																			"description": "If true, context information will be passed as query parameters",
+																			"type": "boolean"
+																		},
+																		"target_uri": {
+																			"description": "URI to which the user will be redirected",
+																			"format": "uri",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"target_uri"
+																	],
+																	"type": "object"
+																},
 																"block_page_enabled": {
 																	"description": "Enable the custom block page.",
 																	"example": true,
@@ -6758,6 +6952,10 @@
 																	"properties": {
 																		"enabled": {
 																			"description": "Set notification on",
+																			"type": "boolean"
+																		},
+																		"include_context": {
+																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
 																		"msg": {
@@ -7338,6 +7536,24 @@
 										},
 										"type": "object"
 									},
+									"block_page": {
+										"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+										"properties": {
+											"include_context": {
+												"description": "If true, context information will be passed as query parameters",
+												"type": "boolean"
+											},
+											"target_uri": {
+												"description": "URI to which the user will be redirected",
+												"format": "uri",
+												"type": "string"
+											}
+										},
+										"required": [
+											"target_uri"
+										],
+										"type": "object"
+									},
 									"block_page_enabled": {
 										"description": "Enable the custom block page.",
 										"example": true,
@@ -7498,6 +7714,10 @@
 										"properties": {
 											"enabled": {
 												"description": "Set notification on",
+												"type": "boolean"
+											},
+											"include_context": {
+												"description": "If true, context information will be passed as query parameters",
 												"type": "boolean"
 											},
 											"msg": {
@@ -8025,6 +8245,24 @@
 															},
 															"type": "object"
 														},
+														"block_page": {
+															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+															"properties": {
+																"include_context": {
+																	"description": "If true, context information will be passed as query parameters",
+																	"type": "boolean"
+																},
+																"target_uri": {
+																	"description": "URI to which the user will be redirected",
+																	"format": "uri",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"target_uri"
+															],
+															"type": "object"
+														},
 														"block_page_enabled": {
 															"description": "Enable the custom block page.",
 															"example": true,
@@ -8185,6 +8423,10 @@
 															"properties": {
 																"enabled": {
 																	"description": "Set notification on",
+																	"type": "boolean"
+																},
+																"include_context": {
+																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
 																"msg": {
@@ -8728,6 +8970,24 @@
 																	},
 																	"type": "object"
 																},
+																"block_page": {
+																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+																	"properties": {
+																		"include_context": {
+																			"description": "If true, context information will be passed as query parameters",
+																			"type": "boolean"
+																		},
+																		"target_uri": {
+																			"description": "URI to which the user will be redirected",
+																			"format": "uri",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"target_uri"
+																	],
+																	"type": "object"
+																},
 																"block_page_enabled": {
 																	"description": "Enable the custom block page.",
 																	"example": true,
@@ -8888,6 +9148,10 @@
 																	"properties": {
 																		"enabled": {
 																			"description": "Set notification on",
+																			"type": "boolean"
+																		},
+																		"include_context": {
+																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
 																		"msg": {

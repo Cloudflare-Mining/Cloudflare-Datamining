@@ -21,7 +21,8 @@
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -40,18 +41,22 @@
 											"type": "string"
 										},
 										"authentication": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"cache_invalidate_on_update": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"cache_ttl": {
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"collect_logs": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"created_at": {
 											"format": "date-time",
@@ -63,7 +68,8 @@
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"internal_id": {
 											"format": "uuid",
@@ -73,7 +79,8 @@
 											"maximum": 10000000,
 											"minimum": 10000,
 											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"log_management_strategy": {
 											"enum": [
@@ -81,16 +88,19 @@
 												"DELETE_OLDEST"
 											],
 											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"logpush": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"logpush_public_key": {
 											"maxLength": 1024,
 											"minLength": 16,
 											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"modified_at": {
 											"format": "date-time",
@@ -99,19 +109,22 @@
 										"rate_limiting_interval": {
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"rate_limiting_limit": {
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"rate_limiting_technique": {
 											"enum": [
 												"fixed",
 												"sliding"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -268,18 +281,22 @@
 												"type": "string"
 											},
 											"authentication": {
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"cache_invalidate_on_update": {
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"cache_ttl": {
 												"minimum": 0,
 												"nullable": true,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"collect_logs": {
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"created_at": {
 												"format": "date-time",
@@ -291,7 +308,8 @@
 												"maxLength": 64,
 												"minLength": 1,
 												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"internal_id": {
 												"format": "uuid",
@@ -301,7 +319,8 @@
 												"maximum": 10000000,
 												"minimum": 10000,
 												"nullable": true,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"log_management_strategy": {
 												"enum": [
@@ -309,16 +328,19 @@
 													"DELETE_OLDEST"
 												],
 												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"logpush": {
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"logpush_public_key": {
 												"maxLength": 1024,
 												"minLength": 16,
 												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"modified_at": {
 												"format": "date-time",
@@ -327,19 +349,22 @@
 											"rate_limiting_interval": {
 												"minimum": 0,
 												"nullable": true,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"rate_limiting_limit": {
 												"minimum": 0,
 												"nullable": true,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"rate_limiting_technique": {
 												"enum": [
 													"fixed",
 													"sliding"
 												],
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -455,7 +480,8 @@
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -590,7 +616,8 @@
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -609,18 +636,22 @@
 											"type": "string"
 										},
 										"authentication": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"cache_invalidate_on_update": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"cache_ttl": {
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"collect_logs": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"created_at": {
 											"format": "date-time",
@@ -632,7 +663,8 @@
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"internal_id": {
 											"format": "uuid",
@@ -642,7 +674,8 @@
 											"maximum": 10000000,
 											"minimum": 10000,
 											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"log_management_strategy": {
 											"enum": [
@@ -650,16 +683,19 @@
 												"DELETE_OLDEST"
 											],
 											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"logpush": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"logpush_public_key": {
 											"maxLength": 1024,
 											"minLength": 16,
 											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"modified_at": {
 											"format": "date-time",
@@ -668,19 +704,22 @@
 										"rate_limiting_interval": {
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"rate_limiting_limit": {
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"rate_limiting_technique": {
 											"enum": [
 												"fixed",
 												"sliding"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -801,18 +840,22 @@
 					"schema": {
 						"properties": {
 							"authentication": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"cache_invalidate_on_update": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"cache_ttl": {
 								"minimum": 0,
 								"nullable": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"collect_logs": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"id": {
 								"description": "gateway id",
@@ -820,13 +863,15 @@
 								"maxLength": 64,
 								"minLength": 1,
 								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"log_management": {
 								"maximum": 10000000,
 								"minimum": 10000,
 								"nullable": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"log_management_strategy": {
 								"enum": [
@@ -834,33 +879,39 @@
 									"DELETE_OLDEST"
 								],
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"logpush": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"logpush_public_key": {
 								"maxLength": 1024,
 								"minLength": 16,
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"rate_limiting_interval": {
 								"minimum": 0,
 								"nullable": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"rate_limiting_limit": {
 								"minimum": 0,
 								"nullable": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"rate_limiting_technique": {
 								"enum": [
 									"fixed",
 									"sliding"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -892,18 +943,22 @@
 											"type": "string"
 										},
 										"authentication": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"cache_invalidate_on_update": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"cache_ttl": {
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"collect_logs": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"created_at": {
 											"format": "date-time",
@@ -915,7 +970,8 @@
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"internal_id": {
 											"format": "uuid",
@@ -925,7 +981,8 @@
 											"maximum": 10000000,
 											"minimum": 10000,
 											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"log_management_strategy": {
 											"enum": [
@@ -933,16 +990,19 @@
 												"DELETE_OLDEST"
 											],
 											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"logpush": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"logpush_public_key": {
 											"maxLength": 1024,
 											"minLength": 16,
 											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"modified_at": {
 											"format": "date-time",
@@ -951,19 +1011,22 @@
 										"rate_limiting_interval": {
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"rate_limiting_limit": {
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"rate_limiting_technique": {
 											"enum": [
 												"fixed",
 												"sliding"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1094,7 +1157,8 @@
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1104,24 +1168,29 @@
 					"schema": {
 						"properties": {
 							"authentication": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"cache_invalidate_on_update": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"cache_ttl": {
 								"minimum": 0,
 								"nullable": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"collect_logs": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"log_management": {
 								"maximum": 10000000,
 								"minimum": 10000,
 								"nullable": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"log_management_strategy": {
 								"enum": [
@@ -1129,33 +1198,39 @@
 									"DELETE_OLDEST"
 								],
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"logpush": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"logpush_public_key": {
 								"maxLength": 1024,
 								"minLength": 16,
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"rate_limiting_interval": {
 								"minimum": 0,
 								"nullable": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"rate_limiting_limit": {
 								"minimum": 0,
 								"nullable": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"rate_limiting_technique": {
 								"enum": [
 									"fixed",
 									"sliding"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1186,18 +1261,22 @@
 											"type": "string"
 										},
 										"authentication": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"cache_invalidate_on_update": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"cache_ttl": {
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"collect_logs": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"created_at": {
 											"format": "date-time",
@@ -1209,7 +1288,8 @@
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"internal_id": {
 											"format": "uuid",
@@ -1219,7 +1299,8 @@
 											"maximum": 10000000,
 											"minimum": 10000,
 											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"log_management_strategy": {
 											"enum": [
@@ -1227,16 +1308,19 @@
 												"DELETE_OLDEST"
 											],
 											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"logpush": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"logpush_public_key": {
 											"maxLength": 1024,
 											"minLength": 16,
 											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"modified_at": {
 											"format": "date-time",
@@ -1245,19 +1329,22 @@
 										"rate_limiting_interval": {
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"rate_limiting_limit": {
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"rate_limiting_technique": {
 											"enum": [
 												"fixed",
 												"sliding"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [

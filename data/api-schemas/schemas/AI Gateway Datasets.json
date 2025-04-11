@@ -21,7 +21,8 @@
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -29,7 +30,8 @@
 				"name": "id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -52,7 +54,8 @@
 											"type": "string"
 										},
 										"enable": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"filters": {
 											"items": {
@@ -73,7 +76,8 @@
 															"duration",
 															"feedback"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"operator": {
 														"enum": [
@@ -82,7 +86,8 @@
 															"lt",
 															"gt"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"value": {
 														"items": {
@@ -98,7 +103,8 @@
 																}
 															]
 														},
-														"type": "array"
+														"type": "array",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -116,17 +122,20 @@
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"modified_at": {
 											"format": "date-time",
 											"type": "string"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -246,7 +255,8 @@
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -272,14 +282,16 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
 				"in": "query",
 				"name": "enable",
 				"schema": {
-					"type": "boolean"
+					"type": "boolean",
+					"x-auditable": true
 				}
 			},
 			{
@@ -311,7 +323,8 @@
 												"type": "string"
 											},
 											"enable": {
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"filters": {
 												"items": {
@@ -332,7 +345,8 @@
 																"duration",
 																"feedback"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"operator": {
 															"enum": [
@@ -341,7 +355,8 @@
 																"lt",
 																"gt"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"items": {
@@ -357,7 +372,8 @@
 																	}
 																]
 															},
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -375,17 +391,20 @@
 												"maxLength": 64,
 												"minLength": 1,
 												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"modified_at": {
 												"format": "date-time",
 												"type": "string"
 											},
 											"name": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -507,7 +526,8 @@
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -515,7 +535,8 @@
 				"name": "id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -538,7 +559,8 @@
 											"type": "string"
 										},
 										"enable": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"filters": {
 											"items": {
@@ -559,7 +581,8 @@
 															"duration",
 															"feedback"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"operator": {
 														"enum": [
@@ -568,7 +591,8 @@
 															"lt",
 															"gt"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"value": {
 														"items": {
@@ -584,7 +608,8 @@
 																}
 															]
 														},
-														"type": "array"
+														"type": "array",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -602,17 +627,20 @@
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"modified_at": {
 											"format": "date-time",
 											"type": "string"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -724,7 +752,8 @@
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -743,7 +772,8 @@
 					"schema": {
 						"properties": {
 							"enable": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"filters": {
 								"items": {
@@ -764,7 +794,8 @@
 												"duration",
 												"feedback"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"operator": {
 											"enum": [
@@ -773,7 +804,8 @@
 												"lt",
 												"gt"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"value": {
 											"items": {
@@ -789,7 +821,8 @@
 													}
 												]
 											},
-											"type": "array"
+											"type": "array",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -802,7 +835,8 @@
 								"type": "array"
 							},
 							"name": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -834,7 +868,8 @@
 											"type": "string"
 										},
 										"enable": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"filters": {
 											"items": {
@@ -855,7 +890,8 @@
 															"duration",
 															"feedback"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"operator": {
 														"enum": [
@@ -864,7 +900,8 @@
 															"lt",
 															"gt"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"value": {
 														"items": {
@@ -880,7 +917,8 @@
 																}
 															]
 														},
-														"type": "array"
+														"type": "array",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -898,17 +936,20 @@
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"modified_at": {
 											"format": "date-time",
 											"type": "string"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1036,7 +1077,8 @@
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1044,7 +1086,8 @@
 				"name": "id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1054,7 +1097,8 @@
 					"schema": {
 						"properties": {
 							"enable": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"filters": {
 								"items": {
@@ -1075,7 +1119,8 @@
 												"duration",
 												"feedback"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"operator": {
 											"enum": [
@@ -1084,7 +1129,8 @@
 												"lt",
 												"gt"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"value": {
 											"items": {
@@ -1100,7 +1146,8 @@
 													}
 												]
 											},
-											"type": "array"
+											"type": "array",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1113,7 +1160,8 @@
 								"type": "array"
 							},
 							"name": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1145,7 +1193,8 @@
 											"type": "string"
 										},
 										"enable": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"filters": {
 											"items": {
@@ -1166,7 +1215,8 @@
 															"duration",
 															"feedback"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"operator": {
 														"enum": [
@@ -1175,7 +1225,8 @@
 															"lt",
 															"gt"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"value": {
 														"items": {
@@ -1191,7 +1242,8 @@
 																}
 															]
 														},
-														"type": "array"
+														"type": "array",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -1209,17 +1261,20 @@
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"modified_at": {
 											"format": "date-time",
 											"type": "string"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [

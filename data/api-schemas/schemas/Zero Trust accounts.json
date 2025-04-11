@@ -861,6 +861,10 @@
 																					"description": "Set notification on",
 																					"type": "boolean"
 																				},
+																				"include_context": {
+																					"description": "If true, context information will be passed as query parameters",
+																					"type": "boolean"
+																				},
 																				"msg": {
 																					"description": "Customize the message shown in the notification.",
 																					"type": "string"
@@ -1227,6 +1231,10 @@
 																					"properties": {
 																						"enabled": {
 																							"description": "Set notification on",
+																							"type": "boolean"
+																						},
+																						"include_context": {
+																							"description": "If true, context information will be passed as query parameters",
 																							"type": "boolean"
 																						},
 																						"msg": {
@@ -2680,6 +2688,10 @@
 														"description": "Set notification on",
 														"type": "boolean"
 													},
+													"include_context": {
+														"description": "If true, context information will be passed as query parameters",
+														"type": "boolean"
+													},
 													"msg": {
 														"description": "Customize the message shown in the notification.",
 														"type": "string"
@@ -3021,6 +3033,10 @@
 																			"properties": {
 																				"enabled": {
 																					"description": "Set notification on",
+																					"type": "boolean"
+																				},
+																				"include_context": {
+																					"description": "If true, context information will be passed as query parameters",
 																					"type": "boolean"
 																				},
 																				"msg": {
@@ -3389,6 +3405,10 @@
 																					"properties": {
 																						"enabled": {
 																							"description": "Set notification on",
+																							"type": "boolean"
+																						},
+																						"include_context": {
+																							"description": "If true, context information will be passed as query parameters",
 																							"type": "boolean"
 																						},
 																						"msg": {
@@ -4569,6 +4589,10 @@
 														"description": "Set notification on",
 														"type": "boolean"
 													},
+													"include_context": {
+														"description": "If true, context information will be passed as query parameters",
+														"type": "boolean"
+													},
 													"msg": {
 														"description": "Customize the message shown in the notification.",
 														"type": "string"
@@ -4910,6 +4934,10 @@
 																			"properties": {
 																				"enabled": {
 																					"description": "Set notification on",
+																					"type": "boolean"
+																				},
+																				"include_context": {
+																					"description": "If true, context information will be passed as query parameters",
 																					"type": "boolean"
 																				},
 																				"msg": {
@@ -5278,6 +5306,10 @@
 																					"properties": {
 																						"enabled": {
 																							"description": "Set notification on",
+																							"type": "boolean"
+																						},
+																						"include_context": {
+																							"description": "If true, context information will be passed as query parameters",
 																							"type": "boolean"
 																						},
 																						"msg": {
