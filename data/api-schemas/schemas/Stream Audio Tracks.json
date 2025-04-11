@@ -11,7 +11,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -22,7 +23,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -33,7 +35,8 @@
 					"description": "The unique identifier for an additional audio track.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -278,7 +281,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -289,7 +293,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -389,12 +394,14 @@
 													"default": {
 														"default": false,
 														"description": "Denotes whether the audio track will be played by default in a player.",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"label": {
 														"description": "A string to uniquely identify the track amongst other audio track labels for the specified video.",
 														"example": "director commentary",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"status": {
 														"description": "Specifies the processing status of the video.",
@@ -403,13 +410,15 @@
 															"ready",
 															"error"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"uid": {
 														"description": "A Cloudflare-generated unique identifier for a media item.",
 														"example": "ea95132c15732412d22c1476fa83f27a",
 														"maxLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												}
 											},
@@ -565,7 +574,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -576,7 +586,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -587,7 +598,8 @@
 					"description": "The unique identifier for an additional audio track.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -599,12 +611,14 @@
 							"default": {
 								"default": false,
 								"description": "Denotes whether the audio track will be played by default in a player.",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"label": {
 								"description": "A string to uniquely identify the track amongst other audio track labels for the specified video.",
 								"example": "director commentary",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -708,12 +722,14 @@
 												"default": {
 													"default": false,
 													"description": "Denotes whether the audio track will be played by default in a player.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"label": {
 													"description": "A string to uniquely identify the track amongst other audio track labels for the specified video.",
 													"example": "director commentary",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Specifies the processing status of the video.",
@@ -722,13 +738,15 @@
 														"ready",
 														"error"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a media item.",
 													"example": "ea95132c15732412d22c1476fa83f27a",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}
@@ -881,7 +899,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -892,7 +911,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -904,13 +924,15 @@
 							"label": {
 								"description": "A string to uniquely identify the track amongst other audio track labels for the specified video.",
 								"example": "director commentary",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"url": {
 								"description": "An audio track URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file.",
 								"example": "https://www.examplestorage.com/audio_file.mp3",
 								"format": "uri",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1017,12 +1039,14 @@
 												"default": {
 													"default": false,
 													"description": "Denotes whether the audio track will be played by default in a player.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"label": {
 													"description": "A string to uniquely identify the track amongst other audio track labels for the specified video.",
 													"example": "director commentary",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Specifies the processing status of the video.",
@@ -1031,13 +1055,15 @@
 														"ready",
 														"error"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a media item.",
 													"example": "ea95132c15732412d22c1476fa83f27a",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}

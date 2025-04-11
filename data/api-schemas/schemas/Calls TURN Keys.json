@@ -12,7 +12,8 @@
 					"example": "2a95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
 					"minLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -23,7 +24,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -140,14 +142,16 @@
 													"default": "",
 													"description": "A short description of Calls app, not shown to end users.",
 													"example": "production-realtime-app",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a item.",
 													"example": "2a95132c15732412d22c1476fa83f27a",
 													"maxLength": 32,
 													"minLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -192,7 +196,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -305,14 +310,16 @@
 														"default": "",
 														"description": "A short description of Calls app, not shown to end users.",
 														"example": "production-realtime-app",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"uid": {
 														"description": "A Cloudflare-generated unique identifier for a item.",
 														"example": "2a95132c15732412d22c1476fa83f27a",
 														"maxLength": 32,
 														"minLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -468,7 +475,8 @@
 					"example": "2a95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
 					"minLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -479,7 +487,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -596,14 +605,16 @@
 													"default": "",
 													"description": "A short description of Calls app, not shown to end users.",
 													"example": "production-realtime-app",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a item.",
 													"example": "2a95132c15732412d22c1476fa83f27a",
 													"maxLength": 32,
 													"minLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -756,7 +767,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -769,7 +781,8 @@
 								"default": "",
 								"description": "A short description of a TURN key, not shown to end users.",
 								"example": "my-turn-key",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -808,14 +821,16 @@
 									"default": "",
 									"description": "A short description of a TURN key, not shown to end users.",
 									"example": "my-turn-key",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"uid": {
 									"description": "A Cloudflare-generated unique identifier for a item.",
 									"example": "2a95132c15732412d22c1476fa83f27a",
 									"maxLength": 32,
 									"minLength": 32,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -851,7 +866,8 @@
 					"example": "2a95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
 					"minLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -862,7 +878,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -875,7 +892,8 @@
 								"default": "",
 								"description": "A short description of a TURN key, not shown to end users.",
 								"example": "my-turn-key",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -997,14 +1015,16 @@
 													"default": "",
 													"description": "A short description of Calls app, not shown to end users.",
 													"example": "production-realtime-app",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a item.",
 													"example": "2a95132c15732412d22c1476fa83f27a",
 													"maxLength": 32,
 													"minLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"

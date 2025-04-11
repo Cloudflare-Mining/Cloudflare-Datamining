@@ -11,7 +11,8 @@
 					"description": "A unique identifier for a live input.",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -73,7 +74,8 @@
 					"description": "A unique identifier for the output.",
 					"example": "baea4d9c515887b80289d5c33cf01145",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -84,7 +86,8 @@
 					"description": "A unique identifier for a live input.",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -259,13 +262,15 @@
 																"description": "The date and time the live input was created.",
 																"example": "2014-01-02T02:20:00Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"deleteRecordingAfterDays": {
 																"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
 																"example": 45,
 																"minimum": 30,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"meta": {
 																"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
@@ -278,13 +283,15 @@
 																"description": "The date and time the live input was last modified.",
 																"example": "2014-01-02T02:20:00Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"uid": {
 																"description": "A unique identifier for a live input.",
 																"example": "66be4bf738797e01e1fca35a7bdecdcd",
 																"maxLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														}
 													},
@@ -453,7 +460,8 @@
 					"description": "A unique identifier for a live input.",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -570,13 +578,15 @@
 													"description": "The date and time the live input was created.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"deleteRecordingAfterDays": {
 													"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
 													"example": 45,
 													"minimum": 30,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
@@ -589,7 +599,8 @@
 													"description": "The date and time the live input was last modified.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"recording": {
 													"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
@@ -606,7 +617,8 @@
 																"example.com"
 															],
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -614,7 +626,8 @@
 															"default": false,
 															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"mode": {
 															"default": "off",
@@ -624,18 +637,21 @@
 																"automatic"
 															],
 															"example": "automatic",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"requireSignedURLs": {
 															"default": false,
 															"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"timeoutSeconds": {
 															"default": 0,
 															"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -652,7 +668,8 @@
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
 															"example": "rtmps://live.cloudflare.com:443/live/",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -669,7 +686,8 @@
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
 															"example": "rtmps://live.cloudflare.com:443/live/",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -686,12 +704,14 @@
 														"streamId": {
 															"description": "The identifier of the live input to use when streaming via SRT.",
 															"example": "f256e6ea9341d51eea64c9454659e576",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"url": {
 															"description": "The SRT URL you provide to the broadcaster, which they stream live video to.",
 															"example": "srt://live.cloudflare.com:778",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -708,12 +728,14 @@
 														"streamId": {
 															"description": "The identifier of the live input to use for playback via SRT.",
 															"example": "f256e6ea9341d51eea64c9454659e576",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"url": {
 															"description": "The URL used to play live video over SRT.",
 															"example": "rtmps://live.cloudflare.com:443/live/",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -732,13 +754,15 @@
 														"new_configuration_accepted"
 													],
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "A unique identifier for a live input.",
 													"example": "66be4bf738797e01e1fca35a7bdecdcd",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"webRTC": {
 													"description": "Details for streaming to a live input using WebRTC.",
@@ -746,7 +770,8 @@
 														"url": {
 															"description": "The WebRTC URL you provide to the broadcaster, which they stream live video to.",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -757,7 +782,8 @@
 														"url": {
 															"description": "The URL used to play live video over WebRTC.",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -915,7 +941,8 @@
 					"description": "A unique identifier for a live input.",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1027,23 +1054,27 @@
 														"default": true,
 														"description": "When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch.",
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"streamKey": {
 														"description": "The streamKey used to authenticate against an output's target.",
 														"example": "uzya-f19y-g2g9-a2ee-51j2",
-														"type": "string"
+														"type": "string",
+														"x-sensitive": true
 													},
 													"uid": {
 														"description": "A unique identifier for the output.",
 														"example": "baea4d9c515887b80289d5c33cf01145",
 														"maxLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"url": {
 														"description": "The URL an output uses to restream.",
 														"example": "rtmp://a.rtmp.youtube.com/live2",
-														"type": "string"
+														"type": "string",
+														"x-sensitive": true
 													}
 												}
 											},
@@ -1210,13 +1241,15 @@
 						"properties": {
 							"defaultCreator": {
 								"description": "Sets the creator ID asssociated with this live input.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"deleteRecordingAfterDays": {
 								"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
 								"example": 45,
 								"minimum": 30,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"meta": {
 								"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
@@ -1240,7 +1273,8 @@
 											"example.com"
 										],
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": "array"
 									},
@@ -1248,7 +1282,8 @@
 										"default": false,
 										"description": "Disables reporting the number of live viewers when this property is set to `true`.",
 										"example": true,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"mode": {
 										"default": "off",
@@ -1258,18 +1293,21 @@
 											"automatic"
 										],
 										"example": "automatic",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"requireSignedURLs": {
 										"default": false,
 										"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
 										"example": true,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"timeoutSeconds": {
 										"default": 0,
 										"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
-										"type": "integer"
+										"type": "integer",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -1382,13 +1420,15 @@
 													"description": "The date and time the live input was created.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"deleteRecordingAfterDays": {
 													"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
 													"example": 45,
 													"minimum": 30,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
@@ -1401,7 +1441,8 @@
 													"description": "The date and time the live input was last modified.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"recording": {
 													"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
@@ -1418,7 +1459,8 @@
 																"example.com"
 															],
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -1426,7 +1468,8 @@
 															"default": false,
 															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"mode": {
 															"default": "off",
@@ -1436,18 +1479,21 @@
 																"automatic"
 															],
 															"example": "automatic",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"requireSignedURLs": {
 															"default": false,
 															"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"timeoutSeconds": {
 															"default": 0,
 															"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1464,7 +1510,8 @@
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
 															"example": "rtmps://live.cloudflare.com:443/live/",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -1481,7 +1528,8 @@
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
 															"example": "rtmps://live.cloudflare.com:443/live/",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -1498,12 +1546,14 @@
 														"streamId": {
 															"description": "The identifier of the live input to use when streaming via SRT.",
 															"example": "f256e6ea9341d51eea64c9454659e576",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"url": {
 															"description": "The SRT URL you provide to the broadcaster, which they stream live video to.",
 															"example": "srt://live.cloudflare.com:778",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -1520,12 +1570,14 @@
 														"streamId": {
 															"description": "The identifier of the live input to use for playback via SRT.",
 															"example": "f256e6ea9341d51eea64c9454659e576",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"url": {
 															"description": "The URL used to play live video over SRT.",
 															"example": "rtmps://live.cloudflare.com:443/live/",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -1544,13 +1596,15 @@
 														"new_configuration_accepted"
 													],
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "A unique identifier for a live input.",
 													"example": "66be4bf738797e01e1fca35a7bdecdcd",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"webRTC": {
 													"description": "Details for streaming to a live input using WebRTC.",
@@ -1558,7 +1612,8 @@
 														"url": {
 															"description": "The WebRTC URL you provide to the broadcaster, which they stream live video to.",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -1569,7 +1624,8 @@
 														"url": {
 															"description": "The URL used to play live video over WebRTC.",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -1726,7 +1782,8 @@
 					"description": "A unique identifier for a live input.",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1750,17 +1807,20 @@
 								"default": true,
 								"description": "When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"streamKey": {
 								"description": "The streamKey used to authenticate against an output's target.",
 								"example": "uzya-f19y-g2g9-a2ee-51j2",
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							},
 							"url": {
 								"description": "The URL an output uses to restream.",
 								"example": "rtmp://a.rtmp.youtube.com/live2",
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							}
 						},
 						"required": [
@@ -1873,23 +1933,27 @@
 													"default": true,
 													"description": "When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"streamKey": {
 													"description": "The streamKey used to authenticate against an output's target.",
 													"example": "uzya-f19y-g2g9-a2ee-51j2",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"uid": {
 													"description": "A unique identifier for the output.",
 													"example": "baea4d9c515887b80289d5c33cf01145",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"url": {
 													"description": "The URL an output uses to restream.",
 													"example": "rtmp://a.rtmp.youtube.com/live2",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												}
 											}
 										}
@@ -2039,7 +2103,8 @@
 					"description": "A unique identifier for a live input.",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2061,13 +2126,15 @@
 						"properties": {
 							"defaultCreator": {
 								"description": "Sets the creator ID asssociated with this live input.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"deleteRecordingAfterDays": {
 								"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
 								"example": 45,
 								"minimum": 30,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"meta": {
 								"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
@@ -2091,7 +2158,8 @@
 											"example.com"
 										],
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": "array"
 									},
@@ -2099,7 +2167,8 @@
 										"default": false,
 										"description": "Disables reporting the number of live viewers when this property is set to `true`.",
 										"example": true,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"mode": {
 										"default": "off",
@@ -2109,18 +2178,21 @@
 											"automatic"
 										],
 										"example": "automatic",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"requireSignedURLs": {
 										"default": false,
 										"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
 										"example": true,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"timeoutSeconds": {
 										"default": 0,
 										"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
-										"type": "integer"
+										"type": "integer",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -2233,13 +2305,15 @@
 													"description": "The date and time the live input was created.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"deleteRecordingAfterDays": {
 													"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
 													"example": 45,
 													"minimum": 30,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
@@ -2252,7 +2326,8 @@
 													"description": "The date and time the live input was last modified.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"recording": {
 													"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
@@ -2269,7 +2344,8 @@
 																"example.com"
 															],
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -2277,7 +2353,8 @@
 															"default": false,
 															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"mode": {
 															"default": "off",
@@ -2287,18 +2364,21 @@
 																"automatic"
 															],
 															"example": "automatic",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"requireSignedURLs": {
 															"default": false,
 															"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"timeoutSeconds": {
 															"default": 0,
 															"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2315,7 +2395,8 @@
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
 															"example": "rtmps://live.cloudflare.com:443/live/",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -2332,7 +2413,8 @@
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
 															"example": "rtmps://live.cloudflare.com:443/live/",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -2349,12 +2431,14 @@
 														"streamId": {
 															"description": "The identifier of the live input to use when streaming via SRT.",
 															"example": "f256e6ea9341d51eea64c9454659e576",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"url": {
 															"description": "The SRT URL you provide to the broadcaster, which they stream live video to.",
 															"example": "srt://live.cloudflare.com:778",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -2371,12 +2455,14 @@
 														"streamId": {
 															"description": "The identifier of the live input to use for playback via SRT.",
 															"example": "f256e6ea9341d51eea64c9454659e576",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"url": {
 															"description": "The URL used to play live video over SRT.",
 															"example": "rtmps://live.cloudflare.com:443/live/",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -2395,13 +2481,15 @@
 														"new_configuration_accepted"
 													],
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "A unique identifier for a live input.",
 													"example": "66be4bf738797e01e1fca35a7bdecdcd",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"webRTC": {
 													"description": "Details for streaming to a live input using WebRTC.",
@@ -2409,7 +2497,8 @@
 														"url": {
 															"description": "The WebRTC URL you provide to the broadcaster, which they stream live video to.",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -2420,7 +2509,8 @@
 														"url": {
 															"description": "The URL used to play live video over WebRTC.",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -2577,7 +2667,8 @@
 					"description": "A unique identifier for the output.",
 					"example": "baea4d9c515887b80289d5c33cf01145",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2588,7 +2679,8 @@
 					"description": "A unique identifier for a live input.",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2612,7 +2704,8 @@
 								"default": true,
 								"description": "When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2724,23 +2817,27 @@
 													"default": true,
 													"description": "When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"streamKey": {
 													"description": "The streamKey used to authenticate against an output's target.",
 													"example": "uzya-f19y-g2g9-a2ee-51j2",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"uid": {
 													"description": "A unique identifier for the output.",
 													"example": "baea4d9c515887b80289d5c33cf01145",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"url": {
 													"description": "The URL an output uses to restream.",
 													"example": "rtmp://a.rtmp.youtube.com/live2",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												}
 											}
 										}

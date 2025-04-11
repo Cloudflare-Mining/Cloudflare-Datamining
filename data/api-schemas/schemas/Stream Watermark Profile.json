@@ -11,7 +11,8 @@
 					"description": "The unique identifier for a watermark profile.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -22,7 +23,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -129,7 +131,8 @@
 									"properties": {
 										"result": {
 											"example": "",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									}
 								}
@@ -280,7 +283,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -381,22 +385,26 @@
 														"description": "The date and a time a watermark profile was created.",
 														"example": "2014-01-02T02:20:00Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"downloadedFrom": {
 														"description": "The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.",
 														"example": "https://company.com/logo.png",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"height": {
 														"description": "The height of the image in pixels.",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"name": {
 														"default": "",
 														"description": "A short description of the watermark profile.",
 														"example": "Marketing Videos",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"opacity": {
 														"default": 1,
@@ -404,7 +412,8 @@
 														"example": 0.75,
 														"maximum": 1,
 														"minimum": 0,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"padding": {
 														"default": 0.05,
@@ -412,13 +421,15 @@
 														"example": 0.1,
 														"maximum": 1,
 														"minimum": 0,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"position": {
 														"default": "upperRight",
 														"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 														"example": "center",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"scale": {
 														"default": 0.15,
@@ -426,22 +437,26 @@
 														"example": 0.1,
 														"maximum": 1,
 														"minimum": 0,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"size": {
 														"description": "The size of the image in bytes.",
 														"example": 29472,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"uid": {
 														"description": "The unique identifier for a watermark profile.",
 														"example": "ea95132c15732412d22c1476fa83f27a",
 														"maxLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"width": {
 														"description": "The width of the image in pixels.",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -598,7 +613,8 @@
 					"description": "The unique identifier for a watermark profile.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -609,7 +625,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -714,22 +731,26 @@
 													"description": "The date and a time a watermark profile was created.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"downloadedFrom": {
 													"description": "The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.",
 													"example": "https://company.com/logo.png",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"height": {
 													"description": "The height of the image in pixels.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"name": {
 													"default": "",
 													"description": "A short description of the watermark profile.",
 													"example": "Marketing Videos",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"opacity": {
 													"default": 1,
@@ -737,7 +758,8 @@
 													"example": 0.75,
 													"maximum": 1,
 													"minimum": 0,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"padding": {
 													"default": 0.05,
@@ -745,13 +767,15 @@
 													"example": 0.1,
 													"maximum": 1,
 													"minimum": 0,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"position": {
 													"default": "upperRight",
 													"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 													"example": "center",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"scale": {
 													"default": 0.15,
@@ -759,22 +783,26 @@
 													"example": 0.1,
 													"maximum": 1,
 													"minimum": 0,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"size": {
 													"description": "The size of the image in bytes.",
 													"example": 29472,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "The unique identifier for a watermark profile.",
 													"example": "ea95132c15732412d22c1476fa83f27a",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"width": {
 													"description": "The width of the image in pixels.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -929,7 +957,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -941,13 +970,15 @@
 							"file": {
 								"description": "The image file to upload.",
 								"example": "@/Users/rchen/Downloads/watermark.png",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"default": "",
 								"description": "A short description of the watermark profile.",
 								"example": "Marketing Videos",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"opacity": {
 								"default": 1,
@@ -955,7 +986,8 @@
 								"example": 0.75,
 								"maximum": 1,
 								"minimum": 0,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"padding": {
 								"default": 0.05,
@@ -963,13 +995,15 @@
 								"example": 0.1,
 								"maximum": 1,
 								"minimum": 0,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"position": {
 								"default": "upperRight",
 								"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 								"example": "center",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"scale": {
 								"default": 0.15,
@@ -977,7 +1011,8 @@
 								"example": 0.1,
 								"maximum": 1,
 								"minimum": 0,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1090,22 +1125,26 @@
 													"description": "The date and a time a watermark profile was created.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"downloadedFrom": {
 													"description": "The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.",
 													"example": "https://company.com/logo.png",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"height": {
 													"description": "The height of the image in pixels.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"name": {
 													"default": "",
 													"description": "A short description of the watermark profile.",
 													"example": "Marketing Videos",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"opacity": {
 													"default": 1,
@@ -1113,7 +1152,8 @@
 													"example": 0.75,
 													"maximum": 1,
 													"minimum": 0,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"padding": {
 													"default": 0.05,
@@ -1121,13 +1161,15 @@
 													"example": 0.1,
 													"maximum": 1,
 													"minimum": 0,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"position": {
 													"default": "upperRight",
 													"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 													"example": "center",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"scale": {
 													"default": 0.15,
@@ -1135,22 +1177,26 @@
 													"example": 0.1,
 													"maximum": 1,
 													"minimum": 0,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"size": {
 													"description": "The size of the image in bytes.",
 													"example": 29472,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "The unique identifier for a watermark profile.",
 													"example": "ea95132c15732412d22c1476fa83f27a",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"width": {
 													"description": "The width of the image in pixels.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											},
 											"type": "object"

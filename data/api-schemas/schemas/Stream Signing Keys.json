@@ -381,7 +381,8 @@
 														"description": "The date and time a signing key was created.",
 														"example": "2014-01-02T02:20:00Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier.",
@@ -650,7 +651,8 @@
 													"description": "The date and time a signing key was created.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier.",

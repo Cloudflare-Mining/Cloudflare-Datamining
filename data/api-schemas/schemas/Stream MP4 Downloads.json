@@ -11,7 +11,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -274,7 +275,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -537,7 +539,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{

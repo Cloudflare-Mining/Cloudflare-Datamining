@@ -11,7 +11,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -26,7 +27,8 @@
 									"example.com"
 								],
 								"items": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -34,33 +36,39 @@
 								"description": "The unique video identifier (UID).",
 								"example": "023e105f4ecef8ad9ca31a8372d0c353",
 								"maxLength": 32,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"creator": {
 								"description": "A user-defined identifier for the media creator.",
 								"example": "creator-id_abcde12345",
 								"maxLength": 64,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"endTimeSeconds": {
 								"description": "Specifies the end time for the video clip in seconds.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"maxDurationSeconds": {
 								"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
 								"maximum": 21600,
 								"minimum": 1,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"requireSignedURLs": {
 								"default": false,
 								"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"startTimeSeconds": {
 								"description": "Specifies the start time for the video clip in seconds.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"thumbnailTimestampPct": {
 								"default": 0,
@@ -68,7 +76,8 @@
 								"example": 0.529241,
 								"maximum": 1,
 								"minimum": 0,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"watermark": {
 								"properties": {
@@ -76,7 +85,8 @@
 										"description": "The unique identifier for the watermark profile.",
 										"example": "ea95132c15732412d22c1476fa83f27a",
 										"maxLength": 32,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -191,7 +201,8 @@
 														"example.com"
 													],
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -199,7 +210,8 @@
 													"description": "The unique video identifier (UID).",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created": {
 													"description": "The date and time the clip was created.",
@@ -211,17 +223,20 @@
 													"description": "A user-defined identifier for the media creator.",
 													"example": "creator-id_abcde12345",
 													"maxLength": 64,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"endTimeSeconds": {
 													"description": "Specifies the end time for the video clip in seconds.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"maxDurationSeconds": {
 													"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
 													"maximum": 21600,
 													"minimum": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
@@ -234,19 +249,22 @@
 													"description": "The date and time the live input was last modified.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"playback": {
 													"properties": {
 														"dash": {
 															"description": "DASH Media Presentation Description for the video.",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"hls": {
 															"description": "The HLS manifest for the video.",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -255,17 +273,20 @@
 													"description": "The video's preview page URI. This field is omitted until encoding is complete.",
 													"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/watch",
 													"format": "uri",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"requireSignedURLs": {
 													"default": false,
 													"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"startTimeSeconds": {
 													"description": "Specifies the start time for the video clip in seconds.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Specifies the processing status for all quality levels for a video.",
@@ -278,7 +299,8 @@
 														"error"
 													],
 													"example": "inprogress",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"thumbnailTimestampPct": {
 													"default": 0,
@@ -286,7 +308,8 @@
 													"example": 0.529241,
 													"maximum": 1,
 													"minimum": 0,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"watermark": {
 													"properties": {
@@ -294,7 +317,8 @@
 															"description": "The unique identifier for the watermark profile.",
 															"example": "ea95132c15732412d22c1476fa83f27a",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"

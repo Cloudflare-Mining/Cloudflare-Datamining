@@ -10,7 +10,8 @@
 				"schema": {
 					"description": "The language tag in BCP 47 format.",
 					"example": "tr",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -21,7 +22,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -134,7 +136,8 @@
 									"properties": {
 										"result": {
 											"example": "",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									}
 								}
@@ -285,7 +288,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -396,17 +400,20 @@
 													"generated": {
 														"description": "Whether the caption was generated via AI.",
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"label": {
 														"description": "The language label displayed in the native language to users.",
 														"example": "Türkçe",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"language": {
 														"description": "The language tag in BCP 47 format.",
 														"example": "tr",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"status": {
 														"description": "The status of a generated caption.",
@@ -415,7 +422,8 @@
 															"inprogress",
 															"error"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -571,7 +579,8 @@
 				"schema": {
 					"description": "The language tag in BCP 47 format.",
 					"example": "tr",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -582,7 +591,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -697,17 +707,20 @@
 												"generated": {
 													"description": "Whether the caption was generated via AI.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"label": {
 													"description": "The language label displayed in the native language to users.",
 													"example": "Türkçe",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"language": {
 													"description": "The language tag in BCP 47 format.",
 													"example": "tr",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "The status of a generated caption.",
@@ -716,7 +729,8 @@
 														"inprogress",
 														"error"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -870,7 +884,8 @@
 				"schema": {
 					"description": "The language tag in BCP 47 format.",
 					"example": "tr",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -881,7 +896,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1055,7 +1071,8 @@
 				"schema": {
 					"description": "The language tag in BCP 47 format.",
 					"example": "tr",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1066,7 +1083,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1181,17 +1199,20 @@
 												"generated": {
 													"description": "Whether the caption was generated via AI.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"label": {
 													"description": "The language label displayed in the native language to users.",
 													"example": "Türkçe",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"language": {
 													"description": "The language tag in BCP 47 format.",
 													"example": "tr",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "The status of a generated caption.",
@@ -1200,7 +1221,8 @@
 														"inprogress",
 														"error"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1350,7 +1372,8 @@
 				"schema": {
 					"description": "The language tag in BCP 47 format.",
 					"example": "tr",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1361,7 +1384,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1384,7 +1408,8 @@
 							"file": {
 								"description": "The WebVTT file containing the caption or subtitle content.",
 								"example": "@/Users/kyle/Desktop/tr.vtt",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1496,17 +1521,20 @@
 												"generated": {
 													"description": "Whether the caption was generated via AI.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"label": {
 													"description": "The language label displayed in the native language to users.",
 													"example": "Türkçe",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"language": {
 													"description": "The language tag in BCP 47 format.",
 													"example": "tr",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "The status of a generated caption.",
@@ -1515,7 +1543,8 @@
 														"inprogress",
 														"error"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"

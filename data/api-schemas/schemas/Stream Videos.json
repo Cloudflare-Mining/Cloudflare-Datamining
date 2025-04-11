@@ -11,7 +11,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -22,7 +23,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -73,7 +75,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -90,7 +93,8 @@
 						"error"
 					],
 					"example": "inprogress",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -100,7 +104,8 @@
 					"description": "A user-defined identifier for the media creator.",
 					"example": "creator-id_abcde12345",
 					"maxLength": 64,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -109,7 +114,8 @@
 				"schema": {
 					"description": "Specifies whether the video is `vod` or `live`.",
 					"example": "live",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -128,7 +134,8 @@
 				"schema": {
 					"description": "Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.",
 					"example": "puppy.mp4",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -261,7 +268,8 @@
 															"example.com"
 														],
 														"items": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": "array"
 													},
@@ -269,27 +277,32 @@
 														"description": "The date and time the media item was created.",
 														"example": "2014-01-02T02:20:00Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"creator": {
 														"description": "A user-defined identifier for the media creator.",
 														"example": "creator-id_abcde12345",
 														"maxLength": 64,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"duration": {
 														"description": "The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.",
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"input": {
 														"properties": {
 															"height": {
 																"description": "The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"width": {
 																"description": "The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -298,13 +311,15 @@
 														"description": "The live input ID used to upload a video with Stream Live.",
 														"example": "fc0a8dc887b16759bfd9ad922230a014",
 														"maxLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxDurationSeconds": {
 														"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
 														"maximum": 21600,
 														"minimum": 1,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"meta": {
 														"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
@@ -317,19 +332,22 @@
 														"description": "The date and time the media item was last modified.",
 														"example": "2014-01-02T02:20:00Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"playback": {
 														"properties": {
 															"dash": {
 																"description": "DASH Media Presentation Description for the video.",
 																"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"hls": {
 																"description": "The HLS manifest for the video.",
 																"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -338,35 +356,41 @@
 														"description": "The video's preview page URI. This field is omitted until encoding is complete.",
 														"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/watch",
 														"format": "uri",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"readyToStream": {
 														"description": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.",
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"readyToStreamAt": {
 														"description": "Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.",
 														"example": "2014-01-02T02:20:00Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"requireSignedURLs": {
 														"default": false,
 														"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"scheduledDeletion": {
 														"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
 														"example": "2014-01-02T02:20:00Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"size": {
 														"description": "The size of the media item in bytes.",
 														"example": 4190963,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"status": {
 														"description": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.",
@@ -374,18 +398,21 @@
 															"errorReasonCode": {
 																"description": "Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use.",
 																"example": "ERR_NON_VIDEO",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"errorReasonText": {
 																"description": "Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state.",
 																"example": "The file was not recognized as a valid video file.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"pctComplete": {
 																"description": "Indicates the size of the entire upload in bytes. The value must be a non-negative integer.",
 																"maximum": 100,
 																"minimum": 0,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"state": {
 																"description": "Specifies the processing status for all quality levels for a video.",
@@ -398,7 +425,8 @@
 																	"error"
 																],
 																"example": "inprogress",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														}
 													},
@@ -406,7 +434,8 @@
 														"description": "The media item's thumbnail URI. This field is omitted until encoding is complete.",
 														"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/thumbnails/thumbnail.jpg",
 														"format": "uri",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"thumbnailTimestampPct": {
 														"default": 0,
@@ -414,25 +443,29 @@
 														"example": 0.529241,
 														"maximum": 1,
 														"minimum": 0,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"uid": {
 														"description": "A Cloudflare-generated unique identifier for a media item.",
 														"example": "ea95132c15732412d22c1476fa83f27a",
 														"maxLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"uploadExpiry": {
 														"description": "The date and time when the video upload URL is no longer valid for direct user uploads.",
 														"example": "2014-01-02T02:20:00Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"uploaded": {
 														"description": "The date and time the media item was uploaded.",
 														"example": "2014-01-02T02:20:00Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"watermark": {
 														"properties": {
@@ -440,22 +473,26 @@
 																"description": "The date and a time a watermark profile was created.",
 																"example": "2014-01-02T02:20:00Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"downloadedFrom": {
 																"description": "The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.",
 																"example": "https://company.com/logo.png",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"height": {
 																"description": "The height of the image in pixels.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"name": {
 																"default": "",
 																"description": "A short description of the watermark profile.",
 																"example": "Marketing Videos",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"opacity": {
 																"default": 1,
@@ -463,7 +500,8 @@
 																"example": 0.75,
 																"maximum": 1,
 																"minimum": 0,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"padding": {
 																"default": 0.05,
@@ -471,13 +509,15 @@
 																"example": 0.1,
 																"maximum": 1,
 																"minimum": 0,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"position": {
 																"default": "upperRight",
 																"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 																"example": "center",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"scale": {
 																"default": 0.15,
@@ -485,22 +525,26 @@
 																"example": 0.1,
 																"maximum": 1,
 																"minimum": 0,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"size": {
 																"description": "The size of the image in bytes.",
 																"example": 29472,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"uid": {
 																"description": "The unique identifier for a watermark profile.",
 																"example": "ea95132c15732412d22c1476fa83f27a",
 																"maxLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"width": {
 																"description": "The width of the image in pixels.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -674,7 +718,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -685,7 +730,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -792,7 +838,8 @@
 														"example.com"
 													],
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -800,27 +847,32 @@
 													"description": "The date and time the media item was created.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"creator": {
 													"description": "A user-defined identifier for the media creator.",
 													"example": "creator-id_abcde12345",
 													"maxLength": 64,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"duration": {
 													"description": "The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.",
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"input": {
 													"properties": {
 														"height": {
 															"description": "The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"width": {
 															"description": "The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -829,13 +881,15 @@
 													"description": "The live input ID used to upload a video with Stream Live.",
 													"example": "fc0a8dc887b16759bfd9ad922230a014",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"maxDurationSeconds": {
 													"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
 													"maximum": 21600,
 													"minimum": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
@@ -848,19 +902,22 @@
 													"description": "The date and time the media item was last modified.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"playback": {
 													"properties": {
 														"dash": {
 															"description": "DASH Media Presentation Description for the video.",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"hls": {
 															"description": "The HLS manifest for the video.",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -869,35 +926,41 @@
 													"description": "The video's preview page URI. This field is omitted until encoding is complete.",
 													"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/watch",
 													"format": "uri",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"readyToStream": {
 													"description": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"readyToStreamAt": {
 													"description": "Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"requireSignedURLs": {
 													"default": false,
 													"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"scheduledDeletion": {
 													"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"size": {
 													"description": "The size of the media item in bytes.",
 													"example": 4190963,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.",
@@ -905,18 +968,21 @@
 														"errorReasonCode": {
 															"description": "Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use.",
 															"example": "ERR_NON_VIDEO",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"errorReasonText": {
 															"description": "Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state.",
 															"example": "The file was not recognized as a valid video file.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"pctComplete": {
 															"description": "Indicates the size of the entire upload in bytes. The value must be a non-negative integer.",
 															"maximum": 100,
 															"minimum": 0,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"state": {
 															"description": "Specifies the processing status for all quality levels for a video.",
@@ -929,7 +995,8 @@
 																"error"
 															],
 															"example": "inprogress",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												},
@@ -937,7 +1004,8 @@
 													"description": "The media item's thumbnail URI. This field is omitted until encoding is complete.",
 													"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/thumbnails/thumbnail.jpg",
 													"format": "uri",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"thumbnailTimestampPct": {
 													"default": 0,
@@ -945,25 +1013,29 @@
 													"example": 0.529241,
 													"maximum": 1,
 													"minimum": 0,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a media item.",
 													"example": "ea95132c15732412d22c1476fa83f27a",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uploadExpiry": {
 													"description": "The date and time when the video upload URL is no longer valid for direct user uploads.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uploaded": {
 													"description": "The date and time the media item was uploaded.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"watermark": {
 													"properties": {
@@ -971,22 +1043,26 @@
 															"description": "The date and a time a watermark profile was created.",
 															"example": "2014-01-02T02:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"downloadedFrom": {
 															"description": "The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.",
 															"example": "https://company.com/logo.png",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"height": {
 															"description": "The height of the image in pixels.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"name": {
 															"default": "",
 															"description": "A short description of the watermark profile.",
 															"example": "Marketing Videos",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"opacity": {
 															"default": 1,
@@ -994,7 +1070,8 @@
 															"example": 0.75,
 															"maximum": 1,
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"padding": {
 															"default": 0.05,
@@ -1002,13 +1079,15 @@
 															"example": 0.1,
 															"maximum": 1,
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"position": {
 															"default": "upperRight",
 															"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 															"example": "center",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"scale": {
 															"default": 0.15,
@@ -1016,22 +1095,26 @@
 															"example": 0.1,
 															"maximum": 1,
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"size": {
 															"description": "The size of the image in bytes.",
 															"example": 29472,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"uid": {
 															"description": "The unique identifier for a watermark profile.",
 															"example": "ea95132c15732412d22c1476fa83f27a",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"width": {
 															"description": "The width of the image in pixels.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1189,7 +1272,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1200,7 +1284,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1357,7 +1442,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1367,7 +1453,8 @@
 					"description": "A user-defined identifier for the media creator.",
 					"example": "creator-id_abcde12345",
 					"maxLength": 64,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1472,7 +1559,8 @@
 													"description": "A user-defined identifier for the media creator.",
 													"example": "creator-id_abcde12345",
 													"maxLength": 64,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"totalStorageMinutes": {
 													"description": "The total minutes of video content stored in the account.",
@@ -1640,7 +1728,8 @@
 						"1.0.0"
 					],
 					"example": "1.0.0",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1650,7 +1739,8 @@
 					"description": "A user-defined identifier for the media creator.",
 					"example": "creator-id_abcde12345",
 					"maxLength": 64,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1660,7 +1750,8 @@
 				"schema": {
 					"description": "Indicates the size of the entire upload in bytes. The value must be a non-negative integer.",
 					"minimum": 0,
-					"type": "integer"
+					"type": "integer",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1669,7 +1760,8 @@
 				"schema": {
 					"description": "Comma-separated key-value pairs following the TUS protocol specification. Values are Base-64 encoded.\nSupported keys: `name`, `requiresignedurls`, `allowedorigins`, `thumbnailtimestamppct`, `watermark`, `scheduleddeletion`, `maxdurationseconds`.",
 					"example": "name aGVsbG8gd29ybGQ=, requiresignedurls, allowedorigins ZXhhbXBsZS5jb20sdGVzdC5jb20=",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1680,7 +1772,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1690,7 +1783,8 @@
 					"default": false,
 					"description": "Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.",
 					"example": true,
-					"type": "boolean"
+					"type": "boolean",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1741,7 +1835,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1752,7 +1847,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1767,7 +1863,8 @@
 									"example.com"
 								],
 								"items": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -1775,13 +1872,15 @@
 								"description": "A user-defined identifier for the media creator.",
 								"example": "creator-id_abcde12345",
 								"maxLength": 64,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"maxDurationSeconds": {
 								"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
 								"maximum": 21600,
 								"minimum": 1,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"meta": {
 								"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
@@ -1794,13 +1893,15 @@
 								"default": false,
 								"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"scheduledDeletion": {
 								"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
 								"example": "2014-01-02T02:20:00Z",
 								"format": "date-time",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"thumbnailTimestampPct": {
 								"default": 0,
@@ -1808,13 +1909,15 @@
 								"example": 0.529241,
 								"maximum": 1,
 								"minimum": 0,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"uploadExpiry": {
 								"description": "The date and time when the video upload URL is no longer valid for direct user uploads.",
 								"example": "2014-01-02T02:20:00Z",
 								"format": "date-time",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -1926,7 +2029,8 @@
 														"example.com"
 													],
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -1934,27 +2038,32 @@
 													"description": "The date and time the media item was created.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"creator": {
 													"description": "A user-defined identifier for the media creator.",
 													"example": "creator-id_abcde12345",
 													"maxLength": 64,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"duration": {
 													"description": "The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.",
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"input": {
 													"properties": {
 														"height": {
 															"description": "The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"width": {
 															"description": "The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1963,13 +2072,15 @@
 													"description": "The live input ID used to upload a video with Stream Live.",
 													"example": "fc0a8dc887b16759bfd9ad922230a014",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"maxDurationSeconds": {
 													"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
 													"maximum": 21600,
 													"minimum": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
@@ -1982,19 +2093,22 @@
 													"description": "The date and time the media item was last modified.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"playback": {
 													"properties": {
 														"dash": {
 															"description": "DASH Media Presentation Description for the video.",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"hls": {
 															"description": "The HLS manifest for the video.",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2003,35 +2117,41 @@
 													"description": "The video's preview page URI. This field is omitted until encoding is complete.",
 													"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/watch",
 													"format": "uri",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"readyToStream": {
 													"description": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"readyToStreamAt": {
 													"description": "Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"requireSignedURLs": {
 													"default": false,
 													"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"scheduledDeletion": {
 													"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"size": {
 													"description": "The size of the media item in bytes.",
 													"example": 4190963,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.",
@@ -2039,18 +2159,21 @@
 														"errorReasonCode": {
 															"description": "Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use.",
 															"example": "ERR_NON_VIDEO",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"errorReasonText": {
 															"description": "Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state.",
 															"example": "The file was not recognized as a valid video file.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"pctComplete": {
 															"description": "Indicates the size of the entire upload in bytes. The value must be a non-negative integer.",
 															"maximum": 100,
 															"minimum": 0,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"state": {
 															"description": "Specifies the processing status for all quality levels for a video.",
@@ -2063,7 +2186,8 @@
 																"error"
 															],
 															"example": "inprogress",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												},
@@ -2071,7 +2195,8 @@
 													"description": "The media item's thumbnail URI. This field is omitted until encoding is complete.",
 													"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/thumbnails/thumbnail.jpg",
 													"format": "uri",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"thumbnailTimestampPct": {
 													"default": 0,
@@ -2079,25 +2204,29 @@
 													"example": 0.529241,
 													"maximum": 1,
 													"minimum": 0,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a media item.",
 													"example": "ea95132c15732412d22c1476fa83f27a",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uploadExpiry": {
 													"description": "The date and time when the video upload URL is no longer valid for direct user uploads.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uploaded": {
 													"description": "The date and time the media item was uploaded.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"watermark": {
 													"properties": {
@@ -2105,22 +2234,26 @@
 															"description": "The date and a time a watermark profile was created.",
 															"example": "2014-01-02T02:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"downloadedFrom": {
 															"description": "The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.",
 															"example": "https://company.com/logo.png",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"height": {
 															"description": "The height of the image in pixels.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"name": {
 															"default": "",
 															"description": "A short description of the watermark profile.",
 															"example": "Marketing Videos",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"opacity": {
 															"default": 1,
@@ -2128,7 +2261,8 @@
 															"example": 0.75,
 															"maximum": 1,
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"padding": {
 															"default": 0.05,
@@ -2136,13 +2270,15 @@
 															"example": 0.1,
 															"maximum": 1,
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"position": {
 															"default": "upperRight",
 															"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 															"example": "center",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"scale": {
 															"default": 0.15,
@@ -2150,22 +2286,26 @@
 															"example": 0.1,
 															"maximum": 1,
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"size": {
 															"description": "The size of the image in bytes.",
 															"example": 29472,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"uid": {
 															"description": "The unique identifier for a watermark profile.",
 															"example": "ea95132c15732412d22c1476fa83f27a",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"width": {
 															"description": "The width of the image in pixels.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2319,7 +2459,8 @@
 					"description": "A Cloudflare-generated unique identifier for a media item.",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2330,7 +2471,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2373,19 +2515,22 @@
 												"block"
 											],
 											"example": "allow",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"country": {
 											"description": "An array of 2-letter country codes in ISO 3166-1 Alpha-2 format used to match requests.",
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										},
 										"ip": {
 											"description": "An array of IPv4 or IPV6 addresses or CIDRs used to match requests.",
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										},
@@ -2397,7 +2542,8 @@
 												"ip.geoip.country"
 											],
 											"example": "ip.src",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -2407,7 +2553,8 @@
 							"downloadable": {
 								"default": false,
 								"description": "The optional boolean value that enables using signed tokens to access MP4 download links for a video.",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"exp": {
 								"description": "The optional unix epoch timestamp that specficies the time after a token is not accepted. The maximum time specification is 24 hours from issuing time. If this field is not set, the default is one hour after issuing.",
@@ -2416,11 +2563,13 @@
 							"id": {
 								"description": "The optional ID of a Stream signing key. If present, the `pem` field is also required.",
 								"example": "ab0d4ef71g4425f8dcba9041231813000",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"nbf": {
 								"description": "The optional unix epoch timestamp that specifies the time before a the token is not accepted. If this field is not set, the default is one hour before issuing.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"pem": {
 								"description": "The optional base64 encoded private key in PEM format associated with a Stream signing key. If present, the `id` field is also required.",
@@ -2686,7 +2835,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2696,7 +2846,8 @@
 					"description": "A user-defined identifier for the media creator.",
 					"example": "creator-id_abcde12345",
 					"maxLength": 64,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2711,7 +2862,8 @@
 									"example.com"
 								],
 								"items": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -2719,7 +2871,8 @@
 								"description": "A user-defined identifier for the media creator.",
 								"example": "creator-id_abcde12345",
 								"maxLength": 64,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"meta": {
 								"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
@@ -2732,13 +2885,15 @@
 								"default": false,
 								"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"scheduledDeletion": {
 								"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
 								"example": "2014-01-02T02:20:00Z",
 								"format": "date-time",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"thumbnailTimestampPct": {
 								"default": 0,
@@ -2746,7 +2901,8 @@
 								"example": 0.529241,
 								"maximum": 1,
 								"minimum": 0,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"url": {
 								"description": "A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file.",
@@ -2760,7 +2916,8 @@
 										"description": "The unique identifier for the watermark profile.",
 										"example": "ea95132c15732412d22c1476fa83f27a",
 										"maxLength": 32,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -2877,7 +3034,8 @@
 														"example.com"
 													],
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -2885,27 +3043,32 @@
 													"description": "The date and time the media item was created.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"creator": {
 													"description": "A user-defined identifier for the media creator.",
 													"example": "creator-id_abcde12345",
 													"maxLength": 64,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"duration": {
 													"description": "The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.",
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"input": {
 													"properties": {
 														"height": {
 															"description": "The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"width": {
 															"description": "The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2914,13 +3077,15 @@
 													"description": "The live input ID used to upload a video with Stream Live.",
 													"example": "fc0a8dc887b16759bfd9ad922230a014",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"maxDurationSeconds": {
 													"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
 													"maximum": 21600,
 													"minimum": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
@@ -2933,19 +3098,22 @@
 													"description": "The date and time the media item was last modified.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"playback": {
 													"properties": {
 														"dash": {
 															"description": "DASH Media Presentation Description for the video.",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"hls": {
 															"description": "The HLS manifest for the video.",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2954,35 +3122,41 @@
 													"description": "The video's preview page URI. This field is omitted until encoding is complete.",
 													"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/watch",
 													"format": "uri",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"readyToStream": {
 													"description": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"readyToStreamAt": {
 													"description": "Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"requireSignedURLs": {
 													"default": false,
 													"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"scheduledDeletion": {
 													"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"size": {
 													"description": "The size of the media item in bytes.",
 													"example": 4190963,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.",
@@ -2990,18 +3164,21 @@
 														"errorReasonCode": {
 															"description": "Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use.",
 															"example": "ERR_NON_VIDEO",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"errorReasonText": {
 															"description": "Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state.",
 															"example": "The file was not recognized as a valid video file.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"pctComplete": {
 															"description": "Indicates the size of the entire upload in bytes. The value must be a non-negative integer.",
 															"maximum": 100,
 															"minimum": 0,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"state": {
 															"description": "Specifies the processing status for all quality levels for a video.",
@@ -3014,7 +3191,8 @@
 																"error"
 															],
 															"example": "inprogress",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												},
@@ -3022,7 +3200,8 @@
 													"description": "The media item's thumbnail URI. This field is omitted until encoding is complete.",
 													"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/thumbnails/thumbnail.jpg",
 													"format": "uri",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"thumbnailTimestampPct": {
 													"default": 0,
@@ -3030,25 +3209,29 @@
 													"example": 0.529241,
 													"maximum": 1,
 													"minimum": 0,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a media item.",
 													"example": "ea95132c15732412d22c1476fa83f27a",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uploadExpiry": {
 													"description": "The date and time when the video upload URL is no longer valid for direct user uploads.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uploaded": {
 													"description": "The date and time the media item was uploaded.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"watermark": {
 													"properties": {
@@ -3056,22 +3239,26 @@
 															"description": "The date and a time a watermark profile was created.",
 															"example": "2014-01-02T02:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"downloadedFrom": {
 															"description": "The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.",
 															"example": "https://company.com/logo.png",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"height": {
 															"description": "The height of the image in pixels.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"name": {
 															"default": "",
 															"description": "A short description of the watermark profile.",
 															"example": "Marketing Videos",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"opacity": {
 															"default": 1,
@@ -3079,7 +3266,8 @@
 															"example": 0.75,
 															"maximum": 1,
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"padding": {
 															"default": 0.05,
@@ -3087,13 +3275,15 @@
 															"example": 0.1,
 															"maximum": 1,
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"position": {
 															"default": "upperRight",
 															"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 															"example": "center",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"scale": {
 															"default": 0.15,
@@ -3101,22 +3291,26 @@
 															"example": 0.1,
 															"maximum": 1,
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"size": {
 															"description": "The size of the image in bytes.",
 															"example": 29472,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"uid": {
 															"description": "The unique identifier for a watermark profile.",
 															"example": "ea95132c15732412d22c1476fa83f27a",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"width": {
 															"description": "The width of the image in pixels.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3273,7 +3467,8 @@
 					"description": "The account identifier tag.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3283,7 +3478,8 @@
 					"description": "A user-defined identifier for the media creator.",
 					"example": "creator-id_abcde12345",
 					"maxLength": 64,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3298,7 +3494,8 @@
 									"example.com"
 								],
 								"items": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -3306,20 +3503,23 @@
 								"description": "A user-defined identifier for the media creator.",
 								"example": "creator-id_abcde12345",
 								"maxLength": 64,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"expiry": {
 								"default": "Now + 30 minutes",
 								"description": "The date and time after upload when videos will not be accepted.",
 								"example": "2021-01-02T02:20:00Z",
 								"format": "date-time",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"maxDurationSeconds": {
 								"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
 								"maximum": 21600,
 								"minimum": 1,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"meta": {
 								"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
@@ -3332,13 +3532,15 @@
 								"default": false,
 								"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"scheduledDeletion": {
 								"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
 								"example": "2014-01-02T02:20:00Z",
 								"format": "date-time",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"thumbnailTimestampPct": {
 								"default": 0,
@@ -3346,7 +3548,8 @@
 								"example": 0.529241,
 								"maximum": 1,
 								"minimum": 0,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"watermark": {
 								"properties": {
@@ -3354,7 +3557,8 @@
 										"description": "The unique identifier for the watermark profile.",
 										"example": "ea95132c15732412d22c1476fa83f27a",
 										"maxLength": 32,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -3470,13 +3674,15 @@
 													"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a media item.",
 													"example": "ea95132c15732412d22c1476fa83f27a",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uploadURL": {
 													"description": "The URL an unauthenticated upload can use for a single `HTTP POST multipart/form-data` request.",
@@ -3489,22 +3695,26 @@
 															"description": "The date and a time a watermark profile was created.",
 															"example": "2014-01-02T02:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"downloadedFrom": {
 															"description": "The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.",
 															"example": "https://company.com/logo.png",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"height": {
 															"description": "The height of the image in pixels.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"name": {
 															"default": "",
 															"description": "A short description of the watermark profile.",
 															"example": "Marketing Videos",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"opacity": {
 															"default": 1,
@@ -3512,7 +3722,8 @@
 															"example": 0.75,
 															"maximum": 1,
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"padding": {
 															"default": 0.05,
@@ -3520,13 +3731,15 @@
 															"example": 0.1,
 															"maximum": 1,
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"position": {
 															"default": "upperRight",
 															"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 															"example": "center",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"scale": {
 															"default": 0.15,
@@ -3534,22 +3747,26 @@
 															"example": 0.1,
 															"maximum": 1,
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"size": {
 															"description": "The size of the image in bytes.",
 															"example": 29472,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"uid": {
 															"description": "The unique identifier for a watermark profile.",
 															"example": "ea95132c15732412d22c1476fa83f27a",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"width": {
 															"description": "The width of the image in pixels.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
