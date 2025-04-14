@@ -2109,7 +2109,8 @@
 													"name": {
 														"description": "The name of the Access group.",
 														"example": "Allow devs",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"require": {
 														"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
@@ -4620,7 +4621,8 @@
 												"name": {
 													"description": "The name of the Access group.",
 													"example": "Allow devs",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"require": {
 													"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
@@ -6458,12 +6460,14 @@
 							},
 							"is_default": {
 								"description": "Whether this is the default group",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The name of the Access group.",
 								"example": "Allow devs",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"require": {
 								"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
@@ -8810,7 +8814,8 @@
 												"name": {
 													"description": "The name of the Access group.",
 													"example": "Allow devs",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"require": {
 													"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
@@ -10658,12 +10663,14 @@
 							},
 							"is_default": {
 								"description": "Whether this is the default group",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The name of the Access group.",
 								"example": "Allow devs",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"require": {
 								"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
@@ -13010,7 +13017,8 @@
 												"name": {
 													"description": "The name of the Access group.",
 													"example": "Allow devs",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"require": {
 													"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",

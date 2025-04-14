@@ -115,17 +115,20 @@
 												"allow_authenticate_via_warp": {
 													"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
 													"example": "false",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"auth_domain": {
 													"description": "The unique subdomain assigned to your Zero Trust organization.",
 													"example": "test.cloudflareaccess.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"auto_redirect_to_identity": {
 													"default": false,
 													"description": "When set to `true`, users skip the identity provider selection step during login.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -149,7 +152,8 @@
 												"is_ui_read_only": {
 													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
 													"example": "false",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"login_design": {
 													"properties": {
@@ -183,7 +187,8 @@
 												"name": {
 													"description": "The name of your Zero Trust organization.",
 													"example": "Widget Corps Internal Applications",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"session_duration": {
 													"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
@@ -203,12 +208,14 @@
 												"user_seat_expiration_inactive_time": {
 													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
 													"example": "730h",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"warp_auth_session_duration": {
 													"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.",
 													"example": "24h",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -480,7 +487,8 @@
 															"default": "8760h",
 															"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 															"example": "60m",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"expires_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -508,7 +516,8 @@
 														"name": {
 															"description": "The name of the service token.",
 															"example": "CI/CD token",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -695,22 +704,26 @@
 							"allow_authenticate_via_warp": {
 								"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
 								"example": "false",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"auth_domain": {
 								"description": "The unique subdomain assigned to your Zero Trust organization.",
 								"example": "test.cloudflareaccess.com",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"auto_redirect_to_identity": {
 								"default": false,
 								"description": "When set to `true`, users skip the identity provider selection step during login.",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"is_ui_read_only": {
 								"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
 								"example": "false",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"login_design": {
 								"properties": {
@@ -744,7 +757,8 @@
 							"name": {
 								"description": "The name of your Zero Trust organization.",
 								"example": "Widget Corps Internal Applications",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"session_duration": {
 								"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
@@ -759,12 +773,14 @@
 							"user_seat_expiration_inactive_time": {
 								"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
 								"example": "730h",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"warp_auth_session_duration": {
 								"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.",
 								"example": "24h",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -876,17 +892,20 @@
 												"allow_authenticate_via_warp": {
 													"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
 													"example": "false",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"auth_domain": {
 													"description": "The unique subdomain assigned to your Zero Trust organization.",
 													"example": "test.cloudflareaccess.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"auto_redirect_to_identity": {
 													"default": false,
 													"description": "When set to `true`, users skip the identity provider selection step during login.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -910,7 +929,8 @@
 												"is_ui_read_only": {
 													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
 													"example": "false",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"login_design": {
 													"properties": {
@@ -944,7 +964,8 @@
 												"name": {
 													"description": "The name of your Zero Trust organization.",
 													"example": "Widget Corps Internal Applications",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"session_duration": {
 													"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
@@ -964,12 +985,14 @@
 												"user_seat_expiration_inactive_time": {
 													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
 													"example": "730h",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"warp_auth_session_duration": {
 													"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.",
 													"example": "24h",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1353,17 +1376,20 @@
 							"allow_authenticate_via_warp": {
 								"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
 								"example": "false",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"auth_domain": {
 								"description": "The unique subdomain assigned to your Zero Trust organization.",
 								"example": "test.cloudflareaccess.com",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"auto_redirect_to_identity": {
 								"default": false,
 								"description": "When set to `true`, users skip the identity provider selection step during login.",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"custom_pages": {
 								"properties": {
@@ -1382,7 +1408,8 @@
 							"is_ui_read_only": {
 								"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
 								"example": "false",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"login_design": {
 								"properties": {
@@ -1416,7 +1443,8 @@
 							"name": {
 								"description": "The name of your Zero Trust organization.",
 								"example": "Widget Corps Internal Applications",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"session_duration": {
 								"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
@@ -1431,12 +1459,14 @@
 							"user_seat_expiration_inactive_time": {
 								"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
 								"example": "730h",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"warp_auth_session_duration": {
 								"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.",
 								"example": "24h",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						}
 					}
@@ -1544,17 +1574,20 @@
 												"allow_authenticate_via_warp": {
 													"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
 													"example": "false",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"auth_domain": {
 													"description": "The unique subdomain assigned to your Zero Trust organization.",
 													"example": "test.cloudflareaccess.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"auto_redirect_to_identity": {
 													"default": false,
 													"description": "When set to `true`, users skip the identity provider selection step during login.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1578,7 +1611,8 @@
 												"is_ui_read_only": {
 													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
 													"example": "false",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"login_design": {
 													"properties": {
@@ -1612,7 +1646,8 @@
 												"name": {
 													"description": "The name of your Zero Trust organization.",
 													"example": "Widget Corps Internal Applications",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"session_duration": {
 													"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
@@ -1632,12 +1667,14 @@
 												"user_seat_expiration_inactive_time": {
 													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
 													"example": "730h",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"warp_auth_session_duration": {
 													"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.",
 													"example": "24h",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1802,7 +1839,8 @@
 							"doh_jwt_duration": {
 								"description": "The duration the DoH JWT is valid for. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.  Note that the maximum duration for this setting is the same as the key rotation period on the account. Default expiration is 24h",
 								"example": "800h",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"service_token_id": {
 								"description": "The uuid of the service token you want to use for DoH authentication",
@@ -1927,7 +1965,8 @@
 															"default": "8760h",
 															"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 															"example": "60m",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"expires_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -1955,7 +1994,8 @@
 														"name": {
 															"description": "The name of the service token.",
 															"example": "CI/CD token",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -1976,7 +2016,8 @@
 												"doh_jwt_duration": {
 													"description": "The duration the DoH JWT is valid for. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.  Note that the maximum duration for this setting is the same as the key rotation period on the account. Default expiration is 24h",
 													"example": "800h",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}

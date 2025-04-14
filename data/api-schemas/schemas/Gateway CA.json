@@ -413,7 +413,8 @@
 												"properties": {
 													"id": {
 														"description": "The key ID of this certificate.",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"public_key": {
 														"description": "The public key of this certificate.",
@@ -676,7 +677,8 @@
 											"properties": {
 												"id": {
 													"description": "The key ID of this certificate.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"public_key": {
 													"description": "The public key of this certificate.",

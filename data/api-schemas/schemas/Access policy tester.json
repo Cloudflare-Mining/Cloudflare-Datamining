@@ -22,15 +22,8 @@
 					"description": "The UUID of the policy test.",
 					"example": "f1a8b3c9d4e5f6789a0b1c2d3e4f5678a9b0c1d2e3f4a5b67890c1d2e3f4b5a6",
 					"maxLength": 64,
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "page",
-				"schema": {
-					"default": 1,
-					"type": "integer"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -135,22 +128,26 @@
 													"description": "The UUID of the policy test.",
 													"example": "f1a8b3c9d4e5f6789a0b1c2d3e4f5678a9b0c1d2e3f4a5b67890c1d2e3f4b5a6",
 													"maxLength": 64,
-													"type": "string"
-												},
-												"pages_processed": {
-													"description": "The number of pages of (processed) users.",
-													"example": 2,
-													"type": "integer"
+													"type": "string",
+													"x-auditable": true
 												},
 												"percent_approved": {
 													"description": "The percentage of (processed) users approved based on policy evaluation results.",
 													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"percent_blocked": {
 													"description": "The percentage of (processed) users blocked based on policy evaluation results.",
 													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
+												},
+												"percent_errored": {
+													"description": "The percentage of (processed) users errored based on policy evaluation results.",
+													"example": 25,
+													"type": "integer",
+													"x-auditable": true
 												},
 												"percent_users_processed": {
 													"description": "The percentage of users processed so far (of the entire user base).",
@@ -162,23 +159,33 @@
 													"enum": [
 														"blocked",
 														"processing",
+														"exceeded time",
 														"complete"
 													],
 													"example": "complete",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"total_users": {
 													"description": "The total number of users in the user base.",
 													"example": 20,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"users_approved": {
 													"description": "The number of (processed) users approved based on policy evaluation results.",
 													"example": 5,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"users_blocked": {
 													"description": "The number of (processed) users blocked based on policy evaluation results.",
+													"example": 5,
+													"type": "integer",
+													"x-auditable": true
+												},
+												"users_errored": {
+													"description": "The number of (processed) users errored based on policy evaluation results.",
 													"example": 5,
 													"type": "integer"
 												}
@@ -345,7 +352,24 @@
 					"description": "The UUID of the policy test.",
 					"example": "f1a8b3c9d4e5f6789a0b1c2d3e4f5678a9b0c1d2e3f4a5b67890c1d2e3f4b5a6",
 					"maxLength": 64,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 25,
+					"type": "integer"
 				}
 			},
 			{
@@ -355,7 +379,8 @@
 				"schema": {
 					"enum": [
 						"success",
-						"fail"
+						"fail",
+						"error"
 					],
 					"type": "string"
 				}
@@ -481,10 +506,12 @@
 														"description": "Policy evaluation result for an individual user.",
 														"enum": [
 															"approved",
-															"blocked"
+															"blocked",
+															"error"
 														],
 														"example": "approved",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -2546,7 +2573,8 @@
 													"description": "The UUID of the policy test.",
 													"example": "f1a8b3c9d4e5f6789a0b1c2d3e4f5678a9b0c1d2e3f4a5b67890c1d2e3f4b5a6",
 													"maxLength": 64,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "The status of the policy test request.",
@@ -2554,7 +2582,8 @@
 														"success"
 													],
 													"example": "success",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"

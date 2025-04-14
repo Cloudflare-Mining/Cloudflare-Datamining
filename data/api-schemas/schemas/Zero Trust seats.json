@@ -31,18 +31,21 @@
 								"access_seat": {
 									"description": "True if the seat is part of Access.",
 									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"x-auditable": true
 								},
 								"gateway_seat": {
 									"description": "True if the seat is part of Gateway.",
 									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"x-auditable": true
 								},
 								"seat_uid": {
 									"description": "The unique API identifier for the Zero Trust seat.",
 									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 									"maxLength": 36,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -193,7 +196,8 @@
 													"access_seat": {
 														"description": "True if the seat is part of Access.",
 														"example": false,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -203,13 +207,15 @@
 													"gateway_seat": {
 														"description": "True if the seat is part of Gateway.",
 														"example": false,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"seat_uid": {
 														"description": "The unique API identifier for the Zero Trust seat.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"updated_at": {
 														"example": "2014-01-01T05:20:00.12345Z",

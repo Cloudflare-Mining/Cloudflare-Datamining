@@ -414,7 +414,8 @@
 													"app_count": {
 														"description": "The number of applications that have this tag",
 														"example": 1,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -705,7 +706,8 @@
 												"app_count": {
 													"description": "The number of applications that have this tag",
 													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -998,7 +1000,8 @@
 												"app_count": {
 													"description": "The number of applications that have this tag",
 													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1315,7 +1318,8 @@
 												"app_count": {
 													"description": "The number of applications that have this tag",
 													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",

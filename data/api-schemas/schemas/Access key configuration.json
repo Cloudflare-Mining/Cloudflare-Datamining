@@ -116,20 +116,23 @@
 													"description": "The number of days until the next key rotation.",
 													"example": 1,
 													"readOnly": true,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"key_rotation_interval_days": {
 													"description": "The number of days between key rotations.",
 													"example": 30,
 													"maximum": 365,
 													"minimum": 21,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"last_key_rotation_at": {
 													"description": "The timestamp of the previous key rotation.",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -388,20 +391,23 @@
 													"description": "The number of days until the next key rotation.",
 													"example": 1,
 													"readOnly": true,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"key_rotation_interval_days": {
 													"description": "The number of days between key rotations.",
 													"example": 30,
 													"maximum": 365,
 													"minimum": 21,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"last_key_rotation_at": {
 													"description": "The timestamp of the previous key rotation.",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -568,7 +574,8 @@
 								"example": 30,
 								"maximum": 365,
 								"minimum": 21,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -680,20 +687,23 @@
 													"description": "The number of days until the next key rotation.",
 													"example": 1,
 													"readOnly": true,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"key_rotation_interval_days": {
 													"description": "The number of days between key rotations.",
 													"example": 30,
 													"maximum": 365,
 													"minimum": 21,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"last_key_rotation_at": {
 													"description": "The timestamp of the previous key rotation.",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"

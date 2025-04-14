@@ -137,7 +137,8 @@
 													"default": "8760h",
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"example": "60m",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"expires_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -165,7 +166,8 @@
 												"name": {
 													"description": "The name of the service token.",
 													"example": "CI/CD token",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -484,7 +486,8 @@
 														"default": "8760h",
 														"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 														"example": "60m",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"expires_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -512,7 +515,8 @@
 													"name": {
 														"description": "The name of the service token.",
 														"example": "CI/CD token",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"updated_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -799,7 +803,8 @@
 													"default": "8760h",
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"example": "60m",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"expires_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -827,7 +832,8 @@
 												"name": {
 													"description": "The name of the service token.",
 													"example": "CI/CD token",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -999,12 +1005,14 @@
 								"default": "8760h",
 								"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 								"example": "60m",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The name of the service token.",
 								"example": "CI/CD token",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1132,7 +1140,8 @@
 													"default": "8760h",
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"example": "60m",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The ID of the service token.",
@@ -1141,7 +1150,8 @@
 												"name": {
 													"description": "The name of the service token.",
 													"example": "CI/CD token",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1424,7 +1434,8 @@
 													"default": "8760h",
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"example": "60m",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"expires_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1452,7 +1463,8 @@
 												"name": {
 													"description": "The name of the service token.",
 													"example": "CI/CD token",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1742,7 +1754,8 @@
 													"default": "8760h",
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"example": "60m",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The ID of the service token.",
@@ -1751,7 +1764,8 @@
 												"name": {
 													"description": "The name of the service token.",
 													"example": "CI/CD token",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1929,12 +1943,14 @@
 								"default": "8760h",
 								"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 								"example": "60m",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The name of the service token.",
 								"example": "CI/CD token",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						}
 					}
@@ -2053,7 +2069,8 @@
 													"default": "8760h",
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"example": "60m",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"expires_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -2081,7 +2098,8 @@
 												"name": {
 													"description": "The name of the service token.",
 													"example": "CI/CD token",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",

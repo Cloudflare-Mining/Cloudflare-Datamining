@@ -2204,7 +2204,8 @@
 															"app_count": {
 																"description": "Number of access applications currently using this policy.",
 																"example": 2,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"reusable": {
 																"enum": [
@@ -4272,7 +4273,8 @@
 														"app_count": {
 															"description": "Number of access applications currently using this policy.",
 															"example": 2,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"reusable": {
 															"enum": [
@@ -8111,7 +8113,8 @@
 														"app_count": {
 															"description": "Number of access applications currently using this policy.",
 															"example": 2,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"reusable": {
 															"enum": [
@@ -11960,7 +11963,8 @@
 														"app_count": {
 															"description": "Number of access applications currently using this policy.",
 															"example": 2,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"reusable": {
 															"enum": [

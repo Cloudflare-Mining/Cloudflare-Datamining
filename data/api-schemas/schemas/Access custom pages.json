@@ -408,7 +408,8 @@
 												"properties": {
 													"app_count": {
 														"description": "Number of apps the custom page is assigned to.",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -417,7 +418,8 @@
 													},
 													"name": {
 														"description": "Custom page name.",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": {
 														"description": "Custom page type.",
@@ -425,7 +427,8 @@
 															"identity_denied",
 															"forbidden"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"uid": {
 														"description": "UUID.",
@@ -710,7 +713,8 @@
 											"properties": {
 												"app_count": {
 													"description": "Number of apps the custom page is assigned to.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -720,11 +724,13 @@
 												"custom_html": {
 													"description": "Custom page HTML.",
 													"example": "<html><body><h1>Access Denied</h1></body></html>",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Custom page name.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "Custom page type.",
@@ -732,7 +738,8 @@
 														"identity_denied",
 														"forbidden"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "UUID.",
@@ -913,7 +920,8 @@
 						"properties": {
 							"app_count": {
 								"description": "Number of apps the custom page is assigned to.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"created_at": {
 								"example": "2014-01-01T05:20:00.12345Z",
@@ -923,11 +931,13 @@
 							"custom_html": {
 								"description": "Custom page HTML.",
 								"example": "<html><body><h1>Access Denied</h1></body></html>",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "Custom page name.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"type": {
 								"description": "Custom page type.",
@@ -935,7 +945,8 @@
 									"identity_denied",
 									"forbidden"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"uid": {
 								"description": "UUID.",
@@ -1058,7 +1069,8 @@
 											"properties": {
 												"app_count": {
 													"description": "Number of apps the custom page is assigned to.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1067,7 +1079,8 @@
 												},
 												"name": {
 													"description": "Custom page name.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "Custom page type.",
@@ -1075,7 +1088,8 @@
 														"identity_denied",
 														"forbidden"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "UUID.",
@@ -1265,7 +1279,8 @@
 						"properties": {
 							"app_count": {
 								"description": "Number of apps the custom page is assigned to.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"created_at": {
 								"example": "2014-01-01T05:20:00.12345Z",
@@ -1275,11 +1290,13 @@
 							"custom_html": {
 								"description": "Custom page HTML.",
 								"example": "<html><body><h1>Access Denied</h1></body></html>",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "Custom page name.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"type": {
 								"description": "Custom page type.",
@@ -1287,7 +1304,8 @@
 									"identity_denied",
 									"forbidden"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"uid": {
 								"description": "UUID.",
@@ -1410,7 +1428,8 @@
 											"properties": {
 												"app_count": {
 													"description": "Number of apps the custom page is assigned to.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1419,7 +1438,8 @@
 												},
 												"name": {
 													"description": "Custom page name.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "Custom page type.",
@@ -1427,7 +1447,8 @@
 														"identity_denied",
 														"forbidden"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uid": {
 													"description": "UUID.",
