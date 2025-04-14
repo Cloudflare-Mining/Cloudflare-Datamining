@@ -643,6 +643,10 @@
 																					"allOf": [
 																						{
 																							"properties": {
+																								"case_sensitive": {
+																									"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																									"type": "boolean"
+																								},
 																								"created_at": {
 																									"format": "date-time",
 																									"type": "string"
@@ -671,7 +675,8 @@
 																								"created_at",
 																								"updated_at",
 																								"enabled",
-																								"secret"
+																								"secret",
+																								"case_sensitive"
 																							],
 																							"type": "object"
 																						},
@@ -1050,6 +1055,10 @@
 																					"allOf": [
 																						{
 																							"properties": {
+																								"case_sensitive": {
+																									"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																									"type": "boolean"
+																								},
 																								"created_at": {
 																									"format": "date-time",
 																									"type": "string"
@@ -1078,7 +1087,8 @@
 																								"created_at",
 																								"updated_at",
 																								"enabled",
-																								"secret"
+																								"secret",
+																								"case_sensitive"
 																							],
 																							"type": "object"
 																						},
@@ -1414,6 +1424,10 @@
 																					"allOf": [
 																						{
 																							"properties": {
+																								"case_sensitive": {
+																									"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																									"type": "boolean"
+																								},
 																								"created_at": {
 																									"format": "date-time",
 																									"type": "string"
@@ -1442,7 +1456,8 @@
 																								"created_at",
 																								"updated_at",
 																								"enabled",
-																								"secret"
+																								"secret",
+																								"case_sensitive"
 																							],
 																							"type": "object"
 																						},
@@ -2089,6 +2104,10 @@
 																				"allOf": [
 																					{
 																						"properties": {
+																							"case_sensitive": {
+																								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																								"type": "boolean"
+																							},
 																							"created_at": {
 																								"format": "date-time",
 																								"type": "string"
@@ -2117,7 +2136,8 @@
 																							"created_at",
 																							"updated_at",
 																							"enabled",
-																							"secret"
+																							"secret",
+																							"case_sensitive"
 																						],
 																						"type": "object"
 																					},
@@ -2496,6 +2516,10 @@
 																				"allOf": [
 																					{
 																						"properties": {
+																							"case_sensitive": {
+																								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																								"type": "boolean"
+																							},
 																							"created_at": {
 																								"format": "date-time",
 																								"type": "string"
@@ -2524,7 +2548,8 @@
 																							"created_at",
 																							"updated_at",
 																							"enabled",
-																							"secret"
+																							"secret",
+																							"case_sensitive"
 																						],
 																						"type": "object"
 																					},
@@ -2860,6 +2885,10 @@
 																				"allOf": [
 																					{
 																						"properties": {
+																							"case_sensitive": {
+																								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																								"type": "boolean"
+																							},
 																							"created_at": {
 																								"format": "date-time",
 																								"type": "string"
@@ -2888,7 +2917,8 @@
 																							"created_at",
 																							"updated_at",
 																							"enabled",
-																							"secret"
+																							"secret",
+																							"case_sensitive"
 																						],
 																						"type": "object"
 																					},
@@ -3533,6 +3563,10 @@
 																				"allOf": [
 																					{
 																						"properties": {
+																							"case_sensitive": {
+																								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																								"type": "boolean"
+																							},
 																							"created_at": {
 																								"format": "date-time",
 																								"type": "string"
@@ -3561,7 +3595,8 @@
 																							"created_at",
 																							"updated_at",
 																							"enabled",
-																							"secret"
+																							"secret",
+																							"case_sensitive"
 																						],
 																						"type": "object"
 																					},
@@ -3940,6 +3975,10 @@
 																				"allOf": [
 																					{
 																						"properties": {
+																							"case_sensitive": {
+																								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																								"type": "boolean"
+																							},
 																							"created_at": {
 																								"format": "date-time",
 																								"type": "string"
@@ -3968,7 +4007,8 @@
 																							"created_at",
 																							"updated_at",
 																							"enabled",
-																							"secret"
+																							"secret",
+																							"case_sensitive"
 																						],
 																						"type": "object"
 																					},
@@ -4304,6 +4344,10 @@
 																				"allOf": [
 																					{
 																						"properties": {
+																							"case_sensitive": {
+																								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																								"type": "boolean"
+																							},
 																							"created_at": {
 																								"format": "date-time",
 																								"type": "string"
@@ -4332,7 +4376,8 @@
 																							"created_at",
 																							"updated_at",
 																							"enabled",
-																							"secret"
+																							"secret",
+																							"case_sensitive"
 																						],
 																						"type": "object"
 																					},
@@ -4977,6 +5022,10 @@
 																				"allOf": [
 																					{
 																						"properties": {
+																							"case_sensitive": {
+																								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																								"type": "boolean"
+																							},
 																							"created_at": {
 																								"format": "date-time",
 																								"type": "string"
@@ -5005,7 +5054,8 @@
 																							"created_at",
 																							"updated_at",
 																							"enabled",
-																							"secret"
+																							"secret",
+																							"case_sensitive"
 																						],
 																						"type": "object"
 																					},
@@ -5384,6 +5434,10 @@
 																				"allOf": [
 																					{
 																						"properties": {
+																							"case_sensitive": {
+																								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																								"type": "boolean"
+																							},
 																							"created_at": {
 																								"format": "date-time",
 																								"type": "string"
@@ -5412,7 +5466,8 @@
 																							"created_at",
 																							"updated_at",
 																							"enabled",
-																							"secret"
+																							"secret",
+																							"case_sensitive"
 																						],
 																						"type": "object"
 																					},
@@ -5748,6 +5803,10 @@
 																				"allOf": [
 																					{
 																						"properties": {
+																							"case_sensitive": {
+																								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																								"type": "boolean"
+																							},
 																							"created_at": {
 																								"format": "date-time",
 																								"type": "string"
@@ -5776,7 +5835,8 @@
 																							"created_at",
 																							"updated_at",
 																							"enabled",
-																							"secret"
+																							"secret",
+																							"case_sensitive"
 																						],
 																						"type": "object"
 																					},
@@ -6898,6 +6958,10 @@
 																						"allOf": [
 																							{
 																								"properties": {
+																									"case_sensitive": {
+																										"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																										"type": "boolean"
+																									},
 																									"created_at": {
 																										"format": "date-time",
 																										"type": "string"
@@ -6926,7 +6990,8 @@
 																									"created_at",
 																									"updated_at",
 																									"enabled",
-																									"secret"
+																									"secret",
+																									"case_sensitive"
 																								],
 																								"type": "object"
 																							},
@@ -7305,6 +7370,10 @@
 																						"allOf": [
 																							{
 																								"properties": {
+																									"case_sensitive": {
+																										"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																										"type": "boolean"
+																									},
 																									"created_at": {
 																										"format": "date-time",
 																										"type": "string"
@@ -7333,7 +7402,8 @@
 																									"created_at",
 																									"updated_at",
 																									"enabled",
-																									"secret"
+																									"secret",
+																									"case_sensitive"
 																								],
 																								"type": "object"
 																							},
@@ -7669,6 +7739,10 @@
 																						"allOf": [
 																							{
 																								"properties": {
+																									"case_sensitive": {
+																										"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																										"type": "boolean"
+																									},
 																									"created_at": {
 																										"format": "date-time",
 																										"type": "string"
@@ -7697,7 +7771,8 @@
 																									"created_at",
 																									"updated_at",
 																									"enabled",
-																									"secret"
+																									"secret",
+																									"case_sensitive"
 																								],
 																								"type": "object"
 																							},
@@ -8088,6 +8163,10 @@
 																							"allOf": [
 																								{
 																									"properties": {
+																										"case_sensitive": {
+																											"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																											"type": "boolean"
+																										},
 																										"created_at": {
 																											"format": "date-time",
 																											"type": "string"
@@ -8116,7 +8195,8 @@
 																										"created_at",
 																										"updated_at",
 																										"enabled",
-																										"secret"
+																										"secret",
+																										"case_sensitive"
 																									],
 																									"type": "object"
 																								},
@@ -8495,6 +8575,10 @@
 																							"allOf": [
 																								{
 																									"properties": {
+																										"case_sensitive": {
+																											"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																											"type": "boolean"
+																										},
 																										"created_at": {
 																											"format": "date-time",
 																											"type": "string"
@@ -8523,7 +8607,8 @@
 																										"created_at",
 																										"updated_at",
 																										"enabled",
-																										"secret"
+																										"secret",
+																										"case_sensitive"
 																									],
 																									"type": "object"
 																								},
@@ -8859,6 +8944,10 @@
 																							"allOf": [
 																								{
 																									"properties": {
+																										"case_sensitive": {
+																											"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																											"type": "boolean"
+																										},
 																										"created_at": {
 																											"format": "date-time",
 																											"type": "string"
@@ -8887,7 +8976,8 @@
 																										"created_at",
 																										"updated_at",
 																										"enabled",
-																										"secret"
+																										"secret",
+																										"case_sensitive"
 																									],
 																									"type": "object"
 																								},
@@ -9780,6 +9870,10 @@
 																				"allOf": [
 																					{
 																						"properties": {
+																							"case_sensitive": {
+																								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																								"type": "boolean"
+																							},
 																							"created_at": {
 																								"format": "date-time",
 																								"type": "string"
@@ -9808,7 +9902,8 @@
 																							"created_at",
 																							"updated_at",
 																							"enabled",
-																							"secret"
+																							"secret",
+																							"case_sensitive"
 																						],
 																						"type": "object"
 																					},
@@ -10187,6 +10282,10 @@
 																				"allOf": [
 																					{
 																						"properties": {
+																							"case_sensitive": {
+																								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																								"type": "boolean"
+																							},
 																							"created_at": {
 																								"format": "date-time",
 																								"type": "string"
@@ -10215,7 +10314,8 @@
 																							"created_at",
 																							"updated_at",
 																							"enabled",
-																							"secret"
+																							"secret",
+																							"case_sensitive"
 																						],
 																						"type": "object"
 																					},
@@ -10551,6 +10651,10 @@
 																				"allOf": [
 																					{
 																						"properties": {
+																							"case_sensitive": {
+																								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																								"type": "boolean"
+																							},
 																							"created_at": {
 																								"format": "date-time",
 																								"type": "string"
@@ -10579,7 +10683,8 @@
 																							"created_at",
 																							"updated_at",
 																							"enabled",
-																							"secret"
+																							"secret",
+																							"case_sensitive"
 																						],
 																						"type": "object"
 																					},
@@ -11300,6 +11405,10 @@
 																				"allOf": [
 																					{
 																						"properties": {
+																							"case_sensitive": {
+																								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																								"type": "boolean"
+																							},
 																							"created_at": {
 																								"format": "date-time",
 																								"type": "string"
@@ -11328,7 +11437,8 @@
 																							"created_at",
 																							"updated_at",
 																							"enabled",
-																							"secret"
+																							"secret",
+																							"case_sensitive"
 																						],
 																						"type": "object"
 																					},
@@ -11707,6 +11817,10 @@
 																				"allOf": [
 																					{
 																						"properties": {
+																							"case_sensitive": {
+																								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																								"type": "boolean"
+																							},
 																							"created_at": {
 																								"format": "date-time",
 																								"type": "string"
@@ -11735,7 +11849,8 @@
 																							"created_at",
 																							"updated_at",
 																							"enabled",
-																							"secret"
+																							"secret",
+																							"case_sensitive"
 																						],
 																						"type": "object"
 																					},
@@ -12071,6 +12186,10 @@
 																				"allOf": [
 																					{
 																						"properties": {
+																							"case_sensitive": {
+																								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																								"type": "boolean"
+																							},
 																							"created_at": {
 																								"format": "date-time",
 																								"type": "string"
@@ -12099,7 +12218,8 @@
 																							"created_at",
 																							"updated_at",
 																							"enabled",
-																							"secret"
+																							"secret",
+																							"case_sensitive"
 																						],
 																						"type": "object"
 																					},

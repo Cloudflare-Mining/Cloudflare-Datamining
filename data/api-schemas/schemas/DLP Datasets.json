@@ -264,6 +264,9 @@
 										"result": {
 											"items": {
 												"properties": {
+													"case_sensitive": {
+														"type": "boolean"
+													},
 													"columns": {
 														"items": {
 															"properties": {
@@ -647,6 +650,9 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"case_sensitive": {
+													"type": "boolean"
+												},
 												"columns": {
 													"items": {
 														"properties": {
@@ -927,6 +933,10 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"case_sensitive": {
+								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if `secret` is true or undefined",
+								"type": "boolean"
+							},
 							"description": {
 								"description": "The description of the dataset",
 								"nullable": true,
@@ -1055,6 +1065,9 @@
 											"properties": {
 												"dataset": {
 													"properties": {
+														"case_sensitive": {
+															"type": "boolean"
+														},
 														"columns": {
 															"items": {
 																"properties": {
@@ -1465,6 +1478,9 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"case_sensitive": {
+													"type": "boolean"
+												},
 												"columns": {
 													"items": {
 														"properties": {
@@ -1804,6 +1820,9 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"case_sensitive": {
+													"type": "boolean"
+												},
 												"columns": {
 													"items": {
 														"properties": {
@@ -2768,6 +2787,10 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"case_sensitive": {
+								"description": "Determines if the words should be matched in a case-sensitive manner.\n\nOnly required for custom word lists.",
+								"type": "boolean"
+							},
 							"description": {
 								"description": "The description of the dataset",
 								"nullable": true,
@@ -2883,6 +2906,9 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"case_sensitive": {
+													"type": "boolean"
+												},
 												"columns": {
 													"items": {
 														"properties": {

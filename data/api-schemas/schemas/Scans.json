@@ -3,22 +3,22 @@
 		"operationId": "delete_DeleteScans",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Defines the Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Defines the Account ID.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Config ID",
+				"description": "Defines the Config ID.",
 				"in": "path",
 				"name": "config_id",
 				"required": true,
 				"schema": {
-					"description": "Config ID",
+					"description": "Defines the Config ID.",
 					"type": "string"
 				}
 			}
@@ -58,7 +58,115 @@
 						}
 					}
 				},
-				"description": "Delete a Scan Config"
+				"description": "Delete a Scan Config."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											},
+											"type": "object"
+										},
+										"success": {
+											"example": false,
+											"type": "boolean"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete a Scan Config failure."
 			}
 		},
 		"security": [
@@ -82,12 +190,12 @@
 		"operationId": "get_ConfigFetch",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Defines the Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Defines the Account ID.",
 					"type": "string"
 				}
 			}
@@ -108,8 +216,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -129,8 +248,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -143,7 +273,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -168,36 +298,36 @@
 														"type": "string"
 													},
 													"frequency": {
-														"description": "The number of days between each scan (0 = no recurring scans).",
+														"description": "Defines the number of days between each scan (0 = One-off scan).",
 														"example": 7,
 														"title": "Frequency",
 														"type": "number"
 													},
 													"id": {
-														"description": "Config ID",
+														"description": "Defines the Config ID.",
 														"example": "uuid",
 														"type": "string"
 													},
 													"ips": {
-														"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+														"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 														"example": [
 															"1.1.1.1",
 															"2606:4700:4700::1111"
 														],
 														"items": {
-															"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+															"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 															"type": "string"
 														},
 														"title": "IP List",
 														"type": "array"
 													},
 													"ports": {
-														"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+														"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
 														"example": [
 															"default"
 														],
 														"items": {
-															"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+															"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
 															"type": "string"
 														},
 														"title": "Port List",
@@ -222,7 +352,115 @@
 						}
 					}
 				},
-				"description": "Returns all Scan Configs"
+				"description": "Returns all Scan Configs."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											},
+											"type": "object"
+										},
+										"success": {
+											"example": false,
+											"type": "boolean"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Scan Configs failure."
 			}
 		},
 		"security": [
@@ -247,22 +485,22 @@
 		"operationId": "get_GetOpenPorts",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Defines the Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Defines the Account ID.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Config ID",
+				"description": "Defines the Config ID.",
 				"in": "path",
 				"name": "config_id",
 				"required": true,
 				"schema": {
-					"description": "Config ID",
+					"description": "Defines the Config ID.",
 					"type": "string"
 				}
 			}
@@ -333,7 +571,115 @@
 						}
 					}
 				},
-				"description": "Returns Current Open Ports"
+				"description": "Returns Current Open Ports."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											},
+											"type": "object"
+										},
+										"success": {
+											"example": false,
+											"type": "boolean"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get the Latest Scan Result failure."
 			}
 		},
 		"security": [
@@ -354,108 +700,26 @@
 			"Cloudforce One Read"
 		]
 	},
-	"GET /scans": {
-		"operationId": "get_GetScans",
-		"parameters": [
-			{
-				"description": "Toggle IP Authorization",
-				"in": "query",
-				"name": "verifyIPs",
-				"schema": {
-					"description": "Toggle IP Authorization",
-					"type": "boolean"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"type": "string"
-									},
-									"type": "array"
-								},
-								"messages": {
-									"items": {
-										"type": "string"
-									},
-									"type": "array"
-								},
-								"result": {
-									"properties": {
-										"account_id": {
-											"example": "abcd1234abcd1234abcd1234abcd1234",
-											"type": "string"
-										},
-										"ips": {
-											"items": {
-												"example": "1.1.1.1",
-												"type": "string"
-											},
-											"type": "array"
-										}
-									},
-									"required": [
-										"account_id",
-										"ips"
-									],
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"result",
-								"messages",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Returns All Due Scans"
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Fetches All Due Scans",
-		"tags": [
-			"Scans"
-		]
-	},
 	"PATCH /accounts/{account_id}/cloudforce-one/scans/config/{config_id}": {
 		"operationId": "post_ConfigUpdate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Defines the Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Defines the Account ID.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Config ID",
+				"description": "Defines the Config ID.",
 				"in": "path",
 				"name": "config_id",
 				"required": true,
 				"schema": {
-					"description": "Config ID",
+					"description": "Defines the Config ID.",
 					"type": "string"
 				}
 			}
@@ -466,31 +730,31 @@
 					"schema": {
 						"properties": {
 							"frequency": {
-								"description": "The number of days between each scan (0 = no recurring scans).",
+								"description": "Defines the number of days between each scan (0 = One-off scan).",
 								"example": 7,
 								"title": "Frequency",
 								"type": "number"
 							},
 							"ips": {
-								"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+								"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 								"example": [
 									"1.1.1.1",
 									"2606:4700:4700::1111"
 								],
 								"items": {
-									"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+									"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 									"type": "string"
 								},
 								"title": "IP List",
 								"type": "array"
 							},
 							"ports": {
-								"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+								"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
 								"example": [
 									"default"
 								],
 								"items": {
-									"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+									"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
 									"type": "string"
 								},
 								"title": "Port List",
@@ -518,8 +782,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -539,8 +814,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -553,7 +839,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -577,36 +863,36 @@
 													"type": "string"
 												},
 												"frequency": {
-													"description": "The number of days between each scan (0 = no recurring scans).",
+													"description": "Defines the number of days between each scan (0 = One-off scan).",
 													"example": 7,
 													"title": "Frequency",
 													"type": "number"
 												},
 												"id": {
-													"description": "Config ID",
+													"description": "Defines the Config ID.",
 													"example": "uuid",
 													"type": "string"
 												},
 												"ips": {
-													"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+													"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 													"example": [
 														"1.1.1.1",
 														"2606:4700:4700::1111"
 													],
 													"items": {
-														"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+														"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 														"type": "string"
 													},
 													"title": "IP List",
 													"type": "array"
 												},
 												"ports": {
-													"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+													"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
 													"example": [
 														"default"
 													],
 													"items": {
-														"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+														"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
 														"type": "string"
 													},
 													"title": "Port List",
@@ -629,7 +915,115 @@
 						}
 					}
 				},
-				"description": "Returns the updated config"
+				"description": "Returns the updated config."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											},
+											"type": "object"
+										},
+										"success": {
+											"example": false,
+											"type": "boolean"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update an Existing Scan Config failure."
 			}
 		},
 		"security": [
@@ -653,12 +1047,12 @@
 		"operationId": "post_ConfigCreate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Defines the Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Defines the Account ID.",
 					"type": "string"
 				}
 			}
@@ -669,31 +1063,31 @@
 					"schema": {
 						"properties": {
 							"frequency": {
-								"description": "The number of days between each scan (0 = no recurring scans).",
+								"description": "Defines the number of days between each scan (0 = One-off scan).",
 								"example": 7,
 								"title": "Frequency",
 								"type": "number"
 							},
 							"ips": {
-								"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+								"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 								"example": [
 									"1.1.1.1",
 									"2606:4700:4700::1111"
 								],
 								"items": {
-									"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+									"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 									"type": "string"
 								},
 								"title": "IP List",
 								"type": "array"
 							},
 							"ports": {
-								"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+								"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
 								"example": [
 									"default"
 								],
 								"items": {
-									"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+									"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
 									"type": "string"
 								},
 								"title": "Port List",
@@ -724,8 +1118,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -745,8 +1150,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -759,7 +1175,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -783,36 +1199,36 @@
 													"type": "string"
 												},
 												"frequency": {
-													"description": "The number of days between each scan (0 = no recurring scans).",
+													"description": "Defines the number of days between each scan (0 = One-off scan).",
 													"example": 7,
 													"title": "Frequency",
 													"type": "number"
 												},
 												"id": {
-													"description": "Config ID",
+													"description": "Defines the Config ID.",
 													"example": "uuid",
 													"type": "string"
 												},
 												"ips": {
-													"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+													"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 													"example": [
 														"1.1.1.1",
 														"2606:4700:4700::1111"
 													],
 													"items": {
-														"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+														"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 														"type": "string"
 													},
 													"title": "IP List",
 													"type": "array"
 												},
 												"ports": {
-													"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+													"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
 													"example": [
 														"default"
 													],
 													"items": {
-														"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+														"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
 														"type": "string"
 													},
 													"title": "Port List",
@@ -835,7 +1251,115 @@
 						}
 					}
 				},
-				"description": "Returns the created config"
+				"description": "Returns the created config."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											},
+											"type": "object"
+										},
+										"success": {
+											"example": false,
+											"type": "boolean"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a new Scan Config failure."
 			}
 		},
 		"security": [
@@ -853,77 +1377,6 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
-	},
-	"POST /scans": {
-		"operationId": "post_RetryScans",
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"account_id": {
-								"type": "string"
-							}
-						},
-						"required": [
-							"account_id"
-						],
-						"type": "object"
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"type": "string"
-									},
-									"type": "array"
-								},
-								"messages": {
-									"items": {
-										"type": "string"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"result",
-								"messages",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Returns the created config"
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Mark a Scan for Retry",
-		"tags": [
-			"Scans"
 		]
 	}
 }
