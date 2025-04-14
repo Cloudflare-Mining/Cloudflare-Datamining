@@ -5,34 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: This is a remote-based role that can be based in the United States</strong></p>
-<p>&nbsp;</p>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare is looking for a Principal Partner Engagement &amp; Experience Manager to drive meaningful interactions and amplify engagement within our partner ecosystem. In this role, you will develop and execute strategies to energize our partners, enhance their experience, and ensure they have the tools, resources, and awareness needed to succeed with Cloudflare. This role requires collaboration across partner programs, marketing, and sales operations and enablement teams to drive partner loyalty, awareness, and activation</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available Locations: San Francisco Bay Area</strong></p>
+<p><strong>About the Department</strong></p>
+<p>Account Executives, Channel Account Managers, Business Development Representatives, Solution Engineers, Customer Success, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences. The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.</p>
+<p><strong>About this Role</strong></p>
+<p>Digital Native AEs at Cloudflare sell into the most innovative companies in North America. In targeting high-growth, technologically advanced, and venture-backed companies, AEs are positioned to drive in-depth product discussions while communicating and demonstrating value quickly to customers.&nbsp; This role within the digital native segment focuses on both the acquisition of prospective Digital Native accounts, as well as the expansion of existing customer accounts.&nbsp; The ideal candidate will have both a sales and technical background that enables them to drive customer engagement from technical professionals through to senior executive levels, and across Security, Network, Development and Infrastructure teams.&nbsp;&nbsp;</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Drive Partner Engagement: Develop and implement strategies to increase partner engagement with Cloudflare’s tools, resources, and enablement programs.</li>
-	<li>Create Impactful Content: Own the design, promotion, and execution of awareness materials that empower partners and contribute to their success.</li>
-	<li>Enhance Partner Experience: Collaborate with the partner programs team to drive partner loyalty and ensure seamless partner interactions.</li>
-	<li>Support Field Readiness: Work with partner marketing, product marketing, and sales enablement teams to identify and develop partner-facing content that enhances field readiness.</li>
-	<li>Champion Partner Success: Serve as an advocate for partners, ensuring their feedback is heard and incorporated into engagement strategies.</li>
-	<li>Create and implement strategies that will energize our partner community to increase their engagement with our tools and resources.</li>
-	<li>Own Cross-Functional Liaison &amp; Change Management: Act as the primary liaison for the Partner Experience team with cross functional teams such as IT and Operations, ensuring alignment across internal initiatives, advocating for partner needs, and leading change management efforts to ensure the team is fully informed, engaged, and driving key initiatives forward.</li>
+	<li>Develop, execute, and maintain your territory plan to exceed quarterly sales targets and annual quota assignment.</li>
+	<li>Be an expert in three unique sales motions; new business acquisition (new customer logos), customer expansion (upsell and cross sell Cloudflare solutions), and renewal within your territory.</li>
+	<li>Build a robust sales pipeline utilizing the four sourcing funnels: AE led outbound, BDR, Channel, and Marketing Inbound.</li>
+	<li>Develop and strategically leverage a deep technical understanding of the problems Cloudflare solves in order to drive a consultative sales motion.</li>
+	<li>Craft and communicate compelling value propositions for Cloudflare services. Drive awareness through regular outbound campaigns on product and feature roadmap updates.&nbsp;</li>
+	<li>Accurately forecast, build commercial outcomes by running a consistent sales process, including driving next step expectations and contract negotiations.</li>
+	<li>As a trusted advisor, build long-term strategic relationships with key accounts, to ensure customer adoption, retention and expansion. Regularly evaluate usage trends and articulate value to show Cloudflare impact and provide strategic recommendations during business reviews.&nbsp;</li>
+	<li>Network across different business units with each of your accounts, and multi-thread to identify and engage new divisional buyers.</li>
+	<li>Position Cloudflare's platform in each of your target customers, including Cloudflare One and the Connectivity Cloud to realize our full potential in every customer.</li>
+	<li>Operate internally as a liaison with cross-functional teams to share key customer feedback and insights to improve customer experience and further investments with Cloudflare.</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>Requirements:</strong></p>
 <ul>
-	<li>10+ years of experience in partner-focused roles (marketing, communications, experience, programs, project management, or analytics).</li>
-	<li>Deep understanding of various partner types and their routes to revenue.</li>
-	<li>Strong analytical mindset with exceptional organizational skills and attention to detail.</li>
-	<li>Proven ability to influence and collaborate across multiple stakeholders in a fast-paced, dynamic environment.</li>
-	<li>Excellent written and presentation skills, with the ability to craft compelling narratives for partners</li>
+	<li>5+ years sales experience selling B2B SaaS&nbsp;</li>
+	<li>Strong B2B discovery skills</li>
+	<li>Candidates have a point of view of industry trends and able to customize a client centric why change narrative</li>
+	<li>Track record of beating annual targets of $1M+ and successfully managing complex six figure deals</li>
+	<li>Experienced in multithreading into the C-suite and across an organization to manage a complex sales cycle</li>
+	<li>Self-motivated; entrepreneurial spirit</li>
+	<li>Bachelor's degree required&nbsp;</li>
+	<li>Software and system skills are a must (SFDC, Tableau, G-suite, MSFT suite)</li>
+	<li>Ability to travel up to 25% of the time.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $257,000 - $314,000.</li>
-	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $282,000 - $345,000.</li>
-	<li>For Bay Area based hires: Estimated annual salary of $310,000 - $379,000.</li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $284,000 - $347,000.</span></li>
 </ul>
 <p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
 <p><strong>Equity</strong></p>
@@ -62,7 +68,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
