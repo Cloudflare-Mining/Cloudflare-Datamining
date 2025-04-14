@@ -54,10 +54,9 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TvQBKtKVxy9MC0buyE07x/57d03cf1c0be765b582318e53e6d6a8e/3.png" alt="" class="kg-image" width="1999" height="1166" loading="lazy">
 	</figure>
 	<p>For example, connecting from Cloudflare Workers to a private API in an external VPC is just a matter of calling fetch() on a binding to a named Workers VPC resource:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">const response = await env.WORKERS_VPC_RESOURCE.fetch(“/api/users/342”);</code></pre>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const response = await env.WORKERS_VPC_RESOURCE.fetch("/api/users/342");</code></pre>
 	<p>Similarly, Cloudflare resources are accessible via a standardized URL that has been configured within a private DNS resource in your external cloud by Workers VPC Private Link. If you were attempting to access R2 objects from an API in your VPC, you would be able to make the request to the expected URL:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">const response = await 
-fetch(“https://&lt;account_id&gt;.r2.cloudflarestorage.com.cloudflare-workers-vpc.com”);</code></pre>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const response = await fetch("https://&lt;account_id&gt;.r2.cloudflarestorage.com.cloudflare-workers-vpc.com");</code></pre>
 	<p>Best of all, since Workers VPC is built on our existing platform, it takes full advantage of our networking and routing capabilities to reduce egress fees and let you build global apps.</p>
 	<p>First, by supporting <a href="https://developers.cloudflare.com/network-interconnect"><u>Cloudflare Network Interconnect</u></a> as the underlying connection method, Workers VPC Private Links can help you lower your bandwidth costs by taking advantage of discounted external cloud egress pricing. Second, since Workers VPC is global by nature, your Workers and resources can be placed wherever needed to ensure optimal performance. For instance, with Workers’ <a href="https://developers.cloudflare.com/workers/configuration/smart-placement"><u>Smart Placement</u></a>, you can ensure that your Workers are automatically placed in a region closest to your external, regional VPC to maximize app performance.&nbsp;</p>
 	<div class="flex anchor relative">
