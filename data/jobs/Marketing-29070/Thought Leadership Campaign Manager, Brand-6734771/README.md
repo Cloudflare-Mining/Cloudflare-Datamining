@@ -7,7 +7,7 @@
 </div>
 <h3>Position Location: Austin, TX | New York, NY | San Francisco, CA</h3>
 <h3><strong>About the Role</strong></h3>
-<p>Cloudflare’s Brand Marketing team is responsible for increasing awareness, affinity, and preference for the Cloudflare brand. We are looking for a Thought Leadership Program Manager to help manage and support our high-impact executive programs — using owned, earned, and paid channels to create influential and thought provoking engagement with senior leaders at customer organizations.</p>
+<p>Cloudflare’s Brand Marketing team is responsible for increasing awareness, affinity, and preference for the Cloudflare brand. We are looking for a Thought Leadership Campaign Manager, Brand to help manage and support our high-impact executive programs — using owned, earned, and paid channels to create influential and thought provoking engagement with senior leaders at customer organizations.</p>
 <h3><strong>Responsibilities:</strong></h3>
 <ul>
 	<li>Own program operations for theNET, a publication dedicated to technology business leaders.</li>
@@ -30,7 +30,7 @@
 	<li>Experience with a variety of content marketing tools, tactics, and channels. Familiarity with Contentful, Asana, and Figma a plus.</li>
 	<li>Organized and results oriented.</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <h3><strong>Compensation</strong></h3>
 <p><strong>Compensation may be adjusted depending on work location.</strong></p>
 <ul>
@@ -64,7 +64,7 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

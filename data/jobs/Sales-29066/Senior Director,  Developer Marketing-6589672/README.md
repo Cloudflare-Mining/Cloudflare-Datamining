@@ -5,28 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location(s): Austin, TX, US<br><br>About the Department&nbsp;</strong></p>
-<p>The Partner Marketing Team works to build and manage relationships with channel partners like resellers, system integrators &amp; technology/alliance partners, all with the goal of promoting and selling Cloudflare's products and services together. This team is focused on creating and executing marketing programs that help partners effectively communicate Cloudflare's value to their audiences, drive customer acquisition, and ultimately boost revenue.</p>
-<p><strong>About the Role</strong>&nbsp;</p>
-<p>As a Partner Marketing Intern, you will support the tracking and analysis of partner marketing campaigns across the Americas, ensuring that data is clear, actionable, and aligned with team goals. You’ll provide valuable insights to improve tracking, reporting, and campaign performance. You will directly contribute to smarter decision-making, enhance campaign effectiveness, and help optimize lead conversion.</p>
-<p><strong>Responsibilities</strong></p>
+<p>At Cloudflare, we have an ambitious goal: to help build a better Internet. Our global network powers trillions of requests per month, securing and accelerating applications without requiring additional hardware, software, or code changes. Our Developer Platform, including&nbsp;<strong>Cloudflare Workers, Workers AI, R2, KV, Durable Objects, and Pages</strong>, is redefining how developers build and deploy applications at scale.</p>
+<p>We are looking for a <strong>Head of Developer Marketing</strong> to lead and scale our efforts in reaching, engaging, and converting developers—<strong>from independent developers to engineering leaders at the world’s largest enterprises.</strong> This is a <strong>high-impact leadership role</strong> responsible for defining our <strong>developer marketing strategy, owning demand generation, and leading field marketing efforts.</strong></p>
+<p><strong>About the Role</strong></p>
+<p>Since launching <strong>Cloudflare Workers</strong> in 2017, Cloudflare has become a serious player in the developer ecosystem, providing a <strong>full-stack platform</strong> that combines <strong>compute, storage, security, and networking</strong>. As we scale, we need a <strong>senior leader</strong> to drive <strong>awareness, activation, and adoption</strong> across the developer audience.</p>
+<p>This role is <strong>more than just product marketing</strong>—it’s about creating and executing <strong>a full-funnel, go-to-market strategy</strong> that <strong>drives developer engagement, pipeline, and revenue.</strong> You will lead a team responsible for <strong>developer-focused product marketing, demand generation, and field marketing.</strong></p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>Track the performance of Americas Partner Marketing campaigns, including events, digital ads (Relevize), webinars, and Partner Demand Center initiatives.&nbsp;</li>
-	<li>Ensure data is clear, actionable, and aligned with team goals, while suggesting improvements to enhance tracking and reporting for better usability and actionability.</li>
-	<li>Monitor the progress of partner marketing leads passed to Business Development Representatives (BDRs), focusing on key metrics like MQLs, lead-to-opportunity conversion, and pipeline velocity.&nbsp;</li>
-	<li>Capture BDR feedback on lead quality to identify areas for improvement and suggest refinements to optimize the lead-handling process.&nbsp;</li>
+	<li><strong>Develop and execute a developer marketing strategy</strong> that spans <strong>awareness, activation, and conversion</strong>, ensuring measurable business impact.</li>
+	<li><strong>Own and scale developer demand generation</strong>, creating high-performing campaigns, content, and digital experiences to drive developer acquisition and growth.</li>
+	<li><strong>Lead field marketing strategy</strong> to ensure a strong Cloudflare presence at industry events, developer conferences, and technical workshops.</li>
+	<li><strong>Build and manage a high-performing team</strong> of developer marketers, demand generation experts, and field marketers.</li>
+	<li><strong>Refine our messaging and positioning</strong> to better communicate Cloudflare’s value to developers across different segments (from individual devs to enterprise engineering teams).</li>
+	<li><strong>Develop a high-impact content strategy</strong>, ensuring our blog, documentation, and community resources align with developer needs and discovery patterns.</li>
+	<li><strong>Drive end-to-end go-to-market (GTM) strategy</strong> for new developer-focused products, features, and launches.</li>
+	<li><strong>Collaborate with Product, Engineering, and Sales</strong> to ensure developer marketing efforts align with company priorities and revenue goals.</li>
+	<li><strong>Own the multi-year narrative</strong> with technology analysts, positioning Cloudflare as a leader in edge computing and modern cloud infrastructure.</li>
+	<li><strong>Measure and optimize performance</strong> across all developer marketing efforts using data and experimentation.</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>What We’re Looking For</strong></p>
 <ul>
-	<li>Degree in Marketing, Data Analytics, Business Administration preferred</li>
-	<li>Proficiency in Salesforce and Tableau required.</li>
-	<li>Interest in B2B marketing for a technical buyer and audience. Basic understanding of cloud technology is a bonus.</li>
-	<li>Knowledge of traditional and digital marketing, content marketing, and social media marketing</li>
-	<li>Willingness to learn Marketo, Relevize and other demand gen tech stack tools.</li>
-	<li>Strong analytical skills with the ability to monitor and evaluate marketing performance data.</li>
-	<li>Excellent written and stellar presentation skills.</li>
-	<li>Curiosity and eagerness to learn about industry standards, KPIs, and best practices.</li>
+	<li><strong>Proven leadership experience</strong> in <strong>developer marketing, growth marketing, or demand generation</strong> for a <strong>developer-focused product</strong>.</li>
+	<li><strong>Strong team leadership skills</strong>—experience hiring, managing, and scaling high-performing teams.</li>
+	<li><strong>Deep understanding of developers</strong>—how they discover, evaluate, and adopt new technologies.</li>
+	<li><strong>Track record of executing full-funnel marketing strategies</strong>—from awareness to engagement to revenue impact.</li>
+	<li><strong>Experience driving measurable impact</strong> through campaigns, community engagement, and product-led growth.</li>
+	<li><strong>Technical fluency</strong>—you understand modern software development practices and can speak credibly with engineers.</li>
+	<li><strong>Excellent storytelling and positioning skills</strong>, with the ability to refine messaging for different developer segments.</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
