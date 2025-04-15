@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "d24b107e-06fb-57b1-9cd4-564b4738475b")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "d8db70f8-f9be-585e-a7a9-2bbf3c73daba")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1019,10 +1019,10 @@
 					t.g.build = wn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "407fb555606e852c16b80c7ba508682878702c0e",
-						dashVersion: "32534070",
+						commit: "15043c2304fceb084905895e36ff25d199e364aa",
+						dashVersion: "32556921",
 						env: "production",
-						builtAt: 1744721089882,
+						builtAt: 1744753028755,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -7371,7 +7371,7 @@
 					return typeof _e == "number" && _e > 1 ? _e : 60
 				},
 				$ = H => c(H, "foundation_dns.advanced_nameservers_allowed") || m(H, "foundation_dns.advanced_nameservers_allowed"),
-				te = H => c(H, "authoritative_dns.account_custom_nameservers_allowed.allowed"),
+				te = H => c(H, "authoritative_dns.account_custom_nameservers_allowed"),
 				me = H => m(H, "authoritative_dns.zone_custom_nameservers_allowed"),
 				le = H => me(H) || te(H),
 				ge = (H, _e) => ((0, e.el)(window.location.pathname) ? i : d)(H, _e),
@@ -20831,4 +20831,4 @@
 	}
 ]);
 
-//# debugId=d24b107e-06fb-57b1-9cd4-564b4738475b
+//# debugId=d8db70f8-f9be-585e-a7a9-2bbf3c73daba
