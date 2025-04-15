@@ -245,6 +245,11 @@ const navigation = {
 		testId: "sidenav-magic-transit-link",
 		hasPermission: M => (0, p.iY)(M) && !!(0, e.Le)(M, "magic_transit", "mt_home"),
 		pages: [{
+			title: "navigation.account.magic_connectors.network_overview",
+			url: "/magic-transit/network",
+			labels: ["beta"],
+			hasPermission: M => !!(0, o.z1)("magic-transit-cf-site")(M)
+		}, {
 			title: "navigation.account.magic_connectors.configuration",
 			url: "/magic-transit/configuration",
 			tabs: O.Lx.concat(O.SF, O.Jg)
