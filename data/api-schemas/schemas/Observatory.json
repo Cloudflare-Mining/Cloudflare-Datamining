@@ -21,7 +21,8 @@
 				"schema": {
 					"description": "A URL.",
 					"example": "example.com",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -55,7 +56,8 @@
 								"us-west1"
 							],
 							"example": "us-central1",
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						},
 						{
 							"default": "us-central1"
@@ -80,10 +82,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -101,10 +105,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -119,7 +125,8 @@
 												"success": {
 													"description": "Whether the API call was successful.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -139,7 +146,8 @@
 												"count": {
 													"description": "Number of items affected.",
 													"example": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -308,7 +316,8 @@
 				"schema": {
 					"description": "A URL.",
 					"example": "example.com",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -342,7 +351,8 @@
 								"us-west1"
 							],
 							"example": "us-central1",
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						},
 						{
 							"default": "us-central1"
@@ -367,10 +377,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -388,10 +400,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -406,7 +420,8 @@
 												"success": {
 													"description": "Whether the API call was successful.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -426,7 +441,8 @@
 												"count": {
 													"description": "Number of items affected.",
 													"example": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -605,10 +621,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -626,10 +644,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -644,7 +664,8 @@
 												"success": {
 													"description": "Whether the API call was successful.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -666,7 +687,8 @@
 														"plan": {
 															"description": "Cloudflare plan.",
 															"example": "free",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"quotasPerPlan": {
 															"description": "The number of tests available per plan.",
@@ -676,19 +698,23 @@
 																	"properties": {
 																		"business": {
 																			"example": 1,
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		},
 																		"enterprise": {
 																			"example": 1,
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		},
 																		"free": {
 																			"example": 1,
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		},
 																		"pro": {
 																			"example": 1,
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -699,12 +725,14 @@
 														"remainingSchedules": {
 															"description": "The number of remaining schedules available.",
 															"example": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"remainingTests": {
 															"description": "The number of remaining tests available.",
 															"example": 30,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"scheduleQuotasPerPlan": {
 															"description": "The number of schedules available per plan.",
@@ -714,19 +742,23 @@
 																	"properties": {
 																		"business": {
 																			"example": 1,
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		},
 																		"enterprise": {
 																			"example": 1,
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		},
 																		"free": {
 																			"example": 1,
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		},
 																		"pro": {
 																			"example": 1,
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -743,7 +775,8 @@
 														"properties": {
 															"label": {
 																"example": "Iowa, USA",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"value": {
 																"description": "A test region.",
@@ -771,7 +804,8 @@
 																	"us-west1"
 																],
 																"example": "us-central1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -787,7 +821,8 @@
 																"properties": {
 																	"label": {
 																		"example": "Iowa, USA",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "A test region.",
@@ -815,7 +850,8 @@
 																			"us-west1"
 																		],
 																		"example": "us-central1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -828,7 +864,8 @@
 																"properties": {
 																	"label": {
 																		"example": "Iowa, USA",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "A test region.",
@@ -856,7 +893,8 @@
 																			"us-west1"
 																		],
 																		"example": "us-central1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -869,7 +907,8 @@
 																"properties": {
 																	"label": {
 																		"example": "Iowa, USA",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "A test region.",
@@ -897,7 +936,8 @@
 																			"us-west1"
 																		],
 																		"example": "us-central1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -910,7 +950,8 @@
 																"properties": {
 																	"label": {
 																		"example": "Iowa, USA",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "A test region.",
@@ -938,7 +979,8 @@
 																			"us-west1"
 																		],
 																		"example": "us-central1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1126,10 +1168,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1147,10 +1191,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1165,7 +1211,8 @@
 												"success": {
 													"description": "Whether the API call was successful.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1188,7 +1235,8 @@
 														"properties": {
 															"label": {
 																"example": "Iowa, USA",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"value": {
 																"description": "A test region.",
@@ -1216,7 +1264,8 @@
 																	"us-west1"
 																],
 																"example": "us-central1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1228,7 +1277,8 @@
 															"WEEKLY"
 														],
 														"example": "DAILY",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"tests": {
 														"items": {
@@ -1244,7 +1294,8 @@
 																		"cls": {
 																			"description": "Cumulative Layout Shift.",
 																			"example": 100,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"deviceType": {
 																			"description": "The type of device.",
@@ -1253,7 +1304,8 @@
 																				"MOBILE"
 																			],
 																			"example": "DESKTOP",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"error": {
 																			"properties": {
@@ -1267,17 +1319,20 @@
 																						"UNKNOWN"
 																					],
 																					"example": "NOT_REACHABLE",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"detail": {
 																					"description": "Detailed error message.",
 																					"example": "Details: net::ERR_CONNECTION_CLOSED",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"finalDisplayedUrl": {
 																					"description": "The final URL displayed to the user.",
 																					"example": "example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1285,26 +1340,31 @@
 																		"fcp": {
 																			"description": "First Contentful Paint.",
 																			"example": 100,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"jsonReportUrl": {
 																			"description": "The URL to the full Lighthouse JSON report.",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"lcp": {
 																			"description": "Largest Contentful Paint.",
 																			"example": 100,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"performanceScore": {
 																			"description": "The Lighthouse performance score.",
 																			"example": 90,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"si": {
 																			"description": "Speed Index.",
 																			"example": 100,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"state": {
 																			"description": "The state of the Lighthouse report.",
@@ -1314,22 +1374,26 @@
 																				"FAILED"
 																			],
 																			"example": "COMPLETE",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"tbt": {
 																			"description": "Total Blocking Time.",
 																			"example": 100,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"ttfb": {
 																			"description": "Time To First Byte.",
 																			"example": 100,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"tti": {
 																			"description": "Time To Interactive.",
 																			"example": 100,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1346,7 +1410,8 @@
 																		"cls": {
 																			"description": "Cumulative Layout Shift.",
 																			"example": 100,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"deviceType": {
 																			"description": "The type of device.",
@@ -1355,7 +1420,8 @@
 																				"MOBILE"
 																			],
 																			"example": "DESKTOP",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"error": {
 																			"properties": {
@@ -1369,17 +1435,20 @@
 																						"UNKNOWN"
 																					],
 																					"example": "NOT_REACHABLE",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"detail": {
 																					"description": "Detailed error message.",
 																					"example": "Details: net::ERR_CONNECTION_CLOSED",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"finalDisplayedUrl": {
 																					"description": "The final URL displayed to the user.",
 																					"example": "example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1387,26 +1456,31 @@
 																		"fcp": {
 																			"description": "First Contentful Paint.",
 																			"example": 100,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"jsonReportUrl": {
 																			"description": "The URL to the full Lighthouse JSON report.",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"lcp": {
 																			"description": "Largest Contentful Paint.",
 																			"example": 100,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"performanceScore": {
 																			"description": "The Lighthouse performance score.",
 																			"example": 90,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"si": {
 																			"description": "Speed Index.",
 																			"example": 100,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"state": {
 																			"description": "The state of the Lighthouse report.",
@@ -1416,22 +1490,26 @@
 																				"FAILED"
 																			],
 																			"example": "COMPLETE",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"tbt": {
 																			"description": "Total Blocking Time.",
 																			"example": 100,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"ttfb": {
 																			"description": "Time To First Byte.",
 																			"example": 100,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"tti": {
 																			"description": "Time To Interactive.",
 																			"example": 100,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1441,7 +1519,8 @@
 																	"properties": {
 																		"label": {
 																			"example": "Iowa, USA",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "A test region.",
@@ -1469,7 +1548,8 @@
 																				"us-west1"
 																			],
 																			"example": "us-central1",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1481,12 +1561,14 @@
 																		"WEEKLY"
 																	],
 																	"example": "DAILY",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"url": {
 																	"description": "A URL.",
 																	"example": "example.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -1496,7 +1578,8 @@
 													"url": {
 														"description": "A URL.",
 														"example": "example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												}
 											},
@@ -1667,7 +1750,8 @@
 				"schema": {
 					"description": "A URL.",
 					"example": "example.com",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1719,7 +1803,8 @@
 								"us-west1"
 							],
 							"example": "us-central1",
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						},
 						{
 							"default": "us-central1"
@@ -1744,10 +1829,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1765,10 +1852,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1783,7 +1872,8 @@
 												"success": {
 													"description": "Whether the API call was successful.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1812,7 +1902,8 @@
 															"cls": {
 																"description": "Cumulative Layout Shift.",
 																"example": 100,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"deviceType": {
 																"description": "The type of device.",
@@ -1821,7 +1912,8 @@
 																	"MOBILE"
 																],
 																"example": "DESKTOP",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"error": {
 																"properties": {
@@ -1835,17 +1927,20 @@
 																			"UNKNOWN"
 																		],
 																		"example": "NOT_REACHABLE",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"detail": {
 																		"description": "Detailed error message.",
 																		"example": "Details: net::ERR_CONNECTION_CLOSED",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"finalDisplayedUrl": {
 																		"description": "The final URL displayed to the user.",
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1853,26 +1948,31 @@
 															"fcp": {
 																"description": "First Contentful Paint.",
 																"example": 100,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"jsonReportUrl": {
 																"description": "The URL to the full Lighthouse JSON report.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"lcp": {
 																"description": "Largest Contentful Paint.",
 																"example": 100,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"performanceScore": {
 																"description": "The Lighthouse performance score.",
 																"example": 90,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"si": {
 																"description": "Speed Index.",
 																"example": 100,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"state": {
 																"description": "The state of the Lighthouse report.",
@@ -1882,22 +1982,26 @@
 																	"FAILED"
 																],
 																"example": "COMPLETE",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"tbt": {
 																"description": "Total Blocking Time.",
 																"example": 100,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"ttfb": {
 																"description": "Time To First Byte.",
 																"example": 100,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"tti": {
 																"description": "Time To Interactive.",
 																"example": 100,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1914,7 +2018,8 @@
 															"cls": {
 																"description": "Cumulative Layout Shift.",
 																"example": 100,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"deviceType": {
 																"description": "The type of device.",
@@ -1923,7 +2028,8 @@
 																	"MOBILE"
 																],
 																"example": "DESKTOP",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"error": {
 																"properties": {
@@ -1937,17 +2043,20 @@
 																			"UNKNOWN"
 																		],
 																		"example": "NOT_REACHABLE",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"detail": {
 																		"description": "Detailed error message.",
 																		"example": "Details: net::ERR_CONNECTION_CLOSED",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"finalDisplayedUrl": {
 																		"description": "The final URL displayed to the user.",
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1955,26 +2064,31 @@
 															"fcp": {
 																"description": "First Contentful Paint.",
 																"example": 100,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"jsonReportUrl": {
 																"description": "The URL to the full Lighthouse JSON report.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"lcp": {
 																"description": "Largest Contentful Paint.",
 																"example": 100,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"performanceScore": {
 																"description": "The Lighthouse performance score.",
 																"example": 90,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"si": {
 																"description": "Speed Index.",
 																"example": 100,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"state": {
 																"description": "The state of the Lighthouse report.",
@@ -1984,22 +2098,26 @@
 																	"FAILED"
 																],
 																"example": "COMPLETE",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"tbt": {
 																"description": "Total Blocking Time.",
 																"example": 100,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"ttfb": {
 																"description": "Time To First Byte.",
 																"example": 100,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"tti": {
 																"description": "Time To Interactive.",
 																"example": 100,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2009,7 +2127,8 @@
 														"properties": {
 															"label": {
 																"example": "Iowa, USA",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"value": {
 																"description": "A test region.",
@@ -2037,7 +2156,8 @@
 																	"us-west1"
 																],
 																"example": "us-central1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2049,12 +2169,14 @@
 															"WEEKLY"
 														],
 														"example": "DAILY",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"url": {
 														"description": "A URL.",
 														"example": "example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -2069,19 +2191,23 @@
 											"properties": {
 												"count": {
 													"example": 5,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"page": {
 													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"per_page": {
 													"example": 5,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"total_count": {
 													"example": 3,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2251,7 +2377,8 @@
 				"schema": {
 					"description": "A URL.",
 					"example": "example.com",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2279,10 +2406,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2300,10 +2429,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2318,7 +2449,8 @@
 												"success": {
 													"description": "Whether the API call was successful.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -2346,7 +2478,8 @@
 														"cls": {
 															"description": "Cumulative Layout Shift.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"deviceType": {
 															"description": "The type of device.",
@@ -2355,7 +2488,8 @@
 																"MOBILE"
 															],
 															"example": "DESKTOP",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"error": {
 															"properties": {
@@ -2369,17 +2503,20 @@
 																		"UNKNOWN"
 																	],
 																	"example": "NOT_REACHABLE",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"detail": {
 																	"description": "Detailed error message.",
 																	"example": "Details: net::ERR_CONNECTION_CLOSED",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"finalDisplayedUrl": {
 																	"description": "The final URL displayed to the user.",
 																	"example": "example.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2387,26 +2524,31 @@
 														"fcp": {
 															"description": "First Contentful Paint.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"jsonReportUrl": {
 															"description": "The URL to the full Lighthouse JSON report.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"lcp": {
 															"description": "Largest Contentful Paint.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"performanceScore": {
 															"description": "The Lighthouse performance score.",
 															"example": 90,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"si": {
 															"description": "Speed Index.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"state": {
 															"description": "The state of the Lighthouse report.",
@@ -2416,22 +2558,26 @@
 																"FAILED"
 															],
 															"example": "COMPLETE",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"tbt": {
 															"description": "Total Blocking Time.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"ttfb": {
 															"description": "Time To First Byte.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"tti": {
 															"description": "Time To Interactive.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2448,7 +2594,8 @@
 														"cls": {
 															"description": "Cumulative Layout Shift.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"deviceType": {
 															"description": "The type of device.",
@@ -2457,7 +2604,8 @@
 																"MOBILE"
 															],
 															"example": "DESKTOP",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"error": {
 															"properties": {
@@ -2471,17 +2619,20 @@
 																		"UNKNOWN"
 																	],
 																	"example": "NOT_REACHABLE",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"detail": {
 																	"description": "Detailed error message.",
 																	"example": "Details: net::ERR_CONNECTION_CLOSED",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"finalDisplayedUrl": {
 																	"description": "The final URL displayed to the user.",
 																	"example": "example.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2489,26 +2640,31 @@
 														"fcp": {
 															"description": "First Contentful Paint.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"jsonReportUrl": {
 															"description": "The URL to the full Lighthouse JSON report.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"lcp": {
 															"description": "Largest Contentful Paint.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"performanceScore": {
 															"description": "The Lighthouse performance score.",
 															"example": 90,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"si": {
 															"description": "Speed Index.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"state": {
 															"description": "The state of the Lighthouse report.",
@@ -2518,22 +2674,26 @@
 																"FAILED"
 															],
 															"example": "COMPLETE",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"tbt": {
 															"description": "Total Blocking Time.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"ttfb": {
 															"description": "Time To First Byte.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"tti": {
 															"description": "Time To Interactive.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2543,7 +2703,8 @@
 													"properties": {
 														"label": {
 															"example": "Iowa, USA",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "A test region.",
@@ -2571,7 +2732,8 @@
 																"us-west1"
 															],
 															"example": "us-central1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2583,12 +2745,14 @@
 														"WEEKLY"
 													],
 													"example": "DAILY",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"url": {
 													"description": "A URL.",
 													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2758,7 +2922,8 @@
 				"schema": {
 					"description": "A URL.",
 					"example": "example.com",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2791,7 +2956,8 @@
 						"us-west1"
 					],
 					"example": "us-central1",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2805,7 +2971,8 @@
 						"MOBILE"
 					],
 					"example": "DESKTOP",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2864,10 +3031,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2885,10 +3054,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2903,7 +3074,8 @@
 												"success": {
 													"description": "Whether the API call was successful.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -2924,7 +3096,8 @@
 													"description": "Cumulative Layout Shift trend.",
 													"items": {
 														"nullable": true,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -2932,7 +3105,8 @@
 													"description": "First Contentful Paint trend.",
 													"items": {
 														"nullable": true,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -2940,7 +3114,8 @@
 													"description": "Largest Contentful Paint trend.",
 													"items": {
 														"nullable": true,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -2948,7 +3123,8 @@
 													"description": "The Lighthouse score trend.",
 													"items": {
 														"nullable": true,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -2956,7 +3132,8 @@
 													"description": "Speed Index trend.",
 													"items": {
 														"nullable": true,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -2964,7 +3141,8 @@
 													"description": "Total Blocking Time trend.",
 													"items": {
 														"nullable": true,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -2972,7 +3150,8 @@
 													"description": "Time To First Byte trend.",
 													"items": {
 														"nullable": true,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -2980,7 +3159,8 @@
 													"description": "Time To Interactive trend.",
 													"items": {
 														"nullable": true,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"type": "array"
 												}
@@ -3152,7 +3332,8 @@
 				"schema": {
 					"description": "A URL.",
 					"example": "example.com",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3186,7 +3367,8 @@
 								"us-west1"
 							],
 							"example": "us-central1",
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						},
 						{
 							"default": "us-central1"
@@ -3211,10 +3393,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3232,10 +3416,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3250,7 +3436,8 @@
 												"success": {
 													"description": "Whether the API call was successful.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -3275,7 +3462,8 @@
 														"WEEKLY"
 													],
 													"example": "DAILY",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"region": {
 													"description": "A test region.",
@@ -3303,12 +3491,14 @@
 														"us-west1"
 													],
 													"example": "us-central1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"url": {
 													"description": "A URL.",
 													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -3478,7 +3668,8 @@
 				"schema": {
 					"description": "A URL.",
 					"example": "example.com",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3515,7 +3706,8 @@
 											"us-west1"
 										],
 										"example": "us-central1",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									{
 										"default": "us-central1"
@@ -3544,10 +3736,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3565,10 +3759,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3583,7 +3779,8 @@
 												"success": {
 													"description": "Whether the API call was successful.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -3611,7 +3808,8 @@
 														"cls": {
 															"description": "Cumulative Layout Shift.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"deviceType": {
 															"description": "The type of device.",
@@ -3620,7 +3818,8 @@
 																"MOBILE"
 															],
 															"example": "DESKTOP",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"error": {
 															"properties": {
@@ -3634,17 +3833,20 @@
 																		"UNKNOWN"
 																	],
 																	"example": "NOT_REACHABLE",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"detail": {
 																	"description": "Detailed error message.",
 																	"example": "Details: net::ERR_CONNECTION_CLOSED",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"finalDisplayedUrl": {
 																	"description": "The final URL displayed to the user.",
 																	"example": "example.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -3652,26 +3854,31 @@
 														"fcp": {
 															"description": "First Contentful Paint.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"jsonReportUrl": {
 															"description": "The URL to the full Lighthouse JSON report.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"lcp": {
 															"description": "Largest Contentful Paint.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"performanceScore": {
 															"description": "The Lighthouse performance score.",
 															"example": 90,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"si": {
 															"description": "Speed Index.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"state": {
 															"description": "The state of the Lighthouse report.",
@@ -3681,22 +3888,26 @@
 																"FAILED"
 															],
 															"example": "COMPLETE",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"tbt": {
 															"description": "Total Blocking Time.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"ttfb": {
 															"description": "Time To First Byte.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"tti": {
 															"description": "Time To Interactive.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3713,7 +3924,8 @@
 														"cls": {
 															"description": "Cumulative Layout Shift.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"deviceType": {
 															"description": "The type of device.",
@@ -3722,7 +3934,8 @@
 																"MOBILE"
 															],
 															"example": "DESKTOP",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"error": {
 															"properties": {
@@ -3736,17 +3949,20 @@
 																		"UNKNOWN"
 																	],
 																	"example": "NOT_REACHABLE",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"detail": {
 																	"description": "Detailed error message.",
 																	"example": "Details: net::ERR_CONNECTION_CLOSED",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"finalDisplayedUrl": {
 																	"description": "The final URL displayed to the user.",
 																	"example": "example.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -3754,26 +3970,31 @@
 														"fcp": {
 															"description": "First Contentful Paint.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"jsonReportUrl": {
 															"description": "The URL to the full Lighthouse JSON report.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"lcp": {
 															"description": "Largest Contentful Paint.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"performanceScore": {
 															"description": "The Lighthouse performance score.",
 															"example": 90,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"si": {
 															"description": "Speed Index.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"state": {
 															"description": "The state of the Lighthouse report.",
@@ -3783,22 +4004,26 @@
 																"FAILED"
 															],
 															"example": "COMPLETE",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"tbt": {
 															"description": "Total Blocking Time.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"ttfb": {
 															"description": "Time To First Byte.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"tti": {
 															"description": "Time To Interactive.",
 															"example": 100,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3808,7 +4033,8 @@
 													"properties": {
 														"label": {
 															"example": "Iowa, USA",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "A test region.",
@@ -3836,7 +4062,8 @@
 																"us-west1"
 															],
 															"example": "us-central1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3848,12 +4075,14 @@
 														"WEEKLY"
 													],
 													"example": "DAILY",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"url": {
 													"description": "A URL.",
 													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -4022,7 +4251,8 @@
 				"schema": {
 					"description": "A URL.",
 					"example": "example.com",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4056,7 +4286,8 @@
 								"us-west1"
 							],
 							"example": "us-central1",
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						},
 						{
 							"default": "us-central1"
@@ -4081,10 +4312,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -4102,10 +4335,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -4120,7 +4355,8 @@
 												"success": {
 													"description": "Whether the API call was successful.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -4147,7 +4383,8 @@
 																"WEEKLY"
 															],
 															"example": "DAILY",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"region": {
 															"description": "A test region.",
@@ -4175,12 +4412,14 @@
 																"us-west1"
 															],
 															"example": "us-central1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"url": {
 															"description": "A URL.",
 															"example": "example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -4198,7 +4437,8 @@
 																"cls": {
 																	"description": "Cumulative Layout Shift.",
 																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"deviceType": {
 																	"description": "The type of device.",
@@ -4207,7 +4447,8 @@
 																		"MOBILE"
 																	],
 																	"example": "DESKTOP",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"error": {
 																	"properties": {
@@ -4221,17 +4462,20 @@
 																				"UNKNOWN"
 																			],
 																			"example": "NOT_REACHABLE",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"detail": {
 																			"description": "Detailed error message.",
 																			"example": "Details: net::ERR_CONNECTION_CLOSED",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"finalDisplayedUrl": {
 																			"description": "The final URL displayed to the user.",
 																			"example": "example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -4239,26 +4483,31 @@
 																"fcp": {
 																	"description": "First Contentful Paint.",
 																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"jsonReportUrl": {
 																	"description": "The URL to the full Lighthouse JSON report.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"lcp": {
 																	"description": "Largest Contentful Paint.",
 																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"performanceScore": {
 																	"description": "The Lighthouse performance score.",
 																	"example": 90,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"si": {
 																	"description": "Speed Index.",
 																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"state": {
 																	"description": "The state of the Lighthouse report.",
@@ -4268,22 +4517,26 @@
 																		"FAILED"
 																	],
 																	"example": "COMPLETE",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"tbt": {
 																	"description": "Total Blocking Time.",
 																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"ttfb": {
 																	"description": "Time To First Byte.",
 																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"tti": {
 																	"description": "Time To Interactive.",
 																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -4300,7 +4553,8 @@
 																"cls": {
 																	"description": "Cumulative Layout Shift.",
 																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"deviceType": {
 																	"description": "The type of device.",
@@ -4309,7 +4563,8 @@
 																		"MOBILE"
 																	],
 																	"example": "DESKTOP",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"error": {
 																	"properties": {
@@ -4323,17 +4578,20 @@
 																				"UNKNOWN"
 																			],
 																			"example": "NOT_REACHABLE",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"detail": {
 																			"description": "Detailed error message.",
 																			"example": "Details: net::ERR_CONNECTION_CLOSED",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"finalDisplayedUrl": {
 																			"description": "The final URL displayed to the user.",
 																			"example": "example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -4341,26 +4599,31 @@
 																"fcp": {
 																	"description": "First Contentful Paint.",
 																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"jsonReportUrl": {
 																	"description": "The URL to the full Lighthouse JSON report.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"lcp": {
 																	"description": "Largest Contentful Paint.",
 																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"performanceScore": {
 																	"description": "The Lighthouse performance score.",
 																	"example": 90,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"si": {
 																	"description": "Speed Index.",
 																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"state": {
 																	"description": "The state of the Lighthouse report.",
@@ -4370,22 +4633,26 @@
 																		"FAILED"
 																	],
 																	"example": "COMPLETE",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"tbt": {
 																	"description": "Total Blocking Time.",
 																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"ttfb": {
 																	"description": "Time To First Byte.",
 																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"tti": {
 																	"description": "Time To Interactive.",
 																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -4395,7 +4662,8 @@
 															"properties": {
 																"label": {
 																	"example": "Iowa, USA",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"value": {
 																	"description": "A test region.",
@@ -4423,7 +4691,8 @@
 																		"us-west1"
 																	],
 																	"example": "us-central1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -4435,12 +4704,14 @@
 																"WEEKLY"
 															],
 															"example": "DAILY",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"url": {
 															"description": "A URL.",
 															"example": "example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
