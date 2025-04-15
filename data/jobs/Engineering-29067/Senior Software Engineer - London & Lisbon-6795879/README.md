@@ -5,8 +5,8 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p></p>
-<p><strong>Software Engineer, All Levels</strong></p>
+<p><strong>Available locations: Lisbon or London</strong></p>
+<hr>
 <p><strong>Hiring Process &amp; Cloudflare's Engineering Teams</strong></p>
 <p>If you want to build things at Cloudflare but are unsure about which team to apply for, this role will give you the best opportunity to match with a team that is most aligned to your experience, skill, and ambition. We've created a hiring process designed to find great candidates and figure out where they fit best as we go along. At the end of the hiring process you will have the opportunity to meet with one or more teams to find out if there is a fit, but if you discover during the interview process that a particular team or product area is interesting to you let us know.</p>
 <p><strong>About Engineering at Cloudflare</strong></p>
@@ -50,7 +50,7 @@
 	<li>Fluent in analyses of data sets such as logs</li>
 	<li>Understanding of security and fraud detection systems</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
