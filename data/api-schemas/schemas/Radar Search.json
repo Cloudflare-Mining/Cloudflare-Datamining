@@ -14,11 +14,11 @@
 				}
 			},
 			{
-				"description": "Limit the number of objects per search category.",
+				"description": "Limits the number of objects per search category.",
 				"in": "query",
 				"name": "limitPerGroup",
 				"schema": {
-					"description": "Limit the number of objects per search category.",
+					"description": "Limits the number of objects per search category.",
 					"type": "number"
 				}
 			},
@@ -34,11 +34,11 @@
 				}
 			},
 			{
-				"description": "Search types to be included in results.",
+				"description": "Search types included in results.",
 				"in": "query",
 				"name": "include",
 				"schema": {
-					"description": "Search types to be included in results.",
+					"description": "Search types included in results.",
 					"items": {
 						"enum": [
 							"SPECIAL_EVENTS",
@@ -52,11 +52,11 @@
 				}
 			},
 			{
-				"description": "Search types to be excluded from results.",
+				"description": "Search types excluded from results.",
 				"in": "query",
 				"name": "exclude",
 				"schema": {
-					"description": "Search types to be excluded from results.",
+					"description": "Search types excluded from results.",
 					"items": {
 						"enum": [
 							"SPECIAL_EVENTS",
@@ -136,7 +136,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -174,7 +174,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [

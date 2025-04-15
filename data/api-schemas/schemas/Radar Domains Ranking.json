@@ -26,12 +26,12 @@
 				}
 			},
 			{
-				"description": "Ranking type.",
+				"description": "The ranking type.",
 				"in": "query",
 				"name": "rankingType",
 				"schema": {
 					"default": "POPULAR",
-					"description": "Ranking type.",
+					"description": "The ranking type.",
 					"enum": [
 						"POPULAR",
 						"TRENDING_RISE",
@@ -64,11 +64,11 @@
 				}
 			},
 			{
-				"description": "Array of dates to filter the results.",
+				"description": "Filters results by the specified array of dates.",
 				"in": "query",
 				"name": "date",
 				"schema": {
-					"description": "Array of dates to filter the results.",
+					"description": "Filters results by the specified array of dates.",
 					"example": "2022-09-19",
 					"items": {
 						"format": "date",
@@ -219,7 +219,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -257,7 +257,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -297,12 +297,12 @@
 				}
 			},
 			{
-				"description": "Ranking type.",
+				"description": "The ranking type.",
 				"in": "query",
 				"name": "rankingType",
 				"schema": {
 					"default": "POPULAR",
-					"description": "Ranking type.",
+					"description": "The ranking type.",
 					"enum": [
 						"POPULAR",
 						"TRENDING_RISE",
@@ -326,11 +326,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes).",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes).",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
 					"example": "US",
 					"items": {
 						"type": "string"
@@ -339,11 +339,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of domain names.",
+				"description": "Filters results by domain name. Specify a comma-separated list of domain names.",
 				"in": "query",
 				"name": "domains",
 				"schema": {
-					"description": "Comma-separated list of domain names.",
+					"description": "Filters results by domain name. Specify a comma-separated list of domain names.",
 					"example": "google.com,facebook.com",
 					"items": {
 						"pattern": "^([a-zA-Z0-9]([a-zA-Z0-9-]{0,63}[a-zA-Z0-9-])?\\.)+[a-zA-Z0-9-]{2,63}$",
@@ -366,11 +366,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -518,7 +518,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -556,7 +556,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -609,11 +609,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes).",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes).",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
 					"example": "US",
 					"items": {
 						"type": "string"
@@ -635,11 +635,11 @@
 				}
 			},
 			{
-				"description": "Array of dates to filter the results.",
+				"description": "Filters results by the specified array of dates.",
 				"in": "query",
 				"name": "date",
 				"schema": {
-					"description": "Array of dates to filter the results.",
+					"description": "Filters results by the specified array of dates.",
 					"example": "2022-09-19",
 					"items": {
 						"format": "date",
@@ -649,12 +649,12 @@
 				}
 			},
 			{
-				"description": "Ranking type.",
+				"description": "The ranking type.",
 				"in": "query",
 				"name": "rankingType",
 				"schema": {
 					"default": "POPULAR",
-					"description": "Ranking type.",
+					"description": "The ranking type.",
 					"enum": [
 						"POPULAR",
 						"TRENDING_RISE",
@@ -778,7 +778,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -816,7 +816,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [

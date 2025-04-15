@@ -17,11 +17,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -60,11 +60,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -73,11 +73,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -103,11 +103,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -121,12 +121,12 @@
 				}
 			},
 			{
-				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"description": "Specifies whether the `location` filter applies to the source or target location.",
 				"in": "query",
 				"name": "direction",
 				"schema": {
 					"default": "ORIGIN",
-					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"description": "Specifies whether the `location` filter applies to the source or target location.",
 					"enum": [
 						"ORIGIN",
 						"TARGET"
@@ -300,7 +300,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -338,7 +338,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -381,11 +381,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -424,11 +424,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -437,11 +437,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -467,11 +467,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -485,12 +485,12 @@
 				}
 			},
 			{
-				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"description": "Specifies whether the `location` filter applies to the source or target location.",
 				"in": "query",
 				"name": "direction",
 				"schema": {
 					"default": "ORIGIN",
-					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"description": "Specifies whether the `location` filter applies to the source or target location.",
 					"enum": [
 						"ORIGIN",
 						"TARGET"
@@ -669,7 +669,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -707,7 +707,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -750,11 +750,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -793,11 +793,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -806,11 +806,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -836,11 +836,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -854,12 +854,12 @@
 				}
 			},
 			{
-				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"description": "Specifies whether the `location` filter applies to the source or target location.",
 				"in": "query",
 				"name": "direction",
 				"schema": {
 					"default": "ORIGIN",
-					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"description": "Specifies whether the `location` filter applies to the source or target location.",
 					"enum": [
 						"ORIGIN",
 						"TARGET"
@@ -868,11 +868,11 @@
 				}
 			},
 			{
-				"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
 				"in": "query",
 				"name": "limitPerGroup",
 				"schema": {
-					"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
 					"example": 10,
 					"type": "integer"
 				}
@@ -1020,7 +1020,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -1058,7 +1058,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -1101,11 +1101,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -1144,11 +1144,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -1157,11 +1157,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -1170,11 +1170,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -1188,12 +1188,12 @@
 				}
 			},
 			{
-				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"description": "Specifies whether the `location` filter applies to the source or target location.",
 				"in": "query",
 				"name": "direction",
 				"schema": {
 					"default": "ORIGIN",
-					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"description": "Specifies whether the `location` filter applies to the source or target location.",
 					"enum": [
 						"ORIGIN",
 						"TARGET"
@@ -1352,7 +1352,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -1390,7 +1390,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -1433,11 +1433,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -1476,11 +1476,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -1489,11 +1489,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -1519,12 +1519,12 @@
 				}
 			},
 			{
-				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"description": "Specifies whether the `location` filter applies to the source or target location.",
 				"in": "query",
 				"name": "direction",
 				"schema": {
 					"default": "ORIGIN",
-					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"description": "Specifies whether the `location` filter applies to the source or target location.",
 					"enum": [
 						"ORIGIN",
 						"TARGET"
@@ -1693,7 +1693,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -1731,7 +1731,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -1774,11 +1774,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -1817,11 +1817,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -1830,11 +1830,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -1860,11 +1860,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -1878,12 +1878,12 @@
 				}
 			},
 			{
-				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"description": "Specifies whether the `location` filter applies to the source or target location.",
 				"in": "query",
 				"name": "direction",
 				"schema": {
 					"default": "ORIGIN",
-					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"description": "Specifies whether the `location` filter applies to the source or target location.",
 					"enum": [
 						"ORIGIN",
 						"TARGET"
@@ -1892,11 +1892,11 @@
 				}
 			},
 			{
-				"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
 				"in": "query",
 				"name": "limitPerGroup",
 				"schema": {
-					"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
 					"example": 10,
 					"type": "integer"
 				}
@@ -2045,7 +2045,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -2083,7 +2083,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -2126,11 +2126,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -2169,11 +2169,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -2182,11 +2182,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -2212,11 +2212,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -2230,12 +2230,12 @@
 				}
 			},
 			{
-				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"description": "Specifies whether the `location` filter applies to the source or target location.",
 				"in": "query",
 				"name": "direction",
 				"schema": {
 					"default": "ORIGIN",
-					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"description": "Specifies whether the `location` filter applies to the source or target location.",
 					"enum": [
 						"ORIGIN",
 						"TARGET"
@@ -2244,11 +2244,11 @@
 				}
 			},
 			{
-				"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
 				"in": "query",
 				"name": "limitPerGroup",
 				"schema": {
-					"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
 					"example": 10,
 					"type": "integer"
 				}
@@ -2396,7 +2396,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -2434,7 +2434,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -2464,11 +2464,11 @@
 		"operationId": "radar-get-attacks-layer3-timeseries-by-bytes",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
-					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
@@ -2493,11 +2493,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -2536,11 +2536,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
 						"type": "string"
@@ -2549,11 +2549,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -2562,11 +2562,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -2592,11 +2592,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -2610,11 +2610,11 @@
 				}
 			},
 			{
-				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 				"in": "query",
 				"name": "normalization",
 				"schema": {
-					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
 						"PERCENTAGE_CHANGE",
 						"MIN0_MAX"
@@ -2638,12 +2638,12 @@
 				}
 			},
 			{
-				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"description": "Specifies whether the `location` filter applies to the source or target location.",
 				"in": "query",
 				"name": "direction",
 				"schema": {
 					"default": "ORIGIN",
-					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"description": "Specifies whether the `location` filter applies to the source or target location.",
 					"enum": [
 						"ORIGIN",
 						"TARGET"
@@ -2718,7 +2718,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -2756,7 +2756,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -2786,11 +2786,11 @@
 		"operationId": "radar-get-attacks-layer3-timeseries-group-by-bitrate",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
-					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
@@ -2815,11 +2815,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -2858,11 +2858,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -2871,11 +2871,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -2901,11 +2901,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -2919,12 +2919,12 @@
 				}
 			},
 			{
-				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 				"in": "query",
 				"name": "normalization",
 				"schema": {
 					"default": "PERCENTAGE",
-					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
 						"PERCENTAGE",
 						"MIN0_MAX"
@@ -2934,12 +2934,12 @@
 				}
 			},
 			{
-				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"description": "Specifies whether the `location` filter applies to the source or target location.",
 				"in": "query",
 				"name": "direction",
 				"schema": {
 					"default": "ORIGIN",
-					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"description": "Specifies whether the `location` filter applies to the source or target location.",
 					"enum": [
 						"ORIGIN",
 						"TARGET"
@@ -3042,7 +3042,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -3080,7 +3080,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -3110,11 +3110,11 @@
 		"operationId": "radar-get-attacks-layer3-timeseries-group-by-duration",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
-					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
@@ -3139,11 +3139,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -3182,11 +3182,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -3195,11 +3195,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -3225,11 +3225,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -3243,12 +3243,12 @@
 				}
 			},
 			{
-				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 				"in": "query",
 				"name": "normalization",
 				"schema": {
 					"default": "PERCENTAGE",
-					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
 						"PERCENTAGE",
 						"MIN0_MAX"
@@ -3258,12 +3258,12 @@
 				}
 			},
 			{
-				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"description": "Specifies whether the `location` filter applies to the source or target location.",
 				"in": "query",
 				"name": "direction",
 				"schema": {
 					"default": "ORIGIN",
-					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"description": "Specifies whether the `location` filter applies to the source or target location.",
 					"enum": [
 						"ORIGIN",
 						"TARGET"
@@ -3373,7 +3373,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -3411,7 +3411,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -3441,11 +3441,11 @@
 		"operationId": "radar-get-attacks-layer3-timeseries-group-by-industry",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
-					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
@@ -3470,11 +3470,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -3513,11 +3513,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -3526,11 +3526,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -3556,11 +3556,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -3574,12 +3574,12 @@
 				}
 			},
 			{
-				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 				"in": "query",
 				"name": "normalization",
 				"schema": {
 					"default": "PERCENTAGE",
-					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
 						"PERCENTAGE",
 						"MIN0_MAX"
@@ -3589,12 +3589,12 @@
 				}
 			},
 			{
-				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"description": "Specifies whether the `location` filter applies to the source or target location.",
 				"in": "query",
 				"name": "direction",
 				"schema": {
 					"default": "ORIGIN",
-					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"description": "Specifies whether the `location` filter applies to the source or target location.",
 					"enum": [
 						"ORIGIN",
 						"TARGET"
@@ -3603,11 +3603,11 @@
 				}
 			},
 			{
-				"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
 				"in": "query",
 				"name": "limitPerGroup",
 				"schema": {
-					"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
 					"example": 10,
 					"type": "integer"
 				}
@@ -3686,7 +3686,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -3724,7 +3724,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -3754,11 +3754,11 @@
 		"operationId": "radar-get-attacks-layer3-timeseries-group-by-ip-version",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
-					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
@@ -3783,11 +3783,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -3826,11 +3826,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -3839,11 +3839,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -3852,11 +3852,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -3870,12 +3870,12 @@
 				}
 			},
 			{
-				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 				"in": "query",
 				"name": "normalization",
 				"schema": {
 					"default": "PERCENTAGE",
-					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
 						"PERCENTAGE",
 						"MIN0_MAX"
@@ -3885,12 +3885,12 @@
 				}
 			},
 			{
-				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"description": "Specifies whether the `location` filter applies to the source or target location.",
 				"in": "query",
 				"name": "direction",
 				"schema": {
 					"default": "ORIGIN",
-					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"description": "Specifies whether the `location` filter applies to the source or target location.",
 					"enum": [
 						"ORIGIN",
 						"TARGET"
@@ -3972,7 +3972,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -4010,7 +4010,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -4040,11 +4040,11 @@
 		"operationId": "radar-get-attacks-layer3-timeseries-group-by-protocol",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
-					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
@@ -4069,11 +4069,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -4112,11 +4112,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -4125,11 +4125,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -4155,12 +4155,12 @@
 				}
 			},
 			{
-				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 				"in": "query",
 				"name": "normalization",
 				"schema": {
 					"default": "PERCENTAGE",
-					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
 						"PERCENTAGE",
 						"MIN0_MAX"
@@ -4170,12 +4170,12 @@
 				}
 			},
 			{
-				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"description": "Specifies whether the `location` filter applies to the source or target location.",
 				"in": "query",
 				"name": "direction",
 				"schema": {
 					"default": "ORIGIN",
-					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"description": "Specifies whether the `location` filter applies to the source or target location.",
 					"enum": [
 						"ORIGIN",
 						"TARGET"
@@ -4271,7 +4271,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -4309,7 +4309,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -4339,11 +4339,11 @@
 		"operationId": "radar-get-attacks-layer3-timeseries-group-by-vector",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
-					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
@@ -4368,11 +4368,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -4411,11 +4411,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -4424,11 +4424,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -4454,11 +4454,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -4472,12 +4472,12 @@
 				}
 			},
 			{
-				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 				"in": "query",
 				"name": "normalization",
 				"schema": {
 					"default": "PERCENTAGE",
-					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
 						"PERCENTAGE",
 						"MIN0_MAX"
@@ -4487,12 +4487,12 @@
 				}
 			},
 			{
-				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"description": "Specifies whether the `location` filter applies to the source or target location.",
 				"in": "query",
 				"name": "direction",
 				"schema": {
 					"default": "ORIGIN",
-					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"description": "Specifies whether the `location` filter applies to the source or target location.",
 					"enum": [
 						"ORIGIN",
 						"TARGET"
@@ -4501,11 +4501,11 @@
 				}
 			},
 			{
-				"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
 				"in": "query",
 				"name": "limitPerGroup",
 				"schema": {
-					"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
 					"example": 10,
 					"type": "integer"
 				}
@@ -4584,7 +4584,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -4622,7 +4622,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -4652,11 +4652,11 @@
 		"operationId": "radar-get-attacks-layer3-timeseries-group-by-vertical",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
-					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
@@ -4681,11 +4681,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -4724,11 +4724,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -4737,11 +4737,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -4767,11 +4767,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -4785,12 +4785,12 @@
 				}
 			},
 			{
-				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 				"in": "query",
 				"name": "normalization",
 				"schema": {
 					"default": "PERCENTAGE",
-					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
 						"PERCENTAGE",
 						"MIN0_MAX"
@@ -4800,12 +4800,12 @@
 				}
 			},
 			{
-				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"description": "Specifies whether the `location` filter applies to the source or target location.",
 				"in": "query",
 				"name": "direction",
 				"schema": {
 					"default": "ORIGIN",
-					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"description": "Specifies whether the `location` filter applies to the source or target location.",
 					"enum": [
 						"ORIGIN",
 						"TARGET"
@@ -4814,11 +4814,11 @@
 				}
 			},
 			{
-				"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
 				"in": "query",
 				"name": "limitPerGroup",
 				"schema": {
-					"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
 					"example": 10,
 					"type": "integer"
 				}
@@ -4897,7 +4897,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -4935,7 +4935,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -4988,11 +4988,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -5031,11 +5031,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -5044,11 +5044,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -5074,11 +5074,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -5092,12 +5092,12 @@
 				}
 			},
 			{
-				"description": "Array of attack origin/target location attack limits. Together with `limitPerLocation`, limits how many objects will be fetched per origin/target location.",
+				"description": "Specifies whether the `limitPerLocation` applies to the source or target location.",
 				"in": "query",
 				"name": "limitDirection",
 				"schema": {
 					"default": "ORIGIN",
-					"description": "Array of attack origin/target location attack limits. Together with `limitPerLocation`, limits how many objects will be fetched per origin/target location.",
+					"description": "Specifies whether the `limitPerLocation` applies to the source or target location.",
 					"enum": [
 						"ORIGIN",
 						"TARGET"
@@ -5117,11 +5117,11 @@
 				}
 			},
 			{
-				"description": "Attack magnitude can be defined by total mitigated bytes or by total mitigated attacks.",
+				"description": "Orders results based on attack magnitude, defined by total mitigated bytes or total mitigated attacks.",
 				"in": "query",
 				"name": "magnitude",
 				"schema": {
-					"description": "Attack magnitude can be defined by total mitigated bytes or by total mitigated attacks.",
+					"description": "Orders results based on attack magnitude, defined by total mitigated bytes or total mitigated attacks.",
 					"enum": [
 						"MITIGATED_BYTES",
 						"MITIGATED_ATTACKS"
@@ -5131,12 +5131,12 @@
 				}
 			},
 			{
-				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 				"in": "query",
 				"name": "normalization",
 				"schema": {
 					"default": "PERCENTAGE",
-					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
 						"PERCENTAGE",
 						"MIN_MAX"
@@ -5299,7 +5299,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"404": {
 				"content": {
@@ -5307,7 +5307,7 @@
 						"schema": {
 							"properties": {
 								"error": {
-									"example": "Not Found",
+									"example": "Not Found.",
 									"type": "string"
 								}
 							},
@@ -5318,7 +5318,7 @@
 						}
 					}
 				},
-				"description": "Not found"
+				"description": "Not found."
 			}
 		},
 		"security": [
@@ -5372,11 +5372,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -5415,11 +5415,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -5428,11 +5428,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -5458,11 +5458,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -5624,7 +5624,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"404": {
 				"content": {
@@ -5632,7 +5632,7 @@
 						"schema": {
 							"properties": {
 								"error": {
-									"example": "Not Found",
+									"example": "Not Found.",
 									"type": "string"
 								}
 							},
@@ -5643,7 +5643,7 @@
 						}
 					}
 				},
-				"description": "Not found"
+				"description": "Not found."
 			}
 		},
 		"security": [
@@ -5696,11 +5696,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -5739,11 +5739,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -5752,11 +5752,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -5782,11 +5782,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -5958,7 +5958,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"404": {
 				"content": {
@@ -5966,7 +5966,7 @@
 						"schema": {
 							"properties": {
 								"error": {
-									"example": "Not Found",
+									"example": "Not Found.",
 									"type": "string"
 								}
 							},
@@ -5977,7 +5977,7 @@
 						}
 					}
 				},
-				"description": "Not found"
+				"description": "Not found."
 			}
 		},
 		"security": [
@@ -6030,11 +6030,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -6073,11 +6073,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -6086,11 +6086,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -6116,11 +6116,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -6292,7 +6292,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"404": {
 				"content": {
@@ -6300,7 +6300,7 @@
 						"schema": {
 							"properties": {
 								"error": {
-									"example": "Not Found",
+									"example": "Not Found.",
 									"type": "string"
 								}
 							},
@@ -6311,7 +6311,7 @@
 						}
 					}
 				},
-				"description": "Not found"
+				"description": "Not found."
 			}
 		},
 		"security": [
@@ -6365,11 +6365,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -6408,11 +6408,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -6421,11 +6421,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -6451,11 +6451,11 @@
 				}
 			},
 			{
-				"description": "Array of L3/4 attack types.",
+				"description": "Filters the results by layer 3/4 protocol.",
 				"in": "query",
 				"name": "protocol",
 				"schema": {
-					"description": "Array of L3/4 attack types.",
+					"description": "Filters the results by layer 3/4 protocol.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -6617,7 +6617,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"404": {
 				"content": {
@@ -6625,7 +6625,7 @@
 						"schema": {
 							"properties": {
 								"error": {
-									"example": "Not Found",
+									"example": "Not Found.",
 									"type": "string"
 								}
 							},
@@ -6636,7 +6636,7 @@
 						}
 					}
 				},
-				"description": "Not found"
+				"description": "Not found."
 			}
 		},
 		"security": [

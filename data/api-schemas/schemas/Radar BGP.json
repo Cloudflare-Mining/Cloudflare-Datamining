@@ -77,29 +77,29 @@
 				}
 			},
 			{
-				"description": "The minimum confidence score to filter events (1-4 low, 5-7 mid, 8+ high).",
+				"description": "Filters events by minimum confidence score (1-4 low, 5-7 mid, 8+ high).",
 				"in": "query",
 				"name": "minConfidence",
 				"schema": {
-					"description": "The minimum confidence score to filter events (1-4 low, 5-7 mid, 8+ high).",
+					"description": "Filters events by minimum confidence score (1-4 low, 5-7 mid, 8+ high).",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "The maximum confidence score to filter events (1-4 low, 5-7 mid, 8+ high).",
+				"description": "Filters events by maximum confidence score (1-4 low, 5-7 mid, 8+ high).",
 				"in": "query",
 				"name": "maxConfidence",
 				"schema": {
-					"description": "The maximum confidence score to filter events (1-4 low, 5-7 mid, 8+ high).",
+					"description": "Filters events by maximum confidence score (1-4 low, 5-7 mid, 8+ high).",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+				"description": "Filters results by date range.",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+					"description": "Filters results by date range.",
 					"example": "7d",
 					"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 					"type": "string"
@@ -358,7 +358,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -396,7 +396,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -439,11 +439,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -482,11 +482,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
 						"type": "string"
@@ -495,11 +495,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 codes).",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 codes).",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
 					"example": "US",
 					"items": {
 						"type": "string"
@@ -525,11 +525,11 @@
 				}
 			},
 			{
-				"description": "Include data delay meta information.",
+				"description": "Includes data delay meta information.",
 				"in": "query",
 				"name": "includeDelay",
 				"schema": {
-					"description": "Include data delay meta information.",
+					"description": "Includes data delay meta information.",
 					"type": "boolean"
 				}
 			},
@@ -648,7 +648,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -686,7 +686,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -770,11 +770,11 @@
 				}
 			},
 			{
-				"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+				"description": "Filters results by date range.",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+					"description": "Filters results by date range.",
 					"example": "7d",
 					"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 					"type": "string"
@@ -991,7 +991,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -1029,7 +1029,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -1059,11 +1059,11 @@
 		"operationId": "radar-get-bgp-routes-asns",
 		"parameters": [
 			{
-				"description": "Location alpha-2 code.",
+				"description": "Filters results by location. Specify an alpha-2 location code.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Location alpha-2 code.",
+					"description": "Filters results by location. Specify an alpha-2 location code.",
 					"example": "US",
 					"type": "string"
 				}
@@ -1141,41 +1141,41 @@
 														"type": "integer"
 													},
 													"coneSize": {
-														"description": "AS's customer cone size",
+														"description": "AS's customer cone size.",
 														"type": "integer"
 													},
 													"country": {
-														"description": "2-letter country code for the AS's registration country",
+														"description": "Alpha-2 code for the AS's registration country.",
 														"example": "US",
 														"type": "string"
 													},
 													"ipv4Count": {
-														"description": "number of IPv4 addresses originated by the AS",
+														"description": "Number of IPv4 addresses originated by the AS.",
 														"type": "integer"
 													},
 													"ipv6Count": {
-														"description": "number of IPv6 addresses originated by the AS",
+														"description": "Number of IPv6 addresses originated by the AS.",
 														"example": "1.21e24",
 														"type": "string"
 													},
 													"name": {
-														"description": "name of the AS",
+														"description": "Name of the AS.",
 														"type": "string"
 													},
 													"pfxsCount": {
-														"description": "number of total IP prefixes originated by the AS",
+														"description": "Number of total IP prefixes originated by the AS.",
 														"type": "integer"
 													},
 													"rpkiInvalid": {
-														"description": "number of RPKI invalid prefixes originated by the AS",
+														"description": "Number of RPKI invalid prefixes originated by the AS.",
 														"type": "integer"
 													},
 													"rpkiUnknown": {
-														"description": "number of RPKI unknown prefixes originated by the AS",
+														"description": "Number of RPKI unknown prefixes originated by the AS.",
 														"type": "integer"
 													},
 													"rpkiValid": {
-														"description": "number of RPKI valid prefixes originated by the AS",
+														"description": "Number of RPKI valid prefixes originated by the AS.",
 														"type": "integer"
 													}
 												},
@@ -1198,17 +1198,17 @@
 										"meta": {
 											"properties": {
 												"dataTime": {
-													"description": "the timestamp of when the data is generated",
+													"description": "The timestamp of when the data is generated.",
 													"example": "2024-06-03T14:00:00",
 													"type": "string"
 												},
 												"queryTime": {
-													"description": "the timestamp of the query",
+													"description": "The timestamp of the query.",
 													"example": "2024-06-03T14:00:00",
 													"type": "string"
 												},
 												"totalPeers": {
-													"description": "total number of route collector peers used to generate this data",
+													"description": "Total number of route collector peers used to generate this data.",
 													"type": "integer"
 												}
 											},
@@ -1239,7 +1239,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -1277,7 +1277,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -1433,7 +1433,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -1471,7 +1471,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -1632,7 +1632,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -1670,7 +1670,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -1734,39 +1734,134 @@
 									"properties": {
 										"meta": {
 											"properties": {
+												"asn_info": {
+													"items": {
+														"properties": {
+															"as_name": {
+																"description": "Name of the autonomous system.",
+																"type": "string"
+															},
+															"asn": {
+																"description": "AS number.",
+																"type": "integer"
+															},
+															"country_code": {
+																"description": "Alpha-2 code for the AS's registration country.",
+																"type": "string"
+															},
+															"org_id": {
+																"description": "Organization ID.",
+																"type": "string"
+															},
+															"org_name": {
+																"description": "Organization name.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"asn",
+															"as_name",
+															"country_code",
+															"org_id",
+															"org_name"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
 												"collectors": {
 													"items": {
 														"properties": {
 															"collector": {
-																"description": "public route collector ID",
+																"description": "Public route collector ID.",
 																"type": "string"
 															},
 															"latest_realtime_ts": {
-																"description": "latest realtime stream timestamp for this collector",
+																"description": "Latest realtime stream timestamp for this collector.",
 																"type": "string"
 															},
 															"latest_rib_ts": {
-																"description": "latest RIB dump MRT file timestamp for this collector",
+																"description": "Latest RIB dump MRT file timestamp for this collector.",
 																"type": "string"
 															},
 															"latest_updates_ts": {
-																"description": "latest BGP updates MRT file timestamp for this collector",
+																"description": "Latest BGP updates MRT file timestamp for this collector.",
 																"type": "string"
+															},
+															"peers_count": {
+																"description": "Total number of collector peers used from this collector.",
+																"type": "integer"
+															},
+															"peers_v4_count": {
+																"description": "Total number of collector peers used from this collector for IPv4 prefixes.",
+																"type": "integer"
+															},
+															"peers_v6_count": {
+																"description": "Total number of collector peers used from this collector for IPv6 prefixes.",
+																"type": "integer"
 															}
 														},
 														"required": [
 															"collector",
 															"latest_realtime_ts",
 															"latest_updates_ts",
-															"latest_rib_ts"
+															"latest_rib_ts",
+															"peers_count",
+															"peers_v4_count",
+															"peers_v6_count"
 														],
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"rpki": {
+													"items": {
+														"properties": {
+															"origin": {
+																"description": "Origin ASN.",
+																"type": "integer"
+															},
+															"rpki_validation": {
+																"description": "Validation status: valid, invalid, or unknown.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"origin",
+															"rpki_validation"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"visibility": {
+													"properties": {
+														"total_peers": {
+															"description": "Total number of peers.",
+															"type": "integer"
+														},
+														"total_visible": {
+															"description": "Total number of peers seeing this prefix.",
+															"type": "integer"
+														},
+														"visibility": {
+															"description": "Ratio of peers seeing this prefix to total number of peers.",
+															"type": "number"
+														}
+													},
+													"required": [
+														"total_peers",
+														"total_visible",
+														"visibility"
+													],
+													"type": "object"
 												}
 											},
 											"required": [
-												"collectors"
+												"collectors",
+												"asn_info",
+												"rpki",
+												"visibility"
 											],
 											"type": "object"
 										},
@@ -1774,29 +1869,29 @@
 											"items": {
 												"properties": {
 													"as_path": {
-														"description": "AS-level path for this route, from collector to origin",
+														"description": "AS-level path for this route, from collector to origin.",
 														"items": {
 															"type": "integer"
 														},
 														"type": "array"
 													},
 													"collector": {
-														"description": "public collector ID for this route",
+														"description": "Public collector ID for this route.",
 														"type": "string"
 													},
 													"communities": {
-														"description": "BGP community values",
+														"description": "BGP community values.",
 														"items": {
 															"type": "string"
 														},
 														"type": "array"
 													},
 													"prefix": {
-														"description": "IP prefix of this query",
+														"description": "IP prefix of this query.",
 														"type": "string"
 													},
 													"timestamp": {
-														"description": "latest timestamp of change for this route ",
+														"description": "Latest timestamp of change for this route.",
 														"type": "string"
 													}
 												},
@@ -1831,7 +1926,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -1869,7 +1964,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -1899,21 +1994,21 @@
 		"operationId": "radar-get-bgp-routes-stats",
 		"parameters": [
 			{
-				"description": "Single Autonomous System Number (ASN) as integer.",
+				"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Single Autonomous System Number (ASN) as integer.",
+					"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
 					"example": 174,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Location alpha-2 code.",
+				"description": "Filters results by location. Specify an alpha-2 location code.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Location alpha-2 code.",
+					"description": "Filters results by location. Specify an alpha-2 location code.",
 					"example": "US",
 					"type": "string"
 				}
@@ -2059,7 +2154,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -2097,7 +2192,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -2127,11 +2222,11 @@
 		"operationId": "radar-get-bgp-timeseries",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
-					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
@@ -2156,11 +2251,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -2199,11 +2294,11 @@
 				}
 			},
 			{
-				"description": "Array of BGP network prefixes.",
+				"description": "Filters results by BGP network prefix.",
 				"in": "query",
 				"name": "prefix",
 				"schema": {
-					"description": "Array of BGP network prefixes.",
+					"description": "Filters results by BGP network prefix.",
 					"example": "1.1.1.0/24",
 					"items": {
 						"description": "Network prefix, IPv4 or IPv6.",
@@ -2214,11 +2309,11 @@
 				}
 			},
 			{
-				"description": "Array of BGP update types.",
+				"description": "Filters results by BGP update type.",
 				"in": "query",
 				"name": "updateType",
 				"schema": {
-					"description": "Array of BGP update types.",
+					"description": "Filters results by BGP update type.",
 					"example": "ANNOUNCEMENT",
 					"items": {
 						"enum": [
@@ -2231,11 +2326,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
 						"type": "string"
@@ -2400,7 +2495,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -2438,7 +2533,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -2491,11 +2586,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -2534,11 +2629,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
 						"type": "string"
@@ -2547,11 +2642,11 @@
 				}
 			},
 			{
-				"description": "Array of BGP network prefixes.",
+				"description": "Filters results by BGP network prefix.",
 				"in": "query",
 				"name": "prefix",
 				"schema": {
-					"description": "Array of BGP network prefixes.",
+					"description": "Filters results by BGP network prefix.",
 					"example": "1.1.1.0/24",
 					"items": {
 						"description": "Network prefix, IPv4 or IPv6.",
@@ -2562,11 +2657,11 @@
 				}
 			},
 			{
-				"description": "Array of BGP update types.",
+				"description": "Filters results by BGP update type.",
 				"in": "query",
 				"name": "updateType",
 				"schema": {
-					"description": "Array of BGP update types.",
+					"description": "Filters results by BGP update type.",
 					"example": "ANNOUNCEMENT",
 					"items": {
 						"enum": [
@@ -2679,7 +2774,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -2717,7 +2812,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -2854,7 +2949,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"404": {
 				"content": {
@@ -2862,7 +2957,7 @@
 						"schema": {
 							"properties": {
 								"error": {
-									"example": "Not Found",
+									"example": "Not Found.",
 									"type": "string"
 								}
 							},
@@ -2873,7 +2968,7 @@
 						}
 					}
 				},
-				"description": "Not found"
+				"description": "Not found."
 			}
 		},
 		"security": [
@@ -2926,11 +3021,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -2969,11 +3064,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
 						"type": "string"
@@ -2982,11 +3077,11 @@
 				}
 			},
 			{
-				"description": "Array of BGP update types.",
+				"description": "Filters results by BGP update type.",
 				"in": "query",
 				"name": "updateType",
 				"schema": {
-					"description": "Array of BGP update types.",
+					"description": "Filters results by BGP update type.",
 					"example": "ANNOUNCEMENT",
 					"items": {
 						"enum": [
@@ -3093,7 +3188,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -3131,7 +3226,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [

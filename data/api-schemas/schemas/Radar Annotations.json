@@ -23,11 +23,11 @@
 				}
 			},
 			{
-				"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+				"description": "Filters results by date range.",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+					"description": "Filters results by date range.",
 					"example": "7d",
 					"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 					"type": "string"
@@ -56,21 +56,21 @@
 				}
 			},
 			{
-				"description": "Single Autonomous System Number (ASN) as integer.",
+				"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Single Autonomous System Number (ASN) as integer.",
+					"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
 					"example": 174,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Location alpha-2 code.",
+				"description": "Filters results by location. Specify an alpha-2 location code.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Location alpha-2 code.",
+					"description": "Filters results by location. Specify an alpha-2 location code.",
 					"example": "US",
 					"type": "string"
 				}
@@ -256,7 +256,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -294,7 +294,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -343,11 +343,11 @@
 				}
 			},
 			{
-				"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+				"description": "Filters results by date range.",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+					"description": "Filters results by date range.",
 					"example": "7d",
 					"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 					"type": "string"
@@ -376,21 +376,21 @@
 				}
 			},
 			{
-				"description": "Single Autonomous System Number (ASN) as integer.",
+				"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Single Autonomous System Number (ASN) as integer.",
+					"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
 					"example": 174,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Location alpha-2 code.",
+				"description": "Filters results by location. Specify an alpha-2 location code.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Location alpha-2 code.",
+					"description": "Filters results by location. Specify an alpha-2 location code.",
 					"example": "US",
 					"type": "string"
 				}
@@ -576,7 +576,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -614,7 +614,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -654,11 +654,11 @@
 				}
 			},
 			{
-				"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+				"description": "Filters results by date range.",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+					"description": "Filters results by date range.",
 					"example": "7d",
 					"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 					"type": "string"
@@ -753,7 +753,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -791,7 +791,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [

@@ -23,32 +23,32 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs).",
+				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs).",
+					"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list.",
 					"example": "174,7922",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Location alpha-2 code.",
+				"description": "Filters results by location. Specify an alpha-2 location code.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Location alpha-2 code.",
+					"description": "Filters results by location. Specify an alpha-2 location code.",
 					"example": "US",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Metric to order the ASNs by.",
+				"description": "Specifies the metric to order the ASNs by.",
 				"in": "query",
 				"name": "orderBy",
 				"schema": {
 					"default": "ASN",
-					"description": "Metric to order the ASNs by.",
+					"description": "Specifies the metric to order the ASNs by.",
 					"enum": [
 						"ASN",
 						"POPULATION"
@@ -142,7 +142,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -180,7 +180,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -267,7 +267,7 @@
 												"estimatedUsers": {
 													"properties": {
 														"estimatedUsers": {
-															"description": "Total estimated users",
+															"description": "Total estimated users.",
 															"example": 86099,
 															"type": "integer"
 														},
@@ -275,7 +275,7 @@
 															"items": {
 																"properties": {
 																	"estimatedUsers": {
-																		"description": "Estimated users per location",
+																		"description": "Estimated users per location.",
 																		"example": 16710,
 																		"type": "integer"
 																	},
@@ -324,7 +324,7 @@
 																"type": "integer"
 															},
 															"estimatedUsers": {
-																"description": "Total estimated users",
+																"description": "Total estimated users.",
 																"example": 65345,
 																"type": "integer"
 															},
@@ -342,7 +342,7 @@
 													"type": "array"
 												},
 												"source": {
-													"description": "Regional Internet Registry",
+													"description": "Regional Internet Registry.",
 													"example": "RIPE",
 													"type": "string"
 												},
@@ -384,7 +384,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"404": {
 				"content": {
@@ -392,7 +392,7 @@
 						"schema": {
 							"properties": {
 								"error": {
-									"example": "Not Found",
+									"example": "Not Found.",
 									"type": "string"
 								}
 							},
@@ -403,7 +403,7 @@
 						}
 					}
 				},
-				"description": "Not found"
+				"description": "Not found."
 			}
 		},
 		"security": [
@@ -552,7 +552,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -590,7 +590,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -674,7 +674,7 @@
 												"estimatedUsers": {
 													"properties": {
 														"estimatedUsers": {
-															"description": "Total estimated users",
+															"description": "Total estimated users.",
 															"example": 86099,
 															"type": "integer"
 														},
@@ -682,7 +682,7 @@
 															"items": {
 																"properties": {
 																	"estimatedUsers": {
-																		"description": "Estimated users per location",
+																		"description": "Estimated users per location.",
 																		"example": 16710,
 																		"type": "integer"
 																	},
@@ -730,7 +730,7 @@
 																"type": "integer"
 															},
 															"estimatedUsers": {
-																"description": "Total estimated users",
+																"description": "Total estimated users.",
 																"example": 65345,
 																"type": "integer"
 															},
@@ -747,7 +747,7 @@
 													"type": "array"
 												},
 												"source": {
-													"description": "Regional Internet Registry",
+													"description": "Regional Internet Registry.",
 													"example": "RIPE",
 													"type": "string"
 												},
@@ -788,7 +788,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"404": {
 				"content": {
@@ -796,7 +796,7 @@
 						"schema": {
 							"properties": {
 								"error": {
-									"example": "Not Found",
+									"example": "Not Found.",
 									"type": "string"
 								}
 							},
@@ -807,7 +807,7 @@
 						}
 					}
 				},
-				"description": "Not found"
+				"description": "Not found."
 			}
 		},
 		"security": [
@@ -833,7 +833,7 @@
 		}
 	},
 	"GET /radar/entities/ip": {
-		"description": "Retrieves IP address information. ",
+		"description": "Retrieves IP address information.",
 		"operationId": "radar-get-entities-ip",
 		"parameters": [
 			{
@@ -937,7 +937,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"404": {
 				"content": {
@@ -945,7 +945,7 @@
 						"schema": {
 							"properties": {
 								"error": {
-									"example": "Not Found",
+									"example": "Not Found.",
 									"type": "string"
 								}
 							},
@@ -956,7 +956,7 @@
 						}
 					}
 				},
-				"description": "Not found"
+				"description": "Not found."
 			}
 		},
 		"security": [
@@ -1005,11 +1005,11 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of locations (alpha-2 location codes).",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma-separated list of locations (alpha-2 location codes).",
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
 					"example": "US,CA",
 					"type": "string"
 				}
@@ -1086,7 +1086,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -1124,7 +1124,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -1248,7 +1248,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"404": {
 				"content": {
@@ -1256,7 +1256,7 @@
 						"schema": {
 							"properties": {
 								"error": {
-									"example": "Not Found",
+									"example": "Not Found.",
 									"type": "string"
 								}
 							},
@@ -1267,7 +1267,7 @@
 						}
 					}
 				},
-				"description": "Not found"
+				"description": "Not found."
 			}
 		},
 		"security": [

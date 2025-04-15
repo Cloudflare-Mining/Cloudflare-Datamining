@@ -41,11 +41,11 @@
 				}
 			},
 			{
-				"description": "Array of dates to filter the results.",
+				"description": "Filters results by the specified array of dates.",
 				"in": "query",
 				"name": "date",
 				"schema": {
-					"description": "Array of dates to filter the results.",
+					"description": "Filters results by the specified array of dates.",
 					"example": "2022-09-19",
 					"items": {
 						"format": "date",
@@ -228,7 +228,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"404": {
 				"content": {
@@ -236,7 +236,7 @@
 						"schema": {
 							"properties": {
 								"error": {
-									"example": "Not Found",
+									"example": "Not Found.",
 									"type": "string"
 								}
 							},
@@ -247,7 +247,7 @@
 						}
 					}
 				},
-				"description": "Not found"
+				"description": "Not found."
 			}
 		},
 		"security": [
@@ -314,11 +314,11 @@
 				}
 			},
 			{
-				"description": "Array of dates to filter the results.",
+				"description": "Filters results by the specified array of dates.",
 				"in": "query",
 				"name": "date",
 				"schema": {
-					"description": "Array of dates to filter the results.",
+					"description": "Filters results by the specified array of dates.",
 					"example": "2022-09-19",
 					"items": {
 						"format": "date",
@@ -535,7 +535,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"404": {
 				"content": {
@@ -543,7 +543,7 @@
 						"schema": {
 							"properties": {
 								"error": {
-									"example": "Not Found",
+									"example": "Not Found.",
 									"type": "string"
 								}
 							},
@@ -554,7 +554,7 @@
 						}
 					}
 				},
-				"description": "Not found"
+				"description": "Not found."
 			}
 		},
 		"security": [

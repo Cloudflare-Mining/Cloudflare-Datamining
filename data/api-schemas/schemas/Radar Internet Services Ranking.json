@@ -27,11 +27,11 @@
 				}
 			},
 			{
-				"description": "Array of dates to filter the results.",
+				"description": "Filters results by the specified array of dates.",
 				"in": "query",
 				"name": "date",
 				"schema": {
-					"description": "Array of dates to filter the results.",
+					"description": "Filters results by the specified array of dates.",
 					"example": "2022-09-19",
 					"items": {
 						"format": "date",
@@ -97,7 +97,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -135,7 +135,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -201,11 +201,11 @@
 				}
 			},
 			{
-				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -353,7 +353,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -391,7 +391,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
@@ -457,11 +457,11 @@
 				}
 			},
 			{
-				"description": "Array of dates to filter the results.",
+				"description": "Filters results by the specified array of dates.",
 				"in": "query",
 				"name": "date",
 				"schema": {
-					"description": "Array of dates to filter the results.",
+					"description": "Filters results by the specified array of dates.",
 					"example": "2022-09-19",
 					"items": {
 						"format": "date",
@@ -558,7 +558,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Successful response."
 			},
 			"400": {
 				"content": {
@@ -596,7 +596,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request."
 			}
 		},
 		"security": [
