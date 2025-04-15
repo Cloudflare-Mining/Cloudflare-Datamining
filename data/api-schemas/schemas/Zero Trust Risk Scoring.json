@@ -217,7 +217,7 @@
 						}
 					}
 				},
-				"description": "Risk events"
+				"description": "Risk events."
 			},
 			"4XX": {
 				"content": {
@@ -330,7 +330,7 @@
 						}
 					}
 				},
-				"description": "Failed to get risk events"
+				"description": "Failed to get risk events."
 			}
 		},
 		"security": [
@@ -501,7 +501,7 @@
 						}
 					}
 				},
-				"description": "Risk scoring behaviors"
+				"description": "Risk scoring behaviors."
 			},
 			"4XX": {
 				"content": {
@@ -614,7 +614,7 @@
 						}
 					}
 				},
-				"description": "Failed to get risk scoring behaviors"
+				"description": "Failed to get risk scoring behaviors."
 			}
 		},
 		"security": [
@@ -826,7 +826,7 @@
 						}
 					}
 				},
-				"description": "Risk score for all users in the account"
+				"description": "Risk score for all users in the account."
 			},
 			"4XX": {
 				"content": {
@@ -939,7 +939,7 @@
 						}
 					}
 				},
-				"description": "Failed to get risk scores"
+				"description": "Failed to get risk scores."
 			}
 		},
 		"security": [
@@ -1084,7 +1084,7 @@
 						}
 					}
 				},
-				"description": "Dataset created successfully"
+				"description": "Dataset created successfully."
 			},
 			"4XX": {
 				"content": {
@@ -1197,7 +1197,7 @@
 						}
 					}
 				},
-				"description": "Dataset creation failed"
+				"description": "Dataset creation failed."
 			}
 		},
 		"security": [
@@ -1219,7 +1219,7 @@
 		"operationId": "dlp-risk-score-behaviors-put",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
@@ -1264,7 +1264,7 @@
 					}
 				}
 			},
-			"description": "Behaviors",
+			"description": "Behaviors.",
 			"required": true
 		},
 		"responses": {
@@ -1400,7 +1400,7 @@
 						}
 					}
 				},
-				"description": "Dataset created successfully"
+				"description": "Dataset created successfully."
 			},
 			"4XX": {
 				"content": {
@@ -1513,7 +1513,7 @@
 						}
 					}
 				},
-				"description": "Dataset creation failed"
+				"description": "Dataset creation failed."
 			}
 		},
 		"security": [

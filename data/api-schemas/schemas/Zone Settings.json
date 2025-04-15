@@ -902,18 +902,22 @@
 																	},
 																	"value": {
 																		"default": "flatten_at_root",
+																		"deprecated": true,
 																		"description": "Value of the cname flattening setting.",
 																		"enum": [
 																			"flatten_at_root",
 																			"flatten_all"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-deprecation-message": "This zone setting is deprecated; please use the DNS Settings route instead. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-03-21"
 																	}
 																}
 															}
 														],
+														"deprecated": true,
 														"description": "Whether or not cname flattening is on.",
-														"title": "Cloudflare CNAME Flattening"
+														"title": "Cloudflare CNAME Flattening",
+														"x-stainless-deprecation-message": "This zone setting is deprecated; please use the DNS Settings route instead. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-03-21"
 													},
 													{
 														"allOf": [
@@ -4707,18 +4711,22 @@
 																},
 																"value": {
 																	"default": "flatten_at_root",
+																	"deprecated": true,
 																	"description": "Value of the cname flattening setting.",
 																	"enum": [
 																		"flatten_at_root",
 																		"flatten_all"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-stainless-deprecation-message": "This zone setting is deprecated; please use the DNS Settings route instead. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-03-21"
 																}
 															}
 														}
 													],
+													"deprecated": true,
 													"description": "Whether or not cname flattening is on.",
-													"title": "Cloudflare CNAME Flattening"
+													"title": "Cloudflare CNAME Flattening",
+													"x-stainless-deprecation-message": "This zone setting is deprecated; please use the DNS Settings route instead. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-03-21"
 												},
 												{
 													"allOf": [
@@ -9979,18 +9987,22 @@
 												},
 												"value": {
 													"default": "flatten_at_root",
+													"deprecated": true,
 													"description": "Value of the cname flattening setting.",
 													"enum": [
 														"flatten_at_root",
 														"flatten_all"
 													],
-													"type": "string"
+													"type": "string",
+													"x-stainless-deprecation-message": "This zone setting is deprecated; please use the DNS Settings route instead. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-03-21"
 												}
 											}
 										}
 									],
+									"deprecated": true,
 									"description": "Whether or not cname flattening is on.",
-									"title": "Cloudflare CNAME Flattening"
+									"title": "Cloudflare CNAME Flattening",
+									"x-stainless-deprecation-message": "This zone setting is deprecated; please use the DNS Settings route instead. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-03-21"
 								},
 								{
 									"allOf": [
@@ -13578,18 +13590,22 @@
 																	},
 																	"value": {
 																		"default": "flatten_at_root",
+																		"deprecated": true,
 																		"description": "Value of the cname flattening setting.",
 																		"enum": [
 																			"flatten_at_root",
 																			"flatten_all"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-deprecation-message": "This zone setting is deprecated; please use the DNS Settings route instead. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-03-21"
 																	}
 																}
 															}
 														],
+														"deprecated": true,
 														"description": "Whether or not cname flattening is on.",
-														"title": "Cloudflare CNAME Flattening"
+														"title": "Cloudflare CNAME Flattening",
+														"x-stainless-deprecation-message": "This zone setting is deprecated; please use the DNS Settings route instead. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-03-21"
 													},
 													{
 														"allOf": [
@@ -17320,18 +17336,22 @@
 											},
 											"value": {
 												"default": "flatten_at_root",
+												"deprecated": true,
 												"description": "Value of the cname flattening setting.",
 												"enum": [
 													"flatten_at_root",
 													"flatten_all"
 												],
-												"type": "string"
+												"type": "string",
+												"x-stainless-deprecation-message": "This zone setting is deprecated; please use the DNS Settings route instead. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-03-21"
 											}
 										}
 									}
 								],
+								"deprecated": true,
 								"description": "Whether or not cname flattening is on.",
-								"title": "Cloudflare CNAME Flattening"
+								"title": "Cloudflare CNAME Flattening",
+								"x-stainless-deprecation-message": "This zone setting is deprecated; please use the DNS Settings route instead. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-03-21"
 							},
 							{
 								"allOf": [
@@ -20979,18 +20999,22 @@
 																},
 																"value": {
 																	"default": "flatten_at_root",
+																	"deprecated": true,
 																	"description": "Value of the cname flattening setting.",
 																	"enum": [
 																		"flatten_at_root",
 																		"flatten_all"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-stainless-deprecation-message": "This zone setting is deprecated; please use the DNS Settings route instead. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-03-21"
 																}
 															}
 														}
 													],
+													"deprecated": true,
 													"description": "Whether or not cname flattening is on.",
-													"title": "Cloudflare CNAME Flattening"
+													"title": "Cloudflare CNAME Flattening",
+													"x-stainless-deprecation-message": "This zone setting is deprecated; please use the DNS Settings route instead. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-03-21"
 												},
 												{
 													"allOf": [

@@ -126,7 +126,7 @@
 						}
 					}
 				},
-				"description": "Limits retrieved successfully"
+				"description": "Limits retrieved successfully."
 			},
 			"4XX": {
 				"content": {
@@ -239,7 +239,7 @@
 						}
 					}
 				},
-				"description": "Limits get failed"
+				"description": "Limits get failed."
 			}
 		},
 		"security": [
@@ -388,7 +388,7 @@
 						}
 					}
 				},
-				"description": "Payload log settings"
+				"description": "Payload log settings."
 			},
 			"4XX": {
 				"content": {
@@ -501,7 +501,7 @@
 						}
 					}
 				},
-				"description": "Failed to get payload log settings"
+				"description": "Failed to get payload log settings."
 			}
 		},
 		"security": [
@@ -525,7 +525,7 @@
 		"operationId": "dlp-pattern-validate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
@@ -557,7 +557,7 @@
 					}
 				}
 			},
-			"description": "Validation query",
+			"description": "Validation query.",
 			"required": true
 		},
 		"responses": {
@@ -673,7 +673,7 @@
 						}
 					}
 				},
-				"description": "Validation response"
+				"description": "Validation response."
 			},
 			"4XX": {
 				"content": {
@@ -786,7 +786,7 @@
 						}
 					}
 				},
-				"description": "Failed to validate"
+				"description": "Failed to validate."
 			}
 		},
 		"security": [
@@ -830,7 +830,7 @@
 					}
 				}
 			},
-			"description": "New payload log settings",
+			"description": "New payload log settings.",
 			"required": true
 		},
 		"responses": {
@@ -951,7 +951,7 @@
 						}
 					}
 				},
-				"description": "Payload log settings"
+				"description": "Payload log settings."
 			},
 			"4XX": {
 				"content": {
@@ -1064,7 +1064,7 @@
 						}
 					}
 				},
-				"description": "Failed to set payload log settings"
+				"description": "Failed to set payload log settings."
 			}
 		},
 		"security": [

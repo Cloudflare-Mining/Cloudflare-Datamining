@@ -126,7 +126,7 @@
 						}
 					}
 				},
-				"description": "Delete response"
+				"description": "Delete response."
 			},
 			"4XX": {
 				"content": {
@@ -239,7 +239,7 @@
 						}
 					}
 				},
-				"description": "Delete failure response"
+				"description": "Delete failure response."
 			}
 		},
 		"security": [
@@ -396,11 +396,11 @@
 														"type": "string"
 													},
 													"tenant_url": {
-														"description": "The base URL for the tenant. E.g. \"https://tenant.okta.com\"",
+														"description": "The base URL for the tenant. E.g. \"https://tenant.okta.com\".",
 														"type": "string"
 													},
 													"well_known_url": {
-														"description": "The URL for the Shared Signals Framework configuration, e.g. \"/.well-known/sse-configuration/{integration_uuid}/\". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1",
+														"description": "The URL for the Shared Signals Framework configuration, e.g. \"/.well-known/sse-configuration/{integration_uuid}/\". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1.",
 														"type": "string"
 													}
 												},
@@ -425,7 +425,7 @@
 						}
 					}
 				},
-				"description": "List response"
+				"description": "List response."
 			},
 			"4XX": {
 				"content": {
@@ -538,7 +538,7 @@
 						}
 					}
 				},
-				"description": "List failure response"
+				"description": "List failure response."
 			}
 		},
 		"security": [
@@ -704,11 +704,11 @@
 													"type": "string"
 												},
 												"tenant_url": {
-													"description": "The base URL for the tenant. E.g. \"https://tenant.okta.com\"",
+													"description": "The base URL for the tenant. E.g. \"https://tenant.okta.com\".",
 													"type": "string"
 												},
 												"well_known_url": {
-													"description": "The URL for the Shared Signals Framework configuration, e.g. \"/.well-known/sse-configuration/{integration_uuid}/\". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1",
+													"description": "The URL for the Shared Signals Framework configuration, e.g. \"/.well-known/sse-configuration/{integration_uuid}/\". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1.",
 													"type": "string"
 												}
 											},
@@ -731,7 +731,7 @@
 						}
 					}
 				},
-				"description": "Get response"
+				"description": "Get response."
 			},
 			"4XX": {
 				"content": {
@@ -844,7 +844,7 @@
 						}
 					}
 				},
-				"description": "Get failure response"
+				"description": "Get failure response."
 			}
 		},
 		"security": [
@@ -1009,11 +1009,11 @@
 													"type": "string"
 												},
 												"tenant_url": {
-													"description": "The base URL for the tenant. E.g. \"https://tenant.okta.com\"",
+													"description": "The base URL for the tenant. E.g. \"https://tenant.okta.com\".",
 													"type": "string"
 												},
 												"well_known_url": {
-													"description": "The URL for the Shared Signals Framework configuration, e.g. \"/.well-known/sse-configuration/{integration_uuid}/\". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1",
+													"description": "The URL for the Shared Signals Framework configuration, e.g. \"/.well-known/sse-configuration/{integration_uuid}/\". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1.",
 													"type": "string"
 												}
 											},
@@ -1036,7 +1036,7 @@
 						}
 					}
 				},
-				"description": "Get response"
+				"description": "Get response."
 			},
 			"4XX": {
 				"content": {
@@ -1149,7 +1149,7 @@
 						}
 					}
 				},
-				"description": "Get failure response"
+				"description": "Get failure response."
 			}
 		},
 		"security": [
@@ -1197,7 +1197,7 @@
 								"type": "string"
 							},
 							"tenant_url": {
-								"description": "The base url of the tenant, e.g. \"https://tenant.okta.com\"",
+								"description": "The base url of the tenant, e.g. \"https://tenant.okta.com\".",
 								"format": "uri",
 								"type": "string"
 							}
@@ -1338,11 +1338,11 @@
 													"type": "string"
 												},
 												"tenant_url": {
-													"description": "The base URL for the tenant. E.g. \"https://tenant.okta.com\"",
+													"description": "The base URL for the tenant. E.g. \"https://tenant.okta.com\".",
 													"type": "string"
 												},
 												"well_known_url": {
-													"description": "The URL for the Shared Signals Framework configuration, e.g. \"/.well-known/sse-configuration/{integration_uuid}/\". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1",
+													"description": "The URL for the Shared Signals Framework configuration, e.g. \"/.well-known/sse-configuration/{integration_uuid}/\". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1.",
 													"type": "string"
 												}
 											},
@@ -1365,7 +1365,7 @@
 						}
 					}
 				},
-				"description": "Create response"
+				"description": "Create response."
 			},
 			"4XX": {
 				"content": {
@@ -1478,7 +1478,7 @@
 						}
 					}
 				},
-				"description": "Create failure response"
+				"description": "Create failure response."
 			}
 		},
 		"security": [
@@ -1497,7 +1497,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}": {
-		"description": "Overwrite the reference_id, tenant_url, and active values with the ones provided",
+		"description": "Overwrite the reference_id, tenant_url, and active values with the ones provided.",
 		"operationId": "dlp-zt-risk-score-integration-update",
 		"parameters": [
 			{
@@ -1533,7 +1533,7 @@
 								"type": "string"
 							},
 							"tenant_url": {
-								"description": "The base url of the tenant, e.g. \"https://tenant.okta.com\"",
+								"description": "The base url of the tenant, e.g. \"https://tenant.okta.com\".",
 								"format": "uri",
 								"type": "string"
 							}
@@ -1674,11 +1674,11 @@
 													"type": "string"
 												},
 												"tenant_url": {
-													"description": "The base URL for the tenant. E.g. \"https://tenant.okta.com\"",
+													"description": "The base URL for the tenant. E.g. \"https://tenant.okta.com\".",
 													"type": "string"
 												},
 												"well_known_url": {
-													"description": "The URL for the Shared Signals Framework configuration, e.g. \"/.well-known/sse-configuration/{integration_uuid}/\". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1",
+													"description": "The URL for the Shared Signals Framework configuration, e.g. \"/.well-known/sse-configuration/{integration_uuid}/\". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1.",
 													"type": "string"
 												}
 											},
@@ -1701,7 +1701,7 @@
 						}
 					}
 				},
-				"description": "Update response"
+				"description": "Update response."
 			},
 			"4XX": {
 				"content": {
@@ -1814,7 +1814,7 @@
 						}
 					}
 				},
-				"description": "Update failure response"
+				"description": "Update failure response."
 			}
 		},
 		"security": [

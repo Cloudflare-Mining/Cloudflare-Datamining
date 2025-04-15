@@ -127,7 +127,7 @@
 						}
 					}
 				},
-				"description": "Delete custom profile response"
+				"description": "Delete custom profile response."
 			},
 			"4XX": {
 				"content": {
@@ -240,7 +240,7 @@
 						}
 					}
 				},
-				"description": "Delete custom profile failure response"
+				"description": "Delete custom profile failure response."
 			}
 		},
 		"security": [
@@ -434,12 +434,12 @@
 																		"type": "object"
 																	},
 																	"created_at": {
-																		"description": "When the profile was created",
+																		"description": "When the profile was created.",
 																		"format": "date-time",
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "The description of the profile",
+																		"description": "The description of the profile.",
 																		"nullable": true,
 																		"type": "string"
 																	},
@@ -530,11 +530,11 @@
 																								"confidence": {
 																									"properties": {
 																										"ai_context_available": {
-																											"description": "Indicates whether this entry has AI remote service validation",
+																											"description": "Indicates whether this entry has AI remote service validation.",
 																											"type": "boolean"
 																										},
 																										"available": {
-																											"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																											"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																											"type": "boolean"
 																										}
 																									},
@@ -758,19 +758,19 @@
 																		"type": "array"
 																	},
 																	"id": {
-																		"description": "The id of the profile (uuid)",
+																		"description": "The id of the profile (uuid).",
 																		"format": "uuid",
 																		"type": "string"
 																	},
 																	"name": {
-																		"description": "The name of the profile",
+																		"description": "The name of the profile.",
 																		"type": "string"
 																	},
 																	"ocr_enabled": {
 																		"type": "boolean"
 																	},
 																	"updated_at": {
-																		"description": "When the profile was lasted updated",
+																		"description": "When the profile was lasted updated.",
 																		"format": "date-time",
 																		"type": "string"
 																	}
@@ -942,11 +942,11 @@
 																								"confidence": {
 																									"properties": {
 																										"ai_context_available": {
-																											"description": "Indicates whether this entry has AI remote service validation",
+																											"description": "Indicates whether this entry has AI remote service validation.",
 																											"type": "boolean"
 																										},
 																										"available": {
-																											"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																											"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																											"type": "boolean"
 																										}
 																									},
@@ -1170,19 +1170,19 @@
 																		"type": "array"
 																	},
 																	"id": {
-																		"description": "The id of the predefined profile (uuid)",
+																		"description": "The id of the predefined profile (uuid).",
 																		"format": "uuid",
 																		"type": "string"
 																	},
 																	"name": {
-																		"description": "The name of the predefined profile",
+																		"description": "The name of the predefined profile.",
 																		"type": "string"
 																	},
 																	"ocr_enabled": {
 																		"type": "boolean"
 																	},
 																	"open_access": {
-																		"description": "Whether this profile can be accessed by anyone",
+																		"description": "Whether this profile can be accessed by anyone.",
 																		"type": "boolean"
 																	}
 																},
@@ -1220,7 +1220,7 @@
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "The description of the profile",
+																		"description": "The description of the profile.",
 																		"nullable": true,
 																		"type": "string"
 																	},
@@ -1311,11 +1311,11 @@
 																								"confidence": {
 																									"properties": {
 																										"ai_context_available": {
-																											"description": "Indicates whether this entry has AI remote service validation",
+																											"description": "Indicates whether this entry has AI remote service validation.",
 																											"type": "boolean"
 																										},
 																										"available": {
-																											"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																											"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																											"type": "boolean"
 																										}
 																									},
@@ -1587,7 +1587,7 @@
 						}
 					}
 				},
-				"description": "List all profiles response"
+				"description": "List all profiles response."
 			},
 			"4XX": {
 				"content": {
@@ -1700,7 +1700,7 @@
 						}
 					}
 				},
-				"description": "List all profiles failure response"
+				"description": "List all profiles failure response."
 			}
 		},
 		"security": [
@@ -1720,7 +1720,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/profiles/{profile_id}": {
-		"description": "Fetches a DLP profile by ID",
+		"description": "Fetches a DLP profile by ID.",
 		"operationId": "dlp-profiles-get-dlp-profile",
 		"parameters": [
 			{
@@ -1895,12 +1895,12 @@
 																	"type": "object"
 																},
 																"created_at": {
-																	"description": "When the profile was created",
+																	"description": "When the profile was created.",
 																	"format": "date-time",
 																	"type": "string"
 																},
 																"description": {
-																	"description": "The description of the profile",
+																	"description": "The description of the profile.",
 																	"nullable": true,
 																	"type": "string"
 																},
@@ -1991,11 +1991,11 @@
 																							"confidence": {
 																								"properties": {
 																									"ai_context_available": {
-																										"description": "Indicates whether this entry has AI remote service validation",
+																										"description": "Indicates whether this entry has AI remote service validation.",
 																										"type": "boolean"
 																									},
 																									"available": {
-																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																										"type": "boolean"
 																									}
 																								},
@@ -2219,19 +2219,19 @@
 																	"type": "array"
 																},
 																"id": {
-																	"description": "The id of the profile (uuid)",
+																	"description": "The id of the profile (uuid).",
 																	"format": "uuid",
 																	"type": "string"
 																},
 																"name": {
-																	"description": "The name of the profile",
+																	"description": "The name of the profile.",
 																	"type": "string"
 																},
 																"ocr_enabled": {
 																	"type": "boolean"
 																},
 																"updated_at": {
-																	"description": "When the profile was lasted updated",
+																	"description": "When the profile was lasted updated.",
 																	"format": "date-time",
 																	"type": "string"
 																}
@@ -2403,11 +2403,11 @@
 																							"confidence": {
 																								"properties": {
 																									"ai_context_available": {
-																										"description": "Indicates whether this entry has AI remote service validation",
+																										"description": "Indicates whether this entry has AI remote service validation.",
 																										"type": "boolean"
 																									},
 																									"available": {
-																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																										"type": "boolean"
 																									}
 																								},
@@ -2631,19 +2631,19 @@
 																	"type": "array"
 																},
 																"id": {
-																	"description": "The id of the predefined profile (uuid)",
+																	"description": "The id of the predefined profile (uuid).",
 																	"format": "uuid",
 																	"type": "string"
 																},
 																"name": {
-																	"description": "The name of the predefined profile",
+																	"description": "The name of the predefined profile.",
 																	"type": "string"
 																},
 																"ocr_enabled": {
 																	"type": "boolean"
 																},
 																"open_access": {
-																	"description": "Whether this profile can be accessed by anyone",
+																	"description": "Whether this profile can be accessed by anyone.",
 																	"type": "boolean"
 																}
 															},
@@ -2681,7 +2681,7 @@
 																	"type": "string"
 																},
 																"description": {
-																	"description": "The description of the profile",
+																	"description": "The description of the profile.",
 																	"nullable": true,
 																	"type": "string"
 																},
@@ -2772,11 +2772,11 @@
 																							"confidence": {
 																								"properties": {
 																									"ai_context_available": {
-																										"description": "Indicates whether this entry has AI remote service validation",
+																										"description": "Indicates whether this entry has AI remote service validation.",
 																										"type": "boolean"
 																									},
 																									"available": {
-																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																										"type": "boolean"
 																									}
 																								},
@@ -3046,7 +3046,7 @@
 						}
 					}
 				},
-				"description": "Get profile response"
+				"description": "Get profile response."
 			},
 			"4XX": {
 				"content": {
@@ -3159,7 +3159,7 @@
 						}
 					}
 				},
-				"description": "Get profile failure response"
+				"description": "Get profile failure response."
 			}
 		},
 		"security": [
@@ -3354,12 +3354,12 @@
 																	"type": "object"
 																},
 																"created_at": {
-																	"description": "When the profile was created",
+																	"description": "When the profile was created.",
 																	"format": "date-time",
 																	"type": "string"
 																},
 																"description": {
-																	"description": "The description of the profile",
+																	"description": "The description of the profile.",
 																	"nullable": true,
 																	"type": "string"
 																},
@@ -3450,11 +3450,11 @@
 																							"confidence": {
 																								"properties": {
 																									"ai_context_available": {
-																										"description": "Indicates whether this entry has AI remote service validation",
+																										"description": "Indicates whether this entry has AI remote service validation.",
 																										"type": "boolean"
 																									},
 																									"available": {
-																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																										"type": "boolean"
 																									}
 																								},
@@ -3678,19 +3678,19 @@
 																	"type": "array"
 																},
 																"id": {
-																	"description": "The id of the profile (uuid)",
+																	"description": "The id of the profile (uuid).",
 																	"format": "uuid",
 																	"type": "string"
 																},
 																"name": {
-																	"description": "The name of the profile",
+																	"description": "The name of the profile.",
 																	"type": "string"
 																},
 																"ocr_enabled": {
 																	"type": "boolean"
 																},
 																"updated_at": {
-																	"description": "When the profile was lasted updated",
+																	"description": "When the profile was lasted updated.",
 																	"format": "date-time",
 																	"type": "string"
 																}
@@ -3862,11 +3862,11 @@
 																							"confidence": {
 																								"properties": {
 																									"ai_context_available": {
-																										"description": "Indicates whether this entry has AI remote service validation",
+																										"description": "Indicates whether this entry has AI remote service validation.",
 																										"type": "boolean"
 																									},
 																									"available": {
-																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																										"type": "boolean"
 																									}
 																								},
@@ -4090,19 +4090,19 @@
 																	"type": "array"
 																},
 																"id": {
-																	"description": "The id of the predefined profile (uuid)",
+																	"description": "The id of the predefined profile (uuid).",
 																	"format": "uuid",
 																	"type": "string"
 																},
 																"name": {
-																	"description": "The name of the predefined profile",
+																	"description": "The name of the predefined profile.",
 																	"type": "string"
 																},
 																"ocr_enabled": {
 																	"type": "boolean"
 																},
 																"open_access": {
-																	"description": "Whether this profile can be accessed by anyone",
+																	"description": "Whether this profile can be accessed by anyone.",
 																	"type": "boolean"
 																}
 															},
@@ -4140,7 +4140,7 @@
 																	"type": "string"
 																},
 																"description": {
-																	"description": "The description of the profile",
+																	"description": "The description of the profile.",
 																	"nullable": true,
 																	"type": "string"
 																},
@@ -4231,11 +4231,11 @@
 																							"confidence": {
 																								"properties": {
 																									"ai_context_available": {
-																										"description": "Indicates whether this entry has AI remote service validation",
+																										"description": "Indicates whether this entry has AI remote service validation.",
 																										"type": "boolean"
 																									},
 																									"available": {
-																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																										"type": "boolean"
 																									}
 																								},
@@ -4505,7 +4505,7 @@
 						}
 					}
 				},
-				"description": "Custom profile response"
+				"description": "Custom profile response."
 			},
 			"4XX": {
 				"content": {
@@ -4618,7 +4618,7 @@
 						}
 					}
 				},
-				"description": "Custom profile failure response"
+				"description": "Custom profile failure response."
 			}
 		},
 		"security": [
@@ -4813,12 +4813,12 @@
 																	"type": "object"
 																},
 																"created_at": {
-																	"description": "When the profile was created",
+																	"description": "When the profile was created.",
 																	"format": "date-time",
 																	"type": "string"
 																},
 																"description": {
-																	"description": "The description of the profile",
+																	"description": "The description of the profile.",
 																	"nullable": true,
 																	"type": "string"
 																},
@@ -4909,11 +4909,11 @@
 																							"confidence": {
 																								"properties": {
 																									"ai_context_available": {
-																										"description": "Indicates whether this entry has AI remote service validation",
+																										"description": "Indicates whether this entry has AI remote service validation.",
 																										"type": "boolean"
 																									},
 																									"available": {
-																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																										"type": "boolean"
 																									}
 																								},
@@ -5137,19 +5137,19 @@
 																	"type": "array"
 																},
 																"id": {
-																	"description": "The id of the profile (uuid)",
+																	"description": "The id of the profile (uuid).",
 																	"format": "uuid",
 																	"type": "string"
 																},
 																"name": {
-																	"description": "The name of the profile",
+																	"description": "The name of the profile.",
 																	"type": "string"
 																},
 																"ocr_enabled": {
 																	"type": "boolean"
 																},
 																"updated_at": {
-																	"description": "When the profile was lasted updated",
+																	"description": "When the profile was lasted updated.",
 																	"format": "date-time",
 																	"type": "string"
 																}
@@ -5321,11 +5321,11 @@
 																							"confidence": {
 																								"properties": {
 																									"ai_context_available": {
-																										"description": "Indicates whether this entry has AI remote service validation",
+																										"description": "Indicates whether this entry has AI remote service validation.",
 																										"type": "boolean"
 																									},
 																									"available": {
-																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																										"type": "boolean"
 																									}
 																								},
@@ -5549,19 +5549,19 @@
 																	"type": "array"
 																},
 																"id": {
-																	"description": "The id of the predefined profile (uuid)",
+																	"description": "The id of the predefined profile (uuid).",
 																	"format": "uuid",
 																	"type": "string"
 																},
 																"name": {
-																	"description": "The name of the predefined profile",
+																	"description": "The name of the predefined profile.",
 																	"type": "string"
 																},
 																"ocr_enabled": {
 																	"type": "boolean"
 																},
 																"open_access": {
-																	"description": "Whether this profile can be accessed by anyone",
+																	"description": "Whether this profile can be accessed by anyone.",
 																	"type": "boolean"
 																}
 															},
@@ -5599,7 +5599,7 @@
 																	"type": "string"
 																},
 																"description": {
-																	"description": "The description of the profile",
+																	"description": "The description of the profile.",
 																	"nullable": true,
 																	"type": "string"
 																},
@@ -5690,11 +5690,11 @@
 																							"confidence": {
 																								"properties": {
 																									"ai_context_available": {
-																										"description": "Indicates whether this entry has AI remote service validation",
+																										"description": "Indicates whether this entry has AI remote service validation.",
 																										"type": "boolean"
 																									},
 																									"available": {
-																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																										"type": "boolean"
 																									}
 																								},
@@ -5964,7 +5964,7 @@
 						}
 					}
 				},
-				"description": "Predefined profile response"
+				"description": "Predefined profile response."
 			},
 			"4XX": {
 				"content": {
@@ -6077,7 +6077,7 @@
 						}
 					}
 				},
-				"description": "Predefined profile failure response"
+				"description": "Predefined profile failure response."
 			}
 		},
 		"security": [
@@ -6164,7 +6164,7 @@
 													"type": "object"
 												},
 												"description": {
-													"description": "The description of the profile",
+													"description": "The description of the profile.",
 													"nullable": true,
 													"type": "string"
 												},
@@ -6402,7 +6402,7 @@
 										"type": "object"
 									},
 									"description": {
-										"description": "The description of the profile",
+										"description": "The description of the profile.",
 										"nullable": true,
 										"type": "string"
 									},
@@ -6749,12 +6749,12 @@
 																			"type": "object"
 																		},
 																		"created_at": {
-																			"description": "When the profile was created",
+																			"description": "When the profile was created.",
 																			"format": "date-time",
 																			"type": "string"
 																		},
 																		"description": {
-																			"description": "The description of the profile",
+																			"description": "The description of the profile.",
 																			"nullable": true,
 																			"type": "string"
 																		},
@@ -6845,11 +6845,11 @@
 																									"confidence": {
 																										"properties": {
 																											"ai_context_available": {
-																												"description": "Indicates whether this entry has AI remote service validation",
+																												"description": "Indicates whether this entry has AI remote service validation.",
 																												"type": "boolean"
 																											},
 																											"available": {
-																												"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																												"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																												"type": "boolean"
 																											}
 																										},
@@ -7073,19 +7073,19 @@
 																			"type": "array"
 																		},
 																		"id": {
-																			"description": "The id of the profile (uuid)",
+																			"description": "The id of the profile (uuid).",
 																			"format": "uuid",
 																			"type": "string"
 																		},
 																		"name": {
-																			"description": "The name of the profile",
+																			"description": "The name of the profile.",
 																			"type": "string"
 																		},
 																		"ocr_enabled": {
 																			"type": "boolean"
 																		},
 																		"updated_at": {
-																			"description": "When the profile was lasted updated",
+																			"description": "When the profile was lasted updated.",
 																			"format": "date-time",
 																			"type": "string"
 																		}
@@ -7257,11 +7257,11 @@
 																									"confidence": {
 																										"properties": {
 																											"ai_context_available": {
-																												"description": "Indicates whether this entry has AI remote service validation",
+																												"description": "Indicates whether this entry has AI remote service validation.",
 																												"type": "boolean"
 																											},
 																											"available": {
-																												"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																												"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																												"type": "boolean"
 																											}
 																										},
@@ -7485,19 +7485,19 @@
 																			"type": "array"
 																		},
 																		"id": {
-																			"description": "The id of the predefined profile (uuid)",
+																			"description": "The id of the predefined profile (uuid).",
 																			"format": "uuid",
 																			"type": "string"
 																		},
 																		"name": {
-																			"description": "The name of the predefined profile",
+																			"description": "The name of the predefined profile.",
 																			"type": "string"
 																		},
 																		"ocr_enabled": {
 																			"type": "boolean"
 																		},
 																		"open_access": {
-																			"description": "Whether this profile can be accessed by anyone",
+																			"description": "Whether this profile can be accessed by anyone.",
 																			"type": "boolean"
 																		}
 																	},
@@ -7535,7 +7535,7 @@
 																			"type": "string"
 																		},
 																		"description": {
-																			"description": "The description of the profile",
+																			"description": "The description of the profile.",
 																			"nullable": true,
 																			"type": "string"
 																		},
@@ -7626,11 +7626,11 @@
 																									"confidence": {
 																										"properties": {
 																											"ai_context_available": {
-																												"description": "Indicates whether this entry has AI remote service validation",
+																												"description": "Indicates whether this entry has AI remote service validation.",
 																												"type": "boolean"
 																											},
 																											"available": {
-																												"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																												"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																												"type": "boolean"
 																											}
 																										},
@@ -7954,12 +7954,12 @@
 																				"type": "object"
 																			},
 																			"created_at": {
-																				"description": "When the profile was created",
+																				"description": "When the profile was created.",
 																				"format": "date-time",
 																				"type": "string"
 																			},
 																			"description": {
-																				"description": "The description of the profile",
+																				"description": "The description of the profile.",
 																				"nullable": true,
 																				"type": "string"
 																			},
@@ -8050,11 +8050,11 @@
 																										"confidence": {
 																											"properties": {
 																												"ai_context_available": {
-																													"description": "Indicates whether this entry has AI remote service validation",
+																													"description": "Indicates whether this entry has AI remote service validation.",
 																													"type": "boolean"
 																												},
 																												"available": {
-																													"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																													"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																													"type": "boolean"
 																												}
 																											},
@@ -8278,19 +8278,19 @@
 																				"type": "array"
 																			},
 																			"id": {
-																				"description": "The id of the profile (uuid)",
+																				"description": "The id of the profile (uuid).",
 																				"format": "uuid",
 																				"type": "string"
 																			},
 																			"name": {
-																				"description": "The name of the profile",
+																				"description": "The name of the profile.",
 																				"type": "string"
 																			},
 																			"ocr_enabled": {
 																				"type": "boolean"
 																			},
 																			"updated_at": {
-																				"description": "When the profile was lasted updated",
+																				"description": "When the profile was lasted updated.",
 																				"format": "date-time",
 																				"type": "string"
 																			}
@@ -8462,11 +8462,11 @@
 																										"confidence": {
 																											"properties": {
 																												"ai_context_available": {
-																													"description": "Indicates whether this entry has AI remote service validation",
+																													"description": "Indicates whether this entry has AI remote service validation.",
 																													"type": "boolean"
 																												},
 																												"available": {
-																													"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																													"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																													"type": "boolean"
 																												}
 																											},
@@ -8690,19 +8690,19 @@
 																				"type": "array"
 																			},
 																			"id": {
-																				"description": "The id of the predefined profile (uuid)",
+																				"description": "The id of the predefined profile (uuid).",
 																				"format": "uuid",
 																				"type": "string"
 																			},
 																			"name": {
-																				"description": "The name of the predefined profile",
+																				"description": "The name of the predefined profile.",
 																				"type": "string"
 																			},
 																			"ocr_enabled": {
 																				"type": "boolean"
 																			},
 																			"open_access": {
-																				"description": "Whether this profile can be accessed by anyone",
+																				"description": "Whether this profile can be accessed by anyone.",
 																				"type": "boolean"
 																			}
 																		},
@@ -8740,7 +8740,7 @@
 																				"type": "string"
 																			},
 																			"description": {
-																				"description": "The description of the profile",
+																				"description": "The description of the profile.",
 																				"nullable": true,
 																				"type": "string"
 																			},
@@ -8831,11 +8831,11 @@
 																										"confidence": {
 																											"properties": {
 																												"ai_context_available": {
-																													"description": "Indicates whether this entry has AI remote service validation",
+																													"description": "Indicates whether this entry has AI remote service validation.",
 																													"type": "boolean"
 																												},
 																												"available": {
-																													"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																													"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																													"type": "boolean"
 																												}
 																											},
@@ -9109,7 +9109,7 @@
 						}
 					}
 				},
-				"description": "New custom profile response"
+				"description": "New custom profile response."
 			},
 			"4XX": {
 				"content": {
@@ -9222,7 +9222,7 @@
 						}
 					}
 				},
-				"description": "New custom profile failure response"
+				"description": "New custom profile failure response."
 			}
 		},
 		"security": [
@@ -9307,7 +9307,7 @@
 								"type": "object"
 							},
 							"description": {
-								"description": "The description of the profile",
+								"description": "The description of the profile.",
 								"nullable": true,
 								"type": "string"
 							},
@@ -9661,12 +9661,12 @@
 																	"type": "object"
 																},
 																"created_at": {
-																	"description": "When the profile was created",
+																	"description": "When the profile was created.",
 																	"format": "date-time",
 																	"type": "string"
 																},
 																"description": {
-																	"description": "The description of the profile",
+																	"description": "The description of the profile.",
 																	"nullable": true,
 																	"type": "string"
 																},
@@ -9757,11 +9757,11 @@
 																							"confidence": {
 																								"properties": {
 																									"ai_context_available": {
-																										"description": "Indicates whether this entry has AI remote service validation",
+																										"description": "Indicates whether this entry has AI remote service validation.",
 																										"type": "boolean"
 																									},
 																									"available": {
-																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																										"type": "boolean"
 																									}
 																								},
@@ -9985,19 +9985,19 @@
 																	"type": "array"
 																},
 																"id": {
-																	"description": "The id of the profile (uuid)",
+																	"description": "The id of the profile (uuid).",
 																	"format": "uuid",
 																	"type": "string"
 																},
 																"name": {
-																	"description": "The name of the profile",
+																	"description": "The name of the profile.",
 																	"type": "string"
 																},
 																"ocr_enabled": {
 																	"type": "boolean"
 																},
 																"updated_at": {
-																	"description": "When the profile was lasted updated",
+																	"description": "When the profile was lasted updated.",
 																	"format": "date-time",
 																	"type": "string"
 																}
@@ -10169,11 +10169,11 @@
 																							"confidence": {
 																								"properties": {
 																									"ai_context_available": {
-																										"description": "Indicates whether this entry has AI remote service validation",
+																										"description": "Indicates whether this entry has AI remote service validation.",
 																										"type": "boolean"
 																									},
 																									"available": {
-																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																										"type": "boolean"
 																									}
 																								},
@@ -10397,19 +10397,19 @@
 																	"type": "array"
 																},
 																"id": {
-																	"description": "The id of the predefined profile (uuid)",
+																	"description": "The id of the predefined profile (uuid).",
 																	"format": "uuid",
 																	"type": "string"
 																},
 																"name": {
-																	"description": "The name of the predefined profile",
+																	"description": "The name of the predefined profile.",
 																	"type": "string"
 																},
 																"ocr_enabled": {
 																	"type": "boolean"
 																},
 																"open_access": {
-																	"description": "Whether this profile can be accessed by anyone",
+																	"description": "Whether this profile can be accessed by anyone.",
 																	"type": "boolean"
 																}
 															},
@@ -10447,7 +10447,7 @@
 																	"type": "string"
 																},
 																"description": {
-																	"description": "The description of the profile",
+																	"description": "The description of the profile.",
 																	"nullable": true,
 																	"type": "string"
 																},
@@ -10538,11 +10538,11 @@
 																							"confidence": {
 																								"properties": {
 																									"ai_context_available": {
-																										"description": "Indicates whether this entry has AI remote service validation",
+																										"description": "Indicates whether this entry has AI remote service validation.",
 																										"type": "boolean"
 																									},
 																									"available": {
-																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																										"type": "boolean"
 																									}
 																								},
@@ -10812,7 +10812,7 @@
 						}
 					}
 				},
-				"description": "Update custom profile response"
+				"description": "Update custom profile response."
 			},
 			"4XX": {
 				"content": {
@@ -10925,7 +10925,7 @@
 						}
 					}
 				},
-				"description": "Update custom profile failure response"
+				"description": "Update custom profile failure response."
 			}
 		},
 		"security": [
@@ -11196,12 +11196,12 @@
 																	"type": "object"
 																},
 																"created_at": {
-																	"description": "When the profile was created",
+																	"description": "When the profile was created.",
 																	"format": "date-time",
 																	"type": "string"
 																},
 																"description": {
-																	"description": "The description of the profile",
+																	"description": "The description of the profile.",
 																	"nullable": true,
 																	"type": "string"
 																},
@@ -11292,11 +11292,11 @@
 																							"confidence": {
 																								"properties": {
 																									"ai_context_available": {
-																										"description": "Indicates whether this entry has AI remote service validation",
+																										"description": "Indicates whether this entry has AI remote service validation.",
 																										"type": "boolean"
 																									},
 																									"available": {
-																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																										"type": "boolean"
 																									}
 																								},
@@ -11520,19 +11520,19 @@
 																	"type": "array"
 																},
 																"id": {
-																	"description": "The id of the profile (uuid)",
+																	"description": "The id of the profile (uuid).",
 																	"format": "uuid",
 																	"type": "string"
 																},
 																"name": {
-																	"description": "The name of the profile",
+																	"description": "The name of the profile.",
 																	"type": "string"
 																},
 																"ocr_enabled": {
 																	"type": "boolean"
 																},
 																"updated_at": {
-																	"description": "When the profile was lasted updated",
+																	"description": "When the profile was lasted updated.",
 																	"format": "date-time",
 																	"type": "string"
 																}
@@ -11704,11 +11704,11 @@
 																							"confidence": {
 																								"properties": {
 																									"ai_context_available": {
-																										"description": "Indicates whether this entry has AI remote service validation",
+																										"description": "Indicates whether this entry has AI remote service validation.",
 																										"type": "boolean"
 																									},
 																									"available": {
-																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																										"type": "boolean"
 																									}
 																								},
@@ -11932,19 +11932,19 @@
 																	"type": "array"
 																},
 																"id": {
-																	"description": "The id of the predefined profile (uuid)",
+																	"description": "The id of the predefined profile (uuid).",
 																	"format": "uuid",
 																	"type": "string"
 																},
 																"name": {
-																	"description": "The name of the predefined profile",
+																	"description": "The name of the predefined profile.",
 																	"type": "string"
 																},
 																"ocr_enabled": {
 																	"type": "boolean"
 																},
 																"open_access": {
-																	"description": "Whether this profile can be accessed by anyone",
+																	"description": "Whether this profile can be accessed by anyone.",
 																	"type": "boolean"
 																}
 															},
@@ -11982,7 +11982,7 @@
 																	"type": "string"
 																},
 																"description": {
-																	"description": "The description of the profile",
+																	"description": "The description of the profile.",
 																	"nullable": true,
 																	"type": "string"
 																},
@@ -12073,11 +12073,11 @@
 																							"confidence": {
 																								"properties": {
 																									"ai_context_available": {
-																										"description": "Indicates whether this entry has AI remote service validation",
+																										"description": "Indicates whether this entry has AI remote service validation.",
 																										"type": "boolean"
 																									},
 																									"available": {
-																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																										"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																										"type": "boolean"
 																									}
 																								},
@@ -12347,7 +12347,7 @@
 						}
 					}
 				},
-				"description": "Update predefined profile response"
+				"description": "Update predefined profile response."
 			},
 			"4XX": {
 				"content": {
@@ -12460,7 +12460,7 @@
 						}
 					}
 				},
-				"description": "Update predefined profile failure response"
+				"description": "Update predefined profile failure response."
 			}
 		},
 		"security": [

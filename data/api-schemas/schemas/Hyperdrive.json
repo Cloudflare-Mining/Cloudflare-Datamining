@@ -449,6 +449,27 @@
 																"type": "string",
 																"x-auditable": true
 															},
+															"mtls": {
+																"properties": {
+																	"ca_certificate_id": {
+																		"description": "CA certificate ID",
+																		"example": "00000000-0000-0000-0000-0000000000",
+																		"type": "string"
+																	},
+																	"mtls_certificate_id": {
+																		"description": "mTLS certificate ID",
+																		"example": "00000000-0000-0000-0000-0000000000",
+																		"type": "string"
+																	},
+																	"sslmode": {
+																		"description": "SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'",
+																		"example": "verify-full",
+																		"type": "string"
+																	}
+																},
+																"title": "mTLS",
+																"type": "object"
+															},
 															"name": {
 																"example": "example-hyperdrive",
 																"type": "string",
@@ -478,7 +499,8 @@
 																								"description": "Specifies the URL scheme used to connect to your origin database.",
 																								"enum": [
 																									"postgres",
-																									"postgresql"
+																									"postgresql",
+																									"mysql"
 																								],
 																								"type": "string",
 																								"x-auditable": true
@@ -549,7 +571,8 @@
 																								"description": "Specifies the URL scheme used to connect to your origin database.",
 																								"enum": [
 																									"postgres",
-																									"postgresql"
+																									"postgresql",
+																									"mysql"
 																								],
 																								"type": "string",
 																								"x-auditable": true
@@ -943,6 +966,27 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"mtls": {
+															"properties": {
+																"ca_certificate_id": {
+																	"description": "CA certificate ID",
+																	"example": "00000000-0000-0000-0000-0000000000",
+																	"type": "string"
+																},
+																"mtls_certificate_id": {
+																	"description": "mTLS certificate ID",
+																	"example": "00000000-0000-0000-0000-0000000000",
+																	"type": "string"
+																},
+																"sslmode": {
+																	"description": "SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'",
+																	"example": "verify-full",
+																	"type": "string"
+																}
+															},
+															"title": "mTLS",
+															"type": "object"
+														},
 														"name": {
 															"example": "example-hyperdrive",
 															"type": "string",
@@ -972,7 +1016,8 @@
 																							"description": "Specifies the URL scheme used to connect to your origin database.",
 																							"enum": [
 																								"postgres",
-																								"postgresql"
+																								"postgresql",
+																								"mysql"
 																							],
 																							"type": "string",
 																							"x-auditable": true
@@ -1043,7 +1088,8 @@
 																							"description": "Specifies the URL scheme used to connect to your origin database.",
 																							"enum": [
 																								"postgres",
-																								"postgresql"
+																								"postgresql",
+																								"mysql"
 																							],
 																							"type": "string",
 																							"x-auditable": true
@@ -1335,6 +1381,27 @@
 								],
 								"type": "object"
 							},
+							"mtls": {
+								"properties": {
+									"ca_certificate_id": {
+										"description": "CA certificate ID",
+										"example": "00000000-0000-0000-0000-0000000000",
+										"type": "string"
+									},
+									"mtls_certificate_id": {
+										"description": "mTLS certificate ID",
+										"example": "00000000-0000-0000-0000-0000000000",
+										"type": "string"
+									},
+									"sslmode": {
+										"description": "SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'",
+										"example": "verify-full",
+										"type": "string"
+									}
+								},
+								"title": "mTLS",
+								"type": "object"
+							},
 							"name": {
 								"example": "example-hyperdrive",
 								"type": "string",
@@ -1360,7 +1427,8 @@
 												"description": "Specifies the URL scheme used to connect to your origin database.",
 												"enum": [
 													"postgres",
-													"postgresql"
+													"postgresql",
+													"mysql"
 												],
 												"type": "string",
 												"x-auditable": true
@@ -1601,6 +1669,27 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"mtls": {
+															"properties": {
+																"ca_certificate_id": {
+																	"description": "CA certificate ID",
+																	"example": "00000000-0000-0000-0000-0000000000",
+																	"type": "string"
+																},
+																"mtls_certificate_id": {
+																	"description": "mTLS certificate ID",
+																	"example": "00000000-0000-0000-0000-0000000000",
+																	"type": "string"
+																},
+																"sslmode": {
+																	"description": "SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'",
+																	"example": "verify-full",
+																	"type": "string"
+																}
+															},
+															"title": "mTLS",
+															"type": "object"
+														},
 														"name": {
 															"example": "example-hyperdrive",
 															"type": "string",
@@ -1630,7 +1719,8 @@
 																							"description": "Specifies the URL scheme used to connect to your origin database.",
 																							"enum": [
 																								"postgres",
-																								"postgresql"
+																								"postgresql",
+																								"mysql"
 																							],
 																							"type": "string",
 																							"x-auditable": true
@@ -1701,7 +1791,8 @@
 																							"description": "Specifies the URL scheme used to connect to your origin database.",
 																							"enum": [
 																								"postgres",
-																								"postgresql"
+																								"postgresql",
+																								"mysql"
 																							],
 																							"type": "string",
 																							"x-auditable": true
@@ -2003,6 +2094,27 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"mtls": {
+								"properties": {
+									"ca_certificate_id": {
+										"description": "CA certificate ID",
+										"example": "00000000-0000-0000-0000-0000000000",
+										"type": "string"
+									},
+									"mtls_certificate_id": {
+										"description": "mTLS certificate ID",
+										"example": "00000000-0000-0000-0000-0000000000",
+										"type": "string"
+									},
+									"sslmode": {
+										"description": "SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'",
+										"example": "verify-full",
+										"type": "string"
+									}
+								},
+								"title": "mTLS",
+								"type": "object"
+							},
 							"name": {
 								"example": "example-hyperdrive",
 								"type": "string",
@@ -2032,7 +2144,8 @@
 																"description": "Specifies the URL scheme used to connect to your origin database.",
 																"enum": [
 																	"postgres",
-																	"postgresql"
+																	"postgresql",
+																	"mysql"
 																],
 																"type": "string",
 																"x-auditable": true
@@ -2103,7 +2216,8 @@
 																"description": "Specifies the URL scheme used to connect to your origin database.",
 																"enum": [
 																	"postgres",
-																	"postgresql"
+																	"postgresql",
+																	"mysql"
 																],
 																"type": "string",
 																"x-auditable": true
@@ -2339,6 +2453,27 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"mtls": {
+															"properties": {
+																"ca_certificate_id": {
+																	"description": "CA certificate ID",
+																	"example": "00000000-0000-0000-0000-0000000000",
+																	"type": "string"
+																},
+																"mtls_certificate_id": {
+																	"description": "mTLS certificate ID",
+																	"example": "00000000-0000-0000-0000-0000000000",
+																	"type": "string"
+																},
+																"sslmode": {
+																	"description": "SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'",
+																	"example": "verify-full",
+																	"type": "string"
+																}
+															},
+															"title": "mTLS",
+															"type": "object"
+														},
 														"name": {
 															"example": "example-hyperdrive",
 															"type": "string",
@@ -2368,7 +2503,8 @@
 																							"description": "Specifies the URL scheme used to connect to your origin database.",
 																							"enum": [
 																								"postgres",
-																								"postgresql"
+																								"postgresql",
+																								"mysql"
 																							],
 																							"type": "string",
 																							"x-auditable": true
@@ -2439,7 +2575,8 @@
 																							"description": "Specifies the URL scheme used to connect to your origin database.",
 																							"enum": [
 																								"postgres",
-																								"postgresql"
+																								"postgresql",
+																								"mysql"
 																							],
 																							"type": "string",
 																							"x-auditable": true
@@ -2754,6 +2891,27 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"mtls": {
+								"properties": {
+									"ca_certificate_id": {
+										"description": "CA certificate ID",
+										"example": "00000000-0000-0000-0000-0000000000",
+										"type": "string"
+									},
+									"mtls_certificate_id": {
+										"description": "mTLS certificate ID",
+										"example": "00000000-0000-0000-0000-0000000000",
+										"type": "string"
+									},
+									"sslmode": {
+										"description": "SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'",
+										"example": "verify-full",
+										"type": "string"
+									}
+								},
+								"title": "mTLS",
+								"type": "object"
+							},
 							"name": {
 								"example": "example-hyperdrive",
 								"type": "string",
@@ -2783,7 +2941,8 @@
 																"description": "Specifies the URL scheme used to connect to your origin database.",
 																"enum": [
 																	"postgres",
-																	"postgresql"
+																	"postgresql",
+																	"mysql"
 																],
 																"type": "string",
 																"x-auditable": true
@@ -2854,7 +3013,8 @@
 																"description": "Specifies the URL scheme used to connect to your origin database.",
 																"enum": [
 																	"postgres",
-																	"postgresql"
+																	"postgresql",
+																	"mysql"
 																],
 																"type": "string",
 																"x-auditable": true
@@ -3090,6 +3250,27 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"mtls": {
+															"properties": {
+																"ca_certificate_id": {
+																	"description": "CA certificate ID",
+																	"example": "00000000-0000-0000-0000-0000000000",
+																	"type": "string"
+																},
+																"mtls_certificate_id": {
+																	"description": "mTLS certificate ID",
+																	"example": "00000000-0000-0000-0000-0000000000",
+																	"type": "string"
+																},
+																"sslmode": {
+																	"description": "SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'",
+																	"example": "verify-full",
+																	"type": "string"
+																}
+															},
+															"title": "mTLS",
+															"type": "object"
+														},
 														"name": {
 															"example": "example-hyperdrive",
 															"type": "string",
@@ -3119,7 +3300,8 @@
 																							"description": "Specifies the URL scheme used to connect to your origin database.",
 																							"enum": [
 																								"postgres",
-																								"postgresql"
+																								"postgresql",
+																								"mysql"
 																							],
 																							"type": "string",
 																							"x-auditable": true
@@ -3190,7 +3372,8 @@
 																							"description": "Specifies the URL scheme used to connect to your origin database.",
 																							"enum": [
 																								"postgres",
-																								"postgresql"
+																								"postgresql",
+																								"mysql"
 																							],
 																							"type": "string",
 																							"x-auditable": true

@@ -23,7 +23,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Dataset deleted successfully"
+				"description": "Dataset deleted successfully."
 			},
 			"4XX": {
 				"content": {
@@ -136,7 +136,7 @@
 						}
 					}
 				},
-				"description": "Dataset delete failed"
+				"description": "Dataset delete failed."
 			}
 		},
 		"security": [
@@ -307,7 +307,7 @@
 														"type": "string"
 													},
 													"description": {
-														"description": "The description of the dataset",
+														"description": "The description of the dataset.",
 														"nullable": true,
 														"type": "string"
 													},
@@ -400,7 +400,7 @@
 						}
 					}
 				},
-				"description": "Datasets read successfully"
+				"description": "Datasets read successfully."
 			},
 			"4XX": {
 				"content": {
@@ -513,7 +513,7 @@
 						}
 					}
 				},
-				"description": "Datasets read failed"
+				"description": "Datasets read failed."
 			}
 		},
 		"security": [
@@ -693,7 +693,7 @@
 													"type": "string"
 												},
 												"description": {
-													"description": "The description of the dataset",
+													"description": "The description of the dataset.",
 													"nullable": true,
 													"type": "string"
 												},
@@ -784,7 +784,7 @@
 						}
 					}
 				},
-				"description": "Dataset read successfully"
+				"description": "Dataset read successfully."
 			},
 			"4XX": {
 				"content": {
@@ -897,7 +897,7 @@
 						}
 					}
 				},
-				"description": "Dataset read failed"
+				"description": "Dataset read failed."
 			}
 		},
 		"security": [
@@ -938,7 +938,7 @@
 								"type": "boolean"
 							},
 							"description": {
-								"description": "The description of the dataset",
+								"description": "The description of the dataset.",
 								"nullable": true,
 								"type": "string"
 							},
@@ -963,7 +963,7 @@
 					}
 				}
 			},
-			"description": "Dataset description",
+			"description": "Dataset description.",
 			"required": true
 		},
 		"responses": {
@@ -1108,7 +1108,7 @@
 															"type": "string"
 														},
 														"description": {
-															"description": "The description of the dataset",
+															"description": "The description of the dataset.",
 															"nullable": true,
 															"type": "string"
 														},
@@ -1193,7 +1193,7 @@
 													"type": "object"
 												},
 												"encoding_version": {
-													"description": "Encoding version to use for dataset",
+													"description": "Encoding version to use for dataset.",
 													"format": "int32",
 													"minimum": 0,
 													"type": "integer"
@@ -1229,7 +1229,7 @@
 						}
 					}
 				},
-				"description": "Dataset created successfully"
+				"description": "Dataset created successfully."
 			},
 			"4XX": {
 				"content": {
@@ -1342,7 +1342,7 @@
 						}
 					}
 				},
-				"description": "Dataset creation failed"
+				"description": "Dataset creation failed."
 			}
 		},
 		"security": [
@@ -1549,7 +1549,7 @@
 						}
 					}
 				},
-				"description": "Dataset version created successfully"
+				"description": "Dataset version created successfully."
 			},
 			"4XX": {
 				"content": {
@@ -1662,7 +1662,7 @@
 						}
 					}
 				},
-				"description": "Dataset version creation failed"
+				"description": "Dataset version creation failed."
 			}
 		},
 		"security": [
@@ -1863,7 +1863,7 @@
 													"type": "string"
 												},
 												"description": {
-													"description": "The description of the dataset",
+													"description": "The description of the dataset.",
 													"nullable": true,
 													"type": "string"
 												},
@@ -1954,7 +1954,7 @@
 						}
 					}
 				},
-				"description": "Dataset version uploaded successfully"
+				"description": "Dataset version uploaded successfully."
 			},
 			"4XX": {
 				"content": {
@@ -2067,7 +2067,7 @@
 						}
 					}
 				},
-				"description": "Dataset version upload failed"
+				"description": "Dataset version upload failed."
 			}
 		},
 		"security": [
@@ -2173,7 +2173,7 @@
 					}
 				}
 			},
-			"description": "array of new columns to create for this dataset version",
+			"description": "array of new columns to create for this dataset version.",
 			"required": true
 		},
 		"responses": {
@@ -2313,7 +2313,7 @@
 						}
 					}
 				},
-				"description": "Dataset columns created successfully"
+				"description": "Dataset columns created successfully."
 			},
 			"4XX": {
 				"content": {
@@ -2426,7 +2426,7 @@
 						}
 					}
 				},
-				"description": "Failed to create dataset columns"
+				"description": "Failed to create dataset columns."
 			}
 		},
 		"security": [
@@ -2493,7 +2493,7 @@
 					}
 				}
 			},
-			"description": "Dataset content",
+			"description": "Dataset content.",
 			"required": true
 		},
 		"responses": {
@@ -2630,7 +2630,7 @@
 						}
 					}
 				},
-				"description": "Dataset column uploaded successfully"
+				"description": "Dataset column uploaded successfully."
 			},
 			"4XX": {
 				"content": {
@@ -2743,7 +2743,7 @@
 						}
 					}
 				},
-				"description": "Failed to upload dataset column"
+				"description": "Failed to upload dataset column."
 			}
 		},
 		"security": [
@@ -2792,12 +2792,12 @@
 								"type": "boolean"
 							},
 							"description": {
-								"description": "The description of the dataset",
+								"description": "The description of the dataset.",
 								"nullable": true,
 								"type": "string"
 							},
 							"name": {
-								"description": "The name of the dataset, must be unique",
+								"description": "The name of the dataset, must be unique.",
 								"nullable": true,
 								"type": "string"
 							}
@@ -2806,7 +2806,7 @@
 					}
 				}
 			},
-			"description": "Dataset description",
+			"description": "Dataset description.",
 			"required": true
 		},
 		"responses": {
@@ -2949,7 +2949,7 @@
 													"type": "string"
 												},
 												"description": {
-													"description": "The description of the dataset",
+													"description": "The description of the dataset.",
 													"nullable": true,
 													"type": "string"
 												},
@@ -3040,7 +3040,7 @@
 						}
 					}
 				},
-				"description": "Dataset updated successfully"
+				"description": "Dataset updated successfully."
 			},
 			"4XX": {
 				"content": {
@@ -3153,7 +3153,7 @@
 						}
 					}
 				},
-				"description": "Dataset update failed"
+				"description": "Dataset update failed."
 			}
 		},
 		"security": [

@@ -127,7 +127,7 @@
 						}
 					}
 				},
-				"description": "Delete custom entry response"
+				"description": "Delete custom entry response."
 			},
 			"4XX": {
 				"content": {
@@ -240,7 +240,7 @@
 						}
 					}
 				},
-				"description": "Delete custom entry failure response"
+				"description": "Delete custom entry failure response."
 			}
 		},
 		"security": [
@@ -453,11 +453,11 @@
 																	"confidence": {
 																		"properties": {
 																			"ai_context_available": {
-																				"description": "Indicates whether this entry has AI remote service validation",
+																				"description": "Indicates whether this entry has AI remote service validation.",
 																				"type": "boolean"
 																			},
 																			"available": {
-																				"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																				"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																				"type": "boolean"
 																			}
 																		},
@@ -687,7 +687,7 @@
 						}
 					}
 				},
-				"description": "List all entries response"
+				"description": "List all entries response."
 			},
 			"4XX": {
 				"content": {
@@ -800,7 +800,7 @@
 						}
 					}
 				},
-				"description": "List all entries failure response"
+				"description": "List all entries failure response."
 			}
 		},
 		"security": [
@@ -820,7 +820,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/entries/{entry_id}": {
-		"description": "Fetches a DLP entry by ID",
+		"description": "Fetches a DLP entry by ID.",
 		"operationId": "dlp-entries-get-dlp-entry",
 		"parameters": [
 			{
@@ -1022,11 +1022,11 @@
 																"confidence": {
 																	"properties": {
 																		"ai_context_available": {
-																			"description": "Indicates whether this entry has AI remote service validation",
+																			"description": "Indicates whether this entry has AI remote service validation.",
 																			"type": "boolean"
 																		},
 																		"available": {
-																			"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																			"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																			"type": "boolean"
 																		}
 																	},
@@ -1254,7 +1254,7 @@
 						}
 					}
 				},
-				"description": "Get entry response"
+				"description": "Get entry response."
 			},
 			"4XX": {
 				"content": {
@@ -1367,7 +1367,7 @@
 						}
 					}
 				},
-				"description": "Get entry failure response"
+				"description": "Get entry failure response."
 			}
 		},
 		"security": [
@@ -1610,7 +1610,7 @@
 						}
 					}
 				},
-				"description": "Create new custom entry response"
+				"description": "Create new custom entry response."
 			},
 			"4XX": {
 				"content": {
@@ -1723,7 +1723,7 @@
 						}
 					}
 				},
-				"description": "Create new custom entry failure response"
+				"description": "Create new custom entry failure response."
 			}
 		},
 		"security": [
@@ -1856,7 +1856,7 @@
 					}
 				}
 			},
-			"description": "Update to be applied to the entry",
+			"description": "Update to be applied to the entry.",
 			"required": true
 		},
 		"responses": {
@@ -2040,11 +2040,11 @@
 																"confidence": {
 																	"properties": {
 																		"ai_context_available": {
-																			"description": "Indicates whether this entry has AI remote service validation",
+																			"description": "Indicates whether this entry has AI remote service validation.",
 																			"type": "boolean"
 																		},
 																		"available": {
-																			"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
+																			"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
 																			"type": "boolean"
 																		}
 																	},
@@ -2272,7 +2272,7 @@
 						}
 					}
 				},
-				"description": "Update entry response"
+				"description": "Update entry response."
 			},
 			"4XX": {
 				"content": {
@@ -2385,7 +2385,7 @@
 						}
 					}
 				},
-				"description": "Update entry failure response"
+				"description": "Update entry failure response."
 			}
 		},
 		"security": [
