@@ -5,46 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Job Location: </strong>Austin, TX</p>
-<h4><strong>About the Department</strong></h4>
-<p>The Cloudflare Customer Support Team solves complicated problems and answers technical inquiries via email, chat, phone, and social media. From Enterprise corporations with petabytes of web traffic to Wordpress bloggers using our platform for free, we are here to help. Being the eyes and ears of Cloudflare, we act as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
-<h4><strong>What you'll do&nbsp;</strong></h4>
-<p>The Cloudflare Escalation Engineer will perform deep, technical troubleshooting for complex, escalated issues. This role owns the customer escalation process and works with various Product and Engineering teams to identify product bugs, network problems, and platform issues. Escalation Engineers foster a close relationship with SRE, Network, Engineering and Product teams. They act as an escalation point, isolate/replicate problems, and gather technical information/expectation.</p>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>Available Locations: Austin, San Francisco</strong></p>
+<p>&nbsp;</p>
+<p><strong>A</strong><strong>bout The Role</strong><strong><br></strong>We are seeking a highly organized and detail-oriented Partner Demand Specialist to join our dynamic marketing team.&nbsp;</p>
+<p>This role is pivotal in supporting the Global Demand Generation Programs lead in the conception, launch, execution, promotion, optimization and reporting, of the Cloudflare Partner ecosystem’s global demand generation programs.&nbsp;</p>
+<p>The ideal candidate has strong project management skills, and the ability to orchestrate many moving parts in a dynamic environment, with a proven track record in maintaining accurate reporting and records.&nbsp;</p>
+<p>The candidate must be highly motivated and display an appetite to develop in-depth knowledge and understanding of our DG platforms and offerings, and the platforms used to host them.&nbsp;</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Provide coverage (shift rotation including possibility of weekends and Pacific Time hours) for technical troubleshooting of escalated issues&nbsp;</li>
-	<li>Triage Customer Escalation issues to find the quickest most efficient path of resolution</li>
-	<li>Work cross-functionally with various teams across the company from engineering to sales</li>
+	<li>Support and the development and execution of partner campaigns and programs across multiple channels (email, social, webinars, etc.), in collaboration with our Demand Generation team.&nbsp;</li>
+	<li>Collaborate closely with cross-functional teams (Field Mktg, Partner Sales, Design, MarTech, Product Mktg...) and assist in driving activation of campaigns, programs and activities to drive adoption internally and with partners.</li>
+	<li>Generate effective reports to track partner activation, performance, and analyse program results to uncover actionable insights that drive optimization.&nbsp;</li>
+	<li>Document processes, best practices, and standard operating procedures.&nbsp;</li>
+	<li>Manage joint partner webinars development and implementation.&nbsp;</li>
+	<li>Track and facilitate partner onboarding to programs via third-party platforms.&nbsp;</li>
+	<li>Develop How-To guides that clearly articulate programs available and the steps necessary to execute them.</li>
+	<li>Assist in the design, implementation, and management of processes and initiatives in support of an evolving partner marketing organization.&nbsp;</li>
 </ul>
-<h4><strong>Requirements</strong></h4>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>2-3 years of technical troubleshooting experience, preferably in technical support or system reliability engineering</li>
-	<li>Excellent verbal and written communication skills, ability to disseminate clear and appropriate&nbsp; information to both business and technical audiences</li>
-	<li>Able to manage multiple priorities, commitments, and projects</li>
+	<li>Minimum 3 years experience in marketing operations, partner marketing or a similar role, preferably in B2B marketing (enterprise software, SaaS, Security, etc.).&nbsp;</li>
+	<li>Demonstrated experience in project management, including overseeing timelines and deliverables to ensure successful project completion.</li>
+	<li>Strong analytical skills with the ability to interpret data and provide actionable insights.&nbsp;</li>
+	<li>Exceptional organizational skills, with rigorous attention to detail.</li>
+	<li>Working knowledge of marketing automation and proficiency in reporting platforms (such as Salesforce, Marketo, HubSpot, Tableau,...).</li>
+	<li>Good understanding of different partner types and their routes to revenue.&nbsp;</li>
+	<li>Good understanding of digital marketing channels (webinars, email, social, content syndication…).&nbsp;</li>
+	<li>Excellent communication and interpersonal skills, with the ability to effectively collaborate with team members around the world in a fast-paced and ever-changing environment with tight deadlines.&nbsp;</li>
 </ul>
-<h4><strong>Core competencies (“Desired skills, knowledge and experience”)</strong></h4>
+<p><strong>Bonus points</strong></p>
 <ul>
-	<li>Extensive technical support experience</li>
-	<li>Expertise in troubleshooting application protocols (L7 - DNS, HTTP, etc)</li>
-	<li>Expertise in troubleshooting network infrastructure (L3/L4)</li>
-	<li>Expert with Linux command line tools&nbsp; (curl, dig, git, traceroute, mtr)</li>
-	<li>Expert at analyzing data using tools like grafana, kibana, and SQL</li>
-	<li>Able to clarify complex technical issues and coordinate efforts to resolve</li>
-	<li>Able to identify and share/suggest process improvements&nbsp;</li>
-	<li>Demonstrated leadership, prior mentoring experience</li>
-	<li>Self-motivated, self-directed, strong relationship building, can positively influence the actions of others, team player</li>
-	<li>Comfortable handling inbound and outbound customer calls</li>
+	<li>Familiarity with channel marketing technology and platforms, including ZiftOne (Unifyr), Through Channel Marketing Automation (TCMA), and partner portals.&nbsp;&nbsp;</li>
+	<li>Familiarity with webcast management platforms, such as Goldcast, ON24...&nbsp;</li>
+	<li>Prior demand generation experience in a high growth company in the SaaS, security, or network space.</li>
 </ul>
-<h4><strong>Bonus Points</strong></h4>
-<ul>
-	<li>Experience with regular expressions</li>
-	<li>Knowledge of web programming (HTML, Javascript, PHP) and scripting (bash, Python)</li>
-	<li>Experience managing/configuring non-HTTP applications (email, DNS, FTP, SSH, etc.)</li>
-</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Texas-based hires: Estimated annual salary of $91<span data-sheets-root="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:226000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">,000</span> - $139<span data-sheets-root="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:226000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">,000</span></li>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $92,000 - $112,000.</li>
+	<li>For Bay Area based hires: Estimated annual salary of $95,000 - $116,000.</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
@@ -73,7 +74,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
