@@ -2913,6 +2913,8 @@ interface Socket {
   get writable(): WritableStream;
   get closed(): Promise<void>;
   get opened(): Promise<SocketInfo>;
+  get upgraded(): boolean;
+  get secureTransport(): "on" | "off" | "starttls";
   close(): Promise<void>;
   startTls(options?: TlsOptions): Socket;
 }
@@ -4399,6 +4401,15 @@ type AutoRagSearchRequest = {
   };
   rewrite_query?: boolean;
 };
+type AutoRagAiSearchRequest = AutoRagSearchRequest & {
+  stream?: boolean;
+};
+type AutoRagAiSearchRequestStreaming = Omit<
+  AutoRagAiSearchRequest,
+  "stream"
+> & {
+  stream: true;
+};
 type AutoRagSearchResponse = {
   object: "vector_store.search_results.page";
   search_query: string;
@@ -4420,7 +4431,11 @@ type AutoRagAiSearchResponse = AutoRagSearchResponse & {
 };
 declare abstract class AutoRAG {
   search(params: AutoRagSearchRequest): Promise<AutoRagSearchResponse>;
-  aiSearch(params: AutoRagSearchRequest): Promise<AutoRagAiSearchResponse>;
+  aiSearch(params: AutoRagAiSearchRequestStreaming): Promise<Response>;
+  aiSearch(params: AutoRagAiSearchRequest): Promise<AutoRagAiSearchResponse>;
+  aiSearch(
+    params: AutoRagAiSearchRequest,
+  ): Promise<AutoRagAiSearchResponse | Response>;
 }
 interface BasicImageTransformations {
   /**
