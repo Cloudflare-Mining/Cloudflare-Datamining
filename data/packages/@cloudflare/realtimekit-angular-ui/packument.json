@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit-angular-ui",
 	"dist-tags": {
 		"latest": "0.0.0",
-		"staging": "1.0.0-staging.3"
+		"staging": "1.0.0-staging.4"
 	},
 	"versions": {
 		"0.0.0": {
@@ -55,19 +55,44 @@
 				"@cloudflare/realtimekit-ui": "1.0.0-staging.3"
 			},
 			"peerDependencies": {
+				"@angular/core": ">=12",
+				"@angular/common": ">=12"
+			},
+			"dist": {
+				"shasum": "03abc59ac8f937b829be42624da4e7d614bedcc3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.0-staging.3.tgz",
+				"fileCount": 10,
+				"integrity": "sha512-BPnBhXN+a9DZN6K3VMQgMAU+8s+YmP8Cny7s33r+Xkrir11nsV6e6HyJ+JzoclwjA9qzRbF8pC9nfyqrV3on1g==",
+				"signatures": [
+					{
+						"sig": "MEQCIEJohuM+StWdQH3XCtWdVlxi7oBqkCOYw8AT4fpjH5E/AiA0pdmnht68mA+heE9DfPOdPnBFMfGryovzUbeUom2/kg==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 677648
+			}
+		},
+		"1.0.0-staging.4": {
+			"name": "@cloudflare/realtimekit-angular-ui",
+			"version": "1.0.0-staging.4",
+			"dependencies": {
+				"tslib": "^2.3.0",
+				"@cloudflare/realtimekit-ui": "1.0.0-staging.4"
+			},
+			"peerDependencies": {
 				"@angular/common": ">=12",
 				"@angular/core": ">=12"
 			},
 			"dist": {
-				"integrity": "sha512-BPnBhXN+a9DZN6K3VMQgMAU+8s+YmP8Cny7s33r+Xkrir11nsV6e6HyJ+JzoclwjA9qzRbF8pC9nfyqrV3on1g==",
-				"shasum": "03abc59ac8f937b829be42624da4e7d614bedcc3",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.0-staging.3.tgz",
+				"integrity": "sha512-lf4pArjh5XW9ygHNbnZJ6JelW41RkwmpChfdMjyboY+nVlW5eohupBBnfgjWUT/dnltcP/w5lwQIrf1WEjES0g==",
+				"shasum": "d65aed9ee1bcb28ba72b27592dc9f75711c6df09",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.0-staging.4.tgz",
 				"fileCount": 10,
-				"unpackedSize": 677648,
+				"unpackedSize": 677766,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIEJohuM+StWdQH3XCtWdVlxi7oBqkCOYw8AT4fpjH5E/AiA0pdmnht68mA+heE9DfPOdPnBFMfGryovzUbeUom2/kg=="
+						"sig": "MEYCIQDfu7ETs+/3eJIK/BPJ3ozKrEY6bo4ejAOrNwMKmqiKsQIhAPJupsvwpu2neotcoZD18cmpKr04gQj42G3Nm2tlbdWs"
 					}
 				]
 			}
