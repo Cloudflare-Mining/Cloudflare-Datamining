@@ -4007,6 +4007,60 @@
 	"AccountMconnTelemetrySnapshotThermalsStagingAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountMconnTelemetrySnapshotTunnelsAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector tunnel snapshots with adaptive sampling",
+		"count": "Snapshot Tunnels count",
+		"dimensions": "List of dimensions to group by",
+		"max": ""
+	},
+	"AccountMconnTelemetrySnapshotTunnelsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
+		"interfaceName": "The tunnel interface name (i.e. xfrm1, xfrm3.99, etc.)",
+		"tunnelId": "Tunnel identifier"
+	},
+	"AccountMconnTelemetrySnapshotTunnelsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotTunnelsAdaptiveGroupsMax": {
+		"__description": "",
+		"healthValue": "Numeric value associated with tunnel state (0 = unknown, 1 = healthy, 2 = degraded, 3 = down)"
+	},
+	"AccountMconnTelemetrySnapshotTunnelsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotTunnelsStagingAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector tunnel snapshots with adaptive sampling",
+		"count": "Snapshot Tunnels count",
+		"dimensions": "List of dimensions to group by",
+		"max": ""
+	},
+	"AccountMconnTelemetrySnapshotTunnelsStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
+		"interfaceName": "The tunnel interface name (i.e. xfrm1, xfrm3.99, etc.)",
+		"tunnelId": "Tunnel identifier"
+	},
+	"AccountMconnTelemetrySnapshotTunnelsStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotTunnelsStagingAdaptiveGroupsMax": {
+		"__description": "",
+		"healthValue": "Numeric value associated with tunnel state (0 = unknown, 1 = healthy, 2 = degraded, 3 = down)"
+	},
+	"AccountMconnTelemetrySnapshotTunnelsStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountMconnTelemetrySnapshotsAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector system snapshots with adaptive sampling",
 		"count": "Snapshot count",
@@ -4996,6 +5050,8 @@
 		"mconnTelemetrySnapshotNetdevsStagingAdaptiveGroups": "",
 		"mconnTelemetrySnapshotThermalsAdaptiveGroups": "",
 		"mconnTelemetrySnapshotThermalsStagingAdaptiveGroups": "",
+		"mconnTelemetrySnapshotTunnelsAdaptiveGroups": "",
+		"mconnTelemetrySnapshotTunnelsStagingAdaptiveGroups": "",
 		"mconnTelemetrySnapshotsAdaptiveGroups": "",
 		"mconnTelemetrySnapshotsStagingAdaptiveGroups": "",
 		"mnmAWSVPCFlowDataAdaptiveGroups": "",
@@ -8586,6 +8642,8 @@
 		"mconnTelemetrySnapshotNetdevsStagingAdaptiveGroups": "Aggregated Magic WAN Connector netdev snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotThermalsAdaptiveGroups": "Aggregated Magic WAN Connector thermal snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotThermalsStagingAdaptiveGroups": "Aggregated Magic WAN Connector thermal snapshots with adaptive sampling",
+		"mconnTelemetrySnapshotTunnelsAdaptiveGroups": "Aggregated Magic WAN Connector tunnel snapshots with adaptive sampling",
+		"mconnTelemetrySnapshotTunnelsStagingAdaptiveGroups": "Aggregated Magic WAN Connector tunnel snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotsAdaptiveGroups": "Aggregated Magic WAN Connector system snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotsStagingAdaptiveGroups": "Aggregated Magic WAN Connector system snapshots with adaptive sampling",
 		"mnmAWSVPCFlowDataAdaptiveGroups": "AWS VPC Flow data collected through Magic Network Monitoring",
