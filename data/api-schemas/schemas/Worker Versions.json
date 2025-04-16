@@ -1013,6 +1013,7 @@
 													"json": "#/components/schemas/workers_binding_kind_json",
 													"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 													"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
+													"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
 													"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
 													"queue": "#/components/schemas/workers_binding_kind_queue",
 													"r2_bucket": "#/components/schemas/workers_binding_kind_r2_bucket",
@@ -1374,6 +1375,33 @@
 														"name",
 														"type",
 														"text"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string"
+														},
+														"pipeline": {
+															"description": "Name of the Pipeline to bind to.",
+															"example": "my-pipeline",
+															"type": "string"
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"pipelines"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"pipeline"
 													],
 													"type": "object"
 												},
