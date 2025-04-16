@@ -45,7 +45,7 @@ const navigation = {
 		title: "navigation.profile.authentication",
 		url: "/authentication",
 		iconType: "key",
-		hasPermission: M => !(0, y.n3)() && !(0, o.z1)("oauth-access-management")(M)
+		hasPermission: M => !(0, E.n3)() && !(0, o.z1)("oauth-access-management")(M)
 	}, {
 		title: "navigation.profile.api_tokens",
 		url: "/api-tokens",
@@ -308,7 +308,7 @@ const navigation = {
 	}, {
 		title: "navigation.account.zero_trust",
 		url: () => {
-			const M = (0, L.e1)(),
+			const M = (0, _.e1)(),
 				Q = "https://one.dash.cloudflare.com";
 			return M ? `${Q}/${M}/` : Q
 		},
@@ -442,7 +442,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: M => {
 				const Q = (0, l.tJ)(M);
-				return !(0, v.ky)(Q, [h.uD.EnterpriseTrial])
+				return !(0, y.ky)(Q, [h.uD.EnterpriseTrial])
 			}
 		}]
 	}, {
@@ -777,7 +777,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: M => {
 				const Q = (0, d.nA)(M);
-				return Q ? !!(!ne(M) && !!(0, d.ZB)(M, "origin_reachability_dash", "dash_view") && (0, d.tU)(Q, "enterprise") && !!(0, E.Ek)(M, "httpRequestsAdaptiveGroups")) : !1
+				return Q ? !!(!ne(M) && !!(0, d.ZB)(M, "origin_reachability_dash", "dash_view") && (0, d.tU)(Q, "enterprise") && !!(0, v.Ek)(M, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
@@ -785,7 +785,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: M => {
 				const Q = (0, d.nA)(M);
-				return Q ? !!(!ne(M) && !!(0, d.ZB)(M, "edge_reachability_dash", "dash_view") && (0, d.tU)(Q, "enterprise") && !!(0, E.Ek)(M, "nelReportsAdaptiveGroups")) : !1
+				return Q ? !!(!ne(M) && !!(0, d.ZB)(M, "edge_reachability_dash", "dash_view") && (0, d.tU)(Q, "enterprise") && !!(0, v.Ek)(M, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.workers",
@@ -861,7 +861,7 @@ const navigation = {
 			title: "navigation.zone.email.dmarc-reports",
 			navigationType: "global-settings",
 			url: "/email/dmarc-management",
-			hasPermission: M => (0, _.ig)(M) ? !1 : (0, p.$n)(M, "dns_records", "dns-record") && !!(0, d.ZB)(M, "email", "dmarc_visible")
+			hasPermission: M => (0, A.ig)(M) ? !1 : (0, p.$n)(M, "dns_records", "dns-record") && !!(0, d.ZB)(M, "email", "dmarc_visible")
 		}, {
 			title: "navigation.zone.email.security",
 			navigationType: "global-settings",
@@ -1033,7 +1033,7 @@ const navigation = {
 			title: "navigation.common.overview",
 			navigationType: "global-settings",
 			url: "/caching",
-			tabs: A
+			tabs: L
 		}, {
 			title: "navigation.zone.caching.configuration",
 			url: "/caching/configuration",
@@ -1178,7 +1178,7 @@ const navigation = {
 			title: "navigation.zone.traffic.health_check_analytics",
 			url: "/traffic/health-check-analytics",
 			navigationType: "global-settings",
-			hasPermission: M => !ne(M) && !!(0, E.Ek)(M, "healthCheckEventsAdaptiveGroups")
+			hasPermission: M => !ne(M) && !!(0, v.Ek)(M, "healthCheckEventsAdaptiveGroups")
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
 			url: "/traffic/waiting-rooms",
