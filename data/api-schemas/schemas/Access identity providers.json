@@ -134,7 +134,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -257,7 +258,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete an Access identity provider",
@@ -586,7 +588,8 @@
 																				},
 																				"type": "object"
 																			}
-																		]
+																		],
+																		"type": "object"
 																	}
 																},
 																"type": "object"
@@ -2462,7 +2465,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List Access identity providers",
@@ -2764,7 +2768,8 @@
 																			},
 																			"type": "object"
 																		}
-																	]
+																	],
+																	"type": "object"
 																}
 															},
 															"type": "object"
@@ -4614,7 +4619,8 @@
 																"type": {
 																	"enum": [
 																		"onetimepin"
-																	]
+																	],
+																	"type": "string"
 																}
 															}
 														}
@@ -4622,11 +4628,13 @@
 													"title": "One Time Pin",
 													"type": "object"
 												}
-											]
+											],
+											"type": "object"
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -4749,7 +4757,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get an Access identity provider",
@@ -5116,7 +5125,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List SCIM Group resources",
@@ -5530,7 +5540,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List SCIM User resources",
@@ -5729,7 +5740,8 @@
 														},
 														"type": "object"
 													}
-												]
+												],
+												"type": "object"
 											}
 										},
 										"type": "object"
@@ -7579,7 +7591,8 @@
 											"type": {
 												"enum": [
 													"onetimepin"
-												]
+												],
+												"type": "string"
 											}
 										}
 									}
@@ -7587,7 +7600,8 @@
 								"title": "One Time Pin",
 								"type": "object"
 							}
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -7856,7 +7870,8 @@
 																			},
 																			"type": "object"
 																		}
-																	]
+																	],
+																	"type": "object"
 																}
 															},
 															"type": "object"
@@ -9706,7 +9721,8 @@
 																"type": {
 																	"enum": [
 																		"onetimepin"
-																	]
+																	],
+																	"type": "string"
 																}
 															}
 														}
@@ -9714,11 +9730,13 @@
 													"title": "One Time Pin",
 													"type": "object"
 												}
-											]
+											],
+											"type": "object"
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -9841,7 +9859,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Add an Access identity provider",
@@ -10050,7 +10069,8 @@
 														},
 														"type": "object"
 													}
-												]
+												],
+												"type": "object"
 											}
 										},
 										"type": "object"
@@ -11900,7 +11920,8 @@
 											"type": {
 												"enum": [
 													"onetimepin"
-												]
+												],
+												"type": "string"
 											}
 										}
 									}
@@ -11908,7 +11929,8 @@
 								"title": "One Time Pin",
 								"type": "object"
 							}
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -12177,7 +12199,8 @@
 																			},
 																			"type": "object"
 																		}
-																	]
+																	],
+																	"type": "object"
 																}
 															},
 															"type": "object"
@@ -14027,7 +14050,8 @@
 																"type": {
 																	"enum": [
 																		"onetimepin"
-																	]
+																	],
+																	"type": "string"
 																}
 															}
 														}
@@ -14035,11 +14059,13 @@
 													"title": "One Time Pin",
 													"type": "object"
 												}
-											]
+											],
+											"type": "object"
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -14162,7 +14188,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update an Access identity provider",

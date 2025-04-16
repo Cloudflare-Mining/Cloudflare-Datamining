@@ -145,9 +145,11 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -270,7 +272,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete an Access application policy",
@@ -2193,13 +2196,11 @@
 																"type": "array"
 															},
 															"approval_required": {
-																"default": false,
 																"description": "Requires the user to request access from an administrator at the start of each session.",
 																"example": true,
 																"type": "boolean"
 															},
 															"isolation_required": {
-																"default": false,
 																"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 																"example": false,
 																"type": "boolean"
@@ -2210,7 +2211,6 @@
 																"type": "string"
 															},
 															"purpose_justification_required": {
-																"default": false,
 																"description": "Require users to enter a justification when they log in to the application.",
 																"example": true,
 																"type": "boolean"
@@ -2223,21 +2223,26 @@
 															}
 														},
 														"type": "object"
+													},
+													{
+														"properties": {
+															"precedence": {
+																"description": "The order of execution for this policy. Must be unique for each policy within an app.\n",
+																"type": "integer"
+															}
+														},
+														"type": "object"
 													}
 												],
-												"properties": {
-													"precedence": {
-														"description": "The order of execution for this policy. Must be unique for each policy within an app.",
-														"type": "integer"
-													}
-												},
 												"type": "object"
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2360,7 +2365,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List Access application policies",
@@ -4266,13 +4272,11 @@
 															"type": "array"
 														},
 														"approval_required": {
-															"default": false,
 															"description": "Requires the user to request access from an administrator at the start of each session.",
 															"example": true,
 															"type": "boolean"
 														},
 														"isolation_required": {
-															"default": false,
 															"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 															"example": false,
 															"type": "boolean"
@@ -4283,7 +4287,6 @@
 															"type": "string"
 														},
 														"purpose_justification_required": {
-															"default": false,
 															"description": "Require users to enter a justification when they log in to the application.",
 															"example": true,
 															"type": "boolean"
@@ -4296,19 +4299,24 @@
 														}
 													},
 													"type": "object"
+												},
+												{
+													"properties": {
+														"precedence": {
+															"description": "The order of execution for this policy. Must be unique for each policy within an app.\n",
+															"type": "integer"
+														}
+													},
+													"type": "object"
 												}
 											],
-											"properties": {
-												"precedence": {
-													"description": "The order of execution for this policy. Must be unique for each policy within an app.",
-													"type": "integer"
-												}
-											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -4479,7 +4487,7 @@
 							{
 								"properties": {
 									"precedence": {
-										"description": "The order of execution for this policy. Must be unique for each policy within an app.",
+										"description": "The order of execution for this policy. Must be unique for each policy within an app.\n",
 										"type": "integer"
 									}
 								},
@@ -6231,13 +6239,11 @@
 										"type": "array"
 									},
 									"approval_required": {
-										"default": false,
 										"description": "Requires the user to request access from an administrator at the start of each session.",
 										"example": true,
 										"type": "boolean"
 									},
 									"isolation_required": {
-										"default": false,
 										"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 										"example": false,
 										"type": "boolean"
@@ -6248,7 +6254,6 @@
 										"type": "string"
 									},
 									"purpose_justification_required": {
-										"default": false,
 										"description": "Require users to enter a justification when they log in to the application.",
 										"example": true,
 										"type": "boolean"
@@ -6262,7 +6267,8 @@
 								},
 								"type": "object"
 							}
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -8122,13 +8128,11 @@
 															"type": "array"
 														},
 														"approval_required": {
-															"default": false,
 															"description": "Requires the user to request access from an administrator at the start of each session.",
 															"example": true,
 															"type": "boolean"
 														},
 														"isolation_required": {
-															"default": false,
 															"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 															"example": false,
 															"type": "boolean"
@@ -8139,7 +8143,6 @@
 															"type": "string"
 														},
 														"purpose_justification_required": {
-															"default": false,
 															"description": "Require users to enter a justification when they log in to the application.",
 															"example": true,
 															"type": "boolean"
@@ -8152,19 +8155,24 @@
 														}
 													},
 													"type": "object"
+												},
+												{
+													"properties": {
+														"precedence": {
+															"description": "The order of execution for this policy. Must be unique for each policy within an app.\n",
+															"type": "integer"
+														}
+													},
+													"type": "object"
 												}
 											],
-											"properties": {
-												"precedence": {
-													"description": "The order of execution for this policy. Must be unique for each policy within an app.",
-													"type": "integer"
-												}
-											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -8287,7 +8295,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create an Access application policy",
@@ -8346,7 +8355,7 @@
 							{
 								"properties": {
 									"precedence": {
-										"description": "The order of execution for this policy. Must be unique for each policy within an app.",
+										"description": "The order of execution for this policy. Must be unique for each policy within an app.\n",
 										"type": "integer"
 									}
 								},
@@ -10098,13 +10107,11 @@
 										"type": "array"
 									},
 									"approval_required": {
-										"default": false,
 										"description": "Requires the user to request access from an administrator at the start of each session.",
 										"example": true,
 										"type": "boolean"
 									},
 									"isolation_required": {
-										"default": false,
 										"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 										"example": false,
 										"type": "boolean"
@@ -10115,7 +10122,6 @@
 										"type": "string"
 									},
 									"purpose_justification_required": {
-										"default": false,
 										"description": "Require users to enter a justification when they log in to the application.",
 										"example": true,
 										"type": "boolean"
@@ -10129,7 +10135,8 @@
 								},
 								"type": "object"
 							}
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -11989,13 +11996,11 @@
 															"type": "array"
 														},
 														"approval_required": {
-															"default": false,
 															"description": "Requires the user to request access from an administrator at the start of each session.",
 															"example": true,
 															"type": "boolean"
 														},
 														"isolation_required": {
-															"default": false,
 															"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 															"example": false,
 															"type": "boolean"
@@ -12006,7 +12011,6 @@
 															"type": "string"
 														},
 														"purpose_justification_required": {
-															"default": false,
 															"description": "Require users to enter a justification when they log in to the application.",
 															"example": true,
 															"type": "boolean"
@@ -12019,19 +12023,24 @@
 														}
 													},
 													"type": "object"
+												},
+												{
+													"properties": {
+														"precedence": {
+															"description": "The order of execution for this policy. Must be unique for each policy within an app.\n",
+															"type": "integer"
+														}
+													},
+													"type": "object"
 												}
 											],
-											"properties": {
-												"precedence": {
-													"description": "The order of execution for this policy. Must be unique for each policy within an app.",
-													"type": "integer"
-												}
-											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -12154,7 +12163,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update an Access application policy",
@@ -14089,13 +14099,11 @@
 																"type": "array"
 															},
 															"approval_required": {
-																"default": false,
 																"description": "Requires the user to request access from an administrator at the start of each session.",
 																"example": true,
 																"type": "boolean"
 															},
 															"isolation_required": {
-																"default": false,
 																"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 																"example": false,
 																"type": "boolean"
@@ -14106,7 +14114,6 @@
 																"type": "string"
 															},
 															"purpose_justification_required": {
-																"default": false,
 																"description": "Require users to enter a justification when they log in to the application.",
 																"example": true,
 																"type": "boolean"
@@ -14119,21 +14126,26 @@
 															}
 														},
 														"type": "object"
+													},
+													{
+														"properties": {
+															"precedence": {
+																"description": "The order of execution for this policy. Must be unique for each policy within an app.\n",
+																"type": "integer"
+															}
+														},
+														"type": "object"
 													}
 												],
-												"properties": {
-													"precedence": {
-														"description": "The order of execution for this policy. Must be unique for each policy within an app.",
-														"type": "integer"
-													}
-												},
 												"type": "object"
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -14256,7 +14268,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Convert an Access application policy to a reusable policy",

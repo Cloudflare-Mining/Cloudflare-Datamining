@@ -194,7 +194,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -317,7 +318,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get the current status of a given Access policy test",
@@ -520,7 +522,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -643,7 +646,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get an Access policy test users page",
@@ -2425,13 +2429,11 @@
 													"type": "array"
 												},
 												"approval_required": {
-													"default": false,
 													"description": "Requires the user to request access from an administrator at the start of each session.",
 													"example": true,
 													"type": "boolean"
 												},
 												"isolation_required": {
-													"default": false,
 													"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 													"example": false,
 													"type": "boolean"
@@ -2442,7 +2444,6 @@
 													"type": "string"
 												},
 												"purpose_justification_required": {
-													"default": false,
 													"description": "Require users to enter a justification when they log in to the application.",
 													"example": true,
 													"type": "boolean"
@@ -2590,7 +2591,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2713,7 +2715,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Start Access policy test",

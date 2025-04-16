@@ -109,6 +109,9 @@
 									"type": "object"
 								},
 								{
+									"type": "object"
+								},
+								{
 									"properties": {
 										"result": {
 											"properties": {
@@ -147,7 +150,8 @@
 															"example": "699d98642c564d2e855e9661899b7252",
 															"type": "string"
 														}
-													}
+													},
+													"type": "object"
 												},
 												"is_ui_read_only": {
 													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
@@ -182,7 +186,8 @@
 															"example": "#c5ed1b",
 															"type": "string"
 														}
-													}
+													},
+													"type": "object"
 												},
 												"name": {
 													"description": "The name of your Zero Trust organization.",
@@ -222,7 +227,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -345,7 +351,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get your Zero Trust organization",
@@ -529,7 +536,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -540,7 +548,8 @@
 													"example": "800h",
 													"type": "string"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -667,7 +676,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get your Zero Trust organization DoH settings",
@@ -752,7 +762,8 @@
 										"example": "#c5ed1b",
 										"type": "string"
 									}
-								}
+								},
+								"type": "object"
 							},
 							"name": {
 								"description": "The name of your Zero Trust organization.",
@@ -886,6 +897,9 @@
 									"type": "object"
 								},
 								{
+									"type": "object"
+								},
+								{
 									"properties": {
 										"result": {
 											"properties": {
@@ -924,7 +938,8 @@
 															"example": "699d98642c564d2e855e9661899b7252",
 															"type": "string"
 														}
-													}
+													},
+													"type": "object"
 												},
 												"is_ui_read_only": {
 													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
@@ -959,7 +974,8 @@
 															"example": "#c5ed1b",
 															"type": "string"
 														}
-													}
+													},
+													"type": "object"
 												},
 												"name": {
 													"description": "The name of your Zero Trust organization.",
@@ -999,7 +1015,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1122,7 +1139,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create your Zero Trust organization",
@@ -1218,7 +1236,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1341,7 +1360,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Revoke all Access tokens for a user",
@@ -1403,7 +1423,8 @@
 										"example": "699d98642c564d2e855e9661899b7252",
 										"type": "string"
 									}
-								}
+								},
+								"type": "object"
 							},
 							"is_ui_read_only": {
 								"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
@@ -1438,7 +1459,8 @@
 										"example": "#c5ed1b",
 										"type": "string"
 									}
-								}
+								},
+								"type": "object"
 							},
 							"name": {
 								"description": "The name of your Zero Trust organization.",
@@ -1568,6 +1590,9 @@
 									"type": "object"
 								},
 								{
+									"type": "object"
+								},
+								{
 									"properties": {
 										"result": {
 											"properties": {
@@ -1606,7 +1631,8 @@
 															"example": "699d98642c564d2e855e9661899b7252",
 															"type": "string"
 														}
-													}
+													},
+													"type": "object"
 												},
 												"is_ui_read_only": {
 													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
@@ -1641,7 +1667,8 @@
 															"example": "#c5ed1b",
 															"type": "string"
 														}
-													}
+													},
+													"type": "object"
 												},
 												"name": {
 													"description": "The name of your Zero Trust organization.",
@@ -1681,7 +1708,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1804,7 +1832,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update your Zero Trust organization",
@@ -2007,7 +2036,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -2019,7 +2049,8 @@
 													"type": "string",
 													"x-auditable": true
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -2146,7 +2177,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update your Zero Trust organization DoH settings",
