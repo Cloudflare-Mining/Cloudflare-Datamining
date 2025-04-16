@@ -8,7 +8,7 @@
 <h3><strong>Position Location: New York , NY</strong></h3>
 <hr>
 <h3>About the Role</h3>
-<p>Cloudflare is seeking a&nbsp;<strong>Senior Field Marketing Manager</strong> to lead strategic marketing efforts across our Central US Enterprise segment. This is a high-impact role for someone who thrives in building regional marketing strategies, orchestrating multi-channel campaigns, and working closely with Sales to drive pipeline and revenue.</p>
+<p>Cloudflare is seeking a&nbsp;<strong>Senior Field Marketing Manager</strong> to lead strategic marketing efforts across our Northeast Enterprise segment. This is a high-impact role for someone who thrives in building regional marketing strategies, orchestrating multi-channel campaigns, and working closely with Sales to drive pipeline and revenue.</p>
 <p>You’ll be responsible for owning the <strong>end-to-end marketing plan</strong> for your territory—everything from field events and ABM programs to partner collaborations and executive engagements. You’ll work cross-functionally to bring campaigns to life and ensure our brand and message resonates deeply with enterprise customers across the region.</p>
 <p><strong>What You’ll Do:</strong></p>
 <ul>
