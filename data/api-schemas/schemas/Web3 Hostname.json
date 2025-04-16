@@ -7,7 +7,7 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -19,7 +19,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -95,10 +95,12 @@
 												{
 													"type": "string"
 												}
-											]
+											],
+											"description": "Provides the API response.",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Specifies whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -120,7 +122,7 @@
 											"nullable": true,
 											"properties": {
 												"id": {
-													"description": "Identifier",
+													"description": "Specify the identifier of the hostname.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
@@ -139,807 +141,9 @@
 						}
 					}
 				},
-				"description": "Delete Web3 Hostname response"
+				"description": "Delete Web3 Hostname response."
 			},
-			"5XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"nullable": true,
-													"properties": {
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
-														}
-													},
-													"required": [
-														"id"
-													],
-													"type": "object"
-												}
-											}
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Delete Web3 Hostname response failure"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Delete Web3 Hostname",
-		"tags": [
-			"Web3 Hostname"
-		],
-		"x-api-token-group": [
-			"Web3 Hostnames Write"
-		],
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"DELETE /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}": {
-		"operationId": "web3-hostname-delete-ipfs-universal-path-gateway-content-list-entry",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "content_list_entry_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "zone_id",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {}
-			},
-			"required": true
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"nullable": true,
-											"properties": {
-												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
-												}
-											},
-											"required": [
-												"id"
-											],
-											"type": "object"
-										}
-									}
-								}
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Delete IPFS Universal Path Gateway Content List Entry response"
-			},
-			"5XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"nullable": true,
-													"properties": {
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
-														}
-													},
-													"required": [
-														"id"
-													],
-													"type": "object"
-												}
-											}
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Delete IPFS Universal Path Gateway Content List Entry response failure"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Delete IPFS Universal Path Gateway Content List Entry",
-		"tags": [
-			"Web3 Hostname"
-		],
-		"x-api-token-group": [
-			"Web3 Hostnames Write"
-		],
-		"x-cfPlanAvailability": {
-			"business": false,
-			"enterprise": true,
-			"free": false,
-			"pro": false
-		}
-	},
-	"GET /zones/{zone_id}/web3/hostnames": {
-		"operationId": "web3-hostname-list-web3-hostnames",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "zone_id",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
-												}
-											}
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"items": {
-												"properties": {
-													"created_on": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
-													},
-													"description": {
-														"description": "An optional description of the hostname.",
-														"example": "This is my IPFS gateway.",
-														"maxLength": 500,
-														"type": "string"
-													},
-													"dnslink": {
-														"description": "DNSLink value used if the target is ipfs.",
-														"example": "/ipns/onboarding.ipfs.cloudflare.com",
-														"type": "string"
-													},
-													"id": {
-														"description": "Identifier",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
-													},
-													"modified_on": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
-													},
-													"name": {
-														"description": "The hostname that will point to the target gateway via CNAME.",
-														"example": "gateway.example.com",
-														"maxLength": 255,
-														"type": "string"
-													},
-													"status": {
-														"description": "Status of the hostname's activation.",
-														"enum": [
-															"active",
-															"pending",
-															"deleting",
-															"error"
-														],
-														"example": "active",
-														"readOnly": true,
-														"type": "string"
-													},
-													"target": {
-														"description": "Target gateway of the hostname.",
-														"enum": [
-															"ethereum",
-															"ipfs",
-															"ipfs_universal_path"
-														],
-														"example": "ipfs",
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
-										}
-									}
-								}
-							]
-						}
-					}
-				},
-				"description": "List Web3 Hostnames response"
-			},
-			"5XX": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1004,10 +208,12 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Specifies whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1033,22 +239,22 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Specifies the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Specifies the current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Specifies the number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Specifies the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
@@ -1072,18 +278,18 @@
 																"type": "string"
 															},
 															"description": {
-																"description": "An optional description of the hostname.",
+																"description": "Specify an optional description of the hostname.",
 																"example": "This is my IPFS gateway.",
 																"maxLength": 500,
 																"type": "string"
 															},
 															"dnslink": {
-																"description": "DNSLink value used if the target is ipfs.",
+																"description": "Specify the DNSLink value used if the target is ipfs.",
 																"example": "/ipns/onboarding.ipfs.cloudflare.com",
 																"type": "string"
 															},
 															"id": {
-																"description": "Identifier",
+																"description": "Specify the identifier of the hostname.",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
@@ -1096,13 +302,13 @@
 																"type": "string"
 															},
 															"name": {
-																"description": "The hostname that will point to the target gateway via CNAME.",
+																"description": "Specify the hostname that points to the target gateway via CNAME.",
 																"example": "gateway.example.com",
 																"maxLength": 255,
 																"type": "string"
 															},
 															"status": {
-																"description": "Status of the hostname's activation.",
+																"description": "Specifies the status of the hostname's activation.",
 																"enum": [
 																	"active",
 																	"pending",
@@ -1114,7 +320,7 @@
 																"type": "string"
 															},
 															"target": {
-																"description": "Target gateway of the hostname.",
+																"description": "Specify the target gateway of the hostname.",
 																"enum": [
 																	"ethereum",
 																	"ipfs",
@@ -1200,7 +406,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Specifies whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1220,22 +426,219 @@
 						}
 					}
 				},
-				"description": "List Web3 Hostnames response failure"
+				"description": "Delete Web3 Hostname error response (4XX)."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"description": "Provides the API response.",
+													"type": "object"
+												},
+												"success": {
+													"description": "Specifies whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"properties": {
+														"id": {
+															"description": "Specify the identifier of the hostname.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Specifies whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Web3 Hostname response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
-		"summary": "List Web3 Hostnames",
+		"summary": "Delete Web3 Hostname",
 		"tags": [
 			"Web3 Hostname"
 		],
 		"x-api-token-group": [
-			"Web3 Hostnames Write",
-			"Web3 Hostnames Read"
+			"Web3 Hostnames Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -1244,15 +647,27 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_id}/web3/hostnames/{identifier}": {
-		"operationId": "web3-hostname-web3-hostname-details",
+	"DELETE /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}": {
+		"operationId": "web3-hostname-delete-ipfs-universal-path-gateway-content-list-entry",
 		"parameters": [
+			{
+				"in": "path",
+				"name": "content_list_entry_identifier",
+				"required": true,
+				"schema": {
+					"description": "Specify the identifier of the hostname.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
 			{
 				"in": "path",
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1264,7 +679,555 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											],
+											"description": "Provides the API response.",
+											"type": "object"
+										},
+										"success": {
+											"description": "Specifies whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"id": {
+													"description": "Specify the identifier of the hostname.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete IPFS Universal Path Gateway Content List Entry response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"description": "Provides the API response.",
+													"type": "object"
+												},
+												"success": {
+													"description": "Specifies whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"properties": {
+														"id": {
+															"description": "Specify the identifier of the hostname.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Specifies whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete IPFS Universal Path Gateway Content List Entry error response (4XX)."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"description": "Provides the API response.",
+													"type": "object"
+												},
+												"success": {
+													"description": "Specifies whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"properties": {
+														"id": {
+															"description": "Specify the identifier of the hostname.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Specifies whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete IPFS Universal Path Gateway Content List Entry response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete IPFS Universal Path Gateway Content List Entry",
+		"tags": [
+			"Web3 Hostname"
+		],
+		"x-api-token-group": [
+			"Web3 Hostnames Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_id}/web3/hostnames": {
+		"operationId": "web3-hostname-list-web3-hostnames",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1336,10 +1299,12 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"description": "Provides the API response.",
+													"type": "object"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Specifies whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1358,16 +1323,34 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
-														{
-															"nullable": true,
-															"type": "object"
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Specifies the total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
 														},
-														{
-															"nullable": true,
-															"type": "string"
+														"page": {
+															"description": "Specifies the current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Specifies the number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Specifies the total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
 														}
-													]
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1377,67 +1360,70 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"created_on": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+											"items": {
+												"properties": {
+													"created_on": {
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"description": {
+														"description": "Specify an optional description of the hostname.",
+														"example": "This is my IPFS gateway.",
+														"maxLength": 500,
+														"type": "string"
+													},
+													"dnslink": {
+														"description": "Specify the DNSLink value used if the target is ipfs.",
+														"example": "/ipns/onboarding.ipfs.cloudflare.com",
+														"type": "string"
+													},
+													"id": {
+														"description": "Specify the identifier of the hostname.",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
+													},
+													"modified_on": {
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"name": {
+														"description": "Specify the hostname that points to the target gateway via CNAME.",
+														"example": "gateway.example.com",
+														"maxLength": 255,
+														"type": "string"
+													},
+													"status": {
+														"description": "Specifies the status of the hostname's activation.",
+														"enum": [
+															"active",
+															"pending",
+															"deleting",
+															"error"
+														],
+														"example": "active",
+														"readOnly": true,
+														"type": "string"
+													},
+													"target": {
+														"description": "Specify the target gateway of the hostname.",
+														"enum": [
+															"ethereum",
+															"ipfs",
+															"ipfs_universal_path"
+														],
+														"example": "ipfs",
+														"type": "string"
+													}
 												},
-												"description": {
-													"description": "An optional description of the hostname.",
-													"example": "This is my IPFS gateway.",
-													"maxLength": 500,
-													"type": "string"
-												},
-												"dnslink": {
-													"description": "DNSLink value used if the target is ipfs.",
-													"example": "/ipns/onboarding.ipfs.cloudflare.com",
-													"type": "string"
-												},
-												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
-												},
-												"modified_on": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
-												},
-												"name": {
-													"description": "The hostname that will point to the target gateway via CNAME.",
-													"example": "gateway.example.com",
-													"maxLength": 255,
-													"type": "string"
-												},
-												"status": {
-													"description": "Status of the hostname's activation.",
-													"enum": [
-														"active",
-														"pending",
-														"deleting",
-														"error"
-													],
-													"example": "active",
-													"readOnly": true,
-													"type": "string"
-												},
-												"target": {
-													"description": "Target gateway of the hostname.",
-													"enum": [
-														"ethereum",
-														"ipfs",
-														"ipfs_universal_path"
-													],
-													"example": "ipfs",
-													"type": "string"
-												}
+												"type": "object"
 											},
-											"type": "object"
+											"type": "array"
 										}
 									}
 								}
@@ -1445,7 +1431,292 @@
 						}
 					}
 				},
-				"description": "Web3 Hostname Details response"
+				"description": "List Web3 Hostnames response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"description": "Provides the API response.",
+															"type": "object"
+														},
+														"success": {
+															"description": "Specifies whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Specifies the total number of results for the requested service.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Specifies the current page within paginated list of results.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Specifies the number of results per page of results.",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Specifies the total results available without any search parameters.",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"created_on": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"description": {
+																"description": "Specify an optional description of the hostname.",
+																"example": "This is my IPFS gateway.",
+																"maxLength": 500,
+																"type": "string"
+															},
+															"dnslink": {
+																"description": "Specify the DNSLink value used if the target is ipfs.",
+																"example": "/ipns/onboarding.ipfs.cloudflare.com",
+																"type": "string"
+															},
+															"id": {
+																"description": "Specify the identifier of the hostname.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"modified_on": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"name": {
+																"description": "Specify the hostname that points to the target gateway via CNAME.",
+																"example": "gateway.example.com",
+																"maxLength": 255,
+																"type": "string"
+															},
+															"status": {
+																"description": "Specifies the status of the hostname's activation.",
+																"enum": [
+																	"active",
+																	"pending",
+																	"deleting",
+																	"error"
+																],
+																"example": "active",
+																"readOnly": true,
+																"type": "string"
+															},
+															"target": {
+																"description": "Specify the target gateway of the hostname.",
+																"enum": [
+																	"ethereum",
+																	"ipfs",
+																	"ipfs_universal_path"
+																],
+																"example": "ipfs",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Specifies whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Web3 Hostnames error response (4XX)."
 			},
 			"5XX": {
 				"content": {
@@ -1512,10 +1783,12 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Specifies whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1534,6 +1807,806 @@
 												{
 													"properties": {
 														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Specifies the total number of results for the requested service.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Specifies the current page within paginated list of results.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Specifies the number of results per page of results.",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Specifies the total results available without any search parameters.",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"created_on": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"description": {
+																"description": "Specify an optional description of the hostname.",
+																"example": "This is my IPFS gateway.",
+																"maxLength": 500,
+																"type": "string"
+															},
+															"dnslink": {
+																"description": "Specify the DNSLink value used if the target is ipfs.",
+																"example": "/ipns/onboarding.ipfs.cloudflare.com",
+																"type": "string"
+															},
+															"id": {
+																"description": "Specify the identifier of the hostname.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"modified_on": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"name": {
+																"description": "Specify the hostname that points to the target gateway via CNAME.",
+																"example": "gateway.example.com",
+																"maxLength": 255,
+																"type": "string"
+															},
+															"status": {
+																"description": "Specifies the status of the hostname's activation.",
+																"enum": [
+																	"active",
+																	"pending",
+																	"deleting",
+																	"error"
+																],
+																"example": "active",
+																"readOnly": true,
+																"type": "string"
+															},
+															"target": {
+																"description": "Specify the target gateway of the hostname.",
+																"enum": [
+																	"ethereum",
+																	"ipfs",
+																	"ipfs_universal_path"
+																],
+																"example": "ipfs",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Specifies whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Web3 Hostnames response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List Web3 Hostnames",
+		"tags": [
+			"Web3 Hostname"
+		],
+		"x-api-token-group": [
+			"Web3 Hostnames Write",
+			"Web3 Hostnames Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/web3/hostnames/{identifier}": {
+		"operationId": "web3-hostname-web3-hostname-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Specify the identifier of the hostname.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Specify the identifier of the hostname.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"description": "Provides the API response.",
+													"type": "object"
+												},
+												"success": {
+													"description": "Specifies whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													],
+													"description": "Provides the API response.",
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_on": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"description": {
+													"description": "Specify an optional description of the hostname.",
+													"example": "This is my IPFS gateway.",
+													"maxLength": 500,
+													"type": "string"
+												},
+												"dnslink": {
+													"description": "Specify the DNSLink value used if the target is ipfs.",
+													"example": "/ipns/onboarding.ipfs.cloudflare.com",
+													"type": "string"
+												},
+												"id": {
+													"description": "Specify the identifier of the hostname.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"modified_on": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"description": "Specify the hostname that points to the target gateway via CNAME.",
+													"example": "gateway.example.com",
+													"maxLength": 255,
+													"type": "string"
+												},
+												"status": {
+													"description": "Specifies the status of the hostname's activation.",
+													"enum": [
+														"active",
+														"pending",
+														"deleting",
+														"error"
+													],
+													"example": "active",
+													"readOnly": true,
+													"type": "string"
+												},
+												"target": {
+													"description": "Specify the target gateway of the hostname.",
+													"enum": [
+														"ethereum",
+														"ipfs",
+														"ipfs_universal_path"
+													],
+													"example": "ipfs",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Web3 Hostname Details response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"description": "Provides the API response.",
+															"type": "object"
+														},
+														"success": {
+															"description": "Specifies whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Specifies the total number of results for the requested service.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Specifies the current page within paginated list of results.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Specifies the number of results per page of results.",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Specifies the total results available without any search parameters.",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"created_on": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"description": {
+																"description": "Specify an optional description of the hostname.",
+																"example": "This is my IPFS gateway.",
+																"maxLength": 500,
+																"type": "string"
+															},
+															"dnslink": {
+																"description": "Specify the DNSLink value used if the target is ipfs.",
+																"example": "/ipns/onboarding.ipfs.cloudflare.com",
+																"type": "string"
+															},
+															"id": {
+																"description": "Specify the identifier of the hostname.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"modified_on": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"name": {
+																"description": "Specify the hostname that points to the target gateway via CNAME.",
+																"example": "gateway.example.com",
+																"maxLength": 255,
+																"type": "string"
+															},
+															"status": {
+																"description": "Specifies the status of the hostname's activation.",
+																"enum": [
+																	"active",
+																	"pending",
+																	"deleting",
+																	"error"
+																],
+																"example": "active",
+																"readOnly": true,
+																"type": "string"
+															},
+															"target": {
+																"description": "Specify the target gateway of the hostname.",
+																"enum": [
+																	"ethereum",
+																	"ipfs",
+																	"ipfs_universal_path"
+																],
+																"example": "ipfs",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Specifies whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Web3 Hostname Details error response (4XX)."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"description": "Provides the API response.",
+															"type": "object"
+														},
+														"success": {
+															"description": "Specifies whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
 															"anyOf": [
 																{
 																	"nullable": true,
@@ -1543,7 +2616,9 @@
 																	"nullable": true,
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														}
 													}
 												}
@@ -1561,18 +2636,18 @@
 															"type": "string"
 														},
 														"description": {
-															"description": "An optional description of the hostname.",
+															"description": "Specify an optional description of the hostname.",
 															"example": "This is my IPFS gateway.",
 															"maxLength": 500,
 															"type": "string"
 														},
 														"dnslink": {
-															"description": "DNSLink value used if the target is ipfs.",
+															"description": "Specify the DNSLink value used if the target is ipfs.",
 															"example": "/ipns/onboarding.ipfs.cloudflare.com",
 															"type": "string"
 														},
 														"id": {
-															"description": "Identifier",
+															"description": "Specify the identifier of the hostname.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
@@ -1585,13 +2660,13 @@
 															"type": "string"
 														},
 														"name": {
-															"description": "The hostname that will point to the target gateway via CNAME.",
+															"description": "Specify the hostname that points to the target gateway via CNAME.",
 															"example": "gateway.example.com",
 															"maxLength": 255,
 															"type": "string"
 														},
 														"status": {
-															"description": "Status of the hostname's activation.",
+															"description": "Specifies the status of the hostname's activation.",
 															"enum": [
 																"active",
 																"pending",
@@ -1603,7 +2678,7 @@
 															"type": "string"
 														},
 														"target": {
-															"description": "Target gateway of the hostname.",
+															"description": "Specify the target gateway of the hostname.",
 															"enum": [
 																"ethereum",
 																"ipfs",
@@ -1687,7 +2762,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Specifies whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1707,13 +2782,14 @@
 						}
 					}
 				},
-				"description": "Web3 Hostname Details response failure"
+				"description": "Web3 Hostname Details response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Web3 Hostname Details",
@@ -1739,7 +2815,7 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1751,7 +2827,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1823,10 +2899,12 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"description": "Provides the API response.",
+													"type": "object"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Specifies whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1844,7 +2922,7 @@
 										},
 										{
 											"properties": {
-												"result": {
+												"result_info": {
 													"anyOf": [
 														{
 															"nullable": true,
@@ -1854,7 +2932,9 @@
 															"nullable": true,
 															"type": "string"
 														}
-													]
+													],
+													"description": "Provides the API response.",
+													"type": "object"
 												}
 											}
 										}
@@ -1882,9 +2962,9 @@
 						}
 					}
 				},
-				"description": "IPFS Universal Path Gateway Content List Details response"
+				"description": "IPFS Universal Path Gateway Content List Details response."
 			},
-			"5XX": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1949,10 +3029,12 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Specifies whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1970,7 +3052,7 @@
 												},
 												{
 													"properties": {
-														"result": {
+														"result_info": {
 															"anyOf": [
 																{
 																	"nullable": true,
@@ -1980,7 +3062,9 @@
 																	"nullable": true,
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														}
 													}
 												}
@@ -2074,7 +3158,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Specifies whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2094,13 +3178,230 @@
 						}
 					}
 				},
-				"description": "IPFS Universal Path Gateway Content List Details response failure"
+				"description": "IPFS Universal Path Gateway Content List Details error response (4XX)."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"description": "Provides the API response.",
+															"type": "object"
+														},
+														"success": {
+															"description": "Specifies whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															],
+															"description": "Provides the API response.",
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"action": {
+															"description": "Behavior of the content list.",
+															"enum": [
+																"block"
+															],
+															"example": "block",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Specifies whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "IPFS Universal Path Gateway Content List Details response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "IPFS Universal Path Gateway Content List Details",
@@ -2126,7 +3427,7 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2138,7 +3439,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2210,10 +3511,12 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"description": "Provides the API response.",
+													"type": "object"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Specifies whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2239,22 +3542,22 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Specifies the total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Specifies the current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Specifies the number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Specifies the total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
@@ -2271,12 +3574,12 @@
 										"result": {
 											"properties": {
 												"entries": {
-													"description": "Content list entries.",
+													"description": "Provides content list entries.",
 													"items": {
-														"description": "Content list entry to be blocked.",
+														"description": "Specify a content list entry to block.",
 														"properties": {
 															"content": {
-																"description": "CID or content path of content to block.",
+																"description": "Specify the CID or content path of content to block.",
 																"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
 																"maxLength": 500,
 																"type": "string"
@@ -2288,13 +3591,13 @@
 																"type": "string"
 															},
 															"description": {
-																"description": "An optional description of the content list entry.",
+																"description": "Specify an optional description of the content list entry.",
 																"example": "this is my content list entry",
 																"maxLength": 500,
 																"type": "string"
 															},
 															"id": {
-																"description": "Identifier",
+																"description": "Specify the identifier of the hostname.",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
@@ -2307,7 +3610,7 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "Type of content list entry to block.",
+																"description": "Specify the type of content list entry to block.",
 																"enum": [
 																	"cid",
 																	"content_path"
@@ -2329,9 +3632,9 @@
 						}
 					}
 				},
-				"description": "List IPFS Universal Path Gateway Content List Entries response"
+				"description": "List IPFS Universal Path Gateway Content List Entries response."
 			},
-			"5XX": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2396,10 +3699,12 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Specifies whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2425,22 +3730,22 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Specifies the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Specifies the current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Specifies the number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Specifies the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
@@ -2457,12 +3762,12 @@
 												"result": {
 													"properties": {
 														"entries": {
-															"description": "Content list entries.",
+															"description": "Provides content list entries.",
 															"items": {
-																"description": "Content list entry to be blocked.",
+																"description": "Specify a content list entry to block.",
 																"properties": {
 																	"content": {
-																		"description": "CID or content path of content to block.",
+																		"description": "Specify the CID or content path of content to block.",
 																		"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
 																		"maxLength": 500,
 																		"type": "string"
@@ -2474,13 +3779,13 @@
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "An optional description of the content list entry.",
+																		"description": "Specify an optional description of the content list entry.",
 																		"example": "this is my content list entry",
 																		"maxLength": 500,
 																		"type": "string"
 																	},
 																	"id": {
-																		"description": "Identifier",
+																		"description": "Specify the identifier of the hostname.",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
@@ -2493,7 +3798,7 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "Type of content list entry to block.",
+																		"description": "Specify the type of content list entry to block.",
 																		"enum": [
 																			"cid",
 																			"content_path"
@@ -2581,7 +3886,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Specifies whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2601,13 +3906,288 @@
 						}
 					}
 				},
-				"description": "List IPFS Universal Path Gateway Content List Entries response failure"
+				"description": "List IPFS Universal Path Gateway Content List Entries error response (4XX)."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"description": "Provides the API response.",
+															"type": "object"
+														},
+														"success": {
+															"description": "Specifies whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Specifies the total number of results for the requested service.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Specifies the current page within paginated list of results.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Specifies the number of results per page of results.",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Specifies the total results available without any search parameters.",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"entries": {
+															"description": "Provides content list entries.",
+															"items": {
+																"description": "Specify a content list entry to block.",
+																"properties": {
+																	"content": {
+																		"description": "Specify the CID or content path of content to block.",
+																		"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
+																		"maxLength": 500,
+																		"type": "string"
+																	},
+																	"created_on": {
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "Specify an optional description of the content list entry.",
+																		"example": "this is my content list entry",
+																		"maxLength": 500,
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "Specify the identifier of the hostname.",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"modified_on": {
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Specify the type of content list entry to block.",
+																		"enum": [
+																			"cid",
+																			"content_path"
+																		],
+																		"example": "cid",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Specifies whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List IPFS Universal Path Gateway Content List Entries response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List IPFS Universal Path Gateway Content List Entries",
@@ -2633,7 +4213,7 @@
 				"name": "content_list_entry_identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2645,7 +4225,7 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2657,7 +4237,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2729,10 +4309,12 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"description": "Provides the API response.",
+													"type": "object"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Specifies whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2750,7 +4332,7 @@
 										},
 										{
 											"properties": {
-												"result": {
+												"result_info": {
 													"anyOf": [
 														{
 															"nullable": true,
@@ -2760,7 +4342,9 @@
 															"nullable": true,
 															"type": "string"
 														}
-													]
+													],
+													"description": "Provides the API response.",
+													"type": "object"
 												}
 											}
 										}
@@ -2770,10 +4354,10 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Content list entry to be blocked.",
+											"description": "Specify a content list entry to block.",
 											"properties": {
 												"content": {
-													"description": "CID or content path of content to block.",
+													"description": "Specify the CID or content path of content to block.",
 													"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
 													"maxLength": 500,
 													"type": "string"
@@ -2785,13 +4369,13 @@
 													"type": "string"
 												},
 												"description": {
-													"description": "An optional description of the content list entry.",
+													"description": "Specify an optional description of the content list entry.",
 													"example": "this is my content list entry",
 													"maxLength": 500,
 													"type": "string"
 												},
 												"id": {
-													"description": "Identifier",
+													"description": "Specify the identifier of the hostname.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
@@ -2804,7 +4388,7 @@
 													"type": "string"
 												},
 												"type": {
-													"description": "Type of content list entry to block.",
+													"description": "Specify the type of content list entry to block.",
 													"enum": [
 														"cid",
 														"content_path"
@@ -2821,9 +4405,9 @@
 						}
 					}
 				},
-				"description": "IPFS Universal Path Gateway Content List Entry Details response"
+				"description": "IPFS Universal Path Gateway Content List Entry Details response."
 			},
-			"5XX": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2888,10 +4472,12 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Specifies whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2909,7 +4495,7 @@
 												},
 												{
 													"properties": {
-														"result": {
+														"result_info": {
 															"anyOf": [
 																{
 																	"nullable": true,
@@ -2919,7 +4505,9 @@
 																	"nullable": true,
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														}
 													}
 												}
@@ -2929,10 +4517,10 @@
 										{
 											"properties": {
 												"result": {
-													"description": "Content list entry to be blocked.",
+													"description": "Specify a content list entry to block.",
 													"properties": {
 														"content": {
-															"description": "CID or content path of content to block.",
+															"description": "Specify the CID or content path of content to block.",
 															"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
 															"maxLength": 500,
 															"type": "string"
@@ -2944,13 +4532,13 @@
 															"type": "string"
 														},
 														"description": {
-															"description": "An optional description of the content list entry.",
+															"description": "Specify an optional description of the content list entry.",
 															"example": "this is my content list entry",
 															"maxLength": 500,
 															"type": "string"
 														},
 														"id": {
-															"description": "Identifier",
+															"description": "Specify the identifier of the hostname.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
@@ -2963,7 +4551,7 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "Type of content list entry to block.",
+															"description": "Specify the type of content list entry to block.",
 															"enum": [
 																"cid",
 																"content_path"
@@ -3046,7 +4634,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Specifies whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -3066,13 +4654,263 @@
 						}
 					}
 				},
-				"description": "IPFS Universal Path Gateway Content List Entry Details response failure"
+				"description": "IPFS Universal Path Gateway Content List Entry Details error response (4XX)."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"description": "Provides the API response.",
+															"type": "object"
+														},
+														"success": {
+															"description": "Specifies whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															],
+															"description": "Provides the API response.",
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "Specify a content list entry to block.",
+													"properties": {
+														"content": {
+															"description": "Specify the CID or content path of content to block.",
+															"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
+															"maxLength": 500,
+															"type": "string"
+														},
+														"created_on": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"description": {
+															"description": "Specify an optional description of the content list entry.",
+															"example": "this is my content list entry",
+															"maxLength": 500,
+															"type": "string"
+														},
+														"id": {
+															"description": "Specify the identifier of the hostname.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"modified_on": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"type": {
+															"description": "Specify the type of content list entry to block.",
+															"enum": [
+																"cid",
+																"content_path"
+															],
+															"example": "cid",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Specifies whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "IPFS Universal Path Gateway Content List Entry Details response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "IPFS Universal Path Gateway Content List Entry Details",
@@ -3098,7 +4936,7 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -3110,7 +4948,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -3124,13 +4962,13 @@
 					"schema": {
 						"properties": {
 							"description": {
-								"description": "An optional description of the hostname.",
+								"description": "Specify an optional description of the hostname.",
 								"example": "This is my IPFS gateway.",
 								"maxLength": 500,
 								"type": "string"
 							},
 							"dnslink": {
-								"description": "DNSLink value used if the target is ipfs.",
+								"description": "Specify the DNSLink value used if the target is ipfs.",
 								"example": "/ipns/onboarding.ipfs.cloudflare.com",
 								"type": "string"
 							}
@@ -3205,10 +5043,12 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"description": "Provides the API response.",
+													"type": "object"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Specifies whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3226,7 +5066,7 @@
 										},
 										{
 											"properties": {
-												"result": {
+												"result_info": {
 													"anyOf": [
 														{
 															"nullable": true,
@@ -3236,7 +5076,9 @@
 															"nullable": true,
 															"type": "string"
 														}
-													]
+													],
+													"description": "Provides the API response.",
+													"type": "object"
 												}
 											}
 										}
@@ -3254,18 +5096,18 @@
 													"type": "string"
 												},
 												"description": {
-													"description": "An optional description of the hostname.",
+													"description": "Specify an optional description of the hostname.",
 													"example": "This is my IPFS gateway.",
 													"maxLength": 500,
 													"type": "string"
 												},
 												"dnslink": {
-													"description": "DNSLink value used if the target is ipfs.",
+													"description": "Specify the DNSLink value used if the target is ipfs.",
 													"example": "/ipns/onboarding.ipfs.cloudflare.com",
 													"type": "string"
 												},
 												"id": {
-													"description": "Identifier",
+													"description": "Specify the identifier of the hostname.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
@@ -3278,13 +5120,13 @@
 													"type": "string"
 												},
 												"name": {
-													"description": "The hostname that will point to the target gateway via CNAME.",
+													"description": "Specify the hostname that points to the target gateway via CNAME.",
 													"example": "gateway.example.com",
 													"maxLength": 255,
 													"type": "string"
 												},
 												"status": {
-													"description": "Status of the hostname's activation.",
+													"description": "Specifies the status of the hostname's activation.",
 													"enum": [
 														"active",
 														"pending",
@@ -3296,7 +5138,7 @@
 													"type": "string"
 												},
 												"target": {
-													"description": "Target gateway of the hostname.",
+													"description": "Specify the target gateway of the hostname.",
 													"enum": [
 														"ethereum",
 														"ipfs",
@@ -3314,7 +5156,292 @@
 						}
 					}
 				},
-				"description": "Edit Web3 Hostname response"
+				"description": "Edit Web3 Hostname response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"description": "Provides the API response.",
+															"type": "object"
+														},
+														"success": {
+															"description": "Specifies whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Specifies the total number of results for the requested service.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Specifies the current page within paginated list of results.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Specifies the number of results per page of results.",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Specifies the total results available without any search parameters.",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"created_on": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"description": {
+																"description": "Specify an optional description of the hostname.",
+																"example": "This is my IPFS gateway.",
+																"maxLength": 500,
+																"type": "string"
+															},
+															"dnslink": {
+																"description": "Specify the DNSLink value used if the target is ipfs.",
+																"example": "/ipns/onboarding.ipfs.cloudflare.com",
+																"type": "string"
+															},
+															"id": {
+																"description": "Specify the identifier of the hostname.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"modified_on": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"name": {
+																"description": "Specify the hostname that points to the target gateway via CNAME.",
+																"example": "gateway.example.com",
+																"maxLength": 255,
+																"type": "string"
+															},
+															"status": {
+																"description": "Specifies the status of the hostname's activation.",
+																"enum": [
+																	"active",
+																	"pending",
+																	"deleting",
+																	"error"
+																],
+																"example": "active",
+																"readOnly": true,
+																"type": "string"
+															},
+															"target": {
+																"description": "Specify the target gateway of the hostname.",
+																"enum": [
+																	"ethereum",
+																	"ipfs",
+																	"ipfs_universal_path"
+																],
+																"example": "ipfs",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Specifies whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Edit Web3 Hostname error response (4XX)."
 			},
 			"5XX": {
 				"content": {
@@ -3381,10 +5508,12 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Specifies whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3402,7 +5531,7 @@
 												},
 												{
 													"properties": {
-														"result": {
+														"result_info": {
 															"anyOf": [
 																{
 																	"nullable": true,
@@ -3412,7 +5541,9 @@
 																	"nullable": true,
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														}
 													}
 												}
@@ -3430,18 +5561,18 @@
 															"type": "string"
 														},
 														"description": {
-															"description": "An optional description of the hostname.",
+															"description": "Specify an optional description of the hostname.",
 															"example": "This is my IPFS gateway.",
 															"maxLength": 500,
 															"type": "string"
 														},
 														"dnslink": {
-															"description": "DNSLink value used if the target is ipfs.",
+															"description": "Specify the DNSLink value used if the target is ipfs.",
 															"example": "/ipns/onboarding.ipfs.cloudflare.com",
 															"type": "string"
 														},
 														"id": {
-															"description": "Identifier",
+															"description": "Specify the identifier of the hostname.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
@@ -3454,13 +5585,13 @@
 															"type": "string"
 														},
 														"name": {
-															"description": "The hostname that will point to the target gateway via CNAME.",
+															"description": "Specify the hostname that points to the target gateway via CNAME.",
 															"example": "gateway.example.com",
 															"maxLength": 255,
 															"type": "string"
 														},
 														"status": {
-															"description": "Status of the hostname's activation.",
+															"description": "Specifies the status of the hostname's activation.",
 															"enum": [
 																"active",
 																"pending",
@@ -3472,7 +5603,7 @@
 															"type": "string"
 														},
 														"target": {
-															"description": "Target gateway of the hostname.",
+															"description": "Specify the target gateway of the hostname.",
 															"enum": [
 																"ethereum",
 																"ipfs",
@@ -3556,7 +5687,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Specifies whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -3576,13 +5707,14 @@
 						}
 					}
 				},
-				"description": "Edit Web3 Hostname response failure"
+				"description": "Edit Web3 Hostname response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Edit Web3 Hostname",
@@ -3607,7 +5739,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -3621,24 +5753,24 @@
 					"schema": {
 						"properties": {
 							"description": {
-								"description": "An optional description of the hostname.",
+								"description": "Specify an optional description of the hostname.",
 								"example": "This is my IPFS gateway.",
 								"maxLength": 500,
 								"type": "string"
 							},
 							"dnslink": {
-								"description": "DNSLink value used if the target is ipfs.",
+								"description": "Specify the DNSLink value used if the target is ipfs.",
 								"example": "/ipns/onboarding.ipfs.cloudflare.com",
 								"type": "string"
 							},
 							"name": {
-								"description": "The hostname that will point to the target gateway via CNAME.",
+								"description": "Specify the hostname that points to the target gateway via CNAME.",
 								"example": "gateway.example.com",
 								"maxLength": 255,
 								"type": "string"
 							},
 							"target": {
-								"description": "Target gateway of the hostname.",
+								"description": "Specify the target gateway of the hostname.",
 								"enum": [
 									"ethereum",
 									"ipfs",
@@ -3722,10 +5854,12 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"description": "Provides the API response.",
+													"type": "object"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Specifies whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3743,7 +5877,7 @@
 										},
 										{
 											"properties": {
-												"result": {
+												"result_info": {
 													"anyOf": [
 														{
 															"nullable": true,
@@ -3753,7 +5887,9 @@
 															"nullable": true,
 															"type": "string"
 														}
-													]
+													],
+													"description": "Provides the API response.",
+													"type": "object"
 												}
 											}
 										}
@@ -3771,18 +5907,18 @@
 													"type": "string"
 												},
 												"description": {
-													"description": "An optional description of the hostname.",
+													"description": "Specify an optional description of the hostname.",
 													"example": "This is my IPFS gateway.",
 													"maxLength": 500,
 													"type": "string"
 												},
 												"dnslink": {
-													"description": "DNSLink value used if the target is ipfs.",
+													"description": "Specify the DNSLink value used if the target is ipfs.",
 													"example": "/ipns/onboarding.ipfs.cloudflare.com",
 													"type": "string"
 												},
 												"id": {
-													"description": "Identifier",
+													"description": "Specify the identifier of the hostname.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
@@ -3795,13 +5931,13 @@
 													"type": "string"
 												},
 												"name": {
-													"description": "The hostname that will point to the target gateway via CNAME.",
+													"description": "Specify the hostname that points to the target gateway via CNAME.",
 													"example": "gateway.example.com",
 													"maxLength": 255,
 													"type": "string"
 												},
 												"status": {
-													"description": "Status of the hostname's activation.",
+													"description": "Specifies the status of the hostname's activation.",
 													"enum": [
 														"active",
 														"pending",
@@ -3813,7 +5949,7 @@
 													"type": "string"
 												},
 												"target": {
-													"description": "Target gateway of the hostname.",
+													"description": "Specify the target gateway of the hostname.",
 													"enum": [
 														"ethereum",
 														"ipfs",
@@ -3831,7 +5967,292 @@
 						}
 					}
 				},
-				"description": "Create Web3 Hostname response"
+				"description": "Create Web3 Hostname response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"description": "Provides the API response.",
+															"type": "object"
+														},
+														"success": {
+															"description": "Specifies whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Specifies the total number of results for the requested service.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Specifies the current page within paginated list of results.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Specifies the number of results per page of results.",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Specifies the total results available without any search parameters.",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"created_on": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"description": {
+																"description": "Specify an optional description of the hostname.",
+																"example": "This is my IPFS gateway.",
+																"maxLength": 500,
+																"type": "string"
+															},
+															"dnslink": {
+																"description": "Specify the DNSLink value used if the target is ipfs.",
+																"example": "/ipns/onboarding.ipfs.cloudflare.com",
+																"type": "string"
+															},
+															"id": {
+																"description": "Specify the identifier of the hostname.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"modified_on": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"name": {
+																"description": "Specify the hostname that points to the target gateway via CNAME.",
+																"example": "gateway.example.com",
+																"maxLength": 255,
+																"type": "string"
+															},
+															"status": {
+																"description": "Specifies the status of the hostname's activation.",
+																"enum": [
+																	"active",
+																	"pending",
+																	"deleting",
+																	"error"
+																],
+																"example": "active",
+																"readOnly": true,
+																"type": "string"
+															},
+															"target": {
+																"description": "Specify the target gateway of the hostname.",
+																"enum": [
+																	"ethereum",
+																	"ipfs",
+																	"ipfs_universal_path"
+																],
+																"example": "ipfs",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Specifies whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Web3 Hostname error response (4XX)."
 			},
 			"5XX": {
 				"content": {
@@ -3898,10 +6319,12 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Specifies whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3919,7 +6342,7 @@
 												},
 												{
 													"properties": {
-														"result": {
+														"result_info": {
 															"anyOf": [
 																{
 																	"nullable": true,
@@ -3929,7 +6352,9 @@
 																	"nullable": true,
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														}
 													}
 												}
@@ -3947,18 +6372,18 @@
 															"type": "string"
 														},
 														"description": {
-															"description": "An optional description of the hostname.",
+															"description": "Specify an optional description of the hostname.",
 															"example": "This is my IPFS gateway.",
 															"maxLength": 500,
 															"type": "string"
 														},
 														"dnslink": {
-															"description": "DNSLink value used if the target is ipfs.",
+															"description": "Specify the DNSLink value used if the target is ipfs.",
 															"example": "/ipns/onboarding.ipfs.cloudflare.com",
 															"type": "string"
 														},
 														"id": {
-															"description": "Identifier",
+															"description": "Specify the identifier of the hostname.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
@@ -3971,13 +6396,13 @@
 															"type": "string"
 														},
 														"name": {
-															"description": "The hostname that will point to the target gateway via CNAME.",
+															"description": "Specify the hostname that points to the target gateway via CNAME.",
 															"example": "gateway.example.com",
 															"maxLength": 255,
 															"type": "string"
 														},
 														"status": {
-															"description": "Status of the hostname's activation.",
+															"description": "Specifies the status of the hostname's activation.",
 															"enum": [
 																"active",
 																"pending",
@@ -3989,7 +6414,7 @@
 															"type": "string"
 														},
 														"target": {
-															"description": "Target gateway of the hostname.",
+															"description": "Specify the target gateway of the hostname.",
 															"enum": [
 																"ethereum",
 																"ipfs",
@@ -4073,7 +6498,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Specifies whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -4093,13 +6518,14 @@
 						}
 					}
 				},
-				"description": "Create Web3 Hostname response failure"
+				"description": "Create Web3 Hostname response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create Web3 Hostname",
@@ -4124,7 +6550,7 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -4136,7 +6562,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -4150,19 +6576,19 @@
 					"schema": {
 						"properties": {
 							"content": {
-								"description": "CID or content path of content to block.",
+								"description": "Specify the CID or content path of content to block.",
 								"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
 								"maxLength": 500,
 								"type": "string"
 							},
 							"description": {
-								"description": "An optional description of the content list entry.",
+								"description": "Specify an optional description of the content list entry.",
 								"example": "this is my content list entry",
 								"maxLength": 500,
 								"type": "string"
 							},
 							"type": {
-								"description": "Type of content list entry to block.",
+								"description": "Specify the type of content list entry to block.",
 								"enum": [
 									"cid",
 									"content_path"
@@ -4245,10 +6671,12 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"description": "Provides the API response.",
+													"type": "object"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Specifies whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -4266,7 +6694,7 @@
 										},
 										{
 											"properties": {
-												"result": {
+												"result_info": {
 													"anyOf": [
 														{
 															"nullable": true,
@@ -4276,7 +6704,9 @@
 															"nullable": true,
 															"type": "string"
 														}
-													]
+													],
+													"description": "Provides the API response.",
+													"type": "object"
 												}
 											}
 										}
@@ -4286,10 +6716,10 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Content list entry to be blocked.",
+											"description": "Specify a content list entry to block.",
 											"properties": {
 												"content": {
-													"description": "CID or content path of content to block.",
+													"description": "Specify the CID or content path of content to block.",
 													"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
 													"maxLength": 500,
 													"type": "string"
@@ -4301,13 +6731,13 @@
 													"type": "string"
 												},
 												"description": {
-													"description": "An optional description of the content list entry.",
+													"description": "Specify an optional description of the content list entry.",
 													"example": "this is my content list entry",
 													"maxLength": 500,
 													"type": "string"
 												},
 												"id": {
-													"description": "Identifier",
+													"description": "Specify the identifier of the hostname.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
@@ -4320,7 +6750,7 @@
 													"type": "string"
 												},
 												"type": {
-													"description": "Type of content list entry to block.",
+													"description": "Specify the type of content list entry to block.",
 													"enum": [
 														"cid",
 														"content_path"
@@ -4337,9 +6767,9 @@
 						}
 					}
 				},
-				"description": "Create IPFS Universal Path Gateway Content List Entry response"
+				"description": "Create IPFS Universal Path Gateway Content List Entry response."
 			},
-			"5XX": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4404,10 +6834,12 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Specifies whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -4425,7 +6857,7 @@
 												},
 												{
 													"properties": {
-														"result": {
+														"result_info": {
 															"anyOf": [
 																{
 																	"nullable": true,
@@ -4435,7 +6867,9 @@
 																	"nullable": true,
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														}
 													}
 												}
@@ -4445,10 +6879,10 @@
 										{
 											"properties": {
 												"result": {
-													"description": "Content list entry to be blocked.",
+													"description": "Specify a content list entry to block.",
 													"properties": {
 														"content": {
-															"description": "CID or content path of content to block.",
+															"description": "Specify the CID or content path of content to block.",
 															"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
 															"maxLength": 500,
 															"type": "string"
@@ -4460,13 +6894,13 @@
 															"type": "string"
 														},
 														"description": {
-															"description": "An optional description of the content list entry.",
+															"description": "Specify an optional description of the content list entry.",
 															"example": "this is my content list entry",
 															"maxLength": 500,
 															"type": "string"
 														},
 														"id": {
-															"description": "Identifier",
+															"description": "Specify the identifier of the hostname.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
@@ -4479,7 +6913,7 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "Type of content list entry to block.",
+															"description": "Specify the type of content list entry to block.",
 															"enum": [
 																"cid",
 																"content_path"
@@ -4562,7 +6996,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Specifies whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -4582,13 +7016,263 @@
 						}
 					}
 				},
-				"description": "Create IPFS Universal Path Gateway Content List Entry response failure"
+				"description": "Create IPFS Universal Path Gateway Content List Entry error response (4XX)."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"description": "Provides the API response.",
+															"type": "object"
+														},
+														"success": {
+															"description": "Specifies whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															],
+															"description": "Provides the API response.",
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "Specify a content list entry to block.",
+													"properties": {
+														"content": {
+															"description": "Specify the CID or content path of content to block.",
+															"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
+															"maxLength": 500,
+															"type": "string"
+														},
+														"created_on": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"description": {
+															"description": "Specify an optional description of the content list entry.",
+															"example": "this is my content list entry",
+															"maxLength": 500,
+															"type": "string"
+														},
+														"id": {
+															"description": "Specify the identifier of the hostname.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"modified_on": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"type": {
+															"description": "Specify the type of content list entry to block.",
+															"enum": [
+																"cid",
+																"content_path"
+															],
+															"example": "cid",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Specifies whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create IPFS Universal Path Gateway Content List Entry response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create IPFS Universal Path Gateway Content List Entry",
@@ -4610,7 +7294,7 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -4622,7 +7306,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -4644,12 +7328,12 @@
 								"type": "string"
 							},
 							"entries": {
-								"description": "Content list entries.",
+								"description": "Provides content list entries.",
 								"items": {
-									"description": "Content list entry to be blocked.",
+									"description": "Specify a content list entry to block.",
 									"properties": {
 										"content": {
-											"description": "CID or content path of content to block.",
+											"description": "Specify the CID or content path of content to block.",
 											"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
 											"maxLength": 500,
 											"type": "string"
@@ -4661,13 +7345,13 @@
 											"type": "string"
 										},
 										"description": {
-											"description": "An optional description of the content list entry.",
+											"description": "Specify an optional description of the content list entry.",
 											"example": "this is my content list entry",
 											"maxLength": 500,
 											"type": "string"
 										},
 										"id": {
-											"description": "Identifier",
+											"description": "Specify the identifier of the hostname.",
 											"example": "023e105f4ecef8ad9ca31a8372d0c353",
 											"maxLength": 32,
 											"readOnly": true,
@@ -4680,7 +7364,7 @@
 											"type": "string"
 										},
 										"type": {
-											"description": "Type of content list entry to block.",
+											"description": "Specify the type of content list entry to block.",
 											"enum": [
 												"cid",
 												"content_path"
@@ -4768,10 +7452,12 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"description": "Provides the API response.",
+													"type": "object"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Specifies whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -4789,7 +7475,7 @@
 										},
 										{
 											"properties": {
-												"result": {
+												"result_info": {
 													"anyOf": [
 														{
 															"nullable": true,
@@ -4799,7 +7485,9 @@
 															"nullable": true,
 															"type": "string"
 														}
-													]
+													],
+													"description": "Provides the API response.",
+													"type": "object"
 												}
 											}
 										}
@@ -4827,9 +7515,9 @@
 						}
 					}
 				},
-				"description": "Update IPFS Universal Path Gateway Content List response"
+				"description": "Update IPFS Universal Path Gateway Content List response."
 			},
-			"5XX": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4894,10 +7582,12 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Specifies whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -4915,7 +7605,7 @@
 												},
 												{
 													"properties": {
-														"result": {
+														"result_info": {
 															"anyOf": [
 																{
 																	"nullable": true,
@@ -4925,7 +7615,9 @@
 																	"nullable": true,
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														}
 													}
 												}
@@ -5019,7 +7711,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Specifies whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -5039,13 +7731,230 @@
 						}
 					}
 				},
-				"description": "Update IPFS Universal Path Gateway Content List response failure"
+				"description": "Update IPFS Universal Path Gateway Content List error response (4XX)."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"description": "Provides the API response.",
+															"type": "object"
+														},
+														"success": {
+															"description": "Specifies whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															],
+															"description": "Provides the API response.",
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"action": {
+															"description": "Behavior of the content list.",
+															"enum": [
+																"block"
+															],
+															"example": "block",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Specifies whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update IPFS Universal Path Gateway Content List response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update IPFS Universal Path Gateway Content List",
@@ -5070,7 +7979,7 @@
 				"name": "content_list_entry_identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -5082,7 +7991,7 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -5094,7 +8003,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specify the identifier of the hostname.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -5108,19 +8017,19 @@
 					"schema": {
 						"properties": {
 							"content": {
-								"description": "CID or content path of content to block.",
+								"description": "Specify the CID or content path of content to block.",
 								"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
 								"maxLength": 500,
 								"type": "string"
 							},
 							"description": {
-								"description": "An optional description of the content list entry.",
+								"description": "Specify an optional description of the content list entry.",
 								"example": "this is my content list entry",
 								"maxLength": 500,
 								"type": "string"
 							},
 							"type": {
-								"description": "Type of content list entry to block.",
+								"description": "Specify the type of content list entry to block.",
 								"enum": [
 									"cid",
 									"content_path"
@@ -5203,10 +8112,12 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"description": "Provides the API response.",
+													"type": "object"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Specifies whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -5224,7 +8135,7 @@
 										},
 										{
 											"properties": {
-												"result": {
+												"result_info": {
 													"anyOf": [
 														{
 															"nullable": true,
@@ -5234,7 +8145,9 @@
 															"nullable": true,
 															"type": "string"
 														}
-													]
+													],
+													"description": "Provides the API response.",
+													"type": "object"
 												}
 											}
 										}
@@ -5244,10 +8157,10 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Content list entry to be blocked.",
+											"description": "Specify a content list entry to block.",
 											"properties": {
 												"content": {
-													"description": "CID or content path of content to block.",
+													"description": "Specify the CID or content path of content to block.",
 													"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
 													"maxLength": 500,
 													"type": "string"
@@ -5259,13 +8172,13 @@
 													"type": "string"
 												},
 												"description": {
-													"description": "An optional description of the content list entry.",
+													"description": "Specify an optional description of the content list entry.",
 													"example": "this is my content list entry",
 													"maxLength": 500,
 													"type": "string"
 												},
 												"id": {
-													"description": "Identifier",
+													"description": "Specify the identifier of the hostname.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
@@ -5278,7 +8191,7 @@
 													"type": "string"
 												},
 												"type": {
-													"description": "Type of content list entry to block.",
+													"description": "Specify the type of content list entry to block.",
 													"enum": [
 														"cid",
 														"content_path"
@@ -5295,9 +8208,9 @@
 						}
 					}
 				},
-				"description": "Edit IPFS Universal Path Gateway Content List Entry response"
+				"description": "Edit IPFS Universal Path Gateway Content List Entry response."
 			},
-			"5XX": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -5362,10 +8275,12 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Specifies whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -5383,7 +8298,7 @@
 												},
 												{
 													"properties": {
-														"result": {
+														"result_info": {
 															"anyOf": [
 																{
 																	"nullable": true,
@@ -5393,7 +8308,9 @@
 																	"nullable": true,
 																	"type": "string"
 																}
-															]
+															],
+															"description": "Provides the API response.",
+															"type": "object"
 														}
 													}
 												}
@@ -5403,10 +8320,10 @@
 										{
 											"properties": {
 												"result": {
-													"description": "Content list entry to be blocked.",
+													"description": "Specify a content list entry to block.",
 													"properties": {
 														"content": {
-															"description": "CID or content path of content to block.",
+															"description": "Specify the CID or content path of content to block.",
 															"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
 															"maxLength": 500,
 															"type": "string"
@@ -5418,13 +8335,13 @@
 															"type": "string"
 														},
 														"description": {
-															"description": "An optional description of the content list entry.",
+															"description": "Specify an optional description of the content list entry.",
 															"example": "this is my content list entry",
 															"maxLength": 500,
 															"type": "string"
 														},
 														"id": {
-															"description": "Identifier",
+															"description": "Specify the identifier of the hostname.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
@@ -5437,7 +8354,7 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "Type of content list entry to block.",
+															"description": "Specify the type of content list entry to block.",
 															"enum": [
 																"cid",
 																"content_path"
@@ -5520,7 +8437,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Specifies whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -5540,13 +8457,263 @@
 						}
 					}
 				},
-				"description": "Edit IPFS Universal Path Gateway Content List Entry response failure"
+				"description": "Edit IPFS Universal Path Gateway Content List Entry error response (4XX)."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"description": "Provides the API response.",
+															"type": "object"
+														},
+														"success": {
+															"description": "Specifies whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															],
+															"description": "Provides the API response.",
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "Specify a content list entry to block.",
+													"properties": {
+														"content": {
+															"description": "Specify the CID or content path of content to block.",
+															"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
+															"maxLength": 500,
+															"type": "string"
+														},
+														"created_on": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"description": {
+															"description": "Specify an optional description of the content list entry.",
+															"example": "this is my content list entry",
+															"maxLength": 500,
+															"type": "string"
+														},
+														"id": {
+															"description": "Specify the identifier of the hostname.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"modified_on": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"type": {
+															"description": "Specify the type of content list entry to block.",
+															"enum": [
+																"cid",
+																"content_path"
+															],
+															"example": "cid",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Specifies whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Edit IPFS Universal Path Gateway Content List Entry response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Edit IPFS Universal Path Gateway Content List Entry",
