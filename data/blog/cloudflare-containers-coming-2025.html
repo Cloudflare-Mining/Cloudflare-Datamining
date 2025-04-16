@@ -64,11 +64,11 @@ export default {
       // pass in prompt to get the code from Llama 4
       const codeToExecute = await env.AI.run("@cf/meta/llama-4-scout-17b-16e-instruct", { messages });
 
-// get a different container for each user session
+      // get a different container for each user session
       const id = env.CODE_EXECUTOR.idFromName(sessionId);
       const sandbox = env.CODE_EXECUTOR.get(id);
 
-// execute a request on the container
+      // execute a request on the container
       return sandbox.fetch("/execute-code", { method: "POST", body: codeToExecute });
     }
 
@@ -78,8 +78,8 @@ export default {
 
 // define your container using the Container class from cloudflare:workers
 export class CodeExecutor extends Container {
-defaultPort = 8080;
-sleepAfter = "1m";
+  defaultPort = 8080;
+  sleepAfter = "1m";
 }</code></pre>
 	<p>Then, deploy your code with a single command: <code>wrangler deploy</code>. This builds your container image, pushes it to Cloudflare’s registry, readies containers to boot quickly across the globe, and deploys your Worker.</p>
 	<pre class="language-Rust"><code class="language-Rust">$ wrangler deploy</code></pre>
@@ -155,19 +155,19 @@ export default {
 	<p>Each Durable Object acts as a programmable sidecar that can proxy requests to the container and manages its lifecycle. This allows you to control and extend your containers in ways that are hard on other platforms.&nbsp;</p>
 	<p>You can manually start, stop, and execute commands on a specific container by calling RPC methods on its Durable Object, which now has a new object at <code>this.ctx.container</code>:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">class MyContainer extends DurableObject {
-	// these RPC methods are callable from a Worker
-        async customBoot(entrypoint, envVars) {
-	            this.ctx.container.start({ entrypoint, env: envVars });
-        }
+  // these RPC methods are callable from a Worker
+  async customBoot(entrypoint, envVars) {
+    this.ctx.container.start({ entrypoint, env: envVars });
+  }
 
-       async stopContainer() {
-                   const SIGTERM = 15;
-	           this.ctx.container.signal(SIGTERM);
-        }
+  async stopContainer() {
+    const SIGTERM = 15;
+    this.ctx.container.signal(SIGTERM);
+  }
 
-        async startBackupScript() {
-	            await this.ctx.container.exec(["./backup"]);
-        }
+  async startBackupScript() {
+    await this.ctx.container.exec(["./backup"]);
+  }
 }</code></pre>
 	<p>You can also monitor your container and run hooks in response to Container status changes.</p>
 	<p>For instance, say you have a CI job that runs builds in a Container. You want to post a message to a <a href="https://developers.cloudflare.com/queues"><u>Queue</u></a> based on the exit status. You can easily program this behavior:</p>
@@ -294,8 +294,8 @@ this.ctx.container.start({
 
 // ... container requests to '10.0.0.2:8080' securely route to a different service...
 override async onContainerRequest(request: Request) {
- const containerId = this.env.SUB_SERVICE.idFromName(request.headers['X-Account-Id']);
- return this.env.SUB_SERVICE.get(containerId).fetch(request);
+  const containerId = this.env.SUB_SERVICE.idFromName(request.headers['X-Account-Id']);
+  return this.env.SUB_SERVICE.get(containerId).fetch(request);
 }</code></pre>
 	<p>You can ensure all traffic in and out of your container is secured and encrypted end to end without having to deal with networking yourself.</p>
 	<figure class="kg-card kg-image-card">
@@ -376,27 +376,27 @@ class MyContainer extends Container {
 	<p>You need to download a large file from <a href="https://developers.cloudflare.com/r2"><u>R2</u></a>, compress it, and upload it. You want to ensure that this succeeds, but don’t want to write retry logic and error handling yourself. Additionally, you don’t want to deal with rotating R2 API tokens or worry about network connections — it should be secure by default.</p>
 	<p>This is a perfect opportunity for a <a href="https://developers.cloudflare.com/workflows"><u>Workflow</u></a> using Containers. The container can do the heavy lifting of compressing files, Workers can stream the data to and from R2, and the Workflow can ensure durable execution.</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">export class EncoderWorkflow extends WorkflowEntrypoint&lt;Env, Params&gt; {
-    async run(event: WorkflowEvent&lt;Params&gt;, step: WorkflowStep) {
-        const id = this.env.ENCODER.idFromName(event.instanceId);
-        const container = this.env.ENCODER.get(id);
+  async run(event: WorkflowEvent&lt;Params&gt;, step: WorkflowStep) {
+    const id = this.env.ENCODER.idFromName(event.instanceId);
+    const container = this.env.ENCODER.get(id);
 
-        await step.do('init container', async () =&gt; {
-            await container.init();
-        });
+    await step.do('init container', async () =&gt; {
+      await container.init();
+    });
 
-        await step.do('compress the object with zstd', async () =&gt; {
-            await container.ensureHealthy();
-            const object = await this.env.ARTIFACTS.get(event.payload.r2Path);
-            const result = await container.fetch('http://encoder/zstd', {
-                method: 'POST', body: object.body 
-            });
-            await this.env.ARTIFACTS.put(`results${event.payload.r2Path}`, result.body);
-        });
+    await step.do('compress the object with zstd', async () =&gt; {
+      await container.ensureHealthy();
+      const object = await this.env.ARTIFACTS.get(event.payload.r2Path);
+      const result = await container.fetch('http://encoder/zstd', {
+        method: 'POST', body: object.body 
+      });
+      await this.env.ARTIFACTS.put(`results${event.payload.r2Path}`, result.body);
+    });
 
-        await step.do('cleanup container', async () =&gt; {
-            await container.destroy();
-        });
-    }
+    await step.do('cleanup container', async () =&gt; {
+      await container.destroy();
+    });
+  }
 }</code></pre>
 
 	<div class="flex anchor relative">
