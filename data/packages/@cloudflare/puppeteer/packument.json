@@ -2,7 +2,7 @@
 	"name": "@cloudflare/puppeteer",
 	"dist-tags": {
 		"next": "0.0.14-rc",
-		"latest": "1.0.1"
+		"latest": "1.0.2"
 	},
 	"versions": {
 		"0.0.0-alpha.1": {
@@ -1243,6 +1243,41 @@
 			"name": "@cloudflare/puppeteer",
 			"version": "1.0.1",
 			"dependencies": {
+				"ws": "8.17.0",
+				"debug": "4.3.4",
+				"devtools-protocol": "0.0.1273771",
+				"@puppeteer/browsers": "2.2.3"
+			},
+			"devDependencies": {
+				"mitt": "3.0.1",
+				"rxjs": "7.8.1",
+				"@types/ws": "8.5.10",
+				"parsel-js": "1.1.2",
+				"@types/node": "18.17.15",
+				"@types/debug": "4.1.12",
+				"@types/chrome": "0.0.268"
+			},
+			"dist": {
+				"shasum": "995848e4e9ad1a2916dcb44f4127f3ad315973f5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/puppeteer/-/puppeteer-1.0.1.tgz",
+				"fileCount": 1258,
+				"integrity": "sha512-kCo0/ZnLCsIn0GTLO4PXs7iIEO0SkQD7AK+e+TXzCL41mIpY/NTTCYID8AkdquRQK9w52d8Pu3d8l6aPfzSD/Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDBeK7xK2pGwzsSc6kbRt5rGH63lcZad/WqkjvPJ5J2uQIgUFoe56fP4IrMUh0JP5F84pAKOxDqe2uuFIyUMhyxWD8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 5333917
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"1.0.2": {
+			"name": "@cloudflare/puppeteer",
+			"version": "1.0.2",
+			"dependencies": {
 				"@puppeteer/browsers": "2.2.3",
 				"debug": "4.3.4",
 				"devtools-protocol": "0.0.1273771",
@@ -1258,15 +1293,15 @@
 				"rxjs": "7.8.1"
 			},
 			"dist": {
-				"integrity": "sha512-kCo0/ZnLCsIn0GTLO4PXs7iIEO0SkQD7AK+e+TXzCL41mIpY/NTTCYID8AkdquRQK9w52d8Pu3d8l6aPfzSD/Q==",
-				"shasum": "995848e4e9ad1a2916dcb44f4127f3ad315973f5",
-				"tarball": "https://registry.npmjs.org/@cloudflare/puppeteer/-/puppeteer-1.0.1.tgz",
+				"integrity": "sha512-I4UmeOg/9lmdrDqcXp1ZZALjCpk6ysygMZifVoI75YNuVHmvOjfkaXWRE1p/WgAs9phDeZrY7AqoK1YLGHwwww==",
+				"shasum": "a173e39ba92dc64c7f68fa5706078037b14bc239",
+				"tarball": "https://registry.npmjs.org/@cloudflare/puppeteer/-/puppeteer-1.0.2.tgz",
 				"fileCount": 1258,
-				"unpackedSize": 5333917,
+				"unpackedSize": 5336642,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDBeK7xK2pGwzsSc6kbRt5rGH63lcZad/WqkjvPJ5J2uQIgUFoe56fP4IrMUh0JP5F84pAKOxDqe2uuFIyUMhyxWD8="
+						"sig": "MEQCIDV1D667OYfmVhwNVaBUT7l1EPaIBB7fB/gLAmyhhKtNAiAjS9l86zFf75/VSKjzXFxamSYrxZ6hsBIJoDffXXxrkw=="
 					}
 				]
 			},
