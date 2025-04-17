@@ -12,7 +12,7 @@
 <p>You’ll be responsible for owning the <strong>end-to-end marketing plan</strong> for your territory—everything from field events and ABM programs to partner collaborations and executive engagements. You’ll work cross-functionally to bring campaigns to life and ensure our brand and message resonates deeply with enterprise customers across the region.</p>
 <p><strong>What You’ll Do:</strong></p>
 <ul>
-	<li><strong>Develop and execute</strong> a comprehensive regional marketing strategy that supports pipeline goals for the Central Enterprise sales team.</li>
+	<li><strong>Develop and execute</strong> a comprehensive regional marketing strategy that supports pipeline goals for the Northeast Enterprise sales team.</li>
 	<li><strong>Plan and manage</strong> a mix of hosted and 3rd party events: CxO dinners, customer panels, webinars, roundtables, executive briefings, and more.</li>
 	<li><strong>Own and operationalize</strong> integrated Account-Based Marketing (ABM) programs tailored to key enterprise accounts.</li>
 	<li><strong>Partner cross-functionally </strong>with Sales, BDRs, Partner Marketing, Product Marketing, Ops, and Creative teams to build impactful, multi-touch programs.</li>
