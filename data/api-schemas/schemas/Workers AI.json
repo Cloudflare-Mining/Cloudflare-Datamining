@@ -760,7 +760,7 @@
 											"frequency_penalty": {
 												"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
 												"maximum": 2,
-												"minimum": 0,
+												"minimum": -2,
 												"type": "number"
 											},
 											"lora": {
@@ -775,7 +775,7 @@
 											"presence_penalty": {
 												"description": "Increases the likelihood of the model introducing new topics.",
 												"maximum": 2,
-												"minimum": 0,
+												"minimum": -2,
 												"type": "number"
 											},
 											"prompt": {
@@ -834,8 +834,8 @@
 											},
 											"top_p": {
 												"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
-												"maximum": 2,
-												"minimum": 0,
+												"maximum": 1,
+												"minimum": 0.001,
 												"type": "number"
 											}
 										},
@@ -849,7 +849,7 @@
 											"frequency_penalty": {
 												"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
 												"maximum": 2,
-												"minimum": 0,
+												"minimum": -2,
 												"type": "number"
 											},
 											"functions": {
@@ -899,7 +899,7 @@
 											"presence_penalty": {
 												"description": "Increases the likelihood of the model introducing new topics.",
 												"maximum": 2,
-												"minimum": 0,
+												"minimum": -2,
 												"type": "number"
 											},
 											"raw": {
@@ -1094,8 +1094,8 @@
 											},
 											"top_p": {
 												"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
-												"maximum": 2,
-												"minimum": 0,
+												"maximum": 1,
+												"minimum": 0.001,
 												"type": "number"
 											}
 										},
