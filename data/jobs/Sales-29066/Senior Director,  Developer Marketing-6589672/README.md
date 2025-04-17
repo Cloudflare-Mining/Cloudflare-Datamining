@@ -33,6 +33,9 @@
 	<li><strong>Technical fluency</strong>—you understand modern software development practices and can speak credibly with engineers.</li>
 	<li><strong>Excellent storytelling and positioning skills</strong>, with the ability to refine messaging for different developer segments.</li>
 </ul>
+<p><strong>Compensation</strong>:</p>
+<p>Compensation may be adjusted depending on work location.&nbsp;</p>
+<p>For New York City, Washington, DC Metro and California based (excluding Bay Area): Estimated annual salary of $260,000 - $318,000<br>For San Francisco Bay Area based hires: Estimated annual salary of $299,000 - $365,000&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
