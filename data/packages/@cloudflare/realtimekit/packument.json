@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit",
 	"dist-tags": {
 		"latest": "0.0.2",
-		"staging": "0.5.0-staging.62"
+		"staging": "0.5.0-staging.65"
 	},
 	"versions": {
 		"0.0.0": {
@@ -485,6 +485,81 @@
 			"name": "@cloudflare/realtimekit",
 			"version": "0.5.0-staging.62",
 			"dependencies": {
+				"uuid": "^8.3.2",
+				"bowser": "^2.11.0",
+				"sdp-transform": "^2.14.1",
+				"worker-timers": "7.0.60",
+				"@protobuf-ts/runtime": "^2.7.0"
+			},
+			"devDependencies": {},
+			"dist": {
+				"shasum": "d81af8dc3bdcbd47d989d64789ac1abc42368282",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-0.5.0-staging.62.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-3GsIukUZ1Ls3TkV892BGsvYi1178cqJ8qifIIi6An/nMv572IGDORb8+00YsSrk5KPvnZ/CCpCKiWORUsh1jpw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCguqSpvlGpAR6Q8hbn0FHm2+Eoo/XREh5f4aTvhH3m+wIhAJM3q0nZxuRRNIHpCsRtXiu/e21VfKaArZoJxGdLHTGi",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 4876423
+			}
+		},
+		"0.5.0-staging.63": {
+			"name": "@cloudflare/realtimekit",
+			"version": "0.5.0-staging.63",
+			"dependencies": {
+				"uuid": "^8.3.2",
+				"bowser": "^2.11.0",
+				"sdp-transform": "^2.14.1",
+				"worker-timers": "7.0.60",
+				"@protobuf-ts/runtime": "^2.7.0"
+			},
+			"devDependencies": {},
+			"dist": {
+				"shasum": "6b04b284cafeda0d54e65cb540f9c888cb6bff56",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-0.5.0-staging.63.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-h9GCd6YdTtM8y5x9beH57qCOi8SJYyamYT4CkAa/OmkU2JT+4dgRRYhO5v+XbSqbiwKX6AW39RjA+ZJ36jjbJg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC1gGINZRWb14JOtD56m4tpI19nrcHXo5UdDIue/F+cxwIgI2Ott5g4zCyWWnUE1UE8MzI/ZkKKHZb8rF1805Dr6i8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 4876427
+			}
+		},
+		"0.5.0-staging.64": {
+			"name": "@cloudflare/realtimekit",
+			"version": "0.5.0-staging.64",
+			"dependencies": {
+				"uuid": "^8.3.2",
+				"bowser": "^2.11.0",
+				"sdp-transform": "^2.14.1",
+				"worker-timers": "7.0.60",
+				"@protobuf-ts/runtime": "^2.7.0"
+			},
+			"devDependencies": {},
+			"dist": {
+				"shasum": "d33e4871436083af3556a83bff5ba22aa8fc321b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-0.5.0-staging.64.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-v/9HftM5RMEGTYrjLOiA5E6vriegU/rYPShLBRBhkskDpMwbPdUrnH3A58nRJW7eDCbFMkGc4LUqt8m4FcCmmQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCEhiFziHYVWndGwuuNezN/2sC4q98AQnPGElj2PXyM3QIgTySvAfXOgV11YEusjF09OFBWHrl9FdjBzU7w0TySFBY=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 4876427
+			}
+		},
+		"0.5.0-staging.65": {
+			"name": "@cloudflare/realtimekit",
+			"version": "0.5.0-staging.65",
+			"dependencies": {
 				"@protobuf-ts/runtime": "^2.7.0",
 				"bowser": "^2.11.0",
 				"sdp-transform": "^2.14.1",
@@ -493,15 +568,15 @@
 			},
 			"devDependencies": {},
 			"dist": {
-				"integrity": "sha512-3GsIukUZ1Ls3TkV892BGsvYi1178cqJ8qifIIi6An/nMv572IGDORb8+00YsSrk5KPvnZ/CCpCKiWORUsh1jpw==",
-				"shasum": "d81af8dc3bdcbd47d989d64789ac1abc42368282",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-0.5.0-staging.62.tgz",
+				"integrity": "sha512-G3SIuqMulSk8gnT6TivpLCxL7bMFd+Yml24P/vKjuQ2eNJIpnONcNBB2mw7Jhmk7BB4tYg6g1yL5j0vmklJxOg==",
+				"shasum": "15f954168dcb1df259956746a50d6822846fad84",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-0.5.0-staging.65.tgz",
 				"fileCount": 19,
-				"unpackedSize": 4876423,
+				"unpackedSize": 4875725,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCguqSpvlGpAR6Q8hbn0FHm2+Eoo/XREh5f4aTvhH3m+wIhAJM3q0nZxuRRNIHpCsRtXiu/e21VfKaArZoJxGdLHTGi"
+						"sig": "MEQCIHu/qqyUcqZSRwsmV8WSo0g9Hgp/NaUt8VZBBFmhbTHzAiB8YDfvOZ2/EafY+eRyNX+VLmvqvMs6x0x7aNuyoNJqSw=="
 					}
 				]
 			}
