@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon or London</strong></p>
+<p><strong>Available Locations: Lisbon&nbsp;</strong></p>
 <h4><strong>About the department</strong></h4>
 <p>The Self-Serve Team is responsible for Cloudflare’s PLG business that serves 8M+ customers across 20% of the internet. Our team is responsible for growth marketing, product growth, and growth insights with the goal of building a world class experience for our self-serve customers across all product categories including Application Services, Cloudflare One and Developer Platform, and all Plans such as Free, Pro, Business &amp; Enterprise. We work to grow the business by understanding our customers’ needs at every stage of their journey from Awareness to Activation to Expansion and Retention.&nbsp;</p>
 <p>You may have heard of the cliche that teams call themselves a “startup within a startup”. Except that the self-serve engineering team is fairly young at Cloudflare with established ROI. You will be the founding data engineer for the team.</p>
