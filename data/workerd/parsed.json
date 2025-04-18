@@ -2219,31 +2219,6 @@
 			]
 		},
 		{
-			"name": "workerd/src/workerd/io/compatibility-date.capnp:PythonSnapshotRelease",
-			"fields": [
-				{
-					"name": "pyodide",
-					"annotations": {}
-				},
-				{
-					"name": "pyodideRevision",
-					"annotations": {}
-				},
-				{
-					"name": "packages",
-					"annotations": {}
-				},
-				{
-					"name": "backport",
-					"annotations": {}
-				},
-				{
-					"name": "baselineSnapshotHash",
-					"annotations": {}
-				}
-			]
-		},
-		{
 			"name": "workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags",
 			"fields": [
 				{
@@ -2577,7 +2552,7 @@
 					"annotations": {
 						"compatEnableFlag": "python_workers",
 						"impliedByAfterDate": "unhandled type",
-						"pythonSnapshotRelease": "unhandled type"
+						"pythonSnapshotRelease": "true"
 					}
 				},
 				{
@@ -2695,7 +2670,7 @@
 					"annotations": {
 						"compatEnableFlag": "python_workers_development",
 						"experimental": "true",
-						"pythonSnapshotRelease": "unhandled type"
+						"pythonSnapshotRelease": "true"
 					}
 				},
 				{
@@ -2792,7 +2767,7 @@
 					"annotations": {
 						"compatEnableFlag": "python_workers_20250116",
 						"experimental": "true",
-						"pythonSnapshotRelease": "unhandled type"
+						"pythonSnapshotRelease": "true"
 					}
 				},
 				{
