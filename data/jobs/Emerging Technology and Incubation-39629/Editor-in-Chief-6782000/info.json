@@ -33,13 +33,15 @@
 			"name": "Job Posting Location",
 			"value": [
 				"Austin, US",
-				"Lisbon, Portugal"
+				"Lisbon, Portugal",
+				"New York, US",
+				"San Francisco, US"
 			],
 			"value_type": "multi_select"
 		}
 	],
 	"id": 6782000,
-	"updated_at": "2025-04-14T11:11:40-04:00",
+	"updated_at": "2025-04-18T09:07:44-04:00",
 	"requisition_id": "582",
 	"title": "Editor-in-Chief",
 	"company_name": "Cloudflare",
@@ -57,6 +59,20 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		},
