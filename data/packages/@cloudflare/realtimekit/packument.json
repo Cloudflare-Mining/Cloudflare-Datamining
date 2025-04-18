@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit",
 	"dist-tags": {
 		"latest": "0.0.2",
-		"staging": "0.5.0-staging.69"
+		"staging": "0.5.0-staging.72"
 	},
 	"versions": {
 		"0.0.0": {
@@ -660,6 +660,81 @@
 			"name": "@cloudflare/realtimekit",
 			"version": "0.5.0-staging.69",
 			"dependencies": {
+				"uuid": "^8.3.2",
+				"bowser": "^2.11.0",
+				"sdp-transform": "^2.14.1",
+				"worker-timers": "7.0.60",
+				"@protobuf-ts/runtime": "^2.7.0"
+			},
+			"devDependencies": {},
+			"dist": {
+				"shasum": "d13a5a2c3a48ec8ec810b24e0c6c2cd354fe36b9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-0.5.0-staging.69.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-qK95UsteRJu27d7x3tyeHulwn2IVxjuobdvBOX/OXJMOGxC1GQ4pHe7nyczTPRjZTTLsbM/7cbQAuuRz5C5+VQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCPfUHWwJOE+ejzgBk0YxVl6D3h77bXi6viEkeaas2LFwIhAMv9becZudBevW/6tGjwpzTogOqigYVlivZtrZecZ2Vq",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 4875784
+			}
+		},
+		"0.5.0-staging.70": {
+			"name": "@cloudflare/realtimekit",
+			"version": "0.5.0-staging.70",
+			"dependencies": {
+				"uuid": "^8.3.2",
+				"bowser": "^2.11.0",
+				"sdp-transform": "^2.14.1",
+				"worker-timers": "7.0.60",
+				"@protobuf-ts/runtime": "^2.7.0"
+			},
+			"devDependencies": {},
+			"dist": {
+				"shasum": "92da15511352898ce5d70a254e91ff6cab359571",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-0.5.0-staging.70.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-4yWjuyn1DJbIUBV8greLPPRtJO+XFiAXPa+b4S0JxyJ5a/DHrYkItbjI0Z/x0XzxvY16zYkCHwidFh/dWpXPHA==",
+				"signatures": [
+					{
+						"sig": "MEUCIDc1IscJQlCCZO3Lj7pYCA+prG0Nd8wXr4fXUZFg3fi2AiEAzVDsnDci3oOgADn71NyaEtso4VZtvkIY8HP44kGGpac=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 4875784
+			}
+		},
+		"0.5.0-staging.71": {
+			"name": "@cloudflare/realtimekit",
+			"version": "0.5.0-staging.71",
+			"dependencies": {
+				"uuid": "^8.3.2",
+				"bowser": "^2.11.0",
+				"sdp-transform": "^2.14.1",
+				"worker-timers": "7.0.60",
+				"@protobuf-ts/runtime": "^2.7.0"
+			},
+			"devDependencies": {},
+			"dist": {
+				"shasum": "0f10833d16021ca2b85c762a3e8ba54c09f729fd",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-0.5.0-staging.71.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-DUDWgjiDTnOpsnONIvfaEbcn5qp+6SyzrUxeIzg9u62s0KAZHBcPXowzBqs4LlBX5HuviwOxsvDgBWHb5wxlMQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIGQrQL56U5pEhJvnfFLqvCLE9H8pJ3GojPt/tNJunyu3AiBhOWQSA4JNJLOdha8oxbqNwCnnhCqRYjCCqXljU+PCoQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 4875784
+			}
+		},
+		"0.5.0-staging.72": {
+			"name": "@cloudflare/realtimekit",
+			"version": "0.5.0-staging.72",
+			"dependencies": {
 				"@protobuf-ts/runtime": "^2.7.0",
 				"bowser": "^2.11.0",
 				"sdp-transform": "^2.14.1",
@@ -668,15 +743,15 @@
 			},
 			"devDependencies": {},
 			"dist": {
-				"integrity": "sha512-qK95UsteRJu27d7x3tyeHulwn2IVxjuobdvBOX/OXJMOGxC1GQ4pHe7nyczTPRjZTTLsbM/7cbQAuuRz5C5+VQ==",
-				"shasum": "d13a5a2c3a48ec8ec810b24e0c6c2cd354fe36b9",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-0.5.0-staging.69.tgz",
+				"integrity": "sha512-hJXDWkK5TmKjMh6ZeeBROPT/N8xpfxyizKQ3I2IDdT3WZofjjlnFyZC93B/zU/MPixPTkxG9H/K+EmF9SHbb/g==",
+				"shasum": "bb142a309fbc713835b865a72ea123735b89ffad",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-0.5.0-staging.72.tgz",
 				"fileCount": 19,
-				"unpackedSize": 4875784,
+				"unpackedSize": 4879400,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCPfUHWwJOE+ejzgBk0YxVl6D3h77bXi6viEkeaas2LFwIhAMv9becZudBevW/6tGjwpzTogOqigYVlivZtrZecZ2Vq"
+						"sig": "MEQCH0WPRaRROQ/hfUMLyAbaebvtdLb4UB3fGhAX7x//NKACIQDuRwQxYHr9Q+OmP9gEm8Ubbs9gorvOIxBuhgAo4M0Bbg=="
 					}
 				]
 			}
