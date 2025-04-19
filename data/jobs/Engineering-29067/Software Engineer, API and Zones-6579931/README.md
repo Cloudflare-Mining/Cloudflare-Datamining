@@ -5,48 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Hybrid - Atlanta, Austin, New York, Washington DC, Toronto, Lisbon, London</p>
-<h4>About the Role</h4>
-<p>Cloudflare runs one of the largest networks in the world, and the telemetry we gather from that network is broad in variety and deep in cardinality. We're looking for a Product Manager who can help build an Analytics experience that enables customers to achieve unparalleled visibility into their users, applications, and networks.&nbsp;</p>
-<p>The Analytics PM will be responsible for building a set of analytics, logging, and reporting features that allow Cloudflare customers to quickly and intuitively answer questions about their Cloudflare One deployments. You will partner closely with many stakeholders across Cloudflare One to understand their product’s unique needs and create a consistent data-driven throughline. You will own creating Cloudflare One’s visibility story transforming this into a differentiator within the rapidly developing SASE landscape. You'll work with engineering and design providing clear requirements to create outcome-based dashboard experience that provides an authoritative perspective on the data that matters while also being extensible to any question a customer may have.&nbsp;&nbsp;</p>
-<p>As a member of a growing team of analytics and monitoring product managers your responsibilities include:</p>
+<p><strong>Available Locations: </strong>Hybrid - Austin, TX | Lisbon, Portugal</p>
+<h4><strong>What you'll do</strong></h4>
+<p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
+<p>Cloudflare is looking for a backend engineer on our control plan product platform to help us build our customer APIs and our internal service APIs. This is a role for engineers that are familiar with standard backend backend architecture, and capable in database design and interaction. Our API platform is under constant load and scrutiny, so experience and commitment to easily understood and test code is also a key part of the role. Your ability to visualize the flow of data through a complex application is critical to your success, and to the team’s. You will be working closely with the product team to understand and document the functional needs of their product requirements, developing new code to solve new problems, as well as maintaining existing code to squash bugs. Our tech stack includes services built using Go, Redis, Postgres, and Cloudflare products (e.g. Workers). We are looking for proficiency in RESTful API design, relational databases (SQL), and modern containerized deployment practices.&nbsp;</p>
+<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
 <ul>
-	<li>Represent the customer, be it internal or external. Be the champion and voice of customers. Build intimate, personal customer relationships. Bring the customer's voice into the creation process.</li>
-	<li>Develop the platform vision for your area. Ensure that your vision can work not just for your current set of customers, but for 10 or even 100 times your current set.</li>
-	<li>Evangelize the vision so that all stakeholders are aligned, have context and understand where we are going.</li>
-	<li>Measure success. Own the measures used to define success for your product. Success measures must be defined at the inception of a product and tracked throughout its lifecycle. Make measures visible to all stakeholders and interpret them into actionable conclusions and new hypotheses.</li>
-	<li>Manage the roadmap. Make tough tactical prioritization decisions while helping the company think long-term. Build trust with stakeholders by maintaining an understandable, accurate roadmap.</li>
-	<li>Author use cases and prioritize requirements. Translate observations and customer feedback into a prioritized product backlog. Author use cases based on specific real-world product applications and extrapolate detailed product requirements for the scenarios.</li>
-	<li>Collaborate across teams. We win or lose as a team. Product managers play a critical role in creating alignment between engineering teams and stakeholders. A collaborative attitude is essential to the job.</li>
+	<li>3-5 years of professional experience building and managing software applications at large scale.</li>
+	<li>Deep knowledge of at least one modern programming language such as Go, Rust, JavaScript, PHP with strong computer science fundamentals.</li>
+	<li>Experience in designing and architecting large-scale distributed systems.</li>
+	<li>Passion for Observability (experience with Prometheus, Grafana, and Kibana are a plus, but not required).</li>
+	<li>Experience designing, implementing, and documenting customer-facing APIs are a huge plus.</li>
+	<li>Solid knowledge of SQL and common relational database systems such as PostgreSQL.</li>
+	<li>Experience debugging, optimizing and identifying possible failures in a large-scale distributed system.</li>
+	<li>Some understanding of the Cloudflare developers platform (Workers, Durable Objects, Queues, etc).</li>
+	<li>Experience with containers (Docker &amp; Kubernetes)&nbsp;</li>
 </ul>
-<h4>Examples of desirable skills, knowledge and experience:</h4>
-<p>The ideal candidate is customer-focused, data-driven, methodical and thrives in a goal-oriented and data-driven environment. You have a deep technical understanding of the analytics and monitoring space and outstanding communication and collaboration skills. You are able to work with a diverse group, get consensus, and drive the product forward. You are execution focused, you emphasize getting things done while paying attention to important details. You have a passion for building frameworks that scale massively and make it easy for all teams to get the most out of data as you.</p>
-<ul>
-	<li>Domain expertise in the analytics, monitoring, or observability. You have been there, done that as either an architecture or product owner for analytics or very closely related technology space</li>
-	<li>Distributed systems experience that allows you to drive the scaling strategy for analytics as our scale grows both on volume and number of internal customers supporting.</li>
-	<li>Experience presenting new products and features to customers - whether as a developer, analyst or product manager. You are enthusiastic about taking something you have helped build and sharing it with the world</li>
-	<li>Strong customer and stakeholder empathy. You must be the voice of engineering, customers, support, or ops at any given time. You must be able to channel many points of view into a strategic roadmap and deliverables that provide elegant solutions to all requirements.</li>
-	<li>Exceptional communication, presentation, organizational and analytical skills</li>
-	<li>Demonstrated ability to lead, drive consensus and deliver in a matrixed organization with multiple stakeholders</li>
-	<li>Ability to communicate complex technical concepts to all audiences</li>
-	<li>Experience working with large and complex data sets (SQL, Postgres, Prometheus, etc.). You are skilled at proving points with data and can quickly show others how to do so.</li>
-</ul>
-<h4><strong>Bonus Points if you also have:&nbsp;</strong></h4>
-<ul>
-	<li>BS/MS in a technology- or business-related field</li>
-	<li>Hands-on experience with command-line tools used for interacting with APIs, debugging and testing (e.g. curl, dig, etc.)</li>
-	<li>Scripting/programming experience (Python, Go, etc.) and/or experience with web frameworks</li>
-	<li>Working knowledge of how the Internet works at network layers 3 through 7</li>
-	<li>A solid understanding of API design &amp; documentation</li>
-	<li>An eye for design to translate users needs into intuitive designs</li>
-</ul>
-<p><strong>Compensation</strong></p>
+<h4><strong>Compensation</strong></h4>
 <p>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong></p>
+<h4><strong>Equity</strong></h4>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h4><strong>Benefits</strong></h4>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h4><strong>Health &amp; Welfare Benefits</strong></h4>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -57,14 +38,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h4><strong>Financial Benefits</strong></h4>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h4><strong>Time Off</strong></h4>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
