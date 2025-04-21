@@ -129,23 +129,8 @@
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"type": "string"
-												},
-												"pattern": {
-													"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
-													"example": "example.com/*",
-													"type": "string"
-												},
-												"script": {
-													"description": "Name of the script to run if the route matches.",
-													"example": "my-workers-script",
-													"type": "string"
 												}
 											},
-											"required": [
-												"id",
-												"pattern",
-												"script"
-											],
 											"type": "object"
 										}
 									}
