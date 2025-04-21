@@ -1814,54 +1814,61 @@
 													},
 													"type": "array"
 												},
-												"rpki": {
+												"data_time": {
+													"description": "The most recent data timestamp for from the real-time sources.",
+													"type": "string"
+												},
+												"prefix_origins": {
 													"items": {
 														"properties": {
 															"origin": {
 																"description": "Origin ASN.",
 																"type": "integer"
 															},
-															"rpki_validation": {
-																"description": "Validation status: valid, invalid, or unknown.",
+															"prefix": {
+																"description": "IP prefix of this query.",
 																"type": "string"
+															},
+															"rpki_validation": {
+																"description": "Prefix-origin RPKI validation: valid, invalid, unknown.",
+																"type": "string"
+															},
+															"total_peers": {
+																"description": "Total number of peers.",
+																"type": "integer"
+															},
+															"total_visible": {
+																"description": "Total number of peers seeing this prefix.",
+																"type": "integer"
+															},
+															"visibility": {
+																"description": "Ratio of peers seeing this prefix to total number of peers.",
+																"type": "number"
 															}
 														},
 														"required": [
 															"origin",
-															"rpki_validation"
+															"prefix",
+															"rpki_validation",
+															"total_peers",
+															"total_visible",
+															"visibility"
 														],
 														"type": "object"
 													},
 													"type": "array"
 												},
-												"visibility": {
-													"properties": {
-														"total_peers": {
-															"description": "Total number of peers.",
-															"type": "integer"
-														},
-														"total_visible": {
-															"description": "Total number of peers seeing this prefix.",
-															"type": "integer"
-														},
-														"visibility": {
-															"description": "Ratio of peers seeing this prefix to total number of peers.",
-															"type": "number"
-														}
-													},
-													"required": [
-														"total_peers",
-														"total_visible",
-														"visibility"
-													],
-													"type": "object"
+												"query_time": {
+													"description": "The timestamp of this query.",
+													"type": "string"
 												}
 											},
 											"required": [
 												"collectors",
 												"asn_info",
-												"rpki",
-												"visibility"
+												"prefix_origins",
+												"data_time",
+												"query_time"
 											],
 											"type": "object"
 										},

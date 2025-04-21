@@ -309,7 +309,8 @@
 						"properties": {
 							"datasetId": {
 								"example": 3,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							}
 						},
 						"required": [
