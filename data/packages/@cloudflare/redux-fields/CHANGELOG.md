@@ -1,6 +1,6 @@
 # Change Log
 
-## 2.5.5
+## 2.5.6
 
 ### Patch Changes
 

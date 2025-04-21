@@ -1,13 +1,19 @@
 # Change Log
 
-## 1.12.9
+## 1.13.0
+
+### Minor Changes
+
+- a2ee71c37de: dash: BILLACCT-635: Replace React.FC with explicit children
+- 667c4f19bd1: Updates prop types
 
 ### Patch Changes
 
 - 0a304bd113c: update publish configs to not manually set registry, set appropriate targets
+- Updated dependencies [c6a81a7cc2f]
 - Updated dependencies [0a304bd113c]
-  - @cloudflare/intl-core@1.14.6
-  - @cloudflare/types@6.29.1
+  - @cloudflare/types@7.0.0
+  - @cloudflare/intl-core@1.14.7
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.

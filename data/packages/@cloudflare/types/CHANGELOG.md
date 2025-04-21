@@ -1,12 +1,16 @@
 # Change Log
 
-## 6.29.1
+## 7.0.0
+
+### Major Changes
+
+- c6a81a7cc2f: Added new FreeTrialStatus in subscriptions
 
 ### Patch Changes
 
 - 0a304bd113c: update publish configs to not manually set registry, set appropriate targets
 - Updated dependencies [0a304bd113c]
-  - @cloudflare/intl-types@1.5.6
+  - @cloudflare/intl-types@1.5.7
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.

@@ -1,12 +1,12 @@
 # Change Log
 
-## 1.14.6
+## 1.14.7
 
 ### Patch Changes
 
 - 0a304bd113c: update publish configs to not manually set registry, set appropriate targets
 - Updated dependencies [0a304bd113c]
-  - @cloudflare/intl-types@1.5.6
+  - @cloudflare/intl-types@1.5.7
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.

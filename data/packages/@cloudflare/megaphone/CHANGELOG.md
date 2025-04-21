@@ -1,12 +1,12 @@
 # Change Log
 
-## 0.3.3
+## 0.3.4
 
 ### Patch Changes
 
 - 0a304bd113c: update publish configs to not manually set registry, set appropriate targets
 - Updated dependencies [0a304bd113c]
-  - @cloudflare/cli-helpers@2.3.3
+  - @cloudflare/cli-helpers@2.3.4
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
