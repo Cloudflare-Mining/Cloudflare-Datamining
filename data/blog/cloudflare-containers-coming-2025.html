@@ -196,7 +196,8 @@ class MyContainer extends DurableObject {
     super(ctx, env)
     this.ctx.blockConcurrencyWhile(async () =&gt; {
       this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS state (value TEXT)');
-      this.ctx.storage.sql.exec('INSERT INTO state (value) SELECT '' WHERE NOT EXISTS (SELECT * FROM state)');
+      this.ctx.storage.sql.exec("INSERT INTO state (value) SELECT '' WHERE NOT EXISTS 
+(SELECT * FROM state)");
       await startAndWaitForPort(this.ctx.container, 8080);
       await this.setupContainer();
       this.ctx.container.monitor().then(this.onContainerExit); 
