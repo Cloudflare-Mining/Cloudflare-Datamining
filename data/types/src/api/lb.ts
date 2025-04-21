@@ -3,6 +3,7 @@ import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
 //
 export const Origin = eg.object({
   address: eg.any.optional,
+  port: eg.number.optional,
   name: eg.string.optional,
   disabled_at: eg.string.optional,
   virtual_network_id: eg.string.optional,
@@ -48,6 +49,7 @@ export type LoadBalancerMonitor = TypeFromCodec<typeof LoadBalancerMonitor>;
 export const LoadBalancerPool = eg.object({
   id: eg.string,
   name: eg.string,
+  description: eg.string.optional,
   healthy: eg.boolean,
   monitor: eg.union([LoadBalancerMonitor, eg.null]).optional,
   origins: eg.array(Origin).optional,
@@ -153,6 +155,7 @@ export const LoadBalancer = eg.object({
   modified_on: eg.string.optional,
   pop_pools: eg.any.optional,
   region_pools: eg.object({
+    CHINA: eg.array(LoadBalancerPool).optional,
     EEU: eg.array(LoadBalancerPool).optional,
     ENAM: eg.array(LoadBalancerPool).optional,
     ME: eg.array(LoadBalancerPool).optional,
@@ -205,7 +208,10 @@ export const LoadBalancer = eg.object({
   }).optional,
   ttl: eg.number.optional,
   check_regions: eg.array(eg.string).optional,
-  adaptive_routing: eg.object({ failover_across_pools: eg.boolean })
+  adaptive_routing: eg.object({ failover_across_pools: eg.boolean }),
+  tunnel_id: eg.string.optional,
+  zone_tag: eg.string.optional,
+  zone_name: eg.string.optional
 });
 
 export type LoadBalancer = TypeFromCodec<typeof LoadBalancer>;

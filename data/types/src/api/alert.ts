@@ -91,6 +91,7 @@ export const AlertPolicy = eg.object({
   pager_duty: eg.array(eg.string).optional,
   webhooks: eg.array(eg.string).optional,
   alert_type: eg.string,
+  alert_interval: eg.string.optional,
   conditions: ConditionFilter.optional,
   filters: eg.record(eg.string, eg.union([eg.array(eg.string), eg.null]))
     .optional
@@ -113,6 +114,9 @@ const AlertMechanismMap = eg.record(
 );
 type AlertMechanismMap = TypeFromCodec<typeof AlertMechanismMap>;
 
+export interface AlertSuccessResult {
+  id: string;
+}
 export const AlertPolicyAPIV2 = eg.object({
   id: eg.string.optional, // UUID, nullable for creating new API's
   name: eg.string,
@@ -122,7 +126,8 @@ export const AlertPolicyAPIV2 = eg.object({
   mechanisms: AlertMechanismMap,
   filters: eg.record(eg.string, eg.union([eg.array(eg.string), eg.null]))
     .optional,
-  alert_type: eg.string
+  alert_type: eg.string,
+  alert_interval: eg.string.optional
 });
 
 export type AlertPolicyAPIV2 = TypeFromCodec<typeof AlertPolicyAPIV2>;

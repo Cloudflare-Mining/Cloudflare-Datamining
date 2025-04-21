@@ -21,4 +21,4 @@ export type OverrideRule = RequiredKeys<
 export type RulesetOverride = Overwrite<
   AccountEntrypointType<RulesetPhase, OverrideRule>,
   { rules: OverrideRule[]; enabled?: boolean }
->;
+> & { hasMigratedRules?: boolean };

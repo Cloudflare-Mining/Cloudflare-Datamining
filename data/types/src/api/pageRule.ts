@@ -211,7 +211,7 @@ export type PageRulesQuota = TypeFromCodec<typeof PageRulesQuota>;
 export const SnippetRuleProps = eg.object({
   snippet_name: eg.string,
   expression: eg.string,
-  description: eg.string,
+  description: eg.string.optional,
   enabled: eg.boolean
 });
 
@@ -220,7 +220,6 @@ export const SnippetTypeProps = eg.object({
   snippet_name: eg.string,
   created_on: eg.string.optional,
   modified_on: eg.string.optional,
-  script: eg.string.optional,
   rules: eg.array(SnippetRuleProps)
 });
 

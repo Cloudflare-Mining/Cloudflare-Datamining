@@ -20,3 +20,20 @@ export const Notification = eg.object({
 });
 
 export type Notification = TypeFromCodec<typeof Notification>;
+
+export const LoginBanner = eg.object({
+  id: eg.string,
+  header: eg.string,
+  description: eg.string,
+  ctaText: eg.string,
+  ctaLink: eg.string,
+  darkBackgroundImageUrl: eg.string.optional,
+  lightBackgroundImageUrl: eg.string,
+  displayGraphicsUrl: eg.string.optional,
+  visible: eg.boolean,
+  weight: eg.string.optional,
+  createdAt: eg.number,
+  updatedAt: eg.number,
+  entryID: eg.string.optional
+});
+export type LoginBanner = TypeFromCodec<typeof LoginBanner>;

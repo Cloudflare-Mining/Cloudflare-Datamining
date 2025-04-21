@@ -21,6 +21,7 @@ export enum RulesetPhase {
   HttpRequestRedirect = 'http_request_redirect',
   HttpRequestSanitize = 'http_request_sanitize',
   HttpRequestSBFM = 'http_request_sbfm',
+  HttpRequestsSnippets = 'http_request_snippets',
   HttpRequestTransform = 'http_request_transform',
   HttpResponseCompression = 'http_response_compression',
   HttpResponseFirewallManaged = 'http_response_firewall_managed',
@@ -30,7 +31,7 @@ export enum RulesetPhase {
   MagicIDS = 'magic_transit_ids_managed',
   MagicManaged = 'magic_transit_managed',
   MagicTransit = 'magic_transit',
-  MagicTransitRateLimit = 'magic_transit_rate_limit'
+  MagicTransitRateLimit = 'magic_transit_ratelimit'
 }
 export enum Actions {
   Execute = 'execute',
@@ -49,7 +50,8 @@ export enum Actions {
   Select_Config = 'select_config',
   Set_Config = 'set_config',
   Reset = 'reset',
-  Redirect = 'redirect'
+  Redirect = 'redirect',
+  Cache = 'set_cache_settings'
 }
 
 export enum BypassProducts {

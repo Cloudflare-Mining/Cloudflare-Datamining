@@ -26,7 +26,7 @@ export type ManagedSkipRule = RuleBase<ActionParameterSkip> & {
 
 export type ManagedSkipRuleset =
   RulesetBase<RulesetPhase.HttpRequestFirewallManaged> & {
-    rules?: ManagedSkipRule[];
+    rules?: (ManagedSkipRule | ManagedExecuteRule)[];
   };
 
 export type ManagedRuleset = ManagedExecuteRuleset | ManagedSkipRuleset;

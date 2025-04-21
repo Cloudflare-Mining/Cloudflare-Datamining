@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 export * from './enumerable';
 
 // (A - keys of B)
@@ -283,3 +284,12 @@ export const assertNever = (x: never, returnValue?: any): never => {
     return returnValue as never;
   }
 };
+
+/**
+ * Returns keys in a type T whose values matching type V.
+ *
+ * e.g. KeysOfType<{ foo: string; bar: number; baz: string }, string> -> "foo" | "baz"
+ */
+export type KeysOfType<T, V> = {
+  [K in keyof T]-?: T[K] extends V ? K : never;
+}[keyof T];

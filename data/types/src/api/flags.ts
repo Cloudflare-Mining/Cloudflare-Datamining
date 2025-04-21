@@ -14,8 +14,7 @@ export const AccountFlags = eg.object({
   billing: eg.object({
     no_cf_free_zero_cost: eg.boolean.optional,
     ui_refresh: eg.boolean.optional,
-    'invoices-view-disallowed': eg.boolean.optional,
-    'email-pref-disallowed': eg.boolean.optional
+    'invoices-view-disallowed': eg.boolean.optional
   }).optional,
   bots: eg.object({
     enabled: eg.boolean.optional

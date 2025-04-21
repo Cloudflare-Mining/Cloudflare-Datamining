@@ -5,6 +5,7 @@ import { AccountEntrypointType, RuleBase, RulesetBase } from './utils';
 export type MagicTransitRules = RuleBase<Omit<ActionParameterSkip, 'rules'>> & {
   logging: { enabled: boolean };
   id: string;
+  ip_type: 'ipv4' | 'ipv6';
 };
 
 export type MagicTransitRuleset = RulesetBase<

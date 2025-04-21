@@ -3,7 +3,9 @@ import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
 export const PlanId = eg.union([
   eg.literal('free'),
   eg.literal('pro'),
+  eg.literal('pro_trial'),
   eg.literal('business'),
+  eg.literal('business_trial'),
   eg.literal('enterprise'),
   eg.literal('enterprise_trial'),
   eg.literal('lite'),
@@ -89,6 +91,8 @@ export const ProductPlanId = eg.union([
   eg.literal('CALLS_PAID'),
   eg.literal('calls_ent'),
   eg.literal('CALLS_ENT'),
+  eg.literal('load_balancing_ent'),
+  eg.literal('LOAD_BALANCING_ENT'),
   eg.literal('load_balancing_basic'),
   eg.literal('LOAD_BALANCING_BASIC'),
   eg.literal('load_balancing_basic_plus'),

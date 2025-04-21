@@ -33,6 +33,7 @@ export type GenericRuleset =
   | ManagedRuleset
   | AccountMagicIdsRuleset
   | MagicTransitRuleset
+  | MagicTransitRateLimitRuleset
   | MagicManagedRuleset
   | DDoSl4Ruleset
   | AccountRedirectRuleset;
@@ -98,7 +99,10 @@ export type AccountRulesetsEntrypointByPhase = {
   [RulesetPhase.MagicIDS]: AccountEntrypointType<RulesetPhase.MagicIDS>;
 };
 
-export type GenericRule = ElementType<GenericRuleset['rules']>;
+export type GenericRule = ElementType<GenericRuleset['rules']> & {
+  enabled: boolean;
+  label?: string;
+};
 
 export type WafRulesets = CustomRuleset | RateLimitRuleset | ManagedRuleset;
 export type WafRule = ElementType<WafRulesets['rules']>;

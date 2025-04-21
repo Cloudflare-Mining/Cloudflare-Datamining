@@ -14,7 +14,8 @@ export const DNSRecordMeta = eg.object({
   read_only: eg.boolean.optional,
   shopify: eg.boolean.optional,
   origin_worker_id: eg.string.optional,
-  r2_bucket: eg.string.optional
+  r2_bucket: eg.string.optional,
+  cooperation_cloud: eg.string.optional
 });
 
 export type DNSRecordMeta = TypeFromCodec<typeof DNSRecordMeta>;
@@ -56,7 +57,10 @@ export const DNSRecord = eg.object({
   zone_id: Zone.props.id.optional,
   zone_name: Zone.props.name.optional,
   comment: eg.union([eg.string.optional, eg.null]).optional,
-  tags: eg.array(eg.string).optional
+  tags: eg.array(eg.string).optional,
+  settings: eg.object({
+    flatten_cname: eg.boolean.optional
+  }).optional
 });
 
 export type DNSRecord = TypeFromCodec<typeof DNSRecord>;

@@ -6,6 +6,8 @@ export * from './alert';
 export * from './apiKey';
 export * from './apiToken';
 export * from './billing';
+export * from './builds';
+export * from './contentBlock';
 export * from './dns';
 export * from './domain';
 export * from './domainResourceGroup';
@@ -56,6 +58,7 @@ export type APIResponse<
   status: number;
   body: APIResponseBody<ExpectedData, ExpectedResultInfo>;
   text: string;
+  response: Response;
 };
 
 export const ApiResponseBody = eg.object({

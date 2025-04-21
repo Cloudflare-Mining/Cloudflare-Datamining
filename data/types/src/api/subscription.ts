@@ -13,6 +13,7 @@ export const Currency = eg.literal('USD');
 export type Currency = TypeFromCodec<typeof Currency>;
 
 export const Frequency = eg.union([
+  eg.literal('not-applicable'),
   eg.literal('monthly'),
   eg.literal('yearly'),
   eg.literal('one-time'),
@@ -31,7 +32,8 @@ export type SubscriptionState = TypeFromCodec<typeof SubscriptionState>;
 
 export const SubscriptionScope = eg.union([
   eg.literal('zone'),
-  eg.literal('user')
+  eg.literal('user'),
+  eg.literal('account')
 ]);
 export type SubscriptionScope = TypeFromCodec<typeof SubscriptionScope>;
 
@@ -61,8 +63,12 @@ export const SubscriptionComponentName = eg.union([
   eg.literal('load_balancing_probe_regions'),
   eg.literal('rate_limiting_requests'),
   eg.literal('stream_storage_thousand_minutes'),
+  eg.literal('stream_viewed_thousand_minutes'),
+  eg.literal('http_data_transfer_global'),
   eg.literal('images_storage_per_hundred_thousand'),
+  eg.literal('image_delivered_per_hundred_thousand'),
   eg.literal('images_unique_transformations'),
+  eg.literal('image_unique_transformations'),
   eg.literal('page_rules'),
   eg.literal('spectrum_bytes_transferred'),
   eg.literal('zones'),
@@ -112,12 +118,14 @@ export type SubscriptionProductName = TypeFromCodec<
 
 export const SubscriptionProductPublicName = eg.union([
   eg.literal('Argo'),
+  eg.literal('Basic Load Balancing'),
   eg.literal('Load Balancing'),
   eg.literal('CloudFlare Services'),
   eg.literal('Rate Limiting'),
   eg.literal('Workers'),
   eg.literal('Access'),
   eg.literal('Stream'),
+  eg.literal('Stream Basic Base'),
   eg.literal('Cloudflare Registrar'),
   eg.literal('Cloudflare Apps'),
   eg.literal('Advanced Certificate Manager'),
@@ -126,7 +134,14 @@ export const SubscriptionProductPublicName = eg.union([
   eg.literal('SSL for SaaS'),
   eg.literal('Cloudflare Stream'),
   eg.literal('Cloudflare Images + Stream'),
+  eg.literal('Images Basic Base'),
   eg.literal('Image Resizing'),
+  eg.literal('Image Resizing Basic'),
+  eg.literal('Image Resizing Ent'),
+  eg.literal('Image Resizing Legacy'),
+  eg.literal('Images Stream Basic'),
+  eg.literal('Images Stream Bundle Basic'),
+  eg.literal('Images Stream Bundle Advanced'),
   eg.literal('R2 Storage'),
   eg.literal('Cache Reserve'),
   eg.literal('web3 ETHEREUM'),
@@ -165,7 +180,7 @@ export const SubscriptionRatePlan = eg.object({
   externally_managed: eg.boolean,
   is_contract: eg.boolean,
   is_contract_ss: eg.boolean.optional,
-  sets: eg.array(SubscriptionSet)
+  sets: eg.union([eg.array(SubscriptionSet), eg.null])
 });
 
 export type SubscriptionRatePlan = TypeFromCodec<typeof SubscriptionRatePlan>;
@@ -181,12 +196,37 @@ export type SubscriptionComponentValue = TypeFromCodec<
   typeof SubscriptionComponentValue
 >;
 
+export enum FreeTrialStatus {
+  OFFERED = 'OFFERED',
+  ACTIVE = 'ACTIVE',
+  EXPIRED = 'EXPIRED',
+  CANCELLED = 'CANCELLED',
+  CONVERTED = 'CONVERTED',
+  COMPLETE = 'COMPLETE'
+}
+
+export enum FreeTrialGracePeriod {
+  OFFER = 'offer',
+  ACTIVE = 'active',
+  NONE = ''
+}
+
+export const SubscriptionTrial = eg.object({
+  id: eg.number,
+  rate_plan: RatePlanId,
+  status: eg.enum(FreeTrialStatus),
+  days_left: eg.number,
+  is_on_grace_period: eg.enum(FreeTrialGracePeriod)
+});
+
+export type SubscriptionTrial = TypeFromCodec<typeof SubscriptionTrial>;
+
 export const Subscription = eg.object({
   app: eg.object({
     install_id: eg.union([eg.string, eg.null])
-  }),
+  }).optional,
   id: eg.string,
-  state: SubscriptionState,
+  state: SubscriptionState.optional,
   price: eg.number.optional,
   currency: Currency,
   entitled: eg.boolean.optional,
@@ -201,7 +241,7 @@ export const Subscription = eg.object({
   next_rate_plan: eg.object({
     app: eg.object({
       install_id: eg.union([eg.string, eg.null])
-    }),
+    }).optional,
     id: eg.string,
     state: SubscriptionState,
     price: eg.number,
@@ -217,7 +257,8 @@ export const Subscription = eg.object({
   payment_method_id: eg.union([eg.number, eg.string]).optional, // BILL-17536
   created_date: eg.string.optional,
   deleted_date: eg.string.optional,
-  downgrade_date: eg.string.optional
+  downgrade_date: eg.string.optional,
+  trial: eg.union([SubscriptionTrial, eg.null]).optional
 });
 
 export type Subscription = TypeFromCodec<typeof Subscription>;

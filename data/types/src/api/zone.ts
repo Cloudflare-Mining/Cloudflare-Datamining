@@ -5,11 +5,11 @@ import { PlanId } from './ratePlan';
 
 export const ZoneMeta = eg.object({
   step: eg.number,
-  wildcard_proxiable: eg.boolean,
+  wildcard_proxiable: eg.boolean.optional,
   custom_certificate_quota: eg.number,
   page_rule_quota: eg.number,
   phishing_detected: eg.boolean,
-  multiple_railguns_allowed: eg.boolean,
+  multiple_railguns_allowed: eg.boolean.optional,
   secondary_overrides: eg.boolean,
   cdn_only: eg.boolean.optional,
   dns_only: eg.boolean.optional
@@ -20,7 +20,7 @@ export type ZoneMeta = TypeFromCodec<typeof ZoneMeta>;
 export const ZoneOwner = eg.object({
   id: eg.string,
   type: eg.string,
-  email: eg.string
+  email: eg.string.optional
 });
 export type ZoneOwner = TypeFromCodec<typeof ZoneOwner>;
 
@@ -55,6 +55,14 @@ export const ZonePlan = eg.object({
 });
 
 export type ZonePlan = TypeFromCodec<typeof ZonePlan>;
+
+export const TrialCancelWarning = eg.object({
+  show: eg.boolean,
+  product_name: eg.string.optional,
+  show_again: eg.boolean
+});
+
+export type TrialCancelWarning = TypeFromCodec<typeof TrialCancelWarning>;
 
 export const SelectedZonePlan = eg.object({
   id: eg.string,
@@ -93,6 +101,20 @@ export const AbuseUrl = eg.object({
 
 export type AbuseUrl = TypeFromCodec<typeof AbuseUrl>;
 
+export const ZoneStatus = eg.union([
+  eg.literal('active'),
+  eg.literal('pending'),
+  eg.literal('moved'),
+  eg.literal('deactivated'),
+  eg.literal('paused'),
+  eg.literal('initializing'),
+  eg.literal('plan_limits_exceeded'),
+  eg.literal('abuse_violation'),
+  eg.literal('development_mode')
+]);
+
+export type ZoneStatus = TypeFromCodec<typeof ZoneStatus>;
+
 export const Zone = eg.object({
   id: eg.string,
   name: eg.string,
@@ -102,19 +124,12 @@ export const Zone = eg.object({
     version: eg.number,
     rootZoneId: eg.string
   }).optional,
-  status: eg.union([
-    eg.literal('active'),
-    eg.literal('pending'),
-    eg.literal('moved'),
-    eg.literal('deactivated'),
-    eg.literal('paused'),
-    eg.literal('initializing')
-  ]),
+  status: ZoneStatus,
   paused: eg.boolean,
   type: ZoneType.optional,
   development_mode: eg.number,
-  name_servers: eg.array(eg.string),
-  original_name_servers: eg.array(eg.string),
+  name_servers: eg.array(eg.string).optional,
+  original_name_servers: eg.union([eg.array(eg.string), eg.null]),
   original_registrar: eg.union([eg.string, eg.null]),
   original_dnshost: eg.union([eg.string, eg.null]),
   modified_on: eg.string,
@@ -127,13 +142,16 @@ export const Zone = eg.object({
   plan: ZonePlan,
   plan_pending: ZonePlan.optional,
   vanity_name_servers: eg.array(eg.string).optional,
-  vanity_name_servers_ips: eg.record(
-    eg.string,
-    eg.object({
-      ipv4: eg.string,
-      ipv6: eg.string
-    })
-  ).optional,
+  vanity_name_servers_ips: eg.union([
+    eg.record(
+      eg.string,
+      eg.object({
+        ipv4: eg.string,
+        ipv6: eg.string
+      })
+    ),
+    eg.null
+  ]).optional,
   verification_key: eg.string.optional,
   host: eg.object({
     name: eg.string,
@@ -149,54 +167,6 @@ export const Zone = eg.object({
 });
 
 export type Zone = TypeFromCodec<typeof Zone>;
-
-export const ZoneBlock = eg.object({
-  id: eg.string,
-  account_id: eg.number,
-  brand_id: eg.number,
-  cadence_workflow_id: eg.string,
-  created: eg.string,
-  delete_reason: eg.string,
-  hostname: eg.string,
-  list_item_id: eg.string,
-  lumen_database_url: eg.string,
-  match_subdomain: eg.boolean,
-  match_subpath: eg.boolean,
-  path: eg.string,
-  protocol: eg.union([eg.literal('http'), eg.literal('https')]),
-  reference: eg.string,
-  review_status: eg.union([eg.literal('no_review'), eg.literal('requested')]),
-  review_date: eg.string,
-  ruleset_id: eg.string,
-  status: eg.union([
-    eg.literal('block_active'),
-    eg.literal('block_failed'),
-    eg.literal('block_pending'),
-    eg.literal('block_in_progress'),
-    eg.literal('delete_pending'),
-    eg.literal('delete_in_progress'),
-    eg.literal('delete_failed'),
-    eg.literal('deleted')
-  ]),
-  type: eg.union([
-    eg.literal('geo_block'),
-    eg.literal('legal_block'),
-    eg.literal('phishing_interstitial'),
-    eg.literal('malware_interstitial')
-  ]),
-  updated: eg.string,
-  url_query: eg.array(
-    eg.object({
-      key: eg.string,
-      value: eg.string
-    })
-  ).optional,
-  url_query_string: eg.string.optional,
-  zone_id: eg.number,
-  zone_plan: eg.string
-});
-
-export type ZoneBlock = TypeFromCodec<typeof ZoneBlock>;
 
 export const ZoneHold = eg.object({
   hold: eg.boolean,

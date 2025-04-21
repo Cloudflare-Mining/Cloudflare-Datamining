@@ -10,7 +10,7 @@ export type ElementType<T> =
 export const AccountSettings = eg.object({
   access_approval_expiry: eg.union([eg.string, eg.null]),
   enforce_twofactor: eg.boolean,
-  api_access_enabled: eg.boolean,
+  api_access_enabled: eg.union([eg.boolean, eg.null]),
   abuse_contact_email: eg.union([eg.string, eg.null])
 });
 

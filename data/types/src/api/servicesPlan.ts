@@ -58,7 +58,8 @@ enum PRO {
   cf_pro_20_5 = 'cf_pro_20_5',
   cf_pro_free = 'cf_pro_free',
   partners_pro = 'partners_pro',
-  pro = 'pro'
+  pro = 'pro',
+  pro_trial = 'pro_trial'
 }
 
 /**
@@ -78,6 +79,7 @@ enum PRO_PLUS {
  */
 enum BUSINESS {
   business = 'business',
+  business_trial = 'business_trial',
   cf_biz = 'cf_biz',
   cf_biz_emp = 'cf_biz_emp',
   cf_biz_free = 'cf_biz_free',

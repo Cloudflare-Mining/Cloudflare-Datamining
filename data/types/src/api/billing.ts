@@ -181,29 +181,12 @@ export const BillingTransaction = eg.object({
     eg.literal('CREDIT_FULLY_APPLIED'),
     eg.literal('CREDIT_OPEN')
   ]),
-  source: eg.string
+  source: eg.string,
+  hosted_invoice_url: eg.string.optional,
+  source_invoice_id: eg.string.optional
 });
 
 export type BillingTransaction = TypeFromCodec<typeof BillingTransaction>;
-
-export const BillingInvoice = eg.object({
-  id: eg.string,
-  closed: eg.boolean,
-  source: eg.string,
-  source_id: eg.string,
-  currency: eg.string,
-  issue_date: eg.string,
-  total_amount: eg.number,
-  total_amount_remaining: eg.number,
-});
-
-export type BillingInvoice = TypeFromCodec<typeof BillingInvoice>;
-
-export const BillingUnpaidInvoices = eg.object({
-  invoices: eg.array(BillingInvoice).optional
-});
-
-export type BillingUnpaidInvoices = TypeFromCodec<typeof BillingUnpaidInvoices>;
 
 export const BillingPayment = eg.object({
   payment_applications: eg.array(
@@ -217,6 +200,13 @@ export const BillingPayment = eg.object({
 });
 
 export type BillingPayment = TypeFromCodec<typeof BillingPayment>;
+
+export const PayInvoice = eg.object({
+  invoice_id: eg.string,
+  payment_method_id: eg.union([eg.number, eg.string]).optional
+});
+
+export type PayInvoice = TypeFromCodec<typeof PayInvoice>;
 
 export const BillingQuote = eg.object({
   id: eg.number,

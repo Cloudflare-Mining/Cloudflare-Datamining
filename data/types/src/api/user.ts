@@ -1,6 +1,7 @@
 import { Organization } from './organization';
 import { SupportedLocales } from '@cloudflare/intl-types';
 import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { MembershipsPolicy } from './policy';
 
 export const User = eg.object({
   id: eg.string,
@@ -39,6 +40,23 @@ export const UserDetails = eg.object({
 });
 
 export type UserDetails = TypeFromCodec<typeof UserDetails>;
+
+export const UserGroup = eg.object({
+  id: eg.string,
+  name: eg.string,
+  created_on: eg.string,
+  modified_on: eg.string,
+  policies: eg.array(MembershipsPolicy)
+});
+
+export type UserGroup = TypeFromCodec<typeof UserGroup>;
+
+export const UserGroupMember = eg.object({
+  id: eg.string,
+  email: eg.string
+});
+
+export type UserGroupMember = TypeFromCodec<typeof UserGroupMember>;
 
 export const Dpa = eg.object({
   created_on: eg.string,

@@ -48,7 +48,9 @@ export type BuildConfig = TypeFromCodec<typeof BuildConfig>;
 
 export const ProjectSourceConfig = eg.object({
   owner: eg.string,
+  owner_display_name: eg.string.optional,
   repo_name: eg.string,
+  repo_display_name: eg.string.optional,
   production_branch: eg.string.optional,
   pr_comments_enabled: eg.boolean.optional,
   deployments_enabled: eg.boolean.optional,
@@ -300,3 +302,23 @@ export const Placement = eg.object({
 });
 
 export type Placement = TypeFromCodec<typeof Placement>;
+
+export type GitRepo = TypeFromCodec<typeof GitRepo>;
+export const GitRepo = eg.object({
+  repo_name: eg.string,
+  repo_display_name: eg.string,
+  repo_url: eg.string,
+  default_branch: eg.string,
+  project_id: eg.union([eg.string, eg.null]),
+  project_ids: eg.union([eg.array(eg.string), eg.null]),
+  repo_id: eg.string
+});
+
+export type GitBranch = TypeFromCodec<typeof GitBranch>;
+export const GitBranch = eg.object({
+  branch_name: eg.string,
+  commit: eg.object({
+    sha: eg.string,
+    url: eg.string
+  })
+});

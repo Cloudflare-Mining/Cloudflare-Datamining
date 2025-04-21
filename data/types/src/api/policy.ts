@@ -5,7 +5,9 @@ export const ZoneLevelAccessPolicyScope = eg.object({
   effect: eg.string,
   mode: eg.string,
   zoneId: eg.string.optional,
-  resourceGroupId: eg.string.optional
+  resourceGroupId: eg.string.optional,
+  granularProduct: eg.string.optional,
+  granularResourceKey: eg.string.optional
 });
 
 export const ZoneLevelAccessPolicy = eg.object({
@@ -37,7 +39,8 @@ export const PolicyPermissionGroup = eg.object({
     description: eg.string,
     editable: eg.boolean,
     label: eg.string,
-    scopes: eg.string
+    scopes: eg.string,
+    visibility: eg.string.optional
   }),
   permissions: eg.array(MembershipsPermission).optional
 });
