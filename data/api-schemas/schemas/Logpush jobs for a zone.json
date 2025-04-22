@@ -10,7 +10,8 @@
 				"schema": {
 					"description": "Unique id of the job.",
 					"minimum": 1,
-					"type": "integer"
+					"type": "integer",
+					"x-auditable": true
 				}
 			},
 			{
@@ -126,7 +127,8 @@
 												"id": {
 													"description": "Unique id of the job.",
 													"minimum": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -322,7 +324,8 @@
 					],
 					"example": "http_requests",
 					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -433,7 +436,8 @@
 												"properties": {
 													"key": {
 														"example": "value",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -632,7 +636,8 @@
 					],
 					"example": "http_requests",
 					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -810,7 +815,8 @@
 														],
 														"example": "http_requests",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"destination_conf": {
 														"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
@@ -822,13 +828,15 @@
 													"enabled": {
 														"description": "Flag that indicates if the job is enabled.",
 														"example": false,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"error_message": {
 														"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
 														"format": "date-time",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"frequency": {
 														"default": "high",
@@ -840,12 +848,14 @@
 														],
 														"example": "high",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Unique id of the job.",
 														"minimum": 1,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"kind": {
 														"default": "",
@@ -855,19 +865,22 @@
 														],
 														"example": "",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"last_complete": {
 														"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
 														"format": "date-time",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"last_error": {
 														"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
 														"format": "date-time",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"logpull_options": {
 														"deprecated": true,
@@ -876,7 +889,8 @@
 														"format": "uri-reference",
 														"maxLength": 4096,
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"max_upload_bytes": {
 														"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
@@ -884,7 +898,8 @@
 														"maximum": 1000000000,
 														"minimum": 5000000,
 														"nullable": true,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"max_upload_interval_seconds": {
 														"default": 30,
@@ -893,7 +908,8 @@
 														"maximum": 300,
 														"minimum": 30,
 														"nullable": true,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"max_upload_records": {
 														"default": 100000,
@@ -902,7 +918,8 @@
 														"maximum": 1000000,
 														"minimum": 1000,
 														"nullable": true,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -910,7 +927,8 @@
 														"maxLength": 512,
 														"nullable": true,
 														"pattern": "^[a-zA-Z0-9\\-\\.]*$",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"output_options": {
 														"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
@@ -920,22 +938,26 @@
 																"default": false,
 																"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 																"nullable": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"batch_prefix": {
 																"description": "String to be prepended before each batch.",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"batch_suffix": {
 																"description": "String to be appended after each batch.",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"field_delimiter": {
 																"description": "String to join fields. This field be ignored when `record_template` is set.",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"field_names": {
 																"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
@@ -945,7 +967,8 @@
 																	"RayID"
 																],
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
@@ -957,27 +980,32 @@
 																	"csv"
 																],
 																"example": "ndjson",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"record_delimiter": {
 																"description": "String to be inserted in-between the records as separator.",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"record_prefix": {
 																"description": "String to be prepended before each record.",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"record_suffix": {
 																"description": "String to be appended after each record.",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"record_template": {
 																"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"sample_rate": {
 																"default": 1,
@@ -986,7 +1014,8 @@
 																"maximum": 1,
 																"minimum": 0,
 																"nullable": true,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"timestamp_format": {
 																"default": "unixnano",
@@ -996,7 +1025,8 @@
 																	"unix",
 																	"rfc3339"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1338,7 +1368,8 @@
 														],
 														"example": "http_requests",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"destination_conf": {
 														"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
@@ -1350,13 +1381,15 @@
 													"enabled": {
 														"description": "Flag that indicates if the job is enabled.",
 														"example": false,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"error_message": {
 														"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
 														"format": "date-time",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"frequency": {
 														"default": "high",
@@ -1368,12 +1401,14 @@
 														],
 														"example": "high",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Unique id of the job.",
 														"minimum": 1,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"kind": {
 														"default": "",
@@ -1383,19 +1418,22 @@
 														],
 														"example": "",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"last_complete": {
 														"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
 														"format": "date-time",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"last_error": {
 														"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
 														"format": "date-time",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"logpull_options": {
 														"deprecated": true,
@@ -1404,7 +1442,8 @@
 														"format": "uri-reference",
 														"maxLength": 4096,
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"max_upload_bytes": {
 														"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
@@ -1412,7 +1451,8 @@
 														"maximum": 1000000000,
 														"minimum": 5000000,
 														"nullable": true,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"max_upload_interval_seconds": {
 														"default": 30,
@@ -1421,7 +1461,8 @@
 														"maximum": 300,
 														"minimum": 30,
 														"nullable": true,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"max_upload_records": {
 														"default": 100000,
@@ -1430,7 +1471,8 @@
 														"maximum": 1000000,
 														"minimum": 1000,
 														"nullable": true,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -1438,7 +1480,8 @@
 														"maxLength": 512,
 														"nullable": true,
 														"pattern": "^[a-zA-Z0-9\\-\\.]*$",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"output_options": {
 														"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
@@ -1448,22 +1491,26 @@
 																"default": false,
 																"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 																"nullable": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"batch_prefix": {
 																"description": "String to be prepended before each batch.",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"batch_suffix": {
 																"description": "String to be appended after each batch.",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"field_delimiter": {
 																"description": "String to join fields. This field be ignored when `record_template` is set.",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"field_names": {
 																"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
@@ -1473,7 +1520,8 @@
 																	"RayID"
 																],
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
@@ -1485,27 +1533,32 @@
 																	"csv"
 																],
 																"example": "ndjson",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"record_delimiter": {
 																"description": "String to be inserted in-between the records as separator.",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"record_prefix": {
 																"description": "String to be prepended before each record.",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"record_suffix": {
 																"description": "String to be appended after each record.",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"record_template": {
 																"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"sample_rate": {
 																"default": 1,
@@ -1514,7 +1567,8 @@
 																"maximum": 1,
 																"minimum": 0,
 																"nullable": true,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"timestamp_format": {
 																"default": "unixnano",
@@ -1524,7 +1578,8 @@
 																	"unix",
 																	"rfc3339"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1698,7 +1753,8 @@
 				"schema": {
 					"description": "Unique id of the job.",
 					"minimum": 1,
-					"type": "integer"
+					"type": "integer",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1878,7 +1934,8 @@
 													],
 													"example": "http_requests",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"destination_conf": {
 													"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
@@ -1890,13 +1947,15 @@
 												"enabled": {
 													"description": "Flag that indicates if the job is enabled.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"error_message": {
 													"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
 													"format": "date-time",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"frequency": {
 													"default": "high",
@@ -1908,12 +1967,14 @@
 													],
 													"example": "high",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Unique id of the job.",
 													"minimum": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"kind": {
 													"default": "",
@@ -1923,19 +1984,22 @@
 													],
 													"example": "",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_complete": {
 													"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
 													"format": "date-time",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_error": {
 													"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
 													"format": "date-time",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"logpull_options": {
 													"deprecated": true,
@@ -1944,7 +2008,8 @@
 													"format": "uri-reference",
 													"maxLength": 4096,
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"max_upload_bytes": {
 													"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
@@ -1952,7 +2017,8 @@
 													"maximum": 1000000000,
 													"minimum": 5000000,
 													"nullable": true,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"max_upload_interval_seconds": {
 													"default": 30,
@@ -1961,7 +2027,8 @@
 													"maximum": 300,
 													"minimum": 30,
 													"nullable": true,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"max_upload_records": {
 													"default": 100000,
@@ -1970,7 +2037,8 @@
 													"maximum": 1000000,
 													"minimum": 1000,
 													"nullable": true,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -1978,7 +2046,8 @@
 													"maxLength": 512,
 													"nullable": true,
 													"pattern": "^[a-zA-Z0-9\\-\\.]*$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"output_options": {
 													"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
@@ -1988,22 +2057,26 @@
 															"default": false,
 															"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"batch_prefix": {
 															"description": "String to be prepended before each batch.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"batch_suffix": {
 															"description": "String to be appended after each batch.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"field_delimiter": {
 															"description": "String to join fields. This field be ignored when `record_template` is set.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"field_names": {
 															"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
@@ -2013,7 +2086,8 @@
 																"RayID"
 															],
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -2025,27 +2099,32 @@
 																"csv"
 															],
 															"example": "ndjson",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"record_delimiter": {
 															"description": "String to be inserted in-between the records as separator.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"record_prefix": {
 															"description": "String to be prepended before each record.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"record_suffix": {
 															"description": "String to be appended after each record.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"record_template": {
 															"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"sample_rate": {
 															"default": 1,
@@ -2054,7 +2133,8 @@
 															"maximum": 1,
 															"minimum": 0,
 															"nullable": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"timestamp_format": {
 															"default": "unixnano",
@@ -2064,7 +2144,8 @@
 																"unix",
 																"rfc3339"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2305,7 +2386,8 @@
 								],
 								"example": "http_requests",
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"destination_conf": {
 								"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
@@ -2317,7 +2399,8 @@
 							"enabled": {
 								"description": "Flag that indicates if the job is enabled.",
 								"example": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"frequency": {
 								"default": "high",
@@ -2329,7 +2412,8 @@
 								],
 								"example": "high",
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"kind": {
 								"default": "",
@@ -2339,7 +2423,8 @@
 								],
 								"example": "",
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"logpull_options": {
 								"deprecated": true,
@@ -2348,7 +2433,8 @@
 								"format": "uri-reference",
 								"maxLength": 4096,
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"max_upload_bytes": {
 								"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
@@ -2356,7 +2442,8 @@
 								"maximum": 1000000000,
 								"minimum": 5000000,
 								"nullable": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"max_upload_interval_seconds": {
 								"default": 30,
@@ -2365,7 +2452,8 @@
 								"maximum": 300,
 								"minimum": 30,
 								"nullable": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"max_upload_records": {
 								"default": 100000,
@@ -2374,7 +2462,8 @@
 								"maximum": 1000000,
 								"minimum": 1000,
 								"nullable": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -2382,7 +2471,8 @@
 								"maxLength": 512,
 								"nullable": true,
 								"pattern": "^[a-zA-Z0-9\\-\\.]*$",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"output_options": {
 								"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
@@ -2392,22 +2482,26 @@
 										"default": false,
 										"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 										"nullable": true,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"batch_prefix": {
 										"description": "String to be prepended before each batch.",
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"batch_suffix": {
 										"description": "String to be appended after each batch.",
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"field_delimiter": {
 										"description": "String to join fields. This field be ignored when `record_template` is set.",
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"field_names": {
 										"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
@@ -2417,7 +2511,8 @@
 											"RayID"
 										],
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": "array"
 									},
@@ -2429,27 +2524,32 @@
 											"csv"
 										],
 										"example": "ndjson",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"record_delimiter": {
 										"description": "String to be inserted in-between the records as separator.",
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"record_prefix": {
 										"description": "String to be prepended before each record.",
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"record_suffix": {
 										"description": "String to be appended after each record.",
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"record_template": {
 										"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"sample_rate": {
 										"default": 1,
@@ -2458,7 +2558,8 @@
 										"maximum": 1,
 										"minimum": 0,
 										"nullable": true,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"timestamp_format": {
 										"default": "unixnano",
@@ -2468,7 +2569,8 @@
 											"unix",
 											"rfc3339"
 										],
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -2655,7 +2757,8 @@
 													],
 													"example": "http_requests",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"destination_conf": {
 													"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
@@ -2667,13 +2770,15 @@
 												"enabled": {
 													"description": "Flag that indicates if the job is enabled.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"error_message": {
 													"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
 													"format": "date-time",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"frequency": {
 													"default": "high",
@@ -2685,12 +2790,14 @@
 													],
 													"example": "high",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Unique id of the job.",
 													"minimum": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"kind": {
 													"default": "",
@@ -2700,19 +2807,22 @@
 													],
 													"example": "",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_complete": {
 													"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
 													"format": "date-time",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_error": {
 													"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
 													"format": "date-time",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"logpull_options": {
 													"deprecated": true,
@@ -2721,7 +2831,8 @@
 													"format": "uri-reference",
 													"maxLength": 4096,
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"max_upload_bytes": {
 													"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
@@ -2729,7 +2840,8 @@
 													"maximum": 1000000000,
 													"minimum": 5000000,
 													"nullable": true,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"max_upload_interval_seconds": {
 													"default": 30,
@@ -2738,7 +2850,8 @@
 													"maximum": 300,
 													"minimum": 30,
 													"nullable": true,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"max_upload_records": {
 													"default": 100000,
@@ -2747,7 +2860,8 @@
 													"maximum": 1000000,
 													"minimum": 1000,
 													"nullable": true,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -2755,7 +2869,8 @@
 													"maxLength": 512,
 													"nullable": true,
 													"pattern": "^[a-zA-Z0-9\\-\\.]*$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"output_options": {
 													"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
@@ -2765,22 +2880,26 @@
 															"default": false,
 															"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"batch_prefix": {
 															"description": "String to be prepended before each batch.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"batch_suffix": {
 															"description": "String to be appended after each batch.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"field_delimiter": {
 															"description": "String to join fields. This field be ignored when `record_template` is set.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"field_names": {
 															"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
@@ -2790,7 +2909,8 @@
 																"RayID"
 															],
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -2802,27 +2922,32 @@
 																"csv"
 															],
 															"example": "ndjson",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"record_delimiter": {
 															"description": "String to be inserted in-between the records as separator.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"record_prefix": {
 															"description": "String to be prepended before each record.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"record_suffix": {
 															"description": "String to be appended after each record.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"record_template": {
 															"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"sample_rate": {
 															"default": 1,
@@ -2831,7 +2956,8 @@
 															"maximum": 1,
 															"minimum": 0,
 															"nullable": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"timestamp_format": {
 															"default": "unixnano",
@@ -2841,7 +2967,8 @@
 																"unix",
 																"rfc3339"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3133,15 +3260,18 @@
 											"properties": {
 												"filename": {
 													"example": "logs/challenge-filename.txt",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"message": {
 													"example": "",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"valid": {
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -3439,7 +3569,8 @@
 											"properties": {
 												"valid": {
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -3728,11 +3859,13 @@
 											"properties": {
 												"message": {
 													"example": "",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"valid": {
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -4021,7 +4154,8 @@
 											"properties": {
 												"exists": {
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -4206,7 +4340,8 @@
 								"format": "uri-reference",
 								"maxLength": 4096,
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -4312,11 +4447,13 @@
 											"properties": {
 												"message": {
 													"example": "",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"valid": {
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -4484,7 +4621,8 @@
 				"schema": {
 					"description": "Unique id of the job.",
 					"minimum": 1,
-					"type": "integer"
+					"type": "integer",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4540,7 +4678,8 @@
 							"enabled": {
 								"description": "Flag that indicates if the job is enabled.",
 								"example": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"frequency": {
 								"default": "high",
@@ -4552,7 +4691,8 @@
 								],
 								"example": "high",
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"kind": {
 								"default": "",
@@ -4562,7 +4702,8 @@
 								],
 								"example": "",
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"logpull_options": {
 								"deprecated": true,
@@ -4571,7 +4712,8 @@
 								"format": "uri-reference",
 								"maxLength": 4096,
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"max_upload_bytes": {
 								"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
@@ -4579,7 +4721,8 @@
 								"maximum": 1000000000,
 								"minimum": 5000000,
 								"nullable": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"max_upload_interval_seconds": {
 								"default": 30,
@@ -4588,7 +4731,8 @@
 								"maximum": 300,
 								"minimum": 30,
 								"nullable": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"max_upload_records": {
 								"default": 100000,
@@ -4597,7 +4741,8 @@
 								"maximum": 1000000,
 								"minimum": 1000,
 								"nullable": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -4605,7 +4750,8 @@
 								"maxLength": 512,
 								"nullable": true,
 								"pattern": "^[a-zA-Z0-9\\-\\.]*$",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"output_options": {
 								"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
@@ -4615,22 +4761,26 @@
 										"default": false,
 										"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 										"nullable": true,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"batch_prefix": {
 										"description": "String to be prepended before each batch.",
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"batch_suffix": {
 										"description": "String to be appended after each batch.",
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"field_delimiter": {
 										"description": "String to join fields. This field be ignored when `record_template` is set.",
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"field_names": {
 										"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
@@ -4640,7 +4790,8 @@
 											"RayID"
 										],
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": "array"
 									},
@@ -4652,27 +4803,32 @@
 											"csv"
 										],
 										"example": "ndjson",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"record_delimiter": {
 										"description": "String to be inserted in-between the records as separator.",
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"record_prefix": {
 										"description": "String to be prepended before each record.",
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"record_suffix": {
 										"description": "String to be appended after each record.",
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"record_template": {
 										"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"sample_rate": {
 										"default": 1,
@@ -4681,7 +4837,8 @@
 										"maximum": 1,
 										"minimum": 0,
 										"nullable": true,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"timestamp_format": {
 										"default": "unixnano",
@@ -4691,7 +4848,8 @@
 											"unix",
 											"rfc3339"
 										],
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -4875,7 +5033,8 @@
 													],
 													"example": "http_requests",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"destination_conf": {
 													"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
@@ -4887,13 +5046,15 @@
 												"enabled": {
 													"description": "Flag that indicates if the job is enabled.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"error_message": {
 													"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
 													"format": "date-time",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"frequency": {
 													"default": "high",
@@ -4905,12 +5066,14 @@
 													],
 													"example": "high",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Unique id of the job.",
 													"minimum": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"kind": {
 													"default": "",
@@ -4920,19 +5083,22 @@
 													],
 													"example": "",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_complete": {
 													"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
 													"format": "date-time",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_error": {
 													"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
 													"format": "date-time",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"logpull_options": {
 													"deprecated": true,
@@ -4941,7 +5107,8 @@
 													"format": "uri-reference",
 													"maxLength": 4096,
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"max_upload_bytes": {
 													"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
@@ -4949,7 +5116,8 @@
 													"maximum": 1000000000,
 													"minimum": 5000000,
 													"nullable": true,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"max_upload_interval_seconds": {
 													"default": 30,
@@ -4958,7 +5126,8 @@
 													"maximum": 300,
 													"minimum": 30,
 													"nullable": true,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"max_upload_records": {
 													"default": 100000,
@@ -4967,7 +5136,8 @@
 													"maximum": 1000000,
 													"minimum": 1000,
 													"nullable": true,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -4975,7 +5145,8 @@
 													"maxLength": 512,
 													"nullable": true,
 													"pattern": "^[a-zA-Z0-9\\-\\.]*$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"output_options": {
 													"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
@@ -4985,22 +5156,26 @@
 															"default": false,
 															"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"batch_prefix": {
 															"description": "String to be prepended before each batch.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"batch_suffix": {
 															"description": "String to be appended after each batch.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"field_delimiter": {
 															"description": "String to join fields. This field be ignored when `record_template` is set.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"field_names": {
 															"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
@@ -5010,7 +5185,8 @@
 																"RayID"
 															],
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -5022,27 +5198,32 @@
 																"csv"
 															],
 															"example": "ndjson",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"record_delimiter": {
 															"description": "String to be inserted in-between the records as separator.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"record_prefix": {
 															"description": "String to be prepended before each record.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"record_suffix": {
 															"description": "String to be appended after each record.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"record_template": {
 															"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"sample_rate": {
 															"default": 1,
@@ -5051,7 +5232,8 @@
 															"maximum": 1,
 															"minimum": 0,
 															"nullable": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"timestamp_format": {
 															"default": "unixnano",
@@ -5061,7 +5243,8 @@
 																"unix",
 																"rfc3339"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"

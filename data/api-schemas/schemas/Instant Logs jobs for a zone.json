@@ -114,27 +114,32 @@
 														"example": "wss://logs.cloudflare.com/instant-logs/ws/sessions/99d471b1ca3c23cc8e30b6acec5db987",
 														"format": "uri",
 														"maxLength": 4096,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"fields": {
 														"description": "Comma-separated list of fields.",
 														"example": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"filter": {
 														"description": "Filters to drill down into specific events.",
 														"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"sample": {
 														"description": "The sample parameter is the sample rate of the records set by the client: \"sample\": 1 is 100% of records \"sample\": 10 is 10% and so on.",
 														"example": 1,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"session_id": {
 														"description": "Unique session id of the job.",
 														"example": "99d471b1ca3c23cc8e30b6acec5db987",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -249,27 +254,32 @@
 																"example": "wss://logs.cloudflare.com/instant-logs/ws/sessions/99d471b1ca3c23cc8e30b6acec5db987",
 																"format": "uri",
 																"maxLength": 4096,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"fields": {
 																"description": "Comma-separated list of fields.",
 																"example": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"filter": {
 																"description": "Filters to drill down into specific events.",
 																"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"sample": {
 																"description": "The sample parameter is the sample rate of the records set by the client: \"sample\": 1 is 100% of records \"sample\": 10 is 10% and so on.",
 																"example": 1,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"session_id": {
 																"description": "Unique session id of the job.",
 																"example": "99d471b1ca3c23cc8e30b6acec5db987",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -435,17 +445,20 @@
 							"fields": {
 								"description": "Comma-separated list of fields.",
 								"example": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"filter": {
 								"description": "Filters to drill down into specific events.",
 								"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"sample": {
 								"description": "The sample parameter is the sample rate of the records set by the client: \"sample\": 1 is 100% of records \"sample\": 10 is 10% and so on.",
 								"example": 1,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							}
 						}
 					}
@@ -556,27 +569,32 @@
 													"example": "wss://logs.cloudflare.com/instant-logs/ws/sessions/99d471b1ca3c23cc8e30b6acec5db987",
 													"format": "uri",
 													"maxLength": 4096,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"fields": {
 													"description": "Comma-separated list of fields.",
 													"example": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"filter": {
 													"description": "Filters to drill down into specific events.",
 													"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"sample": {
 													"description": "The sample parameter is the sample rate of the records set by the client: \"sample\": 1 is 100% of records \"sample\": 10 is 10% and so on.",
 													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"session_id": {
 													"description": "Unique session id of the job.",
 													"example": "99d471b1ca3c23cc8e30b6acec5db987",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -693,27 +711,32 @@
 															"example": "wss://logs.cloudflare.com/instant-logs/ws/sessions/99d471b1ca3c23cc8e30b6acec5db987",
 															"format": "uri",
 															"maxLength": 4096,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"fields": {
 															"description": "Comma-separated list of fields.",
 															"example": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"filter": {
 															"description": "Filters to drill down into specific events.",
 															"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"sample": {
 															"description": "The sample parameter is the sample rate of the records set by the client: \"sample\": 1 is 100% of records \"sample\": 10 is 10% and so on.",
 															"example": 1,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"session_id": {
 															"description": "Unique session id of the job.",
 															"example": "99d471b1ca3c23cc8e30b6acec5db987",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
