@@ -10,7 +10,8 @@
 				"schema": {
 					"description": "The id of the rule. Must be unique.",
 					"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -19,7 +20,8 @@
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -140,13 +142,15 @@
 													"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 													"example": "false",
 													"nullable": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"bandwidth_threshold": {
 													"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 													"example": 1000,
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"duration": {
 													"default": "1m",
@@ -162,23 +166,27 @@
 														"60m"
 													],
 													"example": "300s",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The id of the rule. Must be unique.",
 													"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
 													"example": "my_rule_1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"packet_threshold": {
 													"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 													"example": 10000,
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"prefix_match": {
 													"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
@@ -189,13 +197,15 @@
 													],
 													"example": "exact",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"prefixes": {
 													"items": {
 														"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
 														"example": "203.0.113.1/32",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -207,7 +217,8 @@
 														"advanced_ddos"
 													],
 													"example": "zscore",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"zscore_sensitivity": {
 													"description": "Level of sensitivity set for zscore rules.",
@@ -218,7 +229,8 @@
 													],
 													"example": "high",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"zscore_target": {
 													"description": "Target of the zscore rule analysis.",
@@ -228,7 +240,8 @@
 													],
 													"example": "bits",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -360,13 +373,15 @@
 															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 															"example": "false",
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"bandwidth_threshold": {
 															"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 															"example": 1000,
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"duration": {
 															"default": "1m",
@@ -382,23 +397,27 @@
 																"60m"
 															],
 															"example": "300s",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The id of the rule. Must be unique.",
 															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
 															"example": "my_rule_1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"packet_threshold": {
 															"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 															"example": 10000,
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"prefix_match": {
 															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
@@ -409,13 +428,15 @@
 															],
 															"example": "exact",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"prefixes": {
 															"items": {
 																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
 																"example": "203.0.113.1/32",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -427,7 +448,8 @@
 																"advanced_ddos"
 															],
 															"example": "zscore",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zscore_sensitivity": {
 															"description": "Level of sensitivity set for zscore rules.",
@@ -438,7 +460,8 @@
 															],
 															"example": "high",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zscore_target": {
 															"description": "Target of the zscore rule analysis.",
@@ -448,7 +471,8 @@
 															],
 															"example": "bits",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -579,7 +603,8 @@
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -713,13 +738,15 @@
 														"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 														"example": "false",
 														"nullable": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"bandwidth_threshold": {
 														"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 														"example": 1000,
 														"minimum": 1,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"duration": {
 														"default": "1m",
@@ -735,23 +762,27 @@
 															"60m"
 														],
 														"example": "300s",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "The id of the rule. Must be unique.",
 														"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
 														"example": "my_rule_1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"packet_threshold": {
 														"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 														"example": 10000,
 														"minimum": 1,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"prefix_match": {
 														"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
@@ -762,13 +793,15 @@
 														],
 														"example": "exact",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"prefixes": {
 														"items": {
 															"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
 															"example": "203.0.113.1/32",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": "array"
 													},
@@ -780,7 +813,8 @@
 															"advanced_ddos"
 														],
 														"example": "zscore",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"zscore_sensitivity": {
 														"description": "Level of sensitivity set for zscore rules.",
@@ -791,7 +825,8 @@
 														],
 														"example": "high",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"zscore_target": {
 														"description": "Target of the zscore rule analysis.",
@@ -801,7 +836,8 @@
 														],
 														"example": "bits",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -954,13 +990,15 @@
 																"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 																"example": "false",
 																"nullable": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"bandwidth_threshold": {
 																"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 																"example": 1000,
 																"minimum": 1,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"duration": {
 																"default": "1m",
@@ -976,23 +1014,27 @@
 																	"60m"
 																],
 																"example": "300s",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "The id of the rule. Must be unique.",
 																"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
 																"example": "my_rule_1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"packet_threshold": {
 																"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 																"example": 10000,
 																"minimum": 1,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"prefix_match": {
 																"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
@@ -1003,13 +1045,15 @@
 																],
 																"example": "exact",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"prefixes": {
 																"items": {
 																	"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
 																	"example": "203.0.113.1/32",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
@@ -1021,7 +1065,8 @@
 																	"advanced_ddos"
 																],
 																"example": "zscore",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"zscore_sensitivity": {
 																"description": "Level of sensitivity set for zscore rules.",
@@ -1032,7 +1077,8 @@
 																],
 																"example": "high",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"zscore_target": {
 																"description": "Target of the zscore rule analysis.",
@@ -1042,7 +1088,8 @@
 																],
 																"example": "bits",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1178,7 +1225,8 @@
 				"schema": {
 					"description": "The id of the rule. Must be unique.",
 					"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1187,7 +1235,8 @@
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1302,13 +1351,15 @@
 													"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 													"example": "false",
 													"nullable": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"bandwidth_threshold": {
 													"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 													"example": 1000,
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"duration": {
 													"default": "1m",
@@ -1324,23 +1375,27 @@
 														"60m"
 													],
 													"example": "300s",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The id of the rule. Must be unique.",
 													"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
 													"example": "my_rule_1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"packet_threshold": {
 													"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 													"example": 10000,
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"prefix_match": {
 													"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
@@ -1351,13 +1406,15 @@
 													],
 													"example": "exact",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"prefixes": {
 													"items": {
 														"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
 														"example": "203.0.113.1/32",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -1369,7 +1426,8 @@
 														"advanced_ddos"
 													],
 													"example": "zscore",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"zscore_sensitivity": {
 													"description": "Level of sensitivity set for zscore rules.",
@@ -1380,7 +1438,8 @@
 													],
 													"example": "high",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"zscore_target": {
 													"description": "Target of the zscore rule analysis.",
@@ -1390,7 +1449,8 @@
 													],
 													"example": "bits",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1522,13 +1582,15 @@
 															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 															"example": "false",
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"bandwidth_threshold": {
 															"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 															"example": 1000,
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"duration": {
 															"default": "1m",
@@ -1544,23 +1606,27 @@
 																"60m"
 															],
 															"example": "300s",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The id of the rule. Must be unique.",
 															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
 															"example": "my_rule_1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"packet_threshold": {
 															"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 															"example": 10000,
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"prefix_match": {
 															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
@@ -1571,13 +1637,15 @@
 															],
 															"example": "exact",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"prefixes": {
 															"items": {
 																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
 																"example": "203.0.113.1/32",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -1589,7 +1657,8 @@
 																"advanced_ddos"
 															],
 															"example": "zscore",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zscore_sensitivity": {
 															"description": "Level of sensitivity set for zscore rules.",
@@ -1600,7 +1669,8 @@
 															],
 															"example": "high",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zscore_target": {
 															"description": "Target of the zscore rule analysis.",
@@ -1610,7 +1680,8 @@
 															],
 															"example": "bits",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1744,7 +1815,8 @@
 				"schema": {
 					"description": "The id of the rule. Must be unique.",
 					"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1753,7 +1825,8 @@
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1766,13 +1839,15 @@
 								"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 								"example": "false",
 								"nullable": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"bandwidth": {
 								"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 								"example": 1000,
 								"minimum": 1,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"duration": {
 								"default": "1m",
@@ -1788,24 +1863,28 @@
 									"60m"
 								],
 								"example": "300s",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
 								"example": "my_rule_1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"packet_threshold": {
 								"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 								"example": 10000,
 								"minimum": 1,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"prefixes": {
 								"items": {
 									"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
 									"example": "203.0.113.1/32",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							}
@@ -1927,13 +2006,15 @@
 													"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 													"example": "false",
 													"nullable": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"bandwidth_threshold": {
 													"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 													"example": 1000,
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"duration": {
 													"default": "1m",
@@ -1949,23 +2030,27 @@
 														"60m"
 													],
 													"example": "300s",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The id of the rule. Must be unique.",
 													"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
 													"example": "my_rule_1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"packet_threshold": {
 													"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 													"example": 10000,
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"prefix_match": {
 													"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
@@ -1976,13 +2061,15 @@
 													],
 													"example": "exact",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"prefixes": {
 													"items": {
 														"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
 														"example": "203.0.113.1/32",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -1994,7 +2081,8 @@
 														"advanced_ddos"
 													],
 													"example": "zscore",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"zscore_sensitivity": {
 													"description": "Level of sensitivity set for zscore rules.",
@@ -2005,7 +2093,8 @@
 													],
 													"example": "high",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"zscore_target": {
 													"description": "Target of the zscore rule analysis.",
@@ -2015,7 +2104,8 @@
 													],
 													"example": "bits",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -2147,13 +2237,15 @@
 															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 															"example": "false",
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"bandwidth_threshold": {
 															"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 															"example": 1000,
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"duration": {
 															"default": "1m",
@@ -2169,23 +2261,27 @@
 																"60m"
 															],
 															"example": "300s",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The id of the rule. Must be unique.",
 															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
 															"example": "my_rule_1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"packet_threshold": {
 															"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 															"example": 10000,
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"prefix_match": {
 															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
@@ -2196,13 +2292,15 @@
 															],
 															"example": "exact",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"prefixes": {
 															"items": {
 																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
 																"example": "203.0.113.1/32",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -2214,7 +2312,8 @@
 																"advanced_ddos"
 															],
 															"example": "zscore",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zscore_sensitivity": {
 															"description": "Level of sensitivity set for zscore rules.",
@@ -2225,7 +2324,8 @@
 															],
 															"example": "high",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zscore_target": {
 															"description": "Target of the zscore rule analysis.",
@@ -2235,7 +2335,8 @@
 															],
 															"example": "bits",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2368,7 +2469,8 @@
 				"schema": {
 					"description": "The id of the rule. Must be unique.",
 					"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2377,7 +2479,8 @@
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2498,7 +2601,8 @@
 													"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 													"example": "false",
 													"nullable": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -2627,7 +2731,8 @@
 															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 															"example": "false",
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2756,7 +2861,8 @@
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2769,13 +2875,15 @@
 								"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 								"example": "false",
 								"nullable": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"bandwidth": {
 								"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 								"example": 1000,
 								"minimum": 1,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"duration": {
 								"default": "1m",
@@ -2791,24 +2899,28 @@
 									"60m"
 								],
 								"example": "300s",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
 								"example": "my_rule_1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"packet_threshold": {
 								"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 								"example": 10000,
 								"minimum": 1,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"prefixes": {
 								"items": {
 									"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
 									"example": "203.0.113.1/32",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							}
@@ -2934,13 +3046,15 @@
 													"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 													"example": "false",
 													"nullable": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"bandwidth_threshold": {
 													"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 													"example": 1000,
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"duration": {
 													"default": "1m",
@@ -2956,23 +3070,27 @@
 														"60m"
 													],
 													"example": "300s",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The id of the rule. Must be unique.",
 													"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
 													"example": "my_rule_1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"packet_threshold": {
 													"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 													"example": 10000,
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"prefix_match": {
 													"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
@@ -2983,13 +3101,15 @@
 													],
 													"example": "exact",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"prefixes": {
 													"items": {
 														"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
 														"example": "203.0.113.1/32",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -3001,7 +3121,8 @@
 														"advanced_ddos"
 													],
 													"example": "zscore",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"zscore_sensitivity": {
 													"description": "Level of sensitivity set for zscore rules.",
@@ -3012,7 +3133,8 @@
 													],
 													"example": "high",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"zscore_target": {
 													"description": "Target of the zscore rule analysis.",
@@ -3022,7 +3144,8 @@
 													],
 													"example": "bits",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -3154,13 +3277,15 @@
 															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 															"example": "false",
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"bandwidth_threshold": {
 															"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 															"example": 1000,
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"duration": {
 															"default": "1m",
@@ -3176,23 +3301,27 @@
 																"60m"
 															],
 															"example": "300s",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The id of the rule. Must be unique.",
 															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
 															"example": "my_rule_1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"packet_threshold": {
 															"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 															"example": 10000,
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"prefix_match": {
 															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
@@ -3203,13 +3332,15 @@
 															],
 															"example": "exact",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"prefixes": {
 															"items": {
 																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
 																"example": "203.0.113.1/32",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -3221,7 +3352,8 @@
 																"advanced_ddos"
 															],
 															"example": "zscore",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zscore_sensitivity": {
 															"description": "Level of sensitivity set for zscore rules.",
@@ -3232,7 +3364,8 @@
 															],
 															"example": "high",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zscore_target": {
 															"description": "Target of the zscore rule analysis.",
@@ -3242,7 +3375,8 @@
 															],
 															"example": "bits",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3373,7 +3507,8 @@
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3386,13 +3521,15 @@
 								"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 								"example": "false",
 								"nullable": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"bandwidth": {
 								"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 								"example": 1000,
 								"minimum": 1,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"duration": {
 								"default": "1m",
@@ -3408,29 +3545,34 @@
 									"60m"
 								],
 								"example": "300s",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"id": {
 								"description": "The id of the rule. Must be unique.",
 								"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
 								"example": "my_rule_1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"packet_threshold": {
 								"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 								"example": 10000,
 								"minimum": 1,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"prefixes": {
 								"items": {
 									"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
 									"example": "203.0.113.1/32",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							}
@@ -3557,13 +3699,15 @@
 													"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 													"example": "false",
 													"nullable": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"bandwidth_threshold": {
 													"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 													"example": 1000,
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"duration": {
 													"default": "1m",
@@ -3579,23 +3723,27 @@
 														"60m"
 													],
 													"example": "300s",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The id of the rule. Must be unique.",
 													"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
 													"example": "my_rule_1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"packet_threshold": {
 													"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 													"example": 10000,
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"prefix_match": {
 													"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
@@ -3606,13 +3754,15 @@
 													],
 													"example": "exact",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"prefixes": {
 													"items": {
 														"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
 														"example": "203.0.113.1/32",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -3624,7 +3774,8 @@
 														"advanced_ddos"
 													],
 													"example": "zscore",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"zscore_sensitivity": {
 													"description": "Level of sensitivity set for zscore rules.",
@@ -3635,7 +3786,8 @@
 													],
 													"example": "high",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"zscore_target": {
 													"description": "Target of the zscore rule analysis.",
@@ -3645,7 +3797,8 @@
 													],
 													"example": "bits",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -3777,13 +3930,15 @@
 															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
 															"example": "false",
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"bandwidth_threshold": {
 															"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 															"example": 1000,
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"duration": {
 															"default": "1m",
@@ -3799,23 +3954,27 @@
 																"60m"
 															],
 															"example": "300s",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The id of the rule. Must be unique.",
 															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
 															"example": "my_rule_1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"packet_threshold": {
 															"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
 															"example": 10000,
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"prefix_match": {
 															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
@@ -3826,13 +3985,15 @@
 															],
 															"example": "exact",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"prefixes": {
 															"items": {
 																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
 																"example": "203.0.113.1/32",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -3844,7 +4005,8 @@
 																"advanced_ddos"
 															],
 															"example": "zscore",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zscore_sensitivity": {
 															"description": "Level of sensitivity set for zscore rules.",
@@ -3855,7 +4017,8 @@
 															],
 															"example": "high",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zscore_target": {
 															"description": "Target of the zscore rule analysis.",
@@ -3865,7 +4028,8 @@
 															],
 															"example": "bits",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [

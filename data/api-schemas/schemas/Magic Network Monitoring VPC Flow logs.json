@@ -9,7 +9,8 @@
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -120,7 +121,8 @@
 										"result": {
 											"description": "Authentication token to be used for VPC Flows export authentication.",
 											"example": "JWE/JWT auth token",
-											"type": "string"
+											"type": "string",
+											"x-sensitive": true
 										}
 									},
 									"type": "object"
@@ -239,7 +241,8 @@
 												"result": {
 													"description": "Authentication token to be used for VPC Flows export authentication.",
 													"example": "JWE/JWT auth token",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												}
 											},
 											"type": "object"

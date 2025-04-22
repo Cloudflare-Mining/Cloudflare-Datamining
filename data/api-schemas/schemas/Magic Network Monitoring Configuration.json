@@ -9,7 +9,8 @@
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -129,18 +130,21 @@
 													"default": 1,
 													"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The account name.",
 													"example": "cloudflare user's account",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"router_ips": {
 													"items": {
 														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
 														"example": "203.0.113.1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -151,17 +155,20 @@
 															"id": {
 																"description": "Unique identifier for the warp device.",
 																"example": "5360368d-b351-4791-abe1-93550dabd351",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "Name of the warp device.",
 																"example": "My warp device",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"router_ip": {
 																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
 																"example": "203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -302,18 +309,21 @@
 															"default": 1,
 															"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The account name.",
 															"example": "cloudflare user's account",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"router_ips": {
 															"items": {
 																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
 																"example": "203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -324,17 +334,20 @@
 																	"id": {
 																		"description": "Unique identifier for the warp device.",
 																		"example": "5360368d-b351-4791-abe1-93550dabd351",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "Name of the warp device.",
 																		"example": "My warp device",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"router_ip": {
 																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
 																		"example": "203.0.113.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -475,7 +488,8 @@
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -589,18 +603,21 @@
 													"default": 1,
 													"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The account name.",
 													"example": "cloudflare user's account",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"router_ips": {
 													"items": {
 														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
 														"example": "203.0.113.1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -611,17 +628,20 @@
 															"id": {
 																"description": "Unique identifier for the warp device.",
 																"example": "5360368d-b351-4791-abe1-93550dabd351",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "Name of the warp device.",
 																"example": "My warp device",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"router_ip": {
 																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
 																"example": "203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -762,18 +782,21 @@
 															"default": 1,
 															"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The account name.",
 															"example": "cloudflare user's account",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"router_ips": {
 															"items": {
 																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
 																"example": "203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -784,17 +807,20 @@
 																	"id": {
 																		"description": "Unique identifier for the warp device.",
 																		"example": "5360368d-b351-4791-abe1-93550dabd351",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "Name of the warp device.",
 																		"example": "My warp device",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"router_ip": {
 																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
 																		"example": "203.0.113.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -937,7 +963,8 @@
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1051,18 +1078,21 @@
 													"default": 1,
 													"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The account name.",
 													"example": "cloudflare user's account",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"router_ips": {
 													"items": {
 														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
 														"example": "203.0.113.1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -1073,17 +1103,20 @@
 															"id": {
 																"description": "Unique identifier for the warp device.",
 																"example": "5360368d-b351-4791-abe1-93550dabd351",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "Name of the warp device.",
 																"example": "My warp device",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"router_ip": {
 																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
 																"example": "203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1224,18 +1257,21 @@
 															"default": 1,
 															"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The account name.",
 															"example": "cloudflare user's account",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"router_ips": {
 															"items": {
 																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
 																"example": "203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -1246,17 +1282,20 @@
 																	"id": {
 																		"description": "Unique identifier for the warp device.",
 																		"example": "5360368d-b351-4791-abe1-93550dabd351",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "Name of the warp device.",
 																		"example": "My warp device",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"router_ip": {
 																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
 																		"example": "203.0.113.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -1399,7 +1438,8 @@
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1412,18 +1452,21 @@
 								"default": 1,
 								"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
 								"minimum": 1,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The account name.",
 								"example": "cloudflare user's account",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"router_ips": {
 								"items": {
 									"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
 									"example": "203.0.113.1",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -1434,17 +1477,20 @@
 										"id": {
 											"description": "Unique identifier for the warp device.",
 											"example": "5360368d-b351-4791-abe1-93550dabd351",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"name": {
 											"description": "Name of the warp device.",
 											"example": "My warp device",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"router_ip": {
 											"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
 											"example": "203.0.113.1",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1573,18 +1619,21 @@
 													"default": 1,
 													"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The account name.",
 													"example": "cloudflare user's account",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"router_ips": {
 													"items": {
 														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
 														"example": "203.0.113.1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -1595,17 +1644,20 @@
 															"id": {
 																"description": "Unique identifier for the warp device.",
 																"example": "5360368d-b351-4791-abe1-93550dabd351",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "Name of the warp device.",
 																"example": "My warp device",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"router_ip": {
 																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
 																"example": "203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1746,18 +1798,21 @@
 															"default": 1,
 															"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The account name.",
 															"example": "cloudflare user's account",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"router_ips": {
 															"items": {
 																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
 																"example": "203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -1768,17 +1823,20 @@
 																	"id": {
 																		"description": "Unique identifier for the warp device.",
 																		"example": "5360368d-b351-4791-abe1-93550dabd351",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "Name of the warp device.",
 																		"example": "My warp device",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"router_ip": {
 																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
 																		"example": "203.0.113.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -1920,7 +1978,8 @@
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1933,18 +1992,21 @@
 								"default": 1,
 								"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
 								"minimum": 1,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The account name.",
 								"example": "cloudflare user's account",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"router_ips": {
 								"items": {
 									"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
 									"example": "203.0.113.1",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -1955,17 +2017,20 @@
 										"id": {
 											"description": "Unique identifier for the warp device.",
 											"example": "5360368d-b351-4791-abe1-93550dabd351",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"name": {
 											"description": "Name of the warp device.",
 											"example": "My warp device",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"router_ip": {
 											"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
 											"example": "203.0.113.1",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2098,18 +2163,21 @@
 													"default": 1,
 													"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The account name.",
 													"example": "cloudflare user's account",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"router_ips": {
 													"items": {
 														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
 														"example": "203.0.113.1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -2120,17 +2188,20 @@
 															"id": {
 																"description": "Unique identifier for the warp device.",
 																"example": "5360368d-b351-4791-abe1-93550dabd351",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "Name of the warp device.",
 																"example": "My warp device",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"router_ip": {
 																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
 																"example": "203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2271,18 +2342,21 @@
 															"default": 1,
 															"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The account name.",
 															"example": "cloudflare user's account",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"router_ips": {
 															"items": {
 																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
 																"example": "203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -2293,17 +2367,20 @@
 																	"id": {
 																		"description": "Unique identifier for the warp device.",
 																		"example": "5360368d-b351-4791-abe1-93550dabd351",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "Name of the warp device.",
 																		"example": "My warp device",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"router_ip": {
 																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
 																		"example": "203.0.113.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -2444,7 +2521,8 @@
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2457,18 +2535,21 @@
 								"default": 1,
 								"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
 								"minimum": 1,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The account name.",
 								"example": "cloudflare user's account",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"router_ips": {
 								"items": {
 									"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
 									"example": "203.0.113.1",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -2479,17 +2560,20 @@
 										"id": {
 											"description": "Unique identifier for the warp device.",
 											"example": "5360368d-b351-4791-abe1-93550dabd351",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"name": {
 											"description": "Name of the warp device.",
 											"example": "My warp device",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"router_ip": {
 											"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
 											"example": "203.0.113.1",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2622,18 +2706,21 @@
 													"default": 1,
 													"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The account name.",
 													"example": "cloudflare user's account",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"router_ips": {
 													"items": {
 														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
 														"example": "203.0.113.1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -2644,17 +2731,20 @@
 															"id": {
 																"description": "Unique identifier for the warp device.",
 																"example": "5360368d-b351-4791-abe1-93550dabd351",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "Name of the warp device.",
 																"example": "My warp device",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"router_ip": {
 																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
 																"example": "203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2795,18 +2885,21 @@
 															"default": 1,
 															"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The account name.",
 															"example": "cloudflare user's account",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"router_ips": {
 															"items": {
 																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
 																"example": "203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -2817,17 +2910,20 @@
 																	"id": {
 																		"description": "Unique identifier for the warp device.",
 																		"example": "5360368d-b351-4791-abe1-93550dabd351",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "Name of the warp device.",
 																		"example": "My warp device",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"router_ip": {
 																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
 																		"example": "203.0.113.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
