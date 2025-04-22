@@ -706,6 +706,11 @@
 																	"example": "app-server-1",
 																	"type": "string"
 																},
+																"port": {
+																	"default": 0,
+																	"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
+																	"type": "integer"
+																},
 																"virtual_network_id": {
 																	"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
 																	"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4",
@@ -1095,6 +1100,11 @@
 																			"description": "A human-identifiable name for the origin.",
 																			"example": "app-server-1",
 																			"type": "string"
+																		},
+																		"port": {
+																			"default": 0,
+																			"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
+																			"type": "integer"
 																		},
 																		"virtual_network_id": {
 																			"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
@@ -1580,6 +1590,11 @@
 																"example": "app-server-1",
 																"type": "string"
 															},
+															"port": {
+																"default": 0,
+																"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
+																"type": "integer"
+															},
 															"virtual_network_id": {
 																"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
 																"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4",
@@ -1945,6 +1960,11 @@
 																		"description": "A human-identifiable name for the origin.",
 																		"example": "app-server-1",
 																		"type": "string"
+																	},
+																	"port": {
+																		"default": 0,
+																		"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
+																		"type": "integer"
 																	},
 																	"virtual_network_id": {
 																		"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
@@ -3270,6 +3290,11 @@
 																	"example": "app-server-1",
 																	"type": "string"
 																},
+																"port": {
+																	"default": 0,
+																	"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
+																	"type": "integer"
+																},
 																"virtual_network_id": {
 																	"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
 																	"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4",
@@ -3660,6 +3685,11 @@
 																			"example": "app-server-1",
 																			"type": "string"
 																		},
+																		"port": {
+																			"default": 0,
+																			"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
+																			"type": "integer"
+																		},
 																		"virtual_network_id": {
 																			"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
 																			"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4",
@@ -4029,6 +4059,11 @@
 											"example": "app-server-1",
 											"type": "string"
 										},
+										"port": {
+											"default": 0,
+											"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
+											"type": "integer"
+										},
 										"virtual_network_id": {
 											"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
 											"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4",
@@ -4388,6 +4423,11 @@
 																"description": "A human-identifiable name for the origin.",
 																"example": "app-server-1",
 																"type": "string"
+															},
+															"port": {
+																"default": 0,
+																"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
+																"type": "integer"
 															},
 															"virtual_network_id": {
 																"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
@@ -4755,6 +4795,11 @@
 																		"example": "app-server-1",
 																		"type": "string"
 																	},
+																	"port": {
+																		"default": 0,
+																		"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
+																		"type": "integer"
+																	},
 																	"virtual_network_id": {
 																		"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
 																		"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4",
@@ -5115,6 +5160,11 @@
 											"description": "A human-identifiable name for the origin.",
 											"example": "app-server-1",
 											"type": "string"
+										},
+										"port": {
+											"default": 0,
+											"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
+											"type": "integer"
 										},
 										"virtual_network_id": {
 											"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
@@ -5479,6 +5529,11 @@
 																"description": "A human-identifiable name for the origin.",
 																"example": "app-server-1",
 																"type": "string"
+															},
+															"port": {
+																"default": 0,
+																"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
+																"type": "integer"
 															},
 															"virtual_network_id": {
 																"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
@@ -5845,6 +5900,11 @@
 																		"description": "A human-identifiable name for the origin.",
 																		"example": "app-server-1",
 																		"type": "string"
+																	},
+																	"port": {
+																		"default": 0,
+																		"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
+																		"type": "integer"
 																	},
 																	"virtual_network_id": {
 																		"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
@@ -6698,6 +6758,11 @@
 											"example": "app-server-1",
 											"type": "string"
 										},
+										"port": {
+											"default": 0,
+											"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
+											"type": "integer"
+										},
 										"virtual_network_id": {
 											"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
 											"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4",
@@ -7061,6 +7126,11 @@
 																"description": "A human-identifiable name for the origin.",
 																"example": "app-server-1",
 																"type": "string"
+															},
+															"port": {
+																"default": 0,
+																"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
+																"type": "integer"
 															},
 															"virtual_network_id": {
 																"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
@@ -7427,6 +7497,11 @@
 																		"description": "A human-identifiable name for the origin.",
 																		"example": "app-server-1",
 																		"type": "string"
+																	},
+																	"port": {
+																		"default": 0,
+																		"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
+																		"type": "integer"
 																	},
 																	"virtual_network_id": {
 																		"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
