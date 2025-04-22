@@ -5,32 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Senior Technical Program Manager - Infrastructure Engineering Organization</strong></h4>
-<p>Cloudflare is seeking a highly skilled and self-motivated Technical Program Manager to lead and manage various company-wide initiatives and projects spanning multiple quarters and teams within Infrastructure Engineering.&nbsp; Your main responsibility will be to work cross functionally across product, engineering, security, technical operations, and more to build and execute on the overall strategy.&nbsp;</p>
-<p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations, and working with various functions to deliver success. You will partner with various product and engineering counterparts to determine available options, manage stakeholder expectations, and execute against the roadmap.</p>
-<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.&nbsp;</p>
-<p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</p>
-<p><strong>This position will be based in Austin TX, or Atlanta GA with the expectation of ~2 days/week in office if in Austin. You will be reporting into the Infrastructure Engineering organization. If relocation is required (Austin only), it is expected to occur within ~6 months of starting employment.</strong></p>
-<p><strong>Major areas of responsibilities</strong></p>
+<p><strong>Available Locations:&nbsp;Lisbon or London - Hybrid</strong></p>
+<p><strong>About Product Experience (PX) team</strong></p>
+<p>We're a diverse group of creative people that love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and talented Senior Product Designer to join our team.</p>
+<p>Your work will impact and influence the user experience of a product used by millions of people daily. As a Senior Product Designer, you will work closely with other designers, engineers, product managers, and cross-functional stakeholders. While this is not a managerial role with direct reports, we expect our Senior Product Designers to lead by example and coach the team into doing their best work.</p>
+<p>If you're a systems-thinking Senior Product Designer who's excited to work on significant, meaningful, and complex problems with real-world impact, come help us make the Internet better! We'd love to hear from you.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Understand technical requirements of assigned engineering programs</li>
-	<li>Effectively balance risk and achieve business objectives&nbsp;</li>
-	<li>Obtain clear requirements, plans, and decisions to proactively tackle critical gaps and mitigate risk</li>
-	<li>Drive creation and roll out of scalable processes to meet product and engineering team goals</li>
-	<li>Set up regular feedback cycles and ensure buy-in from contributors on program plan &amp; roadmap</li>
-	<li>Provide regular status updates to stakeholders and senior management</li>
+	<li>Demonstrate talent and passion for designing end-to-end user experiences.</li>
+	<li>Distill complex problems into approachable steps through researching, sketching, and sharing ideas with your cross-functional team.</li>
+	<li>Creation of low and high fidelity user interface designs and prototypes using Figma.</li>
+	<li>Partner with product managers and engineering leaders to work through technical tradeoffs that affect product roadmaps.</li>
+	<li>Partner with other designers to collaborate on shared patterns, product vision, and design goals.</li>
+	<li>Facilitate design reviews with cross-functional teams.</li>
+	<li>Influence and contribute to the internal design process and team culture</li>
+	<li>Make time to mentor other designers on the team and share your craft, learning as you teach.</li>
+	<li>Find ways to grow design's impact, spending time to share design decisions throughout the organisation.</li>
 </ul>
-<p><strong>Desirable skills and knowledge&nbsp;</strong></p>
+<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>BS+ in Computer Science, Information Technology, Information Security or related field or equivalent experience&nbsp;</li>
-	<li>Knowledge of network architecture and working with infrastructure teams a plus</li>
-	<li>10+ years experience in technical program management and a desire for continuous improvement</li>
-	<li>Proven track record on creating realistic project plans, managing dependencies, and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level</li>
-	<li>Experience working with multiple time zones and multiple cross functional teams</li>
-	<li>Strong competency with Confluence, JIRA, and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc)&nbsp;&nbsp;</li>
-	<li>Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
+	<li>Deep understanding of human-centered design.</li>
+	<li>5+ years working in professional UX or product design roles.</li>
+	<li>Effective visual, written, and verbal communication skills.</li>
+	<li>Technical expertise and an understanding of network services/developer tools are a plus.</li>
+	<li>If possible, please submit a 1-2 case studies or portfolio with your application</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
