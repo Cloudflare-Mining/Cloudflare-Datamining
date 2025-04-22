@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit-angular-ui",
 	"dist-tags": {
 		"latest": "0.0.0",
-		"staging": "1.0.0-staging.9"
+		"staging": "1.0.0-staging.11"
 	},
 	"versions": {
 		"0.0.0": {
@@ -205,19 +205,69 @@
 				"@cloudflare/realtimekit-ui": "1.0.0-staging.9"
 			},
 			"peerDependencies": {
+				"@angular/core": ">=12",
+				"@angular/common": ">=12"
+			},
+			"dist": {
+				"shasum": "8b36f7c8448af55b16000aa3615847a27aa71942",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.0-staging.9.tgz",
+				"fileCount": 10,
+				"integrity": "sha512-dHMvek52bHkqFeVj5OpZUvcLtD7J+NBrkjWZVLyV8begz4dbO+zHgmFRt6zqSkaEm1BIFufd6mABhDvJ82WLOA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCoX93DQu1Xgp+rh1OxR7ls2814QmaBT5Z2WwXb1XBogwIgWG3lySqaSkBy3wsNfEV9k3lGNI5H6i9CpuCNYxXMwgs=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 678112
+			}
+		},
+		"1.0.0-staging.10": {
+			"name": "@cloudflare/realtimekit-angular-ui",
+			"version": "1.0.0-staging.10",
+			"dependencies": {
+				"tslib": "^2.3.0",
+				"@cloudflare/realtimekit-ui": "1.0.0-staging.10"
+			},
+			"peerDependencies": {
+				"@angular/core": ">=12",
+				"@angular/common": ">=12"
+			},
+			"dist": {
+				"shasum": "8f1756a9d73f0baad7e19cf96646c1a91578e386",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.0-staging.10.tgz",
+				"fileCount": 10,
+				"integrity": "sha512-73MmfgcYBVUE2PVS2iZ3fh48pcJBlf7ISo6ZStoRKjnroODYWRsDDkg803QQUEopD5eQAeZVy0ShDEEd5jLPVw==",
+				"signatures": [
+					{
+						"sig": "MEUCIDUQ7UXRN1awXFU5T7bzEPQd2YZcqrLDPJxIwt45uAQSAiEA/npBv3HnxW+RydMALioEOlh12agJFFmKtV0tTDmCCak=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 678114
+			}
+		},
+		"1.0.0-staging.11": {
+			"name": "@cloudflare/realtimekit-angular-ui",
+			"version": "1.0.0-staging.11",
+			"dependencies": {
+				"tslib": "^2.3.0",
+				"@cloudflare/realtimekit-ui": "1.0.0-staging.11"
+			},
+			"peerDependencies": {
 				"@angular/common": ">=12",
 				"@angular/core": ">=12"
 			},
 			"dist": {
-				"integrity": "sha512-dHMvek52bHkqFeVj5OpZUvcLtD7J+NBrkjWZVLyV8begz4dbO+zHgmFRt6zqSkaEm1BIFufd6mABhDvJ82WLOA==",
-				"shasum": "8b36f7c8448af55b16000aa3615847a27aa71942",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.0-staging.9.tgz",
+				"integrity": "sha512-fAmM3QlqhCqReJjnBePnpXwWt5nM7jTFWPHplpcKj0JKoJKhtTbSwS76FrhjPqLrFBGbqqHQ1lFOs3cBaADS+g==",
+				"shasum": "009ff52c17203d9763872847c387f4d575e5a9cb",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.0-staging.11.tgz",
 				"fileCount": 10,
-				"unpackedSize": 678112,
+				"unpackedSize": 678114,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCoX93DQu1Xgp+rh1OxR7ls2814QmaBT5Z2WwXb1XBogwIgWG3lySqaSkBy3wsNfEV9k3lGNI5H6i9CpuCNYxXMwgs="
+						"sig": "MEYCIQCyrS4P/Q6DHYdGoTFu6E70Eh4jhrXy78p9IYYb6cp16QIhANw+fyes+qe6pMWQ47uzi4fcvo4bugl9Coo1MyY3JzCg"
 					}
 				]
 			}
