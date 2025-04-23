@@ -41,6 +41,8 @@
 	"PolicyID": "string; ID of the policy/rule that was applied (if any).",
 	"PolicyName": "string; Name of the policy that was applied (if any).",
 	"Protocol": "string; The protocol used for the DNS query by the client (for example, 'udp').",
+	"QueryApplicationIDs": "array[int]; ID or IDs of applications the queried domain belongs to (for example, [1, 51])",
+	"QueryApplicationNames": "array[string]; Name or names of applications the queried domain belongs to (for example, ['Cloudflare Dashboard'])",
 	"QueryCategoryIDs": "array[int]; Union of all categories; Initial categories + Resolved IP categories + Cname intermediate categories",
 	"QueryCategoryNames": "array[string]; Union of all category names; Initial categories + Resolved IP categories + Cname intermediate categories",
 	"QueryID": "string; Globally unique identifier of the query.",
