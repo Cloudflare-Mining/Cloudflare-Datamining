@@ -279,6 +279,7 @@
 			"durable_object_alarms": "boolean",
 			"durable_object_fetch_requires_full_url": "boolean",
 			"dynamic_dispatch_tunnel_exceptions": "boolean",
+			"enable_weak_ref": "boolean",
 			"export_commonjs_default": "boolean",
 			"fetch_refuses_unknown_protocols": "boolean",
 			"fetch_standard_url": "boolean",
@@ -16044,6 +16045,13 @@
 					"prototype": "undefined"
 				}
 			},
+			"Server": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
 			"TLSSocket": {
 				"__proto": "function",
 				"__type": "function",
@@ -17210,6 +17218,13 @@
 					"prototype": "undefined"
 				}
 			},
+			"createServer": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
 			"checkServerIdentity": {
 				"__proto": "function",
 				"__type": "function",
@@ -17227,7 +17242,33 @@
 					"name": "undefined",
 					"prototype": "undefined"
 				}
-			}
+			},
+			"getCiphers": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"CLIENT_RENEG_LIMIT": "number",
+			"CLIENT_RENEG_WINDOW": "number",
+			"DEFAULT_CIPHERS": {
+				"__proto": "object",
+				"__type": "string"
+			},
+			"DEFAULT_ECDH_CURVE": {
+				"__proto": "object",
+				"__type": "string"
+			},
+			"DEFAULT_MAX_VERSION": {
+				"__proto": "object",
+				"__type": "string"
+			},
+			"DEFAULT_MIN_VERSION": {
+				"__proto": "object",
+				"__type": "string"
+			},
+			"rootCertificates": {}
 		},
 		"zlib": {
 			"crc32": {
