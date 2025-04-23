@@ -5,43 +5,39 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Lisbon&nbsp;</p>
-<p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">The Cloudflare Customer Support Team solves complicated problems and answers technical inquiries via email, chat, phone, and social media. From Enterprise corporations with petabytes of web traffic to Wordpress bloggers using our platform for free, we are here to help. Being the eyes and ears of Cloudflare, we act as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</span></p>
-<p><strong>What you'll do&nbsp;</strong></p>
-<p>The Cloudflare Senior Escalation Engineer will perform deep, technical troubleshooting for complex, escalated issues. This role owns the customer escalation process and works with various Product and Engineering teams to identify product bugs, network problems, and platform issues. Escalation Engineers foster a close relationship with SRE, Network, Engineering and Product teams. They act as an escalation point, isolate/replicate problems, and gather technical information/expectation.</p>
+<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
+<hr>
+<p><strong>About the role</strong></p>
+<p>The Network Operations Center ("NOC") Analyst provides premium-level support for Cloudflare's largest and most technically sophisticated customers. The NOC service will focus on monitoring, alerting, and addressing issues related to availability and latency degradation in Layer 7 traffic, as well as handling basic security escalations and offering recommendations to mitigate fundamental attacks. The NOC system will monitor HTTP requests for alert-able conditions, and our NOC team will alert customers about problems as soon as they are found.&nbsp;</p>
+<p>The NOC Analyst will also analyze the alerts, inform the customer of any material impact, and proactively put in motion a remediation path to resolving the degraded service, whether that be by moving traffic through a new route or working with the Systems Reliability Engineering team for a quick product fix or to declare a broader incident. The team also provides reporting and analysis to the customer in regular cadence, beyond any report that would be self-serviceable within the Cloudflare UI.</p>
 <p><strong>Responsibilities</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide coverage (shift rotation including weekends) for technical troubleshooting of escalated issues&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Triage Customer Escalation issues to find the quickest most efficient path of resolution</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work cross-functionally with various teams across the company from engineering to sales</span></li>
+	<li>Configure and maintain custom alerting for availability and latency across Layer 7.&nbsp;&nbsp;</li>
+	<li>Maintain customer dashboards in Grafana, which will be used to monitor for alert signals.</li>
+	<li>Work closely with internal teams such as System Reliability Engineering, Infrastructure Engineering, and Network Engineering to alert against, and subsequently provide meaningful data on performance degradation.</li>
+	<li>Outreach to customers for triggered alerts, providing them with meaningful information on what alerts are firing and why.</li>
+	<li>Escalate impactful alerts to customer support and/or other internal teams.</li>
+	<li>Join customer calls to provide granular and frequent status updates on critical issues.</li>
+	<li>Compile historical reporting on a regular cadence to customers, including remediation steps.</li>
 </ul>
-<h4><strong>Requirements</strong></h4>
+<p><strong>Requirements</strong></p>
+<p><strong>3+ years experience in a customer-facing technical support role</strong></p>
 <ul>
-	<li style="font-weight: 400;">Minimum 2 years of customer-facing technical experience, preferably technical support or system reliability engineering</li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent verbal and written communication skills, ability to disseminate clear and appropriate&nbsp; information to both business and technical audiences</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Able to manage multiple priorities, commitments, and projects</span></li>
+	<li>Modern internet protocols like HTTPS, UDP, TCP, etc.</li>
+	<li>Analysis of traffic for anomaly detection and creation of mitigation rules</li>
+	<li>Knowledge of Cloudflare Products &amp; Features</li>
+	<li>Excellent communication skills with both an internal technical audience and a high-level customer stakeholder</li>
+	<li>Command line / Bash shell</li>
+	<li>Demonstrates excellent crisis management principles</li>
+	<li>Strong multi-tasker with ability to quickly context switch</li>
+	<li>Motivated self-starter who is always looking to improve and expand skills</li>
+	<li>Flexible for scheduled holiday/weekend coverage.</li>
+	<li>Highly desirable:</li>
+	<ul>
+		<li>Experience with prometheus queries, grafana, alertmanager, webhooks, and pagerduty.</li>
+		<li>You are familiar with Cloudflare and have a site actively using our platform</li>
+	</ul>
 </ul>
-<h4><strong>Core competencies (“Desired skills, knowledge and experience”)</strong></h4>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Extensive technical support experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience troubleshooting application protocols (L7 - DNS, HTTP, etc)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience troubleshooting network infrastructure (L3/L4)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Expert with Linux command line tools&nbsp; (curl, dig, git, traceroute, mtr)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Expert at analyzing data using tools like grafana, kibana, and SQL</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Able to clarify complex technical issues and coordinate efforts to resolve</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Able to identify and share/suggest process improvements&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated leadership, prior mentoring experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-motivated, self-directed, strong relationship building, can positively influence the actions of others, team player</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable handling inbound and outbound customer calls</span></li>
-</ul>
-<h4><strong>Bonus Points</strong></h4>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with regular expressions</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of web programming (HTML, Javascript, PHP) and scripting (bash, Python)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience managing/configuring non-HTTP applications (email, DNS, FTP, SSH, etc.)</span></li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
