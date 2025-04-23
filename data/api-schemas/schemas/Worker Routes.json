@@ -26,12 +26,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"content": {
-				"application/json": {}
-			},
-			"required": true
-		},
 		"responses": {
 			"200": {
 				"content": {
@@ -133,9 +127,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -382,10 +381,15 @@
 											"items": {
 												"properties": {
 													"id": {
-														"description": "Identifier.",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32,
-														"type": "string"
+														"allOf": [
+															{
+																"description": "Identifier.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string"
+															}
+														],
+														"readOnly": true
 													},
 													"pattern": {
 														"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
@@ -407,9 +411,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -667,10 +676,15 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Identifier.",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"type": "string"
+													"allOf": [
+														{
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														}
+													],
+													"readOnly": true
 												},
 												"pattern": {
 													"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
@@ -690,9 +704,14 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -852,10 +871,15 @@
 					"schema": {
 						"properties": {
 							"id": {
-								"description": "Identifier.",
-								"example": "023e105f4ecef8ad9ca31a8372d0c353",
-								"maxLength": 32,
-								"type": "string"
+								"allOf": [
+									{
+										"description": "Identifier.",
+										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+										"maxLength": 32,
+										"type": "string"
+									}
+								],
+								"readOnly": true
 							},
 							"pattern": {
 								"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
@@ -972,10 +996,15 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Identifier.",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"type": "string"
+													"allOf": [
+														{
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														}
+													],
+													"readOnly": true
 												},
 												"pattern": {
 													"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
@@ -995,9 +1024,14 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1167,10 +1201,15 @@
 					"schema": {
 						"properties": {
 							"id": {
-								"description": "Identifier.",
-								"example": "023e105f4ecef8ad9ca31a8372d0c353",
-								"maxLength": 32,
-								"type": "string"
+								"allOf": [
+									{
+										"description": "Identifier.",
+										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+										"maxLength": 32,
+										"type": "string"
+									}
+								],
+								"readOnly": true
 							},
 							"pattern": {
 								"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
@@ -1287,10 +1326,15 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Identifier.",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"type": "string"
+													"allOf": [
+														{
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														}
+													],
+													"readOnly": true
 												},
 												"pattern": {
 													"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
@@ -1310,9 +1354,14 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
