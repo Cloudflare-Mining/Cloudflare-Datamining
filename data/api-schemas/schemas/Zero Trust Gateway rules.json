@@ -467,6 +467,7 @@
 														"type": "string"
 													},
 													"device_posture": {
+														"default": "",
 														"description": "The wirefilter expression used for device posture check matching.",
 														"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 														"type": "string"
@@ -536,6 +537,7 @@
 														"type": "string"
 													},
 													"identity": {
+														"default": "",
 														"description": "The wirefilter expression used for identity matching.",
 														"example": "any(identity.groups.name[*] in {\"finance\"})",
 														"type": "string"
@@ -1044,6 +1046,7 @@
 														"type": "object"
 													},
 													"traffic": {
+														"default": "",
 														"description": "The wirefilter expression used for traffic matching.",
 														"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 														"type": "string"
@@ -1224,6 +1227,7 @@
 																"type": "string"
 															},
 															"device_posture": {
+																"default": "",
 																"description": "The wirefilter expression used for device posture check matching.",
 																"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 																"type": "string"
@@ -1293,6 +1297,7 @@
 																"type": "string"
 															},
 															"identity": {
+																"default": "",
 																"description": "The wirefilter expression used for identity matching.",
 																"example": "any(identity.groups.name[*] in {\"finance\"})",
 																"type": "string"
@@ -1801,6 +1806,7 @@
 																"type": "object"
 															},
 															"traffic": {
+																"default": "",
 																"description": "The wirefilter expression used for traffic matching.",
 																"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 																"type": "string"
@@ -2078,6 +2084,7 @@
 													"type": "string"
 												},
 												"device_posture": {
+													"default": "",
 													"description": "The wirefilter expression used for device posture check matching.",
 													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 													"type": "string"
@@ -2147,6 +2154,7 @@
 													"type": "string"
 												},
 												"identity": {
+													"default": "",
 													"description": "The wirefilter expression used for identity matching.",
 													"example": "any(identity.groups.name[*] in {\"finance\"})",
 													"type": "string"
@@ -2655,6 +2663,7 @@
 													"type": "object"
 												},
 												"traffic": {
+													"default": "",
 													"description": "The wirefilter expression used for traffic matching.",
 													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 													"type": "string"
@@ -2803,6 +2812,7 @@
 															"type": "string"
 														},
 														"device_posture": {
+															"default": "",
 															"description": "The wirefilter expression used for device posture check matching.",
 															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 															"type": "string"
@@ -2872,6 +2882,7 @@
 															"type": "string"
 														},
 														"identity": {
+															"default": "",
 															"description": "The wirefilter expression used for identity matching.",
 															"example": "any(identity.groups.name[*] in {\"finance\"})",
 															"type": "string"
@@ -3380,6 +3391,7 @@
 															"type": "object"
 														},
 														"traffic": {
+															"default": "",
 															"description": "The wirefilter expression used for traffic matching.",
 															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 															"type": "string"
@@ -3560,6 +3572,7 @@
 								"type": "string"
 							},
 							"device_posture": {
+								"default": "",
 								"description": "The wirefilter expression used for device posture check matching.",
 								"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 								"type": "string"
@@ -3623,6 +3636,7 @@
 								"type": "array"
 							},
 							"identity": {
+								"default": "",
 								"description": "The wirefilter expression used for identity matching.",
 								"example": "any(identity.groups.name[*] in {\"finance\"})",
 								"type": "string"
@@ -4131,6 +4145,7 @@
 								"type": "object"
 							},
 							"traffic": {
+								"default": "",
 								"description": "The wirefilter expression used for traffic matching.",
 								"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 								"type": "string"
@@ -4263,6 +4278,7 @@
 													"type": "string"
 												},
 												"device_posture": {
+													"default": "",
 													"description": "The wirefilter expression used for device posture check matching.",
 													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 													"type": "string"
@@ -4332,6 +4348,7 @@
 													"type": "string"
 												},
 												"identity": {
+													"default": "",
 													"description": "The wirefilter expression used for identity matching.",
 													"example": "any(identity.groups.name[*] in {\"finance\"})",
 													"type": "string"
@@ -4840,6 +4857,7 @@
 													"type": "object"
 												},
 												"traffic": {
+													"default": "",
 													"description": "The wirefilter expression used for traffic matching.",
 													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 													"type": "string"
@@ -4988,6 +5006,7 @@
 															"type": "string"
 														},
 														"device_posture": {
+															"default": "",
 															"description": "The wirefilter expression used for device posture check matching.",
 															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 															"type": "string"
@@ -5057,6 +5076,7 @@
 															"type": "string"
 														},
 														"identity": {
+															"default": "",
 															"description": "The wirefilter expression used for identity matching.",
 															"example": "any(identity.groups.name[*] in {\"finance\"})",
 															"type": "string"
@@ -5565,6 +5585,7 @@
 															"type": "object"
 														},
 														"traffic": {
+															"default": "",
 															"description": "The wirefilter expression used for traffic matching.",
 															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 															"type": "string"
@@ -5839,6 +5860,7 @@
 													"type": "string"
 												},
 												"device_posture": {
+													"default": "",
 													"description": "The wirefilter expression used for device posture check matching.",
 													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 													"type": "string"
@@ -5908,6 +5930,7 @@
 													"type": "string"
 												},
 												"identity": {
+													"default": "",
 													"description": "The wirefilter expression used for identity matching.",
 													"example": "any(identity.groups.name[*] in {\"finance\"})",
 													"type": "string"
@@ -6416,6 +6439,7 @@
 													"type": "object"
 												},
 												"traffic": {
+													"default": "",
 													"description": "The wirefilter expression used for traffic matching.",
 													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 													"type": "string"
@@ -6561,6 +6585,7 @@
 															"type": "string"
 														},
 														"device_posture": {
+															"default": "",
 															"description": "The wirefilter expression used for device posture check matching.",
 															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 															"type": "string"
@@ -6630,6 +6655,7 @@
 															"type": "string"
 														},
 														"identity": {
+															"default": "",
 															"description": "The wirefilter expression used for identity matching.",
 															"example": "any(identity.groups.name[*] in {\"finance\"})",
 															"type": "string"
@@ -7138,6 +7164,7 @@
 															"type": "object"
 														},
 														"traffic": {
+															"default": "",
 															"description": "The wirefilter expression used for traffic matching.",
 															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 															"type": "string"
@@ -7329,6 +7356,7 @@
 								"type": "string"
 							},
 							"device_posture": {
+								"default": "",
 								"description": "The wirefilter expression used for device posture check matching.",
 								"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 								"type": "string"
@@ -7392,6 +7420,7 @@
 								"type": "array"
 							},
 							"identity": {
+								"default": "",
 								"description": "The wirefilter expression used for identity matching.",
 								"example": "any(identity.groups.name[*] in {\"finance\"})",
 								"type": "string"
@@ -7900,6 +7929,7 @@
 								"type": "object"
 							},
 							"traffic": {
+								"default": "",
 								"description": "The wirefilter expression used for traffic matching.",
 								"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 								"type": "string"
@@ -8032,6 +8062,7 @@
 													"type": "string"
 												},
 												"device_posture": {
+													"default": "",
 													"description": "The wirefilter expression used for device posture check matching.",
 													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 													"type": "string"
@@ -8101,6 +8132,7 @@
 													"type": "string"
 												},
 												"identity": {
+													"default": "",
 													"description": "The wirefilter expression used for identity matching.",
 													"example": "any(identity.groups.name[*] in {\"finance\"})",
 													"type": "string"
@@ -8609,6 +8641,7 @@
 													"type": "object"
 												},
 												"traffic": {
+													"default": "",
 													"description": "The wirefilter expression used for traffic matching.",
 													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 													"type": "string"
@@ -8757,6 +8790,7 @@
 															"type": "string"
 														},
 														"device_posture": {
+															"default": "",
 															"description": "The wirefilter expression used for device posture check matching.",
 															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 															"type": "string"
@@ -8826,6 +8860,7 @@
 															"type": "string"
 														},
 														"identity": {
+															"default": "",
 															"description": "The wirefilter expression used for identity matching.",
 															"example": "any(identity.groups.name[*] in {\"finance\"})",
 															"type": "string"
@@ -9334,6 +9369,7 @@
 															"type": "object"
 														},
 														"traffic": {
+															"default": "",
 															"description": "The wirefilter expression used for traffic matching.",
 															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 															"type": "string"
