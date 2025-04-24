@@ -1,0 +1,584 @@
+{
+	"alias": "react-postgres-fullstack-template",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "template",
+			"build": "./",
+			"files": [
+				".gitignore",
+				"README.md",
+				"docker-compose.yml",
+				"eslint.config.js",
+				"index.html",
+				"init.sql",
+				"package-lock.json",
+				"package.json",
+				"postcss.config.js",
+				"preview-image.png",
+				"tsconfig.cloudflare.json",
+				"tsconfig.json",
+				"tsconfig.node.json",
+				"vite.config.js",
+				"worker-configuration.d.ts",
+				"wrangler.jsonc",
+				"api/index.js",
+				"src/App.jsx",
+				"src/index.css",
+				"src/main.jsx",
+				"api/lib/mockData.js",
+				"api/lib/utils.js",
+				"api/routes/book-related.js",
+				"api/routes/books.js",
+				"src/components/BookCard.jsx",
+				"src/components/BookDetail.jsx",
+				"src/components/BooksList.jsx",
+				"src/components/Breadcrumbs.jsx",
+				"src/components/MockDataBanner.jsx",
+				"src/components/Sidebar.jsx",
+				"src/lib/utils.js",
+				"public/images/books/anna-karenina.jpg",
+				"public/images/books/brothers-karamazov.jpg",
+				"public/images/books/east-of-eden.jpg",
+				"public/images/books/fifth-season.jpg",
+				"public/images/books/giovannis-room.jpg",
+				"public/images/books/jane-eyre.jpg",
+				"public/images/books/left-hand-of-darkness.jpg",
+				"public/images/books/my-brilliant-friend.jpg",
+				"public/images/books/remains-of-the-day.jpg"
+			],
+			"replacements": {
+				"react-postgres-fullstack-template": {
+					"$ref": "values://target/worker/name"
+				}
+			}
+		}
+	],
+	"category": "templates",
+	"description": "Deploy your own library of books using Postgres and Workers.",
+	"docs_url": "https://developers.cloudflare.com/hyperdrive/get-started/",
+	"flags": [
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "React + Postgres Fullstack App",
+	"permissions": null,
+	"setup_steps": [],
+	"templates": [
+		{
+			"context": "create-git-connected-worker",
+			"label": "React + Postgres Fullstack App",
+			"products": [
+				"Workers",
+				"Hyperdrive",
+				"Workers Static Assets",
+				"Smart Placement"
+			],
+			"categories": [
+				"starter",
+				"storage"
+			],
+			"icon_urls": [],
+			"preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/cd71c67a-253f-477d-022c-2f90cb4b3d00/public",
+			"deploy_resources": [
+				{
+					"name": "template-worker",
+					"type": "git-connected-worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"files": [
+							{
+								"filename": ".gitignore",
+								"content": {
+									"$ref": "assets://template/files/.gitignore"
+								}
+							},
+							{
+								"filename": "README.md",
+								"content": {
+									"$ref": "assets://template/files/README.md"
+								}
+							},
+							{
+								"filename": "docker-compose.yml",
+								"content": {
+									"$ref": "assets://template/files/docker-compose.yml"
+								}
+							},
+							{
+								"filename": "eslint.config.js",
+								"content": {
+									"$ref": "assets://template/files/eslint.config.js"
+								}
+							},
+							{
+								"filename": "index.html",
+								"content": {
+									"$ref": "assets://template/files/index.html"
+								}
+							},
+							{
+								"filename": "init.sql",
+								"content": {
+									"$ref": "assets://template/files/init.sql"
+								}
+							},
+							{
+								"filename": "package-lock.json",
+								"content": {
+									"$ref": "assets://template/files/package-lock.json"
+								}
+							},
+							{
+								"filename": "package.json",
+								"content": {
+									"$ref": "assets://template/files/package.json"
+								}
+							},
+							{
+								"filename": "postcss.config.js",
+								"content": {
+									"$ref": "assets://template/files/postcss.config.js"
+								}
+							},
+							{
+								"filename": "preview-image.png",
+								"content": {
+									"$ref": "assets://template/files/preview-image.png"
+								}
+							},
+							{
+								"filename": "tsconfig.cloudflare.json",
+								"content": {
+									"$ref": "assets://template/files/tsconfig.cloudflare.json"
+								}
+							},
+							{
+								"filename": "tsconfig.json",
+								"content": {
+									"$ref": "assets://template/files/tsconfig.json"
+								}
+							},
+							{
+								"filename": "tsconfig.node.json",
+								"content": {
+									"$ref": "assets://template/files/tsconfig.node.json"
+								}
+							},
+							{
+								"filename": "vite.config.js",
+								"content": {
+									"$ref": "assets://template/files/vite.config.js"
+								}
+							},
+							{
+								"filename": "worker-configuration.d.ts",
+								"content": {
+									"$ref": "assets://template/files/worker-configuration.d.ts"
+								}
+							},
+							{
+								"filename": "wrangler.jsonc",
+								"content": {
+									"$ref": "assets://template/files/wrangler.jsonc"
+								}
+							},
+							{
+								"filename": "api/index.js",
+								"content": {
+									"$ref": "assets://template/files/api/index.js"
+								}
+							},
+							{
+								"filename": "src/App.jsx",
+								"content": {
+									"$ref": "assets://template/files/src/App.jsx"
+								}
+							},
+							{
+								"filename": "src/index.css",
+								"content": {
+									"$ref": "assets://template/files/src/index.css"
+								}
+							},
+							{
+								"filename": "src/main.jsx",
+								"content": {
+									"$ref": "assets://template/files/src/main.jsx"
+								}
+							},
+							{
+								"filename": "api/lib/mockData.js",
+								"content": {
+									"$ref": "assets://template/files/api/lib/mockData.js"
+								}
+							},
+							{
+								"filename": "api/lib/utils.js",
+								"content": {
+									"$ref": "assets://template/files/api/lib/utils.js"
+								}
+							},
+							{
+								"filename": "api/routes/book-related.js",
+								"content": {
+									"$ref": "assets://template/files/api/routes/book-related.js"
+								}
+							},
+							{
+								"filename": "api/routes/books.js",
+								"content": {
+									"$ref": "assets://template/files/api/routes/books.js"
+								}
+							},
+							{
+								"filename": "src/components/BookCard.jsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/BookCard.jsx"
+								}
+							},
+							{
+								"filename": "src/components/BookDetail.jsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/BookDetail.jsx"
+								}
+							},
+							{
+								"filename": "src/components/BooksList.jsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/BooksList.jsx"
+								}
+							},
+							{
+								"filename": "src/components/Breadcrumbs.jsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/Breadcrumbs.jsx"
+								}
+							},
+							{
+								"filename": "src/components/MockDataBanner.jsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/MockDataBanner.jsx"
+								}
+							},
+							{
+								"filename": "src/components/Sidebar.jsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/Sidebar.jsx"
+								}
+							},
+							{
+								"filename": "src/lib/utils.js",
+								"content": {
+									"$ref": "assets://template/files/src/lib/utils.js"
+								}
+							},
+							{
+								"filename": "public/images/books/anna-karenina.jpg",
+								"content": {
+									"$ref": "assets://template/files/public/images/books/anna-karenina.jpg"
+								}
+							},
+							{
+								"filename": "public/images/books/brothers-karamazov.jpg",
+								"content": {
+									"$ref": "assets://template/files/public/images/books/brothers-karamazov.jpg"
+								}
+							},
+							{
+								"filename": "public/images/books/east-of-eden.jpg",
+								"content": {
+									"$ref": "assets://template/files/public/images/books/east-of-eden.jpg"
+								}
+							},
+							{
+								"filename": "public/images/books/fifth-season.jpg",
+								"content": {
+									"$ref": "assets://template/files/public/images/books/fifth-season.jpg"
+								}
+							},
+							{
+								"filename": "public/images/books/giovannis-room.jpg",
+								"content": {
+									"$ref": "assets://template/files/public/images/books/giovannis-room.jpg"
+								}
+							},
+							{
+								"filename": "public/images/books/jane-eyre.jpg",
+								"content": {
+									"$ref": "assets://template/files/public/images/books/jane-eyre.jpg"
+								}
+							},
+							{
+								"filename": "public/images/books/left-hand-of-darkness.jpg",
+								"content": {
+									"$ref": "assets://template/files/public/images/books/left-hand-of-darkness.jpg"
+								}
+							},
+							{
+								"filename": "public/images/books/my-brilliant-friend.jpg",
+								"content": {
+									"$ref": "assets://template/files/public/images/books/my-brilliant-friend.jpg"
+								}
+							},
+							{
+								"filename": "public/images/books/remains-of-the-day.jpg",
+								"content": {
+									"$ref": "assets://template/files/public/images/books/remains-of-the-day.jpg"
+								}
+							}
+						]
+					}
+				}
+			],
+			"preview_files": [
+				{
+					"filename": ".gitignore",
+					"content": {
+						"$ref": "assets://template/files/.gitignore"
+					}
+				},
+				{
+					"filename": "README.md",
+					"content": {
+						"$ref": "assets://template/files/README.md"
+					}
+				},
+				{
+					"filename": "docker-compose.yml",
+					"content": {
+						"$ref": "assets://template/files/docker-compose.yml"
+					}
+				},
+				{
+					"filename": "eslint.config.js",
+					"content": {
+						"$ref": "assets://template/files/eslint.config.js"
+					}
+				},
+				{
+					"filename": "index.html",
+					"content": {
+						"$ref": "assets://template/files/index.html"
+					}
+				},
+				{
+					"filename": "init.sql",
+					"content": {
+						"$ref": "assets://template/files/init.sql"
+					}
+				},
+				{
+					"filename": "package-lock.json",
+					"content": {
+						"$ref": "assets://template/files/package-lock.json"
+					}
+				},
+				{
+					"filename": "package.json",
+					"content": {
+						"$ref": "assets://template/files/package.json"
+					}
+				},
+				{
+					"filename": "postcss.config.js",
+					"content": {
+						"$ref": "assets://template/files/postcss.config.js"
+					}
+				},
+				{
+					"filename": "preview-image.png",
+					"content": {
+						"$ref": "assets://template/files/preview-image.png"
+					}
+				},
+				{
+					"filename": "tsconfig.cloudflare.json",
+					"content": {
+						"$ref": "assets://template/files/tsconfig.cloudflare.json"
+					}
+				},
+				{
+					"filename": "tsconfig.json",
+					"content": {
+						"$ref": "assets://template/files/tsconfig.json"
+					}
+				},
+				{
+					"filename": "tsconfig.node.json",
+					"content": {
+						"$ref": "assets://template/files/tsconfig.node.json"
+					}
+				},
+				{
+					"filename": "vite.config.js",
+					"content": {
+						"$ref": "assets://template/files/vite.config.js"
+					}
+				},
+				{
+					"filename": "worker-configuration.d.ts",
+					"content": {
+						"$ref": "assets://template/files/worker-configuration.d.ts"
+					}
+				},
+				{
+					"filename": "wrangler.jsonc",
+					"content": {
+						"$ref": "assets://template/files/wrangler.jsonc"
+					}
+				},
+				{
+					"filename": "api/index.js",
+					"content": {
+						"$ref": "assets://template/files/api/index.js"
+					}
+				},
+				{
+					"filename": "src/App.jsx",
+					"content": {
+						"$ref": "assets://template/files/src/App.jsx"
+					}
+				},
+				{
+					"filename": "src/index.css",
+					"content": {
+						"$ref": "assets://template/files/src/index.css"
+					}
+				},
+				{
+					"filename": "src/main.jsx",
+					"content": {
+						"$ref": "assets://template/files/src/main.jsx"
+					}
+				},
+				{
+					"filename": "api/lib/mockData.js",
+					"content": {
+						"$ref": "assets://template/files/api/lib/mockData.js"
+					}
+				},
+				{
+					"filename": "api/lib/utils.js",
+					"content": {
+						"$ref": "assets://template/files/api/lib/utils.js"
+					}
+				},
+				{
+					"filename": "api/routes/book-related.js",
+					"content": {
+						"$ref": "assets://template/files/api/routes/book-related.js"
+					}
+				},
+				{
+					"filename": "api/routes/books.js",
+					"content": {
+						"$ref": "assets://template/files/api/routes/books.js"
+					}
+				},
+				{
+					"filename": "src/components/BookCard.jsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/BookCard.jsx"
+					}
+				},
+				{
+					"filename": "src/components/BookDetail.jsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/BookDetail.jsx"
+					}
+				},
+				{
+					"filename": "src/components/BooksList.jsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/BooksList.jsx"
+					}
+				},
+				{
+					"filename": "src/components/Breadcrumbs.jsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/Breadcrumbs.jsx"
+					}
+				},
+				{
+					"filename": "src/components/MockDataBanner.jsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/MockDataBanner.jsx"
+					}
+				},
+				{
+					"filename": "src/components/Sidebar.jsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/Sidebar.jsx"
+					}
+				},
+				{
+					"filename": "src/lib/utils.js",
+					"content": {
+						"$ref": "assets://template/files/src/lib/utils.js"
+					}
+				},
+				{
+					"filename": "public/images/books/anna-karenina.jpg",
+					"content": {
+						"$ref": "assets://template/files/public/images/books/anna-karenina.jpg"
+					}
+				},
+				{
+					"filename": "public/images/books/brothers-karamazov.jpg",
+					"content": {
+						"$ref": "assets://template/files/public/images/books/brothers-karamazov.jpg"
+					}
+				},
+				{
+					"filename": "public/images/books/east-of-eden.jpg",
+					"content": {
+						"$ref": "assets://template/files/public/images/books/east-of-eden.jpg"
+					}
+				},
+				{
+					"filename": "public/images/books/fifth-season.jpg",
+					"content": {
+						"$ref": "assets://template/files/public/images/books/fifth-season.jpg"
+					}
+				},
+				{
+					"filename": "public/images/books/giovannis-room.jpg",
+					"content": {
+						"$ref": "assets://template/files/public/images/books/giovannis-room.jpg"
+					}
+				},
+				{
+					"filename": "public/images/books/jane-eyre.jpg",
+					"content": {
+						"$ref": "assets://template/files/public/images/books/jane-eyre.jpg"
+					}
+				},
+				{
+					"filename": "public/images/books/left-hand-of-darkness.jpg",
+					"content": {
+						"$ref": "assets://template/files/public/images/books/left-hand-of-darkness.jpg"
+					}
+				},
+				{
+					"filename": "public/images/books/my-brilliant-friend.jpg",
+					"content": {
+						"$ref": "assets://template/files/public/images/books/my-brilliant-friend.jpg"
+					}
+				},
+				{
+					"filename": "public/images/books/remains-of-the-day.jpg",
+					"content": {
+						"$ref": "assets://template/files/public/images/books/remains-of-the-day.jpg"
+					}
+				}
+			]
+		}
+	],
+	"uninstall_action": null,
+	"version": "6.0.0"
+}
