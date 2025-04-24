@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/playwright",
 	"dist-tags": {
-		"latest": "0.0.9"
+		"latest": "0.0.10"
 	},
 	"versions": {
 		"0.0.0-test": {
@@ -151,15 +151,35 @@
 				"vite": "^6.1.0"
 			},
 			"dist": {
-				"integrity": "sha512-ytAeVK4ZM5TClIWB5gtT8deleFfz+rQ63fdW7t/ROFtqDBq3ziKMXIwJN5GVwq3hLtdOOzEp0nkgz1NTukhVRQ==",
 				"shasum": "0a17ea0c6552f470345825360b26f69cc51516e2",
 				"tarball": "https://registry.npmjs.org/@cloudflare/playwright/-/playwright-0.0.9.tgz",
 				"fileCount": 647,
-				"unpackedSize": 10701331,
+				"integrity": "sha512-ytAeVK4ZM5TClIWB5gtT8deleFfz+rQ63fdW7t/ROFtqDBq3ziKMXIwJN5GVwq3hLtdOOzEp0nkgz1NTukhVRQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD8e1VB7cSsK81n+G9kfjIerxEnbWvQmSz4FZxVkFplGQIgNOwwE0XFSR1ebeqsh7HQLVJ+yZRf+mwKej4BQJ9rrLM=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 10701331
+			}
+		},
+		"0.0.10": {
+			"name": "@cloudflare/playwright",
+			"version": "0.0.10",
+			"devDependencies": {
+				"vite": "^6.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-phlOzpO5FLgXFbx20C2GyQonffpe+qdL/MSMOf7ryc3+WjEsRrr6zqVLVJJq9ZW4CEypee1e/wcUQ473srC2dA==",
+				"shasum": "e7765e018e8658764f5a7d9313c3ad99b4c2d0ce",
+				"tarball": "https://registry.npmjs.org/@cloudflare/playwright/-/playwright-0.0.10.tgz",
+				"fileCount": 649,
+				"unpackedSize": 11093447,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQD8e1VB7cSsK81n+G9kfjIerxEnbWvQmSz4FZxVkFplGQIgNOwwE0XFSR1ebeqsh7HQLVJ+yZRf+mwKej4BQJ9rrLM="
+						"sig": "MEUCIG4Qntx4me0Bu5XP6rMT/ODkV5qInUd0du2Vt3MBJzoMAiEA/XJ3zPzmly17WHOawlP/KzcIV0xeyl1so9JvVjf6ywk="
 					}
 				]
 			}
