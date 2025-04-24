@@ -21,7 +21,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -51,7 +51,8 @@
 											"type": "string",
 											"x-auditable": true
 										}
-									}
+									},
+									"type": "object"
 								}
 							},
 							"type": "object"
@@ -77,7 +78,8 @@
 													"type": "string",
 													"x-auditable": true
 												}
-											}
+											},
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -150,7 +152,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -176,7 +178,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete a Zone Lockdown rule",
@@ -202,7 +205,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -403,7 +406,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -412,7 +417,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -431,36 +436,39 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true,
 													"type": "array"
 												},
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Defines the total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Defines the current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Defines the number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Defines the total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -482,7 +490,8 @@
 																			"enum": [
 																				"ip"
 																			],
-																			"example": "ip"
+																			"example": "ip",
+																			"type": "string"
 																		},
 																		"value": {
 																			"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -490,7 +499,8 @@
 																			"type": "string"
 																		}
 																	},
-																	"title": "An IP address configuration."
+																	"title": "An IP address configuration.",
+																	"type": "object"
 																},
 																{
 																	"properties": {
@@ -499,7 +509,8 @@
 																			"enum": [
 																				"ip_range"
 																			],
-																			"example": "ip_range"
+																			"example": "ip_range",
+																			"type": "string"
 																		},
 																		"value": {
 																			"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
@@ -507,7 +518,8 @@
 																			"type": "string"
 																		}
 																	},
-																	"title": "An IP address range configuration."
+																	"title": "An IP address range configuration.",
+																	"type": "object"
 																}
 															]
 														},
@@ -567,7 +579,8 @@
 													"description",
 													"urls",
 													"configurations"
-												]
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -642,7 +655,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -651,7 +666,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -670,36 +685,39 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														},
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Defines the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Defines the current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Defines the number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Defines the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -721,7 +739,8 @@
 																					"enum": [
 																						"ip"
 																					],
-																					"example": "ip"
+																					"example": "ip",
+																					"type": "string"
 																				},
 																				"value": {
 																					"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -729,7 +748,8 @@
 																					"type": "string"
 																				}
 																			},
-																			"title": "An IP address configuration."
+																			"title": "An IP address configuration.",
+																			"type": "object"
 																		},
 																		{
 																			"properties": {
@@ -738,7 +758,8 @@
 																					"enum": [
 																						"ip_range"
 																					],
-																					"example": "ip_range"
+																					"example": "ip_range",
+																					"type": "string"
 																				},
 																				"value": {
 																					"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
@@ -746,7 +767,8 @@
 																					"type": "string"
 																				}
 																			},
-																			"title": "An IP address range configuration."
+																			"title": "An IP address range configuration.",
+																			"type": "object"
 																		}
 																	]
 																},
@@ -806,7 +828,8 @@
 															"description",
 															"urls",
 															"configurations"
-														]
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -886,7 +909,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -912,7 +935,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List Zone Lockdown rules",
@@ -952,7 +976,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1018,7 +1042,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1027,7 +1053,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1057,7 +1083,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1078,7 +1105,8 @@
 																		"enum": [
 																			"ip"
 																		],
-																		"example": "ip"
+																		"example": "ip",
+																		"type": "string"
 																	},
 																	"value": {
 																		"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -1086,7 +1114,8 @@
 																		"type": "string"
 																	}
 																},
-																"title": "An IP address configuration."
+																"title": "An IP address configuration.",
+																"type": "object"
 															},
 															{
 																"properties": {
@@ -1095,7 +1124,8 @@
 																		"enum": [
 																			"ip_range"
 																		],
-																		"example": "ip_range"
+																		"example": "ip_range",
+																		"type": "string"
 																	},
 																	"value": {
 																		"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
@@ -1103,7 +1133,8 @@
 																		"type": "string"
 																	}
 																},
-																"title": "An IP address range configuration."
+																"title": "An IP address range configuration.",
+																"type": "object"
 															}
 														]
 													},
@@ -1163,7 +1194,8 @@
 												"description",
 												"urls",
 												"configurations"
-											]
+											],
+											"type": "object"
 										}
 									},
 									"required": [
@@ -1236,7 +1268,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -1245,7 +1279,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1275,7 +1309,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -1296,7 +1331,8 @@
 																				"enum": [
 																					"ip"
 																				],
-																				"example": "ip"
+																				"example": "ip",
+																				"type": "string"
 																			},
 																			"value": {
 																				"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -1304,7 +1340,8 @@
 																				"type": "string"
 																			}
 																		},
-																		"title": "An IP address configuration."
+																		"title": "An IP address configuration.",
+																		"type": "object"
 																	},
 																	{
 																		"properties": {
@@ -1313,7 +1350,8 @@
 																				"enum": [
 																					"ip_range"
 																				],
-																				"example": "ip_range"
+																				"example": "ip_range",
+																				"type": "string"
 																			},
 																			"value": {
 																				"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
@@ -1321,7 +1359,8 @@
 																				"type": "string"
 																			}
 																		},
-																		"title": "An IP address range configuration."
+																		"title": "An IP address range configuration.",
+																		"type": "object"
 																	}
 																]
 															},
@@ -1381,7 +1420,8 @@
 														"description",
 														"urls",
 														"configurations"
-													]
+													],
+													"type": "object"
 												}
 											},
 											"required": [
@@ -1459,7 +1499,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1485,7 +1525,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get a Zone Lockdown rule",
@@ -1512,7 +1553,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1536,7 +1577,8 @@
 													"enum": [
 														"ip"
 													],
-													"example": "ip"
+													"example": "ip",
+													"type": "string"
 												},
 												"value": {
 													"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -1544,7 +1586,8 @@
 													"type": "string"
 												}
 											},
-											"title": "An IP address configuration."
+											"title": "An IP address configuration.",
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -1553,7 +1596,8 @@
 													"enum": [
 														"ip_range"
 													],
-													"example": "ip_range"
+													"example": "ip_range",
+													"type": "string"
 												},
 												"value": {
 													"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
@@ -1561,7 +1605,8 @@
 													"type": "string"
 												}
 											},
-											"title": "An IP address range configuration."
+											"title": "An IP address range configuration.",
+											"type": "object"
 										}
 									]
 								},
@@ -1645,7 +1690,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1654,7 +1701,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1684,7 +1731,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1705,7 +1753,8 @@
 																		"enum": [
 																			"ip"
 																		],
-																		"example": "ip"
+																		"example": "ip",
+																		"type": "string"
 																	},
 																	"value": {
 																		"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -1713,7 +1762,8 @@
 																		"type": "string"
 																	}
 																},
-																"title": "An IP address configuration."
+																"title": "An IP address configuration.",
+																"type": "object"
 															},
 															{
 																"properties": {
@@ -1722,7 +1772,8 @@
 																		"enum": [
 																			"ip_range"
 																		],
-																		"example": "ip_range"
+																		"example": "ip_range",
+																		"type": "string"
 																	},
 																	"value": {
 																		"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
@@ -1730,7 +1781,8 @@
 																		"type": "string"
 																	}
 																},
-																"title": "An IP address range configuration."
+																"title": "An IP address range configuration.",
+																"type": "object"
 															}
 														]
 													},
@@ -1790,7 +1842,8 @@
 												"description",
 												"urls",
 												"configurations"
-											]
+											],
+											"type": "object"
 										}
 									},
 									"required": [
@@ -1863,7 +1916,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -1872,7 +1927,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1902,7 +1957,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -1923,7 +1979,8 @@
 																				"enum": [
 																					"ip"
 																				],
-																				"example": "ip"
+																				"example": "ip",
+																				"type": "string"
 																			},
 																			"value": {
 																				"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -1931,7 +1988,8 @@
 																				"type": "string"
 																			}
 																		},
-																		"title": "An IP address configuration."
+																		"title": "An IP address configuration.",
+																		"type": "object"
 																	},
 																	{
 																		"properties": {
@@ -1940,7 +1998,8 @@
 																				"enum": [
 																					"ip_range"
 																				],
-																				"example": "ip_range"
+																				"example": "ip_range",
+																				"type": "string"
 																			},
 																			"value": {
 																				"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
@@ -1948,7 +2007,8 @@
 																				"type": "string"
 																			}
 																		},
-																		"title": "An IP address range configuration."
+																		"title": "An IP address range configuration.",
+																		"type": "object"
 																	}
 																]
 															},
@@ -2008,7 +2068,8 @@
 														"description",
 														"urls",
 														"configurations"
-													]
+													],
+													"type": "object"
 												}
 											},
 											"required": [
@@ -2086,7 +2147,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2112,7 +2173,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create a Zone Lockdown rule",
@@ -2151,7 +2213,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2175,7 +2237,8 @@
 													"enum": [
 														"ip"
 													],
-													"example": "ip"
+													"example": "ip",
+													"type": "string"
 												},
 												"value": {
 													"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -2183,7 +2246,8 @@
 													"type": "string"
 												}
 											},
-											"title": "An IP address configuration."
+											"title": "An IP address configuration.",
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -2192,7 +2256,8 @@
 													"enum": [
 														"ip_range"
 													],
-													"example": "ip_range"
+													"example": "ip_range",
+													"type": "string"
 												},
 												"value": {
 													"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
@@ -2200,7 +2265,8 @@
 													"type": "string"
 												}
 											},
-											"title": "An IP address range configuration."
+											"title": "An IP address range configuration.",
+											"type": "object"
 										}
 									]
 								},
@@ -2284,7 +2350,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2293,7 +2361,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2323,7 +2391,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -2344,7 +2413,8 @@
 																		"enum": [
 																			"ip"
 																		],
-																		"example": "ip"
+																		"example": "ip",
+																		"type": "string"
 																	},
 																	"value": {
 																		"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -2352,7 +2422,8 @@
 																		"type": "string"
 																	}
 																},
-																"title": "An IP address configuration."
+																"title": "An IP address configuration.",
+																"type": "object"
 															},
 															{
 																"properties": {
@@ -2361,7 +2432,8 @@
 																		"enum": [
 																			"ip_range"
 																		],
-																		"example": "ip_range"
+																		"example": "ip_range",
+																		"type": "string"
 																	},
 																	"value": {
 																		"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
@@ -2369,7 +2441,8 @@
 																		"type": "string"
 																	}
 																},
-																"title": "An IP address range configuration."
+																"title": "An IP address range configuration.",
+																"type": "object"
 															}
 														]
 													},
@@ -2429,7 +2502,8 @@
 												"description",
 												"urls",
 												"configurations"
-											]
+											],
+											"type": "object"
 										}
 									},
 									"required": [
@@ -2502,7 +2576,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -2511,7 +2587,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2541,7 +2617,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -2562,7 +2639,8 @@
 																				"enum": [
 																					"ip"
 																				],
-																				"example": "ip"
+																				"example": "ip",
+																				"type": "string"
 																			},
 																			"value": {
 																				"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -2570,7 +2648,8 @@
 																				"type": "string"
 																			}
 																		},
-																		"title": "An IP address configuration."
+																		"title": "An IP address configuration.",
+																		"type": "object"
 																	},
 																	{
 																		"properties": {
@@ -2579,7 +2658,8 @@
 																				"enum": [
 																					"ip_range"
 																				],
-																				"example": "ip_range"
+																				"example": "ip_range",
+																				"type": "string"
 																			},
 																			"value": {
 																				"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
@@ -2587,7 +2667,8 @@
 																				"type": "string"
 																			}
 																		},
-																		"title": "An IP address range configuration."
+																		"title": "An IP address range configuration.",
+																		"type": "object"
 																	}
 																]
 															},
@@ -2647,7 +2728,8 @@
 														"description",
 														"urls",
 														"configurations"
-													]
+													],
+													"type": "object"
 												}
 											},
 											"required": [
@@ -2725,7 +2807,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2751,7 +2833,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update a Zone Lockdown rule",

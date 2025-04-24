@@ -9,7 +9,7 @@
 				"name": "rate_limit_id",
 				"required": true,
 				"schema": {
-					"description": "The unique identifier of the rate limit.",
+					"description": "Defines the unique identifier of the rate limit.",
 					"example": "372e67954025e0ba6aaa6d586b9e0b59",
 					"maxLength": 32,
 					"readOnly": true,
@@ -21,7 +21,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -95,7 +95,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -104,7 +106,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -134,7 +136,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -358,7 +361,8 @@
 																	"type": "number",
 																	"x-auditable": true
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -380,7 +384,8 @@
 													"type": "string",
 													"x-auditable": true
 												}
-											}
+											},
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -389,7 +394,7 @@
 						}
 					}
 				},
-				"description": "Delete a rate limit response"
+				"description": "Delete a rate limit response."
 			},
 			"4XX": {
 				"content": {
@@ -452,7 +457,9 @@
 																			"type": "object"
 																		},
 																		{
-																			"items": {},
+																			"items": {
+																				"type": "object"
+																			},
 																			"type": "array"
 																		},
 																		{
@@ -461,7 +468,7 @@
 																	]
 																},
 																"success": {
-																	"description": "Whether the API call was successful",
+																	"description": "Defines whether the API call was successful.",
 																	"enum": [
 																		true
 																	],
@@ -491,7 +498,8 @@
 																		}
 																	]
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -715,7 +723,8 @@
 																			"type": "number",
 																			"x-auditable": true
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															],
 															"type": "object"
@@ -737,7 +746,8 @@
 															"type": "string",
 															"x-auditable": true
 														}
-													}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -812,7 +822,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -832,13 +842,14 @@
 						}
 					}
 				},
-				"description": "Delete a rate limit response failure"
+				"description": "Delete a rate limit response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete a rate limit",
@@ -865,7 +876,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -877,7 +888,7 @@
 				"name": "page",
 				"schema": {
 					"default": 1,
-					"description": "The page number of paginated results.",
+					"description": "Defines the page number of paginated results.",
 					"minimum": 1,
 					"type": "number"
 				}
@@ -887,7 +898,7 @@
 				"name": "per_page",
 				"schema": {
 					"default": 20,
-					"description": "The maximum number of results per page. You can only set the value to `1` or to a multiple of 5 such as `5`, `10`, `15`, or `20`.",
+					"description": "Defines the maximum number of results per page. You can only set the value to `1` or to a multiple of 5 such as `5`, `10`, `15`, or `20`.",
 					"maximum": 1000,
 					"minimum": 1,
 					"type": "number"
@@ -952,7 +963,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -961,7 +974,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -980,36 +993,39 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true,
 													"type": "array"
 												},
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Defines the total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Defines the current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Defines the number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Defines the total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1234,7 +1250,8 @@
 																"type": "number",
 																"x-auditable": true
 															}
-														}
+														},
+														"type": "object"
 													}
 												],
 												"type": "object"
@@ -1248,7 +1265,7 @@
 						}
 					}
 				},
-				"description": "List rate limits response"
+				"description": "List rate limits response."
 			},
 			"4XX": {
 				"content": {
@@ -1309,7 +1326,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -1318,7 +1337,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1337,36 +1356,39 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														},
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Defines the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Defines the current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Defines the number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Defines the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -1591,7 +1613,8 @@
 																		"type": "number",
 																		"x-auditable": true
 																	}
-																}
+																},
+																"type": "object"
 															}
 														],
 														"type": "object"
@@ -1671,7 +1694,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1691,13 +1714,14 @@
 						}
 					}
 				},
-				"description": "List rate limits response failure"
+				"description": "List rate limits response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List rate limits",
@@ -1725,7 +1749,7 @@
 				"name": "rate_limit_id",
 				"required": true,
 				"schema": {
-					"description": "The unique identifier of the rate limit.",
+					"description": "Defines the unique identifier of the rate limit.",
 					"example": "372e67954025e0ba6aaa6d586b9e0b59",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1737,7 +1761,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1803,7 +1827,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1812,7 +1838,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1842,7 +1868,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -2066,7 +2093,8 @@
 															"type": "number",
 															"x-auditable": true
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -2078,7 +2106,7 @@
 						}
 					}
 				},
-				"description": "Get a rate limit response"
+				"description": "Get a rate limit response."
 			},
 			"4XX": {
 				"content": {
@@ -2139,7 +2167,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -2148,7 +2178,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2178,7 +2208,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -2402,7 +2433,8 @@
 																	"type": "number",
 																	"x-auditable": true
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -2480,7 +2512,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2500,13 +2532,14 @@
 						}
 					}
 				},
-				"description": "Get a rate limit response failure"
+				"description": "Get a rate limit response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get a rate limit",
@@ -2534,7 +2567,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2789,7 +2822,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2798,7 +2833,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2828,7 +2863,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -3052,7 +3088,8 @@
 															"type": "number",
 															"x-auditable": true
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -3064,7 +3101,7 @@
 						}
 					}
 				},
-				"description": "Create a rate limit response"
+				"description": "Create a rate limit response."
 			},
 			"4XX": {
 				"content": {
@@ -3125,7 +3162,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -3134,7 +3173,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3164,7 +3203,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -3388,7 +3428,8 @@
 																	"type": "number",
 																	"x-auditable": true
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -3466,7 +3507,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -3486,13 +3527,14 @@
 						}
 					}
 				},
-				"description": "Create a rate limit response failure"
+				"description": "Create a rate limit response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create a rate limit",
@@ -3519,7 +3561,7 @@
 				"name": "rate_limit_id",
 				"required": true,
 				"schema": {
-					"description": "The unique identifier of the rate limit.",
+					"description": "Defines the unique identifier of the rate limit.",
 					"example": "372e67954025e0ba6aaa6d586b9e0b59",
 					"maxLength": 32,
 					"readOnly": true,
@@ -3531,7 +3573,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -3787,7 +3829,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -3796,7 +3840,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3826,7 +3870,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -4050,7 +4095,8 @@
 															"type": "number",
 															"x-auditable": true
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -4062,7 +4108,7 @@
 						}
 					}
 				},
-				"description": "Update a rate limit response"
+				"description": "Update a rate limit response."
 			},
 			"4XX": {
 				"content": {
@@ -4123,7 +4169,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -4132,7 +4180,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -4162,7 +4210,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -4386,7 +4435,8 @@
 																	"type": "number",
 																	"x-auditable": true
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -4464,7 +4514,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -4484,13 +4534,14 @@
 						}
 					}
 				},
-				"description": "Update a rate limit response failure"
+				"description": "Update a rate limit response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update a rate limit",

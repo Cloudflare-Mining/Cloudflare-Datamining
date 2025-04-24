@@ -9,7 +9,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -144,7 +144,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -153,7 +155,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -172,36 +174,39 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true,
 													"type": "array"
 												},
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Defines the total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Defines the current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Defines the number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Defines the total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -230,7 +235,7 @@
 																"type": "string"
 															},
 															"id": {
-																"description": "Identifier",
+																"description": "Defines an identifier.",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
@@ -252,7 +257,7 @@
 																"type": "string"
 															},
 															"zone_id": {
-																"description": "Identifier",
+																"description": "Defines an identifier.",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
@@ -266,7 +271,8 @@
 															"detection_mode",
 															"zone_id"
 														],
-														"title": "Traditional WAF package"
+														"title": "Traditional WAF package",
+														"type": "object"
 													},
 													{
 														"allOf": [
@@ -289,7 +295,7 @@
 																		"type": "string"
 																	},
 																	"id": {
-																		"description": "Identifier",
+																		"description": "Defines an identifier.",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
@@ -311,7 +317,7 @@
 																		"type": "string"
 																	},
 																	"zone_id": {
-																		"description": "Identifier",
+																		"description": "Defines an identifier.",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
@@ -325,7 +331,8 @@
 																	"detection_mode",
 																	"zone_id"
 																],
-																"title": "Traditional WAF package"
+																"title": "Traditional WAF package",
+																"type": "object"
 															},
 															{
 																"properties": {
@@ -368,7 +375,8 @@
 																		],
 																		"type": "string"
 																	}
-																}
+																},
+																"type": "object"
 															}
 														],
 														"required": [
@@ -387,7 +395,8 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -454,7 +463,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -463,7 +474,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -482,36 +493,39 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														},
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Defines the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Defines the current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Defines the number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Defines the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -540,7 +554,7 @@
 																		"type": "string"
 																	},
 																	"id": {
-																		"description": "Identifier",
+																		"description": "Defines an identifier.",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
@@ -562,7 +576,7 @@
 																		"type": "string"
 																	},
 																	"zone_id": {
-																		"description": "Identifier",
+																		"description": "Defines an identifier.",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
@@ -576,7 +590,8 @@
 																	"detection_mode",
 																	"zone_id"
 																],
-																"title": "Traditional WAF package"
+																"title": "Traditional WAF package",
+																"type": "object"
 															},
 															{
 																"allOf": [
@@ -599,7 +614,7 @@
 																				"type": "string"
 																			},
 																			"id": {
-																				"description": "Identifier",
+																				"description": "Defines an identifier.",
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"readOnly": true,
@@ -621,7 +636,7 @@
 																				"type": "string"
 																			},
 																			"zone_id": {
-																				"description": "Identifier",
+																				"description": "Defines an identifier.",
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"readOnly": true,
@@ -635,7 +650,8 @@
 																			"detection_mode",
 																			"zone_id"
 																		],
-																		"title": "Traditional WAF package"
+																		"title": "Traditional WAF package",
+																		"type": "object"
 																	},
 																	{
 																		"properties": {
@@ -678,7 +694,8 @@
 																				],
 																				"type": "string"
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																],
 																"required": [
@@ -697,7 +714,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -769,7 +787,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -795,7 +813,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List WAF packages",
@@ -823,7 +842,7 @@
 				"name": "package_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines a package identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -835,7 +854,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -901,7 +920,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -910,7 +931,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -940,7 +961,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -950,7 +972,8 @@
 										"result": {
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1017,7 +1040,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -1026,7 +1051,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1056,7 +1081,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -1066,7 +1092,8 @@
 												"result": {
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1138,7 +1165,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1164,7 +1191,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get a WAF package",
@@ -1192,7 +1220,7 @@
 				"name": "package_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines a package identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1204,7 +1232,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1305,7 +1333,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -1314,7 +1344,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1344,7 +1374,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -1354,7 +1385,8 @@
 												"result": {
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1381,7 +1413,7 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "Identifier",
+															"description": "Defines an identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
@@ -1403,7 +1435,7 @@
 															"type": "string"
 														},
 														"zone_id": {
-															"description": "Identifier",
+															"description": "Defines an identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
@@ -1417,7 +1449,8 @@
 														"detection_mode",
 														"zone_id"
 													],
-													"title": "Traditional WAF package"
+													"title": "Traditional WAF package",
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -1460,7 +1493,8 @@
 															],
 															"type": "string"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"required": [
@@ -1474,7 +1508,8 @@
 											],
 											"title": "Anomaly detection WAF package (OWASP)"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1543,7 +1578,9 @@
 																			"type": "object"
 																		},
 																		{
-																			"items": {},
+																			"items": {
+																				"type": "object"
+																			},
 																			"type": "array"
 																		},
 																		{
@@ -1552,7 +1589,7 @@
 																	]
 																},
 																"success": {
-																	"description": "Whether the API call was successful",
+																	"description": "Defines whether the API call was successful.",
 																	"enum": [
 																		true
 																	],
@@ -1582,7 +1619,8 @@
 																		}
 																	]
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -1592,7 +1630,8 @@
 														"result": {
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -1619,7 +1658,7 @@
 																	"type": "string"
 																},
 																"id": {
-																	"description": "Identifier",
+																	"description": "Defines an identifier.",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"readOnly": true,
@@ -1641,7 +1680,7 @@
 																	"type": "string"
 																},
 																"zone_id": {
-																	"description": "Identifier",
+																	"description": "Defines an identifier.",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"readOnly": true,
@@ -1655,7 +1694,8 @@
 																"detection_mode",
 																"zone_id"
 															],
-															"title": "Traditional WAF package"
+															"title": "Traditional WAF package",
+															"type": "object"
 														},
 														{
 															"properties": {
@@ -1698,7 +1738,8 @@
 																	],
 																	"type": "string"
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"required": [
@@ -1712,7 +1753,8 @@
 													],
 													"title": "Anomaly detection WAF package (OWASP)"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1784,7 +1826,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1810,7 +1852,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update a WAF package",

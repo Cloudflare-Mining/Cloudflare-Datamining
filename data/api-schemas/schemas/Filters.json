@@ -9,7 +9,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -98,7 +98,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -107,7 +109,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -126,36 +128,39 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true,
 													"type": "array"
 												},
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Defines the total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Defines the current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Defines the number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Defines the total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -279,7 +284,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -288,7 +295,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -307,36 +314,39 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														},
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Defines the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Defines the current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Defines the number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Defines the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -465,7 +475,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -491,7 +501,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete filters",
@@ -531,7 +542,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -603,7 +614,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -612,7 +625,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -642,7 +655,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -766,7 +780,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -775,7 +791,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -805,7 +821,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -934,7 +951,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -960,7 +977,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete a filter",
@@ -987,7 +1005,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1126,7 +1144,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1135,7 +1155,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1154,36 +1174,39 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true,
 													"type": "array"
 												},
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Defines the total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Defines the current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Defines the number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Defines the total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1309,7 +1332,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -1318,7 +1343,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1337,36 +1362,39 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														},
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Defines the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Defines the current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Defines the number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Defines the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -1497,7 +1525,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1523,7 +1551,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List filters",
@@ -1564,7 +1593,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1630,7 +1659,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1639,7 +1670,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1669,7 +1700,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1783,7 +1815,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -1792,7 +1826,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1822,7 +1856,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -1941,7 +1976,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1967,7 +2002,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get a filter",
@@ -1995,7 +2031,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2083,7 +2119,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -2092,7 +2130,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2111,36 +2149,39 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														},
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Defines the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Defines the current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Defines the number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Defines the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -2268,7 +2309,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -2277,7 +2320,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2296,36 +2339,39 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														},
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Defines the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Defines the current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Defines the number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Defines the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -2456,7 +2502,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2482,7 +2528,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create filters",
@@ -2509,7 +2556,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2597,7 +2644,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2606,7 +2655,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2625,36 +2674,39 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true,
 													"type": "array"
 												},
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Defines the total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Defines the current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Defines the number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Defines the total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -2780,7 +2832,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -2789,7 +2843,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2808,36 +2862,39 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														},
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Defines the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Defines the current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Defines the number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Defines the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -2968,7 +3025,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2994,7 +3051,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update filters",
@@ -3034,7 +3092,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -3112,7 +3170,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -3121,7 +3181,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3151,7 +3211,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -3265,7 +3326,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -3274,7 +3337,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3304,7 +3367,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -3423,7 +3487,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -3449,7 +3513,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update a filter",

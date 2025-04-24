@@ -8,7 +8,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -20,7 +20,7 @@
 				"name": "rule_id",
 				"required": true,
 				"schema": {
-					"description": "Unique identifier for a rule",
+					"description": "Unique identifier for a rule.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -42,7 +42,8 @@
 								],
 								"type": "string"
 							}
-						}
+						},
+						"type": "object"
 					}
 				}
 			},
@@ -106,7 +107,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -115,7 +118,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -145,7 +148,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -165,13 +169,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete an IP Access rule response"
+				"description": "Delete an IP Access rule response."
 			},
 			"4XX": {
 				"content": {
@@ -232,7 +237,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -241,7 +248,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -271,7 +278,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -291,7 +299,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -363,7 +372,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -383,13 +392,14 @@
 						}
 					}
 				},
-				"description": "Delete an IP Access rule response failure"
+				"description": "Delete an IP Access rule response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete an IP Access rule",
@@ -415,7 +425,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -589,7 +599,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -598,7 +610,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -617,36 +629,39 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true,
 													"type": "array"
 												},
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Defines the total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Defines the current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Defines the number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Defines the total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -691,7 +706,8 @@
 																		"enum": [
 																			"ip"
 																		],
-																		"example": "ip"
+																		"example": "ip",
+																		"type": "string"
 																	},
 																	"value": {
 																		"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -699,7 +715,8 @@
 																		"type": "string"
 																	}
 																},
-																"title": "An IP address configuration."
+																"title": "An IP address configuration.",
+																"type": "object"
 															},
 															{
 																"properties": {
@@ -708,7 +725,8 @@
 																		"enum": [
 																			"ip6"
 																		],
-																		"example": "ip6"
+																		"example": "ip6",
+																		"type": "string"
 																	},
 																	"value": {
 																		"description": "The IPv6 address to match.",
@@ -716,7 +734,8 @@
 																		"type": "string"
 																	}
 																},
-																"title": "An IPv6 address configuration."
+																"title": "An IPv6 address configuration.",
+																"type": "object"
 															},
 															{
 																"properties": {
@@ -725,7 +744,8 @@
 																		"enum": [
 																			"ip_range"
 																		],
-																		"example": "ip_range"
+																		"example": "ip_range",
+																		"type": "string"
 																	},
 																	"value": {
 																		"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
@@ -733,7 +753,8 @@
 																		"type": "string"
 																	}
 																},
-																"title": "An IP address range configuration."
+																"title": "An IP address range configuration.",
+																"type": "object"
 															},
 															{
 																"properties": {
@@ -742,7 +763,8 @@
 																		"enum": [
 																			"asn"
 																		],
-																		"example": "asn"
+																		"example": "asn",
+																		"type": "string"
 																	},
 																	"value": {
 																		"description": "The AS number to match.",
@@ -750,7 +772,8 @@
 																		"type": "string"
 																	}
 																},
-																"title": "An ASN configuration."
+																"title": "An ASN configuration.",
+																"type": "object"
 															},
 															{
 																"properties": {
@@ -759,7 +782,8 @@
 																		"enum": [
 																			"country"
 																		],
-																		"example": "country"
+																		"example": "country",
+																		"type": "string"
 																	},
 																	"value": {
 																		"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
@@ -768,7 +792,8 @@
 																		"x-auditable": true
 																	}
 																},
-																"title": "A country configuration."
+																"title": "A country configuration.",
+																"type": "object"
 															}
 														],
 														"type": "object"
@@ -825,13 +850,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List IP Access rules response"
+				"description": "List IP Access rules response."
 			},
 			"4XX": {
 				"content": {
@@ -892,7 +918,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -901,7 +929,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -920,36 +948,39 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														},
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Defines the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Defines the current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Defines the number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Defines the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -994,7 +1025,8 @@
 																				"enum": [
 																					"ip"
 																				],
-																				"example": "ip"
+																				"example": "ip",
+																				"type": "string"
 																			},
 																			"value": {
 																				"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -1002,7 +1034,8 @@
 																				"type": "string"
 																			}
 																		},
-																		"title": "An IP address configuration."
+																		"title": "An IP address configuration.",
+																		"type": "object"
 																	},
 																	{
 																		"properties": {
@@ -1011,7 +1044,8 @@
 																				"enum": [
 																					"ip6"
 																				],
-																				"example": "ip6"
+																				"example": "ip6",
+																				"type": "string"
 																			},
 																			"value": {
 																				"description": "The IPv6 address to match.",
@@ -1019,7 +1053,8 @@
 																				"type": "string"
 																			}
 																		},
-																		"title": "An IPv6 address configuration."
+																		"title": "An IPv6 address configuration.",
+																		"type": "object"
 																	},
 																	{
 																		"properties": {
@@ -1028,7 +1063,8 @@
 																				"enum": [
 																					"ip_range"
 																				],
-																				"example": "ip_range"
+																				"example": "ip_range",
+																				"type": "string"
 																			},
 																			"value": {
 																				"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
@@ -1036,7 +1072,8 @@
 																				"type": "string"
 																			}
 																		},
-																		"title": "An IP address range configuration."
+																		"title": "An IP address range configuration.",
+																		"type": "object"
 																	},
 																	{
 																		"properties": {
@@ -1045,7 +1082,8 @@
 																				"enum": [
 																					"asn"
 																				],
-																				"example": "asn"
+																				"example": "asn",
+																				"type": "string"
 																			},
 																			"value": {
 																				"description": "The AS number to match.",
@@ -1053,7 +1091,8 @@
 																				"type": "string"
 																			}
 																		},
-																		"title": "An ASN configuration."
+																		"title": "An ASN configuration.",
+																		"type": "object"
 																	},
 																	{
 																		"properties": {
@@ -1062,7 +1101,8 @@
 																				"enum": [
 																					"country"
 																				],
-																				"example": "country"
+																				"example": "country",
+																				"type": "string"
 																			},
 																			"value": {
 																				"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
@@ -1071,7 +1111,8 @@
 																				"x-auditable": true
 																			}
 																		},
-																		"title": "A country configuration."
+																		"title": "A country configuration.",
+																		"type": "object"
 																	}
 																],
 																"type": "object"
@@ -1128,7 +1169,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1200,7 +1242,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1220,13 +1262,14 @@
 						}
 					}
 				},
-				"description": "List IP Access rules response failure"
+				"description": "List IP Access rules response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List IP Access rules",
@@ -1253,7 +1296,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1265,7 +1308,7 @@
 				"name": "rule_id",
 				"required": true,
 				"schema": {
-					"description": "Unique identifier for a rule",
+					"description": "Unique identifier for a rule.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1296,7 +1339,8 @@
 								"type": "string",
 								"x-auditable": true
 							}
-						}
+						},
+						"type": "object"
 					}
 				}
 			},
@@ -1360,7 +1404,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1369,7 +1415,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1399,7 +1445,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1443,7 +1490,8 @@
 																	"enum": [
 																		"ip"
 																	],
-																	"example": "ip"
+																	"example": "ip",
+																	"type": "string"
 																},
 																"value": {
 																	"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -1451,7 +1499,8 @@
 																	"type": "string"
 																}
 															},
-															"title": "An IP address configuration."
+															"title": "An IP address configuration.",
+															"type": "object"
 														},
 														{
 															"properties": {
@@ -1460,7 +1509,8 @@
 																	"enum": [
 																		"ip6"
 																	],
-																	"example": "ip6"
+																	"example": "ip6",
+																	"type": "string"
 																},
 																"value": {
 																	"description": "The IPv6 address to match.",
@@ -1468,7 +1518,8 @@
 																	"type": "string"
 																}
 															},
-															"title": "An IPv6 address configuration."
+															"title": "An IPv6 address configuration.",
+															"type": "object"
 														},
 														{
 															"properties": {
@@ -1477,7 +1528,8 @@
 																	"enum": [
 																		"ip_range"
 																	],
-																	"example": "ip_range"
+																	"example": "ip_range",
+																	"type": "string"
 																},
 																"value": {
 																	"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
@@ -1485,7 +1537,8 @@
 																	"type": "string"
 																}
 															},
-															"title": "An IP address range configuration."
+															"title": "An IP address range configuration.",
+															"type": "object"
 														},
 														{
 															"properties": {
@@ -1494,7 +1547,8 @@
 																	"enum": [
 																		"asn"
 																	],
-																	"example": "asn"
+																	"example": "asn",
+																	"type": "string"
 																},
 																"value": {
 																	"description": "The AS number to match.",
@@ -1502,7 +1556,8 @@
 																	"type": "string"
 																}
 															},
-															"title": "An ASN configuration."
+															"title": "An ASN configuration.",
+															"type": "object"
 														},
 														{
 															"properties": {
@@ -1511,7 +1566,8 @@
 																	"enum": [
 																		"country"
 																	],
-																	"example": "country"
+																	"example": "country",
+																	"type": "string"
 																},
 																"value": {
 																	"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
@@ -1520,7 +1576,8 @@
 																	"x-auditable": true
 																}
 															},
-															"title": "A country configuration."
+															"title": "A country configuration.",
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -1575,13 +1632,14 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Update an IP Access rule response"
+				"description": "Update an IP Access rule response."
 			},
 			"4XX": {
 				"content": {
@@ -1642,7 +1700,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -1651,7 +1711,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1681,7 +1741,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -1725,7 +1786,8 @@
 																			"enum": [
 																				"ip"
 																			],
-																			"example": "ip"
+																			"example": "ip",
+																			"type": "string"
 																		},
 																		"value": {
 																			"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -1733,7 +1795,8 @@
 																			"type": "string"
 																		}
 																	},
-																	"title": "An IP address configuration."
+																	"title": "An IP address configuration.",
+																	"type": "object"
 																},
 																{
 																	"properties": {
@@ -1742,7 +1805,8 @@
 																			"enum": [
 																				"ip6"
 																			],
-																			"example": "ip6"
+																			"example": "ip6",
+																			"type": "string"
 																		},
 																		"value": {
 																			"description": "The IPv6 address to match.",
@@ -1750,7 +1814,8 @@
 																			"type": "string"
 																		}
 																	},
-																	"title": "An IPv6 address configuration."
+																	"title": "An IPv6 address configuration.",
+																	"type": "object"
 																},
 																{
 																	"properties": {
@@ -1759,7 +1824,8 @@
 																			"enum": [
 																				"ip_range"
 																			],
-																			"example": "ip_range"
+																			"example": "ip_range",
+																			"type": "string"
 																		},
 																		"value": {
 																			"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
@@ -1767,7 +1833,8 @@
 																			"type": "string"
 																		}
 																	},
-																	"title": "An IP address range configuration."
+																	"title": "An IP address range configuration.",
+																	"type": "object"
 																},
 																{
 																	"properties": {
@@ -1776,7 +1843,8 @@
 																			"enum": [
 																				"asn"
 																			],
-																			"example": "asn"
+																			"example": "asn",
+																			"type": "string"
 																		},
 																		"value": {
 																			"description": "The AS number to match.",
@@ -1784,7 +1852,8 @@
 																			"type": "string"
 																		}
 																	},
-																	"title": "An ASN configuration."
+																	"title": "An ASN configuration.",
+																	"type": "object"
 																},
 																{
 																	"properties": {
@@ -1793,7 +1862,8 @@
 																			"enum": [
 																				"country"
 																			],
-																			"example": "country"
+																			"example": "country",
+																			"type": "string"
 																		},
 																		"value": {
 																			"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
@@ -1802,7 +1872,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"title": "A country configuration."
+																	"title": "A country configuration.",
+																	"type": "object"
 																}
 															],
 															"type": "object"
@@ -1857,7 +1928,8 @@
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1929,7 +2001,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1949,13 +2021,14 @@
 						}
 					}
 				},
-				"description": "Update an IP Access rule response failure"
+				"description": "Update an IP Access rule response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update an IP Access rule",
@@ -1981,7 +2054,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2004,7 +2077,8 @@
 												"enum": [
 													"ip"
 												],
-												"example": "ip"
+												"example": "ip",
+												"type": "string"
 											},
 											"value": {
 												"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -2012,7 +2086,8 @@
 												"type": "string"
 											}
 										},
-										"title": "An IP address configuration."
+										"title": "An IP address configuration.",
+										"type": "object"
 									},
 									{
 										"properties": {
@@ -2021,7 +2096,8 @@
 												"enum": [
 													"ip6"
 												],
-												"example": "ip6"
+												"example": "ip6",
+												"type": "string"
 											},
 											"value": {
 												"description": "The IPv6 address to match.",
@@ -2029,7 +2105,8 @@
 												"type": "string"
 											}
 										},
-										"title": "An IPv6 address configuration."
+										"title": "An IPv6 address configuration.",
+										"type": "object"
 									},
 									{
 										"properties": {
@@ -2038,7 +2115,8 @@
 												"enum": [
 													"ip_range"
 												],
-												"example": "ip_range"
+												"example": "ip_range",
+												"type": "string"
 											},
 											"value": {
 												"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
@@ -2046,7 +2124,8 @@
 												"type": "string"
 											}
 										},
-										"title": "An IP address range configuration."
+										"title": "An IP address range configuration.",
+										"type": "object"
 									},
 									{
 										"properties": {
@@ -2055,7 +2134,8 @@
 												"enum": [
 													"asn"
 												],
-												"example": "asn"
+												"example": "asn",
+												"type": "string"
 											},
 											"value": {
 												"description": "The AS number to match.",
@@ -2063,7 +2143,8 @@
 												"type": "string"
 											}
 										},
-										"title": "An ASN configuration."
+										"title": "An ASN configuration.",
+										"type": "object"
 									},
 									{
 										"properties": {
@@ -2072,7 +2153,8 @@
 												"enum": [
 													"country"
 												],
-												"example": "country"
+												"example": "country",
+												"type": "string"
 											},
 											"value": {
 												"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
@@ -2081,7 +2163,8 @@
 												"x-auditable": true
 											}
 										},
-										"title": "A country configuration."
+										"title": "A country configuration.",
+										"type": "object"
 									}
 								],
 								"type": "object"
@@ -2110,7 +2193,8 @@
 							"mode",
 							"configuration",
 							"notes"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -2174,7 +2258,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2183,7 +2269,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2213,7 +2299,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -2257,7 +2344,8 @@
 																	"enum": [
 																		"ip"
 																	],
-																	"example": "ip"
+																	"example": "ip",
+																	"type": "string"
 																},
 																"value": {
 																	"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -2265,7 +2353,8 @@
 																	"type": "string"
 																}
 															},
-															"title": "An IP address configuration."
+															"title": "An IP address configuration.",
+															"type": "object"
 														},
 														{
 															"properties": {
@@ -2274,7 +2363,8 @@
 																	"enum": [
 																		"ip6"
 																	],
-																	"example": "ip6"
+																	"example": "ip6",
+																	"type": "string"
 																},
 																"value": {
 																	"description": "The IPv6 address to match.",
@@ -2282,7 +2372,8 @@
 																	"type": "string"
 																}
 															},
-															"title": "An IPv6 address configuration."
+															"title": "An IPv6 address configuration.",
+															"type": "object"
 														},
 														{
 															"properties": {
@@ -2291,7 +2382,8 @@
 																	"enum": [
 																		"ip_range"
 																	],
-																	"example": "ip_range"
+																	"example": "ip_range",
+																	"type": "string"
 																},
 																"value": {
 																	"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
@@ -2299,7 +2391,8 @@
 																	"type": "string"
 																}
 															},
-															"title": "An IP address range configuration."
+															"title": "An IP address range configuration.",
+															"type": "object"
 														},
 														{
 															"properties": {
@@ -2308,7 +2401,8 @@
 																	"enum": [
 																		"asn"
 																	],
-																	"example": "asn"
+																	"example": "asn",
+																	"type": "string"
 																},
 																"value": {
 																	"description": "The AS number to match.",
@@ -2316,7 +2410,8 @@
 																	"type": "string"
 																}
 															},
-															"title": "An ASN configuration."
+															"title": "An ASN configuration.",
+															"type": "object"
 														},
 														{
 															"properties": {
@@ -2325,7 +2420,8 @@
 																	"enum": [
 																		"country"
 																	],
-																	"example": "country"
+																	"example": "country",
+																	"type": "string"
 																},
 																"value": {
 																	"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
@@ -2334,7 +2430,8 @@
 																	"x-auditable": true
 																}
 															},
-															"title": "A country configuration."
+															"title": "A country configuration.",
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -2389,13 +2486,14 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create an IP Access rule response"
+				"description": "Create an IP Access rule response."
 			},
 			"4XX": {
 				"content": {
@@ -2456,7 +2554,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -2465,7 +2565,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2495,7 +2595,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -2539,7 +2640,8 @@
 																			"enum": [
 																				"ip"
 																			],
-																			"example": "ip"
+																			"example": "ip",
+																			"type": "string"
 																		},
 																		"value": {
 																			"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
@@ -2547,7 +2649,8 @@
 																			"type": "string"
 																		}
 																	},
-																	"title": "An IP address configuration."
+																	"title": "An IP address configuration.",
+																	"type": "object"
 																},
 																{
 																	"properties": {
@@ -2556,7 +2659,8 @@
 																			"enum": [
 																				"ip6"
 																			],
-																			"example": "ip6"
+																			"example": "ip6",
+																			"type": "string"
 																		},
 																		"value": {
 																			"description": "The IPv6 address to match.",
@@ -2564,7 +2668,8 @@
 																			"type": "string"
 																		}
 																	},
-																	"title": "An IPv6 address configuration."
+																	"title": "An IPv6 address configuration.",
+																	"type": "object"
 																},
 																{
 																	"properties": {
@@ -2573,7 +2678,8 @@
 																			"enum": [
 																				"ip_range"
 																			],
-																			"example": "ip_range"
+																			"example": "ip_range",
+																			"type": "string"
 																		},
 																		"value": {
 																			"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
@@ -2581,7 +2687,8 @@
 																			"type": "string"
 																		}
 																	},
-																	"title": "An IP address range configuration."
+																	"title": "An IP address range configuration.",
+																	"type": "object"
 																},
 																{
 																	"properties": {
@@ -2590,7 +2697,8 @@
 																			"enum": [
 																				"asn"
 																			],
-																			"example": "asn"
+																			"example": "asn",
+																			"type": "string"
 																		},
 																		"value": {
 																			"description": "The AS number to match.",
@@ -2598,7 +2706,8 @@
 																			"type": "string"
 																		}
 																	},
-																	"title": "An ASN configuration."
+																	"title": "An ASN configuration.",
+																	"type": "object"
 																},
 																{
 																	"properties": {
@@ -2607,7 +2716,8 @@
 																			"enum": [
 																				"country"
 																			],
-																			"example": "country"
+																			"example": "country",
+																			"type": "string"
 																		},
 																		"value": {
 																			"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
@@ -2616,7 +2726,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"title": "A country configuration."
+																	"title": "A country configuration.",
+																	"type": "object"
 																}
 															],
 															"type": "object"
@@ -2671,7 +2782,8 @@
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2743,7 +2855,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2763,13 +2875,14 @@
 						}
 					}
 				},
-				"description": "Create an IP Access rule response failure"
+				"description": "Create an IP Access rule response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create an IP Access rule",
