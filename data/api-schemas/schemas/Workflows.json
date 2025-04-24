@@ -736,7 +736,7 @@
 												"type": "string"
 											},
 											"id": {
-												"maxLength": 64,
+												"maxLength": 100,
 												"minLength": 1,
 												"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 												"type": "string"
@@ -988,7 +988,7 @@
 				"name": "instance_id",
 				"required": true,
 				"schema": {
-					"maxLength": 64,
+					"maxLength": 100,
 					"minLength": 1,
 					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
@@ -1166,9 +1166,7 @@
 																			},
 																			"delay": {
 																				"anyOf": [
-																					{
-																						"type": "string"
-																					},
+																					{},
 																					{
 																						"type": "number"
 																					}
@@ -1186,9 +1184,7 @@
 																	},
 																	"timeout": {
 																		"anyOf": [
-																			{
-																				"type": "string"
-																			},
+																			{},
 																			{
 																				"type": "number"
 																			}
@@ -2159,7 +2155,7 @@
 				"name": "instance_id",
 				"required": true,
 				"schema": {
-					"maxLength": 64,
+					"maxLength": 100,
 					"minLength": 1,
 					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
@@ -2531,7 +2527,7 @@
 					"schema": {
 						"properties": {
 							"instance_id": {
-								"maximum": 64,
+								"maximum": 100,
 								"minimum": 1,
 								"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 								"type": "string"
@@ -2590,7 +2586,7 @@
 								"result": {
 									"properties": {
 										"id": {
-											"maxLength": 64,
+											"maxLength": 100,
 											"minLength": 1,
 											"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 											"type": "string"
@@ -2825,7 +2821,7 @@
 				"name": "instance_id",
 				"required": true,
 				"schema": {
-					"maxLength": 64,
+					"maxLength": 100,
 					"minLength": 1,
 					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
@@ -2836,7 +2832,7 @@
 				"name": "event_type",
 				"required": true,
 				"schema": {
-					"maxLength": 64,
+					"maxLength": 100,
 					"minLength": 1,
 					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
@@ -3114,7 +3110,7 @@
 						"items": {
 							"properties": {
 								"instance_id": {
-									"maximum": 64,
+									"maximum": 100,
 									"minimum": 1,
 									"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 									"type": "string"
@@ -3178,7 +3174,7 @@
 									"items": {
 										"properties": {
 											"id": {
-												"maxLength": 64,
+												"maxLength": 100,
 												"minLength": 1,
 												"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 												"type": "string"
