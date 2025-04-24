@@ -162,6 +162,15 @@
 														"type": "integer",
 														"x-auditable": true
 													},
+													"asn_prepend_count": {
+														"default": 0,
+														"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+														"example": 2,
+														"maximum": 3,
+														"minimum": 0,
+														"type": "integer",
+														"x-auditable": true
+													},
 													"bgp_signal_opts": {
 														"properties": {
 															"enabled": {
@@ -235,6 +244,13 @@
 															}
 														},
 														"type": "object"
+													},
+													"withdraw_if_no_route": {
+														"default": false,
+														"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -384,6 +400,15 @@
 																"type": "integer",
 																"x-auditable": true
 															},
+															"asn_prepend_count": {
+																"default": 0,
+																"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+																"example": 2,
+																"maximum": 3,
+																"minimum": 0,
+																"type": "integer",
+																"x-auditable": true
+															},
 															"bgp_signal_opts": {
 																"properties": {
 																	"enabled": {
@@ -457,6 +482,13 @@
 																	}
 																},
 																"type": "object"
+															},
+															"withdraw_if_no_route": {
+																"default": false,
+																"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -744,6 +776,15 @@
 													"type": "integer",
 													"x-auditable": true
 												},
+												"asn_prepend_count": {
+													"default": 0,
+													"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+													"example": 2,
+													"maximum": 3,
+													"minimum": 0,
+													"type": "integer",
+													"x-auditable": true
+												},
 												"bgp_signal_opts": {
 													"properties": {
 														"enabled": {
@@ -817,6 +858,13 @@
 														}
 													},
 													"type": "object"
+												},
+												"withdraw_if_no_route": {
+													"default": false,
+													"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -934,6 +982,15 @@
 															"type": "integer",
 															"x-auditable": true
 														},
+														"asn_prepend_count": {
+															"default": 0,
+															"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+															"example": 2,
+															"maximum": 3,
+															"minimum": 0,
+															"type": "integer",
+															"x-auditable": true
+														},
 														"bgp_signal_opts": {
 															"properties": {
 																"enabled": {
@@ -1007,6 +1064,13 @@
 																}
 															},
 															"type": "object"
+														},
+														"withdraw_if_no_route": {
+															"default": false,
+															"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1193,6 +1257,15 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"asn_prepend_count": {
+								"default": 0,
+								"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+								"example": 2,
+								"maximum": 3,
+								"minimum": 0,
+								"type": "integer",
+								"x-auditable": true
+							},
 							"on_demand": {
 								"properties": {
 									"advertised": {
@@ -1200,6 +1273,13 @@
 									}
 								},
 								"type": "object"
+							},
+							"withdraw_if_no_route": {
+								"default": false,
+								"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
+								"example": true,
+								"type": "boolean",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -1312,6 +1392,15 @@
 													"type": "integer",
 													"x-auditable": true
 												},
+												"asn_prepend_count": {
+													"default": 0,
+													"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+													"example": 2,
+													"maximum": 3,
+													"minimum": 0,
+													"type": "integer",
+													"x-auditable": true
+												},
 												"bgp_signal_opts": {
 													"properties": {
 														"enabled": {
@@ -1385,6 +1474,13 @@
 														}
 													},
 													"type": "object"
+												},
+												"withdraw_if_no_route": {
+													"default": false,
+													"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1502,6 +1598,15 @@
 															"type": "integer",
 															"x-auditable": true
 														},
+														"asn_prepend_count": {
+															"default": 0,
+															"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+															"example": 2,
+															"maximum": 3,
+															"minimum": 0,
+															"type": "integer",
+															"x-auditable": true
+														},
 														"bgp_signal_opts": {
 															"properties": {
 																"enabled": {
@@ -1575,6 +1680,13 @@
 																}
 															},
 															"type": "object"
+														},
+														"withdraw_if_no_route": {
+															"default": false,
+															"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1863,6 +1975,15 @@
 													"type": "integer",
 													"x-auditable": true
 												},
+												"asn_prepend_count": {
+													"default": 0,
+													"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+													"example": 2,
+													"maximum": 3,
+													"minimum": 0,
+													"type": "integer",
+													"x-auditable": true
+												},
 												"bgp_signal_opts": {
 													"properties": {
 														"enabled": {
@@ -1936,6 +2057,13 @@
 														}
 													},
 													"type": "object"
+												},
+												"withdraw_if_no_route": {
+													"default": false,
+													"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2053,6 +2181,15 @@
 															"type": "integer",
 															"x-auditable": true
 														},
+														"asn_prepend_count": {
+															"default": 0,
+															"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+															"example": 2,
+															"maximum": 3,
+															"minimum": 0,
+															"type": "integer",
+															"x-auditable": true
+														},
 														"bgp_signal_opts": {
 															"properties": {
 																"enabled": {
@@ -2126,6 +2263,13 @@
 																}
 															},
 															"type": "object"
+														},
+														"withdraw_if_no_route": {
+															"default": false,
+															"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"type": "object"

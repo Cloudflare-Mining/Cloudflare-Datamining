@@ -1088,7 +1088,8 @@
 															"mac",
 															"linux",
 															"android",
-															"ios"
+															"ios",
+															"chromeos"
 														],
 														"example": "windows",
 														"type": "string"
@@ -1356,7 +1357,8 @@
 																	"mac",
 																	"linux",
 																	"android",
-																	"ios"
+																	"ios",
+																	"chromeos"
 																],
 																"example": "windows",
 																"type": "string"
@@ -8480,6 +8482,16 @@
 								},
 								"type": "array"
 							},
+							"lan_allow_minutes": {
+								"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
+								"example": 30,
+								"type": "number"
+							},
+							"lan_allow_subnet_size": {
+								"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
+								"example": 24,
+								"type": "number"
+							},
 							"register_interface_ip_with_dns": {
 								"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 								"example": true,
@@ -9442,6 +9454,16 @@
 									"type": "object"
 								},
 								"type": "array"
+							},
+							"lan_allow_minutes": {
+								"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
+								"example": 30,
+								"type": "number"
+							},
+							"lan_allow_subnet_size": {
+								"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
+								"example": 24,
+								"type": "number"
 							},
 							"match": {
 								"description": "The wirefilter expression to match devices. Available values: \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.service_token_uuid\", \"identity.saml_attributes\", \"network\", \"os.name\", \"os.version\"",
