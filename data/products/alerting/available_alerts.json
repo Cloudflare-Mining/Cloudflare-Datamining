@@ -475,6 +475,27 @@
 			"filter_options": []
 		}
 	],
+	"Stream": [
+		{
+			"display_name": "Stream Live Notifications",
+			"type": "stream_live_notifications",
+			"description": "Get webhook or email notifications about your live stream",
+			"filter_options": [
+				{
+					"Key": "input_id",
+					"ComparisonOperator": "==",
+					"Range": "0-n",
+					"AvailableValues": null
+				},
+				{
+					"Key": "event_type",
+					"ComparisonOperator": "==",
+					"Range": "0-n",
+					"AvailableValues": null
+				}
+			]
+		}
+	],
 	"Traffic Monitoring": [
 		{
 			"display_name": "Passive Origin Monitoring",
