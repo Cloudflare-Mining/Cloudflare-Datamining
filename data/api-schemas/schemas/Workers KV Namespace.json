@@ -935,6 +935,7 @@
 													"title": {
 														"description": "A human-readable string name for a Namespace.",
 														"example": "My Own Namespace",
+														"maxLength": 512,
 														"type": "string",
 														"x-auditable": true
 													}
@@ -1190,6 +1191,7 @@
 												"title": {
 													"description": "A human-readable string name for a Namespace.",
 													"example": "My Own Namespace",
+													"maxLength": 512,
 													"type": "string",
 													"x-auditable": true
 												}
@@ -2029,6 +2031,7 @@
 							"title": {
 								"description": "A human-readable string name for a Namespace.",
 								"example": "My Own Namespace",
+								"maxLength": 512,
 								"type": "string",
 								"x-auditable": true
 							}
@@ -2137,6 +2140,7 @@
 												"title": {
 													"description": "A human-readable string name for a Namespace.",
 													"example": "My Own Namespace",
+													"maxLength": 512,
 													"type": "string",
 													"x-auditable": true
 												}
@@ -2945,6 +2949,7 @@
 							"title": {
 								"description": "A human-readable string name for a Namespace.",
 								"example": "My Own Namespace",
+								"maxLength": 512,
 								"type": "string",
 								"x-auditable": true
 							}
