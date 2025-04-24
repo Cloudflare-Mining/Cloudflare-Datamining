@@ -829,6 +829,7 @@
 																	"description": "Activity log settings.",
 																	"properties": {
 																		"enabled": {
+																			"default": true,
 																			"description": "Enable activity logging.",
 																			"example": true,
 																			"type": "boolean"
@@ -840,16 +841,19 @@
 																	"description": "Anti-virus settings.",
 																	"properties": {
 																		"enabled_download_phase": {
+																			"default": false,
 																			"description": "Enable anti-virus scanning on downloads.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"enabled_upload_phase": {
+																			"default": false,
 																			"description": "Enable anti-virus scanning on uploads.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"fail_closed": {
+																			"default": false,
 																			"description": "Block requests for files that cannot be scanned.",
 																			"example": false,
 																			"type": "boolean"
@@ -858,10 +862,12 @@
 																			"description": "Configure a message to display on the user's device when an antivirus search is performed.",
 																			"properties": {
 																				"enabled": {
+																					"default": false,
 																					"description": "Set notification on",
 																					"type": "boolean"
 																				},
 																				"include_context": {
+																					"default": false,
 																					"description": "If true, context information will be passed as query parameters",
 																					"type": "boolean"
 																				},
@@ -883,39 +889,47 @@
 																	"description": "Block page layout settings.",
 																	"properties": {
 																		"background_color": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
 																			"type": "string"
 																		},
 																		"enabled": {
+																			"default": false,
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																			"example": true,
 																			"type": "boolean"
 																		},
 																		"footer_text": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: block page footer text.",
 																			"example": "--footer--",
 																			"type": "string"
 																		},
 																		"header_text": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: block page header text.",
 																			"example": "--header--",
 																			"type": "string"
 																		},
 																		"include_context": {
+																			"default": false,
 																			"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
 																			"type": "boolean"
 																		},
 																		"logo_path": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: full URL to the logo file.",
 																			"example": "https://logos.com/a.png",
 																			"type": "string"
 																		},
 																		"mailto_address": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: admin email for users to contact.",
 																			"example": "admin@example.com",
 																			"type": "string"
 																		},
 																		"mailto_subject": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																			"example": "Blocked User Inquiry",
 																			"type": "string"
@@ -935,11 +949,13 @@
 																			"type": "string"
 																		},
 																		"suppress_footer": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"target_uri": {
+																			"default": "",
 																			"description": "If mode is redirect_uri: URI to which the user should be redirected.",
 																			"format": "uri",
 																			"type": "string"
@@ -962,11 +978,13 @@
 																	"description": "Browser isolation settings.",
 																	"properties": {
 																		"non_identity_enabled": {
+																			"default": false,
 																			"description": "Enable non-identity onramp support for Browser Isolation.",
 																			"example": true,
 																			"type": "boolean"
 																		},
 																		"url_browser_isolation_enabled": {
+																			"default": false,
 																			"description": "Enable Clientless Browser Isolation.",
 																			"example": true,
 																			"type": "boolean"
@@ -999,6 +1017,7 @@
 																			"type": "string"
 																		},
 																		"enabled": {
+																			"default": false,
 																			"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																			"example": true,
 																			"type": "boolean"
@@ -1023,6 +1042,7 @@
 																	"description": "Extended e-mail matching settings.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																			"example": true,
 																			"type": "boolean"
@@ -1034,6 +1054,7 @@
 																	"description": "FIPS settings.",
 																	"properties": {
 																		"tls": {
+																			"default": false,
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																			"example": true,
 																			"type": "boolean"
@@ -1045,6 +1066,7 @@
 																	"description": "Protocol Detection settings.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Enable detecting protocol on initial bytes of client traffic.",
 																			"example": true,
 																			"type": "boolean"
@@ -1056,6 +1078,7 @@
 																	"description": "Sandbox settings.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Enable sandbox.",
 																			"example": true,
 																			"type": "boolean"
@@ -1075,6 +1098,7 @@
 																	"description": "TLS interception settings.",
 																	"properties": {
 																		"enabled": {
+																			"default": true,
 																			"description": "Enable inspecting encrypted HTTP traffic.",
 																			"example": true,
 																			"type": "boolean"
@@ -1201,6 +1225,7 @@
 																			"description": "Activity log settings.",
 																			"properties": {
 																				"enabled": {
+																					"default": true,
 																					"description": "Enable activity logging.",
 																					"example": true,
 																					"type": "boolean"
@@ -1212,16 +1237,19 @@
 																			"description": "Anti-virus settings.",
 																			"properties": {
 																				"enabled_download_phase": {
+																					"default": false,
 																					"description": "Enable anti-virus scanning on downloads.",
 																					"example": false,
 																					"type": "boolean"
 																				},
 																				"enabled_upload_phase": {
+																					"default": false,
 																					"description": "Enable anti-virus scanning on uploads.",
 																					"example": false,
 																					"type": "boolean"
 																				},
 																				"fail_closed": {
+																					"default": false,
 																					"description": "Block requests for files that cannot be scanned.",
 																					"example": false,
 																					"type": "boolean"
@@ -1230,10 +1258,12 @@
 																					"description": "Configure a message to display on the user's device when an antivirus search is performed.",
 																					"properties": {
 																						"enabled": {
+																							"default": false,
 																							"description": "Set notification on",
 																							"type": "boolean"
 																						},
 																						"include_context": {
+																							"default": false,
 																							"description": "If true, context information will be passed as query parameters",
 																							"type": "boolean"
 																						},
@@ -1255,39 +1285,47 @@
 																			"description": "Block page layout settings.",
 																			"properties": {
 																				"background_color": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
 																					"type": "string"
 																				},
 																				"enabled": {
+																					"default": false,
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																					"example": true,
 																					"type": "boolean"
 																				},
 																				"footer_text": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: block page footer text.",
 																					"example": "--footer--",
 																					"type": "string"
 																				},
 																				"header_text": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: block page header text.",
 																					"example": "--header--",
 																					"type": "string"
 																				},
 																				"include_context": {
+																					"default": false,
 																					"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
 																					"type": "boolean"
 																				},
 																				"logo_path": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: full URL to the logo file.",
 																					"example": "https://logos.com/a.png",
 																					"type": "string"
 																				},
 																				"mailto_address": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: admin email for users to contact.",
 																					"example": "admin@example.com",
 																					"type": "string"
 																				},
 																				"mailto_subject": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																					"example": "Blocked User Inquiry",
 																					"type": "string"
@@ -1307,11 +1345,13 @@
 																					"type": "string"
 																				},
 																				"suppress_footer": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																					"example": false,
 																					"type": "boolean"
 																				},
 																				"target_uri": {
+																					"default": "",
 																					"description": "If mode is redirect_uri: URI to which the user should be redirected.",
 																					"format": "uri",
 																					"type": "string"
@@ -1334,11 +1374,13 @@
 																			"description": "Browser isolation settings.",
 																			"properties": {
 																				"non_identity_enabled": {
+																					"default": false,
 																					"description": "Enable non-identity onramp support for Browser Isolation.",
 																					"example": true,
 																					"type": "boolean"
 																				},
 																				"url_browser_isolation_enabled": {
+																					"default": false,
 																					"description": "Enable Clientless Browser Isolation.",
 																					"example": true,
 																					"type": "boolean"
@@ -1371,6 +1413,7 @@
 																					"type": "string"
 																				},
 																				"enabled": {
+																					"default": false,
 																					"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																					"example": true,
 																					"type": "boolean"
@@ -1395,6 +1438,7 @@
 																			"description": "Extended e-mail matching settings.",
 																			"properties": {
 																				"enabled": {
+																					"default": false,
 																					"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																					"example": true,
 																					"type": "boolean"
@@ -1406,6 +1450,7 @@
 																			"description": "FIPS settings.",
 																			"properties": {
 																				"tls": {
+																					"default": false,
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																					"example": true,
 																					"type": "boolean"
@@ -1417,6 +1462,7 @@
 																			"description": "Protocol Detection settings.",
 																			"properties": {
 																				"enabled": {
+																					"default": false,
 																					"description": "Enable detecting protocol on initial bytes of client traffic.",
 																					"example": true,
 																					"type": "boolean"
@@ -1428,6 +1474,7 @@
 																			"description": "Sandbox settings.",
 																			"properties": {
 																				"enabled": {
+																					"default": false,
 																					"description": "Enable sandbox.",
 																					"example": true,
 																					"type": "boolean"
@@ -1447,6 +1494,7 @@
 																			"description": "TLS interception settings.",
 																			"properties": {
 																				"enabled": {
+																					"default": true,
 																					"description": "Enable inspecting encrypted HTTP traffic.",
 																					"example": true,
 																					"type": "boolean"
@@ -1621,6 +1669,7 @@
 									"type": "string"
 								},
 								"enabled": {
+									"default": false,
 									"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 									"example": true,
 									"type": "boolean"
@@ -1661,6 +1710,7 @@
 											"type": "string"
 										},
 										"enabled": {
+											"default": false,
 											"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 											"example": true,
 											"type": "boolean"
@@ -1880,6 +1930,7 @@
 										"result": {
 											"properties": {
 												"redact_pii": {
+													"default": false,
 													"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).",
 													"example": true,
 													"type": "boolean"
@@ -1890,11 +1941,13 @@
 														"dns": {
 															"properties": {
 																"log_all": {
+																	"default": false,
 																	"description": "Log all requests to this service.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"log_blocks": {
+																	"default": false,
 																	"description": "Log only blocking requests to this service.",
 																	"example": true,
 																	"type": "boolean"
@@ -1905,11 +1958,13 @@
 														"http": {
 															"properties": {
 																"log_all": {
+																	"default": false,
 																	"description": "Log all requests to this service.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"log_blocks": {
+																	"default": false,
 																	"description": "Log only blocking requests to this service.",
 																	"example": true,
 																	"type": "boolean"
@@ -1920,11 +1975,13 @@
 														"l4": {
 															"properties": {
 																"log_all": {
+																	"default": false,
 																	"description": "Log all requests to this service.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"log_blocks": {
+																	"default": false,
 																	"description": "Log only blocking requests to this service.",
 																	"example": true,
 																	"type": "boolean"
@@ -2023,6 +2080,7 @@
 												"result": {
 													"properties": {
 														"redact_pii": {
+															"default": false,
 															"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).",
 															"example": true,
 															"type": "boolean"
@@ -2033,11 +2091,13 @@
 																"dns": {
 																	"properties": {
 																		"log_all": {
+																			"default": false,
 																			"description": "Log all requests to this service.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"log_blocks": {
+																			"default": false,
 																			"description": "Log only blocking requests to this service.",
 																			"example": true,
 																			"type": "boolean"
@@ -2048,11 +2108,13 @@
 																"http": {
 																	"properties": {
 																		"log_all": {
+																			"default": false,
 																			"description": "Log all requests to this service.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"log_blocks": {
+																			"default": false,
 																			"description": "Log only blocking requests to this service.",
 																			"example": true,
 																			"type": "boolean"
@@ -2063,11 +2125,13 @@
 																"l4": {
 																	"properties": {
 																		"log_all": {
+																			"default": false,
 																			"description": "Log all requests to this service.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"log_blocks": {
+																			"default": false,
 																			"description": "Log only blocking requests to this service.",
 																			"example": true,
 																			"type": "boolean"
@@ -2656,6 +2720,7 @@
 										"description": "Activity log settings.",
 										"properties": {
 											"enabled": {
+												"default": true,
 												"description": "Enable activity logging.",
 												"example": true,
 												"type": "boolean"
@@ -2667,16 +2732,19 @@
 										"description": "Anti-virus settings.",
 										"properties": {
 											"enabled_download_phase": {
+												"default": false,
 												"description": "Enable anti-virus scanning on downloads.",
 												"example": false,
 												"type": "boolean"
 											},
 											"enabled_upload_phase": {
+												"default": false,
 												"description": "Enable anti-virus scanning on uploads.",
 												"example": false,
 												"type": "boolean"
 											},
 											"fail_closed": {
+												"default": false,
 												"description": "Block requests for files that cannot be scanned.",
 												"example": false,
 												"type": "boolean"
@@ -2685,10 +2753,12 @@
 												"description": "Configure a message to display on the user's device when an antivirus search is performed.",
 												"properties": {
 													"enabled": {
+														"default": false,
 														"description": "Set notification on",
 														"type": "boolean"
 													},
 													"include_context": {
+														"default": false,
 														"description": "If true, context information will be passed as query parameters",
 														"type": "boolean"
 													},
@@ -2710,39 +2780,47 @@
 										"description": "Block page layout settings.",
 										"properties": {
 											"background_color": {
+												"default": "",
 												"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
 												"type": "string"
 											},
 											"enabled": {
+												"default": false,
 												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 												"example": true,
 												"type": "boolean"
 											},
 											"footer_text": {
+												"default": "",
 												"description": "If mode is customized_block_page: block page footer text.",
 												"example": "--footer--",
 												"type": "string"
 											},
 											"header_text": {
+												"default": "",
 												"description": "If mode is customized_block_page: block page header text.",
 												"example": "--header--",
 												"type": "string"
 											},
 											"include_context": {
+												"default": false,
 												"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
 												"type": "boolean"
 											},
 											"logo_path": {
+												"default": "",
 												"description": "If mode is customized_block_page: full URL to the logo file.",
 												"example": "https://logos.com/a.png",
 												"type": "string"
 											},
 											"mailto_address": {
+												"default": "",
 												"description": "If mode is customized_block_page: admin email for users to contact.",
 												"example": "admin@example.com",
 												"type": "string"
 											},
 											"mailto_subject": {
+												"default": "",
 												"description": "If mode is customized_block_page: subject line for emails created from block page.",
 												"example": "Blocked User Inquiry",
 												"type": "string"
@@ -2762,11 +2840,13 @@
 												"type": "string"
 											},
 											"suppress_footer": {
+												"default": "",
 												"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 												"example": false,
 												"type": "boolean"
 											},
 											"target_uri": {
+												"default": "",
 												"description": "If mode is redirect_uri: URI to which the user should be redirected.",
 												"format": "uri",
 												"type": "string"
@@ -2789,11 +2869,13 @@
 										"description": "Browser isolation settings.",
 										"properties": {
 											"non_identity_enabled": {
+												"default": false,
 												"description": "Enable non-identity onramp support for Browser Isolation.",
 												"example": true,
 												"type": "boolean"
 											},
 											"url_browser_isolation_enabled": {
+												"default": false,
 												"description": "Enable Clientless Browser Isolation.",
 												"example": true,
 												"type": "boolean"
@@ -2826,6 +2908,7 @@
 												"type": "string"
 											},
 											"enabled": {
+												"default": false,
 												"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 												"example": true,
 												"type": "boolean"
@@ -2850,6 +2933,7 @@
 										"description": "Extended e-mail matching settings.",
 										"properties": {
 											"enabled": {
+												"default": false,
 												"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 												"example": true,
 												"type": "boolean"
@@ -2861,6 +2945,7 @@
 										"description": "FIPS settings.",
 										"properties": {
 											"tls": {
+												"default": false,
 												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 												"example": true,
 												"type": "boolean"
@@ -2872,6 +2957,7 @@
 										"description": "Protocol Detection settings.",
 										"properties": {
 											"enabled": {
+												"default": false,
 												"description": "Enable detecting protocol on initial bytes of client traffic.",
 												"example": true,
 												"type": "boolean"
@@ -2883,6 +2969,7 @@
 										"description": "Sandbox settings.",
 										"properties": {
 											"enabled": {
+												"default": false,
 												"description": "Enable sandbox.",
 												"example": true,
 												"type": "boolean"
@@ -2902,6 +2989,7 @@
 										"description": "TLS interception settings.",
 										"properties": {
 											"enabled": {
+												"default": true,
 												"description": "Enable inspecting encrypted HTTP traffic.",
 												"example": true,
 												"type": "boolean"
@@ -3003,6 +3091,7 @@
 																	"description": "Activity log settings.",
 																	"properties": {
 																		"enabled": {
+																			"default": true,
 																			"description": "Enable activity logging.",
 																			"example": true,
 																			"type": "boolean"
@@ -3014,16 +3103,19 @@
 																	"description": "Anti-virus settings.",
 																	"properties": {
 																		"enabled_download_phase": {
+																			"default": false,
 																			"description": "Enable anti-virus scanning on downloads.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"enabled_upload_phase": {
+																			"default": false,
 																			"description": "Enable anti-virus scanning on uploads.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"fail_closed": {
+																			"default": false,
 																			"description": "Block requests for files that cannot be scanned.",
 																			"example": false,
 																			"type": "boolean"
@@ -3032,10 +3124,12 @@
 																			"description": "Configure a message to display on the user's device when an antivirus search is performed.",
 																			"properties": {
 																				"enabled": {
+																					"default": false,
 																					"description": "Set notification on",
 																					"type": "boolean"
 																				},
 																				"include_context": {
+																					"default": false,
 																					"description": "If true, context information will be passed as query parameters",
 																					"type": "boolean"
 																				},
@@ -3057,39 +3151,47 @@
 																	"description": "Block page layout settings.",
 																	"properties": {
 																		"background_color": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
 																			"type": "string"
 																		},
 																		"enabled": {
+																			"default": false,
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																			"example": true,
 																			"type": "boolean"
 																		},
 																		"footer_text": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: block page footer text.",
 																			"example": "--footer--",
 																			"type": "string"
 																		},
 																		"header_text": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: block page header text.",
 																			"example": "--header--",
 																			"type": "string"
 																		},
 																		"include_context": {
+																			"default": false,
 																			"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
 																			"type": "boolean"
 																		},
 																		"logo_path": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: full URL to the logo file.",
 																			"example": "https://logos.com/a.png",
 																			"type": "string"
 																		},
 																		"mailto_address": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: admin email for users to contact.",
 																			"example": "admin@example.com",
 																			"type": "string"
 																		},
 																		"mailto_subject": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																			"example": "Blocked User Inquiry",
 																			"type": "string"
@@ -3109,11 +3211,13 @@
 																			"type": "string"
 																		},
 																		"suppress_footer": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"target_uri": {
+																			"default": "",
 																			"description": "If mode is redirect_uri: URI to which the user should be redirected.",
 																			"format": "uri",
 																			"type": "string"
@@ -3136,11 +3240,13 @@
 																	"description": "Browser isolation settings.",
 																	"properties": {
 																		"non_identity_enabled": {
+																			"default": false,
 																			"description": "Enable non-identity onramp support for Browser Isolation.",
 																			"example": true,
 																			"type": "boolean"
 																		},
 																		"url_browser_isolation_enabled": {
+																			"default": false,
 																			"description": "Enable Clientless Browser Isolation.",
 																			"example": true,
 																			"type": "boolean"
@@ -3173,6 +3279,7 @@
 																			"type": "string"
 																		},
 																		"enabled": {
+																			"default": false,
 																			"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																			"example": true,
 																			"type": "boolean"
@@ -3197,6 +3304,7 @@
 																	"description": "Extended e-mail matching settings.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																			"example": true,
 																			"type": "boolean"
@@ -3208,6 +3316,7 @@
 																	"description": "FIPS settings.",
 																	"properties": {
 																		"tls": {
+																			"default": false,
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																			"example": true,
 																			"type": "boolean"
@@ -3219,6 +3328,7 @@
 																	"description": "Protocol Detection settings.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Enable detecting protocol on initial bytes of client traffic.",
 																			"example": true,
 																			"type": "boolean"
@@ -3230,6 +3340,7 @@
 																	"description": "Sandbox settings.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Enable sandbox.",
 																			"example": true,
 																			"type": "boolean"
@@ -3249,6 +3360,7 @@
 																	"description": "TLS interception settings.",
 																	"properties": {
 																		"enabled": {
+																			"default": true,
 																			"description": "Enable inspecting encrypted HTTP traffic.",
 																			"example": true,
 																			"type": "boolean"
@@ -3375,6 +3487,7 @@
 																			"description": "Activity log settings.",
 																			"properties": {
 																				"enabled": {
+																					"default": true,
 																					"description": "Enable activity logging.",
 																					"example": true,
 																					"type": "boolean"
@@ -3386,16 +3499,19 @@
 																			"description": "Anti-virus settings.",
 																			"properties": {
 																				"enabled_download_phase": {
+																					"default": false,
 																					"description": "Enable anti-virus scanning on downloads.",
 																					"example": false,
 																					"type": "boolean"
 																				},
 																				"enabled_upload_phase": {
+																					"default": false,
 																					"description": "Enable anti-virus scanning on uploads.",
 																					"example": false,
 																					"type": "boolean"
 																				},
 																				"fail_closed": {
+																					"default": false,
 																					"description": "Block requests for files that cannot be scanned.",
 																					"example": false,
 																					"type": "boolean"
@@ -3404,10 +3520,12 @@
 																					"description": "Configure a message to display on the user's device when an antivirus search is performed.",
 																					"properties": {
 																						"enabled": {
+																							"default": false,
 																							"description": "Set notification on",
 																							"type": "boolean"
 																						},
 																						"include_context": {
+																							"default": false,
 																							"description": "If true, context information will be passed as query parameters",
 																							"type": "boolean"
 																						},
@@ -3429,39 +3547,47 @@
 																			"description": "Block page layout settings.",
 																			"properties": {
 																				"background_color": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
 																					"type": "string"
 																				},
 																				"enabled": {
+																					"default": false,
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																					"example": true,
 																					"type": "boolean"
 																				},
 																				"footer_text": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: block page footer text.",
 																					"example": "--footer--",
 																					"type": "string"
 																				},
 																				"header_text": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: block page header text.",
 																					"example": "--header--",
 																					"type": "string"
 																				},
 																				"include_context": {
+																					"default": false,
 																					"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
 																					"type": "boolean"
 																				},
 																				"logo_path": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: full URL to the logo file.",
 																					"example": "https://logos.com/a.png",
 																					"type": "string"
 																				},
 																				"mailto_address": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: admin email for users to contact.",
 																					"example": "admin@example.com",
 																					"type": "string"
 																				},
 																				"mailto_subject": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																					"example": "Blocked User Inquiry",
 																					"type": "string"
@@ -3481,11 +3607,13 @@
 																					"type": "string"
 																				},
 																				"suppress_footer": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																					"example": false,
 																					"type": "boolean"
 																				},
 																				"target_uri": {
+																					"default": "",
 																					"description": "If mode is redirect_uri: URI to which the user should be redirected.",
 																					"format": "uri",
 																					"type": "string"
@@ -3508,11 +3636,13 @@
 																			"description": "Browser isolation settings.",
 																			"properties": {
 																				"non_identity_enabled": {
+																					"default": false,
 																					"description": "Enable non-identity onramp support for Browser Isolation.",
 																					"example": true,
 																					"type": "boolean"
 																				},
 																				"url_browser_isolation_enabled": {
+																					"default": false,
 																					"description": "Enable Clientless Browser Isolation.",
 																					"example": true,
 																					"type": "boolean"
@@ -3545,6 +3675,7 @@
 																					"type": "string"
 																				},
 																				"enabled": {
+																					"default": false,
 																					"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																					"example": true,
 																					"type": "boolean"
@@ -3569,6 +3700,7 @@
 																			"description": "Extended e-mail matching settings.",
 																			"properties": {
 																				"enabled": {
+																					"default": false,
 																					"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																					"example": true,
 																					"type": "boolean"
@@ -3580,6 +3712,7 @@
 																			"description": "FIPS settings.",
 																			"properties": {
 																				"tls": {
+																					"default": false,
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																					"example": true,
 																					"type": "boolean"
@@ -3591,6 +3724,7 @@
 																			"description": "Protocol Detection settings.",
 																			"properties": {
 																				"enabled": {
+																					"default": false,
 																					"description": "Enable detecting protocol on initial bytes of client traffic.",
 																					"example": true,
 																					"type": "boolean"
@@ -3602,6 +3736,7 @@
 																			"description": "Sandbox settings.",
 																			"properties": {
 																				"enabled": {
+																					"default": false,
 																					"description": "Enable sandbox.",
 																					"example": true,
 																					"type": "boolean"
@@ -3621,6 +3756,7 @@
 																			"description": "TLS interception settings.",
 																			"properties": {
 																				"enabled": {
+																					"default": true,
 																					"description": "Enable inspecting encrypted HTTP traffic.",
 																					"example": true,
 																					"type": "boolean"
@@ -4557,6 +4693,7 @@
 										"description": "Activity log settings.",
 										"properties": {
 											"enabled": {
+												"default": true,
 												"description": "Enable activity logging.",
 												"example": true,
 												"type": "boolean"
@@ -4568,16 +4705,19 @@
 										"description": "Anti-virus settings.",
 										"properties": {
 											"enabled_download_phase": {
+												"default": false,
 												"description": "Enable anti-virus scanning on downloads.",
 												"example": false,
 												"type": "boolean"
 											},
 											"enabled_upload_phase": {
+												"default": false,
 												"description": "Enable anti-virus scanning on uploads.",
 												"example": false,
 												"type": "boolean"
 											},
 											"fail_closed": {
+												"default": false,
 												"description": "Block requests for files that cannot be scanned.",
 												"example": false,
 												"type": "boolean"
@@ -4586,10 +4726,12 @@
 												"description": "Configure a message to display on the user's device when an antivirus search is performed.",
 												"properties": {
 													"enabled": {
+														"default": false,
 														"description": "Set notification on",
 														"type": "boolean"
 													},
 													"include_context": {
+														"default": false,
 														"description": "If true, context information will be passed as query parameters",
 														"type": "boolean"
 													},
@@ -4611,39 +4753,47 @@
 										"description": "Block page layout settings.",
 										"properties": {
 											"background_color": {
+												"default": "",
 												"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
 												"type": "string"
 											},
 											"enabled": {
+												"default": false,
 												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 												"example": true,
 												"type": "boolean"
 											},
 											"footer_text": {
+												"default": "",
 												"description": "If mode is customized_block_page: block page footer text.",
 												"example": "--footer--",
 												"type": "string"
 											},
 											"header_text": {
+												"default": "",
 												"description": "If mode is customized_block_page: block page header text.",
 												"example": "--header--",
 												"type": "string"
 											},
 											"include_context": {
+												"default": false,
 												"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
 												"type": "boolean"
 											},
 											"logo_path": {
+												"default": "",
 												"description": "If mode is customized_block_page: full URL to the logo file.",
 												"example": "https://logos.com/a.png",
 												"type": "string"
 											},
 											"mailto_address": {
+												"default": "",
 												"description": "If mode is customized_block_page: admin email for users to contact.",
 												"example": "admin@example.com",
 												"type": "string"
 											},
 											"mailto_subject": {
+												"default": "",
 												"description": "If mode is customized_block_page: subject line for emails created from block page.",
 												"example": "Blocked User Inquiry",
 												"type": "string"
@@ -4663,11 +4813,13 @@
 												"type": "string"
 											},
 											"suppress_footer": {
+												"default": "",
 												"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 												"example": false,
 												"type": "boolean"
 											},
 											"target_uri": {
+												"default": "",
 												"description": "If mode is redirect_uri: URI to which the user should be redirected.",
 												"format": "uri",
 												"type": "string"
@@ -4690,11 +4842,13 @@
 										"description": "Browser isolation settings.",
 										"properties": {
 											"non_identity_enabled": {
+												"default": false,
 												"description": "Enable non-identity onramp support for Browser Isolation.",
 												"example": true,
 												"type": "boolean"
 											},
 											"url_browser_isolation_enabled": {
+												"default": false,
 												"description": "Enable Clientless Browser Isolation.",
 												"example": true,
 												"type": "boolean"
@@ -4727,6 +4881,7 @@
 												"type": "string"
 											},
 											"enabled": {
+												"default": false,
 												"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 												"example": true,
 												"type": "boolean"
@@ -4751,6 +4906,7 @@
 										"description": "Extended e-mail matching settings.",
 										"properties": {
 											"enabled": {
+												"default": false,
 												"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 												"example": true,
 												"type": "boolean"
@@ -4762,6 +4918,7 @@
 										"description": "FIPS settings.",
 										"properties": {
 											"tls": {
+												"default": false,
 												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 												"example": true,
 												"type": "boolean"
@@ -4773,6 +4930,7 @@
 										"description": "Protocol Detection settings.",
 										"properties": {
 											"enabled": {
+												"default": false,
 												"description": "Enable detecting protocol on initial bytes of client traffic.",
 												"example": true,
 												"type": "boolean"
@@ -4784,6 +4942,7 @@
 										"description": "Sandbox settings.",
 										"properties": {
 											"enabled": {
+												"default": false,
 												"description": "Enable sandbox.",
 												"example": true,
 												"type": "boolean"
@@ -4803,6 +4962,7 @@
 										"description": "TLS interception settings.",
 										"properties": {
 											"enabled": {
+												"default": true,
 												"description": "Enable inspecting encrypted HTTP traffic.",
 												"example": true,
 												"type": "boolean"
@@ -4904,6 +5064,7 @@
 																	"description": "Activity log settings.",
 																	"properties": {
 																		"enabled": {
+																			"default": true,
 																			"description": "Enable activity logging.",
 																			"example": true,
 																			"type": "boolean"
@@ -4915,16 +5076,19 @@
 																	"description": "Anti-virus settings.",
 																	"properties": {
 																		"enabled_download_phase": {
+																			"default": false,
 																			"description": "Enable anti-virus scanning on downloads.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"enabled_upload_phase": {
+																			"default": false,
 																			"description": "Enable anti-virus scanning on uploads.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"fail_closed": {
+																			"default": false,
 																			"description": "Block requests for files that cannot be scanned.",
 																			"example": false,
 																			"type": "boolean"
@@ -4933,10 +5097,12 @@
 																			"description": "Configure a message to display on the user's device when an antivirus search is performed.",
 																			"properties": {
 																				"enabled": {
+																					"default": false,
 																					"description": "Set notification on",
 																					"type": "boolean"
 																				},
 																				"include_context": {
+																					"default": false,
 																					"description": "If true, context information will be passed as query parameters",
 																					"type": "boolean"
 																				},
@@ -4958,39 +5124,47 @@
 																	"description": "Block page layout settings.",
 																	"properties": {
 																		"background_color": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
 																			"type": "string"
 																		},
 																		"enabled": {
+																			"default": false,
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																			"example": true,
 																			"type": "boolean"
 																		},
 																		"footer_text": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: block page footer text.",
 																			"example": "--footer--",
 																			"type": "string"
 																		},
 																		"header_text": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: block page header text.",
 																			"example": "--header--",
 																			"type": "string"
 																		},
 																		"include_context": {
+																			"default": false,
 																			"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
 																			"type": "boolean"
 																		},
 																		"logo_path": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: full URL to the logo file.",
 																			"example": "https://logos.com/a.png",
 																			"type": "string"
 																		},
 																		"mailto_address": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: admin email for users to contact.",
 																			"example": "admin@example.com",
 																			"type": "string"
 																		},
 																		"mailto_subject": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																			"example": "Blocked User Inquiry",
 																			"type": "string"
@@ -5010,11 +5184,13 @@
 																			"type": "string"
 																		},
 																		"suppress_footer": {
+																			"default": "",
 																			"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"target_uri": {
+																			"default": "",
 																			"description": "If mode is redirect_uri: URI to which the user should be redirected.",
 																			"format": "uri",
 																			"type": "string"
@@ -5037,11 +5213,13 @@
 																	"description": "Browser isolation settings.",
 																	"properties": {
 																		"non_identity_enabled": {
+																			"default": false,
 																			"description": "Enable non-identity onramp support for Browser Isolation.",
 																			"example": true,
 																			"type": "boolean"
 																		},
 																		"url_browser_isolation_enabled": {
+																			"default": false,
 																			"description": "Enable Clientless Browser Isolation.",
 																			"example": true,
 																			"type": "boolean"
@@ -5074,6 +5252,7 @@
 																			"type": "string"
 																		},
 																		"enabled": {
+																			"default": false,
 																			"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																			"example": true,
 																			"type": "boolean"
@@ -5098,6 +5277,7 @@
 																	"description": "Extended e-mail matching settings.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																			"example": true,
 																			"type": "boolean"
@@ -5109,6 +5289,7 @@
 																	"description": "FIPS settings.",
 																	"properties": {
 																		"tls": {
+																			"default": false,
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																			"example": true,
 																			"type": "boolean"
@@ -5120,6 +5301,7 @@
 																	"description": "Protocol Detection settings.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Enable detecting protocol on initial bytes of client traffic.",
 																			"example": true,
 																			"type": "boolean"
@@ -5131,6 +5313,7 @@
 																	"description": "Sandbox settings.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Enable sandbox.",
 																			"example": true,
 																			"type": "boolean"
@@ -5150,6 +5333,7 @@
 																	"description": "TLS interception settings.",
 																	"properties": {
 																		"enabled": {
+																			"default": true,
 																			"description": "Enable inspecting encrypted HTTP traffic.",
 																			"example": true,
 																			"type": "boolean"
@@ -5276,6 +5460,7 @@
 																			"description": "Activity log settings.",
 																			"properties": {
 																				"enabled": {
+																					"default": true,
 																					"description": "Enable activity logging.",
 																					"example": true,
 																					"type": "boolean"
@@ -5287,16 +5472,19 @@
 																			"description": "Anti-virus settings.",
 																			"properties": {
 																				"enabled_download_phase": {
+																					"default": false,
 																					"description": "Enable anti-virus scanning on downloads.",
 																					"example": false,
 																					"type": "boolean"
 																				},
 																				"enabled_upload_phase": {
+																					"default": false,
 																					"description": "Enable anti-virus scanning on uploads.",
 																					"example": false,
 																					"type": "boolean"
 																				},
 																				"fail_closed": {
+																					"default": false,
 																					"description": "Block requests for files that cannot be scanned.",
 																					"example": false,
 																					"type": "boolean"
@@ -5305,10 +5493,12 @@
 																					"description": "Configure a message to display on the user's device when an antivirus search is performed.",
 																					"properties": {
 																						"enabled": {
+																							"default": false,
 																							"description": "Set notification on",
 																							"type": "boolean"
 																						},
 																						"include_context": {
+																							"default": false,
 																							"description": "If true, context information will be passed as query parameters",
 																							"type": "boolean"
 																						},
@@ -5330,39 +5520,47 @@
 																			"description": "Block page layout settings.",
 																			"properties": {
 																				"background_color": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
 																					"type": "string"
 																				},
 																				"enabled": {
+																					"default": false,
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																					"example": true,
 																					"type": "boolean"
 																				},
 																				"footer_text": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: block page footer text.",
 																					"example": "--footer--",
 																					"type": "string"
 																				},
 																				"header_text": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: block page header text.",
 																					"example": "--header--",
 																					"type": "string"
 																				},
 																				"include_context": {
+																					"default": false,
 																					"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
 																					"type": "boolean"
 																				},
 																				"logo_path": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: full URL to the logo file.",
 																					"example": "https://logos.com/a.png",
 																					"type": "string"
 																				},
 																				"mailto_address": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: admin email for users to contact.",
 																					"example": "admin@example.com",
 																					"type": "string"
 																				},
 																				"mailto_subject": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																					"example": "Blocked User Inquiry",
 																					"type": "string"
@@ -5382,11 +5580,13 @@
 																					"type": "string"
 																				},
 																				"suppress_footer": {
+																					"default": "",
 																					"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																					"example": false,
 																					"type": "boolean"
 																				},
 																				"target_uri": {
+																					"default": "",
 																					"description": "If mode is redirect_uri: URI to which the user should be redirected.",
 																					"format": "uri",
 																					"type": "string"
@@ -5409,11 +5609,13 @@
 																			"description": "Browser isolation settings.",
 																			"properties": {
 																				"non_identity_enabled": {
+																					"default": false,
 																					"description": "Enable non-identity onramp support for Browser Isolation.",
 																					"example": true,
 																					"type": "boolean"
 																				},
 																				"url_browser_isolation_enabled": {
+																					"default": false,
 																					"description": "Enable Clientless Browser Isolation.",
 																					"example": true,
 																					"type": "boolean"
@@ -5446,6 +5648,7 @@
 																					"type": "string"
 																				},
 																				"enabled": {
+																					"default": false,
 																					"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																					"example": true,
 																					"type": "boolean"
@@ -5470,6 +5673,7 @@
 																			"description": "Extended e-mail matching settings.",
 																			"properties": {
 																				"enabled": {
+																					"default": false,
 																					"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																					"example": true,
 																					"type": "boolean"
@@ -5481,6 +5685,7 @@
 																			"description": "FIPS settings.",
 																			"properties": {
 																				"tls": {
+																					"default": false,
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																					"example": true,
 																					"type": "boolean"
@@ -5492,6 +5697,7 @@
 																			"description": "Protocol Detection settings.",
 																			"properties": {
 																				"enabled": {
+																					"default": false,
 																					"description": "Enable detecting protocol on initial bytes of client traffic.",
 																					"example": true,
 																					"type": "boolean"
@@ -5503,6 +5709,7 @@
 																			"description": "Sandbox settings.",
 																			"properties": {
 																				"enabled": {
+																					"default": false,
 																					"description": "Enable sandbox.",
 																					"example": true,
 																					"type": "boolean"
@@ -5522,6 +5729,7 @@
 																			"description": "TLS interception settings.",
 																			"properties": {
 																				"enabled": {
+																					"default": true,
 																					"description": "Enable inspecting encrypted HTTP traffic.",
 																					"example": true,
 																					"type": "boolean"
@@ -5686,6 +5894,7 @@
 					"schema": {
 						"properties": {
 							"redact_pii": {
+								"default": false,
 								"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).",
 								"example": true,
 								"type": "boolean"
@@ -5696,11 +5905,13 @@
 									"dns": {
 										"properties": {
 											"log_all": {
+												"default": false,
 												"description": "Log all requests to this service.",
 												"example": false,
 												"type": "boolean"
 											},
 											"log_blocks": {
+												"default": false,
 												"description": "Log only blocking requests to this service.",
 												"example": true,
 												"type": "boolean"
@@ -5711,11 +5922,13 @@
 									"http": {
 										"properties": {
 											"log_all": {
+												"default": false,
 												"description": "Log all requests to this service.",
 												"example": false,
 												"type": "boolean"
 											},
 											"log_blocks": {
+												"default": false,
 												"description": "Log only blocking requests to this service.",
 												"example": true,
 												"type": "boolean"
@@ -5726,11 +5939,13 @@
 									"l4": {
 										"properties": {
 											"log_all": {
+												"default": false,
 												"description": "Log all requests to this service.",
 												"example": false,
 												"type": "boolean"
 											},
 											"log_blocks": {
+												"default": false,
 												"description": "Log only blocking requests to this service.",
 												"example": true,
 												"type": "boolean"
@@ -5824,6 +6039,7 @@
 										"result": {
 											"properties": {
 												"redact_pii": {
+													"default": false,
 													"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).",
 													"example": true,
 													"type": "boolean"
@@ -5834,11 +6050,13 @@
 														"dns": {
 															"properties": {
 																"log_all": {
+																	"default": false,
 																	"description": "Log all requests to this service.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"log_blocks": {
+																	"default": false,
 																	"description": "Log only blocking requests to this service.",
 																	"example": true,
 																	"type": "boolean"
@@ -5849,11 +6067,13 @@
 														"http": {
 															"properties": {
 																"log_all": {
+																	"default": false,
 																	"description": "Log all requests to this service.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"log_blocks": {
+																	"default": false,
 																	"description": "Log only blocking requests to this service.",
 																	"example": true,
 																	"type": "boolean"
@@ -5864,11 +6084,13 @@
 														"l4": {
 															"properties": {
 																"log_all": {
+																	"default": false,
 																	"description": "Log all requests to this service.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"log_blocks": {
+																	"default": false,
 																	"description": "Log only blocking requests to this service.",
 																	"example": true,
 																	"type": "boolean"
@@ -5967,6 +6189,7 @@
 												"result": {
 													"properties": {
 														"redact_pii": {
+															"default": false,
 															"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).",
 															"example": true,
 															"type": "boolean"
@@ -5977,11 +6200,13 @@
 																"dns": {
 																	"properties": {
 																		"log_all": {
+																			"default": false,
 																			"description": "Log all requests to this service.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"log_blocks": {
+																			"default": false,
 																			"description": "Log only blocking requests to this service.",
 																			"example": true,
 																			"type": "boolean"
@@ -5992,11 +6217,13 @@
 																"http": {
 																	"properties": {
 																		"log_all": {
+																			"default": false,
 																			"description": "Log all requests to this service.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"log_blocks": {
+																			"default": false,
 																			"description": "Log only blocking requests to this service.",
 																			"example": true,
 																			"type": "boolean"
@@ -6007,11 +6234,13 @@
 																"l4": {
 																	"properties": {
 																		"log_all": {
+																			"default": false,
 																			"description": "Log all requests to this service.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"log_blocks": {
+																			"default": false,
 																			"description": "Log only blocking requests to this service.",
 																			"example": true,
 																			"type": "boolean"

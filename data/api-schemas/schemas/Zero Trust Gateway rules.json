@@ -462,6 +462,7 @@
 														"type": "string"
 													},
 													"description": {
+														"default": "",
 														"description": "The description of the rule.",
 														"example": "Block bad websites based on their host name.",
 														"type": "string"
@@ -473,6 +474,7 @@
 														"type": "string"
 													},
 													"enabled": {
+														"default": false,
 														"description": "True if the rule is enabled.",
 														"example": true,
 														"type": "boolean"
@@ -489,6 +491,7 @@
 															"expired": {
 																"description": "Whether the policy has expired.",
 																"example": false,
+																"readOnly": true,
 																"type": "boolean"
 															},
 															"expires_at": {
@@ -571,6 +574,7 @@
 																"type": "object"
 															},
 															"allow_child_bypass": {
+																"default": false,
 																"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																"example": false,
 																"type": "boolean"
@@ -579,6 +583,7 @@
 																"description": "Settings for the Audit SSH action.",
 																"properties": {
 																	"command_logging": {
+																		"default": false,
 																		"description": "Enable to turn on SSH command logging.",
 																		"example": false,
 																		"type": "boolean"
@@ -600,16 +605,19 @@
 																		"type": "string"
 																	},
 																	"dcp": {
+																		"default": false,
 																		"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																		"example": false,
 																		"type": "boolean"
 																	},
 																	"dd": {
+																		"default": false,
 																		"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																		"example": false,
 																		"type": "boolean"
 																	},
 																	"dk": {
+																		"default": false,
 																		"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																		"example": false,
 																		"type": "boolean"
@@ -624,11 +632,13 @@
 																		"type": "string"
 																	},
 																	"dp": {
+																		"default": false,
 																		"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																		"example": false,
 																		"type": "boolean"
 																	},
 																	"du": {
+																		"default": false,
 																		"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																		"example": false,
 																		"type": "boolean"
@@ -686,6 +696,7 @@
 																"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
 																"properties": {
 																	"include_context": {
+																		"default": false,
 																		"description": "If true, context information will be passed as query parameters",
 																		"type": "boolean"
 																	},
@@ -701,16 +712,19 @@
 																"type": "object"
 															},
 															"block_page_enabled": {
+																"default": false,
 																"description": "Enable the custom block page.",
 																"example": true,
 																"type": "boolean"
 															},
 															"block_reason": {
+																"default": "",
 																"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																"example": "This website is a security risk",
 																"type": "string"
 															},
 															"bypass_parent_rule": {
+																"default": false,
 																"description": "Set by children MSP accounts to bypass their parent's rules.",
 																"example": false,
 																"type": "boolean"
@@ -724,6 +738,7 @@
 																		"type": "string"
 																	},
 																	"enforce": {
+																		"default": false,
 																		"description": "Set to true to enable session enforcement.",
 																		"example": true,
 																		"type": "boolean"
@@ -821,21 +836,25 @@
 																"type": "object"
 															},
 															"ignore_cname_category_matches": {
+																"default": false,
 																"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																"example": true,
 																"type": "boolean"
 															},
 															"insecure_disable_dnssec_validation": {
+																"default": false,
 																"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																"example": false,
 																"type": "boolean"
 															},
 															"ip_categories": {
+																"default": false,
 																"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																"example": true,
 																"type": "boolean"
 															},
 															"ip_indicator_feeds": {
+																"default": false,
 																"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																"example": true,
 																"type": "boolean"
@@ -859,6 +878,7 @@
 																"description": "Configure a notification to display on the user's device when this rule is matched.",
 																"properties": {
 																	"enabled": {
+																		"default": false,
 																		"description": "Set notification on",
 																		"type": "boolean"
 																	},
@@ -878,6 +898,7 @@
 																"type": "object"
 															},
 															"override_host": {
+																"default": "",
 																"description": "Override matching DNS queries with a hostname.",
 																"example": "example.com",
 																"type": "string"
@@ -899,6 +920,7 @@
 																"description": "Configure DLP payload logging.",
 																"properties": {
 																	"enabled": {
+																		"default": false,
 																		"description": "Set to true to enable DLP payload logging for this rule.",
 																		"example": true,
 																		"type": "boolean"
@@ -938,10 +960,12 @@
 																"description": "Settings that apply to redirect rules",
 																"properties": {
 																	"include_context": {
+																		"default": false,
 																		"description": "If true, context information will be passed as query parameters",
 																		"type": "boolean"
 																	},
 																	"preserve_path_and_query": {
+																		"default": false,
 																		"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																		"type": "boolean"
 																	},
@@ -976,6 +1000,7 @@
 																"type": "object"
 															},
 															"resolve_dns_through_cloudflare": {
+																"default": false,
 																"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																"example": true,
 																"type": "boolean"
@@ -1060,6 +1085,7 @@
 													"version": {
 														"description": "version number of the rule",
 														"example": 1,
+														"readOnly": true,
 														"type": "integer"
 													}
 												},
@@ -1222,6 +1248,7 @@
 																"type": "string"
 															},
 															"description": {
+																"default": "",
 																"description": "The description of the rule.",
 																"example": "Block bad websites based on their host name.",
 																"type": "string"
@@ -1233,6 +1260,7 @@
 																"type": "string"
 															},
 															"enabled": {
+																"default": false,
 																"description": "True if the rule is enabled.",
 																"example": true,
 																"type": "boolean"
@@ -1249,6 +1277,7 @@
 																	"expired": {
 																		"description": "Whether the policy has expired.",
 																		"example": false,
+																		"readOnly": true,
 																		"type": "boolean"
 																	},
 																	"expires_at": {
@@ -1331,6 +1360,7 @@
 																		"type": "object"
 																	},
 																	"allow_child_bypass": {
+																		"default": false,
 																		"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																		"example": false,
 																		"type": "boolean"
@@ -1339,6 +1369,7 @@
 																		"description": "Settings for the Audit SSH action.",
 																		"properties": {
 																			"command_logging": {
+																				"default": false,
 																				"description": "Enable to turn on SSH command logging.",
 																				"example": false,
 																				"type": "boolean"
@@ -1360,16 +1391,19 @@
 																				"type": "string"
 																			},
 																			"dcp": {
+																				"default": false,
 																				"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																				"example": false,
 																				"type": "boolean"
 																			},
 																			"dd": {
+																				"default": false,
 																				"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																				"example": false,
 																				"type": "boolean"
 																			},
 																			"dk": {
+																				"default": false,
 																				"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																				"example": false,
 																				"type": "boolean"
@@ -1384,11 +1418,13 @@
 																				"type": "string"
 																			},
 																			"dp": {
+																				"default": false,
 																				"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																				"example": false,
 																				"type": "boolean"
 																			},
 																			"du": {
+																				"default": false,
 																				"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																				"example": false,
 																				"type": "boolean"
@@ -1446,6 +1482,7 @@
 																		"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
 																		"properties": {
 																			"include_context": {
+																				"default": false,
 																				"description": "If true, context information will be passed as query parameters",
 																				"type": "boolean"
 																			},
@@ -1461,16 +1498,19 @@
 																		"type": "object"
 																	},
 																	"block_page_enabled": {
+																		"default": false,
 																		"description": "Enable the custom block page.",
 																		"example": true,
 																		"type": "boolean"
 																	},
 																	"block_reason": {
+																		"default": "",
 																		"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																		"example": "This website is a security risk",
 																		"type": "string"
 																	},
 																	"bypass_parent_rule": {
+																		"default": false,
 																		"description": "Set by children MSP accounts to bypass their parent's rules.",
 																		"example": false,
 																		"type": "boolean"
@@ -1484,6 +1524,7 @@
 																				"type": "string"
 																			},
 																			"enforce": {
+																				"default": false,
 																				"description": "Set to true to enable session enforcement.",
 																				"example": true,
 																				"type": "boolean"
@@ -1581,21 +1622,25 @@
 																		"type": "object"
 																	},
 																	"ignore_cname_category_matches": {
+																		"default": false,
 																		"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																		"example": true,
 																		"type": "boolean"
 																	},
 																	"insecure_disable_dnssec_validation": {
+																		"default": false,
 																		"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																		"example": false,
 																		"type": "boolean"
 																	},
 																	"ip_categories": {
+																		"default": false,
 																		"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																		"example": true,
 																		"type": "boolean"
 																	},
 																	"ip_indicator_feeds": {
+																		"default": false,
 																		"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																		"example": true,
 																		"type": "boolean"
@@ -1619,6 +1664,7 @@
 																		"description": "Configure a notification to display on the user's device when this rule is matched.",
 																		"properties": {
 																			"enabled": {
+																				"default": false,
 																				"description": "Set notification on",
 																				"type": "boolean"
 																			},
@@ -1638,6 +1684,7 @@
 																		"type": "object"
 																	},
 																	"override_host": {
+																		"default": "",
 																		"description": "Override matching DNS queries with a hostname.",
 																		"example": "example.com",
 																		"type": "string"
@@ -1659,6 +1706,7 @@
 																		"description": "Configure DLP payload logging.",
 																		"properties": {
 																			"enabled": {
+																				"default": false,
 																				"description": "Set to true to enable DLP payload logging for this rule.",
 																				"example": true,
 																				"type": "boolean"
@@ -1698,10 +1746,12 @@
 																		"description": "Settings that apply to redirect rules",
 																		"properties": {
 																			"include_context": {
+																				"default": false,
 																				"description": "If true, context information will be passed as query parameters",
 																				"type": "boolean"
 																			},
 																			"preserve_path_and_query": {
+																				"default": false,
 																				"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																				"type": "boolean"
 																			},
@@ -1736,6 +1786,7 @@
 																		"type": "object"
 																	},
 																	"resolve_dns_through_cloudflare": {
+																		"default": false,
 																		"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																		"example": true,
 																		"type": "boolean"
@@ -1820,6 +1871,7 @@
 															"version": {
 																"description": "version number of the rule",
 																"example": 1,
+																"readOnly": true,
 																"type": "integer"
 															}
 														},
@@ -2079,6 +2131,7 @@
 													"type": "string"
 												},
 												"description": {
+													"default": "",
 													"description": "The description of the rule.",
 													"example": "Block bad websites based on their host name.",
 													"type": "string"
@@ -2090,6 +2143,7 @@
 													"type": "string"
 												},
 												"enabled": {
+													"default": false,
 													"description": "True if the rule is enabled.",
 													"example": true,
 													"type": "boolean"
@@ -2106,6 +2160,7 @@
 														"expired": {
 															"description": "Whether the policy has expired.",
 															"example": false,
+															"readOnly": true,
 															"type": "boolean"
 														},
 														"expires_at": {
@@ -2188,6 +2243,7 @@
 															"type": "object"
 														},
 														"allow_child_bypass": {
+															"default": false,
 															"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 															"example": false,
 															"type": "boolean"
@@ -2196,6 +2252,7 @@
 															"description": "Settings for the Audit SSH action.",
 															"properties": {
 																"command_logging": {
+																	"default": false,
 																	"description": "Enable to turn on SSH command logging.",
 																	"example": false,
 																	"type": "boolean"
@@ -2217,16 +2274,19 @@
 																	"type": "string"
 																},
 																"dcp": {
+																	"default": false,
 																	"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dd": {
+																	"default": false,
 																	"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dk": {
+																	"default": false,
 																	"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
@@ -2241,11 +2301,13 @@
 																	"type": "string"
 																},
 																"dp": {
+																	"default": false,
 																	"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"du": {
+																	"default": false,
 																	"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
@@ -2303,6 +2365,7 @@
 															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
 															"properties": {
 																"include_context": {
+																	"default": false,
 																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
@@ -2318,16 +2381,19 @@
 															"type": "object"
 														},
 														"block_page_enabled": {
+															"default": false,
 															"description": "Enable the custom block page.",
 															"example": true,
 															"type": "boolean"
 														},
 														"block_reason": {
+															"default": "",
 															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 															"example": "This website is a security risk",
 															"type": "string"
 														},
 														"bypass_parent_rule": {
+															"default": false,
 															"description": "Set by children MSP accounts to bypass their parent's rules.",
 															"example": false,
 															"type": "boolean"
@@ -2341,6 +2407,7 @@
 																	"type": "string"
 																},
 																"enforce": {
+																	"default": false,
 																	"description": "Set to true to enable session enforcement.",
 																	"example": true,
 																	"type": "boolean"
@@ -2438,21 +2505,25 @@
 															"type": "object"
 														},
 														"ignore_cname_category_matches": {
+															"default": false,
 															"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 															"example": true,
 															"type": "boolean"
 														},
 														"insecure_disable_dnssec_validation": {
+															"default": false,
 															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 															"example": false,
 															"type": "boolean"
 														},
 														"ip_categories": {
+															"default": false,
 															"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 															"example": true,
 															"type": "boolean"
 														},
 														"ip_indicator_feeds": {
+															"default": false,
 															"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 															"example": true,
 															"type": "boolean"
@@ -2476,6 +2547,7 @@
 															"description": "Configure a notification to display on the user's device when this rule is matched.",
 															"properties": {
 																"enabled": {
+																	"default": false,
 																	"description": "Set notification on",
 																	"type": "boolean"
 																},
@@ -2495,6 +2567,7 @@
 															"type": "object"
 														},
 														"override_host": {
+															"default": "",
 															"description": "Override matching DNS queries with a hostname.",
 															"example": "example.com",
 															"type": "string"
@@ -2516,6 +2589,7 @@
 															"description": "Configure DLP payload logging.",
 															"properties": {
 																"enabled": {
+																	"default": false,
 																	"description": "Set to true to enable DLP payload logging for this rule.",
 																	"example": true,
 																	"type": "boolean"
@@ -2555,10 +2629,12 @@
 															"description": "Settings that apply to redirect rules",
 															"properties": {
 																"include_context": {
+																	"default": false,
 																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
 																"preserve_path_and_query": {
+																	"default": false,
 																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																	"type": "boolean"
 																},
@@ -2593,6 +2669,7 @@
 															"type": "object"
 														},
 														"resolve_dns_through_cloudflare": {
+															"default": false,
 															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
 															"type": "boolean"
@@ -2677,6 +2754,7 @@
 												"version": {
 													"description": "version number of the rule",
 													"example": 1,
+													"readOnly": true,
 													"type": "integer"
 												}
 											},
@@ -2807,6 +2885,7 @@
 															"type": "string"
 														},
 														"description": {
+															"default": "",
 															"description": "The description of the rule.",
 															"example": "Block bad websites based on their host name.",
 															"type": "string"
@@ -2818,6 +2897,7 @@
 															"type": "string"
 														},
 														"enabled": {
+															"default": false,
 															"description": "True if the rule is enabled.",
 															"example": true,
 															"type": "boolean"
@@ -2834,6 +2914,7 @@
 																"expired": {
 																	"description": "Whether the policy has expired.",
 																	"example": false,
+																	"readOnly": true,
 																	"type": "boolean"
 																},
 																"expires_at": {
@@ -2916,6 +2997,7 @@
 																	"type": "object"
 																},
 																"allow_child_bypass": {
+																	"default": false,
 																	"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																	"example": false,
 																	"type": "boolean"
@@ -2924,6 +3006,7 @@
 																	"description": "Settings for the Audit SSH action.",
 																	"properties": {
 																		"command_logging": {
+																			"default": false,
 																			"description": "Enable to turn on SSH command logging.",
 																			"example": false,
 																			"type": "boolean"
@@ -2945,16 +3028,19 @@
 																			"type": "string"
 																		},
 																		"dcp": {
+																			"default": false,
 																			"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dd": {
+																			"default": false,
 																			"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dk": {
+																			"default": false,
 																			"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
@@ -2969,11 +3055,13 @@
 																			"type": "string"
 																		},
 																		"dp": {
+																			"default": false,
 																			"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"du": {
+																			"default": false,
 																			"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
@@ -3031,6 +3119,7 @@
 																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
 																	"properties": {
 																		"include_context": {
+																			"default": false,
 																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
@@ -3046,16 +3135,19 @@
 																	"type": "object"
 																},
 																"block_page_enabled": {
+																	"default": false,
 																	"description": "Enable the custom block page.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"block_reason": {
+																	"default": "",
 																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																	"example": "This website is a security risk",
 																	"type": "string"
 																},
 																"bypass_parent_rule": {
+																	"default": false,
 																	"description": "Set by children MSP accounts to bypass their parent's rules.",
 																	"example": false,
 																	"type": "boolean"
@@ -3069,6 +3161,7 @@
 																			"type": "string"
 																		},
 																		"enforce": {
+																			"default": false,
 																			"description": "Set to true to enable session enforcement.",
 																			"example": true,
 																			"type": "boolean"
@@ -3166,21 +3259,25 @@
 																	"type": "object"
 																},
 																"ignore_cname_category_matches": {
+																	"default": false,
 																	"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"insecure_disable_dnssec_validation": {
+																	"default": false,
 																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"ip_categories": {
+																	"default": false,
 																	"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"ip_indicator_feeds": {
+																	"default": false,
 																	"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																	"example": true,
 																	"type": "boolean"
@@ -3204,6 +3301,7 @@
 																	"description": "Configure a notification to display on the user's device when this rule is matched.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Set notification on",
 																			"type": "boolean"
 																		},
@@ -3223,6 +3321,7 @@
 																	"type": "object"
 																},
 																"override_host": {
+																	"default": "",
 																	"description": "Override matching DNS queries with a hostname.",
 																	"example": "example.com",
 																	"type": "string"
@@ -3244,6 +3343,7 @@
 																	"description": "Configure DLP payload logging.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Set to true to enable DLP payload logging for this rule.",
 																			"example": true,
 																			"type": "boolean"
@@ -3283,10 +3383,12 @@
 																	"description": "Settings that apply to redirect rules",
 																	"properties": {
 																		"include_context": {
+																			"default": false,
 																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
 																		"preserve_path_and_query": {
+																			"default": false,
 																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																			"type": "boolean"
 																		},
@@ -3321,6 +3423,7 @@
 																	"type": "object"
 																},
 																"resolve_dns_through_cloudflare": {
+																	"default": false,
 																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"example": true,
 																	"type": "boolean"
@@ -3405,6 +3508,7 @@
 														"version": {
 															"description": "version number of the rule",
 															"example": 1,
+															"readOnly": true,
 															"type": "integer"
 														}
 													},
@@ -3567,6 +3671,7 @@
 								"type": "string"
 							},
 							"description": {
+								"default": "",
 								"description": "The description of the rule.",
 								"example": "Block bad websites based on their host name.",
 								"type": "string"
@@ -3578,6 +3683,7 @@
 								"type": "string"
 							},
 							"enabled": {
+								"default": false,
 								"description": "True if the rule is enabled.",
 								"example": true,
 								"type": "boolean"
@@ -3594,6 +3700,7 @@
 									"expired": {
 										"description": "Whether the policy has expired.",
 										"example": false,
+										"readOnly": true,
 										"type": "boolean"
 									},
 									"expires_at": {
@@ -3670,6 +3777,7 @@
 										"type": "object"
 									},
 									"allow_child_bypass": {
+										"default": false,
 										"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 										"example": false,
 										"type": "boolean"
@@ -3678,6 +3786,7 @@
 										"description": "Settings for the Audit SSH action.",
 										"properties": {
 											"command_logging": {
+												"default": false,
 												"description": "Enable to turn on SSH command logging.",
 												"example": false,
 												"type": "boolean"
@@ -3699,16 +3808,19 @@
 												"type": "string"
 											},
 											"dcp": {
+												"default": false,
 												"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
 											},
 											"dd": {
+												"default": false,
 												"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
 											},
 											"dk": {
+												"default": false,
 												"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
@@ -3723,11 +3835,13 @@
 												"type": "string"
 											},
 											"dp": {
+												"default": false,
 												"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
 											},
 											"du": {
+												"default": false,
 												"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
@@ -3785,6 +3899,7 @@
 										"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
 										"properties": {
 											"include_context": {
+												"default": false,
 												"description": "If true, context information will be passed as query parameters",
 												"type": "boolean"
 											},
@@ -3800,16 +3915,19 @@
 										"type": "object"
 									},
 									"block_page_enabled": {
+										"default": false,
 										"description": "Enable the custom block page.",
 										"example": true,
 										"type": "boolean"
 									},
 									"block_reason": {
+										"default": "",
 										"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 										"example": "This website is a security risk",
 										"type": "string"
 									},
 									"bypass_parent_rule": {
+										"default": false,
 										"description": "Set by children MSP accounts to bypass their parent's rules.",
 										"example": false,
 										"type": "boolean"
@@ -3823,6 +3941,7 @@
 												"type": "string"
 											},
 											"enforce": {
+												"default": false,
 												"description": "Set to true to enable session enforcement.",
 												"example": true,
 												"type": "boolean"
@@ -3920,21 +4039,25 @@
 										"type": "object"
 									},
 									"ignore_cname_category_matches": {
+										"default": false,
 										"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 										"example": true,
 										"type": "boolean"
 									},
 									"insecure_disable_dnssec_validation": {
+										"default": false,
 										"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 										"example": false,
 										"type": "boolean"
 									},
 									"ip_categories": {
+										"default": false,
 										"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 										"example": true,
 										"type": "boolean"
 									},
 									"ip_indicator_feeds": {
+										"default": false,
 										"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 										"example": true,
 										"type": "boolean"
@@ -3958,6 +4081,7 @@
 										"description": "Configure a notification to display on the user's device when this rule is matched.",
 										"properties": {
 											"enabled": {
+												"default": false,
 												"description": "Set notification on",
 												"type": "boolean"
 											},
@@ -3977,6 +4101,7 @@
 										"type": "object"
 									},
 									"override_host": {
+										"default": "",
 										"description": "Override matching DNS queries with a hostname.",
 										"example": "example.com",
 										"type": "string"
@@ -3998,6 +4123,7 @@
 										"description": "Configure DLP payload logging.",
 										"properties": {
 											"enabled": {
+												"default": false,
 												"description": "Set to true to enable DLP payload logging for this rule.",
 												"example": true,
 												"type": "boolean"
@@ -4037,10 +4163,12 @@
 										"description": "Settings that apply to redirect rules",
 										"properties": {
 											"include_context": {
+												"default": false,
 												"description": "If true, context information will be passed as query parameters",
 												"type": "boolean"
 											},
 											"preserve_path_and_query": {
+												"default": false,
 												"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 												"type": "boolean"
 											},
@@ -4075,6 +4203,7 @@
 										"type": "object"
 									},
 									"resolve_dns_through_cloudflare": {
+										"default": false,
 										"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 										"example": true,
 										"type": "boolean"
@@ -4273,6 +4402,7 @@
 													"type": "string"
 												},
 												"description": {
+													"default": "",
 													"description": "The description of the rule.",
 													"example": "Block bad websites based on their host name.",
 													"type": "string"
@@ -4284,6 +4414,7 @@
 													"type": "string"
 												},
 												"enabled": {
+													"default": false,
 													"description": "True if the rule is enabled.",
 													"example": true,
 													"type": "boolean"
@@ -4300,6 +4431,7 @@
 														"expired": {
 															"description": "Whether the policy has expired.",
 															"example": false,
+															"readOnly": true,
 															"type": "boolean"
 														},
 														"expires_at": {
@@ -4382,6 +4514,7 @@
 															"type": "object"
 														},
 														"allow_child_bypass": {
+															"default": false,
 															"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 															"example": false,
 															"type": "boolean"
@@ -4390,6 +4523,7 @@
 															"description": "Settings for the Audit SSH action.",
 															"properties": {
 																"command_logging": {
+																	"default": false,
 																	"description": "Enable to turn on SSH command logging.",
 																	"example": false,
 																	"type": "boolean"
@@ -4411,16 +4545,19 @@
 																	"type": "string"
 																},
 																"dcp": {
+																	"default": false,
 																	"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dd": {
+																	"default": false,
 																	"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dk": {
+																	"default": false,
 																	"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
@@ -4435,11 +4572,13 @@
 																	"type": "string"
 																},
 																"dp": {
+																	"default": false,
 																	"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"du": {
+																	"default": false,
 																	"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
@@ -4497,6 +4636,7 @@
 															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
 															"properties": {
 																"include_context": {
+																	"default": false,
 																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
@@ -4512,16 +4652,19 @@
 															"type": "object"
 														},
 														"block_page_enabled": {
+															"default": false,
 															"description": "Enable the custom block page.",
 															"example": true,
 															"type": "boolean"
 														},
 														"block_reason": {
+															"default": "",
 															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 															"example": "This website is a security risk",
 															"type": "string"
 														},
 														"bypass_parent_rule": {
+															"default": false,
 															"description": "Set by children MSP accounts to bypass their parent's rules.",
 															"example": false,
 															"type": "boolean"
@@ -4535,6 +4678,7 @@
 																	"type": "string"
 																},
 																"enforce": {
+																	"default": false,
 																	"description": "Set to true to enable session enforcement.",
 																	"example": true,
 																	"type": "boolean"
@@ -4632,21 +4776,25 @@
 															"type": "object"
 														},
 														"ignore_cname_category_matches": {
+															"default": false,
 															"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 															"example": true,
 															"type": "boolean"
 														},
 														"insecure_disable_dnssec_validation": {
+															"default": false,
 															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 															"example": false,
 															"type": "boolean"
 														},
 														"ip_categories": {
+															"default": false,
 															"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 															"example": true,
 															"type": "boolean"
 														},
 														"ip_indicator_feeds": {
+															"default": false,
 															"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 															"example": true,
 															"type": "boolean"
@@ -4670,6 +4818,7 @@
 															"description": "Configure a notification to display on the user's device when this rule is matched.",
 															"properties": {
 																"enabled": {
+																	"default": false,
 																	"description": "Set notification on",
 																	"type": "boolean"
 																},
@@ -4689,6 +4838,7 @@
 															"type": "object"
 														},
 														"override_host": {
+															"default": "",
 															"description": "Override matching DNS queries with a hostname.",
 															"example": "example.com",
 															"type": "string"
@@ -4710,6 +4860,7 @@
 															"description": "Configure DLP payload logging.",
 															"properties": {
 																"enabled": {
+																	"default": false,
 																	"description": "Set to true to enable DLP payload logging for this rule.",
 																	"example": true,
 																	"type": "boolean"
@@ -4749,10 +4900,12 @@
 															"description": "Settings that apply to redirect rules",
 															"properties": {
 																"include_context": {
+																	"default": false,
 																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
 																"preserve_path_and_query": {
+																	"default": false,
 																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																	"type": "boolean"
 																},
@@ -4787,6 +4940,7 @@
 															"type": "object"
 														},
 														"resolve_dns_through_cloudflare": {
+															"default": false,
 															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
 															"type": "boolean"
@@ -4871,6 +5025,7 @@
 												"version": {
 													"description": "version number of the rule",
 													"example": 1,
+													"readOnly": true,
 													"type": "integer"
 												}
 											},
@@ -5001,6 +5156,7 @@
 															"type": "string"
 														},
 														"description": {
+															"default": "",
 															"description": "The description of the rule.",
 															"example": "Block bad websites based on their host name.",
 															"type": "string"
@@ -5012,6 +5168,7 @@
 															"type": "string"
 														},
 														"enabled": {
+															"default": false,
 															"description": "True if the rule is enabled.",
 															"example": true,
 															"type": "boolean"
@@ -5028,6 +5185,7 @@
 																"expired": {
 																	"description": "Whether the policy has expired.",
 																	"example": false,
+																	"readOnly": true,
 																	"type": "boolean"
 																},
 																"expires_at": {
@@ -5110,6 +5268,7 @@
 																	"type": "object"
 																},
 																"allow_child_bypass": {
+																	"default": false,
 																	"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																	"example": false,
 																	"type": "boolean"
@@ -5118,6 +5277,7 @@
 																	"description": "Settings for the Audit SSH action.",
 																	"properties": {
 																		"command_logging": {
+																			"default": false,
 																			"description": "Enable to turn on SSH command logging.",
 																			"example": false,
 																			"type": "boolean"
@@ -5139,16 +5299,19 @@
 																			"type": "string"
 																		},
 																		"dcp": {
+																			"default": false,
 																			"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dd": {
+																			"default": false,
 																			"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dk": {
+																			"default": false,
 																			"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
@@ -5163,11 +5326,13 @@
 																			"type": "string"
 																		},
 																		"dp": {
+																			"default": false,
 																			"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"du": {
+																			"default": false,
 																			"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
@@ -5225,6 +5390,7 @@
 																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
 																	"properties": {
 																		"include_context": {
+																			"default": false,
 																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
@@ -5240,16 +5406,19 @@
 																	"type": "object"
 																},
 																"block_page_enabled": {
+																	"default": false,
 																	"description": "Enable the custom block page.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"block_reason": {
+																	"default": "",
 																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																	"example": "This website is a security risk",
 																	"type": "string"
 																},
 																"bypass_parent_rule": {
+																	"default": false,
 																	"description": "Set by children MSP accounts to bypass their parent's rules.",
 																	"example": false,
 																	"type": "boolean"
@@ -5263,6 +5432,7 @@
 																			"type": "string"
 																		},
 																		"enforce": {
+																			"default": false,
 																			"description": "Set to true to enable session enforcement.",
 																			"example": true,
 																			"type": "boolean"
@@ -5360,21 +5530,25 @@
 																	"type": "object"
 																},
 																"ignore_cname_category_matches": {
+																	"default": false,
 																	"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"insecure_disable_dnssec_validation": {
+																	"default": false,
 																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"ip_categories": {
+																	"default": false,
 																	"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"ip_indicator_feeds": {
+																	"default": false,
 																	"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																	"example": true,
 																	"type": "boolean"
@@ -5398,6 +5572,7 @@
 																	"description": "Configure a notification to display on the user's device when this rule is matched.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Set notification on",
 																			"type": "boolean"
 																		},
@@ -5417,6 +5592,7 @@
 																	"type": "object"
 																},
 																"override_host": {
+																	"default": "",
 																	"description": "Override matching DNS queries with a hostname.",
 																	"example": "example.com",
 																	"type": "string"
@@ -5438,6 +5614,7 @@
 																	"description": "Configure DLP payload logging.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Set to true to enable DLP payload logging for this rule.",
 																			"example": true,
 																			"type": "boolean"
@@ -5477,10 +5654,12 @@
 																	"description": "Settings that apply to redirect rules",
 																	"properties": {
 																		"include_context": {
+																			"default": false,
 																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
 																		"preserve_path_and_query": {
+																			"default": false,
 																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																			"type": "boolean"
 																		},
@@ -5515,6 +5694,7 @@
 																	"type": "object"
 																},
 																"resolve_dns_through_cloudflare": {
+																	"default": false,
 																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"example": true,
 																	"type": "boolean"
@@ -5599,6 +5779,7 @@
 														"version": {
 															"description": "version number of the rule",
 															"example": 1,
+															"readOnly": true,
 															"type": "integer"
 														}
 													},
@@ -5855,6 +6036,7 @@
 													"type": "string"
 												},
 												"description": {
+													"default": "",
 													"description": "The description of the rule.",
 													"example": "Block bad websites based on their host name.",
 													"type": "string"
@@ -5866,6 +6048,7 @@
 													"type": "string"
 												},
 												"enabled": {
+													"default": false,
 													"description": "True if the rule is enabled.",
 													"example": true,
 													"type": "boolean"
@@ -5882,6 +6065,7 @@
 														"expired": {
 															"description": "Whether the policy has expired.",
 															"example": false,
+															"readOnly": true,
 															"type": "boolean"
 														},
 														"expires_at": {
@@ -5964,6 +6148,7 @@
 															"type": "object"
 														},
 														"allow_child_bypass": {
+															"default": false,
 															"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 															"example": false,
 															"type": "boolean"
@@ -5972,6 +6157,7 @@
 															"description": "Settings for the Audit SSH action.",
 															"properties": {
 																"command_logging": {
+																	"default": false,
 																	"description": "Enable to turn on SSH command logging.",
 																	"example": false,
 																	"type": "boolean"
@@ -5993,16 +6179,19 @@
 																	"type": "string"
 																},
 																"dcp": {
+																	"default": false,
 																	"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dd": {
+																	"default": false,
 																	"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dk": {
+																	"default": false,
 																	"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
@@ -6017,11 +6206,13 @@
 																	"type": "string"
 																},
 																"dp": {
+																	"default": false,
 																	"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"du": {
+																	"default": false,
 																	"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
@@ -6079,6 +6270,7 @@
 															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
 															"properties": {
 																"include_context": {
+																	"default": false,
 																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
@@ -6094,16 +6286,19 @@
 															"type": "object"
 														},
 														"block_page_enabled": {
+															"default": false,
 															"description": "Enable the custom block page.",
 															"example": true,
 															"type": "boolean"
 														},
 														"block_reason": {
+															"default": "",
 															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 															"example": "This website is a security risk",
 															"type": "string"
 														},
 														"bypass_parent_rule": {
+															"default": false,
 															"description": "Set by children MSP accounts to bypass their parent's rules.",
 															"example": false,
 															"type": "boolean"
@@ -6117,6 +6312,7 @@
 																	"type": "string"
 																},
 																"enforce": {
+																	"default": false,
 																	"description": "Set to true to enable session enforcement.",
 																	"example": true,
 																	"type": "boolean"
@@ -6214,21 +6410,25 @@
 															"type": "object"
 														},
 														"ignore_cname_category_matches": {
+															"default": false,
 															"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 															"example": true,
 															"type": "boolean"
 														},
 														"insecure_disable_dnssec_validation": {
+															"default": false,
 															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 															"example": false,
 															"type": "boolean"
 														},
 														"ip_categories": {
+															"default": false,
 															"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 															"example": true,
 															"type": "boolean"
 														},
 														"ip_indicator_feeds": {
+															"default": false,
 															"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 															"example": true,
 															"type": "boolean"
@@ -6252,6 +6452,7 @@
 															"description": "Configure a notification to display on the user's device when this rule is matched.",
 															"properties": {
 																"enabled": {
+																	"default": false,
 																	"description": "Set notification on",
 																	"type": "boolean"
 																},
@@ -6271,6 +6472,7 @@
 															"type": "object"
 														},
 														"override_host": {
+															"default": "",
 															"description": "Override matching DNS queries with a hostname.",
 															"example": "example.com",
 															"type": "string"
@@ -6292,6 +6494,7 @@
 															"description": "Configure DLP payload logging.",
 															"properties": {
 																"enabled": {
+																	"default": false,
 																	"description": "Set to true to enable DLP payload logging for this rule.",
 																	"example": true,
 																	"type": "boolean"
@@ -6331,10 +6534,12 @@
 															"description": "Settings that apply to redirect rules",
 															"properties": {
 																"include_context": {
+																	"default": false,
 																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
 																"preserve_path_and_query": {
+																	"default": false,
 																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																	"type": "boolean"
 																},
@@ -6369,6 +6574,7 @@
 															"type": "object"
 														},
 														"resolve_dns_through_cloudflare": {
+															"default": false,
 															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
 															"type": "boolean"
@@ -6453,6 +6659,7 @@
 												"version": {
 													"description": "version number of the rule",
 													"example": 1,
+													"readOnly": true,
 													"type": "integer"
 												}
 											},
@@ -6580,6 +6787,7 @@
 															"type": "string"
 														},
 														"description": {
+															"default": "",
 															"description": "The description of the rule.",
 															"example": "Block bad websites based on their host name.",
 															"type": "string"
@@ -6591,6 +6799,7 @@
 															"type": "string"
 														},
 														"enabled": {
+															"default": false,
 															"description": "True if the rule is enabled.",
 															"example": true,
 															"type": "boolean"
@@ -6607,6 +6816,7 @@
 																"expired": {
 																	"description": "Whether the policy has expired.",
 																	"example": false,
+																	"readOnly": true,
 																	"type": "boolean"
 																},
 																"expires_at": {
@@ -6689,6 +6899,7 @@
 																	"type": "object"
 																},
 																"allow_child_bypass": {
+																	"default": false,
 																	"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																	"example": false,
 																	"type": "boolean"
@@ -6697,6 +6908,7 @@
 																	"description": "Settings for the Audit SSH action.",
 																	"properties": {
 																		"command_logging": {
+																			"default": false,
 																			"description": "Enable to turn on SSH command logging.",
 																			"example": false,
 																			"type": "boolean"
@@ -6718,16 +6930,19 @@
 																			"type": "string"
 																		},
 																		"dcp": {
+																			"default": false,
 																			"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dd": {
+																			"default": false,
 																			"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dk": {
+																			"default": false,
 																			"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
@@ -6742,11 +6957,13 @@
 																			"type": "string"
 																		},
 																		"dp": {
+																			"default": false,
 																			"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"du": {
+																			"default": false,
 																			"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
@@ -6804,6 +7021,7 @@
 																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
 																	"properties": {
 																		"include_context": {
+																			"default": false,
 																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
@@ -6819,16 +7037,19 @@
 																	"type": "object"
 																},
 																"block_page_enabled": {
+																	"default": false,
 																	"description": "Enable the custom block page.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"block_reason": {
+																	"default": "",
 																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																	"example": "This website is a security risk",
 																	"type": "string"
 																},
 																"bypass_parent_rule": {
+																	"default": false,
 																	"description": "Set by children MSP accounts to bypass their parent's rules.",
 																	"example": false,
 																	"type": "boolean"
@@ -6842,6 +7063,7 @@
 																			"type": "string"
 																		},
 																		"enforce": {
+																			"default": false,
 																			"description": "Set to true to enable session enforcement.",
 																			"example": true,
 																			"type": "boolean"
@@ -6939,21 +7161,25 @@
 																	"type": "object"
 																},
 																"ignore_cname_category_matches": {
+																	"default": false,
 																	"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"insecure_disable_dnssec_validation": {
+																	"default": false,
 																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"ip_categories": {
+																	"default": false,
 																	"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"ip_indicator_feeds": {
+																	"default": false,
 																	"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																	"example": true,
 																	"type": "boolean"
@@ -6977,6 +7203,7 @@
 																	"description": "Configure a notification to display on the user's device when this rule is matched.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Set notification on",
 																			"type": "boolean"
 																		},
@@ -6996,6 +7223,7 @@
 																	"type": "object"
 																},
 																"override_host": {
+																	"default": "",
 																	"description": "Override matching DNS queries with a hostname.",
 																	"example": "example.com",
 																	"type": "string"
@@ -7017,6 +7245,7 @@
 																	"description": "Configure DLP payload logging.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Set to true to enable DLP payload logging for this rule.",
 																			"example": true,
 																			"type": "boolean"
@@ -7056,10 +7285,12 @@
 																	"description": "Settings that apply to redirect rules",
 																	"properties": {
 																		"include_context": {
+																			"default": false,
 																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
 																		"preserve_path_and_query": {
+																			"default": false,
 																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																			"type": "boolean"
 																		},
@@ -7094,6 +7325,7 @@
 																	"type": "object"
 																},
 																"resolve_dns_through_cloudflare": {
+																	"default": false,
 																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"example": true,
 																	"type": "boolean"
@@ -7178,6 +7410,7 @@
 														"version": {
 															"description": "version number of the rule",
 															"example": 1,
+															"readOnly": true,
 															"type": "integer"
 														}
 													},
@@ -7351,6 +7584,7 @@
 								"type": "string"
 							},
 							"description": {
+								"default": "",
 								"description": "The description of the rule.",
 								"example": "Block bad websites based on their host name.",
 								"type": "string"
@@ -7362,6 +7596,7 @@
 								"type": "string"
 							},
 							"enabled": {
+								"default": false,
 								"description": "True if the rule is enabled.",
 								"example": true,
 								"type": "boolean"
@@ -7378,6 +7613,7 @@
 									"expired": {
 										"description": "Whether the policy has expired.",
 										"example": false,
+										"readOnly": true,
 										"type": "boolean"
 									},
 									"expires_at": {
@@ -7454,6 +7690,7 @@
 										"type": "object"
 									},
 									"allow_child_bypass": {
+										"default": false,
 										"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 										"example": false,
 										"type": "boolean"
@@ -7462,6 +7699,7 @@
 										"description": "Settings for the Audit SSH action.",
 										"properties": {
 											"command_logging": {
+												"default": false,
 												"description": "Enable to turn on SSH command logging.",
 												"example": false,
 												"type": "boolean"
@@ -7483,16 +7721,19 @@
 												"type": "string"
 											},
 											"dcp": {
+												"default": false,
 												"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
 											},
 											"dd": {
+												"default": false,
 												"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
 											},
 											"dk": {
+												"default": false,
 												"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
@@ -7507,11 +7748,13 @@
 												"type": "string"
 											},
 											"dp": {
+												"default": false,
 												"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
 											},
 											"du": {
+												"default": false,
 												"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
@@ -7569,6 +7812,7 @@
 										"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
 										"properties": {
 											"include_context": {
+												"default": false,
 												"description": "If true, context information will be passed as query parameters",
 												"type": "boolean"
 											},
@@ -7584,16 +7828,19 @@
 										"type": "object"
 									},
 									"block_page_enabled": {
+										"default": false,
 										"description": "Enable the custom block page.",
 										"example": true,
 										"type": "boolean"
 									},
 									"block_reason": {
+										"default": "",
 										"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 										"example": "This website is a security risk",
 										"type": "string"
 									},
 									"bypass_parent_rule": {
+										"default": false,
 										"description": "Set by children MSP accounts to bypass their parent's rules.",
 										"example": false,
 										"type": "boolean"
@@ -7607,6 +7854,7 @@
 												"type": "string"
 											},
 											"enforce": {
+												"default": false,
 												"description": "Set to true to enable session enforcement.",
 												"example": true,
 												"type": "boolean"
@@ -7704,21 +7952,25 @@
 										"type": "object"
 									},
 									"ignore_cname_category_matches": {
+										"default": false,
 										"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 										"example": true,
 										"type": "boolean"
 									},
 									"insecure_disable_dnssec_validation": {
+										"default": false,
 										"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 										"example": false,
 										"type": "boolean"
 									},
 									"ip_categories": {
+										"default": false,
 										"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 										"example": true,
 										"type": "boolean"
 									},
 									"ip_indicator_feeds": {
+										"default": false,
 										"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 										"example": true,
 										"type": "boolean"
@@ -7742,6 +7994,7 @@
 										"description": "Configure a notification to display on the user's device when this rule is matched.",
 										"properties": {
 											"enabled": {
+												"default": false,
 												"description": "Set notification on",
 												"type": "boolean"
 											},
@@ -7761,6 +8014,7 @@
 										"type": "object"
 									},
 									"override_host": {
+										"default": "",
 										"description": "Override matching DNS queries with a hostname.",
 										"example": "example.com",
 										"type": "string"
@@ -7782,6 +8036,7 @@
 										"description": "Configure DLP payload logging.",
 										"properties": {
 											"enabled": {
+												"default": false,
 												"description": "Set to true to enable DLP payload logging for this rule.",
 												"example": true,
 												"type": "boolean"
@@ -7821,10 +8076,12 @@
 										"description": "Settings that apply to redirect rules",
 										"properties": {
 											"include_context": {
+												"default": false,
 												"description": "If true, context information will be passed as query parameters",
 												"type": "boolean"
 											},
 											"preserve_path_and_query": {
+												"default": false,
 												"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 												"type": "boolean"
 											},
@@ -7859,6 +8116,7 @@
 										"type": "object"
 									},
 									"resolve_dns_through_cloudflare": {
+										"default": false,
 										"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 										"example": true,
 										"type": "boolean"
@@ -8057,6 +8315,7 @@
 													"type": "string"
 												},
 												"description": {
+													"default": "",
 													"description": "The description of the rule.",
 													"example": "Block bad websites based on their host name.",
 													"type": "string"
@@ -8068,6 +8327,7 @@
 													"type": "string"
 												},
 												"enabled": {
+													"default": false,
 													"description": "True if the rule is enabled.",
 													"example": true,
 													"type": "boolean"
@@ -8084,6 +8344,7 @@
 														"expired": {
 															"description": "Whether the policy has expired.",
 															"example": false,
+															"readOnly": true,
 															"type": "boolean"
 														},
 														"expires_at": {
@@ -8166,6 +8427,7 @@
 															"type": "object"
 														},
 														"allow_child_bypass": {
+															"default": false,
 															"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 															"example": false,
 															"type": "boolean"
@@ -8174,6 +8436,7 @@
 															"description": "Settings for the Audit SSH action.",
 															"properties": {
 																"command_logging": {
+																	"default": false,
 																	"description": "Enable to turn on SSH command logging.",
 																	"example": false,
 																	"type": "boolean"
@@ -8195,16 +8458,19 @@
 																	"type": "string"
 																},
 																"dcp": {
+																	"default": false,
 																	"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dd": {
+																	"default": false,
 																	"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dk": {
+																	"default": false,
 																	"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
@@ -8219,11 +8485,13 @@
 																	"type": "string"
 																},
 																"dp": {
+																	"default": false,
 																	"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"du": {
+																	"default": false,
 																	"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
@@ -8281,6 +8549,7 @@
 															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
 															"properties": {
 																"include_context": {
+																	"default": false,
 																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
@@ -8296,16 +8565,19 @@
 															"type": "object"
 														},
 														"block_page_enabled": {
+															"default": false,
 															"description": "Enable the custom block page.",
 															"example": true,
 															"type": "boolean"
 														},
 														"block_reason": {
+															"default": "",
 															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 															"example": "This website is a security risk",
 															"type": "string"
 														},
 														"bypass_parent_rule": {
+															"default": false,
 															"description": "Set by children MSP accounts to bypass their parent's rules.",
 															"example": false,
 															"type": "boolean"
@@ -8319,6 +8591,7 @@
 																	"type": "string"
 																},
 																"enforce": {
+																	"default": false,
 																	"description": "Set to true to enable session enforcement.",
 																	"example": true,
 																	"type": "boolean"
@@ -8416,21 +8689,25 @@
 															"type": "object"
 														},
 														"ignore_cname_category_matches": {
+															"default": false,
 															"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 															"example": true,
 															"type": "boolean"
 														},
 														"insecure_disable_dnssec_validation": {
+															"default": false,
 															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 															"example": false,
 															"type": "boolean"
 														},
 														"ip_categories": {
+															"default": false,
 															"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 															"example": true,
 															"type": "boolean"
 														},
 														"ip_indicator_feeds": {
+															"default": false,
 															"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 															"example": true,
 															"type": "boolean"
@@ -8454,6 +8731,7 @@
 															"description": "Configure a notification to display on the user's device when this rule is matched.",
 															"properties": {
 																"enabled": {
+																	"default": false,
 																	"description": "Set notification on",
 																	"type": "boolean"
 																},
@@ -8473,6 +8751,7 @@
 															"type": "object"
 														},
 														"override_host": {
+															"default": "",
 															"description": "Override matching DNS queries with a hostname.",
 															"example": "example.com",
 															"type": "string"
@@ -8494,6 +8773,7 @@
 															"description": "Configure DLP payload logging.",
 															"properties": {
 																"enabled": {
+																	"default": false,
 																	"description": "Set to true to enable DLP payload logging for this rule.",
 																	"example": true,
 																	"type": "boolean"
@@ -8533,10 +8813,12 @@
 															"description": "Settings that apply to redirect rules",
 															"properties": {
 																"include_context": {
+																	"default": false,
 																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
 																"preserve_path_and_query": {
+																	"default": false,
 																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																	"type": "boolean"
 																},
@@ -8571,6 +8853,7 @@
 															"type": "object"
 														},
 														"resolve_dns_through_cloudflare": {
+															"default": false,
 															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
 															"type": "boolean"
@@ -8655,6 +8938,7 @@
 												"version": {
 													"description": "version number of the rule",
 													"example": 1,
+													"readOnly": true,
 													"type": "integer"
 												}
 											},
@@ -8785,6 +9069,7 @@
 															"type": "string"
 														},
 														"description": {
+															"default": "",
 															"description": "The description of the rule.",
 															"example": "Block bad websites based on their host name.",
 															"type": "string"
@@ -8796,6 +9081,7 @@
 															"type": "string"
 														},
 														"enabled": {
+															"default": false,
 															"description": "True if the rule is enabled.",
 															"example": true,
 															"type": "boolean"
@@ -8812,6 +9098,7 @@
 																"expired": {
 																	"description": "Whether the policy has expired.",
 																	"example": false,
+																	"readOnly": true,
 																	"type": "boolean"
 																},
 																"expires_at": {
@@ -8894,6 +9181,7 @@
 																	"type": "object"
 																},
 																"allow_child_bypass": {
+																	"default": false,
 																	"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																	"example": false,
 																	"type": "boolean"
@@ -8902,6 +9190,7 @@
 																	"description": "Settings for the Audit SSH action.",
 																	"properties": {
 																		"command_logging": {
+																			"default": false,
 																			"description": "Enable to turn on SSH command logging.",
 																			"example": false,
 																			"type": "boolean"
@@ -8923,16 +9212,19 @@
 																			"type": "string"
 																		},
 																		"dcp": {
+																			"default": false,
 																			"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dd": {
+																			"default": false,
 																			"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dk": {
+																			"default": false,
 																			"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
@@ -8947,11 +9239,13 @@
 																			"type": "string"
 																		},
 																		"dp": {
+																			"default": false,
 																			"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"du": {
+																			"default": false,
 																			"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
@@ -9009,6 +9303,7 @@
 																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
 																	"properties": {
 																		"include_context": {
+																			"default": false,
 																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
@@ -9024,16 +9319,19 @@
 																	"type": "object"
 																},
 																"block_page_enabled": {
+																	"default": false,
 																	"description": "Enable the custom block page.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"block_reason": {
+																	"default": "",
 																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																	"example": "This website is a security risk",
 																	"type": "string"
 																},
 																"bypass_parent_rule": {
+																	"default": false,
 																	"description": "Set by children MSP accounts to bypass their parent's rules.",
 																	"example": false,
 																	"type": "boolean"
@@ -9047,6 +9345,7 @@
 																			"type": "string"
 																		},
 																		"enforce": {
+																			"default": false,
 																			"description": "Set to true to enable session enforcement.",
 																			"example": true,
 																			"type": "boolean"
@@ -9144,21 +9443,25 @@
 																	"type": "object"
 																},
 																"ignore_cname_category_matches": {
+																	"default": false,
 																	"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"insecure_disable_dnssec_validation": {
+																	"default": false,
 																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"ip_categories": {
+																	"default": false,
 																	"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"ip_indicator_feeds": {
+																	"default": false,
 																	"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																	"example": true,
 																	"type": "boolean"
@@ -9182,6 +9485,7 @@
 																	"description": "Configure a notification to display on the user's device when this rule is matched.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Set notification on",
 																			"type": "boolean"
 																		},
@@ -9201,6 +9505,7 @@
 																	"type": "object"
 																},
 																"override_host": {
+																	"default": "",
 																	"description": "Override matching DNS queries with a hostname.",
 																	"example": "example.com",
 																	"type": "string"
@@ -9222,6 +9527,7 @@
 																	"description": "Configure DLP payload logging.",
 																	"properties": {
 																		"enabled": {
+																			"default": false,
 																			"description": "Set to true to enable DLP payload logging for this rule.",
 																			"example": true,
 																			"type": "boolean"
@@ -9261,10 +9567,12 @@
 																	"description": "Settings that apply to redirect rules",
 																	"properties": {
 																		"include_context": {
+																			"default": false,
 																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
 																		"preserve_path_and_query": {
+																			"default": false,
 																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																			"type": "boolean"
 																		},
@@ -9299,6 +9607,7 @@
 																	"type": "object"
 																},
 																"resolve_dns_through_cloudflare": {
+																	"default": false,
 																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"example": true,
 																	"type": "boolean"
@@ -9383,6 +9692,7 @@
 														"version": {
 															"description": "version number of the rule",
 															"example": 1,
+															"readOnly": true,
 															"type": "integer"
 														}
 													},
