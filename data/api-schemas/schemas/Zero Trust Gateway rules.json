@@ -574,9 +574,9 @@
 																"type": "object"
 															},
 															"allow_child_bypass": {
-																"default": false,
 																"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																"example": false,
+																"nullable": true,
 																"type": "boolean"
 															},
 															"audit_ssh": {
@@ -724,9 +724,9 @@
 																"type": "string"
 															},
 															"bypass_parent_rule": {
-																"default": false,
 																"description": "Set by children MSP accounts to bypass their parent's rules.",
 																"example": false,
+																"nullable": true,
 																"type": "boolean"
 															},
 															"check_session": {
@@ -1360,9 +1360,9 @@
 																		"type": "object"
 																	},
 																	"allow_child_bypass": {
-																		"default": false,
 																		"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																		"example": false,
+																		"nullable": true,
 																		"type": "boolean"
 																	},
 																	"audit_ssh": {
@@ -1510,9 +1510,9 @@
 																		"type": "string"
 																	},
 																	"bypass_parent_rule": {
-																		"default": false,
 																		"description": "Set by children MSP accounts to bypass their parent's rules.",
 																		"example": false,
+																		"nullable": true,
 																		"type": "boolean"
 																	},
 																	"check_session": {
@@ -2243,9 +2243,9 @@
 															"type": "object"
 														},
 														"allow_child_bypass": {
-															"default": false,
 															"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 															"example": false,
+															"nullable": true,
 															"type": "boolean"
 														},
 														"audit_ssh": {
@@ -2393,9 +2393,9 @@
 															"type": "string"
 														},
 														"bypass_parent_rule": {
-															"default": false,
 															"description": "Set by children MSP accounts to bypass their parent's rules.",
 															"example": false,
+															"nullable": true,
 															"type": "boolean"
 														},
 														"check_session": {
@@ -2997,9 +2997,9 @@
 																	"type": "object"
 																},
 																"allow_child_bypass": {
-																	"default": false,
 																	"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																	"example": false,
+																	"nullable": true,
 																	"type": "boolean"
 																},
 																"audit_ssh": {
@@ -3147,9 +3147,9 @@
 																	"type": "string"
 																},
 																"bypass_parent_rule": {
-																	"default": false,
 																	"description": "Set by children MSP accounts to bypass their parent's rules.",
 																	"example": false,
+																	"nullable": true,
 																	"type": "boolean"
 																},
 																"check_session": {
@@ -3777,9 +3777,9 @@
 										"type": "object"
 									},
 									"allow_child_bypass": {
-										"default": false,
 										"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 										"example": false,
+										"nullable": true,
 										"type": "boolean"
 									},
 									"audit_ssh": {
@@ -3927,9 +3927,9 @@
 										"type": "string"
 									},
 									"bypass_parent_rule": {
-										"default": false,
 										"description": "Set by children MSP accounts to bypass their parent's rules.",
 										"example": false,
+										"nullable": true,
 										"type": "boolean"
 									},
 									"check_session": {
@@ -4514,9 +4514,9 @@
 															"type": "object"
 														},
 														"allow_child_bypass": {
-															"default": false,
 															"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 															"example": false,
+															"nullable": true,
 															"type": "boolean"
 														},
 														"audit_ssh": {
@@ -4664,9 +4664,9 @@
 															"type": "string"
 														},
 														"bypass_parent_rule": {
-															"default": false,
 															"description": "Set by children MSP accounts to bypass their parent's rules.",
 															"example": false,
+															"nullable": true,
 															"type": "boolean"
 														},
 														"check_session": {
@@ -5268,9 +5268,9 @@
 																	"type": "object"
 																},
 																"allow_child_bypass": {
-																	"default": false,
 																	"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																	"example": false,
+																	"nullable": true,
 																	"type": "boolean"
 																},
 																"audit_ssh": {
@@ -5418,9 +5418,9 @@
 																	"type": "string"
 																},
 																"bypass_parent_rule": {
-																	"default": false,
 																	"description": "Set by children MSP accounts to bypass their parent's rules.",
 																	"example": false,
+																	"nullable": true,
 																	"type": "boolean"
 																},
 																"check_session": {
@@ -6148,9 +6148,9 @@
 															"type": "object"
 														},
 														"allow_child_bypass": {
-															"default": false,
 															"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 															"example": false,
+															"nullable": true,
 															"type": "boolean"
 														},
 														"audit_ssh": {
@@ -6298,9 +6298,9 @@
 															"type": "string"
 														},
 														"bypass_parent_rule": {
-															"default": false,
 															"description": "Set by children MSP accounts to bypass their parent's rules.",
 															"example": false,
+															"nullable": true,
 															"type": "boolean"
 														},
 														"check_session": {
@@ -6899,9 +6899,9 @@
 																	"type": "object"
 																},
 																"allow_child_bypass": {
-																	"default": false,
 																	"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																	"example": false,
+																	"nullable": true,
 																	"type": "boolean"
 																},
 																"audit_ssh": {
@@ -7049,9 +7049,9 @@
 																	"type": "string"
 																},
 																"bypass_parent_rule": {
-																	"default": false,
 																	"description": "Set by children MSP accounts to bypass their parent's rules.",
 																	"example": false,
+																	"nullable": true,
 																	"type": "boolean"
 																},
 																"check_session": {
@@ -7690,9 +7690,9 @@
 										"type": "object"
 									},
 									"allow_child_bypass": {
-										"default": false,
 										"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 										"example": false,
+										"nullable": true,
 										"type": "boolean"
 									},
 									"audit_ssh": {
@@ -7840,9 +7840,9 @@
 										"type": "string"
 									},
 									"bypass_parent_rule": {
-										"default": false,
 										"description": "Set by children MSP accounts to bypass their parent's rules.",
 										"example": false,
+										"nullable": true,
 										"type": "boolean"
 									},
 									"check_session": {
@@ -8427,9 +8427,9 @@
 															"type": "object"
 														},
 														"allow_child_bypass": {
-															"default": false,
 															"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 															"example": false,
+															"nullable": true,
 															"type": "boolean"
 														},
 														"audit_ssh": {
@@ -8577,9 +8577,9 @@
 															"type": "string"
 														},
 														"bypass_parent_rule": {
-															"default": false,
 															"description": "Set by children MSP accounts to bypass their parent's rules.",
 															"example": false,
+															"nullable": true,
 															"type": "boolean"
 														},
 														"check_session": {
@@ -9181,9 +9181,9 @@
 																	"type": "object"
 																},
 																"allow_child_bypass": {
-																	"default": false,
 																	"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																	"example": false,
+																	"nullable": true,
 																	"type": "boolean"
 																},
 																"audit_ssh": {
@@ -9331,9 +9331,9 @@
 																	"type": "string"
 																},
 																"bypass_parent_rule": {
-																	"default": false,
 																	"description": "Set by children MSP accounts to bypass their parent's rules.",
 																	"example": false,
+																	"nullable": true,
 																	"type": "boolean"
 																},
 																"check_session": {
