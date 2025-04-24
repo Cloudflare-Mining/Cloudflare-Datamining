@@ -14,7 +14,8 @@
 									"domain2.tld"
 								],
 								"items": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							}
@@ -123,12 +124,14 @@
 												"expression": {
 													"description": "WAF Expression for fallthrough",
 													"example": "(cf.api_gateway.fallthrough_detected)",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"title": {
 													"description": "Title for the expression",
 													"example": "Fallthrough Expression for [zone.domain.tld]",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [

@@ -15,7 +15,8 @@
 							"auth_id_characteristics"
 						],
 						"example": "auth_id_characteristics",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array",
 					"uniqueItems": true
@@ -124,7 +125,8 @@
 																		"description": "The name of the characteristic field, i.e., the header or cookie name.",
 																		"example": "authorization",
 																		"maxLength": 128,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "The type of characteristic.",
@@ -133,7 +135,8 @@
 																			"cookie"
 																		],
 																		"example": "header",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -149,7 +152,8 @@
 																		"example": "e0de1a3a-8c2c-4f90-98d8-cbdf0a3f2cb5:$.foo.bar[0].baz",
 																		"maxLength": 128,
 																		"pattern": "^(?<token_config_id>[a-z0-9\\-]{32,36}):\\$(?<json_path>.*?)$",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "The type of characteristic.",
@@ -157,7 +161,8 @@
 																			"jwt"
 																		],
 																		"example": "jwt",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -339,7 +344,8 @@
 													"description": "The name of the characteristic field, i.e., the header or cookie name.",
 													"example": "authorization",
 													"maxLength": 128,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of characteristic.",
@@ -348,7 +354,8 @@
 														"cookie"
 													],
 													"example": "header",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -364,7 +371,8 @@
 													"example": "e0de1a3a-8c2c-4f90-98d8-cbdf0a3f2cb5:$.foo.bar[0].baz",
 													"maxLength": 128,
 													"pattern": "^(?<token_config_id>[a-z0-9\\-]{32,36}):\\$(?<json_path>.*?)$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of characteristic.",
@@ -372,7 +380,8 @@
 														"jwt"
 													],
 													"example": "jwt",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [

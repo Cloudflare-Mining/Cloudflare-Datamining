@@ -139,7 +139,8 @@
 														},
 														{
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													]
 												}
@@ -300,7 +301,8 @@
 																},
 																{
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															]
 														}
@@ -558,7 +560,8 @@
 						"SessionIdentifier",
 						"LabelDiscovery"
 					],
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -572,7 +575,8 @@
 						"saved",
 						"ignored"
 					],
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -718,7 +722,8 @@
 																					},
 																					{
 																						"readOnly": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				]
 																			},
@@ -726,14 +731,16 @@
 																				"description": "The period in seconds these statistics were computed over",
 																				"example": 3600,
 																				"readOnly": true,
-																				"type": "integer"
+																				"type": "integer",
+																				"x-auditable": true
 																			},
 																			"requests": {
 																				"description": "The average number of requests seen during this period",
 																				"example": 1987.06,
 																				"format": "float",
 																				"readOnly": true,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -751,7 +758,8 @@
 																"allOf": [
 																	{
 																		"minLength": 36,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"description": "UUID.",
@@ -770,7 +778,8 @@
 																	},
 																	{
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																]
 															},
@@ -783,7 +792,8 @@
 																		"SessionIdentifier",
 																		"LabelDiscovery"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
@@ -794,7 +804,8 @@
 																	"saved",
 																	"ignored"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -813,14 +824,16 @@
 																"format": "uri-template",
 																"maxLength": 4096,
 																"pattern": "^/.*$",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"host": {
 																"description": "RFC3986-compliant host.",
 																"example": "www.example.com",
 																"format": "hostname",
 																"maxLength": 255,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"method": {
 																"description": "The HTTP method used to access the endpoint.",
@@ -836,7 +849,8 @@
 																	"TRACE"
 																],
 																"example": "GET",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1014,7 +1028,8 @@
 										"review",
 										"ignored"
 									],
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -1133,7 +1148,8 @@
 															"review",
 															"ignored"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -1306,7 +1322,8 @@
 											"review",
 											"ignored"
 										],
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								]
 							}
@@ -1416,7 +1433,8 @@
 														"saved",
 														"ignored"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"

@@ -19,13 +19,15 @@
 									"allOf": [
 										{
 											"description": "The ID of the operation",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										{
 											"allOf": [
 												{
 													"minLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												{
 													"description": "UUID.",
@@ -740,14 +742,16 @@
 																				"format": "uri-template",
 																				"maxLength": 4096,
 																				"pattern": "^/.*$",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"host": {
 																				"description": "RFC3986-compliant host.",
 																				"example": "www.example.com",
 																				"format": "hostname",
 																				"maxLength": 255,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"method": {
 																				"description": "The HTTP method used to access the endpoint.",
@@ -763,7 +767,8 @@
 																					"TRACE"
 																				],
 																				"example": "GET",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -784,7 +789,8 @@
 																					},
 																					{
 																						"readOnly": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				]
 																			},
@@ -792,7 +798,8 @@
 																				"allOf": [
 																					{
 																						"minLength": 36,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					{
 																						"description": "UUID.",
@@ -824,12 +831,14 @@
 																							"auth_id_tokens": {
 																								"description": "The total number of auth-ids seen across this calculation.",
 																								"readOnly": true,
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							},
 																							"data_points": {
 																								"description": "The number of data points used for the threshold suggestion calculation.",
 																								"readOnly": true,
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							},
 																							"last_updated": {
 																								"example": "2014-01-01T05:20:00.12345Z",
@@ -839,32 +848,38 @@
 																							"p50": {
 																								"description": "The p50 quantile of requests (in period_seconds).",
 																								"readOnly": true,
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							},
 																							"p90": {
 																								"description": "The p90 quantile of requests (in period_seconds).",
 																								"readOnly": true,
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							},
 																							"p99": {
 																								"description": "The p99 quantile of requests (in period_seconds).",
 																								"readOnly": true,
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							},
 																							"period_seconds": {
 																								"description": "The period over which this threshold is suggested.",
 																								"readOnly": true,
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							},
 																							"requests": {
 																								"description": "The estimated number of requests covered by these calculations.",
 																								"readOnly": true,
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							},
 																							"suggested_threshold": {
 																								"description": "The suggested threshold in requests done by the same auth_id or period_seconds.",
 																								"readOnly": true,
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -973,7 +988,8 @@
 																							"route": {
 																								"description": "Target route.",
 																								"example": "https://api.example.com/api/service",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -1023,12 +1039,14 @@
 																													"lower": {
 																														"description": "Lower bound for percentile estimate",
 																														"example": 20.5,
-																														"type": "number"
+																														"type": "number",
+																														"x-auditable": true
 																													},
 																													"upper": {
 																														"description": "Upper bound for percentile estimate",
 																														"example": 30.4,
-																														"type": "number"
+																														"type": "number",
+																														"x-auditable": true
 																													}
 																												},
 																												"readOnly": true,
@@ -1040,12 +1058,14 @@
 																													"lower": {
 																														"description": "Lower bound for percentile estimate",
 																														"example": 20.5,
-																														"type": "number"
+																														"type": "number",
+																														"x-auditable": true
 																													},
 																													"upper": {
 																														"description": "Upper bound for percentile estimate",
 																														"example": 30.4,
-																														"type": "number"
+																														"type": "number",
+																														"x-auditable": true
 																													}
 																												},
 																												"readOnly": true,
@@ -1057,12 +1077,14 @@
 																													"lower": {
 																														"description": "Lower bound for percentile estimate",
 																														"example": 20.5,
-																														"type": "number"
+																														"type": "number",
+																														"x-auditable": true
 																													},
 																													"upper": {
 																														"description": "Upper bound for percentile estimate",
 																														"example": 30.4,
-																														"type": "number"
+																														"type": "number",
+																														"x-auditable": true
 																													}
 																												},
 																												"readOnly": true,
@@ -1074,7 +1096,8 @@
 																									"mean": {
 																										"description": "Suggested threshold.",
 																										"example": 25.5,
-																										"type": "number"
+																										"type": "number",
+																										"x-auditable": true
 																									}
 																								},
 																								"type": "object"
@@ -1102,7 +1125,8 @@
 																										"allOf": [
 																											{
 																												"minLength": 36,
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											{
 																												"description": "UUID.",
@@ -1115,12 +1139,14 @@
 																									"is_learned": {
 																										"description": "True if schema is Cloudflare-provided.",
 																										"example": true,
-																										"type": "boolean"
+																										"type": "boolean",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "Schema file name.",
 																										"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"type": "object"
@@ -1128,7 +1154,8 @@
 																							"learned_available": {
 																								"description": "True if a Cloudflare-provided learned schema is available for this endpoint.",
 																								"example": true,
-																								"type": "boolean"
+																								"type": "boolean",
+																								"x-auditable": true
 																							},
 																							"mitigation_action": {
 																								"description": "Action taken on requests failing validation.",
@@ -1139,7 +1166,8 @@
 																								],
 																								"example": "block",
 																								"nullable": true,
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -1434,14 +1462,16 @@
 																			"format": "uri-template",
 																			"maxLength": 4096,
 																			"pattern": "^/.*$",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"host": {
 																			"description": "RFC3986-compliant host.",
 																			"example": "www.example.com",
 																			"format": "hostname",
 																			"maxLength": 255,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"method": {
 																			"description": "The HTTP method used to access the endpoint.",
@@ -1457,7 +1487,8 @@
 																				"TRACE"
 																			],
 																			"example": "GET",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -1478,7 +1509,8 @@
 																				},
 																				{
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			]
 																		},
@@ -1486,7 +1518,8 @@
 																			"allOf": [
 																				{
 																					"minLength": 36,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				{
 																					"description": "UUID.",
@@ -1518,12 +1551,14 @@
 																						"auth_id_tokens": {
 																							"description": "The total number of auth-ids seen across this calculation.",
 																							"readOnly": true,
-																							"type": "integer"
+																							"type": "integer",
+																							"x-auditable": true
 																						},
 																						"data_points": {
 																							"description": "The number of data points used for the threshold suggestion calculation.",
 																							"readOnly": true,
-																							"type": "integer"
+																							"type": "integer",
+																							"x-auditable": true
 																						},
 																						"last_updated": {
 																							"example": "2014-01-01T05:20:00.12345Z",
@@ -1533,32 +1568,38 @@
 																						"p50": {
 																							"description": "The p50 quantile of requests (in period_seconds).",
 																							"readOnly": true,
-																							"type": "integer"
+																							"type": "integer",
+																							"x-auditable": true
 																						},
 																						"p90": {
 																							"description": "The p90 quantile of requests (in period_seconds).",
 																							"readOnly": true,
-																							"type": "integer"
+																							"type": "integer",
+																							"x-auditable": true
 																						},
 																						"p99": {
 																							"description": "The p99 quantile of requests (in period_seconds).",
 																							"readOnly": true,
-																							"type": "integer"
+																							"type": "integer",
+																							"x-auditable": true
 																						},
 																						"period_seconds": {
 																							"description": "The period over which this threshold is suggested.",
 																							"readOnly": true,
-																							"type": "integer"
+																							"type": "integer",
+																							"x-auditable": true
 																						},
 																						"requests": {
 																							"description": "The estimated number of requests covered by these calculations.",
 																							"readOnly": true,
-																							"type": "integer"
+																							"type": "integer",
+																							"x-auditable": true
 																						},
 																						"suggested_threshold": {
 																							"description": "The suggested threshold in requests done by the same auth_id or period_seconds.",
 																							"readOnly": true,
-																							"type": "integer"
+																							"type": "integer",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -1667,7 +1708,8 @@
 																						"route": {
 																							"description": "Target route.",
 																							"example": "https://api.example.com/api/service",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -1717,12 +1759,14 @@
 																												"lower": {
 																													"description": "Lower bound for percentile estimate",
 																													"example": 20.5,
-																													"type": "number"
+																													"type": "number",
+																													"x-auditable": true
 																												},
 																												"upper": {
 																													"description": "Upper bound for percentile estimate",
 																													"example": 30.4,
-																													"type": "number"
+																													"type": "number",
+																													"x-auditable": true
 																												}
 																											},
 																											"readOnly": true,
@@ -1734,12 +1778,14 @@
 																												"lower": {
 																													"description": "Lower bound for percentile estimate",
 																													"example": 20.5,
-																													"type": "number"
+																													"type": "number",
+																													"x-auditable": true
 																												},
 																												"upper": {
 																													"description": "Upper bound for percentile estimate",
 																													"example": 30.4,
-																													"type": "number"
+																													"type": "number",
+																													"x-auditable": true
 																												}
 																											},
 																											"readOnly": true,
@@ -1751,12 +1797,14 @@
 																												"lower": {
 																													"description": "Lower bound for percentile estimate",
 																													"example": 20.5,
-																													"type": "number"
+																													"type": "number",
+																													"x-auditable": true
 																												},
 																												"upper": {
 																													"description": "Upper bound for percentile estimate",
 																													"example": 30.4,
-																													"type": "number"
+																													"type": "number",
+																													"x-auditable": true
 																												}
 																											},
 																											"readOnly": true,
@@ -1768,7 +1816,8 @@
 																								"mean": {
 																									"description": "Suggested threshold.",
 																									"example": 25.5,
-																									"type": "number"
+																									"type": "number",
+																									"x-auditable": true
 																								}
 																							},
 																							"type": "object"
@@ -1796,7 +1845,8 @@
 																									"allOf": [
 																										{
 																											"minLength": 36,
-																											"type": "string"
+																											"type": "string",
+																											"x-auditable": true
 																										},
 																										{
 																											"description": "UUID.",
@@ -1809,12 +1859,14 @@
 																								"is_learned": {
 																									"description": "True if schema is Cloudflare-provided.",
 																									"example": true,
-																									"type": "boolean"
+																									"type": "boolean",
+																									"x-auditable": true
 																								},
 																								"name": {
 																									"description": "Schema file name.",
 																									"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
-																									"type": "string"
+																									"type": "string",
+																									"x-auditable": true
 																								}
 																							},
 																							"type": "object"
@@ -1822,7 +1874,8 @@
 																						"learned_available": {
 																							"description": "True if a Cloudflare-provided learned schema is available for this endpoint.",
 																							"example": true,
-																							"type": "boolean"
+																							"type": "boolean",
+																							"x-auditable": true
 																						},
 																						"mitigation_action": {
 																							"description": "Action taken on requests failing validation.",
@@ -1833,7 +1886,8 @@
 																							],
 																							"example": "block",
 																							"nullable": true,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -2164,7 +2218,8 @@
 													"type": "array"
 												},
 												"timestamp": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2328,14 +2383,16 @@
 									"format": "uri-template",
 									"maxLength": 4096,
 									"pattern": "^/.*$",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"host": {
 									"description": "RFC3986-compliant host.",
 									"example": "www.example.com",
 									"format": "hostname",
 									"maxLength": 255,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"method": {
 									"description": "The HTTP method used to access the endpoint.",
@@ -2351,7 +2408,8 @@
 										"TRACE"
 									],
 									"example": "GET",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -2470,14 +2528,16 @@
 																		"format": "uri-template",
 																		"maxLength": 4096,
 																		"pattern": "^/.*$",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"host": {
 																		"description": "RFC3986-compliant host.",
 																		"example": "www.example.com",
 																		"format": "hostname",
 																		"maxLength": 255,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"method": {
 																		"description": "The HTTP method used to access the endpoint.",
@@ -2493,7 +2553,8 @@
 																			"TRACE"
 																		],
 																		"example": "GET",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -2514,7 +2575,8 @@
 																			},
 																			{
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		]
 																	},
@@ -2522,7 +2584,8 @@
 																		"allOf": [
 																			{
 																				"minLength": 36,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			{
 																				"description": "UUID.",
@@ -2554,12 +2617,14 @@
 																					"auth_id_tokens": {
 																						"description": "The total number of auth-ids seen across this calculation.",
 																						"readOnly": true,
-																						"type": "integer"
+																						"type": "integer",
+																						"x-auditable": true
 																					},
 																					"data_points": {
 																						"description": "The number of data points used for the threshold suggestion calculation.",
 																						"readOnly": true,
-																						"type": "integer"
+																						"type": "integer",
+																						"x-auditable": true
 																					},
 																					"last_updated": {
 																						"example": "2014-01-01T05:20:00.12345Z",
@@ -2569,32 +2634,38 @@
 																					"p50": {
 																						"description": "The p50 quantile of requests (in period_seconds).",
 																						"readOnly": true,
-																						"type": "integer"
+																						"type": "integer",
+																						"x-auditable": true
 																					},
 																					"p90": {
 																						"description": "The p90 quantile of requests (in period_seconds).",
 																						"readOnly": true,
-																						"type": "integer"
+																						"type": "integer",
+																						"x-auditable": true
 																					},
 																					"p99": {
 																						"description": "The p99 quantile of requests (in period_seconds).",
 																						"readOnly": true,
-																						"type": "integer"
+																						"type": "integer",
+																						"x-auditable": true
 																					},
 																					"period_seconds": {
 																						"description": "The period over which this threshold is suggested.",
 																						"readOnly": true,
-																						"type": "integer"
+																						"type": "integer",
+																						"x-auditable": true
 																					},
 																					"requests": {
 																						"description": "The estimated number of requests covered by these calculations.",
 																						"readOnly": true,
-																						"type": "integer"
+																						"type": "integer",
+																						"x-auditable": true
 																					},
 																					"suggested_threshold": {
 																						"description": "The suggested threshold in requests done by the same auth_id or period_seconds.",
 																						"readOnly": true,
-																						"type": "integer"
+																						"type": "integer",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -2703,7 +2774,8 @@
 																					"route": {
 																						"description": "Target route.",
 																						"example": "https://api.example.com/api/service",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -2753,12 +2825,14 @@
 																											"lower": {
 																												"description": "Lower bound for percentile estimate",
 																												"example": 20.5,
-																												"type": "number"
+																												"type": "number",
+																												"x-auditable": true
 																											},
 																											"upper": {
 																												"description": "Upper bound for percentile estimate",
 																												"example": 30.4,
-																												"type": "number"
+																												"type": "number",
+																												"x-auditable": true
 																											}
 																										},
 																										"readOnly": true,
@@ -2770,12 +2844,14 @@
 																											"lower": {
 																												"description": "Lower bound for percentile estimate",
 																												"example": 20.5,
-																												"type": "number"
+																												"type": "number",
+																												"x-auditable": true
 																											},
 																											"upper": {
 																												"description": "Upper bound for percentile estimate",
 																												"example": 30.4,
-																												"type": "number"
+																												"type": "number",
+																												"x-auditable": true
 																											}
 																										},
 																										"readOnly": true,
@@ -2787,12 +2863,14 @@
 																											"lower": {
 																												"description": "Lower bound for percentile estimate",
 																												"example": 20.5,
-																												"type": "number"
+																												"type": "number",
+																												"x-auditable": true
 																											},
 																											"upper": {
 																												"description": "Upper bound for percentile estimate",
 																												"example": 30.4,
-																												"type": "number"
+																												"type": "number",
+																												"x-auditable": true
 																											}
 																										},
 																										"readOnly": true,
@@ -2804,7 +2882,8 @@
 																							"mean": {
 																								"description": "Suggested threshold.",
 																								"example": 25.5,
-																								"type": "number"
+																								"type": "number",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -2832,7 +2911,8 @@
 																								"allOf": [
 																									{
 																										"minLength": 36,
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									{
 																										"description": "UUID.",
@@ -2845,12 +2925,14 @@
 																							"is_learned": {
 																								"description": "True if schema is Cloudflare-provided.",
 																								"example": true,
-																								"type": "boolean"
+																								"type": "boolean",
+																								"x-auditable": true
 																							},
 																							"name": {
 																								"description": "Schema file name.",
 																								"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -2858,7 +2940,8 @@
 																					"learned_available": {
 																						"description": "True if a Cloudflare-provided learned schema is available for this endpoint.",
 																						"example": true,
-																						"type": "boolean"
+																						"type": "boolean",
+																						"x-auditable": true
 																					},
 																					"mitigation_action": {
 																						"description": "Action taken on requests failing validation.",
@@ -2869,7 +2952,8 @@
 																						],
 																						"example": "block",
 																						"nullable": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -3045,14 +3129,16 @@
 								"format": "uri-template",
 								"maxLength": 4096,
 								"pattern": "^/.*$",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"host": {
 								"description": "RFC3986-compliant host.",
 								"example": "www.example.com",
 								"format": "hostname",
 								"maxLength": 255,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"method": {
 								"description": "The HTTP method used to access the endpoint.",
@@ -3068,7 +3154,8 @@
 									"TRACE"
 								],
 								"example": "GET",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -3186,14 +3273,16 @@
 																			"format": "uri-template",
 																			"maxLength": 4096,
 																			"pattern": "^/.*$",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"host": {
 																			"description": "RFC3986-compliant host.",
 																			"example": "www.example.com",
 																			"format": "hostname",
 																			"maxLength": 255,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"method": {
 																			"description": "The HTTP method used to access the endpoint.",
@@ -3209,7 +3298,8 @@
 																				"TRACE"
 																			],
 																			"example": "GET",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -3230,7 +3320,8 @@
 																				},
 																				{
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			]
 																		},
@@ -3238,7 +3329,8 @@
 																			"allOf": [
 																				{
 																					"minLength": 36,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				{
 																					"description": "UUID.",
@@ -3270,12 +3362,14 @@
 																						"auth_id_tokens": {
 																							"description": "The total number of auth-ids seen across this calculation.",
 																							"readOnly": true,
-																							"type": "integer"
+																							"type": "integer",
+																							"x-auditable": true
 																						},
 																						"data_points": {
 																							"description": "The number of data points used for the threshold suggestion calculation.",
 																							"readOnly": true,
-																							"type": "integer"
+																							"type": "integer",
+																							"x-auditable": true
 																						},
 																						"last_updated": {
 																							"example": "2014-01-01T05:20:00.12345Z",
@@ -3285,32 +3379,38 @@
 																						"p50": {
 																							"description": "The p50 quantile of requests (in period_seconds).",
 																							"readOnly": true,
-																							"type": "integer"
+																							"type": "integer",
+																							"x-auditable": true
 																						},
 																						"p90": {
 																							"description": "The p90 quantile of requests (in period_seconds).",
 																							"readOnly": true,
-																							"type": "integer"
+																							"type": "integer",
+																							"x-auditable": true
 																						},
 																						"p99": {
 																							"description": "The p99 quantile of requests (in period_seconds).",
 																							"readOnly": true,
-																							"type": "integer"
+																							"type": "integer",
+																							"x-auditable": true
 																						},
 																						"period_seconds": {
 																							"description": "The period over which this threshold is suggested.",
 																							"readOnly": true,
-																							"type": "integer"
+																							"type": "integer",
+																							"x-auditable": true
 																						},
 																						"requests": {
 																							"description": "The estimated number of requests covered by these calculations.",
 																							"readOnly": true,
-																							"type": "integer"
+																							"type": "integer",
+																							"x-auditable": true
 																						},
 																						"suggested_threshold": {
 																							"description": "The suggested threshold in requests done by the same auth_id or period_seconds.",
 																							"readOnly": true,
-																							"type": "integer"
+																							"type": "integer",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -3419,7 +3519,8 @@
 																						"route": {
 																							"description": "Target route.",
 																							"example": "https://api.example.com/api/service",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -3469,12 +3570,14 @@
 																												"lower": {
 																													"description": "Lower bound for percentile estimate",
 																													"example": 20.5,
-																													"type": "number"
+																													"type": "number",
+																													"x-auditable": true
 																												},
 																												"upper": {
 																													"description": "Upper bound for percentile estimate",
 																													"example": 30.4,
-																													"type": "number"
+																													"type": "number",
+																													"x-auditable": true
 																												}
 																											},
 																											"readOnly": true,
@@ -3486,12 +3589,14 @@
 																												"lower": {
 																													"description": "Lower bound for percentile estimate",
 																													"example": 20.5,
-																													"type": "number"
+																													"type": "number",
+																													"x-auditable": true
 																												},
 																												"upper": {
 																													"description": "Upper bound for percentile estimate",
 																													"example": 30.4,
-																													"type": "number"
+																													"type": "number",
+																													"x-auditable": true
 																												}
 																											},
 																											"readOnly": true,
@@ -3503,12 +3608,14 @@
 																												"lower": {
 																													"description": "Lower bound for percentile estimate",
 																													"example": 20.5,
-																													"type": "number"
+																													"type": "number",
+																													"x-auditable": true
 																												},
 																												"upper": {
 																													"description": "Upper bound for percentile estimate",
 																													"example": 30.4,
-																													"type": "number"
+																													"type": "number",
+																													"x-auditable": true
 																												}
 																											},
 																											"readOnly": true,
@@ -3520,7 +3627,8 @@
 																								"mean": {
 																									"description": "Suggested threshold.",
 																									"example": 25.5,
-																									"type": "number"
+																									"type": "number",
+																									"x-auditable": true
 																								}
 																							},
 																							"type": "object"
@@ -3548,7 +3656,8 @@
 																									"allOf": [
 																										{
 																											"minLength": 36,
-																											"type": "string"
+																											"type": "string",
+																											"x-auditable": true
 																										},
 																										{
 																											"description": "UUID.",
@@ -3561,12 +3670,14 @@
 																								"is_learned": {
 																									"description": "True if schema is Cloudflare-provided.",
 																									"example": true,
-																									"type": "boolean"
+																									"type": "boolean",
+																									"x-auditable": true
 																								},
 																								"name": {
 																									"description": "Schema file name.",
 																									"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
-																									"type": "string"
+																									"type": "string",
+																									"x-auditable": true
 																								}
 																							},
 																							"type": "object"
@@ -3574,7 +3685,8 @@
 																						"learned_available": {
 																							"description": "True if a Cloudflare-provided learned schema is available for this endpoint.",
 																							"example": true,
-																							"type": "boolean"
+																							"type": "boolean",
+																							"x-auditable": true
 																						},
 																						"mitigation_action": {
 																							"description": "Action taken on requests failing validation.",
@@ -3585,7 +3697,8 @@
 																							],
 																							"example": "block",
 																							"nullable": true,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"

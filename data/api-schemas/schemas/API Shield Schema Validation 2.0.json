@@ -245,13 +245,15 @@
 									],
 									"example": "block",
 									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"operation_id": {
 									"allOf": [
 										{
 											"minLength": 36,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										{
 											"description": "UUID.",
@@ -417,7 +419,8 @@
 										"block"
 									],
 									"example": "block",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"validation_override_mitigation_action": {
 									"description": "When set, this overrides both zone level and operation level mitigation actions.\n\n  - `none` will skip running schema validation entirely for the request\n  - `null` indicates that no override is in place\n",
@@ -427,7 +430,8 @@
 									],
 									"example": "disable_override",
 									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -606,7 +610,8 @@
 				"name": "validation_enabled",
 				"schema": {
 					"description": "Flag whether schema is enabled for validation.",
-					"type": "boolean"
+					"type": "boolean",
+					"x-auditable": true
 				}
 			}
 		],
@@ -746,7 +751,8 @@
 															},
 															{
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														]
 													},
@@ -756,18 +762,21 @@
 															"openapi_v3"
 														],
 														"example": "openapi_v3",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "Name of the schema",
 														"example": "petstore schema",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"schema_id": {
 														"allOf": [
 															{
 																"minLength": 36,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															{
 																"description": "UUID.",
@@ -780,11 +789,13 @@
 													"source": {
 														"description": "Source of the schema",
 														"example": "<schema file bytes>",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"validation_enabled": {
 														"description": "Flag whether schema is enabled for validation.",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -1059,7 +1070,8 @@
 														},
 														{
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													]
 												},
@@ -1069,18 +1081,21 @@
 														"openapi_v3"
 													],
 													"example": "openapi_v3",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the schema",
 													"example": "petstore schema",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"schema_id": {
 													"allOf": [
 														{
 															"minLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"description": "UUID.",
@@ -1093,11 +1108,13 @@
 												"source": {
 													"description": "Source of the schema",
 													"example": "<schema file bytes>",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"validation_enabled": {
 													"description": "Flag whether schema is enabled for validation.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1486,14 +1503,16 @@
 																				"format": "uri-template",
 																				"maxLength": 4096,
 																				"pattern": "^/.*$",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"host": {
 																				"description": "RFC3986-compliant host.",
 																				"example": "www.example.com",
 																				"format": "hostname",
 																				"maxLength": 255,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"method": {
 																				"description": "The HTTP method used to access the endpoint.",
@@ -1509,7 +1528,8 @@
 																					"TRACE"
 																				],
 																				"example": "GET",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -1530,7 +1550,8 @@
 																					},
 																					{
 																						"readOnly": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				]
 																			},
@@ -1538,7 +1559,8 @@
 																				"allOf": [
 																					{
 																						"minLength": 36,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					{
 																						"description": "UUID.",
@@ -1570,12 +1592,14 @@
 																							"auth_id_tokens": {
 																								"description": "The total number of auth-ids seen across this calculation.",
 																								"readOnly": true,
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							},
 																							"data_points": {
 																								"description": "The number of data points used for the threshold suggestion calculation.",
 																								"readOnly": true,
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							},
 																							"last_updated": {
 																								"example": "2014-01-01T05:20:00.12345Z",
@@ -1585,32 +1609,38 @@
 																							"p50": {
 																								"description": "The p50 quantile of requests (in period_seconds).",
 																								"readOnly": true,
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							},
 																							"p90": {
 																								"description": "The p90 quantile of requests (in period_seconds).",
 																								"readOnly": true,
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							},
 																							"p99": {
 																								"description": "The p99 quantile of requests (in period_seconds).",
 																								"readOnly": true,
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							},
 																							"period_seconds": {
 																								"description": "The period over which this threshold is suggested.",
 																								"readOnly": true,
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							},
 																							"requests": {
 																								"description": "The estimated number of requests covered by these calculations.",
 																								"readOnly": true,
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							},
 																							"suggested_threshold": {
 																								"description": "The suggested threshold in requests done by the same auth_id or period_seconds.",
 																								"readOnly": true,
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -1719,7 +1749,8 @@
 																							"route": {
 																								"description": "Target route.",
 																								"example": "https://api.example.com/api/service",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -1769,12 +1800,14 @@
 																													"lower": {
 																														"description": "Lower bound for percentile estimate",
 																														"example": 20.5,
-																														"type": "number"
+																														"type": "number",
+																														"x-auditable": true
 																													},
 																													"upper": {
 																														"description": "Upper bound for percentile estimate",
 																														"example": 30.4,
-																														"type": "number"
+																														"type": "number",
+																														"x-auditable": true
 																													}
 																												},
 																												"readOnly": true,
@@ -1786,12 +1819,14 @@
 																													"lower": {
 																														"description": "Lower bound for percentile estimate",
 																														"example": 20.5,
-																														"type": "number"
+																														"type": "number",
+																														"x-auditable": true
 																													},
 																													"upper": {
 																														"description": "Upper bound for percentile estimate",
 																														"example": 30.4,
-																														"type": "number"
+																														"type": "number",
+																														"x-auditable": true
 																													}
 																												},
 																												"readOnly": true,
@@ -1803,12 +1838,14 @@
 																													"lower": {
 																														"description": "Lower bound for percentile estimate",
 																														"example": 20.5,
-																														"type": "number"
+																														"type": "number",
+																														"x-auditable": true
 																													},
 																													"upper": {
 																														"description": "Upper bound for percentile estimate",
 																														"example": 30.4,
-																														"type": "number"
+																														"type": "number",
+																														"x-auditable": true
 																													}
 																												},
 																												"readOnly": true,
@@ -1820,7 +1857,8 @@
 																									"mean": {
 																										"description": "Suggested threshold.",
 																										"example": 25.5,
-																										"type": "number"
+																										"type": "number",
+																										"x-auditable": true
 																									}
 																								},
 																								"type": "object"
@@ -1848,7 +1886,8 @@
 																										"allOf": [
 																											{
 																												"minLength": 36,
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											{
 																												"description": "UUID.",
@@ -1861,12 +1900,14 @@
 																									"is_learned": {
 																										"description": "True if schema is Cloudflare-provided.",
 																										"example": true,
-																										"type": "boolean"
+																										"type": "boolean",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "Schema file name.",
 																										"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"type": "object"
@@ -1874,7 +1915,8 @@
 																							"learned_available": {
 																								"description": "True if a Cloudflare-provided learned schema is available for this endpoint.",
 																								"example": true,
-																								"type": "boolean"
+																								"type": "boolean",
+																								"x-auditable": true
 																							},
 																							"mitigation_action": {
 																								"description": "Action taken on requests failing validation.",
@@ -1885,7 +1927,8 @@
 																								],
 																								"example": "block",
 																								"nullable": true,
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -1911,14 +1954,16 @@
 																"format": "uri-template",
 																"maxLength": 4096,
 																"pattern": "^/.*$",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"host": {
 																"description": "RFC3986-compliant host.",
 																"example": "www.example.com",
 																"format": "hostname",
 																"maxLength": 255,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"method": {
 																"description": "The HTTP method used to access the endpoint.",
@@ -1934,7 +1979,8 @@
 																	"TRACE"
 																],
 																"example": "GET",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2230,7 +2276,8 @@
 															},
 															{
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														]
 													},
@@ -2244,13 +2291,15 @@
 													"name": {
 														"description": "Name of the schema",
 														"example": "petstore schema",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"schema_id": {
 														"allOf": [
 															{
 																"minLength": 36,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															{
 																"description": "UUID.",
@@ -2431,7 +2480,8 @@
 									],
 									"example": "block",
 									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -2554,7 +2604,8 @@
 														],
 														"example": "block",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -2733,7 +2784,8 @@
 								],
 								"example": "block",
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"validation_override_mitigation_action": {
 								"description": "When set, this overrides both zone level and operation level mitigation actions.\n\n  - `none` will skip running schema validation entirely for the request\n\nTo clear any override, use the special value `disable_override`\n\n`null` will have no effect.\n",
@@ -2744,7 +2796,8 @@
 								],
 								"example": "none",
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -2767,7 +2820,8 @@
 										"block"
 									],
 									"example": "block",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"validation_override_mitigation_action": {
 									"description": "When set, this overrides both zone level and operation level mitigation actions.\n\n  - `none` will skip running schema validation entirely for the request\n  - `null` indicates that no override is in place\n",
@@ -2777,7 +2831,8 @@
 									],
 									"example": "disable_override",
 									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -2927,7 +2982,8 @@
 								"allOf": [
 									{
 										"description": "Flag whether schema is enabled for validation.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									{
 										"enum": [
@@ -3044,7 +3100,8 @@
 														},
 														{
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													]
 												},
@@ -3054,18 +3111,21 @@
 														"openapi_v3"
 													],
 													"example": "openapi_v3",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the schema",
 													"example": "petstore schema",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"schema_id": {
 													"allOf": [
 														{
 															"minLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"description": "UUID.",
@@ -3078,11 +3138,13 @@
 												"source": {
 													"description": "Source of the schema",
 													"example": "<schema file bytes>",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"validation_enabled": {
 													"description": "Flag whether schema is enabled for validation.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -3253,7 +3315,8 @@
 									"openapi_v3"
 								],
 								"example": "openapi_v3",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "Name of the schema",
@@ -3382,7 +3445,8 @@
 																},
 																{
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															]
 														},
@@ -3392,18 +3456,21 @@
 																"openapi_v3"
 															],
 															"example": "openapi_v3",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "Name of the schema",
 															"example": "petstore schema",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"schema_id": {
 															"allOf": [
 																{
 																	"minLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																{
 																	"description": "UUID.",
@@ -3416,11 +3483,13 @@
 														"source": {
 															"description": "Source of the schema",
 															"example": "<schema file bytes>",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"validation_enabled": {
 															"description": "Flag whether schema is enabled for validation.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3440,21 +3509,24 @@
 																	"code": {
 																		"description": "Code that identifies the event that occurred.",
 																		"example": 28,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"locations": {
 																		"description": "JSONPath location(s) in the schema where these events were encountered.  See [https://goessner.net/articles/JsonPath/](https://goessner.net/articles/JsonPath/) for JSONPath specification.",
 																		"items": {
 																			"description": "JSONPath location in the schema where these events were encountered.  See [https://goessner.net/articles/JsonPath/](https://goessner.net/articles/JsonPath/) for JSONPath specification.",
 																			"example": ".paths[\"/user/{username}\"].put",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
 																	"message": {
 																		"description": "Diagnostic message that describes the event.",
 																		"example": "unsupported media type: application/octet-stream",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -3607,21 +3679,24 @@
 															"code": {
 																"description": "Code that identifies the event that occurred.",
 																"example": 28,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"locations": {
 																"description": "JSONPath location(s) in the schema where these events were encountered.  See [https://goessner.net/articles/JsonPath/](https://goessner.net/articles/JsonPath/) for JSONPath specification.",
 																"items": {
 																	"description": "JSONPath location in the schema where these events were encountered.  See [https://goessner.net/articles/JsonPath/](https://goessner.net/articles/JsonPath/) for JSONPath specification.",
 																	"example": ".paths[\"/user/{username}\"].put",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"message": {
 																"description": "Diagnostic message that describes the event.",
 																"example": "unsupported media type: application/octet-stream",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3638,21 +3713,24 @@
 															"code": {
 																"description": "Code that identifies the event that occurred.",
 																"example": 28,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"locations": {
 																"description": "JSONPath location(s) in the schema where these events were encountered.  See [https://goessner.net/articles/JsonPath/](https://goessner.net/articles/JsonPath/) for JSONPath specification.",
 																"items": {
 																	"description": "JSONPath location in the schema where these events were encountered.  See [https://goessner.net/articles/JsonPath/](https://goessner.net/articles/JsonPath/) for JSONPath specification.",
 																	"example": ".paths[\"/user/{username}\"].put",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"message": {
 																"description": "Diagnostic message that describes the event.",
 																"example": "unsupported media type: application/octet-stream",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3709,7 +3787,8 @@
 								],
 								"example": "block",
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -3734,13 +3813,15 @@
 									],
 									"example": "block",
 									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"operation_id": {
 									"allOf": [
 										{
 											"minLength": 36,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										{
 											"description": "UUID.",
@@ -3903,7 +3984,8 @@
 									"block"
 								],
 								"example": "block",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"validation_override_mitigation_action": {
 								"description": "When set, this overrides both zone level and operation level mitigation actions.\n\n  - `none` will skip running schema validation entirely for the request\n  - `null` indicates that no override is in place\n\nTo clear any override, use the special value `disable_override` or `null`\n",
@@ -3914,7 +3996,8 @@
 								],
 								"example": "none",
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -3940,7 +4023,8 @@
 										"block"
 									],
 									"example": "block",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"validation_override_mitigation_action": {
 									"description": "When set, this overrides both zone level and operation level mitigation actions.\n\n  - `none` will skip running schema validation entirely for the request\n  - `null` indicates that no override is in place\n",
@@ -3950,7 +4034,8 @@
 									],
 									"example": "disable_override",
 									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
