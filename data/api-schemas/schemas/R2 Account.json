@@ -8,7 +8,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -53,7 +53,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -71,42 +71,42 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Metrics based on the class they belong to",
+											"description": "Metrics based on the class they belong to.",
 											"properties": {
 												"infrequentAccess": {
-													"description": "Metrics based on what state they are in(uploaded or published)",
+													"description": "Metrics based on what state they are in(uploaded or published).",
 													"properties": {
 														"published": {
-															"description": "Metrics on number of objects/amount of storage used",
+															"description": "Metrics on number of objects/amount of storage used.",
 															"properties": {
 																"metadataSize": {
-																	"description": "Amount of",
+																	"description": "Amount of.",
 																	"type": "number"
 																},
 																"objects": {
-																	"description": "Number of objects stored",
+																	"description": "Number of objects stored.",
 																	"type": "number"
 																},
 																"payloadSize": {
-																	"description": "Amount of storage used by object data",
+																	"description": "Amount of storage used by object data.",
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														},
 														"uploaded": {
-															"description": "Metrics on number of objects/amount of storage used",
+															"description": "Metrics on number of objects/amount of storage used.",
 															"properties": {
 																"metadataSize": {
-																	"description": "Amount of",
+																	"description": "Amount of.",
 																	"type": "number"
 																},
 																"objects": {
-																	"description": "Number of objects stored",
+																	"description": "Number of objects stored.",
 																	"type": "number"
 																},
 																"payloadSize": {
-																	"description": "Amount of storage used by object data",
+																	"description": "Amount of storage used by object data.",
 																	"type": "number"
 																}
 															},
@@ -116,39 +116,39 @@
 													"type": "object"
 												},
 												"standard": {
-													"description": "Metrics based on what state they are in(uploaded or published)",
+													"description": "Metrics based on what state they are in(uploaded or published).",
 													"properties": {
 														"published": {
-															"description": "Metrics on number of objects/amount of storage used",
+															"description": "Metrics on number of objects/amount of storage used.",
 															"properties": {
 																"metadataSize": {
-																	"description": "Amount of",
+																	"description": "Amount of.",
 																	"type": "number"
 																},
 																"objects": {
-																	"description": "Number of objects stored",
+																	"description": "Number of objects stored.",
 																	"type": "number"
 																},
 																"payloadSize": {
-																	"description": "Amount of storage used by object data",
+																	"description": "Amount of storage used by object data.",
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														},
 														"uploaded": {
-															"description": "Metrics on number of objects/amount of storage used",
+															"description": "Metrics on number of objects/amount of storage used.",
 															"properties": {
 																"metadataSize": {
-																	"description": "Amount of",
+																	"description": "Amount of.",
 																	"type": "number"
 																},
 																"objects": {
-																	"description": "Number of objects stored",
+																	"description": "Number of objects stored.",
 																	"type": "number"
 																},
 																"payloadSize": {
-																	"description": "Amount of storage used by object data",
+																	"description": "Amount of storage used by object data.",
 																	"type": "number"
 																}
 															},
@@ -167,7 +167,7 @@
 						}
 					}
 				},
-				"description": "Get Account-Level Metrics response"
+				"description": "Get Account-Level Metrics response."
 			},
 			"4XX": {
 				"content": {
@@ -208,7 +208,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -226,7 +226,7 @@
 						}
 					}
 				},
-				"description": "Get Account-Level Metrics response failure"
+				"description": "Get Account-Level Metrics response failure."
 			}
 		},
 		"security": [

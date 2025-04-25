@@ -8,7 +8,7 @@
 				"name": "queue_id",
 				"required": true,
 				"schema": {
-					"description": "Queue ID",
+					"description": "Queue ID.",
 					"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
 					"maxLength": 32,
 					"type": "string"
@@ -19,7 +19,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -32,7 +32,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -43,7 +43,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -60,9 +60,9 @@
 					"schema": {
 						"properties": {
 							"ruleIds": {
-								"description": "Array of rule ids to delete",
+								"description": "Array of rule ids to delete.",
 								"items": {
-									"description": "rule ids to be deleted",
+									"description": "rule ids to be deleted.",
 									"type": "string"
 								},
 								"type": "array"
@@ -111,7 +111,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -133,7 +133,7 @@
 						}
 					}
 				},
-				"description": "Delete Configuration response"
+				"description": "Delete Configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -174,7 +174,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -192,7 +192,7 @@
 						}
 					}
 				},
-				"description": "Delete Configuration failure"
+				"description": "Delete Configuration failure."
 			}
 		},
 		"security": [
@@ -217,7 +217,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -230,7 +230,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -241,7 +241,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -288,7 +288,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										true
 									],
@@ -305,7 +305,7 @@
 						}
 					}
 				},
-				"description": "Delete Bucket response"
+				"description": "Delete Bucket response."
 			},
 			"4XX": {
 				"content": {
@@ -346,7 +346,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -364,7 +364,7 @@
 						}
 					}
 				},
-				"description": "Delete Bucket response failure"
+				"description": "Delete Bucket response failure."
 			}
 		},
 		"security": [
@@ -381,7 +381,7 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
-		"description": "Delete the CORS policy for a bucket",
+		"description": "Delete the CORS policy for a bucket.",
 		"operationId": "r2-delete-bucket-cors-policy",
 		"parameters": [
 			{
@@ -389,7 +389,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -402,7 +402,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -413,7 +413,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -462,7 +462,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -484,7 +484,7 @@
 						}
 					}
 				},
-				"description": "Success Response"
+				"description": "Success Response."
 			},
 			"4XX": {
 				"content": {
@@ -525,7 +525,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -543,7 +543,7 @@
 						}
 					}
 				},
-				"description": "Error Response"
+				"description": "Error Response."
 			}
 		},
 		"security": [
@@ -557,7 +557,7 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}": {
-		"description": "Remove custom domain registration from an existing R2 bucket",
+		"description": "Remove custom domain registration from an existing R2 bucket.",
 		"operationId": "r2-delete-custom-domain",
 		"parameters": [
 			{
@@ -565,7 +565,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -578,7 +578,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -589,7 +589,7 @@
 				"name": "domain",
 				"required": true,
 				"schema": {
-					"description": "Name of the custom domain",
+					"description": "Name of the custom domain.",
 					"example": "example-domain/custom-domain.com",
 					"type": "string"
 				}
@@ -599,7 +599,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -648,7 +648,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -671,7 +671,7 @@
 											},
 											"properties": {
 												"domain": {
-													"description": "Name of the removed custom domain",
+													"description": "Name of the removed custom domain.",
 													"type": "string"
 												}
 											},
@@ -687,7 +687,7 @@
 						}
 					}
 				},
-				"description": "Delete Custom Domain response"
+				"description": "Delete Custom Domain response."
 			},
 			"4XX": {
 				"content": {
@@ -728,7 +728,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -746,7 +746,7 @@
 						}
 					}
 				},
-				"description": "Delete Custom Domain response failure"
+				"description": "Delete Custom Domain response failure."
 			}
 		},
 		"security": [
@@ -763,7 +763,7 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/sippy": {
-		"description": "Disables Sippy on this bucket",
+		"description": "Disables Sippy on this bucket.",
 		"operationId": "r2-delete-bucket-sippy-config",
 		"parameters": [
 			{
@@ -771,7 +771,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -784,7 +784,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -795,7 +795,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -844,7 +844,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -879,7 +879,7 @@
 						}
 					}
 				},
-				"description": "Delete Sippy Configuration response"
+				"description": "Delete Sippy Configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -920,7 +920,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -938,7 +938,7 @@
 						}
 					}
 				},
-				"description": "Delete Sippy Configuration response failure"
+				"description": "Delete Sippy Configuration response failure."
 			}
 		},
 		"security": [
@@ -963,7 +963,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -976,7 +976,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -987,7 +987,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -1036,7 +1036,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -1064,12 +1064,12 @@
 													"items": {
 														"properties": {
 															"queueId": {
-																"description": "Queue ID",
+																"description": "Queue ID.",
 																"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
 																"type": "string"
 															},
 															"queueName": {
-																"description": "Name of the queue",
+																"description": "Name of the queue.",
 																"example": "first-queue",
 																"type": "string"
 															},
@@ -1079,7 +1079,7 @@
 																		{
 																			"properties": {
 																				"actions": {
-																					"description": "Array of R2 object actions that will trigger notifications",
+																					"description": "Array of R2 object actions that will trigger notifications.",
 																					"example": [
 																						"PutObject",
 																						"CopyObject"
@@ -1098,17 +1098,17 @@
 																					"uniqueItems": true
 																				},
 																				"description": {
-																					"description": "A description that can be used to identify the event notification rule after creation",
+																					"description": "A description that can be used to identify the event notification rule after creation.",
 																					"example": "Notifications from source bucket to queue",
 																					"type": "string"
 																				},
 																				"prefix": {
-																					"description": "Notifications will be sent only for objects with this prefix",
+																					"description": "Notifications will be sent only for objects with this prefix.",
 																					"example": "img/",
 																					"type": "string"
 																				},
 																				"suffix": {
-																					"description": "Notifications will be sent only for objects with this suffix",
+																					"description": "Notifications will be sent only for objects with this suffix.",
 																					"example": ".jpeg",
 																					"type": "string"
 																				}
@@ -1121,17 +1121,17 @@
 																		{
 																			"properties": {
 																				"createdAt": {
-																					"description": "Timestamp when the rule was created",
+																					"description": "Timestamp when the rule was created.",
 																					"example": "2024-09-19T21:54:48.405Z",
 																					"type": "string"
 																				},
 																				"description": {
-																					"description": "A description that can be used to identify the event notification rule after creation",
+																					"description": "A description that can be used to identify the event notification rule after creation.",
 																					"example": "Notifications from source bucket to queue",
 																					"type": "string"
 																				},
 																				"ruleId": {
-																					"description": "Rule ID",
+																					"description": "Rule ID.",
 																					"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
 																					"type": "string"
 																				}
@@ -1157,7 +1157,7 @@
 						}
 					}
 				},
-				"description": "Read Configuration response"
+				"description": "Read Configuration response."
 			},
 			"404": {
 				"content": {
@@ -1209,7 +1209,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -1227,7 +1227,7 @@
 						}
 					}
 				},
-				"description": "No Configuration Found response"
+				"description": "No Configuration Found response."
 			},
 			"4XX": {
 				"content": {
@@ -1268,7 +1268,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -1286,7 +1286,7 @@
 						}
 					}
 				},
-				"description": "Read Configuration failure"
+				"description": "Read Configuration failure."
 			}
 		},
 		"security": [
@@ -1304,7 +1304,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/r2/buckets": {
-		"description": "Lists all R2 buckets on your account",
+		"description": "Lists all R2 buckets on your account.",
 		"operationId": "r2-list-buckets",
 		"parameters": [
 			{
@@ -1312,7 +1312,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1341,7 +1341,7 @@
 				"name": "per_page",
 				"schema": {
 					"default": 20,
-					"description": "Maximum number of buckets to return in a single call",
+					"description": "Maximum number of buckets to return in a single call.",
 					"maximum": 1000,
 					"minimum": 1,
 					"type": "number"
@@ -1351,7 +1351,7 @@
 				"in": "query",
 				"name": "order",
 				"schema": {
-					"description": "Field to order buckets by",
+					"description": "Field to order buckets by.",
 					"enum": [
 						"name"
 					],
@@ -1362,7 +1362,7 @@
 				"in": "query",
 				"name": "direction",
 				"schema": {
-					"description": "Direction to order buckets",
+					"description": "Direction to order buckets.",
 					"enum": [
 						"asc",
 						"desc"
@@ -1384,7 +1384,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "Lists buckets in the provided jurisdiction",
+					"description": "Lists buckets in the provided jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -1435,7 +1435,7 @@
 													"type": "object"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1455,12 +1455,12 @@
 												"result_info": {
 													"properties": {
 														"cursor": {
-															"description": "A continuation token that should be used to fetch the next page of results",
+															"description": "A continuation token that should be used to fetch the next page of results.",
 															"example": "1-JTdCJTIydiUyMiUzQTElMkMlMjJzdGFydEFmdGVyJTIyJTNBJTIyZGF2aWRwdWJsaWMlMjIlN0Q=",
 															"type": "string"
 														},
 														"per_page": {
-															"description": "Maximum number of results on this page",
+															"description": "Maximum number of results on this page.",
 															"example": 20,
 															"type": "number"
 														}
@@ -1478,14 +1478,14 @@
 											"properties": {
 												"buckets": {
 													"items": {
-														"description": "A single R2 bucket",
+														"description": "A single R2 bucket.",
 														"properties": {
 															"creation_date": {
-																"description": "Creation timestamp",
+																"description": "Creation timestamp.",
 																"type": "string"
 															},
 															"location": {
-																"description": "Location of the bucket",
+																"description": "Location of the bucket.",
 																"enum": [
 																	"apac",
 																	"eeur",
@@ -1497,7 +1497,7 @@
 																"type": "string"
 															},
 															"name": {
-																"description": "Name of the bucket",
+																"description": "Name of the bucket.",
 																"example": "example-bucket",
 																"maxLength": 64,
 																"minLength": 3,
@@ -1528,7 +1528,7 @@
 						}
 					}
 				},
-				"description": "List Buckets response"
+				"description": "List Buckets response."
 			},
 			"4XX": {
 				"content": {
@@ -1569,7 +1569,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -1587,7 +1587,7 @@
 						}
 					}
 				},
-				"description": "List Buckets response failure"
+				"description": "List Buckets response failure."
 			}
 		},
 		"security": [
@@ -1605,7 +1605,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}": {
-		"description": "Gets metadata for an existing R2 bucket.",
+		"description": "Gets properties of an existing R2 bucket.",
 		"operationId": "r2-get-bucket",
 		"parameters": [
 			{
@@ -1613,7 +1613,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1624,7 +1624,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -1637,7 +1637,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -1686,7 +1686,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -1704,14 +1704,14 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A single R2 bucket",
+											"description": "A single R2 bucket.",
 											"properties": {
 												"creation_date": {
-													"description": "Creation timestamp",
+													"description": "Creation timestamp.",
 													"type": "string"
 												},
 												"location": {
-													"description": "Location of the bucket",
+													"description": "Location of the bucket.",
 													"enum": [
 														"apac",
 														"eeur",
@@ -1723,7 +1723,7 @@
 													"type": "string"
 												},
 												"name": {
-													"description": "Name of the bucket",
+													"description": "Name of the bucket.",
 													"example": "example-bucket",
 													"maxLength": 64,
 													"minLength": 3,
@@ -1749,7 +1749,7 @@
 						}
 					}
 				},
-				"description": "Get Bucket response"
+				"description": "Get Bucket response."
 			},
 			"4XX": {
 				"content": {
@@ -1790,7 +1790,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -1808,7 +1808,7 @@
 						}
 					}
 				},
-				"description": "Get Bucket response failure"
+				"description": "Get Bucket response failure."
 			}
 		},
 		"security": [
@@ -1827,7 +1827,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
-		"description": "Get the CORS policy for a bucket",
+		"description": "Get the CORS policy for a bucket.",
 		"operationId": "r2-get-bucket-cors-policy",
 		"parameters": [
 			{
@@ -1835,7 +1835,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -1848,7 +1848,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1859,7 +1859,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -1908,7 +1908,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -1979,7 +1979,7 @@
 																"type": "array"
 															},
 															"id": {
-																"description": "Identifier for this rule",
+																"description": "Identifier for this rule.",
 																"example": "Allow Local Development",
 																"type": "string"
 															},
@@ -2006,7 +2006,7 @@
 						}
 					}
 				},
-				"description": "Success Response"
+				"description": "Success Response."
 			},
 			"4XX": {
 				"content": {
@@ -2047,7 +2047,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -2065,7 +2065,7 @@
 						}
 					}
 				},
-				"description": "Error Response"
+				"description": "Error Response."
 			}
 		},
 		"security": [
@@ -2087,7 +2087,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -2098,7 +2098,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -2111,7 +2111,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -2160,7 +2160,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -2206,11 +2206,11 @@
 													"items": {
 														"properties": {
 															"domain": {
-																"description": "Domain name of the custom domain to be added",
+																"description": "Domain name of the custom domain to be added.",
 																"type": "string"
 															},
 															"enabled": {
-																"description": "Whether this bucket is publicly accessible at the specified custom domain",
+																"description": "Whether this bucket is publicly accessible at the specified custom domain.",
 																"type": "boolean"
 															},
 															"minTLS": {
@@ -2226,7 +2226,7 @@
 															"status": {
 																"properties": {
 																	"ownership": {
-																		"description": "Ownership status of the domain",
+																		"description": "Ownership status of the domain.",
 																		"enum": [
 																			"pending",
 																			"active",
@@ -2238,7 +2238,7 @@
 																		"type": "string"
 																	},
 																	"ssl": {
-																		"description": "SSL certificate status",
+																		"description": "SSL certificate status.",
 																		"enum": [
 																			"initializing",
 																			"pending",
@@ -2257,11 +2257,11 @@
 																"type": "object"
 															},
 															"zoneId": {
-																"description": "Zone ID of the custom domain resides in",
+																"description": "Zone ID of the custom domain resides in.",
 																"type": "string"
 															},
 															"zoneName": {
-																"description": "Zone that the custom domain resides in",
+																"description": "Zone that the custom domain resides in.",
 																"type": "string"
 															}
 														},
@@ -2287,7 +2287,7 @@
 						}
 					}
 				},
-				"description": "List Custom Domains response"
+				"description": "List Custom Domains response."
 			},
 			"4XX": {
 				"content": {
@@ -2328,7 +2328,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -2346,7 +2346,7 @@
 						}
 					}
 				},
-				"description": "List Custom Domains response failure"
+				"description": "List Custom Domains response failure."
 			}
 		},
 		"security": [
@@ -2373,7 +2373,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -2384,7 +2384,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -2397,7 +2397,7 @@
 				"name": "domain",
 				"required": true,
 				"schema": {
-					"description": "Name of the custom domain",
+					"description": "Name of the custom domain.",
 					"example": "example-domain/custom-domain.com",
 					"type": "string"
 				}
@@ -2407,7 +2407,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -2456,7 +2456,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -2488,11 +2488,11 @@
 													},
 													"properties": {
 														"domain": {
-															"description": "Domain name of the custom domain to be added",
+															"description": "Domain name of the custom domain to be added.",
 															"type": "string"
 														},
 														"enabled": {
-															"description": "Whether this bucket is publicly accessible at the specified custom domain",
+															"description": "Whether this bucket is publicly accessible at the specified custom domain.",
 															"type": "boolean"
 														},
 														"minTLS": {
@@ -2508,7 +2508,7 @@
 														"status": {
 															"properties": {
 																"ownership": {
-																	"description": "Ownership status of the domain",
+																	"description": "Ownership status of the domain.",
 																	"enum": [
 																		"pending",
 																		"active",
@@ -2520,7 +2520,7 @@
 																	"type": "string"
 																},
 																"ssl": {
-																	"description": "SSL certificate status",
+																	"description": "SSL certificate status.",
 																	"enum": [
 																		"initializing",
 																		"pending",
@@ -2539,11 +2539,11 @@
 															"type": "object"
 														},
 														"zoneId": {
-															"description": "Zone ID of the custom domain resides in",
+															"description": "Zone ID of the custom domain resides in.",
 															"type": "string"
 														},
 														"zoneName": {
-															"description": "Zone that the custom domain resides in",
+															"description": "Zone that the custom domain resides in.",
 															"type": "string"
 														}
 													},
@@ -2563,7 +2563,7 @@
 						}
 					}
 				},
-				"description": "Get Custom Domain Configuration response"
+				"description": "Get Custom Domain Configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -2604,7 +2604,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -2622,7 +2622,7 @@
 						}
 					}
 				},
-				"description": "Get Custom Domain Configuration response failure"
+				"description": "Get Custom Domain Configuration response failure."
 			}
 		},
 		"security": [
@@ -2648,7 +2648,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -2659,7 +2659,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -2672,7 +2672,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -2721,7 +2721,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -2746,16 +2746,16 @@
 											},
 											"properties": {
 												"bucketId": {
-													"description": "Bucket ID",
+													"description": "Bucket ID.",
 													"maxLength": 32,
 													"type": "string"
 												},
 												"domain": {
-													"description": "Domain name of the bucket's r2.dev domain",
+													"description": "Domain name of the bucket's r2.dev domain.",
 													"type": "string"
 												},
 												"enabled": {
-													"description": "Whether this bucket is publicly accessible at the r2.dev domain",
+													"description": "Whether this bucket is publicly accessible at the r2.dev domain.",
 													"type": "boolean"
 												}
 											},
@@ -2773,7 +2773,7 @@
 						}
 					}
 				},
-				"description": "Get Managed Subdomain response"
+				"description": "Get Managed Subdomain response."
 			},
 			"4XX": {
 				"content": {
@@ -2814,7 +2814,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -2832,7 +2832,7 @@
 						}
 					}
 				},
-				"description": "Get Managed Subdomain response failure"
+				"description": "Get Managed Subdomain response failure."
 			}
 		},
 		"security": [
@@ -2851,7 +2851,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/lifecycle": {
-		"description": "Get object lifecycle rules for a bucket",
+		"description": "Get object lifecycle rules for a bucket.",
 		"operationId": "r2-get-bucket-lifecycle-configuration",
 		"parameters": [
 			{
@@ -2859,7 +2859,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -2872,7 +2872,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -2883,7 +2883,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -2932,7 +2932,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -2957,12 +2957,12 @@
 															{
 																"properties": {
 																	"abortMultipartUploadsTransition": {
-																		"description": "Transition to abort ongoing multipart uploads",
+																		"description": "Transition to abort ongoing multipart uploads.",
 																		"properties": {
 																			"condition": {
 																				"allOf": [
 																					{
-																						"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds",
+																						"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds.",
 																						"properties": {
 																							"maxAge": {
 																								"type": "integer"
@@ -2986,10 +2986,10 @@
 																		"type": "object"
 																	},
 																	"conditions": {
-																		"description": "Conditions that apply to all transitions of this rule",
+																		"description": "Conditions that apply to all transitions of this rule.",
 																		"properties": {
 																			"prefix": {
-																				"description": "Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads",
+																				"description": "Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.",
 																				"type": "string"
 																			}
 																		},
@@ -2999,12 +2999,12 @@
 																		"type": "object"
 																	},
 																	"deleteObjectsTransition": {
-																		"description": "Transition to delete objects",
+																		"description": "Transition to delete objects.",
 																		"properties": {
 																			"condition": {
 																				"oneOf": [
 																					{
-																						"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds",
+																						"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds.",
 																						"properties": {
 																							"maxAge": {
 																								"type": "integer"
@@ -3023,7 +3023,7 @@
 																						"type": "object"
 																					},
 																					{
-																						"description": "Condition for lifecycle transitions to apply on a specific date",
+																						"description": "Condition for lifecycle transitions to apply on a specific date.",
 																						"properties": {
 																							"date": {
 																								"format": "date",
@@ -3048,16 +3048,16 @@
 																		"type": "object"
 																	},
 																	"enabled": {
-																		"description": "Whether or not this rule is in effect",
+																		"description": "Whether or not this rule is in effect.",
 																		"type": "boolean"
 																	},
 																	"id": {
-																		"description": "Unique identifier for this rule",
+																		"description": "Unique identifier for this rule.",
 																		"example": "Expire all objects older than 24 hours",
 																		"type": "string"
 																	},
 																	"storageClassTransitions": {
-																		"description": "Transitions to change the storage class of objects",
+																		"description": "Transitions to change the storage class of objects.",
 																		"items": {
 																			"allOf": [
 																				{
@@ -3065,7 +3065,7 @@
 																						"condition": {
 																							"oneOf": [
 																								{
-																									"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds",
+																									"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds.",
 																									"properties": {
 																										"maxAge": {
 																											"type": "integer"
@@ -3084,7 +3084,7 @@
 																									"type": "object"
 																								},
 																								{
-																									"description": "Condition for lifecycle transitions to apply on a specific date",
+																									"description": "Condition for lifecycle transitions to apply on a specific date.",
 																									"properties": {
 																										"date": {
 																											"format": "date",
@@ -3144,7 +3144,7 @@
 						}
 					}
 				},
-				"description": "Success Response"
+				"description": "Success Response."
 			},
 			"4XX": {
 				"content": {
@@ -3185,7 +3185,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -3203,7 +3203,7 @@
 						}
 					}
 				},
-				"description": "Error Response"
+				"description": "Error Response."
 			}
 		},
 		"security": [
@@ -3217,7 +3217,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/lock": {
-		"description": "Get lock rules for a bucket",
+		"description": "Get lock rules for a bucket.",
 		"operationId": "r2-get-bucket-lock-configuration",
 		"parameters": [
 			{
@@ -3225,7 +3225,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -3238,7 +3238,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -3249,7 +3249,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -3297,7 +3297,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -3324,7 +3324,7 @@
 																	"condition": {
 																		"oneOf": [
 																			{
-																				"description": "Condition to apply a lock rule to an object for how long in seconds",
+																				"description": "Condition to apply a lock rule to an object for how long in seconds.",
 																				"properties": {
 																					"maxAgeSeconds": {
 																						"example": 100,
@@ -3344,7 +3344,7 @@
 																				"type": "object"
 																			},
 																			{
-																				"description": "Condition to apply a lock rule to an object until a specific date",
+																				"description": "Condition to apply a lock rule to an object until a specific date.",
 																				"properties": {
 																					"date": {
 																						"format": "date",
@@ -3364,7 +3364,7 @@
 																				"type": "object"
 																			},
 																			{
-																				"description": "Condition to apply a lock rule indefinitely",
+																				"description": "Condition to apply a lock rule indefinitely.",
 																				"properties": {
 																					"type": {
 																						"enum": [
@@ -3381,16 +3381,16 @@
 																		]
 																	},
 																	"enabled": {
-																		"description": "Whether or not this rule is in effect",
+																		"description": "Whether or not this rule is in effect.",
 																		"type": "boolean"
 																	},
 																	"id": {
-																		"description": "Unique identifier for this rule",
+																		"description": "Unique identifier for this rule.",
 																		"example": "Lock all objects for 24 hours",
 																		"type": "string"
 																	},
 																	"prefix": {
-																		"description": "Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads",
+																		"description": "Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.",
 																		"type": "string"
 																	}
 																},
@@ -3415,7 +3415,7 @@
 						}
 					}
 				},
-				"description": "Success Response"
+				"description": "Success Response."
 			},
 			"4XX": {
 				"content": {
@@ -3456,7 +3456,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -3474,7 +3474,7 @@
 						}
 					}
 				},
-				"description": "Error Response"
+				"description": "Error Response."
 			}
 		},
 		"security": [
@@ -3496,7 +3496,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -3507,7 +3507,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -3520,7 +3520,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -3569,7 +3569,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -3589,17 +3589,17 @@
 										"result": {
 											"properties": {
 												"destination": {
-													"description": "Details about the configured destination bucket",
+													"description": "Details about the configured destination bucket.",
 													"properties": {
 														"accessKeyId": {
-															"description": "ID of the Cloudflare API token used when writing objects to this\nbucket\n",
+															"description": "ID of the Cloudflare API token used when writing objects to this\nbucket.\n",
 															"type": "string"
 														},
 														"account": {
 															"type": "string"
 														},
 														"bucket": {
-															"description": "Name of the bucket on the provider",
+															"description": "Name of the bucket on the provider.",
 															"type": "string"
 														},
 														"provider": {
@@ -3612,14 +3612,14 @@
 													"type": "object"
 												},
 												"enabled": {
-													"description": "State of Sippy for this bucket",
+													"description": "State of Sippy for this bucket.",
 													"type": "boolean"
 												},
 												"source": {
-													"description": "Details about the configured source bucket",
+													"description": "Details about the configured source bucket.",
 													"properties": {
 														"bucket": {
-															"description": "Name of the bucket on the provider",
+															"description": "Name of the bucket on the provider.",
 															"type": "string"
 														},
 														"provider": {
@@ -3630,7 +3630,7 @@
 															"type": "string"
 														},
 														"region": {
-															"description": "Region where the bucket resides (AWS only)",
+															"description": "Region where the bucket resides (AWS only).",
 															"nullable": true,
 															"type": "string"
 														}
@@ -3647,7 +3647,7 @@
 						}
 					}
 				},
-				"description": "Get Sippy Configuration response"
+				"description": "Get Sippy Configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -3688,7 +3688,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -3706,7 +3706,7 @@
 						}
 					}
 				},
-				"description": "Get Sippy Configuration response failure"
+				"description": "Get Sippy Configuration response failure."
 			}
 		},
 		"security": [
@@ -3724,6 +3724,247 @@
 			]
 		}
 	},
+	"PATCH /accounts/{account_id}/r2/buckets/{bucket_name}": {
+		"description": "Updates properties of an existing R2 bucket.",
+		"operationId": "r2-patch-bucket",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket.",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction.",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-storage-class",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"default": "Standard",
+							"description": "Storage class for newly uploaded objects, unless specified otherwise.",
+							"enum": [
+								"Standard",
+								"InfrequentAccess"
+							],
+							"type": "string"
+						}
+					],
+					"x-stainless-param": "storage_class"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A single R2 bucket.",
+											"properties": {
+												"creation_date": {
+													"description": "Creation timestamp.",
+													"type": "string"
+												},
+												"location": {
+													"description": "Location of the bucket.",
+													"enum": [
+														"apac",
+														"eeur",
+														"enam",
+														"weur",
+														"wnam",
+														"oc"
+													],
+													"type": "string"
+												},
+												"name": {
+													"description": "Name of the bucket.",
+													"example": "example-bucket",
+													"maxLength": 64,
+													"minLength": 3,
+													"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+													"type": "string"
+												},
+												"storage_class": {
+													"default": "Standard",
+													"description": "Storage class for newly uploaded objects, unless specified otherwise.",
+													"enum": [
+														"Standard",
+														"InfrequentAccess"
+													],
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch Bucket response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Bucket response failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Patch Bucket",
+		"tags": [
+			"R2 Bucket"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.r2.bucket.write"
+			]
+		}
+	},
 	"POST /accounts/{account_id}/r2/buckets": {
 		"description": "Creates a new R2 bucket.",
 		"operationId": "r2-create-bucket",
@@ -3733,7 +3974,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -3744,7 +3985,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "Creates the bucket in the provided jurisdiction",
+					"description": "Creates the bucket in the provided jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -3762,7 +4003,7 @@
 						"example": "{\"name\": \"example-bucket\"}",
 						"properties": {
 							"locationHint": {
-								"description": "Location of the bucket",
+								"description": "Location of the bucket.",
 								"enum": [
 									"apac",
 									"eeur",
@@ -3774,7 +4015,7 @@
 								"type": "string"
 							},
 							"name": {
-								"description": "Name of the bucket",
+								"description": "Name of the bucket.",
 								"example": "example-bucket",
 								"maxLength": 64,
 								"minLength": 3,
@@ -3838,7 +4079,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -3856,14 +4097,14 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A single R2 bucket",
+											"description": "A single R2 bucket.",
 											"properties": {
 												"creation_date": {
-													"description": "Creation timestamp",
+													"description": "Creation timestamp.",
 													"type": "string"
 												},
 												"location": {
-													"description": "Location of the bucket",
+													"description": "Location of the bucket.",
 													"enum": [
 														"apac",
 														"eeur",
@@ -3875,7 +4116,7 @@
 													"type": "string"
 												},
 												"name": {
-													"description": "Name of the bucket",
+													"description": "Name of the bucket.",
 													"example": "example-bucket",
 													"maxLength": 64,
 													"minLength": 3,
@@ -3901,7 +4142,7 @@
 						}
 					}
 				},
-				"description": "Create Bucket response"
+				"description": "Create Bucket response."
 			},
 			"4XX": {
 				"content": {
@@ -3942,7 +4183,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -3960,7 +4201,7 @@
 						}
 					}
 				},
-				"description": "Create Bucket response failure"
+				"description": "Create Bucket response failure."
 			}
 		},
 		"security": [
@@ -3985,7 +4226,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -3996,7 +4237,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -4009,7 +4250,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -4031,7 +4272,7 @@
 						},
 						"properties": {
 							"domain": {
-								"description": "Name of the custom domain to be added",
+								"description": "Name of the custom domain to be added.",
 								"type": "string"
 							},
 							"enabled": {
@@ -4049,7 +4290,7 @@
 								"type": "string"
 							},
 							"zoneId": {
-								"description": "Zone ID of the custom domain",
+								"description": "Zone ID of the custom domain.",
 								"type": "string"
 							}
 						},
@@ -4102,7 +4343,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -4126,11 +4367,11 @@
 											},
 											"properties": {
 												"domain": {
-													"description": "Domain name of the affected custom domain",
+													"description": "Domain name of the affected custom domain.",
 													"type": "string"
 												},
 												"enabled": {
-													"description": "Whether this bucket is publicly accessible at the specified custom domain",
+													"description": "Whether this bucket is publicly accessible at the specified custom domain.",
 													"type": "boolean"
 												},
 												"minTLS": {
@@ -4157,7 +4398,7 @@
 						}
 					}
 				},
-				"description": "Add Custom Domain response"
+				"description": "Add Custom Domain response."
 			},
 			"4XX": {
 				"content": {
@@ -4198,7 +4439,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -4216,7 +4457,7 @@
 						}
 					}
 				},
-				"description": "Add Custom Domain response failure"
+				"description": "Add Custom Domain response failure."
 			}
 		},
 		"security": [
@@ -4243,7 +4484,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -4268,22 +4509,22 @@
 						},
 						"properties": {
 							"bucket": {
-								"description": "Name of the R2 bucket",
+								"description": "Name of the R2 bucket.",
 								"type": "string"
 							},
 							"objects": {
-								"description": "Optional object paths to scope the credentials to",
+								"description": "Optional object paths to scope the credentials to.",
 								"items": {
 									"type": "string"
 								},
 								"type": "array"
 							},
 							"parentAccessKeyId": {
-								"description": "The parent access key id to use for signing",
+								"description": "The parent access key id to use for signing.",
 								"type": "string"
 							},
 							"permission": {
-								"description": "Permissions allowed on the credentials",
+								"description": "Permissions allowed on the credentials.",
 								"enum": [
 									"admin-read-write",
 									"admin-read-only",
@@ -4293,7 +4534,7 @@
 								"type": "string"
 							},
 							"prefixes": {
-								"description": "Optional prefix paths to scope the credentials to",
+								"description": "Optional prefix paths to scope the credentials to.",
 								"items": {
 									"type": "string"
 								},
@@ -4301,7 +4542,7 @@
 							},
 							"ttlSeconds": {
 								"default": 900,
-								"description": "How long the credentials will live for in seconds",
+								"description": "How long the credentials will live for in seconds.",
 								"maximum": 604800,
 								"type": "number"
 							}
@@ -4356,7 +4597,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -4381,16 +4622,16 @@
 											},
 											"properties": {
 												"accessKeyId": {
-													"description": "ID for new access key",
+													"description": "ID for new access key.",
 													"type": "string"
 												},
 												"secretAccessKey": {
-													"description": "Secret access key",
+													"description": "Secret access key.",
 													"type": "string",
 													"x-sensitive": true
 												},
 												"sessionToken": {
-													"description": "Security token",
+													"description": "Security token.",
 													"type": "string",
 													"x-sensitive": true
 												}
@@ -4404,7 +4645,7 @@
 						}
 					}
 				},
-				"description": "Create temporary access credentials response"
+				"description": "Create temporary access credentials response."
 			},
 			"4XX": {
 				"content": {
@@ -4445,7 +4686,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -4463,7 +4704,7 @@
 						}
 					}
 				},
-				"description": "Create temporary access credentials response failure"
+				"description": "Create temporary access credentials response failure."
 			}
 		},
 		"security": [
@@ -4485,7 +4726,7 @@
 				"name": "queue_id",
 				"required": true,
 				"schema": {
-					"description": "Queue ID",
+					"description": "Queue ID.",
 					"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
 					"maxLength": 32,
 					"type": "string"
@@ -4496,7 +4737,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -4509,7 +4750,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -4520,7 +4761,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -4537,11 +4778,11 @@
 					"schema": {
 						"properties": {
 							"rules": {
-								"description": "Array of rules to drive notifications",
+								"description": "Array of rules to drive notifications.",
 								"items": {
 									"properties": {
 										"actions": {
-											"description": "Array of R2 object actions that will trigger notifications",
+											"description": "Array of R2 object actions that will trigger notifications.",
 											"example": [
 												"PutObject",
 												"CopyObject"
@@ -4560,17 +4801,17 @@
 											"uniqueItems": true
 										},
 										"description": {
-											"description": "A description that can be used to identify the event notification rule after creation",
+											"description": "A description that can be used to identify the event notification rule after creation.",
 											"example": "Notifications from source bucket to queue",
 											"type": "string"
 										},
 										"prefix": {
-											"description": "Notifications will be sent only for objects with this prefix",
+											"description": "Notifications will be sent only for objects with this prefix.",
 											"example": "img/",
 											"type": "string"
 										},
 										"suffix": {
-											"description": "Notifications will be sent only for objects with this suffix",
+											"description": "Notifications will be sent only for objects with this suffix.",
 											"example": ".jpeg",
 											"type": "string"
 										}
@@ -4627,7 +4868,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -4649,7 +4890,7 @@
 						}
 					}
 				},
-				"description": "Create Configuration response"
+				"description": "Create Configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -4690,7 +4931,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -4708,7 +4949,7 @@
 						}
 					}
 				},
-				"description": "Create Configuration failure"
+				"description": "Create Configuration failure."
 			}
 		},
 		"security": [
@@ -4725,7 +4966,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
-		"description": "Set the CORS policy for a bucket",
+		"description": "Set the CORS policy for a bucket.",
 		"operationId": "r2-put-bucket-cors-policy",
 		"parameters": [
 			{
@@ -4733,7 +4974,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -4746,7 +4987,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -4757,7 +4998,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -4825,7 +5066,7 @@
 											"type": "array"
 										},
 										"id": {
-											"description": "Identifier for this rule",
+											"description": "Identifier for this rule.",
 											"example": "Allow Local Development",
 											"type": "string"
 										},
@@ -4887,7 +5128,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -4909,7 +5150,7 @@
 						}
 					}
 				},
-				"description": "Success Response"
+				"description": "Success Response."
 			},
 			"4XX": {
 				"content": {
@@ -4950,7 +5191,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -4968,7 +5209,7 @@
 						}
 					}
 				},
-				"description": "Error Response"
+				"description": "Error Response."
 			}
 		},
 		"security": [
@@ -4990,7 +5231,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -5001,7 +5242,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -5014,7 +5255,7 @@
 				"name": "domain",
 				"required": true,
 				"schema": {
-					"description": "Name of the custom domain",
+					"description": "Name of the custom domain.",
 					"example": "example-domain/custom-domain.com",
 					"type": "string"
 				}
@@ -5024,7 +5265,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -5045,7 +5286,7 @@
 						},
 						"properties": {
 							"enabled": {
-								"description": "Whether to enable public bucket access at the specified custom domain",
+								"description": "Whether to enable public bucket access at the specified custom domain.",
 								"type": "boolean"
 							},
 							"minTLS": {
@@ -5103,7 +5344,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -5129,11 +5370,11 @@
 													},
 													"properties": {
 														"domain": {
-															"description": "Domain name of the affected custom domain",
+															"description": "Domain name of the affected custom domain.",
 															"type": "string"
 														},
 														"enabled": {
-															"description": "Whether this bucket is publicly accessible at the specified custom domain",
+															"description": "Whether this bucket is publicly accessible at the specified custom domain.",
 															"type": "boolean"
 														},
 														"minTLS": {
@@ -5161,7 +5402,7 @@
 						}
 					}
 				},
-				"description": "Edit Custom Domain Configuration response"
+				"description": "Edit Custom Domain Configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -5202,7 +5443,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -5220,7 +5461,7 @@
 						}
 					}
 				},
-				"description": "Edit Custom Domain Configuration response failure"
+				"description": "Edit Custom Domain Configuration response failure."
 			}
 		},
 		"security": [
@@ -5247,7 +5488,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -5258,7 +5499,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -5271,7 +5512,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -5291,7 +5532,7 @@
 						},
 						"properties": {
 							"enabled": {
-								"description": "Whether to enable public bucket access at the r2.dev domain",
+								"description": "Whether to enable public bucket access at the r2.dev domain.",
 								"type": "boolean"
 							}
 						},
@@ -5342,7 +5583,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -5367,16 +5608,16 @@
 											},
 											"properties": {
 												"bucketId": {
-													"description": "Bucket ID",
+													"description": "Bucket ID.",
 													"maxLength": 32,
 													"type": "string"
 												},
 												"domain": {
-													"description": "Domain name of the bucket's r2.dev domain",
+													"description": "Domain name of the bucket's r2.dev domain.",
 													"type": "string"
 												},
 												"enabled": {
-													"description": "Whether this bucket is publicly accessible at the r2.dev domain",
+													"description": "Whether this bucket is publicly accessible at the r2.dev domain.",
 													"type": "boolean"
 												}
 											},
@@ -5394,7 +5635,7 @@
 						}
 					}
 				},
-				"description": "Update Managed Subdomain response"
+				"description": "Update Managed Subdomain response."
 			},
 			"4XX": {
 				"content": {
@@ -5435,7 +5676,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -5453,7 +5694,7 @@
 						}
 					}
 				},
-				"description": "Update Managed Subdomain response failure"
+				"description": "Update Managed Subdomain response failure."
 			}
 		},
 		"security": [
@@ -5472,7 +5713,7 @@
 		}
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/lifecycle": {
-		"description": "Set the object lifecycle rules for a bucket",
+		"description": "Set the object lifecycle rules for a bucket.",
 		"operationId": "r2-put-bucket-lifecycle-configuration",
 		"parameters": [
 			{
@@ -5480,7 +5721,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -5493,7 +5734,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -5504,7 +5745,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -5524,12 +5765,12 @@
 								"items": {
 									"properties": {
 										"abortMultipartUploadsTransition": {
-											"description": "Transition to abort ongoing multipart uploads",
+											"description": "Transition to abort ongoing multipart uploads.",
 											"properties": {
 												"condition": {
 													"allOf": [
 														{
-															"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds",
+															"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds.",
 															"properties": {
 																"maxAge": {
 																	"type": "integer"
@@ -5553,10 +5794,10 @@
 											"type": "object"
 										},
 										"conditions": {
-											"description": "Conditions that apply to all transitions of this rule",
+											"description": "Conditions that apply to all transitions of this rule.",
 											"properties": {
 												"prefix": {
-													"description": "Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads",
+													"description": "Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.",
 													"type": "string"
 												}
 											},
@@ -5566,12 +5807,12 @@
 											"type": "object"
 										},
 										"deleteObjectsTransition": {
-											"description": "Transition to delete objects",
+											"description": "Transition to delete objects.",
 											"properties": {
 												"condition": {
 													"oneOf": [
 														{
-															"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds",
+															"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds.",
 															"properties": {
 																"maxAge": {
 																	"type": "integer"
@@ -5590,7 +5831,7 @@
 															"type": "object"
 														},
 														{
-															"description": "Condition for lifecycle transitions to apply on a specific date",
+															"description": "Condition for lifecycle transitions to apply on a specific date.",
 															"properties": {
 																"date": {
 																	"format": "date",
@@ -5615,16 +5856,16 @@
 											"type": "object"
 										},
 										"enabled": {
-											"description": "Whether or not this rule is in effect",
+											"description": "Whether or not this rule is in effect.",
 											"type": "boolean"
 										},
 										"id": {
-											"description": "Unique identifier for this rule",
+											"description": "Unique identifier for this rule.",
 											"example": "Expire all objects older than 24 hours",
 											"type": "string"
 										},
 										"storageClassTransitions": {
-											"description": "Transitions to change the storage class of objects",
+											"description": "Transitions to change the storage class of objects.",
 											"items": {
 												"allOf": [
 													{
@@ -5632,7 +5873,7 @@
 															"condition": {
 																"oneOf": [
 																	{
-																		"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds",
+																		"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds.",
 																		"properties": {
 																			"maxAge": {
 																				"type": "integer"
@@ -5651,7 +5892,7 @@
 																		"type": "object"
 																	},
 																	{
-																		"description": "Condition for lifecycle transitions to apply on a specific date",
+																		"description": "Condition for lifecycle transitions to apply on a specific date.",
 																		"properties": {
 																			"date": {
 																				"format": "date",
@@ -5744,7 +5985,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -5766,7 +6007,7 @@
 						}
 					}
 				},
-				"description": "Success Response"
+				"description": "Success Response."
 			},
 			"4XX": {
 				"content": {
@@ -5807,7 +6048,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -5825,7 +6066,7 @@
 						}
 					}
 				},
-				"description": "Error Response"
+				"description": "Error Response."
 			}
 		},
 		"security": [
@@ -5839,7 +6080,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/lock": {
-		"description": "Set lock rules for a bucket",
+		"description": "Set lock rules for a bucket.",
 		"operationId": "r2-put-bucket-lock-configuration",
 		"parameters": [
 			{
@@ -5847,7 +6088,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -5860,7 +6101,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -5871,7 +6112,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -5892,7 +6133,7 @@
 										"condition": {
 											"oneOf": [
 												{
-													"description": "Condition to apply a lock rule to an object for how long in seconds",
+													"description": "Condition to apply a lock rule to an object for how long in seconds.",
 													"properties": {
 														"maxAgeSeconds": {
 															"example": 100,
@@ -5912,7 +6153,7 @@
 													"type": "object"
 												},
 												{
-													"description": "Condition to apply a lock rule to an object until a specific date",
+													"description": "Condition to apply a lock rule to an object until a specific date.",
 													"properties": {
 														"date": {
 															"format": "date",
@@ -5932,7 +6173,7 @@
 													"type": "object"
 												},
 												{
-													"description": "Condition to apply a lock rule indefinitely",
+													"description": "Condition to apply a lock rule indefinitely.",
 													"properties": {
 														"type": {
 															"enum": [
@@ -5949,16 +6190,16 @@
 											]
 										},
 										"enabled": {
-											"description": "Whether or not this rule is in effect",
+											"description": "Whether or not this rule is in effect.",
 											"type": "boolean"
 										},
 										"id": {
-											"description": "Unique identifier for this rule",
+											"description": "Unique identifier for this rule.",
 											"example": "Lock all objects for 24 hours",
 											"type": "string"
 										},
 										"prefix": {
-											"description": "Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads",
+											"description": "Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.",
 											"type": "string"
 										}
 									},
@@ -6016,7 +6257,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -6038,7 +6279,7 @@
 						}
 					}
 				},
-				"description": "Success Response"
+				"description": "Success Response."
 			},
 			"4XX": {
 				"content": {
@@ -6079,7 +6320,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -6097,7 +6338,7 @@
 						}
 					}
 				},
-				"description": "Error Response"
+				"description": "Error Response."
 			}
 		},
 		"security": [
@@ -6119,7 +6360,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -6130,7 +6371,7 @@
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket.",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
@@ -6143,7 +6384,7 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction",
+					"description": "The bucket jurisdiction.",
 					"enum": [
 						"default",
 						"eu",
@@ -6162,10 +6403,10 @@
 							{
 								"properties": {
 									"destination": {
-										"description": "R2 bucket to copy objects to",
+										"description": "R2 bucket to copy objects to.",
 										"properties": {
 											"accessKeyId": {
-												"description": "ID of a Cloudflare API token.\nThis is the value labelled \"Access Key ID\" when creating an API\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
+												"description": "ID of a Cloudflare API token.\nThis is the value labelled \"Access Key ID\" when creating an API.\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
 												"type": "string"
 											},
 											"provider": {
@@ -6175,7 +6416,7 @@
 												"type": "string"
 											},
 											"secretAccessKey": {
-												"description": "Value of a Cloudflare API token.\nThis is the value labelled \"Secret Access Key\" when creating an API\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
+												"description": "Value of a Cloudflare API token.\nThis is the value labelled \"Secret Access Key\" when creating an API.\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
 												"type": "string",
 												"x-sensitive": true
 											}
@@ -6183,14 +6424,14 @@
 										"type": "object"
 									},
 									"source": {
-										"description": "AWS S3 bucket to copy objects from",
+										"description": "AWS S3 bucket to copy objects from.",
 										"properties": {
 											"accessKeyId": {
-												"description": "Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)",
+												"description": "Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).",
 												"type": "string"
 											},
 											"bucket": {
-												"description": "Name of the AWS S3 bucket",
+												"description": "Name of the AWS S3 bucket.",
 												"type": "string"
 											},
 											"provider": {
@@ -6200,11 +6441,11 @@
 												"type": "string"
 											},
 											"region": {
-												"description": "Name of the AWS availability zone",
+												"description": "Name of the AWS availability zone.",
 												"type": "string"
 											},
 											"secretAccessKey": {
-												"description": "Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)",
+												"description": "Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).",
 												"type": "string",
 												"x-sensitive": true
 											}
@@ -6216,10 +6457,10 @@
 							{
 								"properties": {
 									"destination": {
-										"description": "R2 bucket to copy objects to",
+										"description": "R2 bucket to copy objects to.",
 										"properties": {
 											"accessKeyId": {
-												"description": "ID of a Cloudflare API token.\nThis is the value labelled \"Access Key ID\" when creating an API\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
+												"description": "ID of a Cloudflare API token.\nThis is the value labelled \"Access Key ID\" when creating an API.\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
 												"type": "string"
 											},
 											"provider": {
@@ -6229,7 +6470,7 @@
 												"type": "string"
 											},
 											"secretAccessKey": {
-												"description": "Value of a Cloudflare API token.\nThis is the value labelled \"Secret Access Key\" when creating an API\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
+												"description": "Value of a Cloudflare API token.\nThis is the value labelled \"Secret Access Key\" when creating an API.\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
 												"type": "string",
 												"x-sensitive": true
 											}
@@ -6237,18 +6478,18 @@
 										"type": "object"
 									},
 									"source": {
-										"description": "GCS bucket to copy objects from",
+										"description": "GCS bucket to copy objects from.",
 										"properties": {
 											"bucket": {
-												"description": "Name of the GCS bucket",
+												"description": "Name of the GCS bucket.",
 												"type": "string"
 											},
 											"clientEmail": {
-												"description": "Client email of an IAM credential (ideally scoped to a single GCS bucket)",
+												"description": "Client email of an IAM credential (ideally scoped to a single GCS bucket).",
 												"type": "string"
 											},
 											"privateKey": {
-												"description": "Private Key of an IAM credential (ideally scoped to a single GCS bucket)",
+												"description": "Private Key of an IAM credential (ideally scoped to a single GCS bucket).",
 												"type": "string",
 												"x-sensitive": true
 											},
@@ -6307,7 +6548,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -6327,17 +6568,17 @@
 										"result": {
 											"properties": {
 												"destination": {
-													"description": "Details about the configured destination bucket",
+													"description": "Details about the configured destination bucket.",
 													"properties": {
 														"accessKeyId": {
-															"description": "ID of the Cloudflare API token used when writing objects to this\nbucket\n",
+															"description": "ID of the Cloudflare API token used when writing objects to this\nbucket.\n",
 															"type": "string"
 														},
 														"account": {
 															"type": "string"
 														},
 														"bucket": {
-															"description": "Name of the bucket on the provider",
+															"description": "Name of the bucket on the provider.",
 															"type": "string"
 														},
 														"provider": {
@@ -6350,14 +6591,14 @@
 													"type": "object"
 												},
 												"enabled": {
-													"description": "State of Sippy for this bucket",
+													"description": "State of Sippy for this bucket.",
 													"type": "boolean"
 												},
 												"source": {
-													"description": "Details about the configured source bucket",
+													"description": "Details about the configured source bucket.",
 													"properties": {
 														"bucket": {
-															"description": "Name of the bucket on the provider",
+															"description": "Name of the bucket on the provider.",
 															"type": "string"
 														},
 														"provider": {
@@ -6368,7 +6609,7 @@
 															"type": "string"
 														},
 														"region": {
-															"description": "Region where the bucket resides (AWS only)",
+															"description": "Region where the bucket resides (AWS only).",
 															"nullable": true,
 															"type": "string"
 														}
@@ -6385,7 +6626,7 @@
 						}
 					}
 				},
-				"description": "Set Sippy Configuration response"
+				"description": "Set Sippy Configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -6426,7 +6667,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -6444,7 +6685,7 @@
 						}
 					}
 				},
-				"description": "Get Sippy Configuration response failure"
+				"description": "Get Sippy Configuration response failure."
 			}
 		},
 		"security": [
