@@ -308,7 +308,7 @@ const navigation = {
 	}, {
 		title: "navigation.account.zero_trust",
 		url: () => {
-			const M = (0, A.e1)(),
+			const M = (0, _.e1)(),
 				W = "https://one.dash.cloudflare.com";
 			return M ? `${W}/${M}/` : W
 		},
@@ -861,7 +861,7 @@ const navigation = {
 			title: "navigation.zone.email.dmarc-reports",
 			navigationType: "global-settings",
 			url: "/email/dmarc-management",
-			hasPermission: M => (0, _.ig)(M) ? !1 : (0, p.$n)(M, "dns_records", "dns-record") && !!(0, d.ZB)(M, "email", "dmarc_visible")
+			hasPermission: M => (0, A.ig)(M) ? !1 : (0, p.$n)(M, "dns_records", "dns-record") && !!(0, d.ZB)(M, "email", "dmarc_visible")
 		}, {
 			title: "navigation.zone.email.security",
 			navigationType: "global-settings",

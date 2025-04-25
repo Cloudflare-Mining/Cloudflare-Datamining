@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "f42e1ec6-c423-5335-a2a6-a3945876ce71")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "65d7f5dd-fbf6-5417-91cc-ab703726a93e")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1033,10 +1033,10 @@
 					t.g.build = Sn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "b55de8c166159b8c79296752ef9bfcb0deee7683",
-						dashVersion: "32794032",
+						commit: "b681338a6cec5353966cc1b47c4663ff795e7b86",
+						dashVersion: "32799880",
 						env: "production",
-						builtAt: 1745566368848,
+						builtAt: 1745588222740,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -11477,9 +11477,9 @@
 						buildConfig: "https://developers.cloudflare.com/pages/configuration/build-configuration/",
 						buildCache: "https://developers.cloudflare.com/pages/configuration/build-caching/#build-caching-beta",
 						configuration: "https://developers.cloudflare.com/pages/configuration/",
-						gettingStarted: "https://developers.cloudflare.com/pages/getting-started",
+						gettingStarted: "https://developers.cloudflare.com/pages/get-started",
 						configuringBuilds: "https://developers.cloudflare.com/pages/platform/build-configuration",
-						supportedFrameworks: "https://developers.cloudflare.com/pages/platform/build-configuration#framework-presets",
+						supportedFrameworks: "https://developers.cloudflare.com/pages/configuration/build-configuration/#framework-presets",
 						supportedTools: "https://developers.cloudflare.com/pages/configuration/language-support-and-tools",
 						supportedLanguages: "https://developers.cloudflare.com/pages/configuration/language-support-and-tools/#supported-languages-and-tools",
 						deployingBranches: "https://developers.cloudflare.com/pages/platform/preview-deployments",
@@ -21696,4 +21696,4 @@
 	}
 ]);
 
-//# debugId=f42e1ec6-c423-5335-a2a6-a3945876ce71
+//# debugId=65d7f5dd-fbf6-5417-91cc-ab703726a93e
