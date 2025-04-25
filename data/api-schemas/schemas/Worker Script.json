@@ -1076,13 +1076,11 @@
 															"type": "string"
 														},
 														"run_worker_first": {
-															"default": false,
 															"description": "When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.",
 															"example": false,
 															"type": "boolean"
 														},
 														"serve_directly": {
-															"default": true,
 															"deprecated": true,
 															"description": "When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.",
 															"example": true,
@@ -8149,12 +8147,19 @@
 											"type": "integer"
 										}
 									},
+									"required": [
+										"hash",
+										"size"
+									],
 									"type": "object"
 								},
 								"description": "A manifest ([path]: {hash, size}) map of files to upload. As an example, `/blog/hello-world.html` would be a valid path key.",
 								"type": "object"
 							}
 						},
+						"required": [
+							"manifest"
+						],
 						"type": "object"
 					}
 				}
@@ -8808,13 +8813,11 @@
 														"type": "string"
 													},
 													"run_worker_first": {
-														"default": false,
 														"description": "When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.",
 														"example": false,
 														"type": "boolean"
 													},
 													"serve_directly": {
-														"default": true,
 														"deprecated": true,
 														"description": "When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.",
 														"example": true,
