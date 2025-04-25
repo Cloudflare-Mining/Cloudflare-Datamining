@@ -1,5 +1,6 @@
 {
 	"GET /zones/{zone_id}/settings": {
+		"deprecated": true,
 		"description": "Available settings for your user in relation to a zone.",
 		"operationId": "zone-settings-get-all-zone-settings",
 		"parameters": [
@@ -3797,7 +3798,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "This endpoint is deprecated. Zone settings should instead be managed individually."
 	},
 	"GET /zones/{zone_id}/settings/{setting_id}": {
 		"description": "Fetch a single zone setting by name",
@@ -9147,6 +9149,7 @@
 		}
 	},
 	"PATCH /zones/{zone_id}/settings": {
+		"deprecated": true,
 		"description": "Edit settings for a zone.",
 		"operationId": "zone-settings-edit-zone-settings-info",
 		"parameters": [
@@ -16484,7 +16487,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "This endpoint is deprecated. Zone settings should instead be managed individually."
 	},
 	"PATCH /zones/{zone_id}/settings/{setting_id}": {
 		"description": "Updates a single zone setting by the identifier",
