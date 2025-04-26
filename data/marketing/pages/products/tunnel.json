@@ -3349,6 +3349,62 @@
 						]
 					},
 					{
+						"contentfulId": "2Ar9nmRdp6Y66QSmoSS6KK",
+						"title": "Protect web servers from direct attacks",
+						"copy": "Tunnel works with Cloudflare DDoS Protection and Web Application Firewall (WAF) to defend your web properties from attacks.\n\nOnce you deploy the Tunnel daemon and lock down your firewall, all inbound web traffic is filtered through Cloudflare's network.\n\nNow, your web server's firewall can block volumetric DDoS attacks and data breach attempts from reaching your application's origin servers.",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uOr1VUzVYcM88qkYmE4iO/5339ab8bf2c30527ddd689246b81d36b/argo-tunnel-protect-web-server.svg"
+							},
+							"description": null
+						},
+						"imageAssetFile": {
+							"id": "bc1dee80-1638-596e-8e2d-0446338afc87",
+							"altText": "Argo tunnel diagram 2",
+							"title": "Argo tunnel diagram 2",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5uLXEYIlWL2EyMuugX2H4U/916ebdad56ed34cdb3161bd471e95ec5/argo-tunnel-diagram.svg"
+								},
+								"description": "Argo tunnel diagram "
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "large",
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
 						"contentfulId": "2fKOVhQxYIg226eyQCkY2",
 						"title": "Secure access to internal applications",
 						"copy": "Tunnel allows you to quickly deploy infrastructure in a [Zero Trust environment](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/), so all requests to your resources first pass through Cloudflare's robust security filters.\n\nWhen  Tunnel is combined with Cloudflare Access, our comprehensive [Zero Trust access solution](https://www.cloudflare.com/teams/access/), users are authenticated by major identity providers (like Gsuite and Okta) without the help of a VPN.\n\nApplications once accessible to anyone through the origin IP are now only accessible to authenticated users through Cloudflare's network.\n\nAnd you can restrict access to internal applications (including those in development environments) that you'd like to make externally facing.\n\nLearn more about how Cloudflare enables [Zero Trust security](https://www.cloudflare.com/teams/).",
@@ -3496,6 +3552,28 @@
 						"logoList": [],
 						"logoListAssetFile": [],
 						"quoteCarousel": []
+					},
+					{
+						"contentfulId": "45Mu732vBmkEoUMqACicou",
+						"contentTypeId": "bladeKeyFeatures",
+						"backgroundColor": "white",
+						"title": "Key Features",
+						"keyFeature": [
+							"Easy-to-install agent with low performance overhead",
+							"Command-line configuration",
+							"Built-in DDoS protection",
+							"Load balancing across origin pools with Cloudflare Load Balancer",
+							"Custom tags to identify tunnels",
+							"Encrypted tunnels with TLS (origin-side certificates)",
+							"Application and protocol-level error logging"
+						],
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"titleColor": null,
+						"variant": null,
+						"description": null,
+						"featuresTextStyle": null,
+						"htmlId": null
 					},
 					{
 						"contentTypeId": "bladeTrustedBy",
@@ -3807,7 +3885,48 @@
 					}
 				],
 				"noindex": false,
-				"formModal": null,
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "4Aow0TgLBYkYEZ28QCgHjF",
+						"modalName": "Argo Tunnel - Product Page: Form Modal",
+						"modalId": "argo-tunnel-product-contact-sales",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "2OrYAoEqwQ8CQbGnVmwVRe",
+							"bladeName": "Argo Tunnel - Product Page: Marketo Form (1341)",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Web Form - Contact Us Argo Tunnel",
+							"marketoFormHeaderText": null,
+							"marketoFormDefaultComment": null,
+							"showCommentBox": true,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": "Contact Sales",
+						"regularCopy": "Cloudflare Tunnel",
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
