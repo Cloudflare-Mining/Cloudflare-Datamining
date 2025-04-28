@@ -556,5 +556,234 @@
 				"type": "integer"
 			}
 		}
+	],
+	"PARAMETERS /zones/{zone_id}/schema_validation/schemas": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string"
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/schema_validation/schemas/{schema_id}": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string"
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		},
+		{
+			"description": "The unique identifier of the schema",
+			"in": "path",
+			"name": "schema_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"allOf": [
+							{
+								"minLength": 36,
+								"type": "string",
+								"x-auditable": true
+							},
+							{
+								"description": "UUID.",
+								"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+								"maxLength": 36,
+								"type": "string"
+							}
+						]
+					},
+					{
+						"format": "uuid",
+						"readOnly": true,
+						"type": "string"
+					}
+				],
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/schema_validation/schemas/{schema_id}/operations": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string"
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		},
+		{
+			"description": "The unique identifier of the schema",
+			"in": "path",
+			"name": "schema_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"allOf": [
+							{
+								"minLength": 36,
+								"type": "string",
+								"x-auditable": true
+							},
+							{
+								"description": "UUID.",
+								"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+								"maxLength": 36,
+								"type": "string"
+							}
+						]
+					},
+					{
+						"format": "uuid",
+						"readOnly": true,
+						"type": "string"
+					}
+				],
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/schema_validation/schemas/hosts": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string"
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/schema_validation/settings": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string"
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/schema_validation/settings/operations": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string"
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/schema_validation/settings/operations/{operation_id}": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string"
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		},
+		{
+			"description": "Identifier for the operation",
+			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+			"in": "path",
+			"name": "operation_id",
+			"required": true,
+			"schema": {
+				"description": "UUID.",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+				"maxLength": 36,
+				"type": "string"
+			}
+		}
 	]
 }
