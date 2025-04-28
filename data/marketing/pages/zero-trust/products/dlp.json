@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-09-19T21:08:07.422Z",
-					"updatedAt": "2025-04-23T07:43:05.397Z"
+					"updatedAt": "2025-04-28T20:42:54.079Z"
 				},
 				"contentfulId": "7cgyYFfMqkSTHyCQqZ8g8Z",
 				"contentTypeId": "page",
@@ -93,11 +93,11 @@
 										"navigationLinks": [
 											{
 												"contentTypeId": "elementNavLink",
-												"contentfulId": "7JRJ8E2YY8VkjU2rWTUODX",
+												"contentfulId": "4a9ZtmQowpEL1RJrDEEPbw",
 												"locale": "en-US",
-												"title": "Risk posture",
-												"description": "Automated & dynamic risk controls across your attack surface",
-												"url": "/cybersecurity-risk-management/",
+												"title": "Everywhere security",
+												"description": "Unified security for the Internet, employees & networks",
+												"url": "cybersecurity",
 												"badges": null,
 												"specialLinkType": null,
 												"openInNewWindow": false,
@@ -105,11 +105,35 @@
 											},
 											{
 												"contentTypeId": "elementNavLink",
-												"contentfulId": "4a9ZtmQowpEL1RJrDEEPbw",
+												"contentfulId": "2LgPwohNZNmiqpjvktpwfP",
 												"locale": "en-US",
-												"title": "Cybersecurity",
-												"description": "Unified security for the Internet, employees & networks",
-												"url": "cybersecurity",
+												"title": "Modernize applications",
+												"description": "Modernize apps faster with Cloudflare. Launch, simplify, and scale with AI.",
+												"url": "/modernize-applications/",
+												"badges": null,
+												"specialLinkType": null,
+												"openInNewWindow": false,
+												"isExternalUrl": null
+											},
+											{
+												"contentTypeId": "elementNavLink",
+												"contentfulId": "5sQNV1h1gqFeDWOLCHyv4m",
+												"locale": "en-US",
+												"title": "Modernize networks",
+												"description": "Simplify enterprise connectivity with Cloudflare—boost performance, reliability, and security.",
+												"url": "/modernize-networks/",
+												"badges": null,
+												"specialLinkType": null,
+												"openInNewWindow": false,
+												"isExternalUrl": null
+											},
+											{
+												"contentTypeId": "elementNavLink",
+												"contentfulId": "7JRJ8E2YY8VkjU2rWTUODX",
+												"locale": "en-US",
+												"title": "Risk posture",
+												"description": "Automated & dynamic risk controls across your attack surface",
+												"url": "/cybersecurity-risk-management/",
 												"badges": null,
 												"specialLinkType": null,
 												"openInNewWindow": false,
@@ -3637,127 +3661,143 @@
 						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "5cgpXLLsHpHwAQTPgN3cQz",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "5uuGJG8t6sHD2cRF4JT6XF",
 						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "1R2L4VcLejWwCAG5KUt41d",
-								"title": "Adopt unified protection for data everywhere",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "2Ne4KiZuZ1WOQzyCDy9Sdu",
+								"heading": "Solution brief",
 								"description": "Learn how Cloudflare enables more effective, productive, and agile data protection — and find out which use cases to prioritize first.",
-								"learnMoreUrl": "https://cfl.re/data-protection-solution-brief",
-								"learnMoreText": "Get the solution brief",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "nN7giTUHjhknRFJJ3NDQe",
+									"elementName": "Adopt unified protection for data everywhere - Link",
+									"standardText": null,
+									"text": "Get the solution brief",
+									"url": "https://cfl.re/data-protection-solution-brief",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
+									"altText": "Solution brief - thumbnail",
+									"title": "Solution brief - thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "692Kk4eXEsBSwReBZJmmTx",
-								"title": "Why sprawling cloud and SaaS applications put more data at risk",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "1YHl5dv1Hos3MYtZrQpQjO",
+								"heading": "Infographic",
 								"description": "See why expanding cloud and SaaS environments, coding practices, and emerging AI tools demand a modern approach to security.",
-								"learnMoreUrl": "https://cfl.re/data-protection-infographic",
-								"learnMoreText": "View infographic",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "2CO6rUe8SPnmymJ3ZpwGth",
+									"elementName": "Why sprawling cloud and SaaS applications put more data at risk - link",
+									"standardText": null,
+									"text": "View infographic",
+									"url": "https://cfl.re/data-protection-infographic",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "09321c22-bf09-5048-9255-ca5659c313b2",
+									"altText": "Cloudflare infographic thumbnail",
+									"title": "Cloudflare infographic thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Q1cQoV79vPJwvEVPKXvfo/142e6b0a27bacfe52123e3b446de3d7f/thumbnail-2.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": "Cloudflare infographic thumbnail"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "0pvvImwpZZfvQof888one",
-								"title": "Get the buyer's guide to SASE use cases ",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "66sHf1ufUVLWMnXT62g8J8",
+								"heading": "Documentation",
 								"description": "Identify the starting point to your SASE journey, evaluate platform architectures, and plan vendor conversations with our in-depth guide.",
-								"learnMoreUrl": "/lp/the-buyers-guide-to-sase-use-cases/",
-								"learnMoreText": "Read the guide",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "uxOV8zy8Fezg7WeBFV7MW",
+									"elementName": "Get the buyer's guide to SASE use cases - link",
+									"standardText": null,
+									"text": "Read the guide",
+									"url": "/lp/the-buyers-guide-to-sase-use-cases/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "debaf283-5a96-54fe-8e6c-4af695d18f32",
+									"altText": "Documentation and News - thumbnail",
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cjUWD1XYnEQPLfBBphpbz/6664e5677d1165cd5e48ccaf57d344f2/News_Thumbnails_Opt-3.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": "Documentation and News - thumbnail"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5IUVAPbdi80LdRhzAOsEk0",
+								"heading": "Insight",
+								"description": "SASE combines network connectivity & security on a single platform",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5uC9E1ycbdFqPLkJLUXvM5",
+									"elementName": "What is SASE? - link",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://www.cloudflare.com/learning/access-management/what-is-sase/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
 								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"image": {
+									"id": "1c0de5f1-abee-55b8-9653-945bf9480f62",
+									"altText": "Cloudflare insights",
+									"title": "Cloudflare insights",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eD4EXWL2DPwSe5Y8ASppZ/3cf93c08e638e5f6057d6a1a7eccd9ab/Insight_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},
