@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-03-18T14:27:03.866Z",
-					"updatedAt": "2025-04-22T18:18:38.881Z"
+					"updatedAt": "2025-04-28T15:48:33.359Z"
 				},
 				"contentfulId": "4oTSpffYgFNj78MlHYQceF",
 				"contentTypeId": "page",
@@ -946,6 +946,18 @@
 								"navigationLinks": [
 									{
 										"contentTypeId": "elementNavLink",
+										"contentfulId": "ZIQ2hkVLfTaMKIdwobKEB",
+										"locale": "en-US",
+										"title": "View FAQs",
+										"description": null,
+										"url": "plans/faq/",
+										"badges": null,
+										"specialLinkType": "NAV_BOTTOM_LINK",
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									{
+										"contentTypeId": "elementNavLink",
 										"contentfulId": "1Zk1C7Tp3SEjRAYIZdZ97p",
 										"locale": "en-US",
 										"title": "Contact sales",
@@ -1157,6 +1169,18 @@
 														"title": "Bot Management",
 														"description": null,
 														"url": "https://developers.cloudflare.com/bots/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "2YDP6M4rjvy7ySkW5GYigk",
+														"locale": "en-US",
+														"title": "Firewall Rules",
+														"description": null,
+														"url": "https://developers.cloudflare.com/waf/custom-rules/",
 														"badges": null,
 														"specialLinkType": null,
 														"openInNewWindow": true,
@@ -1553,6 +1577,18 @@
 														"title": "API Reference",
 														"description": null,
 														"url": "https://developers.cloudflare.com/api",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "5NKAJ5xNecrC3FhsfScjTg",
+														"locale": "en-US",
+														"title": "API Authentication",
+														"description": null,
+														"url": "https://developers.cloudflare.com/fundamentals/api",
 														"badges": null,
 														"specialLinkType": null,
 														"openInNewWindow": true,
@@ -2440,6 +2476,18 @@
 								"navigationItems": [],
 								"mainLink": null,
 								"navigationLinks": [
+									{
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "4qMTa5oo6WQknsTOzFsrQ",
+										"locale": "en-US",
+										"title": "Community Support",
+										"description": null,
+										"url": "https://community.cloudflare.com/",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": true,
+										"isExternalUrl": null
+									},
 									{
 										"contentTypeId": "elementNavLink",
 										"contentfulId": "7eEo2tTS8nkTUH01h4y5BN",
@@ -3601,131 +3649,6 @@
 							"locale": "en-US"
 						},
 						"secondaryCtaButton": null
-					},
-					{
-						"contentfulId": "JqHOwelC9RN2P4GLgHtJY",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3USHbi9ikU1tUanheOJY3l",
-								"title": "Implement unified protection for data everywhere",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Learn how Cloudflare enables more effective, productive, and agile data protection — and find out which use cases to prioritize first.",
-								"learnMoreUrl": "http://cfl.re/data-protection-solution-brief",
-								"learnMoreText": "Get the solution brief",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
-										},
-										"description": "Resources card - Thin top orange line  - image"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2SulHIV67Lud3IEw9qYaJ5",
-								"title": "Multi-channel phishing threat defense",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "See how Cloudflare protects users, apps, and networks from multi-channel phishing.",
-								"learnMoreUrl": "/lp/multi-channel-phishing-demo/",
-								"learnMoreText": "Watch demo",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
-										},
-										"description": "Resources card - Thin top orange line  - image"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "fDD1VVzJPRuxHcCURs0Nj",
-								"title": "Get the buyer's guide to SASE use cases",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Identify the starting point to your SASE journey, evaluate platform architectures, and plan vendor conversations with our in-depth guide.",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/the-buyers-guide-to-sase-use-cases/",
-								"learnMoreText": "Read the guide",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
-										},
-										"description": "Resources card - Thin top orange line  - image"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
 					},
 					{
 						"contentTypeId": "bladeEnablement",
