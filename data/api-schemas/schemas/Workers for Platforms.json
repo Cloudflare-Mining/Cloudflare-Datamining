@@ -1977,7 +1977,7 @@
 														"ai": "#/components/schemas/workers_binding_kind_ai",
 														"analytics_engine": "#/components/schemas/workers_binding_kind_analytics_engine",
 														"assets": "#/components/schemas/workers_binding_kind_assets",
-														"browser_rendering": "#/components/schemas/workers_binding_kind_browser_rendering",
+														"browser": "#/components/schemas/workers_binding_kind_browser",
 														"d1": "#/components/schemas/workers_binding_kind_d1",
 														"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 														"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
@@ -2079,7 +2079,7 @@
 															"type": {
 																"description": "The kind of resource that the binding provides.",
 																"enum": [
-																	"browser_rendering"
+																	"browser"
 																],
 																"type": "string"
 															}
@@ -3879,7 +3879,7 @@
 																"ai": "#/components/schemas/workers_binding_kind_ai",
 																"analytics_engine": "#/components/schemas/workers_binding_kind_analytics_engine",
 																"assets": "#/components/schemas/workers_binding_kind_assets",
-																"browser_rendering": "#/components/schemas/workers_binding_kind_browser_rendering",
+																"browser": "#/components/schemas/workers_binding_kind_browser",
 																"d1": "#/components/schemas/workers_binding_kind_d1",
 																"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 																"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
@@ -3981,7 +3981,7 @@
 																	"type": {
 																		"description": "The kind of resource that the binding provides.",
 																		"enum": [
-																			"browser_rendering"
+																			"browser"
 																		],
 																		"type": "string"
 																	}
@@ -5300,7 +5300,7 @@
 													"ai": "#/components/schemas/workers_binding_kind_ai",
 													"analytics_engine": "#/components/schemas/workers_binding_kind_analytics_engine",
 													"assets": "#/components/schemas/workers_binding_kind_assets",
-													"browser_rendering": "#/components/schemas/workers_binding_kind_browser_rendering",
+													"browser": "#/components/schemas/workers_binding_kind_browser",
 													"d1": "#/components/schemas/workers_binding_kind_d1",
 													"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 													"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
@@ -5402,7 +5402,7 @@
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
-																"browser_rendering"
+																"browser"
 															],
 															"type": "string"
 														}
@@ -6401,7 +6401,7 @@
 																"ai": "#/components/schemas/workers_binding_kind_ai",
 																"analytics_engine": "#/components/schemas/workers_binding_kind_analytics_engine",
 																"assets": "#/components/schemas/workers_binding_kind_assets",
-																"browser_rendering": "#/components/schemas/workers_binding_kind_browser_rendering",
+																"browser": "#/components/schemas/workers_binding_kind_browser",
 																"d1": "#/components/schemas/workers_binding_kind_d1",
 																"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 																"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
@@ -6503,7 +6503,7 @@
 																	"type": {
 																		"description": "The kind of resource that the binding provides.",
 																		"enum": [
-																			"browser_rendering"
+																			"browser"
 																		],
 																		"type": "string"
 																	}
@@ -8371,7 +8371,7 @@
 													"ai": "#/components/schemas/workers_binding_kind_ai",
 													"analytics_engine": "#/components/schemas/workers_binding_kind_analytics_engine",
 													"assets": "#/components/schemas/workers_binding_kind_assets",
-													"browser_rendering": "#/components/schemas/workers_binding_kind_browser_rendering",
+													"browser": "#/components/schemas/workers_binding_kind_browser",
 													"d1": "#/components/schemas/workers_binding_kind_d1",
 													"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 													"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
@@ -8473,7 +8473,7 @@
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
-																"browser_rendering"
+																"browser"
 															],
 															"type": "string"
 														}

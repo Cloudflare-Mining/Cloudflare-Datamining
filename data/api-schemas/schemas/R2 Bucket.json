@@ -11,7 +11,8 @@
 					"description": "Queue ID.",
 					"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -24,7 +25,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -222,7 +224,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -394,7 +397,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -570,7 +574,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -591,7 +596,8 @@
 				"schema": {
 					"description": "Name of the custom domain.",
 					"example": "example-domain/custom-domain.com",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -672,7 +678,8 @@
 											"properties": {
 												"domain": {
 													"description": "Name of the removed custom domain.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -776,7 +783,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -968,7 +976,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1057,7 +1066,8 @@
 											"properties": {
 												"bucketName": {
 													"description": "Name of the bucket.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"queues": {
 													"description": "List of queues associated with the bucket.",
@@ -1066,12 +1076,14 @@
 															"queueId": {
 																"description": "Queue ID.",
 																"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"queueName": {
 																"description": "Name of the queue.",
 																"example": "first-queue",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"rules": {
 																"items": {
@@ -1092,7 +1104,8 @@
 																							"CompleteMultipartUpload",
 																							"LifecycleDeletion"
 																						],
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"type": "array",
 																					"uniqueItems": true
@@ -1100,17 +1113,20 @@
 																				"description": {
 																					"description": "A description that can be used to identify the event notification rule after creation.",
 																					"example": "Notifications from source bucket to queue",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"prefix": {
 																					"description": "Notifications will be sent only for objects with this prefix.",
 																					"example": "img/",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"suffix": {
 																					"description": "Notifications will be sent only for objects with this suffix.",
 																					"example": ".jpeg",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
@@ -1123,17 +1139,20 @@
 																				"createdAt": {
 																					"description": "Timestamp when the rule was created.",
 																					"example": "2024-09-19T21:54:48.405Z",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"description": {
 																					"description": "A description that can be used to identify the event notification rule after creation.",
 																					"example": "Notifications from source bucket to queue",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"ruleId": {
 																					"description": "Rule ID.",
 																					"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1494,7 +1513,8 @@
 																	"wnam",
 																	"oc"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "Name of the bucket.",
@@ -1502,7 +1522,8 @@
 																"maxLength": 64,
 																"minLength": 3,
 																"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"storage_class": {
 																"default": "Standard",
@@ -1511,7 +1532,8 @@
 																	"Standard",
 																	"InfrequentAccess"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1629,7 +1651,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1720,7 +1743,8 @@
 														"wnam",
 														"oc"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the bucket.",
@@ -1728,7 +1752,8 @@
 													"maxLength": 64,
 													"minLength": 3,
 													"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"storage_class": {
 													"default": "Standard",
@@ -1737,7 +1762,8 @@
 														"Standard",
 														"InfrequentAccess"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1840,7 +1866,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1937,7 +1964,8 @@
 																		"description": "Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.",
 																		"items": {
 																			"example": "x-requested-by",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
@@ -1951,7 +1979,8 @@
 																				"DELETE",
 																				"HEAD"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
@@ -1959,7 +1988,8 @@
 																		"description": "Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.",
 																		"items": {
 																			"example": "http://localhost:3000",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	}
@@ -1974,19 +2004,22 @@
 																"description": "Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.",
 																"items": {
 																	"example": "Content-Encoding",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"id": {
 																"description": "Identifier for this rule.",
 																"example": "Allow Local Development",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"maxAgeSeconds": {
 																"description": "Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.",
 																"example": 3600,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2103,7 +2136,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2207,11 +2241,13 @@
 														"properties": {
 															"domain": {
 																"description": "Domain name of the custom domain to be added.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"enabled": {
 																"description": "Whether this bucket is publicly accessible at the specified custom domain.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"minTLS": {
 																"description": "Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.",
@@ -2221,7 +2257,8 @@
 																	"1.2",
 																	"1.3"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"status": {
 																"properties": {
@@ -2235,7 +2272,8 @@
 																			"error",
 																			"unknown"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"ssl": {
 																		"description": "SSL certificate status.",
@@ -2247,7 +2285,8 @@
 																			"error",
 																			"unknown"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -2258,11 +2297,13 @@
 															},
 															"zoneId": {
 																"description": "Zone ID of the custom domain resides in.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"zoneName": {
 																"description": "Zone that the custom domain resides in.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2389,7 +2430,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2399,7 +2441,8 @@
 				"schema": {
 					"description": "Name of the custom domain.",
 					"example": "example-domain/custom-domain.com",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2489,11 +2532,13 @@
 													"properties": {
 														"domain": {
 															"description": "Domain name of the custom domain to be added.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"enabled": {
 															"description": "Whether this bucket is publicly accessible at the specified custom domain.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"minTLS": {
 															"description": "Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.",
@@ -2503,7 +2548,8 @@
 																"1.2",
 																"1.3"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"properties": {
@@ -2517,7 +2563,8 @@
 																		"error",
 																		"unknown"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"ssl": {
 																	"description": "SSL certificate status.",
@@ -2529,7 +2576,8 @@
 																		"error",
 																		"unknown"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -2540,11 +2588,13 @@
 														},
 														"zoneId": {
 															"description": "Zone ID of the custom domain resides in.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zoneName": {
 															"description": "Zone that the custom domain resides in.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2664,7 +2714,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2748,15 +2799,18 @@
 												"bucketId": {
 													"description": "Bucket ID.",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"domain": {
 													"description": "Domain name of the bucket's r2.dev domain.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"enabled": {
 													"description": "Whether this bucket is publicly accessible at the r2.dev domain.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -2864,7 +2918,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2965,13 +3020,15 @@
 																						"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds.",
 																						"properties": {
 																							"maxAge": {
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"enum": [
 																									"Age"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -2990,7 +3047,8 @@
 																		"properties": {
 																			"prefix": {
 																				"description": "Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -3007,13 +3065,15 @@
 																						"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds.",
 																						"properties": {
 																							"maxAge": {
-																								"type": "integer"
+																								"type": "integer",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"enum": [
 																									"Age"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -3027,13 +3087,15 @@
 																						"properties": {
 																							"date": {
 																								"format": "date",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"enum": [
 																									"Date"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -3049,12 +3111,14 @@
 																	},
 																	"enabled": {
 																		"description": "Whether or not this rule is in effect.",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Unique identifier for this rule.",
 																		"example": "Expire all objects older than 24 hours",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"storageClassTransitions": {
 																		"description": "Transitions to change the storage class of objects.",
@@ -3068,13 +3132,15 @@
 																									"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds.",
 																									"properties": {
 																										"maxAge": {
-																											"type": "integer"
+																											"type": "integer",
+																											"x-auditable": true
 																										},
 																										"type": {
 																											"enum": [
 																												"Age"
 																											],
-																											"type": "string"
+																											"type": "string",
+																											"x-auditable": true
 																										}
 																									},
 																									"required": [
@@ -3088,13 +3154,15 @@
 																									"properties": {
 																										"date": {
 																											"format": "date",
-																											"type": "string"
+																											"type": "string",
+																											"x-auditable": true
 																										},
 																										"type": {
 																											"enum": [
 																												"Date"
 																											],
-																											"type": "string"
+																											"type": "string",
+																											"x-auditable": true
 																										}
 																									},
 																									"required": [
@@ -3109,7 +3177,8 @@
 																							"enum": [
 																								"InfrequentAccess"
 																							],
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"required": [
@@ -3230,7 +3299,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3328,13 +3398,15 @@
 																				"properties": {
 																					"maxAgeSeconds": {
 																						"example": 100,
-																						"type": "integer"
+																						"type": "integer",
+																						"x-auditable": true
 																					},
 																					"type": {
 																						"enum": [
 																							"Age"
 																						],
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -3348,13 +3420,15 @@
 																				"properties": {
 																					"date": {
 																						"format": "date",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"type": {
 																						"enum": [
 																							"Date"
 																						],
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -3370,7 +3444,8 @@
 																						"enum": [
 																							"Indefinite"
 																						],
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -3382,16 +3457,19 @@
 																	},
 																	"enabled": {
 																		"description": "Whether or not this rule is in effect.",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Unique identifier for this rule.",
 																		"example": "Lock all objects for 24 hours",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"prefix": {
 																		"description": "Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -3512,7 +3590,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3596,43 +3675,50 @@
 															"type": "string"
 														},
 														"account": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"bucket": {
 															"description": "Name of the bucket on the provider.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"provider": {
 															"enum": [
 																"r2"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
 												},
 												"enabled": {
 													"description": "State of Sippy for this bucket.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"source": {
 													"description": "Details about the configured source bucket.",
 													"properties": {
 														"bucket": {
 															"description": "Name of the bucket on the provider.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"provider": {
 															"enum": [
 																"aws",
 																"gcs"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"region": {
 															"description": "Region where the bucket resides (AWS only).",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3749,7 +3835,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3780,7 +3867,8 @@
 								"Standard",
 								"InfrequentAccess"
 							],
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						}
 					],
 					"x-stainless-param": "storage_class"
@@ -3859,7 +3947,8 @@
 														"wnam",
 														"oc"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the bucket.",
@@ -3867,7 +3956,8 @@
 													"maxLength": 64,
 													"minLength": 3,
 													"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"storage_class": {
 													"default": "Standard",
@@ -3876,7 +3966,8 @@
 														"Standard",
 														"InfrequentAccess"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -4012,7 +4103,8 @@
 									"wnam",
 									"oc"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "Name of the bucket.",
@@ -4020,7 +4112,8 @@
 								"maxLength": 64,
 								"minLength": 3,
 								"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"storageClass": {
 								"default": "Standard",
@@ -4029,7 +4122,8 @@
 									"Standard",
 									"InfrequentAccess"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -4113,7 +4207,8 @@
 														"wnam",
 														"oc"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the bucket.",
@@ -4121,7 +4216,8 @@
 													"maxLength": 64,
 													"minLength": 3,
 													"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"storage_class": {
 													"default": "Standard",
@@ -4130,7 +4226,8 @@
 														"Standard",
 														"InfrequentAccess"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -4242,7 +4339,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4273,11 +4371,13 @@
 						"properties": {
 							"domain": {
 								"description": "Name of the custom domain to be added.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"enabled": {
 								"description": "Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"minTLS": {
 								"description": "Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.",
@@ -4287,11 +4387,13 @@
 									"1.2",
 									"1.3"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"zoneId": {
 								"description": "Zone ID of the custom domain.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -4368,7 +4470,8 @@
 											"properties": {
 												"domain": {
 													"description": "Domain name of the affected custom domain.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"enabled": {
 													"description": "Whether this bucket is publicly accessible at the specified custom domain.",
@@ -4382,7 +4485,8 @@
 														"1.2",
 														"1.3"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -4510,12 +4614,14 @@
 						"properties": {
 							"bucket": {
 								"description": "Name of the R2 bucket.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"objects": {
 								"description": "Optional object paths to scope the credentials to.",
 								"items": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -4531,12 +4637,14 @@
 									"object-read-write",
 									"object-read-only"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"prefixes": {
 								"description": "Optional prefix paths to scope the credentials to.",
 								"items": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -4544,7 +4652,8 @@
 								"default": 900,
 								"description": "How long the credentials will live for in seconds.",
 								"maximum": 604800,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -4729,7 +4838,8 @@
 					"description": "Queue ID.",
 					"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4742,7 +4852,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4795,7 +4906,8 @@
 													"CompleteMultipartUpload",
 													"LifecycleDeletion"
 												],
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array",
 											"uniqueItems": true
@@ -4803,17 +4915,20 @@
 										"description": {
 											"description": "A description that can be used to identify the event notification rule after creation.",
 											"example": "Notifications from source bucket to queue",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"prefix": {
 											"description": "Notifications will be sent only for objects with this prefix.",
 											"example": "img/",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"suffix": {
 											"description": "Notifications will be sent only for objects with this suffix.",
 											"example": ".jpeg",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -4979,7 +5094,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -5024,7 +5140,8 @@
 													"description": "Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.",
 													"items": {
 														"example": "x-requested-by",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -5038,7 +5155,8 @@
 															"DELETE",
 															"HEAD"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -5046,7 +5164,8 @@
 													"description": "Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.",
 													"items": {
 														"example": "http://localhost:3000",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												}
@@ -5061,19 +5180,22 @@
 											"description": "Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.",
 											"items": {
 												"example": "Content-Encoding",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										},
 										"id": {
 											"description": "Identifier for this rule.",
 											"example": "Allow Local Development",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"maxAgeSeconds": {
 											"description": "Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.",
 											"example": 3600,
-											"type": "number"
+											"type": "number",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -5247,7 +5369,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -5257,7 +5380,8 @@
 				"schema": {
 					"description": "Name of the custom domain.",
 					"example": "example-domain/custom-domain.com",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -5287,7 +5411,8 @@
 						"properties": {
 							"enabled": {
 								"description": "Whether to enable public bucket access at the specified custom domain.",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"minTLS": {
 								"description": "Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to previous value.",
@@ -5297,7 +5422,8 @@
 									"1.2",
 									"1.3"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -5371,11 +5497,13 @@
 													"properties": {
 														"domain": {
 															"description": "Domain name of the affected custom domain.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"enabled": {
 															"description": "Whether this bucket is publicly accessible at the specified custom domain.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"minTLS": {
 															"description": "Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.",
@@ -5385,7 +5513,8 @@
 																"1.2",
 																"1.3"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -5504,7 +5633,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -5533,7 +5663,8 @@
 						"properties": {
 							"enabled": {
 								"description": "Whether to enable public bucket access at the r2.dev domain.",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -5610,15 +5741,18 @@
 												"bucketId": {
 													"description": "Bucket ID.",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"domain": {
 													"description": "Domain name of the bucket's r2.dev domain.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"enabled": {
 													"description": "Whether this bucket is publicly accessible at the r2.dev domain.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -5726,7 +5860,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -5773,13 +5908,15 @@
 															"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds.",
 															"properties": {
 																"maxAge": {
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																},
 																"type": {
 																	"enum": [
 																		"Age"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -5798,7 +5935,8 @@
 											"properties": {
 												"prefix": {
 													"description": "Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -5815,13 +5953,15 @@
 															"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds.",
 															"properties": {
 																"maxAge": {
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																},
 																"type": {
 																	"enum": [
 																		"Age"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -5835,13 +5975,15 @@
 															"properties": {
 																"date": {
 																	"format": "date",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": {
 																	"enum": [
 																		"Date"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -5857,12 +5999,14 @@
 										},
 										"enabled": {
 											"description": "Whether or not this rule is in effect.",
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"id": {
 											"description": "Unique identifier for this rule.",
 											"example": "Expire all objects older than 24 hours",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"storageClassTransitions": {
 											"description": "Transitions to change the storage class of objects.",
@@ -5876,13 +6020,15 @@
 																		"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds.",
 																		"properties": {
 																			"maxAge": {
-																				"type": "integer"
+																				"type": "integer",
+																				"x-auditable": true
 																			},
 																			"type": {
 																				"enum": [
 																					"Age"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -5896,13 +6042,15 @@
 																		"properties": {
 																			"date": {
 																				"format": "date",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": {
 																				"enum": [
 																					"Date"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -5917,7 +6065,8 @@
 																"enum": [
 																	"InfrequentAccess"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -6093,7 +6242,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -6137,13 +6287,15 @@
 													"properties": {
 														"maxAgeSeconds": {
 															"example": 100,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"type": {
 															"enum": [
 																"Age"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -6157,13 +6309,15 @@
 													"properties": {
 														"date": {
 															"format": "date",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"enum": [
 																"Date"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -6179,7 +6333,8 @@
 															"enum": [
 																"Indefinite"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -6191,16 +6346,19 @@
 										},
 										"enabled": {
 											"description": "Whether or not this rule is in effect.",
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"id": {
 											"description": "Unique identifier for this rule.",
 											"example": "Lock all objects for 24 hours",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"prefix": {
 											"description": "Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -6376,7 +6534,8 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -6413,7 +6572,8 @@
 												"enum": [
 													"r2"
 												],
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"secretAccessKey": {
 												"description": "Value of a Cloudflare API token.\nThis is the value labelled \"Secret Access Key\" when creating an API.\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
@@ -6432,17 +6592,20 @@
 											},
 											"bucket": {
 												"description": "Name of the AWS S3 bucket.",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"provider": {
 												"enum": [
 													"aws"
 												],
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"region": {
 												"description": "Name of the AWS availability zone.",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"secretAccessKey": {
 												"description": "Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).",
@@ -6482,7 +6645,8 @@
 										"properties": {
 											"bucket": {
 												"description": "Name of the GCS bucket.",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"clientEmail": {
 												"description": "Client email of an IAM credential (ideally scoped to a single GCS bucket).",
@@ -6575,43 +6739,50 @@
 															"type": "string"
 														},
 														"account": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"bucket": {
 															"description": "Name of the bucket on the provider.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"provider": {
 															"enum": [
 																"r2"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
 												},
 												"enabled": {
 													"description": "State of Sippy for this bucket.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"source": {
 													"description": "Details about the configured source bucket.",
 													"properties": {
 														"bucket": {
 															"description": "Name of the bucket on the provider.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"provider": {
 															"enum": [
 																"aws",
 																"gcs"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"region": {
 															"description": "Region where the bucket resides (AWS only).",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
