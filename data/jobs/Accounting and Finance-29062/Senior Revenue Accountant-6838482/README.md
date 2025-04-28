@@ -5,27 +5,48 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="font-size: 12pt;">Available Locations:&nbsp;</span></p>
+<p><strong>Available Location: Austin, TX</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>The Senior Revenue Accountant’s primary responsibility is helping to ensure the Company’s revenue recognition to be in compliance with US GAAP and Company policies.&nbsp; It is both advisory and operational in nature. The advisory role helps business partners make informed business decisions while maintaining accounting compliance.&nbsp; The operational role ensures accounting processes comply with policies and function in an effective and efficient manner while working with local partners to complete business transactions with customers.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li><span style="font-size: 12pt;">Lisbon, Portugal, </span></li>
-	<li><span style="font-size: 12pt;">London, United Kingdom</span></li>
+	<li>Participates in accounting close activities, including:</li>
+	<ul>
+		<li>partnering with other teams (legal, sales, etc.) to interpret, research, discuss, and / or process deal reviews</li>
+		<li>complete contract accounting of executed customer contracts</li>
+		<li>preparation / review of journal entries</li>
+		<li>preparation / review of reconciliations and related financial analysis for management and external reporting</li>
+	</ul>
+	<li>Participates in Company-wide initiatives and cross-functional projects that directly impact or relate to the revenue accounting area, particularly increasing the revenue analytical capabilities within Cloudflare</li>
+	<li>Develop and streamline processes using system automation and tools to maximize efficiency and accuracy of revenue accounting systems and processes</li>
+	<li>Takes a clean sheet of paper approach when revisiting operational processes and continually works to consolidate and streamline using automation and tools to maximize efficiency and accuracy</li>
+	<li>Stay current on the latest financial accounting and reporting developments and U.S GAAP reporting requirements, as applicable.</li>
+	<li>Effectively interacts with peers and shares knowledge</li>
+	<li>Mentors and supports junior members of the team and provides feedback</li>
+	<li>Communicates any problems to senior management timely</li>
+	<li>Present findings and solutions to the management team, while considering global impacts and subsequent guidance to influence other regions where appropriate to adopt a consistent process and policy</li>
+	<li>Establish and track Key Performance Indicators (KPI’s)</li>
+	<li>Prepares schedules in support of the external audit process</li>
+	<li>Coordinates with the auditors on accounting issues and audit related queries</li>
+	<li>Reviews and maintains controls as the business environment changes as a result of process, system and policy enhancements. Includes risk assessment and review of risk areas</li>
 </ul>
-<h2>What you’ll do</h2>
-<p>As a member of the Zero Trust Escalation Engineering team, you will play a key role in addressing technical issues experienced by customers and internal users in all layers of our Zero Trust offering (Gateway SWG, Gateway Resolver, ZTNA Access, Infrastructure Access, Browser Isolation, Data Loss Prevention).</p>
-<p>As the goto person for problem management of the most complex issues, you will collaborate with multiple Zero Trust teams to triage, prioritize, reproduce, evaluate impact, delve into client or server logs and source code, and methodically determine root causes. You will communicate updates and estimated time of resolution to stakeholders, including senior management.</p>
-<p>The interconnectedness of our products will require you to use a wide range of advanced troubleshooting strategies and tools to reproduce and solve the most complex problems. You will need to have a broad, in-depth product knowledge and technical understanding, spanning multiple teams within the Zero Trust organization.</p>
-<p>In addition to driving issue resolutions, you will contribute to the enhancement of operational efficiency. You will develop tooling, write thorough documentation, refine processes, and identify patterns to elevate the quality and efficiency of our management of issues, as well as our software development process.</p>
-<h2>Examples of desirable skills, knowledge, and experience</h2>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Depth of knowledge in our Zero Trust product portfolio, technologies, and customer use cases</li>
-	<li>Demonstrable experience with network-related software and underlying Internet technologies between L4 and L7 (TCP/UDP, DNS, VPNs, VLANs, proxies, etc.)</li>
-	<li>Experience working with and debugging man-in-the-middle TLS terminating proxies</li>
-	<li>Knowledgeable of DNS over HTTPS (DoH), DNS over TLS (DoT), and related DNS protocols</li>
-	<li>Proven track record in tracking and solving problems within complex and distributed environments, both on desktop and on the edge/in the cloud.</li>
-	<li>Experience capturing and analyzing network data captures to troubleshoot network-related issues (network connectivity, data loss, etc.)</li>
-	<li>Strong experience in writing scripts or actual code, ideally in languages such as Python, Rust, or Go.</li>
+	<li>Bachelor’s degree in Accounting, or a related field, or advanced experience</li>
+	<li>Active CPA</li>
+	<li>5 years of experience in accounting roles</li>
+	<li>Strong understanding of revenue accounting rules under ASC 606</li>
+	<li>Experience working with revenue related systems such as billing systems, ERP, and revenue recognition tool / subledger</li>
+	<li>Revenue accounting for SaaS revenue recognition and understanding of multi-element arrangements</li>
+	<li>Ability to work effectively with various departments, particularly Sales</li>
+	<li>Ability to manage multiple priorities</li>
+	<li>Flexibility to work under time constraints and deadlines</li>
+	<li>Must be meticulous, detail oriented, and organized</li>
+	<li>Strong interpersonal and communication skills</li>
+	<li>Ability to work independently, yet cooperatively and constructively in a team environment</li>
+	<li>Highly proficient in advanced MS Excel</li>
 </ul>
-<p><strong>Compensation</strong></p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -53,7 +74,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

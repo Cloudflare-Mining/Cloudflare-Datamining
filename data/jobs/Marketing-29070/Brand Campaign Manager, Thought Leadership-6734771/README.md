@@ -14,10 +14,8 @@
 	<li>Maintain, nurture, and grow executive subscriber-base.</li>
 	<li>Design integrated programs to engage decision makers in support of marketing priorities.</li>
 	<li>Collaborate with Content Writers, Design Studio, Marketing Operations, Web Strategy, and Localization to publish quality content, creative, and program assets.</li>
-	<li>Work with Cloudflare executives to bring their voice and insights to life.</li>
-	<li>Uphold editorial guidelines and content strategy.</li>
+	<li>Work with Cloudflare executives to deliver peer-based thought leadership.</li>
 	<li>Deliver measurable results to global stakeholders and use data to inform promotional strategy.</li>
-	<li>Own the editorial calendar.</li>
 	<li>Collaborate with Email, Social, PR, and Advertising to extend content to owned, earned, and paid channels.</li>
 </ul>
 <h3><strong>Requirements:</strong></h3>
