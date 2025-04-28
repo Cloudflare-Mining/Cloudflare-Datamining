@@ -13,7 +13,8 @@
 					"maxLength": 32,
 					"minLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -21,11 +22,12 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -91,13 +93,15 @@
 													"type": "object"
 												},
 												{
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"type": "array"
 												}
 											]
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -118,9 +122,10 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "The unique ID of the item in the List.",
+													"description": "Defines the unique ID of the item in the List.",
 													"example": "34b12448945f11eaa1b71c4d701ab86e",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -133,7 +138,7 @@
 						}
 					}
 				},
-				"description": "Delete a list response"
+				"description": "Delete a list response."
 			},
 			"4XX": {
 				"content": {
@@ -192,13 +197,15 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														}
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -219,9 +226,10 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "The unique ID of the item in the List.",
+															"description": "Defines the unique ID of the item in the List.",
 															"example": "34b12448945f11eaa1b71c4d701ab86e",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -300,7 +308,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -320,13 +328,14 @@
 						}
 					}
 				},
-				"description": "Delete a list response failure"
+				"description": "Delete a list response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete a list",
@@ -357,7 +366,8 @@
 					"maxLength": 32,
 					"minLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -365,11 +375,12 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -382,11 +393,13 @@
 								"items": {
 									"properties": {
 										"id": {
-											"description": "The unique ID of the item in the List.",
+											"description": "Defines the unique ID of the item in the List.",
 											"example": "34b12448945f11eaa1b71c4d701ab86e",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
-									}
+									},
+									"type": "object"
 								},
 								"minItems": 1,
 								"type": "array"
@@ -456,13 +469,15 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														}
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -481,11 +496,14 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true,
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -498,7 +516,8 @@
 													"description": "The unique operation ID of the asynchronous action.",
 													"example": "4da8780eeb215e6cb7f48dd981c4ea02",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -510,7 +529,7 @@
 						}
 					}
 				},
-				"description": "Delete list items response"
+				"description": "Delete list items response."
 			},
 			"4XX": {
 				"content": {
@@ -571,13 +590,15 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																}
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -596,11 +617,14 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -613,7 +637,8 @@
 															"description": "The unique operation ID of the asynchronous action.",
 															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -691,7 +716,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -711,13 +736,14 @@
 						}
 					}
 				},
-				"description": "Delete list items response failure"
+				"description": "Delete list items response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete list items",
@@ -743,11 +769,12 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -809,13 +836,15 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														}
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -834,11 +863,14 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true,
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -853,13 +885,15 @@
 															"created_on": {
 																"description": "The RFC 3339 timestamp of when the list was created.",
 																"example": "2020-01-01T08:00:00Z",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": {
 																"description": "An informative summary of the list.",
 																"example": "This is a note",
 																"maxLength": 500,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "The unique ID of the list.",
@@ -867,7 +901,8 @@
 																"maxLength": 32,
 																"minLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"kind": {
 																"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
@@ -882,24 +917,28 @@
 															"modified_on": {
 																"description": "The RFC 3339 timestamp of when the list was last modified.",
 																"example": "2020-01-10T14:00:00Z",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "An informative name for the list. Use this name in filter and rule expressions.",
 																"example": "list1",
 																"maxLength": 50,
 																"pattern": "^[a-zA-Z0-9_]+$",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"num_items": {
 																"description": "The number of items in the list.",
 																"example": 10,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"num_referencing_filters": {
 																"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
 																"example": 2,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -927,7 +966,7 @@
 						}
 					}
 				},
-				"description": "Get lists response"
+				"description": "Get lists response."
 			},
 			"4XX": {
 				"content": {
@@ -988,13 +1027,15 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																}
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1013,11 +1054,14 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -1032,13 +1076,15 @@
 																	"created_on": {
 																		"description": "The RFC 3339 timestamp of when the list was created.",
 																		"example": "2020-01-01T08:00:00Z",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"description": {
 																		"description": "An informative summary of the list.",
 																		"example": "This is a note",
 																		"maxLength": 500,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "The unique ID of the list.",
@@ -1046,7 +1092,8 @@
 																		"maxLength": 32,
 																		"minLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"kind": {
 																		"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
@@ -1061,24 +1108,28 @@
 																	"modified_on": {
 																		"description": "The RFC 3339 timestamp of when the list was last modified.",
 																		"example": "2020-01-10T14:00:00Z",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "An informative name for the list. Use this name in filter and rule expressions.",
 																		"example": "list1",
 																		"maxLength": 50,
 																		"pattern": "^[a-zA-Z0-9_]+$",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"num_items": {
 																		"description": "The number of items in the list.",
 																		"example": 10,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"num_referencing_filters": {
 																		"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
 																		"example": 2,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1172,7 +1223,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1192,13 +1243,14 @@
 						}
 					}
 				},
-				"description": "Get lists response failure"
+				"description": "Get lists response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get lists",
@@ -1230,7 +1282,8 @@
 					"maxLength": 32,
 					"minLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1238,11 +1291,12 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1302,13 +1356,15 @@
 													"type": "object"
 												},
 												{
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"type": "array"
 												}
 											]
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -1331,13 +1387,15 @@
 												"created_on": {
 													"description": "The RFC 3339 timestamp of when the list was created.",
 													"example": "2020-01-01T08:00:00Z",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "An informative summary of the list.",
 													"example": "This is a note",
 													"maxLength": 500,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The unique ID of the list.",
@@ -1345,7 +1403,8 @@
 													"maxLength": 32,
 													"minLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"kind": {
 													"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
@@ -1360,24 +1419,28 @@
 												"modified_on": {
 													"description": "The RFC 3339 timestamp of when the list was last modified.",
 													"example": "2020-01-10T14:00:00Z",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "An informative name for the list. Use this name in filter and rule expressions.",
 													"example": "list1",
 													"maxLength": 50,
 													"pattern": "^[a-zA-Z0-9_]+$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"num_items": {
 													"description": "The number of items in the list.",
 													"example": 10,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"num_referencing_filters": {
 													"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
 													"example": 2,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1390,7 +1453,7 @@
 						}
 					}
 				},
-				"description": "Get a list response"
+				"description": "Get a list response."
 			},
 			"4XX": {
 				"content": {
@@ -1449,13 +1512,15 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														}
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1478,13 +1543,15 @@
 														"created_on": {
 															"description": "The RFC 3339 timestamp of when the list was created.",
 															"example": "2020-01-01T08:00:00Z",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "An informative summary of the list.",
 															"example": "This is a note",
 															"maxLength": 500,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique ID of the list.",
@@ -1492,7 +1559,8 @@
 															"maxLength": 32,
 															"minLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"kind": {
 															"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
@@ -1507,24 +1575,28 @@
 														"modified_on": {
 															"description": "The RFC 3339 timestamp of when the list was last modified.",
 															"example": "2020-01-10T14:00:00Z",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "An informative name for the list. Use this name in filter and rule expressions.",
 															"example": "list1",
 															"maxLength": 50,
 															"pattern": "^[a-zA-Z0-9_]+$",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"num_items": {
 															"description": "The number of items in the list.",
 															"example": 10,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"num_referencing_filters": {
 															"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
 															"example": 2,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1603,7 +1675,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1623,13 +1695,14 @@
 						}
 					}
 				},
-				"description": "Get a list response failure"
+				"description": "Get a list response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get a list",
@@ -1661,7 +1734,8 @@
 					"maxLength": 32,
 					"minLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1669,11 +1743,12 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1763,13 +1838,15 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														}
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1788,11 +1865,14 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true,
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1812,26 +1892,31 @@
 													{
 														"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
 														"example": "10.0.0.1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													{
 														"description": "The definition of the redirect.",
 														"properties": {
 															"include_subdomains": {
 																"default": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"preserve_path_suffix": {
 																"default": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"preserve_query_string": {
 																"default": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"source_url": {
 																"example": "example.com/arch",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"status_code": {
 																"default": 301,
@@ -1841,15 +1926,18 @@
 																	307,
 																	308
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"subpath_matching": {
 																"default": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"target_url": {
 																"example": "https://archlinux.org/",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1862,7 +1950,8 @@
 														"properties": {
 															"url_hostname": {
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1870,34 +1959,39 @@
 														]
 													},
 													{
-														"description": "A non-negative 32 bit integer",
+														"description": "Defines a non-negative 32 bit integer.",
 														"example": 5567,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													}
 												],
 												"properties": {
 													"asn": {
-														"description": "A non-negative 32 bit integer",
+														"description": "Defines a non-negative 32 bit integer.",
 														"example": 5567,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"comment": {
-														"description": "An informative summary of the list item.",
+														"description": "Defines an informative summary of the list item.",
 														"example": "Private IP address",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"created_on": {
 														"description": "The RFC 3339 timestamp of when the item was created.",
 														"example": "2020-01-01T08:00:00Z",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"hostname": {
 														"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 														"properties": {
 															"url_hostname": {
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1910,37 +2004,44 @@
 														"maxLength": 32,
 														"minLength": 32,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"ip": {
 														"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
 														"example": "10.0.0.1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"modified_on": {
 														"description": "The RFC 3339 timestamp of when the item was last modified.",
 														"example": "2020-01-10T14:00:00Z",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"redirect": {
 														"description": "The definition of the redirect.",
 														"properties": {
 															"include_subdomains": {
 																"default": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"preserve_path_suffix": {
 																"default": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"preserve_query_string": {
 																"default": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"source_url": {
 																"example": "example.com/arch",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"status_code": {
 																"default": 301,
@@ -1950,15 +2051,18 @@
 																	307,
 																	308
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"subpath_matching": {
 																"default": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"target_url": {
 																"example": "https://archlinux.org/",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1977,11 +2081,13 @@
 													"properties": {
 														"after": {
 															"example": "yyy",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"before": {
 															"example": "xxx",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1996,7 +2102,7 @@
 						}
 					}
 				},
-				"description": "Get list items response"
+				"description": "Get list items response."
 			},
 			"4XX": {
 				"content": {
@@ -2057,13 +2163,15 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																}
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2082,11 +2190,14 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -2106,26 +2217,31 @@
 															{
 																"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
 																"example": "10.0.0.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															{
 																"description": "The definition of the redirect.",
 																"properties": {
 																	"include_subdomains": {
 																		"default": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"preserve_path_suffix": {
 																		"default": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"preserve_query_string": {
 																		"default": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"source_url": {
 																		"example": "example.com/arch",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"status_code": {
 																		"default": 301,
@@ -2135,15 +2251,18 @@
 																			307,
 																			308
 																		],
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"subpath_matching": {
 																		"default": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"target_url": {
 																		"example": "https://archlinux.org/",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -2156,7 +2275,8 @@
 																"properties": {
 																	"url_hostname": {
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -2164,34 +2284,39 @@
 																]
 															},
 															{
-																"description": "A non-negative 32 bit integer",
+																"description": "Defines a non-negative 32 bit integer.",
 																"example": 5567,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															}
 														],
 														"properties": {
 															"asn": {
-																"description": "A non-negative 32 bit integer",
+																"description": "Defines a non-negative 32 bit integer.",
 																"example": 5567,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"comment": {
-																"description": "An informative summary of the list item.",
+																"description": "Defines an informative summary of the list item.",
 																"example": "Private IP address",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"created_on": {
 																"description": "The RFC 3339 timestamp of when the item was created.",
 																"example": "2020-01-01T08:00:00Z",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"hostname": {
 																"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 																"properties": {
 																	"url_hostname": {
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -2204,37 +2329,44 @@
 																"maxLength": 32,
 																"minLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"ip": {
 																"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
 																"example": "10.0.0.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"modified_on": {
 																"description": "The RFC 3339 timestamp of when the item was last modified.",
 																"example": "2020-01-10T14:00:00Z",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"redirect": {
 																"description": "The definition of the redirect.",
 																"properties": {
 																	"include_subdomains": {
 																		"default": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"preserve_path_suffix": {
 																		"default": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"preserve_query_string": {
 																		"default": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"source_url": {
 																		"example": "example.com/arch",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"status_code": {
 																		"default": 301,
@@ -2244,15 +2376,18 @@
 																			307,
 																			308
 																		],
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"subpath_matching": {
 																		"default": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"target_url": {
 																		"example": "https://archlinux.org/",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -2271,11 +2406,13 @@
 															"properties": {
 																"after": {
 																	"example": "yyy",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"before": {
 																	"example": "xxx",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2356,7 +2493,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2376,13 +2513,14 @@
 						}
 					}
 				},
-				"description": "Get list items response failure"
+				"description": "Get list items response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get list items",
@@ -2400,7 +2538,7 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/rules/lists/{list_id}/items/{item_id}": {
+	"GET /accounts/{account_id}/rules/lists/{list_id}/items/{item_id}": {
 		"description": "Fetches a list item in the list.",
 		"operationId": "lists-get-a-list-item",
 		"parameters": [
@@ -2409,9 +2547,10 @@
 				"name": "item_id",
 				"required": true,
 				"schema": {
-					"description": "The unique ID of the item in the List.",
+					"description": "Defines the unique ID of the item in the List.",
 					"example": "34b12448945f11eaa1b71c4d701ab86e",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2424,19 +2563,21 @@
 					"maxLength": 32,
 					"minLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2498,13 +2639,15 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														}
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2523,11 +2666,14 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true,
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -2546,26 +2692,31 @@
 												{
 													"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
 													"example": "10.0.0.1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												{
 													"description": "The definition of the redirect.",
 													"properties": {
 														"include_subdomains": {
 															"default": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"preserve_path_suffix": {
 															"default": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"preserve_query_string": {
 															"default": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"source_url": {
 															"example": "example.com/arch",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status_code": {
 															"default": 301,
@@ -2575,15 +2726,18 @@
 																307,
 																308
 															],
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"subpath_matching": {
 															"default": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"target_url": {
 															"example": "https://archlinux.org/",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2596,7 +2750,8 @@
 													"properties": {
 														"url_hostname": {
 															"example": "example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2604,34 +2759,39 @@
 													]
 												},
 												{
-													"description": "A non-negative 32 bit integer",
+													"description": "Defines a non-negative 32 bit integer.",
 													"example": 5567,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											],
 											"properties": {
 												"asn": {
-													"description": "A non-negative 32 bit integer",
+													"description": "Defines a non-negative 32 bit integer.",
 													"example": 5567,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"comment": {
-													"description": "An informative summary of the list item.",
+													"description": "Defines an informative summary of the list item.",
 													"example": "Private IP address",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_on": {
 													"description": "The RFC 3339 timestamp of when the item was created.",
 													"example": "2020-01-01T08:00:00Z",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"hostname": {
 													"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 													"properties": {
 														"url_hostname": {
 															"example": "example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2644,37 +2804,44 @@
 													"maxLength": 32,
 													"minLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ip": {
 													"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
 													"example": "10.0.0.1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "The RFC 3339 timestamp of when the item was last modified.",
 													"example": "2020-01-10T14:00:00Z",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"redirect": {
 													"description": "The definition of the redirect.",
 													"properties": {
 														"include_subdomains": {
 															"default": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"preserve_path_suffix": {
 															"default": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"preserve_query_string": {
 															"default": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"source_url": {
 															"example": "example.com/arch",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status_code": {
 															"default": 301,
@@ -2684,15 +2851,18 @@
 																307,
 																308
 															],
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"subpath_matching": {
 															"default": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"target_url": {
 															"example": "https://archlinux.org/",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2710,7 +2880,7 @@
 						}
 					}
 				},
-				"description": "Get a list item response"
+				"description": "Get a list item response."
 			},
 			"4XX": {
 				"content": {
@@ -2771,13 +2941,15 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																}
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2796,11 +2968,14 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -2819,26 +2994,31 @@
 														{
 															"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
 															"example": "10.0.0.1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"description": "The definition of the redirect.",
 															"properties": {
 																"include_subdomains": {
 																	"default": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"preserve_path_suffix": {
 																	"default": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"preserve_query_string": {
 																	"default": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"source_url": {
 																	"example": "example.com/arch",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status_code": {
 																	"default": 301,
@@ -2848,15 +3028,18 @@
 																		307,
 																		308
 																	],
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																},
 																"subpath_matching": {
 																	"default": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"target_url": {
 																	"example": "https://archlinux.org/",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -2869,7 +3052,8 @@
 															"properties": {
 																"url_hostname": {
 																	"example": "example.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -2877,34 +3061,39 @@
 															]
 														},
 														{
-															"description": "A non-negative 32 bit integer",
+															"description": "Defines a non-negative 32 bit integer.",
 															"example": 5567,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													],
 													"properties": {
 														"asn": {
-															"description": "A non-negative 32 bit integer",
+															"description": "Defines a non-negative 32 bit integer.",
 															"example": 5567,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"comment": {
-															"description": "An informative summary of the list item.",
+															"description": "Defines an informative summary of the list item.",
 															"example": "Private IP address",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_on": {
 															"description": "The RFC 3339 timestamp of when the item was created.",
 															"example": "2020-01-01T08:00:00Z",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"hostname": {
 															"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 															"properties": {
 																"url_hostname": {
 																	"example": "example.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -2917,37 +3106,44 @@
 															"maxLength": 32,
 															"minLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ip": {
 															"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
 															"example": "10.0.0.1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The RFC 3339 timestamp of when the item was last modified.",
 															"example": "2020-01-10T14:00:00Z",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"redirect": {
 															"description": "The definition of the redirect.",
 															"properties": {
 																"include_subdomains": {
 																	"default": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"preserve_path_suffix": {
 																	"default": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"preserve_query_string": {
 																	"default": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"source_url": {
 																	"example": "example.com/arch",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status_code": {
 																	"default": 301,
@@ -2957,15 +3153,18 @@
 																		307,
 																		308
 																	],
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																},
 																"subpath_matching": {
 																	"default": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"target_url": {
 																	"example": "https://archlinux.org/",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -3049,7 +3248,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -3069,13 +3268,14 @@
 						}
 					}
 				},
-				"description": "Get a list item response failure"
+				"description": "Get a list item response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get a list item",
@@ -3093,7 +3293,7 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/rules/lists/bulk_operations/{operation_id}": {
+	"GET /accounts/{account_id}/rules/lists/bulk_operations/{operation_id}": {
 		"description": "Gets the current status of an asynchronous operation on a list.\n\nThe `status` property can have one of the following values: `pending`, `running`, `completed`, or `failed`. If the status is `failed`, the `error` property will contain a message describing the error.",
 		"operationId": "lists-get-bulk-operation-status",
 		"parameters": [
@@ -3105,19 +3305,21 @@
 					"description": "The unique operation ID of the asynchronous action.",
 					"example": "4da8780eeb215e6cb7f48dd981c4ea02",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3179,13 +3381,15 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														}
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3204,11 +3408,14 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true,
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -3221,19 +3428,22 @@
 													"description": "The RFC 3339 timestamp of when the operation was completed.",
 													"example": "2020-01-01T08:00:00Z",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"error": {
 													"description": "A message describing the error when the status is `failed`.",
 													"example": "This list is at the maximum number of items",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The unique operation ID of the asynchronous action.",
 													"example": "4da8780eeb215e6cb7f48dd981c4ea02",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "The current status of the asynchronous operation.",
@@ -3245,7 +3455,8 @@
 													],
 													"example": "failed",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -3261,7 +3472,7 @@
 						}
 					}
 				},
-				"description": "Get bulk operation status response"
+				"description": "Get bulk operation status response."
 			},
 			"4XX": {
 				"content": {
@@ -3322,13 +3533,15 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																}
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3347,11 +3560,14 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -3364,19 +3580,22 @@
 															"description": "The RFC 3339 timestamp of when the operation was completed.",
 															"example": "2020-01-01T08:00:00Z",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"error": {
 															"description": "A message describing the error when the status is `failed`.",
 															"example": "This list is at the maximum number of items",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique operation ID of the asynchronous action.",
 															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "The current status of the asynchronous operation.",
@@ -3388,7 +3607,8 @@
 															],
 															"example": "failed",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3470,7 +3690,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -3490,13 +3710,14 @@
 						}
 					}
 				},
-				"description": "Get bulk operation status response failure"
+				"description": "Get bulk operation status response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get bulk operation status",
@@ -3523,11 +3744,12 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3540,7 +3762,8 @@
 								"description": "An informative summary of the list.",
 								"example": "This is a note",
 								"maxLength": 500,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"kind": {
 								"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
@@ -3557,7 +3780,8 @@
 								"example": "list1",
 								"maxLength": 50,
 								"pattern": "^[a-zA-Z0-9_]+$",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -3626,13 +3850,15 @@
 													"type": "object"
 												},
 												{
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"type": "array"
 												}
 											]
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -3655,13 +3881,15 @@
 												"created_on": {
 													"description": "The RFC 3339 timestamp of when the list was created.",
 													"example": "2020-01-01T08:00:00Z",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "An informative summary of the list.",
 													"example": "This is a note",
 													"maxLength": 500,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The unique ID of the list.",
@@ -3669,7 +3897,8 @@
 													"maxLength": 32,
 													"minLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"kind": {
 													"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
@@ -3684,24 +3913,28 @@
 												"modified_on": {
 													"description": "The RFC 3339 timestamp of when the list was last modified.",
 													"example": "2020-01-10T14:00:00Z",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "An informative name for the list. Use this name in filter and rule expressions.",
 													"example": "list1",
 													"maxLength": 50,
 													"pattern": "^[a-zA-Z0-9_]+$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"num_items": {
 													"description": "The number of items in the list.",
 													"example": 10,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"num_referencing_filters": {
 													"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
 													"example": 2,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -3714,7 +3947,7 @@
 						}
 					}
 				},
-				"description": "Create a list response"
+				"description": "Create a list response."
 			},
 			"4XX": {
 				"content": {
@@ -3773,13 +4006,15 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														}
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3802,13 +4037,15 @@
 														"created_on": {
 															"description": "The RFC 3339 timestamp of when the list was created.",
 															"example": "2020-01-01T08:00:00Z",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "An informative summary of the list.",
 															"example": "This is a note",
 															"maxLength": 500,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique ID of the list.",
@@ -3816,7 +4053,8 @@
 															"maxLength": 32,
 															"minLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"kind": {
 															"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
@@ -3831,24 +4069,28 @@
 														"modified_on": {
 															"description": "The RFC 3339 timestamp of when the list was last modified.",
 															"example": "2020-01-10T14:00:00Z",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "An informative name for the list. Use this name in filter and rule expressions.",
 															"example": "list1",
 															"maxLength": 50,
 															"pattern": "^[a-zA-Z0-9_]+$",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"num_items": {
 															"description": "The number of items in the list.",
 															"example": 10,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"num_referencing_filters": {
 															"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
 															"example": 2,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3927,7 +4169,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -3947,13 +4189,14 @@
 						}
 					}
 				},
-				"description": "Create a list response failure"
+				"description": "Create a list response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create a list",
@@ -3984,7 +4227,8 @@
 					"maxLength": 32,
 					"minLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3992,11 +4236,12 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -4009,21 +4254,24 @@
 								{
 									"properties": {
 										"asn": {
-											"description": "A non-negative 32 bit integer",
+											"description": "Defines a non-negative 32 bit integer.",
 											"example": 5567,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"comment": {
-											"description": "An informative summary of the list item.",
+											"description": "Defines an informative summary of the list item.",
 											"example": "Private IP address",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"hostname": {
 											"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 											"properties": {
 												"url_hostname": {
 													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -4033,26 +4281,31 @@
 										"ip": {
 											"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
 											"example": "10.0.0.1",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"redirect": {
 											"description": "The definition of the redirect.",
 											"properties": {
 												"include_subdomains": {
 													"default": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"preserve_path_suffix": {
 													"default": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"preserve_query_string": {
 													"default": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"source_url": {
 													"example": "example.com/arch",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status_code": {
 													"default": 301,
@@ -4062,15 +4315,18 @@
 														307,
 														308
 													],
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"subpath_matching": {
 													"default": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"target_url": {
 													"example": "https://archlinux.org/",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -4147,13 +4403,15 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														}
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -4172,11 +4430,14 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true,
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -4189,7 +4450,8 @@
 													"description": "The unique operation ID of the asynchronous action.",
 													"example": "4da8780eeb215e6cb7f48dd981c4ea02",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -4201,7 +4463,7 @@
 						}
 					}
 				},
-				"description": "Create list items response"
+				"description": "Create list items response."
 			},
 			"4XX": {
 				"content": {
@@ -4262,13 +4524,15 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																}
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -4287,11 +4551,14 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -4304,7 +4571,8 @@
 															"description": "The unique operation ID of the asynchronous action.",
 															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -4382,7 +4650,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -4402,13 +4670,14 @@
 						}
 					}
 				},
-				"description": "Create list items response failure"
+				"description": "Create list items response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create list items",
@@ -4436,7 +4705,8 @@
 					"maxLength": 32,
 					"minLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4444,11 +4714,12 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -4461,7 +4732,8 @@
 								"description": "An informative summary of the list.",
 								"example": "This is a note",
 								"maxLength": 500,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -4526,13 +4798,15 @@
 													"type": "object"
 												},
 												{
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"type": "array"
 												}
 											]
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -4555,13 +4829,15 @@
 												"created_on": {
 													"description": "The RFC 3339 timestamp of when the list was created.",
 													"example": "2020-01-01T08:00:00Z",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "An informative summary of the list.",
 													"example": "This is a note",
 													"maxLength": 500,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The unique ID of the list.",
@@ -4569,7 +4845,8 @@
 													"maxLength": 32,
 													"minLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"kind": {
 													"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
@@ -4584,24 +4861,28 @@
 												"modified_on": {
 													"description": "The RFC 3339 timestamp of when the list was last modified.",
 													"example": "2020-01-10T14:00:00Z",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "An informative name for the list. Use this name in filter and rule expressions.",
 													"example": "list1",
 													"maxLength": 50,
 													"pattern": "^[a-zA-Z0-9_]+$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"num_items": {
 													"description": "The number of items in the list.",
 													"example": 10,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"num_referencing_filters": {
 													"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
 													"example": 2,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -4614,7 +4895,7 @@
 						}
 					}
 				},
-				"description": "Update a list response"
+				"description": "Update a list response."
 			},
 			"4XX": {
 				"content": {
@@ -4673,13 +4954,15 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														}
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -4702,13 +4985,15 @@
 														"created_on": {
 															"description": "The RFC 3339 timestamp of when the list was created.",
 															"example": "2020-01-01T08:00:00Z",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "An informative summary of the list.",
 															"example": "This is a note",
 															"maxLength": 500,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique ID of the list.",
@@ -4716,7 +5001,8 @@
 															"maxLength": 32,
 															"minLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"kind": {
 															"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
@@ -4731,24 +5017,28 @@
 														"modified_on": {
 															"description": "The RFC 3339 timestamp of when the list was last modified.",
 															"example": "2020-01-10T14:00:00Z",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "An informative name for the list. Use this name in filter and rule expressions.",
 															"example": "list1",
 															"maxLength": 50,
 															"pattern": "^[a-zA-Z0-9_]+$",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"num_items": {
 															"description": "The number of items in the list.",
 															"example": 10,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"num_referencing_filters": {
 															"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
 															"example": 2,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -4827,7 +5117,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -4847,13 +5137,14 @@
 						}
 					}
 				},
-				"description": "Update a list response failure"
+				"description": "Update a list response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update a list",
@@ -4884,7 +5175,8 @@
 					"maxLength": 32,
 					"minLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4892,11 +5184,12 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Defines an identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -4909,21 +5202,24 @@
 								{
 									"properties": {
 										"asn": {
-											"description": "A non-negative 32 bit integer",
+											"description": "Defines a non-negative 32 bit integer.",
 											"example": 5567,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"comment": {
-											"description": "An informative summary of the list item.",
+											"description": "Defines an informative summary of the list item.",
 											"example": "Private IP address",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"hostname": {
 											"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 											"properties": {
 												"url_hostname": {
 													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -4933,26 +5229,31 @@
 										"ip": {
 											"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
 											"example": "10.0.0.1",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"redirect": {
 											"description": "The definition of the redirect.",
 											"properties": {
 												"include_subdomains": {
 													"default": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"preserve_path_suffix": {
 													"default": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"preserve_query_string": {
 													"default": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"source_url": {
 													"example": "example.com/arch",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status_code": {
 													"default": 301,
@@ -4962,15 +5263,18 @@
 														307,
 														308
 													],
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"subpath_matching": {
 													"default": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"target_url": {
 													"example": "https://archlinux.org/",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -5047,13 +5351,15 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														}
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Defines whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -5072,11 +5378,14 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true,
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -5089,7 +5398,8 @@
 													"description": "The unique operation ID of the asynchronous action.",
 													"example": "4da8780eeb215e6cb7f48dd981c4ea02",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -5101,7 +5411,7 @@
 						}
 					}
 				},
-				"description": "Update all list items response"
+				"description": "Update all list items response."
 			},
 			"4XX": {
 				"content": {
@@ -5162,13 +5472,15 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																}
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Defines whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -5187,11 +5499,14 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -5204,7 +5519,8 @@
 															"description": "The unique operation ID of the asynchronous action.",
 															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -5282,7 +5598,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Defines whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -5302,13 +5618,14 @@
 						}
 					}
 				},
-				"description": "Update all list items response failure"
+				"description": "Update all list items response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update all list items",
