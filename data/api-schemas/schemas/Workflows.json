@@ -1,4 +1,268 @@
 {
+	"DELETE /accounts/{account_id}/workflows/{workflow_name}": {
+		"operationId": "wor-delete-workflow",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "workflow_name",
+				"required": true,
+				"schema": {
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"status": {
+											"enum": [
+												"ok"
+											],
+											"type": "string"
+										},
+										"success": {
+											"nullable": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"status"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Deletes a Workflow"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Workflow has no deployed versions"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Workflow not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Deletes a Workflow. This only deletes the Workflow and does not delete or modify any Worker associated to this Workflow or bounded to it.",
+		"tags": [
+			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /accounts/{account_id}/workflows": {
 		"operationId": "wor-list-workflows",
 		"parameters": [
@@ -104,9 +368,6 @@
 														"type": "number"
 													},
 													"terminated": {
-														"type": "number"
-													},
-													"unknown": {
 														"type": "number"
 													},
 													"waiting": {
@@ -376,9 +637,6 @@
 												"terminated": {
 													"type": "number"
 												},
-												"unknown": {
-													"type": "number"
-												},
 												"waiting": {
 													"type": "number"
 												},
@@ -646,8 +904,7 @@
 						"terminated",
 						"complete",
 						"waitingForPause",
-						"waiting",
-						"unknown"
+						"waiting"
 					],
 					"type": "string"
 				}
@@ -759,8 +1016,7 @@
 													"terminated",
 													"complete",
 													"waitingForPause",
-													"waiting",
-													"unknown"
+													"waiting"
 												],
 												"type": "string"
 											},
@@ -1099,8 +1355,7 @@
 												"terminated",
 												"complete",
 												"waitingForPause",
-												"waiting",
-												"unknown"
+												"waiting"
 											],
 											"type": "string"
 										},
@@ -1583,6 +1838,268 @@
 			}
 		],
 		"summary": "Get logs and status from instance",
+		"tags": [
+			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/terminate": {
+		"operationId": "wor-status-terminate-workflow-instances",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "workflow_name",
+				"required": true,
+				"schema": {
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"status": {
+											"enum": [
+												"running",
+												"not_running"
+											],
+											"type": "string"
+										}
+									},
+									"required": [
+										"status"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get status of the job responsible for terminate all instances of a workflow"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Workflow Name not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get status of the job responsible for terminate all instances of a workflow",
 		"tags": [
 			"Workflows"
 		],
@@ -2246,8 +2763,7 @@
 												"terminated",
 												"complete",
 												"waitingForPause",
-												"waiting",
-												"unknown"
+												"waiting"
 											],
 											"type": "string"
 										},
@@ -2600,8 +3116,7 @@
 												"terminated",
 												"complete",
 												"waitingForPause",
-												"waiting",
-												"unknown"
+												"waiting"
 											],
 											"type": "string"
 										},
@@ -3188,8 +3703,7 @@
 													"terminated",
 													"complete",
 													"waitingForPause",
-													"waiting",
-													"unknown"
+													"waiting"
 												],
 												"type": "string"
 											},
@@ -3252,7 +3766,7 @@
 						}
 					}
 				},
-				"description": "Batch create workflow instances. Body is is a JSON list that contain all payloads and ids that are passed into the new instance as the event payload."
+				"description": "Batch create workflow instances. Body is a JSON list that contain all payloads and ids that are passed into the new instance as the event payload."
 			},
 			"400": {
 				"content": {
@@ -3392,6 +3906,287 @@
 			"pro": true
 		}
 	},
+	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/batch/terminate": {
+		"operationId": "wor-batch-terminate-workflow-instances",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "workflow_name",
+				"required": true,
+				"schema": {
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"items": {
+							"maximum": 100,
+							"minimum": 1,
+							"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
+							"type": "string"
+						},
+						"maxItems": 100,
+						"minItems": 1,
+						"type": "array"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"instancesTerminated": {
+											"type": "number"
+										},
+										"status": {
+											"enum": [
+												"ok",
+												"already_running"
+											],
+											"type": "string"
+										}
+									},
+									"required": [
+										"status",
+										"instancesTerminated"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Batch terminate instances of a workflow, via a async job. Body is a JSON list that contain the ids of the instances to terminate."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Provided Workflow ID is not valid"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Workflow Name not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Batch terminate instances of a workflow",
+		"tags": [
+			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"PUT /accounts/{account_id}/workflows/{workflow_name}": {
 		"operationId": "wor-create-or-modify-workflow",
 		"parameters": [
@@ -3496,6 +4291,9 @@
 											"format": "uuid",
 											"type": "string"
 										},
+										"is_deleted": {
+											"type": "number"
+										},
 										"modified_on": {
 											"format": "date-time",
 											"type": "string"
@@ -3508,6 +4306,9 @@
 										},
 										"script_name": {
 											"type": "string"
+										},
+										"terminator_running": {
+											"type": "number"
 										},
 										"triggered_on": {
 											"format": "date-time",
@@ -3527,7 +4328,9 @@
 										"modified_on",
 										"script_name",
 										"class_name",
-										"triggered_on"
+										"triggered_on",
+										"is_deleted",
+										"terminator_running"
 									],
 									"type": "object"
 								},
