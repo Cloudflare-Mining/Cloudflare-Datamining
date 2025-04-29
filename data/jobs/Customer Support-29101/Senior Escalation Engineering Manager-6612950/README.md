@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Location: Sydney, Australia</strong></h4>
+<h4><strong>Available Location: Singapore, or Sydney, Australia</strong></h4>
 <h4><strong>What you'll do</strong></h4>
 <p>The Manager of Escalation Engineering will manage a highly technical Escalation Engineering team in Support, a team that performs deep, technical troubleshooting for complex, escalated issues. This role owns the standard customer escalation process, critical escalation flows, escalation metrics and tracking, and works with all Product and Engineering teams to identify product bugs, network problems, and platform issues. Their team acts as an escalation point and owner for many escalations per month: isolates, replicates and resolves problems while making the product and company better based on their learnings.</p>
 <p>As an <strong>Escalation Engineering Manager</strong> at Cloudflare you will:</p>
