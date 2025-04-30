@@ -8,7 +8,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -24,7 +24,8 @@
 							"name": {
 								"description": "Domain of your zone.",
 								"example": "example.net",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -53,8 +54,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -74,8 +86,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -88,7 +111,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -120,8 +143,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -141,8 +175,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -155,7 +200,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -175,22 +220,22 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
@@ -217,14 +262,16 @@
 																"description": "DNS record name (or @ for the zone apex).",
 																"example": "example.com",
 																"maxLength": 255,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"priority": {
 																"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
 																"example": 12,
 																"maximum": 65535,
 																"minimum": 0,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"ttl": {
 																"anyOf": [
@@ -243,7 +290,8 @@
 																],
 																"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
 																"example": 1,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"type": {
 																"description": "DNS record type.",
@@ -269,7 +317,8 @@
 																],
 																"example": "NS",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -316,7 +365,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -341,8 +390,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -362,8 +422,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -376,7 +447,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -415,14 +486,16 @@
 															],
 															"example": true,
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Email Routing settings identifier.",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the settings have been modified.",
@@ -434,7 +507,8 @@
 														"name": {
 															"description": "Domain of your zone.",
 															"example": "example.net",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"skip_wizard": {
 															"description": "Flag to check if the user skipped the configuration wizard.",
@@ -522,7 +596,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -534,7 +608,8 @@
 				"schema": {
 					"description": "Domain of your zone.",
 					"example": "example.net",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -558,8 +633,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -579,8 +665,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -593,7 +690,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -613,22 +710,22 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
@@ -662,14 +759,16 @@
 																				"description": "DNS record name (or @ for the zone apex).",
 																				"example": "example.com",
 																				"maxLength": 255,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"priority": {
 																				"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
 																				"example": 12,
 																				"maximum": 65535,
 																				"minimum": 0,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"ttl": {
 																				"anyOf": [
@@ -688,7 +787,8 @@
 																				],
 																				"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
 																				"example": 1,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"type": {
 																				"description": "DNS record type.",
@@ -714,7 +814,8 @@
 																				],
 																				"example": "NS",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -737,14 +838,16 @@
 																		"description": "DNS record name (or @ for the zone apex).",
 																		"example": "example.com",
 																		"maxLength": 255,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"priority": {
 																		"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
 																		"example": 12,
 																		"maximum": 65535,
 																		"minimum": 0,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"ttl": {
 																		"anyOf": [
@@ -763,7 +866,8 @@
 																		],
 																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
 																		"example": 1,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "DNS record type.",
@@ -789,7 +893,8 @@
 																		],
 																		"example": "NS",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -818,8 +923,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -839,8 +955,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -853,7 +980,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -873,22 +1000,22 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
@@ -915,14 +1042,16 @@
 																"description": "DNS record name (or @ for the zone apex).",
 																"example": "example.com",
 																"maxLength": 255,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"priority": {
 																"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
 																"example": 12,
 																"maximum": 65535,
 																"minimum": 0,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"ttl": {
 																"anyOf": [
@@ -941,7 +1070,8 @@
 																],
 																"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
 																"example": 1,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"type": {
 																"description": "DNS record type.",
@@ -967,7 +1097,8 @@
 																],
 																"example": "NS",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1020,7 +1151,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1036,7 +1167,8 @@
 							"name": {
 								"description": "Domain of your zone.",
 								"example": "example.net",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1065,8 +1197,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1086,8 +1229,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1100,7 +1254,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1139,14 +1293,16 @@
 															],
 															"example": true,
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Email Routing settings identifier.",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the settings have been modified.",
@@ -1158,7 +1314,8 @@
 														"name": {
 															"description": "Domain of your zone.",
 															"example": "example.net",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"skip_wizard": {
 															"description": "Flag to check if the user skipped the configuration wizard.",
@@ -1246,7 +1403,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1277,8 +1434,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1298,8 +1466,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1312,7 +1491,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1351,14 +1530,16 @@
 															],
 															"example": true,
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Email Routing settings identifier.",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the settings have been modified.",
@@ -1370,7 +1551,8 @@
 														"name": {
 															"description": "Domain of your zone.",
 															"example": "example.net",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"skip_wizard": {
 															"description": "Flag to check if the user skipped the configuration wizard.",
@@ -1457,7 +1639,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1473,7 +1655,8 @@
 							"name": {
 								"description": "Domain of your zone.",
 								"example": "example.net",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1502,8 +1685,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1523,8 +1717,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1537,7 +1742,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1576,14 +1781,16 @@
 															],
 															"example": true,
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Email Routing settings identifier.",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the settings have been modified.",
@@ -1595,7 +1802,8 @@
 														"name": {
 															"description": "Domain of your zone.",
 															"example": "example.net",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"skip_wizard": {
 															"description": "Flag to check if the user skipped the configuration wizard.",
@@ -1683,7 +1891,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1714,8 +1922,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1735,8 +1954,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1749,7 +1979,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1788,14 +2018,16 @@
 															],
 															"example": true,
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Email Routing settings identifier.",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the settings have been modified.",
@@ -1807,7 +2039,8 @@
 														"name": {
 															"description": "Domain of your zone.",
 															"example": "example.net",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"skip_wizard": {
 															"description": "Flag to check if the user skipped the configuration wizard.",

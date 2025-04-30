@@ -12,7 +12,8 @@
 					"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -20,7 +21,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -45,8 +46,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -66,8 +78,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -80,7 +103,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -117,21 +140,22 @@
 																			"worker"
 																		],
 																		"example": "forward",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"items": {
 																			"description": "Value for action.",
 																			"example": "destinationaddress@example.net",
 																			"maxLength": 90,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	}
 																},
 																"required": [
-																	"type",
-																	"value"
+																	"type"
 																],
 																"type": "object"
 															},
@@ -145,14 +169,16 @@
 																false
 															],
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Routing rule identifier.",
 															"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"matchers": {
 															"description": "Matching patterns to forward to your actions.",
@@ -165,7 +191,8 @@
 																			"to"
 																		],
 																		"example": "to",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "Type of matcher.",
@@ -173,19 +200,19 @@
 																			"literal"
 																		],
 																		"example": "literal",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Value for matcher.",
 																		"example": "test@example.com",
 																		"maxLength": 90,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
-																	"type",
-																	"field",
-																	"value"
+																	"type"
 																],
 																"type": "object"
 															},
@@ -195,13 +222,15 @@
 															"description": "Routing rule name.",
 															"example": "Send to user@example.net rule.",
 															"maxLength": 256,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"priority": {
 															"default": 0,
 															"description": "Priority of the routing rule.",
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"tag": {
 															"deprecated": true,
@@ -260,7 +289,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -319,8 +348,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -340,8 +380,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -354,7 +405,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -374,22 +425,22 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
@@ -421,21 +472,22 @@
 																				"worker"
 																			],
 																			"example": "forward",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"items": {
 																				"description": "Value for action.",
 																				"example": "destinationaddress@example.net",
 																				"maxLength": 90,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		}
 																	},
 																	"required": [
-																		"type",
-																		"value"
+																		"type"
 																	],
 																	"type": "object"
 																},
@@ -449,14 +501,16 @@
 																	false
 																],
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Routing rule identifier.",
 																"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"matchers": {
 																"description": "Matching patterns to forward to your actions.",
@@ -469,7 +523,8 @@
 																				"to"
 																			],
 																			"example": "to",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": {
 																			"description": "Type of matcher.",
@@ -477,19 +532,19 @@
 																				"literal"
 																			],
 																			"example": "literal",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "Value for matcher.",
 																			"example": "test@example.com",
 																			"maxLength": 90,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
-																		"type",
-																		"field",
-																		"value"
+																		"type"
 																	],
 																	"type": "object"
 																},
@@ -499,13 +554,15 @@
 																"description": "Routing rule name.",
 																"example": "Send to user@example.net rule.",
 																"maxLength": 256,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"priority": {
 																"default": 0,
 																"description": "Priority of the routing rule.",
 																"minimum": 0,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"tag": {
 																"deprecated": true,
@@ -588,7 +645,8 @@
 					"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -596,7 +654,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -621,8 +679,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -642,8 +711,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -656,7 +736,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -693,21 +773,22 @@
 																			"worker"
 																		],
 																		"example": "forward",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"items": {
 																			"description": "Value for action.",
 																			"example": "destinationaddress@example.net",
 																			"maxLength": 90,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	}
 																},
 																"required": [
-																	"type",
-																	"value"
+																	"type"
 																],
 																"type": "object"
 															},
@@ -721,14 +802,16 @@
 																false
 															],
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Routing rule identifier.",
 															"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"matchers": {
 															"description": "Matching patterns to forward to your actions.",
@@ -741,7 +824,8 @@
 																			"to"
 																		],
 																		"example": "to",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "Type of matcher.",
@@ -749,19 +833,19 @@
 																			"literal"
 																		],
 																		"example": "literal",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Value for matcher.",
 																		"example": "test@example.com",
 																		"maxLength": 90,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
-																	"type",
-																	"field",
-																	"value"
+																	"type"
 																],
 																"type": "object"
 															},
@@ -771,13 +855,15 @@
 															"description": "Routing rule name.",
 															"example": "Send to user@example.net rule.",
 															"maxLength": 256,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"priority": {
 															"default": 0,
 															"description": "Priority of the routing rule.",
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"tag": {
 															"deprecated": true,
@@ -837,7 +923,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -862,8 +948,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -883,8 +980,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -897,7 +1005,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -932,14 +1040,16 @@
 																	"worker"
 																],
 																"example": "forward",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"value": {
 																"items": {
 																	"description": "Input value for action.",
 																	"example": "destinationaddress@example.net",
 																	"maxLength": 90,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															}
@@ -959,14 +1069,16 @@
 														false
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Routing rule identifier.",
 													"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"matchers": {
 													"description": "List of matchers for the catch-all routing rule.",
@@ -979,7 +1091,8 @@
 																	"all"
 																],
 																"example": "all",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -993,7 +1106,8 @@
 													"description": "Routing rule name.",
 													"example": "Send to user@example.net rule.",
 													"maxLength": 256,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"tag": {
 													"deprecated": true,
@@ -1050,7 +1164,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1075,21 +1189,22 @@
 												"worker"
 											],
 											"example": "forward",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"value": {
 											"items": {
 												"description": "Value for action.",
 												"example": "destinationaddress@example.net",
 												"maxLength": 90,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										}
 									},
 									"required": [
-										"type",
-										"value"
+										"type"
 									],
 									"type": "object"
 								},
@@ -1103,7 +1218,8 @@
 									false
 								],
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"matchers": {
 								"description": "Matching patterns to forward to your actions.",
@@ -1116,7 +1232,8 @@
 												"to"
 											],
 											"example": "to",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": {
 											"description": "Type of matcher.",
@@ -1124,19 +1241,19 @@
 												"literal"
 											],
 											"example": "literal",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"value": {
 											"description": "Value for matcher.",
 											"example": "test@example.com",
 											"maxLength": 90,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
-										"type",
-										"field",
-										"value"
+										"type"
 									],
 									"type": "object"
 								},
@@ -1146,13 +1263,15 @@
 								"description": "Routing rule name.",
 								"example": "Send to user@example.net rule.",
 								"maxLength": 256,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"priority": {
 								"default": 0,
 								"description": "Priority of the routing rule.",
 								"minimum": 0,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1183,8 +1302,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1204,8 +1334,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1218,7 +1359,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1255,21 +1396,22 @@
 																			"worker"
 																		],
 																		"example": "forward",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"items": {
 																			"description": "Value for action.",
 																			"example": "destinationaddress@example.net",
 																			"maxLength": 90,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	}
 																},
 																"required": [
-																	"type",
-																	"value"
+																	"type"
 																],
 																"type": "object"
 															},
@@ -1283,14 +1425,16 @@
 																false
 															],
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Routing rule identifier.",
 															"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"matchers": {
 															"description": "Matching patterns to forward to your actions.",
@@ -1303,7 +1447,8 @@
 																			"to"
 																		],
 																		"example": "to",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "Type of matcher.",
@@ -1311,19 +1456,19 @@
 																			"literal"
 																		],
 																		"example": "literal",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Value for matcher.",
 																		"example": "test@example.com",
 																		"maxLength": 90,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
-																	"type",
-																	"field",
-																	"value"
+																	"type"
 																],
 																"type": "object"
 															},
@@ -1333,13 +1478,15 @@
 															"description": "Routing rule name.",
 															"example": "Send to user@example.net rule.",
 															"maxLength": 256,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"priority": {
 															"default": 0,
 															"description": "Priority of the routing rule.",
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"tag": {
 															"deprecated": true,
@@ -1402,7 +1549,8 @@
 					"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1410,7 +1558,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1435,21 +1583,22 @@
 												"worker"
 											],
 											"example": "forward",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"value": {
 											"items": {
 												"description": "Value for action.",
 												"example": "destinationaddress@example.net",
 												"maxLength": 90,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										}
 									},
 									"required": [
-										"type",
-										"value"
+										"type"
 									],
 									"type": "object"
 								},
@@ -1463,7 +1612,8 @@
 									false
 								],
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"matchers": {
 								"description": "Matching patterns to forward to your actions.",
@@ -1476,7 +1626,8 @@
 												"to"
 											],
 											"example": "to",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": {
 											"description": "Type of matcher.",
@@ -1484,19 +1635,19 @@
 												"literal"
 											],
 											"example": "literal",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"value": {
 											"description": "Value for matcher.",
 											"example": "test@example.com",
 											"maxLength": 90,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
-										"type",
-										"field",
-										"value"
+										"type"
 									],
 									"type": "object"
 								},
@@ -1506,13 +1657,15 @@
 								"description": "Routing rule name.",
 								"example": "Send to user@example.net rule.",
 								"maxLength": 256,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"priority": {
 								"default": 0,
 								"description": "Priority of the routing rule.",
 								"minimum": 0,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1543,8 +1696,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1564,8 +1728,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1578,7 +1753,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1615,21 +1790,22 @@
 																			"worker"
 																		],
 																		"example": "forward",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"items": {
 																			"description": "Value for action.",
 																			"example": "destinationaddress@example.net",
 																			"maxLength": 90,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	}
 																},
 																"required": [
-																	"type",
-																	"value"
+																	"type"
 																],
 																"type": "object"
 															},
@@ -1643,14 +1819,16 @@
 																false
 															],
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Routing rule identifier.",
 															"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"matchers": {
 															"description": "Matching patterns to forward to your actions.",
@@ -1663,7 +1841,8 @@
 																			"to"
 																		],
 																		"example": "to",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "Type of matcher.",
@@ -1671,19 +1850,19 @@
 																			"literal"
 																		],
 																		"example": "literal",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Value for matcher.",
 																		"example": "test@example.com",
 																		"maxLength": 90,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
-																	"type",
-																	"field",
-																	"value"
+																	"type"
 																],
 																"type": "object"
 															},
@@ -1693,13 +1872,15 @@
 															"description": "Routing rule name.",
 															"example": "Send to user@example.net rule.",
 															"maxLength": 256,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"priority": {
 															"default": 0,
 															"description": "Priority of the routing rule.",
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"tag": {
 															"deprecated": true,
@@ -1758,7 +1939,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1783,14 +1964,16 @@
 												"worker"
 											],
 											"example": "forward",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"value": {
 											"items": {
 												"description": "Input value for action.",
 												"example": "destinationaddress@example.net",
 												"maxLength": 90,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										}
@@ -1810,7 +1993,8 @@
 									false
 								],
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"matchers": {
 								"description": "List of matchers for the catch-all routing rule.",
@@ -1823,7 +2007,8 @@
 												"all"
 											],
 											"example": "all",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1837,7 +2022,8 @@
 								"description": "Routing rule name.",
 								"example": "Send to user@example.net rule.",
 								"maxLength": 256,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1868,8 +2054,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1889,8 +2086,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1903,7 +2111,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1938,14 +2146,16 @@
 																	"worker"
 																],
 																"example": "forward",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"value": {
 																"items": {
 																	"description": "Input value for action.",
 																	"example": "destinationaddress@example.net",
 																	"maxLength": 90,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															}
@@ -1965,14 +2175,16 @@
 														false
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Routing rule identifier.",
 													"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"matchers": {
 													"description": "List of matchers for the catch-all routing rule.",
@@ -1985,7 +2197,8 @@
 																	"all"
 																],
 																"example": "all",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1999,7 +2212,8 @@
 													"description": "Routing rule name.",
 													"example": "Send to user@example.net rule.",
 													"maxLength": 256,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"tag": {
 													"deprecated": true,
