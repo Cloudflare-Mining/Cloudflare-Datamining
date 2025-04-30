@@ -2551,28 +2551,28 @@
 			"name": "@cloudflare/intl-core",
 			"version": "1.14.7",
 			"dependencies": {
-				"@cloudflare/intl-types": "^1.5.7",
-				"@cloudflare/util-markdown": "^1.2.15",
-				"@types/lodash": "^4.14.107",
-				"@types/node-polyglot": "^2.4.1",
 				"lodash": "^4.17.21",
-				"node-polyglot": "^2.3.0"
+				"@types/lodash": "^4.14.107",
+				"node-polyglot": "^2.3.0",
+				"@types/node-polyglot": "^2.4.1",
+				"@cloudflare/intl-types": "^1.5.7",
+				"@cloudflare/util-markdown": "^1.2.15"
 			},
 			"peerDependencies": {
 				"regenerator-runtime": "0.x"
 			},
 			"dist": {
 				"shasum": "c692d8d1f3080ad6838aed821eb4c62dbdc17c12",
-				"integrity": "sha512-eJ9Z26CHt7DfXVBkCJs43bDeNPcGM9UFoYyNiZVuHeWEUjY/eO7E41R1aWVRvrOPQ2xFIsiUAcekuzgB3A92Fg==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/intl-core/-/intl-core-1.14.7.tgz",
 				"fileCount": 25,
-				"unpackedSize": 85821,
+				"integrity": "sha512-eJ9Z26CHt7DfXVBkCJs43bDeNPcGM9UFoYyNiZVuHeWEUjY/eO7E41R1aWVRvrOPQ2xFIsiUAcekuzgB3A92Fg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQC5cJKiUgtzrEj1Hxjo6qSYHCSnFq30IptPNQT52GIHBAIgWqoc3lcwKnh+ENnQ30cwIpDUnfbgax0KXqVyORaL9I4="
+						"sig": "MEUCIQC5cJKiUgtzrEj1Hxjo6qSYHCSnFq30IptPNQT52GIHBAIgWqoc3lcwKnh+ENnQ30cwIpDUnfbgax0KXqVyORaL9I4=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 85821
 			},
 			"stratus": {
 				"srcDirectory": "./src",
