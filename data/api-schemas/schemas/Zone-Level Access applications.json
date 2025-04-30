@@ -799,6 +799,11 @@
 															},
 															{
 																"properties": {
+																	"allow_iframe": {
+																		"description": "Enables loading application content in an iFrame.",
+																		"example": true,
+																		"type": "boolean"
+																	},
 																	"allowed_idps": {
 																		"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																		"items": {
@@ -2070,6 +2075,11 @@
 																"allOf": [
 																	{
 																		"properties": {
+																			"allow_iframe": {
+																				"description": "Enables loading application content in an iFrame.",
+																				"example": true,
+																				"type": "boolean"
+																			},
 																			"allowed_idps": {
 																				"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																				"items": {
@@ -2619,6 +2629,11 @@
 																"allOf": [
 																	{
 																		"properties": {
+																			"allow_iframe": {
+																				"description": "Enables loading application content in an iFrame.",
+																				"example": true,
+																				"type": "boolean"
+																			},
 																			"allowed_idps": {
 																				"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																				"items": {
@@ -5219,6 +5234,11 @@
 														},
 														{
 															"properties": {
+																"allow_iframe": {
+																	"description": "Enables loading application content in an iFrame.",
+																	"example": true,
+																	"type": "boolean"
+																},
 																"allowed_idps": {
 																	"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																	"items": {
@@ -6490,6 +6510,11 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"allow_iframe": {
+																			"description": "Enables loading application content in an iFrame.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"allowed_idps": {
 																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
@@ -7039,6 +7064,11 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"allow_iframe": {
+																			"description": "Enables loading application content in an iFrame.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"allowed_idps": {
 																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
@@ -9502,6 +9532,313 @@
 			"Access: Apps and Policies Read"
 		]
 	},
+	"PATCH /zones/{zone_id}/access/apps/{app_id}/settings": {
+		"description": "Updates application settings.",
+		"operationId": "zone-level-access-applications-patch-update-access-application-settings",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"oneOf": [
+						{
+							"description": "Identifier.",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"type": "string"
+						},
+						{
+							"description": "UUID.",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"type": "string"
+						}
+					]
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"allow_iframe": {
+								"description": "Enables loading application content in an iFrame.",
+								"example": true,
+								"type": "boolean"
+							},
+							"skip_interstitial": {
+								"description": "Enables automatic authentication through cloudflared.",
+								"example": true,
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"202": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"allow_iframe": {
+															"description": "Enables loading application content in an iFrame.",
+															"example": true,
+															"type": "boolean"
+														},
+														"skip_interstitial": {
+															"description": "Enables automatic authentication through cloudflared.",
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update application settings response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update application settings response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update application settings",
+		"tags": [
+			"Zone-Level Access applications"
+		]
+	},
 	"POST /zones/{zone_id}/access/apps": {
 		"description": "Adds a new application to Access.",
 		"operationId": "zone-level-access-applications-add-a-bookmark-application",
@@ -9899,6 +10236,11 @@
 									},
 									{
 										"properties": {
+											"allow_iframe": {
+												"description": "Enables loading application content in an iFrame.",
+												"example": true,
+												"type": "boolean"
+											},
 											"allowed_idps": {
 												"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 												"items": {
@@ -11170,6 +11512,11 @@
 										"allOf": [
 											{
 												"properties": {
+													"allow_iframe": {
+														"description": "Enables loading application content in an iFrame.",
+														"example": true,
+														"type": "boolean"
+													},
 													"allowed_idps": {
 														"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 														"items": {
@@ -11719,6 +12066,11 @@
 										"allOf": [
 											{
 												"properties": {
+													"allow_iframe": {
+														"description": "Enables loading application content in an iFrame.",
+														"example": true,
+														"type": "boolean"
+													},
 													"allowed_idps": {
 														"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 														"items": {
@@ -14144,6 +14496,11 @@
 																},
 																{
 																	"properties": {
+																		"allow_iframe": {
+																			"description": "Enables loading application content in an iFrame.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"allowed_idps": {
 																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
@@ -15415,6 +15772,11 @@
 																	"allOf": [
 																		{
 																			"properties": {
+																				"allow_iframe": {
+																					"description": "Enables loading application content in an iFrame.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"allowed_idps": {
 																					"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																					"items": {
@@ -15964,6 +16326,11 @@
 																	"allOf": [
 																		{
 																			"properties": {
+																				"allow_iframe": {
+																					"description": "Enables loading application content in an iFrame.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"allowed_idps": {
 																					"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																					"items": {
@@ -18295,6 +18662,11 @@
 														},
 														{
 															"properties": {
+																"allow_iframe": {
+																	"description": "Enables loading application content in an iFrame.",
+																	"example": true,
+																	"type": "boolean"
+																},
 																"allowed_idps": {
 																	"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																	"items": {
@@ -19566,6 +19938,11 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"allow_iframe": {
+																			"description": "Enables loading application content in an iFrame.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"allowed_idps": {
 																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
@@ -20115,6 +20492,11 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"allow_iframe": {
+																			"description": "Enables loading application content in an iFrame.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"allowed_idps": {
 																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
@@ -22813,6 +23195,11 @@
 									},
 									{
 										"properties": {
+											"allow_iframe": {
+												"description": "Enables loading application content in an iFrame.",
+												"example": true,
+												"type": "boolean"
+											},
 											"allowed_idps": {
 												"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 												"items": {
@@ -24084,6 +24471,11 @@
 										"allOf": [
 											{
 												"properties": {
+													"allow_iframe": {
+														"description": "Enables loading application content in an iFrame.",
+														"example": true,
+														"type": "boolean"
+													},
 													"allowed_idps": {
 														"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 														"items": {
@@ -24633,6 +25025,11 @@
 										"allOf": [
 											{
 												"properties": {
+													"allow_iframe": {
+														"description": "Enables loading application content in an iFrame.",
+														"example": true,
+														"type": "boolean"
+													},
 													"allowed_idps": {
 														"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 														"items": {
@@ -27058,6 +27455,11 @@
 																},
 																{
 																	"properties": {
+																		"allow_iframe": {
+																			"description": "Enables loading application content in an iFrame.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"allowed_idps": {
 																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
@@ -28329,6 +28731,11 @@
 																	"allOf": [
 																		{
 																			"properties": {
+																				"allow_iframe": {
+																					"description": "Enables loading application content in an iFrame.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"allowed_idps": {
 																					"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																					"items": {
@@ -28878,6 +29285,11 @@
 																	"allOf": [
 																		{
 																			"properties": {
+																				"allow_iframe": {
+																					"description": "Enables loading application content in an iFrame.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"allowed_idps": {
 																					"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																					"items": {
@@ -31209,6 +31621,11 @@
 														},
 														{
 															"properties": {
+																"allow_iframe": {
+																	"description": "Enables loading application content in an iFrame.",
+																	"example": true,
+																	"type": "boolean"
+																},
 																"allowed_idps": {
 																	"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																	"items": {
@@ -32480,6 +32897,11 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"allow_iframe": {
+																			"description": "Enables loading application content in an iFrame.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"allowed_idps": {
 																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
@@ -33029,6 +33451,11 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"allow_iframe": {
+																			"description": "Enables loading application content in an iFrame.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"allowed_idps": {
 																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
@@ -35104,6 +35531,317 @@
 			}
 		],
 		"summary": "Update an Access application",
+		"tags": [
+			"Zone-Level Access applications"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Write"
+		]
+	},
+	"PUT /zones/{zone_id}/access/apps/{app_id}/settings": {
+		"description": "Updates application settings.",
+		"operationId": "zone-level-access-applications-put-update-access-application-settings",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"oneOf": [
+						{
+							"description": "Identifier.",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"type": "string"
+						},
+						{
+							"description": "UUID.",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"type": "string"
+						}
+					]
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"allow_iframe": {
+								"description": "Enables loading application content in an iFrame.",
+								"example": true,
+								"type": "boolean"
+							},
+							"skip_interstitial": {
+								"description": "Enables automatic authentication through cloudflared.",
+								"example": true,
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"202": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"allow_iframe": {
+															"description": "Enables loading application content in an iFrame.",
+															"example": true,
+															"type": "boolean"
+														},
+														"skip_interstitial": {
+															"description": "Enables automatic authentication through cloudflared.",
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update application settings response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update application settings response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update application settings",
 		"tags": [
 			"Zone-Level Access applications"
 		],
