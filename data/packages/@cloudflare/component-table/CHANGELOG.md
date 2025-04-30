@@ -1,5 +1,14 @@
 # Change Log
 
+## 10.0.43
+
+### Patch Changes
+
+- @cloudflare/component-arrow-swivel@8.1.22
+- @cloudflare/component-box@4.0.8
+- @cloudflare/component-loading@6.1.9
+- @cloudflare/elements@3.0.10
+
 ## 10.0.42
 
 ### Patch Changes

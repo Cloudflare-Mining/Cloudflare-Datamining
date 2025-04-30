@@ -1,5 +1,7 @@
 # Change Log
 
+## 12.30.1
+
 ## 12.30.0
 
 ### Minor Changes

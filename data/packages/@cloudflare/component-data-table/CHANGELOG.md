@@ -1,5 +1,16 @@
 # Change Log
 
+## 6.0.54
+
+### Patch Changes
+
+- @cloudflare/component-button@8.5.25
+- @cloudflare/component-checkbox@5.3.9
+- @cloudflare/component-link@8.1.26
+- @cloudflare/component-loading@6.1.9
+- @cloudflare/component-pagination@10.0.41
+- @cloudflare/elements@3.0.10
+
 ## 6.0.53
 
 ### Patch Changes

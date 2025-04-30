@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.11.0
+
+### Minor Changes
+
+- 679fb94c7f: Darkened dark mode background color
+
 ## 5.10.1
 
 ### Patch Changes
