@@ -5,39 +5,67 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Location: Munich, Germany</strong></h4>
-<hr>
-<h4><strong>About the Role</strong></h4>
-<p>Cloudflare is looking for a passionate and results-driven Senior Marketing &amp; Events Manager, EMEA to join our dynamic EMEA Events Center of Excellence team. If you love bringing events to life, have strong project management skills, and enjoy working in a fast-paced, cross-functional environment, this is the perfect role for you!</p>
-<p>As part of the EMEA Marketing team, you will be primarily responsible for driving &amp; supporting events in the DACH region (Germany, Austria, Switzerland) while also playing a key role in shaping and executing EMEA-wide channel events. You’ll help execute the EMEA Channel event plan, contribute to strategic marketing initiatives, and execute activities that support Cloudflare’s channel business transformation.</p>
-<p>This role is a mix of event execution, partner marketing, and strategic planning—requiring collaboration with regional partners, channel sales, and marketing leadership. Your ability to build strong relationships, align events with business objectives, and drive measurable outcomes will be key to success.</p>
-<h4><strong>What You’ll Do</strong></h4>
-<p><strong>DACH Region Event Execution: </strong>Plan and execute high-impact events such as trade shows, Cloudflare conferences, meetups, executive dinners, and partner events to generate leads, engage customers, and support pipeline growth.</p>
-<p><strong>EMEA Channel Event Strategy &amp; Execution:</strong> Work with the Head of EMEA events and the Director of Partner Marketing and the broader EMEA Field Marketing team to develop and execute channel event plans that align with Cloudflare’s partner growth strategy.</p>
-<p><strong>Collaboration &amp; Cross-Functional Support:</strong> Partner with internal teams—including Sales, Product, Localization, and Marketing—to ensure events align with broader regional goals and drive meaningful engagement.</p>
-<p><strong>Vendor &amp; Partner Management: </strong>Oversee relationships with regional partners, vendors, and agencies to ensure seamless event execution and maximum impact.</p>
-<p><strong>Marketing Campaign Execution: </strong>Develop event-related marketing assets (landing pages, email templates, promotional content), track campaign performance, and ensure lead conversion strategies are in place.</p>
-<p><strong>Data-Driven Decision Making: </strong>Analyze event performance, track ROI, and optimize strategies based on insights to enhance future initiatives.</p>
-<p><strong>Regional Field Marketing Support: </strong>Work closely with the Field Marketing Manager to integrate events into the overall DACH and EMEA marketing strategy.</p>
-<h4><strong>What We’re Looking For</strong></h4>
+<h2><strong>About the Role</strong></h2>
+<p>Cloudflare is transforming the way enterprise IT operates—redefining an entire category and growing a billion-pound business with over 40% annual growth. At the heart of this expansion is our dynamic regional marketing team.</p>
+<p>We’re looking for a <strong>Senior Marketing &amp; Events Manager, EMEA</strong> to join our Events Center of Excellence. This role is perfect for someone who thrives on bringing exceptional events to life, loves fast-paced collaboration, and is driven by data, creativity, and results.</p>
+<p>In this pivotal position, you'll lead event strategy and execution across the <strong>DACH region (Germany, Austria, Switzerland)</strong> and support <strong>EMEA-wide channel events</strong>. You’ll collaborate across Marketing, Sales, and Partner teams to deliver experiences that drive engagement, build pipeline, and fuel Cloudflare’s channel growth.</p>
+<p>This role reports to the <strong>Head of Field Marketing &amp; Events, EMEA</strong>, and works closely with the broader regional marketing and sales organisation. Who you are: A proactive, positive, and high-energy team player. Curious, adaptable, and eager to grow in a <strong>tech-driven, high-growth environment</strong>.<br><br></p>
+<h2><strong>What You'll Do</strong></h2>
 <ul>
-	<li>Fluent in English and German (mandatory).</li>
-	<li>Based in Munich, Germany (or willing to relocate)</li>
-	<li>Experience in event marketing, channel marketing, or field marketing, with the ability to manage multiple projects simultaneously.</li>
-	<li>A highly motivated, positive, and collaborative team player who thrives in a fast-paced, evolving environment.</li>
-	<li>Strong organizational and strategic thinking skills, with attention to detail and the ability to prioritize effectively.</li>
-	<li>Experience working closely with regional sales teams, BDRs, and channel partners</li>
-	<li>An analytical mindset, with a passion for data-driven decision-making and continuous optimization.</li>
-	<li>Excellent written and verbal communication skills, with the ability to craft compelling messaging and event promotions.</li>
-	<li>A natural curiosity and eagerness to learn in a high-growth, tech-driven company.</li>
+	<li>
+		<p>Lead Event Execution in DACH<br>Plan and execute impactful events—trade shows, executive dinners, Cloudflare conferences, partner gatherings, and more—to drive pipeline and customer engagement across the region.<br><br></p>
+	</li>
+	<li>
+		<p>Drive EMEA Channel Event Strategy<br>Collaborate with the Head of EMEA Events, Director of Partner Marketing, and DACH Field Marketing leads to shape and deliver strategic channel events aligned with Cloudflare’s partner ecosystem growth.<br><br></p>
+	</li>
+	<li>
+		<p>Cross-Functional Collaboration<br>Work closely with Sales, Product, Localization, and Marketing teams to align event strategy with business goals and deliver meaningful experiences.<br><br></p>
+	</li>
+	<li>
+		<p>Vendor &amp; Partner Management<br>Own relationships with agencies, venues, and regional partners—ensuring seamless execution and maximum ROI for every event.<br><br></p>
+	</li>
+	<li>
+		<p>Campaign Development &amp; Execution<br>Create event-related assets including landing pages, promotional content, and email campaigns. Ensure strong pre- and post-event strategies to drive lead conversion.<br><br></p>
+	</li>
+	<li>
+		<p>Performance Tracking &amp; Insights<br>Measure, report, and optimise events using clear KPIs and ROI metrics—continuously refining strategies for better outcomes.<br><br></p>
+	</li>
+	<li>
+		<p>Support Regional Field Marketing<br>Partner with the DACH Field Marketing Manager to ensure event initiatives are embedded within the broader EMEA marketing strategy.</p>
+	</li>
 </ul>
-<h4><strong>Bonus Points If You Have</strong></h4>
+<h2><strong>Required Qualifications</strong></h2>
 <ul>
-	<li>Experience with Salesforce, Marketo, or other marketing automation tools.</li>
-	<li>Experience in content localization to improve engagement across different languages and regions.</li>
-	<li>Strong outreach messaging and content creation skills.</li>
-	<li>Prior experience in a high-growth SaaS, cybersecurity, or networking company.</li>
+	<li><strong>Fluent in English and German</strong> (mandatory).</li>
+	<li><strong>Based in Munich, Germany</strong>, or open to relocation.</li>
+	<li><strong>8+ years</strong> of regional marketing experience, including support for <strong>field sales teams and channel partners</strong>.</li>
+	<li>Background in <strong>cybersecurity or high-growth SaaS</strong> is a strong advantage.</li>
 </ul>
+<h2><strong>What You Bring</strong></h2>
+<h3><strong>Professional Experience</strong></h3>
+<ul>
+	<li>Deep expertise in <strong>event, channel, or field marketing</strong>, with a proven track record of managing complex, multi-market programs.</li>
+	<li>Comfortable and expertise working closely with <strong>sales, BDRs, and partner ecosystems</strong> to align on business objectives.</li>
+	<li>Experience operating across <strong>diverse EMEA teams and cultures</strong>.</li>
+</ul>
+<h3><strong>Core Skills</strong></h3>
+<ul>
+	<li>Exceptional <strong>project and time management skills</strong>; detail-oriented and highly organised.</li>
+	<li>Excellent <strong>written and verbal communication</strong>, with a knack for compelling storytelling and promotional messaging.</li>
+	<li>Collaborative communicator, able to influence stakeholders across Sales, Marketing, and Partner teams.</li>
+	<li><strong>Strategic mindset</strong> with the ability to execute flawlessly in a fast-paced, evolving environment.</li>
+	<li>Strong analytical acumen, using data to inform decisions and optimise performance.</li>
+</ul>
+<h3><strong>Tech &amp; Tools</strong></h3>
+<ul>
+	<li>Proficiency in <strong>Google Workspace (G Suite)</strong>.</li>
+	<li>Experience with <strong>Salesforce, Marketo, Demandbase</strong>, or other martech platforms is a plus.</li>
+</ul>
+<h2><strong>Bonus Points If You Have</strong></h2>
+<ul>
+	<li>Expertise in <strong>marketing automation platforms</strong> like Salesforce, Marketo, or Demandbase.</li>
+</ul>
+<p>Strong copywriting and <strong>content creation</strong> skills for outreach and engagement.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
