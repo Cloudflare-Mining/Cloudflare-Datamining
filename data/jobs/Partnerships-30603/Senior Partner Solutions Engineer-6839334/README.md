@@ -5,47 +5,46 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Job Location: </strong>Austin, TX</p>
-<h4><strong>About the Department</strong></h4>
-<p>The Cloudflare Customer Support Team solves complicated problems and answers technical inquiries via email, chat, phone, and social media. From Enterprise corporations with petabytes of web traffic to Wordpress bloggers using our platform for free, we are here to help. Being the eyes and ears of Cloudflare, we act as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
-<h4><strong>What you'll do&nbsp;</strong></h4>
-<p>The Cloudflare Escalation Engineer will perform deep, technical troubleshooting for complex, escalated issues. This role owns the customer escalation process and works with various Product and Engineering teams to identify product bugs, network problems, and platform issues. Escalation Engineers foster a close relationship with SRE, Network, Engineering and Product teams. They act as an escalation point, isolate/replicate problems, and gather technical information/expectation.</p>
-<h4><strong>Responsibilities</strong></h4>
+<p><span style="text-decoration: underline;"><strong>This is a Hybrid role open to candidates based in the Northeast US Region</strong></span></p>
+<hr>
+<p><strong>About Solutions Engineering at Cloudflare:</strong></p>
+<p>The Pre-Sales Solution Engineering organization owns the technical sale of the Cloudflare solution portfolio, ensuring maximal business value, fit-for-purpose solution design and adoption roadmap for our customers. Solutions Engineering is made up of individuals from a wide range of backgrounds - from Financial Consulting to Product Management, Customer Support to Software Engineering, and we are serious about building a diverse, experienced and curious team.&nbsp;</p>
+<p>The Partner Solutions Engineer is an experienced PreSales role within the Solutions Engineering team. Partner Solutions Engineers work closely with our partners to educate, empower, and ensure their success delivering Cloudflare security, reliability and performance solutions.</p>
+<h4><strong>What you'll do as a Partner Solutions Engineer:</strong></h4>
+<p>Your role will be to build passionate champions within the technology ranks at your Partner accounts, aid your Partner organizations to drive sales for identified opportunities, and collaborate with your technical champions to build revenue pipeline. As the technical partner advocate within Cloudflare, you will work closely with every team at Cloudflare, from Sales and Product, through to Engineering and Customer Support.&nbsp;</p>
+<p>You have strong experience in large Pre-Sales partner and account management as well as excellent verbal and written communications skills, suited for both technical and executive-level engagement. You are comfortable speaking about the Cloudflare vision and mission with all technical and non-technical audiences.&nbsp;</p>
+<p>Ultimately, you are passionate about technology and have the ability to explain complex technical concepts in easy-to-understand terms. You are naturally curious, and an avid builder who is not afraid to get your hands dirty. You appreciate the diversity of challenges in working with partners and customers, and look forward to helping them realize the full promise of Cloudflare. On the Solutions Engineering team, you will find a collaborative environment where everyone brings different strengths and jumps in to help each other.</p>
+<p><strong>Specifically, we are looking for you to:</strong></p>
 <ul>
-	<li>Provide coverage (shift rotation including possibility of weekends and Pacific Time hours) for technical troubleshooting of escalated issues&nbsp;</li>
-	<li>Triage Customer Escalation issues to find the quickest most efficient path of resolution</li>
-	<li>Work cross-functionally with various teams across the company from engineering to sales</li>
+	<li>Build and maintain long term technical relationships with our partners to increase Cloudflare’s reputation and authority within the partner solution portfolio through demonstrating value, enablement, and uncovering new areas of potential revenue</li>
+	<li>Drive technical solution design conversations and guide partners through use case qualification and collaborative technical wins through demonstrations and proofs-of-concepts</li>
+	<li>Evangelize and represent Cloudflare through technical thought leadership and expertise&nbsp;</li>
+	<li>Be the voice of the partner internally at Cloudflare, engaging with and influencing Cloudflare’s Product and Engineering teams to meet your partner and customer needs</li>
+	<li>Travel up to 40% throughout the quarter to support partner engagements, attend conferences and industry events, and to collaborate with your Cloudflare teammates&nbsp;</li>
 </ul>
-<h4><strong>Requirements</strong></h4>
+<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
-	<li>2-3 years of technical troubleshooting experience, preferably in technical support or system reliability engineering</li>
-	<li>Excellent verbal and written communication skills, ability to disseminate clear and appropriate&nbsp; information to both business and technical audiences</li>
-	<li>Able to manage multiple priorities, commitments, and projects</li>
-</ul>
-<h4><strong>Core competencies (“Desired skills, knowledge and experience”)</strong></h4>
-<ul>
-	<li>Extensive technical support experience</li>
-	<li>Expertise in troubleshooting application protocols (L7 - DNS, HTTP, etc)</li>
-	<li>Expertise in troubleshooting network infrastructure (L3/L4)</li>
-	<li>Expert with Linux command line tools&nbsp; (curl, dig, git, traceroute, mtr)</li>
-	<li>Expert at analyzing data using tools like grafana, kibana, and SQL</li>
-	<li>Able to clarify complex technical issues and coordinate efforts to resolve</li>
-	<li>Able to identify and share/suggest process improvements&nbsp;</li>
-	<li>Demonstrated leadership, prior mentoring experience</li>
-	<li>Self-motivated, self-directed, strong relationship building, can positively influence the actions of others, team player</li>
-	<li>Comfortable handling inbound and outbound customer calls</li>
-</ul>
-<h4><strong>Bonus Points</strong></h4>
-<ul>
-	<li>Experience with regular expressions</li>
-	<li>Knowledge of web programming (HTML, Javascript, PHP) and scripting (bash, Python)</li>
-	<li>Experience managing/configuring non-HTTP applications (email, DNS, FTP, SSH, etc.)</li>
+	<li>Experience managing technical sales within large partners and accounts:</li>
+	<ul>
+		<li>Developing champion-style relationships</li>
+		<li>Driving technical wins</li>
+		<li>Assisting with technical validation</li>
+	</ul>
+	<li>Experience and expertise in one or more of the core industry components of Cloudflare solutions:</li>
+	<ul>
+		<li>SASE concepts and Zero Trust Networking architectures</li>
+		<li>Networking technologies including TCP, UDP, DNS, IPv4 + IPv6, BGP routing, GRE, SD-WAN, MPLS, Global Traffic Management</li>
+		<li>Internet security technologies including DDoS and DDoS mitigation, Firewalls, TLS, VPN, DLP</li>
+		<li>Detailed understanding of workflow from user to application including hybrid architectures with Azure, AWS, GCP</li>
+		<li>HTTP technologies including reverse proxy (e.g., WAF and CDN), forward proxy (secure web gateway), serverless application development.</li>
+	</ul>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Texas-based hires: Estimated annual salary of $91<span data-sheets-root="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:226000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">,000</span> - $111<span data-sheets-root="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:226000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">,000</span></li>
+	<li>For New York City based hires: Estimated annual salary of $211,000 - $257,000.</li>
 </ul>
+<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -73,7 +72,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
