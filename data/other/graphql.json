@@ -898,6 +898,62 @@
 		"txBandwidthP90": "TX bandwidth (90th percentile)",
 		"txBandwidthP99": "TX bandwidth (99th percentile)"
 	},
+	"AccountCloudflareTunnelsAnalyticsAdaptiveGroups": {
+		"__description": "Cloudflare tunnel Device Analytics",
+		"avg": "The average of values for a metric per dimension",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountCloudflareTunnelsAnalyticsAdaptiveGroupsAvg": {
+		"__description": "",
+		"bitRate": "Sum of bits received, divided by 1 second, providing a per-second bit rate when grouped by datetime",
+		"bitRateDay": "Sum of bits received, divided by 86400 seconds, providing a per-second bit rate when grouped by date",
+		"bitRateFifteenMinutes": "Sum of bits received, divided by 900 seconds, providing a per-second bit rate when grouped by datetimeFifteenMinutes",
+		"bitRateFiveMinutes": "Sum of bits received, divided by 300 seconds, providing a per-second bit rate when grouped by datetimeFiveMinutes",
+		"bitRateHour": "Sum of bits received, divided by 3600 seconds, providing a per-second bit rate when grouped by datetimeHour",
+		"bitRateMinute": "Sum of bits received, divided by 60 seconds, providing a per-second bit rate when grouped by datetimeMinute",
+		"bitRateTenSeconds": "Sum of bits received, divided by 10 seconds, providing a per-second bit rate when grouped by datetimeTenSeconds",
+		"egressBitRate": "Sum of egress bits received, divided by 1 second, providing a per-second egress bit rate when grouped by datetime",
+		"egressBitRateDay": "Sum of egress bits received, divided by 86400 seconds, providing a per-second egress bit rate when grouped by date",
+		"egressBitRateFifteenMinutes": "Sum of egress bits received, divided by 900 seconds, providing a per-second egress bit rate when grouped by datetimeFifteenMinutes",
+		"egressBitRateFiveMinutes": "Sum of egress bits received, divided by 300 seconds, providing a per-second egress bit rate when grouped by datetimeFiveMinutes",
+		"egressBitRateHour": "Sum of egress bits received, divided by 3600 seconds, providing a per-second egress bit rate when grouped by datetimeHour",
+		"egressBitRateMinute": "Sum of egress bits received, divided by 60 seconds, providing a per-second egress bit rate when grouped by datetimeMinute",
+		"egressBitRateTenSeconds": "Sum of egress bits received, divided by 10 seconds, providing a per-second egress bit rate when grouped by datetimeTenSeconds",
+		"sampleInterval": "Average sample interval applied to the data"
+	},
+	"AccountCloudflareTunnelsAnalyticsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectionDuration": "Duration of the network connection in milliseconds.",
+		"date": "Date that the connection was started",
+		"datetime": "Date and time the connection was started",
+		"datetimeFifteenMinutes": "Date and time that the connection was started, rounded to the start of the nearest fifteen minutes",
+		"datetimeFiveMinutes": "Date and time that the connection was started, rounded to the start of the nearest five minutes",
+		"datetimeHour": "Date and time that the connection was started, rounded to the start of the nearest hour",
+		"datetimeMinute": "Date and time that the connection was started, rounded to the start of the nearest minute",
+		"datetimeTenSeconds": "Date and time that the connection was started rounded to the start of the nearest ten seconds",
+		"destinationCountry": "Destination country for the network connection. Only available for public addresses.",
+		"destinationIP": "Destination IP of the network connection.",
+		"destinationPort": "Destination port of the network connection.",
+		"deviceID": "Identifier of the Cloudflare tunnel connector to which the network session was routed to.",
+		"deviceName": "Name of the Cloudflare tunnel connector to which the network session was routed to.",
+		"protocol": "Network Protocol of the network connection. Available values: [UDP,TCP,ICMP,ICMPv6]",
+		"sourceCountry": "Source country for the network connection. Only available for public addresses.",
+		"sourceIP": "Source IP of the network connection.",
+		"sourcePort": "Source port of the network connection.",
+		"tcpHandshakeDuration": "Duration of the TCP Handshake for TCP connections in milliseconds."
+	},
+	"AccountCloudflareTunnelsAnalyticsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCloudflareTunnelsAnalyticsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCloudflareTunnelsAnalyticsAdaptiveGroupsSum": {
+		"__description": "",
+		"bits": "Sum of bits",
+		"egressBits": "Sum of egress bits"
+	},
 	"AccountD1AnalyticsAdaptiveGroups": {
 		"__description": "Beta. Aggregated D1 analytics with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
@@ -2843,6 +2899,42 @@
 		"bytesCompressed": "Bytes of compressed log data pushed",
 		"records": "A count of the total number of records pushed."
 	},
+	"AccountMagicEndpointHealthCheckAdaptiveGroups": {
+		"__description": "Magic Endpoint Healthcheck events with adaptive sampling.",
+		"avg": "The average value for a metric per dimension",
+		"count": "Total number of health checks",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of value for a metric per dimension"
+	},
+	"AccountMagicEndpointHealthCheckAdaptiveGroupsAvg": {
+		"__description": "",
+		"lossPercentage": "Average calculated percentage (0-100) for endpoint healthchecks",
+		"sampleInterval": "The average value used for sample interval"
+	},
+	"AccountMagicEndpointHealthCheckAdaptiveGroupsDimensions": {
+		"__description": "",
+		"checkId": "The ID of the check associated with the healthcheck",
+		"checkType": "The type of check associated with the healthcheck",
+		"date": "Healthcheck event timestamp, truncated to the day",
+		"datetime": "Healthcheck event timestamp",
+		"datetimeFifteenMinutes": "Healthcheck event timestamp, truncated to multiple of 15 minutes",
+		"datetimeFiveMinutes": "Calculation event timestamp, truncated to multiple of 5 minutes",
+		"datetimeHalfOfHour": "Healthcheck event timestamp, truncated to multiple of 30 minutes",
+		"datetimeHour": "Healthcheck event timestamp, truncated to the hour",
+		"datetimeMinute": "Healthcheck event timestamp, truncated to the minute",
+		"endpoint": "The endpoint of the check associated with the healthcheck"
+	},
+	"AccountMagicEndpointHealthCheckAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMagicEndpointHealthCheckAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMagicEndpointHealthCheckAdaptiveGroupsSum": {
+		"__description": "",
+		"failures": "Total failures",
+		"total": "Total number of health check events"
+	},
 	"AccountMagicFirewallNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Magic Firewall",
 		"avg": "The average of values for a metric per dimension",
@@ -4084,7 +4176,7 @@
 	"AccountMconnTelemetrySnapshotsAdaptiveGroupsMax": {
 		"__description": "",
 		"cpuCount": "Count of processors/cores",
-		"haValue": "Numeric value associated with high availability state (0 = unknown, 1 = active, 2 = standby, 3 = disabled, 4 = fault)",
+		"haValue": "Numeric value associated with high availability state (0 = disabled, 1 = active, 2 = standby, 3 = stopped, 4 = fault)",
 		"kernelBtime": "Boot time (seconds since Unix epoch)",
 		"kernelProcessesRunning": "Number of processes in runnable state",
 		"loadAverage15m": "The fifteen-minute load average",
@@ -4123,7 +4215,7 @@
 	"AccountMconnTelemetrySnapshotsStagingAdaptiveGroupsMax": {
 		"__description": "",
 		"cpuCount": "Count of processors/cores",
-		"haValue": "Numeric value associated with high availability state (0 = unknown, 1 = active, 2 = standby, 3 = disabled, 4 = fault)",
+		"haValue": "Numeric value associated with high availability state (0 = disabled, 1 = active, 2 = standby, 3 = stopped, 4 = fault)",
 		"kernelBtime": "Boot time (seconds since Unix epoch)",
 		"kernelProcessesRunning": "Number of processes in runnable state",
 		"loadAverage15m": "The fifteen-minute load average",
@@ -4995,6 +5087,7 @@
 		"callsUsageAdaptiveGroups": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "",
 		"cloudchamberMetricsAdaptiveGroups": "",
+		"cloudflareTunnelsAnalyticsAdaptiveGroups": "",
 		"d1AnalyticsAdaptiveGroups": "",
 		"d1QueriesAdaptiveGroups": "",
 		"d1StorageAdaptiveGroups": "",
@@ -5030,6 +5123,7 @@
 		"kvOperationsAdaptiveGroups": "",
 		"kvStorageAdaptiveGroups": "",
 		"logpushHealthAdaptiveGroups": "",
+		"magicEndpointHealthCheckAdaptiveGroups": "",
 		"magicFirewallNetworkAnalyticsAdaptiveGroups": "",
 		"magicFirewallRateLimitNetworkAnalyticsAdaptiveGroups": "",
 		"magicFirewallSamplesAdaptiveGroups": "",
@@ -8587,6 +8681,7 @@
 		"callsUsageAdaptiveGroups": "Beta. Aggregated Calls SFU bandwidth usage with adaptive sampling",
 		"cdnNetworkAnalyticsAdaptiveGroups": "Network analytics data for Cloudflare CDN traffic",
 		"cloudchamberMetricsAdaptiveGroups": "Metrics for Cloudchamber applications and deployments",
+		"cloudflareTunnelsAnalyticsAdaptiveGroups": "Cloudflare tunnel Device Analytics",
 		"d1AnalyticsAdaptiveGroups": "Beta. Aggregated D1 analytics with adaptive sampling",
 		"d1QueriesAdaptiveGroups": "Beta. D1 query metrics with adaptive sampling",
 		"d1StorageAdaptiveGroups": "Beta. D1 storage with adaptive sampling",
@@ -8622,6 +8717,7 @@
 		"kvOperationsAdaptiveGroups": "KV operations data with adaptive sampling",
 		"kvStorageAdaptiveGroups": "KV stored data with adaptive sampling",
 		"logpushHealthAdaptiveGroups": "Beta. Logpush job health metrics",
+		"magicEndpointHealthCheckAdaptiveGroups": "Magic Endpoint Healthcheck events with adaptive sampling.",
 		"magicFirewallNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic Firewall",
 		"magicFirewallRateLimitNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic Firewall Ratelimiting",
 		"magicFirewallSamplesAdaptiveGroups": "Data to visualize traffic allowed and blocked by Magic Firewall rules",
