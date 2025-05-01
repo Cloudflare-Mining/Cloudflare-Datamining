@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2025-04-28T21:40:24.580Z",
-					"updatedAt": "2025-04-28T21:40:24.580Z"
+					"updatedAt": "2025-04-30T21:36:39.980Z"
 				},
 				"contentfulId": "5qol7o0OBAzdo8EPDI6l1P",
 				"contentTypeId": "page",
@@ -132,7 +132,22 @@
 						"title": "Networks become complex, brittle, and inefficient over time",
 						"copy": "Networks become complex, brittle, and operationally inefficient over time. Many traditional and cloud-based security products make the complexity problem even worse, due to the narrow focus of their capabilities.",
 						"toggleText": null,
-						"button": [],
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "linaDnyHh8qY822Tv1UTA",
+								"elementName": "Modernize networks - Problem button",
+								"standardText": null,
+								"text": "Read whitepaper",
+								"url": "https://www.cloudflare.com/lp/developing-a-strategy-for-network-modernization/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							}
+						],
 						"learnMoreUrl": null,
 						"learnMoreText": null,
 						"link": [],
@@ -1007,9 +1022,21 @@
 						"eyebrow": null
 					},
 					{
+						"contentfulId": "4wZigWZ19GiFXKo6sz0YEa",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": " Instead of building network infrastructure, use Cloudflare's global network",
+						"eyebrowHeading": "HOW IT WORKS",
+						"description": "Cloudflare delivers the SASE capabilities for Network-as-a-Service and Network Security-as-a-Service through a single, centrally managed control plane. Organizations simply connect their users, offices, and clouds to the nearest [Cloudflare Anycast data center](https://www.cloudflare.com/network/) for visibility and control for all traffic.\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/3h4zIzqy7lVVMtIs24BtIM/ae53f39dc20f77a9a7e22b23748d2185/BDES-7450_Modernize-networks_how-it-works.svg\" alt=\"\" />",
+						"textLayout": "center",
+						"columnsLayout": "One Column",
+						"columnContent": [],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
+					},
+					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "373hf7B5e8rM7OLQBWq6Jj",
-						"htmlContent": "<div style=\"text-align:left; padding-bottom:64px; padding-top: 64px;\" class=\"headline-2\">\nCredit Saison India powers secure, scalable, and cost-effective nationwide workforce and infrastructure expansion with Cloudflare\n</div>",
+						"htmlContent": "<div style=\"text-align:left; padding-bottom:64px; padding-top: 64px;\" class=\"headline-2\">\nBuilding a hardware-independent secure cloud infrastructure to support rapid growth\n</div>",
 						"htmlId": null
 					},
 					{
@@ -1046,7 +1073,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Credit Saison India sought a security infrastructure that did not require extensive equipment upgrades or a patchwork of third-party software solutions to support a hybrid workforce of employees, partners, and contractors. Simplifying technology management was another priority.",
+													"value": "Credit Saison India sought a security infrastructure that did not require extensive equipment upgrades or a patchwork of third-party software solutions to support a hybrid workforce of employees, partners, and contractors. Simplifying management was another priority.",
 													"marks": [],
 													"content": null
 												}
@@ -1067,7 +1094,100 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "After conducting extensive research, Credit Saison India selected Cloudflare One, the unified platform that brings together Cloudflare's Zero Trust Network Access (ZTNA) and networking solutions — all secured on the Cloudflare global network.",
+													"value": "Credit Saison India selected ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/zero-trust/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Cloudflare One",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", the unified platform that brings together Cloudflare's ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/zero-trust/solutions/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "ZTNA",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " and ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/network-services/solutions/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "networking solutions",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
 													"marks": [],
 													"content": null
 												}
@@ -1088,7 +1208,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Using Cloudflare, Credit Saison India now secures employees, and public and private networks, without additional hardware, difficult-to-maintain VPNs, or excessive infrastructure investments.",
+													"value": "Credit Saison India now secures employees, and public and private networks , without additional hardware, VPNs, or excessive infrastructure investments. ",
 													"marks": [],
 													"content": null
 												}
