@@ -7,36 +7,33 @@
 </div>
 <p><strong>Available Location: Singapore</strong></p>
 <p><strong>Your Career</strong></p>
-<p>As our physical security specialist, reporting to our Director of Physical Security, you will take ownership of our physical security technologies across our office and data center footprint.&nbsp;</p>
+<p>As our Global Physical Security Specialist, reporting to our Sr. Director of Physical Security you will take ownership of our physical security technologies across our office and data center footprint.&nbsp;</p>
 <p>We are looking for someone excited about solving physical world challenges with next-generation technology on a global scale. You will be leading the overall strategy &amp; implementation as well as partnering with other teams to unify physical and digital access into one cohesive security solution for Cloudflare’s global network powering our products.</p>
 <p><strong>What You’ll Do</strong></p>
-<p>Continue to build and manage our global physical security data center program overall in the following areas:&nbsp;</p>
+<p>Continue to work as a member of a unique global physical security team and program in the following areas:&nbsp;</p>
 <ul>
 	<li>Physical security systems:</li>
 	<ul>
-		<li>Lead a global program focused on developing and deploying innovative physical security technology &amp; operations across our global network of data centers. This will require traveling to a variety of locations, building relationships with our partners and working in an agile environment.&nbsp;</li>
-		<li>Utilize Cloudflare products to secure our physical security technology and work with the product teams to create new features and products applicable to the IOT / physical security space.&nbsp;</li>
-		<li>Run pilots to assess if new technologies and services are worthy of longer term investment.</li>
-		<li>Work alongside our detections Team to identify ways to ingest video and access control event alarms into detection pipelines and process those through various stages of triage.</li>
-	</ul>
-	<li>Contracts and security addendums:</li>
-	<ul>
-		<li>Working with legal to oversee our contracts and security addendums with our data center partners as they relate to physical security controls</li>
+		<li>Ability to work within a global physical security program focused on developing and deploying innovative physical security technology &amp; operations across our global network of data centers. This will require traveling to a variety of locations, building relationships with our partners and working in an agile environment.&nbsp;</li>
+		<li>Ability to assist and manage investigations working with Cloudflare’s People’s Team.&nbsp;</li>
+		<li>Work alongside our SIRT Team&nbsp; as required for physical Security related incidents.&nbsp;</li>
+		<li>Deploy and remediate access control and CCTV equipment with vendor support</li>
+		<li>Coordinate and provide facility and personnel safety practices, guidance, assistance, and response as required.</li>
 	</ul>
 	<li>Audit and certifications:</li>
 	<ul>
-		<li>Deliver the review &amp; audit of existing and new data centers.</li>
-		<li>Establish, implement, and automate our physical security standards, policies, and processes globally. Support implementation of operational metrics, project tracking, and status / blockers reporting as needed.</li>
-		<li>Work alongside our infrastructure partners to enhance their standard operating procedures ensuring compliance with physical security standards and controls.</li>
+		<li>Establish, implement, and automate our physical security standards, policies, and processes globally.&nbsp;</li>
+		<li>Support implementation of operational metrics, project tracking, and status/ blockers reporting as needed.</li>
+		<li>Work alongside our infrastructure partners to enhance their standard operating procedures ensuring compliance with physical security standards and controls, including Cloudflare Data Centers and partners.</li>
 		<li>Work with the security compliance and risk management team on developing and implementing physical security controls as it relates to various compliance requirements including but not limited to FedRAMP, ISO 27001 and SOC 2; and support internal and external audits of physical security controls.</li>
-		<li>Travel to Cloudflare data center locations to carry out physical security audits and oversee physical security control build outs.</li>
 	</ul>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>Ability to make decisions on acceptable physical security risk and drive risk mitigation.&nbsp;</li>
-	<li>Experience managing large scale physical security programs, preferably with experience of physical security controls inside data centers</li>
-	<li>Solid understanding of integrating and deploying systems at scale, including networking and systems engineering.</li>
+	<li>Experience managing a local physical security program and managing event security practices, preferably with experience of physical security controls.</li>
+	<li>Solid understanding of integrating and deploying access control and CCTV systems at scale, including networking and systems engineering.</li>
+	<li>Ability to coordinate with law enforcement and government agencies at every level</li>
 	<li>Understanding of networking security as it relates to physical security technology</li>
 	<li>Understanding of access control as it relates to granting logical access to systems</li>
 	<li>Previous experience working in Verkada Command and deploying Verkada cameras and access sensors</li>
