@@ -5693,6 +5693,19 @@
 					"schema": {
 						"additionalProperties": false,
 						"properties": {
+							"allowed_delivery_modes": {
+								"items": {
+									"enum": [
+										"DIRECT",
+										"BCC",
+										"JOURNAL",
+										"API",
+										"RETRO_SCAN"
+									],
+									"type": "string"
+								},
+								"type": "array"
+							},
 							"domain": {
 								"nullable": true,
 								"type": "string"

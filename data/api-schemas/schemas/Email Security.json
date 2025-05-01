@@ -2316,6 +2316,71 @@
 				}
 			},
 			{
+				"in": "query",
+				"name": "original_disposition",
+				"schema": {
+					"allOf": [
+						{
+							"enum": [
+								"MALICIOUS",
+								"SUSPICIOUS",
+								"SPOOF",
+								"SPAM",
+								"BULK",
+								"NONE"
+							],
+							"type": "string"
+						}
+					]
+				}
+			},
+			{
+				"in": "query",
+				"name": "requested_disposition",
+				"schema": {
+					"allOf": [
+						{
+							"enum": [
+								"MALICIOUS",
+								"SUSPICIOUS",
+								"SPOOF",
+								"SPAM",
+								"BULK",
+								"NONE"
+							],
+							"type": "string"
+						}
+					]
+				}
+			},
+			{
+				"in": "query",
+				"name": "outcome_disposition",
+				"schema": {
+					"allOf": [
+						{
+							"enum": [
+								"MALICIOUS",
+								"SUSPICIOUS",
+								"SPOOF",
+								"SPAM",
+								"BULK",
+								"NONE"
+							],
+							"type": "string"
+						}
+					]
+				}
+			},
+			{
+				"in": "query",
+				"name": "query",
+				"schema": {
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
 				"description": "The page number of paginated results.",
 				"in": "query",
 				"name": "page",
