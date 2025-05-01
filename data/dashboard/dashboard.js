@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "aaca50ed-f62a-5406-90d2-4a0991a2b0c8")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "94424e57-97ae-5c2e-a7af-77fa28667c4f")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -319,10 +319,10 @@
 			var oe = t("../../../../node_modules/@sentry/tracing/esm/index.js"),
 				ce = t("../../../../node_modules/history/esm/history.js"),
 				me = (0, ce.lX)(),
-				he = t("../../../../node_modules/@sentry/utils/esm/worldwide.js"),
+				be = t("../../../../node_modules/@sentry/utils/esm/worldwide.js"),
 				Le = t("../react/utils/url.ts");
-			const je = (0, he.Rf)();
-			let be;
+			const je = (0, be.Rf)();
+			let he;
 
 			function Se(N) {
 				return Ye(N, "react-router-v5")
@@ -330,7 +330,7 @@
 
 			function Ye(N, j) {
 				return (q, ae = !0, fe = !0) => {
-					ae && je && je.location && (be = q({
+					ae && je && je.location && (he = q({
 						name: (0, Le.Fl)(je.location.pathname),
 						op: "pageload",
 						tags: {
@@ -338,11 +338,11 @@
 						}
 					})), fe && N.listen && N.listen((Ie, Oe) => {
 						if (Oe && (Oe === "PUSH" || Oe === "POP")) {
-							be && be.finish();
+							he && he.finish();
 							const Me = {
 								"routing.instrumentation": j
 							};
-							be = q({
+							he = q({
 								name: (0, Le.Fl)(Ie.pathname),
 								op: "navigation",
 								tags: Me
@@ -1041,10 +1041,10 @@
 					t.g.build = Sn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "ef40dde4665276729b6bbbfebb8eaa607118df04",
-						dashVersion: "32906270",
+						commit: "36cc83545442771ba102c4acaa9a049712ede25e",
+						dashVersion: "32941114",
 						env: "production",
-						builtAt: 1746020269534,
+						builtAt: 1746113619887,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -2825,7 +2825,7 @@
 							} = $,
 							ge = z($, ["disableOn", "permissionCheck"]),
 							me = oe && R[oe],
-							he = X({}, ge, {
+							be = X({}, ge, {
 								disabled: me
 							});
 						return ce ? r().createElement(c.Z, {
@@ -2833,9 +2833,9 @@
 							edit: ce
 						}, ({
 							isEditable: Le
-						}) => Le && r().createElement(k, he)) : r().createElement(k, U({
+						}) => Le && r().createElement(k, be)) : r().createElement(k, U({
 							key: H.url
-						}, he))
+						}, be))
 					}))
 				},
 				x = ({
@@ -3235,9 +3235,9 @@
 							}
 						}).finally(() => ee(!1)) : ee(!1)
 					}, [R]);
-					const $ = (ge, me) => !!w.favorites.find(he => he.type === "zone" && he.name === ge && he.accountId === me),
+					const $ = (ge, me) => !!w.favorites.find(be => be.type === "zone" && be.name === ge && be.accountId === me),
 						oe = v - w.favorites.length,
-						ce = ge => w.favorites.filter(he => he.type === "zone" && he.accountId === ge).length < v;
+						ce = ge => w.favorites.filter(be => be.type === "zone" && be.accountId === ge).length < v;
 					return r().createElement(P.Provider, {
 						value: c({}, w, {
 							isLoading: K,
@@ -3247,20 +3247,20 @@
 								canAccountStarZone: ce,
 								isZoneStarred: $,
 								starZone: async (ge, me) => {
-									var he;
+									var be;
 									const Le = !$(ge, me),
 										je = ce(me);
 									if (Le && !je) {
 										console.log("can not star zone - account is at limit");
 										return
 									}
-									const be = await (0, g.lt)(ge, me);
+									const he = await (0, g.lt)(ge, me);
 									l().sendEvent("click star zone", {
 										isStarring: Le,
-										totalStarredZones: be.filter(Se => Se.accountId === me && Se.type === "zone").length,
-										totalZones: V == null || (he = V.paginationData) === null || he === void 0 ? void 0 : he.info.total_count
+										totalStarredZones: he.filter(Se => Se.accountId === me && Se.type === "zone").length,
+										totalZones: V == null || (be = V.paginationData) === null || be === void 0 ? void 0 : be.info.total_count
 									}), x(c({}, w, {
-										favorites: be
+										favorites: he
 									}))
 								},
 								toggleSecurityNavigation: async ge => {
@@ -3280,8 +3280,8 @@
 								},
 								logRouteVisited: async ge => {
 									var me;
-									const he = await (0, g.n)(ge);
-									x((me = he) !== null && me !== void 0 ? me : c({}, w))
+									const be = await (0, g.n)(ge);
+									x((me = be) !== null && me !== void 0 ? me : c({}, w))
 								},
 								viewChange: async ge => {
 									const me = await (0, g.m6)(ge);
@@ -3290,9 +3290,9 @@
 									}))
 								},
 								dismissTask: async (ge, me) => {
-									const he = await (0, g.Mn)(ge, me);
+									const be = await (0, g.Mn)(ge, me);
 									x(c({}, w, {
-										dismissedTasks: he
+										dismissedTasks: be
 									}))
 								}
 							}
@@ -6844,7 +6844,7 @@
 					return A
 				},
 				hX: function() {
-					return be
+					return he
 				},
 				iq: function() {
 					return Ve
@@ -7028,10 +7028,10 @@
 				},
 				ge = G => oe(G, "custom_pages"),
 				me = G => !!G && G["webhooks.webhooks.enabled"],
-				he = G => D(G, "bots", "enabled"),
+				be = G => D(G, "bots", "enabled"),
 				Le = G => D(G, "billing", "annual_subscriptions_enable"),
 				je = G => G ? Boolean(D(G, "ConstellationAI", "v2_ui")) : !1,
-				be = G => G ? Boolean(D(G, "ConstellationAI", "ai-emergency-waitlist")) : !1,
+				he = G => G ? Boolean(D(G, "ConstellationAI", "ai-emergency-waitlist")) : !1,
 				Se = G => G ? Boolean(D(G, "AIgateway", "enabled")) : !1,
 				Ye = G => ce(G, "enterprise_zone_quota"),
 				Ke = G => {
@@ -7181,7 +7181,7 @@
 					return S
 				},
 				Nb: function() {
-					return he
+					return be
 				},
 				Pj: function() {
 					return Se
@@ -7238,7 +7238,7 @@
 					return I
 				},
 				pK: function() {
-					return be
+					return he
 				},
 				pf: function() {
 					return n
@@ -7388,14 +7388,14 @@
 				ce = Z => g(Z, "authoritative_dns.zone_custom_nameservers_allowed"),
 				ge = Z => ce(Z) || oe(Z),
 				me = (Z, ve) => ((0, e.el)(window.location.pathname) ? s : d)(Z, ve),
-				he = Z => ((0, e.el)(window.location.pathname) ? l : n)(Z),
+				be = Z => ((0, e.el)(window.location.pathname) ? l : n)(Z),
 				Le = Z => a(Z, "authoritative_dns.multi_provider_allowed") || g(Z, "authoritative_dns.multi_provider_allowed"),
 				je = Z => g(Z, "authoritative_dns.cname_flattening_allowed"),
-				be = Z => a(Z, "secondary_dns.secondary_overrides") || g(Z, "secondary_dns.secondary_overrides"),
+				he = Z => a(Z, "secondary_dns.secondary_overrides") || g(Z, "secondary_dns.secondary_overrides"),
 				Se = Z => a(Z, "authoritative_dns.custom_soa_allowed") || g(Z, "authoritative_dns.custom_soa_allowed"),
 				Ye = Z => a(Z, "authoritative_dns.custom_ns_ttl_allowed") || g(Z, "authoritative_dns.custom_ns_ttl_allowed"),
 				Ke = Z => a(Z, "secondary.create_zone"),
-				Ve = Z => $(Z) || oe(Z) || Le(Z) || Ke(Z) || be(Z) || Se(Z) || Ye(Z)
+				Ve = Z => $(Z) || oe(Z) || Le(Z) || Ke(Z) || he(Z) || Se(Z) || Ye(Z)
 		},
 		"../react/common/selectors/languagePreferenceSelector.ts": function(F, E, t) {
 			"use strict";
@@ -7601,7 +7601,7 @@
 					return w
 				},
 				cU: function() {
-					return be
+					return he
 				},
 				cg: function() {
 					return H
@@ -7664,7 +7664,7 @@
 					return X
 				},
 				xw: function() {
-					return he
+					return be
 				},
 				z5: function() {
 					return W
@@ -7876,12 +7876,12 @@
 				ce = (Q, ...de) => u()(Q, ["zoneFlags", "data", ...de]),
 				ge = (Q, ...de) => u()(Q, ["accountFlags", "data", ...de]),
 				me = Q => Q.accountFlags.isRequesting,
-				he = Q => Q.zoneFlags.isRequesting,
+				be = Q => Q.zoneFlags.isRequesting,
 				Le = (Q, ...de) => u()(Q, ["zoneFlagsChanges", "data", ...de]),
 				je = Q => Q.zoneFlagsChanges.isRequesting,
-				be = Q => Q.zoneFlags && Q.zoneFlags.data,
+				he = Q => Q.zoneFlags && Q.zoneFlags.data,
 				Se = Q => Q.zoneFlags,
-				Ye = (0, e.P1)(be, Se, (Q, de) => ({
+				Ye = (0, e.P1)(he, Se, (Q, de) => ({
 					data: Q,
 					meta: de
 				})),
@@ -8555,7 +8555,7 @@
 					return At
 				},
 				Pk: function() {
-					return be
+					return he
 				},
 				Pp: function() {
 					return st
@@ -8636,7 +8636,7 @@
 					return Xe
 				},
 				g7: function() {
-					return he
+					return be
 				},
 				hO: function() {
 					return pt
@@ -9219,14 +9219,14 @@
 			}
 
 			function ge(p) {
-				return he(p) || x(p)
+				return be(p) || x(p)
 			}
 
 			function me(p) {
-				return !he(p) && x(p)
+				return !be(p) && x(p)
 			}
 
-			function he(p) {
+			function be(p) {
 				return !p || p.lastKnownStatus === "pendingTransfer" || p.lastKnownStatus === "transferFOAPending" || !x(p) && p.transferConditions && !p.transferConditions.not_started || !1
 			}
 
@@ -9238,7 +9238,7 @@
 				return (p == null ? void 0 : p.includes("/")) ? !0 : p.split("").some(h => h.charCodeAt(0) > 123)
 			}
 
-			function be(p) {
+			function he(p) {
 				switch (p) {
 					case "1&1internetse":
 						return "1&1 Ionos";
@@ -9586,7 +9586,7 @@
 					return g
 				},
 				HG: function() {
-					return he
+					return be
 				},
 				Hv: function() {
 					return Le
@@ -9706,7 +9706,7 @@
 					verifyEmail: z,
 					zone: Y
 				},
-				he = {
+				be = {
 					LEGACY_domains: W,
 					LEGACY_domainsActionCenter: B,
 					LEGACY_domainsDomain: w,
@@ -13196,11 +13196,11 @@
 				x = $ => $.pageShield.whoIsRecord,
 				K = ($, oe, ce) => {
 					var ge;
-					const me = Object.values(ce).map(he => ({
-						key: he,
-						label: u.Uv[he],
-						score: $[he]
-					})).filter(he => he.score !== void 0 && he.score <= oe);
+					const me = Object.values(ce).map(be => ({
+						key: be,
+						label: u.Uv[be],
+						score: $[be]
+					})).filter(be => be.score !== void 0 && be.score <= oe);
 					return oe === u.V0 && me.length === 0 && ((ge = $.js_integrity_score) !== null && ge !== void 0 ? ge : 100) <= oe && me.push({
 						key: null,
 						label: "script_monitor.malicious",
@@ -13226,8 +13226,8 @@
 							if (!ge) continue;
 							const me = ge.index;
 							if (me === 0) return null;
-							const he = me + ge[0].length;
-							return [me, he]
+							const be = me + ge[0].length;
+							return [me, be]
 						}
 				}
 		},
@@ -13930,9 +13930,9 @@
 							var H, $, oe, ce;
 							const ge = W == null || (H = W.current) === null || H === void 0 ? void 0 : H.offsetHeight,
 								me = B == null || ($ = B.current) === null || $ === void 0 ? void 0 : $.offsetHeight,
-								he = ((oe = ge) !== null && oe !== void 0 ? oe : 0) + z,
+								be = ((oe = ge) !== null && oe !== void 0 ? oe : 0) + z,
 								Le = (ce = me) !== null && ce !== void 0 ? ce : 0;
-							x(he), ee(Le)
+							x(be), ee(Le)
 						};
 						return V(), window.addEventListener("resize", V), () => window.removeEventListener("resize", V)
 					}, []), {
@@ -14230,7 +14230,7 @@
 						}
 					}, [z, Y, ne]), (0, o.useEffect)(() => {
 						if (z && ne) {
-							const ce = z.reduce((me, he) => (he.source === W ? me[W].push(he) : he.source === B && me[B].push(he), me), {
+							const ce = z.reduce((me, be) => (be.source === W ? me[W].push(be) : be.source === B && me[B].push(be), me), {
 									[W]: [],
 									[B]: []
 								}),
@@ -17427,10 +17427,10 @@
 				ce = t("../react/pages/security/settings/index.tsx"),
 				ge = t("../react/pages/shared-config/sparrowEvents.tsx"),
 				me = t("../react/pages/spectrum/tracking.tsx"),
-				he = t("../react/pages/traffic/argo/tracking.ts"),
+				be = t("../react/pages/traffic/argo/tracking.ts"),
 				Le = t("../react/pages/traffic/waiting-rooms/tracking.tsx"),
 				je = t("../react/pages/turnstile/tracking.ts"),
-				be = t("../react/pages/zoneless-workers/constants.ts"),
+				he = t("../react/pages/zoneless-workers/constants.ts"),
 				Se = t("../react/app/components/AccountHome/tracking.ts"),
 				Ye = t("../react/pages/security/waf/managed-rules/resources/tracking.ts"),
 				Ke = t("../react/pages/home/configurations/dns-settings/tracking.ts"),
@@ -17440,7 +17440,7 @@
 				Pe = t("../react/pages/security/overview/resources/constants.ts"),
 				Xe = t("../react/common/components/analytics/AnalyticsReport/constants.ts"),
 				Je = t("../react/pages/secrets-store/resources/constants.ts");
-			const qe = ((ie, re, ...p) => n.eg.union([n.eg.literal(ie), n.eg.literal(re), ...p.map(h => n.eg.literal(h))]))("abort import", "Access Click", "Access click", "Access Promo Banner Click", "account name menu clicked", "account quick action click", "accounts table click", "ack queue message", "ACM Purchase Success", "activate coveo recommended resource TSF (3.0)", "activate helperbot diagnostic TSF (3.0)", "Activity feed cancel download modal", "Activity feed close event", "Activity feed download from modal", "Activity feed download", "Activity feed expand event", "Activity feed expand matches", "Activity feed next page", "Activity feed open download modal", "Activity feed previous page", "Add API Discovery authorization headers", "Add column", "Add Configuration Rule Settings", "add cron trigger", "Add filter", "add jwt credentials", "add jwt configuration location", "add kv key-value", "Add insight", "Add cache rule setting", "add payment method", "Add site click", "add workers route", "added api shield schema", "Addon Purchase Success", "Advanced Certificate Manager click", "agree to terms", "Analytics Secondary Nav - Tab Click", "Analytics Time Period Change", "anonymizers found", "API documentation click", "apply recommendation", "argo enabled", "argo click", "argo smart routing click", "argo tiered caching click", "argo cancel modal submit feedback clicked", "argo cancel modal open state", "argo cancel modal clicked cancel", "Attempt TOTP reconfigure", "begin deployment log stream", "begin import flow", "begin log stream", "begin zone activation flow", "Billing address country select toggle", "Billing click", "Billing email update failure", "Billing email update success", "Billing invoice download failed", "Billing invoice download success", "brand protection", "bulk delete images", "bulk export images", "Button click", "Cache settings click", "Can not display filter - Unparsable filter", "Can not display filter - Unsupported Fields", "cancel add records later", "cancel addon purchase of automatic platform optimization", "cancel create database", "cancel disable totalTLS", "cancel import flow", "cancel form", "cancel notification create", "cancel notification delete", "cancel notification edit", "cancel notification test", "cancel onboarding flow", "cancel resizing after bundle buy", "cancel snippet form", "cancel source deletion", "cancel switch ca totalTLS", "cancel variant edit", "Canceled rule form", "Canceled subscription", "Certificate Patch click", "change api shield sequence rule config option", "change brand pattern filter", "change certificate authority totalTLS", "change chart time horizon", "Change dataset", "change default action api shield sv", "change DNS file upload error visibility", "change DNS setup method", "Change limit", "change metadata boundary", "change pagination page shield", "Change Plan Frequency", "change priority submitted", "change SSL recommender", "change tab", "Change time window", "change zone setting", "Change zone setup confirmation", "Change zone status confirmation", "change zone status", "chat submission form submit click", "check nameservers", "choose plan", "Continue adding domain", "copy script url page shield", "copy trace json", "Cipher Suites Link Click", "claim yubico promo offer", "click 2fa support token link", "click Account Home TSF (3.0)", "click add settings", "click add sources", "click api shield upsell link", "click api shield enable product button", "click api shield feedback link", "click api shield route", "click API snippet drawer", "click back to all policies link", "click block ai bots", "Click BM bots JS detection", "Click BM bot templates", "Click BM create firewall rule", "Click BM welcome card", "click bot settings", "click cancel downgrade", "click cancel free trial", "click cache reserve purchase", "click chat button", "click chat close modal", "click chat start", "click close callback request form", "click configure 2fa support app link", "click continue quick scan", "click continue to support TSF (3.0)", "click coveo recommended resource TSF (3.0)", "click create ai gateway", "click create load balancer", "click create project success resource", "click create project success next step", "Click Create Rule", "click create policy form link", "click create token from sidebar", "click create table button", "click database detail tab", "click deflect community TSF (3.0)", "click delete database button", "click delete table button", "Click Deploy Rule", "click dns completion wizard suggestion", "click dns email security configure", "click dns email security wizard record type", "click documentation link", "click edit policy", "click edge traffic visualisation link", "click enable argo button", "click end stream button", "click expand known issue", "click expand maintenance view", "click help drawer", "click helperbot diagnostic report TSF (3.0)", "click Hide Self Help Flow", "click learn more link", "click link to waf migration documentation", "click link", "click load more coveo content TSF (3.0)", "click load balancer step", "click login help forgot email selection", "click login help forgot password selection", "click login help lost two factor selection", "click multi-sku confirmation", "click on apply rule ai assistant", "click on close rule ai assistant", "click on edit snippet", "click on content_scanning", "click on exposed_credentials", "click on expand one sequence on api gateway sequences", "click on filter one sequence on api gateway sequences", "click on main filter api gateway sequences", "click on rule ai assistant", "click on view endpoint on api gateway sequences", "click Open a Ticket TSF (3.0)", "click open callback request form", "click payment details", "click plan documentation link", "click purchase ACM - totalTLS", "click refresh suggestions", "Click refresh transfer status", "click Request Live Chat TSF (3.0)", "click restore database button", "click save whois", "click scan again", "click select known issue", "click Self Help Flow Answer", "click Self Help Flow Close", "click Start Over TSF (3.0)", "click Start Self Help Flow", "click start stream button", "click submit callback request form", "click submit domain categorization feedback", "click submit feedback TSF (3.0)", "click subscribe system status", "click table insert data button", "click ticket submission form search result", "click ticket submission form suggestion", "click to create api shield portal", "click to create rate limiting rule for endpoint", "click to Trace link", "click Top N investigate", "click intent submenu back link", "click investigate icon", "click trace feedback form", "click TSF (2.0) community more help", "click TSF (2.0) new category", "click TSF (2.0) search result", "click TSF (2.0) step", "click TSF (2.0) suggested help link", "click TSF (2.0) suggestion", "Click query logs", "Click use custom sql", "Click use basic editor", "click update table data row button", "click Upgrade to Business Close", "click Upgrade to Business Start", "click Upgrade to Business Zone Selected", "Click view details", "click waf upgrade banner", "click domain registration link", "click Workers & Pages link", "click worker edit code", "click workers plan icon", "click wrangler cli guide link", "click full DNS setup docs link", "click partial DNS setup docs link", "click secondary DNS setup docs link", "click settings first deploy cta", "click custom domain first deploy cta", "click web analytics first deploy cta", "click start quick scan", "click plan upgrade from rules setting", "click on snippets promo page", "Click", "close chat window", "create migration", "create or update queue consumer", "create trace", "create queue", "create sink", "create trace", "enter summary TSF (3.0)", "reach chat end TSF (3.0)", "submit login help form submission", "toggle TSF (3.0)", "toggle snippet status", "close abort import modal", "close account select dropdown", "close add product dropdown", "close bulk delete image modal", "close configuration switcher sidemodal", "close delete image modal", "close delete variant modal", "close domain switcher sidemodal", "close rename source modal", "close script modal page shield", "close zone select dropdown", "close support dropdown", "close profile dropdown", "collapse row", "collapse sidebar nav", "Collapse top N", "Community page link click", "complete addon purchase of automatic platform optimization", "complete plan change from automatic platform optimization card", "Configuration Rules Link Click", "confirm add records later", "confirm api shield sequence rule config", "confirm auth code", "confirm disable totalTLS", "confirm DNS records", "confirm domain transfer purchase", "confirm source deletion", "confirm zone removal", "Confirm", "contentful banner displayed", "contentful banner dismissed", "continue billing flow", "continue import flow", "continue onboarding flow", "continue to final step", "continue to review step", "continue to overview", "continue to js snippet", "Continue", "Contract SS - Approver contact details cancel", "Contract SS - Approver contact details submit success", "Contract SS - Legal agreement cancel", "Contract SS - Legal agreement submit success", "Contract SS - Payment type cancel", "Contract SS - Payment type selected success", "Contract SS - Purchase cancel", "Contract SS - Purchase flow enter", "Contract SS - Purchase success", "copy account hash", "copy account id", "copy API snippet from drawer", "copy curl command", "copy delivery url", "copy image delivery url", "copy image id", "copy script url page shield", "copy snippet", "Create Bulk Redirect Rule", "create clone", "create application click workers docs", "create application click pages docs", "create application click create with CLI", "create application select workers", "create application select pages", "create default environments", "create database", "create environment", "create job", "create kv namespace", "create migration", "Create New Rule", "create new magic firewall rule", "create notification", "create pages deployment", "create pages deployment", "create pages project", "create pages project", "create r2 api token", "create r2 api token", "create r2 bucket", "create rate limiting rule", "create regional hostname", "create rule", "Create Rule (Save)", "Create Rule as Draft (Save as Draft)", "create service", "create table", "create worker from playground", "create worker select filter", "cancel create worker from playground", "create sink", "create source", "create snippet", "create snippet", "create user", "create variant", "create worker", "create zone", "Create, Update or Edit Save Failures (Builder)", "Create, Update or Edit Save Failures (Editor)", "CT Alerting Change", "Custom Hostname create click", "Custom Hostname create success", "Custom Hostname delete click", "Custom Hostname delete success", "Custom Hostname edit click", "Custom Hostname edit success", "Custom Hostname fallback origin add click", "Custom Hostname fallback origin delete click", "Custom Hostname fallback origin delete success", "Custom Hostname fallback origin edit click", "Custom Hostname fallback origin refresh", "Custom Hostname refresh click", "Custom Trust Store delete click", "Custom Trust Store delete success", "Custom Trust Store upload click", "Custom Trust Store upload success", "customer click URL in support ai chat", "customer close support ai chat", "Dashboard search closed", "Dashboard search opened", "clicked header navigation", "Dashboard search result selected", "Dashboard search results empty", "Dedicated Certificates click", "Deep Link Cancel", "Deep Link Success", "delete api shield route", "delete brand pattern", "Delete click", "Delete confirmation", "delete custom error pages", "delete database", "delete environment", "delete image", "delete kv key-value", "delete kv namespace", "delete multiple selected table data rows", "delete notification", "delete pages project", "delete policy", "delete queue", "delete r2 api token", "delete r2 bucket", "delete r2 objects", "Delete Rule", "delete service", "delete site", "delete snippet", "delete snippet", "delete source", "delete table", "delete table data row", "delete variant", "deploy api shield portal", "deploy api shield route", "deploy policy", "deploy worker script", "deploy worker script", "deploy version", "Details click", "Dev Mode change confirm", "Dev Mode change", "develop with wrangler cli", "Diagnostic failure", "Diagnostic result", "disable page shield", "disable pages web analytics", "Disable Rule", "disable sidebar nav", "disable totalTLS", "dislike redirect in the same window", "dismiss notification", "dismiss recommendation", "dismiss yubico promo banner", "display recommendation module", "display recommendation", "display record wizard notification", "display self help flow", "display yubico promo banner", "display support ai chat", "DNS settings click", "download file", "download progress log", "download r2 object", "download tax doc", "draft new worker script", "edge traffic visualisation is shown", "edit contact information", "edit cron trigger", "edit environment", "Edit filter", "edit image", "edit kv key-value", "edit notification", "edit plan", "edit r2 api token", "edit registration details", "edit service environment variables", "edit service kv bindings", "edit service r2 bindings", "edit service to service bindings", "edit service mtls certificate bindings", "edit service tail consumers", "edit dispatch namespace bindings", "edit variant", "edit workers route", "Edit/Update Rule (Save)", "Enable automatic https rewrites click", "Enable Optimization", "enable or disable api shield sv", "enable page shield", "enable pages access policy", "enable pages web analytics", "Enable Rule", "enable sidebar nav", "enable totalTLS", "enable policy toggle", "enable versioning", "enable workers", "enable cache reserve storage sync", "encrypt variable", "end WAF migration v2", "environment migrate forward", "environment migrate back", "enter domain search value", "enter icloud registrar", "enter summary TSF (3.0)", "live training button clicked", "Error adding or removing records", "Error Analytics link click", "Error when retrieving conflicting records", "error creating snippet", "Event Names", "execute console tab query", "exit onboarding guide", "expand account select dropdown", "expand directive", "expand domain details", "Expand measurement details", "expand row", "expand sidebar nav account selector", "expand sidebar nav zone selector", "expand sidebar nav", "Expand top N", "expand trace accordion", "expand zone select dropdown", "export instant logs", "export single image", "export trace results", "fail addon purchase of automatic platform optimization", "Failed to Switch to Editor", "failed pre-flight check", "Fetched template", "Filter rules", "filter search page shield", "filter search view all page shield", "filter snippet", "filter trace results", "Filter used", "filter workers and pages", "finish import flow", "finish loading gates and microfrontends", "finish onboarding guide later", "finish onboarding guide", "Firewall settings click", "Flow authorize", "Flow cancel", "follow contentful banner link", "follow docs link", "follow link to investigate external", "follow link to investigate", "follow link", "follow policy link", "follow recommendation CTA", "follow return to icloud link", "follow support link", "follow yubico promo banner", "follower icloud footer link", "Follow Trial Offer Link", "Free Long Wait", "get current bookmark id", "Get your API key click", "go back in billing flow", "go to next page", "go to page", "go to prev page", "hover score tooltip page shield", "hover to read risk identified tooltip", "hover to read threshold tooltip", "http worker editor tab", "identify", "image upload complete", "Initialization error", "Initialization success", "initiate addon purchase of automatic platform optimization", "initiate plan change from automatic platform optimization card", "initiate wordpress plugin installation for automatic platform optimization", "insert table data row", "interact with api shield sequence rule main table", "Interaction with Film Strip", "Interacton with Film Strip", "investigate threat search", "IP settings click", "launch icloud registrar onboarding", "launch onboarding guide", "launch sidebar nav survey", "launch teams dashboard", "launch zone overview", "list kv key-values", "list kv namespaces", "list pages projects", "list queues", "list r2 buckets", "list r2 objects", "Load Balancing click", "load web analytics overview", "Logpush Create Job - Open modal", "Logpush Create Job - Step Transition", "Logpush Create Job - Success", "Manage click", "manage pages members", "manage pages policies", "Map detail type changed", "Matches Entitlement Validation error", "migrate waf", "Mixed content notification test 2019-05-03 link click", "multi-sku purchase error", "multi-sku purchase success", "navigate back", "navigate footer nav", "navigate investigate sidebar nav", "navigate quick link", "navigate sidebar nav", "navigate to account", "navigate to api tokens", "navigate to appearance", "navigate to billing", "navigate to community forum", "navigate to community", "navigate to compliance docs", "navigate to contact support", "navigate to create first source", "navigate to documentation", "navigate to edit image", "navigate to enterprise customer portal", "navigate to filtered domains", "navigate to help center", "navigate to import detail", "navigate to images", "navigate to my activities", "navigate to logout", "navigate to previous onboarding guide task", "navigate to profile", "navigate to request feature", "navigate to request feature", "Navigate to speed test", "navigate to source detail", "navigate to variant detail", "navigate to version management through configuration sidemodal", "navigate to version management docs through configuration sidemodal", "navigate to WAF Migration Review configuration view", "navigate topbar", "navigate to tax docs", "navigate to share feedback", "new page available refresh cta", "Next onboarding guide section", "next page", "next tooltip step", "Notification dismissed", "Notification displayed", "Notification link click", "Notification load on page confirmation", "observe automatic platform optimization card", "Onboarding guide elapsed time", "open abort import modal", "open advanced waiting room sales link", "open add product dropdown", "open alert modal page shield", "open argo subscription modal", "open blog post for automatic platform optimization", "open bot management lead generator link", "open bulk delete image modal", "open cancel downgrade modal", "open cancel free trial modal", "open configuration switcher sidemodal", "open create bucket page", "open create database page", "open create notification page", "open delete image modal", "open delete notification modal", "open delete variant modal", "open domain switcher sidemodal", "open edit notification page", "open hostname confirmation modal", "Open Trial Offer Modal", "open help documentation for automatic platform optimization", "open image preview", "open load balancing subscription modal", "Open Modal Enable Access", "open priority change modal", "open profile dropdown", "open onboarding guide task manually", "open remove zone modal", "open rename source modal", "open script modal page shield", "open support dropdown", "open security center url categorization feedback", "open security center categorization tooltip", "open waiting room upsell modal", "open zone plan update modal", "Opened BrowserInsights tab", "opt-in to marketing emails", "Order click", "Order success", "Page Rules click", "pageview", "page load gate deflection TSF", "paginate kv key-values", "paginate kv namespaces", "paginate pages projects", "paginate queues", "paginate r2 buckets", "paginate r2 objects", "paginate services", "Pick validity period success", "Plan Purchase Confirmation", "Plan Purchase Failure", "Plan Purchase Success", "Plan Update Confirmation", "Plan Update Failure", "Plan Update Success", "preview live worker", "preview queue messages", "preview worker editor tab", "previous page", "previous tooltip step", "Private keys in china toggle", "Product Purchase Cancel", "Product Purchase Failure", "Product Purchase Success", "Product Update Failure", "Product Update Success", "prompted to verify email", "promote version", "purchase domain transfer", "purchase from plan change modal", "purchase images subscription", "Purge cache click", "purge everything from cache", "quick actions basic features modal close", "quick actions basic features modal open", "quick actions basic features activate selections", "Rate Limiting click", "Re-activate zone click", "Re-check nameservers click", "reach ticket end TSF (3.0)", "read kv key-value", "ready to update waf migration phase 2", "recheck zone for automatic platform optimization", "redirect chat", "register site", "Remove column", "Remove filter", "Remove insight", "remove item from checkout", "remove zone", "rename account", "rename service", "rename source", "Reprioritize certificate", "Request review click", "resend verification email", "restore database", "resume onboarding", "retry coveo search", "return to developer platform from modal", "return to developer platform from onboarding", "review onboarding guide task from summary", "review products", "request migrator capacity", "rollback version", "roll r2 api token", "Rule event", "Rule preview that was denied because of an unsupported field or operator", "Rule preview that was denied because of lack of data", "Rule preview that was denied due to error", "rules configured", "save contact information", "save and deploy load balancer", "save load balancer", "save load balancer as draft", "save onboarding guide task", "save payment details", "save registration details", "search auto fetch", "search d1 databases", "search kv key-values", "search kv namespaces", "search pages projects", "search queues", "search r2 buckets", "search r2 objects", "search services", "search source", "search table", "Search", "See more click", "select account", "select alert type page shield", "select category TSF (3.0)", "select change nameservers", "select directive default value", "select directive value", "select domain", "select d1 database", "select file", "Select hostname success", "select intent capture card", "select language", "select mp4 download checkbox", "select automatic deletion checkbox", "select notification type", "select onboarding bundle", "select page rules quantity", "select product", "select r2 plan", "select source", "select storage plan", "select table", "select task", "Select timeseries group by", "select transfer registrars", "Select type success", "select variant", "select version", "select queues plan", "select workers plan", "select workers template", "select zone plan", "select zone", "select summary in support ai chat", "Select", "Selected advanced GeoIP field in rule builder", "selected schema api shield portal", "send verification email", "send queue message", "Set Communication Preferences", "Set communication Preferences", "set page size", "set pages do bindings", "set pages environment variables", "set pages kv bindings", "set pages vectorize bindings", "set r2 bucket storage class", "set up custom domain", "set up subdomain", "Setting up", "show access key", "show cache reserve potential savings", "show cache reserve disabled", "show notification", "show waf upgrade banner v2", "show waf upgrade banner", "showed api shield flyfishing page", "signed exchanges toggle", "Sign in to Area 1 button click", "Go to Zero Trust Email Security button click", "site configured", "skip onboarding guide section", "something wrong", "sort auto fetch", "sort column page shield", "sort queues", "sort r2 buckets", "sort services", "sort table", "sort workers and pages", "Speedheader - change your nameservers click", "Speedtest - Headless Chrome fetch returned error", "Speedtest - tests are completed", "Speedtest - Tests are running", "Speedtest - WPT tests failed", "SPF conflict resolution failure", "SSL click", "SSL Mode Change", "start import flow", "start import manually", "start subscription change", "start WAF migration v2", "start wizard", "Status page link click", "Stream click", "Stream Signup Success", "Stream Video Page Play", "Stream Video Upload Failure", "Stream Video Upload Success", "Stream navigate away from videos page", "Stream Video Upload with link", "Stream video caption uploaded", "Stream video caption deleted", "Stream video caption downloaded", "Stream video caption generating", "Stream video caption regenerating", "submit brand pattern", "submit grotto chat feedback", "submit DNS email security wizard failure", "submit DNS email security wizard", "submit DNS entry method", "submit domain name", "submit login form", "submit login help form submission", "submit new grotto chat request", "submit new support ai chat request", "submit order", "submit signup form", "sign up option clicked", "login option clicked", "Successful flow and user redirected", "Successful rule preview", "Suggestions query confirmation", "suggest category tsf (3.0)", "suggest category displayed tsf (3.0)", "Marketing banner dismissed", "Survey banner closed", "Marketing banner shown", "Survey banner shown", "Survey opened", "switch DNS entry method", "Switch from Editor and Discarded Changes", "Switch to expression editor", "Test", "test notification", "Ticket form step click", "Ticket submission form button click", "Ticket submission form submit click", "Time range changed", "Toast dismiss click", "Toast load on page confirmation", "toggle advanced options", "Toggle API discovery", "toggle automatic platform optimization feature", "toggle cache by device type", "toggle counting expression", "toggle flexible variants", "toggle key", "toggle recommendation module", "toggle TSF (3.0)", "Toggle user level audit logs", "Toggled injection", "trace user jorney", "transfer DNS records", "transformations disabled for zone", "transformations enabled for zone", "Trial Offer Displayed", "Trial Started", "Trial Cancelled", "tried to register unavailable domain", "tried to remove zone of a domain registered on cloudflare registrar", "Under Attack Mode change", "Under attack mode enabled", "undo restore database", "update custom error pages", "update job", "update jwt configuration", "update jwt rule", "update magic firewall rule", "update pages project", "update rule", "update site", "update table data row", "upgrade unique transformations config", "upgrade stream subscription", "upgrade resizing to new stream subscription", "Upload custom click", "Upload custom confirmation", "upload custom error pages", "upload DNS file", "upload image", "Upload keyless click", "Upload keyless confirmation", "Upload list item CSV", "update snippet", "upload r2 objects", "use multiselect api shield sv", "use overflow api shield sv", "use spacebar to pause", "use spacebar to play", "User has recommended optimisations", "User navigated by zone navigation", "Use template", "USSL Certificate Authority: Changed", "USSL Certificate Authority: Modal Launch", "validate spf content", "Validation method change", "Validation success", "verified email successfully", "verify email", "view accounts", "view checkout complete purchase", "View click", "view custom error pages", "view documentation", "view downgrade offer", "view downgrade survey", "view downgrade warning", "view onboarding guide recommendations", "view snippet", "view plan", "view system status", "Viewed Global API Key", "Viewed Origin CA Key", "visit workers developer docs", "visit workers showcase", "visit workers templates", "web analytics upgrade plan click", "web analytics option changed to enabled", "web analytics option changed to enabled with lite", "web analytics option changed to manual", "web analytics option changed to disabled", "WHOIS link click", "Workers:Enablement", "Zap:Opt in", "Zap:Opt out", "zones table click", "Zone setup change", "Bots Report Data", "Information Toast Shown", "Information Toast Closed", "quick edit http tab", "quick edit preview tab", "quick edit schedule tab", "quick edit wrangler tab", "visit product documentation", "visit blog post", "visit recent", "visit blog announcements", "click application name", "click change compute setting", "click change subdomain", "click discover card call to action", "click discover card view products", "click welcome card call to action", "click welcome card view products", "skip to dash", "click create application", "click connect to git", "click featured product call to action", "click paygo card cta", "click opt-in", "click opt-out", "click close opt out", "click setup AE", "click stripe beta select plan support link", "click stripe beta change plan support link", "click rule link", "click button to speed recommendation page", "click element", "click trace rule details", "click upload assets", "click worker detail tab", "click workers resource", "click workers manage account members", "click workers manage notifications and alerts", "view stripe beta opt out", "error notification shown", "fetch personalized content", "view page", "run speed test", "delete speed test", "create speed test schedule", "delete speed test schedule", "select speed test trend range", "select speed test trend metric", "view speed recommendation", "view lighthouse audit", "enable speed recommendation", "click speed feature link", "click speed optimization documentation link", "enable all speed optimization recommendations", "complete plan change from speed", "start plan change from speed", "view rum disabled screen", "enable rum from speed", "enable rum lite from speed", "enable rum from zone", "enable rum lite from zone", "enable rum from observatory", "enable rum lite from observatory", "enable rum from account", "enable rum lite from account", "select rum map range", "select rum map metric", "has payment plan on file", "click DNS records link", "click disable DNSSEC link", "click migrate DNSSEC link", "click enable DNSSEC link", "click pending domains link", "change appearance", "click star zone", "click star zone filter", "click empty state link", "click view more", "visit system status item", "view system status item menu", "subscribe to system status item", "click feedback link", "click registrar link", "click cloudflare logo", "dismiss change notification", "dismiss change notification modal", "set marketing preference ent ss purchase", "view change notification", "view change notification modal", "expand side drawer", "collapse side drawer", "expand documentation side drawer", "collapse documentation side drawer", "dismiss message", "dismiss all messages", "click message inbox popover", "click message footer action", "toggle templates sidepanel", Se.gX.SPARROW_PROJECTS_TABLE_CLICK, Se.gX.SPARROW_EMPTY_STATE_CTA_CLICK, Se.gX.SPARROW_PRODUCT_CARD_CLICK, Se.gX.SPARROW_VIEW_ALL_PROJECTS_CLICK, Se.gX.SPARROW_ZERO_TRUST_LINK_CARD_CLICK, Se.gX.SPARROW_ZERO_TRUST_ONBOARDING_CARD_CLICK, Se.gX.SPARROW_ZERO_TRUST_ANALYTICS_LINK_CLICK, Se.gX.SPARROW_ZERO_TRUST_PRODUCT_CARD_CLICK, Se.gX.SPARROW_ZERO_TRUST_PLAN_PILL_CLICK, Se.gX.SPARROW_ZERO_TRUST_PLAN_FALLBACK_CLICK, "clicked sidebar Discord link", "clicked sidebar Community Forum link", be.QV.clickedDownloadAnalytics, be.QV.clickedPrintAnalytics, be.QV.toggledSmartPlacement, "clicked Workers for Platforms CLI Guide link", "clicked Workers for Platforms Documentation link", be.QV.addWCITriggerToExistingWorker, be.QV.updateWCITrigger, be.QV.deleteWCITrigger, be.QV.addWCITriggerToNewWorker, be.QV.createWCIBuildForNewWorker, be.QV.completedWCIBuildForNewWorker, be.QV.changedDefaultConfigurations, z.QV.toggledPagesSmartPlacement, z.QV.downloadDemoProject, be.QV.clickCreateWorkerFromRepoNextStep, be.QV.clickCreateWorkerFromRepoPreviousStep, be.QV.clickCreateNewSCMConnection, be.QV.redirectFromSCMOAuth, be.QV.clickSubmitError, be.QV.selectTemplate, be.QV.clickedListTemplates, be.QV.clickedImportRepository, be.QV.templateStubWorkerCreated, be.QV.templateStubWorkerCreationFailed, be.QV.templateRepositoryCreated, be.QV.templateRepositoryCreationFailed, be.QV.copyTemplateC3Command, be.QV.templateDeployClick, be.QV.reauthenticateGithubModalShown, be.QV.updateGithubPermissionsClicked, be.QV.D2W_importRepository, be.QV.D2W_stubWorkerCreated, be.QV.D2W_stubWorkerCreationFailed, be.QV.D2W_repositoryCreated, be.QV.D2W_repositoryCreationFailed, be.QV.D2W_resourcesProvisioned, be.QV.D2W_resourceProvisioningFailed, be.QV.D2W_githubAPIRateLimitReached, "clicked R2 feedback link", "clicked R2 CLI guide", "clicked R2 footer link", "clicked Constellation feedback link", x.N3.INITIAL_FETCH_SCORES, x.N3.FETCH_CONFIGURATION, x.N3.INITIAL_FETCH_TIME_SERIES, x.N3.INITIAL_FETCH_ATTRIBUTES, x.N3.UPDATE_SETTINGS, x.N3.DELETE_RULE, x.N3.UPDATE_RULE, x.N3.FETCH_RULES, x.N3.CONFIGURE_BOT_MANAGEMENT, x.N3.WAF_RULES_REDIRECT, U.F.TOGGLE_TCP_PROTECTION, U.F.GET_TCP_PROTECTION_PREFIXES, U.F.CREATE_TCP_PROTECTION_PREFIXES, U.F.CREATE_TCP_PROTECTION_PREFIX, U.F.UPDATE_TCP_PROTECTION_PREFIX, U.F.DELETE_TCP_PROTECTION_PREFIX, U.F.DELETE_TCP_PROTECTION_PREFIXES, U.F.GET_TCP_PROTECTION_ALLOWLIST, U.F.CREATE_TCP_PROTECTION_ALLOWLIST, U.F.UPDATE_TCP_PROTECTION_ALLOWLIST, U.F.DELETE_PREFIX_TCP_PROTECTION_ALLOWLIST, U.F.DELETE_TCP_PROTECTION_ALLOWLIST, U.F.GET_SYN_PROTECTION_RULES, U.F.GET_SYN_PROTECTION_RULE, U.F.CREATE_SYN_PROTECTION_RULE, U.F.UPDATE_SYN_PROTECTION_RULE, U.F.DELETE_SYN_PROTECTION_RULE, U.F.GET_TCP_FLOW_PROTECTION_RULES, U.F.GET_TCP_FLOW_PROTECTION_RULE, U.F.CREATE_TCP_FLOW_PROTECTION_RULE, U.F.UPDATE_TCP_FLOW_PROTECTION_RULE, U.F.DELETE_TCP_FLOW_PROTECTION_RULE, U.F.GET_SYN_PROTECTION_FILTERS, U.F.GET_SYN_PROTECTION_FILTER, U.F.CREATE_SYN_PROTECTION_FILTER, U.F.UPDATE_SYN_PROTECTION_FILTER, U.F.DELETE_SYN_PROTECTION_FILTER, U.F.GET_TCP_FLOW_PROTECTION_FILTERS, U.F.GET_TCP_FLOW_PROTECTION_FILTER, U.F.CREATE_TCP_FLOW_PROTECTION_FILTER, U.F.UPDATE_TCP_FLOW_PROTECTION_FILTER, U.F.DELETE_TCP_FLOW_PROTECTION_FILTER, U.F.GET_DNS_PROTECTION_RULES, U.F.GET_DNS_PROTECTION_RULE, U.F.CREATE_DNS_PROTECTION_RULE, U.F.UPDATE_DNS_PROTECTION_RULE, U.F.DELETE_DNS_PROTECTION_RULE, ee.FV.MANAGE_PAGE_SHIELD_POLICY, ee.FV.CONFIGURE_PAGE_SHIELD, ee.FV.VIEW_DETECTED_CONNECTIONS, ee.FV.VIEW_DETECTED_SCRIPTS, ee.FV.VIEW_PAGE_SHIELD_POLICIES, ee.FV.VIEW_PAGE_SHIELD_SETTINGS, ee.FV.OPEN_MUTABLE_VERSION_TOOLTIP, ee.FV.SHOW_MUTABLE_VERSION_TOOLTIP, te.y.CREATE_LIST, te.y.DELETE_LIST, te.y.ADD_LIST_ITEM, te.y.DELETE_LIST_ITEM, X.KO.PURCHASE_WORKERS_PAID, X.KO.LIST_CONFIGS, X.KO.SEARCH_CONFIGS, X.KO.CREATE_HYPERDRIVE_CONFIG, X.KO.VIEW_CONFIG_DETAILS, X.KO.UPDATE_CACHING_SETTINGS, X.KO.DELETE_HYPERDRIVE_CONFIG, X.KO.CLICK_HYPERDRIVE_DOCUMENTATION, X.KO.CLICK_GET_STARTED_GUIDE, X.KO.CLICK_CONNECTIVITY_GUIDES, X.KO.CLICK_QUICK_LINK, X.KO.CLICK_DISCORD, X.KO.CLICK_COMMUNITY, me.N.CNAME, me.N.IP_ADDRESS, me.N.LB, me.N.UPDATE_CNAME, me.N.UPDATE_IP_ADDRESS, me.N.UPDATE_LB, me.N.DISABLE, D.N.TIERED_CACHE, D.N.CACHE_PURGE, D.N.CACHE_ANALYTICS, ...(0, je.P)(), ...(0, A.x4)(), ...(0, ce.m8)(), ...(0, Ve.Ky)(), ...(0, Z.Cf)(), Le.N.CREATE, Le.N.EVENTS, Le.N.ANALYTICS, Le.N.UPDATE, Le.N.GENERATE_PREVIEW, B.RY.INITIATE_URL_SCAN, B.RY.LOAD_SCAN_INFO, B.Ev.LOAD_THREAT_EVENTS, B.Ev.THREAT_EVENT_MORE_DETAILS_CLICK, B.Ev.THREAT_EVENTS_FILTERS, B.Ev.ABUSE_REPORT_BUTTON_CLICK, B.Ev.ABUSE_REPORT_SUBMIT_CLICK, B.Ev.ABUSE_REPORT_SUBMIT_FAILED, B.Ev.ABUSE_REPORT_SUBMIT_SUCCESS, B.v9.EXPAND_INSIGHT_ROW, B.v9.ONE_CLICK_RESOLVE_BUTTON, B.v9.FOLLOW_RESOLVE_URL, B.v9.MANAGE_INSIGHT, B.v9.CLICK_SCAN_NOW, B.v9.CLICK_EXPORT_INSIGHTS, B.v9.BULK_ARCHIVE, B.v9.CLICK_DETAILS_BUTTON, w.Fj[w.kq.ENDPOINT_MANAGEMENT].listOfEndpoints, w.Fj[w.kq.ENDPOINT_MANAGEMENT].detailedMetrics, w.Fj[w.kq.ENDPOINT_MANAGEMENT].createEndpoint, w.Fj[w.kq.ENDPOINT_MANAGEMENT].deleteEndpoint, w.Fj[w.kq.ENDPOINT_MANAGEMENT].deployRouting, w.Fj[w.kq.ENDPOINT_MANAGEMENT].deleteRouting, w.Fj[w.kq.API_DISCOVERY].viewDiscoveredEndpoints, w.Fj[w.kq.API_DISCOVERY].saveDiscoveredEndpoint, w.Fj[w.kq.API_DISCOVERY].ignoreOrUnignoreDiscoveredEndpoint, w.Fj[w.kq.SCHEMA_VALIDATION].viewSchemasList, w.Fj[w.kq.SCHEMA_VALIDATION].uploadSchema, w.Fj[w.kq.SCHEMA_VALIDATION].viewSchemaAdoption, w.Fj[w.kq.SCHEMA_VALIDATION].downloadSchema, w.Fj[w.kq.SCHEMA_VALIDATION].deleteSchema, w.Fj[w.kq.SCHEMA_VALIDATION].addLearnedSchemaByHostname, w.Fj[w.kq.SCHEMA_VALIDATION].addLearnedSchemaByEndpoint, w.Fj[w.kq.SEQUENCE_ANALYTICS].viewSequencesPage, w.Fj[w.kq.JWT_VALIDATION].viewJWTRules, w.Fj[w.kq.JWT_VALIDATION].addJWTRule, w.Fj[w.kq.JWT_VALIDATION].editJWTRule, w.Fj[w.kq.JWT_VALIDATION].deleteJWTRule, w.Fj[w.kq.JWT_VALIDATION].reprioritizeJWTRule, w.Fj[w.kq.JWT_VALIDATION].viewJWTConfigs, w.Fj[w.kq.JWT_VALIDATION].addJWTConfig, w.Fj[w.kq.JWT_VALIDATION].editJWTConfig, w.Fj[w.kq.JWT_VALIDATION].deleteJWTConfig, w.Fj[w.kq.SETTINGS].redirectToFirewallRulesTemplate, w.Fj[w.kq.SETTINGS].redirectToPages, w.Fj[w.kq.SETTINGS].listSessionIdentifiers, w.Fj[w.kq.SETTINGS].listRequestsContainingSessionIdentifiers, w.Fj[w.kq.SETTINGS].addOrRemoveSessionIdentifiers, w.Fj[w.kq.SETTINGS].redirectToCustomRules, w.Fj[w.kq.SETTINGS].listAllFallthroughSchemas, w.Fj[w.kq.SEQUENCE_RULES].listSequenceRules, w.Fj[w.kq.SEQUENCE_RULES].deleteSequenceRule, w.Fj[w.kq.SEQUENCE_RULES].reorderSequenceRule, w.Fj[w.kq.SEQUENCE_RULES].createSequenceRule, w.Fj[w.kq.SEQUENCE_RULES].editSequenceRule, ne.Z.ANALYTICS, ne.Z.CREATE_AND_DEPLOY, ne.Z.CREATE_MONITOR_LINK, ne.Z.CREATE_MONITOR, ne.Z.CREATE_POOL_LINK, ne.Z.CREATE_POOL, ne.Z.EDIT_MONITOR, ne.Z.EDIT_POOL, ne.Z.LOAD_BALANCING_TABLE, ne.Z.POOL_TABLE, ne.Z.EDIT_MONITOR_LINK, ne.Z.EDIT_POOL_LINK, ...R.eT, V.y.SECONDARY_DNS_NOTIFICATION_CREATE, V.y.SECONDARY_DNS_NOTIFICATION_UPDATE, V.y.SECONDARY_DNS_NOTIFICATION_DELETE, H.U.ZONE_TRANSFER_SUCCESS, H.U.DNS_RECORD_CREATE, H.U.DNS_RECORD_UPDATE, H.U.DNS_RECORD_DELETE, Ke.Y.PEER_DNS_CREATE, Ke.Y.PEER_DNS_UPDATE, Ke.Y.PEER_DNS_DELETE, Ke.Y.ZONE_TRANSFER_ENABLE, Ke.Y.ZONE_TRANSFER_DISABLE, he.V.ARGO_ENABLEMENT, he.V.ARGO_GEO_ANALYTICS_FETCH, he.V.ARGO_GLOBAL_ANALYTICS_FETCH, pe.X.VIEW_BUCKETS_LIST, pe.X.CREATE_BUCKET, pe.X.VALIDATE_BUCKET, pe.X.DELETE_BUCKET, pe.X.VIEW_CAPTURES_LIST, pe.X.CREATE_SIMPLE_CAPTURE, pe.X.CREATE_FULL_CAPTURE, pe.X.VIEW_FULL_CAPTURE, pe.X.DOWNLOAD_SIMPLE_CAPTURE, $.bK.VIEW_RULES, $.bK.CREATE_RULE, $.bK.UPDATE_RULE, $.bK.DELETE_RULE, $.bK.VIEW_CONFIGURATION, $.bK.CREATE_CONFIGURATION, $.bK.UPDATE_CONFIGURATION, $.bK.DELETE_CONFIGURATION, se.r8.VIEW_ALERTS, se.r8.VIEW_ALERTS_HISTORY, se.r8.MAGIC_OVERVIEW_ANALYTICS, se.VZ.CREATE_SITE, se.VZ.CREATE_TUNNEL, se.VZ.CREATE_STATIC_ROUTE, oe.o4.CLICK_ADAPTIVE_SAMPLING, oe.o4.CLICK_TO_LOG_EXPLORER_BANNER, oe.o4.CLICK_TO_LOG_EXPLORER_DESCRIPTION, oe.o4.CLICK_SWITCH_TO_RAW_LOGS, oe.o4.CLICK_SWITCH_TO_SAMPLED_LOGS, "send AI feedback", k.U.REGISTER_DOMAIN_SEARCH_SUBMIT, k.U.REGISTER_DOMAIN_SEARCH_SELECT_DOMAIN, k.U.REGISTER_DOMAIN_CHECKOUT_SELECT_PAYMENT_OPTION, k.U.REGISTER_DOMAIN_CHECKOUT_PURCHASE, k.U.REGISTER_DOMAIN_CHECKOUT_PURCHASE_ATTEMPT, k.U.REGISTER_DOMAIN_CHECKOUT_PURCHASE_COMPLETED, k.U.REGISTER_DOMAIN_CHECKOUT_BILLING_COUNTRY_SELECT, k.U.REGISTER_DOMAIN_CHECKOUT_BILLING_VERIFY_ADDRESS, k.U.REGISTER_DOMAIN_CHECKOUT_BILLING_SELECT_PAYMENT_METHOD, k.U.REGISTER_DOMAIN_CHECKOUT_TMCH_DOMAIN_HAS_CLAIMS, k.U.REGISTER_DOMAIN_CHECKOUT_TMCH_EXPAND_CLAIMS, k.U.REGISTER_DOMAIN_CHECKOUT_TMCH_DISAGREE, k.U.REGISTER_DOMAIN_CHECKOUT_TMCH_AGREE, k.U.REGISTER_DOMAIN_CHECKOUT_ERROR, k.U.TRANSFER_DOMAIN_CHANGE_STEP, k.U.RENEW_DOMAIN_COMPLETED, k.U.RESTORE_DOMAIN_INIT, k.U.RESTORE_DOMAIN_CLOSE_RESTORE_MODAL, k.U.RESTORE_DOMAIN_OPEN_ADD_PAYMENT_METHOD_MODAL, k.U.RESTORE_DOMAIN_CLOSE_ADD_PAYMENT_METHOD_MODAL, k.U.RESTORE_DOMAIN_FAILURE, k.U.RESTORE_DOMAIN_COMPLETED, k.U.DOMAIN_DELETE_INIT, k.U.DOMAIN_DELETE_COMPLETED, k.U.DOMAIN_DELETE_FAILURE_NO_PERMISSIONS, k.U.DOMAIN_DELETE_FAILURE_INVALID_CONFIRMATION_CODE, k.U.DOMAIN_DELETE_FAILURE_UNKNOWN_REASON, k.U.DOMAIN_DELETE_CONFIRM_DELETE, k.U.DOMAIN_DELETE_CLOSE_CONFIRM_MODAL, k.U.DOMAIN_DELETE_RESEND_CONFIRMATION_CODE, k.U.DOMAIN_DELETE_CLOSE_VERIFICATION_MODAL, k.U.DOMAIN_DELETE_WARNING_MODAL_CONTINUE, k.U.DOMAIN_DELETE_CLOSE_WARNING_MODAL, k.U.DOMAIN_MOVE_START_FLOW, k.U.DOMAIN_MOVE_OPEN_DOCS, k.U.DOMAIN_MOVE_CLOSE_FLOW, k.U.DOMAIN_MOVE_PROGRESS_FLOW, k.U.DOMAIN_MOVE_SUBMIT, k.U.DOMAIN_MOVE_INITIATE_SUCCESS, k.U.DOMAIN_MOVE_INITIATE_ERROR, k.U.DOMAIN_MOVE_CANCEL, k.U.DOMAIN_MOVE_CANCEL_SUCCESS, k.U.DOMAIN_MOVE_CANCEL_ERROR, k.U.ACTION_CENTER_NAVIGATE, k.U.ACTION_CENTER_DOMAIN_MOVE_DECISION, k.U.ACTION_CENTER_DOMAIN_MOVE_DECISION_SUCCESS, k.U.ACTION_CENTER_DOMAIN_MOVE_DECISION_ERROR, Je.z3.CREATE_SECRET, Je.z3.DELETE_SECRET, Je.z3.BIND_SECRET, Je.z3.DUPLICATE_SECRET, Je.z3.EDIT_SECRET, Y.KO.CLICK_GET_STARTED_GUIDE, Y.KO.CLICK_PIPELINE_DOCUMENTATION, Y.KO.CLICK_QUICK_LINK, Y.KO.CREATE_PIPELINE, Y.KO.DELETE_PIPELINE, Y.KO.LIST_PIPELINES, Y.KO.VIEW_PIPELINE, L.S.EXISTING_DOMAIN, L.S.NEW_DOMAIN, L.S.WAF_RULESET, L.S.WORKERS, L.S.PAGES, L.S.R2, L.S.ACCOUNT_MEMBERS, ue._.TEMPLATE_PRODUCT_SELECTED, ue._.TEMPLATE_SELECTED, ue._.TEMPLATE_SAVE_DRAFT, ue._.TEMPLATE_CANCEL, ue._.TEMPLATE_DEPLOY, ge.D.CLICK_GO_BACK_SHARE_MODAL, ge.D.CLICK_MENU_ITEM_SHARE, ge.D.CLICK_ON_CANCEL_SHARE_MODAL, ge.D.CLICK_ON_CLOSE_SHARE_MODAL, ge.D.CLICK_ON_CONFIGURE_SHARE_BUTTON, ge.D.CLICK_ON_DELETE_RULESET, ge.D.CLICK_ON_DEPLOY_BUTTON_SHARE_MODAL, ge.D.CLICK_ON_EDIT_SHARE_PERMISSION, ge.D.CLICK_ON_GO_TO_SOURCE_ACCOUNT, ge.D.CLICK_ON_SHARE_BUTTON_SHARE_MODAL, ge.D.CLICK_ON_SHARE_TABLE_ROW, K.pR.CLICK_GEOGRAPHICAL_TEMPLATE, K.pR.CLICK_IP_TEMPLATE, K.pR.CLICK_USER_AGENT_TEMPLATE, K.pR.CLICK_ZONE_LOCKDOWN_TEMPLATE, ce.vc.CREATED, ce.vc.ENABLED, ce.vc.DISABLED, ce.vc.DELETED, ce.vc.UPDATED, ce.vc.DOWNLOADED, W.Gk.REQUEST_REVIEW, W.Gk.COPY_URL, M.v.FIELD, M.v.OPERATOR, Ye.Vj.SHOW_LCC_MIGRATION_BANNER, Ye.Vj.CLICK_LCC_DOCUMENTATION, Ye.Vj.CLICK_LCC_UPGRADE_GUIDE, Ye.Vj.SHOW_LCC_MIGRATION_WARNING, ve.y.CLICK_DISMISS_INELIGIBILITY, ve.y.CLICK_NEXT_STEP, ve.y.CLICK_OPT_IN, ve.y.CLICK_OPT_IN_BUTTON, ve.y.CLICK_OPT_OUT_BUTTON, ve.y.DISPLAY_MODAL, ve.y.DISPLAY_OPT_OUT_MODAL, ve.y.DISPLAY_TOOLTIP_NOT_AVAILABLE, ve.y.CLICK_EXTERNAL_LINK_TOOLTIP_NOT_AVAILABLE, Pe.AZ.LOAD_INSIGHTS, Pe.AZ.OPEN_SIDE_MODAL_INSIGHT, Pe.AZ.CLOSE_SIDE_MODAL_INSIGHT, Pe.AZ.CLICK_ACTION_INSIGHT, Xe.JR.ADD_SUSPICIOUS_ACTIVITY_FILTER, Xe.JR.REMOVE_SUSPICIOUS_ACTIVITY_FILTER),
+			const qe = ((ie, re, ...p) => n.eg.union([n.eg.literal(ie), n.eg.literal(re), ...p.map(h => n.eg.literal(h))]))("abort import", "Access Click", "Access click", "Access Promo Banner Click", "account name menu clicked", "account quick action click", "accounts table click", "ack queue message", "ACM Purchase Success", "activate coveo recommended resource TSF (3.0)", "activate helperbot diagnostic TSF (3.0)", "Activity feed cancel download modal", "Activity feed close event", "Activity feed download from modal", "Activity feed download", "Activity feed expand event", "Activity feed expand matches", "Activity feed next page", "Activity feed open download modal", "Activity feed previous page", "Add API Discovery authorization headers", "Add column", "Add Configuration Rule Settings", "add cron trigger", "Add filter", "add jwt credentials", "add jwt configuration location", "add kv key-value", "Add insight", "Add cache rule setting", "add payment method", "Add site click", "add workers route", "added api shield schema", "Addon Purchase Success", "Advanced Certificate Manager click", "agree to terms", "Analytics Secondary Nav - Tab Click", "Analytics Time Period Change", "anonymizers found", "API documentation click", "apply recommendation", "argo enabled", "argo click", "argo smart routing click", "argo tiered caching click", "argo cancel modal submit feedback clicked", "argo cancel modal open state", "argo cancel modal clicked cancel", "Attempt TOTP reconfigure", "begin deployment log stream", "begin import flow", "begin log stream", "begin zone activation flow", "Billing address country select toggle", "Billing click", "Billing email update failure", "Billing email update success", "Billing invoice download failed", "Billing invoice download success", "brand protection", "bulk delete images", "bulk export images", "Button click", "Cache settings click", "Can not display filter - Unparsable filter", "Can not display filter - Unsupported Fields", "cancel add records later", "cancel addon purchase of automatic platform optimization", "cancel create database", "cancel disable totalTLS", "cancel import flow", "cancel form", "cancel notification create", "cancel notification delete", "cancel notification edit", "cancel notification test", "cancel onboarding flow", "cancel resizing after bundle buy", "cancel snippet form", "cancel source deletion", "cancel switch ca totalTLS", "cancel variant edit", "Canceled rule form", "Canceled subscription", "Certificate Patch click", "change api shield sequence rule config option", "change brand pattern filter", "change certificate authority totalTLS", "change chart time horizon", "Change dataset", "change default action api shield sv", "change DNS file upload error visibility", "change DNS setup method", "Change limit", "change metadata boundary", "change pagination page shield", "Change Plan Frequency", "change priority submitted", "change SSL recommender", "change tab", "Change time window", "change zone setting", "Change zone setup confirmation", "Change zone status confirmation", "change zone status", "chat submission form submit click", "check nameservers", "choose plan", "Continue adding domain", "copy script url page shield", "copy trace json", "Cipher Suites Link Click", "claim yubico promo offer", "click 2fa support token link", "click Account Home TSF (3.0)", "click add settings", "click add sources", "click api shield upsell link", "click api shield enable product button", "click api shield feedback link", "click api shield route", "click API snippet drawer", "click back to all policies link", "click block ai bots", "Click BM bots JS detection", "Click BM bot templates", "Click BM create firewall rule", "Click BM welcome card", "click bot settings", "click cancel downgrade", "click cancel free trial", "click cache reserve purchase", "click chat button", "click chat close modal", "click chat start", "click close callback request form", "click configure 2fa support app link", "click continue quick scan", "click continue to support TSF (3.0)", "click coveo recommended resource TSF (3.0)", "click create ai gateway", "click create load balancer", "click create project success resource", "click create project success next step", "Click Create Rule", "click create policy form link", "click create token from sidebar", "click create table button", "click database detail tab", "click deflect community TSF (3.0)", "click delete database button", "click delete table button", "Click Deploy Rule", "click dns completion wizard suggestion", "click dns email security configure", "click dns email security wizard record type", "click documentation link", "click edit policy", "click edge traffic visualisation link", "click enable argo button", "click end stream button", "click expand known issue", "click expand maintenance view", "click help drawer", "click helperbot diagnostic report TSF (3.0)", "click Hide Self Help Flow", "click learn more link", "click link to waf migration documentation", "click link", "click load more coveo content TSF (3.0)", "click load balancer step", "click login help forgot email selection", "click login help forgot password selection", "click login help lost two factor selection", "click multi-sku confirmation", "click on apply rule ai assistant", "click on close rule ai assistant", "click on edit snippet", "click on content_scanning", "click on exposed_credentials", "click on expand one sequence on api gateway sequences", "click on filter one sequence on api gateway sequences", "click on main filter api gateway sequences", "click on rule ai assistant", "click on view endpoint on api gateway sequences", "click Open a Ticket TSF (3.0)", "click open callback request form", "click payment details", "click plan documentation link", "click purchase ACM - totalTLS", "click refresh suggestions", "Click refresh transfer status", "click Request Live Chat TSF (3.0)", "click restore database button", "click save whois", "click scan again", "click select known issue", "click Self Help Flow Answer", "click Self Help Flow Close", "click Start Over TSF (3.0)", "click Start Self Help Flow", "click start stream button", "click submit callback request form", "click submit domain categorization feedback", "click submit feedback TSF (3.0)", "click subscribe system status", "click table insert data button", "click ticket submission form search result", "click ticket submission form suggestion", "click to create api shield portal", "click to create rate limiting rule for endpoint", "click to Trace link", "click Top N investigate", "click intent submenu back link", "click investigate icon", "click trace feedback form", "click TSF (2.0) community more help", "click TSF (2.0) new category", "click TSF (2.0) search result", "click TSF (2.0) step", "click TSF (2.0) suggested help link", "click TSF (2.0) suggestion", "Click query logs", "Click use custom sql", "Click use basic editor", "click update table data row button", "click Upgrade to Business Close", "click Upgrade to Business Start", "click Upgrade to Business Zone Selected", "Click view details", "click waf upgrade banner", "click domain registration link", "click Workers & Pages link", "click worker edit code", "click workers plan icon", "click wrangler cli guide link", "click full DNS setup docs link", "click partial DNS setup docs link", "click secondary DNS setup docs link", "click settings first deploy cta", "click custom domain first deploy cta", "click web analytics first deploy cta", "click start quick scan", "click plan upgrade from rules setting", "click on snippets promo page", "Click", "close chat window", "create migration", "create or update queue consumer", "create trace", "create queue", "create sink", "create trace", "enter summary TSF (3.0)", "reach chat end TSF (3.0)", "submit login help form submission", "toggle TSF (3.0)", "toggle snippet status", "close abort import modal", "close account select dropdown", "close add product dropdown", "close bulk delete image modal", "close configuration switcher sidemodal", "close delete image modal", "close delete variant modal", "close domain switcher sidemodal", "close rename source modal", "close script modal page shield", "close zone select dropdown", "close support dropdown", "close profile dropdown", "collapse row", "collapse sidebar nav", "Collapse top N", "Community page link click", "complete addon purchase of automatic platform optimization", "complete plan change from automatic platform optimization card", "Configuration Rules Link Click", "confirm add records later", "confirm api shield sequence rule config", "confirm auth code", "confirm disable totalTLS", "confirm DNS records", "confirm domain transfer purchase", "confirm source deletion", "confirm zone removal", "Confirm", "contentful banner displayed", "contentful banner dismissed", "continue billing flow", "continue import flow", "continue onboarding flow", "continue to final step", "continue to review step", "continue to overview", "continue to js snippet", "Continue", "Contract SS - Approver contact details cancel", "Contract SS - Approver contact details submit success", "Contract SS - Legal agreement cancel", "Contract SS - Legal agreement submit success", "Contract SS - Payment type cancel", "Contract SS - Payment type selected success", "Contract SS - Purchase cancel", "Contract SS - Purchase flow enter", "Contract SS - Purchase success", "copy account hash", "copy account id", "copy API snippet from drawer", "copy curl command", "copy delivery url", "copy image delivery url", "copy image id", "copy script url page shield", "copy snippet", "Create Bulk Redirect Rule", "create clone", "create application click workers docs", "create application click pages docs", "create application click create with CLI", "create application select workers", "create application select pages", "create default environments", "create database", "create environment", "create job", "create kv namespace", "create migration", "Create New Rule", "create new magic firewall rule", "create notification", "create pages deployment", "create pages deployment", "create pages project", "create pages project", "create r2 api token", "create r2 api token", "create r2 bucket", "create rate limiting rule", "create regional hostname", "create rule", "Create Rule (Save)", "Create Rule as Draft (Save as Draft)", "create service", "create table", "create worker from playground", "create worker select filter", "cancel create worker from playground", "create sink", "create source", "create snippet", "create snippet", "create user", "create variant", "create worker", "create zone", "Create, Update or Edit Save Failures (Builder)", "Create, Update or Edit Save Failures (Editor)", "CT Alerting Change", "Custom Hostname create click", "Custom Hostname create success", "Custom Hostname delete click", "Custom Hostname delete success", "Custom Hostname edit click", "Custom Hostname edit success", "Custom Hostname fallback origin add click", "Custom Hostname fallback origin delete click", "Custom Hostname fallback origin delete success", "Custom Hostname fallback origin edit click", "Custom Hostname fallback origin refresh", "Custom Hostname refresh click", "Custom Trust Store delete click", "Custom Trust Store delete success", "Custom Trust Store upload click", "Custom Trust Store upload success", "customer click URL in support ai chat", "customer close support ai chat", "Dashboard search closed", "Dashboard search opened", "clicked header navigation", "Dashboard search result selected", "Dashboard search results empty", "Dedicated Certificates click", "Deep Link Cancel", "Deep Link Success", "delete api shield route", "delete brand pattern", "Delete click", "Delete confirmation", "delete custom error pages", "delete database", "delete environment", "delete image", "delete kv key-value", "delete kv namespace", "delete multiple selected table data rows", "delete notification", "delete pages project", "delete policy", "delete queue", "delete r2 api token", "delete r2 bucket", "delete r2 objects", "Delete Rule", "delete service", "delete site", "delete snippet", "delete snippet", "delete source", "delete table", "delete table data row", "delete variant", "deploy api shield portal", "deploy api shield route", "deploy policy", "deploy worker script", "deploy worker script", "deploy version", "Details click", "Dev Mode change confirm", "Dev Mode change", "develop with wrangler cli", "Diagnostic failure", "Diagnostic result", "disable page shield", "disable pages web analytics", "Disable Rule", "disable sidebar nav", "disable totalTLS", "dislike redirect in the same window", "dismiss notification", "dismiss recommendation", "dismiss yubico promo banner", "display recommendation module", "display recommendation", "display record wizard notification", "display self help flow", "display yubico promo banner", "display support ai chat", "DNS settings click", "download file", "download progress log", "download r2 object", "download tax doc", "draft new worker script", "edge traffic visualisation is shown", "edit contact information", "edit cron trigger", "edit environment", "Edit filter", "edit image", "edit kv key-value", "edit notification", "edit plan", "edit r2 api token", "edit registration details", "edit service environment variables", "edit service kv bindings", "edit service r2 bindings", "edit service to service bindings", "edit service mtls certificate bindings", "edit service tail consumers", "edit dispatch namespace bindings", "edit variant", "edit workers route", "Edit/Update Rule (Save)", "Enable automatic https rewrites click", "Enable Optimization", "enable or disable api shield sv", "enable page shield", "enable pages access policy", "enable pages web analytics", "Enable Rule", "enable sidebar nav", "enable totalTLS", "enable policy toggle", "enable versioning", "enable workers", "enable cache reserve storage sync", "encrypt variable", "end WAF migration v2", "environment migrate forward", "environment migrate back", "enter domain search value", "enter icloud registrar", "enter summary TSF (3.0)", "live training button clicked", "Error adding or removing records", "Error Analytics link click", "Error when retrieving conflicting records", "error creating snippet", "Event Names", "execute console tab query", "exit onboarding guide", "expand account select dropdown", "expand directive", "expand domain details", "Expand measurement details", "expand row", "expand sidebar nav account selector", "expand sidebar nav zone selector", "expand sidebar nav", "Expand top N", "expand trace accordion", "expand zone select dropdown", "export instant logs", "export single image", "export trace results", "fail addon purchase of automatic platform optimization", "Failed to Switch to Editor", "failed pre-flight check", "Fetched template", "Filter rules", "filter search page shield", "filter search view all page shield", "filter snippet", "filter trace results", "Filter used", "filter workers and pages", "finish import flow", "finish loading gates and microfrontends", "finish onboarding guide later", "finish onboarding guide", "Firewall settings click", "Flow authorize", "Flow cancel", "follow contentful banner link", "follow docs link", "follow link to investigate external", "follow link to investigate", "follow link", "follow policy link", "follow recommendation CTA", "follow return to icloud link", "follow support link", "follow yubico promo banner", "follower icloud footer link", "Follow Trial Offer Link", "Free Long Wait", "get current bookmark id", "Get your API key click", "go back in billing flow", "go to next page", "go to page", "go to prev page", "hover score tooltip page shield", "hover to read risk identified tooltip", "hover to read threshold tooltip", "http worker editor tab", "identify", "image upload complete", "Initialization error", "Initialization success", "initiate addon purchase of automatic platform optimization", "initiate plan change from automatic platform optimization card", "initiate wordpress plugin installation for automatic platform optimization", "insert table data row", "interact with api shield sequence rule main table", "Interaction with Film Strip", "Interacton with Film Strip", "investigate threat search", "IP settings click", "launch icloud registrar onboarding", "launch onboarding guide", "launch sidebar nav survey", "launch teams dashboard", "launch zone overview", "list kv key-values", "list kv namespaces", "list pages projects", "list queues", "list r2 buckets", "list r2 objects", "Load Balancing click", "load web analytics overview", "Logpush Create Job - Open modal", "Logpush Create Job - Step Transition", "Logpush Create Job - Success", "Manage click", "manage pages members", "manage pages policies", "Map detail type changed", "Matches Entitlement Validation error", "migrate waf", "Mixed content notification test 2019-05-03 link click", "multi-sku purchase error", "multi-sku purchase success", "navigate back", "navigate footer nav", "navigate investigate sidebar nav", "navigate quick link", "navigate sidebar nav", "navigate to account", "navigate to api tokens", "navigate to appearance", "navigate to billing", "navigate to community forum", "navigate to community", "navigate to compliance docs", "navigate to contact support", "navigate to create first source", "navigate to documentation", "navigate to edit image", "navigate to enterprise customer portal", "navigate to filtered domains", "navigate to help center", "navigate to import detail", "navigate to images", "navigate to my activities", "navigate to logout", "navigate to previous onboarding guide task", "navigate to profile", "navigate to request feature", "navigate to request feature", "Navigate to speed test", "navigate to source detail", "navigate to variant detail", "navigate to version management through configuration sidemodal", "navigate to version management docs through configuration sidemodal", "navigate to WAF Migration Review configuration view", "navigate topbar", "navigate to tax docs", "navigate to share feedback", "new page available refresh cta", "Next onboarding guide section", "next page", "next tooltip step", "Notification dismissed", "Notification displayed", "Notification link click", "Notification load on page confirmation", "observe automatic platform optimization card", "Onboarding guide elapsed time", "open abort import modal", "open advanced waiting room sales link", "open add product dropdown", "open alert modal page shield", "open argo subscription modal", "open blog post for automatic platform optimization", "open bot management lead generator link", "open bulk delete image modal", "open cancel downgrade modal", "open cancel free trial modal", "open configuration switcher sidemodal", "open create bucket page", "open create database page", "open create notification page", "open delete image modal", "open delete notification modal", "open delete variant modal", "open domain switcher sidemodal", "open edit notification page", "open hostname confirmation modal", "Open Trial Offer Modal", "open help documentation for automatic platform optimization", "open image preview", "open load balancing subscription modal", "Open Modal Enable Access", "open priority change modal", "open profile dropdown", "open onboarding guide task manually", "open remove zone modal", "open rename source modal", "open script modal page shield", "open support dropdown", "open security center url categorization feedback", "open security center categorization tooltip", "open waiting room upsell modal", "open zone plan update modal", "Opened BrowserInsights tab", "opt-in to marketing emails", "Order click", "Order success", "Page Rules click", "pageview", "page load gate deflection TSF", "paginate kv key-values", "paginate kv namespaces", "paginate pages projects", "paginate queues", "paginate r2 buckets", "paginate r2 objects", "paginate services", "Pick validity period success", "Plan Purchase Confirmation", "Plan Purchase Failure", "Plan Purchase Success", "Plan Update Confirmation", "Plan Update Failure", "Plan Update Success", "preview live worker", "preview queue messages", "preview worker editor tab", "previous page", "previous tooltip step", "Private keys in china toggle", "Product Purchase Cancel", "Product Purchase Failure", "Product Purchase Success", "Product Update Failure", "Product Update Success", "prompted to verify email", "promote version", "purchase domain transfer", "purchase from plan change modal", "purchase images subscription", "Purge cache click", "purge everything from cache", "quick actions basic features modal close", "quick actions basic features modal open", "quick actions basic features activate selections", "Rate Limiting click", "Re-activate zone click", "Re-check nameservers click", "reach ticket end TSF (3.0)", "read kv key-value", "ready to update waf migration phase 2", "recheck zone for automatic platform optimization", "redirect chat", "register site", "Remove column", "Remove filter", "Remove insight", "remove item from checkout", "remove zone", "rename account", "rename service", "rename source", "Reprioritize certificate", "Request review click", "resend verification email", "restore database", "resume onboarding", "retry coveo search", "return to developer platform from modal", "return to developer platform from onboarding", "review onboarding guide task from summary", "review products", "request migrator capacity", "rollback version", "roll r2 api token", "Rule event", "Rule preview that was denied because of an unsupported field or operator", "Rule preview that was denied because of lack of data", "Rule preview that was denied due to error", "rules configured", "save contact information", "save and deploy load balancer", "save load balancer", "save load balancer as draft", "save onboarding guide task", "save payment details", "save registration details", "search auto fetch", "search d1 databases", "search kv key-values", "search kv namespaces", "search pages projects", "search queues", "search r2 buckets", "search r2 objects", "search services", "search source", "search table", "Search", "See more click", "select account", "select alert type page shield", "select category TSF (3.0)", "select change nameservers", "select directive default value", "select directive value", "select domain", "select d1 database", "select file", "Select hostname success", "select intent capture card", "select language", "select mp4 download checkbox", "select automatic deletion checkbox", "select notification type", "select onboarding bundle", "select page rules quantity", "select product", "select r2 plan", "select source", "select storage plan", "select table", "select task", "Select timeseries group by", "select transfer registrars", "Select type success", "select variant", "select version", "select queues plan", "select workers plan", "select workers template", "select zone plan", "select zone", "select summary in support ai chat", "Select", "Selected advanced GeoIP field in rule builder", "selected schema api shield portal", "send verification email", "send queue message", "Set Communication Preferences", "Set communication Preferences", "set page size", "set pages do bindings", "set pages environment variables", "set pages kv bindings", "set pages vectorize bindings", "set r2 bucket storage class", "set up custom domain", "set up subdomain", "Setting up", "show access key", "show cache reserve potential savings", "show cache reserve disabled", "show notification", "show waf upgrade banner v2", "show waf upgrade banner", "showed api shield flyfishing page", "signed exchanges toggle", "Sign in to Area 1 button click", "Go to Zero Trust Email Security button click", "site configured", "skip onboarding guide section", "something wrong", "sort auto fetch", "sort column page shield", "sort queues", "sort r2 buckets", "sort services", "sort table", "sort workers and pages", "Speedheader - change your nameservers click", "Speedtest - Headless Chrome fetch returned error", "Speedtest - tests are completed", "Speedtest - Tests are running", "Speedtest - WPT tests failed", "SPF conflict resolution failure", "SSL click", "SSL Mode Change", "start import flow", "start import manually", "start subscription change", "start WAF migration v2", "start wizard", "Status page link click", "Stream click", "Stream Signup Success", "Stream Video Page Play", "Stream Video Upload Failure", "Stream Video Upload Success", "Stream navigate away from videos page", "Stream Video Upload with link", "Stream video caption uploaded", "Stream video caption deleted", "Stream video caption downloaded", "Stream video caption generating", "Stream video caption regenerating", "submit brand pattern", "submit grotto chat feedback", "submit DNS email security wizard failure", "submit DNS email security wizard", "submit DNS entry method", "submit domain name", "submit login form", "submit login help form submission", "submit new grotto chat request", "submit new support ai chat request", "submit order", "submit signup form", "sign up option clicked", "login option clicked", "Successful flow and user redirected", "Successful rule preview", "Suggestions query confirmation", "suggest category tsf (3.0)", "suggest category displayed tsf (3.0)", "Marketing banner dismissed", "Survey banner closed", "Marketing banner shown", "Survey banner shown", "Survey opened", "switch DNS entry method", "Switch from Editor and Discarded Changes", "Switch to expression editor", "Test", "test notification", "Ticket form step click", "Ticket submission form button click", "Ticket submission form submit click", "Time range changed", "Toast dismiss click", "Toast load on page confirmation", "toggle advanced options", "Toggle API discovery", "toggle automatic platform optimization feature", "toggle cache by device type", "toggle counting expression", "toggle flexible variants", "toggle key", "toggle recommendation module", "toggle TSF (3.0)", "Toggle user level audit logs", "Toggled injection", "trace user jorney", "transfer DNS records", "transformations disabled for zone", "transformations enabled for zone", "Trial Offer Displayed", "Trial Started", "Trial Cancelled", "tried to register unavailable domain", "tried to remove zone of a domain registered on cloudflare registrar", "Under Attack Mode change", "Under attack mode enabled", "undo restore database", "update custom error pages", "update job", "update jwt configuration", "update jwt rule", "update magic firewall rule", "update pages project", "update rule", "update site", "update table data row", "upgrade unique transformations config", "upgrade stream subscription", "upgrade resizing to new stream subscription", "Upload custom click", "Upload custom confirmation", "upload custom error pages", "upload DNS file", "upload image", "Upload keyless click", "Upload keyless confirmation", "Upload list item CSV", "update snippet", "upload r2 objects", "use multiselect api shield sv", "use overflow api shield sv", "use spacebar to pause", "use spacebar to play", "User has recommended optimisations", "User navigated by zone navigation", "Use template", "USSL Certificate Authority: Changed", "USSL Certificate Authority: Modal Launch", "validate spf content", "Validation method change", "Validation success", "verified email successfully", "verify email", "view accounts", "view checkout complete purchase", "View click", "view custom error pages", "view documentation", "view downgrade offer", "view downgrade survey", "view downgrade warning", "view onboarding guide recommendations", "view snippet", "view plan", "view system status", "Viewed Global API Key", "Viewed Origin CA Key", "visit workers developer docs", "visit workers showcase", "visit workers templates", "web analytics upgrade plan click", "web analytics option changed to enabled", "web analytics option changed to enabled with lite", "web analytics option changed to manual", "web analytics option changed to disabled", "WHOIS link click", "Workers:Enablement", "Zap:Opt in", "Zap:Opt out", "zones table click", "Zone setup change", "Bots Report Data", "Information Toast Shown", "Information Toast Closed", "quick edit http tab", "quick edit preview tab", "quick edit schedule tab", "quick edit wrangler tab", "visit product documentation", "visit blog post", "visit recent", "visit blog announcements", "click application name", "click change compute setting", "click change subdomain", "click discover card call to action", "click discover card view products", "click welcome card call to action", "click welcome card view products", "skip to dash", "click create application", "click connect to git", "click featured product call to action", "click paygo card cta", "click opt-in", "click opt-out", "click close opt out", "click setup AE", "click stripe beta select plan support link", "click stripe beta change plan support link", "click rule link", "click button to speed recommendation page", "click element", "click trace rule details", "click upload assets", "click worker detail tab", "click workers resource", "click workers manage account members", "click workers manage notifications and alerts", "view stripe beta opt out", "error notification shown", "fetch personalized content", "view page", "run speed test", "delete speed test", "create speed test schedule", "delete speed test schedule", "select speed test trend range", "select speed test trend metric", "view speed recommendation", "view lighthouse audit", "enable speed recommendation", "click speed feature link", "click speed optimization documentation link", "enable all speed optimization recommendations", "complete plan change from speed", "start plan change from speed", "view rum disabled screen", "enable rum from speed", "enable rum lite from speed", "enable rum from zone", "enable rum lite from zone", "enable rum from observatory", "enable rum lite from observatory", "enable rum from account", "enable rum lite from account", "select rum map range", "select rum map metric", "has payment plan on file", "click DNS records link", "click disable DNSSEC link", "click migrate DNSSEC link", "click enable DNSSEC link", "click pending domains link", "change appearance", "click star zone", "click star zone filter", "click empty state link", "click view more", "visit system status item", "view system status item menu", "subscribe to system status item", "click feedback link", "click registrar link", "click cloudflare logo", "dismiss change notification", "dismiss change notification modal", "set marketing preference ent ss purchase", "view change notification", "view change notification modal", "expand side drawer", "collapse side drawer", "expand documentation side drawer", "collapse documentation side drawer", "dismiss message", "dismiss all messages", "click message inbox popover", "click message footer action", "toggle templates sidepanel", Se.gX.SPARROW_PROJECTS_TABLE_CLICK, Se.gX.SPARROW_EMPTY_STATE_CTA_CLICK, Se.gX.SPARROW_PRODUCT_CARD_CLICK, Se.gX.SPARROW_VIEW_ALL_PROJECTS_CLICK, Se.gX.SPARROW_ZERO_TRUST_LINK_CARD_CLICK, Se.gX.SPARROW_ZERO_TRUST_ONBOARDING_CARD_CLICK, Se.gX.SPARROW_ZERO_TRUST_ANALYTICS_LINK_CLICK, Se.gX.SPARROW_ZERO_TRUST_PRODUCT_CARD_CLICK, Se.gX.SPARROW_ZERO_TRUST_PLAN_PILL_CLICK, Se.gX.SPARROW_ZERO_TRUST_PLAN_FALLBACK_CLICK, "clicked sidebar Discord link", "clicked sidebar Community Forum link", he.QV.clickedDownloadAnalytics, he.QV.clickedPrintAnalytics, he.QV.toggledSmartPlacement, "clicked Workers for Platforms CLI Guide link", "clicked Workers for Platforms Documentation link", he.QV.addWCITriggerToExistingWorker, he.QV.updateWCITrigger, he.QV.deleteWCITrigger, he.QV.addWCITriggerToNewWorker, he.QV.createWCIBuildForNewWorker, he.QV.completedWCIBuildForNewWorker, he.QV.changedDefaultConfigurations, he.QV.clickElement, z.QV.toggledPagesSmartPlacement, z.QV.downloadDemoProject, he.QV.clickCreateWorkerFromRepoNextStep, he.QV.clickCreateWorkerFromRepoPreviousStep, he.QV.clickCreateNewSCMConnection, he.QV.redirectFromSCMOAuth, he.QV.clickSubmitError, he.QV.selectTemplate, he.QV.clickedListTemplates, he.QV.clickedImportRepository, he.QV.templateStubWorkerCreated, he.QV.templateStubWorkerCreationFailed, he.QV.templateRepositoryCreated, he.QV.templateRepositoryCreationFailed, he.QV.copyTemplateC3Command, he.QV.templateDeployClick, he.QV.reauthenticateGithubModalShown, he.QV.updateGithubPermissionsClicked, he.QV.D2W_importRepository, he.QV.D2W_stubWorkerCreated, he.QV.D2W_stubWorkerCreationFailed, he.QV.D2W_repositoryCreated, he.QV.D2W_repositoryCreationFailed, he.QV.D2W_resourcesProvisioned, he.QV.D2W_resourceProvisioningFailed, he.QV.D2W_githubAPIRateLimitReached, "clicked R2 feedback link", "clicked R2 CLI guide", "clicked R2 footer link", "clicked Constellation feedback link", x.N3.INITIAL_FETCH_SCORES, x.N3.FETCH_CONFIGURATION, x.N3.INITIAL_FETCH_TIME_SERIES, x.N3.INITIAL_FETCH_ATTRIBUTES, x.N3.UPDATE_SETTINGS, x.N3.DELETE_RULE, x.N3.UPDATE_RULE, x.N3.FETCH_RULES, x.N3.CONFIGURE_BOT_MANAGEMENT, x.N3.WAF_RULES_REDIRECT, U.F.TOGGLE_TCP_PROTECTION, U.F.GET_TCP_PROTECTION_PREFIXES, U.F.CREATE_TCP_PROTECTION_PREFIXES, U.F.CREATE_TCP_PROTECTION_PREFIX, U.F.UPDATE_TCP_PROTECTION_PREFIX, U.F.DELETE_TCP_PROTECTION_PREFIX, U.F.DELETE_TCP_PROTECTION_PREFIXES, U.F.GET_TCP_PROTECTION_ALLOWLIST, U.F.CREATE_TCP_PROTECTION_ALLOWLIST, U.F.UPDATE_TCP_PROTECTION_ALLOWLIST, U.F.DELETE_PREFIX_TCP_PROTECTION_ALLOWLIST, U.F.DELETE_TCP_PROTECTION_ALLOWLIST, U.F.GET_SYN_PROTECTION_RULES, U.F.GET_SYN_PROTECTION_RULE, U.F.CREATE_SYN_PROTECTION_RULE, U.F.UPDATE_SYN_PROTECTION_RULE, U.F.DELETE_SYN_PROTECTION_RULE, U.F.GET_TCP_FLOW_PROTECTION_RULES, U.F.GET_TCP_FLOW_PROTECTION_RULE, U.F.CREATE_TCP_FLOW_PROTECTION_RULE, U.F.UPDATE_TCP_FLOW_PROTECTION_RULE, U.F.DELETE_TCP_FLOW_PROTECTION_RULE, U.F.GET_SYN_PROTECTION_FILTERS, U.F.GET_SYN_PROTECTION_FILTER, U.F.CREATE_SYN_PROTECTION_FILTER, U.F.UPDATE_SYN_PROTECTION_FILTER, U.F.DELETE_SYN_PROTECTION_FILTER, U.F.GET_TCP_FLOW_PROTECTION_FILTERS, U.F.GET_TCP_FLOW_PROTECTION_FILTER, U.F.CREATE_TCP_FLOW_PROTECTION_FILTER, U.F.UPDATE_TCP_FLOW_PROTECTION_FILTER, U.F.DELETE_TCP_FLOW_PROTECTION_FILTER, U.F.GET_DNS_PROTECTION_RULES, U.F.GET_DNS_PROTECTION_RULE, U.F.CREATE_DNS_PROTECTION_RULE, U.F.UPDATE_DNS_PROTECTION_RULE, U.F.DELETE_DNS_PROTECTION_RULE, ee.FV.MANAGE_PAGE_SHIELD_POLICY, ee.FV.CONFIGURE_PAGE_SHIELD, ee.FV.VIEW_DETECTED_CONNECTIONS, ee.FV.VIEW_DETECTED_SCRIPTS, ee.FV.VIEW_PAGE_SHIELD_POLICIES, ee.FV.VIEW_PAGE_SHIELD_SETTINGS, ee.FV.OPEN_MUTABLE_VERSION_TOOLTIP, ee.FV.SHOW_MUTABLE_VERSION_TOOLTIP, te.y.CREATE_LIST, te.y.DELETE_LIST, te.y.ADD_LIST_ITEM, te.y.DELETE_LIST_ITEM, X.KO.PURCHASE_WORKERS_PAID, X.KO.LIST_CONFIGS, X.KO.SEARCH_CONFIGS, X.KO.CREATE_HYPERDRIVE_CONFIG, X.KO.VIEW_CONFIG_DETAILS, X.KO.UPDATE_CACHING_SETTINGS, X.KO.DELETE_HYPERDRIVE_CONFIG, X.KO.CLICK_HYPERDRIVE_DOCUMENTATION, X.KO.CLICK_GET_STARTED_GUIDE, X.KO.CLICK_CONNECTIVITY_GUIDES, X.KO.CLICK_QUICK_LINK, X.KO.CLICK_DISCORD, X.KO.CLICK_COMMUNITY, me.N.CNAME, me.N.IP_ADDRESS, me.N.LB, me.N.UPDATE_CNAME, me.N.UPDATE_IP_ADDRESS, me.N.UPDATE_LB, me.N.DISABLE, D.N.TIERED_CACHE, D.N.CACHE_PURGE, D.N.CACHE_ANALYTICS, ...(0, je.P)(), ...(0, A.x4)(), ...(0, ce.m8)(), ...(0, Ve.Ky)(), ...(0, Z.Cf)(), Le.N.CREATE, Le.N.EVENTS, Le.N.ANALYTICS, Le.N.UPDATE, Le.N.GENERATE_PREVIEW, B.RY.INITIATE_URL_SCAN, B.RY.LOAD_SCAN_INFO, B.Ev.LOAD_THREAT_EVENTS, B.Ev.THREAT_EVENT_MORE_DETAILS_CLICK, B.Ev.THREAT_EVENTS_FILTERS, B.Ev.ABUSE_REPORT_BUTTON_CLICK, B.Ev.ABUSE_REPORT_SUBMIT_CLICK, B.Ev.ABUSE_REPORT_SUBMIT_FAILED, B.Ev.ABUSE_REPORT_SUBMIT_SUCCESS, B.v9.EXPAND_INSIGHT_ROW, B.v9.ONE_CLICK_RESOLVE_BUTTON, B.v9.FOLLOW_RESOLVE_URL, B.v9.MANAGE_INSIGHT, B.v9.CLICK_SCAN_NOW, B.v9.CLICK_EXPORT_INSIGHTS, B.v9.BULK_ARCHIVE, B.v9.CLICK_DETAILS_BUTTON, w.Fj[w.kq.ENDPOINT_MANAGEMENT].listOfEndpoints, w.Fj[w.kq.ENDPOINT_MANAGEMENT].detailedMetrics, w.Fj[w.kq.ENDPOINT_MANAGEMENT].createEndpoint, w.Fj[w.kq.ENDPOINT_MANAGEMENT].deleteEndpoint, w.Fj[w.kq.ENDPOINT_MANAGEMENT].deployRouting, w.Fj[w.kq.ENDPOINT_MANAGEMENT].deleteRouting, w.Fj[w.kq.API_DISCOVERY].viewDiscoveredEndpoints, w.Fj[w.kq.API_DISCOVERY].saveDiscoveredEndpoint, w.Fj[w.kq.API_DISCOVERY].ignoreOrUnignoreDiscoveredEndpoint, w.Fj[w.kq.SCHEMA_VALIDATION].viewSchemasList, w.Fj[w.kq.SCHEMA_VALIDATION].uploadSchema, w.Fj[w.kq.SCHEMA_VALIDATION].viewSchemaAdoption, w.Fj[w.kq.SCHEMA_VALIDATION].downloadSchema, w.Fj[w.kq.SCHEMA_VALIDATION].deleteSchema, w.Fj[w.kq.SCHEMA_VALIDATION].addLearnedSchemaByHostname, w.Fj[w.kq.SCHEMA_VALIDATION].addLearnedSchemaByEndpoint, w.Fj[w.kq.SEQUENCE_ANALYTICS].viewSequencesPage, w.Fj[w.kq.JWT_VALIDATION].viewJWTRules, w.Fj[w.kq.JWT_VALIDATION].addJWTRule, w.Fj[w.kq.JWT_VALIDATION].editJWTRule, w.Fj[w.kq.JWT_VALIDATION].deleteJWTRule, w.Fj[w.kq.JWT_VALIDATION].reprioritizeJWTRule, w.Fj[w.kq.JWT_VALIDATION].viewJWTConfigs, w.Fj[w.kq.JWT_VALIDATION].addJWTConfig, w.Fj[w.kq.JWT_VALIDATION].editJWTConfig, w.Fj[w.kq.JWT_VALIDATION].deleteJWTConfig, w.Fj[w.kq.SETTINGS].redirectToFirewallRulesTemplate, w.Fj[w.kq.SETTINGS].redirectToPages, w.Fj[w.kq.SETTINGS].listSessionIdentifiers, w.Fj[w.kq.SETTINGS].listRequestsContainingSessionIdentifiers, w.Fj[w.kq.SETTINGS].addOrRemoveSessionIdentifiers, w.Fj[w.kq.SETTINGS].redirectToCustomRules, w.Fj[w.kq.SETTINGS].listAllFallthroughSchemas, w.Fj[w.kq.SEQUENCE_RULES].listSequenceRules, w.Fj[w.kq.SEQUENCE_RULES].deleteSequenceRule, w.Fj[w.kq.SEQUENCE_RULES].reorderSequenceRule, w.Fj[w.kq.SEQUENCE_RULES].createSequenceRule, w.Fj[w.kq.SEQUENCE_RULES].editSequenceRule, ne.Z.ANALYTICS, ne.Z.CREATE_AND_DEPLOY, ne.Z.CREATE_MONITOR_LINK, ne.Z.CREATE_MONITOR, ne.Z.CREATE_POOL_LINK, ne.Z.CREATE_POOL, ne.Z.EDIT_MONITOR, ne.Z.EDIT_POOL, ne.Z.LOAD_BALANCING_TABLE, ne.Z.POOL_TABLE, ne.Z.EDIT_MONITOR_LINK, ne.Z.EDIT_POOL_LINK, ...R.eT, V.y.SECONDARY_DNS_NOTIFICATION_CREATE, V.y.SECONDARY_DNS_NOTIFICATION_UPDATE, V.y.SECONDARY_DNS_NOTIFICATION_DELETE, H.U.ZONE_TRANSFER_SUCCESS, H.U.DNS_RECORD_CREATE, H.U.DNS_RECORD_UPDATE, H.U.DNS_RECORD_DELETE, Ke.Y.PEER_DNS_CREATE, Ke.Y.PEER_DNS_UPDATE, Ke.Y.PEER_DNS_DELETE, Ke.Y.ZONE_TRANSFER_ENABLE, Ke.Y.ZONE_TRANSFER_DISABLE, be.V.ARGO_ENABLEMENT, be.V.ARGO_GEO_ANALYTICS_FETCH, be.V.ARGO_GLOBAL_ANALYTICS_FETCH, pe.X.VIEW_BUCKETS_LIST, pe.X.CREATE_BUCKET, pe.X.VALIDATE_BUCKET, pe.X.DELETE_BUCKET, pe.X.VIEW_CAPTURES_LIST, pe.X.CREATE_SIMPLE_CAPTURE, pe.X.CREATE_FULL_CAPTURE, pe.X.VIEW_FULL_CAPTURE, pe.X.DOWNLOAD_SIMPLE_CAPTURE, $.bK.VIEW_RULES, $.bK.CREATE_RULE, $.bK.UPDATE_RULE, $.bK.DELETE_RULE, $.bK.VIEW_CONFIGURATION, $.bK.CREATE_CONFIGURATION, $.bK.UPDATE_CONFIGURATION, $.bK.DELETE_CONFIGURATION, se.r8.VIEW_ALERTS, se.r8.VIEW_ALERTS_HISTORY, se.r8.MAGIC_OVERVIEW_ANALYTICS, se.VZ.CREATE_SITE, se.VZ.CREATE_TUNNEL, se.VZ.CREATE_STATIC_ROUTE, oe.o4.CLICK_ADAPTIVE_SAMPLING, oe.o4.CLICK_TO_LOG_EXPLORER_BANNER, oe.o4.CLICK_TO_LOG_EXPLORER_DESCRIPTION, oe.o4.CLICK_SWITCH_TO_RAW_LOGS, oe.o4.CLICK_SWITCH_TO_SAMPLED_LOGS, "send AI feedback", k.U.REGISTER_DOMAIN_SEARCH_SUBMIT, k.U.REGISTER_DOMAIN_SEARCH_SELECT_DOMAIN, k.U.REGISTER_DOMAIN_CHECKOUT_SELECT_PAYMENT_OPTION, k.U.REGISTER_DOMAIN_CHECKOUT_PURCHASE, k.U.REGISTER_DOMAIN_CHECKOUT_PURCHASE_ATTEMPT, k.U.REGISTER_DOMAIN_CHECKOUT_PURCHASE_COMPLETED, k.U.REGISTER_DOMAIN_CHECKOUT_BILLING_COUNTRY_SELECT, k.U.REGISTER_DOMAIN_CHECKOUT_BILLING_VERIFY_ADDRESS, k.U.REGISTER_DOMAIN_CHECKOUT_BILLING_SELECT_PAYMENT_METHOD, k.U.REGISTER_DOMAIN_CHECKOUT_TMCH_DOMAIN_HAS_CLAIMS, k.U.REGISTER_DOMAIN_CHECKOUT_TMCH_EXPAND_CLAIMS, k.U.REGISTER_DOMAIN_CHECKOUT_TMCH_DISAGREE, k.U.REGISTER_DOMAIN_CHECKOUT_TMCH_AGREE, k.U.REGISTER_DOMAIN_CHECKOUT_ERROR, k.U.TRANSFER_DOMAIN_CHANGE_STEP, k.U.RENEW_DOMAIN_COMPLETED, k.U.RESTORE_DOMAIN_INIT, k.U.RESTORE_DOMAIN_CLOSE_RESTORE_MODAL, k.U.RESTORE_DOMAIN_OPEN_ADD_PAYMENT_METHOD_MODAL, k.U.RESTORE_DOMAIN_CLOSE_ADD_PAYMENT_METHOD_MODAL, k.U.RESTORE_DOMAIN_FAILURE, k.U.RESTORE_DOMAIN_COMPLETED, k.U.DOMAIN_DELETE_INIT, k.U.DOMAIN_DELETE_COMPLETED, k.U.DOMAIN_DELETE_FAILURE_NO_PERMISSIONS, k.U.DOMAIN_DELETE_FAILURE_INVALID_CONFIRMATION_CODE, k.U.DOMAIN_DELETE_FAILURE_UNKNOWN_REASON, k.U.DOMAIN_DELETE_CONFIRM_DELETE, k.U.DOMAIN_DELETE_CLOSE_CONFIRM_MODAL, k.U.DOMAIN_DELETE_RESEND_CONFIRMATION_CODE, k.U.DOMAIN_DELETE_CLOSE_VERIFICATION_MODAL, k.U.DOMAIN_DELETE_WARNING_MODAL_CONTINUE, k.U.DOMAIN_DELETE_CLOSE_WARNING_MODAL, k.U.DOMAIN_MOVE_START_FLOW, k.U.DOMAIN_MOVE_OPEN_DOCS, k.U.DOMAIN_MOVE_CLOSE_FLOW, k.U.DOMAIN_MOVE_PROGRESS_FLOW, k.U.DOMAIN_MOVE_SUBMIT, k.U.DOMAIN_MOVE_INITIATE_SUCCESS, k.U.DOMAIN_MOVE_INITIATE_ERROR, k.U.DOMAIN_MOVE_CANCEL, k.U.DOMAIN_MOVE_CANCEL_SUCCESS, k.U.DOMAIN_MOVE_CANCEL_ERROR, k.U.ACTION_CENTER_NAVIGATE, k.U.ACTION_CENTER_DOMAIN_MOVE_DECISION, k.U.ACTION_CENTER_DOMAIN_MOVE_DECISION_SUCCESS, k.U.ACTION_CENTER_DOMAIN_MOVE_DECISION_ERROR, Je.z3.CREATE_SECRET, Je.z3.DELETE_SECRET, Je.z3.BIND_SECRET, Je.z3.DUPLICATE_SECRET, Je.z3.EDIT_SECRET, Y.KO.CLICK_GET_STARTED_GUIDE, Y.KO.CLICK_PIPELINE_DOCUMENTATION, Y.KO.CLICK_QUICK_LINK, Y.KO.CREATE_PIPELINE, Y.KO.DELETE_PIPELINE, Y.KO.LIST_PIPELINES, Y.KO.VIEW_PIPELINE, L.S.EXISTING_DOMAIN, L.S.NEW_DOMAIN, L.S.WAF_RULESET, L.S.WORKERS, L.S.PAGES, L.S.R2, L.S.ACCOUNT_MEMBERS, ue._.TEMPLATE_PRODUCT_SELECTED, ue._.TEMPLATE_SELECTED, ue._.TEMPLATE_SAVE_DRAFT, ue._.TEMPLATE_CANCEL, ue._.TEMPLATE_DEPLOY, ge.D.CLICK_GO_BACK_SHARE_MODAL, ge.D.CLICK_MENU_ITEM_SHARE, ge.D.CLICK_ON_CANCEL_SHARE_MODAL, ge.D.CLICK_ON_CLOSE_SHARE_MODAL, ge.D.CLICK_ON_CONFIGURE_SHARE_BUTTON, ge.D.CLICK_ON_DELETE_RULESET, ge.D.CLICK_ON_DEPLOY_BUTTON_SHARE_MODAL, ge.D.CLICK_ON_EDIT_SHARE_PERMISSION, ge.D.CLICK_ON_GO_TO_SOURCE_ACCOUNT, ge.D.CLICK_ON_SHARE_BUTTON_SHARE_MODAL, ge.D.CLICK_ON_SHARE_TABLE_ROW, K.pR.CLICK_GEOGRAPHICAL_TEMPLATE, K.pR.CLICK_IP_TEMPLATE, K.pR.CLICK_USER_AGENT_TEMPLATE, K.pR.CLICK_ZONE_LOCKDOWN_TEMPLATE, ce.vc.CREATED, ce.vc.ENABLED, ce.vc.DISABLED, ce.vc.DELETED, ce.vc.UPDATED, ce.vc.DOWNLOADED, W.Gk.REQUEST_REVIEW, W.Gk.COPY_URL, M.v.FIELD, M.v.OPERATOR, Ye.Vj.SHOW_LCC_MIGRATION_BANNER, Ye.Vj.CLICK_LCC_DOCUMENTATION, Ye.Vj.CLICK_LCC_UPGRADE_GUIDE, Ye.Vj.SHOW_LCC_MIGRATION_WARNING, ve.y.CLICK_DISMISS_INELIGIBILITY, ve.y.CLICK_NEXT_STEP, ve.y.CLICK_OPT_IN, ve.y.CLICK_OPT_IN_BUTTON, ve.y.CLICK_OPT_OUT_BUTTON, ve.y.DISPLAY_MODAL, ve.y.DISPLAY_OPT_OUT_MODAL, ve.y.DISPLAY_TOOLTIP_NOT_AVAILABLE, ve.y.CLICK_EXTERNAL_LINK_TOOLTIP_NOT_AVAILABLE, Pe.AZ.LOAD_INSIGHTS, Pe.AZ.OPEN_SIDE_MODAL_INSIGHT, Pe.AZ.CLOSE_SIDE_MODAL_INSIGHT, Pe.AZ.CLICK_ACTION_INSIGHT, Xe.JR.ADD_SUSPICIOUS_ACTIVITY_FILTER, Xe.JR.REMOVE_SUSPICIOUS_ACTIVITY_FILTER),
 				pt = n.eg.exactStrict(n.eg.object({
 					".agency": n.eg.any.optional,
 					".auction": n.eg.any.optional,
@@ -19057,15 +19057,15 @@
 							key: ce,
 							operator: ge,
 							value: me
-						} = $, he = x[ce].ignoreLabelTranslation ? x[ce].label : H.t(x[ce].label), Le = H.t(`analytics.report.filters.operators.${ge}`), je = Array.isArray(me) ? me.map(Se => w(ce, Se, H)).join(", ") : w(ce, me, H), be = `${he} ${Le} ${je}`;
+						} = $, be = x[ce].ignoreLabelTranslation ? x[ce].label : H.t(x[ce].label), Le = H.t(`analytics.report.filters.operators.${ge}`), je = Array.isArray(me) ? me.map(Se => w(ce, Se, H)).join(", ") : w(ce, me, H), he = `${be} ${Le} ${je}`;
 						return r().createElement(A, {
 							key: `${ce}-${ge}-${me}`,
-							title: be
+							title: he
 						}, r().createElement(T, {
 							onClick: () => this.handleOpenFilterEdit(oe)
 						}, r().createElement(d.ZC, {
 							display: "flex"
-						}, r().createElement(D, null, he), r().createElement(k, null, Le), r().createElement(U, null, je), (0, b.oN)($, x) ? r().createElement(c.OE, {
+						}, r().createElement(D, null, be), r().createElement(k, null, Le), r().createElement(U, null, je), (0, b.oN)($, x) ? r().createElement(c.OE, {
 							startAngle: 90,
 							color: "gray.4"
 						}) : r().createElement(pe, {
@@ -19528,14 +19528,13 @@
 			e.locals && (F.exports = e.locals)
 		},
 		"../node_modules/css-loader/index.js!../react/common/out.css": function(F, E, t) {
-			E = F.exports = t("../node_modules/css-loader/lib/css-base.js")(!1), E.push([F.id, `/*! tailwindcss v4.1.4 | MIT License | https://tailwindcss.com */
+			E = F.exports = t("../node_modules/css-loader/lib/css-base.js")(!1), E.push([F.id, `/*! tailwindcss v4.1.5 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, components, utilities;
 @layer theme {
-  :root,
-  :host {
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-      'Liberation Mono', 'Courier New', monospace;
+  :root, :host {
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
     --color-red-50: oklch(97.1% 0.013 17.38);
     --color-red-100: oklch(93.6% 0.032 17.717);
     --color-red-200: oklch(88.5% 0.062 18.334);
@@ -19562,6 +19561,7 @@
     --color-green-700: oklch(52.7% 0.154 150.069);
     --color-green-900: oklch(39.3% 0.095 152.535);
     --color-blue-50: oklch(97% 0.014 254.604);
+    --color-blue-100: oklch(93.2% 0.032 255.585);
     --color-blue-200: oklch(88.2% 0.059 254.128);
     --color-blue-300: oklch(80.9% 0.105 251.813);
     --color-blue-400: oklch(0.707 0.165 254.624);
@@ -19575,7 +19575,6 @@
     --color-gray-600: oklch(44.6% 0.03 256.802);
     --color-gray-700: oklch(37.3% 0.034 259.733);
     --color-gray-800: oklch(27.8% 0.033 256.848);
-    --color-gray-900: oklch(21% 0.034 264.665);
     --color-neutral-50: oklch(0.985 0 0);
     --color-neutral-100: oklch(0.97 0 0);
     --color-neutral-200: oklch(0.922 0 0);
@@ -19724,7 +19723,7 @@
     left: calc(var(--spacing) * 0);
   }
   .left-1\\/2 {
-    left: calc(1 / 2 * 100%);
+    left: calc(1/2 * 100%);
   }
   .isolate {
     isolation: isolate;
@@ -19771,9 +19770,6 @@
   .m-auto {
     margin: auto;
   }
-  .\\!my-4 {
-    margin-block: calc(var(--spacing) * 4) !important;
-  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -19782,12 +19778,6 @@
   }
   .my-4 {
     margin-block: calc(var(--spacing) * 4);
-  }
-  .\\!mt-0 {
-    margin-top: calc(var(--spacing) * 0) !important;
-  }
-  .\\!mt-2 {
-    margin-top: calc(var(--spacing) * 2) !important;
   }
   .\\!mt-4 {
     margin-top: calc(var(--spacing) * 4) !important;
@@ -19831,11 +19821,11 @@
   .\\!mb-2 {
     margin-bottom: calc(var(--spacing) * 2) !important;
   }
-  .\\!mb-4 {
-    margin-bottom: calc(var(--spacing) * 4) !important;
-  }
   .\\!mb-3 {
     margin-bottom: calc(var(--spacing) * 3) !important;
+  }
+  .\\!mb-4 {
+    margin-bottom: calc(var(--spacing) * 4) !important;
   }
   .mb-1 {
     margin-bottom: calc(var(--spacing) * 1);
@@ -19848,9 +19838,6 @@
   }
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
-  }
-  .mb-8 {
-    margin-bottom: calc(var(--spacing) * 8);
   }
   .\\!ml-0 {
     margin-left: calc(var(--spacing) * 0) !important;
@@ -19969,7 +19956,7 @@
     height: calc(var(--spacing) * 8);
   }
   .h-8\\/10 {
-    height: calc(8 / 10 * 100%);
+    height: calc(8/10 * 100%);
   }
   .h-9 {
     height: calc(var(--spacing) * 9);
@@ -20005,7 +19992,7 @@
     width: 100% !important;
   }
   .w-1\\/2 {
-    width: calc(1 / 2 * 100%);
+    width: calc(1/2 * 100%);
   }
   .w-3 {
     width: calc(var(--spacing) * 3);
@@ -20018,6 +20005,9 @@
   }
   .w-5 {
     width: calc(var(--spacing) * 5);
+  }
+  .w-8 {
+    width: calc(var(--spacing) * 8);
   }
   .w-8\\.5 {
     width: calc(var(--spacing) * 8.5);
@@ -20058,17 +20048,14 @@
   .max-w-140 {
     max-width: calc(var(--spacing) * 140);
   }
-  .max-w-\\[800px\\] {
-    max-width: 800px;
-  }
   .max-w-\\[60ch\\] {
     max-width: 60ch;
   }
+  .max-w-\\[800px\\] {
+    max-width: 800px;
+  }
   .max-w-\\[1000px\\] {
     max-width: 1000px;
-  }
-  .max-w-md {
-    max-width: var(--container-md);
   }
   .min-w-0 {
     min-width: calc(var(--spacing) * 0);
@@ -20119,7 +20106,7 @@
     transform-origin: top right;
   }
   .-translate-x-1\\/2 {
-    --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
+    --tw-translate-x: calc(calc(1/2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .translate-x-0 {
@@ -20138,12 +20125,10 @@
     rotate: 180deg;
   }
   .transform {
-    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,)
-      var(--tw-skew-x,) var(--tw-skew-y,);
+    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
   .transform-gpu {
-    transform: translateZ(0) var(--tw-rotate-x,) var(--tw-rotate-y,)
-      var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+    transform: translateZ(0) var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
   .animate-refresh {
     animation: var(--animate-refresh);
@@ -20163,11 +20148,11 @@
   .resize {
     resize: both;
   }
-  .list-disc {
-    list-style-type: disc;
-  }
   .\\!list-none {
     list-style-type: none !important;
+  }
+  .list-disc {
+    list-style-type: disc;
   }
   .appearance-none {
     appearance: none;
@@ -20238,12 +20223,8 @@
   .space-y-2 {
     :where(& > :not(:last-child)) {
       --tw-space-y-reverse: 0;
-      margin-block-start: calc(
-        calc(var(--spacing) * 2) * var(--tw-space-y-reverse)
-      );
-      margin-block-end: calc(
-        calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse))
-      );
+      margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
   .space-y-\\[var\\(--gap\\)\\] {
@@ -20329,6 +20310,10 @@
     border-top-right-radius: var(--radius-xl) !important;
     border-bottom-right-radius: var(--radius-xl) !important;
   }
+  .rounded-b-lg {
+    border-bottom-right-radius: var(--radius-lg);
+    border-bottom-left-radius: var(--radius-lg);
+  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
@@ -20375,20 +20360,17 @@
   .border-blue-300 {
     border-color: var(--color-blue-300);
   }
-  .border-gray-300 {
-    border-color: var(--color-gray-300);
-  }
-  .border-green-300 {
-    border-color: var(--color-green-300);
-  }
-  .border-blue-300 {
-    border-color: var(--color-blue-300);
-  }
   .border-blue-600 {
     border-color: var(--color-blue-600);
   }
   .border-border {
     border-color: var(--color-border);
+  }
+  .border-gray-300 {
+    border-color: var(--color-gray-300);
+  }
+  .border-green-300 {
+    border-color: var(--color-green-300);
   }
   .border-neutral-200 {
     border-color: var(--color-neutral-200);
@@ -20396,11 +20378,7 @@
   .border-neutral-200\\/60 {
     border-color: color-mix(in srgb, oklch(0.922 0 0) 60%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
-      border-color: color-mix(
-        in oklab,
-        var(--color-neutral-200) 60%,
-        transparent
-      );
+      border-color: color-mix(in oklab, var(--color-neutral-200) 60%, transparent);
     }
   }
   .border-neutral-500 {
@@ -20439,17 +20417,8 @@
   .\\!bg-blue-600 {
     background-color: var(--color-blue-600) !important;
   }
-  .\\!bg-neutral-900 {
-    background-color: var(--color-neutral-900) !important;
-  }
   .\\!bg-transparent {
     background-color: transparent !important;
-  }
-  .bg-\\[\\#f6821f\\/10\\] {
-    background-color: #f6821f/10;
-  }
-  .bg-\\[\\#f6821f1a\\] {
-    background-color: #f6821f1a;
   }
   .bg-\\[\\#f6821f\\] {
     background-color: #f6821f;
@@ -20472,27 +20441,26 @@
   .bg-black\\/30 {
     background-color: color-mix(in srgb, #000 30%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(
-        in oklab,
-        var(--color-black) 30%,
-        transparent
-      );
+      background-color: color-mix(in oklab, var(--color-black) 30%, transparent);
     }
   }
   .bg-blue-50 {
     background-color: var(--color-blue-50);
   }
+  .bg-blue-100 {
+    background-color: var(--color-blue-100);
+  }
   .bg-blue-500 {
     background-color: var(--color-blue-500);
+  }
+  .bg-blue-600 {
+    background-color: var(--color-blue-600);
   }
   .bg-gray-100 {
     background-color: var(--color-gray-100);
   }
   .bg-green-50 {
     background-color: var(--color-green-50);
-  }
-  .bg-blue-600 {
-    background-color: var(--color-blue-600);
   }
   .bg-green-100 {
     background-color: var(--color-green-100);
@@ -20551,21 +20519,11 @@
   }
   .from-transparent {
     --tw-gradient-from: transparent;
-    --tw-gradient-stops: var(
-      --tw-gradient-via-stops,
-      var(--tw-gradient-position),
-      var(--tw-gradient-from) var(--tw-gradient-from-position),
-      var(--tw-gradient-to) var(--tw-gradient-to-position)
-    );
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .to-white {
     --tw-gradient-to: var(--color-white);
-    --tw-gradient-stops: var(
-      --tw-gradient-via-stops,
-      var(--tw-gradient-position),
-      var(--tw-gradient-from) var(--tw-gradient-from-position),
-      var(--tw-gradient-to) var(--tw-gradient-to-position)
-    );
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .to-40\\% {
     --tw-gradient-to-position: 40%;
@@ -20609,11 +20567,14 @@
   .p-8 {
     padding: calc(var(--spacing) * 8);
   }
-  .px-1 {
-    padding-inline: calc(var(--spacing) * 1);
+  .\\!px-2 {
+    padding-inline: calc(var(--spacing) * 2) !important;
   }
   .\\!px-3 {
     padding-inline: calc(var(--spacing) * 3) !important;
+  }
+  .px-1 {
+    padding-inline: calc(var(--spacing) * 1);
   }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
@@ -20630,14 +20591,17 @@
   .px-10 {
     padding-inline: calc(var(--spacing) * 10);
   }
-  .py-0\\.5 {
-    padding-block: calc(var(--spacing) * 0.5);
+  .\\!py-1 {
+    padding-block: calc(var(--spacing) * 1) !important;
   }
   .\\!py-1\\.5 {
     padding-block: calc(var(--spacing) * 1.5) !important;
   }
   .\\!py-2 {
     padding-block: calc(var(--spacing) * 2) !important;
+  }
+  .py-0\\.5 {
+    padding-block: calc(var(--spacing) * 0.5);
   }
   .py-1 {
     padding-block: calc(var(--spacing) * 1);
@@ -20786,9 +20750,6 @@
   .\\!text-black {
     color: var(--color-black) !important;
   }
-  .\\!text-white {
-    color: var(--color-white) !important;
-  }
   .\\!text-inherit {
     color: inherit !important;
   }
@@ -20804,11 +20765,11 @@
   .text-blue-700 {
     color: var(--color-blue-700);
   }
-  .text-gray-700 {
-    color: var(--color-gray-700);
-  }
   .text-border {
     color: var(--color-border);
+  }
+  .text-gray-700 {
+    color: var(--color-gray-700);
   }
   .text-green-500 {
     color: var(--color-green-500);
@@ -20858,9 +20819,6 @@
   .text-red-500 {
     color: var(--color-red-500);
   }
-  .text-red-600 {
-    color: var(--color-red-600);
-  }
   .text-red-700 {
     color: var(--color-red-700);
   }
@@ -20881,9 +20839,7 @@
   }
   .tabular-nums {
     --tw-numeric-spacing: tabular-nums;
-    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,)
-      var(--tw-numeric-figure,) var(--tw-numeric-spacing,)
-      var(--tw-numeric-fraction,);
+    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);
   }
   .\\!no-underline {
     text-decoration-line: none !important;
@@ -20908,54 +20864,37 @@
     opacity: 100%;
   }
   .shadow {
-    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
-      0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
-      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-\\[0_0_0_1px_rgba\\(0\\,0\\,0\\,0\\.5\\)_inset\\] {
-    --tw-shadow: 0 0 0 1px var(--tw-shadow-color, rgba(0, 0, 0, 0.5)) inset;
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
-      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    --tw-shadow: 0 0 0 1px var(--tw-shadow-color, rgba(0,0,0,0.5)) inset;
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-lg {
-    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
-      0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
-      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-sm {
-    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
-      0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
-      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-xl {
-    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
-      0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
-      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-xs {
     --tw-shadow: 0 1px 2px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.05));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
-      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .ring {
-    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0
-      calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
-      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-black\\/5 {
     --tw-shadow-color: color-mix(in srgb, #000 5%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
-      --tw-shadow-color: color-mix(
-        in oklab,
-        color-mix(in oklab, var(--color-black) 5%, transparent)
-          var(--tw-shadow-alpha),
-        transparent
-      );
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-black) 5%, transparent) var(--tw-shadow-alpha), transparent);
     }
   }
   .outline {
@@ -20964,147 +20903,60 @@
   }
   .blur {
     --tw-blur: blur(8px);
-    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,)
-      var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,)
-      var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .grayscale {
     --tw-grayscale: grayscale(100%);
-    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,)
-      var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,)
-      var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .invert {
     --tw-invert: invert(100%);
-    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,)
-      var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,)
-      var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .\\!filter {
-    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,)
-      var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,)
-      var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,) !important;
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,) !important;
   }
   .filter {
-    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,)
-      var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,)
-      var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .backdrop-blur-\\[2px\\] {
     --tw-backdrop-blur: blur(2px);
-    -webkit-backdrop-filter: var(--tw-backdrop-blur,)
-      var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,)
-      var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,)
-      var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,)
-      var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
-    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,)
-      var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,)
-      var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,)
-      var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,)
-      var(--tw-backdrop-sepia,);
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
   .backdrop-blur-md {
     --tw-backdrop-blur: blur(var(--blur-md));
-    -webkit-backdrop-filter: var(--tw-backdrop-blur,)
-      var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,)
-      var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,)
-      var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,)
-      var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
-    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,)
-      var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,)
-      var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,)
-      var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,)
-      var(--tw-backdrop-sepia,);
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
   .\\!transition {
-    transition-property:
-      color,
-      background-color,
-      border-color,
-      outline-color,
-      text-decoration-color,
-      fill,
-      stroke,
-      --tw-gradient-from,
-      --tw-gradient-via,
-      --tw-gradient-to,
-      opacity,
-      box-shadow,
-      transform,
-      translate,
-      scale,
-      rotate,
-      filter,
-      -webkit-backdrop-filter,
-      backdrop-filter !important;
-    transition-timing-function: var(
-      --tw-ease,
-      var(--default-transition-timing-function)
-    ) !important;
-    transition-duration: var(
-      --tw-duration,
-      var(--default-transition-duration)
-    ) !important;
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events !important;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function)) !important;
+    transition-duration: var(--tw-duration, var(--default-transition-duration)) !important;
   }
   .transition {
-    transition-property:
-      color,
-      background-color,
-      border-color,
-      outline-color,
-      text-decoration-color,
-      fill,
-      stroke,
-      --tw-gradient-from,
-      --tw-gradient-via,
-      --tw-gradient-to,
-      opacity,
-      box-shadow,
-      transform,
-      translate,
-      scale,
-      rotate,
-      filter,
-      -webkit-backdrop-filter,
-      backdrop-filter;
-    transition-timing-function: var(
-      --tw-ease,
-      var(--default-transition-timing-function)
-    );
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
   .transition-\\[width\\] {
     transition-property: width;
-    transition-timing-function: var(
-      --tw-ease,
-      var(--default-transition-timing-function)
-    );
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
   .transition-all {
     transition-property: all;
-    transition-timing-function: var(
-      --tw-ease,
-      var(--default-transition-timing-function)
-    );
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
   .transition-colors {
-    transition-property: color, background-color, border-color, outline-color,
-      text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via,
-      --tw-gradient-to;
-    transition-timing-function: var(
-      --tw-ease,
-      var(--default-transition-timing-function)
-    );
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
   .transition-transform {
     transition-property: transform, translate, scale, rotate;
-    transition-timing-function: var(
-      --tw-ease,
-      var(--default-transition-timing-function)
-    );
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
   .duration-100 {
@@ -21230,11 +21082,7 @@
       @media (hover: hover) {
         border-color: color-mix(in srgb, oklch(0.87 0 0) 80%, transparent);
         @supports (color: color-mix(in lab, red, red)) {
-          border-color: color-mix(
-            in oklab,
-            var(--color-neutral-300) 80%,
-            transparent
-          );
+          border-color: color-mix(in oklab, var(--color-neutral-300) 80%, transparent);
         }
       }
     }
@@ -21333,10 +21181,8 @@
   .hover\\:shadow-md {
     &:hover {
       @media (hover: hover) {
-        --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
-          0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
-          var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+        --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
       }
     }
   }
@@ -21388,9 +21234,24 @@
       border-color: var(--color-ob-border-active);
     }
   }
+  .sm\\:mb-8 {
+    @media (width >= 40rem) {
+      margin-bottom: calc(var(--spacing) * 8);
+    }
+  }
+  .sm\\:block {
+    @media (width >= 40rem) {
+      display: block;
+    }
+  }
   .sm\\:grid-cols-4 {
     @media (width >= 40rem) {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .sm\\:py-1\\.5 {
+    @media (width >= 40rem) {
+      padding-block: calc(var(--spacing) * 1.5);
     }
   }
   .md\\:\\!flex {
@@ -21454,6 +21315,13 @@
       flex-direction: row;
     }
   }
+  .dark\\:divide-border {
+    &:where(.dark, .dark *) {
+      :where(& > :not(:last-child)) {
+        border-color: var(--color-border);
+      }
+    }
+  }
   .dark\\:\\!border-neutral-800 {
     &:where(.dark, .dark *) {
       border-color: var(--color-neutral-800) !important;
@@ -21472,18 +21340,6 @@
   .dark\\:border-green-500 {
     &:where(.dark, .dark *) {
       border-color: var(--color-green-500);
-    }
-  }
-  .dark\\:divide-border {
-    &:where(.dark, .dark *) {
-      :where(& > :not(:last-child)) {
-        border-color: var(--color-border);
-      }
-    }
-  }
-  .dark\\:border-blue-500 {
-    &:where(.dark, .dark *) {
-      border-color: var(--color-blue-500);
     }
   }
   .dark\\:border-neutral-100 {
@@ -21510,11 +21366,7 @@
     &:where(.dark, .dark *) {
       border-color: color-mix(in srgb, oklch(0.269 0 0) 60%, transparent);
       @supports (color: color-mix(in lab, red, red)) {
-        border-color: color-mix(
-          in oklab,
-          var(--color-neutral-800) 60%,
-          transparent
-        );
+        border-color: color-mix(in oklab, var(--color-neutral-800) 60%, transparent);
       }
     }
   }
@@ -21637,11 +21489,7 @@
     &:where(.dark, .dark *) {
       background-color: color-mix(in srgb, #fff 30%, transparent);
       @supports (color: color-mix(in lab, red, red)) {
-        background-color: color-mix(
-          in oklab,
-          var(--color-white) 30%,
-          transparent
-        );
+        background-color: color-mix(in oklab, var(--color-white) 30%, transparent);
       }
     }
   }
@@ -21658,23 +21506,13 @@
   .dark\\:to-neutral-900 {
     &:where(.dark, .dark *) {
       --tw-gradient-to: var(--color-neutral-900);
-      --tw-gradient-stops: var(
-        --tw-gradient-via-stops,
-        var(--tw-gradient-position),
-        var(--tw-gradient-from) var(--tw-gradient-from-position),
-        var(--tw-gradient-to) var(--tw-gradient-to-position)
-      );
+      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
     }
   }
   .dark\\:to-neutral-950 {
     &:where(.dark, .dark *) {
       --tw-gradient-to: var(--color-neutral-950);
-      --tw-gradient-stops: var(
-        --tw-gradient-via-stops,
-        var(--tw-gradient-position),
-        var(--tw-gradient-from) var(--tw-gradient-from-position),
-        var(--tw-gradient-to) var(--tw-gradient-to-position)
-      );
+      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
     }
   }
   .dark\\:\\!text-white {
@@ -21739,10 +21577,8 @@
   }
   .dark\\:shadow-\\[0_0_0_1px_rgba\\(255\\,255\\,255\\,0\\.5\\)_inset\\] {
     &:where(.dark, .dark *) {
-      --tw-shadow: 0 0 0 1px var(--tw-shadow-color, rgba(255, 255, 255, 0.5))
-        inset;
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
-        var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      --tw-shadow: 0 0 0 1px var(--tw-shadow-color, rgba(255,255,255,0.5)) inset;
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
   .dark\\:hover\\:border-neutral-700\\/80 {
@@ -21751,11 +21587,7 @@
         @media (hover: hover) {
           border-color: color-mix(in srgb, oklch(0.371 0 0) 80%, transparent);
           @supports (color: color-mix(in lab, red, red)) {
-            border-color: color-mix(
-              in oklab,
-              var(--color-neutral-700) 80%,
-              transparent
-            );
+            border-color: color-mix(in oklab, var(--color-neutral-700) 80%, transparent);
           }
         }
       }
@@ -21861,6 +21693,9 @@
   --color-ob-btn-destructive-border-hover: var(--color-red-600);
   --color-ob-focus: var(--color-blue-800);
 }
+#react-app {
+  overflow: hidden;
+}
 .border-color {
   border-color: var(--color-ob-border);
 }
@@ -21870,8 +21705,7 @@
     background-color: var(--color-ob-btn-primary-bg);
     color: var(--text-color-ob-inverted);
     --tw-shadow: 0 1px 2px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.05));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
-      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     &:where(.interactive, .interactive *) {
       &:not(*:disabled) {
         &:hover {
@@ -21902,8 +21736,7 @@
     background-color: var(--color-ob-btn-secondary-bg);
     color: var(--text-color-ob-base-300);
     --tw-shadow: 0 1px 2px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.05));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
-      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     &:where(.interactive, .interactive *) {
       &:not(*:disabled) {
         &:hover {
@@ -21981,13 +21814,8 @@
   border-width: 1px;
   &:where(.interactive, .interactive *) {
     cursor: pointer;
-    transition-property: color, background-color, border-color, outline-color,
-      text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via,
-      --tw-gradient-to;
-    transition-timing-function: var(
-      --tw-ease,
-      var(--default-transition-timing-function)
-    );
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
 }
@@ -21998,10 +21826,8 @@
     opacity: 100%;
   }
   &:focus-visible {
-    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0
-      calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
-      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   &:focus-visible {
     --tw-ring-color: var(--color-ob-focus);
@@ -22150,8 +21976,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  animation: shimmer var(--shimmer-duration, 1.5s) var(--shimmer-delay, 0s)
-    infinite ease-in-out;
+  animation: shimmer var(--shimmer-duration, 1.5s) var(--shimmer-delay, 0s) infinite ease-in-out;
   content: '';
 }
 .skeleton-line {
@@ -22168,26 +21993,15 @@
   right: 0;
   bottom: 0;
   left: 0;
-  animation: shimmer var(--shimmer-duration, 1.5s) var(--shimmer-delay, 0s)
-    infinite ease-in-out;
+  animation: shimmer var(--shimmer-duration, 1.5s) var(--shimmer-delay, 0s) infinite ease-in-out;
   content: '';
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.08) 50%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background: linear-gradient( 90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.08) 50%, rgba(0, 0, 0, 0) 100% );
 }
 .dark .skeleton-line {
   background-color: rgba(255, 255, 255, 0.06);
 }
 .dark .skeleton-line::after {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.05) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient( 90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 100% );
 }
 .text-shimmer {
   background-size: 200% 100%;
@@ -22197,295 +22011,295 @@
   animation: text-shimmer 2s ease-in-out infinite;
 }
 @property --tw-translate-x {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
   initial-value: 0;
 }
 @property --tw-translate-y {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
   initial-value: 0;
 }
 @property --tw-translate-z {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
   initial-value: 0;
 }
 @property --tw-rotate-x {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-rotate-y {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-rotate-z {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-skew-x {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-skew-y {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-space-y-reverse {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
   initial-value: 0;
 }
 @property --tw-divide-y-reverse {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
   initial-value: 0;
 }
 @property --tw-border-style {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
   initial-value: solid;
 }
 @property --tw-gradient-position {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-gradient-from {
-  syntax: '<color>';
+  syntax: "<color>";
   inherits: false;
   initial-value: #0000;
 }
 @property --tw-gradient-via {
-  syntax: '<color>';
+  syntax: "<color>";
   inherits: false;
   initial-value: #0000;
 }
 @property --tw-gradient-to {
-  syntax: '<color>';
+  syntax: "<color>";
   inherits: false;
   initial-value: #0000;
 }
 @property --tw-gradient-stops {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-gradient-via-stops {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-gradient-from-position {
-  syntax: '<length-percentage>';
+  syntax: "<length-percentage>";
   inherits: false;
   initial-value: 0%;
 }
 @property --tw-gradient-via-position {
-  syntax: '<length-percentage>';
+  syntax: "<length-percentage>";
   inherits: false;
   initial-value: 50%;
 }
 @property --tw-gradient-to-position {
-  syntax: '<length-percentage>';
+  syntax: "<length-percentage>";
   inherits: false;
   initial-value: 100%;
 }
 @property --tw-leading {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-font-weight {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-ordinal {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-slashed-zero {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-numeric-figure {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-numeric-spacing {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-numeric-fraction {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-shadow {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
   initial-value: 0 0 #0000;
 }
 @property --tw-shadow-color {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-shadow-alpha {
-  syntax: '<percentage>';
+  syntax: "<percentage>";
   inherits: false;
   initial-value: 100%;
 }
 @property --tw-inset-shadow {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
   initial-value: 0 0 #0000;
 }
 @property --tw-inset-shadow-color {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-inset-shadow-alpha {
-  syntax: '<percentage>';
+  syntax: "<percentage>";
   inherits: false;
   initial-value: 100%;
 }
 @property --tw-ring-color {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-ring-shadow {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
   initial-value: 0 0 #0000;
 }
 @property --tw-inset-ring-color {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-inset-ring-shadow {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
   initial-value: 0 0 #0000;
 }
 @property --tw-ring-inset {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-ring-offset-width {
-  syntax: '<length>';
+  syntax: "<length>";
   inherits: false;
   initial-value: 0px;
 }
 @property --tw-ring-offset-color {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
   initial-value: #fff;
 }
 @property --tw-ring-offset-shadow {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
   initial-value: 0 0 #0000;
 }
 @property --tw-outline-style {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
   initial-value: solid;
 }
 @property --tw-blur {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-brightness {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-contrast {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-grayscale {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-hue-rotate {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-invert {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-opacity {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-saturate {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-sepia {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-drop-shadow {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-drop-shadow-color {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-drop-shadow-alpha {
-  syntax: '<percentage>';
+  syntax: "<percentage>";
   inherits: false;
   initial-value: 100%;
 }
 @property --tw-drop-shadow-size {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-backdrop-blur {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-backdrop-brightness {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-backdrop-contrast {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-backdrop-grayscale {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-backdrop-hue-rotate {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-backdrop-invert {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-backdrop-opacity {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-backdrop-saturate {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-backdrop-sepia {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-duration {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-ease {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 @property --tw-content {
-  syntax: '*';
-  initial-value: '';
+  syntax: "*";
+  initial-value: "";
   inherits: false;
 }
 @keyframes spin {
@@ -22494,12 +22308,8 @@
   }
 }
 @layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or
-    ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
-    *,
-    ::before,
-    ::after,
-    ::backdrop {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
       --tw-translate-x: 0;
       --tw-translate-y: 0;
       --tw-translate-z: 0;
@@ -22566,7 +22376,7 @@
       --tw-backdrop-sepia: initial;
       --tw-duration: initial;
       --tw-ease: initial;
-      --tw-content: '';
+      --tw-content: "";
     }
   }
 }
@@ -22598,4 +22408,4 @@
 	}
 ]);
 
-//# debugId=aaca50ed-f62a-5406-90d2-4a0991a2b0c8
+//# debugId=94424e57-97ae-5c2e-a7af-77fa28667c4f
