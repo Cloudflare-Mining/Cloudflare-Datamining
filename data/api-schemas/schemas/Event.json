@@ -475,6 +475,338 @@
 			"Cloudforce One Write"
 		]
 	},
+	"GET /accounts/{account_id}/cloudforce-one/events": {
+		"description": "The `datasetId` parameter must be defined. Must provide query parameters. To list existing datasets (and their IDs), use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
+		"operationId": "get_EventListGet",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"default": [],
+					"items": {
+						"properties": {
+							"field": {
+								"example": "attackerCountry",
+								"type": "string"
+							},
+							"op": {
+								"enum": [
+									"equals",
+									"not",
+									"gt",
+									"gte",
+									"lt",
+									"lte",
+									"like",
+									"contains",
+									"startsWith",
+									"endsWith",
+									"in",
+									"find"
+								],
+								"example": "equals",
+								"type": "string"
+							},
+							"value": {
+								"anyOf": [
+									{
+										"example": "usa",
+										"type": "string"
+									},
+									{
+										"example": 1,
+										"type": "number"
+									},
+									{
+										"items": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												}
+											]
+										},
+										"type": "array"
+									}
+								]
+							}
+						},
+						"type": "object"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "pageSize",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "orderBy",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "datasetId",
+				"schema": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"accountId": {
+										"example": 1234,
+										"type": "number"
+									},
+									"attacker": {
+										"example": "Flying Yeti",
+										"type": "string"
+									},
+									"attackerCountry": {
+										"example": "CN",
+										"type": "string"
+									},
+									"category": {
+										"example": "Domain Resolution",
+										"type": "string"
+									},
+									"categoryId": {
+										"example": 1,
+										"type": "number"
+									},
+									"date": {
+										"example": "2022-04-01T00:00:00Z",
+										"type": "string"
+									},
+									"event": {
+										"example": "An attacker registered the domain domain.com",
+										"type": "string"
+									},
+									"id": {
+										"example": 1223,
+										"type": "number"
+									},
+									"indicator": {
+										"example": "domain",
+										"type": "string"
+									},
+									"indicatorType": {
+										"example": "domain",
+										"type": "string"
+									},
+									"indicatorTypeId": {
+										"example": 5,
+										"type": "number"
+									},
+									"insight": {
+										"type": "string"
+									},
+									"killChain": {
+										"type": "number"
+									},
+									"mitreAttack": {
+										"items": {
+											"example": " ",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"numReferenced": {
+										"type": "number"
+									},
+									"numReferences": {
+										"type": "number"
+									},
+									"rawId": {
+										"example": "453gw34w3",
+										"type": "string"
+									},
+									"referenced": {
+										"items": {
+											"example": " ",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"referencedIds": {
+										"items": {
+											"type": "number"
+										},
+										"type": "array"
+									},
+									"references": {
+										"items": {
+											"example": " ",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"referencesIds": {
+										"items": {
+											"type": "number"
+										},
+										"type": "array"
+									},
+									"releasabilityId": {
+										"type": "string"
+									},
+									"tags": {
+										"items": {
+											"example": "malware",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"targetCountry": {
+										"example": "US",
+										"type": "string"
+									},
+									"targetIndustry": {
+										"example": "Agriculture",
+										"type": "string"
+									},
+									"tlp": {
+										"example": "amber",
+										"type": "string"
+									},
+									"uuid": {
+										"example": "12345678-1234-1234-1234-1234567890ab",
+										"type": "string"
+									}
+								},
+								"required": [
+									"id",
+									"uuid",
+									"accountId",
+									"date",
+									"categoryId",
+									"targetCountry",
+									"attacker",
+									"attackerCountry",
+									"targetIndustry",
+									"rawId",
+									"indicatorTypeId",
+									"indicator",
+									"event",
+									"numReferenced",
+									"numReferences",
+									"tlp",
+									"category",
+									"indicatorType",
+									"referenced",
+									"references",
+									"tags",
+									"killChain",
+									"mitreAttack",
+									"referencedIds",
+									"referencesIds"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Returns a list of events"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Filter and list events",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}": {
 		"operationId": "get_EventRead",
 		"parameters": [
@@ -1713,6 +2045,20 @@
 											"type": "string"
 										},
 										"op": {
+											"enum": [
+												"equals",
+												"not",
+												"gt",
+												"gte",
+												"lt",
+												"lte",
+												"like",
+												"contains",
+												"startsWith",
+												"endsWith",
+												"in",
+												"find"
+											],
 											"example": "equals",
 											"type": "string"
 										},
@@ -1747,6 +2093,9 @@
 								"type": "array"
 							}
 						},
+						"required": [
+							"search"
+						],
 						"type": "object"
 					}
 				}

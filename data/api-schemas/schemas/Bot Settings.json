@@ -8,7 +8,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -33,8 +33,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -54,8 +65,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -68,7 +90,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -103,7 +125,8 @@
 																				"disabled"
 																			],
 																			"example": "block",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -112,18 +135,21 @@
 																				"disabled"
 																			],
 																			"example": "enabled",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
 																			"readOnly": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -135,7 +161,8 @@
 																"fight_mode": {
 																	"description": "Whether to enable Bot Fight Mode.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"stale_zone_configuration": {
 																	"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -143,32 +170,38 @@
 																		"optimize_wordpress": {
 																			"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 																			"title": "optimize_wordpress",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"sbfm_definitely_automated": {
 																			"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
 																			"title": "sbfm_definitely_automated",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_likely_automated": {
 																			"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
 																			"title": "sbfm_likely_automated",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_static_resource_protection": {
 																			"description": "Indicates that the zone's static resource protection is turned on.",
 																			"title": "sbfm_static_resource_protection",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_verified_bots": {
 																			"description": "Indicates that the zone's verified bot requests are being blocked.",
 																			"title": "sbfm_verified_bots",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"suppress_session_score": {
 																			"description": "Indicates that the zone's session score tracking is disabled.",
 																			"title": "suppress_session_score",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"readOnly": true,
@@ -193,7 +226,8 @@
 																				"disabled"
 																			],
 																			"example": "block",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -202,18 +236,21 @@
 																				"disabled"
 																			],
 																			"example": "enabled",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
 																			"readOnly": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -225,7 +262,8 @@
 																"optimize_wordpress": {
 																	"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"sbfm_definitely_automated": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -235,12 +273,14 @@
 																		"managed_challenge"
 																	],
 																	"example": "allow",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sbfm_static_resource_protection": {
 																	"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"sbfm_verified_bots": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -249,7 +289,8 @@
 																		"block"
 																	],
 																	"example": "allow",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"stale_zone_configuration": {
 																	"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -257,12 +298,14 @@
 																		"fight_mode": {
 																			"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																			"title": "fight_mode",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"sbfm_likely_automated": {
 																			"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
 																			"title": "sbfm_likely_automated",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"readOnly": true,
@@ -287,7 +330,8 @@
 																				"disabled"
 																			],
 																			"example": "block",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -296,18 +340,21 @@
 																				"disabled"
 																			],
 																			"example": "enabled",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
 																			"readOnly": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -319,7 +366,8 @@
 																"optimize_wordpress": {
 																	"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"sbfm_definitely_automated": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -329,7 +377,8 @@
 																		"managed_challenge"
 																	],
 																	"example": "allow",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sbfm_likely_automated": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
@@ -339,12 +388,14 @@
 																		"managed_challenge"
 																	],
 																	"example": "allow",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sbfm_static_resource_protection": {
 																	"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"sbfm_verified_bots": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -353,7 +404,8 @@
 																		"block"
 																	],
 																	"example": "allow",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"stale_zone_configuration": {
 																	"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -361,7 +413,8 @@
 																		"fight_mode": {
 																			"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																			"title": "fight_mode",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"readOnly": true,
@@ -386,7 +439,8 @@
 																				"disabled"
 																			],
 																			"example": "block",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -395,18 +449,21 @@
 																				"disabled"
 																			],
 																			"example": "enabled",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
 																			"readOnly": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -418,7 +475,8 @@
 																"auto_update_model": {
 																	"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"stale_zone_configuration": {
 																	"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -426,32 +484,38 @@
 																		"fight_mode": {
 																			"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																			"title": "fight_mode",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"optimize_wordpress": {
 																			"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 																			"title": "optimize_wordpress",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"sbfm_definitely_automated": {
 																			"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
 																			"title": "sbfm_definitely_automated",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_likely_automated": {
 																			"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
 																			"title": "sbfm_likely_automated",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_static_resource_protection": {
 																			"description": "Indicates that the zone's static resource protection is turned on.",
 																			"title": "sbfm_static_resource_protection",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_verified_bots": {
 																			"description": "Indicates that the zone's verified bot requests are being blocked.",
 																			"title": "sbfm_verified_bots",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"readOnly": true,
@@ -462,7 +526,8 @@
 																	"default": false,
 																	"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															}
 														}
@@ -499,8 +564,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -520,8 +596,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -534,7 +621,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -569,7 +656,8 @@
 																						"disabled"
 																					],
 																					"example": "block",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -578,18 +666,21 @@
 																						"disabled"
 																					],
 																					"example": "enabled",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
 																					"readOnly": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			}
 																		}
@@ -601,7 +692,8 @@
 																		"fight_mode": {
 																			"description": "Whether to enable Bot Fight Mode.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"stale_zone_configuration": {
 																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -609,32 +701,38 @@
 																				"optimize_wordpress": {
 																					"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 																					"title": "optimize_wordpress",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"sbfm_definitely_automated": {
 																					"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
 																					"title": "sbfm_definitely_automated",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"sbfm_likely_automated": {
 																					"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
 																					"title": "sbfm_likely_automated",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"sbfm_static_resource_protection": {
 																					"description": "Indicates that the zone's static resource protection is turned on.",
 																					"title": "sbfm_static_resource_protection",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"sbfm_verified_bots": {
 																					"description": "Indicates that the zone's verified bot requests are being blocked.",
 																					"title": "sbfm_verified_bots",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"suppress_session_score": {
 																					"description": "Indicates that the zone's session score tracking is disabled.",
 																					"title": "suppress_session_score",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"readOnly": true,
@@ -659,7 +757,8 @@
 																						"disabled"
 																					],
 																					"example": "block",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -668,18 +767,21 @@
 																						"disabled"
 																					],
 																					"example": "enabled",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
 																					"readOnly": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			}
 																		}
@@ -691,7 +793,8 @@
 																		"optimize_wordpress": {
 																			"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"sbfm_definitely_automated": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -701,12 +804,14 @@
 																				"managed_challenge"
 																			],
 																			"example": "allow",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_static_resource_protection": {
 																			"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"sbfm_verified_bots": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -715,7 +820,8 @@
 																				"block"
 																			],
 																			"example": "allow",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"stale_zone_configuration": {
 																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -723,12 +829,14 @@
 																				"fight_mode": {
 																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																					"title": "fight_mode",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"sbfm_likely_automated": {
 																					"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
 																					"title": "sbfm_likely_automated",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"readOnly": true,
@@ -753,7 +861,8 @@
 																						"disabled"
 																					],
 																					"example": "block",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -762,18 +871,21 @@
 																						"disabled"
 																					],
 																					"example": "enabled",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
 																					"readOnly": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			}
 																		}
@@ -785,7 +897,8 @@
 																		"optimize_wordpress": {
 																			"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"sbfm_definitely_automated": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -795,7 +908,8 @@
 																				"managed_challenge"
 																			],
 																			"example": "allow",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_likely_automated": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
@@ -805,12 +919,14 @@
 																				"managed_challenge"
 																			],
 																			"example": "allow",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_static_resource_protection": {
 																			"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"sbfm_verified_bots": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -819,7 +935,8 @@
 																				"block"
 																			],
 																			"example": "allow",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"stale_zone_configuration": {
 																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -827,7 +944,8 @@
 																				"fight_mode": {
 																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																					"title": "fight_mode",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"readOnly": true,
@@ -852,7 +970,8 @@
 																						"disabled"
 																					],
 																					"example": "block",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -861,18 +980,21 @@
 																						"disabled"
 																					],
 																					"example": "enabled",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
 																					"readOnly": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			}
 																		}
@@ -884,7 +1006,8 @@
 																		"auto_update_model": {
 																			"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"stale_zone_configuration": {
 																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -892,32 +1015,38 @@
 																				"fight_mode": {
 																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																					"title": "fight_mode",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"optimize_wordpress": {
 																					"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 																					"title": "optimize_wordpress",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"sbfm_definitely_automated": {
 																					"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
 																					"title": "sbfm_definitely_automated",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"sbfm_likely_automated": {
 																					"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
 																					"title": "sbfm_likely_automated",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"sbfm_static_resource_protection": {
 																					"description": "Indicates that the zone's static resource protection is turned on.",
 																					"title": "sbfm_static_resource_protection",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"sbfm_verified_bots": {
 																					"description": "Indicates that the zone's verified bot requests are being blocked.",
 																					"title": "sbfm_verified_bots",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"readOnly": true,
@@ -928,7 +1057,8 @@
 																			"default": false,
 																			"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -954,8 +1084,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -986,8 +1127,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1010,7 +1162,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1066,7 +1218,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1169,7 +1321,8 @@
 															"disabled"
 														],
 														"example": "block",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"crawler_protection": {
 														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -1178,18 +1331,21 @@
 															"disabled"
 														],
 														"example": "enabled",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"enable_js": {
 														"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"using_latest_model": {
 														"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 														"example": true,
 														"readOnly": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												}
 											}
@@ -1201,7 +1357,8 @@
 											"fight_mode": {
 												"description": "Whether to enable Bot Fight Mode.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"stale_zone_configuration": {
 												"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -1209,32 +1366,38 @@
 													"optimize_wordpress": {
 														"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 														"title": "optimize_wordpress",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"sbfm_definitely_automated": {
 														"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
 														"title": "sbfm_definitely_automated",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"sbfm_likely_automated": {
 														"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
 														"title": "sbfm_likely_automated",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"sbfm_static_resource_protection": {
 														"description": "Indicates that the zone's static resource protection is turned on.",
 														"title": "sbfm_static_resource_protection",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"sbfm_verified_bots": {
 														"description": "Indicates that the zone's verified bot requests are being blocked.",
 														"title": "sbfm_verified_bots",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"suppress_session_score": {
 														"description": "Indicates that the zone's session score tracking is disabled.",
 														"title": "suppress_session_score",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"readOnly": true,
@@ -1259,7 +1422,8 @@
 															"disabled"
 														],
 														"example": "block",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"crawler_protection": {
 														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -1268,18 +1432,21 @@
 															"disabled"
 														],
 														"example": "enabled",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"enable_js": {
 														"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"using_latest_model": {
 														"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 														"example": true,
 														"readOnly": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												}
 											}
@@ -1291,7 +1458,8 @@
 											"optimize_wordpress": {
 												"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"sbfm_definitely_automated": {
 												"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -1301,12 +1469,14 @@
 													"managed_challenge"
 												],
 												"example": "allow",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"sbfm_static_resource_protection": {
 												"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"sbfm_verified_bots": {
 												"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -1315,7 +1485,8 @@
 													"block"
 												],
 												"example": "allow",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"stale_zone_configuration": {
 												"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -1323,12 +1494,14 @@
 													"fight_mode": {
 														"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 														"title": "fight_mode",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"sbfm_likely_automated": {
 														"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
 														"title": "sbfm_likely_automated",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"readOnly": true,
@@ -1353,7 +1526,8 @@
 															"disabled"
 														],
 														"example": "block",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"crawler_protection": {
 														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -1362,18 +1536,21 @@
 															"disabled"
 														],
 														"example": "enabled",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"enable_js": {
 														"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"using_latest_model": {
 														"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 														"example": true,
 														"readOnly": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												}
 											}
@@ -1385,7 +1562,8 @@
 											"optimize_wordpress": {
 												"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"sbfm_definitely_automated": {
 												"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -1395,7 +1573,8 @@
 													"managed_challenge"
 												],
 												"example": "allow",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"sbfm_likely_automated": {
 												"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
@@ -1405,12 +1584,14 @@
 													"managed_challenge"
 												],
 												"example": "allow",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"sbfm_static_resource_protection": {
 												"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"sbfm_verified_bots": {
 												"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -1419,7 +1600,8 @@
 													"block"
 												],
 												"example": "allow",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"stale_zone_configuration": {
 												"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -1427,7 +1609,8 @@
 													"fight_mode": {
 														"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 														"title": "fight_mode",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"readOnly": true,
@@ -1452,7 +1635,8 @@
 															"disabled"
 														],
 														"example": "block",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"crawler_protection": {
 														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -1461,18 +1645,21 @@
 															"disabled"
 														],
 														"example": "enabled",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"enable_js": {
 														"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"using_latest_model": {
 														"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 														"example": true,
 														"readOnly": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												}
 											}
@@ -1484,7 +1671,8 @@
 											"auto_update_model": {
 												"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"stale_zone_configuration": {
 												"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -1492,32 +1680,38 @@
 													"fight_mode": {
 														"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 														"title": "fight_mode",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"optimize_wordpress": {
 														"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 														"title": "optimize_wordpress",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"sbfm_definitely_automated": {
 														"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
 														"title": "sbfm_definitely_automated",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"sbfm_likely_automated": {
 														"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
 														"title": "sbfm_likely_automated",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"sbfm_static_resource_protection": {
 														"description": "Indicates that the zone's static resource protection is turned on.",
 														"title": "sbfm_static_resource_protection",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"sbfm_verified_bots": {
 														"description": "Indicates that the zone's verified bot requests are being blocked.",
 														"title": "sbfm_verified_bots",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"readOnly": true,
@@ -1528,7 +1722,8 @@
 												"default": false,
 												"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										}
 									}
@@ -1560,8 +1755,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1581,8 +1787,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1595,7 +1812,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1630,7 +1847,8 @@
 																				"disabled"
 																			],
 																			"example": "block",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -1639,18 +1857,21 @@
 																				"disabled"
 																			],
 																			"example": "enabled",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
 																			"readOnly": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -1662,7 +1883,8 @@
 																"fight_mode": {
 																	"description": "Whether to enable Bot Fight Mode.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"stale_zone_configuration": {
 																	"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -1670,32 +1892,38 @@
 																		"optimize_wordpress": {
 																			"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 																			"title": "optimize_wordpress",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"sbfm_definitely_automated": {
 																			"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
 																			"title": "sbfm_definitely_automated",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_likely_automated": {
 																			"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
 																			"title": "sbfm_likely_automated",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_static_resource_protection": {
 																			"description": "Indicates that the zone's static resource protection is turned on.",
 																			"title": "sbfm_static_resource_protection",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_verified_bots": {
 																			"description": "Indicates that the zone's verified bot requests are being blocked.",
 																			"title": "sbfm_verified_bots",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"suppress_session_score": {
 																			"description": "Indicates that the zone's session score tracking is disabled.",
 																			"title": "suppress_session_score",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"readOnly": true,
@@ -1720,7 +1948,8 @@
 																				"disabled"
 																			],
 																			"example": "block",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -1729,18 +1958,21 @@
 																				"disabled"
 																			],
 																			"example": "enabled",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
 																			"readOnly": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -1752,7 +1984,8 @@
 																"optimize_wordpress": {
 																	"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"sbfm_definitely_automated": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -1762,12 +1995,14 @@
 																		"managed_challenge"
 																	],
 																	"example": "allow",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sbfm_static_resource_protection": {
 																	"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"sbfm_verified_bots": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -1776,7 +2011,8 @@
 																		"block"
 																	],
 																	"example": "allow",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"stale_zone_configuration": {
 																	"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -1784,12 +2020,14 @@
 																		"fight_mode": {
 																			"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																			"title": "fight_mode",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"sbfm_likely_automated": {
 																			"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
 																			"title": "sbfm_likely_automated",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"readOnly": true,
@@ -1814,7 +2052,8 @@
 																				"disabled"
 																			],
 																			"example": "block",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -1823,18 +2062,21 @@
 																				"disabled"
 																			],
 																			"example": "enabled",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
 																			"readOnly": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -1846,7 +2088,8 @@
 																"optimize_wordpress": {
 																	"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"sbfm_definitely_automated": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -1856,7 +2099,8 @@
 																		"managed_challenge"
 																	],
 																	"example": "allow",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sbfm_likely_automated": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
@@ -1866,12 +2110,14 @@
 																		"managed_challenge"
 																	],
 																	"example": "allow",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sbfm_static_resource_protection": {
 																	"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"sbfm_verified_bots": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -1880,7 +2126,8 @@
 																		"block"
 																	],
 																	"example": "allow",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"stale_zone_configuration": {
 																	"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -1888,7 +2135,8 @@
 																		"fight_mode": {
 																			"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																			"title": "fight_mode",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"readOnly": true,
@@ -1913,7 +2161,8 @@
 																				"disabled"
 																			],
 																			"example": "block",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -1922,18 +2171,21 @@
 																				"disabled"
 																			],
 																			"example": "enabled",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
 																			"readOnly": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -1945,7 +2197,8 @@
 																"auto_update_model": {
 																	"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"stale_zone_configuration": {
 																	"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -1953,32 +2206,38 @@
 																		"fight_mode": {
 																			"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																			"title": "fight_mode",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"optimize_wordpress": {
 																			"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 																			"title": "optimize_wordpress",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"sbfm_definitely_automated": {
 																			"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
 																			"title": "sbfm_definitely_automated",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_likely_automated": {
 																			"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
 																			"title": "sbfm_likely_automated",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_static_resource_protection": {
 																			"description": "Indicates that the zone's static resource protection is turned on.",
 																			"title": "sbfm_static_resource_protection",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_verified_bots": {
 																			"description": "Indicates that the zone's verified bot requests are being blocked.",
 																			"title": "sbfm_verified_bots",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"readOnly": true,
@@ -1989,7 +2248,8 @@
 																	"default": false,
 																	"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															}
 														}
@@ -2026,8 +2286,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -2047,8 +2318,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -2061,7 +2343,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2096,7 +2378,8 @@
 																						"disabled"
 																					],
 																					"example": "block",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -2105,18 +2388,21 @@
 																						"disabled"
 																					],
 																					"example": "enabled",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
 																					"readOnly": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			}
 																		}
@@ -2128,7 +2414,8 @@
 																		"fight_mode": {
 																			"description": "Whether to enable Bot Fight Mode.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"stale_zone_configuration": {
 																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -2136,32 +2423,38 @@
 																				"optimize_wordpress": {
 																					"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 																					"title": "optimize_wordpress",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"sbfm_definitely_automated": {
 																					"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
 																					"title": "sbfm_definitely_automated",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"sbfm_likely_automated": {
 																					"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
 																					"title": "sbfm_likely_automated",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"sbfm_static_resource_protection": {
 																					"description": "Indicates that the zone's static resource protection is turned on.",
 																					"title": "sbfm_static_resource_protection",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"sbfm_verified_bots": {
 																					"description": "Indicates that the zone's verified bot requests are being blocked.",
 																					"title": "sbfm_verified_bots",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"suppress_session_score": {
 																					"description": "Indicates that the zone's session score tracking is disabled.",
 																					"title": "suppress_session_score",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"readOnly": true,
@@ -2186,7 +2479,8 @@
 																						"disabled"
 																					],
 																					"example": "block",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -2195,18 +2489,21 @@
 																						"disabled"
 																					],
 																					"example": "enabled",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
 																					"readOnly": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			}
 																		}
@@ -2218,7 +2515,8 @@
 																		"optimize_wordpress": {
 																			"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"sbfm_definitely_automated": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -2228,12 +2526,14 @@
 																				"managed_challenge"
 																			],
 																			"example": "allow",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_static_resource_protection": {
 																			"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"sbfm_verified_bots": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -2242,7 +2542,8 @@
 																				"block"
 																			],
 																			"example": "allow",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"stale_zone_configuration": {
 																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -2250,12 +2551,14 @@
 																				"fight_mode": {
 																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																					"title": "fight_mode",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"sbfm_likely_automated": {
 																					"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
 																					"title": "sbfm_likely_automated",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"readOnly": true,
@@ -2280,7 +2583,8 @@
 																						"disabled"
 																					],
 																					"example": "block",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -2289,18 +2593,21 @@
 																						"disabled"
 																					],
 																					"example": "enabled",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
 																					"readOnly": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			}
 																		}
@@ -2312,7 +2619,8 @@
 																		"optimize_wordpress": {
 																			"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"sbfm_definitely_automated": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -2322,7 +2630,8 @@
 																				"managed_challenge"
 																			],
 																			"example": "allow",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_likely_automated": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
@@ -2332,12 +2641,14 @@
 																				"managed_challenge"
 																			],
 																			"example": "allow",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sbfm_static_resource_protection": {
 																			"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"sbfm_verified_bots": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -2346,7 +2657,8 @@
 																				"block"
 																			],
 																			"example": "allow",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"stale_zone_configuration": {
 																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -2354,7 +2666,8 @@
 																				"fight_mode": {
 																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																					"title": "fight_mode",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"readOnly": true,
@@ -2379,7 +2692,8 @@
 																						"disabled"
 																					],
 																					"example": "block",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -2388,18 +2702,21 @@
 																						"disabled"
 																					],
 																					"example": "enabled",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
 																					"readOnly": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			}
 																		}
@@ -2411,7 +2728,8 @@
 																		"auto_update_model": {
 																			"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"stale_zone_configuration": {
 																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -2419,32 +2737,38 @@
 																				"fight_mode": {
 																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																					"title": "fight_mode",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"optimize_wordpress": {
 																					"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 																					"title": "optimize_wordpress",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"sbfm_definitely_automated": {
 																					"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
 																					"title": "sbfm_definitely_automated",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"sbfm_likely_automated": {
 																					"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
 																					"title": "sbfm_likely_automated",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"sbfm_static_resource_protection": {
 																					"description": "Indicates that the zone's static resource protection is turned on.",
 																					"title": "sbfm_static_resource_protection",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"sbfm_verified_bots": {
 																					"description": "Indicates that the zone's verified bot requests are being blocked.",
 																					"title": "sbfm_verified_bots",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"readOnly": true,
@@ -2455,7 +2779,8 @@
 																			"default": false,
 																			"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -2481,8 +2806,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -2513,8 +2849,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -2537,7 +2884,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
