@@ -306,27 +306,6 @@ const navigation = {
 		labels: ["separator"],
 		iconType: "internet-browser"
 	}, {
-		title: "navigation.account.magic_networks",
-		labels: ["new"],
-		url: M => "/magic-networking/overview",
-		iconType: "cloudflare-magic-wan",
-		testId: "sidenav-magic-networks-link",
-		hasPermission: M => (0, p.iY)(M) && !!(0, o.z1)("magic-fractus-networking")(M) && (!!(0, e.Le)(M, "magic_wan", "mw_home") || !!(0, e.Le)(M, "magic_wan", "mc_home") || !!(0, e.Le)(M, "magic_transit", "mt_home")),
-		pages: [{
-			title: "navigation.account.magic_networks.overview",
-			url: "/magic-networking/overview"
-		}, {
-			title: "navigation.account.magic_networks.firewall",
-			url: "/magic-networking/firewall",
-			hasPermission: M => !!(0, o.z1)("magic-fractus-firewall")(M)
-		}]
-	}, {
-		title: "navigation.account.magic_networks",
-		url: "/",
-		labels: ["separator"],
-		iconType: "internet-browser",
-		hasPermission: M => !!(0, o.z1)("magic-fractus-networking")(M)
-	}, {
 		title: "navigation.account.zero_trust",
 		url: () => {
 			const M = (0, _.e1)(),
