@@ -472,6 +472,7 @@ export declare abstract class Navigator {
   ): boolean;
   readonly userAgent: string;
   readonly hardwareConcurrency: number;
+  readonly language: string;
 }
 /**
  * The Workers runtime supports a subset of the Performance API, used to measure timing and performance,
@@ -2649,7 +2650,7 @@ export interface OTelSpan {
 }
 export interface OTelSpanTag {
   key: string;
-  value: boolean | (number | bigint) | number | string;
+  value: string | boolean | number | (number | bigint);
 }
 export interface TraceException {
   readonly timestamp: number;
