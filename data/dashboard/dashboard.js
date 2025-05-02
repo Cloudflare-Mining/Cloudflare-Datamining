@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "6530d4e4-d5c8-5099-b044-c21de873daaa")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "fb189ce9-ffcb-5ac6-a83d-4d7155055565")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1041,10 +1041,10 @@
 					t.g.build = Sn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "fd7c46775b770b69b333519cc162e155f66a3a47",
-						dashVersion: "32954873",
+						commit: "3c9da87e2bd0c1c499b336e25ca25331c15d3bad",
+						dashVersion: "32956438",
 						env: "production",
-						builtAt: 1746137437109,
+						builtAt: 1746143461675,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -21693,9 +21693,6 @@
   --color-ob-btn-destructive-border-hover: var(--color-red-600);
   --color-ob-focus: var(--color-blue-800);
 }
-#react-app {
-  overflow: hidden;
-}
 .border-color {
   border-color: var(--color-ob-border);
 }
@@ -22408,4 +22405,4 @@
 	}
 ]);
 
-//# debugId=6530d4e4-d5c8-5099-b044-c21de873daaa
+//# debugId=fb189ce9-ffcb-5ac6-a83d-4d7155055565
