@@ -5,57 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Lisbon, and London</strong></p>
-<p><strong>About The Role</strong></p>
-<p>We announced Cloudflare Workers in 2017&nbsp; — since then it’s played a key role in Cloudflare’s strategy for entering the compute market. Until the launch of Workers, as Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than rules engines could support.</p>
-<p>Workers has grown from a simple functions-as-a-service option into a complete full-stack platform — and with this comes the need to support a broader set of <a href="https://developers.cloudflare.com/workers/runtime-apis/">Runtime APIs</a>. This spans a wide range, from TC39 standards, to Node.js APIs, to web standards. We played a key role in forming <a href="https://wintercg.org/">WinterCG</a>, and there’s still much work to do to grow a shared base of APIs across runtimes — to push forward the ecosystem and ease the burden on open-source maintainers of supporting multiple runtimes.</p>
-<p><strong>What You’ll Do</strong></p>
+<p><strong>Location:</strong> Lisbon, Portugal</p>
+<h4><strong>About the Role</strong></h4>
+<p>Cloudflare is looking for a passionate, creative, and results-driven <strong>Marketing &amp; Events Manager</strong>&nbsp;to join our dynamic <strong>EMEA Events Center of Excellence</strong> team. If you thrive in a fast-paced environment, have a blend of analytical and creative marketing skills, and love bringing events to life, this is the perfect role for you!</p>
+<p>As part of the <strong>EMEA Marketing team</strong>, you will play a key role in driving high-impact events across the region to generate new leads, expand customer accounts, and contribute to our marketing pipeline growth. You’ll own and execute a variety of event campaigns—from contract negotiations and promotional strategies to booth execution, team coordination, and post-event sales follow-up—to maximize return on investment.</p>
+<p>This role requires exceptional project management skills, a strategic mindset, and a passion for delivering measurable results. You’ll also gain hands-on experience in the sales process and learn how to craft strategic marketing campaigns that align with ambitious business goals.</p>
+<p>A key focus of this role is <strong>supporting the Southern Europe region (Spain, France, Italy)</strong>.&nbsp;Additionally, travel within the region will be necessary to support event execution.</p>
+<p>&nbsp;</p>
+<h3><strong>What You’ll Do</strong></h3>
 <ul>
-	<li>Drive the strategy and roadmap for JavaScript APIs in the Cloudflare Workers Runtime</li>
-	<li>Lead new APIs from ideation through launch, and continuing through ongoing maintenance and support</li>
-	<li>Guide teams both internal and external on developing new JavaScript APIs in Workers, including first-party Cloudflare products and external libraries seeking to increase compatibility</li>
-	<li>Develop and nurture key external relationships with open-source maintainers, and ensure their needs are heard and acted on</li>
-	<li>Partner with other departments such as Product Marketing, Marketing, Community &amp; developer advocacy, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</li>
-	<li>Ruthlessly prioritize across a complex environment of diverse customers, stakeholders and objectives</li>
-	<li>Represent the company externally as needed, including meetings with customers, speaking at external events, participating in WinterCG and more.</li>
+	<li><strong>Plan &amp; Execute Events:</strong> Organize and manage a variety of marketing events, including trade shows, Cloudflare conferences, meetups, executive dinners, and breakfast briefings, ensuring strong lead capture and conversion.</li>
+	<li><strong>Collaborate Across Teams:</strong> Work closely with Design, Sales, Product, Localization, and Marketing teams to deliver high-impact, integrated online and offline marketing campaigns.</li>
+	<li><strong>Campaign Strategy &amp; Execution:</strong> Define objectives, develop marketing assets (landing pages, banners, email templates), segment leads, and track/report campaign performance.</li>
+	<li><strong>Vendor &amp; Partner Management:</strong> Oversee local vendors and partners to ensure seamless event execution.</li>
+	<li><strong>Project Management &amp; Data Analysis:</strong> Manage campaign execution across platforms like Marketo and Salesforce, ensuring accuracy, timeline adherence, ROI measurement, and continuous optimization.</li>
+	<li><strong>Regional Field Marketing Support:</strong> Work side by side with the Field Marketing Manager to integrate impactful events into the broader regional marketing strategy and communicate insights to stakeholders.</li>
 </ul>
-<p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
-<p>The ideal candidate is entrepreneurial-minded and thrives in a fast-paced and goal-driven environment.&nbsp;</p>
-<p>You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.&nbsp;</p>
+<p>&nbsp;</p>
+<h3><strong>What We’re Looking For</strong></h3>
 <ul>
-	<li>Proven track record of shipping developer-facing products from ideation to launch, 3+ years of professional experience working on technology products</li>
-	<li>Strong knowledge of JavaScript, the NPM ecosystem, and web standards. You have built things in JavaScript and enjoy immersing yourself in the JavaScript community, engaging with new standards, libraries, and frameworks</li>
-	<li>Developer focus — you’ll be working directly, and often be a part of the customers team in helping them get their initial implementation off the ground</li>
-	<li>Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view</li>
-	<li>A desire to sweat the details and ship great developer experiences</li>
-	<li>A love for talking to developers at organizations both large and small on a daily basis so that you can build and ship products that solve real problems.</li>
+	<li><strong>Fluent in English</strong> and <strong>French, Spanish, or Italian</strong> (mandatory).</li>
+	<li><strong>Based in Lisbon, Portugal.</strong></li>
+	<li><strong>Experience in event marketing</strong>, with a strong ability to manage multiple projects simultaneously.</li>
+	<li>A <strong>highly motivated, positive, and collaborative team player</strong> who thrives in a fast-paced, evolving environment.</li>
+	<li><strong>Strong organizational skills</strong> with attention to detail and an ability to manage multiple priorities effectively.</li>
+	<li><strong>Analytical mindset</strong> with a passion for data-driven decision-making and optimization.</li>
+	<li><strong>Excellent written communication skills</strong> with the ability to craft compelling marketing messages.</li>
+	<li><strong>A natural curiosity and eagerness to learn</strong> in a high-growth, tech-driven company.</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3><strong>Bonus Points If You Have:</strong></h3>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Hands-on experience with <strong>Salesforce, Marketo, Contentful</strong>, or other marketing automation tools.</li>
+	<li>Experience in <strong>content localization</strong> to enhance engagement across different languages and regions.</li>
+	<li>Strong <strong>outreach messaging</strong> and <strong>content creation</strong> skills.</li>
+	<li>Prior experience in a <strong>high-growth SaaS, security, or networking company</strong>.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
