@@ -7864,19 +7864,14 @@
 			"content": {
 				"multipart/form-data": {
 					"encoding": {
-						"<any file hash>": {
-							"contentType": "text/html, application/octet-stream, etc."
+						"*": {
+							"contentType": "*/*"
 						}
 					},
 					"schema": {
-						"properties": {
-							"<any file hash>": {
-								"description": "Base-64 encoded contents of the file. The content type of the file should be included to ensure a valid \"Content-Type\" header is included in asset responses.",
-								"items": {
-									"type": "string"
-								},
-								"type": "array"
-							}
+						"additionalProperties": {
+							"description": "Base-64 encoded contents of the file. The content type of the file should be included to ensure a valid \"Content-Type\" header is included in asset responses.",
+							"type": "string"
 						},
 						"type": "object"
 					}
