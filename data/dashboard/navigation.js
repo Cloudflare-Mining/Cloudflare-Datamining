@@ -252,7 +252,7 @@ const navigation = {
 		}, {
 			title: "navigation.account.magic_connectors.configuration",
 			url: "/magic-transit/configuration",
-			tabs: O.Lx.concat(O.SF, O.Jg)
+			tabs: I.Lx.concat(I.SF, I.Jg)
 		}, {
 			title: "navigation.account.magic.tunnel_healthcheck",
 			url: "/magic-transit/tunnel-healthchecks"
@@ -369,7 +369,7 @@ const navigation = {
 		}, {
 			title: "navigation.account.magic_connectors.configuration",
 			url: "/magic-wan/configuration",
-			tabs: O.SF.concat(O.Jg)
+			tabs: I.SF.concat(I.Jg)
 		}, {
 			title: "navigation.account.magic.tunnel_healthcheck",
 			url: "/magic-wan/tunnel-healthchecks"
@@ -454,7 +454,7 @@ const navigation = {
 			title: "navigation.account.workers.pipelines",
 			url: "/workers/pipelines",
 			labels: ["beta"],
-			hasPermission: M => (0, R.r)(M) && (0, R._)(M) && !(0, o.z1)("storage-and-databases-account-navigation")(M)
+			hasPermission: M => (0, j.r)(M) && (0, j._)(M) && !(0, o.z1)("storage-and-databases-account-navigation")(M)
 		}, {
 			title: "navigation.account.workers.browser_rendering",
 			url: "/workers/browser-rendering"
@@ -499,7 +499,7 @@ const navigation = {
 			title: "navigation.account.workers.pipelines",
 			url: "/workers/pipelines",
 			labels: ["beta"],
-			hasPermission: M => (0, R.r)(M) && (0, R._)(M)
+			hasPermission: M => (0, j.r)(M) && (0, j._)(M)
 		}, {
 			title: "navigation.account.workers.queues",
 			url: "/workers/queues",
@@ -720,7 +720,12 @@ const navigation = {
 			url: "/shared-configurations",
 			testId: "shared-config-link",
 			labels: ["alpha"],
-			hasPermission: M => (0, w.K)(M, "account")
+			hasPermission: M => (0, S.K)(M, "account")
+		}, {
+			title: "navigation.account.abuse",
+			url: "/abuse",
+			labels: ["new"],
+			hasPermission: M => (0, p.iY)(M) && (0, u.V0)(M)
 		}, {
 			title: "navigation.account.mcn",
 			url: "/mcn/integrations",
@@ -876,7 +881,7 @@ const navigation = {
 			title: "navigation.zone.email.routing",
 			navigationType: "global-settings",
 			url: "/email/routing",
-			tabs: D.hg,
+			tabs: O.hg,
 			hasPermission: M => (0, p.iY)(M) && !q(M) && (0, p.$n)(M, "dns_records", "dns-record")
 		}, {
 			title: "navigation.zone.email.dmarc-reports",
@@ -977,7 +982,7 @@ const navigation = {
 			title: "navigation.zone.security.waf",
 			url: "/security/waf",
 			navigationType: "version",
-			tabs: S.gn,
+			tabs: w.gn,
 			hasPermission: M => !(0, oe.P8)(M) && (0, p.$n)(M, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.page_shield",
@@ -999,7 +1004,7 @@ const navigation = {
 			title: "navigation.zone.security.api_shield",
 			url: "/security/api-shield",
 			navigationType: "version",
-			hasPermission: M => !(0, oe.P8)(M) && (0, k.R0)(M),
+			hasPermission: M => !(0, oe.P8)(M) && (0, R.R0)(M),
 			tabs: T.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
@@ -1098,7 +1103,7 @@ const navigation = {
 			title: "navigation.zone.rules.templates",
 			url: "/rules/templates",
 			labels: ["new"],
-			tabs: I.HI,
+			tabs: D.HI,
 			navigationType: "version",
 			hasPermission: M => !(0, o.z1)("rules-overview")(M) && ((0, p.$n)(M, "waf", "firewall.rule") || (0, p.$n)(M, "zone_settings", "page-rule"))
 		}, {
@@ -1115,13 +1120,13 @@ const navigation = {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
 			navigationType: "version",
-			tabs: I.mI,
+			tabs: D.mI,
 			hasPermission: M => !(0, o.z1)("rules-overview")(M)
 		}, {
 			title: "navigation.zone.rules.redirect_rules",
 			url: "/rules/redirect-rules",
 			navigationType: "version",
-			tabs: I.KZ,
+			tabs: D.KZ,
 			hasPermission: M => !(0, o.z1)("rules-overview")(M) && (0, p.$n)(M, "zone_settings", "page-rule")
 		}, {
 			title: "navigation.zone.rules.origin_rules",
@@ -1159,7 +1164,7 @@ const navigation = {
 			title: "navigation.zone.rules.settings",
 			url: "/rules/settings",
 			navigationType: "version",
-			tabs: I.od
+			tabs: D.od
 		}]
 	}, {
 		title: "navigation.zone.custom_pages",
