@@ -1403,6 +1403,10 @@
 				"read": true,
 				"edit": true
 			},
+			"d1": {
+				"read": false,
+				"edit": true
+			},
 			"stream": {
 				"read": true,
 				"edit": true
@@ -1692,6 +1696,10 @@
 			"analytics": {
 				"read": true,
 				"edit": false
+			},
+			"d1": {
+				"read": false,
+				"edit": true
 			},
 			"r2_bucket": {
 				"read": true,
@@ -2223,6 +2231,10 @@
 			},
 			"api_gateway": {
 				"read": true,
+				"edit": true
+			},
+			"d1": {
+				"read": false,
 				"edit": true
 			},
 			"stream": {
