@@ -698,7 +698,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "In some cases, we may perform a background and/or credit check. When we do that, we\nmay collect the following categories of information from a background check provider:\nname, title, address, telephone number, personal email address, date of birth, employment history, national ID, references, education. Section 4, below, provides more information about the \"special categories\" of Sensitive Personal Information we may collect, store, and use.\n",
+														"value": "In some cases, we may perform a background, identity verification, and/or credit check. When we do that, we may collect the following categories of information from a background check provider: name, title, address, telephone number, personal email address, date of birth, photograph, employment history, national ID, references, education. The section below titled \"Sensitive personal information we may collect, and how we use it\" provides more information about the \"special categories\" of Sensitive Personal Information we may collect, store, and use.",
 														"marks": [],
 														"content": null
 													}
@@ -811,7 +811,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "Carry out background and reference checks as appropriate and in accordance with applicable law.",
+																		"value": "Carry out background, identity verification, and reference checks as appropriate and in accordance with applicable law.",
 																		"marks": [],
 																		"content": null
 																	}
@@ -1133,7 +1133,38 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "We have in place an appropriate policy document and safeguards which we are required\nby law to maintain when processing such data.\n\n",
+														"value": "We have in place an appropriate policy document and safeguards which we are required\nby law to maintain when processing such data.",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "In the event we receive any personal data from a third party that the third party identifies and treats as sensitive, we will treat such information we receive as sensitive information.",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "\n",
 														"marks": [],
 														"content": null
 													}
@@ -1288,17 +1319,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "CrossHCQ",
-																		"marks": [],
-																		"content": null
-																	},
-																	{
-																		"nodeType": "text",
-																		"data": {
-																			"target": null,
-																			"uri": null
-																		},
-																		"value": ", a cloud services provider located in the United States of America and engaged by Cloudflare to help facilitate the recruitment process on Cloudflare's behalf.",
+																		"value": "CrossHCQ, a cloud services provider located in the United States of America and engaged by Cloudflare to help facilitate the recruitment process on Cloudflare's behalf.",
 																		"marks": [],
 																		"content": null
 																	}
@@ -1330,17 +1351,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "Calendly",
-																		"marks": [],
-																		"content": null
-																	},
-																	{
-																		"nodeType": "text",
-																		"data": {
-																			"target": null,
-																			"uri": null
-																		},
-																		"value": ", a cloud services provider located in the United States of America and engaged by Cloudflare to help manage interview scheduling on Cloudflare's behalf.",
+																		"value": "Etch Mobile d/b/a GoodTime, a cloud services provider located in the United States of America and engaged by Cloudflare to help manage interview scheduling on Cloudflare's behalf.",
 																		"marks": [],
 																		"content": null
 																	}
@@ -1533,6 +1544,70 @@
 																			"uri": null
 																		},
 																		"value": "Gant Travel, a service provider located in the United States of America and engaged by Cloudflare to assist with candidate travel during the interview on Cloudflare's behalf.",
+																		"marks": [],
+																		"content": null
+																	}
+																]
+															}
+														]
+													},
+													{
+														"nodeType": "list-item",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "paragraph",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "Google BigQuery, a data warehouse located in the United States and used by Cloudflare for analytics purposes.",
+																		"marks": [],
+																		"content": null
+																	}
+																]
+															}
+														]
+													},
+													{
+														"nodeType": "list-item",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "paragraph",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "Tableau, a data visualization tool located in the United States and used by Cloudflare for analytics purposes.",
 																		"marks": [],
 																		"content": null
 																	}
@@ -1970,7 +2045,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "We will retain your personal data for a period of up to 3 years after we have communicated to you our decision about whether to appoint you to a role. We retain your personal data for that period so that we can show, in the event of a legal claim, that we have not discriminated against candidates on prohibited grounds and that we have conducted the recruitment exercise in a fair and transparent way. After this period, we will securely destroy your personal data in accordance with internal policies and procedures.\n",
+														"value": "How long we retain your personal information depends on which Cloudflare entity you interact with and the country that entity is located in, because each country has different legal obligations. For most countries, this means we will retain your application for a period of 3 to 5 years after your last activity. We retain your personal data for that period so that we can show, in the event of a legal claim, that we have not discriminated against candidates on prohibited grounds and that we have conducted the recruitment exercise in a fair and transparent way. When the retention period applicable to your personal data ends, we will securely destroy your personal data in accordance with internal policies and procedures. Regardless of the retention period that may apply, every candidate has the right to request deletion of their information pursuant to this privacy notice.\n",
 														"marks": [],
 														"content": null
 													}
@@ -2506,17 +2581,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": " in writing. ",
-														"marks": [],
-														"content": null
-													},
-													{
-														"nodeType": "text",
-														"data": {
-															"target": null,
-															"uri": null
-														},
-														"value": "\n\nPlease note, that we may be required to ask you for further information in order to confirm your identity before we provide the information requested. Specifically, we may send a separate email to verify your email address on file. We will respond to your request as soon as reasonably possible. Should we not be able to respond to your request within thirty (30) days after receiving your request, we will inform you in writing within thirty (30) days of the time by which we will be able to respond to your request. If we are unable to provide you with any personal data, make a correction or delete personal data requested by you, we shall generally inform you of the reasons why we are unable to do so (except where we are not required to do so under Applicable Data Protection Laws).",
+														"value": " in writing. \n\nPlease note, that we may be required to ask you for further information in order to confirm your identity before we provide the information requested. Specifically, we may send a separate email to verify your email address on file. We will respond to your request as soon as reasonably possible. Should we not be able to respond to your request within thirty (30) days after receiving your request, we will inform you in writing within thirty (30) days of the time by which we will be able to respond to your request. If we are unable to provide you with any personal data, make a correction or delete personal data requested by you, we shall generally inform you of the reasons why we are unable to do so (except where we are not required to do so under Applicable Data Protection Laws).",
 														"marks": [],
 														"content": null
 													}
