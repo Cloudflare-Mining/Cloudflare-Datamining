@@ -6,34 +6,35 @@
 	</div>
 </div>
 <h4>Available Locations: Austin, TX&nbsp; OR other Texas Metro cities (Houston, Dallas, San Antonio)</h4>
-<h4>About the department</h4>
-<p>The Internal Audit (IA) organization is responsible for delivering high-quality, objective and independent assurance over Cloudflare’s key technology and cyber risks to the Audit Committee and Management consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of cybersecurity risks, exploring more efficient audit approaches and industry best practices where appropriate.&nbsp;</p>
-<p>We are seeking a highly motivated, strategic, and solution-focused candidate to lead and support Cloudflare’s technology and cybersecurity audit plan to evaluate the effectiveness of control and management of risk. The ideal candidate will bring a deep understanding of cybersecurity risks, technology experience, and best-in-class audit practices. This role will report to the Director, Cybersecurity and IT Audit within Internal Audit.</p>
-<h4>What you'll do</h4>
+<p><strong>About the Department</strong></p>
+<p>The Internal Audit (IA) organization is responsible for delivering high-quality, objective and independent assurance over Cloudflare’s key technology and cyber risks to the Audit Committee and Management consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward deeper coverage of cybersecurity risks, exploring more efficient audit approaches and industry best practices where appropriate.&nbsp;</p>
+<p>We are seeking a highly motivated, technical, and solution-focused candidate to lead and execute against Cloudflare’s technology and cybersecurity audit plan to evaluate the effectiveness of control and management of risk. The ideal candidate will bring a deep understanding of cybersecurity risks, data analytics capabilities, and internal audit experience with best-in-class audit practices.&nbsp;</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Design, lead, and execute technology and cybersecurity audits, with oversight of the project and timelines.&nbsp;</li>
-	<li>Identify opportunities to utilize data analytics, AI, and other innovative tools to improve audit insights and effectiveness.&nbsp;</li>
+	<li>Design, lead, and execute technology and cybersecurity audits, aligning to the project timelines.&nbsp;</li>
+	<li>Identify opportunities and perform data analytics, AI analysis, and other innovative approaches to improve audit insights and effectiveness.&nbsp;</li>
+	<li>Develop and perform complex testing across technical topics including on-prem and cloud systems.&nbsp;</li>
 	<li>Incorporate your understanding of existing and emerging cyber threats into audits.</li>
-	<li>Support the risk assessments to identify and prioritize areas for audit focus.</li>
-	<li>Prepare clear, concise and high impact audit reports with actionable recommendations for improvements.</li>
+	<li>Prepare clear, concise and high impact audit results with actionable recommendations for improvements.</li>
 	<li>Ensure audits are completed on time, within scope, and in accordance with professional and department standards.</li>
-	<li>Communicate audit findings and recommendations to all levels of the company, including senior executives.&nbsp;</li>
-	<li>Act as a trusted advisor to the business, providing insights and recommendations on risk management and control improvements.</li>
+	<li>Communicate audit findings and recommendations to stakeholders and leaders</li>
 	<li>Identify opportunities to enhance the efficiency and effectiveness of internal audit processes and methodologies.</li>
 	<li>Mentor and provide guidance to internal audit team members, fostering a culture of continuous learning and professional development.</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>10+<strong>&nbsp;</strong>years of&nbsp;experience in internal audit, risk management, or related field with at least 3 years in a leadership role.</li>
-	<li>Strong understanding of technology and systems including on-prem and public cloud.</li>
+	<li>8+<strong>&nbsp;</strong>years of&nbsp;experience, including technology/cyber internal audit</li>
+	<li>Strong understanding of technology, systems, and security topics (ex. encryption, system hardening, data security, etc.)</li>
+	<li>Experience in performing advanced testing techniques including data analytics and anomaly detection</li>
 	<li>Strong knowledge and proven track record in applying internal auditing and cybersecurity principles and practices, specifically audit methodologies, risk assessment, sampling techniques, and audit documentation.</li>
 	<li>Excellent analytical, problem-solving, and decision-making skills.</li>
-	<li>Exceptional written and verbal communication skills, with the ability to present complex information clearly and concisely.</li>
+	<li>Strong written and verbal communication skills, with the ability to present complex information clearly and concisely.</li>
 	<li>Proven ability to build and maintain effective working relationships with stakeholders at all levels.</li>
 	<li>High level of integrity, professionalism, and attention to detail.</li>
-	<li>Familiarity with data analytics, cybersecurity frameworks, and advanced auditing techniques.</li>
-	<li>Professional certifications such as: CISA, CISSP, etc.<br><br></li>
+	<li>Familiarity with cybersecurity frameworks and assessing against these using advanced auditing techniques.</li>
+	<li>Professional certifications such as: CISA, CISSP, etc.</li>
 </ul>
+<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
