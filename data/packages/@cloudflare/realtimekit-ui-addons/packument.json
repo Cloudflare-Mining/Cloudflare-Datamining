@@ -1,22 +1,50 @@
 {
 	"name": "@cloudflare/realtimekit-ui-addons",
 	"dist-tags": {
-		"latest": "0.0.0"
+		"latest": "0.0.2"
 	},
 	"versions": {
 		"0.0.0": {
 			"name": "@cloudflare/realtimekit-ui-addons",
 			"version": "0.0.0",
 			"dist": {
-				"integrity": "sha512-uqs01RczIjJ67SGx8kmJFb+7hY/Jj3MnRcPF+KRkjlUeHpcVx+AC4R+NexBA058iNCkGfCdvLj6hZGRboxmZ8g==",
 				"shasum": "bddcb252c3d2f6b07d4cb2aa0df9b2b599103a81",
 				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui-addons/-/realtimekit-ui-addons-0.0.0.tgz",
 				"fileCount": 1,
-				"unpackedSize": 109,
+				"integrity": "sha512-uqs01RczIjJ67SGx8kmJFb+7hY/Jj3MnRcPF+KRkjlUeHpcVx+AC4R+NexBA058iNCkGfCdvLj6hZGRboxmZ8g==",
+				"signatures": [
+					{
+						"sig": "MEUCIGyCi8dxppZWU0x5jLbz68Z9N9ZcbJTOWOq4fqnFgr/oAiEAxIZgRjQDdUzl/ee6gHksos7S3EmhDsKYtmJy2BHus64=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 109
+			}
+		},
+		"0.0.2": {
+			"name": "@cloudflare/realtimekit-ui-addons",
+			"version": "0.0.2",
+			"dependencies": {
+				"@dytesdk/video-background-transformer": "2.0.6"
+			},
+			"devDependencies": {
+				"typescript": "^5.2.2",
+				"vite": "^4.4.8"
+			},
+			"peerDependencies": {
+				"@dytesdk/ui-kit": ">=2.2.0",
+				"@dytesdk/web-core": ">=2.3.0"
+			},
+			"dist": {
+				"integrity": "sha512-8NGViMw9xr8I7Qbv2ShMQMEshkHLabHuOiL4sZseDxU+gQYmKV3YptFaGya6drGUIkIW+BHHW6q873aFc2qLKA==",
+				"shasum": "955dedd40034cadcfcb437ee46f9719a436a01ae",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui-addons/-/realtimekit-ui-addons-0.0.2.tgz",
+				"fileCount": 60,
+				"unpackedSize": 346748,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIGyCi8dxppZWU0x5jLbz68Z9N9ZcbJTOWOq4fqnFgr/oAiEAxIZgRjQDdUzl/ee6gHksos7S3EmhDsKYtmJy2BHus64="
+						"sig": "MEQCIAe+1mKCqaGoJnI4tP61tIQEyV5MvmzkgyYsbBSekEKkAiBW7vDbFIJX1Ad3Mk4PtfJnRRCgoiINtg/g8j2oUxIURA=="
 					}
 				]
 			}
