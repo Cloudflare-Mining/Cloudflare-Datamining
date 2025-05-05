@@ -87,7 +87,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -126,7 +128,8 @@
 													"nullable": true,
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -144,13 +147,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete a device posture rule response"
+				"description": "Delete a device posture rule response."
 			},
 			"4XX": {
 				"content": {
@@ -211,7 +215,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -250,7 +256,8 @@
 															"nullable": true,
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -268,7 +275,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -340,7 +348,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -360,13 +368,14 @@
 						}
 					}
 				},
-				"description": "Delete a device posture rule response failure"
+				"description": "Delete a device posture rule response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete a device posture rule",
@@ -448,7 +457,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -476,36 +487,39 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true,
 													"type": "array"
 												},
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -542,12 +556,12 @@
 															{
 																"properties": {
 																	"exists": {
-																		"description": "Whether or not file exists",
+																		"description": "Whether or not file exists.",
 																		"example": true,
 																		"type": "boolean"
 																	},
 																	"operating_system": {
-																		"description": "Operating system",
+																		"description": "Operating system.",
 																		"enum": [
 																			"windows",
 																			"linux",
@@ -587,7 +601,7 @@
 																		"type": "string"
 																	},
 																	"operating_system": {
-																		"description": "Operating System",
+																		"description": "Operating System.",
 																		"enum": [
 																			"android",
 																			"ios",
@@ -607,12 +621,12 @@
 															{
 																"properties": {
 																	"domain": {
-																		"description": "Domain",
+																		"description": "Domain.",
 																		"example": "example.com",
 																		"type": "string"
 																	},
 																	"operating_system": {
-																		"description": "Operating System",
+																		"description": "Operating System.",
 																		"enum": [
 																			"windows"
 																		],
@@ -629,7 +643,7 @@
 															{
 																"properties": {
 																	"operating_system": {
-																		"description": "Operating System",
+																		"description": "Operating System.",
 																		"enum": [
 																			"windows"
 																		],
@@ -637,7 +651,7 @@
 																		"type": "string"
 																	},
 																	"operator": {
-																		"description": "Operator",
+																		"description": "Operator.",
 																		"enum": [
 																			"<",
 																			"<=",
@@ -649,22 +663,22 @@
 																		"type": "string"
 																	},
 																	"os_distro_name": {
-																		"description": "Operating System Distribution Name (linux only)",
+																		"description": "Operating System Distribution Name (linux only).",
 																		"example": "ubuntu",
 																		"type": "string"
 																	},
 																	"os_distro_revision": {
-																		"description": "Version of OS Distribution (linux only)",
+																		"description": "Version of OS Distribution (linux only).",
 																		"example": "11.3.1",
 																		"type": "string"
 																	},
 																	"os_version_extra": {
-																		"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)",
+																		"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 																		"example": "(a) or -1007",
 																		"type": "string"
 																	},
 																	"version": {
-																		"description": "Version of OS",
+																		"description": "Version of OS.",
 																		"example": "13.3.0",
 																		"type": "string"
 																	}
@@ -680,12 +694,12 @@
 															{
 																"properties": {
 																	"enabled": {
-																		"description": "Enabled",
+																		"description": "Enabled.",
 																		"example": true,
 																		"type": "boolean"
 																	},
 																	"operating_system": {
-																		"description": "Operating System",
+																		"description": "Operating System.",
 																		"enum": [
 																			"windows",
 																			"mac"
@@ -704,7 +718,7 @@
 															{
 																"properties": {
 																	"operating_system": {
-																		"description": "Operating system",
+																		"description": "Operating system.",
 																		"enum": [
 																			"windows",
 																			"linux",
@@ -739,7 +753,7 @@
 															{
 																"properties": {
 																	"operating_system": {
-																		"description": "Operating system",
+																		"description": "Operating system.",
 																		"enum": [
 																			"windows",
 																			"linux",
@@ -773,6 +787,21 @@
 															},
 															{
 																"properties": {
+																	"id": {
+																		"description": "UUID of Access List",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id"
+																],
+																"title": "Serial Number",
+																"type": "object"
+															},
+															{
+																"properties": {
 																	"checkDisks": {
 																		"description": "List of volume names to be checked for encryption.",
 																		"example": [
@@ -797,7 +826,7 @@
 															{
 																"properties": {
 																	"operating_system": {
-																		"description": "Operating system",
+																		"description": "Operating system.",
 																		"enum": [
 																			"windows",
 																			"linux",
@@ -838,7 +867,7 @@
 																		"type": "string"
 																	},
 																	"cn": {
-																		"description": "Common Name that is protected by the certificate",
+																		"description": "Common Name that is protected by the certificate.",
 																		"example": "example.com",
 																		"type": "string"
 																	}
@@ -869,7 +898,7 @@
 																		"type": "string"
 																	},
 																	"extended_key_usage": {
-																		"description": "List of values indicating purposes for which the certificate public key can be used",
+																		"description": "List of values indicating purposes for which the certificate public key can be used.",
 																		"example": [
 																			"clientAuth",
 																			"emailProtection"
@@ -915,7 +944,7 @@
 																		"type": "object"
 																	},
 																	"operating_system": {
-																		"description": "Operating System",
+																		"description": "Operating System.",
 																		"enum": [
 																			"windows",
 																			"mac",
@@ -936,7 +965,7 @@
 															{
 																"properties": {
 																	"compliance_status": {
-																		"description": "Compliance Status",
+																		"description": "Compliance Status.",
 																		"enum": [
 																			"compliant",
 																			"noncompliant",
@@ -971,7 +1000,7 @@
 																		"type": "string"
 																	},
 																	"operator": {
-																		"description": "Operator",
+																		"description": "Operator.",
 																		"enum": [
 																			"<",
 																			"<=",
@@ -983,17 +1012,17 @@
 																		"type": "string"
 																	},
 																	"os": {
-																		"description": "Os Version",
+																		"description": "Os Version.",
 																		"example": "13.3.0",
 																		"type": "string"
 																	},
 																	"overall": {
-																		"description": "overall",
+																		"description": "Overall.",
 																		"example": 90,
 																		"type": "string"
 																	},
 																	"sensor_config": {
-																		"description": "SensorConfig",
+																		"description": "SensorConfig.",
 																		"example": 90,
 																		"type": "string"
 																	},
@@ -1008,12 +1037,12 @@
 																		"type": "string"
 																	},
 																	"version": {
-																		"description": "Version",
+																		"description": "Version.",
 																		"example": "13.3.0",
 																		"type": "string"
 																	},
 																	"versionOperator": {
-																		"description": "Version Operator",
+																		"description": "Version Operator.",
 																		"enum": [
 																			"<",
 																			"<=",
@@ -1034,7 +1063,7 @@
 															{
 																"properties": {
 																	"compliance_status": {
-																		"description": "Compliance Status",
+																		"description": "Compliance Status.",
 																		"enum": [
 																			"compliant",
 																			"noncompliant",
@@ -1067,7 +1096,7 @@
 																		"type": "string"
 																	},
 																	"countOperator": {
-																		"description": "Count Operator",
+																		"description": "Count Operator.",
 																		"enum": [
 																			"<",
 																			"<=",
@@ -1128,7 +1157,7 @@
 																		"type": "string"
 																	},
 																	"scoreOperator": {
-																		"description": "Score Operator",
+																		"description": "Score Operator.",
 																		"enum": [
 																			"<",
 																			"<=",
@@ -1198,7 +1227,7 @@
 																		"type": "string"
 																	},
 																	"operator": {
-																		"description": "operator",
+																		"description": "Operator.",
 																		"enum": [
 																			"<",
 																			"<=",
@@ -1224,7 +1253,7 @@
 																		"type": "string"
 																	},
 																	"operator": {
-																		"description": "operator",
+																		"description": "Operator.",
 																		"enum": [
 																			"<",
 																			"<=",
@@ -1292,6 +1321,7 @@
 															"gateway",
 															"warp",
 															"disk_encryption",
+															"serial_number",
 															"sentinelone",
 															"carbonblack",
 															"firewall",
@@ -1316,13 +1346,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List device posture rules response"
+				"description": "List device posture rules response."
 			},
 			"4XX": {
 				"content": {
@@ -1383,7 +1414,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -1411,36 +1444,39 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true,
 															"type": "array"
 														},
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -1477,12 +1513,12 @@
 																	{
 																		"properties": {
 																			"exists": {
-																				"description": "Whether or not file exists",
+																				"description": "Whether or not file exists.",
 																				"example": true,
 																				"type": "boolean"
 																			},
 																			"operating_system": {
-																				"description": "Operating system",
+																				"description": "Operating system.",
 																				"enum": [
 																					"windows",
 																					"linux",
@@ -1522,7 +1558,7 @@
 																				"type": "string"
 																			},
 																			"operating_system": {
-																				"description": "Operating System",
+																				"description": "Operating System.",
 																				"enum": [
 																					"android",
 																					"ios",
@@ -1542,12 +1578,12 @@
 																	{
 																		"properties": {
 																			"domain": {
-																				"description": "Domain",
+																				"description": "Domain.",
 																				"example": "example.com",
 																				"type": "string"
 																			},
 																			"operating_system": {
-																				"description": "Operating System",
+																				"description": "Operating System.",
 																				"enum": [
 																					"windows"
 																				],
@@ -1564,7 +1600,7 @@
 																	{
 																		"properties": {
 																			"operating_system": {
-																				"description": "Operating System",
+																				"description": "Operating System.",
 																				"enum": [
 																					"windows"
 																				],
@@ -1572,7 +1608,7 @@
 																				"type": "string"
 																			},
 																			"operator": {
-																				"description": "Operator",
+																				"description": "Operator.",
 																				"enum": [
 																					"<",
 																					"<=",
@@ -1584,22 +1620,22 @@
 																				"type": "string"
 																			},
 																			"os_distro_name": {
-																				"description": "Operating System Distribution Name (linux only)",
+																				"description": "Operating System Distribution Name (linux only).",
 																				"example": "ubuntu",
 																				"type": "string"
 																			},
 																			"os_distro_revision": {
-																				"description": "Version of OS Distribution (linux only)",
+																				"description": "Version of OS Distribution (linux only).",
 																				"example": "11.3.1",
 																				"type": "string"
 																			},
 																			"os_version_extra": {
-																				"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)",
+																				"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 																				"example": "(a) or -1007",
 																				"type": "string"
 																			},
 																			"version": {
-																				"description": "Version of OS",
+																				"description": "Version of OS.",
 																				"example": "13.3.0",
 																				"type": "string"
 																			}
@@ -1615,12 +1651,12 @@
 																	{
 																		"properties": {
 																			"enabled": {
-																				"description": "Enabled",
+																				"description": "Enabled.",
 																				"example": true,
 																				"type": "boolean"
 																			},
 																			"operating_system": {
-																				"description": "Operating System",
+																				"description": "Operating System.",
 																				"enum": [
 																					"windows",
 																					"mac"
@@ -1639,7 +1675,7 @@
 																	{
 																		"properties": {
 																			"operating_system": {
-																				"description": "Operating system",
+																				"description": "Operating system.",
 																				"enum": [
 																					"windows",
 																					"linux",
@@ -1674,7 +1710,7 @@
 																	{
 																		"properties": {
 																			"operating_system": {
-																				"description": "Operating system",
+																				"description": "Operating system.",
 																				"enum": [
 																					"windows",
 																					"linux",
@@ -1708,6 +1744,21 @@
 																	},
 																	{
 																		"properties": {
+																			"id": {
+																				"description": "UUID of Access List",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"maxLength": 36,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id"
+																		],
+																		"title": "Serial Number",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
 																			"checkDisks": {
 																				"description": "List of volume names to be checked for encryption.",
 																				"example": [
@@ -1732,7 +1783,7 @@
 																	{
 																		"properties": {
 																			"operating_system": {
-																				"description": "Operating system",
+																				"description": "Operating system.",
 																				"enum": [
 																					"windows",
 																					"linux",
@@ -1773,7 +1824,7 @@
 																				"type": "string"
 																			},
 																			"cn": {
-																				"description": "Common Name that is protected by the certificate",
+																				"description": "Common Name that is protected by the certificate.",
 																				"example": "example.com",
 																				"type": "string"
 																			}
@@ -1804,7 +1855,7 @@
 																				"type": "string"
 																			},
 																			"extended_key_usage": {
-																				"description": "List of values indicating purposes for which the certificate public key can be used",
+																				"description": "List of values indicating purposes for which the certificate public key can be used.",
 																				"example": [
 																					"clientAuth",
 																					"emailProtection"
@@ -1850,7 +1901,7 @@
 																				"type": "object"
 																			},
 																			"operating_system": {
-																				"description": "Operating System",
+																				"description": "Operating System.",
 																				"enum": [
 																					"windows",
 																					"mac",
@@ -1871,7 +1922,7 @@
 																	{
 																		"properties": {
 																			"compliance_status": {
-																				"description": "Compliance Status",
+																				"description": "Compliance Status.",
 																				"enum": [
 																					"compliant",
 																					"noncompliant",
@@ -1906,7 +1957,7 @@
 																				"type": "string"
 																			},
 																			"operator": {
-																				"description": "Operator",
+																				"description": "Operator.",
 																				"enum": [
 																					"<",
 																					"<=",
@@ -1918,17 +1969,17 @@
 																				"type": "string"
 																			},
 																			"os": {
-																				"description": "Os Version",
+																				"description": "Os Version.",
 																				"example": "13.3.0",
 																				"type": "string"
 																			},
 																			"overall": {
-																				"description": "overall",
+																				"description": "Overall.",
 																				"example": 90,
 																				"type": "string"
 																			},
 																			"sensor_config": {
-																				"description": "SensorConfig",
+																				"description": "SensorConfig.",
 																				"example": 90,
 																				"type": "string"
 																			},
@@ -1943,12 +1994,12 @@
 																				"type": "string"
 																			},
 																			"version": {
-																				"description": "Version",
+																				"description": "Version.",
 																				"example": "13.3.0",
 																				"type": "string"
 																			},
 																			"versionOperator": {
-																				"description": "Version Operator",
+																				"description": "Version Operator.",
 																				"enum": [
 																					"<",
 																					"<=",
@@ -1969,7 +2020,7 @@
 																	{
 																		"properties": {
 																			"compliance_status": {
-																				"description": "Compliance Status",
+																				"description": "Compliance Status.",
 																				"enum": [
 																					"compliant",
 																					"noncompliant",
@@ -2002,7 +2053,7 @@
 																				"type": "string"
 																			},
 																			"countOperator": {
-																				"description": "Count Operator",
+																				"description": "Count Operator.",
 																				"enum": [
 																					"<",
 																					"<=",
@@ -2063,7 +2114,7 @@
 																				"type": "string"
 																			},
 																			"scoreOperator": {
-																				"description": "Score Operator",
+																				"description": "Score Operator.",
 																				"enum": [
 																					"<",
 																					"<=",
@@ -2133,7 +2184,7 @@
 																				"type": "string"
 																			},
 																			"operator": {
-																				"description": "operator",
+																				"description": "Operator.",
 																				"enum": [
 																					"<",
 																					"<=",
@@ -2159,7 +2210,7 @@
 																				"type": "string"
 																			},
 																			"operator": {
-																				"description": "operator",
+																				"description": "Operator.",
 																				"enum": [
 																					"<",
 																					"<=",
@@ -2227,6 +2278,7 @@
 																	"gateway",
 																	"warp",
 																	"disk_encryption",
+																	"serial_number",
 																	"sentinelone",
 																	"carbonblack",
 																	"firewall",
@@ -2251,7 +2303,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2323,7 +2376,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2343,13 +2396,14 @@
 						}
 					}
 				},
-				"description": "List device posture rules response failure"
+				"description": "List device posture rules response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List device posture rules",
@@ -2443,7 +2497,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2482,7 +2538,8 @@
 													"nullable": true,
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -2518,12 +2575,12 @@
 														{
 															"properties": {
 																"exists": {
-																	"description": "Whether or not file exists",
+																	"description": "Whether or not file exists.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"operating_system": {
-																	"description": "Operating system",
+																	"description": "Operating system.",
 																	"enum": [
 																		"windows",
 																		"linux",
@@ -2563,7 +2620,7 @@
 																	"type": "string"
 																},
 																"operating_system": {
-																	"description": "Operating System",
+																	"description": "Operating System.",
 																	"enum": [
 																		"android",
 																		"ios",
@@ -2583,12 +2640,12 @@
 														{
 															"properties": {
 																"domain": {
-																	"description": "Domain",
+																	"description": "Domain.",
 																	"example": "example.com",
 																	"type": "string"
 																},
 																"operating_system": {
-																	"description": "Operating System",
+																	"description": "Operating System.",
 																	"enum": [
 																		"windows"
 																	],
@@ -2605,7 +2662,7 @@
 														{
 															"properties": {
 																"operating_system": {
-																	"description": "Operating System",
+																	"description": "Operating System.",
 																	"enum": [
 																		"windows"
 																	],
@@ -2613,7 +2670,7 @@
 																	"type": "string"
 																},
 																"operator": {
-																	"description": "Operator",
+																	"description": "Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -2625,22 +2682,22 @@
 																	"type": "string"
 																},
 																"os_distro_name": {
-																	"description": "Operating System Distribution Name (linux only)",
+																	"description": "Operating System Distribution Name (linux only).",
 																	"example": "ubuntu",
 																	"type": "string"
 																},
 																"os_distro_revision": {
-																	"description": "Version of OS Distribution (linux only)",
+																	"description": "Version of OS Distribution (linux only).",
 																	"example": "11.3.1",
 																	"type": "string"
 																},
 																"os_version_extra": {
-																	"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)",
+																	"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 																	"example": "(a) or -1007",
 																	"type": "string"
 																},
 																"version": {
-																	"description": "Version of OS",
+																	"description": "Version of OS.",
 																	"example": "13.3.0",
 																	"type": "string"
 																}
@@ -2656,12 +2713,12 @@
 														{
 															"properties": {
 																"enabled": {
-																	"description": "Enabled",
+																	"description": "Enabled.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"operating_system": {
-																	"description": "Operating System",
+																	"description": "Operating System.",
 																	"enum": [
 																		"windows",
 																		"mac"
@@ -2680,7 +2737,7 @@
 														{
 															"properties": {
 																"operating_system": {
-																	"description": "Operating system",
+																	"description": "Operating system.",
 																	"enum": [
 																		"windows",
 																		"linux",
@@ -2715,7 +2772,7 @@
 														{
 															"properties": {
 																"operating_system": {
-																	"description": "Operating system",
+																	"description": "Operating system.",
 																	"enum": [
 																		"windows",
 																		"linux",
@@ -2749,6 +2806,21 @@
 														},
 														{
 															"properties": {
+																"id": {
+																	"description": "UUID of Access List",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"title": "Serial Number",
+															"type": "object"
+														},
+														{
+															"properties": {
 																"checkDisks": {
 																	"description": "List of volume names to be checked for encryption.",
 																	"example": [
@@ -2773,7 +2845,7 @@
 														{
 															"properties": {
 																"operating_system": {
-																	"description": "Operating system",
+																	"description": "Operating system.",
 																	"enum": [
 																		"windows",
 																		"linux",
@@ -2814,7 +2886,7 @@
 																	"type": "string"
 																},
 																"cn": {
-																	"description": "Common Name that is protected by the certificate",
+																	"description": "Common Name that is protected by the certificate.",
 																	"example": "example.com",
 																	"type": "string"
 																}
@@ -2845,7 +2917,7 @@
 																	"type": "string"
 																},
 																"extended_key_usage": {
-																	"description": "List of values indicating purposes for which the certificate public key can be used",
+																	"description": "List of values indicating purposes for which the certificate public key can be used.",
 																	"example": [
 																		"clientAuth",
 																		"emailProtection"
@@ -2891,7 +2963,7 @@
 																	"type": "object"
 																},
 																"operating_system": {
-																	"description": "Operating System",
+																	"description": "Operating System.",
 																	"enum": [
 																		"windows",
 																		"mac",
@@ -2912,7 +2984,7 @@
 														{
 															"properties": {
 																"compliance_status": {
-																	"description": "Compliance Status",
+																	"description": "Compliance Status.",
 																	"enum": [
 																		"compliant",
 																		"noncompliant",
@@ -2947,7 +3019,7 @@
 																	"type": "string"
 																},
 																"operator": {
-																	"description": "Operator",
+																	"description": "Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -2959,17 +3031,17 @@
 																	"type": "string"
 																},
 																"os": {
-																	"description": "Os Version",
+																	"description": "Os Version.",
 																	"example": "13.3.0",
 																	"type": "string"
 																},
 																"overall": {
-																	"description": "overall",
+																	"description": "Overall.",
 																	"example": 90,
 																	"type": "string"
 																},
 																"sensor_config": {
-																	"description": "SensorConfig",
+																	"description": "SensorConfig.",
 																	"example": 90,
 																	"type": "string"
 																},
@@ -2984,12 +3056,12 @@
 																	"type": "string"
 																},
 																"version": {
-																	"description": "Version",
+																	"description": "Version.",
 																	"example": "13.3.0",
 																	"type": "string"
 																},
 																"versionOperator": {
-																	"description": "Version Operator",
+																	"description": "Version Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -3010,7 +3082,7 @@
 														{
 															"properties": {
 																"compliance_status": {
-																	"description": "Compliance Status",
+																	"description": "Compliance Status.",
 																	"enum": [
 																		"compliant",
 																		"noncompliant",
@@ -3043,7 +3115,7 @@
 																	"type": "string"
 																},
 																"countOperator": {
-																	"description": "Count Operator",
+																	"description": "Count Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -3104,7 +3176,7 @@
 																	"type": "string"
 																},
 																"scoreOperator": {
-																	"description": "Score Operator",
+																	"description": "Score Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -3174,7 +3246,7 @@
 																	"type": "string"
 																},
 																"operator": {
-																	"description": "operator",
+																	"description": "Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -3200,7 +3272,7 @@
 																	"type": "string"
 																},
 																"operator": {
-																	"description": "operator",
+																	"description": "Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -3268,6 +3340,7 @@
 														"gateway",
 														"warp",
 														"disk_encryption",
+														"serial_number",
 														"sentinelone",
 														"carbonblack",
 														"firewall",
@@ -3290,13 +3363,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get device posture rule details response"
+				"description": "Get device posture rule details response."
 			},
 			"4XX": {
 				"content": {
@@ -3357,7 +3431,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -3396,7 +3472,8 @@
 															"nullable": true,
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -3432,12 +3509,12 @@
 																{
 																	"properties": {
 																		"exists": {
-																			"description": "Whether or not file exists",
+																			"description": "Whether or not file exists.",
 																			"example": true,
 																			"type": "boolean"
 																		},
 																		"operating_system": {
-																			"description": "Operating system",
+																			"description": "Operating system.",
 																			"enum": [
 																				"windows",
 																				"linux",
@@ -3477,7 +3554,7 @@
 																			"type": "string"
 																		},
 																		"operating_system": {
-																			"description": "Operating System",
+																			"description": "Operating System.",
 																			"enum": [
 																				"android",
 																				"ios",
@@ -3497,12 +3574,12 @@
 																{
 																	"properties": {
 																		"domain": {
-																			"description": "Domain",
+																			"description": "Domain.",
 																			"example": "example.com",
 																			"type": "string"
 																		},
 																		"operating_system": {
-																			"description": "Operating System",
+																			"description": "Operating System.",
 																			"enum": [
 																				"windows"
 																			],
@@ -3519,7 +3596,7 @@
 																{
 																	"properties": {
 																		"operating_system": {
-																			"description": "Operating System",
+																			"description": "Operating System.",
 																			"enum": [
 																				"windows"
 																			],
@@ -3527,7 +3604,7 @@
 																			"type": "string"
 																		},
 																		"operator": {
-																			"description": "Operator",
+																			"description": "Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -3539,22 +3616,22 @@
 																			"type": "string"
 																		},
 																		"os_distro_name": {
-																			"description": "Operating System Distribution Name (linux only)",
+																			"description": "Operating System Distribution Name (linux only).",
 																			"example": "ubuntu",
 																			"type": "string"
 																		},
 																		"os_distro_revision": {
-																			"description": "Version of OS Distribution (linux only)",
+																			"description": "Version of OS Distribution (linux only).",
 																			"example": "11.3.1",
 																			"type": "string"
 																		},
 																		"os_version_extra": {
-																			"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)",
+																			"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 																			"example": "(a) or -1007",
 																			"type": "string"
 																		},
 																		"version": {
-																			"description": "Version of OS",
+																			"description": "Version of OS.",
 																			"example": "13.3.0",
 																			"type": "string"
 																		}
@@ -3570,12 +3647,12 @@
 																{
 																	"properties": {
 																		"enabled": {
-																			"description": "Enabled",
+																			"description": "Enabled.",
 																			"example": true,
 																			"type": "boolean"
 																		},
 																		"operating_system": {
-																			"description": "Operating System",
+																			"description": "Operating System.",
 																			"enum": [
 																				"windows",
 																				"mac"
@@ -3594,7 +3671,7 @@
 																{
 																	"properties": {
 																		"operating_system": {
-																			"description": "Operating system",
+																			"description": "Operating system.",
 																			"enum": [
 																				"windows",
 																				"linux",
@@ -3629,7 +3706,7 @@
 																{
 																	"properties": {
 																		"operating_system": {
-																			"description": "Operating system",
+																			"description": "Operating system.",
 																			"enum": [
 																				"windows",
 																				"linux",
@@ -3663,6 +3740,21 @@
 																},
 																{
 																	"properties": {
+																		"id": {
+																			"description": "UUID of Access List",
+																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																			"maxLength": 36,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"title": "Serial Number",
+																	"type": "object"
+																},
+																{
+																	"properties": {
 																		"checkDisks": {
 																			"description": "List of volume names to be checked for encryption.",
 																			"example": [
@@ -3687,7 +3779,7 @@
 																{
 																	"properties": {
 																		"operating_system": {
-																			"description": "Operating system",
+																			"description": "Operating system.",
 																			"enum": [
 																				"windows",
 																				"linux",
@@ -3728,7 +3820,7 @@
 																			"type": "string"
 																		},
 																		"cn": {
-																			"description": "Common Name that is protected by the certificate",
+																			"description": "Common Name that is protected by the certificate.",
 																			"example": "example.com",
 																			"type": "string"
 																		}
@@ -3759,7 +3851,7 @@
 																			"type": "string"
 																		},
 																		"extended_key_usage": {
-																			"description": "List of values indicating purposes for which the certificate public key can be used",
+																			"description": "List of values indicating purposes for which the certificate public key can be used.",
 																			"example": [
 																				"clientAuth",
 																				"emailProtection"
@@ -3805,7 +3897,7 @@
 																			"type": "object"
 																		},
 																		"operating_system": {
-																			"description": "Operating System",
+																			"description": "Operating System.",
 																			"enum": [
 																				"windows",
 																				"mac",
@@ -3826,7 +3918,7 @@
 																{
 																	"properties": {
 																		"compliance_status": {
-																			"description": "Compliance Status",
+																			"description": "Compliance Status.",
 																			"enum": [
 																				"compliant",
 																				"noncompliant",
@@ -3861,7 +3953,7 @@
 																			"type": "string"
 																		},
 																		"operator": {
-																			"description": "Operator",
+																			"description": "Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -3873,17 +3965,17 @@
 																			"type": "string"
 																		},
 																		"os": {
-																			"description": "Os Version",
+																			"description": "Os Version.",
 																			"example": "13.3.0",
 																			"type": "string"
 																		},
 																		"overall": {
-																			"description": "overall",
+																			"description": "Overall.",
 																			"example": 90,
 																			"type": "string"
 																		},
 																		"sensor_config": {
-																			"description": "SensorConfig",
+																			"description": "SensorConfig.",
 																			"example": 90,
 																			"type": "string"
 																		},
@@ -3898,12 +3990,12 @@
 																			"type": "string"
 																		},
 																		"version": {
-																			"description": "Version",
+																			"description": "Version.",
 																			"example": "13.3.0",
 																			"type": "string"
 																		},
 																		"versionOperator": {
-																			"description": "Version Operator",
+																			"description": "Version Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -3924,7 +4016,7 @@
 																{
 																	"properties": {
 																		"compliance_status": {
-																			"description": "Compliance Status",
+																			"description": "Compliance Status.",
 																			"enum": [
 																				"compliant",
 																				"noncompliant",
@@ -3957,7 +4049,7 @@
 																			"type": "string"
 																		},
 																		"countOperator": {
-																			"description": "Count Operator",
+																			"description": "Count Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -4018,7 +4110,7 @@
 																			"type": "string"
 																		},
 																		"scoreOperator": {
-																			"description": "Score Operator",
+																			"description": "Score Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -4088,7 +4180,7 @@
 																			"type": "string"
 																		},
 																		"operator": {
-																			"description": "operator",
+																			"description": "Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -4114,7 +4206,7 @@
 																			"type": "string"
 																		},
 																		"operator": {
-																			"description": "operator",
+																			"description": "Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -4182,6 +4274,7 @@
 																"gateway",
 																"warp",
 																"disk_encryption",
+																"serial_number",
 																"sentinelone",
 																"carbonblack",
 																"firewall",
@@ -4204,7 +4297,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -4276,7 +4370,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -4296,13 +4390,14 @@
 						}
 					}
 				},
-				"description": "Get device posture rule details response failure"
+				"description": "Get device posture rule details response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get device posture rule details",
@@ -4353,12 +4448,12 @@
 									{
 										"properties": {
 											"exists": {
-												"description": "Whether or not file exists",
+												"description": "Whether or not file exists.",
 												"example": true,
 												"type": "boolean"
 											},
 											"operating_system": {
-												"description": "Operating system",
+												"description": "Operating system.",
 												"enum": [
 													"windows",
 													"linux",
@@ -4398,7 +4493,7 @@
 												"type": "string"
 											},
 											"operating_system": {
-												"description": "Operating System",
+												"description": "Operating System.",
 												"enum": [
 													"android",
 													"ios",
@@ -4418,12 +4513,12 @@
 									{
 										"properties": {
 											"domain": {
-												"description": "Domain",
+												"description": "Domain.",
 												"example": "example.com",
 												"type": "string"
 											},
 											"operating_system": {
-												"description": "Operating System",
+												"description": "Operating System.",
 												"enum": [
 													"windows"
 												],
@@ -4440,7 +4535,7 @@
 									{
 										"properties": {
 											"operating_system": {
-												"description": "Operating System",
+												"description": "Operating System.",
 												"enum": [
 													"windows"
 												],
@@ -4448,7 +4543,7 @@
 												"type": "string"
 											},
 											"operator": {
-												"description": "Operator",
+												"description": "Operator.",
 												"enum": [
 													"<",
 													"<=",
@@ -4460,22 +4555,22 @@
 												"type": "string"
 											},
 											"os_distro_name": {
-												"description": "Operating System Distribution Name (linux only)",
+												"description": "Operating System Distribution Name (linux only).",
 												"example": "ubuntu",
 												"type": "string"
 											},
 											"os_distro_revision": {
-												"description": "Version of OS Distribution (linux only)",
+												"description": "Version of OS Distribution (linux only).",
 												"example": "11.3.1",
 												"type": "string"
 											},
 											"os_version_extra": {
-												"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)",
+												"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 												"example": "(a) or -1007",
 												"type": "string"
 											},
 											"version": {
-												"description": "Version of OS",
+												"description": "Version of OS.",
 												"example": "13.3.0",
 												"type": "string"
 											}
@@ -4491,12 +4586,12 @@
 									{
 										"properties": {
 											"enabled": {
-												"description": "Enabled",
+												"description": "Enabled.",
 												"example": true,
 												"type": "boolean"
 											},
 											"operating_system": {
-												"description": "Operating System",
+												"description": "Operating System.",
 												"enum": [
 													"windows",
 													"mac"
@@ -4515,7 +4610,7 @@
 									{
 										"properties": {
 											"operating_system": {
-												"description": "Operating system",
+												"description": "Operating system.",
 												"enum": [
 													"windows",
 													"linux",
@@ -4550,7 +4645,7 @@
 									{
 										"properties": {
 											"operating_system": {
-												"description": "Operating system",
+												"description": "Operating system.",
 												"enum": [
 													"windows",
 													"linux",
@@ -4584,6 +4679,21 @@
 									},
 									{
 										"properties": {
+											"id": {
+												"description": "UUID of Access List",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"maxLength": 36,
+												"type": "string"
+											}
+										},
+										"required": [
+											"id"
+										],
+										"title": "Serial Number",
+										"type": "object"
+									},
+									{
+										"properties": {
 											"checkDisks": {
 												"description": "List of volume names to be checked for encryption.",
 												"example": [
@@ -4608,7 +4718,7 @@
 									{
 										"properties": {
 											"operating_system": {
-												"description": "Operating system",
+												"description": "Operating system.",
 												"enum": [
 													"windows",
 													"linux",
@@ -4649,7 +4759,7 @@
 												"type": "string"
 											},
 											"cn": {
-												"description": "Common Name that is protected by the certificate",
+												"description": "Common Name that is protected by the certificate.",
 												"example": "example.com",
 												"type": "string"
 											}
@@ -4680,7 +4790,7 @@
 												"type": "string"
 											},
 											"extended_key_usage": {
-												"description": "List of values indicating purposes for which the certificate public key can be used",
+												"description": "List of values indicating purposes for which the certificate public key can be used.",
 												"example": [
 													"clientAuth",
 													"emailProtection"
@@ -4726,7 +4836,7 @@
 												"type": "object"
 											},
 											"operating_system": {
-												"description": "Operating System",
+												"description": "Operating System.",
 												"enum": [
 													"windows",
 													"mac",
@@ -4747,7 +4857,7 @@
 									{
 										"properties": {
 											"compliance_status": {
-												"description": "Compliance Status",
+												"description": "Compliance Status.",
 												"enum": [
 													"compliant",
 													"noncompliant",
@@ -4782,7 +4892,7 @@
 												"type": "string"
 											},
 											"operator": {
-												"description": "Operator",
+												"description": "Operator.",
 												"enum": [
 													"<",
 													"<=",
@@ -4794,17 +4904,17 @@
 												"type": "string"
 											},
 											"os": {
-												"description": "Os Version",
+												"description": "Os Version.",
 												"example": "13.3.0",
 												"type": "string"
 											},
 											"overall": {
-												"description": "overall",
+												"description": "Overall.",
 												"example": 90,
 												"type": "string"
 											},
 											"sensor_config": {
-												"description": "SensorConfig",
+												"description": "SensorConfig.",
 												"example": 90,
 												"type": "string"
 											},
@@ -4819,12 +4929,12 @@
 												"type": "string"
 											},
 											"version": {
-												"description": "Version",
+												"description": "Version.",
 												"example": "13.3.0",
 												"type": "string"
 											},
 											"versionOperator": {
-												"description": "Version Operator",
+												"description": "Version Operator.",
 												"enum": [
 													"<",
 													"<=",
@@ -4845,7 +4955,7 @@
 									{
 										"properties": {
 											"compliance_status": {
-												"description": "Compliance Status",
+												"description": "Compliance Status.",
 												"enum": [
 													"compliant",
 													"noncompliant",
@@ -4878,7 +4988,7 @@
 												"type": "string"
 											},
 											"countOperator": {
-												"description": "Count Operator",
+												"description": "Count Operator.",
 												"enum": [
 													"<",
 													"<=",
@@ -4939,7 +5049,7 @@
 												"type": "string"
 											},
 											"scoreOperator": {
-												"description": "Score Operator",
+												"description": "Score Operator.",
 												"enum": [
 													"<",
 													"<=",
@@ -5009,7 +5119,7 @@
 												"type": "string"
 											},
 											"operator": {
-												"description": "operator",
+												"description": "Operator.",
 												"enum": [
 													"<",
 													"<=",
@@ -5035,7 +5145,7 @@
 												"type": "string"
 											},
 											"operator": {
-												"description": "operator",
+												"description": "Operator.",
 												"enum": [
 													"<",
 													"<=",
@@ -5103,6 +5213,7 @@
 									"gateway",
 									"warp",
 									"disk_encryption",
+									"serial_number",
 									"sentinelone",
 									"carbonblack",
 									"firewall",
@@ -5126,7 +5237,8 @@
 						"required": [
 							"name",
 							"type"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -5190,7 +5302,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -5229,7 +5343,8 @@
 													"nullable": true,
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -5265,12 +5380,12 @@
 														{
 															"properties": {
 																"exists": {
-																	"description": "Whether or not file exists",
+																	"description": "Whether or not file exists.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"operating_system": {
-																	"description": "Operating system",
+																	"description": "Operating system.",
 																	"enum": [
 																		"windows",
 																		"linux",
@@ -5310,7 +5425,7 @@
 																	"type": "string"
 																},
 																"operating_system": {
-																	"description": "Operating System",
+																	"description": "Operating System.",
 																	"enum": [
 																		"android",
 																		"ios",
@@ -5330,12 +5445,12 @@
 														{
 															"properties": {
 																"domain": {
-																	"description": "Domain",
+																	"description": "Domain.",
 																	"example": "example.com",
 																	"type": "string"
 																},
 																"operating_system": {
-																	"description": "Operating System",
+																	"description": "Operating System.",
 																	"enum": [
 																		"windows"
 																	],
@@ -5352,7 +5467,7 @@
 														{
 															"properties": {
 																"operating_system": {
-																	"description": "Operating System",
+																	"description": "Operating System.",
 																	"enum": [
 																		"windows"
 																	],
@@ -5360,7 +5475,7 @@
 																	"type": "string"
 																},
 																"operator": {
-																	"description": "Operator",
+																	"description": "Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -5372,22 +5487,22 @@
 																	"type": "string"
 																},
 																"os_distro_name": {
-																	"description": "Operating System Distribution Name (linux only)",
+																	"description": "Operating System Distribution Name (linux only).",
 																	"example": "ubuntu",
 																	"type": "string"
 																},
 																"os_distro_revision": {
-																	"description": "Version of OS Distribution (linux only)",
+																	"description": "Version of OS Distribution (linux only).",
 																	"example": "11.3.1",
 																	"type": "string"
 																},
 																"os_version_extra": {
-																	"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)",
+																	"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 																	"example": "(a) or -1007",
 																	"type": "string"
 																},
 																"version": {
-																	"description": "Version of OS",
+																	"description": "Version of OS.",
 																	"example": "13.3.0",
 																	"type": "string"
 																}
@@ -5403,12 +5518,12 @@
 														{
 															"properties": {
 																"enabled": {
-																	"description": "Enabled",
+																	"description": "Enabled.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"operating_system": {
-																	"description": "Operating System",
+																	"description": "Operating System.",
 																	"enum": [
 																		"windows",
 																		"mac"
@@ -5427,7 +5542,7 @@
 														{
 															"properties": {
 																"operating_system": {
-																	"description": "Operating system",
+																	"description": "Operating system.",
 																	"enum": [
 																		"windows",
 																		"linux",
@@ -5462,7 +5577,7 @@
 														{
 															"properties": {
 																"operating_system": {
-																	"description": "Operating system",
+																	"description": "Operating system.",
 																	"enum": [
 																		"windows",
 																		"linux",
@@ -5496,6 +5611,21 @@
 														},
 														{
 															"properties": {
+																"id": {
+																	"description": "UUID of Access List",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"title": "Serial Number",
+															"type": "object"
+														},
+														{
+															"properties": {
 																"checkDisks": {
 																	"description": "List of volume names to be checked for encryption.",
 																	"example": [
@@ -5520,7 +5650,7 @@
 														{
 															"properties": {
 																"operating_system": {
-																	"description": "Operating system",
+																	"description": "Operating system.",
 																	"enum": [
 																		"windows",
 																		"linux",
@@ -5561,7 +5691,7 @@
 																	"type": "string"
 																},
 																"cn": {
-																	"description": "Common Name that is protected by the certificate",
+																	"description": "Common Name that is protected by the certificate.",
 																	"example": "example.com",
 																	"type": "string"
 																}
@@ -5592,7 +5722,7 @@
 																	"type": "string"
 																},
 																"extended_key_usage": {
-																	"description": "List of values indicating purposes for which the certificate public key can be used",
+																	"description": "List of values indicating purposes for which the certificate public key can be used.",
 																	"example": [
 																		"clientAuth",
 																		"emailProtection"
@@ -5638,7 +5768,7 @@
 																	"type": "object"
 																},
 																"operating_system": {
-																	"description": "Operating System",
+																	"description": "Operating System.",
 																	"enum": [
 																		"windows",
 																		"mac",
@@ -5659,7 +5789,7 @@
 														{
 															"properties": {
 																"compliance_status": {
-																	"description": "Compliance Status",
+																	"description": "Compliance Status.",
 																	"enum": [
 																		"compliant",
 																		"noncompliant",
@@ -5694,7 +5824,7 @@
 																	"type": "string"
 																},
 																"operator": {
-																	"description": "Operator",
+																	"description": "Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -5706,17 +5836,17 @@
 																	"type": "string"
 																},
 																"os": {
-																	"description": "Os Version",
+																	"description": "Os Version.",
 																	"example": "13.3.0",
 																	"type": "string"
 																},
 																"overall": {
-																	"description": "overall",
+																	"description": "Overall.",
 																	"example": 90,
 																	"type": "string"
 																},
 																"sensor_config": {
-																	"description": "SensorConfig",
+																	"description": "SensorConfig.",
 																	"example": 90,
 																	"type": "string"
 																},
@@ -5731,12 +5861,12 @@
 																	"type": "string"
 																},
 																"version": {
-																	"description": "Version",
+																	"description": "Version.",
 																	"example": "13.3.0",
 																	"type": "string"
 																},
 																"versionOperator": {
-																	"description": "Version Operator",
+																	"description": "Version Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -5757,7 +5887,7 @@
 														{
 															"properties": {
 																"compliance_status": {
-																	"description": "Compliance Status",
+																	"description": "Compliance Status.",
 																	"enum": [
 																		"compliant",
 																		"noncompliant",
@@ -5790,7 +5920,7 @@
 																	"type": "string"
 																},
 																"countOperator": {
-																	"description": "Count Operator",
+																	"description": "Count Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -5851,7 +5981,7 @@
 																	"type": "string"
 																},
 																"scoreOperator": {
-																	"description": "Score Operator",
+																	"description": "Score Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -5921,7 +6051,7 @@
 																	"type": "string"
 																},
 																"operator": {
-																	"description": "operator",
+																	"description": "Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -5947,7 +6077,7 @@
 																	"type": "string"
 																},
 																"operator": {
-																	"description": "operator",
+																	"description": "Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -6015,6 +6145,7 @@
 														"gateway",
 														"warp",
 														"disk_encryption",
+														"serial_number",
 														"sentinelone",
 														"carbonblack",
 														"firewall",
@@ -6037,13 +6168,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create device posture rule response"
+				"description": "Create device posture rule response."
 			},
 			"4XX": {
 				"content": {
@@ -6104,7 +6236,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -6143,7 +6277,8 @@
 															"nullable": true,
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -6179,12 +6314,12 @@
 																{
 																	"properties": {
 																		"exists": {
-																			"description": "Whether or not file exists",
+																			"description": "Whether or not file exists.",
 																			"example": true,
 																			"type": "boolean"
 																		},
 																		"operating_system": {
-																			"description": "Operating system",
+																			"description": "Operating system.",
 																			"enum": [
 																				"windows",
 																				"linux",
@@ -6224,7 +6359,7 @@
 																			"type": "string"
 																		},
 																		"operating_system": {
-																			"description": "Operating System",
+																			"description": "Operating System.",
 																			"enum": [
 																				"android",
 																				"ios",
@@ -6244,12 +6379,12 @@
 																{
 																	"properties": {
 																		"domain": {
-																			"description": "Domain",
+																			"description": "Domain.",
 																			"example": "example.com",
 																			"type": "string"
 																		},
 																		"operating_system": {
-																			"description": "Operating System",
+																			"description": "Operating System.",
 																			"enum": [
 																				"windows"
 																			],
@@ -6266,7 +6401,7 @@
 																{
 																	"properties": {
 																		"operating_system": {
-																			"description": "Operating System",
+																			"description": "Operating System.",
 																			"enum": [
 																				"windows"
 																			],
@@ -6274,7 +6409,7 @@
 																			"type": "string"
 																		},
 																		"operator": {
-																			"description": "Operator",
+																			"description": "Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -6286,22 +6421,22 @@
 																			"type": "string"
 																		},
 																		"os_distro_name": {
-																			"description": "Operating System Distribution Name (linux only)",
+																			"description": "Operating System Distribution Name (linux only).",
 																			"example": "ubuntu",
 																			"type": "string"
 																		},
 																		"os_distro_revision": {
-																			"description": "Version of OS Distribution (linux only)",
+																			"description": "Version of OS Distribution (linux only).",
 																			"example": "11.3.1",
 																			"type": "string"
 																		},
 																		"os_version_extra": {
-																			"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)",
+																			"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 																			"example": "(a) or -1007",
 																			"type": "string"
 																		},
 																		"version": {
-																			"description": "Version of OS",
+																			"description": "Version of OS.",
 																			"example": "13.3.0",
 																			"type": "string"
 																		}
@@ -6317,12 +6452,12 @@
 																{
 																	"properties": {
 																		"enabled": {
-																			"description": "Enabled",
+																			"description": "Enabled.",
 																			"example": true,
 																			"type": "boolean"
 																		},
 																		"operating_system": {
-																			"description": "Operating System",
+																			"description": "Operating System.",
 																			"enum": [
 																				"windows",
 																				"mac"
@@ -6341,7 +6476,7 @@
 																{
 																	"properties": {
 																		"operating_system": {
-																			"description": "Operating system",
+																			"description": "Operating system.",
 																			"enum": [
 																				"windows",
 																				"linux",
@@ -6376,7 +6511,7 @@
 																{
 																	"properties": {
 																		"operating_system": {
-																			"description": "Operating system",
+																			"description": "Operating system.",
 																			"enum": [
 																				"windows",
 																				"linux",
@@ -6410,6 +6545,21 @@
 																},
 																{
 																	"properties": {
+																		"id": {
+																			"description": "UUID of Access List",
+																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																			"maxLength": 36,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"title": "Serial Number",
+																	"type": "object"
+																},
+																{
+																	"properties": {
 																		"checkDisks": {
 																			"description": "List of volume names to be checked for encryption.",
 																			"example": [
@@ -6434,7 +6584,7 @@
 																{
 																	"properties": {
 																		"operating_system": {
-																			"description": "Operating system",
+																			"description": "Operating system.",
 																			"enum": [
 																				"windows",
 																				"linux",
@@ -6475,7 +6625,7 @@
 																			"type": "string"
 																		},
 																		"cn": {
-																			"description": "Common Name that is protected by the certificate",
+																			"description": "Common Name that is protected by the certificate.",
 																			"example": "example.com",
 																			"type": "string"
 																		}
@@ -6506,7 +6656,7 @@
 																			"type": "string"
 																		},
 																		"extended_key_usage": {
-																			"description": "List of values indicating purposes for which the certificate public key can be used",
+																			"description": "List of values indicating purposes for which the certificate public key can be used.",
 																			"example": [
 																				"clientAuth",
 																				"emailProtection"
@@ -6552,7 +6702,7 @@
 																			"type": "object"
 																		},
 																		"operating_system": {
-																			"description": "Operating System",
+																			"description": "Operating System.",
 																			"enum": [
 																				"windows",
 																				"mac",
@@ -6573,7 +6723,7 @@
 																{
 																	"properties": {
 																		"compliance_status": {
-																			"description": "Compliance Status",
+																			"description": "Compliance Status.",
 																			"enum": [
 																				"compliant",
 																				"noncompliant",
@@ -6608,7 +6758,7 @@
 																			"type": "string"
 																		},
 																		"operator": {
-																			"description": "Operator",
+																			"description": "Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -6620,17 +6770,17 @@
 																			"type": "string"
 																		},
 																		"os": {
-																			"description": "Os Version",
+																			"description": "Os Version.",
 																			"example": "13.3.0",
 																			"type": "string"
 																		},
 																		"overall": {
-																			"description": "overall",
+																			"description": "Overall.",
 																			"example": 90,
 																			"type": "string"
 																		},
 																		"sensor_config": {
-																			"description": "SensorConfig",
+																			"description": "SensorConfig.",
 																			"example": 90,
 																			"type": "string"
 																		},
@@ -6645,12 +6795,12 @@
 																			"type": "string"
 																		},
 																		"version": {
-																			"description": "Version",
+																			"description": "Version.",
 																			"example": "13.3.0",
 																			"type": "string"
 																		},
 																		"versionOperator": {
-																			"description": "Version Operator",
+																			"description": "Version Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -6671,7 +6821,7 @@
 																{
 																	"properties": {
 																		"compliance_status": {
-																			"description": "Compliance Status",
+																			"description": "Compliance Status.",
 																			"enum": [
 																				"compliant",
 																				"noncompliant",
@@ -6704,7 +6854,7 @@
 																			"type": "string"
 																		},
 																		"countOperator": {
-																			"description": "Count Operator",
+																			"description": "Count Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -6765,7 +6915,7 @@
 																			"type": "string"
 																		},
 																		"scoreOperator": {
-																			"description": "Score Operator",
+																			"description": "Score Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -6835,7 +6985,7 @@
 																			"type": "string"
 																		},
 																		"operator": {
-																			"description": "operator",
+																			"description": "Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -6861,7 +7011,7 @@
 																			"type": "string"
 																		},
 																		"operator": {
-																			"description": "operator",
+																			"description": "Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -6929,6 +7079,7 @@
 																"gateway",
 																"warp",
 																"disk_encryption",
+																"serial_number",
 																"sentinelone",
 																"carbonblack",
 																"firewall",
@@ -6951,7 +7102,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -7023,7 +7175,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -7043,13 +7195,14 @@
 						}
 					}
 				},
-				"description": "Create device posture rule response failure"
+				"description": "Create device posture rule response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create a device posture rule",
@@ -7110,12 +7263,12 @@
 									{
 										"properties": {
 											"exists": {
-												"description": "Whether or not file exists",
+												"description": "Whether or not file exists.",
 												"example": true,
 												"type": "boolean"
 											},
 											"operating_system": {
-												"description": "Operating system",
+												"description": "Operating system.",
 												"enum": [
 													"windows",
 													"linux",
@@ -7155,7 +7308,7 @@
 												"type": "string"
 											},
 											"operating_system": {
-												"description": "Operating System",
+												"description": "Operating System.",
 												"enum": [
 													"android",
 													"ios",
@@ -7175,12 +7328,12 @@
 									{
 										"properties": {
 											"domain": {
-												"description": "Domain",
+												"description": "Domain.",
 												"example": "example.com",
 												"type": "string"
 											},
 											"operating_system": {
-												"description": "Operating System",
+												"description": "Operating System.",
 												"enum": [
 													"windows"
 												],
@@ -7197,7 +7350,7 @@
 									{
 										"properties": {
 											"operating_system": {
-												"description": "Operating System",
+												"description": "Operating System.",
 												"enum": [
 													"windows"
 												],
@@ -7205,7 +7358,7 @@
 												"type": "string"
 											},
 											"operator": {
-												"description": "Operator",
+												"description": "Operator.",
 												"enum": [
 													"<",
 													"<=",
@@ -7217,22 +7370,22 @@
 												"type": "string"
 											},
 											"os_distro_name": {
-												"description": "Operating System Distribution Name (linux only)",
+												"description": "Operating System Distribution Name (linux only).",
 												"example": "ubuntu",
 												"type": "string"
 											},
 											"os_distro_revision": {
-												"description": "Version of OS Distribution (linux only)",
+												"description": "Version of OS Distribution (linux only).",
 												"example": "11.3.1",
 												"type": "string"
 											},
 											"os_version_extra": {
-												"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)",
+												"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 												"example": "(a) or -1007",
 												"type": "string"
 											},
 											"version": {
-												"description": "Version of OS",
+												"description": "Version of OS.",
 												"example": "13.3.0",
 												"type": "string"
 											}
@@ -7248,12 +7401,12 @@
 									{
 										"properties": {
 											"enabled": {
-												"description": "Enabled",
+												"description": "Enabled.",
 												"example": true,
 												"type": "boolean"
 											},
 											"operating_system": {
-												"description": "Operating System",
+												"description": "Operating System.",
 												"enum": [
 													"windows",
 													"mac"
@@ -7272,7 +7425,7 @@
 									{
 										"properties": {
 											"operating_system": {
-												"description": "Operating system",
+												"description": "Operating system.",
 												"enum": [
 													"windows",
 													"linux",
@@ -7307,7 +7460,7 @@
 									{
 										"properties": {
 											"operating_system": {
-												"description": "Operating system",
+												"description": "Operating system.",
 												"enum": [
 													"windows",
 													"linux",
@@ -7341,6 +7494,21 @@
 									},
 									{
 										"properties": {
+											"id": {
+												"description": "UUID of Access List",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"maxLength": 36,
+												"type": "string"
+											}
+										},
+										"required": [
+											"id"
+										],
+										"title": "Serial Number",
+										"type": "object"
+									},
+									{
+										"properties": {
 											"checkDisks": {
 												"description": "List of volume names to be checked for encryption.",
 												"example": [
@@ -7365,7 +7533,7 @@
 									{
 										"properties": {
 											"operating_system": {
-												"description": "Operating system",
+												"description": "Operating system.",
 												"enum": [
 													"windows",
 													"linux",
@@ -7406,7 +7574,7 @@
 												"type": "string"
 											},
 											"cn": {
-												"description": "Common Name that is protected by the certificate",
+												"description": "Common Name that is protected by the certificate.",
 												"example": "example.com",
 												"type": "string"
 											}
@@ -7437,7 +7605,7 @@
 												"type": "string"
 											},
 											"extended_key_usage": {
-												"description": "List of values indicating purposes for which the certificate public key can be used",
+												"description": "List of values indicating purposes for which the certificate public key can be used.",
 												"example": [
 													"clientAuth",
 													"emailProtection"
@@ -7483,7 +7651,7 @@
 												"type": "object"
 											},
 											"operating_system": {
-												"description": "Operating System",
+												"description": "Operating System.",
 												"enum": [
 													"windows",
 													"mac",
@@ -7504,7 +7672,7 @@
 									{
 										"properties": {
 											"compliance_status": {
-												"description": "Compliance Status",
+												"description": "Compliance Status.",
 												"enum": [
 													"compliant",
 													"noncompliant",
@@ -7539,7 +7707,7 @@
 												"type": "string"
 											},
 											"operator": {
-												"description": "Operator",
+												"description": "Operator.",
 												"enum": [
 													"<",
 													"<=",
@@ -7551,17 +7719,17 @@
 												"type": "string"
 											},
 											"os": {
-												"description": "Os Version",
+												"description": "Os Version.",
 												"example": "13.3.0",
 												"type": "string"
 											},
 											"overall": {
-												"description": "overall",
+												"description": "Overall.",
 												"example": 90,
 												"type": "string"
 											},
 											"sensor_config": {
-												"description": "SensorConfig",
+												"description": "SensorConfig.",
 												"example": 90,
 												"type": "string"
 											},
@@ -7576,12 +7744,12 @@
 												"type": "string"
 											},
 											"version": {
-												"description": "Version",
+												"description": "Version.",
 												"example": "13.3.0",
 												"type": "string"
 											},
 											"versionOperator": {
-												"description": "Version Operator",
+												"description": "Version Operator.",
 												"enum": [
 													"<",
 													"<=",
@@ -7602,7 +7770,7 @@
 									{
 										"properties": {
 											"compliance_status": {
-												"description": "Compliance Status",
+												"description": "Compliance Status.",
 												"enum": [
 													"compliant",
 													"noncompliant",
@@ -7635,7 +7803,7 @@
 												"type": "string"
 											},
 											"countOperator": {
-												"description": "Count Operator",
+												"description": "Count Operator.",
 												"enum": [
 													"<",
 													"<=",
@@ -7696,7 +7864,7 @@
 												"type": "string"
 											},
 											"scoreOperator": {
-												"description": "Score Operator",
+												"description": "Score Operator.",
 												"enum": [
 													"<",
 													"<=",
@@ -7766,7 +7934,7 @@
 												"type": "string"
 											},
 											"operator": {
-												"description": "operator",
+												"description": "Operator.",
 												"enum": [
 													"<",
 													"<=",
@@ -7792,7 +7960,7 @@
 												"type": "string"
 											},
 											"operator": {
-												"description": "operator",
+												"description": "Operator.",
 												"enum": [
 													"<",
 													"<=",
@@ -7860,6 +8028,7 @@
 									"gateway",
 									"warp",
 									"disk_encryption",
+									"serial_number",
 									"sentinelone",
 									"carbonblack",
 									"firewall",
@@ -7883,7 +8052,8 @@
 						"required": [
 							"name",
 							"type"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -7947,7 +8117,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -7986,7 +8158,8 @@
 													"nullable": true,
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -8022,12 +8195,12 @@
 														{
 															"properties": {
 																"exists": {
-																	"description": "Whether or not file exists",
+																	"description": "Whether or not file exists.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"operating_system": {
-																	"description": "Operating system",
+																	"description": "Operating system.",
 																	"enum": [
 																		"windows",
 																		"linux",
@@ -8067,7 +8240,7 @@
 																	"type": "string"
 																},
 																"operating_system": {
-																	"description": "Operating System",
+																	"description": "Operating System.",
 																	"enum": [
 																		"android",
 																		"ios",
@@ -8087,12 +8260,12 @@
 														{
 															"properties": {
 																"domain": {
-																	"description": "Domain",
+																	"description": "Domain.",
 																	"example": "example.com",
 																	"type": "string"
 																},
 																"operating_system": {
-																	"description": "Operating System",
+																	"description": "Operating System.",
 																	"enum": [
 																		"windows"
 																	],
@@ -8109,7 +8282,7 @@
 														{
 															"properties": {
 																"operating_system": {
-																	"description": "Operating System",
+																	"description": "Operating System.",
 																	"enum": [
 																		"windows"
 																	],
@@ -8117,7 +8290,7 @@
 																	"type": "string"
 																},
 																"operator": {
-																	"description": "Operator",
+																	"description": "Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -8129,22 +8302,22 @@
 																	"type": "string"
 																},
 																"os_distro_name": {
-																	"description": "Operating System Distribution Name (linux only)",
+																	"description": "Operating System Distribution Name (linux only).",
 																	"example": "ubuntu",
 																	"type": "string"
 																},
 																"os_distro_revision": {
-																	"description": "Version of OS Distribution (linux only)",
+																	"description": "Version of OS Distribution (linux only).",
 																	"example": "11.3.1",
 																	"type": "string"
 																},
 																"os_version_extra": {
-																	"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)",
+																	"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 																	"example": "(a) or -1007",
 																	"type": "string"
 																},
 																"version": {
-																	"description": "Version of OS",
+																	"description": "Version of OS.",
 																	"example": "13.3.0",
 																	"type": "string"
 																}
@@ -8160,12 +8333,12 @@
 														{
 															"properties": {
 																"enabled": {
-																	"description": "Enabled",
+																	"description": "Enabled.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"operating_system": {
-																	"description": "Operating System",
+																	"description": "Operating System.",
 																	"enum": [
 																		"windows",
 																		"mac"
@@ -8184,7 +8357,7 @@
 														{
 															"properties": {
 																"operating_system": {
-																	"description": "Operating system",
+																	"description": "Operating system.",
 																	"enum": [
 																		"windows",
 																		"linux",
@@ -8219,7 +8392,7 @@
 														{
 															"properties": {
 																"operating_system": {
-																	"description": "Operating system",
+																	"description": "Operating system.",
 																	"enum": [
 																		"windows",
 																		"linux",
@@ -8253,6 +8426,21 @@
 														},
 														{
 															"properties": {
+																"id": {
+																	"description": "UUID of Access List",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"title": "Serial Number",
+															"type": "object"
+														},
+														{
+															"properties": {
 																"checkDisks": {
 																	"description": "List of volume names to be checked for encryption.",
 																	"example": [
@@ -8277,7 +8465,7 @@
 														{
 															"properties": {
 																"operating_system": {
-																	"description": "Operating system",
+																	"description": "Operating system.",
 																	"enum": [
 																		"windows",
 																		"linux",
@@ -8318,7 +8506,7 @@
 																	"type": "string"
 																},
 																"cn": {
-																	"description": "Common Name that is protected by the certificate",
+																	"description": "Common Name that is protected by the certificate.",
 																	"example": "example.com",
 																	"type": "string"
 																}
@@ -8349,7 +8537,7 @@
 																	"type": "string"
 																},
 																"extended_key_usage": {
-																	"description": "List of values indicating purposes for which the certificate public key can be used",
+																	"description": "List of values indicating purposes for which the certificate public key can be used.",
 																	"example": [
 																		"clientAuth",
 																		"emailProtection"
@@ -8395,7 +8583,7 @@
 																	"type": "object"
 																},
 																"operating_system": {
-																	"description": "Operating System",
+																	"description": "Operating System.",
 																	"enum": [
 																		"windows",
 																		"mac",
@@ -8416,7 +8604,7 @@
 														{
 															"properties": {
 																"compliance_status": {
-																	"description": "Compliance Status",
+																	"description": "Compliance Status.",
 																	"enum": [
 																		"compliant",
 																		"noncompliant",
@@ -8451,7 +8639,7 @@
 																	"type": "string"
 																},
 																"operator": {
-																	"description": "Operator",
+																	"description": "Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -8463,17 +8651,17 @@
 																	"type": "string"
 																},
 																"os": {
-																	"description": "Os Version",
+																	"description": "Os Version.",
 																	"example": "13.3.0",
 																	"type": "string"
 																},
 																"overall": {
-																	"description": "overall",
+																	"description": "Overall.",
 																	"example": 90,
 																	"type": "string"
 																},
 																"sensor_config": {
-																	"description": "SensorConfig",
+																	"description": "SensorConfig.",
 																	"example": 90,
 																	"type": "string"
 																},
@@ -8488,12 +8676,12 @@
 																	"type": "string"
 																},
 																"version": {
-																	"description": "Version",
+																	"description": "Version.",
 																	"example": "13.3.0",
 																	"type": "string"
 																},
 																"versionOperator": {
-																	"description": "Version Operator",
+																	"description": "Version Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -8514,7 +8702,7 @@
 														{
 															"properties": {
 																"compliance_status": {
-																	"description": "Compliance Status",
+																	"description": "Compliance Status.",
 																	"enum": [
 																		"compliant",
 																		"noncompliant",
@@ -8547,7 +8735,7 @@
 																	"type": "string"
 																},
 																"countOperator": {
-																	"description": "Count Operator",
+																	"description": "Count Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -8608,7 +8796,7 @@
 																	"type": "string"
 																},
 																"scoreOperator": {
-																	"description": "Score Operator",
+																	"description": "Score Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -8678,7 +8866,7 @@
 																	"type": "string"
 																},
 																"operator": {
-																	"description": "operator",
+																	"description": "Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -8704,7 +8892,7 @@
 																	"type": "string"
 																},
 																"operator": {
-																	"description": "operator",
+																	"description": "Operator.",
 																	"enum": [
 																		"<",
 																		"<=",
@@ -8772,6 +8960,7 @@
 														"gateway",
 														"warp",
 														"disk_encryption",
+														"serial_number",
 														"sentinelone",
 														"carbonblack",
 														"firewall",
@@ -8794,13 +8983,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Update a device posture rule response"
+				"description": "Update a device posture rule response."
 			},
 			"4XX": {
 				"content": {
@@ -8861,7 +9051,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -8900,7 +9092,8 @@
 															"nullable": true,
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -8936,12 +9129,12 @@
 																{
 																	"properties": {
 																		"exists": {
-																			"description": "Whether or not file exists",
+																			"description": "Whether or not file exists.",
 																			"example": true,
 																			"type": "boolean"
 																		},
 																		"operating_system": {
-																			"description": "Operating system",
+																			"description": "Operating system.",
 																			"enum": [
 																				"windows",
 																				"linux",
@@ -8981,7 +9174,7 @@
 																			"type": "string"
 																		},
 																		"operating_system": {
-																			"description": "Operating System",
+																			"description": "Operating System.",
 																			"enum": [
 																				"android",
 																				"ios",
@@ -9001,12 +9194,12 @@
 																{
 																	"properties": {
 																		"domain": {
-																			"description": "Domain",
+																			"description": "Domain.",
 																			"example": "example.com",
 																			"type": "string"
 																		},
 																		"operating_system": {
-																			"description": "Operating System",
+																			"description": "Operating System.",
 																			"enum": [
 																				"windows"
 																			],
@@ -9023,7 +9216,7 @@
 																{
 																	"properties": {
 																		"operating_system": {
-																			"description": "Operating System",
+																			"description": "Operating System.",
 																			"enum": [
 																				"windows"
 																			],
@@ -9031,7 +9224,7 @@
 																			"type": "string"
 																		},
 																		"operator": {
-																			"description": "Operator",
+																			"description": "Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -9043,22 +9236,22 @@
 																			"type": "string"
 																		},
 																		"os_distro_name": {
-																			"description": "Operating System Distribution Name (linux only)",
+																			"description": "Operating System Distribution Name (linux only).",
 																			"example": "ubuntu",
 																			"type": "string"
 																		},
 																		"os_distro_revision": {
-																			"description": "Version of OS Distribution (linux only)",
+																			"description": "Version of OS Distribution (linux only).",
 																			"example": "11.3.1",
 																			"type": "string"
 																		},
 																		"os_version_extra": {
-																			"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)",
+																			"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 																			"example": "(a) or -1007",
 																			"type": "string"
 																		},
 																		"version": {
-																			"description": "Version of OS",
+																			"description": "Version of OS.",
 																			"example": "13.3.0",
 																			"type": "string"
 																		}
@@ -9074,12 +9267,12 @@
 																{
 																	"properties": {
 																		"enabled": {
-																			"description": "Enabled",
+																			"description": "Enabled.",
 																			"example": true,
 																			"type": "boolean"
 																		},
 																		"operating_system": {
-																			"description": "Operating System",
+																			"description": "Operating System.",
 																			"enum": [
 																				"windows",
 																				"mac"
@@ -9098,7 +9291,7 @@
 																{
 																	"properties": {
 																		"operating_system": {
-																			"description": "Operating system",
+																			"description": "Operating system.",
 																			"enum": [
 																				"windows",
 																				"linux",
@@ -9133,7 +9326,7 @@
 																{
 																	"properties": {
 																		"operating_system": {
-																			"description": "Operating system",
+																			"description": "Operating system.",
 																			"enum": [
 																				"windows",
 																				"linux",
@@ -9167,6 +9360,21 @@
 																},
 																{
 																	"properties": {
+																		"id": {
+																			"description": "UUID of Access List",
+																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																			"maxLength": 36,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"title": "Serial Number",
+																	"type": "object"
+																},
+																{
+																	"properties": {
 																		"checkDisks": {
 																			"description": "List of volume names to be checked for encryption.",
 																			"example": [
@@ -9191,7 +9399,7 @@
 																{
 																	"properties": {
 																		"operating_system": {
-																			"description": "Operating system",
+																			"description": "Operating system.",
 																			"enum": [
 																				"windows",
 																				"linux",
@@ -9232,7 +9440,7 @@
 																			"type": "string"
 																		},
 																		"cn": {
-																			"description": "Common Name that is protected by the certificate",
+																			"description": "Common Name that is protected by the certificate.",
 																			"example": "example.com",
 																			"type": "string"
 																		}
@@ -9263,7 +9471,7 @@
 																			"type": "string"
 																		},
 																		"extended_key_usage": {
-																			"description": "List of values indicating purposes for which the certificate public key can be used",
+																			"description": "List of values indicating purposes for which the certificate public key can be used.",
 																			"example": [
 																				"clientAuth",
 																				"emailProtection"
@@ -9309,7 +9517,7 @@
 																			"type": "object"
 																		},
 																		"operating_system": {
-																			"description": "Operating System",
+																			"description": "Operating System.",
 																			"enum": [
 																				"windows",
 																				"mac",
@@ -9330,7 +9538,7 @@
 																{
 																	"properties": {
 																		"compliance_status": {
-																			"description": "Compliance Status",
+																			"description": "Compliance Status.",
 																			"enum": [
 																				"compliant",
 																				"noncompliant",
@@ -9365,7 +9573,7 @@
 																			"type": "string"
 																		},
 																		"operator": {
-																			"description": "Operator",
+																			"description": "Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -9377,17 +9585,17 @@
 																			"type": "string"
 																		},
 																		"os": {
-																			"description": "Os Version",
+																			"description": "Os Version.",
 																			"example": "13.3.0",
 																			"type": "string"
 																		},
 																		"overall": {
-																			"description": "overall",
+																			"description": "Overall.",
 																			"example": 90,
 																			"type": "string"
 																		},
 																		"sensor_config": {
-																			"description": "SensorConfig",
+																			"description": "SensorConfig.",
 																			"example": 90,
 																			"type": "string"
 																		},
@@ -9402,12 +9610,12 @@
 																			"type": "string"
 																		},
 																		"version": {
-																			"description": "Version",
+																			"description": "Version.",
 																			"example": "13.3.0",
 																			"type": "string"
 																		},
 																		"versionOperator": {
-																			"description": "Version Operator",
+																			"description": "Version Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -9428,7 +9636,7 @@
 																{
 																	"properties": {
 																		"compliance_status": {
-																			"description": "Compliance Status",
+																			"description": "Compliance Status.",
 																			"enum": [
 																				"compliant",
 																				"noncompliant",
@@ -9461,7 +9669,7 @@
 																			"type": "string"
 																		},
 																		"countOperator": {
-																			"description": "Count Operator",
+																			"description": "Count Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -9522,7 +9730,7 @@
 																			"type": "string"
 																		},
 																		"scoreOperator": {
-																			"description": "Score Operator",
+																			"description": "Score Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -9592,7 +9800,7 @@
 																			"type": "string"
 																		},
 																		"operator": {
-																			"description": "operator",
+																			"description": "Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -9618,7 +9826,7 @@
 																			"type": "string"
 																		},
 																		"operator": {
-																			"description": "operator",
+																			"description": "Operator.",
 																			"enum": [
 																				"<",
 																				"<=",
@@ -9686,6 +9894,7 @@
 																"gateway",
 																"warp",
 																"disk_encryption",
+																"serial_number",
 																"sentinelone",
 																"carbonblack",
 																"firewall",
@@ -9708,7 +9917,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -9780,7 +9990,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -9800,13 +10010,14 @@
 						}
 					}
 				},
-				"description": "Update a device posture rule response failure"
+				"description": "Update a device posture rule response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update a device posture rule",

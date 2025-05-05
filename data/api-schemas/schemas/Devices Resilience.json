@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/devices/resilience/disconnect": {
-		"description": "Fetch the Global WARP override state",
+		"description": "Fetch the Global WARP override state.",
 		"operationId": "devices-resilience-retrieve-global-warp-override",
 		"parameters": [
 			{
@@ -70,7 +70,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -109,7 +111,8 @@
 													"nullable": true,
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -132,14 +135,15 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Fetch Global WARP override state response"
+				"description": "Fetch Global WARP override state response."
 			},
 			"4XX": {
 				"content": {
@@ -214,7 +218,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -234,13 +238,14 @@
 						}
 					}
 				},
-				"description": "Fetch Global WARP override state failure"
+				"description": "Fetch Global WARP override state failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Retrieve Global WARP override state",
@@ -351,7 +356,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -390,7 +397,8 @@
 													"nullable": true,
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -413,14 +421,15 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Set Global WARP override state response"
+				"description": "Set Global WARP override state response."
 			},
 			"4XX": {
 				"content": {
@@ -495,7 +504,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -515,13 +524,14 @@
 						}
 					}
 				},
-				"description": "Set Global WARP override state response failure"
+				"description": "Set Global WARP override state response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Set Global WARP override state",
