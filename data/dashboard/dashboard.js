@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "bf122ece-16f0-559b-81fa-40088a6679be")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "6c046dff-008f-599d-82cb-ae77ce6eed8f")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1041,10 +1041,10 @@
 					t.g.build = Sn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "5b178b38874a43c25f76ae922ea74b0ce185e781",
-						dashVersion: "32980389",
+						commit: "ca8b19530b4af5260f77ff80ec4f867c0c3ec16a",
+						dashVersion: "33003726",
 						env: "production",
-						builtAt: 1746218098735,
+						builtAt: 1746452734456,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -16600,7 +16600,9 @@
 						telemetry: {
 							query: (0, e.BC)`/accounts/${"accountId"}/workers/observability/telemetry/query`,
 							keys: (0, e.BC)`/accounts/${"accountId"}/workers/observability/telemetry/keys`,
-							values: (0, e.BC)`/accounts/${"accountId"}/workers/observability/telemetry/values`
+							values: (0, e.BC)`/accounts/${"accountId"}/workers/observability/telemetry/values`,
+							getParameters: (0, e.BC)`/accounts/${"accountId"}/workers/observability/telemetry/parameters/${"generationId"}`,
+							generateParameters: (0, e.BC)`/accounts/${"accountId"}/workers/observability/telemetry/parameters`
 						},
 						queries: {
 							list: (0, e.BC)`/accounts/${"accountId"}/workers/observability/queries`,
@@ -22405,4 +22407,4 @@
 	}
 ]);
 
-//# debugId=bf122ece-16f0-559b-81fa-40088a6679be
+//# debugId=6c046dff-008f-599d-82cb-ae77ce6eed8f
