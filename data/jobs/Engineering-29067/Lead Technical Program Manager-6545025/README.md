@@ -11,7 +11,6 @@
 <p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.&nbsp;</p>
 <p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</p>
 <p><strong>This position can be based in Austin, Denver, Atlanta, or Washington D.C..&nbsp; You will be reporting into the Engineering Program Management Organization (PMO).&nbsp;</strong></p>
-<p>&nbsp;</p>
 <p><strong>Major areas of responsibilities</strong></p>
 <ul>
 	<li>Work horizontally. Disparate groups like Engineering, Product Management, Finance, Revenue Operations, Business Intelligence and external vendors like Stripe and Salesforce all need to keep plans aligned and work together to deliver commitments.</li>
