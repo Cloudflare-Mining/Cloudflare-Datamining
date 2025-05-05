@@ -13,7 +13,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2O6gCfhZsoU1QCf3lu0QMl/bb4377cccbf982b607ce3564e4bf9fbd/2.png" alt="" class="kg-image" width="1999" height="1126" loading="lazy">
 	</figure>
 	<p>
-		Cloudflare’s network serves millions of requests per second across diverse geographies. How do we know that HMD will react quickly the next time we accidentally release code that contains a bug? HMD performs a testing strategy called <a href="https://en.wikipedia.org/wiki/Backtesting"><u>backtesting</u></a>, outside of the release process, which uses historical incident data to test how long it would take to react to degrading signals in a future release.</p>
+		Cloudflare’s network serves millions of requests per second across diverse geographies. How do we know that HMD will react quickly the next time we accidentally release code that contains a bug? HMD performs a testing strategy called <a href="https://en.wikipedia.org/wiki/Backtesting"><u>backtesting</u></a>, outside the release process, which uses historical incident data to test how long it would take to react to degrading signals in a future release.</p>
 	<p>We use Thanos to join thousands of small Prometheus deployments into a single unified query layer while keeping our monitoring reliable and cost-efficient. To backfill historical incident metric data that has fallen out of Prometheus’ retention period, we use our object storage solution, <a href="https://blog.cloudflare.com/tag/cloudflare-r2"><u>R2</u></a>.</p>
 	<p>Today, we store 4.5 billion distinct time series for a year of retention, which results in roughly 8 petabytes of data in 17 million objects distributed all over the globe.</p>
 	<figure class="kg-card kg-image-card">
@@ -83,7 +83,7 @@ sum(rate(http_request_count[10m]))</code></pre>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jcK7cvQfMtqeQMeuFnTMz/3bdca2132a4e700050512dc15d823ef3/5.png" alt="" class="kg-image" width="1516" height="818" loading="lazy">
 	</figure>
-	<p>While this works, it is not optimal for several reasons. We have to wait for raw data from thousands of data sources all over the world to arrive in one location before we can even start to decompress it, and then we are limited by all of the data being processed by one instance. If we double the number of data centers, we also need to double the amount of memory we allocate for query evaluation.</p>
+	<p>While this works, it is not optimal for several reasons. We have to wait for raw data from thousands of data sources all over the world to arrive in one location before we can even start to decompress it, and then we are limited by all the data being processed by one instance. If we double the number of data centers, we also need to double the amount of memory we allocate for query evaluation.</p>
 	<p>Many SLIs come in the form of simple aggregations, typically to boil down some aspect of the service's health to a number, such as the percentage of errors. As with the aforementioned recording rule, those aggregations are often distributive — we can evaluate them inside the data center and coalesce the sub-aggregations again to arrive at the same result.</p>
 	<p>To illustrate, if we had a recording rule per data center, we could rewrite our example like this:</p>
 	<pre class="language-Rust"><code class="language-Rust">sum(datacenter:http_request_count:rate10m{code="500"})
@@ -95,7 +95,7 @@ sum(datacenter:http_request_count:rate10m)</code></pre>
 	<pre class="language-Rust"><code class="language-Rust">(sum(rate(http_requests_total{status="500", datacenter="dc1"}[10m])) + ...)
 /
 (sum(rate(http_requests_total{datacenter="dc1"}[10m])) + ...)</code></pre>
-	<p>This is exactly what Thanos’ <a href="https://thanos.io/tip/proposals-done/202301-distributed-query-execution.md">distributed query engine</a> is capable of doing. Instead of requesting raw time series data, we request data center scoped aggregates and only need <b>to </b>send those back home where they get coalesced back again into the full query result:</p>
+	<p>This is exactly what Thanos’ <a href="https://thanos.io/tip/proposals-done/202301-distributed-query-execution.md"><u>distributed query engine</u></a> is capable of doing. Instead of requesting raw time series data, we request data center scoped aggregates and only need to send those back home where they get coalesced back again into the full query result:</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/41XYc4JFFrNsmr3p0nYD2h/e3719dbe8fb8055cbb8f72c88729dfd9/6.png" alt="" class="kg-image" width="1936" height="931" loading="lazy">
 	</figure>
