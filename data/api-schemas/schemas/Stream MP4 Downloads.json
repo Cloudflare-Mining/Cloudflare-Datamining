@@ -126,13 +126,14 @@
 											"example": "ok",
 											"type": "string"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete downloads response"
+				"description": "Delete downloads response."
 			},
 			"4XX": {
 				"content": {
@@ -245,7 +246,7 @@
 						}
 					}
 				},
-				"description": "Delete downloads response failure"
+				"description": "Delete downloads response failure."
 			}
 		},
 		"security": [
@@ -389,13 +390,14 @@
 										"result": {
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List downloads response"
+				"description": "List downloads response."
 			},
 			"4XX": {
 				"content": {
@@ -508,7 +510,7 @@
 						}
 					}
 				},
-				"description": "List downloads response failure"
+				"description": "List downloads response failure."
 			}
 		},
 		"security": [
@@ -659,13 +661,14 @@
 										"result": {
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create downloads response"
+				"description": "Create downloads response."
 			},
 			"4XX": {
 				"content": {
@@ -778,7 +781,7 @@
 						}
 					}
 				},
-				"description": "Create downloads response failure"
+				"description": "Create downloads response failure."
 			}
 		},
 		"security": [

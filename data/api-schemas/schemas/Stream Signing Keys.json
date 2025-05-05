@@ -131,13 +131,14 @@
 											"example": "ok",
 											"type": "string"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete signing keys response"
+				"description": "Delete signing keys response."
 			},
 			"4XX": {
 				"content": {
@@ -250,7 +251,7 @@
 						}
 					}
 				},
-				"description": "Delete signing keys response failure"
+				"description": "Delete signing keys response failure."
 			}
 		},
 		"security": [
@@ -395,13 +396,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List signing keys response"
+				"description": "List signing keys response."
 			},
 			"4XX": {
 				"content": {
@@ -514,7 +516,7 @@
 						}
 					}
 				},
-				"description": "List signing keys response failure"
+				"description": "List signing keys response failure."
 			}
 		},
 		"security": [
@@ -675,13 +677,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create signing keys response"
+				"description": "Create signing keys response."
 			},
 			"4XX": {
 				"content": {
@@ -794,7 +797,7 @@
 						}
 					}
 				},
-				"description": "Create signing keys response failure"
+				"description": "Create signing keys response failure."
 			}
 		},
 		"security": [

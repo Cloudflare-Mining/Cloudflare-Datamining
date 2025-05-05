@@ -139,13 +139,14 @@
 											"type": "string",
 											"x-auditable": true
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete captions or subtitles response"
+				"description": "Delete captions or subtitles response."
 			},
 			"4XX": {
 				"content": {
@@ -258,7 +259,7 @@
 						}
 					}
 				},
-				"description": "Delete captions or subtitles response failure"
+				"description": "Delete captions or subtitles response failure."
 			}
 		},
 		"security": [
@@ -430,13 +431,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List captions or subtitles response"
+				"description": "List captions or subtitles response."
 			},
 			"4XX": {
 				"content": {
@@ -549,7 +551,7 @@
 						}
 					}
 				},
-				"description": "List captions or subtitles response failure"
+				"description": "List captions or subtitles response failure."
 			}
 		},
 		"security": [
@@ -735,13 +737,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List captions or subtitles response for a provided language"
+				"description": "List captions or subtitles response for a provided language."
 			},
 			"4XX": {
 				"content": {
@@ -854,7 +857,7 @@
 						}
 					}
 				},
-				"description": "List captions or subtitles response for a provided language"
+				"description": "List captions or subtitles response for a provided language."
 			}
 		},
 		"security": [
@@ -928,7 +931,7 @@
 						}
 					}
 				},
-				"description": "Return WebVTT caption or subtitle response"
+				"description": "Return WebVTT caption or subtitle response."
 			},
 			"4XX": {
 				"content": {
@@ -1041,7 +1044,7 @@
 						}
 					}
 				},
-				"description": "Return WebVTT caption or subtitle response failure"
+				"description": "Return WebVTT caption or subtitle response failure."
 			}
 		},
 		"security": [
@@ -1227,13 +1230,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Generate captions or subtitles response for a provided language"
+				"description": "Generate captions or subtitles response for a provided language."
 			},
 			"4XX": {
 				"content": {
@@ -1346,7 +1350,7 @@
 						}
 					}
 				},
-				"description": "Generate captions or subtitles response for a provided language"
+				"description": "Generate captions or subtitles response for a provided language."
 			}
 		},
 		"security": [
@@ -1549,13 +1553,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Upload captions or subtitles response"
+				"description": "Upload captions or subtitles response."
 			},
 			"4XX": {
 				"content": {
@@ -1668,7 +1673,7 @@
 						}
 					}
 				},
-				"description": "Upload captions or subtitles response failure"
+				"description": "Upload captions or subtitles response failure."
 			}
 		},
 		"security": [

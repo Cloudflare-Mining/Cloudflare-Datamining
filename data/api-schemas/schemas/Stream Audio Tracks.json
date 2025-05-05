@@ -139,13 +139,14 @@
 											"example": "ok",
 											"type": "string"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Deletes additional audio tracks on a video"
+				"description": "Deletes additional audio tracks on a video."
 			},
 			"4XX": {
 				"content": {
@@ -245,13 +246,14 @@
 											"example": "ok",
 											"type": "string"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Deletes additional audio tracks on a video response failure"
+				"description": "Deletes additional audio tracks on a video response failure."
 			}
 		},
 		"security": [
@@ -420,17 +422,19 @@
 														"type": "string",
 														"x-auditable": true
 													}
-												}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Lists additional audio tracks on a video"
+				"description": "Lists additional audio tracks on a video."
 			},
 			"4XX": {
 				"content": {
@@ -543,7 +547,7 @@
 						}
 					}
 				},
-				"description": "Lists additional audio tracks on a video response failure"
+				"description": "Lists additional audio tracks on a video response failure."
 			}
 		},
 		"security": [
@@ -748,15 +752,17 @@
 													"type": "string",
 													"x-auditable": true
 												}
-											}
+											},
+											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Edits additional audio tracks on a video"
+				"description": "Edits additional audio tracks on a video."
 			},
 			"4XX": {
 				"content": {
@@ -869,7 +875,7 @@
 						}
 					}
 				},
-				"description": "Edits additional audio tracks on a video response failure"
+				"description": "Edits additional audio tracks on a video response failure."
 			}
 		},
 		"security": [
@@ -1065,15 +1071,17 @@
 													"type": "string",
 													"x-auditable": true
 												}
-											}
+											},
+											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Add audio tracks to a video"
+				"description": "Add audio tracks to a video."
 			},
 			"4XX": {
 				"content": {
@@ -1186,7 +1194,7 @@
 						}
 					}
 				},
-				"description": "Add audio tracks to a video response failure"
+				"description": "Add audio tracks to a video response failure."
 			}
 		},
 		"security": [

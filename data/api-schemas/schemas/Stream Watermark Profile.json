@@ -134,13 +134,14 @@
 											"type": "string",
 											"x-auditable": true
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete watermark profiles response"
+				"description": "Delete watermark profiles response."
 			},
 			"4XX": {
 				"content": {
@@ -253,7 +254,7 @@
 						}
 					}
 				},
-				"description": "Delete watermark profiles response failure"
+				"description": "Delete watermark profiles response failure."
 			}
 		},
 		"security": [
@@ -463,13 +464,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List watermark profiles response"
+				"description": "List watermark profiles response."
 			},
 			"4XX": {
 				"content": {
@@ -582,7 +584,7 @@
 						}
 					}
 				},
-				"description": "List watermark profiles response failure"
+				"description": "List watermark profiles response failure."
 			}
 		},
 		"security": [
@@ -807,13 +809,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Watermark profile details response"
+				"description": "Watermark profile details response."
 			},
 			"4XX": {
 				"content": {
@@ -926,7 +929,7 @@
 						}
 					}
 				},
-				"description": "Watermark profile details response failure"
+				"description": "Watermark profile details response failure."
 			}
 		},
 		"security": [
@@ -1201,13 +1204,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create watermark profiles via basic upload response"
+				"description": "Create watermark profiles via basic upload response."
 			},
 			"4XX": {
 				"content": {
@@ -1320,7 +1324,7 @@
 						}
 					}
 				},
-				"description": "Create watermark profiles via basic upload response failure"
+				"description": "Create watermark profiles via basic upload response failure."
 			}
 		},
 		"security": [

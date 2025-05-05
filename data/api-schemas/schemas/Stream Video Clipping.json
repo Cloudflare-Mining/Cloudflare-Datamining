@@ -325,13 +325,14 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Clip videos given a start and end time response"
+				"description": "Clip videos given a start and end time response."
 			},
 			"4XX": {
 				"content": {
@@ -444,7 +445,7 @@
 						}
 					}
 				},
-				"description": "Clip videos given a start and end time response failure"
+				"description": "Clip videos given a start and end time response failure."
 			}
 		},
 		"security": [

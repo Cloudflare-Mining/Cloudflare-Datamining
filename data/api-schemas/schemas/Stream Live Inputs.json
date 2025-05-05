@@ -38,13 +38,13 @@
 				"content": {
 					"application/json": {}
 				},
-				"description": "Delete a live input response"
+				"description": "Delete a live input response."
 			},
 			"4XX": {
 				"content": {
 					"application/json": {}
 				},
-				"description": "Delete a live input response failure"
+				"description": "Delete a live input response failure."
 			}
 		},
 		"security": [
@@ -113,13 +113,13 @@
 				"content": {
 					"application/json": {}
 				},
-				"description": "Delete an output response"
+				"description": "Delete an output response."
 			},
 			"4XX": {
 				"content": {
 					"application/json": {}
 				},
-				"description": "Delete an output response failure"
+				"description": "Delete an output response failure."
 			}
 		},
 		"security": [
@@ -310,13 +310,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List live inputs response"
+				"description": "List live inputs response."
 			},
 			"4XX": {
 				"content": {
@@ -429,7 +430,7 @@
 						}
 					}
 				},
-				"description": "List live inputs response failure"
+				"description": "List live inputs response failure."
 			}
 		},
 		"security": [
@@ -791,13 +792,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Retrieve a live input response"
+				"description": "Retrieve a live input response."
 			},
 			"4XX": {
 				"content": {
@@ -910,7 +912,7 @@
 						}
 					}
 				},
-				"description": "Retrieve a live input response failure"
+				"description": "Retrieve a live input response failure."
 			}
 		},
 		"security": [
@@ -1080,13 +1082,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List all outputs associated with a specified live input response"
+				"description": "List all outputs associated with a specified live input response."
 			},
 			"4XX": {
 				"content": {
@@ -1199,7 +1202,7 @@
 						}
 					}
 				},
-				"description": "List all outputs associated with a specified live input response failure"
+				"description": "List all outputs associated with a specified live input response failure."
 			}
 		},
 		"security": [
@@ -1633,13 +1636,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create a live input response"
+				"description": "Create a live input response."
 			},
 			"4XX": {
 				"content": {
@@ -1752,7 +1756,7 @@
 						}
 					}
 				},
-				"description": "Create a live input response failure"
+				"description": "Create a live input response failure."
 			}
 		},
 		"security": [
@@ -1957,13 +1961,14 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create a new output, connected to a live input response"
+				"description": "Create a new output, connected to a live input response."
 			},
 			"4XX": {
 				"content": {
@@ -2076,7 +2081,7 @@
 						}
 					}
 				},
-				"description": "Create a new output, connected to a live input response failure"
+				"description": "Create a new output, connected to a live input response failure."
 			}
 		},
 		"security": [
@@ -2518,13 +2523,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Update a live input response"
+				"description": "Update a live input response."
 			},
 			"4XX": {
 				"content": {
@@ -2637,7 +2643,7 @@
 						}
 					}
 				},
-				"description": "Update a live input response failure"
+				"description": "Update a live input response failure."
 			}
 		},
 		"security": [
@@ -2841,13 +2847,14 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Update an output response"
+				"description": "Update an output response."
 			},
 			"4XX": {
 				"content": {
@@ -2960,7 +2967,7 @@
 						}
 					}
 				},
-				"description": "Update an output response failure"
+				"description": "Update an output response failure."
 			}
 		},
 		"security": [

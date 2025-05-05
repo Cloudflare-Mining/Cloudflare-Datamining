@@ -1,13 +1,13 @@
 {
-	"DELETE /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}": {
+	"DELETE /accounts/{account_id}/cloudforce-one/requests/{request_id}": {
 		"operationId": "cloudforce-one-request-delete",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -15,10 +15,10 @@
 			},
 			{
 				"in": "path",
-				"name": "request_identifier",
+				"name": "request_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -39,8 +39,19 @@
 												"minimum": 1000,
 												"type": "integer"
 											},
+											"documentation_url": {
+												"type": "string"
+											},
 											"message": {
 												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"type": "object"
 											}
 										},
 										"required": [
@@ -60,8 +71,19 @@
 												"minimum": 1000,
 												"type": "integer"
 											},
+											"documentation_url": {
+												"type": "string"
+											},
 											"message": {
 												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"type": "object"
 											}
 										},
 										"required": [
@@ -74,7 +96,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										true
 									],
@@ -91,7 +113,7 @@
 						}
 					}
 				},
-				"description": "Delete request response"
+				"description": "Delete request response."
 			},
 			"4XX": {
 				"content": {
@@ -108,8 +130,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -129,8 +162,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -143,7 +187,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -161,21 +205,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete request response failure"
+				"description": "Delete request response failure."
 			}
 		},
 		"security": [
@@ -192,15 +245,15 @@
 			"Cloudforce One Write"
 		]
 	},
-	"DELETE /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/asset/{asset_identifer}": {
+	"DELETE /accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}": {
 		"operationId": "cloudforce-one-request-asset-delete",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -208,10 +261,10 @@
 			},
 			{
 				"in": "path",
-				"name": "request_identifier",
+				"name": "request_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -219,10 +272,10 @@
 			},
 			{
 				"in": "path",
-				"name": "asset_identifer",
+				"name": "asset_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -243,8 +296,19 @@
 												"minimum": 1000,
 												"type": "integer"
 											},
+											"documentation_url": {
+												"type": "string"
+											},
 											"message": {
 												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"type": "object"
 											}
 										},
 										"required": [
@@ -264,8 +328,19 @@
 												"minimum": 1000,
 												"type": "integer"
 											},
+											"documentation_url": {
+												"type": "string"
+											},
 											"message": {
 												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"type": "object"
 											}
 										},
 										"required": [
@@ -278,7 +353,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										true
 									],
@@ -295,7 +370,7 @@
 						}
 					}
 				},
-				"description": "Delete request asset response"
+				"description": "Delete request asset response."
 			},
 			"4XX": {
 				"content": {
@@ -312,8 +387,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -333,8 +419,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -347,7 +444,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -365,21 +462,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete request asset response failure"
+				"description": "Delete request asset response failure."
 			}
 		},
 		"security": [
@@ -396,15 +502,15 @@
 			"Cloudforce One Write"
 		]
 	},
-	"DELETE /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/message/{message_identifer}": {
+	"DELETE /accounts/{account_id}/cloudforce-one/requests/{request_id}/message/{message_id}": {
 		"operationId": "cloudforce-one-request-message-delete",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -412,10 +518,10 @@
 			},
 			{
 				"in": "path",
-				"name": "request_identifier",
+				"name": "request_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -423,7 +529,7 @@
 			},
 			{
 				"in": "path",
-				"name": "message_identifer",
+				"name": "message_id",
 				"required": true,
 				"schema": {
 					"type": "integer"
@@ -444,8 +550,19 @@
 												"minimum": 1000,
 												"type": "integer"
 											},
+											"documentation_url": {
+												"type": "string"
+											},
 											"message": {
 												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"type": "object"
 											}
 										},
 										"required": [
@@ -465,8 +582,19 @@
 												"minimum": 1000,
 												"type": "integer"
 											},
+											"documentation_url": {
+												"type": "string"
+											},
 											"message": {
 												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"type": "object"
 											}
 										},
 										"required": [
@@ -479,7 +607,7 @@
 									"type": "array"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										true
 									],
@@ -496,7 +624,7 @@
 						}
 					}
 				},
-				"description": "Delete request message response"
+				"description": "Delete request message response."
 			},
 			"4XX": {
 				"content": {
@@ -513,8 +641,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -534,8 +673,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -548,7 +698,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -566,21 +716,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete request message response failure"
+				"description": "Delete request message response failure."
 			}
 		},
 		"security": [
@@ -597,15 +756,15 @@
 			"Cloudforce One Write"
 		]
 	},
-	"GET /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}": {
+	"GET /accounts/{account_id}/cloudforce-one/requests/{request_id}": {
 		"operationId": "cloudforce-one-request-get",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -613,10 +772,10 @@
 			},
 			{
 				"in": "path",
-				"name": "request_identifier",
+				"name": "request_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -639,8 +798,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -660,8 +830,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -674,7 +855,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -699,7 +880,7 @@
 													"type": "string"
 												},
 												"content": {
-													"description": "Request content",
+													"description": "Request content.",
 													"example": "What regions were most effected by the recent DoS?",
 													"type": "string"
 												},
@@ -709,13 +890,13 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "UUID",
+													"description": "UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
 												},
 												"message_tokens": {
-													"description": "Tokens for the request messages",
+													"description": "Tokens for the request messages.",
 													"example": 1,
 													"type": "integer"
 												},
@@ -725,18 +906,18 @@
 													"type": "string"
 												},
 												"readable_id": {
-													"description": "Readable Request ID",
+													"description": "Readable Request ID.",
 													"example": "RFI-2022-000001",
 													"title": "Request Readable ID",
 													"type": "string"
 												},
 												"request": {
-													"description": "Requested information from request",
+													"description": "Requested information from request.",
 													"example": "Victomology",
 													"type": "string"
 												},
 												"status": {
-													"description": "Request Status",
+													"description": "Request Status.",
 													"enum": [
 														"open",
 														"accepted",
@@ -749,12 +930,12 @@
 													"type": "string"
 												},
 												"summary": {
-													"description": "Brief description of the request",
+													"description": "Brief description of the request.",
 													"example": "DoS attack",
 													"type": "string"
 												},
 												"tlp": {
-													"description": "The CISA defined Traffic Light Protocol (TLP)",
+													"description": "The CISA defined Traffic Light Protocol (TLP).",
 													"enum": [
 														"clear",
 														"amber",
@@ -766,7 +947,7 @@
 													"type": "string"
 												},
 												"tokens": {
-													"description": "Tokens for the request",
+													"description": "Tokens for the request.",
 													"example": 16,
 													"type": "integer"
 												},
@@ -789,13 +970,14 @@
 											"title": "Request Item",
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get request response"
+				"description": "Get request response."
 			},
 			"4XX": {
 				"content": {
@@ -812,8 +994,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -833,8 +1026,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -847,7 +1051,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -865,21 +1069,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get request response failure"
+				"description": "Get request response failure."
 			}
 		},
 		"security": [
@@ -897,15 +1110,15 @@
 			"Cloudforce One Read"
 		]
 	},
-	"GET /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/asset/{asset_identifer}": {
+	"GET /accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}": {
 		"operationId": "cloudforce-one-request-asset-get",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -913,10 +1126,10 @@
 			},
 			{
 				"in": "path",
-				"name": "request_identifier",
+				"name": "request_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -924,10 +1137,10 @@
 			},
 			{
 				"in": "path",
-				"name": "asset_identifer",
+				"name": "asset_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -950,8 +1163,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -971,8 +1195,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -985,7 +1220,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -1011,31 +1246,27 @@
 																"example": "2022-04-01T05:20:00Z",
 																"format": "date-time",
 																"type": "string"
-															},
-															{
-																"description": "Asset creation time"
-															},
-															{
-																"example": "2022-01-01T00:00:00Z"
 															}
-														]
+														],
+														"description": "Defines the asset creation time.",
+														"example": "2022-01-01T00:00:00Z"
 													},
 													"description": {
-														"description": "Asset description",
+														"description": "Asset description.",
 														"example": "example description",
 														"type": "string"
 													},
 													"file_type": {
-														"description": "Asset file type",
+														"description": "Asset file type.",
 														"example": "docx",
 														"type": "string"
 													},
 													"id": {
-														"description": "Asset ID",
+														"description": "Asset ID.",
 														"type": "integer"
 													},
 													"name": {
-														"description": "Asset name",
+														"description": "Asset name.",
 														"example": "example.docx",
 														"type": "string"
 													}
@@ -1049,13 +1280,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get request asset response"
+				"description": "Get request asset response."
 			},
 			"4XX": {
 				"content": {
@@ -1072,8 +1304,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1093,8 +1336,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1107,7 +1361,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -1125,21 +1379,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get request asset response failure"
+				"description": "Get request asset response failure."
 			}
 		},
 		"security": [
@@ -1157,15 +1420,15 @@
 			"Cloudforce One Read"
 		]
 	},
-	"GET /accounts/{account_identifier}/cloudforce-one/requests/constants": {
+	"GET /accounts/{account_id}/cloudforce-one/requests/constants": {
 		"operationId": "cloudforce-one-request-constants",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1188,8 +1451,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1209,8 +1483,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1223,7 +1508,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -1269,7 +1554,7 @@
 														"declined"
 													],
 													"items": {
-														"description": "Request Status",
+														"description": "Request Status.",
 														"enum": [
 															"open",
 															"accepted",
@@ -1292,7 +1577,7 @@
 														"red"
 													],
 													"items": {
-														"description": "The CISA defined Traffic Light Protocol (TLP)",
+														"description": "The CISA defined Traffic Light Protocol (TLP).",
 														"enum": [
 															"clear",
 															"amber",
@@ -1309,13 +1594,14 @@
 											"title": "Request Constants",
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get request constants response"
+				"description": "Get request constants response."
 			},
 			"4XX": {
 				"content": {
@@ -1332,8 +1618,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1353,8 +1650,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1367,7 +1675,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -1385,21 +1693,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get request constants response failure"
+				"description": "Get request constants response failure."
 			}
 		},
 		"security": [
@@ -1417,15 +1734,15 @@
 			"Cloudforce One Read"
 		]
 	},
-	"GET /accounts/{account_identifier}/cloudforce-one/requests/quota": {
+	"GET /accounts/{account_id}/cloudforce-one/requests/quota": {
 		"operationId": "cloudforce-one-request-quota",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1448,8 +1765,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1469,8 +1797,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1483,7 +1822,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -1508,14 +1847,10 @@
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
 															"type": "string"
-														},
-														{
-															"description": "Anniversary date is when annual quota limit is refresh"
-														},
-														{
-															"example": "2022-01-01T00:00:00Z"
 														}
-													]
+													],
+													"description": "Anniversary date is when annual quota limit is refreshed.",
+													"example": "2022-04-01T00:00:00Z"
 												},
 												"quarter_anniversary_date": {
 													"allOf": [
@@ -1523,22 +1858,18 @@
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
 															"type": "string"
-														},
-														{
-															"description": "Quater anniversary date is when quota limit is refreshed each quarter"
-														},
-														{
-															"example": "2022-04-01T00:00:00Z"
 														}
-													]
+													],
+													"description": "Quarter anniversary date is when quota limit is refreshed each quarter.",
+													"example": "2022-04-01T00:00:00Z"
 												},
 												"quota": {
-													"description": "Tokens for the quarter",
+													"description": "Tokens for the quarter.",
 													"example": 120,
 													"type": "integer"
 												},
 												"remaining": {
-													"description": "Tokens remaining for the quarter",
+													"description": "Tokens remaining for the quarter.",
 													"example": 64,
 													"type": "integer"
 												}
@@ -1546,13 +1877,14 @@
 											"title": "Quota",
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get request quota response"
+				"description": "Get request quota response."
 			},
 			"4XX": {
 				"content": {
@@ -1569,8 +1901,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1590,8 +1933,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1604,7 +1958,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -1622,21 +1976,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get request quota response failure"
+				"description": "Get request quota response failure."
 			}
 		},
 		"security": [
@@ -1654,15 +2017,15 @@
 			"Cloudforce One Read"
 		]
 	},
-	"GET /accounts/{account_identifier}/cloudforce-one/requests/types": {
+	"GET /accounts/{account_id}/cloudforce-one/requests/types": {
 		"operationId": "cloudforce-one-request-types",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1685,8 +2048,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1706,8 +2080,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1720,7 +2105,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -1743,19 +2128,20 @@
 												"Victomology"
 											],
 											"items": {
-												"description": "Request Types",
+												"description": "Request Types.",
 												"type": "string"
 											},
 											"title": "Request Types",
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get request types response"
+				"description": "Get request types response."
 			},
 			"4XX": {
 				"content": {
@@ -1772,8 +2158,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1793,8 +2190,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1807,7 +2215,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -1825,21 +2233,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get request types response failure"
+				"description": "Get request types response failure."
 			}
 		},
 		"security": [
@@ -1857,15 +2274,15 @@
 			"Cloudforce One Read"
 		]
 	},
-	"POST /accounts/{account_identifier}/cloudforce-one/requests": {
+	"POST /accounts/{account_id}/cloudforce-one/requests": {
 		"operationId": "cloudforce-one-request-list",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1883,14 +2300,10 @@
 										"example": "2022-04-01T05:20:00Z",
 										"format": "date-time",
 										"type": "string"
-									},
-									{
-										"description": "Retrieve requests completed after this time"
-									},
-									{
-										"example": "2022-01-01T00:00:00Z"
 									}
-								]
+								],
+								"description": "Retrieve requests completed after this time.",
+								"example": "2022-01-01T00:00:00Z"
 							},
 							"completed_before": {
 								"allOf": [
@@ -1898,14 +2311,10 @@
 										"example": "2022-04-01T05:20:00Z",
 										"format": "date-time",
 										"type": "string"
-									},
-									{
-										"description": "Retrieve requests completed before this time"
-									},
-									{
-										"example": "2024-01-01T00:00:00Z"
 									}
-								]
+								],
+								"description": "Retrieve requests completed before this time.",
+								"example": "2024-01-01T00:00:00Z"
 							},
 							"created_after": {
 								"allOf": [
@@ -1913,14 +2322,10 @@
 										"example": "2022-04-01T05:20:00Z",
 										"format": "date-time",
 										"type": "string"
-									},
-									{
-										"description": "Retrieve requests created after this time"
-									},
-									{
-										"example": "2022-01-01T00:00:00Z"
 									}
-								]
+								],
+								"description": "Retrieve requests created after this time.",
+								"example": "2022-01-01T00:00:00Z"
 							},
 							"created_before": {
 								"allOf": [
@@ -1928,36 +2333,32 @@
 										"example": "2022-04-01T05:20:00Z",
 										"format": "date-time",
 										"type": "string"
-									},
-									{
-										"description": "Retrieve requests created before this time"
-									},
-									{
-										"example": "2024-01-01T00:00:00Z"
 									}
-								]
+								],
+								"description": "Retrieve requests created before this time.",
+								"example": "2024-01-01T00:00:00Z"
 							},
 							"page": {
-								"description": "Page number of results",
+								"description": "Page number of results.",
 								"type": "integer"
 							},
 							"per_page": {
-								"description": "Number of results per page",
+								"description": "Number of results per page.",
 								"example": 10,
 								"type": "integer"
 							},
 							"request_type": {
-								"description": "Requested information from request",
+								"description": "Requested information from request.",
 								"example": "Victomology",
 								"type": "string"
 							},
 							"sort_by": {
-								"description": "Field to sort results by",
+								"description": "Field to sort results by.",
 								"example": "created",
 								"type": "string"
 							},
 							"sort_order": {
-								"description": "Sort order (asc or desc)",
+								"description": "Sort order (asc or desc).",
 								"enum": [
 									"asc",
 									"desc"
@@ -1965,7 +2366,7 @@
 								"type": "string"
 							},
 							"status": {
-								"description": "Request Status",
+								"description": "Request Status.",
 								"enum": [
 									"open",
 									"accepted",
@@ -2005,8 +2406,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2026,8 +2438,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2040,7 +2463,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -2066,14 +2489,10 @@
 																"example": "2022-04-01T05:20:00Z",
 																"format": "date-time",
 																"type": "string"
-															},
-															{
-																"description": "Request completion time"
-															},
-															{
-																"example": "2024-01-01T00:00:00Z"
 															}
-														]
+														],
+														"description": "Request completion time.",
+														"example": "2024-01-01T00:00:00Z"
 													},
 													"created": {
 														"allOf": [
@@ -2081,23 +2500,19 @@
 																"example": "2022-04-01T05:20:00Z",
 																"format": "date-time",
 																"type": "string"
-															},
-															{
-																"description": "Request creation time"
-															},
-															{
-																"example": "2022-04-01T00:00:00Z"
 															}
-														]
+														],
+														"description": "Request creation time.",
+														"example": "2022-04-01T00:00:00Z"
 													},
 													"id": {
-														"description": "UUID",
+														"description": "UUID.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"type": "string"
 													},
 													"message_tokens": {
-														"description": "Tokens for the request messages",
+														"description": "Tokens for the request messages.",
 														"example": 16,
 														"type": "integer"
 													},
@@ -2111,18 +2526,18 @@
 														"type": "string"
 													},
 													"readable_id": {
-														"description": "Readable Request ID",
+														"description": "Readable Request ID.",
 														"example": "RFI-2022-000001",
 														"title": "Request Readable ID",
 														"type": "string"
 													},
 													"request": {
-														"description": "Requested information from request",
+														"description": "Requested information from request.",
 														"example": "Victomology",
 														"type": "string"
 													},
 													"status": {
-														"description": "Request Status",
+														"description": "Request Status.",
 														"enum": [
 															"open",
 															"accepted",
@@ -2135,12 +2550,12 @@
 														"type": "string"
 													},
 													"summary": {
-														"description": "Brief description of the request",
+														"description": "Brief description of the request.",
 														"example": "DoS attack",
 														"type": "string"
 													},
 													"tlp": {
-														"description": "The CISA defined Traffic Light Protocol (TLP)",
+														"description": "The CISA defined Traffic Light Protocol (TLP).",
 														"enum": [
 															"clear",
 															"amber",
@@ -2152,7 +2567,7 @@
 														"type": "string"
 													},
 													"tokens": {
-														"description": "Tokens for the request",
+														"description": "Tokens for the request.",
 														"type": "integer"
 													},
 													"updated": {
@@ -2161,14 +2576,10 @@
 																"example": "2022-04-01T05:20:00Z",
 																"format": "date-time",
 																"type": "string"
-															},
-															{
-																"description": "Request last updated time"
-															},
-															{
-																"example": "2022-04-01T00:00:00Z"
 															}
-														]
+														],
+														"description": "Request last updated time.",
+														"example": "2022-04-01T00:00:00Z"
 													}
 												},
 												"required": [
@@ -2185,13 +2596,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List requests response"
+				"description": "List requests response."
 			},
 			"4XX": {
 				"content": {
@@ -2208,8 +2620,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2229,8 +2652,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2243,7 +2677,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -2261,21 +2695,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create response failure"
+				"description": "Create response failure."
 			}
 		},
 		"security": [
@@ -2292,15 +2735,15 @@
 			"Cloudforce One Write"
 		]
 	},
-	"POST /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/asset": {
+	"POST /accounts/{account_id}/cloudforce-one/requests/{request_id}/asset": {
 		"operationId": "cloudforce-one-request-asset-list",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -2308,10 +2751,10 @@
 			},
 			{
 				"in": "path",
-				"name": "request_identifier",
+				"name": "request_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -2324,11 +2767,11 @@
 					"schema": {
 						"properties": {
 							"page": {
-								"description": "Page number of results",
+								"description": "Page number of results.",
 								"type": "integer"
 							},
 							"per_page": {
-								"description": "Number of results per page",
+								"description": "Number of results per page.",
 								"example": 10,
 								"type": "integer"
 							}
@@ -2360,8 +2803,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2381,8 +2835,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2395,7 +2860,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -2421,31 +2886,27 @@
 																"example": "2022-04-01T05:20:00Z",
 																"format": "date-time",
 																"type": "string"
-															},
-															{
-																"description": "Asset creation time"
-															},
-															{
-																"example": "2022-01-01T00:00:00Z"
 															}
-														]
+														],
+														"description": "Defines the asset creation time.",
+														"example": "2022-01-01T00:00:00Z"
 													},
 													"description": {
-														"description": "Asset description",
+														"description": "Asset description.",
 														"example": "example description",
 														"type": "string"
 													},
 													"file_type": {
-														"description": "Asset file type",
+														"description": "Asset file type.",
 														"example": "docx",
 														"type": "string"
 													},
 													"id": {
-														"description": "Asset ID",
+														"description": "Asset ID.",
 														"type": "integer"
 													},
 													"name": {
-														"description": "Asset name",
+														"description": "Asset name.",
 														"example": "example.docx",
 														"type": "string"
 													}
@@ -2459,13 +2920,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List request assets response"
+				"description": "List request assets response."
 			},
 			"4XX": {
 				"content": {
@@ -2482,8 +2944,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2503,8 +2976,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2517,7 +3001,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -2535,21 +3019,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List request assets response failure"
+				"description": "List request assets response failure."
 			}
 		},
 		"security": [
@@ -2566,15 +3059,15 @@
 			"Cloudforce One Write"
 		]
 	},
-	"POST /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/asset/new": {
+	"POST /accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/new": {
 		"operationId": "cloudforce-one-request-asset-new",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -2582,10 +3075,10 @@
 			},
 			{
 				"in": "path",
-				"name": "request_identifier",
+				"name": "request_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -2598,7 +3091,7 @@
 					"schema": {
 						"properties": {
 							"source": {
-								"description": "Asset file to upload",
+								"description": "Asset file to upload.",
 								"example": "@/Users/me/example.docx",
 								"type": "string"
 							}
@@ -2626,8 +3119,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2647,8 +3151,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2661,7 +3176,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -2686,31 +3201,27 @@
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
 															"type": "string"
-														},
-														{
-															"description": "Asset creation time"
-														},
-														{
-															"example": "2022-01-01T00:00:00Z"
 														}
-													]
+													],
+													"description": "Defines the asset creation time.",
+													"example": "2022-01-01T00:00:00Z"
 												},
 												"description": {
-													"description": "Asset description",
+													"description": "Asset description.",
 													"example": "example description",
 													"type": "string"
 												},
 												"file_type": {
-													"description": "Asset file type",
+													"description": "Asset file type.",
 													"example": "docx",
 													"type": "string"
 												},
 												"id": {
-													"description": "Asset ID",
+													"description": "Asset ID.",
 													"type": "integer"
 												},
 												"name": {
-													"description": "Asset name",
+													"description": "Asset name.",
 													"example": "example.docx",
 													"type": "string"
 												}
@@ -2722,13 +3233,14 @@
 											"title": "Request Asset Item",
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create request asset response"
+				"description": "Create request asset response."
 			},
 			"4XX": {
 				"content": {
@@ -2745,8 +3257,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2766,8 +3289,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2780,7 +3314,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -2798,21 +3332,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create request asset response failure"
+				"description": "Create request asset response failure."
 			}
 		},
 		"security": [
@@ -2829,15 +3372,15 @@
 			"Cloudforce One Write"
 		]
 	},
-	"POST /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/message": {
+	"POST /accounts/{account_id}/cloudforce-one/requests/{request_id}/message": {
 		"operationId": "cloudforce-one-request-message-list",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -2845,10 +3388,10 @@
 			},
 			{
 				"in": "path",
-				"name": "request_identifier",
+				"name": "request_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -2866,14 +3409,10 @@
 										"example": "2022-04-01T05:20:00Z",
 										"format": "date-time",
 										"type": "string"
-									},
-									{
-										"description": "Retrieve messages created after this time"
-									},
-									{
-										"example": "2022-01-01T00:00:00Z"
 									}
-								]
+								],
+								"description": "Retrieve mes  ges created after this time.",
+								"example": "2022-01-01T00:00:Z"
 							},
 							"before": {
 								"allOf": [
@@ -2881,31 +3420,27 @@
 										"example": "2022-04-01T05:20:00Z",
 										"format": "date-time",
 										"type": "string"
-									},
-									{
-										"description": "Retrieve messages created before this time"
-									},
-									{
-										"example": "2024-01-01T00:00:00Z"
 									}
-								]
+								],
+								"description": "Retrieve messages created before this time.",
+								"example": "2024-01-01T00:00:00Z"
 							},
 							"page": {
-								"description": "Page number of results",
+								"description": "Page number of results.",
 								"type": "integer"
 							},
 							"per_page": {
-								"description": "Number of results per page",
+								"description": "Number of results per page.",
 								"example": 10,
 								"type": "integer"
 							},
 							"sort_by": {
-								"description": "Field to sort results by",
+								"description": "Field to sort results by.",
 								"example": "created",
 								"type": "string"
 							},
 							"sort_order": {
-								"description": "Sort order (asc or desc)",
+								"description": "Sort order (asc or desc).",
 								"enum": [
 									"asc",
 									"desc"
@@ -2940,8 +3475,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2961,8 +3507,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2975,7 +3532,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -2996,12 +3553,12 @@
 											"items": {
 												"properties": {
 													"author": {
-														"description": "Author of message",
+														"description": "Author of message.",
 														"example": "user@domain.com",
 														"type": "string"
 													},
 													"content": {
-														"description": "Content of message",
+														"description": "Content of message.",
 														"example": "Can you elaborate on the type of DoS that occurred?",
 														"type": "string"
 													},
@@ -3011,21 +3568,17 @@
 																"example": "2022-04-01T05:20:00Z",
 																"format": "date-time",
 																"type": "string"
-															},
-															{
-																"description": "Message creation time"
-															},
-															{
-																"example": "2022-01-01T00:00:00Z"
 															}
-														]
+														],
+														"description": "Defines the message creation time.",
+														"example": "2022-01-01T00:00:00Z"
 													},
 													"id": {
-														"description": "Message ID",
+														"description": "Message ID.",
 														"type": "integer"
 													},
 													"is_follow_on_request": {
-														"description": "Whether the message is a follow-on request",
+														"description": "Whether the message is a follow-on request.",
 														"type": "boolean"
 													},
 													"updated": {
@@ -3034,14 +3587,10 @@
 																"example": "2022-04-01T05:20:00Z",
 																"format": "date-time",
 																"type": "string"
-															},
-															{
-																"description": "Message last updated time"
-															},
-															{
-																"example": "2022-01-01T00:00:00Z"
 															}
-														]
+														],
+														"description": "Defines the message last updated time.",
+														"example": "2022-01-01T00:00:00Z"
 													}
 												},
 												"required": [
@@ -3056,13 +3605,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List request messages response"
+				"description": "List request messages response."
 			},
 			"4XX": {
 				"content": {
@@ -3079,8 +3629,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -3100,8 +3661,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -3114,7 +3686,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -3132,21 +3704,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List request messages response failure"
+				"description": "List request messages response failure."
 			}
 		},
 		"security": [
@@ -3163,15 +3744,15 @@
 			"Cloudforce One Write"
 		]
 	},
-	"POST /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/message/new": {
+	"POST /accounts/{account_id}/cloudforce-one/requests/{request_id}/message/new": {
 		"operationId": "cloudforce-one-request-message-new",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -3179,10 +3760,10 @@
 			},
 			{
 				"in": "path",
-				"name": "request_identifier",
+				"name": "request_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -3195,7 +3776,7 @@
 					"schema": {
 						"properties": {
 							"content": {
-								"description": "Content of message",
+								"description": "Content of message.",
 								"example": "Can you elaborate on the type of DoS that occurred?",
 								"type": "string"
 							}
@@ -3223,8 +3804,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -3244,8 +3836,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -3258,7 +3861,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -3278,12 +3881,12 @@
 										"result": {
 											"properties": {
 												"author": {
-													"description": "Author of message",
+													"description": "Author of message.",
 													"example": "user@domain.com",
 													"type": "string"
 												},
 												"content": {
-													"description": "Content of message",
+													"description": "Content of message.",
 													"example": "Can you elaborate on the type of DoS that occurred?",
 													"type": "string"
 												},
@@ -3293,21 +3896,17 @@
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
 															"type": "string"
-														},
-														{
-															"description": "Message creation time"
-														},
-														{
-															"example": "2022-01-01T00:00:00Z"
 														}
-													]
+													],
+													"description": "Defines the message creation time.",
+													"example": "2022-01-01T00:00:00Z"
 												},
 												"id": {
-													"description": "Message ID",
+													"description": "Message ID.",
 													"type": "integer"
 												},
 												"is_follow_on_request": {
-													"description": "Whether the message is a follow-on request",
+													"description": "Whether the message is a follow-on request.",
 													"type": "boolean"
 												},
 												"updated": {
@@ -3316,14 +3915,10 @@
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
 															"type": "string"
-														},
-														{
-															"description": "Message last updated time"
-														},
-														{
-															"example": "2022-01-01T00:00:00Z"
 														}
-													]
+													],
+													"description": "Defines the message last updated time.",
+													"example": "2022-01-01T00:00:00Z"
 												}
 											},
 											"required": [
@@ -3336,13 +3931,14 @@
 											"title": "Request Message Item",
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create request message response"
+				"description": "Create request message response."
 			},
 			"4XX": {
 				"content": {
@@ -3359,8 +3955,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -3380,8 +3987,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -3394,7 +4012,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -3412,21 +4030,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create request message response failure"
+				"description": "Create request message response failure."
 			}
 		},
 		"security": [
@@ -3443,16 +4070,16 @@
 			"Cloudforce One Write"
 		]
 	},
-	"POST /accounts/{account_identifier}/cloudforce-one/requests/new": {
+	"POST /accounts/{account_id}/cloudforce-one/requests/new": {
 		"description": "Creating a request adds the request into the Cloudforce One queue for analysis. In addition to the content, a short title, type, priority, and releasability should be provided. If one is not provided, a default will be assigned.",
 		"operationId": "cloudforce-one-request-new",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -3465,27 +4092,27 @@
 					"schema": {
 						"properties": {
 							"content": {
-								"description": "Request content",
+								"description": "Request content.",
 								"example": "What regions were most effected by the recent DoS?",
 								"type": "string"
 							},
 							"priority": {
-								"description": "Priority for analyzing the request",
+								"description": "Priority for analyzing the request.",
 								"example": "routine",
 								"type": "string"
 							},
 							"request_type": {
-								"description": "Requested information from request",
+								"description": "Requested information from request.",
 								"example": "Victomology",
 								"type": "string"
 							},
 							"summary": {
-								"description": "Brief description of the request",
+								"description": "Brief description of the request.",
 								"example": "DoS attack",
 								"type": "string"
 							},
 							"tlp": {
-								"description": "The CISA defined Traffic Light Protocol (TLP)",
+								"description": "The CISA defined Traffic Light Protocol (TLP).",
 								"enum": [
 									"clear",
 									"amber",
@@ -3520,8 +4147,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -3541,8 +4179,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -3555,7 +4204,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -3580,7 +4229,7 @@
 													"type": "string"
 												},
 												"content": {
-													"description": "Request content",
+													"description": "Request content.",
 													"example": "What regions were most effected by the recent DoS?",
 													"type": "string"
 												},
@@ -3590,13 +4239,13 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "UUID",
+													"description": "UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
 												},
 												"message_tokens": {
-													"description": "Tokens for the request messages",
+													"description": "Tokens for the request messages.",
 													"example": 1,
 													"type": "integer"
 												},
@@ -3606,18 +4255,18 @@
 													"type": "string"
 												},
 												"readable_id": {
-													"description": "Readable Request ID",
+													"description": "Readable Request ID.",
 													"example": "RFI-2022-000001",
 													"title": "Request Readable ID",
 													"type": "string"
 												},
 												"request": {
-													"description": "Requested information from request",
+													"description": "Requested information from request.",
 													"example": "Victomology",
 													"type": "string"
 												},
 												"status": {
-													"description": "Request Status",
+													"description": "Request Status.",
 													"enum": [
 														"open",
 														"accepted",
@@ -3630,12 +4279,12 @@
 													"type": "string"
 												},
 												"summary": {
-													"description": "Brief description of the request",
+													"description": "Brief description of the request.",
 													"example": "DoS attack",
 													"type": "string"
 												},
 												"tlp": {
-													"description": "The CISA defined Traffic Light Protocol (TLP)",
+													"description": "The CISA defined Traffic Light Protocol (TLP).",
 													"enum": [
 														"clear",
 														"amber",
@@ -3647,7 +4296,7 @@
 													"type": "string"
 												},
 												"tokens": {
-													"description": "Tokens for the request",
+													"description": "Tokens for the request.",
 													"example": 16,
 													"type": "integer"
 												},
@@ -3670,13 +4319,14 @@
 											"title": "Request Item",
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create request response"
+				"description": "Create request response."
 			},
 			"4XX": {
 				"content": {
@@ -3693,8 +4343,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -3714,8 +4375,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -3728,7 +4400,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -3746,21 +4418,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create response failure"
+				"description": "Create response failure."
 			}
 		},
 		"security": [
@@ -3769,7 +4450,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a New Request",
+		"summary": "Create a New Request.",
 		"tags": [
 			"Request for Information (RFI)"
 		],
@@ -3777,16 +4458,16 @@
 			"Cloudforce One Write"
 		]
 	},
-	"PUT /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}": {
+	"PUT /accounts/{account_id}/cloudforce-one/requests/{request_id}": {
 		"description": "Updating a request alters the request in the Cloudforce One queue. This API may be used to update any attributes of the request after the initial submission. Only fields that you choose to update need to be add to the request body.",
 		"operationId": "cloudforce-one-request-update",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -3794,10 +4475,10 @@
 			},
 			{
 				"in": "path",
-				"name": "request_identifier",
+				"name": "request_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -3810,27 +4491,27 @@
 					"schema": {
 						"properties": {
 							"content": {
-								"description": "Request content",
+								"description": "Request content.",
 								"example": "What regions were most effected by the recent DoS?",
 								"type": "string"
 							},
 							"priority": {
-								"description": "Priority for analyzing the request",
+								"description": "Priority for analyzing the request.",
 								"example": "routine",
 								"type": "string"
 							},
 							"request_type": {
-								"description": "Requested information from request",
+								"description": "Requested information from request.",
 								"example": "Victomology",
 								"type": "string"
 							},
 							"summary": {
-								"description": "Brief description of the request",
+								"description": "Brief description of the request.",
 								"example": "DoS attack",
 								"type": "string"
 							},
 							"tlp": {
-								"description": "The CISA defined Traffic Light Protocol (TLP)",
+								"description": "The CISA defined Traffic Light Protocol (TLP).",
 								"enum": [
 									"clear",
 									"amber",
@@ -3865,8 +4546,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -3886,8 +4578,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -3900,7 +4603,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -3925,7 +4628,7 @@
 													"type": "string"
 												},
 												"content": {
-													"description": "Request content",
+													"description": "Request content.",
 													"example": "What regions were most effected by the recent DoS?",
 													"type": "string"
 												},
@@ -3935,13 +4638,13 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "UUID",
+													"description": "UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
 												},
 												"message_tokens": {
-													"description": "Tokens for the request messages",
+													"description": "Tokens for the request messages.",
 													"example": 1,
 													"type": "integer"
 												},
@@ -3951,18 +4654,18 @@
 													"type": "string"
 												},
 												"readable_id": {
-													"description": "Readable Request ID",
+													"description": "Readable Request ID.",
 													"example": "RFI-2022-000001",
 													"title": "Request Readable ID",
 													"type": "string"
 												},
 												"request": {
-													"description": "Requested information from request",
+													"description": "Requested information from request.",
 													"example": "Victomology",
 													"type": "string"
 												},
 												"status": {
-													"description": "Request Status",
+													"description": "Request Status.",
 													"enum": [
 														"open",
 														"accepted",
@@ -3975,12 +4678,12 @@
 													"type": "string"
 												},
 												"summary": {
-													"description": "Brief description of the request",
+													"description": "Brief description of the request.",
 													"example": "DoS attack",
 													"type": "string"
 												},
 												"tlp": {
-													"description": "The CISA defined Traffic Light Protocol (TLP)",
+													"description": "The CISA defined Traffic Light Protocol (TLP).",
 													"enum": [
 														"clear",
 														"amber",
@@ -3992,7 +4695,7 @@
 													"type": "string"
 												},
 												"tokens": {
-													"description": "Tokens for the request",
+													"description": "Tokens for the request.",
 													"example": 16,
 													"type": "integer"
 												},
@@ -4015,13 +4718,14 @@
 											"title": "Request Item",
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Update request response"
+				"description": "Update request response."
 			},
 			"4XX": {
 				"content": {
@@ -4038,8 +4742,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -4059,8 +4774,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -4073,7 +4799,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -4091,21 +4817,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Update request response failure"
+				"description": "Update request response failure."
 			}
 		},
 		"security": [
@@ -4122,15 +4857,15 @@
 			"Cloudforce One Write"
 		]
 	},
-	"PUT /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/asset/{asset_identifer}": {
+	"PUT /accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}": {
 		"operationId": "cloudforce-one-request-asset-update",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -4138,10 +4873,10 @@
 			},
 			{
 				"in": "path",
-				"name": "request_identifier",
+				"name": "request_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -4149,10 +4884,10 @@
 			},
 			{
 				"in": "path",
-				"name": "asset_identifer",
+				"name": "asset_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -4165,7 +4900,7 @@
 					"schema": {
 						"properties": {
 							"source": {
-								"description": "Asset file to upload",
+								"description": "Asset file to upload.",
 								"example": "@/Users/me/example.docx",
 								"type": "string"
 							}
@@ -4193,8 +4928,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -4214,8 +4960,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -4228,7 +4985,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -4253,31 +5010,27 @@
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
 															"type": "string"
-														},
-														{
-															"description": "Asset creation time"
-														},
-														{
-															"example": "2022-01-01T00:00:00Z"
 														}
-													]
+													],
+													"description": "Defines the asset creation time.",
+													"example": "2022-01-01T00:00:00Z"
 												},
 												"description": {
-													"description": "Asset description",
+													"description": "Asset description.",
 													"example": "example description",
 													"type": "string"
 												},
 												"file_type": {
-													"description": "Asset file type",
+													"description": "Asset file type.",
 													"example": "docx",
 													"type": "string"
 												},
 												"id": {
-													"description": "Asset ID",
+													"description": "Asset ID.",
 													"type": "integer"
 												},
 												"name": {
-													"description": "Asset name",
+													"description": "Asset name.",
 													"example": "example.docx",
 													"type": "string"
 												}
@@ -4289,13 +5042,14 @@
 											"title": "Request Asset Item",
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Update request asset response"
+				"description": "Update request asset response."
 			},
 			"4XX": {
 				"content": {
@@ -4312,8 +5066,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -4333,8 +5098,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -4347,7 +5123,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -4365,21 +5141,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Update request asset response failure"
+				"description": "Update request asset response failure."
 			}
 		},
 		"security": [
@@ -4396,15 +5181,15 @@
 			"Cloudforce One Write"
 		]
 	},
-	"PUT /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/message/{message_identifer}": {
+	"PUT /accounts/{account_id}/cloudforce-one/requests/{request_id}/message/{message_id}": {
 		"operationId": "cloudforce-one-request-message-update",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -4412,10 +5197,10 @@
 			},
 			{
 				"in": "path",
-				"name": "request_identifier",
+				"name": "request_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -4423,7 +5208,7 @@
 			},
 			{
 				"in": "path",
-				"name": "message_identifer",
+				"name": "message_id",
 				"required": true,
 				"schema": {
 					"type": "integer"
@@ -4436,7 +5221,7 @@
 					"schema": {
 						"properties": {
 							"content": {
-								"description": "Content of message",
+								"description": "Content of message.",
 								"example": "Can you elaborate on the type of DoS that occurred?",
 								"type": "string"
 							}
@@ -4464,8 +5249,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -4485,8 +5281,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -4499,7 +5306,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -4519,12 +5326,12 @@
 										"result": {
 											"properties": {
 												"author": {
-													"description": "Author of message",
+													"description": "Author of message.",
 													"example": "user@domain.com",
 													"type": "string"
 												},
 												"content": {
-													"description": "Content of message",
+													"description": "Content of message.",
 													"example": "Can you elaborate on the type of DoS that occurred?",
 													"type": "string"
 												},
@@ -4534,21 +5341,17 @@
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
 															"type": "string"
-														},
-														{
-															"description": "Message creation time"
-														},
-														{
-															"example": "2022-01-01T00:00:00Z"
 														}
-													]
+													],
+													"description": "Defines the message creation time.",
+													"example": "2022-01-01T00:00:00Z"
 												},
 												"id": {
-													"description": "Message ID",
+													"description": "Message ID.",
 													"type": "integer"
 												},
 												"is_follow_on_request": {
-													"description": "Whether the message is a follow-on request",
+													"description": "Whether the message is a follow-on request.",
 													"type": "boolean"
 												},
 												"updated": {
@@ -4557,14 +5360,10 @@
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
 															"type": "string"
-														},
-														{
-															"description": "Message last updated time"
-														},
-														{
-															"example": "2022-01-01T00:00:00Z"
 														}
-													]
+													],
+													"description": "Defines the message last updated time.",
+													"example": "2022-01-01T00:00:00Z"
 												}
 											},
 											"required": [
@@ -4577,13 +5376,14 @@
 											"title": "Request Message Item",
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Update request message response"
+				"description": "Update request message response."
 			},
 			"4XX": {
 				"content": {
@@ -4600,8 +5400,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -4621,8 +5432,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -4635,7 +5457,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -4653,21 +5475,30 @@
 								{
 									"properties": {
 										"errors": {
-											"example": {
-												"code": 10433,
-												"message": "request error"
-											}
+											"properties": {
+												"code": {
+													"example": 10433,
+													"type": "integer"
+												},
+												"message": {
+													"example": "request error",
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"success": {
-											"example": false
+											"example": false,
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Update request message response failure"
+				"description": "Update request message response failure."
 			}
 		},
 		"security": [

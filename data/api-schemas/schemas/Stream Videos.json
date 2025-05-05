@@ -39,13 +39,13 @@
 				"content": {
 					"application/json": {}
 				},
-				"description": "Delete video response"
+				"description": "Delete video response."
 			},
 			"4XX": {
 				"content": {
 					"application/json": {}
 				},
-				"description": "Delete video response failure"
+				"description": "Delete video response failure."
 			}
 		},
 		"security": [
@@ -554,7 +554,8 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -568,13 +569,14 @@
 											"example": 35586,
 											"type": "integer"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List videos response"
+				"description": "List videos response."
 			},
 			"4XX": {
 				"content": {
@@ -687,7 +689,7 @@
 						}
 					}
 				},
-				"description": "List videos response failure"
+				"description": "List videos response failure."
 			}
 		},
 		"security": [
@@ -1122,13 +1124,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Retrieve video details response"
+				"description": "Retrieve video details response."
 			},
 			"4XX": {
 				"content": {
@@ -1241,7 +1244,7 @@
 						}
 					}
 				},
-				"description": "Retrieve video details response failure"
+				"description": "Retrieve video details response failure."
 			}
 		},
 		"security": [
@@ -1294,11 +1297,12 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"example": "<stream id=\"ea95132c15732412d22c1476fa83f27a\"></stream><script data-cfasync=\"false\" defer type=\"text/javascript\" src=\"https://embed.cloudflarestream.com/embed/we4g.fla9.latest.js\"></script>"
+							"example": "<stream id=\"ea95132c15732412d22c1476fa83f27a\"></stream><script data-cfasync=\"false\" defer type=\"text/javascript\" src=\"https://embed.cloudflarestream.com/embed/we4g.fla9.latest.js\"></script>",
+							"type": "string"
 						}
 					}
 				},
-				"description": "Retreieve embed Code HTML response"
+				"description": "Retreieve embed Code HTML response."
 			},
 			"4XX": {
 				"content": {
@@ -1411,7 +1415,7 @@
 						}
 					}
 				},
-				"description": "Retreieve embed Code HTML response failure"
+				"description": "Retreieve embed Code HTML response failure."
 			}
 		},
 		"security": [
@@ -1574,15 +1578,17 @@
 													"description": "The total count of videos associated with the account.",
 													"type": "integer"
 												}
-											}
+											},
+											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Returns information about an account's storage use response"
+				"description": "Returns information about an account's storage use response."
 			},
 			"4XX": {
 				"content": {
@@ -1695,7 +1701,7 @@
 						}
 					}
 				},
-				"description": "Returns information about an account's storage use response failure"
+				"description": "Returns information about an account's storage use response failure."
 			}
 		},
 		"security": [
@@ -1799,13 +1805,13 @@
 				"content": {
 					"application/json": {}
 				},
-				"description": "Initiate video uploads using TUS response"
+				"description": "Initiate video uploads using TUS response."
 			},
 			"4XX": {
 				"content": {
 					"application/json": {}
 				},
-				"description": "Initiate video uploads using TUS response failure"
+				"description": "Initiate video uploads using TUS response failure."
 			}
 		},
 		"security": [
@@ -2313,13 +2319,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Edit video details response"
+				"description": "Edit video details response."
 			},
 			"4XX": {
 				"content": {
@@ -2432,7 +2439,7 @@
 						}
 					}
 				},
-				"description": "Edit video details response failure"
+				"description": "Edit video details response failure."
 			}
 		},
 		"security": [
@@ -2687,15 +2694,17 @@
 													"type": "string",
 													"x-sensitive": true
 												}
-											}
+											},
+											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create signed URL tokens for videos response"
+				"description": "Create signed URL tokens for videos response."
 			},
 			"4XX": {
 				"content": {
@@ -2808,7 +2817,7 @@
 						}
 					}
 				},
-				"description": "Create signed URL tokens for videos response failure"
+				"description": "Create signed URL tokens for videos response failure."
 			}
 		},
 		"security": [
@@ -3318,13 +3327,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Upload videos from a URL response"
+				"description": "Upload videos from a URL response."
 			},
 			"4XX": {
 				"content": {
@@ -3437,7 +3447,7 @@
 						}
 					}
 				},
-				"description": "Upload videos from a URL response failure"
+				"description": "Upload videos from a URL response failure."
 			}
 		},
 		"security": [
@@ -3771,15 +3781,17 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Upload videos via direct upload URLs response"
+				"description": "Upload videos via direct upload URLs response."
 			},
 			"4XX": {
 				"content": {
@@ -3892,7 +3904,7 @@
 						}
 					}
 				},
-				"description": "Upload videos via direct upload URLs response failure"
+				"description": "Upload videos via direct upload URLs response failure."
 			}
 		},
 		"security": [

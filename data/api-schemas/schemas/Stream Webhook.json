@@ -121,13 +121,14 @@
 											"example": "ok",
 											"type": "string"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete webhooks response"
+				"description": "Delete webhooks response."
 			},
 			"4XX": {
 				"content": {
@@ -240,7 +241,7 @@
 						}
 					}
 				},
-				"description": "Delete webhooks response failure"
+				"description": "Delete webhooks response failure."
 			}
 		},
 		"security": [
@@ -373,13 +374,14 @@
 										"result": {
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "View webhooks response"
+				"description": "View webhooks response."
 			},
 			"4XX": {
 				"content": {
@@ -492,7 +494,7 @@
 						}
 					}
 				},
-				"description": "View webhooks response failure"
+				"description": "View webhooks response failure."
 			}
 		},
 		"security": [
@@ -647,13 +649,14 @@
 										"result": {
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create webhooks response"
+				"description": "Create webhooks response."
 			},
 			"4XX": {
 				"content": {
@@ -766,7 +769,7 @@
 						}
 					}
 				},
-				"description": "Create webhooks response failure"
+				"description": "Create webhooks response failure."
 			}
 		},
 		"security": [
