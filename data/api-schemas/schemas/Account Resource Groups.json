@@ -993,19 +993,10 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"meta": {
-								"description": "Attributes associated to the resource group.",
-								"example": {
-									"editable": "false"
-								},
-								"type": "object"
-							},
 							"name": {
-								"description": "Name of the resource group.",
-								"example": "NameOfTheResourceGroup",
-								"readOnly": true,
-								"type": "string",
-								"x-auditable": true
+								"description": "Name of the resource group",
+								"example": "NewResourceGroup",
+								"type": "string"
 							},
 							"scope": {
 								"description": "A scope is a combination of scope objects which provides additional context.",
@@ -1040,8 +1031,10 @@
 							}
 						},
 						"required": [
+							"name",
 							"scope"
 						],
+						"title": "Create resource group",
 						"type": "object"
 					}
 				}
@@ -1286,19 +1279,10 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"meta": {
-								"description": "Attributes associated to the resource group.",
-								"example": {
-									"editable": "false"
-								},
-								"type": "object"
-							},
 							"name": {
-								"description": "Name of the resource group.",
-								"example": "NameOfTheResourceGroup",
-								"readOnly": true,
-								"type": "string",
-								"x-auditable": true
+								"description": "Name of the resource group",
+								"example": "UpdatedResourceGroup",
+								"type": "string"
 							},
 							"scope": {
 								"description": "A scope is a combination of scope objects which provides additional context.",
@@ -1332,9 +1316,7 @@
 								"type": "object"
 							}
 						},
-						"required": [
-							"scope"
-						],
+						"title": "Update resource group",
 						"type": "object"
 					}
 				}
