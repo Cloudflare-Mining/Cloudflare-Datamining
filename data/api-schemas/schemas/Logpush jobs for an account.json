@@ -667,6 +667,7 @@
 									"destination_conf": "s3://mybucket/logs?region=us-west-2",
 									"enabled": false,
 									"error_message": null,
+									"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
 									"id": 1,
 									"kind": "",
 									"last_complete": null,
@@ -1220,6 +1221,7 @@
 									"destination_conf": "s3://mybucket/logs?region=us-west-2",
 									"enabled": false,
 									"error_message": null,
+									"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
 									"id": 1,
 									"kind": "",
 									"last_complete": null,
@@ -1783,6 +1785,7 @@
 								"destination_conf": "s3://mybucket/logs?region=us-west-2",
 								"enabled": false,
 								"error_message": null,
+								"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
 								"id": 1,
 								"kind": "",
 								"last_complete": null,
@@ -2331,6 +2334,7 @@
 						"dataset": "gateway_dns",
 						"destination_conf": "s3://mybucket/logs?region=us-west-2",
 						"enabled": false,
+						"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
 						"kind": "",
 						"max_upload_bytes": 5000000,
 						"max_upload_interval_seconds": 30,
@@ -2403,6 +2407,12 @@
 								"example": false,
 								"type": "boolean",
 								"x-auditable": true
+							},
+							"filter": {
+								"description": "The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).",
+								"example": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+								"nullable": true,
+								"type": "string"
 							},
 							"frequency": {
 								"default": "high",
@@ -2606,6 +2616,7 @@
 								"destination_conf": "s3://mybucket/logs?region=us-west-2",
 								"enabled": false,
 								"error_message": null,
+								"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
 								"id": 1,
 								"kind": "",
 								"last_complete": null,
@@ -4645,6 +4656,7 @@
 					"example": {
 						"destination_conf": "s3://mybucket/logs?region=us-west-2",
 						"enabled": false,
+						"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
 						"kind": "",
 						"max_upload_bytes": 5000000,
 						"max_upload_interval_seconds": 30,
@@ -4682,6 +4694,12 @@
 								"example": false,
 								"type": "boolean",
 								"x-auditable": true
+							},
+							"filter": {
+								"description": "The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).",
+								"example": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+								"nullable": true,
+								"type": "string"
 							},
 							"frequency": {
 								"default": "high",
@@ -4882,6 +4900,7 @@
 								"destination_conf": "s3://mybucket/logs?region=us-west-2",
 								"enabled": false,
 								"error_message": null,
+								"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
 								"id": 1,
 								"kind": "",
 								"last_complete": null,
