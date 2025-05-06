@@ -45,7 +45,7 @@ const navigation = {
 		title: "navigation.profile.authentication",
 		url: "/authentication",
 		iconType: "key",
-		hasPermission: M => !(0, h.n3)() && !(0, o.z1)("oauth-access-management")(M)
+		hasPermission: M => !(0, E.n3)() && !(0, o.z1)("oauth-access-management")(M)
 	}, {
 		title: "navigation.profile.api_tokens",
 		url: "/api-tokens",
@@ -463,7 +463,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: M => {
 				const W = (0, l.tJ)(M);
-				return !(0, y.ky)(W, [E.uD.EnterpriseTrial])
+				return !(0, y.ky)(W, [h.uD.EnterpriseTrial])
 			}
 		}]
 	}, {
