@@ -5,42 +5,39 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations:&nbsp;</strong></h4>
+<p>Location: This role can be based out of Austin, TX or Lisbon, Portugal</p>
+<p><strong>About the department</strong></p>
+<p>Cloudflare’s Enterprise Engineering Team builds and runs software and systems that make Cloudflare run more efficiently and enable our customers and partners to do business with us. Enterprise Engineering is part of the Engineering organization.&nbsp; This team seeks talented business systems analyst who takes great pride in both the technical and business contribution of their work. You will be given the chance to have a significant impact on our systems, our business and most importantly, our customers. As a member of our team, you will work closely with the business to design and implement new features. You will contribute to all aspects of an agile software development life cycle including design, architecture, development, documentation, testing and operations. You will push your design and architecture limits by owning all aspects of solutions end-to-end.&nbsp;</p>
+<p><strong>&nbsp;What you'll do</strong></p>
 <ul>
-	<li>London, UK</li>
-	<li>Lisbon, Portugal&nbsp;</li>
+	<li>Maintain quote to cash systems and integrations including internal and SAAS systems that support ordering, subscriptions, entitlements, customer billing, invoices, taxation, payments, revenue recognition and other systems/ integrations supported by enterprise engineering team</li>
+	<li>Participate in systems analysis, writing functional/ technical specs and detailed systems design.</li>
+	<li>Respond promptly to application alerts, production issues and follow through to resolution per established SLAs</li>
+	<li>Effectively communicate issue status to internal stakeholders</li>
+	<li>Maintain in-depth functional knowledge of the supported applications and interdependencies</li>
+	<li>Partner with the business teams to identify gaps, document and re-engineer current processes within business applications.&nbsp;</li>
+	<li>Work on Proof of concepts for new requirements as appropriate</li>
+	<li>Work closely with the finance and other internal teams in bringing efficiencies to their monthly close process and improve upon existing system reporting needs</li>
+	<li>Seek opportunities to streamline and/or automate processes</li>
+	<li>Participate in QA activities for various projects. Work closely with business teams, analysts, engineers and product managers to write test plans, test cases and estimates to support project and product releases ensuring consistency with specified requirements agreed with both external and internal customers</li>
 </ul>
-<h4><strong>About the Department</strong></h4>
-<p>Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.&nbsp;</p>
-<h4><strong>What you'll do</strong></h4>
-<p>We're seeking an Engineering Manager to lead the UI Platform Team at Cloudflare.&nbsp; You'll be responsible for the core technology that drives the Cloudflare Dashboard.&nbsp; You'll be pioneering new techniques and tooling to move away from a traditional monolithic application and onto <a href="https://blog.cloudflare.com/fragment-piercing/">Cloudflare's innovative Web Fragments</a>. You will set best practices, evangelize this change across engineering teams, and ensure adoption. The team also owns UI infrastructure (CI/CD, observability, experimentation tools) for the monolith and for the fragment architecture. Our mission is to improve developer productivity and application performance.</p>
-<p><strong>Key Responsibilities</strong></p>
+<p><strong>&nbsp;&nbsp;Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Lead and mentor the team to build, migrate, and scale UI platform frameworks.</li>
-	<li>Set and promote best practices for UI development and evangelize the transition across engineering teams.</li>
-	<li>Drive UI infrastructure excellence, including CI/CD, observability, and experimentation tools.</li>
-	<li>Collaborate with product and design teams to deliver self-serviceable, cohesive user experiences.</li>
-	<li>Tackle cross-cutting concerns to improve developer velocity and code quality.</li>
+	<li>Minimum 5 years experience implementing a SAAS based/ subscription billing system (eg. Stripe, Zuora, Oracle BRM, GoTransverse etc)</li>
+	<li>Proficient in writing database queries in PostGres/ BigQuery/ Snowflake or other languages</li>
+	<li>Adaptability and Learning Mindset: Demonstrating a willingness to learn new technologies, tools, and methodologies is crucial. Adaptability to changing project requirements and the ability to work in a dynamic environment is highly desirable</li>
+	<li>Possess excellent communication skills – written and oral, interpersonal and organizational.</li>
+	<li>Ability to handle multiple projects and responsibilities with competing priorities</li>
+	<li>Solid understanding of business Financial processes including but not limited to Quote to cash process including OM/ Billing/ AR/ RevRec and understanding of GL</li>
+	<li>Able to deliver a high degree of customer satisfaction at all times</li>
+	<li>Must be results/ Outcome focused</li>
 </ul>
-<p><strong>Technologies We Use</strong></p>
-<p>React, TypeScript, JavaScript (ES6+), Remix, Qwik, PlayWright, Cypress, Vite, Webpack, Bazel, CI/CD tools, Go, RESTful APIs</p>
-<p><strong>Qualifications</strong></p>
+<p><strong>&nbsp;Bonus points if you have</strong>:</p>
 <ul>
-	<li>We want someone who understands and obsesses over front-end systems.</li>
-	<li>Has built new technology that powers important systems.</li>
-	<li>Experience building and leading a team, including hiring, coaching, and professional development.</li>
-	<li>A self-directing nature, keen to take ownership of projects from start to finish.</li>
-	<li>Experience coordinating projects across multiple teams and experience with driving migrations from monolith to modular frameworks is a plus.</li>
-	<li>Empathetic and clear communication skills, verbal and written</li>
-	<li>Strong leadership, collaboration, and technical evangelism skills.</li>
-	<li>Experience building and scaling large-scale web applications.</li>
-	<li>Expertise in React.js, TypeScript, and modern front-end systems.</li>
-</ul>
-<p>Why Join Us?</p>
-<ul>
-	<li>Lead a pivotal migration to a modern, scalable UI platform.</li>
-	<li>Shape best practices and drive impactful engineering change.</li>
-	<li>Work with modern technologies and solve large-scale challenges.</li>
+	<li>Track record of delivering successful large-scale, business transformation, and multi-disciplinary change initiatives especially in Subscription/SaaS model</li>
+	<li>5+ years experience in systems analyst roles, implementing and supporting ERP applications such as Oracle, Netsuite, SAP or Workday Financials</li>
+	<li>Business engagement and business analysis experience in implementing ERP systems is preferred</li>
+	<li>Hands-on experience with analytics and monitoring tools like Grafana (configuring, creating queries, dashboards, and alerts), and ability to troubleshoot application/ systems logs using tools like Kibana, Sentry</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
