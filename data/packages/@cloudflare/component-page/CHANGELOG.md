@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.4.0
+
+### Minor Changes
+
+- ac7d8de88a: Updates @cloudflare/component-page to include button text in aria label
+
 ## 9.3.20
 
 ### Patch Changes
