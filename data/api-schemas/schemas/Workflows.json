@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/workflows/{workflow_name}": {
+		"description": "Deletes a Workflow. This only deletes the Workflow and does not delete or modify any Worker associated to this Workflow or bounded to it.",
 		"operationId": "wor-delete-workflow",
 		"parameters": [
 			{
@@ -243,7 +244,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Deletes a Workflow. This only deletes the Workflow and does not delete or modify any Worker associated to this Workflow or bounded to it.",
+		"summary": "Deletes a Workflow",
 		"tags": [
 			"Workflows"
 		],
