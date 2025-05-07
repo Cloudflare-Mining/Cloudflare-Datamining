@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Bengaluru, India | Lisbon, Portugal | Mexico City, MX</strong></h3>
+<h3><strong>Available Locations: Lisbon, Portugal | Mexico City, MX</strong></h3>
 <p><strong>About the role</strong></p>
 <p>As the Sr. Web Production Program Manager on the Web Strategy team, you will be responsible for the intake, grooming, prioritization, and delivery of web facing initiatives in an operationally efficient manner for our marketing website. The role is 50% program management and 50% hands-on web production.&nbsp;</p>
 <p>You will act as a key partner to x-functional stakeholders for their web facing needs and help drive those initiatives with a strategic lens in a standardized, timely and operationally efficient manner. This is a highly visible role, which requires a growth mindset, great attention to detail, ability to multi-task, strong communication, and organizational skills.</p>

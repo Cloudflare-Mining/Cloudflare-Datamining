@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3>Position Location: Austin, TX</h3>
+<h3>Position Location: Austin, TX and or San Francisco, CA</h3>
 <h3><strong>About the Role</strong></h3>
 <p>Cloudflare’s Brand Marketing team is responsible for increasing awareness, affinity, and preference for the Cloudflare brand. We are looking for a <strong>Brand Campaign Manager, Thought Leadership</strong>&nbsp;to help manage and support our high-impact executive programs — using owned, earned, and paid channels to create influential and thought provoking engagement with senior leaders at customer organizations.</p>
 <h3><strong>Responsibilities:</strong></h3>
