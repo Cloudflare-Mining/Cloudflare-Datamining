@@ -68,21 +68,7 @@ const meeting = await RealtimeKit.init({
 });
 ```
 
-For React you can use the hooks wrapper
-
-```ts
-const [meeting, initMeeting] = useRealtimeKitClient();
-useEffect(() => {
-  await initMeeting({
-    authToken: "<AuthTokenHere>",
-    defaults: {
-        audio: false,
-        video: false,
-    }
-  });
-}, []);
-```
-
+For React you can use the hooks wrapper package `@cloudflare/realtimekit-react`
 
 The `meeting` object is used for all interaction with Cloudflare's servers. For example, the following code snippet is used for a user to join a room.
 
