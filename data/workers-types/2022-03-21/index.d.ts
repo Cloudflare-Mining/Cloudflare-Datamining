@@ -6387,8 +6387,8 @@ declare namespace TailStream {
   }
   interface SpanOpen {
     readonly type: "spanOpen";
-    readonly op?: string;
-    readonly info?: FetchEventInfo | JsRpcEventInfo | Attribute[];
+    readonly name: string;
+    readonly info?: FetchEventInfo | JsRpcEventInfo | Attributes;
   }
   interface SpanClose {
     readonly type: "spanClose";
@@ -6412,7 +6412,7 @@ declare namespace TailStream {
   }
   interface Return {
     readonly type: "return";
-    readonly info?: FetchResponseInfo | Attribute[];
+    readonly info?: FetchResponseInfo | Attributes;
   }
   interface Link {
     readonly type: "link";
@@ -6422,28 +6422,42 @@ declare namespace TailStream {
     readonly spanId: string;
   }
   interface Attribute {
-    readonly type: "attribute";
     readonly name: string;
-    readonly value: string | string[] | boolean | boolean[] | number | number[];
+    readonly value:
+      | string
+      | string[]
+      | boolean
+      | boolean[]
+      | number
+      | number[]
+      | bigint
+      | bigint[];
   }
-  type Mark =
-    | DiagnosticChannelEvent
-    | Exception
-    | Log
-    | Return
-    | Link
-    | Attribute[];
+  interface Attributes {
+    readonly type: "attributes";
+    readonly info: Attribute[];
+  }
   interface TailEvent {
     readonly traceId: string;
     readonly invocationId: string;
     readonly spanId: string;
     readonly timestamp: Date;
     readonly sequence: number;
-    readonly event: Onset | Outcome | Hibernate | SpanOpen | SpanClose | Mark;
+    readonly event:
+      | Onset
+      | Outcome
+      | Hibernate
+      | SpanOpen
+      | SpanClose
+      | DiagnosticChannelEvent
+      | Exception
+      | Log
+      | Return
+      | Link
+      | Attributes;
   }
   type TailEventHandler = (event: TailEvent) => void | Promise<void>;
   type TailEventHandlerName =
-    | "onset"
     | "outcome"
     | "hibernate"
     | "spanOpen"
@@ -6453,7 +6467,7 @@ declare namespace TailStream {
     | "log"
     | "return"
     | "link"
-    | "attribute";
+    | "attributes";
   type TailEventHandlerObject = Record<TailEventHandlerName, TailEventHandler>;
   type TailEventHandlerType = TailEventHandler | TailEventHandlerObject;
 }
