@@ -5,46 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations: </strong>Lisbon, Portugal</h4>
-<h4><strong>About the Department</strong></h4>
-<p>The Email Security - Applications team builds and runs the UI platform customers with email protection use to onboard, analyze, investigate, and remediate. We also build and run the internal tools, platforms, and APIs that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.&nbsp;</p>
-<p><strong>About the Role</strong></p>
-<p>We are seeking a skilled <strong>Frontend (UI) Engineer</strong> to join the Email Security - Applications team. The ideal candidates will have experience working with large-scale applications and a track record of producing great output. You must care deeply not only about the quality of your and the team's code, but also the customer experience. In this role, you will enhance UI infrastructure, streamline UX workflows, and collaborate across teams to improve code quality and developer velocity. Your contributions will be pivotal in refining the developer experience, ensuring high-quality frontend delivery, and optimizing performance and reliability at scale.</p>
-<p>We believe that a great design and simple UX is at the heart of any successful product, and you will work closely with our design/UX team and must be comfortable seeking feedback from non-technical sources. We work iteratively and deploy often. We’re also strong believers in dog-fooding our own products. From Cloudflare Access to Cloudflare Workers and KV and R2 - these are all tools in our frontend engineer's tool belt.&nbsp;</p>
-<p><strong>Key Responsibilities</strong></p>
+<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
+<p><strong>What you’ll do</strong></p>
+<p>In this role, you’ll help build and maintain the CASB (Cloud Access Security Broker) offering, a critical component of our Zero Trust Platform. CASB integrates with customers’ SaaS applications and Cloud infrastructure to detect and monitor for a wide range of security issues including: misconfigurations, shadow IT, critical data leakage, and access risks. As an engineer on the team, you will focus on building new functionality into our API integration-based stack while also ensuring the performance and reliability of our services which ingest millions of data points each day. You’ll be joining a team of bright, knowledge-seeking engineers who are truly missionaries in solving the security challenges our customers face across their SaaS applications.</p>
+<p><strong>Technologies we use:</strong></p>
 <ul>
-	<li>Help build and scale the Email Security platform frameworks.</li>
-	<li>Drive UI infrastructure excellence, including CI/CD, observability, and experimentation tools.</li>
-	<li>Tackle cross-cutting concerns to enhance developer velocity, maintainability, and code quality.</li>
-	<li>Upgrade and maintain the frontend codebase, modernizing legacy components to align with current best practices.</li>
-	<li>Collaborate with product and design teams to deliver cohesive, self-serviceable user experiences.</li>
+	<li>CASB core services are written in Go.</li>
+	<li>CASB Cloud remote client services run on AWS, GCP, and Azure.</li>
+	<li>We utilize Postgres as our data store, Redis as our cache, and Kafka as our message broker.</li>
+	<li>Our frontend is written in Typescript and React.</li>
+	<li>For service monitoring we use Prometheus and Grafana.</li>
+	<li>For service logging we use Elasticsearch and Kibana.</li>
+	<li>For product analytics we use Clickhouse and BigQuery.&nbsp;</li>
 </ul>
-<p><strong>Technologies We Use</strong></p>
-<p>React, TypeScript, JavaScript (ES6+), Cypress, Vite, Webpack, CI/CD tools, RESTful APIs</p>
-<p><strong>Qualifications</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
-	<li>We want someone who understands and obsesses over front-end systems.</li>
-	<li>Experience designing, developing, and deploying M365 or Gmail Add-Ins a big plus.</li>
-	<li>Passion for improving developer experience and increasing development velocity.</li>
-	<li>4+ years of experience in frontend engineering, specializing in JavaScript, TypeScript, and React.</li>
-	<li>Strong knowledge of UI infrastructure, CI/CD, and testing frameworks (e.g., Playwright, Cypress).</li>
-	<li>Proven ability to drive projects independently, from concept to implementation.</li>
+	<li>3+ years of professional experience building and managing reliable and performant software systems at scale, preferably with Go and/or Postgres.</li>
+	<li>Passion for making the digital world a more secure place</li>
+	<li>Excellent debugging and optimization skills</li>
+	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies and systems</li>
+	<li>Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</li>
 </ul>
-<p><strong>Preferred Skills:</strong></p>
+<p><strong>Bonus</strong></p>
 <ul>
-	<li>Expertise in React, TypeScript, and modern front-end systems.</li>
-	<li>Expertise in performance optimization for frontend applications.</li>
-	<li>Experience with modern JavaScript bundling tools like Webpack or Vite.</li>
-	<li>Familiarity with RESTful APIs.</li>
-	<li>Experience building and maintaining integration test suites with API mocks.</li>
-	<li>Experience building and scaling large-scale web applications.</li>
+	<li>Frontend programming experience in Typescript/Javascript</li>
+	<li>Previous experience working with third-party API integrations</li>
+	<li>Previous experience working on security products</li>
 </ul>
-<p><strong>Why Join Us?</strong></p>
-<ul>
-	<li>Help us shape and improve our customers’ experience with Email Security</li>
-	<li>Shape best practices and drive impactful engineering change.</li>
-	<li>Work with modern technologies and solve large-scale challenges.</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
