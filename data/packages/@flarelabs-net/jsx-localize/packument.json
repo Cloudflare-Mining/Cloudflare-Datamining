@@ -1,7 +1,7 @@
 {
 	"name": "@flarelabs-net/jsx-localize",
 	"dist-tags": {
-		"latest": "0.0.0"
+		"latest": "0.0.1"
 	},
 	"versions": {
 		"0.0.0": {
@@ -11,9 +11,39 @@
 				"recast": "^0.23.9"
 			},
 			"devDependencies": {
-				"@types/react": "^19.0.8",
-				"typescript": "catalog:",
 				"vite": "catalog:",
+				"vitest": "^3.1.1",
+				"typescript": "catalog:",
+				"@types/react": "^19.0.8"
+			},
+			"peerDependencies": {
+				"react": "^19.0.0",
+				"@angular/localize": "^19.1.4"
+			},
+			"dist": {
+				"shasum": "4fd6e3320c1e6bc205caea230aec243b0a45d927",
+				"tarball": "https://registry.npmjs.org/@flarelabs-net/jsx-localize/-/jsx-localize-0.0.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-dkW+ToLvsK3+IQgyAkyvSXGItC5JR6BVM39RKozZnWpEjLbExAxPkZLfxxN7euVvXKJLtJSvWF4gwF8oeUz/bA==",
+				"signatures": [
+					{
+						"sig": "MEQCIHhikwQoBI1eT5CkIWLx06CZsTT9FE1Y0al9FlFs+OASAiBzMC7MpBhYEfvRMRsLQADYG9joauaBh8yaWDjpfxnsuQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1242675
+			}
+		},
+		"0.0.1": {
+			"name": "@flarelabs-net/jsx-localize",
+			"version": "0.0.1",
+			"dependencies": {
+				"recast": "^0.23.9"
+			},
+			"devDependencies": {
+				"@types/react": "^19.0.8",
+				"typescript": "^5.8.3",
+				"vite": "^6.3.3",
 				"vitest": "^3.1.1"
 			},
 			"peerDependencies": {
@@ -21,15 +51,15 @@
 				"@angular/localize": "^19.1.4"
 			},
 			"dist": {
-				"integrity": "sha512-dkW+ToLvsK3+IQgyAkyvSXGItC5JR6BVM39RKozZnWpEjLbExAxPkZLfxxN7euVvXKJLtJSvWF4gwF8oeUz/bA==",
-				"shasum": "4fd6e3320c1e6bc205caea230aec243b0a45d927",
-				"tarball": "https://registry.npmjs.org/@flarelabs-net/jsx-localize/-/jsx-localize-0.0.0.tgz",
-				"fileCount": 4,
-				"unpackedSize": 1242675,
+				"integrity": "sha512-bnVvZmpbqTB/vUKEB1GS9NbyfiOoZ758vKqP1L/vrGEOc1hRirz8fFkRZ7ar84RIyCeQ4usSv3VMw8UGUfsvow==",
+				"shasum": "5eaf36bf3b00d76104ae1c333446e7ccb6657f39",
+				"tarball": "https://registry.npmjs.org/@flarelabs-net/jsx-localize/-/jsx-localize-0.0.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 1244079,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIHhikwQoBI1eT5CkIWLx06CZsTT9FE1Y0al9FlFs+OASAiBzMC7MpBhYEfvRMRsLQADYG9joauaBh8yaWDjpfxnsuQ=="
+						"sig": "MEQCIGz4B+Nb8HqqgE5+Ny/mh8TWEls6Cpu6eqdkun2zWXYbAiApcQ5z1jLD1gPZq4kcdvjfH8kDQov5US3U4GWLPSjJug=="
 					}
 				]
 			}
