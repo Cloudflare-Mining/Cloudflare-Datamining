@@ -2929,7 +2929,41 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Yes, Cloudflare maintains PCI DSS Level 1 compliance for certain products. Cloudflare has been compliant since 2014 and is audited annually by a third-party Qualified Security Assessor (\"QSA\"). ",
+													"value": "Yes, Cloudflare maintains PCI DSS Level 1 compliance for its network, platform and infrastructure services with a ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "defined subset of products",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " included within the scope of the assessment",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ". Cloudflare has been compliant since 2014 and is audited annually by a third-party Qualified Security Assessor (\"QSA\"). ",
 													"marks": [],
 													"content": null
 												}
@@ -2976,7 +3010,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "API Shield, Page Shield, Turnstile, WAF",
+													"value": "API Shield, Page Shield, SSL/TLS, Turnstile, WAF",
 													"marks": [],
 													"content": null
 												}
@@ -3032,6 +3066,41 @@
 														"target": null,
 														"uri": null
 													},
+													"value": "Analytics and Insights:\n",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Logs",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
 													"value": "Zero Trust Services:\n",
 													"marks": [
 														{
@@ -3046,7 +3115,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Access, Browser Isolation, Cloudflare Tunnel, Gateway",
+													"value": "Access, Browser Isolation, CASB, Cloudflare Tunnel, DLP, Gateway, Warp ZT",
 													"marks": [],
 													"content": null
 												}
@@ -3081,7 +3150,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Magic WAN, Magic Transit, Magic Firewall",
+													"value": "Magic WAN, Magic Transit, Magic Firewall, Time Services",
 													"marks": [],
 													"content": null
 												}
@@ -3116,7 +3185,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Pages, Workers, Workers KV",
+													"value": "Durable Objects, Hyperdrive, Pages, Workers, Workers KV",
 													"marks": [],
 													"content": null
 												}
@@ -3151,7 +3220,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare Time Services",
+													"value": "Cloudflare Dashboard, Notifications",
 													"marks": [],
 													"content": null
 												}
