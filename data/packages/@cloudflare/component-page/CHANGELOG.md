@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.4.1
+
+### Patch Changes
+
+- @cloudflare/component-link@8.1.27
+
 ## 9.4.0
 
 ### Minor Changes
