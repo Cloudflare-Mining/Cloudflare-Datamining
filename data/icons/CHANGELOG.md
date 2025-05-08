@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.31.0
+
+### Minor Changes
+
+- 4e3e317ef5: New "garbage outline" icon added
+
 ## 12.30.1
 
 ## 12.30.0

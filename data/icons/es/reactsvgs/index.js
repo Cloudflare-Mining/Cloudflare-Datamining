@@ -82,6 +82,7 @@ import Flowchart from './Flowchart';
 import Folder from './Folder';
 import Forward from './Forward';
 import Funnel from './Funnel';
+import GarbageOutline from './GarbageOutline';
 import Garbage from './Garbage';
 import Gateway from './Gateway';
 import Gear from './Gear';
@@ -287,6 +288,7 @@ export default {
   folder: Folder,
   forward: Forward,
   funnel: Funnel,
+  'garbage-outline': GarbageOutline,
   garbage: Garbage,
   gateway: Gateway,
   gear: Gear,
