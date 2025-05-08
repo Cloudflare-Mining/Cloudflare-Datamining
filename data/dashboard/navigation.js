@@ -664,8 +664,7 @@ const navigation = {
 			url: "/tag-management/plans"
 		}, {
 			title: "navigation.account.tag_management.gmt_fp",
-			url: "/tag-management/google-tag-gateway",
-			labels: ["beta"]
+			url: "/tag-management/google-tag-gateway"
 		}]
 	}, {
 		title: "navigation.account.event_hub",
