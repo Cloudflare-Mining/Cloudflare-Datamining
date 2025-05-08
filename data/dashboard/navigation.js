@@ -237,7 +237,7 @@ const navigation = {
 		url: "/interconnects",
 		iconType: "cloudflare-magic-wan",
 		testId: "sidenav-interconnects-link",
-		hasPermission: M => !!((0, p.iY)(M) && (0, o.z1)("magic-interconnects")(M) && (!!(0, e.Le)(M, "magic_wan", "mw_home") || !!(0, e.Le)(M, "magic_transit", "mt_home")))
+		hasPermission: M => !!((0, p.iY)(M) && (!!(0, e.Le)(M, "magic_wan", "mw_home") || !!(0, e.Le)(M, "magic_transit", "mt_home")))
 	}, {
 		title: "navigation.account.magic_transit",
 		url: "/magic-transit",
@@ -1099,13 +1099,6 @@ const navigation = {
 			labels: ["new"],
 			navigationType: "version",
 			hasPermission: M => !!(0, o.z1)("rules-overview")(M)
-		}, {
-			title: "navigation.zone.rules.templates",
-			url: "/rules/templates",
-			labels: ["new"],
-			tabs: D.HI,
-			navigationType: "version",
-			hasPermission: M => !(0, o.z1)("rules-overview")(M) && ((0, p.$n)(M, "waf", "firewall.rule") || (0, p.$n)(M, "zone_settings", "page-rule"))
 		}, {
 			title: "navigation.zone.rules.configuration_rules",
 			url: "/rules/configuration-rules",
