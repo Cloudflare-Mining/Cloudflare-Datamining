@@ -69,7 +69,7 @@
 	<li>Familiarity with SOAR platforms and security case management automation.</li>
 	<li>Experience in Red Teaming, Threat Intelligence, or Malware Analysis.</li>
 	<li>Understanding of cloud-native security monitoring (AWS, GCP, Azure).<br><strong>&nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>Compensation</strong></li>
-	<li>For Texas based hires: Estimated annual salary of $115,000-$141,000.
+	<li>For Texas based hires: Estimated annual salary of $98,000-$120,000.
 		<p><strong>Equity</strong></p>
 		<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 		<ul>
