@@ -188,6 +188,7 @@
 	"dns.name.tooltip": "Identifies the resource this record resolves to.",
 	"dns.actions": "Actions",
 	"dns.nameservers.description": "Every DNS zone on Cloudflare is assigned a set of Cloudflare-branded nameservers.",
+	"dns.nameservers.description.fedramp": "Every DNS zone on Cloudflare is assigned a set of Cloudflare-branded nameservers. FedRAMP-authorized zones, like the current one, are always configured with advanced nameservers as part of their enhanced security and compliance requirements.",
 	"dns.nameservers.description.with_kb_link": "To use Cloudflare, [change your nameservers](https://developers.cloudflare.com/dns/zone-setups/full-setup), or authoritative DNS servers. These are your assigned Cloudflare nameservers.",
 	"dns.nameservers.title": "Cloudflare Nameservers",
 	"dns.no_records_parsed": "No DNS records were parsed. Please check that you are uploading valid DNS records and that they are in the BIND format.",

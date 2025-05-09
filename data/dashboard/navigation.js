@@ -378,24 +378,6 @@ const navigation = {
 			url: "/magic-wan/packet-captures/captures"
 		}]
 	}, {
-		hasPermission: M => (0, p.iY)(M),
-		iconType: "email-forwarding",
-		title: "navigation.account.area_one",
-		url: "/area1",
-		testId: "sidenav-area-one-link",
-		pages: [{
-			url: "/area1",
-			title: "navigation.common.overview"
-		}, {
-			url: () => (0, K.Uj)("email-security/overview"),
-			title: "navigation.account.zero_trust.email_security.overview",
-			labels: ["external-link"]
-		}, {
-			url: "/area1/retro-scan",
-			title: "navigation.account.area_one.retro_scan",
-			hasPermission: M => (0, o.z1)("area-1-retro-scan")(M) === !0
-		}]
-	}, {
 		title: "account.home",
 		url: "/",
 		labels: ["separator"],
