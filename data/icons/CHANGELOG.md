@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.1.0
+
+### Minor Changes
+
+- 02635cc16b: Add "Table" and "CaptchaOutline" icons
+
 ## 13.0.0
 
 ### Patch Changes

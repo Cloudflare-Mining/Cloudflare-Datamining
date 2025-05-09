@@ -15,6 +15,7 @@ import Bolt from './Bolt';
 import Byoip from './Byoip';
 import Calendar from './Calendar';
 import Calls from './Calls';
+import CaptchaOutline from './CaptchaOutline';
 import Carbon from './Carbon';
 import CaretDoubleLeft from './CaretDoubleLeft';
 import CaretDoubleRight from './CaretDoubleRight';
@@ -163,6 +164,7 @@ import StarOutline from './StarOutline';
 import Star from './Star';
 import Stream from './Stream';
 import Subtract from './Subtract';
+import Table from './Table';
 import TailWorker from './TailWorker';
 import Teams from './Teams';
 import Terraform from './Terraform';
@@ -221,6 +223,7 @@ export default {
   byoip: Byoip,
   calendar: Calendar,
   calls: Calls,
+  'captcha-outline': CaptchaOutline,
   carbon: Carbon,
   'caret-double-left': CaretDoubleLeft,
   'caret-double-right': CaretDoubleRight,
@@ -369,6 +372,7 @@ export default {
   star: Star,
   stream: Stream,
   subtract: Subtract,
+  table: Table,
   'tail-worker': TailWorker,
   teams: Teams,
   terraform: Terraform,

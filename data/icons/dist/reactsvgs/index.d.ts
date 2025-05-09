@@ -17,6 +17,7 @@ declare const _default: {
     byoip: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     calendar: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     calls: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'captcha-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     carbon: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'caret-double-left': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'caret-double-right': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -165,6 +166,7 @@ declare const _default: {
     star: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     stream: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     subtract: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    table: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'tail-worker': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     teams: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     terraform: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
