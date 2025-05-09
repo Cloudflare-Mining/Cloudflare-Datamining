@@ -1,7 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit-virtual-background",
 	"dist-tags": {
-		"latest": "0.0.1"
+		"latest": "0.0.1",
+		"staging": "0.0.2-staging.2"
 	},
 	"versions": {
 		"0.0.0": {
@@ -25,15 +26,51 @@
 			"name": "@cloudflare/realtimekit-virtual-background",
 			"version": "0.0.1",
 			"dist": {
-				"integrity": "sha512-ZzxkCcul4uFpeqztsknWuyk5Jzasi/K/O3dkEVh8NSBarvgoRdR7tzHFgWIgqFIG6IjtdUh+S3RiMy+NhGqaRg==",
 				"shasum": "cdd348a12ed5086d95d3c7387439c7ddf11e71aa",
 				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-virtual-background/-/realtimekit-virtual-background-0.0.1.tgz",
 				"fileCount": 1,
-				"unpackedSize": 118,
+				"integrity": "sha512-ZzxkCcul4uFpeqztsknWuyk5Jzasi/K/O3dkEVh8NSBarvgoRdR7tzHFgWIgqFIG6IjtdUh+S3RiMy+NhGqaRg==",
+				"signatures": [
+					{
+						"sig": "MEQCIGWMPHUpUk+BzusrPkNv7HL17D+u5Q4mLDezV3ZnBRI5AiBhEvxZfYLdWcC2PA2u3n4txW9pfbVPn2q2RQyAMs7BaA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 118
+			}
+		},
+		"0.0.2-staging.1": {
+			"name": "@cloudflare/realtimekit-virtual-background",
+			"version": "0.0.2-staging.1",
+			"dependencies": {},
+			"dist": {
+				"shasum": "a1793dfcd57dfdc044fdfa54428196083662b0e9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-virtual-background/-/realtimekit-virtual-background-0.0.2-staging.1.tgz",
+				"fileCount": 31,
+				"integrity": "sha512-uffC38+3kXObnBkui7DViJ1qw6RtmVTjLKdatgMxtDvOP8BwPrlxe0dNvpOvW86wPzquRduYzePZOfM2skARXQ==",
+				"signatures": [
+					{
+						"sig": "MEMCH2abEqh59WVyWb1J6R1PkCJmMVfTJl3ve8TpJT3rFUwCIAETuyUjRVO8mTLkQtAepe8D51HOyW00qO+T/WOWTZRu",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 283500
+			}
+		},
+		"0.0.2-staging.2": {
+			"name": "@cloudflare/realtimekit-virtual-background",
+			"version": "0.0.2-staging.2",
+			"dependencies": {},
+			"dist": {
+				"integrity": "sha512-NQPPyHBpKV5iCD2ufpIy+j/eDghJeyKDbSPy0NBVHIOawSP2WkV1Og9Xjm7SkuIY9mYRIBf+33XZ8+qY0HjjrQ==",
+				"shasum": "29532b0e6e6043d8c252aaf735da0fe98c6480dc",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-virtual-background/-/realtimekit-virtual-background-0.0.2-staging.2.tgz",
+				"fileCount": 30,
+				"unpackedSize": 281611,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIGWMPHUpUk+BzusrPkNv7HL17D+u5Q4mLDezV3ZnBRI5AiBhEvxZfYLdWcC2PA2u3n4txW9pfbVPn2q2RQyAMs7BaA=="
+						"sig": "MEQCICOvmJO/zFnQCCTsjx1c5DLDEVywqiBS2gIcusklrHfoAiBnft9MZiWEy8WxWlRiyHNWirtfCqVSNK/U2Ok79VTCGA=="
 					}
 				]
 			}
