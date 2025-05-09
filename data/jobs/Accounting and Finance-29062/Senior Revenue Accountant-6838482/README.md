@@ -47,6 +47,9 @@
 	<li>Ability to work independently, yet cooperatively and constructively in a team environment</li>
 	<li>Highly proficient in advanced MS Excel</li>
 </ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $122,000 - $149,000.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
