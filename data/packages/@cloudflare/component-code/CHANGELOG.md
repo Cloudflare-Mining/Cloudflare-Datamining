@@ -1,5 +1,12 @@
 # Change Log
 
+## 5.0.0
+
+### Patch Changes
+
+- Updated dependencies [2573c816c0]
+  - @cloudflare/style-container@8.0.0
+
 ## 4.0.8
 
 ## 4.0.7

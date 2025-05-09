@@ -1,5 +1,18 @@
 # Change Log
 
+## 11.0.0
+
+### Patch Changes
+
+- Updated dependencies [2573c816c0]
+  - @cloudflare/style-const@6.0.0
+  - @cloudflare/style-container@8.0.0
+  - @cloudflare/component-arrow-swivel@9.0.0
+  - @cloudflare/component-button@9.0.0
+  - @cloudflare/component-icon@13.0.0
+  - @cloudflare/component-link@9.0.0
+  - @cloudflare/component-page@10.0.0
+
 ## 10.1.37
 
 ### Patch Changes

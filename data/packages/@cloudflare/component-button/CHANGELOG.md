@@ -1,5 +1,14 @@
 # Change Log
 
+## 9.0.0
+
+### Patch Changes
+
+- Updated dependencies [2573c816c0]
+  - @cloudflare/style-const@6.0.0
+  - @cloudflare/style-container@8.0.0
+  - @cloudflare/component-icon@13.0.0
+
 ## 8.5.26
 
 ## 8.5.25

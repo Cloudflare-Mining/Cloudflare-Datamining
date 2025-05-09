@@ -1,5 +1,17 @@
 # Change Log
 
+## 10.0.0
+
+### Patch Changes
+
+- Updated dependencies [2573c816c0]
+  - @cloudflare/style-const@6.0.0
+  - @cloudflare/style-container@8.0.0
+  - @cloudflare/chart-color-legend@6.0.0
+  - @cloudflare/component-box@5.0.0
+  - @cloudflare/component-tooltip@6.0.0
+  - @cloudflare/component-text@5.0.0
+
 ## 9.0.2
 
 ### Patch Changes

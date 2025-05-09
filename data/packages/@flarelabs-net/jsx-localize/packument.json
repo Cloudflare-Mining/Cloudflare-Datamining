@@ -1,7 +1,7 @@
 {
 	"name": "@flarelabs-net/jsx-localize",
 	"dist-tags": {
-		"latest": "0.0.2"
+		"latest": "0.0.3"
 	},
 	"versions": {
 		"0.0.0": {
@@ -71,6 +71,36 @@
 				"recast": "^0.23.9"
 			},
 			"devDependencies": {
+				"vite": "^6.3.3",
+				"vitest": "^3.1.1",
+				"typescript": "^5.8.3",
+				"@types/react": "^19.0.8"
+			},
+			"peerDependencies": {
+				"react": "^19.0.0",
+				"@angular/localize": "^19.1.4"
+			},
+			"dist": {
+				"shasum": "dd130a846642ece43305079eec0463099519e12d",
+				"tarball": "https://registry.npmjs.org/@flarelabs-net/jsx-localize/-/jsx-localize-0.0.2.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-XJVjn+9LkJdmC+0m/qrkT/YePDfeDJc1tEbwhURyOEsfAxFMY/FhvUXBb7vcFOJvm8Sa+Vdzolzwi3dXtQHv6w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCmRaFqlDikwuv06dofUkoyouPufE7kpDhRhLw0ATyGsAIhAPPcgAy/T23GhNyC8frvnSgorO1CD14na1I44POpHPdv",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1244078
+			}
+		},
+		"0.0.3": {
+			"name": "@flarelabs-net/jsx-localize",
+			"version": "0.0.3",
+			"dependencies": {
+				"recast": "^0.23.9"
+			},
+			"devDependencies": {
 				"@types/react": "^19.0.8",
 				"typescript": "^5.8.3",
 				"vite": "^6.3.3",
@@ -81,15 +111,15 @@
 				"@angular/localize": "^19.1.4"
 			},
 			"dist": {
-				"integrity": "sha512-XJVjn+9LkJdmC+0m/qrkT/YePDfeDJc1tEbwhURyOEsfAxFMY/FhvUXBb7vcFOJvm8Sa+Vdzolzwi3dXtQHv6w==",
-				"shasum": "dd130a846642ece43305079eec0463099519e12d",
-				"tarball": "https://registry.npmjs.org/@flarelabs-net/jsx-localize/-/jsx-localize-0.0.2.tgz",
+				"integrity": "sha512-J/yioYL2/Tdz11+V7kqQVmOrn83MXZYsR28JU76cX2j2MzfphTX4UwfYVFkhy00aTKagipC4HRN+5CeQPWLkBw==",
+				"shasum": "0785497dfc9e97c6261f139e5eea57ef31dd9d4b",
+				"tarball": "https://registry.npmjs.org/@flarelabs-net/jsx-localize/-/jsx-localize-0.0.3.tgz",
 				"fileCount": 5,
-				"unpackedSize": 1244078,
+				"unpackedSize": 1258956,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCmRaFqlDikwuv06dofUkoyouPufE7kpDhRhLw0ATyGsAIhAPPcgAy/T23GhNyC8frvnSgorO1CD14na1I44POpHPdv"
+						"sig": "MEUCIQDWn5rwI2SD/1Dog7j/26/+VvqPnO6f0y8OaxGI/cljlwIgYq38xOeO/xWhUaus7s3tRh4MeJy3f8rSFhbclQ+Wnkc="
 					}
 				]
 			}

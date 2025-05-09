@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.0
+
+### Major Changes
+
+- 2573c816c0: Update dark mode global color for gray.9
+
 ## 5.11.0
 
 ### Minor Changes

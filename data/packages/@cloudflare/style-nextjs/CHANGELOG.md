@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.0.0
+
+### Patch Changes
+
+- @cloudflare/style-provider@4.0.0
+
 ## 3.0.13
 
 ## 3.0.12

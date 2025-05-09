@@ -1,5 +1,16 @@
 # Change Log
 
+## 8.0.0
+
+### Patch Changes
+
+- Updated dependencies [2573c816c0]
+  - @cloudflare/style-const@6.0.0
+  - @cloudflare/style-container@8.0.0
+  - @cloudflare/component-icon@13.0.0
+  - @cloudflare/component-visually-hidden@2.0.0
+  - @cloudflare/util-responsive@4.0.0
+
 ## 7.2.35
 
 ### Patch Changes

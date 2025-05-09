@@ -1,5 +1,18 @@
 # @cloudflare/component-code-block
 
+## 6.0.0
+
+### Patch Changes
+
+- Updated dependencies [2573c816c0]
+  - @cloudflare/style-const@6.0.0
+  - @cloudflare/style-container@8.0.0
+  - @cloudflare/component-button@9.0.0
+  - @cloudflare/component-icon@13.0.0
+  - @cloudflare/component-tooltip@6.0.0
+  - @cloudflare/component-visually-hidden@2.0.0
+  - @cloudflare/elements@4.0.0
+
 ## 5.0.61
 
 ### Patch Changes

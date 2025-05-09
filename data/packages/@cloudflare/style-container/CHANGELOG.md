@@ -1,5 +1,16 @@
 # Change Log
 
+## 8.0.0
+
+### Major Changes
+
+- 2573c816c0: Update dark mode global color for gray.9
+
+### Patch Changes
+
+- Updated dependencies [2573c816c0]
+  - @cloudflare/style-const@6.0.0
+
 ## 7.13.5
 
 ## 7.13.4

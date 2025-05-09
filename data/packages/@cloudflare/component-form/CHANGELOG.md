@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.0.0
+
+### Patch Changes
+
+- Updated dependencies [2573c816c0]
+  - @cloudflare/style-container@8.0.0
+  - @cloudflare/component-listbox@3.0.0
+
 ## 5.0.65
 
 ### Patch Changes

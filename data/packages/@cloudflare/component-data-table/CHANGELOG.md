@@ -1,5 +1,20 @@
 # Change Log
 
+## 7.0.0
+
+### Patch Changes
+
+- Updated dependencies [2573c816c0]
+  - @cloudflare/style-const@6.0.0
+  - @cloudflare/style-container@8.0.0
+  - @cloudflare/component-button@9.0.0
+  - @cloudflare/component-checkbox@6.0.0
+  - @cloudflare/component-icon@13.0.0
+  - @cloudflare/component-link@9.0.0
+  - @cloudflare/component-loading@7.0.0
+  - @cloudflare/component-pagination@11.0.0
+  - @cloudflare/elements@4.0.0
+
 ## 6.0.55
 
 ### Patch Changes
