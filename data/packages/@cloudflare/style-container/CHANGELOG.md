@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.0.1
+
+### Patch Changes
+
+- cbdaa6156a: Fix bad hex code for light gray
+
 ## 8.0.0
 
 ### Major Changes

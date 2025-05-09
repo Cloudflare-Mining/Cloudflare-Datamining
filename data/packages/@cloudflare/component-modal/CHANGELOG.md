@@ -1,5 +1,12 @@
 # Change Log
 
+## 9.0.2
+
+### Patch Changes
+
+- @cloudflare/component-button@9.0.2
+- @cloudflare/component-checkbox@6.0.1
+
 ## 9.0.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.1
+
+### Patch Changes
+
+- cbdaa6156a: Fix bad hex code for light gray
+
 ## 6.0.0
 
 ### Major Changes

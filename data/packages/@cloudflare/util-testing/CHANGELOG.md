@@ -1,5 +1,7 @@
 # Change Log
 
+## 8.0.1
+
 ## 8.0.0
 
 ### Patch Changes

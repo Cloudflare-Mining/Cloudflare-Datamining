@@ -1,5 +1,13 @@
 # Change Log
 
+## 10.0.2
+
+### Patch Changes
+
+- @cloudflare/component-label@6.0.1
+- @cloudflare/component-link@9.0.2
+- @cloudflare/elements@4.0.1
+
 ## 10.0.1
 
 ### Patch Changes

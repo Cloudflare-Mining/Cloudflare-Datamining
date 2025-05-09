@@ -1,5 +1,13 @@
 # Change Log
 
+## 7.0.2
+
+### Patch Changes
+
+- @cloudflare/component-icon@13.1.1
+- @cloudflare/elements@4.0.1
+- @cloudflare/util-responsive@4.0.2
+
 ## 7.0.1
 
 ### Patch Changes
