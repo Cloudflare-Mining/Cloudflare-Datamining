@@ -6,6 +6,7 @@ import fs from 'fs-extra';
 
 import {
 	cfRequest,
+	propertiesToArray,
 	sleep,
 	sortObjectByKeys,
 	tryAndPush,
@@ -29,6 +30,9 @@ const mostRecentBuild = buildsListJson.result[0];
 if (!mostRecentBuild || !mostRecentBuild?.trigger?.trigger_uuid) {
 	throw new Error('No builds found');
 }
+
+const file = path.resolve(dir, 'builds-get-single.json');
+await fs.writeJson(file, propertiesToArray(mostRecentBuild).sort(), { spaces: '\t' });
 
 const buildsRetry = await cfRequest(
 	`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/builds/triggers/${mostRecentBuild.trigger.trigger_uuid}/builds`,
@@ -147,7 +151,8 @@ if (startLscpuIndex && endLscpuIndex) {
 			cpuinfo[match.groups.key] = match.groups.val;
 		}
 	}
-	await fs.writeJSON(path.resolve(dir, 'deployments-logs-lscpu.json'), cpuinfo, { spaces: '\t' });
+	// TODO: re-enable when CPU info is more stable between builds
+	//await fs.writeJSON(path.resolve(dir, 'deployments-logs-lscpu.json'), cpuinfo, { spaces: '\t' });
 }
 
 // get memory
