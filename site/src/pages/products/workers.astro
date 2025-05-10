@@ -1,0 +1,64 @@
+---
+import MainHeading from '../../components/MainHeading.astro';
+import SubHeading from '../../components/SubHeading.astro';
+import Table from '../../components/Table.astro';
+import Layout from '../../layouts/Layout.astro';
+export const prerender = true;
+
+const importFiles = import.meta.glob('../../../../data/products/workers-builds/*.json');
+
+const packageVersions: any = await importFiles[Object.keys(importFiles).find(path => path.endsWith('deployments-logs-dpkg.json')) as string]();
+const CPU: any = await importFiles[Object.keys(importFiles).find(path => path.endsWith('deployments-logs-lscpu.json')) as string]();
+const env: any = await importFiles[Object.keys(importFiles).find(path => path.endsWith('deployments-logs-env.json')) as string]();
+const OS: any = await importFiles[Object.keys(importFiles).find(path => path.endsWith('deployments-logs-os-release.json')) as string]();
+const asdf = await importFiles[Object.keys(importFiles).find(path => path.endsWith('deployments-logs-asdf.json')) as string]();
+---
+<Layout title="Product: Workers - Cloudflare Datamining">
+	<MainHeading title="Product: Workers" />
+
+	<!-- asdf versions -->
+	<SubHeading category="asdf Versions" />
+	<Table
+		headers = {['Key', 'Value']}
+		data = {Object.keys(asdf.default).map((item: string) => [item, asdf.default[item].version])}
+	></Table>
+
+	<!-- Environment -->
+	<SubHeading category="Environment" />
+	<Table
+		headers = {['Key', 'Value']}
+		data = {Object.keys(env.default).map((item: string) => [item, JSON.stringify(env.default[item], null, '\t')])}
+	></Table>
+
+	<!-- OS -->
+	<SubHeading category="OS Info" />
+	<Table
+		headers = {['Key', 'Value']}
+		data = {Object.keys(OS.default).map((item: string) => [item, OS.default[item]])}
+	></Table>
+
+	<!-- CPU -->
+	<SubHeading category="CPU Info" />
+	<Table
+		headers = {['Key', 'Value']}
+		data = {Object.keys(CPU.default).map((item: string) => [item, CPU.default[item]])}
+	></Table>
+
+	<!-- Package versions -->
+	<SubHeading category="Package Versions" />
+	<Table
+		headers = {['Package', 'Version', 'Description', 'Author']}
+		data = {Object.keys(packageVersions.default).map((item: string) => [
+			item,
+			packageVersions.default[item]?.version,
+			packageVersions.default[item]?.short_description,
+			packageVersions.default[item]?.author,
+		])}
+	></Table>
+</Layout>
+
+<style>
+	dt:after {
+		content: ': ';
+	}
+</style>
