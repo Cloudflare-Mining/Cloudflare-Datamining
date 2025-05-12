@@ -36,6 +36,7 @@
 	"containers.metrics.summary.configuration": "Configuration",
 	"containers.metrics.summary.labels": "Labels",
 	"containers.metrics.summary.instances": "Instances",
+	"containers.metrics.summary.durable_objects": "Durable Objects",
 	"containers.metrics.summary.location": "Location",
 	"containers.metrics.summary.status": "Status",
 	"containers.metrics.summary.memory": "Memory",
@@ -56,5 +57,7 @@
 	"containers.metrics.charts.cpu.average.tooltip": "Average CPU load across %{instances} instances",
 	"containers.metrics.charts.diskUsage.average.tooltip": "Average disk usage across %{instances} instances",
 	"containers.metrics.charts.network.bandwidth.average.tooltip": "Average network bandwidth across %{instances} instances",
-	"containers.container.no_instances": "This Container has no instances. If you have just deployed the Container, it may take a few minutes for the instances to be provisioned."
+	"containers.container.no_instances": "This Container has no instances. If you have just deployed the Container, it may take a few minutes for the instances to be provisioned.",
+	"containers.container.no_instances.ready": "You have no running containers (but they are ready to go)",
+	"containers.container.no_instances.check_back": "You have no running containers (check back later)"
 }
