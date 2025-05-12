@@ -2655,28 +2655,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "SNI Rewrite functionality is only available to Enterprise customers when using custom origin functionality. It may only be enabled and used for the purpose of origin servers serving a correct certificate based on custom hostnames.",
-														"marks": [],
-														"content": null
-													}
-												]
-											},
-											{
-												"nodeType": "paragraph",
-												"data": {
-													"target": null,
-													"uri": null
-												},
-												"value": null,
-												"marks": null,
-												"content": [
-													{
-														"nodeType": "text",
-														"data": {
-															"target": null,
-															"uri": null
-														},
-														"value": "SNI Rewrite functionality may not be used for domain fronting. Such use constitutes a material breach of the Agreement. Cloudflare may suspend or terminate all or part of Cloudflare Services provided to you if Cloudflare determines you have used or are using SNI Rewrite for domain fronting.",
+														"value": "You may use SSL for SaaS solely to secure your end customers' (\"End Customers\") subdomains as part of your integrated SaaS application. For the avoidance of doubt, you may not provide direct access to the Cloudflare dashboard or APIs, offer Cloudflare Services on a standalone basis, or act as a managed service provider or reseller of Cloudflare Services.",
 														"marks": [],
 														"content": null
 													}
