@@ -5,26 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>About the department</strong></h4>
-<p>Cloudflare’s Billing Engineering team builds and maintains all the internal/external billing services related to customer onboarding, subscription management, payments, provisioning, usage processing/analytics and back office integrations with financial systems. This is a vital team central to every product launch, campaign or initiative Cloudflare undertakes. There are constantly multiple high profile initiatives going on, therefore the ability to context switch, communicate proactively and manage expectations is a key.</p>
-<p>The Billing Team is a place where you will learn fast, interface with all other engineering product teams, work with empathetic and team driven engineers, solve hard challenges and celebrate wins. Introspection, project/incident retrospectives, team communication is central to our success.&nbsp;</p>
-<p><strong>What you'll do </strong><br><br>We are looking for an engineer to join our Billing Team; an energetic team focused engineer who is growth mindset oriented, able to drive their work from inception, requirements definition, technical specification phase, development, testing and go live.</p>
-<p>You will work on a range of transactional microservices written in Go. You will be involved in helping to maintain our operational excellence by triaging, solving various inbound tickets related to issues across services billing maintains. As you grow within the team you will be given opportunities to own bigger initiatives and lead projects from start to finish solo or as part of a smaller team.</p>
-<p>Our tech stack is a modern container-based microservice architecture. Technologies we use include Docker, Go (golang), PostgreSQL, Redis, Kafka, Kubernetes, Temporal and the usual Unix/Linux tools and workflows. We strive to build reliable, fault tolerant systems that can operate at Cloudflare’s scale.</p>
-<p><strong>Desirable skills and knowledge</strong></p>
+<p><strong>Available Locations:&nbsp;</strong>Austin, TX | Lisbon, Portugal | London, United Kingdom&nbsp;</p>
+<h4><strong>About the Role</strong></h4>
+<p>Cloudflare is seeking a dynamic and experienced product manager to join our platform product team, overseeing marketing engineering and growth initiatives. You will be responsible for defining and executing the product roadmap for the platform capabilities that empower our marketing and growth teams. This high-impact role requires a strategic thinker with a strong technical acumen, a deep understanding of marketing technology and growth principles, and the ability to collaborate effectively with engineering, marketing, analytics, and other product teams.&nbsp;</p>
+<p>Problems you may face:</p>
 <ul>
-	<li>BS+ in Computer Science or equivalent experience</li>
-	<li>5+ years professional experience as a developer/engineer</li>
-	<li>Knowledge of Golang or desire to learn it</li>
-	<li>Solid understanding of RESTful APIs and service security</li>
-	<li>Working knowledge of SQL and relational databases such as PostgreSQL or MySQL</li>
-	<li>Experience with modern Unix/Linux development and runtime environment</li>
-	<li>Experience implementing secure and highly-available distributed systems/microservices</li>
-	<li>Familiarity with event driven architecture</li>
-	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
-	<li>Strong interpersonal and communication skills with a bias towards action</li>
+	<li>How do we drive awareness, engagement, and retention throughout a customer’s Cloudflare journey and set them up for success faster?</li>
+	<li>How can we deliver a best-in-class experience for site authors that balances their short-term needs for business impact with user experience and long-term performance, reliability, and scalability goals</li>
+	<li>What’s the best way to balance competing priorities to optimize for impact, and what are the key KPIs to measure ongoing impact?</li>
 </ul>
-<p><strong>Available Locations</strong>: Lisbon or Remote Portugal</p>
+<h4><strong>Key Competencies</strong></h4>
+<p>We are looking for someone who is curious, customer-centered, can learn quickly, think creatively, and work cross-functionally. Key responsibilities include:</p>
+<ul>
+	<li><strong>Business &amp; Product Vision and Strategy:</strong> Define and communicate the vision, strategic direction, and goals for the marketing engineering and growth initiatives.</li>
+	<li><strong>Roadmap Prioritization:</strong> Develop and maintain a product roadmap that optimizes both short-term wins with long-term version with investments in platform capabilities and&nbsp; customer experience improvements.</li>
+	<li><strong>Champion of the customer:</strong> Develop a deep understanding of the marketing technology landscape, growth best practices, and the needs and behaviors of Cloudflare's target users and customers.&nbsp;</li>
+	<li><strong>Cross-Functional Collaboration:</strong> Act as a central point of contact between various product, marketing, engineering, and analytics teams throughout the product lifecycle to successfully execute the roadmap and impact for customers.</li>
+	<li><strong>Data-informed Decisions:</strong> Define key metrics, establish tracking mechanisms, and analyze product performance to identify areas for improvement.</li>
+	<li><strong>First-class Execution:</strong> Gets things done and has a track record of driving excellence, impact, and managing complex projects end-to-end.</li>
+</ul>
+<h4><strong>Bonus Points</strong></h4>
+<ul>
+	<li>Proven track record of successfully defining and launching impactful platform products and driving growth</li>
+	<li>Excellent analytical and problem-solving skills, with the ability to interpret data and translate it into actionable insights.</li>
+	<li>Data-fluency – There is no team of analysts at Cloudflare. Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
+	<li>Engineering fluency – While it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen would be super helpful</li>
+	<li>Exceptional communication – Strong interpersonal skills with the ability to influence and build consensus across diverse teams.&nbsp;&nbsp;</li>
+	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

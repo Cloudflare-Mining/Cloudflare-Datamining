@@ -5,12 +5,13 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Locations: </strong>Hybrid - Atlanta, Denver, Austin, NYC, London, Lisbon</p>
 <h4><strong>Lead Technical Program Manager, FinTech - Engineering PMO</strong></h4>
 <p>Cloudflare has embarked on a transformation of our entire quote to cash process.&nbsp; We are seeking a highly skilled and self-motivated Technical Program Manager to lead and manage the FinTech portfolio of projects.&nbsp; Your main responsibility will be to work cross functionally across Product, Engineering, Design, Revenue Ops, Finance, BI, external vendors, and more to build and execute on the overall strategy.&nbsp;</p>
 <p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations, and working with various functions to deliver success. You will partner with various product and engineering counterparts to determine available options, manage stakeholder expectations, and execute against the roadmap.</p>
 <p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.&nbsp;</p>
 <p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</p>
-<p><strong>This position can be based in Austin, Denver, Atlanta, or Washington D.C..&nbsp; You will be reporting into the Engineering Program Management Organization (PMO).&nbsp;</strong></p>
+<p><strong>You will be reporting into the Engineering Program Management Organization (PMO).&nbsp;</strong></p>
 <p><strong>Major areas of responsibilities</strong></p>
 <ul>
 	<li>Work horizontally. Disparate groups like Engineering, Product Management, Finance, Revenue Operations, Business Intelligence and external vendors like Stripe and Salesforce all need to keep plans aligned and work together to deliver commitments.</li>
