@@ -2812,6 +2812,8 @@
 				{
 					"name": "cacheApiRequestCfOverridesCacheRules",
 					"annotations": {
+						"compatDisableFlag": "no_cache_api_request_cf_overrides_cache_rules",
+						"compatEnableDate": "2025-05-19",
 						"compatEnableFlag": "cache_api_request_cf_overrides_cache_rules",
 						"neededByFl": "true"
 					}
@@ -2888,6 +2890,13 @@
 					"name": "webFileSystem",
 					"annotations": {
 						"compatEnableFlag": "enable_web_file_system",
+						"experimental": "true"
+					}
+				},
+				{
+					"name": "abortSignalRpc",
+					"annotations": {
+						"compatEnableFlag": "enable_abortsignal_rpc",
 						"experimental": "true"
 					}
 				}
