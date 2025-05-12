@@ -32,7 +32,7 @@
 	{
 		"id": "b0825febc8edc7216a8023813f69a987",
 		"name": "Secrets Store Reporter",
-		"description": "Can read Secrets from the Secrets Store",
+		"description": "Can list all Secrets from the Secrets Store",
 		"permissions": {
 			"zone": {
 				"read": true,
@@ -77,7 +77,7 @@
 	{
 		"id": "94a8a5ccfcb2ade88ad5154d09f27715",
 		"name": "Cloudflare Zero Trust Secure DNS Locations Write",
-		"description": "Can access all Cloudflare for Zero Trust DNS Locations but only edit Secure DNS Locations.",
+		"description": "Can read any DNS Location data in teams but only edit secure DNS Locations",
 		"permissions": {
 			"teams": {
 				"read": true,
@@ -343,7 +343,7 @@
 	{
 		"id": "2d805933d825eb7ee214b294ae7d2e43",
 		"name": "Vectorize Readonly",
-		"description": "Can read Vectorize configurations.",
+		"description": "Can read Vectorize database configurations.",
 		"permissions": {
 			"vectorize": {
 				"read": true,
@@ -362,7 +362,7 @@
 	{
 		"id": "89c48528394f516ff4ce47c39036cf12",
 		"name": "Vectorize Admin",
-		"description": "Can edit Vectorize configurations.",
+		"description": "Can edit Vectorize database configurations.",
 		"permissions": {
 			"vectorize": {
 				"read": true,
@@ -381,7 +381,7 @@
 	{
 		"id": "17f13fba9173af84903c2be2b56240e5",
 		"name": "Bot Management (Account-Wide)",
-		"description": "Can edit Bot Management (including Super Bot Fight Mode) configurations for all domains in account",
+		"description": "Can edit Bot Management Configuration for all domains on an account",
 		"permissions": {
 			"waf": {
 				"read": true,
@@ -530,7 +530,7 @@
 	{
 		"id": "084b982fe42511d15feb1411e4c9ce9e",
 		"name": "Cloudflare R2 Read",
-		"description": "Can read R2 buckets, objects, and associated configurations.",
+		"description": "Can read R2 buckets, objects, warehouses and associated configurations.",
 		"permissions": {
 			"r2_bucket_warehouse": {
 				"read": true,
@@ -565,7 +565,7 @@
 	{
 		"id": "6f83464b634142ce4ac573616256096e",
 		"name": "Cloudflare R2 Admin",
-		"description": "Can edit R2 buckets, objects, and associated configurations.",
+		"description": "Can edit R2 buckets, objects, warehouses, and associated configurations.",
 		"permissions": {
 			"r2_bucket_warehouse": {
 				"read": true,
@@ -627,7 +627,7 @@
 	{
 		"id": "344b7dd765da5a9de6230f7540cabb20",
 		"name": "Page Shield",
-		"description": "Grants write access to Page Shield across the whole account",
+		"description": "Grants write access to Page Shield for all domains in account",
 		"permissions": {
 			"zone_settings": {
 				"read": true,
@@ -650,7 +650,7 @@
 	{
 		"id": "9f436dc7d8294a34345b6a8dc83fdf71",
 		"name": "Cloudflare DEX",
-		"description": "Can edit Cloudflare DEX.",
+		"description": "Can edit Cloudflare DEX",
 		"permissions": {
 			"dex": {
 				"read": true,
@@ -745,7 +745,7 @@
 	{
 		"id": "87ce9ccd4a479a91edbf90747fd08c53",
 		"name": "Waiting Room Admin",
-		"description": "Can edit Waiting Room configuration.",
+		"description": "Can edit waiting rooms configuration.",
 		"permissions": {
 			"waitingroom": {
 				"read": true,
@@ -868,7 +868,7 @@
 	{
 		"id": "e8307f861fd552343e8a582620da412e",
 		"name": "Network Services (Magic)",
-		"description": "Grants write access to network configurations for Magic services.",
+		"description": "Grants write access to conduit-api tunnels and routes",
 		"permissions": {
 			"magic": {
 				"read": true,
@@ -891,7 +891,7 @@
 	{
 		"id": "6fd8c99c8a080a3a8f2b292c1515fb25",
 		"name": "Network Services (Magic, Read-Only)",
-		"description": "Grants read access to network configurations for Magic services.",
+		"description": "Grants read access to conduit-api tunnels and routes",
 		"permissions": {
 			"magic": {
 				"read": true,
@@ -914,7 +914,7 @@
 	{
 		"id": "08abaa5235c2196d5f3daf457190161b",
 		"name": "HTTP Applications",
-		"description": "Can view and edit HTTP Applications",
+		"description": "Grants full access to HTTP Applications",
 		"permissions": {
 			"http_applications": {
 				"read": true,
@@ -937,7 +937,7 @@
 	{
 		"id": "ecd163368eb6c45b880362b0c098f5e1",
 		"name": "HTTP Applications Read",
-		"description": "Can view HTTP Applications",
+		"description": "Grants read-only access to HTTP Applications",
 		"permissions": {
 			"http_applications": {
 				"read": true,
@@ -960,7 +960,7 @@
 	{
 		"id": "051312130d7384b97d7c4fa122eb7519",
 		"name": "Trust And Safety",
-		"description": "Can view and request reviews for blocks",
+		"description": "Grants access to view and request reviews for blocks on Dashboard",
 		"permissions": {
 			"blocks": {
 				"read": true,
@@ -1831,7 +1831,7 @@
 	{
 		"id": "9dfa4d1b73034f70ad896bf1c26d78f3",
 		"name": "Audit Logs Viewer",
-		"description": "Can view Audit Logs.",
+		"description": "Can view Audit Logs",
 		"permissions": {
 			"access": {
 				"read": true,
@@ -1885,7 +1885,7 @@
 	{
 		"id": "f2b20eaa1a5d4af42b53ac16238c99c7",
 		"name": "Administrator Read Only",
-		"description": "Can access the full account in read-only mode.",
+		"description": "Can access the full account in read only mode",
 		"permissions": {
 			"organization": {
 				"read": true,
