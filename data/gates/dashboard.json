@@ -1065,6 +1065,9 @@
 	"magic-on-ramp-aws-hub": {
 		"enabled": true
 	},
+	"magic-self-serve-mconn": {
+		"enabled": true
+	},
 	"magic-transit-cf-site": {
 		"enabled": true
 	},
@@ -1258,7 +1261,7 @@
 		]
 	},
 	"prg-domain-quick-start-guide-v2": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"variant-a",
