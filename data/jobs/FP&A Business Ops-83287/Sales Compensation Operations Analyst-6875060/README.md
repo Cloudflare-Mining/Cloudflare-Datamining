@@ -5,29 +5,68 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Location: Mexico City, Mexico</strong></h3>
-<h3><strong>About the Role</strong></h3>
-<p>Cloudflare is seeking a <strong>proactive, detail-oriented, and highly organized Administrative Assistant</strong> to support our <strong>Emerging Technologies &amp; Incubation </strong>team. This role requires a dynamic individual who thrives in a <strong>fast-paced environment</strong>, excels at multitasking, and is committed to accuracy and efficiency.</p>
-<h3><strong>Key Responsibilities</strong></h3>
+<p><strong>Available Locations: Mexico City, Mexico</strong></p>
+<p><strong>About the role</strong></p>
+<p><strong>What You'll Do</strong></p>
+<p>We are looking for a Sales Compensation Analyst to join our team within the Finance &amp; Business Operations Function. As a key team member of a high-visibility organization, the Sales Compensation Operations Analyst will provide technical and operational assistance in support of Cloudflare’s Global Sales Compensation Program. Working closely with the existing Sales Compensation team and partnering with GTM Finance and Sales Operations, the Sales Compensation Analyst will play an active role in managing and testing the ICM platform, commissions calculations and validations, submission to payroll, and inquiry resolution.&nbsp;</p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li><strong>Calendar Management:</strong> Organize and maintain schedules, ensuring seamless coordination.</li>
-	<li><strong>Travel Coordination:</strong> Arrange international and domestic travel, including visa and passport requirements.</li>
-	<li><strong>Expense Management:</strong> Prepare and process expense reports in a timely manner.</li>
-	<li><strong>Meeting Coordination:</strong> Manage both internal and external meeting logistics.</li>
-	<li><strong>Special Projects &amp; Events:</strong> Assist with various projects and event planning as needed.</li>
+	<li>
+		<p>Support accurate and timely distribution of commission payments and statements for the Global Cloudflare Sales Team</p>
+	</li>
+	<li>
+		<p>Drive alignment amongst cross-functional stakeholders and project manage commissions calculation inputs</p>
+	</li>
+	<li>
+		<p>Build consistent practices, documentation and desktop procedures for all commissions processes</p>
+	</li>
+	<li>
+		<p>Participate in ICM User Acceptance Testing (UAT) and assisting in identifying and troubleshooting defects</p>
+	</li>
+	<li>
+		<p>Manage and calculate sales commissions for special programs</p>
+	</li>
+	<li>
+		<p>Work directly with the Global Cloudflare Sales Team to assist in timely dispute resolution, leading with empathy and employing a customer-focused approach</p>
+	</li>
+	<li>
+		<p>Ensure SOX compliance, collaborating with business partners and Internal Audit on execution of controls</p>
+	</li>
 </ul>
-<h3><strong>What We’re Looking For</strong></h3>
+<p><strong>Experience, desired skills, requirements:</strong></p>
 <ul>
-	<li><strong>2-4+ years of experience</strong> as an Administrative Assistant.</li>
-	<li><strong>Strong written and verbal English communication skills.</strong></li>
-	<li><strong>Exceptional attention to detail</strong> with a proactive mindset.</li>
-	<li><strong>Excellent organizational skills</strong> and the ability to prioritize tasks effectively.</li>
-	<li><strong>Self-starter</strong> who can work independently with minimal supervision.</li>
-	<li><strong>Adaptable, team-oriented, and willing to take on any task.</strong></li>
-	<li><strong>Experience in a startup environment is a plus.</strong></li>
+	<li>
+		<p>Bachelor’s degree - Business Administration, Finance, Accounting or other related field</p>
+	</li>
+	<li>
+		<p>3+ years of either Sales Compensation, Commissions, FP&amp;A, Consulting or Sales Operations experience. Experience in a growth technology company is a plus.</p>
+	</li>
+	<li>
+		<p>Proven track record of building strong relationships and influencing business partners. You are comfortable interfacing with business partners outside of your direct team, and understand the rigor and caliber of deliverables required to work with them.</p>
+	</li>
+	<li>
+		<p>You are a data-driven, truth seeker: analytics and data are your currency for facilitating informed decision making.</p>
+	</li>
+	<li>
+		<p>Firm grasp of the commission administrative process flow, including transaction crediting; incentive calculations; payment file preparation; and issue resolution.&nbsp;</p>
+	</li>
+	<li>
+		<p>Highly proficient in Excel / Google Sheets, system-based analytical tools</p>
+	</li>
+	<li>
+		<p>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</p>
+	</li>
+	<li>
+		<p>Operations: You seek out efficiency, leveraging tools, automation or other means to scale process and deliver more accurate results</p>
+	</li>
+	<li>
+		<p>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</p>
+	</li>
+	<li>
+		<p>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</p>
+	</li>
 </ul>
-<p>If you thrive in a <strong>high-energy, collaborative environment</strong> and are eager to make an impact, we’d love to hear from you!</p>
-<p>&nbsp;</p>
+<h4>&nbsp;</h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

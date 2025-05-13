@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>This position is local to Austin, TX with the expectation of 2 days per week in-office.<br><br>About the Team</strong></h4>
+<h4><strong>This position is local to Austin TX, Atlanta GA, or Denver CO. If located in Austin, there is an expectation of 2 days per week in-office.<br><br>About the Team</strong></h4>
 <p>In this role, you will be focused on the build out and expansion of our global network. You'll work closely with Cloudflare’s SRE (Site Reliability Engineering) team, Network Engineering team, Infrastructure Engineering team, Project Managers and with various vendors and partners (including hardware vendors, logistics, datacenter and network providers, and ISPs) to maintain and improve our global infrastructure, and to plan and aggressively execute on the expansion of our network. You will further be responsible for the development and implementation of consistent processes and visibility measurements for consistent and effective management of our infrastructure. This is a highly visible position that requires deep technical understanding of datacenter infrastructure, physical and logical networking, linux, and basic experience with data analysis and project management.</p>
 <p>To be successful in this position, you should have excellent technical skills, communication skills, and be able to navigate a range of challenges and constraints (e.g. schedule adherence, time zones, and cultures). You will have the opportunity to (literally) build a faster, safer Internet for our millions of users and the billions of web surfers that visit their sites each month.</p>
 <p><strong>Other Responsibilities May Include</strong></p>
@@ -60,6 +60,33 @@
 	<li>Comfortable with remote “lights-out” and out-of-band access to data center resources</li>
 	<li>Linux certifications.</li>
 	<li>Knowledge of the OSI-model and experience isolating network, hardware and software issues.</li>
+</ul>
+<p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>Estimated annual base salary of $93,000.00 - 135,000.00</li>
+</ul>
+<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.<br><br><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.<br><br><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
