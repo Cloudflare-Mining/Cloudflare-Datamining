@@ -2899,6 +2899,14 @@
 						"compatEnableFlag": "enable_abortsignal_rpc",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "allowEvalDuringStartup",
+					"annotations": {
+						"compatDisableFlag": "disallow_eval_during_startup",
+						"compatEnableDate": "2025-06-01",
+						"compatEnableFlag": "allow_eval_during_startup"
+					}
 				}
 			]
 		},
