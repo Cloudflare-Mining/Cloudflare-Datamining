@@ -62,134 +62,118 @@
 	</div>
 	<p>We tested APO on over 500 Cloudflare customer websites that run on WordPress to understand what the performance improvements would be. The results speak for themselves:</p>
 	<p><b>Test Results</b></p>
-	<table>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-7fs1 {
+			background-color: #FFF;
+			border-color: #000000;
+			color: #276D9B;
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+
+		.tg .tg-upde {
+			background-color: #C0C0C0;
+			border-color: #000000;
+			color: #36393A;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-fk66 {
+			background-color: #FFF;
+			border-color: #000000;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-gd6q {
+			background-color: #FFF;
+			border-color: #000000;
+			color: #36393A;
+			text-align: left;
+			vertical-align: middle
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-upde"><span style="font-weight:bold;background-color:#C0C0C0">Metric</span></th>
+				<th class="tg-upde"><span style="font-weight:bold;background-color:#C0C0C0">Percentiles</span></th>
+				<th class="tg-upde"><span style="font-weight:bold;background-color:#C0C0C0">Baseline Cloudflare</span></th>
+				<th class="tg-upde"><span style="font-weight:bold;background-color:#C0C0C0">APO Enabled</span></th>
+				<th class="tg-upde"><span style="font-weight:bold;background-color:#C0C0C0">Improvement (%)</span></th>
+			</tr>
+		</thead>
 		<tbody>
 			<tr>
-				<th>
-					<p><b>Metric</b></p>
-				</th>
-				<th>
-					<p><b>Percentiles</b></p>
-				</th>
-				<th>
-					<p><b>Baseline Cloudflare</b></p>
-				</th>
-				<th>
-					<p><b>APO Enabled</b></p>
-				</th>
-				<th>
-					<p><b>Improvement (%)</b></p>
-				</th>
+				<td class="tg-fk66" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none">Time to First Byte (TTFB)</span></td>
+				<td class="tg-gd6q">90th</td>
+				<td class="tg-gd6q">1252 ms</td>
+				<td class="tg-gd6q">351 ms</td>
+				<td class="tg-gd6q">71.96%</td>
 			</tr>
 			<tr>
-				<td>
-					<p>Time to First Byte (TTFB)</p>
-				</td>
-				<td>
-					<p>90th</p>
-				</td>
-				<td>
-					<p>1252 ms</p>
-				</td>
-				<td>
-					<p>351 ms</p>
-				</td>
-				<td>
-					<p>71.96%</p>
-				</td>
+				<td class="tg-gd6q">10th</td>
+				<td class="tg-gd6q">254 ms</td>
+				<td class="tg-gd6q">261 ms</td>
+				<td class="tg-gd6q">-2.76%</td>
 			</tr>
 			<tr>
-				<td>
-					<p>10th</p>
-				</td>
-				<td>
-					<p>254 ms</p>
-				</td>
-				<td>
-					<p>261 ms</p>
-				</td>
-				<td>
-					<p>-2.76%</p>
-				</td>
-				<td>
-					<p></p>
-				</td>
+				<td class="tg-7fs1" rowspan="2"><a href="http://web.archive.org/web/20210503002739/https://web.dev/fcp" target="_blank" rel="noopener noreferrer"><span style="font-weight:400;font-style:normal;text-decoration:underline">First Contentful Paint</span></a><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000">(FCP)</span></td>
+				<td class="tg-fk66"><span style="font-weight:400;font-style:normal">90th</span></td>
+				<td class="tg-gd6q">2655 ms</td>
+				<td class="tg-gd6q">2056 ms</td>
+				<td class="tg-gd6q">22.55%</td>
 			</tr>
 			<tr>
-				<td>
-					<p><a href="https://web.dev/fcp"><u>First Contentful Paint</u></a></p>
-					<p>
-					</p>
-					<p></p>
-					<p>(FCP)</p>
-				</td>
-				<td>
-					<p>90th</p>
-				</td>
-				<td>
-					<p>2655 ms</p>
-				</td>
-				<td>
-					<p>2056 ms</p>
-				</td>
-				<td>
-					<p>22.55%</p>
-				</td>
+				<td class="tg-fk66"><span style="font-weight:400;font-style:normal">10th</span></td>
+				<td class="tg-gd6q">894 ms</td>
+				<td class="tg-gd6q">783 ms</td>
+				<td class="tg-gd6q">12.46%</td>
 			</tr>
 			<tr>
-				<td>
-					<p>10th</p>
-				</td>
-				<td>
-					<p>894 ms</p>
-				</td>
-				<td>
-					<p>783 ms</p>
-				</td>
-				<td>
-					<p>12.46%</p>
-				</td>
-				<td>
-					<p></p>
-				</td>
+				<td class="tg-7fs1" rowspan="2"><a href="http://web.archive.org/web/20210503002739/https://web.dev/speed-index" target="_blank" rel="noopener noreferrer"><span style="font-weight:400;font-style:normal;text-decoration:underline">Speed Index</span></a><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000">(SI)</span></td>
+				<td class="tg-fk66"><span style="font-weight:400;font-style:normal">90th</span></td>
+				<td class="tg-gd6q">6428</td>
+				<td class="tg-gd6q">5586</td>
+				<td class="tg-gd6q">13.11%</td>
 			</tr>
 			<tr>
-				<td>
-					<p><a href="https://web.dev/speed-index"><u>Speed Index</u></a></p>
-					<p>
-					</p>
-					<p></p>
-					<p>(SI)</p>
-				</td>
-				<td>
-					<p>90th</p>
-				</td>
-				<td>
-					<p>6428</p>
-				</td>
-				<td>
-					<p>5586</p>
-				</td>
-				<td>
-					<p>13.11%</p>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<p>10th</p>
-				</td>
-				<td>
-					<p>1301</p>
-				</td>
-				<td>
-					<p>1242</p>
-				</td>
-				<td>
-					<p>4.52%</p>
-				</td>
-				<td>
-					<p></p>
-				</td>
+				<td class="tg-fk66"><span style="font-weight:400;font-style:normal">10th</span></td>
+				<td class="tg-gd6q">1301</td>
+				<td class="tg-gd6q">1242</td>
+				<td class="tg-gd6q">4.52%</td>
 			</tr>
 		</tbody>
 	</table>
