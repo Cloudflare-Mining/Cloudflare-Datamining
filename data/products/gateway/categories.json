@@ -16,7 +16,7 @@
 			}
 		],
 		"beta": false,
-		"deprecated": true
+		"deprecated": false
 	},
 	{
 		"name": "Adult Themes",
@@ -62,6 +62,15 @@
 		"class": "premium",
 		"subcategories": [
 			{
+				"name": "Brokerage & Investing",
+				"id": 186,
+				"description": "Sites related to brokerage and investing.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
 				"name": "Business",
 				"id": 75,
 				"description": "Sites related to business.",
@@ -83,6 +92,15 @@
 				"name": "Economy & Finance",
 				"id": 89,
 				"description": "Sites related to economics and finance.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Personal Finance",
+				"id": 185,
+				"description": "Sites related to personal finance.",
 				"class": "premium",
 				"subcategories": null,
 				"beta": false,
@@ -129,6 +147,15 @@
 				"name": "Educational Institutions",
 				"id": 91,
 				"description": "Sites related to educational institutions.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Reference",
+				"id": 189,
+				"description": "Sites related to reference materials and maps.",
 				"class": "premium",
 				"subcategories": null,
 				"beta": false,
@@ -345,7 +372,16 @@
 		"class": "premium",
 		"subcategories": [
 			{
-				"name": "Government",
+				"name": "Charity and Non-profit",
+				"id": 190,
+				"description": "Sites related to charities and non-profit organizations.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Government/Legal",
 				"id": 101,
 				"description": "Sites related to Government.",
 				"class": "premium",
@@ -565,7 +601,7 @@
 				"deprecated": false
 			},
 			{
-				"name": "Redirect",
+				"name": "URL Alias/Redirect",
 				"id": 141,
 				"description": "Domains that redirect to other sites.",
 				"class": "premium",
@@ -703,7 +739,7 @@
 		"class": "premium",
 		"subcategories": [
 			{
-				"name": "Religion",
+				"name": "Religion & Spirituality",
 				"id": 142,
 				"description": "Sites related to religion, alternative religion, religious teachings, religious groups and spirituality.",
 				"class": "premium",
@@ -768,6 +804,15 @@
 				"deprecated": false
 			},
 			{
+				"name": "Compromised Domain",
+				"id": 187,
+				"description": "Domains believed to be compromised.",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
 				"name": "Cryptomining",
 				"id": 83,
 				"description": "Sites that mine cryptocurrency by taking over the user's computing resources.",
@@ -807,6 +852,15 @@
 				"name": "Phishing",
 				"id": 131,
 				"description": "Domains that are known for stealing personal information.",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Potentially unwanted software",
+				"id": 188,
+				"description": "Sites associated with spyware and other potentially malicious softare.",
 				"class": "free",
 				"subcategories": null,
 				"beta": false,
