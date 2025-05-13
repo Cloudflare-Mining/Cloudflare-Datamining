@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "402c09b3-fc76-547e-80ad-52f0def02260")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "0b0a9c51-38ef-565d-b967-a66fabd265a6")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1041,10 +1041,10 @@
 					t.g.build = Sn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "cd20ec6cc611b236eda97bb5dbbe426f17190ca7",
-						dashVersion: "33182527",
+						commit: "1b6128997c0e86c3f3bc49e78ad13b6f271a5295",
+						dashVersion: "33201845",
 						env: "production",
-						builtAt: 1747077552817,
+						builtAt: 1747144172546,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -11494,6 +11494,7 @@
 						functions: "https://developers.cloudflare.com/pages/platform/functions",
 						functionsRoutes: "https://developers.cloudflare.com/pages/platform/functions/routing/",
 						invocationRoutes: "https://developers.cloudflare.com/pages/platform/functions/routing/#function-invocation-routes",
+						functionsFailOpenClosed: "https://developers.cloudflare.com/pages/platform/functions/routing/#fail-open--closed",
 						functionsBindings: "https://developers.cloudflare.com/pages/platform/functions/bindings/",
 						functionsAIBindings: "https://developers.cloudflare.com/pages/platform/functions/bindings/#ai",
 						functionsKVNamespace: "https://developers.cloudflare.com/pages/platform/functions/bindings/#kv-namespaces",
@@ -20754,6 +20755,9 @@
   .break-all {
     word-break: break-all;
   }
+  .overflow-ellipsis {
+    text-overflow: ellipsis;
+  }
   .text-ellipsis {
     text-overflow: ellipsis;
   }
@@ -22665,4 +22669,4 @@
 	}
 ]);
 
-//# debugId=402c09b3-fc76-547e-80ad-52f0def02260
+//# debugId=0b0a9c51-38ef-565d-b967-a66fabd265a6
