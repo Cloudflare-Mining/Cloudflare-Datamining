@@ -329,7 +329,7 @@ const navigation = {
 	}, {
 		title: "navigation.account.zero_trust",
 		url: () => {
-			const M = (0, _.e1)(),
+			const M = (0, y.e1)(),
 				W = "https://one.dash.cloudflare.com";
 			return M ? `${W}/${M}/` : W
 		},
@@ -445,7 +445,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: M => {
 				const W = (0, l.tJ)(M);
-				return !(0, y.ky)(W, [h.uD.EnterpriseTrial])
+				return !(0, v.ky)(W, [h.uD.EnterpriseTrial])
 			}
 		}]
 	}, {
@@ -765,8 +765,8 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: M => {
 				const W = (0, d.nA)(M),
-					ie = !!(0, o.z1)("zone-level-rum")(M);
-				return (W == null ? void 0 : W.status) === "active" && ie && !J(M)
+					se = !!(0, o.z1)("zone-level-rum")(M);
+				return (W == null ? void 0 : W.status) === "active" && se && !J(M)
 			}
 		}, {
 			title: "navigation.zone.analytics.security",
@@ -784,7 +784,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: M => {
 				const W = (0, d.nA)(M);
-				return W ? !!(!J(M) && !!(0, d.ZB)(M, "origin_reachability_dash", "dash_view") && (0, d.tU)(W, "enterprise") && !!(0, v.Ek)(M, "httpRequestsAdaptiveGroups")) : !1
+				return W ? !!(!J(M) && !!(0, d.ZB)(M, "origin_reachability_dash", "dash_view") && (0, d.tU)(W, "enterprise") && !!(0, _.Ek)(M, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
@@ -792,7 +792,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: M => {
 				const W = (0, d.nA)(M);
-				return W ? !!(!J(M) && !!(0, d.ZB)(M, "edge_reachability_dash", "dash_view") && (0, d.tU)(W, "enterprise") && !!(0, v.Ek)(M, "nelReportsAdaptiveGroups")) : !1
+				return W ? !!(!J(M) && !!(0, d.ZB)(M, "edge_reachability_dash", "dash_view") && (0, d.tU)(W, "enterprise") && !!(0, _.Ek)(M, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.workers",
@@ -883,10 +883,10 @@ const navigation = {
 		hasPermission: M => {
 			const W = (0, d.nA)(M);
 			if (J(M) || !(0, m.wB)(M, "zone_settings", "spectrum.app") || !W) return !1;
-			const ie = !!((0, s.l8)(M) || (0, d.DQ)(M)),
+			const se = !!((0, s.l8)(M) || (0, d.DQ)(M)),
 				ce = !!(0, d.ZB)(M, "spectrum", "enabled"),
 				ae = !!(0, d.Ns)(W);
-			return ce || ie || !ae
+			return ce || se || !ae
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -1186,7 +1186,7 @@ const navigation = {
 			title: "navigation.zone.traffic.health_check_analytics",
 			url: "/traffic/health-check-analytics",
 			navigationType: "global-settings",
-			hasPermission: M => !J(M) && !!(0, v.Ek)(M, "healthCheckEventsAdaptiveGroups")
+			hasPermission: M => !J(M) && !!(0, _.Ek)(M, "healthCheckEventsAdaptiveGroups")
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
 			url: "/traffic/waiting-rooms",
