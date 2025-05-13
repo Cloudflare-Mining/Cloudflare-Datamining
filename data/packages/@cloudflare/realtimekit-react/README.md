@@ -80,7 +80,7 @@ _For more examples, please refer to the [Documentation](https://docs.realtime.cl
 
 ## About
 
-`@cloudflare/realtimekit-react` is created & maintained by Cloudflare, Inc.
+`@cloudflare/realtimekit` is created & maintained by Cloudflare, Inc.
 
 The names and logos are trademarks of Cloudflare, Inc.
 
