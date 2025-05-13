@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/realtimekit-ui",
 	"dist-tags": {
-		"latest": "0.0.0",
+		"latest": "0.1.0",
 		"staging": "1.0.0-staging.15"
 	},
 	"versions": {
@@ -338,6 +338,30 @@
 			"name": "@cloudflare/realtimekit-ui",
 			"version": "1.0.0-staging.15",
 			"dependencies": {
+				"hark": "^1.2.3",
+				"hls.js": "^1.5.17",
+				"lodash-es": "^4.17.21",
+				"@floating-ui/dom": "^1.1.0",
+				"resize-observer-polyfill": "^1.5.1"
+			},
+			"dist": {
+				"shasum": "932930fb69e00aa9c820095c5a91aaa3619e51f4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-1.0.0-staging.15.tgz",
+				"fileCount": 1223,
+				"integrity": "sha512-G+wy/XXCrjJlo9SzHaPvxRFSYWIjaRVc/sQ1HGiQfpYqxCankgAviFF6Qe/zl9pYRrpw/YAGxa/hDKcN9EVyZg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCyxEPpnsYsr5kjmFxceFXf/jJGN2POTKimyFFeTcHHHQIhAK4kR1GCJPJcaIvfHADlv7ZaNTDI5SMCoxVAX2Rflv0A",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 28963384
+			}
+		},
+		"0.1.0": {
+			"name": "@cloudflare/realtimekit-ui",
+			"version": "0.1.0",
+			"dependencies": {
 				"@floating-ui/dom": "^1.1.0",
 				"hark": "^1.2.3",
 				"hls.js": "^1.5.17",
@@ -345,15 +369,15 @@
 				"resize-observer-polyfill": "^1.5.1"
 			},
 			"dist": {
-				"integrity": "sha512-G+wy/XXCrjJlo9SzHaPvxRFSYWIjaRVc/sQ1HGiQfpYqxCankgAviFF6Qe/zl9pYRrpw/YAGxa/hDKcN9EVyZg==",
-				"shasum": "932930fb69e00aa9c820095c5a91aaa3619e51f4",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-1.0.0-staging.15.tgz",
+				"integrity": "sha512-z6qnnXLqrfygnilN6bxH7O1ZANpuhldQVpXbgkmehG0bcPdhrfujfxzC6nvxasql8TB5LtwPjjZ0UvCw88HEUA==",
+				"shasum": "8eb1d099147956dfc67c5f1d6e00a38ebee43bab",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-0.1.0.tgz",
 				"fileCount": 1223,
-				"unpackedSize": 28963384,
+				"unpackedSize": 28963372,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCyxEPpnsYsr5kjmFxceFXf/jJGN2POTKimyFFeTcHHHQIhAK4kR1GCJPJcaIvfHADlv7ZaNTDI5SMCoxVAX2Rflv0A"
+						"sig": "MEYCIQDwazE3cVI5ReKflSFgFWwnTQaLEzguwnkXGvaIcKVRfwIhAPweobvu3UBSl2qCHTJHMYh8bEV/q88znYiCmW7aGrHs"
 					}
 				]
 			}
