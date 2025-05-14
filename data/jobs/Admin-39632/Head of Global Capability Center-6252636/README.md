@@ -5,11 +5,11 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>We are expanding our footprint with a new global capability center in Bangalore, India, aimed at driving operational excellence, technological innovation, and strategic growth.<br><strong><br>Position Overview:</strong> <br>We are seeking a dynamic and experienced Senior Leader&nbsp; to lead our new global capability center in Bangalore. This leader will play a critical role in overseeing the center's operations, guiding our largest technical team, liaising with the Indian government, and&nbsp; growing important partner and network relationships.</p>
+<p>We are expanding our footprint with a new global capability center in Bengaluru, India, aimed at driving operational excellence, technological innovation, and strategic growth.<br><strong><br>Position Overview:</strong> <br>We are seeking a dynamic and experienced Senior Leader&nbsp; to lead our new global capability center in Bengaluru. This leader will play a critical role in overseeing the center's operations, guiding our largest technical team, liaising with the Indian government, and&nbsp; growing important partner and network relationships.</p>
 <h3><strong>Key Responsibilities:</strong></h3>
 <p><strong>Operational Leadership:</strong></p>
 <ul>
-	<li>Oversee and manage the day-to-day operations of the Bangalore capability center, ensuring alignment with corporate goals and standards.</li>
+	<li>Oversee and manage the day-to-day operations of the Bengaluru capability center, ensuring alignment with corporate goals and standards.</li>
 	<li>Implement and maintain efficient operational processes and systems to drive productivity and quality.</li>
 	<li>Develop and manage the center’s budget, ensuring financial objectives are met.</li>
 	<li>Foster a culture of continuous improvement, innovation, and excellence within the center.</li>
@@ -38,7 +38,7 @@
 <p><strong>Remote Team Collaboration:</strong></p>
 <ul>
 	<li>Work effectively with remote teams in the US / EMEA / APJC, demonstrating flexibility in time zones and availability.</li>
-	<li>Facilitate seamless communication and collaboration between the Hyderabad/Bangalore center and other hub offices.</li>
+	<li>Facilitate seamless communication and collaboration between the teams in Bengaluru other hub offices.</li>
 	<li>Travel as needed for meetings, strategic planning, and team integration.</li>
 </ul>
 <h3><strong>Qualifications:</strong></h3>
