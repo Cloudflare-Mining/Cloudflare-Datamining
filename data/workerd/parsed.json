@@ -2907,6 +2907,13 @@
 						"compatEnableDate": "2025-06-01",
 						"compatEnableFlag": "allow_eval_during_startup"
 					}
+				},
+				{
+					"name": "enableRequestSignal",
+					"annotations": {
+						"compatDisableFlag": "disable_request_signal",
+						"compatEnableFlag": "enable_request_signal"
+					}
 				}
 			]
 		},
