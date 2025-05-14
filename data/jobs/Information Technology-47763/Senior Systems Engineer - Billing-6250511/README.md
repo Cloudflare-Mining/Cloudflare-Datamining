@@ -5,28 +5,26 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Position Location: Toronto, Ontario</strong></p>
-<h4><strong>About the Role:</strong></h4>
-<p>Cloudflare’s Marketing team is seeking a <strong>Channel Marketing &amp; Programs Manager</strong> to lead partner initiatives, hosted events, and marketing campaigns across Canada. In this role, you’ll collaborate closely with partners and our regional marketing team to develop and execute high-impact programs that drive pipeline growth and revenue. Success in this role requires experience in designing and executing revenue-generating programs in partnership with both direct sales teams and reseller partners.</p>
-<h4><strong>What You'll Do:</strong></h4>
+<h4><strong>About the department</strong></h4>
+<p>Cloudflare’s Billing Engineering team builds and maintains all the internal/external billing services related to customer onboarding, subscription management, payments, provisioning, usage processing/analytics and back office integrations with financial systems. This is a vital team central to every product launch, campaign or initiative Cloudflare undertakes. There are constantly multiple high profile initiatives going on, therefore the ability to context switch, communicate proactively and manage expectations is a key.</p>
+<p>The Billing Team is a place where you will learn fast, interface with all other engineering product teams, work with empathetic and team driven engineers, solve hard challenges and celebrate wins. Introspection, project/incident retrospectives, team communication is central to our success.&nbsp;</p>
+<p><strong>What you'll do </strong><br><br>We are looking for an engineer to join our Billing Team; an energetic team focused engineer who is growth mindset oriented, able to drive their work from inception, requirements definition, technical specification phase, development, testing and go live.</p>
+<p>You will work on a range of transactional microservices written in Go. You will be involved in helping to maintain our operational excellence by triaging, solving various inbound tickets related to issues across services billing maintains. As you grow within the team you will be given opportunities to own bigger initiatives and lead projects from start to finish solo or as part of a smaller team.</p>
+<p>Our tech stack is a modern container-based microservice architecture. Technologies we use include Docker, Go (golang), PostgreSQL, Redis, Kafka, Kubernetes, Temporal and the usual Unix/Linux tools and workflows. We strive to build reliable, fault tolerant systems that can operate at Cloudflare’s scale.</p>
+<p><strong>Desirable skills and knowledge</strong></p>
 <ul>
-	<li>Develop and execute the <strong>Canada Marketing Plan</strong>, working closely with internal teams and partners.</li>
-	<li>Plan and manage <strong>marketing campaigns, events, channel programs, and digital initiatives</strong> to drive customer engagement and sales growth.</li>
-	<li>Track, analyze, and optimize campaign performance using <strong>Salesforce and other marketing tools</strong>.</li>
-	<li>Advocate for <strong>partner and country-specific marketing needs</strong>, securing internal resources and aligning initiatives with global programs.</li>
-	<li>Manage <strong>partner incentives, budgets, and MDF (Marketing Development Funds)</strong> to maximize impact.</li>
-	<li>Collaborate cross-functionally with <strong>Partner Account Managers (PAMs), Field Marketers, and other stakeholders</strong> to ensure seamless program execution and success.<br><br></li>
+	<li>BS+ in Computer Science or equivalent experience</li>
+	<li>5+ years professional experience as a developer/engineer</li>
+	<li>Knowledge of Golang or desire to learn it</li>
+	<li>Solid understanding of RESTful APIs and service security</li>
+	<li>Working knowledge of SQL and relational databases such as PostgreSQL or MySQL</li>
+	<li>Experience with modern Unix/Linux development and runtime environment</li>
+	<li>Experience implementing secure and highly-available distributed systems/microservices</li>
+	<li>Familiarity with event driven architecture</li>
+	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
+	<li>Strong interpersonal and communication skills with a bias towards action</li>
 </ul>
-<p><strong>Key Qualifications &amp; Skills:</strong></p>
-<ul>
-	<li><strong>5-7 years</strong> of marketing experience in Canada, including work with resellers.</li>
-	<li><strong>Bachelor’s degree</strong> in Marketing, Business, or Communications (MBA a plus).</li>
-	<li>Strong <strong>organizational skills and cross-functional collaboration abilities</strong>.</li>
-	<li>Hands-on experience with <strong>Salesforce and marketing automation tools</strong>.</li>
-	<li>Ability to work independently, manage multiple projects, and thrive in a fast-paced environment.</li>
-	<li>Prior experience in <strong>SaaS, cybersecurity, or networking</strong> is a plus.<br><br></li>
-</ul>
-<p>This is an exciting opportunity to help shape <strong>Cloudflare’s channel marketing strategy in Canada</strong>. If you’re passionate about <strong>driving results through innovative marketing programs</strong>, we’d love to hear from you!</p>
+<p><strong>Available Locations</strong>: Lisbon or Remote Portugal</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
