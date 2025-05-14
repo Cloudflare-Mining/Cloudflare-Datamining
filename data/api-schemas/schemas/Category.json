@@ -3,22 +3,22 @@
 		"operationId": "delete_CategoryDelete",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Category UUID",
+				"description": "Category UUID.",
 				"in": "path",
 				"name": "category_id",
 				"required": true,
 				"schema": {
-					"description": "Category UUID",
+					"description": "Category UUID.",
 					"type": "string"
 				}
 			}
@@ -41,7 +41,7 @@
 						}
 					}
 				},
-				"description": "Returns the uuid of the deleted category"
+				"description": "Returns the uuid of the deleted category."
 			},
 			"400": {
 				"content": {
@@ -52,7 +52,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -79,7 +79,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -99,12 +99,12 @@
 		"operationId": "get_CategoryList",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			}
@@ -150,7 +150,7 @@
 						}
 					}
 				},
-				"description": "Returns a list of categories"
+				"description": "Returns a list of categories."
 			},
 			"400": {
 				"content": {
@@ -161,7 +161,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -188,7 +188,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -209,22 +209,22 @@
 		"operationId": "get_CategoryRead",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Category UUID",
+				"description": "Category UUID.",
 				"in": "path",
 				"name": "category_id",
 				"required": true,
 				"schema": {
-					"description": "Category UUID",
+					"description": "Category UUID.",
 					"type": "string"
 				}
 			}
@@ -267,7 +267,7 @@
 						}
 					}
 				},
-				"description": "Returns a category"
+				"description": "Returns a category."
 			},
 			"400": {
 				"content": {
@@ -278,7 +278,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -305,7 +305,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -326,22 +326,22 @@
 		"operationId": "patch_CategoryUpdate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Category UUID",
+				"description": "Category UUID.",
 				"in": "path",
 				"name": "category_id",
 				"required": true,
 				"schema": {
-					"description": "Category UUID",
+					"description": "Category UUID.",
 					"type": "string"
 				}
 			}
@@ -413,7 +413,7 @@
 						}
 					}
 				},
-				"description": "Returns the updated category"
+				"description": "Returns the updated category."
 			},
 			"400": {
 				"content": {
@@ -424,7 +424,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -451,7 +451,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -471,22 +471,22 @@
 		"operationId": "post_CategoryUpdate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Category UUID",
+				"description": "Category UUID.",
 				"in": "path",
 				"name": "category_id",
 				"required": true,
 				"schema": {
-					"description": "Category UUID",
+					"description": "Category UUID.",
 					"type": "string"
 				}
 			}
@@ -558,7 +558,7 @@
 						}
 					}
 				},
-				"description": "Returns the updated category"
+				"description": "Returns the updated category."
 			},
 			"400": {
 				"content": {
@@ -569,7 +569,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -596,7 +596,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -617,12 +617,12 @@
 		"operationId": "post_CategoryCreate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			}
@@ -698,7 +698,7 @@
 						}
 					}
 				},
-				"description": "Returns the created category"
+				"description": "Returns the created category."
 			},
 			"400": {
 				"content": {
@@ -709,7 +709,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -736,7 +736,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [

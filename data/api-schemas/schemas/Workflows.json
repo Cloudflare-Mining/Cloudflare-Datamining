@@ -124,7 +124,7 @@
 						}
 					}
 				},
-				"description": "Deletes a Workflow"
+				"description": "Deletes a Workflow."
 			},
 			"400": {
 				"content": {
@@ -179,7 +179,7 @@
 						}
 					}
 				},
-				"description": "Workflow has no deployed versions"
+				"description": "Workflow has no deployed versions."
 			},
 			"404": {
 				"content": {
@@ -234,7 +234,7 @@
 						}
 					}
 				},
-				"description": "Workflow not found"
+				"description": "Workflow not found."
 			}
 		},
 		"security": [
@@ -284,6 +284,18 @@
 					"default": 1,
 					"minimum": 1,
 					"type": "number"
+				}
+			},
+			{
+				"description": "Filter workflows by name.",
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Filter workflows by name.",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
+					"type": "string"
 				}
 			},
 			{
@@ -508,7 +520,7 @@
 						}
 					}
 				},
-				"description": "Input Validation Error"
+				"description": "Input Validation Error."
 			}
 		},
 		"security": [
@@ -718,7 +730,7 @@
 						}
 					}
 				},
-				"description": "Get Workflow details"
+				"description": "Get Workflow details."
 			},
 			"400": {
 				"content": {
@@ -773,7 +785,7 @@
 						}
 					}
 				},
-				"description": "Workflow has no deployed versions"
+				"description": "Workflow has no deployed versions."
 			},
 			"404": {
 				"content": {
@@ -828,7 +840,7 @@
 						}
 					}
 				},
-				"description": "Workflow not found"
+				"description": "Workflow not found."
 			}
 		},
 		"security": [
@@ -1084,7 +1096,7 @@
 						}
 					}
 				},
-				"description": "List of workflow instances"
+				"description": "List of workflow instances."
 			},
 			"400": {
 				"content": {
@@ -1139,7 +1151,7 @@
 						}
 					}
 				},
-				"description": "Input Validation Error"
+				"description": "Input Validation Error."
 			},
 			"404": {
 				"content": {
@@ -1194,7 +1206,7 @@
 						}
 					}
 				},
-				"description": "Workflow Name not found"
+				"description": "Workflow Name not found."
 			}
 		},
 		"security": [
@@ -1718,7 +1730,7 @@
 						}
 					}
 				},
-				"description": "Get all logs and status from the instance"
+				"description": "Get all logs and status from the instance."
 			},
 			"400": {
 				"content": {
@@ -1773,7 +1785,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"404": {
 				"content": {
@@ -1828,7 +1840,7 @@
 						}
 					}
 				},
-				"description": "Instance not found"
+				"description": "Instance not found."
 			}
 		},
 		"security": [
@@ -1980,7 +1992,7 @@
 						}
 					}
 				},
-				"description": "Get status of the job responsible for terminate all instances of a workflow"
+				"description": "Get status of the job responsible for terminate all instances of a workflow."
 			},
 			"400": {
 				"content": {
@@ -2035,7 +2047,7 @@
 						}
 					}
 				},
-				"description": "Input Validation Error"
+				"description": "Input Validation Error."
 			},
 			"404": {
 				"content": {
@@ -2090,7 +2102,7 @@
 						}
 					}
 				},
-				"description": "Workflow Name not found"
+				"description": "Workflow Name not found."
 			}
 		},
 		"security": [
@@ -2280,7 +2292,7 @@
 						}
 					}
 				},
-				"description": "List deployed workflow versions"
+				"description": "List deployed workflow versions."
 			},
 			"400": {
 				"content": {
@@ -2335,7 +2347,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -2512,7 +2524,7 @@
 						}
 					}
 				},
-				"description": "Get specific version details"
+				"description": "Get specific version details."
 			},
 			"400": {
 				"content": {
@@ -2567,7 +2579,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"404": {
 				"content": {
@@ -2622,7 +2634,7 @@
 						}
 					}
 				},
-				"description": "Version not found"
+				"description": "Version not found."
 			}
 		},
 		"security": [
@@ -2694,7 +2706,7 @@
 					"schema": {
 						"properties": {
 							"status": {
-								"description": "Possible actions to apply to instance",
+								"description": "Possible actions to apply to instance.",
 								"enum": [
 									"resume",
 									"pause",
@@ -2875,7 +2887,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"404": {
 				"content": {
@@ -2930,7 +2942,7 @@
 						}
 					}
 				},
-				"description": "Instance not found"
+				"description": "Instance not found."
 			},
 			"409": {
 				"content": {
@@ -2985,7 +2997,7 @@
 						}
 					}
 				},
-				"description": "Instance not in a restartable state"
+				"description": "Instance not in a restartable state."
 			}
 		},
 		"security": [
@@ -3233,7 +3245,7 @@
 						}
 					}
 				},
-				"description": "Provided Workflow ID is not valid"
+				"description": "Provided Workflow ID is not valid."
 			},
 			"404": {
 				"content": {
@@ -3288,7 +3300,7 @@
 						}
 					}
 				},
-				"description": "Workflow Name not found"
+				"description": "Workflow Name not found."
 			}
 		},
 		"security": [
@@ -3456,7 +3468,7 @@
 						}
 					}
 				},
-				"description": "Send an event to an instance"
+				"description": "Send an event to an instance."
 			},
 			"400": {
 				"content": {
@@ -3511,7 +3523,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"404": {
 				"content": {
@@ -3566,7 +3578,7 @@
 						}
 					}
 				},
-				"description": "Workflow not found"
+				"description": "Workflow not found."
 			}
 		},
 		"security": [
@@ -3822,7 +3834,7 @@
 						}
 					}
 				},
-				"description": "Provided Workflow ID is not valid"
+				"description": "Provided Workflow ID is not valid."
 			},
 			"404": {
 				"content": {
@@ -3877,7 +3889,7 @@
 						}
 					}
 				},
-				"description": "Workflow Name not found"
+				"description": "Workflow Name not found."
 			}
 		},
 		"security": [
@@ -4103,7 +4115,7 @@
 						}
 					}
 				},
-				"description": "Provided Workflow ID is not valid"
+				"description": "Provided Workflow ID is not valid."
 			},
 			"404": {
 				"content": {
@@ -4158,7 +4170,7 @@
 						}
 					}
 				},
-				"description": "Workflow Name not found"
+				"description": "Workflow Name not found."
 			}
 		},
 		"security": [
@@ -4430,7 +4442,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [

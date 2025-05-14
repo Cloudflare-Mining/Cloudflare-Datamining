@@ -3,12 +3,12 @@
 		"operationId": "get_DatasetList",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			}
@@ -44,7 +44,7 @@
 						}
 					}
 				},
-				"description": "Returns a list of dataset in an account"
+				"description": "Returns a list of dataset in an account."
 			},
 			"400": {
 				"content": {
@@ -55,7 +55,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -82,7 +82,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -103,22 +103,22 @@
 		"operationId": "get_DatasetRead",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Dataset ID",
+				"description": "Dataset ID.",
 				"in": "path",
 				"name": "dataset_id",
 				"required": true,
 				"schema": {
-					"description": "Dataset ID",
+					"description": "Dataset ID.",
 					"type": "string"
 				}
 			}
@@ -151,7 +151,7 @@
 						}
 					}
 				},
-				"description": "Returns a dataset"
+				"description": "Returns a dataset."
 			},
 			"400": {
 				"content": {
@@ -162,7 +162,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -189,7 +189,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -210,22 +210,22 @@
 		"operationId": "patch_DatasetUpdate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Dataset ID",
+				"description": "Dataset ID.",
 				"in": "path",
 				"name": "dataset_id",
 				"required": true,
 				"schema": {
-					"description": "Dataset ID",
+					"description": "Dataset ID.",
 					"type": "string"
 				}
 			}
@@ -236,11 +236,11 @@
 					"schema": {
 						"properties": {
 							"isPublic": {
-								"description": "If true, then anyone can search the dataset. If false, then its limited to the account. ",
+								"description": "If true, then anyone can search the dataset. If false, then its limited to the account.",
 								"type": "boolean"
 							},
 							"name": {
-								"description": "Used to describe the dataset within the account context",
+								"description": "Used to describe the dataset within the account context.",
 								"minLength": 1,
 								"type": "string"
 							}
@@ -282,7 +282,7 @@
 						}
 					}
 				},
-				"description": "Returns dataset information"
+				"description": "Returns dataset information."
 			},
 			"400": {
 				"content": {
@@ -293,7 +293,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -320,7 +320,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -340,22 +340,22 @@
 		"operationId": "post_DatasetUpdate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Dataset ID",
+				"description": "Dataset ID.",
 				"in": "path",
 				"name": "dataset_id",
 				"required": true,
 				"schema": {
-					"description": "Dataset ID",
+					"description": "Dataset ID.",
 					"type": "string"
 				}
 			}
@@ -366,11 +366,11 @@
 					"schema": {
 						"properties": {
 							"isPublic": {
-								"description": "If true, then anyone can search the dataset. If false, then its limited to the account. ",
+								"description": "If true, then anyone can search the dataset. If false, then its limited to the account.",
 								"type": "boolean"
 							},
 							"name": {
-								"description": "Used to describe the dataset within the account context",
+								"description": "Used to describe the dataset within the account context.",
 								"minLength": 1,
 								"type": "string"
 							}
@@ -412,7 +412,7 @@
 						}
 					}
 				},
-				"description": "Returns dataset information"
+				"description": "Returns dataset information."
 			},
 			"400": {
 				"content": {
@@ -423,7 +423,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -450,7 +450,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -471,12 +471,12 @@
 		"operationId": "post_DatasetCreate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			}
@@ -487,11 +487,11 @@
 					"schema": {
 						"properties": {
 							"isPublic": {
-								"description": "If true, then anyone can search the dataset. If false, then its limited to the account. ",
+								"description": "If true, then anyone can search the dataset. If false, then its limited to the account.",
 								"type": "boolean"
 							},
 							"name": {
-								"description": "Used to describe the dataset within the account context",
+								"description": "Used to describe the dataset within the account context.",
 								"minLength": 1,
 								"type": "string"
 							}
@@ -533,7 +533,7 @@
 						}
 					}
 				},
-				"description": "Returns dataset information"
+				"description": "Returns dataset information."
 			},
 			"400": {
 				"content": {
@@ -544,7 +544,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -571,7 +571,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [

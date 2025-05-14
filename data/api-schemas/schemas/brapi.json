@@ -33,6 +33,11 @@
 							{
 								"additionalProperties": false,
 								"properties": {
+									"actionTimeout": {
+										"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
+										"maximum": 300000,
+										"type": "number"
+									},
 									"addScriptTag": {
 										"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 										"items": {
@@ -845,6 +850,11 @@
 							{
 								"additionalProperties": false,
 								"properties": {
+									"actionTimeout": {
+										"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
+										"maximum": 300000,
+										"type": "number"
+									},
 									"addScriptTag": {
 										"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 										"items": {
@@ -1683,6 +1693,11 @@
 							{
 								"additionalProperties": false,
 								"properties": {
+									"actionTimeout": {
+										"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
+										"maximum": 300000,
+										"type": "number"
+									},
 									"addScriptTag": {
 										"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 										"items": {
@@ -2501,6 +2516,11 @@
 							{
 								"additionalProperties": false,
 								"properties": {
+									"actionTimeout": {
+										"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
+										"maximum": 300000,
+										"type": "number"
+									},
 									"addScriptTag": {
 										"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 										"items": {
@@ -3313,6 +3333,11 @@
 							{
 								"additionalProperties": false,
 								"properties": {
+									"actionTimeout": {
+										"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
+										"maximum": 300000,
+										"type": "number"
+									},
 									"addScriptTag": {
 										"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 										"items": {
@@ -4093,6 +4118,11 @@
 							{
 								"additionalProperties": false,
 								"properties": {
+									"actionTimeout": {
+										"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
+										"maximum": 300000,
+										"type": "number"
+									},
 									"addScriptTag": {
 										"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 										"items": {
@@ -4730,7 +4760,7 @@
 								"result": {
 									"items": {
 										"properties": {
-											"result": {
+											"results": {
 												"properties": {
 													"attributes": {
 														"items": {
@@ -4794,7 +4824,7 @@
 											}
 										},
 										"required": [
-											"result",
+											"results",
 											"selector"
 										],
 										"type": "object"
@@ -4994,6 +5024,11 @@
 							{
 								"additionalProperties": false,
 								"properties": {
+									"actionTimeout": {
+										"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
+										"maximum": 300000,
+										"type": "number"
+									},
 									"addScriptTag": {
 										"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 										"items": {
@@ -5924,6 +5959,11 @@
 							{
 								"additionalProperties": false,
 								"properties": {
+									"actionTimeout": {
+										"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
+										"maximum": 300000,
+										"type": "number"
+									},
 									"addScriptTag": {
 										"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 										"items": {

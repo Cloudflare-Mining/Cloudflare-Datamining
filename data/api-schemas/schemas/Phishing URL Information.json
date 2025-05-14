@@ -8,7 +8,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -180,7 +180,7 @@
 																"x-auditable": true
 															},
 															"model_score": {
-																"description": "Score output by the model for this submission.",
+																"description": "This is the score that is outputted by the model for this submission.",
 																"example": 0.024,
 																"type": "number"
 															}
@@ -261,14 +261,15 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Get results for a URL scan response"
+				"description": "Get results for a URL scan response."
 			},
 			"4XX": {
 				"content": {
@@ -400,7 +401,7 @@
 																		"x-auditable": true
 																	},
 																	"model_score": {
-																		"description": "Score output by the model for this submission.",
+																		"description": "This is the score that is outputted by the model for this submission.",
 																		"example": 0.024,
 																		"type": "number"
 																	}
@@ -481,7 +482,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -554,7 +556,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"example": false,
 											"type": "boolean"
 										}
@@ -571,7 +573,7 @@
 						}
 					}
 				},
-				"description": "Get results for a URL scan response failure"
+				"description": "Get results for a URL scan response failure."
 			}
 		},
 		"security": [

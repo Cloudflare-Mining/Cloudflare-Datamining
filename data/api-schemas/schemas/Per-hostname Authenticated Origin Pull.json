@@ -138,7 +138,8 @@
 													"example": "2100-01-01T05:20:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier.",
@@ -150,18 +151,21 @@
 													"description": "The certificate authority that issued the certificate.",
 													"example": "GlobalSign",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"serial_number": {
 													"description": "The serial number on the uploaded certificate.",
 													"example": "6743787633689793699141714808227354901",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"signature": {
 													"description": "The type of hash used for the certificate.",
 													"example": "SHA256WithRSA",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Status of the certificate or the association.",
@@ -175,13 +179,16 @@
 														"deletion_timed_out"
 													],
 													"example": "active",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
 												},
 												"uploaded_on": {
 													"description": "The time when the certificate was uploaded.",
 													"example": "2019-10-28T18:11:23.37411Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}
@@ -301,7 +308,8 @@
 															"example": "2100-01-01T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier.",
@@ -313,18 +321,21 @@
 															"description": "The certificate authority that issued the certificate.",
 															"example": "GlobalSign",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"serial_number": {
 															"description": "The serial number on the uploaded certificate.",
 															"example": "6743787633689793699141714808227354901",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"signature": {
 															"description": "The type of hash used for the certificate.",
 															"example": "SHA256WithRSA",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "Status of the certificate or the association.",
@@ -338,13 +349,16 @@
 																"deletion_timed_out"
 															],
 															"example": "active",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
 														},
 														"uploaded_on": {
 															"description": "The time when the certificate was uploaded.",
 															"example": "2019-10-28T18:11:23.37411Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -496,7 +510,8 @@
 					"description": "The hostname on the origin for which the client certificate uploaded will be used.",
 					"example": "app.example.com",
 					"maxLength": 255,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -626,20 +641,24 @@
 														"deletion_timed_out"
 													],
 													"example": "active",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
 												},
 												"cert_updated_at": {
 													"description": "The time when the certificate was updated.",
 													"example": "2100-01-01T05:20:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"cert_uploaded_on": {
 													"description": "The time when the certificate was uploaded.",
 													"example": "2019-10-28T18:11:23.37411Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"certificate": {
 													"description": "The hostname certificate.",
@@ -651,43 +670,50 @@
 													"example": "2100-01-01T05:20:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"enabled": {
 													"description": "Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.",
 													"example": true,
 													"nullable": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"expires_on": {
 													"description": "The date when the certificate expires.",
 													"example": "2100-01-01T05:20:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"hostname": {
 													"description": "The hostname on the origin for which the client certificate uploaded will be used.",
 													"example": "app.example.com",
 													"maxLength": 255,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"issuer": {
 													"description": "The certificate authority that issued the certificate.",
 													"example": "GlobalSign",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"serial_number": {
 													"description": "The serial number on the uploaded certificate.",
 													"example": "6743787633689793699141714808227354901",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"signature": {
 													"description": "The type of hash used for the certificate.",
 													"example": "SHA256WithRSA",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Status of the certificate or the association.",
@@ -701,14 +727,17 @@
 														"deletion_timed_out"
 													],
 													"example": "active",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"description": "The time when the certificate was updated.",
 													"example": "2100-01-01T05:20:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}
@@ -836,20 +865,24 @@
 																"deletion_timed_out"
 															],
 															"example": "active",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
 														},
 														"cert_updated_at": {
 															"description": "The time when the certificate was updated.",
 															"example": "2100-01-01T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"cert_uploaded_on": {
 															"description": "The time when the certificate was uploaded.",
 															"example": "2019-10-28T18:11:23.37411Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"certificate": {
 															"description": "The hostname certificate.",
@@ -861,43 +894,50 @@
 															"example": "2100-01-01T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"enabled": {
 															"description": "Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.",
 															"example": true,
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"expires_on": {
 															"description": "The date when the certificate expires.",
 															"example": "2100-01-01T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"hostname": {
 															"description": "The hostname on the origin for which the client certificate uploaded will be used.",
 															"example": "app.example.com",
 															"maxLength": 255,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"issuer": {
 															"description": "The certificate authority that issued the certificate.",
 															"example": "GlobalSign",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"serial_number": {
 															"description": "The serial number on the uploaded certificate.",
 															"example": "6743787633689793699141714808227354901",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"signature": {
 															"description": "The type of hash used for the certificate.",
 															"example": "SHA256WithRSA",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "Status of the certificate or the association.",
@@ -911,14 +951,17 @@
 																"deletion_timed_out"
 															],
 															"example": "active",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"description": "The time when the certificate was updated.",
 															"example": "2100-01-01T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -1222,20 +1265,24 @@
 																	"deletion_timed_out"
 																],
 																"example": "active",
-																"readOnly": true
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
 															},
 															"cert_updated_at": {
 																"description": "The time when the certificate was updated.",
 																"example": "2100-01-01T05:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"cert_uploaded_on": {
 																"description": "The time when the certificate was uploaded.",
 																"example": "2019-10-28T18:11:23.37411Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"certificate": {
 																"description": "The hostname certificate.",
@@ -1247,43 +1294,50 @@
 																"example": "2100-01-01T05:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"enabled": {
 																"description": "Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.",
 																"example": true,
 																"nullable": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"expires_on": {
 																"description": "The date when the certificate expires.",
 																"example": "2100-01-01T05:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"hostname": {
 																"description": "The hostname on the origin for which the client certificate uploaded will be used.",
 																"example": "app.example.com",
 																"maxLength": 255,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"issuer": {
 																"description": "The certificate authority that issued the certificate.",
 																"example": "GlobalSign",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"serial_number": {
 																"description": "The serial number on the uploaded certificate.",
 																"example": "6743787633689793699141714808227354901",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"signature": {
 																"description": "The type of hash used for the certificate.",
 																"example": "SHA256WithRSA",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"status": {
 																"description": "Status of the certificate or the association.",
@@ -1297,14 +1351,17 @@
 																	"deletion_timed_out"
 																],
 																"example": "active",
-																"readOnly": true
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
 															},
 															"updated_at": {
 																"description": "The time when the certificate was updated.",
 																"example": "2100-01-01T05:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														}
 													}
@@ -1325,13 +1382,15 @@
 														"description": "Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.",
 														"example": true,
 														"nullable": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"hostname": {
 														"description": "The hostname on the origin for which the client certificate uploaded will be used.",
 														"example": "app.example.com",
 														"maxLength": 255,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier.",
@@ -1506,20 +1565,24 @@
 																			"deletion_timed_out"
 																		],
 																		"example": "active",
-																		"readOnly": true
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"cert_updated_at": {
 																		"description": "The time when the certificate was updated.",
 																		"example": "2100-01-01T05:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"cert_uploaded_on": {
 																		"description": "The time when the certificate was uploaded.",
 																		"example": "2019-10-28T18:11:23.37411Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"certificate": {
 																		"description": "The hostname certificate.",
@@ -1531,43 +1594,50 @@
 																		"example": "2100-01-01T05:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"enabled": {
 																		"description": "Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.",
 																		"example": true,
 																		"nullable": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"expires_on": {
 																		"description": "The date when the certificate expires.",
 																		"example": "2100-01-01T05:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"hostname": {
 																		"description": "The hostname on the origin for which the client certificate uploaded will be used.",
 																		"example": "app.example.com",
 																		"maxLength": 255,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"issuer": {
 																		"description": "The certificate authority that issued the certificate.",
 																		"example": "GlobalSign",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"serial_number": {
 																		"description": "The serial number on the uploaded certificate.",
 																		"example": "6743787633689793699141714808227354901",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"signature": {
 																		"description": "The type of hash used for the certificate.",
 																		"example": "SHA256WithRSA",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"status": {
 																		"description": "Status of the certificate or the association.",
@@ -1581,14 +1651,17 @@
 																			"deletion_timed_out"
 																		],
 																		"example": "active",
-																		"readOnly": true
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"updated_at": {
 																		"description": "The time when the certificate was updated.",
 																		"example": "2100-01-01T05:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															}
@@ -1609,13 +1682,15 @@
 																"description": "Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.",
 																"example": true,
 																"nullable": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"hostname": {
 																"description": "The hostname on the origin for which the client certificate uploaded will be used.",
 																"example": "app.example.com",
 																"maxLength": 255,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier.",
@@ -1906,7 +1981,8 @@
 													"example": "2100-01-01T05:20:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier.",
@@ -1918,18 +1994,21 @@
 													"description": "The certificate authority that issued the certificate.",
 													"example": "GlobalSign",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"serial_number": {
 													"description": "The serial number on the uploaded certificate.",
 													"example": "6743787633689793699141714808227354901",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"signature": {
 													"description": "The type of hash used for the certificate.",
 													"example": "SHA256WithRSA",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Status of the certificate or the association.",
@@ -1943,13 +2022,16 @@
 														"deletion_timed_out"
 													],
 													"example": "active",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
 												},
 												"uploaded_on": {
 													"description": "The time when the certificate was uploaded.",
 													"example": "2019-10-28T18:11:23.37411Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}
@@ -2069,7 +2151,8 @@
 															"example": "2100-01-01T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier.",
@@ -2081,18 +2164,21 @@
 															"description": "The certificate authority that issued the certificate.",
 															"example": "GlobalSign",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"serial_number": {
 															"description": "The serial number on the uploaded certificate.",
 															"example": "6743787633689793699141714808227354901",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"signature": {
 															"description": "The type of hash used for the certificate.",
 															"example": "SHA256WithRSA",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "Status of the certificate or the association.",
@@ -2106,13 +2192,16 @@
 																"deletion_timed_out"
 															],
 															"example": "active",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
 														},
 														"uploaded_on": {
 															"description": "The time when the certificate was uploaded.",
 															"example": "2019-10-28T18:11:23.37411Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -2404,7 +2493,8 @@
 													"example": "2100-01-01T05:20:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier.",
@@ -2416,18 +2506,21 @@
 													"description": "The certificate authority that issued the certificate.",
 													"example": "GlobalSign",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"serial_number": {
 													"description": "The serial number on the uploaded certificate.",
 													"example": "6743787633689793699141714808227354901",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"signature": {
 													"description": "The type of hash used for the certificate.",
 													"example": "SHA256WithRSA",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Status of the certificate or the association.",
@@ -2441,13 +2534,16 @@
 														"deletion_timed_out"
 													],
 													"example": "active",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
 												},
 												"uploaded_on": {
 													"description": "The time when the certificate was uploaded.",
 													"example": "2019-10-28T18:11:23.37411Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}
@@ -2567,7 +2663,8 @@
 															"example": "2100-01-01T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier.",
@@ -2579,18 +2676,21 @@
 															"description": "The certificate authority that issued the certificate.",
 															"example": "GlobalSign",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"serial_number": {
 															"description": "The serial number on the uploaded certificate.",
 															"example": "6743787633689793699141714808227354901",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"signature": {
 															"description": "The type of hash used for the certificate.",
 															"example": "SHA256WithRSA",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "Status of the certificate or the association.",
@@ -2604,13 +2704,16 @@
 																"deletion_timed_out"
 															],
 															"example": "active",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
 														},
 														"uploaded_on": {
 															"description": "The time when the certificate was uploaded.",
 															"example": "2019-10-28T18:11:23.37411Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -2779,19 +2882,22 @@
 											"description": "Certificate identifier tag.",
 											"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
 											"maxLength": 36,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"enabled": {
 											"description": "Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.",
 											"example": true,
 											"nullable": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"hostname": {
 											"description": "The hostname on the origin for which the client certificate uploaded will be used.",
 											"example": "app.example.com",
 											"maxLength": 255,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -2954,20 +3060,24 @@
 																	"deletion_timed_out"
 																],
 																"example": "active",
-																"readOnly": true
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
 															},
 															"cert_updated_at": {
 																"description": "The time when the certificate was updated.",
 																"example": "2100-01-01T05:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"cert_uploaded_on": {
 																"description": "The time when the certificate was uploaded.",
 																"example": "2019-10-28T18:11:23.37411Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"certificate": {
 																"description": "The hostname certificate.",
@@ -2979,43 +3089,50 @@
 																"example": "2100-01-01T05:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"enabled": {
 																"description": "Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.",
 																"example": true,
 																"nullable": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"expires_on": {
 																"description": "The date when the certificate expires.",
 																"example": "2100-01-01T05:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"hostname": {
 																"description": "The hostname on the origin for which the client certificate uploaded will be used.",
 																"example": "app.example.com",
 																"maxLength": 255,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"issuer": {
 																"description": "The certificate authority that issued the certificate.",
 																"example": "GlobalSign",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"serial_number": {
 																"description": "The serial number on the uploaded certificate.",
 																"example": "6743787633689793699141714808227354901",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"signature": {
 																"description": "The type of hash used for the certificate.",
 																"example": "SHA256WithRSA",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"status": {
 																"description": "Status of the certificate or the association.",
@@ -3029,14 +3146,17 @@
 																	"deletion_timed_out"
 																],
 																"example": "active",
-																"readOnly": true
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
 															},
 															"updated_at": {
 																"description": "The time when the certificate was updated.",
 																"example": "2100-01-01T05:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														}
 													}
@@ -3057,13 +3177,15 @@
 														"description": "Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.",
 														"example": true,
 														"nullable": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"hostname": {
 														"description": "The hostname on the origin for which the client certificate uploaded will be used.",
 														"example": "app.example.com",
 														"maxLength": 255,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier.",
@@ -3238,20 +3360,24 @@
 																			"deletion_timed_out"
 																		],
 																		"example": "active",
-																		"readOnly": true
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"cert_updated_at": {
 																		"description": "The time when the certificate was updated.",
 																		"example": "2100-01-01T05:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"cert_uploaded_on": {
 																		"description": "The time when the certificate was uploaded.",
 																		"example": "2019-10-28T18:11:23.37411Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"certificate": {
 																		"description": "The hostname certificate.",
@@ -3263,43 +3389,50 @@
 																		"example": "2100-01-01T05:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"enabled": {
 																		"description": "Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.",
 																		"example": true,
 																		"nullable": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"expires_on": {
 																		"description": "The date when the certificate expires.",
 																		"example": "2100-01-01T05:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"hostname": {
 																		"description": "The hostname on the origin for which the client certificate uploaded will be used.",
 																		"example": "app.example.com",
 																		"maxLength": 255,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"issuer": {
 																		"description": "The certificate authority that issued the certificate.",
 																		"example": "GlobalSign",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"serial_number": {
 																		"description": "The serial number on the uploaded certificate.",
 																		"example": "6743787633689793699141714808227354901",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"signature": {
 																		"description": "The type of hash used for the certificate.",
 																		"example": "SHA256WithRSA",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"status": {
 																		"description": "Status of the certificate or the association.",
@@ -3313,14 +3446,17 @@
 																			"deletion_timed_out"
 																		],
 																		"example": "active",
-																		"readOnly": true
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"updated_at": {
 																		"description": "The time when the certificate was updated.",
 																		"example": "2100-01-01T05:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															}
@@ -3341,13 +3477,15 @@
 																"description": "Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.",
 																"example": true,
 																"nullable": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"hostname": {
 																"description": "The hostname on the origin for which the client certificate uploaded will be used.",
 																"example": "app.example.com",
 																"maxLength": 255,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier.",

@@ -836,7 +836,6 @@
 													},
 													"error_message": {
 														"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
-														"format": "date-time",
 														"nullable": true,
 														"type": "string",
 														"x-auditable": true
@@ -867,9 +866,9 @@
 															"edge"
 														],
 														"example": "",
-														"nullable": true,
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"last_complete": {
 														"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
@@ -1390,7 +1389,6 @@
 													},
 													"error_message": {
 														"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
-														"format": "date-time",
 														"nullable": true,
 														"type": "string",
 														"x-auditable": true
@@ -1421,9 +1419,9 @@
 															"edge"
 														],
 														"example": "",
-														"nullable": true,
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"last_complete": {
 														"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
@@ -1957,7 +1955,6 @@
 												},
 												"error_message": {
 													"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
-													"format": "date-time",
 													"nullable": true,
 													"type": "string",
 													"x-auditable": true
@@ -1988,9 +1985,9 @@
 														"edge"
 													],
 													"example": "",
-													"nullable": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"last_complete": {
 													"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
@@ -2434,9 +2431,9 @@
 									"edge"
 								],
 								"example": "",
-								"nullable": true,
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"logpull_options": {
 								"deprecated": true,
@@ -2788,7 +2785,6 @@
 												},
 												"error_message": {
 													"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
-													"format": "date-time",
 													"nullable": true,
 													"type": "string",
 													"x-auditable": true
@@ -2819,9 +2815,9 @@
 														"edge"
 													],
 													"example": "",
-													"nullable": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"last_complete": {
 													"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
@@ -4721,9 +4717,9 @@
 									"edge"
 								],
 								"example": "",
-								"nullable": true,
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"logpull_options": {
 								"deprecated": true,
@@ -5072,7 +5068,6 @@
 												},
 												"error_message": {
 													"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
-													"format": "date-time",
 													"nullable": true,
 													"type": "string",
 													"x-auditable": true
@@ -5103,9 +5098,9 @@
 														"edge"
 													],
 													"example": "",
-													"nullable": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"last_complete": {
 													"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",

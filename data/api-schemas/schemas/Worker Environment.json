@@ -308,29 +308,71 @@
 										"result": {
 											"properties": {
 												"logpush": {
-													"description": "Whether Logpush is turned on for the Worker.",
-													"example": false,
-													"type": "boolean"
-												},
-												"observability": {
-													"description": "Observability settings for the Worker.",
-													"properties": {
-														"enabled": {
-															"description": "Whether observability is enabled for the Worker.",
-															"example": true,
+													"allOf": [
+														{
+															"description": "Whether Logpush is turned on for the Worker.",
+															"example": false,
 															"type": "boolean"
 														},
-														"head_sampling_rate": {
-															"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
-															"example": 0.1,
-															"nullable": true,
-															"type": "number"
+														{
+															"default": false
 														}
-													},
-													"required": [
-														"enabled"
-													],
-													"type": "object"
+													]
+												},
+												"observability": {
+													"allOf": [
+														{
+															"description": "Observability settings for the Worker.",
+															"properties": {
+																"enabled": {
+																	"description": "Whether observability is enabled for the Worker.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+																	"example": 0.1,
+																	"nullable": true,
+																	"type": "number"
+																},
+																"logs": {
+																	"description": "Log settings for the Worker.",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "Whether logs are enabled for the Worker.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"head_sampling_rate": {
+																			"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+																			"example": 0.1,
+																			"nullable": true,
+																			"type": "number"
+																		},
+																		"invocation_logs": {
+																			"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"enabled",
+																		"invocation_logs"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"enabled"
+															],
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "object"
+														}
+													]
 												},
 												"tail_consumers": {
 													"description": "List of Workers that will consume logs from the attached Worker.",
@@ -358,6 +400,7 @@
 														],
 														"type": "object"
 													},
+													"nullable": true,
 													"type": "array"
 												}
 											},
@@ -608,29 +651,71 @@
 									"result": {
 										"properties": {
 											"logpush": {
-												"description": "Whether Logpush is turned on for the Worker.",
-												"example": false,
-												"type": "boolean"
-											},
-											"observability": {
-												"description": "Observability settings for the Worker.",
-												"properties": {
-													"enabled": {
-														"description": "Whether observability is enabled for the Worker.",
-														"example": true,
+												"allOf": [
+													{
+														"description": "Whether Logpush is turned on for the Worker.",
+														"example": false,
 														"type": "boolean"
 													},
-													"head_sampling_rate": {
-														"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
-														"example": 0.1,
-														"nullable": true,
-														"type": "number"
+													{
+														"default": false
 													}
-												},
-												"required": [
-													"enabled"
-												],
-												"type": "object"
+												]
+											},
+											"observability": {
+												"allOf": [
+													{
+														"description": "Observability settings for the Worker.",
+														"properties": {
+															"enabled": {
+																"description": "Whether observability is enabled for the Worker.",
+																"example": true,
+																"type": "boolean"
+															},
+															"head_sampling_rate": {
+																"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+																"example": 0.1,
+																"nullable": true,
+																"type": "number"
+															},
+															"logs": {
+																"description": "Log settings for the Worker.",
+																"nullable": true,
+																"properties": {
+																	"enabled": {
+																		"description": "Whether logs are enabled for the Worker.",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"head_sampling_rate": {
+																		"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+																		"example": 0.1,
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"invocation_logs": {
+																		"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																		"example": true,
+																		"type": "boolean"
+																	}
+																},
+																"required": [
+																	"enabled",
+																	"invocation_logs"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"enabled"
+														],
+														"type": "object"
+													},
+													{
+														"nullable": true,
+														"type": "object"
+													}
+												]
 											},
 											"tail_consumers": {
 												"description": "List of Workers that will consume logs from the attached Worker.",
@@ -658,6 +743,7 @@
 													],
 													"type": "object"
 												},
+												"nullable": true,
 												"type": "array"
 											}
 										},
@@ -764,29 +850,71 @@
 										"result": {
 											"properties": {
 												"logpush": {
-													"description": "Whether Logpush is turned on for the Worker.",
-													"example": false,
-													"type": "boolean"
-												},
-												"observability": {
-													"description": "Observability settings for the Worker.",
-													"properties": {
-														"enabled": {
-															"description": "Whether observability is enabled for the Worker.",
-															"example": true,
+													"allOf": [
+														{
+															"description": "Whether Logpush is turned on for the Worker.",
+															"example": false,
 															"type": "boolean"
 														},
-														"head_sampling_rate": {
-															"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
-															"example": 0.1,
-															"nullable": true,
-															"type": "number"
+														{
+															"default": false
 														}
-													},
-													"required": [
-														"enabled"
-													],
-													"type": "object"
+													]
+												},
+												"observability": {
+													"allOf": [
+														{
+															"description": "Observability settings for the Worker.",
+															"properties": {
+																"enabled": {
+																	"description": "Whether observability is enabled for the Worker.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+																	"example": 0.1,
+																	"nullable": true,
+																	"type": "number"
+																},
+																"logs": {
+																	"description": "Log settings for the Worker.",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "Whether logs are enabled for the Worker.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"head_sampling_rate": {
+																			"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+																			"example": 0.1,
+																			"nullable": true,
+																			"type": "number"
+																		},
+																		"invocation_logs": {
+																			"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"enabled",
+																		"invocation_logs"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"enabled"
+															],
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "object"
+														}
+													]
 												},
 												"tail_consumers": {
 													"description": "List of Workers that will consume logs from the attached Worker.",
@@ -814,6 +942,7 @@
 														],
 														"type": "object"
 													},
+													"nullable": true,
 													"type": "array"
 												}
 											},

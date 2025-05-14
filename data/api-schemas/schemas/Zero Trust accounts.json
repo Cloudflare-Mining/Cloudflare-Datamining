@@ -836,7 +836,6 @@
 															"properties": {
 																"activity_log": {
 																	"description": "Activity log settings.",
-																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": true,
@@ -870,7 +869,6 @@
 																		},
 																		"notification_settings": {
 																			"description": "Configure a message to display on the user's device when an antivirus search is performed.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"default": false,
@@ -898,7 +896,6 @@
 																},
 																"block_page": {
 																	"description": "Block page layout settings.",
-																	"nullable": true,
 																	"properties": {
 																		"background_color": {
 																			"default": "",
@@ -977,7 +974,6 @@
 																},
 																"body_scanning": {
 																	"description": "DLP body scanning settings.",
-																	"nullable": true,
 																	"properties": {
 																		"inspection_mode": {
 																			"description": "Set the inspection mode to either `deep` or `shallow`.",
@@ -989,7 +985,6 @@
 																},
 																"browser_isolation": {
 																	"description": "Browser isolation settings.",
-																	"nullable": true,
 																	"properties": {
 																		"non_identity_enabled": {
 																			"default": false,
@@ -1008,7 +1003,6 @@
 																},
 																"certificate": {
 																	"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
-																	"nullable": true,
 																	"properties": {
 																		"id": {
 																			"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
@@ -1024,7 +1018,6 @@
 																"custom_certificate": {
 																	"deprecated": true,
 																	"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
-																	"nullable": true,
 																	"properties": {
 																		"binding_status": {
 																			"description": "Certificate status (internal).",
@@ -1068,7 +1061,6 @@
 																},
 																"fips": {
 																	"description": "FIPS settings.",
-																	"nullable": true,
 																	"properties": {
 																		"tls": {
 																			"default": false,
@@ -1081,7 +1073,6 @@
 																},
 																"host_selector": {
 																	"description": "Setting to enable host selector in egress policies.",
-																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"description": "Enable filtering via hosts for egress policies.",
@@ -1093,7 +1084,6 @@
 																},
 																"protocol_detection": {
 																	"description": "Protocol Detection settings.",
-																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": false,
@@ -1106,7 +1096,6 @@
 																},
 																"sandbox": {
 																	"description": "Sandbox settings.",
-																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": false,
@@ -1127,7 +1116,6 @@
 																},
 																"tls_decrypt": {
 																	"description": "TLS interception settings.",
-																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": true,
@@ -1255,7 +1243,6 @@
 																	"properties": {
 																		"activity_log": {
 																			"description": "Activity log settings.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"default": true,
@@ -1289,7 +1276,6 @@
 																				},
 																				"notification_settings": {
 																					"description": "Configure a message to display on the user's device when an antivirus search is performed.",
-																					"nullable": true,
 																					"properties": {
 																						"enabled": {
 																							"default": false,
@@ -1317,7 +1303,6 @@
 																		},
 																		"block_page": {
 																			"description": "Block page layout settings.",
-																			"nullable": true,
 																			"properties": {
 																				"background_color": {
 																					"default": "",
@@ -1396,7 +1381,6 @@
 																		},
 																		"body_scanning": {
 																			"description": "DLP body scanning settings.",
-																			"nullable": true,
 																			"properties": {
 																				"inspection_mode": {
 																					"description": "Set the inspection mode to either `deep` or `shallow`.",
@@ -1408,7 +1392,6 @@
 																		},
 																		"browser_isolation": {
 																			"description": "Browser isolation settings.",
-																			"nullable": true,
 																			"properties": {
 																				"non_identity_enabled": {
 																					"default": false,
@@ -1427,7 +1410,6 @@
 																		},
 																		"certificate": {
 																			"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
-																			"nullable": true,
 																			"properties": {
 																				"id": {
 																					"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
@@ -1443,7 +1425,6 @@
 																		"custom_certificate": {
 																			"deprecated": true,
 																			"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
-																			"nullable": true,
 																			"properties": {
 																				"binding_status": {
 																					"description": "Certificate status (internal).",
@@ -1487,7 +1468,6 @@
 																		},
 																		"fips": {
 																			"description": "FIPS settings.",
-																			"nullable": true,
 																			"properties": {
 																				"tls": {
 																					"default": false,
@@ -1500,7 +1480,6 @@
 																		},
 																		"host_selector": {
 																			"description": "Setting to enable host selector in egress policies.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"description": "Enable filtering via hosts for egress policies.",
@@ -1512,7 +1491,6 @@
 																		},
 																		"protocol_detection": {
 																			"description": "Protocol Detection settings.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"default": false,
@@ -1525,7 +1503,6 @@
 																		},
 																		"sandbox": {
 																			"description": "Sandbox settings.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"default": false,
@@ -1546,7 +1523,6 @@
 																		},
 																		"tls_decrypt": {
 																			"description": "TLS interception settings.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"default": true,
@@ -1687,6 +1663,207 @@
 			}
 		],
 		"summary": "Get Zero Trust account configuration",
+		"tags": [
+			"Zero Trust accounts"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	},
+	"GET /accounts/{account_id}/gateway/configuration/custom_certificate": {
+		"deprecated": true,
+		"description": "Fetches the current Zero Trust certificate configuration.",
+		"operationId": "zero-trust-accounts-get-zero-trust-certificate-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"deprecated": true,
+							"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
+							"properties": {
+								"binding_status": {
+									"description": "Certificate status (internal).",
+									"example": "pending_deployment",
+									"readOnly": true,
+									"type": "string"
+								},
+								"enabled": {
+									"default": false,
+									"description": "Enable use of custom certificate authority for signing Gateway traffic.",
+									"example": true,
+									"type": "boolean"
+								},
+								"id": {
+									"description": "UUID of certificate (ID from MTLS certificate store).",
+									"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+									"type": "string"
+								},
+								"updated_at": {
+									"format": "date-time",
+									"readOnly": true,
+									"type": "string"
+								}
+							},
+							"required": [
+								"enabled"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Zero Trust account configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"deprecated": true,
+									"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
+									"properties": {
+										"binding_status": {
+											"description": "Certificate status (internal).",
+											"example": "pending_deployment",
+											"readOnly": true,
+											"type": "string"
+										},
+										"enabled": {
+											"default": false,
+											"description": "Enable use of custom certificate authority for signing Gateway traffic.",
+											"example": true,
+											"type": "boolean"
+										},
+										"id": {
+											"description": "UUID of certificate (ID from MTLS certificate store).",
+											"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+											"type": "string"
+										},
+										"updated_at": {
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										}
+									},
+									"required": [
+										"enabled"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1,
+											"type": "object"
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [],
+											"type": "object"
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Zero Trust account configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get Zero Trust certificate configuration",
 		"tags": [
 			"Zero Trust accounts"
 		],
@@ -2582,7 +2759,6 @@
 								"properties": {
 									"activity_log": {
 										"description": "Activity log settings.",
-										"nullable": true,
 										"properties": {
 											"enabled": {
 												"default": true,
@@ -2616,7 +2792,6 @@
 											},
 											"notification_settings": {
 												"description": "Configure a message to display on the user's device when an antivirus search is performed.",
-												"nullable": true,
 												"properties": {
 													"enabled": {
 														"default": false,
@@ -2644,7 +2819,6 @@
 									},
 									"block_page": {
 										"description": "Block page layout settings.",
-										"nullable": true,
 										"properties": {
 											"background_color": {
 												"default": "",
@@ -2723,7 +2897,6 @@
 									},
 									"body_scanning": {
 										"description": "DLP body scanning settings.",
-										"nullable": true,
 										"properties": {
 											"inspection_mode": {
 												"description": "Set the inspection mode to either `deep` or `shallow`.",
@@ -2735,7 +2908,6 @@
 									},
 									"browser_isolation": {
 										"description": "Browser isolation settings.",
-										"nullable": true,
 										"properties": {
 											"non_identity_enabled": {
 												"default": false,
@@ -2754,7 +2926,6 @@
 									},
 									"certificate": {
 										"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
-										"nullable": true,
 										"properties": {
 											"id": {
 												"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
@@ -2770,7 +2941,6 @@
 									"custom_certificate": {
 										"deprecated": true,
 										"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
-										"nullable": true,
 										"properties": {
 											"binding_status": {
 												"description": "Certificate status (internal).",
@@ -2814,7 +2984,6 @@
 									},
 									"fips": {
 										"description": "FIPS settings.",
-										"nullable": true,
 										"properties": {
 											"tls": {
 												"default": false,
@@ -2827,7 +2996,6 @@
 									},
 									"host_selector": {
 										"description": "Setting to enable host selector in egress policies.",
-										"nullable": true,
 										"properties": {
 											"enabled": {
 												"description": "Enable filtering via hosts for egress policies.",
@@ -2839,7 +3007,6 @@
 									},
 									"protocol_detection": {
 										"description": "Protocol Detection settings.",
-										"nullable": true,
 										"properties": {
 											"enabled": {
 												"default": false,
@@ -2852,7 +3019,6 @@
 									},
 									"sandbox": {
 										"description": "Sandbox settings.",
-										"nullable": true,
 										"properties": {
 											"enabled": {
 												"default": false,
@@ -2873,7 +3039,6 @@
 									},
 									"tls_decrypt": {
 										"description": "TLS interception settings.",
-										"nullable": true,
 										"properties": {
 											"enabled": {
 												"default": true,
@@ -2976,7 +3141,6 @@
 															"properties": {
 																"activity_log": {
 																	"description": "Activity log settings.",
-																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": true,
@@ -3010,7 +3174,6 @@
 																		},
 																		"notification_settings": {
 																			"description": "Configure a message to display on the user's device when an antivirus search is performed.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"default": false,
@@ -3038,7 +3201,6 @@
 																},
 																"block_page": {
 																	"description": "Block page layout settings.",
-																	"nullable": true,
 																	"properties": {
 																		"background_color": {
 																			"default": "",
@@ -3117,7 +3279,6 @@
 																},
 																"body_scanning": {
 																	"description": "DLP body scanning settings.",
-																	"nullable": true,
 																	"properties": {
 																		"inspection_mode": {
 																			"description": "Set the inspection mode to either `deep` or `shallow`.",
@@ -3129,7 +3290,6 @@
 																},
 																"browser_isolation": {
 																	"description": "Browser isolation settings.",
-																	"nullable": true,
 																	"properties": {
 																		"non_identity_enabled": {
 																			"default": false,
@@ -3148,7 +3308,6 @@
 																},
 																"certificate": {
 																	"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
-																	"nullable": true,
 																	"properties": {
 																		"id": {
 																			"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
@@ -3164,7 +3323,6 @@
 																"custom_certificate": {
 																	"deprecated": true,
 																	"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
-																	"nullable": true,
 																	"properties": {
 																		"binding_status": {
 																			"description": "Certificate status (internal).",
@@ -3208,7 +3366,6 @@
 																},
 																"fips": {
 																	"description": "FIPS settings.",
-																	"nullable": true,
 																	"properties": {
 																		"tls": {
 																			"default": false,
@@ -3221,7 +3378,6 @@
 																},
 																"host_selector": {
 																	"description": "Setting to enable host selector in egress policies.",
-																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"description": "Enable filtering via hosts for egress policies.",
@@ -3233,7 +3389,6 @@
 																},
 																"protocol_detection": {
 																	"description": "Protocol Detection settings.",
-																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": false,
@@ -3246,7 +3401,6 @@
 																},
 																"sandbox": {
 																	"description": "Sandbox settings.",
-																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": false,
@@ -3267,7 +3421,6 @@
 																},
 																"tls_decrypt": {
 																	"description": "TLS interception settings.",
-																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": true,
@@ -3395,7 +3548,6 @@
 																	"properties": {
 																		"activity_log": {
 																			"description": "Activity log settings.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"default": true,
@@ -3429,7 +3581,6 @@
 																				},
 																				"notification_settings": {
 																					"description": "Configure a message to display on the user's device when an antivirus search is performed.",
-																					"nullable": true,
 																					"properties": {
 																						"enabled": {
 																							"default": false,
@@ -3457,7 +3608,6 @@
 																		},
 																		"block_page": {
 																			"description": "Block page layout settings.",
-																			"nullable": true,
 																			"properties": {
 																				"background_color": {
 																					"default": "",
@@ -3536,7 +3686,6 @@
 																		},
 																		"body_scanning": {
 																			"description": "DLP body scanning settings.",
-																			"nullable": true,
 																			"properties": {
 																				"inspection_mode": {
 																					"description": "Set the inspection mode to either `deep` or `shallow`.",
@@ -3548,7 +3697,6 @@
 																		},
 																		"browser_isolation": {
 																			"description": "Browser isolation settings.",
-																			"nullable": true,
 																			"properties": {
 																				"non_identity_enabled": {
 																					"default": false,
@@ -3567,7 +3715,6 @@
 																		},
 																		"certificate": {
 																			"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
-																			"nullable": true,
 																			"properties": {
 																				"id": {
 																					"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
@@ -3583,7 +3730,6 @@
 																		"custom_certificate": {
 																			"deprecated": true,
 																			"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
-																			"nullable": true,
 																			"properties": {
 																				"binding_status": {
 																					"description": "Certificate status (internal).",
@@ -3627,7 +3773,6 @@
 																		},
 																		"fips": {
 																			"description": "FIPS settings.",
-																			"nullable": true,
 																			"properties": {
 																				"tls": {
 																					"default": false,
@@ -3640,7 +3785,6 @@
 																		},
 																		"host_selector": {
 																			"description": "Setting to enable host selector in egress policies.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"description": "Enable filtering via hosts for egress policies.",
@@ -3652,7 +3796,6 @@
 																		},
 																		"protocol_detection": {
 																			"description": "Protocol Detection settings.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"default": false,
@@ -3665,7 +3808,6 @@
 																		},
 																		"sandbox": {
 																			"description": "Sandbox settings.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"default": false,
@@ -3686,7 +3828,6 @@
 																		},
 																		"tls_decrypt": {
 																			"description": "TLS interception settings.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"default": true,
@@ -4633,7 +4774,6 @@
 								"properties": {
 									"activity_log": {
 										"description": "Activity log settings.",
-										"nullable": true,
 										"properties": {
 											"enabled": {
 												"default": true,
@@ -4667,7 +4807,6 @@
 											},
 											"notification_settings": {
 												"description": "Configure a message to display on the user's device when an antivirus search is performed.",
-												"nullable": true,
 												"properties": {
 													"enabled": {
 														"default": false,
@@ -4695,7 +4834,6 @@
 									},
 									"block_page": {
 										"description": "Block page layout settings.",
-										"nullable": true,
 										"properties": {
 											"background_color": {
 												"default": "",
@@ -4774,7 +4912,6 @@
 									},
 									"body_scanning": {
 										"description": "DLP body scanning settings.",
-										"nullable": true,
 										"properties": {
 											"inspection_mode": {
 												"description": "Set the inspection mode to either `deep` or `shallow`.",
@@ -4786,7 +4923,6 @@
 									},
 									"browser_isolation": {
 										"description": "Browser isolation settings.",
-										"nullable": true,
 										"properties": {
 											"non_identity_enabled": {
 												"default": false,
@@ -4805,7 +4941,6 @@
 									},
 									"certificate": {
 										"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
-										"nullable": true,
 										"properties": {
 											"id": {
 												"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
@@ -4821,7 +4956,6 @@
 									"custom_certificate": {
 										"deprecated": true,
 										"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
-										"nullable": true,
 										"properties": {
 											"binding_status": {
 												"description": "Certificate status (internal).",
@@ -4865,7 +4999,6 @@
 									},
 									"fips": {
 										"description": "FIPS settings.",
-										"nullable": true,
 										"properties": {
 											"tls": {
 												"default": false,
@@ -4878,7 +5011,6 @@
 									},
 									"host_selector": {
 										"description": "Setting to enable host selector in egress policies.",
-										"nullable": true,
 										"properties": {
 											"enabled": {
 												"description": "Enable filtering via hosts for egress policies.",
@@ -4890,7 +5022,6 @@
 									},
 									"protocol_detection": {
 										"description": "Protocol Detection settings.",
-										"nullable": true,
 										"properties": {
 											"enabled": {
 												"default": false,
@@ -4903,7 +5034,6 @@
 									},
 									"sandbox": {
 										"description": "Sandbox settings.",
-										"nullable": true,
 										"properties": {
 											"enabled": {
 												"default": false,
@@ -4924,7 +5054,6 @@
 									},
 									"tls_decrypt": {
 										"description": "TLS interception settings.",
-										"nullable": true,
 										"properties": {
 											"enabled": {
 												"default": true,
@@ -5027,7 +5156,6 @@
 															"properties": {
 																"activity_log": {
 																	"description": "Activity log settings.",
-																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": true,
@@ -5061,7 +5189,6 @@
 																		},
 																		"notification_settings": {
 																			"description": "Configure a message to display on the user's device when an antivirus search is performed.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"default": false,
@@ -5089,7 +5216,6 @@
 																},
 																"block_page": {
 																	"description": "Block page layout settings.",
-																	"nullable": true,
 																	"properties": {
 																		"background_color": {
 																			"default": "",
@@ -5168,7 +5294,6 @@
 																},
 																"body_scanning": {
 																	"description": "DLP body scanning settings.",
-																	"nullable": true,
 																	"properties": {
 																		"inspection_mode": {
 																			"description": "Set the inspection mode to either `deep` or `shallow`.",
@@ -5180,7 +5305,6 @@
 																},
 																"browser_isolation": {
 																	"description": "Browser isolation settings.",
-																	"nullable": true,
 																	"properties": {
 																		"non_identity_enabled": {
 																			"default": false,
@@ -5199,7 +5323,6 @@
 																},
 																"certificate": {
 																	"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
-																	"nullable": true,
 																	"properties": {
 																		"id": {
 																			"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
@@ -5215,7 +5338,6 @@
 																"custom_certificate": {
 																	"deprecated": true,
 																	"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
-																	"nullable": true,
 																	"properties": {
 																		"binding_status": {
 																			"description": "Certificate status (internal).",
@@ -5259,7 +5381,6 @@
 																},
 																"fips": {
 																	"description": "FIPS settings.",
-																	"nullable": true,
 																	"properties": {
 																		"tls": {
 																			"default": false,
@@ -5272,7 +5393,6 @@
 																},
 																"host_selector": {
 																	"description": "Setting to enable host selector in egress policies.",
-																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"description": "Enable filtering via hosts for egress policies.",
@@ -5284,7 +5404,6 @@
 																},
 																"protocol_detection": {
 																	"description": "Protocol Detection settings.",
-																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": false,
@@ -5297,7 +5416,6 @@
 																},
 																"sandbox": {
 																	"description": "Sandbox settings.",
-																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": false,
@@ -5318,7 +5436,6 @@
 																},
 																"tls_decrypt": {
 																	"description": "TLS interception settings.",
-																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": true,
@@ -5446,7 +5563,6 @@
 																	"properties": {
 																		"activity_log": {
 																			"description": "Activity log settings.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"default": true,
@@ -5480,7 +5596,6 @@
 																				},
 																				"notification_settings": {
 																					"description": "Configure a message to display on the user's device when an antivirus search is performed.",
-																					"nullable": true,
 																					"properties": {
 																						"enabled": {
 																							"default": false,
@@ -5508,7 +5623,6 @@
 																		},
 																		"block_page": {
 																			"description": "Block page layout settings.",
-																			"nullable": true,
 																			"properties": {
 																				"background_color": {
 																					"default": "",
@@ -5587,7 +5701,6 @@
 																		},
 																		"body_scanning": {
 																			"description": "DLP body scanning settings.",
-																			"nullable": true,
 																			"properties": {
 																				"inspection_mode": {
 																					"description": "Set the inspection mode to either `deep` or `shallow`.",
@@ -5599,7 +5712,6 @@
 																		},
 																		"browser_isolation": {
 																			"description": "Browser isolation settings.",
-																			"nullable": true,
 																			"properties": {
 																				"non_identity_enabled": {
 																					"default": false,
@@ -5618,7 +5730,6 @@
 																		},
 																		"certificate": {
 																			"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
-																			"nullable": true,
 																			"properties": {
 																				"id": {
 																					"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
@@ -5634,7 +5745,6 @@
 																		"custom_certificate": {
 																			"deprecated": true,
 																			"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
-																			"nullable": true,
 																			"properties": {
 																				"binding_status": {
 																					"description": "Certificate status (internal).",
@@ -5678,7 +5788,6 @@
 																		},
 																		"fips": {
 																			"description": "FIPS settings.",
-																			"nullable": true,
 																			"properties": {
 																				"tls": {
 																					"default": false,
@@ -5691,7 +5800,6 @@
 																		},
 																		"host_selector": {
 																			"description": "Setting to enable host selector in egress policies.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"description": "Enable filtering via hosts for egress policies.",
@@ -5703,7 +5811,6 @@
 																		},
 																		"protocol_detection": {
 																			"description": "Protocol Detection settings.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"default": false,
@@ -5716,7 +5823,6 @@
 																		},
 																		"sandbox": {
 																			"description": "Sandbox settings.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"default": false,
@@ -5737,7 +5843,6 @@
 																		},
 																		"tls_decrypt": {
 																			"description": "TLS interception settings.",
-																			"nullable": true,
 																			"properties": {
 																				"enabled": {
 																					"default": true,

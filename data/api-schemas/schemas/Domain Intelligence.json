@@ -8,7 +8,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -238,7 +238,7 @@
 													"items": {
 														"properties": {
 															"id": {
-																"description": "STIX 2.1 identifier: https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_64yvzeku5a5c",
+																"description": "STIX 2.1 identifier: https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_64yvzeku5a5c.",
 																"example": "ipv4-addr--baa568ec-6efe-5902-be55-0663833db537",
 																"type": "string",
 																"x-auditable": true
@@ -282,14 +282,15 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Get Domain Details response"
+				"description": "Get Domain Details response."
 			},
 			"4XX": {
 				"content": {
@@ -506,7 +507,7 @@
 															"items": {
 																"properties": {
 																	"id": {
-																		"description": "STIX 2.1 identifier: https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_64yvzeku5a5c",
+																		"description": "STIX 2.1 identifier: https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_64yvzeku5a5c.",
 																		"example": "ipv4-addr--baa568ec-6efe-5902-be55-0663833db537",
 																		"type": "string",
 																		"x-auditable": true
@@ -550,7 +551,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -623,7 +625,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"example": false,
 											"type": "boolean"
 										}
@@ -640,7 +642,7 @@
 						}
 					}
 				},
-				"description": "Get Domain Details response failure"
+				"description": "Get Domain Details response failure."
 			}
 		},
 		"security": [
@@ -662,7 +664,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/intel/domain/bulk": {
-		"description": "Same as summary",
+		"description": "Same as summary.",
 		"operationId": "domain-intelligence-get-multiple-domain-details",
 		"parameters": [
 			{
@@ -670,7 +672,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -679,11 +681,17 @@
 				}
 			},
 			{
+				"description": "Accepts multiple values like `?domain=cloudflare.com&domain=example.com`.",
+				"explode": true,
 				"in": "query",
 				"name": "domain",
 				"schema": {
-					"description": "Accepts multiple values, i.e. `?domain=cloudflare.com&domain=example.com`."
-				}
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"style": "form"
 			}
 		],
 		"responses": {
@@ -744,7 +752,16 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"oneOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "object"
+																	}
+																]
+															},
 															"type": "array"
 														},
 														{
@@ -753,7 +770,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -772,36 +789,46 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"oneOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "object"
+															}
+														]
+													},
 													"nullable": true,
 													"type": "array"
 												},
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -948,18 +975,20 @@
 														},
 														"type": "array"
 													}
-												}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Get Multiple Domain Details response"
+				"description": "Get Multiple Domain Details response."
 			},
 			"4XX": {
 				"content": {
@@ -1020,7 +1049,16 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"oneOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "object"
+																			}
+																		]
+																	},
 																	"type": "array"
 																},
 																{
@@ -1029,7 +1067,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1048,36 +1086,46 @@
 												{
 													"properties": {
 														"result": {
-															"items": {},
+															"items": {
+																"oneOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "object"
+																	}
+																]
+															},
 															"nullable": true,
 															"type": "array"
 														},
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -1224,11 +1272,13 @@
 																},
 																"type": "array"
 															}
-														}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1301,7 +1351,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"example": false,
 											"type": "boolean"
 										}
@@ -1318,7 +1368,7 @@
 						}
 					}
 				},
-				"description": "Get Multiple Domain Details response failure"
+				"description": "Get Multiple Domain Details response failure."
 			}
 		},
 		"security": [

@@ -4,22 +4,22 @@
 		"operationId": "delete_EventDelete",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event UUID",
+				"description": "Event UUID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event UUID",
+					"description": "Event UUID.",
 					"type": "string"
 				}
 			}
@@ -42,7 +42,7 @@
 						}
 					}
 				},
-				"description": "Returns the uuid of the deleted event"
+				"description": "Returns the uuid of the deleted event."
 			},
 			"400": {
 				"content": {
@@ -53,7 +53,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -80,7 +80,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -100,32 +100,32 @@
 		"operationId": "delete_EventInsightDelete",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event UUID",
+				"description": "Event UUID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event UUID",
+					"description": "Event UUID.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Insight UUID",
+				"description": "Insight UUID.",
 				"in": "path",
 				"name": "insight_id",
 				"required": true,
 				"schema": {
-					"description": "Insight UUID",
+					"description": "Insight UUID.",
 					"type": "string"
 				}
 			}
@@ -172,7 +172,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -199,7 +199,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -219,22 +219,22 @@
 		"operationId": "delete_EventTagDelete",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event UUID",
+				"description": "Event UUID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event UUID",
+					"description": "Event UUID.",
 					"type": "string"
 				}
 			}
@@ -291,7 +291,7 @@
 						}
 					}
 				},
-				"description": "Returns success if operation succeeded"
+				"description": "Returns success if operation succeeded."
 			},
 			"400": {
 				"content": {
@@ -302,7 +302,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -329,7 +329,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -349,22 +349,22 @@
 		"operationId": "delete_EventReferenceDelete",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event UUID",
+				"description": "Event UUID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event UUID",
+					"description": "Event UUID.",
 					"type": "string"
 				}
 			}
@@ -421,7 +421,7 @@
 						}
 					}
 				},
-				"description": "Returns success if operation succeeded"
+				"description": "Returns success if operation succeeded."
 			},
 			"400": {
 				"content": {
@@ -432,7 +432,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -459,7 +459,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -480,12 +480,12 @@
 		"operationId": "get_EventListGet",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
@@ -752,7 +752,7 @@
 						}
 					}
 				},
-				"description": "Returns a list of events"
+				"description": "Returns a list of events."
 			},
 			"400": {
 				"content": {
@@ -763,7 +763,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -790,7 +790,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -811,22 +811,22 @@
 		"operationId": "get_EventRead",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event UUID",
+				"description": "Event UUID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event UUID",
+					"description": "Event UUID.",
 					"type": "string"
 				}
 			}
@@ -988,7 +988,7 @@
 						}
 					}
 				},
-				"description": "Returns an event"
+				"description": "Returns an event."
 			},
 			"400": {
 				"content": {
@@ -999,7 +999,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -1026,7 +1026,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -1047,32 +1047,32 @@
 		"operationId": "get_EventInsightRead",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event UUID",
+				"description": "Event UUID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event UUID",
+					"description": "Event UUID.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Insight UUID",
+				"description": "Insight UUID.",
 				"in": "path",
 				"name": "insight_id",
 				"required": true,
 				"schema": {
-					"description": "Insight UUID",
+					"description": "Insight UUID.",
 					"type": "string"
 				}
 			}
@@ -1113,7 +1113,7 @@
 						}
 					}
 				},
-				"description": "Returns success if operation succeeded"
+				"description": "Returns success if operation succeeded."
 			},
 			"400": {
 				"content": {
@@ -1124,7 +1124,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -1151,7 +1151,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -1172,32 +1172,32 @@
 		"operationId": "get_EventRawRead",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event UUID",
+				"description": "Event UUID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event UUID",
+					"description": "Event UUID.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Raw Event UUID",
+				"description": "Raw Event UUID.",
 				"in": "path",
 				"name": "raw_id",
 				"required": true,
 				"schema": {
-					"description": "Raw Event UUID",
+					"description": "Raw Event UUID.",
 					"type": "string"
 				}
 			}
@@ -1244,7 +1244,7 @@
 						}
 					}
 				},
-				"description": "Returns the raw event"
+				"description": "Returns the raw event."
 			},
 			"400": {
 				"content": {
@@ -1255,7 +1255,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -1282,7 +1282,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -1303,32 +1303,32 @@
 		"operationId": "get_EventRawReadDS",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event ID",
+				"description": "Event ID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event ID",
+					"description": "Event ID.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Dataset ID",
+				"description": "Dataset ID.",
 				"in": "path",
 				"name": "dataset_id",
 				"required": true,
 				"schema": {
-					"description": "Dataset ID",
+					"description": "Dataset ID.",
 					"type": "string"
 				}
 			}
@@ -1375,7 +1375,7 @@
 						}
 					}
 				},
-				"description": "Returns the raw event"
+				"description": "Returns the raw event."
 			},
 			"400": {
 				"content": {
@@ -1386,7 +1386,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -1413,7 +1413,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -1434,22 +1434,22 @@
 		"operationId": "patch_EventUpdate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event UUID",
+				"description": "Event UUID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event UUID",
+					"description": "Event UUID.",
 					"type": "string"
 				}
 			}
@@ -1663,7 +1663,7 @@
 						}
 					}
 				},
-				"description": "Returns the updated event"
+				"description": "Returns the updated event."
 			},
 			"400": {
 				"content": {
@@ -1674,7 +1674,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -1701,7 +1701,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -1721,32 +1721,32 @@
 		"operationId": "patch_EventInsightUpdate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event UUID",
+				"description": "Event UUID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event UUID",
+					"description": "Event UUID.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Insight UUID",
+				"description": "Insight UUID.",
 				"in": "path",
 				"name": "insight_id",
 				"required": true,
 				"schema": {
-					"description": "Insight UUID",
+					"description": "Insight UUID.",
 					"type": "string"
 				}
 			}
@@ -1805,7 +1805,7 @@
 						}
 					}
 				},
-				"description": "Returns success if operation succeeded"
+				"description": "Returns success if operation succeeded."
 			},
 			"400": {
 				"content": {
@@ -1816,7 +1816,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -1843,7 +1843,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -1863,32 +1863,32 @@
 		"operationId": "patch_EventRawUpdate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event UUID",
+				"description": "Event UUID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event UUID",
+					"description": "Event UUID.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Raw Event UUID",
+				"description": "Raw Event UUID.",
 				"in": "path",
 				"name": "raw_id",
 				"required": true,
 				"schema": {
-					"description": "Raw Event UUID",
+					"description": "Raw Event UUID.",
 					"type": "string"
 				}
 			}
@@ -1937,7 +1937,7 @@
 						}
 					}
 				},
-				"description": "Returns the uuid of the updated raw event and its data"
+				"description": "Returns the uuid of the updated raw event and its data."
 			},
 			"400": {
 				"content": {
@@ -1948,7 +1948,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -1975,7 +1975,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -1996,12 +1996,12 @@
 		"operationId": "post_EventList",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			}
@@ -2261,7 +2261,7 @@
 						}
 					}
 				},
-				"description": "Returns a list of events"
+				"description": "Returns a list of events."
 			},
 			"400": {
 				"content": {
@@ -2272,7 +2272,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -2299,7 +2299,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -2320,22 +2320,22 @@
 		"operationId": "post_EventUpdate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event UUID",
+				"description": "Event UUID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event UUID",
+					"description": "Event UUID.",
 					"type": "string"
 				}
 			}
@@ -2549,7 +2549,7 @@
 						}
 					}
 				},
-				"description": "Returns the updated event"
+				"description": "Returns the updated event."
 			},
 			"400": {
 				"content": {
@@ -2560,7 +2560,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -2587,7 +2587,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -2608,32 +2608,32 @@
 		"operationId": "post_EventInsightUpdate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event UUID",
+				"description": "Event UUID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event UUID",
+					"description": "Event UUID.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Insight UUID",
+				"description": "Insight UUID.",
 				"in": "path",
 				"name": "insight_id",
 				"required": true,
 				"schema": {
-					"description": "Insight UUID",
+					"description": "Insight UUID.",
 					"type": "string"
 				}
 			}
@@ -2692,7 +2692,7 @@
 						}
 					}
 				},
-				"description": "Returns success if operation succeeded"
+				"description": "Returns success if operation succeeded."
 			},
 			"400": {
 				"content": {
@@ -2703,7 +2703,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -2730,7 +2730,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -2751,22 +2751,22 @@
 		"operationId": "post_EventInsightCreate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event UUID",
+				"description": "Event UUID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event UUID",
+					"description": "Event UUID.",
 					"type": "string"
 				}
 			}
@@ -2825,7 +2825,7 @@
 						}
 					}
 				},
-				"description": "Returns success if operation succeeded"
+				"description": "Returns success if operation succeeded."
 			},
 			"400": {
 				"content": {
@@ -2836,7 +2836,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -2863,7 +2863,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -2884,32 +2884,32 @@
 		"operationId": "post_EventRawUpdate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event UUID",
+				"description": "Event UUID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event UUID",
+					"description": "Event UUID.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Raw Event UUID",
+				"description": "Raw Event UUID.",
 				"in": "path",
 				"name": "raw_id",
 				"required": true,
 				"schema": {
-					"description": "Raw Event UUID",
+					"description": "Raw Event UUID.",
 					"type": "string"
 				}
 			}
@@ -2958,7 +2958,7 @@
 						}
 					}
 				},
-				"description": "Returns the uuid of the updated raw event and its data"
+				"description": "Returns the uuid of the updated raw event and its data."
 			},
 			"400": {
 				"content": {
@@ -2969,7 +2969,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -2996,7 +2996,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -3018,12 +3018,12 @@
 		"operationId": "post_EventCreate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			}
@@ -3072,7 +3072,11 @@
 							},
 							"raw": {
 								"properties": {
-									"data": {},
+									"data": {
+										"additionalProperties": true,
+										"nullable": true,
+										"type": "object"
+									},
 									"source": {
 										"example": "example.com",
 										"type": "string"
@@ -3082,6 +3086,9 @@
 										"type": "string"
 									}
 								},
+								"required": [
+									"data"
+								],
 								"type": "object"
 							},
 							"tags": {
@@ -3276,7 +3283,7 @@
 						}
 					}
 				},
-				"description": "Returns the created event. "
+				"description": "Returns the created event."
 			},
 			"400": {
 				"content": {
@@ -3287,7 +3294,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -3314,7 +3321,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -3336,12 +3343,12 @@
 		"operationId": "post_EventCreateBulk",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			}
@@ -3393,7 +3400,11 @@
 										},
 										"raw": {
 											"properties": {
-												"data": {},
+												"data": {
+													"additionalProperties": true,
+													"nullable": true,
+													"type": "object"
+												},
 												"source": {
 													"example": "example.com",
 													"type": "string"
@@ -3403,6 +3414,9 @@
 													"type": "string"
 												}
 											},
+											"required": [
+												"data"
+											],
 											"type": "object"
 										},
 										"tags": {
@@ -3613,7 +3627,7 @@
 						}
 					}
 				},
-				"description": "Returns the created bulk events. "
+				"description": "Returns the created bulk events."
 			},
 			"400": {
 				"content": {
@@ -3624,7 +3638,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -3651,7 +3665,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -3672,22 +3686,22 @@
 		"operationId": "post_EventTagCreate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event UUID",
+				"description": "Event UUID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event UUID",
+					"description": "Event UUID.",
 					"type": "string"
 				}
 			}
@@ -3744,7 +3758,7 @@
 						}
 					}
 				},
-				"description": "Returns success if operation succeeded"
+				"description": "Returns success if operation succeeded."
 			},
 			"400": {
 				"content": {
@@ -3755,7 +3769,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -3782,7 +3796,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [
@@ -3803,22 +3817,22 @@
 		"operationId": "post_EventReferenceCreate",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Event UUID",
+				"description": "Event UUID.",
 				"in": "path",
 				"name": "event_id",
 				"required": true,
 				"schema": {
-					"description": "Event UUID",
+					"description": "Event UUID.",
 					"type": "string"
 				}
 			}
@@ -3875,7 +3889,7 @@
 						}
 					}
 				},
-				"description": "Returns success if operation succeeded"
+				"description": "Returns success if operation succeeded."
 			},
 			"400": {
 				"content": {
@@ -3886,7 +3900,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -3913,7 +3927,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [

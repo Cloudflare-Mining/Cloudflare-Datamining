@@ -3,12 +3,12 @@
 		"operationId": "get_CountryRead",
 		"parameters": [
 			{
-				"description": "Account ID",
+				"description": "Account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Account ID.",
 					"type": "number"
 				}
 			}
@@ -66,7 +66,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred",
+												"example": "An error occurred.",
 												"type": "string"
 											}
 										},
@@ -93,7 +93,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			}
 		},
 		"security": [

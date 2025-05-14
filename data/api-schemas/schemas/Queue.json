@@ -3527,6 +3527,230 @@
 			]
 		}
 	},
+	"POST /accounts/{account_id}/queues/{queue_id}/messages": {
+		"description": "Push a message to a Queue",
+		"operationId": "queues-push-message",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "queue_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"properties": {
+									"delay_seconds": {
+										"description": "The number of seconds to wait for attempting to deliver this message to consumers",
+										"example": "text",
+										"type": "number",
+										"x-auditable": true
+									}
+								},
+								"type": "object"
+							},
+							{
+								"oneOf": [
+									{
+										"properties": {
+											"body": {
+												"type": "string"
+											},
+											"content_type": {
+												"enum": [
+													"text"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"body": {
+												"type": "object"
+											},
+											"content_type": {
+												"enum": [
+													"json"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									}
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"enum": [
+										true
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful message ingestion"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Push Message",
+		"tags": [
+			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.update"
+			]
+		}
+	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/ack": {
 		"description": "Acknowledge + Retry messages from a Queue",
 		"operationId": "queues-ack-messages",
@@ -3771,6 +3995,239 @@
 				"com.cloudflare.edge.worker.queue.update"
 			]
 		}
+	},
+	"POST /accounts/{account_id}/queues/{queue_id}/messages/batch": {
+		"description": "Push a batch of message to a Queue",
+		"operationId": "queues-push-messages",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "queue_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"delay_seconds": {
+								"description": "The number of seconds to wait for attempting to deliver this batch to consumers",
+								"example": "text",
+								"type": "number",
+								"x-auditable": true
+							},
+							"messages": {
+								"items": {
+									"allOf": [
+										{
+											"properties": {
+												"delay_seconds": {
+													"description": "The number of seconds to wait for attempting to deliver this message to consumers",
+													"example": "text",
+													"type": "number",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										},
+										{
+											"oneOf": [
+												{
+													"properties": {
+														"body": {
+															"type": "string"
+														},
+														"content_type": {
+															"enum": [
+																"text"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"body": {
+															"type": "object"
+														},
+														"content_type": {
+															"enum": [
+																"json"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											]
+										}
+									]
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"enum": [
+										true
+									],
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful batch ingestion"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Push Message Batch",
+		"tags": [
+			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
+		]
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/pull": {
 		"description": "Pull a batch of messages from a Queue",

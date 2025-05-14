@@ -117,7 +117,8 @@
 														"uuid": {
 															"description": "The DCV Delegation unique identifier.",
 															"example": "abc123def456ghi7",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -235,7 +236,8 @@
 																"uuid": {
 																	"description": "The DCV Delegation unique identifier.",
 																	"example": "abc123def456ghi7",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														}

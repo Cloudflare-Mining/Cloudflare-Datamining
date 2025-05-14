@@ -1205,7 +1205,8 @@
 														"class_name": {
 															"description": "The exported class name of the Durable Object.",
 															"example": "MyDurableObject",
-															"type": "string"
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"environment": {
 															"description": "The environment of the script_name to bind to.",
@@ -1218,15 +1219,23 @@
 															"type": "string"
 														},
 														"namespace_id": {
-															"description": "Namespace identifier tag.",
-															"example": "0f2ac74b498b48028cb68387c421e279",
-															"maxLength": 32,
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "Namespace identifier tag.",
+																	"example": "0f2ac74b498b48028cb68387c421e279",
+																	"maxLength": 32,
+																	"type": "string"
+																},
+																{
+																	"x-stainless-terraform-configurability": "computed_optional"
+																}
+															]
 														},
 														"script_name": {
 															"description": "The script where the Durable Object is defined, if it is external to this Worker.",
 															"example": "my-other-worker",
-															"type": "string"
+															"type": "string",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
@@ -1238,8 +1247,7 @@
 													},
 													"required": [
 														"name",
-														"type",
-														"class_name"
+														"type"
 													],
 													"type": "object"
 												},

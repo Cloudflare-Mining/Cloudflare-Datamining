@@ -120,19 +120,22 @@
 														"ssl_com"
 													],
 													"example": "google",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"enabled": {
 													"description": "If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"validity_period": {
 													"description": "The validity period in days for the certificates ordered via Total TLS.",
 													"enum": [
 														90
 													],
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											}
 										}
@@ -250,19 +253,22 @@
 																"ssl_com"
 															],
 															"example": "google",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"enabled": {
 															"description": "If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"validity_period": {
 															"description": "The validity period in days for the certificates ordered via Total TLS.",
 															"enum": [
 																90
 															],
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													}
 												}
@@ -438,12 +444,14 @@
 									"ssl_com"
 								],
 								"example": "google",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"enabled": {
 								"description": "If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -559,19 +567,22 @@
 														"ssl_com"
 													],
 													"example": "google",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"enabled": {
 													"description": "If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"validity_period": {
 													"description": "The validity period in days for the certificates ordered via Total TLS.",
 													"enum": [
 														90
 													],
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											}
 										}
@@ -689,19 +700,22 @@
 																"ssl_com"
 															],
 															"example": "google",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"enabled": {
 															"description": "If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"validity_period": {
 															"description": "The validity period in days for the certificates ordered via Total TLS.",
 															"enum": [
 																90
 															],
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													}
 												}

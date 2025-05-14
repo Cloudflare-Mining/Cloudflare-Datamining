@@ -17,7 +17,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -125,14 +125,15 @@
 											"type": "integer",
 											"x-auditable": true
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Get ASN Overview response"
+				"description": "Get ASN Overview response."
 			},
 			"4XX": {
 				"content": {
@@ -234,7 +235,8 @@
 													"type": "integer",
 													"x-auditable": true
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -307,7 +309,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"example": false,
 											"type": "boolean"
 										}
@@ -324,7 +326,7 @@
 						}
 					}
 				},
-				"description": "Get ASN Overview response failure"
+				"description": "Get ASN Overview response failure."
 			}
 		},
 		"security": [
@@ -336,7 +338,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get ASN Overview",
+		"summary": "Get ASN Overview.",
 		"tags": [
 			"ASN Intelligence"
 		],
@@ -346,7 +348,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/intel/asn/{asn}/subnets": {
-		"description": "Get ASN Subnets",
+		"description": "Get ASN Subnets.",
 		"operationId": "asn-intelligence-get-asn-subnets",
 		"parameters": [
 			{
@@ -363,7 +365,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -415,7 +417,7 @@
 						}
 					}
 				},
-				"description": "Get ASN Subnets response"
+				"description": "Get ASN Subnets response."
 			},
 			"4XX": {
 				"content": {
@@ -527,7 +529,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"example": false,
 											"type": "boolean"
 										}
@@ -544,7 +546,7 @@
 						}
 					}
 				},
-				"description": "Get ASN Subnets response failure"
+				"description": "Get ASN Subnets response failure."
 			}
 		},
 		"security": [

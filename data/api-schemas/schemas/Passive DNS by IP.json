@@ -8,7 +8,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -182,7 +182,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -237,14 +238,15 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Get Passive DNS by IP response"
+				"description": "Get Passive DNS by IP response."
 			},
 			"4XX": {
 				"content": {
@@ -364,7 +366,8 @@
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -419,7 +422,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -492,7 +496,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"example": false,
 											"type": "boolean"
 										}
@@ -509,7 +513,7 @@
 						}
 					}
 				},
-				"description": "Get Passive DNS by IP response failure"
+				"description": "Get Passive DNS by IP response failure."
 			}
 		},
 		"security": [

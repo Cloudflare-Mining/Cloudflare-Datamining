@@ -29,7 +29,8 @@
 									"force"
 								],
 								"example": "ubiquitous",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"certificate": {
 								"description": "The zone's SSL certificate or certificate and the intermediate(s).",

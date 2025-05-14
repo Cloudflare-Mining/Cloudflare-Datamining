@@ -9,7 +9,8 @@
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
 				"readOnly": true,
-				"type": "string"
+				"type": "string",
+				"x-auditable": true
 			}
 		},
 		{
@@ -45,7 +46,8 @@
 					"created_on",
 					"modified_on"
 				],
-				"example": "id"
+				"example": "id",
+				"type": "string"
 			}
 		},
 		{
@@ -57,7 +59,8 @@
 					"asc",
 					"desc"
 				],
-				"example": "asc"
+				"example": "asc",
+				"type": "string"
 			}
 		}
 	],
@@ -71,7 +74,8 @@
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
 				"readOnly": true,
-				"type": "string"
+				"type": "string",
+				"x-auditable": true
 			}
 		},
 		{
@@ -82,7 +86,8 @@
 				"description": "Widget item identifier tag.",
 				"example": "0x4AAF00AAAABn0R22HWm-YUc",
 				"maxLength": 32,
-				"type": "string"
+				"type": "string",
+				"x-auditable": true
 			}
 		}
 	],
@@ -96,7 +101,8 @@
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
 				"readOnly": true,
-				"type": "string"
+				"type": "string",
+				"x-auditable": true
 			}
 		},
 		{
@@ -107,7 +113,8 @@
 				"description": "Widget item identifier tag.",
 				"example": "0x4AAF00AAAABn0R22HWm-YUc",
 				"maxLength": 32,
-				"type": "string"
+				"type": "string",
+				"x-auditable": true
 			}
 		}
 	],

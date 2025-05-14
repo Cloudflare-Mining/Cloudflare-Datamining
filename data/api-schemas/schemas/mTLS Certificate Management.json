@@ -134,7 +134,8 @@
 														"ca": {
 															"description": "Indicates whether the certificate is a CA or leaf certificate.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"certificates": {
 															"description": "The uploaded root CA certificate.",
@@ -146,7 +147,8 @@
 															"example": "2122-10-29T16:59:47Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier.",
@@ -158,30 +160,35 @@
 															"description": "The certificate authority that issued the certificate.",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "Optional unique name for the certificate. Only used for human readability.",
 															"example": "example_ca_cert",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"serial_number": {
 															"description": "The certificate serial number.",
 															"example": "235217144297995885180570755458463043449861756659",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"signature": {
 															"description": "The type of hash used for the certificate.",
 															"example": "SHA256WithRSA",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"uploaded_on": {
 															"description": "This is the time the certificate was uploaded.",
 															"example": "2022-11-22T17:32:30.467938Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -299,7 +306,8 @@
 																"ca": {
 																	"description": "Indicates whether the certificate is a CA or leaf certificate.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"certificates": {
 																	"description": "The uploaded root CA certificate.",
@@ -311,7 +319,8 @@
 																	"example": "2122-10-29T16:59:47Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Identifier.",
@@ -323,30 +332,35 @@
 																	"description": "The certificate authority that issued the certificate.",
 																	"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "Optional unique name for the certificate. Only used for human readability.",
 																	"example": "example_ca_cert",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"serial_number": {
 																	"description": "The certificate serial number.",
 																	"example": "235217144297995885180570755458463043449861756659",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"signature": {
 																	"description": "The type of hash used for the certificate.",
 																	"example": "SHA256WithRSA",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"uploaded_on": {
 																	"description": "This is the time the certificate was uploaded.",
 																	"example": "2022-11-22T17:32:30.467938Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														}
@@ -641,7 +655,8 @@
 													"ca": {
 														"description": "Indicates whether the certificate is a CA or leaf certificate.",
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"certificates": {
 														"description": "The uploaded root CA certificate.",
@@ -653,7 +668,8 @@
 														"example": "2122-10-29T16:59:47Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier.",
@@ -665,30 +681,35 @@
 														"description": "The certificate authority that issued the certificate.",
 														"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "Optional unique name for the certificate. Only used for human readability.",
 														"example": "example_ca_cert",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"serial_number": {
 														"description": "The certificate serial number.",
 														"example": "235217144297995885180570755458463043449861756659",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"signature": {
 														"description": "The type of hash used for the certificate.",
 														"example": "SHA256WithRSA",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"uploaded_on": {
 														"description": "This is the time the certificate was uploaded.",
 														"example": "2022-11-22T17:32:30.467938Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												}
 											},
@@ -859,7 +880,8 @@
 															"ca": {
 																"description": "Indicates whether the certificate is a CA or leaf certificate.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"certificates": {
 																"description": "The uploaded root CA certificate.",
@@ -871,7 +893,8 @@
 																"example": "2122-10-29T16:59:47Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier.",
@@ -883,30 +906,35 @@
 																"description": "The certificate authority that issued the certificate.",
 																"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "Optional unique name for the certificate. Only used for human readability.",
 																"example": "example_ca_cert",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"serial_number": {
 																"description": "The certificate serial number.",
 																"example": "235217144297995885180570755458463043449861756659",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"signature": {
 																"description": "The type of hash used for the certificate.",
 																"example": "SHA256WithRSA",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"uploaded_on": {
 																"description": "This is the time the certificate was uploaded.",
 																"example": "2022-11-22T17:32:30.467938Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														}
 													},
@@ -1210,7 +1238,8 @@
 														"ca": {
 															"description": "Indicates whether the certificate is a CA or leaf certificate.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"certificates": {
 															"description": "The uploaded root CA certificate.",
@@ -1222,7 +1251,8 @@
 															"example": "2122-10-29T16:59:47Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier.",
@@ -1234,30 +1264,35 @@
 															"description": "The certificate authority that issued the certificate.",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "Optional unique name for the certificate. Only used for human readability.",
 															"example": "example_ca_cert",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"serial_number": {
 															"description": "The certificate serial number.",
 															"example": "235217144297995885180570755458463043449861756659",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"signature": {
 															"description": "The type of hash used for the certificate.",
 															"example": "SHA256WithRSA",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"uploaded_on": {
 															"description": "This is the time the certificate was uploaded.",
 															"example": "2022-11-22T17:32:30.467938Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -1375,7 +1410,8 @@
 																"ca": {
 																	"description": "Indicates whether the certificate is a CA or leaf certificate.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"certificates": {
 																	"description": "The uploaded root CA certificate.",
@@ -1387,7 +1423,8 @@
 																	"example": "2122-10-29T16:59:47Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Identifier.",
@@ -1399,30 +1436,35 @@
 																	"description": "The certificate authority that issued the certificate.",
 																	"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "Optional unique name for the certificate. Only used for human readability.",
 																	"example": "example_ca_cert",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"serial_number": {
 																	"description": "The certificate serial number.",
 																	"example": "235217144297995885180570755458463043449861756659",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"signature": {
 																	"description": "The type of hash used for the certificate.",
 																	"example": "SHA256WithRSA",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"uploaded_on": {
 																	"description": "This is the time the certificate was uploaded.",
 																	"example": "2022-11-22T17:32:30.467938Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														}
@@ -1729,12 +1771,14 @@
 													"service": {
 														"description": "The service using the certificate.",
 														"example": "gateway",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"status": {
 														"description": "Certificate deployment status for the given service.",
 														"example": "pending_deployment",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												}
 											},
@@ -1879,12 +1923,14 @@
 															"service": {
 																"description": "The service using the certificate.",
 																"example": "gateway",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"status": {
 																"description": "Certificate deployment status for the given service.",
 																"example": "pending_deployment",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														}
 													},
@@ -2057,7 +2103,8 @@
 							"ca": {
 								"description": "Indicates whether the certificate is a CA or leaf certificate.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"certificates": {
 								"description": "The uploaded root CA certificate.",
@@ -2067,10 +2114,11 @@
 							"name": {
 								"description": "Optional unique name for the certificate. Only used for human readability.",
 								"example": "example_ca_cert",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"private_key": {
-								"description": "The private key for the certificate",
+								"description": "The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.",
 								"example": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEXDkcICRU3XBv9hiiPnBWIjgTQyowmVFxDr11mONgZB/cMYjE/OvQjvnpwNcOaSK16MOpAjNbELKRx2lZiVJaLRDCccqCxXwP/CrdRChcqGzo7mbNksMlcidrErb0LlEBKLFC2QjRmRKqB+YOs4TD8WsZu2S667A2fZmjRlaqOxFi1h62ee0P+TLU628UC/nl41JifSt5Evt7hMDHakemdwZblNYr2p6T3NQjdhjYXTtP4UmOGJBhJ7i7Kicg3d3CIgdTMbggSeGWqjndr4ldVnD96FN3cVT5uDFsn2CJXTFgdeBWoUnMS4VnUZzPWGf4vSBXC8qV7Ls+w46yT7T1AgMBAAECggEAQZnp/oqCeNPOR6l5S2L+1tfx0gWjZ78hJVteUpZ0iHSK7F6kKeOxyOird7vUXV0kmo+cJq+0hp0Ke4eam640FCpwKfYoSQ4/R3vgujGWJnaihCN5tv5sMet0XeJPuz5qE7ALoKCvwI6aXLHs20aAeZIDTQJ9QbGSGnJVzOWn+JDTidIgZpN57RpXfSAwnJPTQK/PN8i5z108hsaDOdEgGmxYZ7kYqMqzX20KXmth58LDfPixs5JGtS60iiKC/wOcGzkB2/AdTSojR76oEU77cANP/3zO25NG//whUdYlW0t0d7PgXxIeJe+xgYnamDQJx3qonVyt4H77ha0ObRAj9QKBgQDicZr+VTwFMnELP3a+FXGnjehRiuS1i7MXGKxNweCD+dFlML0FplSQS8Ro2n+d8lu8BBXGx0qm6VXu8Rhn7TAUL6q+PCgfarzxfIhacb/TZCqfieIHsMlVBfhV5HCXnk+kis0tuC/PRArcWTwDHJUJXkBhvkUsNswvQzavDPI7KwKBgQDd/WgLkj7A3X5fgIHZH/GbDSBiXwzKb+rF4ZCT2XFgG/OAW7vapfcX/w+v+5lBLyrocmOAS3PGGAhM5T3HLnUCQfnK4qgps1Lqibkc9Tmnsn60LanUjuUMsYv/zSw70tozbzhJ0pioEpWfRxRZBztO2Rr8Ntm7h6Fk701EXGNAXwKBgQCD1xsjy2J3sCerIdcz0u5qXLAPkeuZW+34m4/ucdwTWwc0gEz9lhsULFj9p4G351zLuiEnq+7mAWLcDJlmIO3mQt6JhiLiL9Y0T4pgBmxmWqKKYtAsJB0EmMY+1BNN44mBRqMxZFTJu1cLdhT/xstrOeoIPqytknYNanfTMZlzIwKBgHrLXe5oq0XMP8dcMneEcAUwsaU4pr6kQd3L9EmUkl5zl7J9C+DaxWAEuwzBw/iGutlxzRB+rD/7szu14wJ29EqXbDGKRzMp+se5/yfBjm7xEZ1hVPw7PwBShfqt57X/4Ktq7lwHnmH6RcGhc+P7WBc5iO/S94YAdIp8xOT3pf9JAoGAE0QkqJUY+5Mgr+fBO0VNV72ZoPveGpW+De59uhKAOnu1zljQCUtk59m6+DXfm0tNYKtawa5n8iN71Zh+s62xXSt3pYi1Y5CCCmv8Y4BhwIcPwXKk3zEvLgSHVTpC0bayA9aSO4bbZgVXa5w+Z0w/vvfp9DWo1IS3EnQRrz6WMYA=\n-----END PRIVATE KEY-----",
 								"type": "string",
 								"x-sensitive": true
@@ -2188,7 +2236,8 @@
 														"ca": {
 															"description": "Indicates whether the certificate is a CA or leaf certificate.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"certificates": {
 															"description": "The uploaded root CA certificate.",
@@ -2200,7 +2249,8 @@
 															"example": "2122-10-29T16:59:47Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier.",
@@ -2212,36 +2262,42 @@
 															"description": "The certificate authority that issued the certificate.",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "Optional unique name for the certificate. Only used for human readability.",
 															"example": "example_ca_cert",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"serial_number": {
 															"description": "The certificate serial number.",
 															"example": "235217144297995885180570755458463043449861756659",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"signature": {
 															"description": "The type of hash used for the certificate.",
 															"example": "SHA256WithRSA",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"description": "This is the time the certificate was updated.",
 															"example": "2022-11-22T17:32:30.467938Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"uploaded_on": {
 															"description": "This is the time the certificate was uploaded.",
 															"example": "2022-11-22T17:32:30.467938Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -2359,7 +2415,8 @@
 																"ca": {
 																	"description": "Indicates whether the certificate is a CA or leaf certificate.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"certificates": {
 																	"description": "The uploaded root CA certificate.",
@@ -2371,7 +2428,8 @@
 																	"example": "2122-10-29T16:59:47Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Identifier.",
@@ -2383,36 +2441,42 @@
 																	"description": "The certificate authority that issued the certificate.",
 																	"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "Optional unique name for the certificate. Only used for human readability.",
 																	"example": "example_ca_cert",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"serial_number": {
 																	"description": "The certificate serial number.",
 																	"example": "235217144297995885180570755458463043449861756659",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"signature": {
 																	"description": "The type of hash used for the certificate.",
 																	"example": "SHA256WithRSA",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"updated_at": {
 																	"description": "This is the time the certificate was updated.",
 																	"example": "2022-11-22T17:32:30.467938Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"uploaded_on": {
 																	"description": "This is the time the certificate was uploaded.",
 																	"example": "2022-11-22T17:32:30.467938Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														}

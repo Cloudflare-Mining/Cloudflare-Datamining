@@ -134,11 +134,13 @@
 													"properties": {
 														"id": {
 															"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"example": "Cloudflare Managed CA for account",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -147,30 +149,35 @@
 													"description": "Common Name of the Client Certificate",
 													"example": "Cloudflare",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"country": {
 													"description": "Country, provided by the CSR",
 													"example": "US",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"csr": {
 													"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
 													"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"expires_on": {
 													"description": "Date that the Client Certificate expires",
 													"example": "2033-02-20T23:18:00Z",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"fingerprint_sha256": {
 													"description": "Unique identifier of the Client Certificate",
 													"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier.",
@@ -182,49 +189,57 @@
 													"description": "Date that the Client Certificate was issued by the Certificate Authority",
 													"example": "2023-02-23T23:18:00Z",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"location": {
 													"description": "Location, provided by the CSR",
 													"example": "Somewhere",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"organization": {
 													"description": "Organization, provided by the CSR",
 													"example": "Organization",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"organizational_unit": {
 													"description": "Organizational Unit, provided by the CSR",
 													"example": "Organizational Unit",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"serial_number": {
 													"description": "The serial number on the created Client Certificate.",
 													"example": "3bb94ff144ac567b9f75ad664b6c55f8d5e48182",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"signature": {
 													"description": "The type of hash used for the Client Certificate..",
 													"example": "SHA256WithRSA",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ski": {
 													"description": "Subject Key Identifier",
 													"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"state": {
 													"description": "State, provided by the CSR",
 													"example": "CA",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
@@ -234,12 +249,15 @@
 														"pending_revocation",
 														"revoked"
 													],
-													"example": "active"
+													"example": "active",
+													"type": "string",
+													"x-auditable": true
 												},
 												"validity_days": {
 													"description": "The number of days the Client Certificate will be valid after the issued_on date",
 													"example": 3650,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											}
 										}
@@ -517,7 +535,8 @@
 												"hostnames": {
 													"items": {
 														"example": "api.example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												}
@@ -879,11 +898,13 @@
 														"properties": {
 															"id": {
 																"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"example": "Cloudflare Managed CA for account",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -892,30 +913,35 @@
 														"description": "Common Name of the Client Certificate",
 														"example": "Cloudflare",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"country": {
 														"description": "Country, provided by the CSR",
 														"example": "US",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"csr": {
 														"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
 														"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"expires_on": {
 														"description": "Date that the Client Certificate expires",
 														"example": "2033-02-20T23:18:00Z",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"fingerprint_sha256": {
 														"description": "Unique identifier of the Client Certificate",
 														"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier.",
@@ -927,49 +953,57 @@
 														"description": "Date that the Client Certificate was issued by the Certificate Authority",
 														"example": "2023-02-23T23:18:00Z",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"location": {
 														"description": "Location, provided by the CSR",
 														"example": "Somewhere",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"organization": {
 														"description": "Organization, provided by the CSR",
 														"example": "Organization",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"organizational_unit": {
 														"description": "Organizational Unit, provided by the CSR",
 														"example": "Organizational Unit",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"serial_number": {
 														"description": "The serial number on the created Client Certificate.",
 														"example": "3bb94ff144ac567b9f75ad664b6c55f8d5e48182",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"signature": {
 														"description": "The type of hash used for the Client Certificate..",
 														"example": "SHA256WithRSA",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"ski": {
 														"description": "Subject Key Identifier",
 														"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"state": {
 														"description": "State, provided by the CSR",
 														"example": "CA",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"status": {
 														"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
@@ -979,12 +1013,15 @@
 															"pending_revocation",
 															"revoked"
 														],
-														"example": "active"
+														"example": "active",
+														"type": "string",
+														"x-auditable": true
 													},
 													"validity_days": {
 														"description": "The number of days the Client Certificate will be valid after the issued_on date",
 														"example": 3650,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													}
 												}
 											},
@@ -1277,11 +1314,13 @@
 													"properties": {
 														"id": {
 															"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"example": "Cloudflare Managed CA for account",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1290,30 +1329,35 @@
 													"description": "Common Name of the Client Certificate",
 													"example": "Cloudflare",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"country": {
 													"description": "Country, provided by the CSR",
 													"example": "US",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"csr": {
 													"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
 													"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"expires_on": {
 													"description": "Date that the Client Certificate expires",
 													"example": "2033-02-20T23:18:00Z",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"fingerprint_sha256": {
 													"description": "Unique identifier of the Client Certificate",
 													"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier.",
@@ -1325,49 +1369,57 @@
 													"description": "Date that the Client Certificate was issued by the Certificate Authority",
 													"example": "2023-02-23T23:18:00Z",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"location": {
 													"description": "Location, provided by the CSR",
 													"example": "Somewhere",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"organization": {
 													"description": "Organization, provided by the CSR",
 													"example": "Organization",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"organizational_unit": {
 													"description": "Organizational Unit, provided by the CSR",
 													"example": "Organizational Unit",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"serial_number": {
 													"description": "The serial number on the created Client Certificate.",
 													"example": "3bb94ff144ac567b9f75ad664b6c55f8d5e48182",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"signature": {
 													"description": "The type of hash used for the Client Certificate..",
 													"example": "SHA256WithRSA",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ski": {
 													"description": "Subject Key Identifier",
 													"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"state": {
 													"description": "State, provided by the CSR",
 													"example": "CA",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
@@ -1377,12 +1429,15 @@
 														"pending_revocation",
 														"revoked"
 													],
-													"example": "active"
+													"example": "active",
+													"type": "string",
+													"x-auditable": true
 												},
 												"validity_days": {
 													"description": "The number of days the Client Certificate will be valid after the issued_on date",
 													"example": 3650,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											}
 										}
@@ -1669,11 +1724,13 @@
 													"properties": {
 														"id": {
 															"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"example": "Cloudflare Managed CA for account",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1682,30 +1739,35 @@
 													"description": "Common Name of the Client Certificate",
 													"example": "Cloudflare",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"country": {
 													"description": "Country, provided by the CSR",
 													"example": "US",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"csr": {
 													"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
 													"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"expires_on": {
 													"description": "Date that the Client Certificate expires",
 													"example": "2033-02-20T23:18:00Z",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"fingerprint_sha256": {
 													"description": "Unique identifier of the Client Certificate",
 													"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier.",
@@ -1717,49 +1779,57 @@
 													"description": "Date that the Client Certificate was issued by the Certificate Authority",
 													"example": "2023-02-23T23:18:00Z",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"location": {
 													"description": "Location, provided by the CSR",
 													"example": "Somewhere",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"organization": {
 													"description": "Organization, provided by the CSR",
 													"example": "Organization",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"organizational_unit": {
 													"description": "Organizational Unit, provided by the CSR",
 													"example": "Organizational Unit",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"serial_number": {
 													"description": "The serial number on the created Client Certificate.",
 													"example": "3bb94ff144ac567b9f75ad664b6c55f8d5e48182",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"signature": {
 													"description": "The type of hash used for the Client Certificate..",
 													"example": "SHA256WithRSA",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ski": {
 													"description": "Subject Key Identifier",
 													"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"state": {
 													"description": "State, provided by the CSR",
 													"example": "CA",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
@@ -1769,12 +1839,15 @@
 														"pending_revocation",
 														"revoked"
 													],
-													"example": "active"
+													"example": "active",
+													"type": "string",
+													"x-auditable": true
 												},
 												"validity_days": {
 													"description": "The number of days the Client Certificate will be valid after the issued_on date",
 													"example": 3650,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											}
 										}
@@ -1949,12 +2022,14 @@
 							"csr": {
 								"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
 								"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"validity_days": {
 								"description": "The number of days the Client Certificate will be valid after the issued_on date",
 								"example": 3650,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2075,11 +2150,13 @@
 													"properties": {
 														"id": {
 															"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"example": "Cloudflare Managed CA for account",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2088,30 +2165,35 @@
 													"description": "Common Name of the Client Certificate",
 													"example": "Cloudflare",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"country": {
 													"description": "Country, provided by the CSR",
 													"example": "US",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"csr": {
 													"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
 													"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"expires_on": {
 													"description": "Date that the Client Certificate expires",
 													"example": "2033-02-20T23:18:00Z",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"fingerprint_sha256": {
 													"description": "Unique identifier of the Client Certificate",
 													"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier.",
@@ -2123,49 +2205,57 @@
 													"description": "Date that the Client Certificate was issued by the Certificate Authority",
 													"example": "2023-02-23T23:18:00Z",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"location": {
 													"description": "Location, provided by the CSR",
 													"example": "Somewhere",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"organization": {
 													"description": "Organization, provided by the CSR",
 													"example": "Organization",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"organizational_unit": {
 													"description": "Organizational Unit, provided by the CSR",
 													"example": "Organizational Unit",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"serial_number": {
 													"description": "The serial number on the created Client Certificate.",
 													"example": "3bb94ff144ac567b9f75ad664b6c55f8d5e48182",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"signature": {
 													"description": "The type of hash used for the Client Certificate..",
 													"example": "SHA256WithRSA",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ski": {
 													"description": "Subject Key Identifier",
 													"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"state": {
 													"description": "State, provided by the CSR",
 													"example": "CA",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
@@ -2175,12 +2265,15 @@
 														"pending_revocation",
 														"revoked"
 													],
-													"example": "active"
+													"example": "active",
+													"type": "string",
+													"x-auditable": true
 												},
 												"validity_days": {
 													"description": "The number of days the Client Certificate will be valid after the issued_on date",
 													"example": 3650,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											}
 										}
@@ -2301,11 +2394,13 @@
 															"properties": {
 																"id": {
 																	"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"example": "Cloudflare Managed CA for account",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2314,30 +2409,35 @@
 															"description": "Common Name of the Client Certificate",
 															"example": "Cloudflare",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"country": {
 															"description": "Country, provided by the CSR",
 															"example": "US",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"csr": {
 															"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
 															"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"expires_on": {
 															"description": "Date that the Client Certificate expires",
 															"example": "2033-02-20T23:18:00Z",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"fingerprint_sha256": {
 															"description": "Unique identifier of the Client Certificate",
 															"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier.",
@@ -2349,49 +2449,57 @@
 															"description": "Date that the Client Certificate was issued by the Certificate Authority",
 															"example": "2023-02-23T23:18:00Z",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"location": {
 															"description": "Location, provided by the CSR",
 															"example": "Somewhere",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"organization": {
 															"description": "Organization, provided by the CSR",
 															"example": "Organization",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"organizational_unit": {
 															"description": "Organizational Unit, provided by the CSR",
 															"example": "Organizational Unit",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"serial_number": {
 															"description": "The serial number on the created Client Certificate.",
 															"example": "3bb94ff144ac567b9f75ad664b6c55f8d5e48182",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"signature": {
 															"description": "The type of hash used for the Client Certificate..",
 															"example": "SHA256WithRSA",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ski": {
 															"description": "Subject Key Identifier",
 															"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"state": {
 															"description": "State, provided by the CSR",
 															"example": "CA",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
@@ -2401,12 +2509,15 @@
 																"pending_revocation",
 																"revoked"
 															],
-															"example": "active"
+															"example": "active",
+															"type": "string",
+															"x-auditable": true
 														},
 														"validity_days": {
 															"description": "The number of days the Client Certificate will be valid after the issued_on date",
 															"example": 3650,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													}
 												}
@@ -2576,7 +2687,8 @@
 							"hostnames": {
 								"items": {
 									"example": "api.example.com",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -2584,7 +2696,8 @@
 								"description": "The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls_certificate_id is given, the hostnames will be associated to your active Cloudflare Managed CA.",
 								"maxLength": 36,
 								"minLength": 36,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -2693,7 +2806,8 @@
 												"hostnames": {
 													"items": {
 														"example": "api.example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												}

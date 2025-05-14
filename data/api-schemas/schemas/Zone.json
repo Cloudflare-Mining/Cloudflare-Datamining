@@ -481,6 +481,11 @@
 														"readOnly": true,
 														"type": "string"
 													},
+													"cname_suffix": {
+														"description": "Allows the customer to use a custom apex.\n*Tenants Only Configuration*.",
+														"example": "cdn.cloudflare.com",
+														"type": "string"
+													},
 													"created_on": {
 														"description": "When the zone was created",
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -624,6 +629,74 @@
 														"readOnly": true,
 														"type": "boolean"
 													},
+													"permissions": {
+														"deprecated": true,
+														"description": "Legacy permissions based on legacy user membership information.",
+														"items": {
+															"example": "#worker:read",
+															"type": "string"
+														},
+														"type": "array",
+														"x-stainless-message": "This has been replaced by Account memberships."
+													},
+													"plan": {
+														"deprecated": true,
+														"description": "A Zones subscription information.",
+														"properties": {
+															"can_subscribe": {
+																"description": "States if the subscription can be activated.",
+																"example": false,
+																"type": "boolean"
+															},
+															"currency": {
+																"description": "The denomination of the customer.",
+																"example": "USD",
+																"type": "string"
+															},
+															"externally_managed": {
+																"description": "If this Zone is managed by another company.",
+																"example": false,
+																"type": "boolean"
+															},
+															"frequency": {
+																"description": "How often the customer is billed.",
+																"example": "monthly",
+																"type": "string"
+															},
+															"id": {
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string"
+															},
+															"is_subscribed": {
+																"description": "States if the subscription active.",
+																"example": false,
+																"type": "boolean"
+															},
+															"legacy_discount": {
+																"description": "If the legacy discount applies to this Zone.",
+																"example": false,
+																"type": "boolean"
+															},
+															"legacy_id": {
+																"description": "The legacy name of the plan.",
+																"example": "free",
+																"type": "string"
+															},
+															"name": {
+																"description": "Name of the owner",
+																"example": "Example Org",
+																"type": "string"
+															},
+															"price": {
+																"description": "How much the customer is paying.",
+																"example": 10.99,
+																"type": "number"
+															}
+														},
+														"x-stainless-message": "Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/)."
+													},
 													"status": {
 														"description": "The zone status on Cloudflare.",
 														"enum": [
@@ -635,6 +708,33 @@
 														"example": "active",
 														"readOnly": true,
 														"type": "string"
+													},
+													"tenant": {
+														"description": "The root organizational unit that this zone belongs to (such as a tenant or organization).",
+														"properties": {
+															"id": {
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string"
+															},
+															"name": {
+																"description": "The name of the Tenant account.",
+																"example": "Example Account Name",
+																"type": "string"
+															}
+														}
+													},
+													"tenant_unit": {
+														"description": "The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).",
+														"properties": {
+															"id": {
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string"
+															}
+														}
 													},
 													"type": {
 														"default": "full",
@@ -681,7 +781,8 @@
 													"original_dnshost",
 													"created_on",
 													"modified_on",
-													"activated_on"
+													"activated_on",
+													"plan"
 												],
 												"type": "object"
 											},
@@ -902,6 +1003,11 @@
 													"readOnly": true,
 													"type": "string"
 												},
+												"cname_suffix": {
+													"description": "Allows the customer to use a custom apex.\n*Tenants Only Configuration*.",
+													"example": "cdn.cloudflare.com",
+													"type": "string"
+												},
 												"created_on": {
 													"description": "When the zone was created",
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1045,6 +1151,74 @@
 													"readOnly": true,
 													"type": "boolean"
 												},
+												"permissions": {
+													"deprecated": true,
+													"description": "Legacy permissions based on legacy user membership information.",
+													"items": {
+														"example": "#worker:read",
+														"type": "string"
+													},
+													"type": "array",
+													"x-stainless-message": "This has been replaced by Account memberships."
+												},
+												"plan": {
+													"deprecated": true,
+													"description": "A Zones subscription information.",
+													"properties": {
+														"can_subscribe": {
+															"description": "States if the subscription can be activated.",
+															"example": false,
+															"type": "boolean"
+														},
+														"currency": {
+															"description": "The denomination of the customer.",
+															"example": "USD",
+															"type": "string"
+														},
+														"externally_managed": {
+															"description": "If this Zone is managed by another company.",
+															"example": false,
+															"type": "boolean"
+														},
+														"frequency": {
+															"description": "How often the customer is billed.",
+															"example": "monthly",
+															"type": "string"
+														},
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														},
+														"is_subscribed": {
+															"description": "States if the subscription active.",
+															"example": false,
+															"type": "boolean"
+														},
+														"legacy_discount": {
+															"description": "If the legacy discount applies to this Zone.",
+															"example": false,
+															"type": "boolean"
+														},
+														"legacy_id": {
+															"description": "The legacy name of the plan.",
+															"example": "free",
+															"type": "string"
+														},
+														"name": {
+															"description": "Name of the owner",
+															"example": "Example Org",
+															"type": "string"
+														},
+														"price": {
+															"description": "How much the customer is paying.",
+															"example": 10.99,
+															"type": "number"
+														}
+													},
+													"x-stainless-message": "Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/)."
+												},
 												"status": {
 													"description": "The zone status on Cloudflare.",
 													"enum": [
@@ -1056,6 +1230,33 @@
 													"example": "active",
 													"readOnly": true,
 													"type": "string"
+												},
+												"tenant": {
+													"description": "The root organizational unit that this zone belongs to (such as a tenant or organization).",
+													"properties": {
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														},
+														"name": {
+															"description": "The name of the Tenant account.",
+															"example": "Example Account Name",
+															"type": "string"
+														}
+													}
+												},
+												"tenant_unit": {
+													"description": "The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).",
+													"properties": {
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														}
+													}
 												},
 												"type": {
 													"default": "full",
@@ -1102,7 +1303,8 @@
 												"original_dnshost",
 												"created_on",
 												"modified_on",
-												"activated_on"
+												"activated_on",
+												"plan"
 											],
 											"type": "object"
 										}
@@ -1432,6 +1634,11 @@
 													"readOnly": true,
 													"type": "string"
 												},
+												"cname_suffix": {
+													"description": "Allows the customer to use a custom apex.\n*Tenants Only Configuration*.",
+													"example": "cdn.cloudflare.com",
+													"type": "string"
+												},
 												"created_on": {
 													"description": "When the zone was created",
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1575,6 +1782,74 @@
 													"readOnly": true,
 													"type": "boolean"
 												},
+												"permissions": {
+													"deprecated": true,
+													"description": "Legacy permissions based on legacy user membership information.",
+													"items": {
+														"example": "#worker:read",
+														"type": "string"
+													},
+													"type": "array",
+													"x-stainless-message": "This has been replaced by Account memberships."
+												},
+												"plan": {
+													"deprecated": true,
+													"description": "A Zones subscription information.",
+													"properties": {
+														"can_subscribe": {
+															"description": "States if the subscription can be activated.",
+															"example": false,
+															"type": "boolean"
+														},
+														"currency": {
+															"description": "The denomination of the customer.",
+															"example": "USD",
+															"type": "string"
+														},
+														"externally_managed": {
+															"description": "If this Zone is managed by another company.",
+															"example": false,
+															"type": "boolean"
+														},
+														"frequency": {
+															"description": "How often the customer is billed.",
+															"example": "monthly",
+															"type": "string"
+														},
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														},
+														"is_subscribed": {
+															"description": "States if the subscription active.",
+															"example": false,
+															"type": "boolean"
+														},
+														"legacy_discount": {
+															"description": "If the legacy discount applies to this Zone.",
+															"example": false,
+															"type": "boolean"
+														},
+														"legacy_id": {
+															"description": "The legacy name of the plan.",
+															"example": "free",
+															"type": "string"
+														},
+														"name": {
+															"description": "Name of the owner",
+															"example": "Example Org",
+															"type": "string"
+														},
+														"price": {
+															"description": "How much the customer is paying.",
+															"example": 10.99,
+															"type": "number"
+														}
+													},
+													"x-stainless-message": "Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/)."
+												},
 												"status": {
 													"description": "The zone status on Cloudflare.",
 													"enum": [
@@ -1586,6 +1861,33 @@
 													"example": "active",
 													"readOnly": true,
 													"type": "string"
+												},
+												"tenant": {
+													"description": "The root organizational unit that this zone belongs to (such as a tenant or organization).",
+													"properties": {
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														},
+														"name": {
+															"description": "The name of the Tenant account.",
+															"example": "Example Account Name",
+															"type": "string"
+														}
+													}
+												},
+												"tenant_unit": {
+													"description": "The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).",
+													"properties": {
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														}
+													}
 												},
 												"type": {
 													"default": "full",
@@ -1632,7 +1934,8 @@
 												"original_dnshost",
 												"created_on",
 												"modified_on",
-												"activated_on"
+												"activated_on",
+												"plan"
 											],
 											"type": "object"
 										}
@@ -1894,6 +2197,11 @@
 													"readOnly": true,
 													"type": "string"
 												},
+												"cname_suffix": {
+													"description": "Allows the customer to use a custom apex.\n*Tenants Only Configuration*.",
+													"example": "cdn.cloudflare.com",
+													"type": "string"
+												},
 												"created_on": {
 													"description": "When the zone was created",
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -2037,6 +2345,74 @@
 													"readOnly": true,
 													"type": "boolean"
 												},
+												"permissions": {
+													"deprecated": true,
+													"description": "Legacy permissions based on legacy user membership information.",
+													"items": {
+														"example": "#worker:read",
+														"type": "string"
+													},
+													"type": "array",
+													"x-stainless-message": "This has been replaced by Account memberships."
+												},
+												"plan": {
+													"deprecated": true,
+													"description": "A Zones subscription information.",
+													"properties": {
+														"can_subscribe": {
+															"description": "States if the subscription can be activated.",
+															"example": false,
+															"type": "boolean"
+														},
+														"currency": {
+															"description": "The denomination of the customer.",
+															"example": "USD",
+															"type": "string"
+														},
+														"externally_managed": {
+															"description": "If this Zone is managed by another company.",
+															"example": false,
+															"type": "boolean"
+														},
+														"frequency": {
+															"description": "How often the customer is billed.",
+															"example": "monthly",
+															"type": "string"
+														},
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														},
+														"is_subscribed": {
+															"description": "States if the subscription active.",
+															"example": false,
+															"type": "boolean"
+														},
+														"legacy_discount": {
+															"description": "If the legacy discount applies to this Zone.",
+															"example": false,
+															"type": "boolean"
+														},
+														"legacy_id": {
+															"description": "The legacy name of the plan.",
+															"example": "free",
+															"type": "string"
+														},
+														"name": {
+															"description": "Name of the owner",
+															"example": "Example Org",
+															"type": "string"
+														},
+														"price": {
+															"description": "How much the customer is paying.",
+															"example": 10.99,
+															"type": "number"
+														}
+													},
+													"x-stainless-message": "Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/)."
+												},
 												"status": {
 													"description": "The zone status on Cloudflare.",
 													"enum": [
@@ -2048,6 +2424,33 @@
 													"example": "active",
 													"readOnly": true,
 													"type": "string"
+												},
+												"tenant": {
+													"description": "The root organizational unit that this zone belongs to (such as a tenant or organization).",
+													"properties": {
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														},
+														"name": {
+															"description": "The name of the Tenant account.",
+															"example": "Example Account Name",
+															"type": "string"
+														}
+													}
+												},
+												"tenant_unit": {
+													"description": "The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).",
+													"properties": {
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														}
+													}
 												},
 												"type": {
 													"default": "full",
@@ -2094,7 +2497,8 @@
 												"original_dnshost",
 												"created_on",
 												"modified_on",
-												"activated_on"
+												"activated_on",
+												"plan"
 											],
 											"type": "object"
 										}

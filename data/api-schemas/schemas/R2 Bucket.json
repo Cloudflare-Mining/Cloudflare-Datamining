@@ -45,13 +45,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -244,13 +245,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -417,13 +419,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -605,13 +608,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -803,13 +807,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -996,13 +1001,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -1403,13 +1409,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "Lists buckets in the provided jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -1503,6 +1510,18 @@
 																"description": "Creation timestamp.",
 																"type": "string"
 															},
+															"jurisdiction": {
+																"default": "default",
+																"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+																"enum": [
+																	"default",
+																	"eu",
+																	"fedramp"
+																],
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-param": "jurisdiction"
+															},
 															"location": {
 																"description": "Location of the bucket.",
 																"enum": [
@@ -1514,7 +1533,8 @@
 																	"oc"
 																],
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"name": {
 																"description": "Name of the bucket.",
@@ -1660,13 +1680,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -1733,6 +1754,18 @@
 													"description": "Creation timestamp.",
 													"type": "string"
 												},
+												"jurisdiction": {
+													"default": "default",
+													"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+													"enum": [
+														"default",
+														"eu",
+														"fedramp"
+													],
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-param": "jurisdiction"
+												},
 												"location": {
 													"description": "Location of the bucket.",
 													"enum": [
@@ -1744,7 +1777,8 @@
 														"oc"
 													],
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "Name of the bucket.",
@@ -1886,13 +1920,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -2145,13 +2180,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -2450,13 +2486,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -2723,13 +2760,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -2938,13 +2976,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -3319,13 +3358,15 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-auditable": true,
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -3599,13 +3640,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -3844,13 +3886,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			},
@@ -3937,6 +3980,18 @@
 													"description": "Creation timestamp.",
 													"type": "string"
 												},
+												"jurisdiction": {
+													"default": "default",
+													"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+													"enum": [
+														"default",
+														"eu",
+														"fedramp"
+													],
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-param": "jurisdiction"
+												},
 												"location": {
 													"description": "Location of the bucket.",
 													"enum": [
@@ -3948,7 +4003,8 @@
 														"oc"
 													],
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "Name of the bucket.",
@@ -4076,13 +4132,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "Creates the bucket in the provided jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -4104,7 +4161,8 @@
 									"oc"
 								],
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"name": {
 								"description": "Name of the bucket.",
@@ -4197,6 +4255,18 @@
 													"description": "Creation timestamp.",
 													"type": "string"
 												},
+												"jurisdiction": {
+													"default": "default",
+													"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+													"enum": [
+														"default",
+														"eu",
+														"fedramp"
+													],
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-param": "jurisdiction"
+												},
 												"location": {
 													"description": "Location of the bucket.",
 													"enum": [
@@ -4208,7 +4278,8 @@
 														"oc"
 													],
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "Name of the bucket.",
@@ -4348,13 +4419,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -4872,13 +4944,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -5114,13 +5187,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -5389,13 +5463,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -5642,13 +5717,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -5880,13 +5956,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -6262,13 +6339,15 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-auditable": true,
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -6543,13 +6622,14 @@
 				"name": "cf-r2-jurisdiction",
 				"schema": {
 					"default": "default",
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
 					"type": "string",
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}

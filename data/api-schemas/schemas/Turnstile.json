@@ -73,7 +73,8 @@
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"clearance_level": {
 													"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
@@ -84,7 +85,8 @@
 														"interactive"
 													],
 													"example": "interactive",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_on": {
 													"description": "When the widget was created.",
@@ -102,7 +104,8 @@
 													"items": {
 														"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
 														"example": "203.0.113.1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxLength": 10,
 													"type": "array"
@@ -110,7 +113,8 @@
 												"ephemeral_id": {
 													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"mode": {
 													"description": "Widget Mode",
@@ -120,7 +124,8 @@
 														"managed"
 													],
 													"example": "invisible",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "When the widget was modified.",
@@ -134,31 +139,37 @@
 													"example": "blog.cloudflare.com login form",
 													"maxLength": 254,
 													"minLength": 1,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"offlabel": {
 													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"region": {
 													"default": "world",
-													"description": "Region where this widget can be used.",
+													"description": "Region where this widget can be used. This cannot be changed after creation.\n",
 													"enum": [
-														"world"
+														"world",
+														"china"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"secret": {
 													"description": "Secret key for this widget.",
 													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"sitekey": {
 													"description": "Widget item identifier tag.",
 													"example": "0x4AAF00AAAABn0R22HWm-YUc",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -177,9 +188,11 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -268,7 +281,7 @@
 						}
 					}
 				},
-				"description": "Delete Turnstile Widget Response"
+				"description": "Delete Turnstile Widget Response Error"
 			}
 		},
 		"security": [
@@ -388,7 +401,8 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -399,7 +413,8 @@
 													"bot_fight_mode": {
 														"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
 														"example": false,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"clearance_level": {
 														"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
@@ -410,7 +425,8 @@
 															"interactive"
 														],
 														"example": "interactive",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"created_on": {
 														"description": "When the widget was created.",
@@ -428,7 +444,8 @@
 														"items": {
 															"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
 															"example": "203.0.113.1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"maxLength": 10,
 														"type": "array"
@@ -436,7 +453,8 @@
 													"ephemeral_id": {
 														"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
 														"example": false,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"mode": {
 														"description": "Widget Mode",
@@ -446,7 +464,8 @@
 															"managed"
 														],
 														"example": "invisible",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"modified_on": {
 														"description": "When the widget was modified.",
@@ -460,26 +479,31 @@
 														"example": "blog.cloudflare.com login form",
 														"maxLength": 254,
 														"minLength": 1,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"offlabel": {
 														"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
 														"example": false,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"region": {
 														"default": "world",
-														"description": "Region where this widget can be used.",
+														"description": "Region where this widget can be used. This cannot be changed after creation.\n",
 														"enum": [
-															"world"
+															"world",
+															"china"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"sitekey": {
 														"description": "Widget item identifier tag.",
 														"example": "0x4AAF00AAAABn0R22HWm-YUc",
 														"maxLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -499,9 +523,11 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -687,7 +713,8 @@
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"clearance_level": {
 													"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
@@ -698,7 +725,8 @@
 														"interactive"
 													],
 													"example": "interactive",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_on": {
 													"description": "When the widget was created.",
@@ -716,7 +744,8 @@
 													"items": {
 														"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
 														"example": "203.0.113.1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxLength": 10,
 													"type": "array"
@@ -724,7 +753,8 @@
 												"ephemeral_id": {
 													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"mode": {
 													"description": "Widget Mode",
@@ -734,7 +764,8 @@
 														"managed"
 													],
 													"example": "invisible",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "When the widget was modified.",
@@ -748,31 +779,37 @@
 													"example": "blog.cloudflare.com login form",
 													"maxLength": 254,
 													"minLength": 1,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"offlabel": {
 													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"region": {
 													"default": "world",
-													"description": "Region where this widget can be used.",
+													"description": "Region where this widget can be used. This cannot be changed after creation.\n",
 													"enum": [
-														"world"
+														"world",
+														"china"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"secret": {
 													"description": "Secret key for this widget.",
 													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"sitekey": {
 													"description": "Widget item identifier tag.",
 													"example": "0x4AAF00AAAABn0R22HWm-YUc",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -791,9 +828,11 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -916,7 +955,8 @@
 							"bot_fight_mode": {
 								"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
 								"example": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"clearance_level": {
 								"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
@@ -927,7 +967,8 @@
 									"interactive"
 								],
 								"example": "interactive",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"domains": {
 								"example": [
@@ -938,7 +979,8 @@
 								"items": {
 									"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
 									"example": "203.0.113.1",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"maxLength": 10,
 								"type": "array"
@@ -946,7 +988,8 @@
 							"ephemeral_id": {
 								"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
 								"example": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"mode": {
 								"description": "Widget Mode",
@@ -956,34 +999,40 @@
 									"managed"
 								],
 								"example": "invisible",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
 								"example": "blog.cloudflare.com login form",
 								"maxLength": 254,
 								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"offlabel": {
 								"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
 								"example": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"region": {
 								"default": "world",
-								"description": "Region where this widget can be used.",
+								"description": "Region where this widget can be used. This cannot be changed after creation.\n",
 								"enum": [
-									"world"
+									"world",
+									"china"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
 							"name",
 							"mode",
 							"domains"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -1085,7 +1134,8 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1095,7 +1145,8 @@
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"clearance_level": {
 													"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
@@ -1106,7 +1157,8 @@
 														"interactive"
 													],
 													"example": "interactive",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_on": {
 													"description": "When the widget was created.",
@@ -1124,7 +1176,8 @@
 													"items": {
 														"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
 														"example": "203.0.113.1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxLength": 10,
 													"type": "array"
@@ -1132,7 +1185,8 @@
 												"ephemeral_id": {
 													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"mode": {
 													"description": "Widget Mode",
@@ -1142,7 +1196,8 @@
 														"managed"
 													],
 													"example": "invisible",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "When the widget was modified.",
@@ -1156,31 +1211,37 @@
 													"example": "blog.cloudflare.com login form",
 													"maxLength": 254,
 													"minLength": 1,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"offlabel": {
 													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"region": {
 													"default": "world",
-													"description": "Region where this widget can be used.",
+													"description": "Region where this widget can be used. This cannot be changed after creation.\n",
 													"enum": [
-														"world"
+														"world",
+														"china"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"secret": {
 													"description": "Secret key for this widget.",
 													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"sitekey": {
 													"description": "Widget item identifier tag.",
 													"example": "0x4AAF00AAAABn0R22HWm-YUc",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1199,9 +1260,11 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1322,9 +1385,11 @@
 							"invalidate_immediately": {
 								"default": false,
 								"description": "If `invalidate_immediately` is set to `false`, the previous secret will\nremain valid for two hours. Otherwise, the secret is immediately\ninvalidated, and requests using it will be rejected.\n",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							}
-						}
+						},
+						"type": "object"
 					}
 				}
 			},
@@ -1401,7 +1466,8 @@
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"clearance_level": {
 													"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
@@ -1412,7 +1478,8 @@
 														"interactive"
 													],
 													"example": "interactive",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_on": {
 													"description": "When the widget was created.",
@@ -1430,7 +1497,8 @@
 													"items": {
 														"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
 														"example": "203.0.113.1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxLength": 10,
 													"type": "array"
@@ -1438,7 +1506,8 @@
 												"ephemeral_id": {
 													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"mode": {
 													"description": "Widget Mode",
@@ -1448,7 +1517,8 @@
 														"managed"
 													],
 													"example": "invisible",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "When the widget was modified.",
@@ -1462,31 +1532,37 @@
 													"example": "blog.cloudflare.com login form",
 													"maxLength": 254,
 													"minLength": 1,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"offlabel": {
 													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"region": {
 													"default": "world",
-													"description": "Region where this widget can be used.",
+													"description": "Region where this widget can be used. This cannot be changed after creation.\n",
 													"enum": [
-														"world"
+														"world",
+														"china"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"secret": {
 													"description": "Secret key for this widget.",
 													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"sitekey": {
 													"description": "Widget item identifier tag.",
 													"example": "0x4AAF00AAAABn0R22HWm-YUc",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1505,9 +1581,11 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1628,7 +1706,8 @@
 							"bot_fight_mode": {
 								"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
 								"example": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"clearance_level": {
 								"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
@@ -1639,7 +1718,8 @@
 									"interactive"
 								],
 								"example": "interactive",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"domains": {
 								"example": [
@@ -1650,7 +1730,8 @@
 								"items": {
 									"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
 									"example": "203.0.113.1",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"maxLength": 10,
 								"type": "array"
@@ -1658,7 +1739,8 @@
 							"ephemeral_id": {
 								"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
 								"example": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"mode": {
 								"description": "Widget Mode",
@@ -1668,26 +1750,40 @@
 									"managed"
 								],
 								"example": "invisible",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
 								"example": "blog.cloudflare.com login form",
 								"maxLength": 254,
 								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"offlabel": {
 								"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
 								"example": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"region": {
+								"default": "world",
+								"description": "Region where this widget can be used. This cannot be changed after creation.\n",
+								"enum": [
+									"world",
+									"china"
+								],
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
 							"name",
 							"mode",
 							"domains"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -1764,7 +1860,8 @@
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"clearance_level": {
 													"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
@@ -1775,7 +1872,8 @@
 														"interactive"
 													],
 													"example": "interactive",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_on": {
 													"description": "When the widget was created.",
@@ -1793,7 +1891,8 @@
 													"items": {
 														"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
 														"example": "203.0.113.1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxLength": 10,
 													"type": "array"
@@ -1801,7 +1900,8 @@
 												"ephemeral_id": {
 													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"mode": {
 													"description": "Widget Mode",
@@ -1811,7 +1911,8 @@
 														"managed"
 													],
 													"example": "invisible",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "When the widget was modified.",
@@ -1825,31 +1926,37 @@
 													"example": "blog.cloudflare.com login form",
 													"maxLength": 254,
 													"minLength": 1,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"offlabel": {
 													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"region": {
 													"default": "world",
-													"description": "Region where this widget can be used.",
+													"description": "Region where this widget can be used. This cannot be changed after creation.\n",
 													"enum": [
-														"world"
+														"world",
+														"china"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"secret": {
 													"description": "Secret key for this widget.",
 													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"sitekey": {
 													"description": "Widget item identifier tag.",
 													"example": "0x4AAF00AAAABn0R22HWm-YUc",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1868,9 +1975,11 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},

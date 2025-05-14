@@ -25,7 +25,8 @@
 						"min_tls_version",
 						"http2"
 					],
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -35,7 +36,8 @@
 				"schema": {
 					"description": "The hostname for which the tls settings are set.",
 					"example": "app.example.com",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -142,23 +144,27 @@
 															"description": "This is the time the tls setting was originally created for this hostname.",
 															"example": "2023-07-10T20:01:50.219171Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"hostname": {
 															"description": "The hostname for which the tls settings are set.",
 															"example": "app.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "Deployment status for the given tls setting.",
 															"example": "pending_deployment",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"description": "This is the time the tls setting was updated.",
 															"example": "2023-07-10T20:01:50.219171Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "The tls setting value.",
@@ -168,14 +174,17 @@
 															],
 															"oneOf": [
 																{
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																{
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																{
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																}
@@ -298,23 +307,27 @@
 																	"description": "This is the time the tls setting was originally created for this hostname.",
 																	"example": "2023-07-10T20:01:50.219171Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"hostname": {
 																	"description": "The hostname for which the tls settings are set.",
 																	"example": "app.example.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "Deployment status for the given tls setting.",
 																	"example": "pending_deployment",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"updated_at": {
 																	"description": "This is the time the tls setting was updated.",
 																	"example": "2023-07-10T20:01:50.219171Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"value": {
 																	"description": "The tls setting value.",
@@ -324,14 +337,17 @@
 																	],
 																	"oneOf": [
 																		{
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		{
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		{
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		}
@@ -510,7 +526,8 @@
 						"min_tls_version",
 						"http2"
 					],
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -645,23 +662,27 @@
 														"description": "This is the time the tls setting was originally created for this hostname.",
 														"example": "2023-07-10T20:01:50.219171Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"hostname": {
 														"description": "The hostname for which the tls settings are set.",
 														"example": "app.example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"status": {
 														"description": "Deployment status for the given tls setting.",
 														"example": "pending_deployment",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"updated_at": {
 														"description": "This is the time the tls setting was updated.",
 														"example": "2023-07-10T20:01:50.219171Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"value": {
 														"description": "The tls setting value.",
@@ -671,14 +692,17 @@
 														],
 														"oneOf": [
 															{
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															{
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															{
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															}
@@ -854,23 +878,27 @@
 																"description": "This is the time the tls setting was originally created for this hostname.",
 																"example": "2023-07-10T20:01:50.219171Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"hostname": {
 																"description": "The hostname for which the tls settings are set.",
 																"example": "app.example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"status": {
 																"description": "Deployment status for the given tls setting.",
 																"example": "pending_deployment",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"updated_at": {
 																"description": "This is the time the tls setting was updated.",
 																"example": "2023-07-10T20:01:50.219171Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"value": {
 																"description": "The tls setting value.",
@@ -880,14 +908,17 @@
 																],
 																"oneOf": [
 																	{
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	{
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"items": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	}
@@ -1092,7 +1123,8 @@
 						"min_tls_version",
 						"http2"
 					],
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1102,7 +1134,8 @@
 				"schema": {
 					"description": "The hostname for which the tls settings are set.",
 					"example": "app.example.com",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1119,14 +1152,17 @@
 								],
 								"oneOf": [
 									{
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									{
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									{
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": "array"
 									}
@@ -1245,23 +1281,27 @@
 															"description": "This is the time the tls setting was originally created for this hostname.",
 															"example": "2023-07-10T20:01:50.219171Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"hostname": {
 															"description": "The hostname for which the tls settings are set.",
 															"example": "app.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "Deployment status for the given tls setting.",
 															"example": "pending_deployment",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"description": "This is the time the tls setting was updated.",
 															"example": "2023-07-10T20:01:50.219171Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "The tls setting value.",
@@ -1271,14 +1311,17 @@
 															],
 															"oneOf": [
 																{
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																{
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																{
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																}
@@ -1401,23 +1444,27 @@
 																	"description": "This is the time the tls setting was originally created for this hostname.",
 																	"example": "2023-07-10T20:01:50.219171Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"hostname": {
 																	"description": "The hostname for which the tls settings are set.",
 																	"example": "app.example.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "Deployment status for the given tls setting.",
 																	"example": "pending_deployment",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"updated_at": {
 																	"description": "This is the time the tls setting was updated.",
 																	"example": "2023-07-10T20:01:50.219171Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"value": {
 																	"description": "The tls setting value.",
@@ -1427,14 +1474,17 @@
 																	],
 																	"oneOf": [
 																		{
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		{
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		{
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		}

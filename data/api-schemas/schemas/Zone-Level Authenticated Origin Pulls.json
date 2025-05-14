@@ -140,7 +140,8 @@
 															"example": "2100-01-01T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier.",
@@ -152,13 +153,15 @@
 															"description": "The certificate authority that issued the certificate.",
 															"example": "GlobalSign",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"signature": {
 															"description": "The type of hash used for the certificate.",
 															"example": "SHA256WithRSA",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "Status of the certificate activation.",
@@ -171,13 +174,16 @@
 																"deployment_timed_out",
 																"deletion_timed_out"
 															],
-															"example": "active"
+															"example": "active",
+															"type": "string",
+															"x-auditable": true
 														},
 														"uploaded_on": {
 															"description": "This is the time the certificate was uploaded.",
 															"example": "2019-10-28T18:11:23.37411Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -191,7 +197,8 @@
 												"enabled": {
 													"description": "Indicates whether zone-level authenticated origin pulls is enabled.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier.",
@@ -326,7 +333,8 @@
 																	"example": "2100-01-01T05:20:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Identifier.",
@@ -338,13 +346,15 @@
 																	"description": "The certificate authority that issued the certificate.",
 																	"example": "GlobalSign",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"signature": {
 																	"description": "The type of hash used for the certificate.",
 																	"example": "SHA256WithRSA",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "Status of the certificate activation.",
@@ -357,13 +367,16 @@
 																		"deployment_timed_out",
 																		"deletion_timed_out"
 																	],
-																	"example": "active"
+																	"example": "active",
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"uploaded_on": {
 																	"description": "This is the time the certificate was uploaded.",
 																	"example": "2019-10-28T18:11:23.37411Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														}
@@ -377,7 +390,8 @@
 														"enabled": {
 															"description": "Indicates whether zone-level authenticated origin pulls is enabled.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier.",
@@ -685,7 +699,8 @@
 																"example": "2100-01-01T05:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier.",
@@ -697,13 +712,15 @@
 																"description": "The certificate authority that issued the certificate.",
 																"example": "GlobalSign",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"signature": {
 																"description": "The type of hash used for the certificate.",
 																"example": "SHA256WithRSA",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"status": {
 																"description": "Status of the certificate activation.",
@@ -716,13 +733,16 @@
 																	"deployment_timed_out",
 																	"deletion_timed_out"
 																],
-																"example": "active"
+																"example": "active",
+																"type": "string",
+																"x-auditable": true
 															},
 															"uploaded_on": {
 																"description": "This is the time the certificate was uploaded.",
 																"example": "2019-10-28T18:11:23.37411Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														}
 													}
@@ -736,7 +756,8 @@
 													"enabled": {
 														"description": "Indicates whether zone-level authenticated origin pulls is enabled.",
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier.",
@@ -903,7 +924,8 @@
 																		"example": "2100-01-01T05:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Identifier.",
@@ -915,13 +937,15 @@
 																		"description": "The certificate authority that issued the certificate.",
 																		"example": "GlobalSign",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"signature": {
 																		"description": "The type of hash used for the certificate.",
 																		"example": "SHA256WithRSA",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"status": {
 																		"description": "Status of the certificate activation.",
@@ -934,13 +958,16 @@
 																			"deployment_timed_out",
 																			"deletion_timed_out"
 																		],
-																		"example": "active"
+																		"example": "active",
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"uploaded_on": {
 																		"description": "This is the time the certificate was uploaded.",
 																		"example": "2019-10-28T18:11:23.37411Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															}
@@ -954,7 +981,8 @@
 															"enabled": {
 																"description": "Indicates whether zone-level authenticated origin pulls is enabled.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier.",
@@ -1251,7 +1279,8 @@
 															"example": "2100-01-01T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier.",
@@ -1263,13 +1292,15 @@
 															"description": "The certificate authority that issued the certificate.",
 															"example": "GlobalSign",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"signature": {
 															"description": "The type of hash used for the certificate.",
 															"example": "SHA256WithRSA",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "Status of the certificate activation.",
@@ -1282,13 +1313,16 @@
 																"deployment_timed_out",
 																"deletion_timed_out"
 															],
-															"example": "active"
+															"example": "active",
+															"type": "string",
+															"x-auditable": true
 														},
 														"uploaded_on": {
 															"description": "This is the time the certificate was uploaded.",
 															"example": "2019-10-28T18:11:23.37411Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -1302,7 +1336,8 @@
 												"enabled": {
 													"description": "Indicates whether zone-level authenticated origin pulls is enabled.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier.",
@@ -1437,7 +1472,8 @@
 																	"example": "2100-01-01T05:20:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Identifier.",
@@ -1449,13 +1485,15 @@
 																	"description": "The certificate authority that issued the certificate.",
 																	"example": "GlobalSign",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"signature": {
 																	"description": "The type of hash used for the certificate.",
 																	"example": "SHA256WithRSA",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "Status of the certificate activation.",
@@ -1468,13 +1506,16 @@
 																		"deployment_timed_out",
 																		"deletion_timed_out"
 																	],
-																	"example": "active"
+																	"example": "active",
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"uploaded_on": {
 																	"description": "This is the time the certificate was uploaded.",
 																	"example": "2019-10-28T18:11:23.37411Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														}
@@ -1488,7 +1529,8 @@
 														"enabled": {
 															"description": "Indicates whether zone-level authenticated origin pulls is enabled.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier.",
@@ -1759,7 +1801,8 @@
 												"enabled": {
 													"description": "Indicates whether zone-level authenticated origin pulls is enabled.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											}
 										}
@@ -1872,7 +1915,8 @@
 														"enabled": {
 															"description": "Indicates whether zone-level authenticated origin pulls is enabled.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													}
 												}
@@ -2166,7 +2210,8 @@
 															"example": "2100-01-01T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier.",
@@ -2178,13 +2223,15 @@
 															"description": "The certificate authority that issued the certificate.",
 															"example": "GlobalSign",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"signature": {
 															"description": "The type of hash used for the certificate.",
 															"example": "SHA256WithRSA",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "Status of the certificate activation.",
@@ -2197,13 +2244,16 @@
 																"deployment_timed_out",
 																"deletion_timed_out"
 															],
-															"example": "active"
+															"example": "active",
+															"type": "string",
+															"x-auditable": true
 														},
 														"uploaded_on": {
 															"description": "This is the time the certificate was uploaded.",
 															"example": "2019-10-28T18:11:23.37411Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -2217,7 +2267,8 @@
 												"enabled": {
 													"description": "Indicates whether zone-level authenticated origin pulls is enabled.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier.",
@@ -2352,7 +2403,8 @@
 																	"example": "2100-01-01T05:20:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Identifier.",
@@ -2364,13 +2416,15 @@
 																	"description": "The certificate authority that issued the certificate.",
 																	"example": "GlobalSign",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"signature": {
 																	"description": "The type of hash used for the certificate.",
 																	"example": "SHA256WithRSA",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "Status of the certificate activation.",
@@ -2383,13 +2437,16 @@
 																		"deployment_timed_out",
 																		"deletion_timed_out"
 																	],
-																	"example": "active"
+																	"example": "active",
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"uploaded_on": {
 																	"description": "This is the time the certificate was uploaded.",
 																	"example": "2019-10-28T18:11:23.37411Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														}
@@ -2403,7 +2460,8 @@
 														"enabled": {
 															"description": "Indicates whether zone-level authenticated origin pulls is enabled.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier.",
@@ -2586,7 +2644,8 @@
 							"enabled": {
 								"description": "Indicates whether zone-level authenticated origin pulls is enabled.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2698,7 +2757,8 @@
 												"enabled": {
 													"description": "Indicates whether zone-level authenticated origin pulls is enabled.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											}
 										}
@@ -2811,7 +2871,8 @@
 														"enabled": {
 															"description": "Indicates whether zone-level authenticated origin pulls is enabled.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													}
 												}

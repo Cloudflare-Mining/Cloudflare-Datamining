@@ -5819,11 +5819,8 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
-			"Cloudflare One Connectors Read",
 			"Cloudflare One Connector: cloudflared Write",
-			"Cloudflare One Connector: cloudflared Read",
-			"Cloudflare Tunnel Write",
-			"Cloudflare Tunnel Read"
+			"Cloudflare Tunnel Write"
 		]
 	},
 	"GET /accounts/{account_id}/tunnels": {
@@ -9349,9 +9346,8 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
-			"Cloudflare One Connectors Read",
-			"Cloudflare One Connector: WARP Write",
-			"Cloudflare One Connector: WARP Read"
+			"Cloudflare One Connector: cloudflared Write",
+			"Cloudflare Tunnel Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/cfd_tunnel/{tunnel_id}": {
