@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: London, UK; Lisbon, Portugal; Kuala Lumpur, Malaysia; Bangalore, India</strong></p>
+<p><strong>Available Location: London, UK; Lisbon, Portugal; Kuala Lumpur, Malaysia; Bengaluru, India</strong></p>
 <p><strong>About the Role:</strong></p>
 <p>The Interconnection Manager within the Network Strategy team will play a crucial role in optimizing and expanding Cloudflare's global network connectivity, encompassing both external interconnections and the internal backbone. This position involves strategic planning, relationship management, and technical execution to ensure efficient and cost-effective interconnection with Internet Service Providers (ISPs), Internet Exchange Points (IXPs), and other network partners, as well as the strategic development and management of Cloudflare's backbone network.</p>
 <p><strong>Responsibilities</strong></p>
