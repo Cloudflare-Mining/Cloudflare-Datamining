@@ -922,6 +922,7 @@
 																		"type": "string"
 																	},
 																	"options_preflight_bypass": {
+																		"default": false,
 																		"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																		"example": true,
 																		"type": "boolean"
@@ -2198,6 +2199,7 @@
 																				"type": "string"
 																			},
 																			"options_preflight_bypass": {
+																				"default": false,
 																				"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																				"example": true,
 																				"type": "boolean"
@@ -2752,6 +2754,7 @@
 																				"type": "string"
 																			},
 																			"options_preflight_bypass": {
+																				"default": false,
 																				"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																				"example": true,
 																				"type": "boolean"
@@ -5357,6 +5360,7 @@
 																	"type": "string"
 																},
 																"options_preflight_bypass": {
+																	"default": false,
 																	"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																	"example": true,
 																	"type": "boolean"
@@ -6633,6 +6637,7 @@
 																			"type": "string"
 																		},
 																		"options_preflight_bypass": {
+																			"default": false,
 																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																			"example": true,
 																			"type": "boolean"
@@ -7187,6 +7192,7 @@
 																			"type": "string"
 																		},
 																		"options_preflight_bypass": {
+																			"default": false,
 																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																			"example": true,
 																			"type": "boolean"
@@ -10359,6 +10365,7 @@
 												"type": "string"
 											},
 											"options_preflight_bypass": {
+												"default": false,
 												"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 												"example": true,
 												"type": "boolean"
@@ -11635,6 +11642,7 @@
 														"type": "string"
 													},
 													"options_preflight_bypass": {
+														"default": false,
 														"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 														"example": true,
 														"type": "boolean"
@@ -12189,6 +12197,7 @@
 														"type": "string"
 													},
 													"options_preflight_bypass": {
+														"default": false,
 														"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 														"example": true,
 														"type": "boolean"
@@ -14619,6 +14628,7 @@
 																			"type": "string"
 																		},
 																		"options_preflight_bypass": {
+																			"default": false,
 																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																			"example": true,
 																			"type": "boolean"
@@ -15895,6 +15905,7 @@
 																					"type": "string"
 																				},
 																				"options_preflight_bypass": {
+																					"default": false,
 																					"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																					"example": true,
 																					"type": "boolean"
@@ -16449,6 +16460,7 @@
 																					"type": "string"
 																				},
 																				"options_preflight_bypass": {
+																					"default": false,
 																					"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																					"example": true,
 																					"type": "boolean"
@@ -18785,6 +18797,7 @@
 																	"type": "string"
 																},
 																"options_preflight_bypass": {
+																	"default": false,
 																	"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																	"example": true,
 																	"type": "boolean"
@@ -20061,6 +20074,7 @@
 																			"type": "string"
 																		},
 																		"options_preflight_bypass": {
+																			"default": false,
 																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																			"example": true,
 																			"type": "boolean"
@@ -20615,6 +20629,7 @@
 																			"type": "string"
 																		},
 																		"options_preflight_bypass": {
+																			"default": false,
 																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																			"example": true,
 																			"type": "boolean"
@@ -23318,6 +23333,7 @@
 												"type": "string"
 											},
 											"options_preflight_bypass": {
+												"default": false,
 												"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 												"example": true,
 												"type": "boolean"
@@ -24594,6 +24610,7 @@
 														"type": "string"
 													},
 													"options_preflight_bypass": {
+														"default": false,
 														"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 														"example": true,
 														"type": "boolean"
@@ -25148,6 +25165,7 @@
 														"type": "string"
 													},
 													"options_preflight_bypass": {
+														"default": false,
 														"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 														"example": true,
 														"type": "boolean"
@@ -27578,6 +27596,7 @@
 																			"type": "string"
 																		},
 																		"options_preflight_bypass": {
+																			"default": false,
 																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																			"example": true,
 																			"type": "boolean"
@@ -28854,6 +28873,7 @@
 																					"type": "string"
 																				},
 																				"options_preflight_bypass": {
+																					"default": false,
 																					"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																					"example": true,
 																					"type": "boolean"
@@ -29408,6 +29428,7 @@
 																					"type": "string"
 																				},
 																				"options_preflight_bypass": {
+																					"default": false,
 																					"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																					"example": true,
 																					"type": "boolean"
@@ -31744,6 +31765,7 @@
 																	"type": "string"
 																},
 																"options_preflight_bypass": {
+																	"default": false,
 																	"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																	"example": true,
 																	"type": "boolean"
@@ -33020,6 +33042,7 @@
 																			"type": "string"
 																		},
 																		"options_preflight_bypass": {
+																			"default": false,
 																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																			"example": true,
 																			"type": "boolean"
@@ -33574,6 +33597,7 @@
 																			"type": "string"
 																		},
 																		"options_preflight_bypass": {
+																			"default": false,
 																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
 																			"example": true,
 																			"type": "boolean"

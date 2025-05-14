@@ -2199,6 +2199,7 @@
 																				"x-auditable": true
 																			},
 																			"sign_request": {
+																				"default": false,
 																				"description": "Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.",
 																				"type": "boolean"
 																			},
@@ -4379,6 +4380,7 @@
 																			"x-auditable": true
 																		},
 																		"sign_request": {
+																			"default": false,
 																			"description": "Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.",
 																			"type": "boolean"
 																		},
@@ -7351,6 +7353,7 @@
 														"x-auditable": true
 													},
 													"sign_request": {
+														"default": false,
 														"description": "Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.",
 														"type": "boolean"
 													},
@@ -9481,6 +9484,7 @@
 																			"x-auditable": true
 																		},
 																		"sign_request": {
+																			"default": false,
 																			"description": "Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.",
 																			"type": "boolean"
 																		},
@@ -11680,6 +11684,7 @@
 														"x-auditable": true
 													},
 													"sign_request": {
+														"default": false,
 														"description": "Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.",
 														"type": "boolean"
 													},
@@ -13810,6 +13815,7 @@
 																			"x-auditable": true
 																		},
 																		"sign_request": {
+																			"default": false,
 																			"description": "Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.",
 																			"type": "boolean"
 																		},

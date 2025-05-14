@@ -460,6 +460,7 @@
 																		"type": "string"
 																	},
 																	"exclude": {
+																		"default": [],
 																		"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 																		"items": {
 																			"oneOf": [
@@ -1022,6 +1023,7 @@
 																		"type": "string"
 																	},
 																	"include": {
+																		"default": [],
 																		"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 																		"items": {
 																			"oneOf": [
@@ -1583,6 +1585,7 @@
 																		"type": "string"
 																	},
 																	"require": {
+																		"default": [],
 																		"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																		"items": {
 																			"oneOf": [
@@ -2536,6 +2539,7 @@
 																	"type": "string"
 																},
 																"exclude": {
+																	"default": [],
 																	"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 																	"items": {
 																		"oneOf": [
@@ -3098,6 +3102,7 @@
 																	"type": "string"
 																},
 																"include": {
+																	"default": [],
 																	"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 																	"items": {
 																		"oneOf": [
@@ -3659,6 +3664,7 @@
 																	"type": "string"
 																},
 																"require": {
+																	"default": [],
 																	"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																	"items": {
 																		"oneOf": [
@@ -4509,6 +4515,7 @@
 												"type": "string"
 											},
 											"exclude": {
+												"default": [],
 												"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 												"items": {
 													"oneOf": [
@@ -5065,6 +5072,7 @@
 												"type": "array"
 											},
 											"include": {
+												"default": [],
 												"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 												"items": {
 													"oneOf": [
@@ -5626,6 +5634,7 @@
 												"type": "string"
 											},
 											"require": {
+												"default": [],
 												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 												"items": {
 													"oneOf": [
@@ -6392,6 +6401,7 @@
 																	"type": "string"
 																},
 																"exclude": {
+																	"default": [],
 																	"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 																	"items": {
 																		"oneOf": [
@@ -6954,6 +6964,7 @@
 																	"type": "string"
 																},
 																"include": {
+																	"default": [],
 																	"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 																	"items": {
 																		"oneOf": [
@@ -7515,6 +7526,7 @@
 																	"type": "string"
 																},
 																"require": {
+																	"default": [],
 																	"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																	"items": {
 																		"oneOf": [
@@ -8377,6 +8389,7 @@
 												"type": "string"
 											},
 											"exclude": {
+												"default": [],
 												"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 												"items": {
 													"oneOf": [
@@ -8933,6 +8946,7 @@
 												"type": "array"
 											},
 											"include": {
+												"default": [],
 												"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 												"items": {
 													"oneOf": [
@@ -9494,6 +9508,7 @@
 												"type": "string"
 											},
 											"require": {
+												"default": [],
 												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 												"items": {
 													"oneOf": [
@@ -10260,6 +10275,7 @@
 																	"type": "string"
 																},
 																"exclude": {
+																	"default": [],
 																	"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 																	"items": {
 																		"oneOf": [
@@ -10822,6 +10838,7 @@
 																	"type": "string"
 																},
 																"include": {
+																	"default": [],
 																	"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 																	"items": {
 																		"oneOf": [
@@ -11383,6 +11400,7 @@
 																	"type": "string"
 																},
 																"require": {
+																	"default": [],
 																	"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																	"items": {
 																		"oneOf": [
@@ -12363,6 +12381,7 @@
 																		"type": "string"
 																	},
 																	"exclude": {
+																		"default": [],
 																		"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 																		"items": {
 																			"oneOf": [
@@ -12925,6 +12944,7 @@
 																		"type": "string"
 																	},
 																	"include": {
+																		"default": [],
 																		"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 																		"items": {
 																			"oneOf": [
@@ -13486,6 +13506,7 @@
 																		"type": "string"
 																	},
 																	"require": {
+																		"default": [],
 																		"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																		"items": {
 																			"oneOf": [
