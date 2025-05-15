@@ -5,74 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, San Francisco</strong></p>
-<p>&nbsp;</p>
-<p><strong>A</strong><strong>bout The Role</strong><strong><br></strong>We are seeking a highly organized and detail-oriented Partner Demand Specialist to join our dynamic marketing team.&nbsp;</p>
-<p>This role is pivotal in supporting the Global Demand Generation Programs lead in the conception, launch, execution, promotion, optimization and reporting, of the Cloudflare Partner ecosystem’s global demand generation programs.&nbsp;</p>
-<p>The ideal candidate has strong project management skills, and the ability to orchestrate many moving parts in a dynamic environment, with a proven track record in maintaining accurate reporting and records.&nbsp;</p>
-<p>The candidate must be highly motivated and display an appetite to develop in-depth knowledge and understanding of our DG platforms and offerings, and the platforms used to host them.&nbsp;</p>
-<p><strong>Key Responsibilities</strong></p>
+<h4>Available Location: Austin</h4>
+<hr>
+<h4>About the department</h4>
+<p>Cloudflare’s IT Business Systems Team is a crucial pillar of the CIO Organization.&nbsp; It operates our enterprise systems end-to-end, providing process cohesiveness across the functional business areas</p>
+<h4>What you'll do</h4>
+<p>Cloudflare is expanding its IT business application group and searching for a dynamic, forward thinking Salesforce Developer to join our team. A Salesforce Developer will be responsible for building world-class applications to automate and improve productivity of the business processes for core business teams (Sales, Partner, Marketing, Support, Legal, and Finance) for a rapidly growing organization.</p>
+<p>&nbsp;The candidate will be responsible for partnering with other Engineers, Business Analysts and Salesforce Administrators. A team player with a collaboration-oriented mindset is essential!</p>
 <ul>
-	<li>Support and the development and execution of partner campaigns and programs across multiple channels (email, social, webinars, etc.), in collaboration with our Demand Generation team.&nbsp;</li>
-	<li>Collaborate closely with cross-functional teams (Field Mktg, Partner Sales, Design, MarTech, Product Mktg...) and assist in driving activation of campaigns, programs and activities to drive adoption internally and with partners.</li>
-	<li>Generate effective reports to track partner activation, performance, and analyse program results to uncover actionable insights that drive optimization.&nbsp;</li>
-	<li>Document processes, best practices, and standard operating procedures.&nbsp;</li>
-	<li>Manage joint partner webinars development and implementation.&nbsp;</li>
-	<li>Track and facilitate partner onboarding to programs via third-party platforms.&nbsp;</li>
-	<li>Develop How-To guides that clearly articulate programs available and the steps necessary to execute them.</li>
-	<li>Assist in the design, implementation, and management of processes and initiatives in support of an evolving partner marketing organization.&nbsp;</li>
+	<li>Successful candidates will be technical professionals, experienced in web application development and have strong hands-on background in building custom solutions using JQuery, Apex, Lightning (LWC, Aura) and Visualforce with a focus on delivering functional solutions on the Salesforce.com platform.</li>
+	<li>Work with senior members of the team to analyze business requirements, translating those requirements into customized solutions using Apex and/or standard Salesforce out of the box functionality.</li>
+	<li>Implement Salesforce solutions that adhere to industry best practices, and perform peer code reviews.</li>
+	<li>Deep Knowledge of Salesforce platform best practices, coding, design guidelines and governor limits</li>
+	<li>Typical Salesforce implementations will include (but not limited to) custom platform development (Apex, Visualforce, Lightning Components), integrations with back office systems (often through the use of middle-ware tools).</li>
+	<li>Provide development support, from design through testing and deployment, often working with other members of the team.</li>
+	<li>Implement, deploy and document projects that leverage the Salesforce.com toolset.</li>
+	<li>Post-delivery: work with client teams in supporting the live application and perform hand-off and knowledge transfer activities with team members, positioning our users for long term success.</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Minimum 3 years experience in marketing operations, partner marketing or a similar role, preferably in B2B marketing (enterprise software, SaaS, Security, etc.).&nbsp;</li>
-	<li>Demonstrated experience in project management, including overseeing timelines and deliverables to ensure successful project completion.</li>
-	<li>Strong analytical skills with the ability to interpret data and provide actionable insights.&nbsp;</li>
-	<li>Exceptional organizational skills, with rigorous attention to detail.</li>
-	<li>Working knowledge of marketing automation and proficiency in reporting platforms (such as Salesforce, Marketo, HubSpot, Tableau,...).</li>
-	<li>Good understanding of different partner types and their routes to revenue.&nbsp;</li>
-	<li>Good understanding of digital marketing channels (webinars, email, social, content syndication…).&nbsp;</li>
-	<li>Excellent communication and interpersonal skills, with the ability to effectively collaborate with team members around the world in a fast-paced and ever-changing environment with tight deadlines.&nbsp;</li>
-</ul>
-<p><strong>Bonus points</strong></p>
-<ul>
-	<li>Familiarity with channel marketing technology and platforms, including ZiftOne (Unifyr), Through Channel Marketing Automation (TCMA), and partner portals.&nbsp;&nbsp;</li>
-	<li>Familiarity with webcast management platforms, such as Goldcast, ON24...&nbsp;</li>
-	<li>Prior demand generation experience in a high growth company in the SaaS, security, or network space.</li>
-</ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $92,000 - $112,000.</li>
-	<li>For Bay Area based hires: Estimated annual salary of $95,000 - $116,000.</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>BS in Computer science, Software engineering or related field involving code development</li>
+	<li>Advance knowledge of Salesforce CRM Platform - Sales/Service Cloud.</li>
+	<li>Experience developing customer-facing interfaces.</li>
+	<li>Proficient in MYSQL, Apex, JavaScript, Native, and VisualForce.</li>
+	<li>Excellent Verbal and Written communication skills.</li>
+	<li>Experience with custom integration with cloud business applications such as CLM, E-sign, Boomi, Marketo</li>
+	<li>Salesforce Certified Platform Developer(I, II) certification strongly desired</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
