@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-shared",
 	"dist-tags": {
-		"latest": "0.13.38"
+		"latest": "0.13.39"
 	},
 	"versions": {
 		"0.0.1": {
@@ -4419,6 +4419,36 @@
 				"@cloudflare/workers-shared": "0.17.5"
 			},
 			"devDependencies": {
+				"glob": "^10.4.5",
+				"vitest": "~3.1.1",
+				"concurrently": "^8.2.2",
+				"html-rewriter-wasm": "^0.4.1",
+				"@cloudflare/workers-types": "^4.20250508.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/vitest-pool-workers": "^0.8.19"
+			},
+			"dist": {
+				"shasum": "ecc2a509d002c7921f9b6422350a8f6d1e4f7e9e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-shared/-/pages-shared-0.13.38.tgz",
+				"fileCount": 14,
+				"integrity": "sha512-2O2SZ/bcL5n1/t2wxqwA26zAf35IStPADT9/ZJjJfcnPOupIhttK4sPmuUm2e60jWEBwXnwQkdPAX5/Q1ULPsQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDs3uxA6BpGhAkoGQ4w6uIPwztBpBX4amu7IpmtkVcbFgIgSqInBnvmmFcw/EO3Fnzb+0LgGGIeORAUTuoKU4TtO/c=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 40546
+			}
+		},
+		"0.13.39": {
+			"name": "@cloudflare/pages-shared",
+			"version": "0.13.39",
+			"dependencies": {
+				"@cloudflare/workers-shared": "0.17.5",
+				"miniflare": "4.20250508.2"
+			},
+			"devDependencies": {
 				"@cloudflare/vitest-pool-workers": "^0.8.19",
 				"@cloudflare/workers-types": "^4.20250508.0",
 				"concurrently": "^8.2.2",
@@ -4428,15 +4458,15 @@
 				"@cloudflare/workers-tsconfig": "0.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-2O2SZ/bcL5n1/t2wxqwA26zAf35IStPADT9/ZJjJfcnPOupIhttK4sPmuUm2e60jWEBwXnwQkdPAX5/Q1ULPsQ==",
-				"shasum": "ecc2a509d002c7921f9b6422350a8f6d1e4f7e9e",
-				"tarball": "https://registry.npmjs.org/@cloudflare/pages-shared/-/pages-shared-0.13.38.tgz",
+				"integrity": "sha512-xtL6tPiH56c6zctg4TksiNP0aSVVWMRNhFDXLcv5RxAnpBxhNnKXgjornaWChFFD9ZaVcxD/RPXXTtQ1X8+Fjg==",
+				"shasum": "b58101d1bb9a85065eefee5b706881b7cbd43ca5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-shared/-/pages-shared-0.13.39.tgz",
 				"fileCount": 14,
 				"unpackedSize": 40546,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDs3uxA6BpGhAkoGQ4w6uIPwztBpBX4amu7IpmtkVcbFgIgSqInBnvmmFcw/EO3Fnzb+0LgGGIeORAUTuoKU4TtO/c="
+						"sig": "MEUCIFKp/0NRPA6Orn1TKqRswEc7L2Utp/ntBwV9mVDnL+vgAiEAgwSf0Fv6H7JcOWacvpoarfX16/msUO061Y5niqhkrOI="
 					}
 				]
 			}
