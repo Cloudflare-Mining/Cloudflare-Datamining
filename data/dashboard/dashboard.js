@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "fbd99536-e1e5-548c-9269-cbeb2b65ee10")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "fa637dce-0ae7-5458-a6ce-bc7374d35847")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -740,7 +740,7 @@
 			var tn = t("../react/app/components/Persistence/index.tsx"),
 				nn = t("../node_modules/@cloudflare/elements/es/index.js"),
 				rn = t("../react/app/components/LoadingSuspense.tsx");
-			const on = ye().lazy(() => Promise.all([t.e(16691), t.e(46812), t.e(12174), t.e(1091), t.e(55554), t.e(5668), t.e(8924), t.e(77216), t.e(40517), t.e(39760), t.e(55879), t.e(83276), t.e(40453)]).then(t.bind(t, "../react/common/components/DevPanel/Main.tsx")));
+			const on = ye().lazy(() => Promise.all([t.e(16691), t.e(46812), t.e(12174), t.e(1091), t.e(55554), t.e(5668), t.e(8924), t.e(77216), t.e(40517), t.e(39760), t.e(91018), t.e(83276), t.e(40453)]).then(t.bind(t, "../react/common/components/DevPanel/Main.tsx")));
 			var an = () => ye().createElement(rn.Z, null, ye().createElement(on, null));
 			const sn = () => (Me.useEffect(() => de, []), null);
 			var cn = t("../../../../node_modules/moment/moment.js"),
@@ -878,8 +878,8 @@
 			};
 			var yn = t("../react/utils/useDomainConnectRedirect.ts");
 			const hn = "GTM-NDGPDFZ",
-				bn = ye().lazy(() => Promise.all([t.e(16691), t.e(46812), t.e(12174), t.e(1091), t.e(55554), t.e(51436), t.e(3292), t.e(47386), t.e(70618), t.e(26122), t.e(8924), t.e(77216), t.e(40517), t.e(39760), t.e(55879), t.e(83276), t.e(18527), t.e(52215), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.jsx"))),
-				Cn = ye().lazy(() => Promise.all([t.e(83741), t.e(65447), t.e(1091), t.e(3292), t.e(55879), t.e(69088), t.e(18527), t.e(76472)]).then(t.bind(t, "../react/UnauthenticatedApp.tsx")));
+				bn = ye().lazy(() => Promise.all([t.e(16691), t.e(46812), t.e(12174), t.e(1091), t.e(55554), t.e(51436), t.e(3292), t.e(47386), t.e(70618), t.e(26122), t.e(8924), t.e(77216), t.e(40517), t.e(39760), t.e(91018), t.e(83276), t.e(13862), t.e(52215), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.jsx"))),
+				Cn = ye().lazy(() => Promise.all([t.e(83741), t.e(65447), t.e(1091), t.e(3292), t.e(91018), t.e(69088), t.e(13862), t.e(76472)]).then(t.bind(t, "../react/UnauthenticatedApp.tsx")));
 			var Tn = ({
 					userIsAuthed: R
 				}) => {
@@ -1041,10 +1041,10 @@
 					t.g.build = Sn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "699022b0d14ebef11ceda43c762ce8124f60f57f",
-						dashVersion: "33255158",
+						commit: "454b998aa4fb5fd6f9e4e1f4bcdd18ff095fe0e4",
+						dashVersion: "33265844",
 						env: "production",
-						builtAt: 1747267765656,
+						builtAt: 1747315635457,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -14460,7 +14460,7 @@
 				s = t.n(f),
 				m = t("../react/pages/security/settings/hooks/index.ts"),
 				v = t("../react/pages/security/settings/resources/index.ts");
-			const n = u().lazy(() => Promise.all([t.e(16691), t.e(46812), t.e(12174), t.e(1091), t.e(55554), t.e(51436), t.e(70618), t.e(68204), t.e(2515), t.e(65022), t.e(45275), t.e(8924), t.e(77216), t.e(40517), t.e(39760), t.e(55879), t.e(83276), t.e(5756), t.e(28861), t.e(52215), t.e(42185)]).then(t.bind(t, "../react/pages/security/settings/SettingsRoute.tsx"))),
+			const n = u().lazy(() => Promise.all([t.e(16691), t.e(46812), t.e(12174), t.e(1091), t.e(55554), t.e(51436), t.e(70618), t.e(68204), t.e(2515), t.e(65022), t.e(45275), t.e(8924), t.e(77216), t.e(40517), t.e(39760), t.e(91018), t.e(83276), t.e(5756), t.e(28861), t.e(52215), t.e(42185)]).then(t.bind(t, "../react/pages/security/settings/SettingsRoute.tsx"))),
 				c = () => {
 					const {
 						t: i
@@ -16547,7 +16547,6 @@
 				E = null,
 				b = {
 					observability: "workers-observability",
-					previewUrls: "workers-preview-urls-enabled",
 					workersBuildsSCMStatusGitHub: "workers-builds-scm-status-github",
 					workersBuildsSCMStatusGitLab: "workers-builds-scm-status-gitlab"
 				};
@@ -20225,6 +20224,9 @@
   .max-w-\\[60ch\\] {
     max-width: 60ch;
   }
+  .max-w-\\[560px\\] {
+    max-width: 560px;
+  }
   .max-w-\\[800px\\] {
     max-width: 800px;
   }
@@ -20551,12 +20553,6 @@
   .border-border {
     border-color: var(--color-border);
   }
-  .border-cl1-new-gray-1 {
-    border-color: var(--color-cl1-new-gray-1);
-  }
-  .border-cl1-new-gray-2 {
-    border-color: var(--color-cl1-new-gray-2);
-  }
   .border-cl1-new-gray-7 {
     border-color: var(--color-cl1-new-gray-7);
   }
@@ -20788,6 +20784,9 @@
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
   }
+  .px-6 {
+    padding-inline: calc(var(--spacing) * 6);
+  }
   .px-10 {
     padding-inline: calc(var(--spacing) * 10);
   }
@@ -20811,6 +20810,9 @@
   }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
+  }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
   }
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
@@ -21080,6 +21082,9 @@
   }
   .opacity-50 {
     opacity: 50%;
+  }
+  .opacity-75 {
+    opacity: 75%;
   }
   .opacity-100 {
     opacity: 100%;
@@ -22696,4 +22701,4 @@
 	}
 ]);
 
-//# debugId=fbd99536-e1e5-548c-9269-cbeb2b65ee10
+//# debugId=fa637dce-0ae7-5458-a6ce-bc7374d35847
