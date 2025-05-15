@@ -55,12 +55,22 @@ async function findWantedChunks(chunks) {
 	let fetched = 0;
 	for (const chunk of chunks) {
 		getChunks.push(async function() {
-			const res = await fetch(`${staticDashURL}${chunk}.js`, { agent });
+			let res = await fetch(`${staticDashURL}${chunk}.js`, { agent });
 			fetched++;
+			function checkResponse() {
+				if (!res.ok && res.status !== 404) {
+					console.error('Received non-200 response:', res.status);
+					throw new Error('Failed to fetch chunk ' + chunk);
+				}
+			}
 			// 404s are okay, but nothing else
-			if (!res.ok && res.status !== 404) {
-				console.error('Received non-200 response:', res.status);
-				throw new Error('Failed to fetch chunk ' + chunk);
+			checkResponse();
+			if (res.headers?.get('content-type')?.includes('text/html')) {
+				console.error('Got HTML response for chunk', chunk);
+				// try with cf- prefix
+				// eslint-disable-next-line require-atomic-updates
+				res = await fetch(`${staticDashURL}cf-${chunk}.js`, { agent });
+				checkResponse();
 			}
 			const text = await res.text();
 
