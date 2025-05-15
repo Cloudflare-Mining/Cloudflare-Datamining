@@ -23,6 +23,7 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
+					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
 				}
@@ -130,12 +131,14 @@
 													"description": "Timestamp of when the resource was created.",
 													"example": "2021-01-25T18:22:34.317854Z",
 													"format": "date-time",
+													"readOnly": true,
 													"type": "string"
 												},
 												"deleted_at": {
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"example": "2009-11-10T23:00:00.000000Z",
 													"format": "date-time",
+													"readOnly": true,
 													"type": "string"
 												},
 												"id": {
@@ -274,12 +277,14 @@
 															"description": "Timestamp of when the resource was created.",
 															"example": "2021-01-25T18:22:34.317854Z",
 															"format": "date-time",
+															"readOnly": true,
 															"type": "string"
 														},
 														"deleted_at": {
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"example": "2009-11-10T23:00:00.000000Z",
 															"format": "date-time",
+															"readOnly": true,
 															"type": "string"
 														},
 														"id": {
@@ -441,6 +446,7 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
+					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
 				}
@@ -620,12 +626,14 @@
 														"description": "Timestamp of when the resource was created.",
 														"example": "2021-01-25T18:22:34.317854Z",
 														"format": "date-time",
+														"readOnly": true,
 														"type": "string"
 													},
 													"deleted_at": {
 														"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 														"example": "2009-11-10T23:00:00.000000Z",
 														"format": "date-time",
+														"readOnly": true,
 														"type": "string"
 													},
 													"id": {
@@ -806,12 +814,14 @@
 																"description": "Timestamp of when the resource was created.",
 																"example": "2021-01-25T18:22:34.317854Z",
 																"format": "date-time",
+																"readOnly": true,
 																"type": "string"
 															},
 															"deleted_at": {
 																"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 																"example": "2009-11-10T23:00:00.000000Z",
 																"format": "date-time",
+																"readOnly": true,
 																"type": "string"
 															},
 															"id": {
@@ -977,6 +987,7 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
+					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
 				}
@@ -1122,12 +1133,14 @@
 													"description": "Timestamp of when the resource was created.",
 													"example": "2021-01-25T18:22:34.317854Z",
 													"format": "date-time",
+													"readOnly": true,
 													"type": "string"
 												},
 												"deleted_at": {
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"example": "2009-11-10T23:00:00.000000Z",
 													"format": "date-time",
+													"readOnly": true,
 													"type": "string"
 												},
 												"id": {
@@ -1266,12 +1279,14 @@
 															"description": "Timestamp of when the resource was created.",
 															"example": "2021-01-25T18:22:34.317854Z",
 															"format": "date-time",
+															"readOnly": true,
 															"type": "string"
 														},
 														"deleted_at": {
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"example": "2009-11-10T23:00:00.000000Z",
 															"format": "date-time",
+															"readOnly": true,
 															"type": "string"
 														},
 														"id": {
@@ -1429,6 +1444,7 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
+					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
 				}
@@ -1574,12 +1590,14 @@
 													"description": "Timestamp of when the resource was created.",
 													"example": "2021-01-25T18:22:34.317854Z",
 													"format": "date-time",
+													"readOnly": true,
 													"type": "string"
 												},
 												"deleted_at": {
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"example": "2009-11-10T23:00:00.000000Z",
 													"format": "date-time",
+													"readOnly": true,
 													"type": "string"
 												},
 												"id": {
@@ -1718,12 +1736,14 @@
 															"description": "Timestamp of when the resource was created.",
 															"example": "2021-01-25T18:22:34.317854Z",
 															"format": "date-time",
+															"readOnly": true,
 															"type": "string"
 														},
 														"deleted_at": {
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"example": "2009-11-10T23:00:00.000000Z",
 															"format": "date-time",
+															"readOnly": true,
 															"type": "string"
 														},
 														"id": {
@@ -1885,6 +1905,7 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
+					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
 				}
@@ -2021,12 +2042,14 @@
 													"description": "Timestamp of when the resource was created.",
 													"example": "2021-01-25T18:22:34.317854Z",
 													"format": "date-time",
+													"readOnly": true,
 													"type": "string"
 												},
 												"deleted_at": {
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"example": "2009-11-10T23:00:00.000000Z",
 													"format": "date-time",
+													"readOnly": true,
 													"type": "string"
 												},
 												"id": {
@@ -2165,12 +2188,14 @@
 															"description": "Timestamp of when the resource was created.",
 															"example": "2021-01-25T18:22:34.317854Z",
 															"format": "date-time",
+															"readOnly": true,
 															"type": "string"
 														},
 														"deleted_at": {
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"example": "2009-11-10T23:00:00.000000Z",
 															"format": "date-time",
+															"readOnly": true,
 															"type": "string"
 														},
 														"id": {

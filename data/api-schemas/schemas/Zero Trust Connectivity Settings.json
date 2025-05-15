@@ -11,6 +11,7 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
+					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
 				}
@@ -251,6 +252,7 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
+					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
 				}

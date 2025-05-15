@@ -11,7 +11,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -130,7 +131,8 @@
 													"description": "Identifier.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"config": {
 													"description": "The tunnel configuration and ingress rules.",
@@ -370,7 +372,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"source": {
 													"default": "local",
@@ -556,7 +559,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -922,7 +926,8 @@
 													"description": "Identifier.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"config": {
 													"description": "The tunnel configuration and ingress rules.",
@@ -1162,7 +1167,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"source": {
 													"default": "local",
