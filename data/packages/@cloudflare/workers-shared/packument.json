@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"latest": "0.17.5",
 		"legacy": "0.15.1",
-		"beta": "0.0.0-14dc3937b"
+		"beta": "0.0.0-2fe62198d"
 	},
 	"versions": {
 		"0.1.0": {
@@ -45645,6 +45645,84 @@
 			"name": "@cloudflare/workers-shared",
 			"version": "0.0.0-14dc3937b",
 			"dependencies": {
+				"zod": "^3.22.3",
+				"mime": "^3.0.0"
+			},
+			"devDependencies": {
+				"ignore": "^5.2.0",
+				"rimraf": "^6.0.1",
+				"vitest": "~2.1.0",
+				"esbuild": "0.25.4",
+				"toucan-js": "4.0.0",
+				"typescript": "^5.7.2",
+				"@sentry/cli": "^2.37.0",
+				"@types/mime": "^3.0.4",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-types": "^4.20250508.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/vitest-pool-workers": "^0.7.0",
+				"@cloudflare/eslint-config-worker": "1.1.0"
+			},
+			"dist": {
+				"shasum": "c6fea5d4e977d20fdeee05d5e47e2114bcac1022",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-14dc3937b.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-rrRmwNmBlIy9cd5fROA7vx3IOuiWtS69ox+xwnHZs5Wup9wWjkkTYkcW21P+xchlomRNBNwyzE0tqAVYyfXmFQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCY7dA8j8OQ+dqelnQyB/UfH22cWEUsXOV/jVh6qrrG7QIhAK+h0vkJ64NwVQCUTsWKnNJ2tK4KfMgpDyJ1P0XCsqI5",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1031023
+			},
+			"engines": {
+				"node": ">=18.0.0"
+			}
+		},
+		"0.0.0-ab8dab1e7": {
+			"name": "@cloudflare/workers-shared",
+			"version": "0.0.0-ab8dab1e7",
+			"dependencies": {
+				"zod": "^3.22.3",
+				"mime": "^3.0.0"
+			},
+			"devDependencies": {
+				"ignore": "^5.2.0",
+				"rimraf": "^6.0.1",
+				"vitest": "~2.1.0",
+				"esbuild": "0.25.4",
+				"toucan-js": "4.0.0",
+				"typescript": "^5.7.2",
+				"@sentry/cli": "^2.37.0",
+				"@types/mime": "^3.0.4",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-types": "^4.20250508.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/vitest-pool-workers": "^0.7.0",
+				"@cloudflare/eslint-config-worker": "1.1.0"
+			},
+			"dist": {
+				"shasum": "3ae9bb8b4166e57392cb7534b44cc767336dd305",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-ab8dab1e7.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-Ww8hDC7dqOuxlTd2NhAirRvP8n2SDU/qNQrfs66v0Tm3iIdSOiJHYf8WyYo+Q9DfJfV97xwrNH7XeR+RSbcNEg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDtaDaNh0Nv2ON+86AntF7qD6hadvvHlGVXs2d9P0ndAgIhAK3k8oHIQglgqdsqHe9dvleMTRftceZJVSu1m/BRMBVp",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1031023
+			},
+			"engines": {
+				"node": ">=18.0.0"
+			}
+		},
+		"0.0.0-2fe62198d": {
+			"name": "@cloudflare/workers-shared",
+			"version": "0.0.0-2fe62198d",
+			"dependencies": {
 				"mime": "^3.0.0",
 				"zod": "^3.22.3"
 			},
@@ -45660,19 +45738,19 @@
 				"toucan-js": "4.0.0",
 				"typescript": "^5.7.2",
 				"vitest": "~2.1.0",
-				"@cloudflare/eslint-config-worker": "1.1.0",
-				"@cloudflare/workers-tsconfig": "0.0.0"
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/eslint-config-worker": "1.1.0"
 			},
 			"dist": {
-				"integrity": "sha512-rrRmwNmBlIy9cd5fROA7vx3IOuiWtS69ox+xwnHZs5Wup9wWjkkTYkcW21P+xchlomRNBNwyzE0tqAVYyfXmFQ==",
-				"shasum": "c6fea5d4e977d20fdeee05d5e47e2114bcac1022",
-				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-14dc3937b.tgz",
+				"integrity": "sha512-iDXqpxDfYwvupCLRnrzTIJ+E7ReNyD79mN9cp61c8KHMjASlTSVRVzgNDFcujUrRt1cM8h0r7GXR+/kuGF2K2g==",
+				"shasum": "e38b316f48cbbc2fd604b7ac73c8450b8c3854f6",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-2fe62198d.tgz",
 				"fileCount": 11,
 				"unpackedSize": 1031023,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCY7dA8j8OQ+dqelnQyB/UfH22cWEUsXOV/jVh6qrrG7QIhAK+h0vkJ64NwVQCUTsWKnNJ2tK4KfMgpDyJ1P0XCsqI5"
+						"sig": "MEUCICV5I6pX4vFyST5H2l7l9N1Cfl0CmhS7cCmckU9l1K+BAiEAzXaAFQD7sq+zaWB6VEGWBW3ODqKWkmW74G3oeo4mIYc="
 					}
 				]
 			},
