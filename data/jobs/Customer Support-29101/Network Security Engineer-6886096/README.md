@@ -5,36 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: </strong>Kuala Lumpur, Malaysia<strong><br></strong></p>
-<hr>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare is redefining how enterprise IT works, establishing its own category, growing a billion dollar business +40% annually and our regional marketing teams are at the forefront of this growth. Our Asia Pacific Marketing team is hiring and we’re looking for growth-obsessed problem solvers, data-informed decision makers, fearless innovators and relentless builders. We’re on a mission to Help Build a Better Internet, and demonstrate the massive benefits that has for customers and partners alike. Our connectivity cloud brings together cybersecurity, networking, application and developer platforms, we’re a leading provider of AI services and IT services to AI market makers, to deliver greater outcomes for customers in all industries and segments.</p>
-<p>Right now we’re looking for an experienced, enthusiastic &amp; highly motivated Partner Marketing Specialist to support Cloudflare’s partner strategy and execution across Asia Pacific, Japan, and China. You will be laser focused on growing partner revenue, building a partner community and integrating partner marketing into the overall regional strategic growth initiatives. You have a passion for working with a diverse set of partner stakeholders, are obsessed with data as a basis for planning and optimizing; you are detail oriented, very familiar with the cybersecurity marketplace and you like to Get Stuff Done.&nbsp;</p>
-<p><strong>Here’s what you will do:</strong></p>
+<h3><strong>Available Locations: Singapore, Sydney (Australia), Tokyo (Japan), or Kuala Lumpur (Malaysia)</strong></h3>
+<h3><strong>About the Team</strong></h3>
+<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
+<h3><strong>What You'll Do</strong></h3>
+<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced <strong>Network Security Engineer</strong> to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</p>
 <ul>
-	<li><strong>Support Partner Marketing Execution:</strong> Assist in implementing the APJC Channel Marketing Strategy to drive partner-sourced pipeline, partner engagement, and revenue growth.</li>
-	<li><strong>MDF Coordination:</strong> Support the regional management of the Market Development Funds (MDF) program, including partner submissions, tracking, reporting, and reviewing ROI.</li>
-	<li><strong>Marketing Content Localisation:</strong> Work with global marketing teams to adapt marketing campaigns and assets for channel partners, including co-branding, co-selling, and campaign assets.</li>
-	<li><strong>Campaign Execution &amp; Event Support:</strong> Assist in the execution of partner marketing campaigns and events, including digital initiatives, in-person activations, and sponsorships.</li>
-	<li><strong>Performance Tracking &amp; Reporting:</strong> Monitor the effectiveness of marketing programs, support SFDC campaign tracking, and contribute to post-event and campaign performance analysis.</li>
-	<li><strong>Incentive Program Support:</strong> Assist in the development and rollout of local channel incentive programs to drive partner engagement and pipeline growth.</li>
-	<li><strong>Distributor &amp; Tier 2 Partner Marketing:</strong> Support marketing initiatives with distributors and Tier 2 partners, helping drive demand generation, enablement, and pipeline growth through scalable marketing programs.</li>
-	<li><strong>Partner Relationship Management:</strong> Maintain strong relationships with key distributors and partners, supporting their marketing initiatives and ensuring alignment with Cloudflare’s strategy.</li>
-	<li><strong>Partner Communications:</strong> Help manage partner newsletters, webinars, and case studies to keep partners informed and engaged.</li>
-	<li><strong>Stakeholder Collaboration:</strong> Work closely with internal teams, including Partner Sales, Channel Account Managers, and Global Marketing, to align on partner marketing initiatives.</li>
+	<li>Serve as a trusted technical advisor for our enterprise customers, responding to and resolving inquiries and incidents related to network security and performance, while delivering timely, high-quality and personalized assistance.</li>
+	<li>Work directly with customers to diagnose, troubleshoot and resolve complex technical issues involving DDoS mitigation, firewall rules, SSL/TLS, network confirmation, and other security configurations.</li>
+	<li>Create and maintain knowledge base articles, technical guides, and troubleshooting documentation for internal and customer use.</li>
+	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
+	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
+	<li>Work with Engineering and Product teams to improve products and tools</li>
 </ul>
-<p><strong>Desirable skills, knowledge and qualifications</strong></p>
+<h3><strong>What We're Looking For</strong></h3>
 <ul>
-	<li><strong>3-5 years of experience</strong> in B2B partner marketing, alliances, or channel marketing, preferably within the enterprise technology or cybersecurity industry.</li>
-	<li><strong>Proven Results:</strong> Demonstrated track record of executing partner-led demand generation programs that drive measurable business impact.</li>
-	<li><strong>Education:</strong> Bachelor's degree in Marketing, Business, or a related field.</li>
-	<li><strong>Technical Proficiency:</strong> Strong working knowledge of CRM and marketing automation platforms.</li>
-	<li><strong>Communication Mastery:</strong> Exceptional verbal and written communication skills, with the ability to engage, persuade, and present effectively to senior-level audiences.</li>
-	<li><strong>Project Leadership:</strong> Strong organizational and project management skills, with a proven ability to manage multiple complex projects simultaneously.</li>
-	<li><strong>Team Collaboration:</strong> Ability to work effectively in a cross-functional team, building strong relationships with stakeholders across different regions and functions.</li>
-	<li><strong>Audience Insight:</strong> A deep understanding of the cybersecurity market and the challenges faced by decision-makers in enterprise companies across the APJC region.</li>
-	<li><strong>Language Skills:</strong> Fluency in English is required. Additional language skills relevant to the Asia Pacific region are desirable.</li>
-	<li><strong>Analytical and Creative Thinking: </strong>Ability to think analytically and creatively to develop and execute effective marketing campaigns</li>
+	<li>You have a minimum of 4 years experience working as a Network Security Engineer / Technical Support Engineer / Sr. Support Engineer supporting networking or web security products.</li>
+	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
+	<li>Strong customer service orientation and communication skills, both written and verbal, fluent in English and preferably a second language like Mandarin, Hindi, Tamil, Korean or Japanese.</li>
+	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
+	<li>Strong understanding of network protocols, including TCP/IP, DNS, HTTP/S, and BGP, with a particular focus on anycast routing concepts and implementation, as well as tools such as iptables and looking glass.</li>
+	<li>Proven experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels, and performing packet capture analysis</li>
+	<li>Confident with command line and tools, including curl, dig, traceroute, openssl, git</li>
+	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
+	<li>You are competent writing scripts in Bash, Python, JavaScript or other scripting language</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
+	<li>Bachelor’s degree in Computer Science, Cybersecurity, or a related field (or equivalent experience).</li>
+	<li>Relevant certifications such as CISSP, GCIA GCIH, GCFA, GCFE or equivalent.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
