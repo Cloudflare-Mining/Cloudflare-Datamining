@@ -11,7 +11,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -221,7 +222,7 @@
 						}
 					}
 				},
-				"description": "List Deployments response"
+				"description": "List Deployments response."
 			},
 			"4XX": {
 				"content": {
@@ -527,7 +528,7 @@
 						}
 					}
 				},
-				"description": "List Deployments response failure"
+				"description": "List Deployments response failure."
 			}
 		},
 		"security": [
@@ -561,7 +562,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -868,7 +870,7 @@
 						}
 					}
 				},
-				"description": "Create Deployment response"
+				"description": "Create Deployment response."
 			},
 			"4XX": {
 				"content": {
@@ -1166,7 +1168,7 @@
 						}
 					}
 				},
-				"description": "Create Deployment response failure"
+				"description": "Create Deployment response failure."
 			}
 		},
 		"security": [

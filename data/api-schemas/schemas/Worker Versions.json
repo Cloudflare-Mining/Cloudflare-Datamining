@@ -11,7 +11,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -176,13 +177,17 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List Versions response"
+				"description": "List Versions response."
 			},
 			"4XX": {
 				"content": {
@@ -309,7 +314,11 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"required": [
+												"result"
+											],
+											"type": "object"
 										}
 									]
 								},
@@ -423,7 +432,7 @@
 						}
 					}
 				},
-				"description": "List Versions response failure"
+				"description": "List Versions response failure."
 			}
 		},
 		"security": [
@@ -456,7 +465,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -633,13 +643,17 @@
 												}
 											]
 										}
-									}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get Version Detail response"
+				"description": "Get Version Detail response."
 			},
 			"4XX": {
 				"content": {
@@ -793,7 +807,11 @@
 														}
 													]
 												}
-											}
+											},
+											"required": [
+												"result"
+											],
+											"type": "object"
 										}
 									]
 								},
@@ -907,7 +925,7 @@
 						}
 					}
 				},
-				"description": "Get Version Detail response failure"
+				"description": "Get Version Detail response failure."
 			}
 		},
 		"security": [
@@ -941,7 +959,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -999,7 +1018,7 @@
 											}
 										],
 										"items": {
-											"description": "A binding to allow the Worker to communicate with resources",
+											"description": "A binding to allow the Worker to communicate with resources.",
 											"discriminator": {
 												"mapping": {
 													"ai": "#/components/schemas/workers_binding_kind_ai",
@@ -1227,6 +1246,7 @@
 																	"type": "string"
 																},
 																{
+																	"type": "string",
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															]
@@ -1282,7 +1302,8 @@
 													"properties": {
 														"json": {
 															"description": "JSON data to use.",
-															"example": "{ \"message\": \"Hello, world!\" }"
+															"example": "{ \"message\": \"Hello, world!\" }",
+															"type": "string"
 														},
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
@@ -1934,13 +1955,17 @@
 												}
 											]
 										}
-									}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Upload Version response"
+				"description": "Upload Version response."
 			},
 			"4XX": {
 				"content": {
@@ -2110,7 +2135,11 @@
 														}
 													]
 												}
-											}
+											},
+											"required": [
+												"result"
+											],
+											"type": "object"
 										}
 									]
 								},
@@ -2224,7 +2253,7 @@
 						}
 					}
 				},
-				"description": "Upload Version response failure"
+				"description": "Upload Version response failure."
 			}
 		},
 		"security": [

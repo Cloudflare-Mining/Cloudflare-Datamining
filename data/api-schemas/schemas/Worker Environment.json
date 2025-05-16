@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/content": {
-		"description": "Get script content from a worker with an environment",
+		"description": "Get script content from a worker with an environment.",
 		"operationId": "worker-environment-get-script-content",
 		"parameters": [
 			{
@@ -11,7 +11,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -19,7 +20,7 @@
 				"name": "service_name",
 				"required": true,
 				"schema": {
-					"description": "Name of Worker to bind to",
+					"description": "Name of Worker to bind to.",
 					"example": "my-worker",
 					"type": "string"
 				}
@@ -40,11 +41,12 @@
 				"content": {
 					"string": {
 						"schema": {
-							"example": "export default {\n  async fetch(request, env, ctx) {\n    return new Response(\"Hello, world!\");\n  }\n};\n"
+							"example": "export default {\n  async fetch(request, env, ctx) {\n    return new Response(\"Hello, world!\");\n  }\n};\n",
+							"type": "string"
 						}
 					}
 				},
-				"description": "Get script content"
+				"description": "Get script content."
 			},
 			"4XX": {
 				"content": {
@@ -157,7 +159,7 @@
 						}
 					}
 				},
-				"description": "Get script content failure"
+				"description": "Get script content failure."
 			}
 		},
 		"security": [
@@ -180,7 +182,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/settings": {
-		"description": "Get script settings from a worker with an environment",
+		"description": "Get script settings from a worker with an environment.",
 		"operationId": "worker-script-environment-get-settings",
 		"parameters": [
 			{
@@ -191,7 +193,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -199,7 +202,7 @@
 				"name": "service_name",
 				"required": true,
 				"schema": {
-					"description": "Name of Worker to bind to",
+					"description": "Name of Worker to bind to.",
 					"example": "my-worker",
 					"type": "string"
 				}
@@ -315,7 +318,8 @@
 															"type": "boolean"
 														},
 														{
-															"default": false
+															"default": false,
+															"type": "boolean"
 														}
 													]
 												},
@@ -406,13 +410,17 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Fetch script settings"
+				"description": "Fetch script settings."
 			},
 			"4XX": {
 				"content": {
@@ -420,88 +428,112 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"example": [],
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer"
-											},
-											"documentation_url": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string"
-											},
-											"source": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
 												"properties": {
-													"pointer": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
 														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
-												"type": "object"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"type": "array"
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer"
-											},
-											"documentation_url": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string"
-											},
-											"source": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
 												"properties": {
-													"pointer": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
 														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
-												"type": "object"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"type": "array"
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
 									"enum": [
-										true
+										false
 									],
-									"example": true,
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Fetch script settings failure"
+				"description": "Fetch script settings failure."
 			}
 		},
 		"security": [
@@ -524,7 +556,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/settings": {
-		"description": "Patch script metadata, such as bindings",
+		"description": "Patch script metadata, such as bindings.",
 		"operationId": "worker-script-environment-patch-settings",
 		"parameters": [
 			{
@@ -535,7 +567,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -543,7 +576,7 @@
 				"name": "service_name",
 				"required": true,
 				"schema": {
-					"description": "Name of Worker to bind to",
+					"description": "Name of Worker to bind to.",
 					"example": "my-worker",
 					"type": "string"
 				}
@@ -658,7 +691,8 @@
 														"type": "boolean"
 													},
 													{
-														"default": false
+														"default": false,
+														"type": "boolean"
 													}
 												]
 											},
@@ -749,7 +783,11 @@
 										},
 										"type": "object"
 									}
-								}
+								},
+								"required": [
+									"result"
+								],
+								"type": "object"
 							}
 						]
 					}
@@ -857,7 +895,8 @@
 															"type": "boolean"
 														},
 														{
-															"default": false
+															"default": false,
+															"type": "boolean"
 														}
 													]
 												},
@@ -948,13 +987,17 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Patch script settings"
+				"description": "Patch script settings."
 			},
 			"4XX": {
 				"content": {
@@ -962,88 +1005,112 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"example": [],
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer"
-											},
-											"documentation_url": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string"
-											},
-											"source": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
 												"properties": {
-													"pointer": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
 														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
-												"type": "object"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"type": "array"
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer"
-											},
-											"documentation_url": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string"
-											},
-											"source": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
 												"properties": {
-													"pointer": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
 														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
-												"type": "object"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"type": "array"
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
 									"enum": [
-										true
+										false
 									],
-									"example": true,
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Patch script settings failure"
+				"description": "Patch script settings failure."
 			}
 		},
 		"security": [
@@ -1061,7 +1128,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/content": {
-		"description": "Put script content from a worker with an environment",
+		"description": "Put script content from a worker with an environment.",
 		"operationId": "worker-environment-put-script-content",
 		"parameters": [
 			{
@@ -1072,7 +1139,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1080,7 +1148,7 @@
 				"name": "service_name",
 				"required": true,
 				"schema": {
-					"description": "Name of Worker to bind to",
+					"description": "Name of Worker to bind to.",
 					"example": "my-worker",
 					"type": "string"
 				}
@@ -1329,7 +1397,8 @@
 															"type": "string"
 														},
 														{
-															"deprecated": true
+															"deprecated": true,
+															"type": "string"
 														}
 													]
 												},
@@ -1346,7 +1415,8 @@
 															"type": "string"
 														},
 														{
-															"deprecated": true
+															"deprecated": true,
+															"type": "string"
 														}
 													]
 												},
@@ -1389,6 +1459,10 @@
 											}
 										}
 									},
+									"required": [
+										"result"
+									],
+									"type": "object",
 									"x-cfLinkErrors": {
 										"10001": "Unsupported or unexpected Content Type",
 										"10002": "Unexpected internal server error",
@@ -1409,7 +1483,7 @@
 						}
 					}
 				},
-				"description": "Put script content"
+				"description": "Put script content."
 			},
 			"4XX": {
 				"content": {
@@ -1522,7 +1596,7 @@
 						}
 					}
 				},
-				"description": "Put script content failure"
+				"description": "Put script content failure."
 			}
 		},
 		"security": [

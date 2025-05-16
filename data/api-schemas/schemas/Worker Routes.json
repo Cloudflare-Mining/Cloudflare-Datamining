@@ -11,7 +11,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -22,7 +23,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -122,7 +124,8 @@
 													"description": "Identifier.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -138,7 +141,7 @@
 						}
 					}
 				},
-				"description": "Delete Route response"
+				"description": "Delete Route response."
 			},
 			"4XX": {
 				"content": {
@@ -251,7 +254,7 @@
 						}
 					}
 				},
-				"description": "Delete Route response failure"
+				"description": "Delete Route response failure."
 			}
 		},
 		"security": [
@@ -283,7 +286,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -386,7 +390,8 @@
 																"description": "Identifier.",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														],
 														"readOnly": true
@@ -422,7 +427,7 @@
 						}
 					}
 				},
-				"description": "List Routes response"
+				"description": "List Routes response."
 			},
 			"4XX": {
 				"content": {
@@ -535,7 +540,7 @@
 						}
 					}
 				},
-				"description": "List Routes response failure"
+				"description": "List Routes response failure."
 			}
 		},
 		"security": [
@@ -568,7 +573,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -579,7 +585,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -681,7 +688,8 @@
 															"description": "Identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													],
 													"readOnly": true
@@ -715,7 +723,7 @@
 						}
 					}
 				},
-				"description": "Get Route response"
+				"description": "Get Route response."
 			},
 			"4XX": {
 				"content": {
@@ -828,7 +836,7 @@
 						}
 					}
 				},
-				"description": "Get Route response failure"
+				"description": "Get Route response failure."
 			}
 		},
 		"security": [
@@ -861,7 +869,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -876,7 +885,8 @@
 										"description": "Identifier.",
 										"example": "023e105f4ecef8ad9ca31a8372d0c353",
 										"maxLength": 32,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								],
 								"readOnly": true
@@ -1001,7 +1011,8 @@
 															"description": "Identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													],
 													"readOnly": true
@@ -1035,7 +1046,7 @@
 						}
 					}
 				},
-				"description": "Create Route response"
+				"description": "Create Route response."
 			},
 			"4XX": {
 				"content": {
@@ -1148,7 +1159,7 @@
 						}
 					}
 				},
-				"description": "Create Route response failure"
+				"description": "Create Route response failure."
 			}
 		},
 		"security": [
@@ -1180,7 +1191,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1191,7 +1203,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1206,7 +1219,8 @@
 										"description": "Identifier.",
 										"example": "023e105f4ecef8ad9ca31a8372d0c353",
 										"maxLength": 32,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								],
 								"readOnly": true
@@ -1331,7 +1345,8 @@
 															"description": "Identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													],
 													"readOnly": true
@@ -1365,7 +1380,7 @@
 						}
 					}
 				},
-				"description": "Update Route response"
+				"description": "Update Route response."
 			},
 			"4XX": {
 				"content": {
@@ -1478,7 +1493,7 @@
 						}
 					}
 				},
-				"description": "Update Route response failure"
+				"description": "Update Route response failure."
 			}
 		},
 		"security": [

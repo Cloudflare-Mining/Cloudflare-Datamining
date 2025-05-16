@@ -11,7 +11,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -132,7 +133,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -170,7 +172,7 @@
 						}
 					}
 				},
-				"description": "List Namespaces response"
+				"description": "List Namespaces response."
 			},
 			"4XX": {
 				"content": {
@@ -290,7 +292,8 @@
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -436,7 +439,7 @@
 						}
 					}
 				},
-				"description": "List Namespaces response failure"
+				"description": "List Namespaces response failure."
 			}
 		},
 		"security": [
@@ -469,7 +472,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -620,7 +624,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -659,7 +664,8 @@
 													"example": "AAAAANuhDN7SjacTnSVsDu3WW1Lvst6dxJGTjRY5BhxPXdf6L6uTcpd_NVtjhn11OUYRsVEykxoUwF-JQU4dn6QylZSKTOJuG0indrdn_MlHpMRtsxgXjs-RPdHYIVm3odE_uvEQ_dTQGFm8oikZMohns34DLBgrQpc",
 													"type": "string"
 												}
-											}
+											},
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -668,7 +674,7 @@
 						}
 					}
 				},
-				"description": "List Objects response"
+				"description": "List Objects response."
 			},
 			"4XX": {
 				"content": {
@@ -788,7 +794,8 @@
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -827,7 +834,8 @@
 															"example": "AAAAANuhDN7SjacTnSVsDu3WW1Lvst6dxJGTjRY5BhxPXdf6L6uTcpd_NVtjhn11OUYRsVEykxoUwF-JQU4dn6QylZSKTOJuG0indrdn_MlHpMRtsxgXjs-RPdHYIVm3odE_uvEQ_dTQGFm8oikZMohns34DLBgrQpc",
 															"type": "string"
 														}
-													}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -944,7 +952,7 @@
 						}
 					}
 				},
-				"description": "List Objects response failure"
+				"description": "List Objects response failure."
 			}
 		},
 		"security": [
