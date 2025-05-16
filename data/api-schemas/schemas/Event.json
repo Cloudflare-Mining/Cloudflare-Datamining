@@ -476,7 +476,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events": {
-		"description": "The `datasetId` parameter must be defined. Must provide query parameters. To list existing datasets (and their IDs), use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
+		"description": "The `datasetId` must be defined (to list existing datasets (and their IDs), use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint). Also, must provide query parameters.",
 		"operationId": "get_EventListGet",
 		"parameters": [
 			{
@@ -589,6 +589,13 @@
 						"type": "string"
 					},
 					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "forceRefresh",
+				"schema": {
+					"type": "boolean"
 				}
 			}
 		],
@@ -2003,6 +2010,13 @@
 				"schema": {
 					"description": "Account ID.",
 					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "forceRefresh",
+				"schema": {
+					"type": "boolean"
 				}
 			}
 		],
