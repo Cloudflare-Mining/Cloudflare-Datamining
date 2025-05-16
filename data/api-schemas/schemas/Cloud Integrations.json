@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/magic/cloud/providers/{provider_id}": {
-		"description": "Delete a Cloud Integration (Closed Beta)",
+		"description": "Delete a Cloud Integration (Closed Beta).",
 		"operationId": "providers-delete",
 		"parameters": [
 			{
@@ -478,7 +478,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -921,7 +921,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -1364,7 +1364,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -1807,7 +1807,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -2250,7 +2250,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"500": {
 				"content": {
@@ -2693,7 +2693,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -2712,7 +2712,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/providers": {
-		"description": "List Cloud Integrations (Closed Beta)",
+		"description": "List Cloud Integrations (Closed Beta).",
 		"operationId": "providers-list",
 		"parameters": [
 			{
@@ -2731,7 +2731,7 @@
 				}
 			},
 			{
-				"description": "one of [\"updated_at\", \"id\", \"cloud_type\", \"name\"]",
+				"description": "One of [\"updated_at\", \"id\", \"cloud_type\", \"name\"].",
 				"in": "query",
 				"name": "order_by",
 				"schema": {
@@ -3414,7 +3414,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -3857,7 +3857,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -4300,7 +4300,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -4743,7 +4743,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"500": {
 				"content": {
@@ -5186,7 +5186,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -5206,7 +5206,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/providers/{provider_id}": {
-		"description": "Read a Cloud Integration (Closed Beta)",
+		"description": "Read a Cloud Integration (Closed Beta).",
 		"operationId": "providers-read",
 		"parameters": [
 			{
@@ -5892,7 +5892,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -6335,7 +6335,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -6778,7 +6778,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -7221,7 +7221,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -7664,7 +7664,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"500": {
 				"content": {
@@ -8107,7 +8107,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -8127,7 +8127,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/providers/{provider_id}/initial_setup": {
-		"description": "Get initial configuration to complete Cloud Integration setup (Closed Beta)",
+		"description": "Get initial configuration to complete Cloud Integration setup (Closed Beta).",
 		"operationId": "providers-initial-setup",
 		"parameters": [
 			{
@@ -8658,7 +8658,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -9101,7 +9101,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -9544,7 +9544,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -9987,7 +9987,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -10430,7 +10430,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"500": {
 				"content": {
@@ -10873,7 +10873,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -10893,7 +10893,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/magic/cloud/providers/{provider_id}": {
-		"description": "Update a Cloud Integration (Closed Beta)",
+		"description": "Update a Cloud Integration (Closed Beta).",
 		"operationId": "providers-patch",
 		"parameters": [
 			{
@@ -11605,7 +11605,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -12048,7 +12048,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -12491,7 +12491,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -12934,7 +12934,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -13377,7 +13377,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"409": {
 				"content": {
@@ -13820,7 +13820,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"422": {
 				"content": {
@@ -14263,7 +14263,7 @@
 						}
 					}
 				},
-				"description": "Unprocessable Entity"
+				"description": "Unprocessable Entity."
 			},
 			"500": {
 				"content": {
@@ -14706,7 +14706,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -14725,7 +14725,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/providers": {
-		"description": "Create a new Cloud Integration (Closed Beta)",
+		"description": "Create a new Cloud Integration (Closed Beta).",
 		"operationId": "providers-create",
 		"parameters": [
 			{
@@ -15433,10 +15433,10 @@
 						}
 					}
 				},
-				"description": "Created",
+				"description": "Created.",
 				"headers": {
 					"location": {
-						"description": "The path to the newly created resource",
+						"description": "The path to the newly created resource.",
 						"schema": {
 							"type": "string"
 						}
@@ -15884,7 +15884,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -16327,7 +16327,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -16770,7 +16770,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"409": {
 				"content": {
@@ -17213,7 +17213,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"422": {
 				"content": {
@@ -17656,7 +17656,7 @@
 						}
 					}
 				},
-				"description": "Unprocessable Entity"
+				"description": "Unprocessable Entity."
 			},
 			"500": {
 				"content": {
@@ -18099,7 +18099,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -18118,7 +18118,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/providers/{provider_id}/discover": {
-		"description": "Run discovery for a Cloud Integration (Closed Beta)",
+		"description": "Run discovery for a Cloud Integration (Closed Beta).",
 		"operationId": "providers-discover",
 		"parameters": [
 			{
@@ -18581,7 +18581,7 @@
 						}
 					}
 				},
-				"description": "Accepted"
+				"description": "Accepted."
 			},
 			"400": {
 				"content": {
@@ -19024,7 +19024,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -19467,7 +19467,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -19910,7 +19910,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -20353,7 +20353,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"409": {
 				"content": {
@@ -20796,7 +20796,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"500": {
 				"content": {
@@ -21239,7 +21239,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -21255,7 +21255,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/providers/discover": {
-		"description": "Run discovery for all Cloud Integrations in an account (Closed Beta)",
+		"description": "Run discovery for all Cloud Integrations in an account (Closed Beta).",
 		"operationId": "providers-discover-all",
 		"parameters": [
 			{
@@ -21702,7 +21702,7 @@
 						}
 					}
 				},
-				"description": "Accepted"
+				"description": "Accepted."
 			},
 			"400": {
 				"content": {
@@ -22145,7 +22145,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -22588,7 +22588,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -23031,7 +23031,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"409": {
 				"content": {
@@ -23474,7 +23474,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"500": {
 				"content": {
@@ -23917,7 +23917,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -23936,7 +23936,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/magic/cloud/providers/{provider_id}": {
-		"description": "Update a Cloud Integration (Closed Beta)",
+		"description": "Update a Cloud Integration (Closed Beta).",
 		"operationId": "providers-update",
 		"parameters": [
 			{
@@ -24648,7 +24648,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -25091,7 +25091,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -25534,7 +25534,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -25977,7 +25977,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -26420,7 +26420,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"409": {
 				"content": {
@@ -26863,7 +26863,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"422": {
 				"content": {
@@ -27306,7 +27306,7 @@
 						}
 					}
 				},
-				"description": "Unprocessable Entity"
+				"description": "Unprocessable Entity."
 			},
 			"500": {
 				"content": {
@@ -27749,7 +27749,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [

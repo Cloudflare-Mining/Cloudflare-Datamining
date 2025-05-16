@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/magic/cloud/resources": {
-		"description": "List resources in the Resource Catalog (Closed Beta)",
+		"description": "List resources in the Resource Catalog (Closed Beta).",
 		"operationId": "resources-catalog-list",
 		"parameters": [
 			{
@@ -130,7 +130,7 @@
 				}
 			},
 			{
-				"description": "one of [\"id\", \"resource_type\", \"region\"]",
+				"description": "One of [\"id\", \"resource_type\", \"region\"].",
 				"in": "query",
 				"name": "order_by",
 				"schema": {
@@ -400,7 +400,7 @@
 															"type": "integer"
 														},
 														"per_page": {
-															"description": "Max items per page.",
+															"description": "The maximum numnber of items per page.",
 															"example": 20,
 															"type": "integer"
 														},
@@ -1604,7 +1604,7 @@
 													"type": "integer"
 												},
 												"per_page": {
-													"description": "Max items per page.",
+													"description": "The maximum numnber of items per page.",
 													"example": 20,
 													"type": "integer"
 												},
@@ -1635,7 +1635,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -2078,7 +2078,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -2521,7 +2521,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -2964,7 +2964,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -3407,7 +3407,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"500": {
 				"content": {
@@ -3850,7 +3850,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -3870,7 +3870,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/resources/{resource_id}": {
-		"description": "Read an resource from the Resource Catalog (Closed Beta)",
+		"description": "Read an resource from the Resource Catalog (Closed Beta).",
 		"operationId": "resources-catalog-read",
 		"parameters": [
 			{
@@ -5283,7 +5283,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -5726,7 +5726,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -6169,7 +6169,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -6612,7 +6612,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -7055,7 +7055,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"500": {
 				"content": {
@@ -7498,7 +7498,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -7518,7 +7518,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/resources/export": {
-		"description": "Export resources in the Resource Catalog as a JSON file (Closed Beta)",
+		"description": "Export resources in the Resource Catalog as a JSON file (Closed Beta).",
 		"operationId": "resources-catalog-export",
 		"parameters": [
 			{
@@ -7641,7 +7641,7 @@
 				}
 			},
 			{
-				"description": "one of [\"id\", \"resource_type\", \"region\"]",
+				"description": "One of [\"id\", \"resource_type\", \"region\"].",
 				"in": "query",
 				"name": "order_by",
 				"schema": {
@@ -7673,7 +7673,7 @@
 						}
 					}
 				},
-				"description": "OK",
+				"description": "Exported file.",
 				"headers": {
 					"Content-Disposition": {
 						"schema": {
@@ -8124,7 +8124,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -8567,7 +8567,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -9010,7 +9010,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -9453,7 +9453,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"500": {
 				"content": {
@@ -9896,7 +9896,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -9916,7 +9916,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/resources/policy-preview": {
-		"description": "Preview Rego query result against the latest resource catalog (Closed Beta)",
+		"description": "Preview Rego query result against the latest resource catalog (Closed Beta).",
 		"operationId": "resources-catalog-policy-preview",
 		"parameters": [
 			{
@@ -10394,7 +10394,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -10837,7 +10837,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -11280,7 +11280,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -11723,7 +11723,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"422": {
 				"content": {
@@ -12166,7 +12166,7 @@
 						}
 					}
 				},
-				"description": "Unprocessable Entity"
+				"description": "Unprocessable Entity."
 			},
 			"500": {
 				"content": {
@@ -12609,7 +12609,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [

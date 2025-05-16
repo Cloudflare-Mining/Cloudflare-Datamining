@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/magic/cloud/onramps/{onramp_id}": {
-		"description": "Delete an On-ramp (Closed Beta)",
+		"description": "Delete an On-ramp (Closed Beta).",
 		"operationId": "onramps-delete",
 		"parameters": [
 			{
@@ -492,7 +492,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -935,7 +935,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -1378,7 +1378,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -1821,7 +1821,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -2264,7 +2264,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"409": {
 				"content": {
@@ -2707,7 +2707,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"500": {
 				"content": {
@@ -3150,7 +3150,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -3169,7 +3169,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/onramps": {
-		"description": "List On-ramps (Closed Beta)",
+		"description": "List On-ramps (Closed Beta).",
 		"operationId": "onramps-list",
 		"parameters": [
 			{
@@ -3181,7 +3181,7 @@
 				}
 			},
 			{
-				"description": "one of [\"updated_at\", \"id\", \"cloud_type\", \"name\"]",
+				"description": "One of [\"updated_at\", \"id\", \"cloud_type\", \"name\"].",
 				"in": "query",
 				"name": "order_by",
 				"schema": {
@@ -6115,7 +6115,7 @@
 														"type": "object"
 													},
 													"vpcs_by_id_unavailable": {
-														"description": "The list of vpc IDs for which resource details could not be generated.",
+														"description": "The list of vpc IDs for which resource details failed to generate.",
 														"items": {
 															"format": "uuid",
 															"type": "string"
@@ -6144,7 +6144,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -6587,7 +6587,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -7030,7 +7030,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -7473,7 +7473,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"500": {
 				"content": {
@@ -7916,7 +7916,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -7936,7 +7936,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/onramps/{onramp_id}": {
-		"description": "Read an On-ramp (Closed Beta)",
+		"description": "Read an On-ramp (Closed Beta).",
 		"operationId": "onramps-read",
 		"parameters": [
 			{
@@ -10889,7 +10889,7 @@
 													"type": "object"
 												},
 												"vpcs_by_id_unavailable": {
-													"description": "The list of vpc IDs for which resource details could not be generated.",
+													"description": "The list of vpc IDs for which resource details failed to generate.",
 													"items": {
 														"format": "uuid",
 														"type": "string"
@@ -10916,7 +10916,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -11359,7 +11359,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -11802,7 +11802,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -12245,7 +12245,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -12688,7 +12688,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"500": {
 				"content": {
@@ -13131,7 +13131,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -13151,7 +13151,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space": {
-		"description": "Read the Magic WAN Address Space (Closed Beta)",
+		"description": "Read the Magic WAN Address Space (Closed Beta).",
 		"operationId": "onramps-mwan-addr-space-read",
 		"parameters": [
 			{
@@ -13604,7 +13604,7 @@
 											"properties": {
 												"prefixes": {
 													"items": {
-														"description": "IP prefix in CIDR format.",
+														"description": "An IP address prefix in CIDR format.",
 														"example": "192.168.0.0/16",
 														"type": "string"
 													},
@@ -13624,7 +13624,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -14067,7 +14067,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -14510,7 +14510,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -14953,7 +14953,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -15396,7 +15396,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"500": {
 				"content": {
@@ -15839,7 +15839,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -15859,7 +15859,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/magic/cloud/onramps/{onramp_id}": {
-		"description": "Update an On-ramp (Closed Beta)",
+		"description": "Update an On-ramp (Closed Beta).",
 		"operationId": "onramps-patch",
 		"parameters": [
 			{
@@ -18832,7 +18832,7 @@
 													"type": "object"
 												},
 												"vpcs_by_id_unavailable": {
-													"description": "The list of vpc IDs for which resource details could not be generated.",
+													"description": "The list of vpc IDs for which resource details failed to generate.",
 													"items": {
 														"format": "uuid",
 														"type": "string"
@@ -18859,7 +18859,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -19302,7 +19302,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -19745,7 +19745,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -20188,7 +20188,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -20631,7 +20631,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"409": {
 				"content": {
@@ -21074,7 +21074,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"422": {
 				"content": {
@@ -21517,7 +21517,7 @@
 						}
 					}
 				},
-				"description": "Unprocessable Entity"
+				"description": "Unprocessable Entity."
 			},
 			"500": {
 				"content": {
@@ -21960,7 +21960,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -21979,7 +21979,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space": {
-		"description": "Update the Magic WAN Address Space (Closed Beta)",
+		"description": "Update the Magic WAN Address Space (Closed Beta).",
 		"operationId": "onramps-mwan-addr-space-patch",
 		"parameters": [
 			{
@@ -21998,7 +21998,7 @@
 						"properties": {
 							"prefixes": {
 								"items": {
-									"description": "IP prefix in CIDR format.",
+									"description": "An IP address prefix in CIDR format.",
 									"example": "192.168.0.0/16",
 									"type": "string"
 								},
@@ -22455,7 +22455,7 @@
 											"properties": {
 												"prefixes": {
 													"items": {
-														"description": "IP prefix in CIDR format.",
+														"description": "An IP address prefix in CIDR format.",
 														"example": "192.168.0.0/16",
 														"type": "string"
 													},
@@ -22475,7 +22475,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -22918,7 +22918,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -23361,7 +23361,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -23804,7 +23804,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -24247,7 +24247,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"422": {
 				"content": {
@@ -24690,7 +24690,7 @@
 						}
 					}
 				},
-				"description": "Unprocessable Entity"
+				"description": "Unprocessable Entity."
 			},
 			"500": {
 				"content": {
@@ -25133,7 +25133,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -25152,7 +25152,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/onramps": {
-		"description": "Create a new On-ramp (Closed Beta)",
+		"description": "Create a new On-ramp (Closed Beta).",
 		"operationId": "onramps-create",
 		"parameters": [
 			{
@@ -28156,7 +28156,7 @@
 													"type": "object"
 												},
 												"vpcs_by_id_unavailable": {
-													"description": "The list of vpc IDs for which resource details could not be generated.",
+													"description": "The list of vpc IDs for which resource details failed to generate.",
 													"items": {
 														"format": "uuid",
 														"type": "string"
@@ -28183,10 +28183,10 @@
 						}
 					}
 				},
-				"description": "Created",
+				"description": "Created.",
 				"headers": {
 					"location": {
-						"description": "The path to the newly created resource",
+						"description": "The path to the newly created resource.",
 						"schema": {
 							"type": "string"
 						}
@@ -28634,7 +28634,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -29077,7 +29077,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -29520,7 +29520,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"409": {
 				"content": {
@@ -29963,7 +29963,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"422": {
 				"content": {
@@ -30406,7 +30406,7 @@
 						}
 					}
 				},
-				"description": "Unprocessable Entity"
+				"description": "Unprocessable Entity."
 			},
 			"500": {
 				"content": {
@@ -30849,7 +30849,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -30868,7 +30868,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/onramps/{onramp_id}/apply": {
-		"description": "Apply an On-ramp (Closed Beta)",
+		"description": "Apply an On-ramp (Closed Beta).",
 		"operationId": "onramps-apply",
 		"parameters": [
 			{
@@ -31324,7 +31324,7 @@
 						}
 					}
 				},
-				"description": "Accepted"
+				"description": "Accepted."
 			},
 			"400": {
 				"content": {
@@ -31767,7 +31767,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -32210,7 +32210,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -32653,7 +32653,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -33096,7 +33096,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"409": {
 				"content": {
@@ -33539,7 +33539,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"500": {
 				"content": {
@@ -33982,7 +33982,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -34001,7 +34001,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/onramps/{onramp_id}/export": {
-		"description": "Export an On-ramp to terraform ready file(s) (Closed Beta)",
+		"description": "Export an On-ramp to terraform ready file(s) (Closed Beta).",
 		"operationId": "onramps-export",
 		"parameters": [
 			{
@@ -34032,7 +34032,7 @@
 						}
 					}
 				},
-				"description": "Created",
+				"description": "Exported file.",
 				"headers": {
 					"Content-Disposition": {
 						"schema": {
@@ -34483,7 +34483,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -34926,7 +34926,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -35369,7 +35369,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -35812,7 +35812,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"409": {
 				"content": {
@@ -36255,7 +36255,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"500": {
 				"content": {
@@ -36698,7 +36698,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -36717,7 +36717,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/onramps/{onramp_id}/plan": {
-		"description": "Plan an On-ramp (Closed Beta)",
+		"description": "Plan an On-ramp (Closed Beta).",
 		"operationId": "onramps-plan",
 		"parameters": [
 			{
@@ -37173,7 +37173,7 @@
 						}
 					}
 				},
-				"description": "Accepted"
+				"description": "Accepted."
 			},
 			"400": {
 				"content": {
@@ -37616,7 +37616,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -38059,7 +38059,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -38502,7 +38502,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -38945,7 +38945,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"409": {
 				"content": {
@@ -39388,7 +39388,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"500": {
 				"content": {
@@ -39831,7 +39831,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -39850,7 +39850,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/magic/cloud/onramps/{onramp_id}": {
-		"description": "Update an On-ramp (Closed Beta)",
+		"description": "Update an On-ramp (Closed Beta).",
 		"operationId": "onramps-update",
 		"parameters": [
 			{
@@ -42823,7 +42823,7 @@
 													"type": "object"
 												},
 												"vpcs_by_id_unavailable": {
-													"description": "The list of vpc IDs for which resource details could not be generated.",
+													"description": "The list of vpc IDs for which resource details failed to generate.",
 													"items": {
 														"format": "uuid",
 														"type": "string"
@@ -42850,7 +42850,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -43293,7 +43293,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -43736,7 +43736,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -44179,7 +44179,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -44622,7 +44622,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"409": {
 				"content": {
@@ -45065,7 +45065,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"422": {
 				"content": {
@@ -45508,7 +45508,7 @@
 						}
 					}
 				},
-				"description": "Unprocessable Entity"
+				"description": "Unprocessable Entity."
 			},
 			"500": {
 				"content": {
@@ -45951,7 +45951,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -45970,7 +45970,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space": {
-		"description": "Update the Magic WAN Address Space (Closed Beta)",
+		"description": "Update the Magic WAN Address Space (Closed Beta).",
 		"operationId": "onramps-mwan-addr-space-update",
 		"parameters": [
 			{
@@ -45989,7 +45989,7 @@
 						"properties": {
 							"prefixes": {
 								"items": {
-									"description": "IP prefix in CIDR format.",
+									"description": "An IP address prefix in CIDR format.",
 									"example": "192.168.0.0/16",
 									"type": "string"
 								},
@@ -46446,7 +46446,7 @@
 											"properties": {
 												"prefixes": {
 													"items": {
-														"description": "IP prefix in CIDR format.",
+														"description": "An IP address prefix in CIDR format.",
 														"example": "192.168.0.0/16",
 														"type": "string"
 													},
@@ -46466,7 +46466,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -46909,7 +46909,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -47352,7 +47352,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -47795,7 +47795,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -48238,7 +48238,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"422": {
 				"content": {
@@ -48681,7 +48681,7 @@
 						}
 					}
 				},
-				"description": "Unprocessable Entity"
+				"description": "Unprocessable Entity."
 			},
 			"500": {
 				"content": {
@@ -49124,7 +49124,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [

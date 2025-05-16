@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}": {
-		"description": "Delete a Catalog Sync (Closed Beta)",
+		"description": "Delete a Catalog Sync (Closed Beta).",
 		"operationId": "catalog-syncs-delete",
 		"parameters": [
 			{
@@ -485,7 +485,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -928,7 +928,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -1371,7 +1371,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -1814,7 +1814,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -2257,7 +2257,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"409": {
 				"content": {
@@ -2700,7 +2700,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"500": {
 				"content": {
@@ -3143,7 +3143,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -3162,7 +3162,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/catalog-syncs": {
-		"description": "List Catalog Syncs (Closed Beta)",
+		"description": "List Catalog Syncs (Closed Beta).",
 		"operationId": "catalog-syncs-list",
 		"parameters": [
 			{
@@ -3883,7 +3883,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -4326,7 +4326,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -4769,7 +4769,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -5212,7 +5212,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -5655,7 +5655,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"500": {
 				"content": {
@@ -6098,7 +6098,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -6118,7 +6118,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}": {
-		"description": "Read a Catalog Sync (Closed Beta)",
+		"description": "Read a Catalog Sync (Closed Beta).",
 		"operationId": "catalog-syncs-read",
 		"parameters": [
 			{
@@ -6845,7 +6845,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -7288,7 +7288,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -7731,7 +7731,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -8174,7 +8174,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -8617,7 +8617,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"500": {
 				"content": {
@@ -9060,7 +9060,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -9080,7 +9080,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/catalog-syncs/prebuilt-policies": {
-		"description": "List prebuilt catalog sync policies (Closed Beta)",
+		"description": "List prebuilt catalog sync policies (Closed Beta).",
 		"operationId": "catalog-syncs-prebuilt-policies-list",
 		"parameters": [
 			{
@@ -9092,7 +9092,7 @@
 				}
 			},
 			{
-				"description": "specify type of destination, omit to return all",
+				"description": "Specify type of destination, omit to return all.",
 				"in": "query",
 				"name": "destination_type",
 				"schema": {
@@ -9582,7 +9582,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -10025,7 +10025,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -10468,7 +10468,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -10911,7 +10911,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"500": {
 				"content": {
@@ -11354,7 +11354,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -11374,7 +11374,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}": {
-		"description": "Update a Catalog Sync (Closed Beta)",
+		"description": "Update a Catalog Sync (Closed Beta).",
 		"operationId": "catalog-syncs-patch",
 		"parameters": [
 			{
@@ -12129,7 +12129,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -12572,7 +12572,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -13015,7 +13015,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -13458,7 +13458,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -13901,7 +13901,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"409": {
 				"content": {
@@ -14344,7 +14344,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"422": {
 				"content": {
@@ -14787,7 +14787,7 @@
 						}
 					}
 				},
-				"description": "Unprocessable Entity"
+				"description": "Unprocessable Entity."
 			},
 			"500": {
 				"content": {
@@ -15230,7 +15230,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -15249,7 +15249,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/catalog-syncs": {
-		"description": "Create a new Catalog Sync (Closed Beta)",
+		"description": "Create a new Catalog Sync (Closed Beta).",
 		"operationId": "catalog-syncs-create",
 		"parameters": [
 			{
@@ -16014,10 +16014,10 @@
 						}
 					}
 				},
-				"description": "Created",
+				"description": "Created.",
 				"headers": {
 					"location": {
-						"description": "The path to the newly created list",
+						"description": "The path to the newly created list.",
 						"schema": {
 							"type": "string"
 						}
@@ -16465,7 +16465,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -16908,7 +16908,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -17351,7 +17351,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"409": {
 				"content": {
@@ -17794,7 +17794,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"422": {
 				"content": {
@@ -18237,7 +18237,7 @@
 						}
 					}
 				},
-				"description": "Unprocessable Entity"
+				"description": "Unprocessable Entity."
 			},
 			"500": {
 				"content": {
@@ -18680,7 +18680,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -18699,7 +18699,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}/refresh": {
-		"description": "Refresh a Catalog Sync's destination by running the sync policy against latest resource catalog (Closed Beta)",
+		"description": "Refresh a Catalog Sync's destination by running the sync policy against latest resource catalog (Closed Beta).",
 		"operationId": "catalog-syncs-refresh",
 		"parameters": [
 			{
@@ -19168,7 +19168,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -19611,7 +19611,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -20054,7 +20054,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -20497,7 +20497,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -20940,7 +20940,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"409": {
 				"content": {
@@ -21383,7 +21383,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"422": {
 				"content": {
@@ -21826,7 +21826,7 @@
 						}
 					}
 				},
-				"description": "Unprocessable Entity"
+				"description": "Unprocessable Entity."
 			},
 			"500": {
 				"content": {
@@ -22269,7 +22269,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -22288,7 +22288,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}": {
-		"description": "Update a Catalog Sync (Closed Beta)",
+		"description": "Update a Catalog Sync (Closed Beta).",
 		"operationId": "catalog-syncs-update",
 		"parameters": [
 			{
@@ -23043,7 +23043,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "OK."
 			},
 			"400": {
 				"content": {
@@ -23486,7 +23486,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad Request."
 			},
 			"401": {
 				"content": {
@@ -23929,7 +23929,7 @@
 						}
 					}
 				},
-				"description": "Invalid Credentials"
+				"description": "Invalid Credentials."
 			},
 			"403": {
 				"content": {
@@ -24372,7 +24372,7 @@
 						}
 					}
 				},
-				"description": "Forbidden"
+				"description": "Forbidden."
 			},
 			"404": {
 				"content": {
@@ -24815,7 +24815,7 @@
 						}
 					}
 				},
-				"description": "Not Found"
+				"description": "Not Found."
 			},
 			"409": {
 				"content": {
@@ -25258,7 +25258,7 @@
 						}
 					}
 				},
-				"description": "Conflict"
+				"description": "Conflict."
 			},
 			"422": {
 				"content": {
@@ -25701,7 +25701,7 @@
 						}
 					}
 				},
-				"description": "Unprocessable Entity"
+				"description": "Unprocessable Entity."
 			},
 			"500": {
 				"content": {
@@ -26144,7 +26144,7 @@
 						}
 					}
 				},
-				"description": "Internal Server Error"
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
