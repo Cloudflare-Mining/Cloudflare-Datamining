@@ -2141,18 +2141,6 @@
 											},
 											{
 												"contentTypeId": "elementNavLink",
-												"contentfulId": "3TUBKRF4MdcxybTg9QrwrE",
-												"locale": "en-US",
-												"title": "Technology partners",
-												"description": "Explore our ecosystem of technology partnerships and integrations",
-												"url": "https://www.cloudflare.com/partners/technology-partners/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
 												"contentfulId": "7w6FaWDKWmcohncR0qXwXr",
 												"locale": "en-US",
 												"title": "Global system integrators",
@@ -2696,12 +2684,6 @@
 										"url": "/analysts/"
 									},
 									{
-										"contentfulId": "7ypbRBFxCGM7pgGyOKj72l",
-										"linkText": "Product tour",
-										"page": null,
-										"url": "https://www.cloudflare.com/zero-trust/interactive-demo/"
-									},
-									{
 										"contentfulId": "KxYYsyoMmFhVrH8ESEj7c",
 										"linkText": "Product guides",
 										"page": null,
@@ -2815,6 +2797,42 @@
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3C0XnrzYfZW8d71tFlkQnW",
+								"title": "Improved operational agility",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Centrally manage enterprise network connectivity and security from one interface. On-ramp traffic in minutes with zero-touch configuration.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
+									"altText": "Ease of use blue",
+									"title": "Ease of use blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wB2WP2bwo7zdgVhToslhe/447d1f23d1b8ac77e61e2819465f58fe/ease-of-use-toggle.svg"
+										},
+										"description": "Ease of use orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "6WuSdBj1nC3rTBrKSzzMgL",
@@ -3495,6 +3513,12 @@
 						"htmlId": null
 					},
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "1BuGlsZPzOtVEMqlE1iR8g",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/network-services/solutions/#protect-accelerate-network-solutions\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
 						"contentfulId": "7xKNgLULOLKIu7Hh20Up1P",
 						"contentTypeId": "bladeLeadGeneration",
 						"title": null,
@@ -3688,7 +3712,32 @@
 								"modalName": "ZT Access Talk to an expert",
 								"modalId": "zt-access-talk-to-an-expert",
 								"modalType": "single-form",
-								"marketoForm": null,
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "5daBy41JohWg0zdFI6JHW",
+									"bladeName": "ZT Access - Talk to an expert - Marketo",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": "Talk to an expert",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
 								"title": null,
 								"regularCopy": null,
 								"splitFormDefaultTab": null,
