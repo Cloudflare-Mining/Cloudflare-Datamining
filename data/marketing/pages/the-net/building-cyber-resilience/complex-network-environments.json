@@ -38,8 +38,8 @@
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "theNET | Regain control of complex network environments",
-					"metaDescription": "Enterprise environments will continue to be complicated and threats will keep coming. However, implementing point solutions for security will only add management complexity and diminish your control over those environments. By adopting a radically new approach — with a unified platform that consolidates tools and connects all your domains — you can regain control, lower costs, and reduce the risks of securing an expanded network environment.",
+					"metaTitle": "theNET | Reduce complexity in network environments | Cloudflare",
+					"metaDescription": "Using a unified platform reduces network complexity by consolidating vendors, cutting costs, and restoring control of your enterprise environment.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -505,6 +505,31 @@
 											]
 										},
 										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The true cost of network complexity in enterprise security",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -540,7 +565,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The complexity of managing the environment compounded our challenges. As we added more tools, we had to spend even more money and hire more people to manage them. It was increasingly difficult to maintain visibility and control over our entire environment. Now, this was a large business in the highly regulated banking industry, and needed to invest deeply in security. Few organizations have the same level of resources available. But many—from small startups to the largest enterprises—have similar problems: they face a wide range of security threats on top of the challenge of maintaining visibility and control.",
+													"value": "The complexity of managing the environment compounded our challenges. As we added more tools, we had to spend even more money and hire more people to manage them. It was increasingly difficult to maintain visibility and control over our entire environment. Now, this was a large business in the highly regulated banking industry, and needed to invest deeply in security. Few organizations have the same level of resources available. But many — from small startups to the largest enterprises — have similar problems: they face a wide range of security threats on top of the challenge of maintaining visibility and control.",
 													"marks": [],
 													"content": null
 												}
@@ -635,7 +660,100 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Risk multiplies daily — to no end. At the same time, we lose visibility and control to growing complexity as the enterprise environment expands. Where is this complexity coming from? Today, security teams must protect their data centers and address threats facing public clouds, SaaS, and even the public Internet. We've all tried to handle the evolving threat landscape with point solutions like web application firewalls (WAF), distributed denial of service (DDoS) mitigation, cloud access security brokers (CASB), intrusion detection, and others. But managing these solutions and their vendors adds to the complexity problem — every technology deployed must be learned and mastered to sustain operational resilience.\n\nHow do you get past this complexity? The first step is acknowledging that you can't continue with the status quo — it's too expensive and it leaves you open to too many risks.\n",
+																	"value": "Risk multiplies daily — to no end. At the same time, we lose visibility and control to growing complexity as the enterprise environment expands. Where is this complexity coming from? Today, security teams must protect their data centers and address threats facing public clouds, SaaS, and even the public Internet. We've all tried to handle the evolving threat landscape with point solutions like ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "web application firewalls (WAF)",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": ", ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/learning/ddos/ddos-mitigation/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "distributed denial of service (DDoS) mitigation",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": ", ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/learning/access-management/what-is-a-casb/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "cloud access security brokers (CASB)",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": ", intrusion detection, and others. But managing these solutions and their vendors adds to the complexity problem — every technology deployed must be learned and mastered to sustain operational resilience.\n\nHow do you get past this complexity? The first step is acknowledging that you can't continue with the status quo — it's too expensive and it leaves you open to too many risks.\n",
 																	"marks": [],
 																	"content": null
 																}
@@ -667,7 +785,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Accelerate consolidation\n\n",
+																	"value": "Accelerate vendor consolidation\n\n",
 																	"marks": [
 																		{
 																			"type": "bold"
@@ -783,7 +901,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Regain Control\n",
+													"value": "Regain control of your network environment",
 													"marks": [
 														{
 															"type": "bold"
@@ -1079,6 +1197,145 @@
 											"nodeType": "hr",
 											"data": {
 												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-2",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Dive deeper into this topic.",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nLearn more about how Cloudflare's connectivity cloud can help you reduce complexity and regain control of IT in the ebook, ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/lp/take-back-it-control-ebook/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Connectivity cloud, explained",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-entry-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "1D4fzEBgHHO8e1jRgHu8p6",
+														"type": "Link",
+														"linkType": "Entry"
+													},
+													"related_asset": [],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [
+														{
+															"buttonAssetFile": null,
+															"buttonTextLoggedIn": null,
+															"contentTypeId": "button",
+															"contentfulId": "1D4fzEBgHHO8e1jRgHu8p6",
+															"elementName": "theNET - Regain control of complex network environments - Dive Deeper button",
+															"standardText": null,
+															"text": "Get the ebook!",
+															"url": "https://www.cloudflare.com/lp/take-back-it-control-ebook/",
+															"loggedInUrl": null,
+															"buttonModal": null,
+															"openInNewTab": false,
+															"locale": "en-US"
+														}
+													],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
 												"uri": null
 											},
 											"value": null,
@@ -1528,7 +1785,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Other articles in this series\n",
+													"value": "Related resources\n",
 													"marks": [],
 													"content": null
 												}
@@ -1543,6 +1800,69 @@
 											"value": null,
 											"marks": null,
 											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/lp/take-back-it-control-ebook/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "Ebook: The connectivity cloud",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
 												{
 													"nodeType": "list-item",
 													"data": {
