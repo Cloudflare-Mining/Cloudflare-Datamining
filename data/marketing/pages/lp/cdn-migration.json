@@ -16,6 +16,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,8 +30,7 @@
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/cdn-migration",
 				"topNavOptions": "empty",
@@ -47,7 +47,12 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2023-09-13T17:00:10.225Z",
+					"updatedAt": "2025-05-13T05:59:52.972Z"
 				},
 				"contentfulId": "6HN3F9enhJSKKeOPM5DP4l",
 				"contentTypeId": "page",
@@ -278,7 +283,7 @@
 									"region": "Oceania"
 								},
 								{
-									"cityName": "Amman, JO",
+									"cityName": "Amman, JO*",
 									"region": "Middle East"
 								},
 								{
@@ -290,7 +295,7 @@
 									"region": "Africa"
 								},
 								{
-									"cityName": "Bangkok, TH",
+									"cityName": "Bangkok, TH*",
 									"region": "Asia"
 								},
 								{
@@ -298,11 +303,11 @@
 									"region": "Mainland China"
 								},
 								{
-									"cityName": "San José, CR**",
+									"cityName": "San José, CR*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
-									"cityName": "Salvador, BR",
+									"cityName": "Salvador, BR*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
@@ -310,7 +315,7 @@
 									"region": "Latin America & the Caribbean"
 								},
 								{
-									"cityName": "Nairobi, KE",
+									"cityName": "Nairobi, KE*",
 									"region": "Africa"
 								},
 								{
@@ -330,10 +335,6 @@
 									"region": "Asia"
 								},
 								{
-									"cityName": "Monrovia, LR",
-									"region": "Africa"
-								},
-								{
 									"cityName": "Tegucigalpa, HN",
 									"region": "Latin America & the Caribbean"
 								},
@@ -342,7 +343,7 @@
 									"region": "Asia"
 								},
 								{
-									"cityName": "Paramaribo, SR",
+									"cityName": "Paramaribo, SR*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
@@ -354,15 +355,15 @@
 									"region": "Asia"
 								},
 								{
-									"cityName": "Adelaide, AU**",
+									"cityName": "Adelaide, AU*",
 									"region": "Oceania"
 								},
 								{
-									"cityName": "St. George's, GD",
+									"cityName": "St. George's, GD*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
-									"cityName": "Thimphu, BT",
+									"cityName": "Thimphu, BT*",
 									"region": "Asia"
 								},
 								{
@@ -374,7 +375,7 @@
 									"region": "Africa"
 								},
 								{
-									"cityName": "Dakar, SN",
+									"cityName": "Dakar, SN*",
 									"region": "Africa"
 								},
 								{
@@ -382,7 +383,7 @@
 									"region": "Latin America & the Caribbean"
 								},
 								{
-									"cityName": "Arica, CL",
+									"cityName": "Arica, CL*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
@@ -410,7 +411,7 @@
 									"region": "Asia"
 								},
 								{
-									"cityName": "Bengaluru, IN",
+									"cityName": "Bengaluru, IN*",
 									"region": "Asia"
 								},
 								{
@@ -418,12 +419,8 @@
 									"region": "Latin America & the Caribbean"
 								},
 								{
-									"cityName": "Noumea, NC",
+									"cityName": "Nouméa, NC*",
 									"region": "Oceania"
-								},
-								{
-									"cityName": "Port-Au-Prince, HT",
-									"region": "Latin America & the Caribbean"
 								},
 								{
 									"cityName": "Asuncion, PY",
@@ -442,7 +439,7 @@
 									"region": "Europe"
 								},
 								{
-									"cityName": "Nicosia, CY",
+									"cityName": "Nicosia, CY*",
 									"region": "Europe"
 								},
 								{
@@ -462,7 +459,7 @@
 									"region": "Europe"
 								},
 								{
-									"cityName": "Hyderabad, IN",
+									"cityName": "Hyderabad, IN*",
 									"region": "Asia"
 								},
 								{
@@ -474,7 +471,7 @@
 									"region": "Middle East"
 								},
 								{
-									"cityName": "Queretaro, MX",
+									"cityName": "Queretaro, MX*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
@@ -482,15 +479,15 @@
 									"region": "North America"
 								},
 								{
-									"cityName": "Porto Alegre, BR",
+									"cityName": "Porto Alegre, BR*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
-									"cityName": "Curitiba, BR",
+									"cityName": "Curitiba, BR*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
-									"cityName": "Reunion, FR",
+									"cityName": "Saint-Denis, RE",
 									"region": "Africa"
 								},
 								{
@@ -506,15 +503,15 @@
 									"region": "Latin America & the Caribbean"
 								},
 								{
-									"cityName": "Lima, PE",
+									"cityName": "Lima, PE*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
-									"cityName": "Buenos Aires, AR",
+									"cityName": "Buenos Aires, AR*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
-									"cityName": "Quito, EC",
+									"cityName": "Quito, EC*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
@@ -522,7 +519,7 @@
 									"region": "Latin America & the Caribbean"
 								},
 								{
-									"cityName": "São Paulo, BR**",
+									"cityName": "São Paulo, BR*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
@@ -538,7 +535,7 @@
 									"region": "Asia"
 								},
 								{
-									"cityName": "Karachi, PK",
+									"cityName": "Karachi, PK*",
 									"region": "Asia"
 								},
 								{
@@ -546,11 +543,11 @@
 									"region": "Asia"
 								},
 								{
-									"cityName": "Ho Chi Minh City, VN",
+									"cityName": "Ho Chi Minh City, VN*",
 									"region": "Asia"
 								},
 								{
-									"cityName": "Hanoi, VN",
+									"cityName": "Hanoi, VN*",
 									"region": "Asia"
 								},
 								{
@@ -570,7 +567,7 @@
 									"region": "North America"
 								},
 								{
-									"cityName": "Lagos, NG",
+									"cityName": "Lagos, NG*",
 									"region": "Africa"
 								},
 								{
@@ -582,7 +579,7 @@
 									"region": "North America"
 								},
 								{
-									"cityName": "Norfolk, US",
+									"cityName": "Norfolk, US*",
 									"region": "North America"
 								},
 								{
@@ -598,10 +595,6 @@
 									"region": "North America"
 								},
 								{
-									"cityName": "Chișinău, MD*",
-									"region": "Europe"
-								},
-								{
 									"cityName": "Houston, US*",
 									"region": "North America"
 								},
@@ -610,15 +603,15 @@
 									"region": "North America"
 								},
 								{
-									"cityName": "Mexico City, MX**",
+									"cityName": "Mexico City, MX*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
-									"cityName": "Montgomery, US",
+									"cityName": "Montgomery, US*",
 									"region": "North America"
 								},
 								{
-									"cityName": "Memphis, US",
+									"cityName": "Memphis, US*",
 									"region": "North America"
 								},
 								{
@@ -646,7 +639,7 @@
 									"region": "Middle East"
 								},
 								{
-									"cityName": "Tel Aviv, IL",
+									"cityName": "Tel Aviv, IL*",
 									"region": "Middle East"
 								},
 								{
@@ -654,11 +647,11 @@
 									"region": "Europe"
 								},
 								{
-									"cityName": "Baghdad, IQ",
+									"cityName": "Baghdad, IQ*",
 									"region": "Middle East"
 								},
 								{
-									"cityName": "Reykjavík, IS**",
+									"cityName": "Reykjavík, IS*",
 									"region": "Europe"
 								},
 								{
@@ -670,7 +663,7 @@
 									"region": "North America"
 								},
 								{
-									"cityName": "Kathmandu, NP",
+									"cityName": "Kathmandu, NP*",
 									"region": "Asia"
 								},
 								{
@@ -694,15 +687,15 @@
 									"region": "North America"
 								},
 								{
-									"cityName": "Durban, ZA",
+									"cityName": "Durban, ZA*",
 									"region": "Africa"
 								},
 								{
-									"cityName": "Mcallen, US*",
+									"cityName": "McAllen, US*",
 									"region": "North America"
 								},
 								{
-									"cityName": "Kyiv, UA",
+									"cityName": "Kyiv, UA*",
 									"region": "Europe"
 								},
 								{
@@ -742,7 +735,7 @@
 									"region": "Europe"
 								},
 								{
-									"cityName": "Yerevan, AM",
+									"cityName": "Yerevan, AM*",
 									"region": "Asia"
 								},
 								{
@@ -758,11 +751,11 @@
 									"region": "Europe"
 								},
 								{
-									"cityName": "Cape Town, ZA",
+									"cityName": "Cape Town, ZA*",
 									"region": "Africa"
 								},
 								{
-									"cityName": "Colombo, LK",
+									"cityName": "Colombo, LK*",
 									"region": "Asia"
 								},
 								{
@@ -778,7 +771,7 @@
 									"region": "North America"
 								},
 								{
-									"cityName": "Tampa, US**",
+									"cityName": "Tampa, US*",
 									"region": "North America"
 								},
 								{
@@ -814,7 +807,7 @@
 									"region": "Europe"
 								},
 								{
-									"cityName": "Brisbane, AU**",
+									"cityName": "Brisbane, AU*",
 									"region": "Oceania"
 								},
 								{
@@ -826,7 +819,7 @@
 									"region": "North America"
 								},
 								{
-									"cityName": "Taipei",
+									"cityName": "Taipei*",
 									"region": "Asia"
 								},
 								{
@@ -870,7 +863,7 @@
 									"region": "North America"
 								},
 								{
-									"cityName": "Manila, PH",
+									"cityName": "Manila, PH*",
 									"region": "Asia"
 								},
 								{
@@ -886,7 +879,7 @@
 									"region": "Europe"
 								},
 								{
-									"cityName": "Zürich, CH",
+									"cityName": "Zürich, CH*",
 									"region": "Europe"
 								},
 								{
@@ -902,15 +895,15 @@
 									"region": "Middle East"
 								},
 								{
-									"cityName": "Chennai, IN**",
+									"cityName": "Chennai, IN*",
 									"region": "Asia"
 								},
 								{
-									"cityName": "New Delhi, IN",
+									"cityName": "New Delhi, IN*",
 									"region": "Asia"
 								},
 								{
-									"cityName": "Mumbai, IN**",
+									"cityName": "Mumbai, IN*",
 									"region": "Asia"
 								},
 								{
@@ -950,11 +943,11 @@
 									"region": "Europe"
 								},
 								{
-									"cityName": "Melbourne, AU**",
+									"cityName": "Melbourne, AU*",
 									"region": "Oceania"
 								},
 								{
-									"cityName": "Johannesburg, ZA**",
+									"cityName": "Johannesburg, ZA*",
 									"region": "Africa"
 								},
 								{
@@ -970,7 +963,7 @@
 									"region": "Asia"
 								},
 								{
-									"cityName": "Seoul, KR**",
+									"cityName": "Seoul, KR*",
 									"region": "Asia"
 								},
 								{
@@ -978,7 +971,7 @@
 									"region": "Europe"
 								},
 								{
-									"cityName": "Toronto, CA**",
+									"cityName": "Toronto, CA*",
 									"region": "North America"
 								},
 								{
@@ -990,7 +983,7 @@
 									"region": "North America"
 								},
 								{
-									"cityName": "Sydney, AU**",
+									"cityName": "Sydney, AU*",
 									"region": "Oceania"
 								},
 								{
@@ -1034,28 +1027,20 @@
 									"region": "North America"
 								},
 								{
-									"cityName": "Algiers, DZ",
+									"cityName": "Algiers, DZ*",
 									"region": "Africa"
 								},
 								{
-									"cityName": "Surat Thani, TH",
+									"cityName": "Surat Thani, TH*",
 									"region": "Asia"
 								},
 								{
-									"cityName": "Guam, GU",
+									"cityName": "Guam, GU*",
 									"region": "Oceania"
 								},
 								{
 									"cityName": "Dammam, SA",
 									"region": "Middle East"
-								},
-								{
-									"cityName": "Anquing, CN",
-									"region": "Mainland China"
-								},
-								{
-									"cityName": "Baoji, CN",
-									"region": "Mainland China"
 								},
 								{
 									"cityName": "Beijing, CN",
@@ -1067,10 +1052,6 @@
 								},
 								{
 									"cityName": "Changzhou, CN",
-									"region": "Mainland China"
-								},
-								{
-									"cityName": "Chengdu, CN",
 									"region": "Mainland China"
 								},
 								{
@@ -1102,15 +1083,7 @@
 									"region": "Mainland China"
 								},
 								{
-									"cityName": "Hohhot, CN",
-									"region": "Mainland China"
-								},
-								{
 									"cityName": "Huainan, CN",
-									"region": "Mainland China"
-								},
-								{
-									"cityName": "Jinhua, CN",
 									"region": "Mainland China"
 								},
 								{
@@ -1122,10 +1095,6 @@
 									"region": "Mainland China"
 								},
 								{
-									"cityName": "Maoming, CN",
-									"region": "Mainland China"
-								},
-								{
 									"cityName": "Nanchang, CN",
 									"region": "Mainland China"
 								},
@@ -1134,31 +1103,7 @@
 									"region": "Mainland China"
 								},
 								{
-									"cityName": "Qinhuangdao, CN",
-									"region": "Mainland China"
-								},
-								{
-									"cityName": "Quanzhou, CN",
-									"region": "Mainland China"
-								},
-								{
-									"cityName": "Quzhou, CN",
-									"region": "Mainland China"
-								},
-								{
 									"cityName": "Shanghai, CN",
-									"region": "Mainland China"
-								},
-								{
-									"cityName": "Shenyang, CN",
-									"region": "Mainland China"
-								},
-								{
-									"cityName": "Shiyan, CN",
-									"region": "Mainland China"
-								},
-								{
-									"cityName": "Suqian, CN",
 									"region": "Mainland China"
 								},
 								{
@@ -1166,27 +1111,7 @@
 									"region": "Mainland China"
 								},
 								{
-									"cityName": "Wuxi, CN",
-									"region": "Mainland China"
-								},
-								{
 									"cityName": "Xianyang, CN",
-									"region": "Mainland China"
-								},
-								{
-									"cityName": "Xining, CN",
-									"region": "Mainland China"
-								},
-								{
-									"cityName": "Xinyu, CN",
-									"region": "Mainland China"
-								},
-								{
-									"cityName": "Yichang, CN",
-									"region": "Mainland China"
-								},
-								{
-									"cityName": "Yiyang, CN",
 									"region": "Mainland China"
 								},
 								{
@@ -1206,11 +1131,11 @@
 									"region": "Europe"
 								},
 								{
-									"cityName": "Guayaquil, EC",
+									"cityName": "Guayaquil, EC*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
-									"cityName": "Caçador, BR",
+									"cityName": "Caçador, BR*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
@@ -1234,7 +1159,7 @@
 									"region": "Latin America & the Caribbean"
 								},
 								{
-									"cityName": "Belém, BR",
+									"cityName": "Belém, BR*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
@@ -1246,7 +1171,7 @@
 									"region": "Latin America & the Caribbean"
 								},
 								{
-									"cityName": "Belo Horizonte, BR",
+									"cityName": "Belo Horizonte, BR*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
@@ -1310,11 +1235,11 @@
 									"region": "Latin America & the Caribbean"
 								},
 								{
-									"cityName": "Accra, GH",
+									"cityName": "Accra, GH*",
 									"region": "Africa"
 								},
 								{
-									"cityName": "Chiang Mai, TH",
+									"cityName": "Chiang Mai, TH*",
 									"region": "Asia"
 								},
 								{
@@ -1374,7 +1299,7 @@
 									"region": "Middle East"
 								},
 								{
-									"cityName": "Georgetown, GY",
+									"cityName": "Georgetown, GY*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
@@ -1386,7 +1311,7 @@
 									"region": "Africa"
 								},
 								{
-									"cityName": "Santo Domingo, DO",
+									"cityName": "Santo Domingo, DO*",
 									"region": "Latin America & the Caribbean"
 								},
 								{
@@ -1422,22 +1347,6 @@
 									"region": "Europe"
 								},
 								{
-									"cityName": "Senai, MY*",
-									"region": "Asia"
-								},
-								{
-									"cityName": "Moldova*",
-									"region": "Europe"
-								},
-								{
-									"cityName": "Brunei*",
-									"region": "Asia"
-								},
-								{
-									"cityName": "Keflavik, ICLD*",
-									"region": "Europe"
-								},
-								{
 									"cityName": "Perth, AU*",
 									"region": "Oceania"
 								},
@@ -1464,6 +1373,238 @@
 								{
 									"cityName": "Hobart, AU*",
 									"region": "Oceania"
+								},
+								{
+									"cityName": "La Paz, BO*",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"cityName": "Austin, US*",
+									"region": "North America"
+								},
+								{
+									"cityName": "Oklahoma City, US*",
+									"region": "North America"
+								},
+								{
+									"cityName": "San Francisco, US*",
+									"region": "North America"
+								},
+								{
+									"cityName": "Anchorage, US",
+									"region": "North America"
+								},
+								{
+									"cityName": "Bangor, US*",
+									"region": "North America"
+								},
+								{
+									"cityName": "Guadalajara, MX",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"cityName": "Halifax, CA",
+									"region": "North America"
+								},
+								{
+									"cityName": "Sioux Falls, US",
+									"region": "North America"
+								},
+								{
+									"cityName": "Bridgetown, BB*",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"cityName": "Campos dos Goytacazes, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"cityName": "Chapeco, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"cityName": "Concepción, CL",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"cityName": "Kingston, JM",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"cityName": "Recife, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"cityName": "Santiago de los Caballeros, DO",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"cityName": "São José dos Campos, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"cityName": "Timbo, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"cityName": "Vitoria, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"cityName": "Annaba, DZ*",
+									"region": "Africa"
+								},
+								{
+									"cityName": "Cairo, EG",
+									"region": "Africa"
+								},
+								{
+									"cityName": "Kinshasa, CD",
+									"region": "Africa"
+								},
+								{
+									"cityName": "Oran, DZ",
+									"region": "Africa"
+								},
+								{
+									"cityName": "Ouagadougou, BF",
+									"region": "Africa"
+								},
+								{
+									"cityName": "Izmir, TR",
+									"region": "Europe"
+								},
+								{
+									"cityName": "Stuttgart, DE",
+									"region": "Europe"
+								},
+								{
+									"cityName": "Tirana, AL",
+									"region": "Europe"
+								},
+								{
+									"cityName": "Sulaymaniyah, IQ",
+									"region": "Middle East"
+								},
+								{
+									"cityName": "Denpasar, ID*",
+									"region": "Asia"
+								},
+								{
+									"cityName": "Kannur, IN",
+									"region": "Asia"
+								},
+								{
+									"cityName": "Kaohsiung City, TW*",
+									"region": "Asia"
+								},
+								{
+									"cityName": "Kochi, IN*",
+									"region": "Asia"
+								},
+								{
+									"cityName": "Suva, FJ",
+									"region": "Oceania"
+								},
+								{
+									"cityName": "Tahiti, PF",
+									"region": "Oceania"
+								},
+								{
+									"cityName": "Beihai, CN",
+									"region": "Mainland China"
+								},
+								{
+									"cityName": "Changsha, CN",
+									"region": "Mainland China"
+								},
+								{
+									"cityName": "Chongqing, CN",
+									"region": "Mainland China"
+								},
+								{
+									"cityName": "Hengshui, CN",
+									"region": "Mainland China"
+								},
+								{
+									"cityName": "Kunming, CN",
+									"region": "Mainland China"
+								},
+								{
+									"cityName": "Shaoxing, CN",
+									"region": "Mainland China"
+								},
+								{
+									"cityName": "Shenzhen, CN",
+									"region": "Mainland China"
+								},
+								{
+									"cityName": "Tianjin, CN",
+									"region": "Mainland China"
+								},
+								{
+									"cityName": "Wuhu, CN",
+									"region": "Mainland China"
+								},
+								{
+									"cityName": "Yangquan, CN",
+									"region": "Mainland China"
+								},
+								{
+									"cityName": "Zhongshan, CN",
+									"region": "Mainland China"
+								},
+								{
+									"cityName": "Zibo, CN",
+									"region": "Mainland China"
+								},
+								{
+									"cityName": "Abidjan, CI*",
+									"region": "Africa"
+								},
+								{
+									"cityName": "Aracatuba, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"cityName": "Barranquilla, CO",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"cityName": "Da Nang, VN",
+									"region": "Asia"
+								},
+								{
+									"cityName": "Palmas, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"cityName": "San Juan, PR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"cityName": "Skopje, MK",
+									"region": "Europe"
+								},
+								{
+									"cityName": "Tarlac City, PH",
+									"region": "Asia"
+								},
+								{
+									"cityName": "Tver, RU",
+									"region": "Europe"
+								},
+								{
+									"cityName": "Yamoussoukro, CI*",
+									"region": "Africa"
+								},
+								{
+									"cityName": "Entebbe, UG*",
+									"region": "Africa"
+								},
+								{
+									"cityName": "Port of Spain, TT*",
+									"region": "Latin America & the Caribbean"
 								}
 							]
 						}
@@ -2040,13 +2181,13 @@
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17ovo10a1mEsAZ7ZwFKfFl/d0d561ddb71ecdb723357bb2f79bc979/logo_mars_gray_32px-wrapper.svg"
 								},
-								"description": null
+								"description": "Mars logo"
 							},
 							{
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/75Iu2nwjYyY5rckEPqO9hr/57b676a2cf5fe6c1e2b3663d7131fda5/logo_loreal_gray_32px-wrapper.svg"
 								},
-								"description": null
+								"description": "L'Oreal logo"
 							},
 							{
 								"file": {
@@ -2064,7 +2205,7 @@
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mAzLb3ofkkG38jtcP2Ys8/094958a88df30575d79254ee6615a82f/logo_ibm_gray_32px-wrapper.svg"
 								},
-								"description": null
+								"description": "IBM logo"
 							},
 							{
 								"file": {
@@ -2076,7 +2217,7 @@
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mhur0vl8q716TyGFZuCIG/acb851172c83f325ae99e527ef4c216e/logo_shopify_color_32px-wrapper.svg"
 								},
-								"description": null
+								"description": "Shopify logo"
 							},
 							{
 								"file": {
@@ -2088,7 +2229,7 @@
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/47baOjkvX7lLtmTdWvCYI9/009360a8301d33def2ea3ffe22a922df/logo_labcorp_color_32px-wrapper.svg"
 								},
-								"description": null
+								"description": "LabCorp logo"
 							},
 							{
 								"file": {
@@ -2120,7 +2261,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Xar1H4WcFHHkHRDzMypMh/1f8989ae11cb464cc640c7121d0be9a6/logo_mars_trusted-by_gray.svg"
 									},
-									"description": ""
+									"description": "Mars logo"
 								},
 								"brandfolderAsset": null,
 								"brandfolderAssetMobile": null
@@ -2135,7 +2276,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xn47h0gWiUSwJ0PU3Ysvk/683779108bfd6eeb62fbac5135780fe6/logo_loreal_trusted-by_gray.svg"
 									},
-									"description": ""
+									"description": "L'Oréal logo"
 								},
 								"brandfolderAsset": null,
 								"brandfolderAssetMobile": null
@@ -2180,7 +2321,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/OMwO1Fr8BxHVum0iBbatc/979c1807f5810edc903d4b07c18e0cb0/logo_ibm_trusted-by_gray.svg"
 									},
-									"description": ""
+									"description": "IBM logo"
 								},
 								"brandfolderAsset": null,
 								"brandfolderAssetMobile": null
@@ -2210,7 +2351,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVeELky7fceWRpfBvN8qr/4e13aa3d8dd73e1f091f3de966fdc9cb/logo_shopify_trusted-by_gray.svg"
 									},
-									"description": ""
+									"description": "Shopify logo"
 								},
 								"brandfolderAsset": null,
 								"brandfolderAssetMobile": null
@@ -2240,7 +2381,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AsuJijKk8EMH5s1ae56nx/b13406881aa864b7e17b2233a0d090ef/logo_labcorp_trusted-by_gray.svg"
 									},
-									"description": ""
+									"description": "LabCorp logo"
 								},
 								"brandfolderAsset": null,
 								"brandfolderAssetMobile": null
@@ -2296,7 +2437,6 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"hasAdobeExperiment": false,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -2321,10 +2461,10 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": false,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

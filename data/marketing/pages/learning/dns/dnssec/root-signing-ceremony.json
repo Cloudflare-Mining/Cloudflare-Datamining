@@ -1,0 +1,839 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/dns/dnssec/root-signing-ceremony/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "1pTVar6IER14ukrePcOoeX",
+				"urlSlug": "dns/dnssec/root-signing-ceremony/",
+				"metaTags": {
+					"metaTitle": "The DNSSEC Root Signing Ceremony",
+					"metaDescription": "The root DNS zone contains information about how to query the top-level domain (TLD) name servers (.com, .edu, .org, etc). It enables Internet users to access domain names in all TLDs, even brand new ones like .software and .bank, making it an integral part of the global Internet.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "7skJGddyApM6rrCZOvn9YF",
+					"learningCenterName": "dns",
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "2j9vWGfXAwGGPl7LN1Ezi7",
+							"displayText": "What is DNS?",
+							"url": "/learning/dns/what-is-dns/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "3noj8iKecv1MxsE67u045T",
+							"displayText": "What is 1.1.1.1?",
+							"url": "/learning/dns/what-is-1.1.1.1/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5H0d0oeRRCTIjGxZR65GiF",
+							"name": "DNS Records (dropdown)",
+							"displayText": "DNS Records",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "52pTZ4IwdIcqznT6vpOg8O",
+									"displayText": "Overview",
+									"url": "/learning/dns/dns-records/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6zoT4UnozC7f0YgaA4GayP",
+									"displayText": "DNS A Record",
+									"url": "/learning/dns/dns-records/dns-a-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "216n5uGl275SXOSCgPUKYE",
+									"displayText": "DNS AAAA Record",
+									"url": "/learning/dns/dns-records/dns-aaaa-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "25IZh36P1Hroccd1Hbn0J9",
+									"displayText": "DNS CNAME Record",
+									"url": "/learning/dns/dns-records/dns-cname-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3RB9F8AcZ12cYLoa88V0tw",
+									"displayText": "DNS MX Record",
+									"url": "/learning/dns/dns-records/dns-mx-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5POxZ3Tq5wtr5nvPh3EjOa",
+									"displayText": "DNS TXT Record",
+									"url": "/learning/dns/dns-records/dns-txt-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4PwRBNlUE7MUBPZhTVrFm7",
+									"displayText": "DNS NS Record",
+									"url": "/learning/dns/dns-records/dns-ns-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7JzBM5jTjsL8wyh3HOEmZx",
+									"displayText": "DNS SOA Record",
+									"url": "/learning/dns/dns-records/dns-soa-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "54EtZ8wu9XeFUmjpP4ffcM",
+									"displayText": "DNS SRV Record",
+									"url": "/learning/dns/dns-records/dns-srv-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3ZJqZzOr67RDB035iGoFfq",
+									"displayText": "DNS PTR Record",
+									"url": "/learning/dns/dns-records/dns-ptr-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4cRZgnJnlTJ0btlrWSVDQs",
+									"displayText": "DNSKEY and DS Records",
+									"url": "/learning/dns/dns-records/dnskey-ds-records/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5qZnEhej6gYQitbACd6zyl",
+									"displayText": "DNS SPF Record",
+									"url": "/learning/dns/dns-records/dns-spf-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4xfxdFdQt99i8HyQJnxrB1",
+									"displayText": "DNS DKIM Record",
+									"url": "/learning/dns/dns-records/dns-dkim-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Q49hOQqCkiSUJkM1OpfYS",
+									"displayText": "DNS DMARC Record",
+									"url": "/learning/dns/dns-records/dns-dmarc-record/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "3ZnjBOMP0HJxvAFLXbYSzJ",
+							"name": "DNS Header: Securing DNS drop-down",
+							"displayText": "Securing DNS",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
+									"displayText": "DNS over TLS",
+									"url": "/learning/dns/dns-over-tls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6eI7dSVO2bxGNiIj6iKq0n",
+									"displayText": "DNS security",
+									"url": "/learning/dns/dns-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2PaGg8hMqJM1igspXYbvv3",
+									"displayText": "DNS Cache Poisoning",
+									"url": "/learning/dns/dns-cache-poisoning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
+									"displayText": "DNS Fast Flux",
+									"url": "/learning/dns/dns-fast-flux/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+									"displayText": "Domain hijacking",
+									"url": "/learning/dns/what-is-domain-hijacking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+									"displayText": "Common DNS issues",
+									"url": "/learning/dns/common-dns-issues/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2AtQTtUFJafy4cPr8qwVxS",
+							"name": "DNS Header: Domain Registration drop-down",
+							"displayText": "Domain Registration",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1ikXSOCWeoGFzBnkDIwuMY",
+									"displayText": "Domain Name",
+									"url": "/learning/dns/glossary/what-is-a-domain-name/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
+									"displayText": "Top-Level Domain",
+									"url": "/learning/dns/top-level-domain/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2h2AMLDpLE26iXPuwzXW9I",
+									"displayText": "Domain name registrar",
+									"url": "/learning/dns/glossary/what-is-a-domain-name-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7nawVf9j5ZfeeEDxxQkox6",
+									"displayText": "Best Domain Name Registrar",
+									"url": "/learning/dns/glossary/choose-the-best-domain-name-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4EJToFmoxmGMpGfGw62Uwb",
+									"displayText": "Expired Domains",
+									"url": "/learning/dns/glossary/expired-domains/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
+									"displayText": "Cloudflare Registrar",
+									"url": "/learning/dns/what-is-cloudflare-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+									"displayText": "How to buy a domain name",
+									"url": "/learning/dns/how-to-buy-a-domain-name/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+									"displayText": "How to transfer a domain name",
+									"url": "/learning/dns/how-to-transfer-a-domain-name/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1KSq89nu1bbMJ3FMyFOV0S",
+							"name": "DNS Header: Glossary ",
+							"displayText": "DNS Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "499ZJa7WyHPnVn7bN9oWez",
+									"displayText": "DNS Zone",
+									"url": "/learning/dns/glossary/dns-zone/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Zxjal5K4Ftso190MOHh5b",
+									"displayText": "IP Address",
+									"url": "/learning/dns/glossary/what-is-my-ip-address/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5OM8E8MngEWEbPk2z3dL8K",
+									"displayText": "What's a DNS Server?",
+									"url": "/learning/dns/what-is-a-dns-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "zUbDVzpVYeLJyroEFft7S",
+									"displayText": "DNS Root Server",
+									"url": "/learning/dns/glossary/dns-root-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "70gaOJdXvkgXzRRApB6HkS",
+									"displayText": "Dynamic DNS",
+									"url": "/learning/dns/glossary/dynamic-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5io6sFzA7GqUtf7iJ48iDZ",
+									"displayText": "Reverse DNS",
+									"url": "/learning/dns/glossary/reverse-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5IMnlrCJD7x0FVpewqkOIR",
+									"displayText": "Primary vs. secondary DNS",
+									"url": "/learning/dns/glossary/primary-secondary-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3SokyTEzCKuAzAad9haVI9",
+									"displayText": "Round-robin DNS",
+									"url": "/learning/dns/glossary/round-robin-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5n1f5p2zH49IYRP3FcVzjQ",
+									"displayText": "Anycast DNS",
+									"url": "/learning/dns/what-is-anycast-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1vco0E7j6jTBPLi9OYJ6eO",
+									"displayText": "Recursive DNS",
+									"url": "/learning/dns/what-is-recursive-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3MOZsA9003MKQ1GDZMGFY5",
+									"displayText": "DNS Server Types",
+									"url": "/learning/dns/dns-server-types/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7LEmGmCIHDsIsBT3vXJtG6",
+							"name": "DNS Header: theNET",
+							"displayText": "theNET",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1n7zfUXeehnxV53QhYGE36",
+									"displayText": "The evolving DNS threat landscape",
+									"url": "http://www.cloudflare.com/learning/insights-dns-landscape"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5bnkrucwjePapZ8qR6nc2D",
+							"name": "DNSSEC Protection",
+							"displayText": "DNSSEC Protection",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1FwG3Iiux41pJ6OLW8kRsW",
+									"displayText": "How DNSSEC Works",
+									"url": "learning/dns/dnssec/how-dnssec-works/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6FnRKWe14VFgollBzoepo9",
+									"displayText": "The DNSSEC Root Signing Ceremony",
+									"url": "learning/dns/dnssec/root-signing-ceremony/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "apgrV3UywiWRwe78tsxSg",
+									"displayText": "ECDSA: The missing piece of DNSSEC",
+									"url": "learning/dns/dnssec/ecdsa-and-dnssec/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "59YqILiJbj7grfW3aTGPj7",
+									"displayText": "Universal DNSSEC",
+									"url": "learning/dns/dnssec/universal-dnssec/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "7pedUTjJAQ6HVpZxZEQCUP",
+					"learningCenterName": "dns",
+					"column1Title": "About DNS",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5bri15IPDKK6k63oZBUMsj",
+						"name": "DNS Footer: About DNS",
+						"displayText": "About DNS",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2j9vWGfXAwGGPl7LN1Ezi7",
+								"displayText": "What is DNS?",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6eI7dSVO2bxGNiIj6iKq0n",
+								"displayText": "DNS security",
+								"url": "/learning/dns/dns-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
+								"displayText": "DNS over TLS",
+								"url": "/learning/dns/dns-over-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+								"displayText": "How to buy a domain name",
+								"url": "/learning/dns/how-to-buy-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+								"displayText": "How to transfer a domain name",
+								"url": "/learning/dns/how-to-transfer-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+								"displayText": "Common DNS issues",
+								"url": "/learning/dns/common-dns-issues/"
+							}
+						]
+					},
+					"column2Title": "DNS Servers",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "6phQ5syd9rr3QdKWNSj1D8",
+						"name": "DNS Footer: DNS Servers",
+						"displayText": "DNS Servers",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5OM8E8MngEWEbPk2z3dL8K",
+								"displayText": "What's a DNS Server?",
+								"url": "/learning/dns/what-is-a-dns-server/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "zUbDVzpVYeLJyroEFft7S",
+								"displayText": "DNS Root Server",
+								"url": "/learning/dns/glossary/dns-root-server/"
+							}
+						]
+					},
+					"column3Title": "DNS Records",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7dBB0Vi2GBftSRtz2gOXAE",
+						"name": "DNS Footer: DNS Records",
+						"displayText": "DNS Records",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52pTZ4IwdIcqznT6vpOg8O",
+								"displayText": "Overview",
+								"url": "/learning/dns/dns-records/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6zoT4UnozC7f0YgaA4GayP",
+								"displayText": "DNS A Record",
+								"url": "/learning/dns/dns-records/dns-a-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "216n5uGl275SXOSCgPUKYE",
+								"displayText": "DNS AAAA Record",
+								"url": "/learning/dns/dns-records/dns-aaaa-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "25IZh36P1Hroccd1Hbn0J9",
+								"displayText": "DNS CNAME Record",
+								"url": "/learning/dns/dns-records/dns-cname-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3RB9F8AcZ12cYLoa88V0tw",
+								"displayText": "DNS MX Record",
+								"url": "/learning/dns/dns-records/dns-mx-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5POxZ3Tq5wtr5nvPh3EjOa",
+								"displayText": "DNS TXT Record",
+								"url": "/learning/dns/dns-records/dns-txt-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4PwRBNlUE7MUBPZhTVrFm7",
+								"displayText": "DNS NS Record",
+								"url": "/learning/dns/dns-records/dns-ns-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7JzBM5jTjsL8wyh3HOEmZx",
+								"displayText": "DNS SOA Record",
+								"url": "/learning/dns/dns-records/dns-soa-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "54EtZ8wu9XeFUmjpP4ffcM",
+								"displayText": "DNS SRV Record",
+								"url": "/learning/dns/dns-records/dns-srv-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3ZJqZzOr67RDB035iGoFfq",
+								"displayText": "DNS PTR Record",
+								"url": "/learning/dns/dns-records/dns-ptr-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4cRZgnJnlTJ0btlrWSVDQs",
+								"displayText": "DNSKEY and DS Records",
+								"url": "/learning/dns/dns-records/dnskey-ds-records/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5qZnEhej6gYQitbACd6zyl",
+								"displayText": "DNS SPF Record",
+								"url": "/learning/dns/dns-records/dns-spf-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4xfxdFdQt99i8HyQJnxrB1",
+								"displayText": "DNS DKIM Record",
+								"url": "/learning/dns/dns-records/dns-dkim-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q49hOQqCkiSUJkM1OpfYS",
+								"displayText": "DNS DMARC Record",
+								"url": "/learning/dns/dns-records/dns-dmarc-record/"
+							}
+						]
+					},
+					"column4Title": "DNS Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5WMBaCE7sRnxCptrlp0KcN",
+						"name": "DNS Footer: Glossary",
+						"displayText": "DNS Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3noj8iKecv1MxsE67u045T",
+								"displayText": "What is 1.1.1.1?",
+								"url": "/learning/dns/what-is-1.1.1.1/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6v4wbr2ex8UmyM5nD2kkKL",
+								"displayText": "What is My IP Address?",
+								"url": "/learning/dns/glossary/what-is-my-ip-address/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "499ZJa7WyHPnVn7bN9oWez",
+								"displayText": "DNS Zone",
+								"url": "/learning/dns/glossary/dns-zone/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "70gaOJdXvkgXzRRApB6HkS",
+								"displayText": "Dynamic DNS",
+								"url": "/learning/dns/glossary/dynamic-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5io6sFzA7GqUtf7iJ48iDZ",
+								"displayText": "Reverse DNS",
+								"url": "/learning/dns/glossary/reverse-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5IMnlrCJD7x0FVpewqkOIR",
+								"displayText": "Primary vs. secondary DNS",
+								"url": "/learning/dns/glossary/primary-secondary-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3SokyTEzCKuAzAad9haVI9",
+								"displayText": "Round-robin DNS",
+								"url": "/learning/dns/glossary/round-robin-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5n1f5p2zH49IYRP3FcVzjQ",
+								"displayText": "Anycast DNS",
+								"url": "/learning/dns/what-is-anycast-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1vco0E7j6jTBPLi9OYJ6eO",
+								"displayText": "Recursive DNS",
+								"url": "/learning/dns/what-is-recursive-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2PaGg8hMqJM1igspXYbvv3",
+								"displayText": "DNS Cache Poisoning",
+								"url": "/learning/dns/dns-cache-poisoning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1ikXSOCWeoGFzBnkDIwuMY",
+								"displayText": "Domain Name",
+								"url": "/learning/dns/glossary/what-is-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2h2AMLDpLE26iXPuwzXW9I",
+								"displayText": "Domain name registrar",
+								"url": "/learning/dns/glossary/what-is-a-domain-name-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7nawVf9j5ZfeeEDxxQkox6",
+								"displayText": "Best Domain Name Registrar",
+								"url": "/learning/dns/glossary/choose-the-best-domain-name-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4EJToFmoxmGMpGfGw62Uwb",
+								"displayText": "Expired Domains",
+								"url": "/learning/dns/glossary/expired-domains/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
+								"displayText": "Cloudflare Registrar",
+								"url": "/learning/dns/what-is-cloudflare-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
+								"displayText": "DNS Fast Flux",
+								"url": "/learning/dns/dns-fast-flux/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
+								"displayText": "Top-Level Domain",
+								"url": "/learning/dns/top-level-domain/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+								"displayText": "Domain hijacking",
+								"url": "/learning/dns/what-is-domain-hijacking/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2FBivsdi2bchWEIqvMoEJ",
+						"name": "DNS Footer: Learning Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7CoqFqlHQVmsyV0mxgXUs2",
+								"displayText": "AI Learning Center",
+								"url": "/learning/ai/what-is-artificial-intelligence/"
+							}
+						]
+					}
+				},
+				"header": "The DNSSEC Root Signing Ceremony",
+				"blurbSubHeader": "The root DNS zone contains information about how to query the top-level domain (TLD) name servers (.com, .edu, .org, etc). It enables Internet users to access domain names in all TLDs, even brand new ones like .software and .bank, making it an integral part of the global Internet.",
+				"objectivesHeader": "Test",
+				"objectivesList": [
+					"Understand what the Root Signing Ceremony is",
+					"Identify the key individuals involved in the Root Signing Ceremony",
+					"Explore the Root Signing Ceremony procedure"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1SMJ4pF8JegIMgSOBwUWIM",
+						"displayText": "Empty related article - default sidebar form",
+						"url": "   "
+					}
+				],
+				"enablementBlade": null,
+				"desktopMainContent": "<style>\n  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .ttu.f2.fw7.mt6.mb0.orange0,  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .divider.pv2.w-100,  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .below-divider{\n    display: none\n  }\n</style>\n<p>\n  In <a href=\"/learning/dns/dnssec/how-dnssec-works/\">How DNSSEC Works</a>, we explained how trust in DNSSEC is derived from the parent zone's DS resource record. However, the root DNS zone has no parent, so how can we trust the integrity and authenticity of its information?\n</p>\n\n<img class=\"responsive-image-pad-center\" title=\"official ceremony photo\" alt=\"official ceremony photo\" src=\"/img/products/official-ceremony-photo.jpg\">\n\n<p>\n  Photo courtesy of IANA\n<br><br>\nThat's the purpose of the Root Signing Ceremony—a rigorous procedure around signing the root DNS zone's public keying information for the next few months. The private signing key used in this process is quite literally the key to the entire DNSSEC-protected Internet. A public, audited, and tightly controlled ceremony around accessing this key is a necessity for DNSSEC to succeed as a global standard.\n<br><br>\nÓlafur Guðmundsson, an engineering manager at Cloudflare and Crypto Officer at ICANN, participated in the ceremony this August. These are his reflections on the Root Signing Ceremony.\n</p>\n<br>\n\n<h2>\n  Where Is the Root-Signing Key?\n</h2>\n\n<p>\n  There are two geographically distinct locations that safeguard the root key-signing key: El Segundo, CA and Culpeper, VA. Both are secure facilities, and they contain redundant copies of the key. The ceremony alternates between the El Segundo and Culpeper locations.\n</p>\n\n<h2>\n  Ceremony Participants\n</h2>\n\n<ul>\n  <li>The Ceremony Administrator</li>\n  <li>An Internal Witness</li>\n  <li>The Credentials Safe Controller</li>\n  <li>The Hardware Safe Controller</li>\n  <li>Crypto Officer #1</li>\n  <li>Crypto Officer #2</li>\n  <li>Crypto Officer #3</li>\n</ul>\n\n<p>\n  Each of these participants can only perform certain parts of the ceremony. Their roles are divided in a way that ensures less than a 1:1,000,000 chance that a group of conspirators could compromise the root-signing key, assuming a 5% dishonesty rate (yes, that's formally in the specification) amongst these individuals.\n<p>\n\n  <img class=\"w-100\" src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/74DJaCth1sSblLhzRCVfEz/2eaef93266148f0d8a4f8b7d92afbb50/diagram-who-holds-the-key.svg\">\n\n<p>\n  The first four of these individuals are ICANN staff members, while the three crypto officers are trusted volunteers from the Internet community. Verisign also plays an important role, as they are the root zone maintainer responsible for generating the root zone-signing key that is signed during the ceremony. In addition, the entire procedure is audited by two Big Four auditing firms that are not associated with either Verisign or ICANN.\n</p>\n\n<h2>Ceremony Preparations</h2>\n\n<p>\n  There are only 14 available Crypto Officers in the world (7 are affiliated with each location), and at least three of them must attend the ceremony. So, the first step is to poll the Crypto Officers to find a two-day window when 4-5 of them can attend. We usually try to find a period where more than the minimum three are available, as emergencies or travel problems can cause a ceremony cancellation.\n<br><br>\nThe last ceremony took place on August 13th at the El Segundo facility. To get into the facility, I had to show a government issued ID and show the contents of my bag. In return, I got an ID strip attached to my shirt. Then, I waited for an ICANN staffer to escort me inside. To get through the door, he had to swipe an access card and place his hand on a scanner.\n<br><br>\nThe first stop was a conference room where lunch was being served. We mingled there while waiting for the rest of the ceremony participants to arrive. Being Crypto Officers, most of the small talk revolved around trying to steal root-signing key. We figured it would only take a half hour or so to blast a hole in the wall and walk out with the safe; however, that would probably trip the seismic sensors, so we would know that the key was compromised.\n<br><br>\nOnce everybody showed up, we were escorted to the ceremony room in small groups as the entrance room only holds about 8 people. In this room we sign a log before we are allowed into the main key ceremony room. To access the entrance room, an ICANN staff member needs to use a smart card; to enter the main room a retina scan is needed of said staffer.\n</p>\n\n<h2>\n  A Guy Walks Into a Room with Two Safes\n</h2>\n\n<p>\n  The ceremony room has a cage on the side of it that contains two safes. These safes store all of the sensitive material used during the ceremony. The cage can only be entered in the presence of the Ceremony Administrator and an Internal Witness. This is enforced by a second retina scan and access cards from both the Ceremony Administrator and Internal Witness.\n</p>\n\n<img class=\"w-100\" src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/4bqxxs9NxgtzcLnFpOvKx1/d4865da18e1ac7130f2c64c57ec79375/diagram-a-guy-walks-into-a-room-with-two-safes.svg\">\n\n<p>\n  However, neither the Ceremony Administrator or Internal Witness can actually open the safes. For that, we need the Safe Controllers\n</p>\n\n<h2>\n  The Credentials Safe\n</h2>\n\n<p>\n  The Credentials Safe Controller opens the first safe, and inside we find several safe deposit boxes, each requiring two keys. The Ceremony Administrator has one of those keys, and each of the Crypto Officers has a key to a different box. Together (and in the presence of the Internal Witness and Credentials Safe Controller), the Ceremony Administrator and the Crypto Officers open three safe deposit boxes.\n</p>\n\n<img class=\"w-100\" src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/4CLRzTpOHxAwO1NHEjklAt/e6ef5993fd135ecb492c3d59d76bf2af/diagram-the-credentials-safe.svg\">\n\n<p>\n  Each safe deposit box contains an operator card and a security permissions card for the Hardware Security Module (HSM), which we'll discuss in the next section. Three operator cards are required to unlock the HSM, which is why three Crypto Officers must attend the ceremony. The security permissions cards are only used when we need to transfer the root-signing key, so we usually leave those in the safe deposit box.\n<br><br>\nBoth cards are stored inside plastic cases wrapped in tamper-evident bags (most of the ceremony revolves around detecting foul-play, if you couldn't tell already). These cards stay in the safe when not in use, which means the last time someone touched them was at the previous Root Signing Ceremony. The tamper-evident bags help ensure that they haven't been altered in the interim.\n<br><br>\nThe plastic cases are also very important, as someone discovered that it was possible to manipulate the cards by poking needles through the tamper evident bag, which would not necessarily be noticeable when inspecting the bag. This is a good example of how the security procedures around the ceremony are constantly evolving.\n</p>\n\n<img class=\"w-100\" src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/vFsW4ObnEkXU5uN7h1jZJ/737f34662aa10261f44b9500bde2e5c5/tamper-evident-bag.jpg\">\n\n<h2>\n  The Hardware Safe\n</h2>\n\n<p>\n  The Hardware Safe Controller then enters the safe room and opens up the second safe, which contains a tamper-proof hardware security module (HSM). The HSM is a physical computing device designed specifically for working with sensitive cryptographic material. You can think of it as a digital lock-box for the root-signing key. It can only be accessed with the three operator cards that we collected from the credentials safe.\n</p>\n\n<img class=\"w-100\" src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NA13UESVs2p5vcs8ghNVE/d118fd58f67fe02277fbb5cc4c97b697/diagram-the-hardware-safe.svg\">\n\n<p>\n  The HSM can't be operated without an external interface, so the hardware safe also contains a special laptop that can send commands to the HSM. This laptop has no battery, hard disk, or even a clock backup battery, and thus can't store state once it's unplugged. The goal is to eliminate any possibility of the root-signing key leaving the HSM after the ceremony ends.\n<br><br>\nWe now have the hardware to perform the Root Signing Ceremony. Notice that the presence of all 7 participants is required to physically access the materials for the ceremony. Again, the idea is to minimize the risk of malicious conspirators by separating access to the HSM from access to the operator cards that activate the HSM.\n<br><br>\nA USB containing logs from each of the prior ceremonies and a DVD used to boot the laptop (both in their own tamper-evident bags) are also removed from this safe.\n</p>\n\n<h2>\n  Equipment Setup\n</h2>\n\n<p>\n  We're now ready to perform the actual Root Signing Ceremony. All of the equipment is laid out on a table in full view of all those attending, as well as the camera used to audit the proceedings.\n<br><br>\nOne by one, each of the three Crypto Officers is called up to the table and asked to hand over the HSM operator card they took out of their safe deposit box. Before doing so, they verify that the tamper-evident bag is in the same condition as when they placed it in the safe deposit box at the end of the previous ceremony. Once they hand it over, only the Ceremony Administrator is allowed to touch the card.\n</p>\n\n<img class=\"w-100\" src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/1shNsRxJISH8pF1J6g9rFm/2419bf770213b977d74c1999b1bbd24d/diagram-equipment-setup.svg\">\n\n<p>\n  The Ceremony Administrator boots the laptop from a DVD and initializes the USB that records the ceremony logs. Remember that the laptop has no clock battery backup, which means the time needs to be set manually from a special wall clock in the ceremony room. It's the same clock used since the first ceremony five years ago, and it's completely isolated from the rest of the world. It's drifted slightly, but that's fine, as it's only used for logging purposes.\n</p>\n\n<img class=\"w-100\" src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/1kRFXJuoeWk4qfT3myevp5/c7c6b8a9fe08dfb0e0cabccb01e7f905/ceremony-table.jpg\">\n\n<p>\n  Ceremony table, before equipment setup\n<br><br>\nNext, the Ceremony Administrator needs to activate the HSM by placing the three operator cards collected from the Crypto Officers into the machine. Then, the HSM is connected to the laptop via ethernet cable. The Ceremony Administrator now has access to the root-signing key.\n</p>\n\n<h2>\n  Signing the Root DNS Keys\n</h2>\n\n<p>\n  There are two geographically distinct locations that safeguard the root key-signing key: El Segundo, CA and Culpeper, VA. Both are secure facilities, and they contain redundant copies of the key. The ceremony alternates between the El Segundo and Culpeper locations.\n</p>\n\n<img class=\"w-100\" src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/4fiAmVczwNxw1xE4G9dos5/b6c9792b0a6a0026c7df27857ad7f297/diagram-signing-the-root-dns-keys.svg\">\n\n<p>\n  The laptop/HSM system is air-gapped, meaning it is physically isolated from any potentially insecure computer networks (e.g., the Internet). The only way to move information from the outside world into the laptop/HSM is via USB drive. Accordingly, the key-signing request is loaded into the laptop via USB. To ensure that the correct key is being signed, a PGP hash of the key-signing request is computed, and Verisign verifies that it is identical to the one they provided.\n<br><br>\nFinally, the Ceremony Administrator can sign the KSR with the private key-signing key. He enters \"Y\" on a command prompt, and the dramatic portion of the ceremony is complete. The result is a collection of digital signatures, otherwise known in DNSSEC as the RRSIG record, which we'll explore in a moment.\n<br><br>\nNote that the KSR actually contains a bundle of zone-signing keys that are rotated out every 15-16 days. There are enough keys in the bundle to last until the next Root Signing Ceremony three months from now.\n</p>\n\n<h2>\n  Public Record\n</h2>\n\n<p>\n  Every tiny detail is recorded by auditors and <a href=\"https://www.iana.org/dnssec/ceremonies/22\" target=\"_blank\">videotaped</a>, making the whole ceremony a matter of public record. This is crucial if the entire DNSSEC-protected Internet is to trust the root name servers' signatures.\n<br><br>\nThis video is streamed live during the ceremony, and we were able to track how many people were watching the ceremony in real time. We had a record-breaking number of viewers this time, probably due to better publicity than previous ceremonies. We were even able to have a participant relay questions from the audience via chatroom. We were very happy about all this engagement.\n</p>\n\n<img class=\"w-100\" src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gVo02CdqmvRQYfXOxTFGp/9d80e5babe1f373d4e9cd012f89ac5dd/public_record_logs.png\">\n\n<p>\n  At the end of the ceremony, logs are printed out and given to anybody in the room that wants a copy. Verisign is given a copy of the signed key set on a USB stick, and they will use these signed DNSKEY RRsets in the root zone during Q4 this year. All materials are put back into tamper-evident bags and placed in their respective safes.\n</p>\n\n<h2>\n  Let's See Those Signed Keys!\n</h2>\n\n<p>\n  There are two geographically distinct locations that safeguard the root key-signing key: El Segundo, CA and Culpeper, VA. Both are secure facilities, and they contain redundant copies of the key. The ceremony alternates between the El Segundo and Culpeper locations.\n  <br><br>\n  <code>dig . dnskey +dnssec</code>\n  <br><br>\n  This requests the dnskey records from the root DNS name servers. The interesting part of the response should look something like the following:\n  <br><br>\n  <code>. 20868 IN DNSKEY 257 3 8 AwEAAagAIKlVZrpC6Ia7gEzahOR+9W29euxhJhVVLOyQbSEW0O8gcCjF FVQUTf6v58fLjwBd0YI0EzrAcQqBGCzh/RStIoO8g0NfnfL2MTJRkxoX bfDaUeVPQuYEhg37NZWAJQ9VnMVDxP/VHL496M/QZxkjf5/Efucp2gaD X6RS6CXpoY68LsvPVjR0ZSwzz1apAzvN9dlzEheX7ICJBBtuA6G3LQpz W5hOA2hzCTMjJPJ8LbqF6dsV6DoBQzgul0sGIcGOYl7OyQdXfZ57relS Qageu+ipAdTTJ25AsRTAoub8ONGcLmqrAmRLKBP1dfwhYB4N7knNnulq QxA+Uk1ihz0= . 20868 IN DNSKEY 256 3 8 AwEAAa67bQck1JjopOOFc+iMISFcp/osWrEst2wbKbuQSUWu77QC9UHL ipiHgWN7JlqVAEjKITZz49hhkLmOpmLK55pTq+RD2kwoyNWk9cvpc+tS nIxT7i93O+3oVeLYjMWrkDAz7K45rObbHDuSBwYZKrcSIUCZnCpNMUtn PFl/04cb . 20868 IN RRSIG DNSKEY 8 0 172800 20150913235959 20150830000000 19036 . QKU/YSUHNXa0coshORV2r8o0PWZ43dn/u1ml4DglqLXTi2WJh+OyMFgi w4Xc7cF4T8Eab5TLbwqDHOrE87fmvcdSgQQOVwYN6jwStHAliuEICs6X rd+sqanyyMpaynLI630k5PuuQVOWxHn/Hyn4yFN5MJoQG9Pz+gn8FjCB oNGs0vu1TQm2m6DSGfjRTd7tRIchXAbOUvEVVnDWaTNPX3c35xqoHlUZ Ta00N9FvKqEwZDjdR1e0BCaDLL/Pk+CRygzOyfSKiuULzKEecsp3jPYY nXfKZmTuMuaQNRmcyJD+WSFwi5XyRgqrnxWUYmFcum4zw1NXdyp0mlGO slQ6NQ==</code>\n  <br><br>\n  The first record is the public counterpart to the private key-signing key in the HSM, the second is the zone-signing key provided by Verisign, and the third RRSIG record is what we created during the Root Signing Ceremony. Without that last one, the worldwide DNSSEC system wouldn't work.\n</p>\n\n<h2>\n  Summary\n</h2>\n\n<p>\n  The Root Signing Ceremony turns the root DNS name servers into a trust anchor. Instead of trust being derived from a parent zone, trust is assumed. This whole ceremony is designed to reinforce that trust. It's a very human side of securing the Internet: the reason you can trust the root DNS servers is because you can trust the people signing it. And, the reason you can trust the people signing it is because of the strict protocols they follow while doing so. That's what the Root Signing Ceremony is all about.\n</p>\n",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "Translated for Locale",
+					"plPL": "English for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": {
+					"contentTypeId": "learningCenterArticleSidebarForm",
+					"contentfulId": "4ad3l3edBzH8KRefyi225g",
+					"heading": "Want to keep learning?",
+					"postSubmissionHeading": "Thank you for subscribing",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
+					"postSubmissionDescription": "We're looking forward to sharing content with you.",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
+						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
+						"backgroundColor": "blue",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": null,
+						"marketoFormDefaultComment": null,
+						"showCommentBox": null,
+						"marketoFormThankYouText": "Thank you for subscribing!",
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
+						"marketoFormSubmitButtonColor": null,
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					}
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1pTVar6IER14ukrePcOoeX",
+			"pathname": "/learning/dns/dnssec/root-signing-ceremony/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"es-LA",
+				"zh-Hans-CN"
+			]
+		}
+	}
+}

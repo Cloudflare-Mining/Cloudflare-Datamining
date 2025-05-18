@@ -16,6 +16,7 @@
 					"koKR": "English for Locale",
 					"ptBR": "English for Locale",
 					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,8 +30,7 @@
 					"trTR": "English for Locale",
 					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/pg-security-lc",
 				"topNavOptions": "no-phone",
@@ -47,7 +47,12 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2023-08-31T20:44:47.229Z",
+					"updatedAt": "2023-09-02T01:50:19.403Z"
 				},
 				"contentfulId": "26VMO7ZRUATgZglnhReKpP",
 				"contentTypeId": "page",
@@ -68,9 +73,9 @@
 						"copy": "Ensure uninterrupted availability, guard sensitive data, and preserve user trust for your business-critical web applications.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
-						"buttonText1": "Get started",
+						"buttonText1": "View plans",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
+						"buttonUrl1": "#plans",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
 						"buttonText2": null,
@@ -89,7 +94,7 @@
 						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": true,
+						"button1OpenInNewTab": false,
 						"button2OpenInNewTab": false,
 						"streamThumbnails": "45s",
 						"sectionPadding": "tile--no-bottom-padding",
@@ -111,7 +116,7 @@
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "1XUaxR3MzF3soWXs4C4k03",
-						"htmlContent": "<br>\n<IMG style= \"float: left; margin: 18.25px 10px 0px 0px;\" src=\"https://paygo-webflow-lps.builtforthis.workers.dev/images/627166964dba1c2aa8c2d5b5_performance-cloud-speed.png\" width=\"23\" />\n<p style=\"text-align: left;\"><span style=\"font-size: 12px; font-weight: normal; line-height: 9px;\"><span style=\"color: #000000;\">In early 2023, Cloudflare blocked an average of 112 billion cyber threats each day.</span><br /><br /></span></p>\n",
+						"htmlContent": "<br>\n<IMG style= \"float: left; margin: 18.25px 10px 0px 0px;\" src=\"https://paygo-webflow-lps.builtforthis.workers.dev/images/627166964dba1c2aa8c2d5b5_performance-cloud-speed.png\" width=\"23\" />\n<p style=\"text-align: left;\"><span style=\"font-size: 12px; font-weight: normal; line-height: 9px;\"><span style=\"color: #000000;\">In Q1 2024, Cloudflare blocked an average of 209 billion cyber threats each day </span><br /><br /></span></p>\n",
 						"htmlId": null
 					},
 					{
@@ -204,7 +209,7 @@
 					},
 					{
 						"contentfulId": "7klgBkF6LhH6RwliiVtIFe",
-						"title": "Cloudflare stops modern application security threats",
+						"title": "Financial and reputational damage from cyber attacks are a constant risk",
 						"copy": "Protect your applications and APIs from malicious traffic to keep your business online and reduce operating costs.",
 						"toggleText": null,
 						"button": [],
@@ -249,14 +254,14 @@
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": "Superior security. Unparalleled speed.",
+						"sectionTitle": null,
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": null,
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"imagePosition": false,
-						"imageSize": "extra-large",
+						"imageSize": "medium",
 						"imageTextAlignment": "top",
 						"togglesTo": []
 					},
@@ -335,7 +340,7 @@
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oIHOELz7Ir7RtBLpEfWEs/d2ddafe107a6a330ab761b16824a1a03/security-shield-protection-1.svg"
 										},
-										"description": ""
+										"description": "Shield icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -354,7 +359,7 @@
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": "large",
-								"description": "58% of Cloudflare traffic is API-related.",
+								"description": "There are billions of stolen credentials on the dark web to fuel credential stuffing that leads to account takeover.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -369,9 +374,9 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44OWJ7jF9JVwp4zh7zMy7B/d282e08b82411f75db51ff233bb34247/traffic-attack-browser__1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44OWJ7jF9JVwp4zh7zMy7B/d80f24569dfb7d418d6913b32940bf5b/traffic-attack-browser_1_.svg"
 										},
-										"description": ""
+										"description": "Prevent financial and identity theft icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -427,7 +432,7 @@
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6axAy0A9zNHFWFPaaXF9Vk/ee7a06a0666bdcac92c66ee741509df8/cloudflare-network-globe-hero-illustration.png"
 										},
-										"description": ""
+										"description": "Illustration of Cloudflare's global network"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -516,7 +521,7 @@
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": "Gain a modern application security posture with immediate protection against security threats including:\n",
-						"title": "Get instant protection with Cloudflare's web application and API protection solutions",
+						"title": "Get instant protection with Cloudflare's web application firewall (WAF) and bot mitigation",
 						"subtitle": "Included with the Pro or Business plan",
 						"bladeStyle": null,
 						"bladeBorder": "none",
@@ -615,7 +620,7 @@
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": "small",
-								"description": "Protect your website against security threats, such as zero-day vulnerabilities, top-10 attack techniques, compromised credentials, and sensitive data breaches automatically with Cloudflare's Managed Rulesets.\n",
+								"description": "Protect your website against security threats, such as zero-day vulnerabilities, OWASP top-10 attack techniques, and use of compromised or stolen credentials with Cloudflare's Managed Rulesets.\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -740,7 +745,7 @@
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oIHOELz7Ir7RtBLpEfWEs/d2ddafe107a6a330ab761b16824a1a03/security-shield-protection-1.svg"
 										},
-										"description": ""
+										"description": "Shield icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -810,9 +815,9 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44OWJ7jF9JVwp4zh7zMy7B/d282e08b82411f75db51ff233bb34247/traffic-attack-browser__1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44OWJ7jF9JVwp4zh7zMy7B/d80f24569dfb7d418d6913b32940bf5b/traffic-attack-browser_1_.svg"
 										},
-										"description": ""
+										"description": "Prevent financial and identity theft icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -829,39 +834,299 @@
 					{
 						"locale": "en-US",
 						"entryTitle": "PAYGO - Security LP - Plans",
-						"htmlId": null,
+						"htmlId": "plans",
 						"contentfulId": "5oOWcmTH2XQPcXdj6g3Jiz",
 						"contentTypeId": "bladeAddOns",
 						"caption": null,
-						"title": "Compare Pro and Business plans",
+						"title": "Compare Cloudflare plans for securing websites and applications",
 						"grouped": false,
 						"description": null,
-						"variant": "Horizontal",
+						"variant": "Vertical",
 						"callToAction": null,
-						"sectionPadding": "default",
+						"sectionPadding": "tile--no-bottom-padding",
 						"bladeBorder": "none",
 						"backgroundColor": "white",
 						"addOns": [
 							{
 								"locale": "en-US",
+								"entryTitle": "PAYGO - Security LP - Add Ons - Free Plan - Element",
+								"contentfulId": "2wOKFr4swjZlfGUuxDDR4H",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": null,
+								"title": "Free plan",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The basics you need to protect and accelerate your site.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Block AI Bots from scraping your site",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Protect against the most severe vulnerabilities using ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Cloudflare Free Managed Ruleset ",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Stop illegitimate traffic with unmetered DDos protection",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Guard all of your content including text, images and email addresses from web scrapers with Cloudflare's ScrapeShield™ service",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Challenge easy-to-detect bad bots from popular cloud providers",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\r\r",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": "Performance",
+								"pricingText": "$0/mo",
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "7z2bevDqtZSyg0dADyWMge",
+									"elementName": "Pages - Select Free plan - CTA (1)",
+									"standardText": null,
+									"text": "Select Free plan",
+									"url": "https://dash.cloudflare.com/sign-up?utm_content=cpc",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
 								"entryTitle": "PAYGO - Security LP - Add Ons - Pro Plan - Element",
 								"contentfulId": "fyAMSUtp7SGTzroFrnmY2",
 								"contentTypeId": "elementAddOn",
-								"iconAssetFile": {
-									"id": "6a4be93c-90c9-5e35-ab87-c7b3579f70cd",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JdeR1vYGByvBRmBl69dwk/573579d6e52cdf1ae9a7bb57291c7931/Icon_Pro_pg_1.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
+								"iconAssetFile": null,
 								"title": "Pro plan",
 								"description": {
 									"nodeType": "document",
@@ -920,7 +1185,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Improve load times with HTTP/2 prioritization, Automatic Signed Exchanges, TCP Turbo, and Mirage",
+																	"value": "Protect against zero-day and common attacks including OWASP vulnerabilities with WAF",
 																	"marks": [],
 																	"content": null
 																}
@@ -952,7 +1217,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Stay protected with WAF pre-configured Managed Rulesets, which are frequently updated for new vulnerabilities",
+																	"value": "Detect stolen and exposed credentials",
 																	"marks": [],
 																	"content": null
 																}
@@ -984,7 +1249,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Protect against automated traffic in addition to verified bots with Super Bot Fight Mode",
+																	"value": "Identify and challenge easy-to-detect bots from any source",
 																	"marks": [],
 																	"content": null
 																}
@@ -1016,7 +1281,103 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Improve site performance and user experience by reducing image file load times with Images Resizing and Polish",
+																	"value": "Increase speed by auto reducing image sizes",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Prioritize loading of key site assets",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Optimize the content served by the Cloudflare CDN by using cache analytics",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Plus, everything in Free",
 																	"marks": [],
 																	"content": null
 																}
@@ -1072,21 +1433,7 @@
 								"entryTitle": "PAYGO - Security LP - Add Ons - Biz Plan Element ",
 								"contentfulId": "3xEKvvI7RiiT5Nh0TNSYS3",
 								"contentTypeId": "elementAddOn",
-								"iconAssetFile": {
-									"id": "e6e2915f-426f-53e9-8a4d-18399aa7047a",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WSWiZ57G4VmvPyvW4w3LT/101923548cb48f4847bef11746889633/Icon_Business_pg_1.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
+								"iconAssetFile": null,
 								"title": "Business plan",
 								"description": {
 									"nodeType": "document",
@@ -1145,7 +1492,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "The highest level of control and customization of all self-serve plans",
+																	"value": "Protect against unknown application vulnerabilities with WAF",
 																	"marks": [],
 																	"content": null
 																}
@@ -1177,7 +1524,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Prioritized ticket and chat support when your business needs it the most",
+																	"value": "Detect 3rd-party scripts on web apps and receive alerts with Page Shield",
 																	"marks": [],
 																	"content": null
 																}
@@ -1209,7 +1556,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Guaranteed uptime with 100% service level agreement",
+																	"value": "Detect and challenge sophisticated bots with highly variable traffic using machine learning",
 																	"marks": [],
 																	"content": null
 																}
@@ -1241,7 +1588,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Built in compliance with the latest PCI, SOC 2 Type II and SOC 3 standards",
+																	"value": "Built in PCI and SOC 2 Type II compliance",
 																	"marks": [],
 																	"content": null
 																}
@@ -1273,7 +1620,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Detect and mitigate attacks even further with newly added WAF Attack Score Lite and Security Analytics",
+																	"value": "Guaranteed uptime with 100% service level agreement (SLA)",
 																	"marks": [],
 																	"content": null
 																}
@@ -1305,7 +1652,39 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "See real-time analytics on what traffic is automated, or likely automated, or likely human",
+																	"value": "Chat and ticket support",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Plus, everything in Pro",
 																	"marks": [],
 																	"content": null
 																}
@@ -1393,7 +1772,6 @@
 				],
 				"noindex": true,
 				"formModal": [],
-				"hasAdobeExperiment": false,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -1411,7 +1789,6 @@
 				"en-US"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": false,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

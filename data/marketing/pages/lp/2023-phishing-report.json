@@ -16,6 +16,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,8 +30,7 @@
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/2023-phishing-report",
 				"topNavOptions": "empty",
@@ -47,7 +47,12 @@
 						},
 						"description": "2023 Phishing Threats Report"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2023-08-15T12:00:05.088Z",
+					"updatedAt": "2024-04-27T01:18:41.492Z"
 				},
 				"contentfulId": "1XlhhimPo0eeBmn8AneUDP",
 				"contentTypeId": "page",
@@ -70,7 +75,7 @@
 						"marketoEmbeddedForm": {
 							"contentTypeId": "marketoEmbeddedForm",
 							"contentfulId": "2F4V8l6wojPZLe5dqiGqZQ",
-							"bladeName": "2023 Phishing Threats Report: Marketo Form (1346)",
+							"bladeName": "2023 Phishing Threats Report: Marketo Form (1341)",
 							"backgroundColor": "purple",
 							"marketoFormId": 1346,
 							"marketoFormLeadSource": "Marketing Generated - Inbound",
@@ -92,7 +97,7 @@
 							"sendAdRoll": false,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonText": "Submit",
 							"marketoFormSubmitButtonColor": null,
 							"enableEmailVerification": null,
 							"disableEnterpriseEmailNotification": null,
@@ -121,7 +126,6 @@
 				],
 				"noindex": true,
 				"formModal": [],
-				"hasAdobeExperiment": false,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -146,10 +150,10 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": false,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

@@ -159,6 +159,18 @@
 									"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
 									"displayText": "DNS Fast Flux",
 									"url": "/learning/dns/dns-fast-flux/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+									"displayText": "Domain hijacking",
+									"url": "/learning/dns/what-is-domain-hijacking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+									"displayText": "Common DNS issues",
+									"url": "/learning/dns/common-dns-issues/"
 								}
 							]
 						},
@@ -203,6 +215,18 @@
 									"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
 									"displayText": "Cloudflare Registrar",
 									"url": "/learning/dns/what-is-cloudflare-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+									"displayText": "How to buy a domain name",
+									"url": "/learning/dns/how-to-buy-a-domain-name/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+									"displayText": "How to transfer a domain name",
+									"url": "/learning/dns/how-to-transfer-a-domain-name/"
 								}
 							]
 						},
@@ -293,6 +317,38 @@
 									"url": "http://www.cloudflare.com/learning/insights-dns-landscape"
 								}
 							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5bnkrucwjePapZ8qR6nc2D",
+							"name": "DNSSEC Protection",
+							"displayText": "DNSSEC Protection",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1FwG3Iiux41pJ6OLW8kRsW",
+									"displayText": "How DNSSEC Works",
+									"url": "learning/dns/dnssec/how-dnssec-works/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6FnRKWe14VFgollBzoepo9",
+									"displayText": "The DNSSEC Root Signing Ceremony",
+									"url": "learning/dns/dnssec/root-signing-ceremony/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "apgrV3UywiWRwe78tsxSg",
+									"displayText": "ECDSA: The missing piece of DNSSEC",
+									"url": "learning/dns/dnssec/ecdsa-and-dnssec/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "59YqILiJbj7grfW3aTGPj7",
+									"displayText": "Universal DNSSEC",
+									"url": "learning/dns/dnssec/universal-dnssec/"
+								}
+							]
 						}
 					]
 				},
@@ -324,6 +380,24 @@
 								"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
 								"displayText": "DNS over TLS",
 								"url": "/learning/dns/dns-over-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+								"displayText": "How to buy a domain name",
+								"url": "/learning/dns/how-to-buy-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+								"displayText": "How to transfer a domain name",
+								"url": "/learning/dns/how-to-transfer-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+								"displayText": "Common DNS issues",
+								"url": "/learning/dns/common-dns-issues/"
 							}
 						]
 					},
@@ -549,6 +623,12 @@
 								"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
 								"displayText": "Top-Level Domain",
 								"url": "/learning/dns/top-level-domain/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+								"displayText": "Domain hijacking",
+								"url": "/learning/dns/what-is-domain-hijacking/"
 							}
 						]
 					},
@@ -725,7 +805,7 @@
 					"sectionPadding": null,
 					"eyebrow": null
 				},
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a primary DNS server?</h2>\n\n<p><a href=\"/learning/dns/what-is-dns/\">DNS</a>, or the Domain Name System, translates domain names into <a href=\"/learning/dns/glossary/what-is-my-ip-address/\">IP addresses</a> so users can easily navigate to sites on the Internet without having to memorize long, specific strings of numbers and letters.</p>\n\n<p>In this system, a primary <a href=\"/learning/dns/dns-server-types/\">DNS server</a> is a server that hosts a website's primary <a href=\"/learning/dns/glossary/dns-zone/\">zone file</a>. This is a text database file that contains all of the authoritative information for a domain, including its IP address, the identity of the domain administrator, and various resource records. Resource records list domain names alongside their corresponding IP addresses, and can take several different forms:</p>\n  <ul class='learning-list'>\n  <li><strong><a href=\"/learning/dns/dns-records/dns-a-record/\">A record</a>:</strong> Directs a domain to an IPv4 address</li>\n  <li><strong>AAAA record:</strong> Directs a domain to an IPv6 address</li>\n  <li> <strong><a href=\"/learning/dns/dns-records/dns-mx-record/\">MX record</a>:</strong> Assigns a mail server to a domain</li>\n  <li><strong><a href=\"/learning/dns/dns-records/dns-ns-record/\">NS record</a>:</strong> Identifies authoritative DNS servers for a domain</li>\n</ul>\n\n<p>Primary servers are also responsible for making any necessary changes to a zone's <a href=\"/learning/dns/dns-records/\">DNS records</a>. Once the primary server has completed the update, it can then pass along change requests to the secondary servers.</p>\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a secondary DNS server?</h2>\n\n  <p>Primary DNS servers contain all relevant resource records and handle DNS queries for a <a href=\"/learning/dns/glossary/what-is-a-domain-name/\">domain</a>. By contrast, secondary DNS servers contain zone file copies that are read-only, meaning they cannot be modified. Instead of getting their information from local files, they receive pertinent information from a primary server in a communication process known as a zone transfer.</p>\n\n  <p>Zone transfers become more complicated when they are completed between multiple secondary servers. If several secondary servers are in use, one may be designated as a higher-tier secondary server so that it is capable of replicating zone file copies to the remaining pool of secondary servers.</p>\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">How is a primary DNS server configured?</h2>\n\n<p>A server administrator may choose to designate a DNS server as a primary or secondary server. In some cases, a server can be primary for one zone and secondary for another zone.</p>\n\n<p>Although each zone is limited to one primary DNS server, it can have any number of secondary DNS servers. Maintaining one or more secondary servers ensures that queries can be resolved even if the primary server becomes unresponsive.</p>\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the benefits of using a secondary DNS server?</h2>\n\n<p>Although secondary DNS servers are not necessary to complete DNS queries for a domain, it is standard practice (and required by many registrars) to establish at least one.</p>\n\n<p>There are two main benefits of using a secondary DNS server:</p>\n <ul class='learning-list'>\n  <li><strong>Redundancy and resiliency:</strong> Relying on just one DNS server creates a single point of failure. If the primary server fails or is compromised by an <a href=\"/learning/ddos/what-is-a-ddos-attack/\">attack</a>, prospective visitors can no longer access the desired domain. Using secondary servers creates redundancy and makes it less likely that users will experience a disruption of service.</li>\n  <li><strong>Load balancing:</strong> Secondary DNS servers can share the burden of incoming requests to the domain so that the primary server doesn't get overloaded and cause a denial-of-service. They do this using <a href=\"/learning/dns/glossary/round-robin-dns/\">round-robin DNS</a>, a load balancing technique designed to send roughly equal amounts of traffic to each server.</li>\n</ul>\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is dynamic DNS?</h2>\n\n<p><a href=\"/learning/dns/glossary/dynamic-dns/\">Dynamic DNS (DDNS)</a> is a service that keeps IP addresses automatically updated. This is especially useful for smaller web properties (personal websites, small businesses, etc.) that are not assigned static IPs, but instead temporarily lease IPs from their Internet Service Provider (ISP).</p>\n\n<p>Rather than making frequent manual changes to a domain's IP address via the primary server, users can employ DDNS to automatically update their DNS records with the most current IP address that has been assigned to their domain.</p>\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">Does Cloudflare offer primary or secondary DNS?</h2>\n\n<p>Cloudflare offers a <a href=\"/dns/\">managed DNS service</a> that can be configured in a hidden primary setup or as a secondary DNS service. In a hidden primary setup, users establish an unlisted primary server to store all zone files and changes, then enable one or more secondary servers to receive and resolve queries. Although the secondary servers essentially fulfill the function of a primary server, the hidden setup allows users to hide their origin IP and shield it from attacks.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a primary DNS server?</h2>\n\n<p><a href=\"/learning/dns/what-is-dns/\">DNS</a>, or the Domain Name System, translates domain names into <a href=\"/learning/dns/glossary/what-is-my-ip-address/\">IP addresses</a> so users can easily navigate to sites on the Internet without having to memorize long, specific strings of numbers and letters.</p>\n\n<p>In this system, a primary <a href=\"/learning/dns/dns-server-types/\">DNS server</a> is a server that hosts a website's primary <a href=\"/learning/dns/glossary/dns-zone/\">zone file</a>. This is a text database file that contains all of the authoritative information for a domain, including its IP address, the identity of the domain administrator, and various resource records. Resource records list domain names alongside their corresponding IP addresses, and can take several different forms:</p>\n  <ul class='learning-list'>\n  <li><strong><a href=\"/learning/dns/dns-records/dns-a-record/\">A record</a>:</strong> Directs a domain to an IPv4 address</li>\n  <li><strong>AAAA record:</strong> Directs a domain to an IPv6 address</li>\n  <li> <strong><a href=\"/learning/dns/dns-records/dns-mx-record/\">MX record</a>:</strong> Assigns a mail server to a domain</li>\n  <li><strong><a href=\"/learning/dns/dns-records/dns-ns-record/\">NS record</a>:</strong> Identifies authoritative DNS servers for a domain</li>\n</ul>\n\n<p>Primary servers are also responsible for making any necessary changes to a zone's <a href=\"/learning/dns/dns-records/\">DNS records</a>. Once the primary server has completed the update, it can then pass along change requests to the secondary servers.</p>\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a secondary DNS server?</h2>\n\n  <p>Primary DNS servers contain all relevant resource records and handle DNS queries for a <a href=\"/learning/dns/glossary/what-is-a-domain-name/\">domain</a>. By contrast, secondary DNS servers contain zone file copies that are read-only, meaning they cannot be modified. Instead of getting their information from local files, they receive pertinent information from a primary server in a communication process known as a zone transfer.</p>\n\n  <p>Zone transfers become more complicated when they are completed between multiple secondary servers. If several secondary servers are in use, one may be designated as a higher-tier secondary server so that it is capable of replicating zone file copies to the remaining pool of secondary servers.</p>\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">How is a primary DNS server configured?</h2>\n\n<p>A server administrator may choose to designate a DNS server as a primary or secondary server. In some cases, a server can be primary for one zone and secondary for another zone.</p>\n\n<p>Although each zone is limited to one primary DNS server, it can have any number of secondary DNS servers. Maintaining one or more secondary servers ensures that queries can be resolved even if the primary server becomes unresponsive.</p>\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the benefits of using a secondary DNS server?</h2>\n\n<p>Although secondary DNS servers are not necessary to complete DNS queries for a domain, it is standard practice (and required by many <a href='https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/'>registrars</a>) to establish at least one.</p>\n\n<p>There are two main benefits of using a secondary DNS server:</p>\n <ul class='learning-list'>\n  <li><strong>Redundancy and resiliency:</strong> Relying on just one DNS server creates a single point of failure. If the primary server fails or is compromised by an <a href=\"/learning/ddos/what-is-a-ddos-attack/\">attack</a>, prospective visitors can no longer access the desired domain. Using secondary servers creates redundancy and makes it less likely that users will experience a disruption of service.</li>\n  <li><strong>Load balancing:</strong> Secondary DNS servers can share the burden of incoming requests to the domain so that the primary server doesn't get overloaded and cause a denial-of-service. They do this using <a href=\"/learning/dns/glossary/round-robin-dns/\">round-robin DNS</a>, a load balancing technique designed to send roughly equal amounts of traffic to each server.</li>\n</ul>\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is dynamic DNS?</h2>\n\n<p><a href=\"/learning/dns/glossary/dynamic-dns/\">Dynamic DNS (DDNS)</a> is a service that keeps IP addresses automatically updated. This is especially useful for smaller web properties (personal websites, small businesses, etc.) that are not assigned static IPs, but instead temporarily lease IPs from their Internet Service Provider (ISP).</p>\n\n<p>Rather than making frequent manual changes to a domain's IP address via the primary server, users can employ DDNS to automatically update their DNS records with the most current IP address that has been assigned to their domain.</p>\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">Does Cloudflare offer primary or secondary DNS?</h2>\n\n<p>Cloudflare offers a <a href=\"/dns/\">managed DNS service</a> that can be configured in a hidden primary setup or as a secondary DNS service. In a hidden primary setup, users establish an unlisted primary server to store all zone files and changes, then enable one or more secondary servers to receive and resolve queries. Although the secondary servers essentially fulfill the function of a primary server, the hidden setup allows users to hide their origin IP and shield it from attacks.</p>",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {
@@ -739,63 +819,28 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -817,7 +862,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -841,6 +886,7 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

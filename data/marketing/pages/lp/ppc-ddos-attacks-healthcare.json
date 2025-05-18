@@ -16,6 +16,7 @@
 					"koKR": "English for Locale",
 					"ptBR": "English for Locale",
 					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,8 +30,7 @@
 					"trTR": "English for Locale",
 					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/ppc-ddos-attacks-healthcare/",
 				"topNavOptions": "empty",
@@ -47,7 +47,12 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2023-02-04T00:04:18.659Z",
+					"updatedAt": "2023-02-07T15:10:47.680Z"
 				},
 				"contentfulId": "7fZBFmu8diEST0nm0joR2R",
 				"contentTypeId": "page",
@@ -155,10 +160,10 @@
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": "Industry Leading",
+						"sectionTitle": "ANALYST RECOGNITION",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-bottom-padding",
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": false,
@@ -254,13 +259,13 @@
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17ovo10a1mEsAZ7ZwFKfFl/d0d561ddb71ecdb723357bb2f79bc979/logo_mars_gray_32px-wrapper.svg"
 								},
-								"description": null
+								"description": "Mars logo"
 							},
 							{
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/75Iu2nwjYyY5rckEPqO9hr/57b676a2cf5fe6c1e2b3663d7131fda5/logo_loreal_gray_32px-wrapper.svg"
 								},
-								"description": null
+								"description": "L'Oreal logo"
 							},
 							{
 								"file": {
@@ -278,7 +283,7 @@
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mAzLb3ofkkG38jtcP2Ys8/094958a88df30575d79254ee6615a82f/logo_ibm_gray_32px-wrapper.svg"
 								},
-								"description": null
+								"description": "IBM logo"
 							},
 							{
 								"file": {
@@ -290,7 +295,7 @@
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mhur0vl8q716TyGFZuCIG/acb851172c83f325ae99e527ef4c216e/logo_shopify_color_32px-wrapper.svg"
 								},
-								"description": null
+								"description": "Shopify logo"
 							},
 							{
 								"file": {
@@ -302,7 +307,7 @@
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/47baOjkvX7lLtmTdWvCYI9/009360a8301d33def2ea3ffe22a922df/logo_labcorp_color_32px-wrapper.svg"
 								},
-								"description": null
+								"description": "LabCorp logo"
 							},
 							{
 								"file": {
@@ -334,7 +339,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Xar1H4WcFHHkHRDzMypMh/1f8989ae11cb464cc640c7121d0be9a6/logo_mars_trusted-by_gray.svg"
 									},
-									"description": ""
+									"description": "Mars logo"
 								},
 								"brandfolderAsset": null,
 								"brandfolderAssetMobile": null
@@ -349,7 +354,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xn47h0gWiUSwJ0PU3Ysvk/683779108bfd6eeb62fbac5135780fe6/logo_loreal_trusted-by_gray.svg"
 									},
-									"description": ""
+									"description": "L'Oréal logo"
 								},
 								"brandfolderAsset": null,
 								"brandfolderAssetMobile": null
@@ -394,7 +399,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/OMwO1Fr8BxHVum0iBbatc/979c1807f5810edc903d4b07c18e0cb0/logo_ibm_trusted-by_gray.svg"
 									},
-									"description": ""
+									"description": "IBM logo"
 								},
 								"brandfolderAsset": null,
 								"brandfolderAssetMobile": null
@@ -424,7 +429,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVeELky7fceWRpfBvN8qr/4e13aa3d8dd73e1f091f3de966fdc9cb/logo_shopify_trusted-by_gray.svg"
 									},
-									"description": ""
+									"description": "Shopify logo"
 								},
 								"brandfolderAsset": null,
 								"brandfolderAssetMobile": null
@@ -454,7 +459,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AsuJijKk8EMH5s1ae56nx/b13406881aa864b7e17b2233a0d090ef/logo_labcorp_trusted-by_gray.svg"
 									},
-									"description": ""
+									"description": "LabCorp logo"
 								},
 								"brandfolderAsset": null,
 								"brandfolderAssetMobile": null
@@ -510,7 +515,6 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"hasAdobeExperiment": null,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -528,7 +532,6 @@
 				"en-US"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

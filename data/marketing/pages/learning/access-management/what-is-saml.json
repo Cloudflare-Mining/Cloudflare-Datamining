@@ -79,6 +79,12 @@
 									"contentfulId": "24MOZlRUGXzizkNkiZSWPV",
 									"displayText": "Security service edge (SSE)",
 									"url": "/learning/access-management/security-service-edge-sse/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "77GMoHfbv1pOadgxJ3XFik",
+									"displayText": "How to implement Zero Trust",
+									"url": "/learning/access-management/how-to-implement-zero-trust/"
 								}
 							]
 						},
@@ -300,7 +306,7 @@
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "4NXJJdVvXOz7XxaX8QB6QK",
 									"displayText": "Network segmentation",
-									"url": "/learning/access-management/what-is-network-segmentation"
+									"url": "/learning/access-management/what-is-network-segmentation/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -513,6 +519,12 @@
 								"contentfulId": "6mO5Xax2Dr4MOVty2psUx3",
 								"displayText": "Microsegmentation",
 								"url": "/learning/access-management/what-is-microsegmentation/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "77GMoHfbv1pOadgxJ3XFik",
+								"displayText": "How to implement Zero Trust",
+								"url": "/learning/access-management/how-to-implement-zero-trust/"
 							}
 						]
 					},
@@ -632,7 +644,7 @@
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "4NXJJdVvXOz7XxaX8QB6QK",
 								"displayText": "Network segmentation",
-								"url": "/learning/access-management/what-is-network-segmentation"
+								"url": "/learning/access-management/what-is-network-segmentation/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -844,7 +856,7 @@
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is SAML?</h2>\n\n<p>Security Assertion Markup Language, or SAML, is a standardized way to tell external applications and services that a user is who they say they are. SAML makes <a href='/learning/access-management/what-is-sso/'>single sign-on (SSO)</a> technology possible by providing a way to authenticate a user once and then communicate that <a href='/learning/access-management/what-is-authentication/'>authentication</a> to multiple applications. The most current version of SAML is SAML 2.0.</p>\n\n<p>Think of SAML authentication as being like an identification card: a short, standardized way to show who someone is. Instead of, say, conducting a series of DNA tests to confirm someone's identity, it is possible to just glance at their ID card.</p>\n\n<p>In computing and networking, one of the major challenges is getting systems and devices built by different vendors for different purposes to work together. This is called \"interoperability\": the ability for different machines to interact with each other, despite their differing technical specifications. SAML is an interoperable standard — it is a widely accepted way to communicate a user's identity to <a href='/learning/cloud/what-is-the-cloud/'>cloud</a> service providers.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is single sign-on (SSO)?</h2>\n\n<p>Single sign-on (SSO) is a way for users to be authenticated for multiple applications and services at once. With SSO, a user signs in at a single login screen and can then use a number of apps. Users do not need to confirm their identity with every single service they use.</p>\n\n<p>For this to take place, the SSO system must communicate with every external app to tell them that the user is signed in — which is where SAML comes into play.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does SAML work?</h2>\n\n<p>A typical SSO authentication process involves these three parties:</p>\n\n<ul class='learning-list'>\n  <li>Principal (also known as the \"subject\")</li>\n  <li>Identity provider</li>\n  <li>Service provider</li>\n</ul>\n\n<p><strong>Principal/subject:</strong> This is almost always a human user who is trying to access a cloud-hosted application.</p>\n\n<p><strong>Identity provider:</strong> An <a href='/learning/access-management/what-is-an-identity-provider/'>identity provider (IdP)</a> is a cloud software service that stores and confirms user identity, typically through a login process. Essentially, an IdP's role is to say, \"I know this person, and here is what they are allowed to do.\" An SSO system may in fact be separate from the IdP, but in those cases the SSO essentially acts as a representative for the IdP, so for all intents and purposes they are the same in a SAML workflow.</p>\n\n<p><strong>Service provider:</strong> This is the cloud-hosted application or service the user wants to use. Common examples include cloud email platforms such as Gmail and Microsoft Office 365, cloud storage services such as Google Drive and AWS S3, and communications apps such as Slack and Skype. Ordinarily a user would just log in to these services directly, but when SSO is used, the user logs into the SSO instead, and SAML is used to give them access instead of a direct login.</p>\n\n<p>This is what a typical flow might look like:</p>\n\n<p>The principal makes a request of the service provider. The service provider then requests authentication from the identity provider. The identity provider sends a SAML assertion to the service provider, and the service provider can then send a response to the principal.</p>\n\n<p>If the principal (the user) was not already logged in, the identity provider may prompt them to log in before sending a SAML assertion.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a SAML assertion?</h2>\n\n<p>A SAML assertion is the message that tells a service provider that a user is signed in. SAML assertions contain all the information necessary for a service provider to confirm user identity, including the source of the assertion, the time it was issued, and the conditions that make the assertion valid.</p>\n\n<p>Think of a SAML assertion as being like the contents of a reference for a job candidate: the person providing the reference says when and for how long they worked with the candidate, what their role was, and their opinion on the candidate. Based on this reference, a company can make a decision about hiring the candidate, just as a <a href='/learning/cloud/what-is-saas/'>SaaS</a> application or cloud service can allow or deny user access based on a SAML assertion.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is SAML 2.0?</h2>\n\n<p>SAML 2.0 is the modern version of SAML, and it has been in use since 2005. SAML 2.0 combined several versions of SAML that had previously been in use. Many systems support earlier versions, such as SAML 1.1, for backwards compatibility, but SAML 2.0 is the modern standard.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Is SAML authentication the same thing as user authorization?</h2>\n\n<p>SAML is a technology for user authentication, not user authorization, and this is a key distinction. User authorization is a separate area of <a href='/learning/access-management/what-is-identity-and-access-management/'>identity and access management</a>.</p>\n\n<p><strong>Authentication</strong> refers to a user's identity: who they are and whether their identity has been confirmed by a login process.</p>\n\n<p><strong>Authorization</strong> refers to a user's privileges or permissions: specifically, what actions they are allowed to perform within a company's systems.</p>\n\n<p>Think about the difference between authentication and authorization like this: Imagine Alice attends a music festival. At the entrance to the festival, she presents her ticket and an additional form of identification to prove that she has the right to possess the ticket. On doing this, she is allowed to enter the festival. She has been authenticated.</p>\n\n<p>However, just because Alice is within the festival does not mean she can go anywhere and do anything she wants. She can watch the festival acts, but she cannot go on stage and perform, nor can she go backstage and interact with the performers — because she is not authorized to do so. If she had purchased backstage passes, or if she was a performer in addition to being an attendee, she would have a greater amount of authorization.</p>\n\n<p>Access management technologies handle user authorization. Access management platforms use several different authorization standards (one of which is OAuth), but not SAML.</p>\n\n<p><a href='/products/zero-trust/'>Cloudflare Zero Trust</a> is one example of an access management solution. Cloudflare enables companies to manage user access to internal resources and data without the use of a <a href='/learning/access-management/what-is-a-vpn/'>virtual private network (VPN)</a>. It integrates easily with SSO providers to offer both user authorization and user authentication.</p>\n\n<p><a href='/learning/access-management/what-is-sso/'>Learn more about SSO.</a></p>\n",
+				"desktopMainContent": "<style>\n\n    .cards-wrapper-lcnew  { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}\n    .cards_item-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fMg89go9MegG1EDg39mNy/5a42817cd388ae352f77f56e53b1ff81/card-new.png'); background-repeat: no-repeat; background-size: cover;  background-position: center;  border-radius: 8px;  box-shadow: 10px 10px 20px -14px rgba(0, 0, 0, 1.0);  overflow: hidden;}\n    .btn-lcnew { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .btn:hover { background-color: rgba(255, 255, 255, 0.12);}\n    .card_content-lcnew  { padding: 1rem; display: flex; flex-direction: column;}\n    .card_title-lcnew  { color: #ffffff; font-size: 12px; margin: 0px; line-height: 18px; text-transform: uppercase;}\n    .card_title-lcnew span  {font-weight: 500}\n    .card_text-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; margin-bottom: 1rem; margin-top: 1rem; font-weight: 600;}\n     a:hover {background-size: 100% 4em !important; color: var(--inline-link-color);}\n\n    @media (max-width: 40rem) \n    {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n    .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n    .card_content-banner-lcnew { padding: 1rem;  display: grid; grid-template-rows: 1fr 1fr; grid-gap: 10px;}\n    .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n    .card_title-banner-lcnew span  {text-transform: uppercase; font-weight: 500 !important}\n    .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n    .card_content-banner-bt { align-self: center; justify-self: center;}\n\n    @media (max-width: 40rem) \n    { .cards-banner-lcnew { grid-template-columns: unset; padding: 0.75rem; display: flex; flex-direction: column; }\n      .card_text-banner-lcnew { line-height: 18px; }\n      .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n      .card_content-banner-bt {align-self: end;}\n    }\n\n    </style> \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is SAML?</h2>\n\n<p>Security Assertion Markup Language, or SAML, is a standardized way to tell external applications and services that a user is who they say they are. SAML makes <a href='/learning/access-management/what-is-sso/'>single sign-on (SSO)</a> technology possible by providing a way to authenticate a user once and then communicate that <a href='/learning/access-management/what-is-authentication/'>authentication</a> to multiple applications. The most current version of SAML is SAML 2.0.</p>\n\n<p>Think of SAML authentication as being like an identification card: a short, standardized way to show who someone is. Instead of, say, conducting a series of DNA tests to confirm someone's identity, it is possible to just glance at their ID card.</p>\n\n<p>In computing and networking, one of the major challenges is getting systems and devices built by different vendors for different purposes to work together. This is called \"interoperability\": the ability for different machines to interact with each other, despite their differing technical specifications. SAML is an interoperable standard — it is a widely accepted way to communicate a user's identity to <a href='/learning/cloud/what-is-the-cloud/'>cloud</a> service providers.</p>\n\n<div class=\"cards-wrapper-lcnew\">\n    <div class=\"cards_item-lcnew\">\n        <div class=\"card_content-lcnew\">\n            <div class=\"card_title-lcnew\"><span>Article</span></div>\n            <div class=\"card_text-lcnew\">Elevating organizational trust with Zero Trusty</div>\n            <div class=\"btn-lcnew card_btn\"><a href=\"https://www.cloudflare.com/the-net/zero-trust-organization/\" data-tracking-action=\"click\" data-tracking-label=\"Learn more - https://www.cloudflare.com/the-net/zero-trust-organization/\" data-tracking-category=\"card1\">Learn more</a></div>\n        </div>\n    </div>\n\n    <div class=\"cards_item-lcnew \">\n        <div class=\"card_content-lcnew \">\n            <div class=\"card_title-lcnew\"><span>Guide</span></div>\n            <div class=\"card_text-lcnew\">The Zero Trust guide to securing aplication access</div>\n            <div class=\"btn-lcnew  card_btn\"><a href=\"/lp/guide-to-zero-trust-access/\" data-tracking-action=\"click\"\n                    data-tracking-label=\"Read the guide - /lp/guide-to-zero-trust-access/\" data-tracking-category=\"card2\">Read the guide</a> </div>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is single sign-on (SSO)?</h2>\n\n<p>Single sign-on (SSO) is a way for users to be authenticated for multiple applications and services at once. With SSO, a user signs in at a single login screen and can then use a number of apps. Users do not need to confirm their identity with every single service they use.</p>\n\n<p>For this to take place, the SSO system must communicate with every external app to tell them that the user is signed in — which is where SAML comes into play.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does SAML work?</h2>\n\n<p>A typical SSO authentication process involves these three parties:</p>\n\n<ul class='learning-list'>\n  <li>Principal (also known as the \"subject\")</li>\n  <li>Identity provider</li>\n  <li>Service provider</li>\n</ul>\n\n<p><strong>Principal/subject:</strong> This is almost always a human user who is trying to access a cloud-hosted application.</p>\n\n<p><strong>Identity provider:</strong> An <a href='/learning/access-management/what-is-an-identity-provider/'>identity provider (IdP)</a> is a cloud software service that stores and confirms user identity, typically through a login process. Essentially, an IdP's role is to say, \"I know this person, and here is what they are allowed to do.\" An SSO system may in fact be separate from the IdP, but in those cases the SSO essentially acts as a representative for the IdP, so for all intents and purposes they are the same in a SAML workflow.</p>\n\n<p><strong>Service provider:</strong> This is the cloud-hosted application or service the user wants to use. Common examples include cloud email platforms such as Gmail and Microsoft Office 365, cloud storage services such as Google Drive and AWS S3, and communications apps such as Slack and Skype. Ordinarily a user would just log in to these services directly, but when SSO is used, the user logs into the SSO instead, and SAML is used to give them access instead of a direct login.</p>\n\n<p>This is what a typical flow might look like:</p>\n\n<p>The principal makes a request of the service provider. The service provider then requests authentication from the identity provider. The identity provider sends a SAML assertion to the service provider, and the service provider can then send a response to the principal.</p>\n\n<p>If the principal (the user) was not already logged in, the identity provider may prompt them to log in before sending a SAML assertion.</p>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Sign Up</span></div>\n        <div class=\"card_text-banner-lcnew\">Security & speed with any Cloudflare plan</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/plans/\" data-tracking-action=\"click\"\n                data-tracking-label=\"Get started free - /plans/\" data-tracking-category=\"card3\">Start for free</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a SAML assertion?</h2>\n\n<p>A SAML assertion is the message that tells a service provider that a user is signed in. SAML assertions contain all the information necessary for a service provider to confirm user identity, including the source of the assertion, the time it was issued, and the conditions that make the assertion valid.</p>\n\n<p>Think of a SAML assertion as being like the contents of a reference for a job candidate: the person providing the reference says when and for how long they worked with the candidate, what their role was, and their opinion on the candidate. Based on this reference, a company can make a decision about hiring the candidate, just as a <a href='/learning/cloud/what-is-saas/'>SaaS</a> application or cloud service can allow or deny user access based on a SAML assertion.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is SAML 2.0?</h2>\n\n<p>SAML 2.0 is the modern version of SAML, and it has been in use since 2005. SAML 2.0 combined several versions of SAML that had previously been in use. Many systems support earlier versions, such as SAML 1.1, for backwards compatibility, but SAML 2.0 is the modern standard.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Is SAML authentication the same thing as user authorization?</h2>\n\n<p>SAML is a technology for user authentication, not user authorization, and this is a key distinction. User authorization is a separate area of <a href='/learning/access-management/what-is-identity-and-access-management/'>identity and access management</a>.</p>\n\n<p><strong>Authentication</strong> refers to a user's identity: who they are and whether their identity has been confirmed by a login process.</p>\n\n<p><strong>Authorization</strong> refers to a user's privileges or permissions: specifically, what actions they are allowed to perform within a company's systems.</p>\n\n<p>Think about the difference between authentication and authorization like this: Imagine Alice attends a music festival. At the entrance to the festival, she presents her ticket and an additional form of identification to prove that she has the right to possess the ticket. On doing this, she is allowed to enter the festival. She has been authenticated.</p>\n\n<p>However, just because Alice is within the festival does not mean she can go anywhere and do anything she wants. She can watch the festival acts, but she cannot go on stage and perform, nor can she go backstage and interact with the performers — because she is not authorized to do so. If she had purchased backstage passes, or if she was a performer in addition to being an attendee, she would have a greater amount of authorization.</p>\n\n<p>Access management technologies handle user authorization. Access management platforms use several different authorization standards (one of which is OAuth), but not SAML.</p>\n\n<p><a href='/zero-trust/'>Cloudflare Zero Trust</a> is one example of an access management solution. Cloudflare enables companies to manage user access to internal resources and data without the use of a <a href='/learning/access-management/what-is-a-vpn/'>virtual private network (VPN)</a>. It integrates easily with SSO providers to offer both user authorization and user authentication.</p>\n\n<p><a href='/learning/access-management/what-is-sso/'>Learn more about SSO.</a></p>\n",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {
@@ -853,68 +865,33 @@
 					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -936,7 +913,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -956,10 +933,12 @@
 				"zh-TW",
 				"fr-FR",
 				"de-DE",
+				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

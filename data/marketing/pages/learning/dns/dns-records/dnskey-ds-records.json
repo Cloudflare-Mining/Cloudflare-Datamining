@@ -164,6 +164,18 @@
 									"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
 									"displayText": "DNS Fast Flux",
 									"url": "/learning/dns/dns-fast-flux/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+									"displayText": "Domain hijacking",
+									"url": "/learning/dns/what-is-domain-hijacking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+									"displayText": "Common DNS issues",
+									"url": "/learning/dns/common-dns-issues/"
 								}
 							]
 						},
@@ -208,6 +220,18 @@
 									"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
 									"displayText": "Cloudflare Registrar",
 									"url": "/learning/dns/what-is-cloudflare-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+									"displayText": "How to buy a domain name",
+									"url": "/learning/dns/how-to-buy-a-domain-name/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+									"displayText": "How to transfer a domain name",
+									"url": "/learning/dns/how-to-transfer-a-domain-name/"
 								}
 							]
 						},
@@ -298,6 +322,38 @@
 									"url": "http://www.cloudflare.com/learning/insights-dns-landscape"
 								}
 							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5bnkrucwjePapZ8qR6nc2D",
+							"name": "DNSSEC Protection",
+							"displayText": "DNSSEC Protection",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1FwG3Iiux41pJ6OLW8kRsW",
+									"displayText": "How DNSSEC Works",
+									"url": "learning/dns/dnssec/how-dnssec-works/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6FnRKWe14VFgollBzoepo9",
+									"displayText": "The DNSSEC Root Signing Ceremony",
+									"url": "learning/dns/dnssec/root-signing-ceremony/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "apgrV3UywiWRwe78tsxSg",
+									"displayText": "ECDSA: The missing piece of DNSSEC",
+									"url": "learning/dns/dnssec/ecdsa-and-dnssec/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "59YqILiJbj7grfW3aTGPj7",
+									"displayText": "Universal DNSSEC",
+									"url": "learning/dns/dnssec/universal-dnssec/"
+								}
+							]
 						}
 					]
 				},
@@ -329,6 +385,24 @@
 								"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
 								"displayText": "DNS over TLS",
 								"url": "/learning/dns/dns-over-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+								"displayText": "How to buy a domain name",
+								"url": "/learning/dns/how-to-buy-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+								"displayText": "How to transfer a domain name",
+								"url": "/learning/dns/how-to-transfer-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+								"displayText": "Common DNS issues",
+								"url": "/learning/dns/common-dns-issues/"
 							}
 						]
 					},
@@ -554,6 +628,12 @@
 								"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
 								"displayText": "Top-Level Domain",
 								"url": "/learning/dns/top-level-domain/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+								"displayText": "Domain hijacking",
+								"url": "/learning/dns/what-is-domain-hijacking/"
 							}
 						]
 					},
@@ -664,10 +744,17 @@
 					"Understand the purpose of the DNSKEY record",
 					"Understand the role the DS record plays in DNSSEC"
 				],
-				"relatedContentLinkText": null,
-				"relatedContent": [],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1SMJ4pF8JegIMgSOBwUWIM",
+						"displayText": "Empty related article - default sidebar form",
+						"url": "   "
+					}
+				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What are the DNSKEY and DS records?</h2>\n\n<p>The <a href='/learning/dns/what-is-dns/'>Domain Name System (DNS)</a> is the phonebook of the Internet, but it was not designed with security in mind. For this reason, an optional security protocol called <a href='/dns/dnssec/how-dnssec-works/'>DNSSEC</a> was created so that owners of web properties could better secure their applications. DNSSEC increases security by adding cryptographic signatures to DNS records; these signatures can be checked to verify that a record came from the correct DNS server.</p>\n\n<p>For the implementation of these cryptographic signatures, two new <a href='/learning/dns/dns-records/'>DNS record types</a> were created: DNSKEY and DS. The DNSKEY record contains a public signing key, and the DS record contains a hash* of a DNSKEY record.</p>\n\n<p>Each DNSSEC zone is assigned a set of <a href='/learning/dns/glossary/dns-zone/'>zone</a> signing keys (ZSK). This set includes a private and public ZSK. The private ZSK is used to sign the DNS records in that zone, and the public ZSK is used to verify the private one.</p>\n\n<p>The public ZSK is published in a DNSSEC record, which is how it is provided to a DNSSEC resolver; the resolver will use the public ZSK to ensure the records from that zone are authentic. As an added layer of security, DNSSEC zones contain a second DNSKEY record containing a key signing key (KSK), which verifies the authenticity of the public ZSK.</p>\n\n<p>The DS record is used to verify the authenticity of child zones** of DNSSEC zones. The DS key record on a parent zone contains a hash of the KSK in a child zone. A DNSSEC resolver can therefore verify the authenticity of the child zone by hashing its KSK record, and comparing that to what is in the parent zone's DS record.</p>\n\n<p>*<em>A cryptographic hash is a one-way scrambling of alphanumeric input; hashes are often used for storing sensitive information like passwords on servers. For example, a hash of the input 'cantguessthis' is 18fe9934cf77a759eb2471f2b304708a. Every time 'cantguessthis' is put through the hashing function, it outputs the same hash. But there is no way to get the original input using just the hash. The hash on its own is essentially useless.</em></p>\n\n<p>**<em>A child zone is a delegated subdomain of another zone. For instance, a URL of example.com could have child zones with domains like blog.example.com and mail.example.com.</em></p>",
+				"desktopMainContent": "<style>\n  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .ttu.f2.fw7.mt6.mb0.orange0,  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .divider.pv2.w-100,  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .below-divider{\n    display: none\n  }\n</style>\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What are the DNSKEY and DS records?</h2>\n\n<p>The <a href='/learning/dns/what-is-dns/'>Domain Name System (DNS)</a> is the phonebook of the Internet, but it was not designed with security in mind. For this reason, an optional security protocol called <a href='/dns/dnssec/how-dnssec-works/'>DNSSEC</a> was created so that owners of web properties could better secure their applications. DNSSEC increases security by adding cryptographic signatures to DNS records; these signatures can be checked to verify that a record came from the correct DNS server.</p>\n\n<p>For the implementation of these cryptographic signatures, two new <a href='/learning/dns/dns-records/'>DNS record types</a> were created: DNSKEY and DS. The DNSKEY record contains a public signing key, and the DS record contains a hash* of a DNSKEY record.</p>\n\n<p>Each DNSSEC zone is assigned a set of <a href='/learning/dns/glossary/dns-zone/'>zone</a> signing keys (ZSK). This set includes a private and public ZSK. The private ZSK is used to sign the DNS records in that zone, and the public ZSK is used to verify the private one.</p>\n\n<p>The public ZSK is published in a DNSSEC record, which is how it is provided to a DNSSEC resolver; the resolver will use the public ZSK to ensure the records from that zone are authentic. As an added layer of security, DNSSEC zones contain a second DNSKEY record containing a key signing key (KSK), which verifies the authenticity of the public ZSK.</p>\n\n<p>The DS record is used to verify the authenticity of child zones** of DNSSEC zones. The DS key record on a parent zone contains a hash of the KSK in a child zone. A DNSSEC resolver can therefore verify the authenticity of the child zone by hashing its KSK record, and comparing that to what is in the parent zone's DS record.</p>\n\n<p>*<em>A cryptographic hash is a one-way scrambling of alphanumeric input; hashes are often used for storing sensitive information like passwords on servers. For example, a hash of the input 'cantguessthis' is 18fe9934cf77a759eb2471f2b304708a. Every time 'cantguessthis' is put through the hashing function, it outputs the same hash. But there is no way to get the original input using just the hash. The hash on its own is essentially useless.</em></p>\n\n<p>**<em>A child zone is a delegated subdomain of another zone. For instance, a URL of example.com could have child zones with domains like blog.example.com and mail.example.com.</em></p>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
@@ -681,63 +768,28 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -759,7 +811,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -783,6 +835,7 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

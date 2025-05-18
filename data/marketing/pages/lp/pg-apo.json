@@ -16,6 +16,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,12 +30,11 @@
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/pg-apo",
 				"topNavOptions": "no-phone",
-				"topNavButtonText": "Get started",
+				"topNavButtonText": "Optimize WordPress",
 				"topNavButtonUrl": "https://dash.cloudflare.com/sign-up?to=/:account/:zone/billing/checkout&add=cf_free_apo",
 				"footerOptions": "minimized",
 				"metaTags": {
@@ -47,7 +47,12 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2022-12-05T18:31:07.067Z",
+					"updatedAt": "2025-05-13T04:27:03.574Z"
 				},
 				"contentfulId": "4tyRxjwkytrhClYV2FBzEX",
 				"contentTypeId": "page",
@@ -61,11 +66,11 @@
 					{
 						"contentfulId": "7g2cwUsXxoN2Rv2jGaFzFR",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Supercharge Your WordPress Site for $5/mo",
+						"title": "Optimize Your WordPress Site with Cloudflare Automatic Platform Optimization (APO)",
 						"titleSize": null,
 						"subtitle": null,
 						"subtitleSize": null,
-						"copy": "Optimizing your WordPress site with multiple plugins can be overwhelming. Switch to a single plugin from Cloudflare and get up to 4x faster loading speed. Automatic Platform Optimization (APO) includes ultra-fast CDN, intelligent caching and requires no setting up.",
+						"copy": "\n- Optimizing your WordPress site with multiple plugins can be overwhelming. Switch to a single plugin from Cloudflare and get up to 4x faster loading speed for $5/month\n- Automatic Platform Optimization (APO) includes ultra-fast CDN, intelligent caching and requires no setting up.\n",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
 						"buttonText1": "Get started",
@@ -111,7 +116,7 @@
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "5W6kiYOtMuVCKYMFTsjiNa",
-						"htmlContent": "<br>\n<IMG style= \"float: left; margin: 18.25px 10px 0px 0px;\" src=\"https://paygo-webflow-lps.builtforthis.workers.dev/images/627166964dba1c2aa8c2d5b5_performance-cloud-speed.png\" width=\"23\" />\n<p style=\"text-align: left;\"><span style=\"font-size: 12px; font-weight: normal; line-height: 9px;\"><span style=\"color: #000000;\">%{GlobalInternetConnectedPercent}% of the internet-connected world is within %{OperationMilliseconds} ms of a Cloudflare server.</span><br /><br /></span></p>\n",
+						"htmlContent": "<br>\n<IMG style= \"float: left; margin: 18.25px 10px 0px 0px;\" src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/Hrl9MJuJGcsYRLaNNcCpS/3ca96c403b9a0195da1a8502d79ef76c/performance-cloud-speed.svg\" width=\"23\" />\n<p style=\"text-align: left;\"><span style=\"font-size: 12px; font-weight: normal; line-height: 9px;\"><span style=\"color: #000000;\">%{GlobalInternetConnectedPercent}% of the Internet-connected world is within %{OperationMilliseconds} ms of a Cloudflare server.</span><br /><br /></span></p>\n",
 						"htmlId": null
 					},
 					{
@@ -207,7 +212,7 @@
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": "redwoodEnablementInlineVersion",
-						"copy": "<div style= \"text-align: center;\"><p> <span style = \"font-size: 32px;line-height:120%;\" > <strong> Why should you optimize your WordPress site with Cloudflare APO?</span></p></div><br><br>",
+						"copy": "<div style= \"text-align: center;\"><p> <span style = \"font-size: 32px;line-height:120%;\" > <strong>How Cloudflare WordPress speed optimization works</span></p></div><br><br>",
 						"title": null,
 						"subtitle": null,
 						"bladeStyle": null,
@@ -261,7 +266,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rgAX5Pezx1EHevEZ8b9vc/67012f637f6d9f7741c8d6aeb7fcfbfb/server-origin.svg"
 									},
-									"description": ""
+									"description": "Origin server icon"
 								},
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
@@ -329,7 +334,7 @@
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": "redwoodEnablementInlineVersion",
-						"copy": "<div style= \"text-align: center;\"><p> <span style = \"font-size: 32px;line-height:120%;\" > <strong>Benefits of using Cloudflare's APO\n</strong></span><p> <span style = \"font-size:18px;\"> <b>An overview of the main benefits you get from APO</B></span></p></p></div><br><br>",
+						"copy": "<div style= \"text-align: center;\"><p> <span style = \"font-size: 32px;line-height:120%;\" > <strong>Benefits of using Cloudflare's APO to optimize WordPress\n</strong></span><p> <span style = \"font-size:18px;\"> <b>An overview of the main benefits you get from APO</B></span></p></p></div><br><br>",
 						"title": null,
 						"subtitle": null,
 						"bladeStyle": "Feature Blocks - 3 columns",
@@ -464,7 +469,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Clytt8pBf5fsuPgtVafD7/42d2f39e656cdeebf1d7fa80c979a4c9/performance-1.svg"
 									},
-									"description": ""
+									"description": "Rotating arrows icon"
 								},
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
@@ -504,7 +509,7 @@
 							"file": {
 								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5G1yMpviKyBlZSTtVSDqpN/9cbf42aee04a679d05387efd6d922d4b/cloudflare-pops-2O04nulSdNrRpJR9fs9OKv.svg"
 							},
-							"description": ""
+							"description": "Map of Google Cloud CDN Internconnect Program with Cloudflare"
 						},
 						"imageAssetFile": null,
 						"featureList": [],
@@ -560,7 +565,7 @@
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": "medium",
+						"imageSize": "small",
 						"imageTextAlignment": null,
 						"togglesTo": []
 					},
@@ -702,6 +707,8 @@
 								"contentTypeId": "elementRichText",
 								"contentfulId": "19LtE7qgxeUxY2viBDpldk",
 								"title": "How do I change my nameservers?",
+								"htmlId": null,
+								"elementPosition": null,
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -733,6 +740,8 @@
 								"contentTypeId": "elementRichText",
 								"contentfulId": "9A1UqyY2BK2UnXOiNeccn",
 								"title": "Can I use other caching plugins with Cloudflare?",
+								"htmlId": null,
+								"elementPosition": null,
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -785,6 +794,8 @@
 								"contentTypeId": "elementRichText",
 								"contentfulId": "15sXJOYW9KZCF8CuvCj71E",
 								"title": "How do I add APO to my free plan? ",
+								"htmlId": null,
+								"elementPosition": null,
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -894,7 +905,6 @@
 				],
 				"noindex": true,
 				"formModal": [],
-				"hasAdobeExperiment": null,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -919,10 +929,10 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}
