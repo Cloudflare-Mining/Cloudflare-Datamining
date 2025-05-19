@@ -145,7 +145,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -199,7 +200,8 @@
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier of BGP Prefix.",
@@ -211,7 +213,8 @@
 													"modified_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"on_demand": {
 														"properties": {
@@ -383,7 +386,8 @@
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -437,7 +441,8 @@
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier of BGP Prefix.",
@@ -449,7 +454,8 @@
 															"modified_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"on_demand": {
 																"properties": {
@@ -813,7 +819,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of BGP Prefix.",
@@ -825,7 +832,8 @@
 												"modified_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"on_demand": {
 													"properties": {
@@ -1019,7 +1027,8 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of BGP Prefix.",
@@ -1031,7 +1040,8 @@
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"on_demand": {
 															"properties": {
@@ -1429,7 +1439,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of BGP Prefix.",
@@ -1441,7 +1452,8 @@
 												"modified_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"on_demand": {
 													"properties": {
@@ -1635,7 +1647,8 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of BGP Prefix.",
@@ -1647,7 +1660,8 @@
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"on_demand": {
 															"properties": {
@@ -2012,7 +2026,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of BGP Prefix.",
@@ -2024,7 +2039,8 @@
 												"modified_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"on_demand": {
 													"properties": {
@@ -2218,7 +2234,8 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of BGP Prefix.",
@@ -2230,7 +2247,8 @@
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"on_demand": {
 															"properties": {

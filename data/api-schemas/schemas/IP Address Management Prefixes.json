@@ -149,7 +149,8 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
@@ -274,7 +275,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -716,7 +718,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -770,7 +773,8 @@
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"description": {
 														"description": "Description of the prefix.",
@@ -797,7 +801,8 @@
 													"modified_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"on_demand_enabled": {
 														"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
@@ -942,7 +947,8 @@
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -996,7 +1002,8 @@
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": {
 																"description": "Description of the prefix.",
@@ -1023,7 +1030,8 @@
 															"modified_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"on_demand_enabled": {
 																"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
@@ -1348,7 +1356,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "Description of the prefix.",
@@ -1375,7 +1384,8 @@
 												"modified_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"on_demand_enabled": {
 													"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
@@ -1542,7 +1552,8 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "Description of the prefix.",
@@ -1569,7 +1580,8 @@
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"on_demand_enabled": {
 															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
@@ -1913,7 +1925,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "Description of the prefix.",
@@ -1940,7 +1953,8 @@
 												"modified_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"on_demand_enabled": {
 													"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
@@ -2107,7 +2121,8 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "Description of the prefix.",
@@ -2134,7 +2149,8 @@
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"on_demand_enabled": {
 															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
@@ -2427,7 +2443,8 @@
 												"created": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"filename": {
 													"description": "Name of LOA document. Max file size 10MB, and supported filetype is pdf.",
@@ -2581,7 +2598,8 @@
 														"created": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"filename": {
 															"description": "Name of LOA document. Max file size 10MB, and supported filetype is pdf.",
@@ -2945,7 +2963,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "Description of the prefix.",
@@ -2972,7 +2991,8 @@
 												"modified_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"on_demand_enabled": {
 													"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
@@ -3139,7 +3159,8 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "Description of the prefix.",
@@ -3166,7 +3187,8 @@
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"on_demand_enabled": {
 															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",

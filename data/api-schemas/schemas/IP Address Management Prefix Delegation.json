@@ -549,7 +549,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -568,7 +569,8 @@
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"delegated_account_id": {
 														"description": "Account identifier for the account to which prefix is being delegated.",
@@ -588,7 +590,8 @@
 													"modified_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"parent_prefix_id": {
 														"description": "Identifier of an IP Prefix.",
@@ -728,7 +731,8 @@
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -747,7 +751,8 @@
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"delegated_account_id": {
 																"description": "Account identifier for the account to which prefix is being delegated.",
@@ -767,7 +772,8 @@
 															"modified_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parent_prefix_id": {
 																"description": "Identifier of an IP Prefix.",
@@ -1072,7 +1078,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"delegated_account_id": {
 													"description": "Account identifier for the account to which prefix is being delegated.",
@@ -1092,7 +1099,8 @@
 												"modified_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"parent_prefix_id": {
 													"description": "Identifier of an IP Prefix.",
@@ -1219,7 +1227,8 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"delegated_account_id": {
 															"description": "Account identifier for the account to which prefix is being delegated.",
@@ -1239,7 +1248,8 @@
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"parent_prefix_id": {
 															"description": "Identifier of an IP Prefix.",
