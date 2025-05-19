@@ -35,14 +35,14 @@
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "39LIvqQCFa8iU7ITBQmaEm",
-							"name": "Cloud Header: Cloud Basics",
+							"name": "Cloud header: Cloud basics",
 							"displayText": "Cloud basics",
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5k1A20zBRQpjW2079su8uz",
-									"displayText": "What is SaaS?",
-									"url": "/learning/cloud/what-is-saas/"
+									"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+									"displayText": "What is cloud storage?",
+									"url": "/learning/cloud/what-is-cloud-storage/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -52,9 +52,21 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
-									"displayText": "What is cloud storage?",
-									"url": "/learning/cloud/what-is-cloud-storage/"
+									"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+									"displayText": "Multitenancy",
+									"url": "/learning/cloud/what-is-multitenancy/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5k1A20zBRQpjW2079su8uz",
+									"displayText": "What is SaaS?",
+									"url": "/learning/cloud/what-is-saas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "38DHkZos35DYciaxPnJk7g",
+									"displayText": "Vendor lock-in",
+									"url": "/learning/cloud/what-is-vendor-lock-in/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -64,24 +76,10 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
-									"displayText": "Multitenancy",
-									"url": "/learning/cloud/what-is-multitenancy/"
+									"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+									"displayText": "Multi-cloud vs hybrid cloud",
+									"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
 								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "38DHkZos35DYciaxPnJk7g",
-									"displayText": "Vendor lock-in",
-									"url": "/learning/cloud/what-is-vendor-lock-in/"
-								}
-							]
-						},
-						{
-							"contentTypeId": "learningCenterArticleLinkedList",
-							"contentfulId": "3X81SpcBRddDrjqw17J1l2",
-							"name": "Cloud Header: Multicloud and hybrid cloud",
-							"displayText": "Multi-cloud and hybrid cloud",
-							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
@@ -90,21 +88,15 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
-									"displayText": "What is hybrid cloud?",
-									"url": "/learning/cloud/what-is-hybrid-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
-									"displayText": "Multi-cloud vs hybrid cloud",
-									"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
 									"displayText": "Multi-cloud management",
 									"url": "/learning/cloud/what-is-multicloud-management/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
+									"displayText": "What is hybrid cloud?",
+									"url": "/learning/cloud/what-is-hybrid-cloud/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -117,9 +109,15 @@
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "486fCRIX89EKjcHElALCiw",
-							"name": "Cloud Header: Securing the Cloud",
+							"name": "Cloud header: Securing the cloud",
 							"displayText": "Securing the cloud",
 							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "kNE9anSSaRE82gAHCyVxp",
+									"displayText": "What is a cloud firewall (FWaaS)?",
+									"url": "/learning/cloud/what-is-a-cloud-firewall/"
+								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
@@ -128,9 +126,21 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "kNE9anSSaRE82gAHCyVxp",
-									"displayText": "What is a cloud firewall (FWaaS)?",
-									"url": "/learning/cloud/what-is-a-cloud-firewall/"
+									"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+									"displayText": "Cloud security posture management (CSPM)",
+									"url": "/learning/cloud/what-is-cspm/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+									"displayText": "Cloud workload protection platform (CWPP)",
+									"url": "/learning/cloud/what-is-cwpp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5xd2QLCI5QCkPAIoDk5CJ2",
+									"displayText": "Cloud-native security",
+									"url": "/learning/cloud/cloud-native-security/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -146,35 +156,47 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
-									"displayText": "Cloud security posture management (CSPM)",
-									"url": "/learning/cloud/what-is-cspm/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
 									"displayText": "SaaS security posture management (SSPM)",
 									"url": "/learning/cloud/what-is-sspm/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
-									"displayText": "Cloud workload protection platform (CWPP)",
-									"url": "/learning/cloud/what-is-cwpp/"
+									"contentfulId": "1FHXopbTiAErueuQvbAXr6",
+									"displayText": "Cloud-native application protection platform (CNAPP)",
+									"url": "/learning/cloud/cnapp/"
 								}
 							]
 						},
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
-							"contentfulId": "2OkRH9jhjm8FmxBtbYnZ9V",
-							"name": "Cloud Header: Cloud Glossary",
-							"displayText": "Glossary",
+							"contentfulId": "26g8mVCbaDb7TF4jJMGFhz",
+							"name": "Cloud header: Cloud modernization",
+							"displayText": "Cloud modernization",
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
-									"displayText": "Cloud migration",
-									"url": "/learning/cloud/what-is-cloud-migration/"
+									"contentfulId": "y0HrOCtfIQJ4B46NGM8aK",
+									"displayText": "Application modernization",
+									"url": "/learning/cloud/application-modernization/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3ogF8VqUtpwiX80xRDH9lQ",
+									"displayText": "How to rehost apps",
+									"url": "/learning/cloud/how-to-rehost-applications/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "174iXrdVMHuS7avH6ICSVG",
+									"displayText": "How to refactor apps",
+									"url": "/learning/cloud/how-to-refactor-applications/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "nypSYuLAN0fI1HcJWLwj7",
+									"displayText": "How to replatform apps",
+									"url": "/learning/cloud/how-to-replatform-applications/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -184,27 +206,35 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
-									"displayText": "What is a public cloud?",
-									"url": "/learning/cloud/what-is-a-public-cloud/"
+									"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+									"displayText": "Cloud migration",
+									"url": "/learning/cloud/what-is-cloud-migration/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
-									"displayText": "What is a private cloud?",
-									"url": "/learning/cloud/what-is-a-private-cloud/"
+									"contentfulId": "31LQEF639fG1XJWTZBqnNO",
+									"displayText": "Data migration",
+									"url": "/learning/cloud/what-is-data-migration/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2OkRH9jhjm8FmxBtbYnZ9V",
+							"name": "Cloud header: Cloud glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2poSO07sAv136qKoXulTex",
+									"displayText": "AWS data transfer pricing",
+									"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "53Auemqu8excTZE8bzc7Zk",
-									"displayText": "Virtual private cloud",
-									"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
-									"displayText": "Cloudflare and the cloud",
-									"url": "/learning/cloud/cloudflare-and-the-cloud/"
+									"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
+									"displayText": "Data egress fees",
+									"url": "/learning/cloud/what-are-data-egress-fees/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -220,6 +250,12 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5tJVSh0zDmPqvoriPMSMuO",
+									"displayText": "What is a data lake?",
+									"url": "/learning/cloud/what-is-a-data-lake/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "7u090eTI3Lc6TC6CZRHIhI",
 									"displayText": "What is object storage?",
 									"url": "/learning/cloud/what-is-object-storage/"
@@ -232,22 +268,40 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
-									"displayText": "Data egress fees",
-									"url": "/learning/cloud/what-are-data-egress-fees/"
+									"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
+									"displayText": "What is a private cloud?",
+									"url": "/learning/cloud/what-is-a-private-cloud/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "2poSO07sAv136qKoXulTex",
-									"displayText": "AWS data transfer pricing",
-									"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+									"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+									"displayText": "What is a public cloud?",
+									"url": "/learning/cloud/what-is-a-public-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+									"displayText": "Virtual private cloud",
+									"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1w22mfnOVmsjLsM3jMxaAY",
+									"displayText": "Cloud networking",
+									"url": "/learning/cloud/what-is-cloud-networking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
+									"displayText": "Cloudflare and the cloud",
+									"url": "/learning/cloud/cloudflare-and-the-cloud/"
 								}
 							]
 						},
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "7qiJLGJVI1us6Le145zRbC",
-							"name": "Cloud Header: theNET",
+							"name": "Cloud header: theNET",
 							"displayText": "theNET",
 							"links": [
 								{
@@ -258,15 +312,15 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "goUykSuhqroMEsPv5li3u",
-									"displayText": "Trading egress for opportunity",
-									"url": "https://www.cloudflare.com/learning/insights-cloud-storage-egress/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "7akEuCGGNzlr1ufpM39JJO",
 									"displayText": "The Internet is the new corporate network",
 									"url": "https://www.cloudflare.com/learning/insights-internet-corp-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "goUykSuhqroMEsPv5li3u",
+									"displayText": "Trading egress for opportunity",
+									"url": "https://www.cloudflare.com/learning/insights-cloud-storage-egress/"
 								}
 							]
 						}
@@ -280,7 +334,7 @@
 					"column1": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "2PUeZxc6Kw9UYN9rDC8IYy",
-						"name": "Cloud Footer - About the Cloud",
+						"name": "Cloud footer — About the cloud",
 						"displayText": "About the cloud",
 						"links": [
 							{
@@ -297,19 +351,13 @@
 							}
 						]
 					},
-					"column2Title": "Cloud Configurations",
+					"column2Title": "Cloud configurations",
 					"column2": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "gD760jkD40xsJ5VKKDGCY",
-						"name": "Cloud Footer - Cloud Configurations",
+						"name": "Cloud Footer - Cloud configurations",
 						"displayText": "Cloud configurations",
 						"links": [
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
-								"displayText": "What is multi-cloud?",
-								"url": "/learning/cloud/what-is-multicloud/"
-							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
@@ -318,9 +366,15 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
-								"displayText": "What is a public cloud?",
-								"url": "/learning/cloud/what-is-a-public-cloud/"
+								"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
+								"displayText": "What is multi-cloud?",
+								"url": "/learning/cloud/what-is-multicloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+								"displayText": "Multitenancy",
+								"url": "/learning/cloud/what-is-multitenancy/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -330,17 +384,35 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
-								"displayText": "Multitenancy",
-								"url": "/learning/cloud/what-is-multitenancy/"
+								"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+								"displayText": "What is a public cloud?",
+								"url": "/learning/cloud/what-is-a-public-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3ogF8VqUtpwiX80xRDH9lQ",
+								"displayText": "How to rehost apps",
+								"url": "/learning/cloud/how-to-rehost-applications/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "nypSYuLAN0fI1HcJWLwj7",
+								"displayText": "How to replatform apps",
+								"url": "/learning/cloud/how-to-replatform-applications/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "174iXrdVMHuS7avH6ICSVG",
+								"displayText": "How to refactor apps",
+								"url": "/learning/cloud/how-to-refactor-applications/"
 							}
 						]
 					},
-					"column3Title": "Cloud Security",
+					"column3Title": "Cloud security",
 					"column3": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "5jkIKbYcSS95KrnsL6yhXO",
-						"name": "Cloud Footer - Cloud security",
+						"name": "Cloud footer — Cloud security",
 						"displayText": "Cloud security",
 						"links": [
 							{
@@ -348,6 +420,18 @@
 								"contentfulId": "kNE9anSSaRE82gAHCyVxp",
 								"displayText": "What is a cloud firewall (FWaaS)?",
 								"url": "/learning/cloud/what-is-a-cloud-firewall/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+								"displayText": "Cloud security posture management (CSPM)",
+								"url": "/learning/cloud/what-is-cspm/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+								"displayText": "Cloud workload protection platform (CWPP)",
+								"url": "/learning/cloud/what-is-cwpp/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -363,102 +447,36 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
-								"displayText": "Cloud security posture management (CSPM)",
-								"url": "/learning/cloud/what-is-cspm/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
 								"displayText": "SaaS security posture management (SSPM)",
 								"url": "/learning/cloud/what-is-sspm/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
-								"displayText": "Cloud workload protection platform (CWPP)",
-								"url": "/learning/cloud/what-is-cwpp/"
+								"contentfulId": "5xd2QLCI5QCkPAIoDk5CJ2",
+								"displayText": "Cloud-native security",
+								"url": "/learning/cloud/cloud-native-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1FHXopbTiAErueuQvbAXr6",
+								"displayText": "Cloud-native application protection platform (CNAPP)",
+								"url": "/learning/cloud/cnapp/"
 							}
 						]
 					},
-					"column4Title": "Cloud Glossary",
+					"column4Title": "Cloud glossary",
 					"column4": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "4ITdD1qcb1o7qstB32QX0V",
-						"name": "Cloud Footer - Glossary",
+						"name": "Cloud footer — Glossary",
 						"displayText": "Cloud glossary",
 						"links": [
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5k1A20zBRQpjW2079su8uz",
-								"displayText": "What is SaaS?",
-								"url": "/learning/cloud/what-is-saas/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
-								"displayText": "Cloud migration",
-								"url": "/learning/cloud/what-is-cloud-migration/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
-								"displayText": "Multi-cloud management",
-								"url": "/learning/cloud/what-is-multicloud-management/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
-								"displayText": "Hybrid cloud architecture",
-								"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
-								"displayText": "Multi-cloud vs hybrid cloud",
-								"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
-								"displayText": "Virtual machine",
-								"url": "/learning/cloud/what-is-a-virtual-machine/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
-								"displayText": "What is cloud storage?",
-								"url": "/learning/cloud/what-is-cloud-storage/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
-								"displayText": "Digital transformation",
-								"url": "/learning/cloud/what-is-digital-transformation/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "38DHkZos35DYciaxPnJk7g",
-								"displayText": "Vendor lock-in",
-								"url": "/learning/cloud/what-is-vendor-lock-in/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
-								"displayText": "What is IaaS?",
-								"url": "/learning/cloud/what-is-iaas/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "53Auemqu8excTZE8bzc7Zk",
-								"displayText": "Virtual private cloud",
-								"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
-								"displayText": "Cloud security",
-								"url": "/learning/cloud/what-is-cloud-security/"
+								"contentfulId": "2poSO07sAv136qKoXulTex",
+								"displayText": "AWS data transfer pricing",
+								"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -474,9 +492,63 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+								"displayText": "Cloud migration",
+								"url": "/learning/cloud/what-is-cloud-migration/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
+								"displayText": "Cloud security",
+								"url": "/learning/cloud/what-is-cloud-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+								"displayText": "What is cloud storage?",
+								"url": "/learning/cloud/what-is-cloud-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
 								"displayText": "Data egress fees",
 								"url": "/learning/cloud/what-are-data-egress-fees/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5tJVSh0zDmPqvoriPMSMuO",
+								"displayText": "What is a data lake?",
+								"url": "/learning/cloud/what-is-a-data-lake/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
+								"displayText": "Digital transformation",
+								"url": "/learning/cloud/what-is-digital-transformation/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
+								"displayText": "Hybrid cloud architecture",
+								"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
+								"displayText": "What is IaaS?",
+								"url": "/learning/cloud/what-is-iaas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+								"displayText": "Multi-cloud vs hybrid cloud",
+								"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
+								"displayText": "Multi-cloud management",
+								"url": "/learning/cloud/what-is-multicloud-management/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -492,13 +564,49 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "2poSO07sAv136qKoXulTex",
-								"displayText": "AWS data transfer pricing",
-								"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+								"contentfulId": "5k1A20zBRQpjW2079su8uz",
+								"displayText": "What is SaaS?",
+								"url": "/learning/cloud/what-is-saas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "38DHkZos35DYciaxPnJk7g",
+								"displayText": "Vendor lock-in",
+								"url": "/learning/cloud/what-is-vendor-lock-in/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
+								"displayText": "Virtual machine",
+								"url": "/learning/cloud/what-is-a-virtual-machine/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+								"displayText": "Virtual private cloud",
+								"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1w22mfnOVmsjLsM3jMxaAY",
+								"displayText": "Cloud networking",
+								"url": "/learning/cloud/what-is-cloud-networking/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "y0HrOCtfIQJ4B46NGM8aK",
+								"displayText": "Application modernization",
+								"url": "/learning/cloud/application-modernization/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "31LQEF639fG1XJWTZBqnNO",
+								"displayText": "Data migration",
+								"url": "/learning/cloud/what-is-data-migration/"
 							}
 						]
 					},
-					"column5Title": "Learning Center Navigation",
+					"column5Title": "Learning Center navigation",
 					"column5": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "3Z0WMXrDmdWdc5R8JIkDrG",
@@ -641,7 +749,7 @@
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What are data egress fees?</h2>\n\n<p>Data egress fees are charges from cloud providers for moving or transferring data from the cloud storage where it was uploaded. These fees, also known as bandwidth or data transfer fees, are separate from the fees organizations pay for cloud storage and computing.</p>\n\n<p><a href='/learning/cloud/what-is-cloud-storage/'>Cloud storage</a> and other cloud technologies have allowed developers and businesses to scale quickly, accelerate innovation, and — historically — lower costs. It is often cheaper to store data and run applications on a third party's infrastructure rather than buying, maintaining, and replacing on-premise infrastructure.</p>\n\n<p>However, the massive popularity of cloud storage comes with a downside: getting data out. Egress is the process of getting data back out of the service to which it was uploaded — and most cloud providers charge a 'tax' for this data transfer.</p>\n\n<p>Data egress fees may not necessarily be a major concern to users that only store and access a limited amount of data in the cloud, and are only interested in using a single cloud architecture. However, egress fees can prevent organizations from taking full advantage of the cloud's benefits, and — ultimately — increase IT costs.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is ingress versus egress for cloud storage?</h2>\n\n<p>Getting data in and out of the cloud is somewhat like visiting another country. For example, U.S. citizens with valid passports can enter many countries for free; however, they have to pay a fee in certain countries to exit. As a tourist, they're stuck unless they pay the departure tax.</p>\n\n<p>In the world of cloud storage, ingress is the data or traffic entering that cloud infrastructure, and egress is the data exiting the boundaries of that cloud infrastructure.</p>\n\n<p>It is usually free for developers or businesses to move their data into cloud storage (such as Amazon S3 object storage or Azure Blob Storage). This is a deliberate business tactic that incentivizes new users to use the service — any associated costs are effectively absorbed within the service's consolidated cost.</p>\n\n<p>Common ways for data ingress to occur include:</p>\n<ul class=\"learning-list\">\n  <li><strong>User-generated content —</strong> There are millions of applications in the world, and many of them <a href='https://time.com/6209991/apps-collecting-personal-data/' target=\"_blank\">collect some form of user data</a>, from usage stats to location data and more.</li>\n  <li><strong>Data pipelines —</strong> A data pipeline is like an assembly line for data, transforming and <a href='https://www.ibm.com/topics/data-pipeline' target=\"_blank\">processing</a> raw data along the way until it reaches a usable state at its final destination.</li>\n  <li><strong>Bulk uploads —</strong> Cloud providers offer different methods of uploading and transferring huge amounts of data for bulk processing.</li>\n  <li><strong>Website changes due to new content —</strong> Website refreshes can lead to the generation of new application assets, including images, JavaScript, and CSS files; new data can also include periodic additions such as new product images or videos.</li>\n</ul>\n\n<p>However, to make data stored in the cloud usable for serving back to customers (through a personalized website, for example), or otherwise used or manipulated, it needs to be retrieved via egress. Examples of scenarios where an organization would need data egress (or bandwidth) from their cloud storage include:</p>\n<ul class=\"learning-list\">\n  <li>Using the data to respond to HTTP requests for application assets from a user or <a href='/learning/cdn/what-is-a-cdn/'>content delivery network (CDN)</a></li>\n  <li>Connecting the data to different applications</li>\n  <li>Downloading the data from the cloud to local memory</li>\n  <li>Moving the data to another availability zone with the same provider</li>\n  <li>Transferring the data to another cloud provider</li>\n</ul>\n\n<p>Most providers would charge egress fees for this data transfer when it leaves their network. Say a U.S. airline's ticketing data is hosted in a facility in Virginia, and a user planning to fly from Australia visits their service. Although the cloud provider is using their own global backbone to carry the traffic across the United States and then across the Pacific, they can charge to move the data between the two places.</p>\n\n<p>Egress fees are a subtle way for certain providers to charge more for cloud management over time, while also discouraging customers from leaving their ecosystem. The fees almost always increase over time: as a company grows more reliant on the cloud, the cost of egress rises. When the diversity and sophistication of a company's IT stack grows, more data naturally needs to travel between more of their applications across clouds.</p>\n\n<p>The egress tax increases because there is more data to move, but at that point, the customer has already invested so much in their cloud infrastructure — ultimately, resulting in <a href='/learning/cloud/what-is-vendor-lock-in/'>vendor lock-in</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What do cloud providers charge for data egress?</h2>\n\n<p>The general rule of thumb is that all traffic coming from the Internet (ingress) into cloud storage enters for free, and traffic exiting (egress) is chargeable, if it exceeds the provider's free tier. Many cloud providers, such as Amazon Web Services, will charge up to $0.09 USD per gigabyte transferred from their storage, regardless of use case.</p>\n\n<p>Specific egress fees are not always transparent, and can be difficult to predict. Understanding the line-by-line charges for egress can require some depth of application architecture and cloud infrastructure expertise — which not all organizations have.</p>\n\n<p>The breakdown of egress fees vary by provider, and are based on multiple factors, including:</p>\n<ul class=\"learning-list\">\n  <li>Customer tier and subscription type</li>\n  <li>Volume of data transferred per month</li>\n  <li>The originating region</li>\n  <li>The data source and destination</li>\n  <li>Requests for failover controls</li>\n  <li>Data transfer acceleration</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why would organizations want to transport data to another provider?</h2>\n\n<p>As noted earlier, there are many scenarios where an organization would need data egress. And some cloud providers will incentivize their customers to transfer data within the same ecosystem; for example, if an organization wants to connect their Amazon S3 <a href='/learning/cloud/what-is-object-storage/'>object storage</a> service to Amazon's Elastic Compute (EC2) within the same region, they can move their data free of charge.</p>\n\n<p>However, there is no one-size-fits-all approach to the cloud. Some developers or businesses that are evolving their cloud strategy (or, are early in their cloud journey) may prefer to use more than one cloud environment, despite egress fees.</p>\n\n<p>Some benefits of using a <a href='/learning/cloud/what-is-hybrid-cloud/'>hybrid cloud</a> (a mix of two or more cloud environments) or <a href='/learning/cloud/what-is-multicloud/'>multi-cloud</a> (multiple public clouds from more than one cloud provider) approach include:</p>\n<ul class=\"learning-list\">\n\n  <li><strong>IT infrastructure control:</strong> A hybrid cloud approach makes it possible for businesses to determine how to customize their cloud operations in the most efficient way possible.</li>\n  <li><strong>Performance optimization:</strong> A properly managed multi-cloud architecture lets developers and organizations run demanding workloads (such as mining archives for business intelligence, or training AI engines) within the most appropriate environments.</li>\n  <li><strong>Balance security with modernization:</strong> Highly regulated industries, such as finance, government, and healthcare, require certain sensitive data to be stored on-premise, while allowing less sensitive data to be stored on the cloud.</li>\n  <li><strong>Unpredictable workloads:</strong> A hybrid or multi-cloud approach can help businesses or governments handle emergency or cyclical needs without overprovisioning large amounts of hardware.</li>\n  <li><strong>Disaster recovery:</strong> Cloud backup and disaster recovery replicates files in case of accidental deletion or data corruption, so that a company can restore data in a rapid, orchestrated manner.</li>\n</ul>\n\n<p>Regardless of which infrastructure a business chooses, cloud storage is a game-changer when it comes to deploying, securing, and continuously improving applications at scale.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare help reduce egress fees?</h2>\n\n<p>Cloudflare's research has found that reducing or eliminating egress fees can <a href='https://blog.cloudflare.com/empowering-customers-with-the-bandwidth-alliance/'>save customers</a> between 7.5% and 27% of their total monthly bill.</p>\n\n<p>Cloudflare offers zero-egress fee object storage via a service called <a href='/products/r2/'>Cloudflare R2</a>. R2 allows for fast and free data retrieval, and when paired with <a href='https://workers.cloudflare.com/'>Cloudflare Workers'</a> distributed code functions, it is endlessly customizable. Cloudflare aims to help developers and organizations avoid vendor lock-in with this service.</p>\n\n<p>Additionally, in 2018, Cloudflare founded the <a href='/bandwidth-alliance/'>Bandwidth Alliance</a>, a group of cloud providers that include Azure, Google Cloud, Oracle, Alibaba Cloud, and others. To help customers save on egress fees, Bandwidth Alliance members agree that data being transferred between any of the participating providers can be moved for free or at a discount.</p>\n\n<p><a href='/products/cache-reserve/'>Cache Reserve</a> is another service Cloudflare offers for reducing egress fees. Cache Reserve helps ensure that assets remain cached in the Cloudflare CDN, even if they are rarely requested, so that they do not have to be served from the customer's <a href='/learning/cdn/glossary/origin-server/'>origin server</a>. This increases <a href='/learning/cdn/what-is-a-cache-hit-ratio/'>cache hit ratio</a> and helps eliminate egress fees.</p>\n",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What are data egress fees?</h2>\n\n<p>Data egress fees are charges from cloud providers for moving or transferring data from the cloud storage where it was uploaded. These fees, also known as bandwidth or data transfer fees, are separate from the fees organizations pay for cloud storage and computing.</p>\n\n<p><a href='/learning/cloud/what-is-cloud-storage/'>Cloud storage</a> and other cloud technologies have allowed developers and businesses to scale quickly, accelerate innovation, and — historically — lower costs. It is often cheaper to store data and run applications on a third party's infrastructure rather than buying, maintaining, and replacing on-premise infrastructure.</p>\n\n<p>However, the massive popularity of cloud storage comes with a downside: getting data out. Egress is the process of getting data back out of the service to which it was uploaded — and most cloud providers charge a 'tax' for this data transfer.</p>\n\n<p>Data egress fees may not necessarily be a major concern to users that only store and access a limited amount of data in the cloud, and are only interested in using a single cloud architecture. However, egress fees can prevent organizations from taking full advantage of the cloud's benefits, and — ultimately — increase IT costs.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is ingress versus egress for cloud storage?</h2>\n\n<p>Getting data in and out of the cloud is somewhat like visiting another country. For example, U.S. citizens with valid passports can enter many countries for free; however, they have to pay a fee in certain countries to exit. As a tourist, they're stuck unless they pay the departure tax.</p>\n\n<p>In the world of cloud storage, ingress is the data or traffic entering that cloud infrastructure, and egress is the data exiting the boundaries of that cloud infrastructure.</p>\n\n<p>It is usually free for developers or businesses to move their data into cloud storage (such as Amazon S3 object storage or Azure Blob Storage). This is a deliberate business tactic that incentivizes new users to use the service — any associated costs are effectively absorbed within the service's consolidated cost.</p>\n\n<p>Common ways for data ingress to occur include:</p>\n<ul class=\"learning-list\">\n  <li><strong>User-generated content —</strong> There are millions of applications in the world, and many of them <a href='https://time.com/6209991/apps-collecting-personal-data/' target=\"_blank\">collect some form of user data</a>, from usage stats to location data and more.</li>\n  <li><strong>Data pipelines —</strong> A data pipeline is like an assembly line for data, transforming and <a href='https://www.ibm.com/topics/data-pipeline' target=\"_blank\">processing</a> raw data along the way until it reaches a usable state at its final destination.</li>\n  <li><strong>Bulk uploads —</strong> Cloud providers offer different methods of uploading and transferring huge amounts of data for bulk processing.</li>\n  <li><strong>Website changes due to new content —</strong> Website refreshes can lead to the generation of new application assets, including images, JavaScript, and CSS files; new data can also include periodic additions such as new product images or videos.</li>\n</ul>\n\n<p>However, to make data stored in the cloud usable for serving back to customers (through a personalized website, for example), or otherwise used or manipulated, it needs to be retrieved via egress. Examples of scenarios where an organization would need data egress (or bandwidth) from their cloud storage include:</p>\n<ul class=\"learning-list\">\n  <li>Using the data to respond to HTTP requests for application assets from a user or <a href='/learning/cdn/what-is-a-cdn/'>content delivery network (CDN)</a></li>\n  <li>Connecting the data to different applications</li>\n  <li>Downloading the data from the cloud to local memory</li>\n  <li>Moving the data to another availability zone with the same provider</li>\n  <li>Transferring the data to another cloud provider</li>\n</ul>\n\n<p>Most providers would charge egress fees for this data transfer when it leaves their network. Say a U.S. airline's ticketing data is hosted in a facility in Virginia, and a user planning to fly from Australia visits their service. Although the cloud provider is using their own global backbone to carry the traffic across the United States and then across the Pacific, they can charge to move the data between the two places.</p>\n\n<p>Egress fees are a subtle way for certain providers to charge more for cloud management over time, while also discouraging customers from leaving their ecosystem. The fees almost always increase over time: as a company grows more reliant on the cloud, the cost of egress rises. When the diversity and sophistication of a company's IT stack grows, more data naturally needs to travel between more of their applications across clouds.</p>\n\n<p>The egress tax increases because there is more data to move, but at that point, the customer has already invested so much in their cloud infrastructure — ultimately, resulting in <a href='/learning/cloud/what-is-vendor-lock-in/'>vendor lock-in</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What do cloud providers charge for data egress?</h2>\n\n<p>The general rule of thumb is that all traffic coming from the Internet (ingress) into cloud storage enters for free, and traffic exiting (egress) is chargeable, if it exceeds the provider's free tier. Many cloud providers, such as Amazon Web Services, will charge up to $0.09 USD per gigabyte transferred from their storage, regardless of use case.</p>\n\n<p>Specific egress fees are not always transparent, and can be difficult to predict. Understanding the line-by-line charges for egress can require some depth of application architecture and cloud infrastructure expertise — which not all organizations have.</p>\n\n<p>The breakdown of egress fees vary by provider, and are based on multiple factors, including:</p>\n<ul class=\"learning-list\">\n  <li>Customer tier and subscription type</li>\n  <li>Volume of data transferred per month</li>\n  <li>The originating region</li>\n  <li>The data source and destination</li>\n  <li>Requests for failover controls</li>\n  <li>Data transfer acceleration</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why would organizations want to transport data to another provider?</h2>\n\n<p>As noted earlier, there are many scenarios where an organization would need data egress. And some cloud providers will incentivize their customers to transfer data within the same ecosystem; for example, if an organization wants to connect their Amazon S3 <a href='/learning/cloud/what-is-object-storage/'>object storage</a> service to Amazon's Elastic Compute (EC2) within the same region, they can move their data free of charge.</p>\n\n<p>However, there is no one-size-fits-all approach to the cloud. Some developers or businesses that are evolving their cloud strategy (or, are early in their cloud journey) may prefer to use more than one cloud environment, despite egress fees.</p>\n\n<p>Some benefits of using a <a href='/learning/cloud/what-is-hybrid-cloud/'>hybrid cloud</a> (a mix of two or more cloud environments) or <a href='/learning/cloud/what-is-multicloud/'>multi-cloud</a> (multiple public clouds from more than one cloud provider) approach include:</p>\n<ul class=\"learning-list\">\n\n  <li><strong>IT infrastructure control:</strong> A hybrid cloud approach makes it possible for businesses to determine how to customize their cloud operations in the most efficient way possible.</li>\n  <li><strong>Performance optimization:</strong> A properly managed multi-cloud architecture lets developers and organizations run demanding workloads (such as mining archives for business intelligence, or training AI engines) within the most appropriate environments.</li>\n  <li><strong>Balance security with modernization:</strong> Highly regulated industries, such as finance, government, and healthcare, require certain sensitive data to be stored on-premise, while allowing less sensitive data to be stored on the cloud.</li>\n  <li><strong>Unpredictable workloads:</strong> A hybrid or multi-cloud approach can help businesses or governments handle emergency or cyclical needs without overprovisioning large amounts of hardware.</li>\n  <li><strong>Disaster recovery:</strong> Cloud backup and disaster recovery replicates files in case of accidental deletion or data corruption, so that a company can restore data in a rapid, orchestrated manner.</li>\n</ul>\n\n<p>Regardless of which infrastructure a business chooses, cloud storage is a game-changer when it comes to deploying, securing, and continuously improving applications at scale.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare help reduce egress fees?</h2>\n\n<p>Cloudflare's research has found that reducing or eliminating egress fees can <a href='https://blog.cloudflare.com/empowering-customers-with-the-bandwidth-alliance/'>save customers</a> between 7.5% and 27% of their total monthly bill.</p>\n\n<p>Cloudflare offers zero-egress fee object storage via a service called <a href='https://www.cloudflare.com/developer-platform/r2/'>Cloudflare R2</a>. R2 is an <a href='https://www.cloudflare.com/developer-platform/solutions/s3-compatible-object-storage/'>S3-compatible object storage solution</a> that allows for fast and free data retrieval, and when paired with <a href='https://workers.cloudflare.com/'>Cloudflare Workers'</a> distributed code functions, it is endlessly customizable. Cloudflare aims to help developers and organizations avoid vendor lock-in with this service.</p>\n\n<p>Additionally, in 2018, Cloudflare founded the <a href='/bandwidth-alliance/'>Bandwidth Alliance</a>, a group of cloud providers that include Azure, Google Cloud, Oracle, Alibaba Cloud, and others. To help customers save on egress fees, Bandwidth Alliance members agree that data being transferred between any of the participating providers can be moved for free or at a discount.</p>\n\n<p><a href='/products/cache-reserve/'>Cache Reserve</a> is another service Cloudflare offers for reducing egress fees. Cache Reserve helps ensure that assets remain cached in the Cloudflare CDN, even if they are rarely requested, so that they do not have to be served from the customer's <a href='/learning/cdn/glossary/origin-server/'>origin server</a>. This increases <a href='/learning/cdn/what-is-a-cache-hit-ratio/'>cache hit ratio</a> and helps eliminate egress fees.</p>\n\n<p>Learn how a <a href='https://www.cloudflare.com/connectivity-cloud/'>connectivity cloud</a> lowers egress fees when moving data between clouds.</p>\n",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
@@ -655,6 +763,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -667,9 +776,7 @@
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"plPL": "English for Locale"
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
@@ -711,7 +818,7 @@
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -733,7 +840,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -757,6 +864,7 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

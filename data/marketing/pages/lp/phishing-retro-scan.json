@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "[ACQ] Q4'23 WEB - GBL - Phishing Retro Scan - LP",
+				"pageName": "[ACQ] Q4'23 WEB - GBL - Phishing Retro Scan - LP ",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -16,6 +16,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,8 +30,7 @@
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "Translated for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/phishing-retro-scan",
 				"topNavOptions": "empty",
@@ -47,7 +47,12 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2023-11-22T23:16:06.092Z",
+					"updatedAt": "2023-12-14T11:46:59.172Z"
 				},
 				"contentfulId": "6ABlnG4NFCO4LbR4aQk1UG",
 				"contentTypeId": "page",
@@ -74,7 +79,7 @@
 							"backgroundColor": "white",
 							"marketoFormId": 3341,
 							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "[ACQ] Q4'23 WEB - GBL - Phishing Retro Scan",
+							"marketoFormLeadSourceDetail": "[ACQ + EXP] Q4'23 WEB - GBL - Phishing Retro Scan",
 							"marketoFormHeaderText": null,
 							"marketoFormDefaultComment": null,
 							"showCommentBox": null,
@@ -95,7 +100,7 @@
 						},
 						"title": "See the phishing threats that are already in your inbox ",
 						"subtitle": null,
-						"copy": "As modern phishing threats increase in sophistication and social engineering tactics become more convincing, the exploitation of individual users continues to represent the largest security risk to organizations. While Microsoft 365 delivers essential controls to limit unwanted emails, targeted and evasive phishing attacks can often bypass built-in security.\n\nWith Cloudflare's phishing retro scan, you can immediately identify the active threats that have already reached your users, including malicious emails that have evaded existing defenses. \n\nStart a retro scan for free and receive a phishing report in minutes, providing an assessment of the threat types detected in your Microsoft 365 inboxes. Your custom report will generate a detailed breakdown of malicious, suspicious, spoof, spam and bulk messages as well as the most targeted individuals in your organization. ",
+						"copy": "As modern phishing threats increase in sophistication and social engineering tactics become more convincing, the exploitation of individual users continues to represent the largest security risk to organizations. While Microsoft 365 delivers essential controls to limit unwanted emails, targeted and evasive phishing attacks can often bypass built-in security.\n\nWith Cloudflare's <a href=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/7B4mm6jduSVapIZO0fv0zL/cdb63e326b0c374053f8a1d9a5da5633/Cloudflare___Phishing_Retro_Scan___Q1_2024.pdf\" target=\"_blank\">phishing retro scan</a>, you can immediately identify the active threats that have already reached your users, including malicious emails that have evaded existing defenses. \n\nStart a retro scan for free and receive a phishing report in minutes, providing an assessment of the threat types detected in your Microsoft 365 inboxes. Your custom report will generate a detailed breakdown of malicious, suspicious, spoof, spam and bulk messages as well as the most targeted individuals in your organization. \n\n<a href=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/7B4mm6jduSVapIZO0fv0zL/cdb63e326b0c374053f8a1d9a5da5633/Cloudflare___Phishing_Retro_Scan___Q1_2024.pdf\" target=\"_blank\">Click here to learn more</a>.",
 						"iconList": [],
 						"iconTitleList": null,
 						"iconCopyList": null,
@@ -116,7 +121,6 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"hasAdobeExperiment": false,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -141,12 +145,12 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"ru-RU",
 				"zh-Hans-CN",
 				"pl-PL"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": false,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

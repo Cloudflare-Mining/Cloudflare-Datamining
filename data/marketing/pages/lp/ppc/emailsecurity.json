@@ -16,6 +16,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,8 +30,7 @@
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/ppc/emailsecurity",
 				"topNavOptions": "default",
@@ -47,7 +47,12 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2022-11-21T20:28:00.626Z",
+					"updatedAt": "2024-02-28T23:06:31.965Z"
 				},
 				"contentfulId": "1LPNEE5oYYkwXYO6gf1tUu",
 				"contentTypeId": "page",
@@ -118,7 +123,7 @@
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
-						"copy": "Request to run Cloudflare Area 1 on your live email production traffic and see - in real-time - what phishing and BEC attacks get through your existing email security controls. Here's how the complimentary phishing risk assessment works:",
+						"copy": "Request to run Cloudflare on your live email production traffic and see — in real-time — what phishing and BEC attacks get through your existing email security controls. Here's how the complimentary phishing risk assessment works:",
 						"title": "How the phishing risk assessment works",
 						"subtitle": null,
 						"bladeStyle": null,
@@ -135,7 +140,7 @@
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Area 1 is a fully elastic cloud service. Get set up in five minutes with flexible connection options that don't impact mail flow or the end user experience.",
+								"description": "Cloudflare is a fully elastic cloud service. Get set up in five minutes with flexible connection options that don't impact mail flow or the end user experience.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -150,7 +155,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wB2WP2bwo7zdgVhToslhe/5983fd8a6bf159cead4f17a99057913a/ease-of-use-toggle.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wB2WP2bwo7zdgVhToslhe/447d1f23d1b8ac77e61e2819465f58fe/ease-of-use-toggle.svg"
 										},
 										"description": "Ease of use orange"
 									},
@@ -171,7 +176,7 @@
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Get full access to the Area 1 dashboard to review detection metrics and forensics. Receive real-time updates from the Area 1 team on incidents that require immediate attention.",
+								"description": "Get full access to the Cloudflare dashboard to review detection metrics and forensics. Receive real-time updates from the Cloudforce One team on incidents that require immediate attention.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -186,9 +191,9 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/10Jn71GCDQVevOJja3TfLO/ce8d67a09048cb50a47d2f90e33da8b2/innovation-intelligence.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/10Jn71GCDQVevOJja3TfLO/c87ebb5a5125cfeafaeec3473c091da4/innovation-intelligence.svg"
 										},
-										"description": ""
+										"description": "Thought bubble icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -207,7 +212,7 @@
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "With an optional inline Area 1 deployment, you can take immediate action on missed phish.",
+								"description": "With an optional inline cloud email security deployment, you can take immediate action on missed phish.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -239,11 +244,11 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "21tyBHgdjmmMEmZ4QHJmfX",
-								"title": "Make Area 1 data work for you",
+								"title": "Make email security data work for you",
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Leverage existing Area 1 integrations to route data to SIEMs and take enforcement actions on other preferred security point solutions.",
+								"description": "Leverage existing Cloudflare integrations to route data to SIEMs and take enforcement actions on other preferred security point solutions.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -277,7 +282,6 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"hasAdobeExperiment": null,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -302,10 +306,10 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

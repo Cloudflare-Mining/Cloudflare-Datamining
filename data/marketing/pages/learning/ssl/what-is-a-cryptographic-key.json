@@ -117,6 +117,12 @@
 									"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
 									"displayText": "Quantum Computing",
 									"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3omkIm00BeovpskqoQQ6ne",
+									"displayText": "Post-Quantum Cryptography",
+									"url": "/learning/ssl/quantum/what-is-post-quantum-cryptography/"
 								}
 							]
 						},
@@ -185,6 +191,12 @@
 									"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
 									"displayText": "What is Domain Spoofing?",
 									"url": "/learning/ssl/what-is-domain-spoofing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "45jjpkuoXvmdkIaeGUsTHk",
+									"displayText": "SSL Certificate Errors",
+									"url": "/learning/ssl/common-errors/"
 								}
 							]
 						},
@@ -316,6 +328,12 @@
 								"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
 								"displayText": "Quantum Computing",
 								"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3omkIm00BeovpskqoQQ6ne",
+								"displayText": "Post-Quantum Cryptography",
+								"url": "/learning/ssl/quantum/what-is-post-quantum-cryptography/"
 							}
 						]
 					},
@@ -373,6 +391,12 @@
 								"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
 								"displayText": "What is Domain Spoofing?",
 								"url": "/learning/ssl/what-is-domain-spoofing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "45jjpkuoXvmdkIaeGUsTHk",
+								"displayText": "SSL Certificate Errors",
+								"url": "/learning/ssl/common-errors/"
 							}
 						]
 					},
@@ -563,6 +587,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -575,51 +600,15 @@
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -641,7 +630,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -665,6 +654,7 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

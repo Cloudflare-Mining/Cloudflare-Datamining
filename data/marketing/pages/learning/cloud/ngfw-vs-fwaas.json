@@ -40,14 +40,14 @@
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "39LIvqQCFa8iU7ITBQmaEm",
-							"name": "Cloud Header: Cloud Basics",
+							"name": "Cloud header: Cloud basics",
 							"displayText": "Cloud basics",
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5k1A20zBRQpjW2079su8uz",
-									"displayText": "What is SaaS?",
-									"url": "/learning/cloud/what-is-saas/"
+									"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+									"displayText": "What is cloud storage?",
+									"url": "/learning/cloud/what-is-cloud-storage/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -57,9 +57,21 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
-									"displayText": "What is cloud storage?",
-									"url": "/learning/cloud/what-is-cloud-storage/"
+									"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+									"displayText": "Multitenancy",
+									"url": "/learning/cloud/what-is-multitenancy/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5k1A20zBRQpjW2079su8uz",
+									"displayText": "What is SaaS?",
+									"url": "/learning/cloud/what-is-saas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "38DHkZos35DYciaxPnJk7g",
+									"displayText": "Vendor lock-in",
+									"url": "/learning/cloud/what-is-vendor-lock-in/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -69,24 +81,10 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
-									"displayText": "Multitenancy",
-									"url": "/learning/cloud/what-is-multitenancy/"
+									"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+									"displayText": "Multi-cloud vs hybrid cloud",
+									"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
 								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "38DHkZos35DYciaxPnJk7g",
-									"displayText": "Vendor lock-in",
-									"url": "/learning/cloud/what-is-vendor-lock-in/"
-								}
-							]
-						},
-						{
-							"contentTypeId": "learningCenterArticleLinkedList",
-							"contentfulId": "3X81SpcBRddDrjqw17J1l2",
-							"name": "Cloud Header: Multicloud and hybrid cloud",
-							"displayText": "Multi-cloud and hybrid cloud",
-							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
@@ -95,21 +93,15 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
-									"displayText": "What is hybrid cloud?",
-									"url": "/learning/cloud/what-is-hybrid-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
-									"displayText": "Multi-cloud vs hybrid cloud",
-									"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
 									"displayText": "Multi-cloud management",
 									"url": "/learning/cloud/what-is-multicloud-management/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
+									"displayText": "What is hybrid cloud?",
+									"url": "/learning/cloud/what-is-hybrid-cloud/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -122,9 +114,15 @@
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "486fCRIX89EKjcHElALCiw",
-							"name": "Cloud Header: Securing the Cloud",
+							"name": "Cloud header: Securing the cloud",
 							"displayText": "Securing the cloud",
 							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "kNE9anSSaRE82gAHCyVxp",
+									"displayText": "What is a cloud firewall (FWaaS)?",
+									"url": "/learning/cloud/what-is-a-cloud-firewall/"
+								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
@@ -133,9 +131,21 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "kNE9anSSaRE82gAHCyVxp",
-									"displayText": "What is a cloud firewall (FWaaS)?",
-									"url": "/learning/cloud/what-is-a-cloud-firewall/"
+									"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+									"displayText": "Cloud security posture management (CSPM)",
+									"url": "/learning/cloud/what-is-cspm/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+									"displayText": "Cloud workload protection platform (CWPP)",
+									"url": "/learning/cloud/what-is-cwpp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5xd2QLCI5QCkPAIoDk5CJ2",
+									"displayText": "Cloud-native security",
+									"url": "/learning/cloud/cloud-native-security/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -151,35 +161,47 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
-									"displayText": "Cloud security posture management (CSPM)",
-									"url": "/learning/cloud/what-is-cspm/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
 									"displayText": "SaaS security posture management (SSPM)",
 									"url": "/learning/cloud/what-is-sspm/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
-									"displayText": "Cloud workload protection platform (CWPP)",
-									"url": "/learning/cloud/what-is-cwpp/"
+									"contentfulId": "1FHXopbTiAErueuQvbAXr6",
+									"displayText": "Cloud-native application protection platform (CNAPP)",
+									"url": "/learning/cloud/cnapp/"
 								}
 							]
 						},
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
-							"contentfulId": "2OkRH9jhjm8FmxBtbYnZ9V",
-							"name": "Cloud Header: Cloud Glossary",
-							"displayText": "Glossary",
+							"contentfulId": "26g8mVCbaDb7TF4jJMGFhz",
+							"name": "Cloud header: Cloud modernization",
+							"displayText": "Cloud modernization",
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
-									"displayText": "Cloud migration",
-									"url": "/learning/cloud/what-is-cloud-migration/"
+									"contentfulId": "y0HrOCtfIQJ4B46NGM8aK",
+									"displayText": "Application modernization",
+									"url": "/learning/cloud/application-modernization/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3ogF8VqUtpwiX80xRDH9lQ",
+									"displayText": "How to rehost apps",
+									"url": "/learning/cloud/how-to-rehost-applications/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "174iXrdVMHuS7avH6ICSVG",
+									"displayText": "How to refactor apps",
+									"url": "/learning/cloud/how-to-refactor-applications/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "nypSYuLAN0fI1HcJWLwj7",
+									"displayText": "How to replatform apps",
+									"url": "/learning/cloud/how-to-replatform-applications/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -189,27 +211,35 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
-									"displayText": "What is a public cloud?",
-									"url": "/learning/cloud/what-is-a-public-cloud/"
+									"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+									"displayText": "Cloud migration",
+									"url": "/learning/cloud/what-is-cloud-migration/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
-									"displayText": "What is a private cloud?",
-									"url": "/learning/cloud/what-is-a-private-cloud/"
+									"contentfulId": "31LQEF639fG1XJWTZBqnNO",
+									"displayText": "Data migration",
+									"url": "/learning/cloud/what-is-data-migration/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2OkRH9jhjm8FmxBtbYnZ9V",
+							"name": "Cloud header: Cloud glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2poSO07sAv136qKoXulTex",
+									"displayText": "AWS data transfer pricing",
+									"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "53Auemqu8excTZE8bzc7Zk",
-									"displayText": "Virtual private cloud",
-									"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
-									"displayText": "Cloudflare and the cloud",
-									"url": "/learning/cloud/cloudflare-and-the-cloud/"
+									"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
+									"displayText": "Data egress fees",
+									"url": "/learning/cloud/what-are-data-egress-fees/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -225,6 +255,12 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5tJVSh0zDmPqvoriPMSMuO",
+									"displayText": "What is a data lake?",
+									"url": "/learning/cloud/what-is-a-data-lake/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "7u090eTI3Lc6TC6CZRHIhI",
 									"displayText": "What is object storage?",
 									"url": "/learning/cloud/what-is-object-storage/"
@@ -237,22 +273,40 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
-									"displayText": "Data egress fees",
-									"url": "/learning/cloud/what-are-data-egress-fees/"
+									"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
+									"displayText": "What is a private cloud?",
+									"url": "/learning/cloud/what-is-a-private-cloud/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "2poSO07sAv136qKoXulTex",
-									"displayText": "AWS data transfer pricing",
-									"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+									"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+									"displayText": "What is a public cloud?",
+									"url": "/learning/cloud/what-is-a-public-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+									"displayText": "Virtual private cloud",
+									"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1w22mfnOVmsjLsM3jMxaAY",
+									"displayText": "Cloud networking",
+									"url": "/learning/cloud/what-is-cloud-networking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
+									"displayText": "Cloudflare and the cloud",
+									"url": "/learning/cloud/cloudflare-and-the-cloud/"
 								}
 							]
 						},
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "7qiJLGJVI1us6Le145zRbC",
-							"name": "Cloud Header: theNET",
+							"name": "Cloud header: theNET",
 							"displayText": "theNET",
 							"links": [
 								{
@@ -263,15 +317,15 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "goUykSuhqroMEsPv5li3u",
-									"displayText": "Trading egress for opportunity",
-									"url": "https://www.cloudflare.com/learning/insights-cloud-storage-egress/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "7akEuCGGNzlr1ufpM39JJO",
 									"displayText": "The Internet is the new corporate network",
 									"url": "https://www.cloudflare.com/learning/insights-internet-corp-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "goUykSuhqroMEsPv5li3u",
+									"displayText": "Trading egress for opportunity",
+									"url": "https://www.cloudflare.com/learning/insights-cloud-storage-egress/"
 								}
 							]
 						}
@@ -285,7 +339,7 @@
 					"column1": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "2PUeZxc6Kw9UYN9rDC8IYy",
-						"name": "Cloud Footer - About the Cloud",
+						"name": "Cloud footer — About the cloud",
 						"displayText": "About the cloud",
 						"links": [
 							{
@@ -302,19 +356,13 @@
 							}
 						]
 					},
-					"column2Title": "Cloud Configurations",
+					"column2Title": "Cloud configurations",
 					"column2": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "gD760jkD40xsJ5VKKDGCY",
-						"name": "Cloud Footer - Cloud Configurations",
+						"name": "Cloud Footer - Cloud configurations",
 						"displayText": "Cloud configurations",
 						"links": [
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
-								"displayText": "What is multi-cloud?",
-								"url": "/learning/cloud/what-is-multicloud/"
-							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
@@ -323,9 +371,15 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
-								"displayText": "What is a public cloud?",
-								"url": "/learning/cloud/what-is-a-public-cloud/"
+								"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
+								"displayText": "What is multi-cloud?",
+								"url": "/learning/cloud/what-is-multicloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+								"displayText": "Multitenancy",
+								"url": "/learning/cloud/what-is-multitenancy/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -335,17 +389,35 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
-								"displayText": "Multitenancy",
-								"url": "/learning/cloud/what-is-multitenancy/"
+								"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+								"displayText": "What is a public cloud?",
+								"url": "/learning/cloud/what-is-a-public-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3ogF8VqUtpwiX80xRDH9lQ",
+								"displayText": "How to rehost apps",
+								"url": "/learning/cloud/how-to-rehost-applications/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "nypSYuLAN0fI1HcJWLwj7",
+								"displayText": "How to replatform apps",
+								"url": "/learning/cloud/how-to-replatform-applications/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "174iXrdVMHuS7avH6ICSVG",
+								"displayText": "How to refactor apps",
+								"url": "/learning/cloud/how-to-refactor-applications/"
 							}
 						]
 					},
-					"column3Title": "Cloud Security",
+					"column3Title": "Cloud security",
 					"column3": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "5jkIKbYcSS95KrnsL6yhXO",
-						"name": "Cloud Footer - Cloud security",
+						"name": "Cloud footer — Cloud security",
 						"displayText": "Cloud security",
 						"links": [
 							{
@@ -353,6 +425,18 @@
 								"contentfulId": "kNE9anSSaRE82gAHCyVxp",
 								"displayText": "What is a cloud firewall (FWaaS)?",
 								"url": "/learning/cloud/what-is-a-cloud-firewall/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+								"displayText": "Cloud security posture management (CSPM)",
+								"url": "/learning/cloud/what-is-cspm/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+								"displayText": "Cloud workload protection platform (CWPP)",
+								"url": "/learning/cloud/what-is-cwpp/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -368,102 +452,36 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
-								"displayText": "Cloud security posture management (CSPM)",
-								"url": "/learning/cloud/what-is-cspm/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
 								"displayText": "SaaS security posture management (SSPM)",
 								"url": "/learning/cloud/what-is-sspm/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
-								"displayText": "Cloud workload protection platform (CWPP)",
-								"url": "/learning/cloud/what-is-cwpp/"
+								"contentfulId": "5xd2QLCI5QCkPAIoDk5CJ2",
+								"displayText": "Cloud-native security",
+								"url": "/learning/cloud/cloud-native-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1FHXopbTiAErueuQvbAXr6",
+								"displayText": "Cloud-native application protection platform (CNAPP)",
+								"url": "/learning/cloud/cnapp/"
 							}
 						]
 					},
-					"column4Title": "Cloud Glossary",
+					"column4Title": "Cloud glossary",
 					"column4": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "4ITdD1qcb1o7qstB32QX0V",
-						"name": "Cloud Footer - Glossary",
+						"name": "Cloud footer — Glossary",
 						"displayText": "Cloud glossary",
 						"links": [
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5k1A20zBRQpjW2079su8uz",
-								"displayText": "What is SaaS?",
-								"url": "/learning/cloud/what-is-saas/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
-								"displayText": "Cloud migration",
-								"url": "/learning/cloud/what-is-cloud-migration/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
-								"displayText": "Multi-cloud management",
-								"url": "/learning/cloud/what-is-multicloud-management/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
-								"displayText": "Hybrid cloud architecture",
-								"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
-								"displayText": "Multi-cloud vs hybrid cloud",
-								"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
-								"displayText": "Virtual machine",
-								"url": "/learning/cloud/what-is-a-virtual-machine/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
-								"displayText": "What is cloud storage?",
-								"url": "/learning/cloud/what-is-cloud-storage/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
-								"displayText": "Digital transformation",
-								"url": "/learning/cloud/what-is-digital-transformation/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "38DHkZos35DYciaxPnJk7g",
-								"displayText": "Vendor lock-in",
-								"url": "/learning/cloud/what-is-vendor-lock-in/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
-								"displayText": "What is IaaS?",
-								"url": "/learning/cloud/what-is-iaas/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "53Auemqu8excTZE8bzc7Zk",
-								"displayText": "Virtual private cloud",
-								"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
-								"displayText": "Cloud security",
-								"url": "/learning/cloud/what-is-cloud-security/"
+								"contentfulId": "2poSO07sAv136qKoXulTex",
+								"displayText": "AWS data transfer pricing",
+								"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -479,9 +497,63 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+								"displayText": "Cloud migration",
+								"url": "/learning/cloud/what-is-cloud-migration/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
+								"displayText": "Cloud security",
+								"url": "/learning/cloud/what-is-cloud-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+								"displayText": "What is cloud storage?",
+								"url": "/learning/cloud/what-is-cloud-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
 								"displayText": "Data egress fees",
 								"url": "/learning/cloud/what-are-data-egress-fees/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5tJVSh0zDmPqvoriPMSMuO",
+								"displayText": "What is a data lake?",
+								"url": "/learning/cloud/what-is-a-data-lake/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
+								"displayText": "Digital transformation",
+								"url": "/learning/cloud/what-is-digital-transformation/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
+								"displayText": "Hybrid cloud architecture",
+								"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
+								"displayText": "What is IaaS?",
+								"url": "/learning/cloud/what-is-iaas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+								"displayText": "Multi-cloud vs hybrid cloud",
+								"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
+								"displayText": "Multi-cloud management",
+								"url": "/learning/cloud/what-is-multicloud-management/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -497,13 +569,49 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "2poSO07sAv136qKoXulTex",
-								"displayText": "AWS data transfer pricing",
-								"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+								"contentfulId": "5k1A20zBRQpjW2079su8uz",
+								"displayText": "What is SaaS?",
+								"url": "/learning/cloud/what-is-saas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "38DHkZos35DYciaxPnJk7g",
+								"displayText": "Vendor lock-in",
+								"url": "/learning/cloud/what-is-vendor-lock-in/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
+								"displayText": "Virtual machine",
+								"url": "/learning/cloud/what-is-a-virtual-machine/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+								"displayText": "Virtual private cloud",
+								"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1w22mfnOVmsjLsM3jMxaAY",
+								"displayText": "Cloud networking",
+								"url": "/learning/cloud/what-is-cloud-networking/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "y0HrOCtfIQJ4B46NGM8aK",
+								"displayText": "Application modernization",
+								"url": "/learning/cloud/application-modernization/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "31LQEF639fG1XJWTZBqnNO",
+								"displayText": "Data migration",
+								"url": "/learning/cloud/what-is-data-migration/"
 							}
 						]
 					},
-					"column5Title": "Learning Center Navigation",
+					"column5Title": "Learning Center navigation",
 					"column5": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "3Z0WMXrDmdWdc5R8JIkDrG",
@@ -645,7 +753,7 @@
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">Next-generation firewall (NGFW) vs. firewall-as-a-service (FWaaS)</h2>\n\n<p>These terms describe two different aspects of a <a href='/learning/security/what-is-a-firewall/'>firewall</a> — what it can do (NGFW) versus where and how it is deployed (FWaaS). A <a href='/learning/security/what-is-next-generation-firewall-ngfw/'>next-generation firewall (NGFW)</a> has a specific set of security capabilities. <a href='/learning/cloud/what-is-a-cloud-firewall/'>Firewall-as-a-service (FWaaS)</a> describes a firewall that is hosted in <a href='/learning/cloud/what-is-the-cloud/'>the cloud</a> and offered as a service (such a firewall can also be called a \"cloud firewall\").</p>\n\n<p>FWaaS can have next-gen capabilities, and an NGFW can be hosted in the cloud.</p>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rz4O4ZKLkPFiIJpskdcuZ/c105ab1094dd4657f65b822bac1cb057/next_generation-firewall-vs-cloud-firewall.svg\" class=\"responsive-image\" alt=\"NGFW vs. FWaaS Venn diagram\" itemprop=\"image\"/>\n\n<p>The type of firewall an organization needs depends on their infrastructure. If all of their networking infrastructure and applications are on-premise, a hardware-based NGFW may be sufficient. But most modern organizations run some workloads in the cloud, making FWaaS a necessity (ideally, a FWaaS solution with next-gen capabilities).</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What does a firewall do?</h2>\n\n<p>A firewall is a security product that monitors and controls network traffic based on a set of security rules. Firewalls can be software applications installed on a server or a computer, or they may be physical hardware appliances that connect to an internal network. Firewalls usually sit between a trusted network and an untrusted network; often the trusted network is a business's internal network, and the untrusted network is the Internet.</p>\n\n<p>The standard capabilities of a firewall include:</p>\n\n<ul class=\"learning-list\">\n  <li>Packet filtering: Analyzes individual <a href='/learning/network-layer/what-is-a-packet/'>data packets</a> and blocks them when necessary</li>\n  <li>Stateful inspection: Evaluates packets in the context of active network connections</li>\n  <li>Virtual private network (VPN) awareness: Identifies encrypted <a href='/learning/access-management/what-is-a-vpn/'>VPN</a> traffic and allows it to pass through</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a next-generation firewall (NGFW)?</h2>\n\n<p>NGFWs have the features of traditional firewalls, but they also have added features to address a greater variety of organizational needs and block more potential threats. They are called \"next generation\" to differentiate them from older firewalls that do not have these capabilities.</p>\n\n<p>NGFW technologies include:</p>\n\n<ul class=\"learning-list\">\n  <li>Intrusion prevention system (IPS): Scans network traffic, identifies malware, and blocks it</li>\n  <li>Deep packet inspection (DPI): Improves on packet filtering by analyzing the body of each packet in addition to the header</li>\n  <li>Application awareness and control: Identifies and blocks traffic based on which applications the traffic is going to</li>\n  <li>Threat intelligence feeds: Incorporates streams of updated <a href='/learning/security/glossary/what-is-threat-intelligence/'>threat intelligence</a> to identify the latest threats</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is firewall-as-a-service (FWaaS)?</h2>\n\n<p>FWaaS is a firewall that is hosted in the cloud by a third party vendor. \"Cloud firewall\" is another term for this type of service.</p>\n\n<p>FWaaS is not a physical appliance, nor is it hosted on an organization's premises. Like other \"as-a-service\" categories, such as <a href='/learning/cloud/what-is-iaas/'>infrastructure-as-a-service (IaaS)</a> or <a href='/learning/cloud/what-is-saas/'>software-as-a-service (SaaS)</a>, FWaaS runs in the cloud and is accessed over the Internet.</p>\n\n<p>Before the advent of cloud computing, a firewall sat in between a trusted network and an untrusted one, and there was a clear boundary (called a \"<a href='/learning/access-management/what-is-the-network-perimeter/'>network perimeter</a>\") between the trusted and untrusted networks. But in cloud computing, this boundary does not exist, because trusted cloud assets are accessed over an untrusted network (the Internet). Cloud-hosted firewalls protect these assets despite this lack of a network perimeter. Additionally, cloud-hosted firewalls are configured, maintained, and updated by the firewall vendor, not the customer.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is Cloudflare Magic Firewall?</h2>\n\n<p>Cloudflare Magic Firewall is a cloud firewall with next-gen capabilities that is hosted on the global Cloudflare network. It protects data centers, remote users, branch offices, and cloud infrastructure, and it is tightly integrated with the <a href='/cloudflare-one/'>Cloudflare One platform</a>. <a href='https://blog.cloudflare.com/introducing-magic-firewall/' target='_blank'>Learn more about Magic Firewall</a>.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">Next-generation firewall (NGFW) vs. firewall-as-a-service (FWaaS)</h2>\n\n<p>These terms describe two different aspects of a <a href='/learning/security/what-is-a-firewall/'>firewall</a> — what it can do (NGFW) versus where and how it is deployed (FWaaS). A <a href='/learning/security/what-is-next-generation-firewall-ngfw/'>next-generation firewall (NGFW)</a> has a specific set of security capabilities. <a href='/learning/cloud/what-is-a-cloud-firewall/'>Firewall-as-a-service (FWaaS)</a> describes a firewall that is hosted in <a href='/learning/cloud/what-is-the-cloud/'>the cloud</a> and offered as a service (such a firewall can also be called a \"cloud firewall\").</p>\n\n<p>FWaaS can have next-gen capabilities, and an NGFW can be hosted in the cloud.</p>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rz4O4ZKLkPFiIJpskdcuZ/c105ab1094dd4657f65b822bac1cb057/next_generation-firewall-vs-cloud-firewall.svg\" class=\"responsive-image\" alt=\"NGFW vs. FWaaS Venn diagram\" itemprop=\"image\"/>\n\n<p>The type of firewall an organization needs depends on their infrastructure. If all of their networking infrastructure and applications are on-premise, a hardware-based NGFW may be sufficient. But most modern organizations run some workloads in the cloud, making FWaaS a necessity (ideally, a FWaaS solution with next-gen capabilities).</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What does a firewall do?</h2>\n\n<p>A firewall is a security product that monitors and controls network traffic based on a set of security rules. Firewalls can be software applications installed on a server or a computer, or they may be physical hardware appliances that connect to an internal network. Firewalls usually sit between a trusted network and an untrusted network; often the trusted network is a business's internal network, and the untrusted network is the Internet.</p>\n\n<p>The standard capabilities of a firewall include:</p>\n\n<ul class=\"learning-list\">\n  <li>Packet filtering: Analyzes individual <a href='/learning/network-layer/what-is-a-packet/'>data packets</a> and blocks them when necessary</li>\n  <li>Stateful inspection: Evaluates packets in the context of active network connections</li>\n  <li>Virtual private network (VPN) awareness: Identifies encrypted <a href='/learning/access-management/what-is-a-vpn/'>VPN</a> traffic and allows it to pass through</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a next-generation firewall (NGFW)?</h2>\n\n<p>NGFWs have the features of traditional firewalls, but they also have added features to address a greater variety of organizational needs and block more potential threats. They are called \"next generation\" to differentiate them from older firewalls that do not have these capabilities.</p>\n\n<p>NGFW technologies include:</p>\n\n<ul class=\"learning-list\">\n  <li>Intrusion prevention system (IPS): Scans network traffic, identifies malware, and blocks it</li>\n  <li>Deep packet inspection (DPI): Improves on packet filtering by analyzing the body of each packet in addition to the header</li>\n  <li>Application awareness and control: Identifies and blocks traffic based on which applications the traffic is going to</li>\n  <li>Threat intelligence feeds: Incorporates streams of updated <a href='/learning/security/glossary/what-is-threat-intelligence/'>threat intelligence</a> to identify the latest threats</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is firewall-as-a-service (FWaaS)?</h2>\n\n<p>FWaaS is a firewall that is hosted in the cloud by a third party vendor. \"Cloud firewall\" is another term for this type of service.</p>\n\n<p>FWaaS is not a physical appliance, nor is it hosted on an organization's premises. Like other \"as-a-service\" categories, such as <a href='/learning/cloud/what-is-iaas/'>infrastructure-as-a-service (IaaS)</a> or <a href='/learning/cloud/what-is-saas/'>software-as-a-service (SaaS)</a>, FWaaS runs in the cloud and is accessed over the Internet.</p>\n\n<p>Before the advent of cloud computing, a firewall sat in between a trusted network and an untrusted one, and there was a clear boundary (called a \"<a href='/learning/access-management/what-is-the-network-perimeter/'>network perimeter</a>\") between the trusted and untrusted networks. But in cloud computing, this boundary does not exist, because trusted cloud assets are accessed over an untrusted network (the Internet). Cloud-hosted firewalls protect these assets despite this lack of a network perimeter. Additionally, cloud-hosted firewalls are configured, maintained, and updated by the firewall vendor, not the customer.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is Cloudflare Magic Firewall?</h2>\n\n<p>Cloudflare Magic Firewall is a cloud firewall with next-gen capabilities that is hosted on the global Cloudflare network. It protects data centers, remote users, branch offices, and cloud infrastructure, and it is tightly integrated with the <a href='https://www.cloudflare.com/zero-trust/'>Cloudflare One platform</a>. <a href='https://blog.cloudflare.com/introducing-magic-firewall/' target='_blank'>Learn more about Magic Firewall</a>.</p>",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {
@@ -659,21 +767,20 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"plPL": "English for Locale"
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
@@ -715,7 +822,7 @@
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -737,7 +844,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -761,6 +868,7 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

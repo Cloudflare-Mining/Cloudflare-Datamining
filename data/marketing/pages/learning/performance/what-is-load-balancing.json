@@ -166,7 +166,7 @@
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
 									"displayText": "What is HTTP/3?",
-									"url": "/learning/performance/what-is-http3"
+									"url": "/learning/performance/what-is-http3/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -185,6 +185,12 @@
 									"contentfulId": "5R3fPgXSxwahqmd0iGD7cd",
 									"displayText": "Digital experience monitoring (DEM)",
 									"url": "/learning/performance/what-is-digital-experience-monitoring/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4hXJMYjP1hdIbiiVUwShgR",
+									"displayText": "Application availability",
+									"url": "/learning/performance/glossary/application-availability/"
 								}
 							]
 						},
@@ -428,7 +434,7 @@
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
 								"displayText": "What is HTTP/3?",
-								"url": "/learning/performance/what-is-http3"
+								"url": "/learning/performance/what-is-http3/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -441,6 +447,12 @@
 								"contentfulId": "1P8TqkuttQTb2gZBWrIBnn",
 								"displayText": "Image compression",
 								"url": "/learning/performance/glossary/what-is-image-compression/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4hXJMYjP1hdIbiiVUwShgR",
+								"displayText": "Application availability",
+								"url": "/learning/performance/glossary/application-availability/"
 							}
 						]
 					},
@@ -626,11 +638,12 @@
 					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -643,9 +656,7 @@
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"plPL": "English for Locale"
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
@@ -687,7 +698,7 @@
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -709,7 +720,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -729,10 +740,12 @@
 				"zh-TW",
 				"fr-FR",
 				"de-DE",
+				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

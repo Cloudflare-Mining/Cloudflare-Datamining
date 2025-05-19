@@ -117,6 +117,12 @@
 									"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
 									"displayText": "Quantum Computing",
 									"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3omkIm00BeovpskqoQQ6ne",
+									"displayText": "Post-Quantum Cryptography",
+									"url": "/learning/ssl/quantum/what-is-post-quantum-cryptography/"
 								}
 							]
 						},
@@ -185,6 +191,12 @@
 									"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
 									"displayText": "What is Domain Spoofing?",
 									"url": "/learning/ssl/what-is-domain-spoofing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "45jjpkuoXvmdkIaeGUsTHk",
+									"displayText": "SSL Certificate Errors",
+									"url": "/learning/ssl/common-errors/"
 								}
 							]
 						},
@@ -316,6 +328,12 @@
 								"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
 								"displayText": "Quantum Computing",
 								"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3omkIm00BeovpskqoQQ6ne",
+								"displayText": "Post-Quantum Cryptography",
+								"url": "/learning/ssl/quantum/what-is-post-quantum-cryptography/"
 							}
 						]
 					},
@@ -373,6 +391,12 @@
 								"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
 								"displayText": "What is Domain Spoofing?",
 								"url": "/learning/ssl/what-is-domain-spoofing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "45jjpkuoXvmdkIaeGUsTHk",
+								"displayText": "SSL Certificate Errors",
+								"url": "/learning/ssl/common-errors/"
 							}
 						]
 					},
@@ -517,39 +541,8 @@
 						"url": "/learning/ssl/what-is-mixed-content/"
 					}
 				],
-				"enablementBlade": {
-					"contentTypeId": "bladeEnablement",
-					"contentfulId": "2LzGaNZHPu82wcJPy58uFK",
-					"title": "Increase security and trust using Cloudflare's free SSL / TLS",
-					"titleSize": "medium",
-					"backgroundColor": "image-background",
-					"buttonText": null,
-					"buttonUrl": null,
-					"buttonText2": null,
-					"buttonModalId2": null,
-					"buttonUrl2": null,
-					"bladeSizeType": "large",
-					"htmlId": null,
-					"bladeBorder": "none",
-					"buttonOne": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "1epT7zW5V2EDfOSFMWYuSf",
-						"elementName": "Get Started For Free - SSL",
-						"standardText": null,
-						"text": "Get Started For Free",
-						"url": "https://www.cloudflare.com/lp/pg-all-plans-ssl-lc/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					},
-					"buttonTwo": null,
-					"sectionPadding": null,
-					"eyebrow": null
-				},
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is public key cryptography?</h2>\n\n<p>Public key cryptography is a method of encrypting or signing data with two different keys and making one of the keys, the public key, available for anyone to use. The other key is known as the private key. Data encrypted with the public key can only be decrypted with the private key. Because of this use of two keys instead of one, public key cryptography is also known as <a href='/learning/ssl/what-is-asymmetric-encryption/'>asymmetric cryptography</a>. It is widely used, especially for <a href='/learning/ssl/transport-layer-security-tls/'>TLS/SSL</a>, which makes <a href='/learning/ssl/what-is-https/'>HTTPS</a> possible.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a cryptographic key?</h2>\n\n<p>In cryptography, a <a href='/learning/ssl/what-is-a-cryptographic-key/'>key</a> is a piece of information used for scrambling data so that it appears random; often it's a large number, or string of numbers and letters. When unencrypted data, also called plaintext, is put into a cryptographic algorithm using the key, the plaintext comes out the other side as random-looking data. However, anyone with the right key for decrypting the data can put it back into plaintext form.</p>\n\n<p>For example, suppose we take a plaintext message, \"hello,\" and encrypt it with a key; let's say the key is \"2jd8932kd8.\" Encrypted with this key, our simple \"hello\" now reads \"X5xJCSycg14=\", which seems like random garbage data. However, by decrypting it with that same key, we get \"hello\" back.<p>\n\n<p>Plaintext + key = ciphertext:</p>\n<pre>hello + 2jd8932kd8 = X5xJCSycg14=</pre>\n\n<p>Ciphertext + key = plaintext:</p>\n<pre>X5xJCSycg14= + 2jd8932kd8 = hello</pre>\n\n<p>This is an example of symmetric cryptography, in which only one key is used. In public key cryptography, there would instead be two keys. The public key would encrypt the data, and the private key would decrypt it.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does TLS/SSL use public key cryptography?</h2>\n\n<p>Public key cryptography is extremely useful for establishing secure communications over the Internet (via HTTPS). A website's <a href='/learning/ssl/what-is-an-ssl-certificate/'>SSL/TLS certificate</a>, which is shared publicly, contains the public key, and the private key is installed on the <a href='/learning/cdn/glossary/origin-server/'>origin server</a> — it's \"owned\" by the website.</p>\n\n<p><a href='/learning/ssl/what-happens-in-a-tls-handshake/'>TLS handshakes</a> use public key cryptography to authenticate the identity of the origin server, and to exchange data that is used for generating the session keys. A key exchange algorithm, such as RSA or Diffie-Hellman, uses the public-private key pair to agree upon session keys, which are used for symmetric encryption once the handshake is complete. Clients and servers are able to agree upon new session keys for each communication session, so that bad actors are unable to decrypt communications even if they identify or steal one of the session keys from a previous session.</p>",
+				"enablementBlade": null,
+				"desktopMainContent": "<style>\n    a:hover { background-size: 100% 4em !important; color: var(--inline-link-color);\n }\n\n @media (max-width: 40rem) {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;\n     background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n .card_content-banner-lcnew { padding: 1rem;  display: grid;  grid-gap: 10px;}\n .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n   .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n .card_title-banner-lcnew span  {text-transform:uppercase; font-weight: 500 !important}\n .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n .card_content-banner-bt { align-self: center; justify-self: center;}\n .helper { grid-template-columns: 70% 1fr;}\n\n @media (max-width: 40rem) {\n   .cards-banner-lcnew {\n     grid-template-columns: unset;\n     padding: 0.75rem; display: flex; flex-direction: column;\n   }\n\n   .card_text-banner-lcnew {\n     line-height: 18px;\n   }\n   .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n   .card_content-banner-bt {align-self: end;}\n }\n\n </style> \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is public key cryptography?</h2>\n\n<p>Public key cryptography is a method of encrypting or signing data with two different keys and making one of the keys, the public key, available for anyone to use. The other key is known as the private key. Data encrypted with the public key can only be decrypted with the private key. Because of this use of two keys instead of one, public key cryptography is also known as <a href='/learning/ssl/what-is-asymmetric-encryption/'>asymmetric cryptography</a>. It is widely used, especially for <a href='/learning/ssl/transport-layer-security-tls/'>TLS/SSL</a>, which makes <a href='/learning/ssl/what-is-https/'>HTTPS</a> possible.</p>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Sign up</span></div>\n        <div class=\"card_text-banner-lcnew\">Security & speed with any Cloudflare plan</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/plans/\" data-tracking-action=\"click\"\n                data-tracking-label=\"Start for free - /plans/\" data-tracking-category=\"card3\">Start for free</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a cryptographic key?</h2>\n\n<p>In cryptography, a <a href='/learning/ssl/what-is-a-cryptographic-key/'>key</a> is a piece of information used for scrambling data so that it appears random; often it's a large number, or string of numbers and letters. When unencrypted data, also called plaintext, is put into a cryptographic algorithm using the key, the plaintext comes out the other side as random-looking data. However, anyone with the right key for decrypting the data can put it back into plaintext form.</p>\n\n<p>For example, suppose we take a plaintext message, \"hello,\" and encrypt it with a key; let's say the key is \"2jd8932kd8.\" Encrypted with this key, our simple \"hello\" now reads \"X5xJCSycg14=\", which seems like random garbage data. However, by decrypting it with that same key, we get \"hello\" back.<p>\n\n<p>Plaintext + key = ciphertext:</p>\n<pre>hello + 2jd8932kd8 = X5xJCSycg14=</pre>\n\n<p>Ciphertext + key = plaintext:</p>\n<pre>X5xJCSycg14= + 2jd8932kd8 = hello</pre>\n\n<p>This is an example of symmetric cryptography, in which only one key is used. In public key cryptography, there would instead be two keys. The public key would encrypt the data, and the private key would decrypt it.</p>\n\n<div class=\"cards-banner-lcnew helper\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Whitepaper</span></div>\n        <div class=\"card_text-banner-lcnew\">Maximize the power of TLS</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/lp/maximize-tls/\" data-tracking-action=\"click\"\n                data-tracking-label=\"Read the whitepaper - /lp/maximize-tls/\" data-tracking-category=\"card3\">Read the whitepaper</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does TLS/SSL use public key cryptography?</h2>\n\n<p>Public key cryptography is extremely useful for establishing secure communications over the Internet (via HTTPS). A website's <a href='https://www.cloudflare.com/application-services/products/ssl/'>SSL/TLS certificate</a>, which is shared publicly, contains the public key, and the private key is installed on the <a href='/learning/cdn/glossary/origin-server/'>origin server</a> — it's \"owned\" by the website.</p>\n\n<p><a href='/learning/ssl/what-happens-in-a-tls-handshake/'>TLS handshakes</a> use public key cryptography to authenticate the identity of the origin server, and to exchange data that is used for generating the session keys. A key exchange algorithm, such as RSA or Diffie-Hellman, uses the public-private key pair to agree upon session keys, which are used for symmetric encryption once the handshake is complete. Clients and servers are able to agree upon new session keys for each communication session, so that bad actors are unable to decrypt communications even if they identify or steal one of the session keys from a previous session.</p>",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {
@@ -563,6 +556,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -575,51 +569,15 @@
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -641,7 +599,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -665,6 +623,7 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

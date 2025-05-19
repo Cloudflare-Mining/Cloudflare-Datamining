@@ -39,21 +39,65 @@
 						},
 						{
 							"contentTypeId": "learningCenterArticleLink",
-							"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
-							"displayText": "What is machine learning?",
-							"url": "/learning/ai/what-is-machine-learning/"
-						},
-						{
-							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
-							"displayText": "Large language models (LLMs)",
+							"displayText": "What is a large language model (LLM)?",
 							"url": "/learning/ai/what-is-large-language-model/"
 						},
 						{
-							"contentTypeId": "learningCenterArticleLink",
-							"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
-							"displayText": "Vector database",
-							"url": "/learning/ai/what-is-vector-database/"
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "41JHcwdZJopZYPQOHjdkkE",
+							"name": "Machine learning",
+							"displayText": "Machine learning",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+									"displayText": "What is machine learning?",
+									"url": "/learning/ai/what-is-machine-learning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+									"displayText": "What is deep learning?",
+									"url": "/learning/ai/what-is-deep-learning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5uKuVMtEUTbsmkjOh86Dsl",
+									"displayText": "Neural networks",
+									"url": "/learning/ai/what-is-neural-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+									"displayText": "What is generative AI?",
+									"url": "/learning/ai/what-is-generative-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
+									"displayText": "Predictive AI",
+									"url": "/learning/ai/what-is-predictive-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+									"displayText": "AI image generation",
+									"url": "/learning/ai/ai-image-generation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+									"displayText": "What is big data?",
+									"url": "/learning/ai/big-data/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
+									"displayText": "What is agentic AI?",
+									"url": "/learning/ai/what-is-agentic-ai/"
+								}
+							]
 						},
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
@@ -63,27 +107,87 @@
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
-									"displayText": "Predictive AI",
-									"url": "/learning/ai/what-is-predictive-ai/"
+									"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+									"displayText": "What are embeddings?",
+									"url": "/learning/ai/what-are-embeddings/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5TheR9rp9ZfJIyLeCo93oq",
-									"displayText": "Big data",
-									"url": "/learning/ai/big-data/"
+									"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+									"displayText": "Vector database",
+									"url": "/learning/ai/what-is-vector-database/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "12RjN72z2wlElvMBzyICp9",
+									"displayText": "AI inference vs. training",
+									"url": "/learning/ai/inference-vs-training/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+									"displayText": "What is natural language processing (NLP)?",
+									"url": "/learning/ai/natural-language-processing-nlp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
+									"displayText": "Low-rank adaptation (LoRA)",
+									"url": "/learning/ai/what-is-lora/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+									"displayText": "AI hallucinations",
+									"url": "/learning/ai/what-are-ai-hallucinations/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4xeYgczMnCqQ0wO8ORIbVY",
+									"displayText": "AI quantization",
+									"url": "/learning/ai/what-is-quantization/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+									"displayText": "OWASP Top 10 for LLMs",
+									"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+									"displayText": "AI data poisoning",
+									"url": "/learning/ai/data-poisoning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+									"displayText": "Retrieval augmented generation (RAG)",
+									"url": "/learning/ai/retrieval-augmented-generation-rag/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7kvDdMXof90koTqWiUdRX5",
+									"displayText": "History of AI",
+									"url": "/learning/ai/history-of-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "pjgC00TeWrxtIOybBfUbh",
+									"displayText": "What is vibe coding?",
+									"url": "/learning/ai/ai-vibe-coding/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+									"displayText": "Third wave of AI",
+									"url": "/learning/ai/evolution-of-ai/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
 									"displayText": "ChatGPT plugins",
 									"url": "/learning/ai/chatgpt-plugins/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
-									"displayText": "What are embeddings?",
-									"url": "/learning/ai/what-are-embeddings/"
 								}
 							]
 						}
@@ -105,6 +209,18 @@
 								"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
 								"displayText": "What is artificial intelligence (AI)?",
 								"url": "/learning/ai/what-is-artificial-intelligence/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "12RjN72z2wlElvMBzyICp9",
+								"displayText": "AI inference vs. training",
+								"url": "/learning/ai/inference-vs-training/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7kvDdMXof90koTqWiUdRX5",
+								"displayText": "History of AI",
+								"url": "/learning/ai/history-of-ai/"
 							}
 						]
 					},
@@ -123,9 +239,27 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+								"displayText": "What is deep learning?",
+								"url": "/learning/ai/what-is-deep-learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
-								"displayText": "Large language models (LLMs)",
+								"displayText": "What is a large language model (LLM)?",
 								"url": "/learning/ai/what-is-large-language-model/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
+								"displayText": "Low-rank adaptation (LoRA)",
+								"url": "/learning/ai/what-is-lora/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+								"displayText": "AI image generation",
+								"url": "/learning/ai/ai-image-generation/"
 							}
 						]
 					},
@@ -174,6 +308,72 @@
 								"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
 								"displayText": "ChatGPT plugins",
 								"url": "/learning/ai/chatgpt-plugins/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5uKuVMtEUTbsmkjOh86Dsl",
+								"displayText": "Neural networks",
+								"url": "/learning/ai/what-is-neural-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+								"displayText": "What is generative AI?",
+								"url": "/learning/ai/what-is-generative-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+								"displayText": "What is natural language processing (NLP)?",
+								"url": "/learning/ai/natural-language-processing-nlp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+								"displayText": "AI hallucinations",
+								"url": "/learning/ai/what-are-ai-hallucinations/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4xeYgczMnCqQ0wO8ORIbVY",
+								"displayText": "AI quantization",
+								"url": "/learning/ai/what-is-quantization/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+								"displayText": "OWASP Top 10 for LLMs",
+								"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+								"displayText": "AI data poisoning",
+								"url": "/learning/ai/data-poisoning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+								"displayText": "Retrieval augmented generation (RAG)",
+								"url": "/learning/ai/retrieval-augmented-generation-rag/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
+								"displayText": "What is agentic AI?",
+								"url": "/learning/ai/what-is-agentic-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+								"displayText": "Third wave of AI",
+								"url": "/learning/ai/evolution-of-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "pjgC00TeWrxtIOybBfUbh",
+								"displayText": "What is vibe coding?",
+								"url": "/learning/ai/ai-vibe-coding/"
 							}
 						]
 					},
@@ -296,7 +496,7 @@
 					{
 						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
-						"displayText": "Large language models (LLMs)",
+						"displayText": "What is a large language model (LLM)?",
 						"url": "/learning/ai/what-is-large-language-model/"
 					},
 					{
@@ -319,20 +519,21 @@
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What are ChatGPT plugins?</h2>\n\n<p>A plugin is a small software component that adds specific features or functionalities to an existing software application or system, such as websites, mobile applications, or third party applications. Plugins allow developers to extend, update, and customize the functionality of a software application without changing its core codebase. ChatGPT plugins are add-on tools developed specifically for the <a href='/learning/ai/what-is-artificial-intelligence/'>AI</a>-powered <a href='/learning/ai/what-is-large-language-model/'>large language model</a> ChatGPT. These plugins add functionality and features, helping users take advantage of the full capabilities of ChatGPT.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do ChatGPT plugins work?</h2>\n\n<p>Plugins work by extending the features of a software application. To do this, they leverage predefined <a href='/learning/security/api/what-is-an-api/'>application programming interfaces (APIs)</a> to interact with and enhance the software.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the benefits of using ChatGPT plugins?</h2>\n\n<p>ChatGPT plugins enhance the capabilities of ChatGPT for a variety of purposes. Plugins allow users to customize the model to meet specific needs or use cases, including integration with external services, databases, or specialized tools, providing industry-specific features (such as those used in healthcare, ecommerce, or finance), supporting translation apps, and running data analysis.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the drawbacks of using ChatGPT plugins?</h2>\n\n<p>In order to use ChatGPT plugins, users need to pay a subscription fee. Also, many plugins are developed by third-party vendors. This could lead to an increased risk of exposure of sensitive information, depending on what information is entered into the plugin and how those vendors handle the data.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are some popular ChatGPT plugins?</h2>\n\n<p>There are many plugins available in the ChatGPT store, which include plugins created by OpenAI as well as third-party extensions. Popular plugins can enable users to obtain travel recommendations, help users make restaurant reservations, offer multi-language translations, and deliver prompt engineering and mathematical solutions.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Does Cloudflare offer a ChatGPT plugin?</h2>\n\n<p>Cloudflare Radar shares Internet traffic trends, insight into network and application layer attack traffic, and adoption and usage of key protocols. Built on top of Workers and a well-documented public API, <a href='https://blog.cloudflare.com/cloudflare-chatgpt-plugins/' target='_blank'>Cloudflare Radar ChatGPT</a> is available on ChatGPT. Developers can also <a href='https://blog.cloudflare.com/magic-in-minutes-how-to-build-a-chatgpt-plugin-with-cloudflare-workers/' target='_blank'>build their own plugins using Workers</a>.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What are ChatGPT plugins?</h2>\n\n<p>A plugin is a small software component that adds specific features or functionalities to an existing software application or system, such as websites, mobile applications, or third party applications. Plugins allow developers to extend, update, and customize the functionality of a software application without changing its core codebase. ChatGPT plugins are add-on tools developed specifically for the <a href='/learning/ai/what-is-artificial-intelligence/'>AI</a>-powered <a href='/learning/ai/what-is-large-language-model/'>large language model</a> ChatGPT. These plugins add functionality and features, helping users take advantage of the full capabilities of ChatGPT.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do ChatGPT plugins work?</h2>\n\n<p>Plugins work by extending the features of a software application. To do this, they leverage predefined <a href='/learning/security/api/what-is-an-api/'>application programming interfaces (APIs)</a> to interact with and enhance the software.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the benefits of using ChatGPT plugins?</h2>\n\n<p>ChatGPT plugins enhance the capabilities of ChatGPT for a variety of purposes. Plugins allow users to customize the model to meet specific needs or use cases, including integration with external services, databases, or specialized tools, providing industry-specific features (such as those used in healthcare, ecommerce, or finance), supporting translation apps, and running data analysis.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the drawbacks of using ChatGPT plugins?</h2>\n\n<p>In order to use ChatGPT plugins, users need to pay a subscription fee. Also, many plugins are developed by third-party vendors. This could lead to an <a href='https://www.cloudflare.com/learning/ai/owasp-top-10-risks-for-llms/'>increased risk of exposure of sensitive information</a>, depending on what information is entered into the plugin and how those vendors handle the data.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are some popular ChatGPT plugins?</h2>\n\n<p>There are many plugins available in the ChatGPT store, which include plugins created by OpenAI as well as third-party extensions. Popular plugins can enable users to obtain travel recommendations, help users make restaurant reservations, offer multi-language translations, and deliver prompt engineering and mathematical solutions.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Does Cloudflare offer a ChatGPT plugin?</h2>\n\n<p>Cloudflare Radar shares Internet traffic trends, insight into network and application layer attack traffic, and adoption and usage of key protocols. Built on top of Workers and a well-documented public API, <a href='https://blog.cloudflare.com/cloudflare-chatgpt-plugins/' target='_blank'>Cloudflare Radar ChatGPT</a> is available on ChatGPT. Developers can also <a href='https://blog.cloudflare.com/magic-in-minutes-how-to-build-a-chatgpt-plugin-with-cloudflare-workers/' target='_blank'>build their own plugins using Workers</a>.</p>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
-					"zhTW": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
-					"deDE": "English for Locale",
+					"deDE": "Translated for Locale",
 					"itIT": "English for Locale",
 					"jaJP": "Translated for Locale",
-					"koKR": "English for Locale",
+					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -344,10 +545,8 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "English for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"zhHansCN": "Translated for Locale",
+					"plPL": "English for Locale"
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
@@ -389,7 +588,7 @@
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -411,7 +610,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -427,10 +626,16 @@
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
 				"en-US",
+				"zh-CN",
+				"zh-TW",
 				"fr-FR",
+				"de-DE",
 				"ja-JP",
+				"ko-KR",
 				"pt-BR",
-				"es-ES"
+				"es-ES",
+				"es-LA",
+				"zh-Hans-CN"
 			]
 		}
 	}

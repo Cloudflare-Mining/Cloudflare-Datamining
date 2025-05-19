@@ -117,6 +117,12 @@
 									"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
 									"displayText": "Quantum Computing",
 									"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3omkIm00BeovpskqoQQ6ne",
+									"displayText": "Post-Quantum Cryptography",
+									"url": "/learning/ssl/quantum/what-is-post-quantum-cryptography/"
 								}
 							]
 						},
@@ -185,6 +191,12 @@
 									"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
 									"displayText": "What is Domain Spoofing?",
 									"url": "/learning/ssl/what-is-domain-spoofing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "45jjpkuoXvmdkIaeGUsTHk",
+									"displayText": "SSL Certificate Errors",
+									"url": "/learning/ssl/common-errors/"
 								}
 							]
 						},
@@ -316,6 +328,12 @@
 								"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
 								"displayText": "Quantum Computing",
 								"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3omkIm00BeovpskqoQQ6ne",
+								"displayText": "Post-Quantum Cryptography",
+								"url": "/learning/ssl/quantum/what-is-post-quantum-cryptography/"
 							}
 						]
 					},
@@ -373,6 +391,12 @@
 								"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
 								"displayText": "What is Domain Spoofing?",
 								"url": "/learning/ssl/what-is-domain-spoofing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "45jjpkuoXvmdkIaeGUsTHk",
+								"displayText": "SSL Certificate Errors",
+								"url": "/learning/ssl/common-errors/"
 							}
 						]
 					},
@@ -518,39 +542,8 @@
 						"url": "/learning/ssl/how-does-public-key-encryption-work/"
 					}
 				],
-				"enablementBlade": {
-					"contentTypeId": "bladeEnablement",
-					"contentfulId": "2LzGaNZHPu82wcJPy58uFK",
-					"title": "Increase security and trust using Cloudflare's free SSL / TLS",
-					"titleSize": "medium",
-					"backgroundColor": "image-background",
-					"buttonText": null,
-					"buttonUrl": null,
-					"buttonText2": null,
-					"buttonModalId2": null,
-					"buttonUrl2": null,
-					"bladeSizeType": "large",
-					"htmlId": null,
-					"bladeBorder": "none",
-					"buttonOne": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "1epT7zW5V2EDfOSFMWYuSf",
-						"elementName": "Get Started For Free - SSL",
-						"standardText": null,
-						"text": "Get Started For Free",
-						"url": "https://www.cloudflare.com/lp/pg-all-plans-ssl-lc/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					},
-					"buttonTwo": null,
-					"sectionPadding": null,
-					"eyebrow": null
-				},
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is HTTPS?</h2>\n\n<p>Hypertext transfer protocol secure (HTTPS) is the secure version of <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a>, which is the primary protocol used to send data between a web browser and a website. HTTPS is encrypted in order to increase security of data transfer. This is particularly important when users transmit sensitive data, such as by logging into a bank account, email service, or health insurance provider.</p>\n\n<p>Any website, especially those that require login credentials, should use HTTPS. In modern web browsers such as Chrome, websites that do not use HTTPS are marked differently than those that are. Look for a padlock in the URL bar to signify the webpage is secure. Web browsers take HTTPS seriously; <a href='/learning/ssl/why-use-https/'>Google Chrome and other browsers flag all non-HTTPS websites as not secure.</a></p>\n\n<img src=/img/learning/security/glossary/what-is-https/not-secure.png class=\"responsive-image\" alt=\"Google Chrome Security Example\" itemprop=\"image\"/>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does HTTPS work?</h2>\n\n<p>HTTPS uses an <a href='/learning/ssl/what-is-encryption/'>encryption</a> protocol to encrypt communications. The protocol is called <a href='/learning/ssl/transport-layer-security-tls/'>Transport Layer Security (TLS)</a>, although formerly it was known as <a href='/learning/ssl/what-is-ssl/'>Secure Sockets Layer (SSL)</a>. This protocol secures communications by using what's known as an <a href='/learning/ssl/how-does-public-key-encryption-work/'>asymmetric public key infrastructure</a>. This type of security system uses two different keys to encrypt communications between two parties:</p>\n\n<ol>\n<li>The private key - this key is controlled by the owner of a website and it's kept, as the reader may have speculated, private. This key lives on a web server and is used to decrypt information encrypted by the public key.</li>\n<li>The public key - this key is available to everyone who wants to interact with the server in a way that's secure. Information that's encrypted by the public key can only be decrypted by the private key.</li>\n</ol>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why is HTTPS important? What happens if a website doesn't have HTTPS?</h2>\n\n<p>HTTPS prevents websites from having their information broadcast in a way that's easily viewed by anyone snooping on the network. When information is sent over regular HTTP,  the information is broken into packets of data that can be easily \"sniffed\" using free software. This makes communication over the an unsecure medium, such as public Wi-Fi, highly vulnerable to interception. In fact, all communications that occur over HTTP occur in plain text, making them highly accessible to anyone with the correct tools, and vulnerable to <a href='/learning/security/threats/on-path-attack/'>on-path attacks</a>.</p>\n\n<p>With HTTPS, traffic is encrypted such that even if the packets are sniffed or otherwise intercepted, they will come across as nonsensical characters. Let's look at an example:</p>\n\n<h4 class=\"learning-content-h4\">Before encryption:</h4>\n\n<pre><code>This is a string of text that is completely readable</code></pre>\n\n<h4 class=\"learning-content-h4\">After encryption:</h4>\n\n<pre><code>ITM0IRyiEhVpa6VnKyExMiEgNveroyWBPlgGyfkflYjDaaFf/Kn3bo3OfghBPDWo6AfSHlNtL8N7ITEwIXc1gU5X73xMsJormzzXlwOyrCs+9XCPk63Y+z0=</code></pre>\n\n<p>In websites without HTTPS, it is possible for Internet service providers (ISPs) or other intermediaries to inject content into webpages without the approval of the website owner. This commonly takes the form of advertising, where an ISP looking to increase revenue injects paid advertising into the webpages of their customers. Unsurprisingly, when this occurs, the profits for the advertisements and the quality control of those advertisements are in no way shared with the website owner. HTTPS eliminates the ability of unmoderated third parties to inject advertising into web content.</p>\n\n<img src=/img/learning/security/glossary/what-is-https/third-party-content.png class=\"responsive-image\" alt=\"Third-party content injection\" itemprop=\"image\"/>\n\n<p>Image from <a href='https://arstechnica.com/information-technology/2015/08/atts-free-wi-fi-hotspot-injects-extra-ads-on-non-att-websites/' target='_blank'>Ars Technica</a></p>\n\n<p>For a full list of benefits HTTPS provides, see <a href='/learning/ssl/why-use-https/'>Why use HTTPS?</a>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What port does HTTPS use?</h2>\n\n<p>HTTPS uses port 443. This differentiates HTTPS from HTTP, which uses port 80.</p>\n\n<p>(In networking, a port is a virtual software-based point where network connections start and end. All network-connected computers expose a number of ports to enable them to receive traffic. Each port is associated with a specific process or service, and different protocols use different ports.)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How else is HTTPS different from HTTP?</h2>\n\n<p>Technically speaking, HTTPS is not a separate protocol from HTTP. It is simply using TLS/SSL encryption over the HTTP protocol. HTTPS occurs based upon the transmission of <a href='/learning/ssl/what-is-an-ssl-certificate/'>TLS/SSL certificates</a>, which verify that a particular provider is who they say they are.</p>\n\n<p>When a user connects to a webpage, the webpage will send over its SSL certificate which contains the public key necessary to start the secure session. The two computers, the client and the server, then go through a process called an SSL/TLS handshake, which is a series of back-and-forth communications used to establish a secure connection. To take a deeper dive into encryption and the SSL/TLS handshake, <a href='/learning/ssl/what-happens-in-a-tls-handshake/'>read about what happens in a TLS handshake</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does a website start using HTTPS?</h2>\n\n<p>Many website hosting providers and other services will offer TLS/SSL certificates for a fee. These certificates will be often be shared amongst many customers. More expensive certificates are available which can be individually registered to particular web properties.</p>\n\n<p><a href='/plans/'>All websites using Cloudflare receive HTTPS for free</a> using a shared certificate (the technical term for this is a multi-domain SSL certificate). Setting up a free account will guarantee a web property receives continually updated HTTPS protection. You can also explore our paid plans for individual certificates and other features. In either case, a web property receives all the benefits of using HTTPS.</p>\n",
+				"enablementBlade": null,
+				"desktopMainContent": "<style>\n\n    .cards-wrapper-lcnew  { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}\n    .cards_item-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fMg89go9MegG1EDg39mNy/5a42817cd388ae352f77f56e53b1ff81/card-new.png'); background-repeat: no-repeat; background-size: cover;  background-position: center;  border-radius: 8px;  box-shadow: 10px 10px 20px -14px rgba(0, 0, 0, 1.0);  overflow: hidden;}\n    .btn-lcnew { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .btn:hover { background-color: rgba(255, 255, 255, 0.12);}\n    .card_content-lcnew  { padding: 1rem; display: flex; flex-direction: column;}\n    .card_title-lcnew  { color: #ffffff; font-size: 12px; margin: 0px; line-height: 18px; text-transform: uppercase;}\n    .card_title-lcnew span  {font-weight: 500}\n    .card_text-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; margin-bottom: 1rem; margin-top: 1rem; font-weight: 600;}\n     a:hover {background-size: 100% 4em !important; color: var(--inline-link-color);}\n\n    @media (max-width: 40rem) \n    {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n    .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n    .card_content-banner-lcnew { padding: 1rem;  display: grid; grid-template-rows: 1fr 1fr; grid-gap: 10px;}\n    .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n    .card_title-banner-lcnew span  {text-transform: uppercase; font-weight: 500 !important}\n    .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n    .card_content-banner-bt { align-self: center; justify-self: center;}\n\n    @media (max-width: 40rem) \n    { .cards-banner-lcnew { grid-template-columns: unset; padding: 0.75rem; display: flex; flex-direction: column; }\n      .card_text-banner-lcnew { line-height: 18px; }\n      .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n      .card_content-banner-bt {align-self: end;}\n    }\n\n    </style> \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is HTTPS?</h2>\n\n<p>Hypertext transfer protocol secure (HTTPS) is the secure version of <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a>, which is the primary protocol used to send data between a web browser and a website. HTTPS is encrypted in order to increase security of data transfer. This is particularly important when users transmit sensitive data, such as by logging into a bank account, email service, or health insurance provider.</p>\n\n<p>Any website, especially those that require login credentials, should use HTTPS. In modern web browsers such as Chrome, websites that do not use HTTPS are marked differently than those that are. Look for a padlock in the URL bar to signify the webpage is secure. Web browsers take HTTPS seriously; <a href='/learning/ssl/why-use-https/'>Google Chrome and other browsers flag all non-HTTPS websites as not secure.</a></p>\n\n<img src=/img/learning/security/glossary/what-is-https/not-secure.png class=\"responsive-image\" alt=\"Google Chrome Security Example\" itemprop=\"image\"/>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does HTTPS work?</h2>\n\n<p>HTTPS uses an <a href='/learning/ssl/what-is-encryption/'>encryption</a> protocol to encrypt communications. The protocol is called <a href='/learning/ssl/transport-layer-security-tls/'>Transport Layer Security (TLS)</a>, although formerly it was known as <a href='/learning/ssl/what-is-ssl/'>Secure Sockets Layer (SSL)</a>. This protocol secures communications by using what's known as an <a href='/learning/ssl/how-does-public-key-encryption-work/'>asymmetric public key infrastructure</a>. This type of security system uses two different keys to encrypt communications between two parties:</p>\n\n<ol>\n<li>The private key - this key is controlled by the owner of a website and it's kept, as the reader may have speculated, private. This key lives on a web server and is used to decrypt information encrypted by the public key.</li>\n<li>The public key - this key is available to everyone who wants to interact with the server in a way that's secure. Information that's encrypted by the public key can only be decrypted by the private key.</li>\n</ol>\n\n<div class=\"cards-wrapper-lcnew\">\n    <div class=\"cards_item-lcnew\">\n        <div class=\"card_content-lcnew\">\n            <div class=\"card_title-lcnew\"><span>eBook</span></div>\n            <div class=\"card_text-lcnew\">5 Ways to Maximize Security & Performance</div>\n            <div class=\"btn-lcnew card_btn\"><a href=\"https://www.cloudflare.com/lp/five-ways-maximize-performance/\" data-tracking-action=\"click\" data-tracking-label=\"Get the eBook - https://www.cloudflare.com/lp/five-ways-maximize-performance/\" data-tracking-category=\"card1\">Get the eBook</a></div>\n        </div>\n    </div>\n\n    <div class=\"cards_item-lcnew \">\n        <div class=\"card_content-lcnew \">\n            <div class=\"card_title-lcnew\"><span>ebook</span></div>\n            <div class=\"card_text-lcnew\">Everywhere security for every phase of the attack lifecycle</div>\n            <div class=\"btn-lcnew  card_btn\"><a href=\"/lp/everywhere-security-ebook/\" data-tracking-action=\"click\"\n                    data-tracking-label=\"Read the whitepaper - /lp/everywhere-security-ebook/\" data-tracking-category=\"card2\">Read the ebook</a> </div>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why is HTTPS important? What happens if a website doesn't have HTTPS?</h2>\n\n<p>HTTPS prevents websites from having their information broadcast in a way that's easily viewed by anyone snooping on the network. When information is sent over regular HTTP,  the information is broken into packets of data that can be easily \"sniffed\" using free software. This makes communication over the an unsecure medium, such as public Wi-Fi, highly vulnerable to interception. In fact, all communications that occur over HTTP occur in plain text, making them highly accessible to anyone with the correct tools, and vulnerable to <a href='/learning/security/threats/on-path-attack/'>on-path attacks</a>.</p>\n\n<p>With HTTPS, traffic is encrypted such that even if the packets are sniffed or otherwise intercepted, they will come across as nonsensical characters. Let's look at an example:</p>\n\n<h4 class=\"learning-content-h4\">Before encryption:</h4>\n\n<pre><code>This is a string of text that is completely readable</code></pre>\n\n<h4 class=\"learning-content-h4\">After encryption:</h4>\n\n<pre><code>ITM0IRyiEhVpa6VnKyExMiEgNveroyWBPlgGyfkflYjDaaFf/Kn3bo3OfghBPDWo6AfSHlNtL8N7ITEwIXc1gU5X73xMsJormzzXlwOyrCs+9XCPk63Y+z0=</code></pre>\n\n<p>In websites without HTTPS, it is possible for Internet service providers (ISPs) or other intermediaries to inject content into webpages without the approval of the website owner. This commonly takes the form of advertising, where an ISP looking to increase revenue injects paid advertising into the webpages of their customers. Unsurprisingly, when this occurs, the profits for the advertisements and the quality control of those advertisements are in no way shared with the website owner. HTTPS eliminates the ability of unmoderated third parties to inject advertising into web content.</p>\n\n<img src=/img/learning/security/glossary/what-is-https/third-party-content.png class=\"responsive-image\" alt=\"Third-party content injection\" itemprop=\"image\"/>\n\n<p>Image from <a href='https://arstechnica.com/information-technology/2015/08/atts-free-wi-fi-hotspot-injects-extra-ads-on-non-att-websites/' target='_blank'>Ars Technica</a></p>\n\n<p>For a full list of benefits HTTPS provides, see <a href='/learning/ssl/why-use-https/'>Why use HTTPS?</a>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Sign Up</span></div>\n        <div class=\"card_text-banner-lcnew\">Free SSL included with any Cloudflare plan</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/plans/\" data-tracking-action=\"click\" data-tracking-label=\"Get started free - /plans/\" data-tracking-category=\"card3\">Start for free</a>\n        </div>\n    </div>\n</div> \n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What port does HTTPS use?</h2>\n\n<p>HTTPS uses port 443. This differentiates HTTPS from HTTP, which uses port 80.</p>\n\n<p>(In networking, a port is a virtual software-based point where network connections start and end. All network-connected computers expose a number of ports to enable them to receive traffic. Each port is associated with a specific process or service, and different protocols use different ports.)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How else is HTTPS different from HTTP?</h2>\n\n<p>Technically speaking, HTTPS is not a separate protocol from HTTP. It is simply using TLS/SSL encryption over the HTTP protocol. HTTPS occurs based upon the transmission of <a href='/learning/ssl/what-is-an-ssl-certificate/'>TLS/SSL certificates</a>, which verify that a particular provider is who they say they are.</p>\n\n<p>When a user connects to a webpage, the webpage will send over its SSL certificate which contains the public key necessary to start the secure session. The two computers, the client and the server, then go through a process called an SSL/TLS handshake, which is a series of back-and-forth communications used to establish a secure connection. To take a deeper dive into encryption and the SSL/TLS handshake, <a href='/learning/ssl/what-happens-in-a-tls-handshake/'>read about what happens in a TLS handshake</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does a website start using HTTPS?</h2>\n\n<p>Many website hosting providers and other services will offer TLS/SSL certificates for a fee. These certificates will be often be shared amongst many customers. More expensive certificates are available which can be individually registered to particular web properties.</p>\n\n<p>All websites using Cloudflare <a href='https://www.cloudflare.com/application-services/products/ssl/'>receive HTTPS for free</a> using a shared certificate (the technical term for this is a multi-domain SSL certificate). Setting up a free account will guarantee a web property receives continually updated HTTPS protection. You can also explore our paid plans for individual certificates and other features. In either case, a web property receives all the benefits of using HTTPS.</p>\n",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {
@@ -559,11 +552,12 @@
 					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -576,51 +570,15 @@
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -642,7 +600,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -662,10 +620,12 @@
 				"zh-TW",
 				"fr-FR",
 				"de-DE",
+				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

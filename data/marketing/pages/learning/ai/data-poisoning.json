@@ -1,0 +1,603 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/ai/data-poisoning/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "27aeqiU3D4WVZtPHdA8mFu",
+				"urlSlug": "ai/data-poisoning",
+				"metaTags": {
+					"metaTitle": "What is AI data poisoning?",
+					"metaDescription": "AI data poisoning is when an attacker purposefully inserts bias into an AI model's training data. Learn more about how LLM poisoning works, and how to stop it.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "5JjQb2yV1d1T7WTVZQkNEW",
+					"learningCenterName": "artificialintelligence",
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+							"displayText": "What is artificial intelligence (AI)?",
+							"url": "/learning/ai/what-is-artificial-intelligence/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+							"displayText": "What is a large language model (LLM)?",
+							"url": "/learning/ai/what-is-large-language-model/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "41JHcwdZJopZYPQOHjdkkE",
+							"name": "Machine learning",
+							"displayText": "Machine learning",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+									"displayText": "What is machine learning?",
+									"url": "/learning/ai/what-is-machine-learning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+									"displayText": "What is deep learning?",
+									"url": "/learning/ai/what-is-deep-learning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5uKuVMtEUTbsmkjOh86Dsl",
+									"displayText": "Neural networks",
+									"url": "/learning/ai/what-is-neural-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+									"displayText": "What is generative AI?",
+									"url": "/learning/ai/what-is-generative-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
+									"displayText": "Predictive AI",
+									"url": "/learning/ai/what-is-predictive-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+									"displayText": "AI image generation",
+									"url": "/learning/ai/ai-image-generation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+									"displayText": "What is big data?",
+									"url": "/learning/ai/big-data/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
+									"displayText": "What is agentic AI?",
+									"url": "/learning/ai/what-is-agentic-ai/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2WaoB1uAGPdfW9vr56U72B",
+							"name": "Glossary - AI subheader",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+									"displayText": "What are embeddings?",
+									"url": "/learning/ai/what-are-embeddings/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+									"displayText": "Vector database",
+									"url": "/learning/ai/what-is-vector-database/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "12RjN72z2wlElvMBzyICp9",
+									"displayText": "AI inference vs. training",
+									"url": "/learning/ai/inference-vs-training/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+									"displayText": "What is natural language processing (NLP)?",
+									"url": "/learning/ai/natural-language-processing-nlp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
+									"displayText": "Low-rank adaptation (LoRA)",
+									"url": "/learning/ai/what-is-lora/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+									"displayText": "AI hallucinations",
+									"url": "/learning/ai/what-are-ai-hallucinations/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4xeYgczMnCqQ0wO8ORIbVY",
+									"displayText": "AI quantization",
+									"url": "/learning/ai/what-is-quantization/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+									"displayText": "OWASP Top 10 for LLMs",
+									"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+									"displayText": "AI data poisoning",
+									"url": "/learning/ai/data-poisoning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+									"displayText": "Retrieval augmented generation (RAG)",
+									"url": "/learning/ai/retrieval-augmented-generation-rag/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7kvDdMXof90koTqWiUdRX5",
+									"displayText": "History of AI",
+									"url": "/learning/ai/history-of-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "pjgC00TeWrxtIOybBfUbh",
+									"displayText": "What is vibe coding?",
+									"url": "/learning/ai/ai-vibe-coding/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+									"displayText": "Third wave of AI",
+									"url": "/learning/ai/evolution-of-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
+									"displayText": "ChatGPT plugins",
+									"url": "/learning/ai/chatgpt-plugins/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "4fHZ91razv1xm1g6m2sAcT",
+					"learningCenterName": "artificialintelligence",
+					"column1Title": "Artificial intelligence",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "504wIqF2RxToUI652YFAHo",
+						"name": "AI Footer - Artificial intelligence",
+						"displayText": "Artificial intelligence",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+								"displayText": "What is artificial intelligence (AI)?",
+								"url": "/learning/ai/what-is-artificial-intelligence/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "12RjN72z2wlElvMBzyICp9",
+								"displayText": "AI inference vs. training",
+								"url": "/learning/ai/inference-vs-training/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7kvDdMXof90koTqWiUdRX5",
+								"displayText": "History of AI",
+								"url": "/learning/ai/history-of-ai/"
+							}
+						]
+					},
+					"column2Title": "Machine learning",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "4WbETih2OgXGNXGsvb7kMZ",
+						"name": "AI footer - Machine Learning",
+						"displayText": "Machine learning",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+								"displayText": "What is machine learning?",
+								"url": "/learning/ai/what-is-machine-learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+								"displayText": "What is deep learning?",
+								"url": "/learning/ai/what-is-deep-learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+								"displayText": "What is a large language model (LLM)?",
+								"url": "/learning/ai/what-is-large-language-model/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
+								"displayText": "Low-rank adaptation (LoRA)",
+								"url": "/learning/ai/what-is-lora/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+								"displayText": "AI image generation",
+								"url": "/learning/ai/ai-image-generation/"
+							}
+						]
+					},
+					"column3Title": "Big data",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3q3KTRPkBi7rS3aDeQoMNn",
+						"name": "AI footer - Big Data",
+						"displayText": "Big data",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+								"displayText": "What are embeddings?",
+								"url": "/learning/ai/what-are-embeddings/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+								"displayText": "What is big data?",
+								"url": "/learning/ai/big-data/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1UCfw4v8J5rpL4BsVNlgVC",
+						"name": "AI footer - Glossary",
+						"displayText": "AI glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+								"displayText": "Vector database",
+								"url": "/learning/ai/what-is-vector-database/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
+								"displayText": "Predictive AI",
+								"url": "/learning/ai/what-is-predictive-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
+								"displayText": "ChatGPT plugins",
+								"url": "/learning/ai/chatgpt-plugins/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5uKuVMtEUTbsmkjOh86Dsl",
+								"displayText": "Neural networks",
+								"url": "/learning/ai/what-is-neural-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+								"displayText": "What is generative AI?",
+								"url": "/learning/ai/what-is-generative-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+								"displayText": "What is natural language processing (NLP)?",
+								"url": "/learning/ai/natural-language-processing-nlp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+								"displayText": "AI hallucinations",
+								"url": "/learning/ai/what-are-ai-hallucinations/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4xeYgczMnCqQ0wO8ORIbVY",
+								"displayText": "AI quantization",
+								"url": "/learning/ai/what-is-quantization/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+								"displayText": "OWASP Top 10 for LLMs",
+								"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+								"displayText": "AI data poisoning",
+								"url": "/learning/ai/data-poisoning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+								"displayText": "Retrieval augmented generation (RAG)",
+								"url": "/learning/ai/retrieval-augmented-generation-rag/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
+								"displayText": "What is agentic AI?",
+								"url": "/learning/ai/what-is-agentic-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+								"displayText": "Third wave of AI",
+								"url": "/learning/ai/evolution-of-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "pjgC00TeWrxtIOybBfUbh",
+								"displayText": "What is vibe coding?",
+								"url": "/learning/ai/ai-vibe-coding/"
+							}
+						]
+					},
+					"column5Title": "Learning Center",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5kj4ISBExxQfI9CaYifpU9",
+						"name": "AI Learning Center footer",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							}
+						]
+					}
+				},
+				"header": "What is AI data poisoning?",
+				"blurbSubHeader": "AI data poisoning is a deliberate attempt to introduce bias into an AI model's training data so that its outputs are skewed.",
+				"objectivesHeader": "AI Data Poisoning",
+				"objectivesList": [
+					"Explain how an AI data poisoning attack works",
+					"Describe the types of AI and LLM data poisoning attacks",
+					"List data poisoning prevention methods"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+						"displayText": "What is artificial intelligence (AI)?",
+						"url": "/learning/ai/what-is-artificial-intelligence/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+						"displayText": "What is machine learning?",
+						"url": "/learning/ai/what-is-machine-learning/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+						"displayText": "What is a large language model (LLM)?",
+						"url": "/learning/ai/what-is-large-language-model/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "12RjN72z2wlElvMBzyICp9",
+						"displayText": "AI inference vs. training",
+						"url": "/learning/ai/inference-vs-training/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+						"displayText": "OWASP Top 10 for LLMs",
+						"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+					}
+				],
+				"enablementBlade": null,
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is AI data poisoning?</h2>\n\n<p><a href='/learning/ai/what-is-artificial-intelligence/'>Artificial intelligence</a> (AI) data poisoning is when an attacker manipulates the outputs of an AI or <a href='/learning/ai/what-is-machine-learning/'>machine learning</a> model by changing its training data. The attacker's goal in an AI data poisoning attack is to get the model to produce biased or dangerous results during <a href='/learning/ai/inference-vs-training/'>inference</a>.</p>\n\n<p>AI and machine learning* models have two primary ingredients: training data and algorithms. Think of an algorithm as being like the engine of a car, and training data as the gasoline that gives the engine something to burn: data makes an AI model go. A data poisoning attack is like if someone were to add an extra ingredient to the gasoline that makes the car drive poorly.</p>\n\n<p>The potential consequences of AI data poisoning have become more severe as more companies and people begin to rely on AI in their everyday activities. A successful AI data poisoning attack can permanently alter a model's output in a way that favors the person behind the attack.</p>\n\n<p>AI data poisoning is of particular concern for <a href='/learning/ai/what-is-large-language-model/'>large language models (LLMs)</a>. Data poisoning is listed in the <a href='/learning/ai/owasp-top-10-risks-for-llms/'>OWASP Top 10 for LLMs</a>, and in recent years researchers have warned of data poisoning vulnerabilities affecting <a href='https://www.hackster.io/news/don-t-trust-doctor-llm-researchers-warn-of-medical-misinformation-data-poisoning-vulnerability-f21c25504391' target='_blank'>healthcare</a>, <a href='https://www.infosecurity-magazine.com/news/confusedpilot-attack-targets-ai/' target='_blank'>code generation</a>, and <a href='https://www.crn.com/news/ai/2024/the-ai-danger-zone-data-poisoning-targets-llms' target='_blank'>text generation</a> models.</p>\n\n<p>*<em>\"Machine learning\" and \"artificial intelligence\" are sometimes used interchangeably, although the two terms refer to slightly different sets of computational capabilities. Machine learning, however, is a type of AI.</em></p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does a data poisoning attack work?</h2>\n\n<p>AI developers use vast amounts of data to train their models. Essentially, the training data set provides the models with examples, and the models then learn to generalize from those examples. The more examples there are in the data set, the more refined and accurate the model becomes — so long as the data is correct and relatively unbiased.</p>\n\n<p>Data poisoning introduces bias on purpose to the training data set, changing the starting point for the model's algorithms so that its results come out differently than its developers originally intended.</p>\n\n<p>Imagine a teacher writes a math problem on a chalkboard for her students to solve: for example, \"47 * (18 + 5) = ?\". The answer is 1,081. But if a student sneaks behind her back and changes \"47\" to \"46,\" then the answer is no longer 1,081, but 1,058. Data poisoning attacks are like that sneaky student: if the starting data changes slightly, the answer is also changed.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do AI data poisoning attacks happen?</h2>\n\n<p>Unauthorized alterations to training data can come from a number of sources.</p>\n\n<p><strong>Insider attack:</strong> Someone with legitimate access to the training data can introduce bias, false data, or other alterations that corrupt outputs. These attacks are more difficult to detect and stop than attacks by an external third party without authorized access to the data.</p>\n\n<p><strong><a href='/learning/security/what-is-a-supply-chain-attack/'>Supply chain</a> attack:</strong> Most AI and machine learning models rely on data sets from a variety of sources to train their models. One or more of those sources could contain \"poisoned\" data that affects any model using that data for training and fine-tuning models.</p>\n\n<p><strong>Unauthorized access:</strong> There are any number of ways that an attacker could gain access to a training data set, from using <a href='/learning/security/glossary/what-is-lateral-movement/'>lateral movement</a> via a previous compromise, to obtaining a developer's credentials using <a href='/learning/access-management/phishing-attack/'>phishing</a>, to multiple potential attacks in between.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the two main categories of data poisoning attack?</h2>\n\n<ul class=\"learning-list\">\n  <li><strong>Direct (or targeted) attacks:</strong> These attacks aim to skew or alter a model's output only in response to particular queries or actions. Such an attack would leave a model otherwise unaltered, giving expected responses to almost all queries. For example, an attacker might want to trick an AI-based email security filter into allowing certain malicious URLs through, while otherwise performing as expected.</li>\n  <li><strong>Indirect (or nontargeted) attacks:</strong> These attacks aim to affect a model's performance in general. An indirect attack may aim to simply slow down the performance of the model as a whole, or to bias it towards giving particular kinds of answers. A foreign adversary, for instance, might want to bias general-use LLMs towards giving out misinformation within a particular country for propaganda purposes.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the types of AI data poisoning attacks?</h2>\n\n<p>There are several ways an attacker can poison an AI model's data for their own purposes. Some of the most important techniques to know include:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Backdoor poisoning:</strong> This attack introduces a hidden vulnerability into the model so that, in response to certain specific triggers known to the attacker, it behaves in an unsafe way. Backdoor poisoning is particularly dangerous because an AI model with a hidden backdoor will otherwise behave normally.</li>\n  <li><strong>Mislabeling:</strong> An attacker can change the way data is labeled within the training data set of a model, leading the model to misidentify items after it has been trained.</li>\n  <li><strong>Data injection and manipulation:</strong> Such an attack alters, adds to, or removes data from a data set. These attacks aim to make the AI model biased in a certain direction.</li>\n  <li><strong>Availability attack:</strong> This attack aims to slow down or crash the model by injecting data that degrades its overall performance.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to prevent data poisoning</h2>\n\n<p><strong>Data validation:</strong> Before training, data sets should be analyzed to identify malicious, suspicious, or outlier data.</p>\n\n<p><strong>Principle of least privilege:</strong> In other words, only those persons and systems that absolutely need access to training data should have it. The <a href='/learning/access-management/principle-of-least-privilege/'>principle of least privilege</a> is a core tenet of a <a href='/learning/security/glossary/what-is-zero-trust/'>Zero Trust</a> approach to security, which can help prevent lateral movement and credential compromise.</p>\n\n<p><strong>Diverse data sources:</strong> Drawing from a wider range of sources for data can help reduce the impacts of bias in a given data set.</p>\n\n<p><strong>Monitoring and auditing:</strong> Tracking and recording who changed training data, what was changed, and when it was changed enables developers to identify suspicious patterns, or to trace an attacker's activity after the data set has been poisoned.</p>\n\n<p><strong>Adversarial training:</strong> This involves training an AI model to recognize intentionally misleading inputs.</p>\n\n<p>Other application defense measures like <a href='/learning/security/what-is-a-firewall/'>firewalls</a> can also be applied to AI models. To prevent data poisoning and other attacks, Cloudflare offers Firewall for AI, which can be deployed in front of LLMs to identify and block abuse before it reaches them. <a href='https://blog.cloudflare.com/firewall-for-ai/' target='_blank'>Learn more about Firewall for AI</a>.</p>",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "Translated for Locale",
+					"plPL": "English for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": {
+					"contentTypeId": "learningCenterArticleSidebarForm",
+					"contentfulId": "4ad3l3edBzH8KRefyi225g",
+					"heading": "Want to keep learning?",
+					"postSubmissionHeading": "Thank you for subscribing",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
+					"postSubmissionDescription": "We're looking forward to sharing content with you.",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
+						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
+						"backgroundColor": "blue",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": null,
+						"marketoFormDefaultComment": null,
+						"showCommentBox": null,
+						"marketoFormThankYouText": "Thank you for subscribing!",
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
+						"marketoFormSubmitButtonColor": null,
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					}
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "27aeqiU3D4WVZtPHdA8mFu",
+			"pathname": "/learning/ai/data-poisoning/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"es-LA",
+				"zh-Hans-CN"
+			]
+		}
+	}
+}

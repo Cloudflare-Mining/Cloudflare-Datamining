@@ -1,0 +1,570 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/ai/retrieval-augmented-generation-rag/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "60k26KB2TSnVyR7f5M1A8S",
+				"urlSlug": "ai/retrieval-augmented-generation-rag",
+				"metaTags": {
+					"metaTitle": "What is retrieval-augmented generation (RAG) in AI?",
+					"metaDescription": "Retrieval-augmented generation (RAG) is the process of optimizing a large language model (LLM) for use in a specific context. Learn how a RAG LLM works.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "5JjQb2yV1d1T7WTVZQkNEW",
+					"learningCenterName": "artificialintelligence",
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+							"displayText": "What is artificial intelligence (AI)?",
+							"url": "/learning/ai/what-is-artificial-intelligence/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+							"displayText": "What is a large language model (LLM)?",
+							"url": "/learning/ai/what-is-large-language-model/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "41JHcwdZJopZYPQOHjdkkE",
+							"name": "Machine learning",
+							"displayText": "Machine learning",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+									"displayText": "What is machine learning?",
+									"url": "/learning/ai/what-is-machine-learning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+									"displayText": "What is deep learning?",
+									"url": "/learning/ai/what-is-deep-learning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5uKuVMtEUTbsmkjOh86Dsl",
+									"displayText": "Neural networks",
+									"url": "/learning/ai/what-is-neural-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+									"displayText": "What is generative AI?",
+									"url": "/learning/ai/what-is-generative-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
+									"displayText": "Predictive AI",
+									"url": "/learning/ai/what-is-predictive-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+									"displayText": "AI image generation",
+									"url": "/learning/ai/ai-image-generation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+									"displayText": "What is big data?",
+									"url": "/learning/ai/big-data/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
+									"displayText": "What is agentic AI?",
+									"url": "/learning/ai/what-is-agentic-ai/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2WaoB1uAGPdfW9vr56U72B",
+							"name": "Glossary - AI subheader",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+									"displayText": "What are embeddings?",
+									"url": "/learning/ai/what-are-embeddings/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+									"displayText": "Vector database",
+									"url": "/learning/ai/what-is-vector-database/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "12RjN72z2wlElvMBzyICp9",
+									"displayText": "AI inference vs. training",
+									"url": "/learning/ai/inference-vs-training/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+									"displayText": "What is natural language processing (NLP)?",
+									"url": "/learning/ai/natural-language-processing-nlp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
+									"displayText": "Low-rank adaptation (LoRA)",
+									"url": "/learning/ai/what-is-lora/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+									"displayText": "AI hallucinations",
+									"url": "/learning/ai/what-are-ai-hallucinations/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4xeYgczMnCqQ0wO8ORIbVY",
+									"displayText": "AI quantization",
+									"url": "/learning/ai/what-is-quantization/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+									"displayText": "OWASP Top 10 for LLMs",
+									"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+									"displayText": "AI data poisoning",
+									"url": "/learning/ai/data-poisoning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+									"displayText": "Retrieval augmented generation (RAG)",
+									"url": "/learning/ai/retrieval-augmented-generation-rag/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7kvDdMXof90koTqWiUdRX5",
+									"displayText": "History of AI",
+									"url": "/learning/ai/history-of-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "pjgC00TeWrxtIOybBfUbh",
+									"displayText": "What is vibe coding?",
+									"url": "/learning/ai/ai-vibe-coding/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+									"displayText": "Third wave of AI",
+									"url": "/learning/ai/evolution-of-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
+									"displayText": "ChatGPT plugins",
+									"url": "/learning/ai/chatgpt-plugins/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "4fHZ91razv1xm1g6m2sAcT",
+					"learningCenterName": "artificialintelligence",
+					"column1Title": "Artificial intelligence",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "504wIqF2RxToUI652YFAHo",
+						"name": "AI Footer - Artificial intelligence",
+						"displayText": "Artificial intelligence",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+								"displayText": "What is artificial intelligence (AI)?",
+								"url": "/learning/ai/what-is-artificial-intelligence/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "12RjN72z2wlElvMBzyICp9",
+								"displayText": "AI inference vs. training",
+								"url": "/learning/ai/inference-vs-training/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7kvDdMXof90koTqWiUdRX5",
+								"displayText": "History of AI",
+								"url": "/learning/ai/history-of-ai/"
+							}
+						]
+					},
+					"column2Title": "Machine learning",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "4WbETih2OgXGNXGsvb7kMZ",
+						"name": "AI footer - Machine Learning",
+						"displayText": "Machine learning",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+								"displayText": "What is machine learning?",
+								"url": "/learning/ai/what-is-machine-learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+								"displayText": "What is deep learning?",
+								"url": "/learning/ai/what-is-deep-learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+								"displayText": "What is a large language model (LLM)?",
+								"url": "/learning/ai/what-is-large-language-model/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
+								"displayText": "Low-rank adaptation (LoRA)",
+								"url": "/learning/ai/what-is-lora/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+								"displayText": "AI image generation",
+								"url": "/learning/ai/ai-image-generation/"
+							}
+						]
+					},
+					"column3Title": "Big data",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3q3KTRPkBi7rS3aDeQoMNn",
+						"name": "AI footer - Big Data",
+						"displayText": "Big data",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+								"displayText": "What are embeddings?",
+								"url": "/learning/ai/what-are-embeddings/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+								"displayText": "What is big data?",
+								"url": "/learning/ai/big-data/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1UCfw4v8J5rpL4BsVNlgVC",
+						"name": "AI footer - Glossary",
+						"displayText": "AI glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+								"displayText": "Vector database",
+								"url": "/learning/ai/what-is-vector-database/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
+								"displayText": "Predictive AI",
+								"url": "/learning/ai/what-is-predictive-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
+								"displayText": "ChatGPT plugins",
+								"url": "/learning/ai/chatgpt-plugins/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5uKuVMtEUTbsmkjOh86Dsl",
+								"displayText": "Neural networks",
+								"url": "/learning/ai/what-is-neural-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+								"displayText": "What is generative AI?",
+								"url": "/learning/ai/what-is-generative-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+								"displayText": "What is natural language processing (NLP)?",
+								"url": "/learning/ai/natural-language-processing-nlp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+								"displayText": "AI hallucinations",
+								"url": "/learning/ai/what-are-ai-hallucinations/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4xeYgczMnCqQ0wO8ORIbVY",
+								"displayText": "AI quantization",
+								"url": "/learning/ai/what-is-quantization/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+								"displayText": "OWASP Top 10 for LLMs",
+								"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+								"displayText": "AI data poisoning",
+								"url": "/learning/ai/data-poisoning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+								"displayText": "Retrieval augmented generation (RAG)",
+								"url": "/learning/ai/retrieval-augmented-generation-rag/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
+								"displayText": "What is agentic AI?",
+								"url": "/learning/ai/what-is-agentic-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+								"displayText": "Third wave of AI",
+								"url": "/learning/ai/evolution-of-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "pjgC00TeWrxtIOybBfUbh",
+								"displayText": "What is vibe coding?",
+								"url": "/learning/ai/ai-vibe-coding/"
+							}
+						]
+					},
+					"column5Title": "Learning Center",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5kj4ISBExxQfI9CaYifpU9",
+						"name": "AI Learning Center footer",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							}
+						]
+					}
+				},
+				"header": "What is retrieval-augmented generation (RAG) in AI?",
+				"blurbSubHeader": "Retrieval-augmented generation (RAG) is a method for adding a new data source to a large language model (LLM) without retraining it.",
+				"objectivesHeader": "RAG",
+				"objectivesList": [
+					"Understand retrieval-augmented generation (RAG) in AI",
+					"Explain how RAG enhances LLMs",
+					"Understand RAG chatbots and AutoRAG"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+						"displayText": "What is a large language model (LLM)?",
+						"url": "/learning/ai/what-is-large-language-model/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+						"displayText": "What is artificial intelligence (AI)?",
+						"url": "/learning/ai/what-is-artificial-intelligence/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+						"displayText": "Vector database",
+						"url": "/learning/ai/what-is-vector-database/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "12RjN72z2wlElvMBzyICp9",
+						"displayText": "AI inference vs. training",
+						"url": "/learning/ai/inference-vs-training/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+						"displayText": "What is machine learning?",
+						"url": "/learning/ai/what-is-machine-learning/"
+					}
+				],
+				"enablementBlade": null,
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is retrieval-augmented generation (RAG) in AI?</h2>\n\n<p>Retrieval-augmented generation (RAG) is the process of optimizing a <a href='/learning/ai/what-is-large-language-model/'>large language model (LLM)</a> for use in a specific context without completely retraining it, by giving it access to a knowledge base relevant to that context. RAG is a cost-effective way to quickly adapt an LLM to a specialized use case. It is one of the methods developers can use to fine-tune an <a href='/learning/ai/what-is-artificial-intelligence/'>artificial intelligence (AI)</a> model.</p>\n\n<p>LLMs are trained on massive amounts of data, but they may not be able to generate the specific information needed within some settings. They have a general understanding of how human language works, but do not always have specific expertise for a given topic area. RAG is one way to correct for this.</p>\n\n<p>Imagine a car mechanic goes to work on a 1964 Chevy. While the mechanic may have lots of general expertise in car maintenance after thousands of hours of practice, they still need the owner's manual for the car to effectively service it. But, the mechanic does not need to get re-certified as a mechanic — they can just peruse the manual, then apply the general knowledge of cars they already have.</p>\n\n<p>RAG is similar. It gives an LLM a \"manual\" — or a knowledge base — so that the LLM can adapt its general knowledge to the specific use case. For instance, a general LLM may be able to generate content on how <a href='/learning/security/api/what-is-an-api/'>API</a> queries work, but not necessarily be able to tell a user how to query one specific application's API. But with RAG, that LLM could be adapted for use with that application by linking it to the application's technical documentation.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does RAG work?</h2>\n\n<p>Ordinarily when an LLM receives a query, it processes that query according to its preexisting parameters and training.</p>\n\n<p>RAG enables the LLM to reference \"external data\" — a database not included in the LLM's training data set. So in contrast to the normal way an LLM functions, an LLM with RAG uses external data to enhance its responses — hence the name <em>retrieval</em> (retrieving external data first) <em>augmented</em> (improving responses with this data) <em>generation</em> (creating a response).</p>\n\n<p>Suppose the car mechanic from the example above wanted to use an LLM instead of consulting owners' manuals directly. Using RAG, the LLM could incorporate consultation of owners' manuals directly into its processes. Despite the fact that the LLM was likely not trained on classic car manuals — or, if such information was included in its training data, it likely was only a tiny percentage — the LLM can use RAG to produce relevant and accurate queries.</p>\n\n<p>For the LLM to be able to use and query the external data source (such as car manuals), the data is first converted into vectors and then stored in a <a href='/learning/ai/what-is-vector-database/'>vector database</a>. This process uses machine learning models to generate mathematical representations of items of a data set. (Each \"vector\" is an array of numbers, like [-0.41522345,0.97685323...].)</p>\n\n<p>When a user sends a prompt, the LLM converts that prompt into a vector, then searches the vector database created from the external data source to find relevant information. It adds that information as additional context for the prompt, then runs the augmented prompt through its typical model to create a response.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the pros and cons of RAG in AI?</h2>\n\n<p>The pros of using RAG for fine-tuning an LLM include:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Increased accuracy within use case:</strong> An LLM is more likely to provide a correct response if it has access to a knowledge base related to the prompt, just as a mechanic is more likely to repair a car properly if they have the manual.</li>\n  <li><strong>Low-cost way to adapt a model:</strong> Since no retraining is necessary, it is less computationally expensive and time-consuming to begin using an LLM in a new context.</li>\n  <li><strong>Flexibility:</strong> Because the model's parameters are not adjusted, the same model can be quickly moved across various use cases.</li>\n</ul>\n\n<p>Some of the potential downsides are:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Slower response times:</strong> While RAG does not require retraining, <a href='/learning/ai/inference-vs-training/'>inference</a> — the process of reasoning and responding to prompts — can take longer, since the LLM now has to query multiple data sets to produce an answer.</li>\n  <li><strong>Inconsistencies across data sets:</strong> The external knowledge base may not integrate seamlessly with the model's training data set, just as two sets of encyclopedias might describe historical events slightly differently. This can lead to inconsistent responses to queries.</li>\n  <li><strong>Manual maintenance:</strong> Each time the external knowledge base is updated — say, when new models of cars come out — developers have to manually initiate the process of converting the new data into vectors and updating the vector database. (Cloudflare developed AutoRAG to help developers avoid this manual process — more below.)</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a RAG chatbot?</h2>\n\n<p>A RAG chatbot is an LLM-based <a href='/learning/bots/what-is-a-chatbot/'>chatbot</a> that has been specialized for specific use cases through RAG — being connected to one or more sources of external data that are relevant to the context in which the chatbot operates. A RAG chatbot for use in an auto garage would have access to automobile documentation; this would be more useful for the mechanics in the garage than asking questions of a general-use LLM chatbot.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">RAG vs. low-rank adaptation (LoRA)</h2>\n\n<p>Low-rank adaptation (LoRA) is another way to fine-tune a model — meaning, adapt it to a specific context without completely retraining it. LoRA, however, does involve adjusting the model's parameters, whereas RAG does not alter the model's parameters at all. <a href='/learning/ai/what-is-lora/'>Learn more about LoRA here</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is AutoRAG?</h2>\n\n<p>AutoRAG sets up and manages RAG pipelines for developers. It connects the tools needed for indexing, retrieval, and generation, and keeps everything up to date by syncing data with the index regularly. Once set up, AutoRAG indexes content in the background and responds to queries in real time. <a href='https://blog.cloudflare.com/introducing-autorag-on-cloudflare/' target='_blank'>Learn how AutoRAG works</a>.</p>",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "Translated for Locale",
+					"plPL": "English for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "60k26KB2TSnVyR7f5M1A8S",
+			"pathname": "/learning/ai/retrieval-augmented-generation-rag/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"es-LA",
+				"zh-Hans-CN"
+			]
+		}
+	}
+}

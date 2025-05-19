@@ -8,8 +8,8 @@
 				"contentfulId": "2yxByIAvXWv5xzuQvZx2kt",
 				"urlSlug": "performance/how-to-minify-css",
 				"metaTags": {
-					"metaTitle": "How to minify CSS for better website performance",
-					"metaDescription": "Cascading style sheets (CSS) are essential for styling a website, and minifying CSS helps webpages load faster. Learn how to minify CSS.",
+					"metaTitle": "Minify CSS | Reduce file sizes for faster loading",
+					"metaDescription": "Minifying CSS speeds up websites by reducing file size and improving page load times. Explore how CSS minification works and learn best practices.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -171,7 +171,7 @@
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
 									"displayText": "What is HTTP/3?",
-									"url": "/learning/performance/what-is-http3"
+									"url": "/learning/performance/what-is-http3/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -190,6 +190,12 @@
 									"contentfulId": "5R3fPgXSxwahqmd0iGD7cd",
 									"displayText": "Digital experience monitoring (DEM)",
 									"url": "/learning/performance/what-is-digital-experience-monitoring/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4hXJMYjP1hdIbiiVUwShgR",
+									"displayText": "Application availability",
+									"url": "/learning/performance/glossary/application-availability/"
 								}
 							]
 						},
@@ -433,7 +439,7 @@
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
 								"displayText": "What is HTTP/3?",
-								"url": "/learning/performance/what-is-http3"
+								"url": "/learning/performance/what-is-http3/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -446,6 +452,12 @@
 								"contentfulId": "1P8TqkuttQTb2gZBWrIBnn",
 								"displayText": "Image compression",
 								"url": "/learning/performance/glossary/what-is-image-compression/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4hXJMYjP1hdIbiiVUwShgR",
+								"displayText": "Application availability",
+								"url": "/learning/performance/glossary/application-availability/"
 							}
 						]
 					},
@@ -587,7 +599,7 @@
 						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
 						"displayText": "What is HTTP/3?",
-						"url": "/learning/performance/what-is-http3"
+						"url": "/learning/performance/what-is-http3/"
 					}
 				],
 				"enablementBlade": null,
@@ -596,15 +608,16 @@
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
-					"zhTW": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
-					"deDE": "English for Locale",
+					"deDE": "Translated for Locale",
 					"itIT": "English for Locale",
 					"jaJP": "Translated for Locale",
-					"koKR": "English for Locale",
+					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -616,13 +629,78 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "English for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"zhHansCN": "Translated for Locale",
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": null,
-				"sidebarForm": null
+				"proactivePopup": {
+					"contentTypeId": "proactivePopup",
+					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
+				},
+				"sidebarForm": {
+					"contentTypeId": "learningCenterArticleSidebarForm",
+					"contentfulId": "4ad3l3edBzH8KRefyi225g",
+					"heading": "Want to keep learning?",
+					"postSubmissionHeading": "Thank you for subscribing",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
+					"postSubmissionDescription": "We're looking forward to sharing content with you.",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
+						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
+						"backgroundColor": "blue",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": null,
+						"marketoFormDefaultComment": null,
+						"showCommentBox": null,
+						"marketoFormThankYouText": "Thank you for subscribing!",
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
+						"marketoFormSubmitButtonColor": null,
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					}
+				}
 			}
 		},
 		"pageContext": {
@@ -632,10 +710,16 @@
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
 				"en-US",
+				"zh-CN",
+				"zh-TW",
 				"fr-FR",
+				"de-DE",
 				"ja-JP",
+				"ko-KR",
 				"pt-BR",
-				"es-ES"
+				"es-ES",
+				"es-LA",
+				"zh-Hans-CN"
 			]
 		}
 	}

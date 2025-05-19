@@ -35,14 +35,14 @@
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "39LIvqQCFa8iU7ITBQmaEm",
-							"name": "Cloud Header: Cloud Basics",
+							"name": "Cloud header: Cloud basics",
 							"displayText": "Cloud basics",
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5k1A20zBRQpjW2079su8uz",
-									"displayText": "What is SaaS?",
-									"url": "/learning/cloud/what-is-saas/"
+									"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+									"displayText": "What is cloud storage?",
+									"url": "/learning/cloud/what-is-cloud-storage/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -52,9 +52,21 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
-									"displayText": "What is cloud storage?",
-									"url": "/learning/cloud/what-is-cloud-storage/"
+									"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+									"displayText": "Multitenancy",
+									"url": "/learning/cloud/what-is-multitenancy/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5k1A20zBRQpjW2079su8uz",
+									"displayText": "What is SaaS?",
+									"url": "/learning/cloud/what-is-saas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "38DHkZos35DYciaxPnJk7g",
+									"displayText": "Vendor lock-in",
+									"url": "/learning/cloud/what-is-vendor-lock-in/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -64,24 +76,10 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
-									"displayText": "Multitenancy",
-									"url": "/learning/cloud/what-is-multitenancy/"
+									"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+									"displayText": "Multi-cloud vs hybrid cloud",
+									"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
 								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "38DHkZos35DYciaxPnJk7g",
-									"displayText": "Vendor lock-in",
-									"url": "/learning/cloud/what-is-vendor-lock-in/"
-								}
-							]
-						},
-						{
-							"contentTypeId": "learningCenterArticleLinkedList",
-							"contentfulId": "3X81SpcBRddDrjqw17J1l2",
-							"name": "Cloud Header: Multicloud and hybrid cloud",
-							"displayText": "Multi-cloud and hybrid cloud",
-							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
@@ -90,21 +88,15 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
-									"displayText": "What is hybrid cloud?",
-									"url": "/learning/cloud/what-is-hybrid-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
-									"displayText": "Multi-cloud vs hybrid cloud",
-									"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
 									"displayText": "Multi-cloud management",
 									"url": "/learning/cloud/what-is-multicloud-management/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
+									"displayText": "What is hybrid cloud?",
+									"url": "/learning/cloud/what-is-hybrid-cloud/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -117,9 +109,15 @@
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "486fCRIX89EKjcHElALCiw",
-							"name": "Cloud Header: Securing the Cloud",
+							"name": "Cloud header: Securing the cloud",
 							"displayText": "Securing the cloud",
 							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "kNE9anSSaRE82gAHCyVxp",
+									"displayText": "What is a cloud firewall (FWaaS)?",
+									"url": "/learning/cloud/what-is-a-cloud-firewall/"
+								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
@@ -128,9 +126,21 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "kNE9anSSaRE82gAHCyVxp",
-									"displayText": "What is a cloud firewall (FWaaS)?",
-									"url": "/learning/cloud/what-is-a-cloud-firewall/"
+									"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+									"displayText": "Cloud security posture management (CSPM)",
+									"url": "/learning/cloud/what-is-cspm/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+									"displayText": "Cloud workload protection platform (CWPP)",
+									"url": "/learning/cloud/what-is-cwpp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5xd2QLCI5QCkPAIoDk5CJ2",
+									"displayText": "Cloud-native security",
+									"url": "/learning/cloud/cloud-native-security/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -146,35 +156,47 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
-									"displayText": "Cloud security posture management (CSPM)",
-									"url": "/learning/cloud/what-is-cspm/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
 									"displayText": "SaaS security posture management (SSPM)",
 									"url": "/learning/cloud/what-is-sspm/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
-									"displayText": "Cloud workload protection platform (CWPP)",
-									"url": "/learning/cloud/what-is-cwpp/"
+									"contentfulId": "1FHXopbTiAErueuQvbAXr6",
+									"displayText": "Cloud-native application protection platform (CNAPP)",
+									"url": "/learning/cloud/cnapp/"
 								}
 							]
 						},
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
-							"contentfulId": "2OkRH9jhjm8FmxBtbYnZ9V",
-							"name": "Cloud Header: Cloud Glossary",
-							"displayText": "Glossary",
+							"contentfulId": "26g8mVCbaDb7TF4jJMGFhz",
+							"name": "Cloud header: Cloud modernization",
+							"displayText": "Cloud modernization",
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
-									"displayText": "Cloud migration",
-									"url": "/learning/cloud/what-is-cloud-migration/"
+									"contentfulId": "y0HrOCtfIQJ4B46NGM8aK",
+									"displayText": "Application modernization",
+									"url": "/learning/cloud/application-modernization/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3ogF8VqUtpwiX80xRDH9lQ",
+									"displayText": "How to rehost apps",
+									"url": "/learning/cloud/how-to-rehost-applications/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "174iXrdVMHuS7avH6ICSVG",
+									"displayText": "How to refactor apps",
+									"url": "/learning/cloud/how-to-refactor-applications/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "nypSYuLAN0fI1HcJWLwj7",
+									"displayText": "How to replatform apps",
+									"url": "/learning/cloud/how-to-replatform-applications/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -184,27 +206,35 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
-									"displayText": "What is a public cloud?",
-									"url": "/learning/cloud/what-is-a-public-cloud/"
+									"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+									"displayText": "Cloud migration",
+									"url": "/learning/cloud/what-is-cloud-migration/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
-									"displayText": "What is a private cloud?",
-									"url": "/learning/cloud/what-is-a-private-cloud/"
+									"contentfulId": "31LQEF639fG1XJWTZBqnNO",
+									"displayText": "Data migration",
+									"url": "/learning/cloud/what-is-data-migration/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2OkRH9jhjm8FmxBtbYnZ9V",
+							"name": "Cloud header: Cloud glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2poSO07sAv136qKoXulTex",
+									"displayText": "AWS data transfer pricing",
+									"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "53Auemqu8excTZE8bzc7Zk",
-									"displayText": "Virtual private cloud",
-									"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
-									"displayText": "Cloudflare and the cloud",
-									"url": "/learning/cloud/cloudflare-and-the-cloud/"
+									"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
+									"displayText": "Data egress fees",
+									"url": "/learning/cloud/what-are-data-egress-fees/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -220,6 +250,12 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5tJVSh0zDmPqvoriPMSMuO",
+									"displayText": "What is a data lake?",
+									"url": "/learning/cloud/what-is-a-data-lake/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "7u090eTI3Lc6TC6CZRHIhI",
 									"displayText": "What is object storage?",
 									"url": "/learning/cloud/what-is-object-storage/"
@@ -232,22 +268,40 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
-									"displayText": "Data egress fees",
-									"url": "/learning/cloud/what-are-data-egress-fees/"
+									"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
+									"displayText": "What is a private cloud?",
+									"url": "/learning/cloud/what-is-a-private-cloud/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "2poSO07sAv136qKoXulTex",
-									"displayText": "AWS data transfer pricing",
-									"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+									"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+									"displayText": "What is a public cloud?",
+									"url": "/learning/cloud/what-is-a-public-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+									"displayText": "Virtual private cloud",
+									"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1w22mfnOVmsjLsM3jMxaAY",
+									"displayText": "Cloud networking",
+									"url": "/learning/cloud/what-is-cloud-networking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
+									"displayText": "Cloudflare and the cloud",
+									"url": "/learning/cloud/cloudflare-and-the-cloud/"
 								}
 							]
 						},
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "7qiJLGJVI1us6Le145zRbC",
-							"name": "Cloud Header: theNET",
+							"name": "Cloud header: theNET",
 							"displayText": "theNET",
 							"links": [
 								{
@@ -258,15 +312,15 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "goUykSuhqroMEsPv5li3u",
-									"displayText": "Trading egress for opportunity",
-									"url": "https://www.cloudflare.com/learning/insights-cloud-storage-egress/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "7akEuCGGNzlr1ufpM39JJO",
 									"displayText": "The Internet is the new corporate network",
 									"url": "https://www.cloudflare.com/learning/insights-internet-corp-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "goUykSuhqroMEsPv5li3u",
+									"displayText": "Trading egress for opportunity",
+									"url": "https://www.cloudflare.com/learning/insights-cloud-storage-egress/"
 								}
 							]
 						}
@@ -280,7 +334,7 @@
 					"column1": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "2PUeZxc6Kw9UYN9rDC8IYy",
-						"name": "Cloud Footer - About the Cloud",
+						"name": "Cloud footer — About the cloud",
 						"displayText": "About the cloud",
 						"links": [
 							{
@@ -297,19 +351,13 @@
 							}
 						]
 					},
-					"column2Title": "Cloud Configurations",
+					"column2Title": "Cloud configurations",
 					"column2": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "gD760jkD40xsJ5VKKDGCY",
-						"name": "Cloud Footer - Cloud Configurations",
+						"name": "Cloud Footer - Cloud configurations",
 						"displayText": "Cloud configurations",
 						"links": [
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
-								"displayText": "What is multi-cloud?",
-								"url": "/learning/cloud/what-is-multicloud/"
-							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
@@ -318,9 +366,15 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
-								"displayText": "What is a public cloud?",
-								"url": "/learning/cloud/what-is-a-public-cloud/"
+								"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
+								"displayText": "What is multi-cloud?",
+								"url": "/learning/cloud/what-is-multicloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+								"displayText": "Multitenancy",
+								"url": "/learning/cloud/what-is-multitenancy/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -330,17 +384,35 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
-								"displayText": "Multitenancy",
-								"url": "/learning/cloud/what-is-multitenancy/"
+								"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+								"displayText": "What is a public cloud?",
+								"url": "/learning/cloud/what-is-a-public-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3ogF8VqUtpwiX80xRDH9lQ",
+								"displayText": "How to rehost apps",
+								"url": "/learning/cloud/how-to-rehost-applications/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "nypSYuLAN0fI1HcJWLwj7",
+								"displayText": "How to replatform apps",
+								"url": "/learning/cloud/how-to-replatform-applications/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "174iXrdVMHuS7avH6ICSVG",
+								"displayText": "How to refactor apps",
+								"url": "/learning/cloud/how-to-refactor-applications/"
 							}
 						]
 					},
-					"column3Title": "Cloud Security",
+					"column3Title": "Cloud security",
 					"column3": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "5jkIKbYcSS95KrnsL6yhXO",
-						"name": "Cloud Footer - Cloud security",
+						"name": "Cloud footer — Cloud security",
 						"displayText": "Cloud security",
 						"links": [
 							{
@@ -348,6 +420,18 @@
 								"contentfulId": "kNE9anSSaRE82gAHCyVxp",
 								"displayText": "What is a cloud firewall (FWaaS)?",
 								"url": "/learning/cloud/what-is-a-cloud-firewall/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+								"displayText": "Cloud security posture management (CSPM)",
+								"url": "/learning/cloud/what-is-cspm/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+								"displayText": "Cloud workload protection platform (CWPP)",
+								"url": "/learning/cloud/what-is-cwpp/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -363,102 +447,36 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
-								"displayText": "Cloud security posture management (CSPM)",
-								"url": "/learning/cloud/what-is-cspm/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
 								"displayText": "SaaS security posture management (SSPM)",
 								"url": "/learning/cloud/what-is-sspm/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
-								"displayText": "Cloud workload protection platform (CWPP)",
-								"url": "/learning/cloud/what-is-cwpp/"
+								"contentfulId": "5xd2QLCI5QCkPAIoDk5CJ2",
+								"displayText": "Cloud-native security",
+								"url": "/learning/cloud/cloud-native-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1FHXopbTiAErueuQvbAXr6",
+								"displayText": "Cloud-native application protection platform (CNAPP)",
+								"url": "/learning/cloud/cnapp/"
 							}
 						]
 					},
-					"column4Title": "Cloud Glossary",
+					"column4Title": "Cloud glossary",
 					"column4": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "4ITdD1qcb1o7qstB32QX0V",
-						"name": "Cloud Footer - Glossary",
+						"name": "Cloud footer — Glossary",
 						"displayText": "Cloud glossary",
 						"links": [
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5k1A20zBRQpjW2079su8uz",
-								"displayText": "What is SaaS?",
-								"url": "/learning/cloud/what-is-saas/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
-								"displayText": "Cloud migration",
-								"url": "/learning/cloud/what-is-cloud-migration/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
-								"displayText": "Multi-cloud management",
-								"url": "/learning/cloud/what-is-multicloud-management/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
-								"displayText": "Hybrid cloud architecture",
-								"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
-								"displayText": "Multi-cloud vs hybrid cloud",
-								"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
-								"displayText": "Virtual machine",
-								"url": "/learning/cloud/what-is-a-virtual-machine/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
-								"displayText": "What is cloud storage?",
-								"url": "/learning/cloud/what-is-cloud-storage/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
-								"displayText": "Digital transformation",
-								"url": "/learning/cloud/what-is-digital-transformation/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "38DHkZos35DYciaxPnJk7g",
-								"displayText": "Vendor lock-in",
-								"url": "/learning/cloud/what-is-vendor-lock-in/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
-								"displayText": "What is IaaS?",
-								"url": "/learning/cloud/what-is-iaas/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "53Auemqu8excTZE8bzc7Zk",
-								"displayText": "Virtual private cloud",
-								"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
-								"displayText": "Cloud security",
-								"url": "/learning/cloud/what-is-cloud-security/"
+								"contentfulId": "2poSO07sAv136qKoXulTex",
+								"displayText": "AWS data transfer pricing",
+								"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -474,9 +492,63 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+								"displayText": "Cloud migration",
+								"url": "/learning/cloud/what-is-cloud-migration/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
+								"displayText": "Cloud security",
+								"url": "/learning/cloud/what-is-cloud-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+								"displayText": "What is cloud storage?",
+								"url": "/learning/cloud/what-is-cloud-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
 								"displayText": "Data egress fees",
 								"url": "/learning/cloud/what-are-data-egress-fees/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5tJVSh0zDmPqvoriPMSMuO",
+								"displayText": "What is a data lake?",
+								"url": "/learning/cloud/what-is-a-data-lake/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
+								"displayText": "Digital transformation",
+								"url": "/learning/cloud/what-is-digital-transformation/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
+								"displayText": "Hybrid cloud architecture",
+								"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
+								"displayText": "What is IaaS?",
+								"url": "/learning/cloud/what-is-iaas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+								"displayText": "Multi-cloud vs hybrid cloud",
+								"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
+								"displayText": "Multi-cloud management",
+								"url": "/learning/cloud/what-is-multicloud-management/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -492,13 +564,49 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "2poSO07sAv136qKoXulTex",
-								"displayText": "AWS data transfer pricing",
-								"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+								"contentfulId": "5k1A20zBRQpjW2079su8uz",
+								"displayText": "What is SaaS?",
+								"url": "/learning/cloud/what-is-saas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "38DHkZos35DYciaxPnJk7g",
+								"displayText": "Vendor lock-in",
+								"url": "/learning/cloud/what-is-vendor-lock-in/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
+								"displayText": "Virtual machine",
+								"url": "/learning/cloud/what-is-a-virtual-machine/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+								"displayText": "Virtual private cloud",
+								"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1w22mfnOVmsjLsM3jMxaAY",
+								"displayText": "Cloud networking",
+								"url": "/learning/cloud/what-is-cloud-networking/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "y0HrOCtfIQJ4B46NGM8aK",
+								"displayText": "Application modernization",
+								"url": "/learning/cloud/application-modernization/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "31LQEF639fG1XJWTZBqnNO",
+								"displayText": "Data migration",
+								"url": "/learning/cloud/what-is-data-migration/"
 							}
 						]
 					},
-					"column5Title": "Learning Center Navigation",
+					"column5Title": "Learning Center navigation",
 					"column5": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "3Z0WMXrDmdWdc5R8JIkDrG",
@@ -640,7 +748,7 @@
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<div itemscope itemtype=\"https://schema.org/FAQPage\">\n  <div itemscope itemprop=\"mainEntity\" itemtype=\"https://schema.org/Question\">\n<h2 itemprop=\"name\">What is cloud computing?</h2>\n\n<iframe src=\"https://iframe.videodelivery.net/ad2223e095b603c44858996d4a727ea4?poster=https://videodelivery.net/ad2223e095b603c44858996d4a727ea4/thumbnails/thumbnail.jpg?time=17s&height=270\" style=\"border: none;\" height=\"412\" width=\"740\" allow=\"accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;\" allowfullscreen=\"true\"></iframe>\n  <div itemscope itemprop=\"acceptedAnswer\" itemtype=\"https://schema.org/Answer\">\n     <div itemprop=\"text\">\n<p>\"The cloud\" refers to servers that are accessed over the Internet, and the software and databases that run on those servers. Cloud servers are located in <a href='/learning/cdn/glossary/data-center/'>data centers</a> all over the world. By using cloud computing, users and companies do not have to manage physical servers themselves or run software applications on their own machines.</p>\n     </div>\n    </div>\n  </div>\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YT0gya2bkUeuMrnGxhjAZ/4146c20c214cf001c74c0868ddfb9503/what-is-the-cloud.png\" class=\"responsive-image\" alt=\"What is the Cloud Diagram\" itemprop=\"image\"/>\n\n<p>The cloud enables users to access the same files and applications from almost any device, because the computing and storage takes place on servers in a data center, instead of locally on the user device. This is why a user can log in to their Instagram account on a new phone after their old phone breaks and still find their old account in place, with all their photos, videos, and conversation history. It works the same way with cloud <a href='/learning/email-security/what-is-email/'>email</a> providers like Gmail or Microsoft Office 365, and with <a href='/learning/cloud/what-is-cloud-storage/'>cloud storage</a> providers like Dropbox or Google Drive.</p>\n\n<p>For businesses, switching to cloud computing removes some IT costs and overhead: for instance, they no longer need to update and maintain their own servers, as the cloud vendor they are using will do that. This especially makes an impact for small businesses that may not have been able to afford their own internal infrastructure but can outsource their infrastructure needs affordably via the cloud. The cloud can also make it easier for companies to operate internationally, because employees and customers can access the same files and applications from any location.</p>\n  <div itemscope itemprop=\"mainEntity\" itemtype=\"https://schema.org/Question\">\n<h2 itemprop=\"name\">How does cloud computing work?</h2>\n  <div itemscope itemprop=\"acceptedAnswer\" itemtype=\"https://schema.org/Answer\">\n     <div itemprop=\"text\">\n<p>Cloud computing is possible because of a technology called virtualization. Virtualization allows for the creation of a simulated, digital-only \"virtual\" computer that behaves as if it were a physical computer with its own hardware. The technical term for such a computer is <a href='/learning/cloud/what-is-a-virtual-machine/'>virtual machine</a>. When properly implemented, virtual machines on the same host machine are sandboxed from one another, so they do not interact with each other at all, and the files and applications from one virtual machine are not visible to the other virtual machines even though they are on the same physical machine.</p>\n\n<p>Virtual machines also make more efficient use of the hardware hosting them. By running many virtual machines at once, one server can run many virtual \"servers,\" and a data center becomes like a whole host of data centers, able to serve many organizations. Thus, cloud providers can offer the use of their servers to far more customers at once than they would be able to otherwise, and they can do so at a low cost.</p>\n\n<p>Even if individual servers go down, cloud servers in general should be always online and always available. Cloud vendors generally back up their services on multiple machines and across multiple regions.</p>\n\n<p>Users access cloud services either through a browser or through an app, connecting to the cloud over the Internet — that is, through many interconnected networks — regardless of what device they are using.</p>\n      </div>\n    </div>\n  </div>\n</div>\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are cloud services?</h2>\n\n<p>The resources available in the cloud are known as \"services,\" since they are actively managed by a cloud provider. Cloud services include infrastructure, applications, development tools, and data storage, among other products. These services are sorted into several different categories, or <em>service models</em>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the main service models of cloud computing?</h2>\n\n<img src=\"/img/learning/serverless/glossary/platform-as-a-service-paas/saas-paas-iaas-diagram.svg\" class=\"responsive-image\" alt=\"cloud service models\" itemprop=\"image\" style=\"margin-top:20px;margin-bottom:20px;\"/>\n\n<p><strong>Software-as-a-Service (SaaS)</strong>: Instead of users installing an application on their device, <a href='/learning/cloud/what-is-saas/'>SaaS</a> applications are hosted on cloud servers, and users access them over the Internet. SaaS is like renting a house: the landlord maintains the house, but the tenant mostly gets to use it as if they owned it. Examples of SaaS applications include Salesforce, MailChimp, and Slack.</p>\n\n<p><strong>Platform-as-a-Service (PaaS)</strong>: In this model, companies don't pay for hosted applications; instead they pay for the things they need to build their own applications. <a href='/learning/serverless/glossary/platform-as-a-service-paas/'>PaaS</a> vendors offer everything necessary for building an application, including development tools, infrastructure, and operating systems, over the Internet. PaaS can be compared to renting all the tools and equipment necessary for building a house, instead of renting the house itself. PaaS examples include Heroku and Microsoft Azure.</p>\n\n<p><strong>Infrastructure-as-a-Service (IaaS)</strong>: In this model, a company rents the servers and storage they need from a cloud provider. They then use that cloud infrastructure to build their applications. <a href='/learning/cloud/what-is-iaas/'>IaaS</a> is like a company leasing a plot of land on which they can build whatever they want — but they need to provide their own building equipment and materials. IaaS providers include DigitalOcean, Google Compute Engine, and OpenStack.</p>\n\n<p>Formerly, SaaS, PaaS, and IaaS were the three main models of cloud computing, and essentially all cloud services fit into one of these categories. However, in recent years a fourth model has emerged:</p>\n\n<p><strong>Function-as-a-Service (FaaS)</strong>: <a href='/learning/serverless/glossary/function-as-a-service-faas/'>FaaS</a>, also known as <a href='/learning/serverless/what-is-serverless/'>serverless computing</a>, breaks cloud applications down into even smaller components that only run when they are needed. Imagine if it were possible to rent a house one little bit at a time: for instance, the tenant only pays for the dining room at dinner time, the bedroom while they are sleeping, the living room while they are watching TV, and when they are not using those rooms, they don't have to pay rent on them.</p>\n\n<p>FaaS or serverless applications still run on servers, as do all these models of cloud computing. But they are called \"serverless\" because they do not run on dedicated machines, and because the companies building the applications do not have to manage any servers.</p>\n\n<p>Also, serverless functions scale up, or duplicate, as more people use the application — imagine if the tenant's dining room could expand on demand when more people come over for dinner! <a href='/learning/serverless/what-is-serverless/'>Learn more about serverless computing (FaaS)</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is cloud infrastructure?</h2>\n\n<p>Cloud infrastructure refers to the resources needed for hosting and building applications in the cloud. IaaS and PaaS services are often included in an organization's cloud infrastructure, although SaaS can be said to be part of cloud infrastructure as well, and FaaS offers the ability to construct infrastructure as code.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the different types of cloud deployments?</h2>\n\n<p>In contrast to the models discussed above, which define how services are offered via the cloud, these different cloud deployment types have to do with where the cloud servers are and who manages them.</p>\n\n<p>The most common cloud deployments are:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Private cloud</strong>: A <a href='/learning/cloud/what-is-a-virtual-private-cloud/'>private cloud</a> is a server, data center, or distributed network wholly dedicated to one organization.</li>\n  <li><strong>Public cloud</strong>: A <a href='/learning/cloud/what-is-a-public-cloud/'>public cloud</a> is a service run by an external vendor that may include servers in one or multiple data centers. Unlike a private cloud, public clouds are shared by multiple organizations. Using virtual machines, individual servers may be shared by different companies, a situation that is called \"<a href='/learning/cloud/what-is-multitenancy/'>multitenancy</a>\" because multiple tenants are renting server space within the same server.</li>\n  <li><strong>Hybrid cloud</strong>: <a href='/learning/cloud/what-is-hybrid-cloud/'>hybrid cloud</a> deployments combine public and private clouds, and may even include on-premises legacy servers. An organization may use their private cloud for some services and their public cloud for others, or they may use the public cloud as backup for their private cloud.</li>\n  <li><strong>Multi-cloud</strong>: <a href='/learning/cloud/what-is-multicloud/'>multi-cloud</a> is a type of cloud deployment that involves using multiple public clouds. In other words, an organization with a multi-cloud deployment rents virtual servers and services from several external vendors — to continue the analogy used above, this is like leasing several adjacent plots of land from different landlords. Multi-cloud deployments can also be hybrid cloud, and vice versa.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare help businesses move to and operate in the cloud?</h2>\n\n<p>Cloudflare helps protect and manage any type of cloud deployment. Our network sits in between end users and the cloud infrastructure of the customer's product or service. Customers can manage <a href='/learning/performance/why-site-speed-matters/'>performance</a>, <a href='/learning/security/what-is-web-application-security/'>security</a>, <a href='/learning/dns/what-is-dns/'>DNS</a>, and other Cloudflare offerings for all their cloud deployments from a single dashboard. Cloudflare offers a <a href='/learning/ddos/glossary/web-application-firewall-waf/'>web application firewall</a> to protect Internet properties from vulnerability exploits. Cloudflare also enables businesses to easily incorporate FaaS (serverless) into their cloud deployment.</p>\n\n<p>Read about <a href='/saas/'>Cloudflare solutions for SaaS</a> here.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How is the cloud different from the traditional client-server model of the Internet?</h2>\n\n<p>The Internet has always been made up of servers, clients, and the infrastructure that connects them. Clients make requests of servers, and servers send responses. Cloud computing differs from this model in that cloud servers are not just responding to requests — they are running programs and storing data on the client's behalf.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why is it called 'the cloud'?</h2>\n\n<p>\"The cloud\" started off as a tech industry slang term. In the early days of the Internet, technical diagrams often represented the servers and networking infrastructure that make up the Internet as a cloud. As more computing processes moved to this servers-and-infrastructure part of the Internet, people began to talk about moving to \"the cloud\" as a shorthand way of expressing where the computing processes were taking place. Today, \"the cloud\" is a widely accepted term for this style of computing.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What about containers? Are containers IaaS, PaaS, SaaS, or FaaS?</h2>\n\n<p>Like virtual machines, <a href='/learning/serverless/serverless-vs-containers/'>containers</a> are a cloud virtualization technology. They are part of the PaaS (Platform-as-a-Service) cloud model. Virtualization for containers occurs one abstraction layer up from where it occurs for virtual machines, at the operating system level instead of at the kernel level (the kernel is the foundation of the operating system, and it interacts with the computer's hardware). Each virtual machine has its own operating system kernel, but containers on the same machine share the same kernel.</p>\n",
+				"desktopMainContent": "<style>\n\n    .cards-wrapper-lcnew  { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}\n    .cards_item-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fMg89go9MegG1EDg39mNy/5a42817cd388ae352f77f56e53b1ff81/card-new.png'); background-repeat: no-repeat; background-size: cover;  background-position: center;  border-radius: 8px;  box-shadow: 10px 10px 20px -14px rgba(0, 0, 0, 1.0);  overflow: hidden;}\n    .btn-lcnew { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .btn:hover { background-color: rgba(255, 255, 255, 0.12);}\n    .card_content-lcnew  { padding: 1rem; display: flex; flex-direction: column;}\n    .card_title-lcnew  { color: #ffffff; font-size: 12px; margin: 0px; line-height: 18px; text-transform: uppercase;}\n    .card_title-lcnew span  {font-weight: 500}\n    .card_text-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; margin-bottom: 1rem; margin-top: 1rem; font-weight: 600;}\n     a:hover {background-size: 100% 4em !important; color: var(--inline-link-color);}\n\n    @media (max-width: 40rem) \n    {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n    .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n    .card_content-banner-lcnew { padding: 1rem;  display: grid; grid-template-rows: 1fr 1fr; grid-gap: 10px;}\n    .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n    .card_title-banner-lcnew span  {text-transform: uppercase; font-weight: 500 !important}\n    .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n    .card_content-banner-bt { align-self: center; justify-self: center;}\n\n    @media (max-width: 40rem) \n    { .cards-banner-lcnew { grid-template-columns: unset; padding: 0.75rem; display: flex; flex-direction: column; }\n      .card_text-banner-lcnew { line-height: 18px; }\n      .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n      .card_content-banner-bt {align-self: end;}\n    }\n\n    </style>  \n\n<div itemscope itemtype=\"https://schema.org/FAQPage\">\n  <div itemscope itemprop=\"mainEntity\" itemtype=\"https://schema.org/Question\">\n<h2 itemprop=\"name\">What is cloud computing?</h2>\n\n<iframe src=\"https://iframe.videodelivery.net/ad2223e095b603c44858996d4a727ea4?poster=https://videodelivery.net/ad2223e095b603c44858996d4a727ea4/thumbnails/thumbnail.jpg?time=17s&height=270\" style=\"border: none;\" height=\"412\" width=\"740\" allow=\"accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;\" allowfullscreen=\"true\"></iframe>\n  <div itemscope itemprop=\"acceptedAnswer\" itemtype=\"https://schema.org/Answer\">\n     <div itemprop=\"text\">\n<p>\"The cloud\" refers to servers that are accessed over the Internet, and the software and databases that run on those servers. Cloud servers are located in <a href='/learning/cdn/glossary/data-center/'>data centers</a> all over the world. By using cloud computing, users and companies do not have to manage physical servers themselves or run software applications on their own machines.</p>\n     </div>\n    </div>\n  </div>\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YT0gya2bkUeuMrnGxhjAZ/4146c20c214cf001c74c0868ddfb9503/what-is-the-cloud.png\" class=\"responsive-image\" alt=\"What is the Cloud Diagram\" itemprop=\"image\"/>\n\n<p>The cloud enables users to access the same files and applications from almost any device, because the computing and storage takes place on servers in a data center, instead of locally on the user device. This is why a user can log in to their Instagram account on a new phone after their old phone breaks and still find their old account in place, with all their photos, videos, and conversation history. It works the same way with cloud <a href='/learning/email-security/what-is-email/'>email</a> providers like Gmail or Microsoft Office 365, and with <a href='/learning/cloud/what-is-cloud-storage/'>cloud storage</a> providers like Dropbox or Google Drive.</p>\n\n<p>For businesses, switching to cloud computing removes some IT costs and overhead: for instance, they no longer need to update and maintain their own servers, as the cloud vendor they are using will do that. This especially makes an impact for <a href='https://www.cloudflare.com/small-business/'>small businesses</a> that may not have been able to afford their own internal infrastructure but can outsource their infrastructure needs affordably via the cloud. The cloud can also make it easier for companies to operate internationally, because employees and customers can access the same files and applications from any location.</p>\n  <div itemscope itemprop=\"mainEntity\" itemtype=\"https://schema.org/Question\">\n<h2 itemprop=\"name\">How does cloud computing work?</h2>\n  <div itemscope itemprop=\"acceptedAnswer\" itemtype=\"https://schema.org/Answer\">\n     <div itemprop=\"text\">\n<p>Cloud computing is possible because of a technology called virtualization. Virtualization allows for the creation of a simulated, digital-only \"virtual\" computer that behaves as if it were a physical computer with its own hardware. The technical term for such a computer is <a href='/learning/cloud/what-is-a-virtual-machine/'>virtual machine</a>. When properly implemented, virtual machines on the same host machine are sandboxed from one another, so they do not interact with each other at all, and the files and applications from one virtual machine are not visible to the other virtual machines even though they are on the same physical machine.</p>\n\n<p>Virtual machines also make more efficient use of the hardware hosting them. By running many virtual machines at once, one server can run many virtual \"servers,\" and a data center becomes like a whole host of data centers, able to serve many organizations. Thus, cloud providers can offer the use of their servers to far more customers at once than they would be able to otherwise, and they can do so at a low cost.</p>\n\n<p>Even if individual servers go down, cloud servers in general should be always online and always available. Cloud vendors generally back up their services on multiple machines and across multiple regions.</p>\n\n<p>Users access cloud services either through a browser or through an app, connecting to the cloud over the Internet — that is, through many interconnected networks — regardless of what device they are using.</p>\n      </div>\n    </div>\n  </div>\n</div>\n\n <div class=\"cards-wrapper-lcnew\">\n    <div class=\"cards_item-lcnew\">\n        <div class=\"card_content-lcnew\">\n            <div class=\"card_title-lcnew\"><span>Resource</span></div>\n            <div class=\"card_text-lcnew\">Regain control with the Connectivity Cloud</div>\n            <div class=\"btn-lcnew card_btn\"><a href=\"https://www.cloudflare.com/connectivity-cloud/\" data-tracking-action=\"click\" data-tracking-label=\"Learn more - https://www.cloudflare.com/connectivity-cloud/\" data-tracking-category=\"card1\">Learn more</a></div>\n        </div>\n    </div>\n\n    <div class=\"cards_item-lcnew \">\n        <div class=\"card_content-lcnew \">\n            <div class=\"card_title-lcnew\"><span>ebook</span></div>\n            <div class=\"card_text-lcnew\">Everywhere security for every phase of the attack lifecycle</div>\n            <div class=\"btn-lcnew  card_btn\"><a href=\"/lp/everywhere-security-ebook/\" data-tracking-action=\"click\"\n                    data-tracking-label=\"Read the whitepaper - /lp/everywhere-security-ebook/\" data-tracking-category=\"card2\">Read the ebook</a> </div>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are cloud services?</h2>\n\n<p>The resources available in the cloud are known as \"services,\" since they are actively managed by a cloud provider. Cloud services include infrastructure, applications, development tools, and data storage, among other products. These services are sorted into several different categories, or <em>service models</em>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the main service models of cloud computing?</h2>\n\n<img src=\"/img/learning/serverless/glossary/platform-as-a-service-paas/saas-paas-iaas-diagram.svg\" class=\"responsive-image\" alt=\"cloud service models\" itemprop=\"image\" style=\"margin-top:20px;margin-bottom:20px;\"/>\n\n<p><strong>Software-as-a-Service (SaaS)</strong>: Instead of users installing an application on their device, <a href='/learning/cloud/what-is-saas/'>SaaS</a> applications are hosted on cloud servers, and users access them over the Internet. SaaS is like renting a house: the landlord maintains the house, but the tenant mostly gets to use it as if they owned it. Examples of SaaS applications include Salesforce, MailChimp, and Slack.</p>\n\n<p><strong>Platform-as-a-Service (PaaS)</strong>: In this model, companies don't pay for hosted applications; instead they pay for the things they need to build their own applications. <a href='/learning/serverless/glossary/platform-as-a-service-paas/'>PaaS</a> vendors offer everything necessary for building an application, including development tools, infrastructure, and operating systems, over the Internet. PaaS can be compared to renting all the tools and equipment necessary for building a house, instead of renting the house itself. PaaS examples include Heroku and Microsoft Azure.</p>\n\n<p><strong>Infrastructure-as-a-Service (IaaS)</strong>: In this model, a company rents the servers and storage they need from a cloud provider. They then use that cloud infrastructure to build their applications. <a href='/learning/cloud/what-is-iaas/'>IaaS</a> is like a company leasing a plot of land on which they can build whatever they want — but they need to provide their own building equipment and materials. IaaS providers include DigitalOcean, Google Compute Engine, and OpenStack.</p>\n\n<p>Formerly, SaaS, PaaS, and IaaS were the three main models of cloud computing, and essentially all cloud services fit into one of these categories. However, in recent years a fourth model has emerged:</p>\n\n<p><strong>Function-as-a-Service (FaaS)</strong>: <a href='/learning/serverless/glossary/function-as-a-service-faas/'>FaaS</a>, also known as <a href='/learning/serverless/what-is-serverless/'>serverless computing</a>, breaks cloud applications down into even smaller components that only run when they are needed. Imagine if it were possible to rent a house one little bit at a time: for instance, the tenant only pays for the dining room at dinner time, the bedroom while they are sleeping, the living room while they are watching TV, and when they are not using those rooms, they don't have to pay rent on them.</p>\n\n<p>FaaS or serverless applications still run on servers, as do all these models of cloud computing. But they are called \"serverless\" because they do not run on dedicated machines, and because the companies building the applications do not have to manage any servers.</p>\n\n<p>Also, serverless functions scale up, or duplicate, as more people use the application — imagine if the tenant's dining room could expand on demand when more people come over for dinner! <a href='/learning/serverless/what-is-serverless/'>Learn more about serverless computing (FaaS)</a>.</p>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Sign Up</span></div>\n        <div class=\"card_text-banner-lcnew\">Build, deploy, and deliver trusted applications</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/lp/pg-developer-platform-multi-sku/\" data-tracking-action=\"click\" data-tracking-label=\"Get started - /lp/pg-developer-platform-multi-sku/\" data-tracking-category=\"card3\">Get started</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is cloud infrastructure?</h2>\n\n<p>Cloud infrastructure refers to the resources needed for hosting and building applications in the cloud. IaaS and PaaS services are often included in an organization's cloud infrastructure, although SaaS can be said to be part of cloud infrastructure as well, and FaaS offers the ability to construct infrastructure as code.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the different types of cloud deployments?</h2>\n\n<p>In contrast to the models discussed above, which define how services are offered via the cloud, these different cloud deployment types have to do with where the cloud servers are and who manages them.</p>\n\n<p>The most common cloud deployments are:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Private cloud</strong>: A <a href='/learning/cloud/what-is-a-virtual-private-cloud/'>private cloud</a> is a server, data center, or distributed network wholly dedicated to one organization.</li>\n  <li><strong>Public cloud</strong>: A <a href='/learning/cloud/what-is-a-public-cloud/'>public cloud</a> is a service run by an external vendor that may include servers in one or multiple data centers. Unlike a private cloud, public clouds are shared by multiple organizations. Using virtual machines, individual servers may be shared by different companies, a situation that is called \"<a href='/learning/cloud/what-is-multitenancy/'>multitenancy</a>\" because multiple tenants are renting server space within the same server.</li>\n  <li><strong>Hybrid cloud</strong>: <a href='/learning/cloud/what-is-hybrid-cloud/'>hybrid cloud</a> deployments combine public and private clouds, and may even include on-premises legacy servers. An organization may use their private cloud for some services and their public cloud for others, or they may use the public cloud as backup for their private cloud.</li>\n  <li><strong>Multi-cloud</strong>: <a href='/learning/cloud/what-is-multicloud/'>multi-cloud</a> is a type of cloud deployment that involves using multiple public clouds. In other words, an organization with a multi-cloud deployment rents virtual servers and services from several external vendors — to continue the analogy used above, this is like leasing several adjacent plots of land from different landlords. Multi-cloud deployments can also be hybrid cloud, and vice versa.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare help businesses move to and operate in the cloud?</h2>\n\n<p>Cloudflare helps protect and manage any type of cloud deployment. Our network sits in between end users and the cloud infrastructure of the customer's product or service. Customers can manage <a href='/learning/performance/why-site-speed-matters/'>performance</a>, <a href='/learning/security/what-is-web-application-security/'>security</a>, <a href='/learning/dns/what-is-dns/'>DNS</a>, and other Cloudflare offerings for all their cloud deployments from a single dashboard. Cloudflare offers a <a href='/learning/ddos/glossary/web-application-firewall-waf/'>web application firewall</a> to protect Internet properties from vulnerability exploits. Cloudflare also enables businesses to easily incorporate FaaS (serverless) into their cloud deployment.</p>\n\n<p>Read about <a href='/saas/'>Cloudflare solutions for SaaS</a> and how  a <a href='https://www.cloudflare.com/connectivity-cloud/'>connectivity cloud</a> easily integrates with any type of cloud deployment.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How is the cloud different from the traditional client-server model of the Internet?</h2>\n\n<p>The Internet has always been made up of servers, clients, and the infrastructure that connects them. Clients make requests of servers, and servers send responses. Cloud computing differs from this model in that cloud servers are not just responding to requests — they are running programs and storing data on the client's behalf.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why is it called 'the cloud'?</h2>\n\n<p>\"The cloud\" started off as a tech industry slang term. In the early days of the Internet, technical diagrams often represented the servers and networking infrastructure that make up the Internet as a cloud. As more computing processes moved to this servers-and-infrastructure part of the Internet, people began to talk about moving to \"the cloud\" as a shorthand way of expressing where the computing processes were taking place. Today, \"the cloud\" is a widely accepted term for this style of computing.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What about containers? Are containers IaaS, PaaS, SaaS, or FaaS?</h2>\n\n<p>Like virtual machines, <a href='/learning/serverless/serverless-vs-containers/'>containers</a> are a cloud virtualization technology. They are part of the PaaS (Platform-as-a-Service) cloud model. Virtualization for containers occurs one abstraction layer up from where it occurs for virtual machines, at the operating system level instead of at the kernel level (the kernel is the foundation of the operating system, and it interacts with the computer's hardware). Each virtual machine has its own operating system kernel, but containers on the same machine share the same kernel.</p>\n",
 				"availableLocales": [
 					"zh-cn"
 				],
@@ -656,6 +764,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -668,51 +777,15 @@
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -734,7 +807,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -759,6 +832,7 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

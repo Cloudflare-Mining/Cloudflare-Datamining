@@ -16,6 +16,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,8 +30,7 @@
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/take-back-it-control-ebook",
 				"topNavOptions": "no-phone",
@@ -47,7 +47,12 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2023-09-19T22:56:48.308Z",
+					"updatedAt": "2024-11-18T11:54:47.552Z"
 				},
 				"contentfulId": "3NUKu31YrVGGy1pAwo5kls",
 				"contentTypeId": "page",
@@ -66,13 +71,13 @@
 						"formTitle": "Get the ebook",
 						"buttonText": "Download",
 						"buttonColor": "orange",
-						"htmlId": null,
+						"htmlId": "form-link",
 						"marketoEmbeddedForm": {
 							"contentTypeId": "marketoEmbeddedForm",
 							"contentfulId": "3CO1Lq5ivwH1CIHYl57Wy0",
 							"bladeName": "[ACQ] Q3'23 WEB - GBL - Connectivity cloud ebook - Marketo Form ",
 							"backgroundColor": "white",
-							"marketoFormId": 1341,
+							"marketoFormId": 1346,
 							"marketoFormLeadSource": "Marketing Generated - Inbound",
 							"marketoFormLeadSourceDetail": "[ACQ] Q3'23 WEB - GBL - Connectivity cloud ebook",
 							"marketoFormHeaderText": null,
@@ -82,13 +87,13 @@
 							"marketoFormCustomSuccessMessage": "You will receive the report in your inbox. You may also download the report here.",
 							"marketoFormPdfDownload": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1v0V2tXAJnhYN4momCWDEx/f7e3d445761aea4a87f699257832522e/The-connectivity-cloud-a-way-to-take-back-it-and-security-control.pdf"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/60GBZIjkcdm2Uh8Qftz6zx/50ca047ce8d349b3a11a93451905f2ed/BDES-6677_Ebook_ConnectivityCloud.pdf"
 								},
-								"description": ""
+								"description": "Connectivity cloud, explained:\nA platform for connecting, protecting, and building more of your business with Cloudflare."
 							},
 							"marketoFormPdfDownloadI18n": [],
 							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1v0V2tXAJnhYN4momCWDEx/f7e3d445761aea4a87f699257832522e/The-connectivity-cloud-a-way-to-take-back-it-and-security-control.pdf",
+							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/60GBZIjkcdm2Uh8Qftz6zx/50ca047ce8d349b3a11a93451905f2ed/BDES-6677_Ebook_ConnectivityCloud.pdf",
 							"sendAdRoll": true,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
@@ -100,7 +105,7 @@
 						},
 						"title": "Ebook: The connectivity cloud",
 						"subtitle": "A way to take back IT and security control ",
-						"copy": "Today, everything and everyone in your organization's IT environment needs to be connected and secured everywhere, all the time. But the cloud, SaaS, Internet, and on-prem domains are intrinsically different, and the tools used to tie them together usually just add more complexity. \n\nAll of this results in IT and security teams having less control over their environment — making the whole organization less agile, less secure, and less financially efficient. How can they close the control gap?\n\nA __connectivity cloud__ is a unified platform of cloud-native services that dramatically simplifies secure \"any to any\" connectivity, helping businesses regain control of their IT environment. This ebook tells you how a connectivity cloud works and how it can help your organization. Check it out to learn:\n\n- Symptoms of loss of IT control\n- How connectivity clouds work on a technical and architectural level\n- How connectivity clouds help simplify critical IT and security tasks\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OYm9M0bw3ioLariOfHjjA/341fc1f2eb22d169ff98ae3b998c7216/Blueprint_after_ConnectivityCloud.png\" alt=\"Blueprint Connectivity Cloud - After\">\n",
+						"copy": "Today, everything and everyone in your organization's IT environment needs to be connected and secured everywhere, all the time. But the cloud, SaaS, Internet, and on-prem domains are intrinsically different, and the tools used to tie them together usually just add more complexity. \n\nAll of this results in IT and security teams having less control over their environment — making the whole organization less agile, less secure, and less financially efficient. How can they close the control gap?\n\nA __connectivity cloud__ is a unified platform of cloud-native services that dramatically simplifies secure \"any to any\" connectivity, helping businesses regain control of their IT environment. This ebook tells you how a connectivity cloud works and how it can help your organization. Check it out to learn:\n\n- Symptoms of loss of IT control\n- How connectivity clouds work on a technical and architectural level\n- How connectivity clouds help simplify critical IT and security tasks\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OYm9M0bw3ioLariOfHjjA/3ed1934bf5aae1d1c85fc99d711acba5/Connectivity_cloud_blueprint.svg\">\n",
 						"iconList": [],
 						"iconTitleList": null,
 						"iconCopyList": null,
@@ -130,16 +135,16 @@
 						"eyebrowHeading": null,
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Three Columns",
+						"columnsLayout": "Four Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "50XsOhoH249OtHmUmsuyBB",
-								"title": "Integration with all networks",
+								"title": "One network, one control plane",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": "small",
-								"description": "Get a direct line to the Internet and every other app, cloud, and ISP, giving you secure, low-latency, infinitely scalable network connectivity no matter the nature of your users, customers, applications, or infrastructure.",
+								"description": "Accelerate user experiences and block attacks close to their source with services built to run in every location in our %{DataCenterCount} city cloud network.\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -147,14 +152,50 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "6a3960ee-a810-5100-a55a-ffcb4d676e43",
-									"altText": "network virtual backbone",
-									"title": "network virtual backbone",
+									"id": "ff8961fa-ef8b-5b0d-b999-e0c79b5bbe93",
+									"altText": "internet globe",
+									"title": "internet globe",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b3ukfoY9BpcbnxK1cEvJs/78b3069991fa76f7b062113f6db17576/internet-globe.svg"
+										},
+										"description": "Orange icon of a globe"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7j3V0dpNG4OkCE8ko2DhoE",
+								"title": "Global scale and network resilience",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "small",
+								"description": "Ensure service availability globally with %{NetworkCapacity} of network capacity, Anycast networking, and a dedicated fiber backbone.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "e32dab88-a3a3-5807-9cac-6b8a1bf92327",
+									"altText": "Security Shield Protection Icon",
+									"title": "Security Shield Protection Icon",
 									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/CkLyY6q1HXN55s43SIWIo/cb5618f644a9f8aa08f02566e51b4e8c/network-virtual-backbone.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Y13tTigGFzx34DZk3iS9Y/5b93f092978693108467fdedd27338d4/security-shield-protection-2.svg"
 										},
 										"description": null
 									},
@@ -170,12 +211,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7j3V0dpNG4OkCE8ko2DhoE",
-								"title": "Built-in intelligence",
+								"contentfulId": "4FSZimXsnIz9f4hBfC06pn",
+								"title": "Composable, programmable services",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": "small",
-								"description": "A connectivity cloud has a wide range of services built in at a foundational level, and analyzes extremely high volumes and varieties of traffic in order to automatically update intelligence. This helps you easily adapt to new threats and traffic patterns.\n",
+								"description": "Customize policy enforcement, decryption, caching, and more for specific regions. Fully API programmable Layer 2-7 connectivity.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -183,16 +224,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "ff31bfda-5ac0-5e67-bf9e-bd602f3d81ce",
-									"altText": "Innovation intelligence blue",
-									"title": "Innovation intelligence blue",
+									"id": "bfdae3ad-fb79-5f09-af76-54a60b58ae4b",
+									"altText": "code api icon blue",
+									"title": "code api icon blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/10Jn71GCDQVevOJja3TfLO/ce8d67a09048cb50a47d2f90e33da8b2/innovation-intelligence.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ugq45RoIF8Tbbt3QlP5Yk/6aa7c9d9aa38d0f77b426a6bb27645a2/code-api.svg"
 										},
-										"description": ""
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -206,12 +247,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4FSZimXsnIz9f4hBfC06pn",
-								"title": "Unified, simplified interface",
+								"contentfulId": "7aKWk5MspqySqV0MALt6tA",
+								"title": "Simplified management interface",
 								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "small",
-								"description": "See and manage much of your IT environment from one interface, greatly reducing tool sprawl and dashboard overload.",
+								"titleSize": null,
+								"description": "Accelerate innovation by managing every Cloudflare service via a single UI or API. Integrate log data for improved visibility.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -219,16 +260,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
-									"altText": "Ease of use blue",
-									"title": "Ease of use blue",
+									"id": "888981a6-dd85-5b86-af64-6ec8fa0d848e",
+									"altText": "Internet browser blue",
+									"title": "Internet browser blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wB2WP2bwo7zdgVhToslhe/5983fd8a6bf159cead4f17a99057913a/ease-of-use-toggle.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17tDJ5kPaGE8eLFJvByBgR/c28fb006fa3ddfba75b2009591559296/internet-browser.svg"
 										},
-										"description": "Ease of use orange"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -241,7 +282,7 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"htmlId": "how-it-works"
 					},
 					{
@@ -252,116 +293,120 @@
 						"sectionPadding": "tile--no-bottom-padding",
 						"featuredCaseStudies": [
 							{
-								"id": "f0b8fe55-bfb7-542d-9bf3-d3f935afb03e",
-								"contentfulId": "1H43KOVhSYFliXe0gYpDFa",
+								"id": "9feeaf80-e89a-5709-8ab4-65e9df4f5185",
+								"contentfulId": "7myLuCPHPzPOChi0VjpUig",
 								"logo": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dDSPSSsnB7C5aL2KHgZG7/7c548df6cd07a691d6b9042e2ee391e7/sage_logo.png"
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1h6HptFO1dOP4w2BpO4WzN/dadc2020927f5a26a128530be02cde11/alpargatas-logo-3__1_.png"
 									},
-									"description": "Sage Intacct logo"
+									"description": "Alpargatas logo"
 								},
-								"nameUrlSlug": "sage",
-								"shortDescription": "Sage leverages Cloudflare to improve application performance and security, enhance product development, secure user data, and streamline their digital footprint.",
-								"longDescription": "## __Sage helps businesses to thrive — Sage partners with Cloudflare to support the security of business management applications for millions of users__\n\nSage is a leader in accounting, financial, HR, and payroll technology for small and mid-sized businesses (SMBs). Its technology automates accounting, payroll and payment practices. \n\nSupporting millions of businesses across 21 countries, Sage helps SMBs thrive in a complex digital landscape. The Sage ecosystem allows entrepreneurs to offload their administrative processes and free up time and resources to focus on core business objectives. Sage's purpose is to knock down barriers so everyone can thrive and good security built into the products from the outset is the foundation of this. \n\n### __Challenge: Securing business application access to millions of users__\n\nAs providers of cloud-based financial and business management tools, Sage is responsible for the security of their clients' financial information. It is a charge they take seriously, especially as online threats become more sophisticated and automated threats increase in frequency.\n\n\"A key cybersecurity focus is the rise of criminal groups that try to hold companies to ransom by making data unavailable or simply by profiting from stolen data,\" says Sage  Chief Information Security Officer (CISO), Gustavo Zeidan. \"Our challenge is to protect our customers' data, as well as their own customers' data, by staying ahead in technology evolution and anticipating changes in the threat landscape — always monitoring the environment and ensuring that Sage and our customers' data stay secure.\"\n\nAs Sage's product portfolio grew, so did their need to secure and integrate their new offerings without hindering development efforts or user access to financial tools and information. \n\n\"We are constantly evolving our business processes and technology, and a significant part of that initiative involved a strong push towards a Zero Trust network architecture,\" Zeidan explains. \"We have been consistently and relentlessly decommissioning legacy ways of working and old technologies such as VPN and modernising how our business colleagues and development teams use technology to deliver their work.\" \n\nLooking for a like-minded partner dedicated to innovation, Sage chose Cloudflare to help them achieve their security and development goals.   \n\n### __Solution: Mitigating automated threats and reducing network complexity with Cloudflare integrated security and analysis tools__\n\nUsing Cloudflare, Sage was able to reduce maintenance costs and streamline their digital footprint.\n\n\"The amount of insight we gained from Cloudflare's integrated solutions such as DNS Analytics is impressive,\" says Zeidan. \"With that added visibility, we could build an understanding of our footprint at the host level and make data driven business decisions on what to keep and what to decommission, enabling us to greatly simplify our external presence.\"  \n\nSage initially had adopted the core Cloudflare application services like the Web Application Firewall (WAF) and global Content Delivery Network (CDN) to bolster product performance and secure their websites and APIs. Based on their early successes, Sage began onboarding additional Cloudflare tools — like Bot Management and DDoS mitigation — to proactively defend against threats using behavioral analysis, fingerprinting, and machine learning to monitor traffic.\n\n\"Cloudflare gives us the ability to identify what is human and what is automated traffic,\" says Zeidan. \"That helps protect our websites from automated attacks and filter out traffic when they are attempting to use our platform in a different way it was designed for.\"\n\n### __Simplifying application security and development with Cloudflare Workers__\n\nWith its comprehensive set of enterprise management tools, ensuring effortless access while maintaining stringent application security and protecting data for a user base of millions was critical to Sage's success. \n\nToday, the Cloudflare-Sage partnership extends beyond security — the Cloudflare Workers development platform gives Sage DevOps an environment in which they can innovate and safely test and deploy additional layers of code straight from the network edge.\n\n\"Cloudflare Workers has brought immense flexibility to our engineering teams,\" says Zeidan. \"This solution alone enabled operations teams to provide fast response to various architecture challenges without having to go anywhere near application code or making changes to core infrastructure.\" \n\nSage's and Cloudflare share a focus on innovation and creating solutions that bring clear benefits to their end users.\n\n\"Sage has the ambition to knock down barriers and transform the way people think and work, enabling their organisations to thrive.\" \n",
-								"cloudflareStreamVideoId": "48db2b290180d222320c681b6e6cf571",
-								"orderDate": "2023-07-12",
+								"nameUrlSlug": "alpargatas",
+								"shortDescription": "Cloudflare optimizes performance and prevents fraud for Havaianas and other iconic brands ",
+								"longDescription": "## Alpargatas secures and scales their global ecommerce platforms with help from Cloudflare \n\nAlpargatas is a group of globally-recognized consumer brands best known for their iconic Havaianas flip-flops. The Alpargatas Group is headquartered in Brazil, but operates over 40 ecommerce platforms that serve customers around the world, including Europe, Latin America, and the United States. \n\n### Challenge: Ensuring performance and security for high-visibility brands\n\nAlpargatas owns many highly-recognizable brands in the consumer goods industry. The success of these brands depends on ensuring a positive user experience for customers around the world.\n\n\"At Alpargatas, we are committed to delight the world with amazing brands, brands that convey lightness and joy to the everyday lives of our consumers,\" says Felipe Bonomo, Executive Manager of Information Security and Privacy at Alpargatas.\n\nServing a global customer base across multiple ecommerce channels requires solutions that ensure that user traffic is quickly routed to the appropriate platform. Additionally, Alpargatas needs to protect their highly-visible brands against fraud and other potential security threats\n\n### Workers and caching ensure application performance and reliability\n\nCloudflare's global network is essential to ensure the availability and performance of Alpargatas' ecommerce platforms. With over 330 locations worldwide, the Cloudflare network is uniquely positioned to protect Alpargatas' ecommerce platforms and help Alpargatas provide a better connectivity experience to their customer base.\n\nAlpargatas uses Cloudflare Workers and Argo Smart Routing to manage and improve routing across their complex infrastructure.\n\n\"At Alpargatas, we use Workers to manage access to our ecommerce solutions around the globe,\" Bonomo says. \"With Workers, we can precisely manage traffic without harming application performance or the user experience.\"\n\n### Cloudflare WAF and Bot Management block targeted attacks\n\nAlpargatas manages high-visibility brands, including Havaianas and Rothys, a sustainable, North American footwear brand. These are common targets for cyber attacks designed to disrupt services or engage in fraudulent activities against the company.\n\nOften, these attacks involve using malicious bots to purchase and resell goods, deplete inventory, or perform credential stuffing attacks against customer accounts.\n\n\"In Brazil, there are many specialized groups engaging in fraudulent activities,\" Bonomo adds. \"Using Cloudflare to mitigate these risks with the Bot Management solution is one of the main benefits we see for Alpargatas.\"\n\n### Simplification and centralization enhance security efficiency\n\nManaging security across over 40 global ecommerce platforms can be a complex job. According to Bonomo, Cloudflare's usability and centralized management are key to the scalability of Alpargatas' security operations.\n\n\"It's very easy to manage Cloudflare's products, enabling scalable security without unnecessary complexity,\" he says. \"The interface is intuitive and makes it easy to customize rules and implement new rules and filters.\"\n\nCloudflare's diverse product catalog was also a major selling point for Alpargatas. As the company engages in a digital transformation initiative to adapt to Industry 4.0 and 5G networks, centralizing key network security capabilities in a single solution helps them streamline their security operations and scale their business with ease.\n",
+								"cloudflareStreamVideoId": "208894ac1c9edc87114de1033b0c70b1",
+								"orderDate": "2024-11-14",
 								"ref_streamVideoThumbnail": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/ILLvFjlVSKYB4Gp5utCeb/32fd2f9b0547d7c2b534d0d8cad192f3/sage_meta.png"
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kttmXv7bpslK1onkT1U0K/9dd6e1291d61502711007f115adf4dfa/Alpargatas_thumbnail3.png"
 									},
-									"description": "Photo of person using Sage Intacct on a laptop"
+									"description": "Alpargatas - Video thumbnail"
+								},
+								"twoCardPreviewImage": null,
+								"industryNew52420": [
+									"Public Sector"
+								],
+								"regionNew52520": [
+									"Latin America & the Caribbean"
+								],
+								"primaryUseCases": [
+									"Accelerate digital properties",
+									"Secure websites & applications"
+								],
+								"product": [
+									"Workers",
+									"Argo Smart Routing",
+									"WAF",
+									"Bot Management"
+								]
+							},
+							{
+								"id": "defc09e8-7427-5cd2-8685-4e519d2a10ea",
+								"contentfulId": "6vH9LlrALlRvEjgRFMNxx",
+								"logo": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5yUNNcm4R4mXsEu9peDFNi/53ff1c4743556c777025221561a97491/Telus-logo.png"
+									},
+									"description": "Telus logo"
+								},
+								"nameUrlSlug": "telus",
+								"shortDescription": "Cloudflare's connectivity cloud helps TELUS improve their security team's agility, block attacks sooner, and cut the security budget by over C$11 million.",
+								"longDescription": "## __TELUS strengthens security and improves digital experiences while eliminating legacy IT complexity with Cloudflare__\n\nTELUS is growing rapidly. Headquartered in Canada, TELUS Corporation is a dynamic, world-leading global communications technology company with more than 19 million customer connections across wireline, wireless, Internet, security, entertainment and TV services. The company is also expanding into new verticals, including health technology, agricultural technology, energy, and smart home technology.\n\nTo succeed in highly competitive markets, TELUS technology leaders are focused on building a world-class engineering organization. That team is responsible for developing innovative products and delivering outstanding digital experiences to customers across Canada and beyond. \n\n### __Defending a high-value target while facing IT complexity__\n\nAmong other technology investments, TELUS is currently migrating key workloads from on-premises data centers to the cloud. \"Moving to the cloud creates great opportunities for accelerating our pace and improving the quality of our services,\" says Steve Tannock, director of platform at TELUS. \n\nHowever, the cloud migration and other initiatives also have the potential for amplifying security challenges by expanding the company's attack surface. \"TELUS is a high-value target for attackers,\" says Tannock. \"In particular, the volume, quality, and sophistication of Distributed Denial of Service (DDoS) attacks are always increasing. Addressing those threats is a high priority.\"\n\nAnother challenge was a heterogeneous IT and security environment — which stemmed in part from the company's growth through acquisitions. \"Initially, we had very piecemeal, uneven protection. Every team, every application and every surface had its own solutions,\" says Tannock. \"Some of those solutions were delivered as physical appliances that were no longer relevant to a cloud approach.\"\n\nThe complexity of this security environment slowed incident responses and even affected retention of employees. \"We were seeing an increased number of DDoS attacks that were not mitigated. As a result, our team was spending lots of time on call, which was stressful and led to burnout,\" says Tannock. \"We needed to completely rethink how we were protecting the company.\"\n\n### __Strengthening security and consolidating tools with Cloudflare__\n\nTo transform their security strategy, TELUS began working with Cloudflare. The team implemented DDoS protection and bot management capabilities to stop attacks and prevent malicious bot activity. TELUS also deployed Cloudflare Advanced Certificate Management to secure applications with TLS certificates while avoiding manual administration. Meanwhile, the Cloudflare content delivery network (CDN) helps deliver exceptional experiences to users everywhere.\n\nThe move to Cloudflare was widely appreciated by the TELUS team. \"Many of our team members had used Cloudflare with previous companies,\" says Tannock. \"When we decided to make the move to Cloudflare at TELUS, we were all excited to work with a company that has prioritized strong engineering. We are closely aligned with Cloudflare's engineering-first culture.\" \n\nBecause Cloudflare offers a single, unified connectivity cloud, the TELUS team immediately recognized the opportunity to consolidate security tools. \"Consolidation helps us be lighter and faster,\" says Tannock. \"We can be more responsive to issues. And at the same time, with fewer tools to manage, we're reducing our team's cognitive load.\"\n\n### __Eliminating C$11.8 million in direct costs over three years__\n\nConsolidating security tools is having a tangible impact on costs. \"With our previous security providers, we had experienced increasing costs and diminishing returns,\" says Tannock. \"By moving to Cloudflare, we anticipate reducing direct costs by C$11.8 million over three years. That is a massive savings for us.\"\n\nTELUS is also driving down operational costs by reducing the need for staff overtime. \"In the first five months of this year, we saved more than a hundred hours of overtime compared with previous years,\" says Tannock. \"That's both a cost reduction and an improvement in quality of life for our teams. It's really a tremendous win.\"\n\n### __Spending less time on urgent incidents and more time on strategic priorities__\n\nWith Cloudflare security capabilities in place, the TELUS team automatically mitigates many more attacks than before — reducing the time to handle attacks by 95% for one high-traffic event. \"Two years ago on Black Friday, we spent 48 hours just putting out fires,\" says Tannock. \"This past year, attackers targeted us even more — but Cloudflare automatically mitigated every attack except one. For the remaining attack, we stopped it within an hour just by quickly adding a configuration rule.\"\n\nIncreased visibility helps the TELUS team handle threats before they escalate. \"Using the Cloudflare dashboard, we can easily see where the problems are and rapidly configure new rules to monitor or block a threat,\" says Tannock. \"Cloudflare has really transformed the way we work. Now we can spend more of our time working on strategic projects.\"\n\n### __Enhancing customer experiences by delivering better performance__\n\nWhile TELUS is using Cloudflare security capabilities to address threats, the Cloudflare network helps deliver better digital experiences for websites and apps. \"We're always thinking about our customer experiences,\" says Tannock. \"When we added Cloudflare to our website, we immediately saw a 1.4-second improvement in page response time, which is huge for us — and a very noticeable improvement for our customers.\"\n\nOn average, the move to Cloudflare has contributed to a 65% reduction in page load times so far. Tannock's team anticipates another 40% reduction in the future. \"Our goal is for all of our properties to load in under two seconds,\" says Tannock. \"Two years ago, we were averaging about 10 seconds. Now it's about three-and-a-half seconds. We think we can reach our goal with Cloudflare.\"\n\nThe TELUS team hopes to achieve that performance goal by moving apps to the edge. \"We're exploring ways to use Cloudflare Workers to serve apps closer to users,\" says Tannock. \"Canada is a large country, and we want to make sure that customers have responsive experiences whether they are on the West Coast, East Coast, or somewhere in between. With Cloudflare, we're rethinking how we deliver our software so we can provide a much faster experience for customers everywhere.\" \n\n### __Securing a distributed workforce and enabling continued innovation__\n\nThe TELUS team has also been investigating a Zero Trust security approach to better protect employees, whether they are working in corporate offices, retail locations, call centers, or elsewhere. \"TELUS has a globally distributed workforce, and we need to ensure that we can safeguard employees and provide the right levels of network access,\" says Tannock. \"We believe that the Cloudflare connectivity cloud will be instrumental in empowering our global employees while maintaining tight security. We can continue to deliver exceptional service and develop innovative products from anywhere.\"\n",
+								"cloudflareStreamVideoId": "bc8c2772f6aadc832ff74536002b8057",
+								"orderDate": "2024-11-11",
+								"ref_streamVideoThumbnail": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xbbCKLej8Ie7Ty2d1NfCh/471c4d9fd80cbf7e1903f137ca488e1a/Telus-thumb.png"
+									},
+									"description": null
 								},
 								"twoCardPreviewImage": null,
 								"industryNew52420": [
 									"High Technology"
 								],
 								"regionNew52520": [
-									"Europe, Middle East & Africa"
+									"North America"
 								],
 								"primaryUseCases": [
 									"Accelerate digital properties",
-									"Enable zero trust security for workforce",
+									"Deliver rich media experiences",
+									"Deploy custom code at the Edge",
+									"Protect network infrastructure",
 									"Secure websites & applications",
-									"Deploy custom code at the Edge"
+									"Secure workforce applications, devices and networks"
 								],
 								"product": [
+									"CDN",
+									"DDoS Protection",
 									"Bot Management",
-									"Workers"
+									"SSL/TLS"
 								]
 							},
 							{
-								"id": "d5639674-dc91-5ea9-9279-2e2b88245aec",
-								"contentfulId": "5hPpVDZeeKcM7grzfQnmNC",
+								"id": "cba37ec5-70d8-5aa4-a8e1-f243b3cf727c",
+								"contentfulId": "504Md5S1kj7FhifMPEmNyC",
 								"logo": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/315wvQPkU3AcEnauttHpg7/ecda8d1d7314284ea83bae496997095e/case_study_logo_GPC.png"
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dy6dqjDdhCwfgpXk8KblO/07daf69f03ddabdf5ead6cf2fecd20bc/Indeed_Logo_RGB.png"
 									},
-									"description": "Genuine Parts Company logo"
+									"description": "Indeed - logo large (blue)"
 								},
-								"nameUrlSlug": "genuine-parts-company",
-								"shortDescription": "Cloudflare's connectivity cloud protects 900+ GPC websites, giving them complete visibility into threats across their entire digital footprint.",
-								"longDescription": "## __Genuine Parts Company teams up with Cloudflare to create a cohesive security posture across its global ecommerce footprint of 900+ sites__\n\nSince its inception in 1928, Genuine Parts Company has sold a wide variety of  automotive replacement parts, industrial parts, and related supplies to a diverse customer base of individuals and businesses.The company's high-profile brands include NAPA AUTO PARTS, Traction Heavy Duty Parts, Motion NA, and Motion Asia Pacific.\n\nA Fortune 200 company, Genuine Parts Company employs more than 53,000 people worldwide and markets its products both online and through brick-and-mortar stores. Online sales are an increasingly important channel, and the company operates more than 900 [ecommerce websites](https://www.cloudflare.com/ecommerce/). \n\n### __Challenge: Gain better visibility into the attack surface__\n\nAccording to Damian Apone, global director of governance, risk, compliance, and security at Genuine Parts Company, the company's primary security challenges revolved around effective attack surface management. The team couldn't tell how many bot attacks and DDoS attacks were occurring globally. In addition, there was no visibility into how many attacks were prevented. \n\nThe company had a web application security service, but it did not deliver the level of insight Genuine Parts Company needed. In addition, the security service ran in multiple regionally siloed instances, making it difficult to manage centrally. \n\n\"We were paying a lot of money, but we had no visibility into our global digital footprint,\" Apone explains. \"We didn't have any information on how or when we were being attacked and we had no idea who was targeting us.\"\n\n### __The solution: Cloudflare delivers robust security with broad, deep visibility__\n\nThe security team opted to move to Cloudflare not only because of its exceptional protection for websites and applications, but also because Cloudflare provides a comprehensive view of attacks. With Cloudflare's Bot Management, DDoS mitigation, Web Application Firewall (WAF), and Rate Limiting, the security team now has the visibility they need to achieve robust surface attack management. \n\nCloudflare's Security Center console depicts Genuine Parts Company's attack surface visually to help the team understand attack types, associated vulnerabilities, and risk levels. This visibility enables team members to quickly see which attacks represent a serious threat so they can marshal their defensive resources in the most effective and efficient manner. \n\nToday, Cloudflare protects 900+ Genuine Parts Company websites around the world. \n\n\"Our busiest website gets approximately 2.5 billion requests a month,\" Apone explains. \"It's hit by approximately 57 million threats each and every month. And Cloudflare blocks all 57 million every month. I know this because Cloudflare's security insights technology shows me exactly what's happening across the entire digital footprint.\"\n\nApone adds that senior leaders constantly scrutinize expenditures and want proof that the company gets adequate return on every investment. Cloudflare delivers value by providing details on the volume and type of attacks it defends against. \n\n\"It's exceptionally powerful to walk into the boardroom and say, 'these are the attacks we're experiencing, here's where they are coming from, and this is how we're blocking them,'\" Apone says. \"It resonates across the business when we say Cloudflare thwarted 450 million threats in one year. Each and every one of them could have had serious financial repercussions. When board members see the numbers, they know we're getting a solid return on our Cloudflare investment.\"\n\n### __Security insights in action__\n\nThe Cloudflare Security Center is the source for data on each attack along with insight into the business impact. For example, using the security insights technology, the security team identified the top five IP addresses hitting the company's most heavily trafficked ecommerce website. Investigation showed that the second most active IP address transacting on the site was a competitor. And that competitor was engaging in extensive screen scraping of the online catalog and accessing private company information.\n\n\"If we didn't have Cloudflare, we wouldn't have known this was happening and the behavior would have continued,\" Apone recalls. \"Malicious activity like this could affect company revenue. So Cloudflare allows us to not only protect the security of our websites, but also take steps to prevent this competitor from obtaining any additional private company information. It's not just security, it's also resiliency from a revenue perspective.\"\n\n### __Alignment with strategic policies__\n\nVendor consolidation is an important aspect of Genuine Parts Company's security strategy. Working with a patchwork of different providers makes it difficult to maintain a coordinated and collaborative security posture across areas of the business. So the security team focuses on partnering with providers that deliver services across a range of security requirements. Apone maintains that reducing the number of providers  enables the security team to orchestrate efforts from a single place, which increases efficiency and productivity. \n\nCloudflare's ability to handle a broad range of threats and provide broad and deep visibility into all of them aligns with Genuine Parts Company's strategic goals for vendor consolidation.\n\n### __Advantages of a true partnership__\n\nApone notes that the most beneficial aspect of switching to Cloudflare is the partnership that has developed. \"I don't need services, I don't need software, I need help solving problems,\" he says. \"Cloudflare embraces and approaches everything through the lens of what's best for the customer, always putting the customer first.\" \n\nThat customer-first attitude has made Cloudflare a trusted partner for Genuine Parts Company. \"Cloudflare is truly interested in solving our problems. The Cloudflare team has been at our side from the beginning. Regardless of the time of day or night, they've rolled up their sleeves and helped us overcome every issue we've experienced. That's where Cloudflare excels.\"\n",
-								"cloudflareStreamVideoId": "54ae3c6bd84affb41dc8e1b53e5cd948",
-								"orderDate": "2023-03-14",
+								"nameUrlSlug": "indeed",
+								"shortDescription": "Global job matching and hiring platform Indeed reduces technical debt, secures employee and contractor access, and protects confidential information in Cloudflare's connectivity cloud",
+								"longDescription": "## Indeed modernizes IT and security by replacing its VPN with a Zero Trust approach\n\nIndeed is the world's #1 job site. Founded in 2004 and based in Austin, Texas, Indeed has over 15,000 employees across North America, Asia Pacific, and Europe. More than 350 million unique visitors use Indeed each month to search for jobs, post resumes, research companies and more. And over 3.5 million employers find candidates. Known for its easy-to-use design and advanced technologies for job matching and hiring, Indeed serves job seekers in over 60 countries and 28 languages.\n\n### Challenge: Modernize security while reducing technical debt\n\nIndeed's security team prioritizes ensuring the platform is safe for the hundreds of millions of employers and job seekers who rely on the platform, and protecting sensitive user data — like resumes, employment histories, and personally identifiable information — from leaks and theft.\n\n\"We have an obligation to be the best data stewards possible,\" explains Matthew Ortiz, senior manager of Indeed's information security, engineering, and operations teams. \"People come to us in a vulnerable state looking for a job. They entrust us with their most valuable personal data and rely on us to provide a secure, efficient environment.\"  \n\nOn top of these day-to-day security concerns, Indeed recognized the need to modernize an IT ecosystem that had grown increasingly complex. This complexity resulted in inconsistent traffic controls to the company's SaaS apps, data centers, and cloud resources. It also meant inefficient backhauling of traffic to data centers and an overreliance on traditional, perimeter-based tools like an on-premises virtual private network (VPN).\n\n\"As we grew, our technical debt grew with us,\" says Ortiz. \"We developed increasingly complex networking and security stacks which created risk and hurt productivity. We needed to simplify — complexity only leads to challenges and vulnerabilities.\"\n\nTo address these security and modernization goals, Indeed turned to Cloudflare's [connectivity cloud](https://www.cloudflare.com/connectivity-cloud/) for secure any-to-any connectivity. In partnership with Cloudflare, Indeed began transforming its IT ecosystem, reducing complexity, improving security, and modernizing its architecture in the cloud.\n\n### Use case: Securing Indeed's job search website\n\nOne initial step towards this transformation was modernizing security for Indeed's main public-facing website. To achieve this, Indeed onboarded Cloudflare's web application firewall (WAF) and bot management capabilities to its job platform to neutralize threats and reduce fraud.\n\n\"Fraudulent job posts and employment applications represent a serious potential risk to our business, endangering users and eroding trust,\" says Ortiz, \"With the help of Cloudflare, we're able to proactively prevent and mitigate such risks to help keep the hundreds of millions of job seekers  on our platform safe.\"\n\n### Accelerating transformation by replacing a legacy VPN\n\nWithin a few months of this initial adoption, Indeed began collaborating with Cloudflare on a longer-term strategic effort to modernize connectivity and security across their workforce, including reimagining how their employees accessed resources. The first phase of this project focused on replacing Indeed's traditional VPN, which created risk and frustrated users.\n\n\"Our legacy architecture relied on implicit trust — meaning, employees had access to more data and resources than we wanted just by being inside an office,\" says Ortiz. \"Plus, the VPN could be slow or add friction in ways that annoyed users and made them turn off the connection, which created blind spots for us.\"\n\nTo modernize its access approach, Indeed began onboarding Cloudflare, specifically the Zero Trust Network Access (ZTNA) service. To evaluate the solution, Indeed rolled out Cloudflare progressively over a few weeks to dedicated test groups of hundreds of users, representing different device types and roles, including contractors. Testing helped Indeed become comfortable with how Cloudflare fit within its existing architecture and protected critical apps, developer environments, and its AWS infrastructure.\n\nIn just over 3 months, Indeed had deprecated its VPN entirely. This included migrating hundreds of preexisting access policies and rolling out Cloudflare to over 13,000 employees and contractors around the world. Today, Indeed uses the infrastructure-as-code tool Terraform to automate the vast majority of its ongoing management, including onboarding new users and configuring new policies. \n\n### ZTNA impact: Better user experiences and reduced risk\n\nThe feedback on Cloudflare's access approach has been positive. \n\n\"Compared to the VPN, our users everywhere report a much better and more consistent access experience with Cloudflare,\" says Ortiz, who specifically cited less latency and more reliable connections, especially in regions that traditionally experienced problems with the VPN.\n\nReplacing its VPN with Cloudflare helps Indeed reduce risk with Zero Trust best practices — meaning least-privilege, default-deny access based on context.\n\n\"Cloudflare has empowered us to be more intentional in how we grant access, enabling us to verify based on identity, device posture, location, and other variables,\" says Ortiz. \"This Zero Trust approach helps us adapt to risk and gives us way more confidence than our legacy architecture.\"\n\nIn particular, Cloudflare restores visibility for Indeed's security teams. With the VPN, the majority of users did not maintain a persistent connection, whether because of dropped service, workarounds, or other connectivity issues. Now with Cloudflare, Indeed's users stay connected for effectively all of their working hours.\n\n\"Cloudflare has helped resolve blind spots in our security and ultimately allows us to make better decisions in what access policies to set,\" says Ortiz.\n\nThe impact of replacing the legacy VPN with Cloudflare ZTNA is felt at the highest levels internally.\n\n\"Cloudflare simplifies how we deliver Zero Trust across our organization — that helps us mitigate risk more effectively with less effort,\" says Anthony Moisant, SVP, Indeed's Chief Information Officer, and Chief Security Officer.  \n\n### Identifying and mitigating generative AI risks\n\nThe visibility Cloudflare provides is helping Indeed reduce the risk of data leaks to AI tools. Specifically, Cloudflare is helping Ortiz and his colleagues identify which unsanctioned AI apps (known as \"shadow AI\") employees are using and establish controls when appropriate to prevent information exposure. Today, those controls include restricting access to unapproved generative AI (GenAI) tools, and over time, will include more specific detections of sensitive data via data loss prevention (DLP) scanning.\n\n\"Despite its many legitimate users, AI presents major security and privacy concerns,\" says Ortiz. \"Cloudflare helps us find what shadow AI risks exist and block unsanctioned AI apps and chatbots.\"\n\n### Future plans: Shift more security and networking to the cloud\n\nGoing forward, Indeed plans to continue simplifying its IT architecture by migrating more security controls and network connectivity to the cloud. Indeed will continue extending Zero Trust principles across environments in pursuit of what Ortiz calls the holy grail: company-wide Zero Trust. \n\nWhile the company's recent focus has been securing traffic from users to applications, one use case on the horizon includes identity-based verification for machine-to-machine workloads. In addition to simplifying access workflows, Indeed is also exploring how Cloudflare can further protect data, secure SaaS environments, and defend against threats with DLP, [cloud access security broker (CASB)](https://www.cloudflare.com/learning/access-management/what-is-a-casb/), and other [secure access service edge (SASE)](https://www.cloudflare.com/learning/access-management/what-is-sase/) capabilities.\n\nReflecting on Indeed's collaboration with Cloudflare to date, Ortiz is positive.\n\n\"Cloudflare sets the standard for all the vendors we work with,\" he says. \"By reducing complexity and improving security across the board, Cloudflare is safeguarding the trust of our most important stakeholders — the employers and job seekers at the heart of the Indeed platform.\"",
+								"cloudflareStreamVideoId": "f754457b22ec9b6c5fd162868acdb64b",
+								"orderDate": "2024-10-28",
 								"ref_streamVideoThumbnail": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XLbCG57F12IbPP7UjpEav/7879ce7cadbb3fdf6664bf5a9f6698fb/GPC_meta.png"
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1WuCMB2xQyP5YwQW1NmnM7/cd7bf7bf2427d528ff91af1fb0819761/indeed_thumbnail.png"
 									},
-									"description": ""
+									"description": "Indeed - Case Study stream thumbnail"
 								},
 								"twoCardPreviewImage": null,
 								"industryNew52420": [
-									"Manufacturing"
+									"Public Interest"
 								],
 								"regionNew52520": [
 									"North America"
 								],
 								"primaryUseCases": [
-									"Enable zero trust security for workforce",
 									"Accelerate digital properties",
+									"Enable zero trust security for workforce",
 									"Secure websites & applications"
 								],
 								"product": [
-									"Zero Trust",
-									"Bot Management",
-									"DDoS Protection",
-									"WAF"
-								]
-							},
-							{
-								"id": "04389edd-3aed-5997-a8ad-8f414ce3d35e",
-								"contentfulId": "5YK7Wz4ed4KhDHWUaER17y",
-								"logo": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OOdISR8NhkOxU6s9Npcpf/8b5a52b17a04b3b9c3557f18b27b8ede/case_study_logo_polestar.png"
-									},
-									"description": "Polestar logo"
-								},
-								"nameUrlSlug": "polestar",
-								"shortDescription": "Cloudflare's connectivity cloud powers Polestar's global ecommerce and development operations, giving them resilience during launches and promotions.",
-								"longDescription": "## __Polestar drives Chinese consumer confidence and scores a Super Bowl win with Cloudflare__\n\nPolestar has always focused on performance and innovation. From its roots as an automotive racing team, the organization evolved to become Volvo's performance tuning arm. Under the Volvo brand, the Polestar badge became synonymous with the Swedish manufacturer's more sporty offerings. \n\nToday, as an independent electric car manufacturer, Polestar applies its talent toward the development and manufacture of design-forward, performance-oriented luxury electric vehicles (EVs). The company's ethos— Pure Progressive Performance — is at the heart of its approach to all aspects of the business, from the cars it designs to the end-to-end customer experience it provides.\n\n### __The Challenge: Improving Chinese customer confidence, finding a strategic development partner, and ensuring highly-performant content delivery__\n\nFor automobile manufacturers, an effective digital infrastructure is central to both product performance and how customers perceive and interact with the manufacturer. Within the performance EV sector, Polestar has the mechanical pedigree, but wants to take its digital experience to the next level.   \n\n\"Polestar has a unique take on how to buy a car and it's very important to us to deliver on those expectations,\" explains Mikael Vesavuori, Cloud Software Architect and Technical Standards Lead at Polestar. \"Whether you purchase our cars online or visit one of the Polestar spaces, we tie together the physical and digital dimensions to provide a much richer retail and automotive encounter.\"\n\nOne way they achieve this is the Polestar Configurator, a central feature of Polestar's distinctive physical spaces. It is a media-rich digital and physical touchpoint that familiarizes buyers with vehicle configurations, options, and interior and exterior materials and trim. \n\nUnfortunately, the Polestar Configurator experienced performance and availability issues in China — a lucrative market where one in every five cars sold is an EV (1).\n\nAt the heart of the problem was Polestar's CDN provider, which had issues with the restrictive Chinese Internet infrastructure and connectivity problems with its global AWS network. The only solution was a partner that could overcome the latency, congestion and peering, and DNS issues that negatively affected customer perceptions of Polestar technology and the cars themselves.         \n\nIn addition to solving these issues, Polestar wanted a strategic partnership to aid along its software development roadmap. The company was developing a micro-front end architecture for its web presence that relied on multiple applications. These applications needed to interact seamlessly to provide a user experience that aligned with Polestar's brand objectives. \n\n\"We were looking for a proactive partner with developer experience, but we were sitting in meetings with vendors simply handing us documentation and saying, 'Here's how you can deal with the challenges you are facing,'\" says Johan Larsson, Technical Lead for the Polestar Platform Team.    \n\nFinally, as Polestar scaled its online and physical spaces internationally and began more proactively marketing its products, they wanted enterprise-class security and content delivery to ensure they remained performant in every imaginable scenario and market.\n\n### __The Cloudflare China Network provides world-class performance and reliability__\n\n\"It was a matter of perfect timing in a very poor situation,\" says Vesavuori, explaining Polestar's move to Cloudflare. With the current CDN partnership up for contract renewal and Chinese connectivity lagging, Polestar began researching to find the ideal solution partner. \n\n\"The list went from many names to very few,\" he explains. \"Only Cloudflare ticked all the boxes and met all of our absolute requirements for a dedicated China network — brand stability, proven reliability, and a very DevOps-oriented approach.\"\n\nAfter the switch, Polestar saw an immediate improvement in the performance of its on-site Configurator and web properties due to the Cloudflare China Network's partnership with China's largest Internet and cloud services provider, JD Cloud. The partnership provides Cloudflare clients with a geographically dispersed network presence in major cities across China to serve their static and dynamic content, and unrestricted access to Cloudflare serverless computing. \n\n\"With our previous vendor, everything was difficult to configure and troubleshoot,\" says Larsson. \"With Cloudflare, it just worked like magic. We instantly saw performance — our Chinese pages were as accessible as any other page, anywhere in the world.\"  \n\n\"Our most important gain in the move to Cloudflare China was the improvement across the board in predictability and stability. It always works,\" Vesavuori adds. \"On the customer side, that ability to deliver reliable technology ensures trust.\"\n\n### __A Super Bowl performant win with Workers and the Cloudflare global network__   \n\nIn addition to adopting the Cloudflare China Network, Polestar moved away from its underperforming cloud services and CDN  provider, switched to the Cloudflare global network for content delivery worldwide, and began web development using Cloudflare Workers serverless edge computing services.\n\nWhen it came to development, Polestar was able to rapidly migrate its entire micro-front-end architecture and applications to Workers, the Cloudflare serverless platform for running applications and code on the network edge. Cloudflare documentation, in addition to its strong online community and consultations, demos, and walkthroughs from proactive Cloudflare support teams further accelerated the transition. \n\nAnother win for the company was the ability to easily test its releases using Workers, a process Polestar previously found tedious and time-consuming. The time saved freed up Polestar's technical teams to focus on core business goals.   \n\n\"Workers was the most compatible with the tech we use to develop our applications — other vendor's solutions were abstracted in a way that made it difficult to get a sense of what would happen when we made changes,\" Larsson explains. \"Using Workers, we have granular control of everything and we can easily test to ensure our setup is correct before we release anything.\" \n\nOn the content delivery side, Polestar put the Cloudflare global network to the test when it aired the ['No Compromises'](https://www.youtube.com/watch?v=B4QI0VzbkHk) commercial during Super Bowl 2022. The advertisement resulted in over 150,000 website visits — a traffic increase of almost 500 percent — in the two minutes after it aired. The site also saw an increase in long-tail traffic of around 15% for weeks following the tv commercial. \n\n\"Immediately after airing the Super Bowl commercial, viewers completed over 2000 configurations. We also saw a sales record for cars sold post event without fatal errors or us even flinching,\" says Vesavuori. \"Without Cloudflare as part of our core infrastructure, that could not have happened.\" \n\nWith 99.7% of its traffic served from the Cloudflare cache — up from a maximum of 80% percent with its previous providers — the Polestar network is faster and more resilient than ever. Cloudflare image resizing and optimization further lighten Polestar's bandwidth requirements, increase performance, and render its graphically-intensive website responsive on any device. \n\nLooking forward, Polestar intends to strengthen its partnership with Cloudflare and explore new services. The company is looking into [Cloudflare Stream](https://www.cloudflare.com/products/cloudflare-stream/) for its video storage, encoding, and adaptive bitrate playback, in addition to digging deeper into Workers KV, the Cloudflare edge key-value-data storage solution.\n\n\"Cloudflare is taking steps that disrupt the traditional marketplace. It's very interesting to follow their emerging services and figure out how they will improve our next generation of applications on the edge,\" says Larsson.\n\n\"Cloudflare is Polestar's twin in the sense they are innovating and disrupting classic software development, I think our continued relationship will be one of the keys to Polestar's success,\" adds Vesavuori.   \n\n---\n[1](https://www.forbes.com/sites/russellflannery/2021/11/13/ev-share-of-china-passenger-car-market-more-than-tripled-to-nearly-19-in-october/?sh%3D104ff31b2c21&sa=D&source=docs&ust=1652516160991840&usg=AOvVaw2g4ebZTrSyGO52TpPwqGiK)\n",
-								"cloudflareStreamVideoId": "9083811aeab79e7fcc2f1f510e9936bd",
-								"orderDate": "2022-05-24",
-								"ref_streamVideoThumbnail": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1R97toQVK94Lb8pvLQurcz/853a3d8281604a4cb48dc8095c4fce1b/Screen_Shot_2022-05-24_at_3.41.34_PM.png"
-									},
-									"description": ""
-								},
-								"twoCardPreviewImage": null,
-								"industryNew52420": [
-									"Travel & Leisure"
-								],
-								"regionNew52520": [
-									"Europe, Middle East & Africa"
-								],
-								"primaryUseCases": [
-									"Accelerate digital properties",
-									"Deploy custom code at the Edge"
-								],
-								"product": [
-									"China Network",
-									"Workers"
+									"Access",
+									"Zero Trust"
 								]
 							}
 						],
@@ -384,7 +429,7 @@
 					{
 						"contentfulId": "6XkWfU9bC7jCiyPkSostKN",
 						"contentTypeId": "bladeLeadGeneration",
-						"title": "Want to learn more? ",
+						"title": "Learn more about our enterprise grade solutions",
 						"description": null,
 						"variant": "full-width",
 						"htmlId": null,
@@ -397,7 +442,7 @@
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/b05450aa05d6c40af93bf04309e1723c/Lead-generation-background-generic.png"
 								},
 								"description": ""
 							},
@@ -414,16 +459,67 @@
 							"text": "Talk to an expert",
 							"url": "https://www.cloudflare.com/plans/enterprise/contact/",
 							"loggedInUrl": null,
-							"buttonModal": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "5WCqmk1IzM81raoSxfOKSV",
+								"modalName": "Enterprise General Sales Inquiry",
+								"modalId": "enterprise-general-sales-inquiry",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "5TLvSjYmTnIb1FOLQW6f9v",
+									"bladeName": "Enterprise General Sales Inquiry",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": "Talk to an expert",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
-						"secondaryCtaButton": null
+						"secondaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "7sDnKiARg32c17QkHkCPMK",
+							"elementName": "Explore enterprise solutions",
+							"standardText": null,
+							"text": "Explore enterprise solutions",
+							"url": "https://www.cloudflare.com/enterprise/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						}
 					}
 				],
 				"noindex": false,
 				"formModal": [],
-				"hasAdobeExperiment": false,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -448,12 +544,12 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"th-TH",
 				"vi-VN",
 				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": false,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

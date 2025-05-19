@@ -166,7 +166,7 @@
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
 									"displayText": "What is HTTP/3?",
-									"url": "/learning/performance/what-is-http3"
+									"url": "/learning/performance/what-is-http3/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -185,6 +185,12 @@
 									"contentfulId": "5R3fPgXSxwahqmd0iGD7cd",
 									"displayText": "Digital experience monitoring (DEM)",
 									"url": "/learning/performance/what-is-digital-experience-monitoring/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4hXJMYjP1hdIbiiVUwShgR",
+									"displayText": "Application availability",
+									"url": "/learning/performance/glossary/application-availability/"
 								}
 							]
 						},
@@ -428,7 +434,7 @@
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
 								"displayText": "What is HTTP/3?",
-								"url": "/learning/performance/what-is-http3"
+								"url": "/learning/performance/what-is-http3/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -441,6 +447,12 @@
 								"contentfulId": "1P8TqkuttQTb2gZBWrIBnn",
 								"displayText": "Image compression",
 								"url": "/learning/performance/glossary/what-is-image-compression/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4hXJMYjP1hdIbiiVUwShgR",
+								"displayText": "Application availability",
+								"url": "/learning/performance/glossary/application-availability/"
 							}
 						]
 					},
@@ -585,7 +597,7 @@
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an image optimizer?</h2>\n                    <p>An image optimizer is a service, product, or library that makes image files smaller. Typically, an image optimizer will reduce the file size of an image by compressing and resizing it, ideally without compromising the quality of the image too much. This optimizes images for the web because they will take less time to load in a user's browser, increasing <a href='/learning/performance/why-site-speed-matters/'>website speed</a> and performance.</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">Why is it necessary to reduce image size?</h2>\n                    <p>All images that appear on a webpage need to be downloaded by the user's browser before they can be displayed. The larger an image is (in terms of file size, not dimensions), the longer it takes to download, and the more bandwidth it will will take up. If users are on a mobile device, large images will also use up a lot of their data as they download.</p>\n                    <p>Therefore, keeping images small is crucial for website performance, and website performance is extremely important for SEO and for keeping users engaged and active on a website. Google <a href='/learning/performance/how-website-speed-boosts-seo/'>prioritizes sites that load quickly</a>, and users are more likely to bounce and <a href='/learning/performance/more/website-performance-conversion-rates/'>less likely to convert</a> if a webpage takes a long time to load.</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">How is image file size reduced?</h2>\n                    <p>The first step for reducing image size is to shrink its dimensions. The typical website will not need images that are 3,000-plus pixels wide, for example. (In fact, most desktop displays are 1,920 pixels wide or smaller.) Adjustments to the dimensions of an image should reduce file size without reducing quality.</p>\n                    <p>Images can also be compressed. <a href='/learning/performance/glossary/what-is-an-image-optimizer/'>Image compressors</a> (such as Photoshop's 'Save for Web' feature) can shrink JPEG files to a much lower resolution level, and the images will look essentially the same. However, images should still look professional, not pixelated. There's a tipping point where the resolution becomes so low that the accompanying performance gains are not worth it. Testing is important; images should appear professional on large monitors and small smartphone screens alike.</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">Are there other ways to optimize images besides resizing or compressing them?</h2>\n                    <p>The file format used for an image affects how large the file is. Most images for the web should be in JPEG format, not PNG or GIF. This is because it's easiest to adjust the quality (which affects the file size) with JPEG files. JPEG files are lossy, which means they lose visual information when they are compressed. As a result, compression can shrink JPEG files to a fraction of their original sizes, which is usually not possible with GIF and PNG files (both are lossless).</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">How does a CDN speed up images?</h2>\n                    <p>A <a href='/learning/cdn/what-is-a-cdn/'>CDN</a>, or content delivery network, is a group of servers distributed around the world that store and deliver content, including images, to end users. CDN servers are optimized for speed, and they are located closer to end users than <a href='/learning/cdn/glossary/origin-server/'>origin servers</a> are, reducing <a href='/learning/performance/glossary/what-is-latency/'>latency</a> and speeding up load times for images, video, and other content delivered over the Internet. <a href='/cdn/'>Learn more about the Cloudflare CDN.</a></p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is image SEO optimization?</h2>\n                    <p>Image search engine optimization and image optimization are separate, but related. Reducing image file size does help optimize images for search by reducing load times, and Google encourages developers to compress images when possible.</p>\n                    <p>However, for an image to be truly optimized for search, developers should:</p>\n                    <ol class=\"learning-list\">\n                        <li>Give the image file a relevant, readable name, and include a relevant keyword if possible</li>\n                        <li>Include a brief, descriptive image alt tag that is helpful for site visitors using screen readers and contains one or more keywords</li>\n                        <li>Make images responsive and mobile-friendly</li>\n                        <li>Caption images where doing so enhances the user experience and keeps users engaged</li>\n                        <li>Include Open Graph and Twitter card images for social sharing</li>\n                    </ol>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an image optimizer?</h2>\n                    <p>An image optimizer is a service, product, or library that makes image files smaller. Typically, an image optimizer will reduce the file size of an image by compressing and resizing it, ideally without compromising the quality of the image too much. This optimizes images for the web because they will take less time to load in a user's browser, increasing <a href='/learning/performance/why-site-speed-matters/'>website speed</a> and performance.</p>\n\n                    <div style=\"position: relative; padding-top: 56.25%;\">\n  <iframe\n    src=\"https://customer-eq7kiuol0tk9chox.cloudflarestream.com/41b7fd3e3b339f4da619aab6bc16790d/iframe?poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F41b7fd3e3b339f4da619aab6bc16790d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600\"\n    loading=\"lazy\"\n    style=\"border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;\"\n    allow=\"accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;\"\n    allowfullscreen=\"true\"\n  ></iframe>\n</div>\n\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">Why is it necessary to reduce image size?</h2>\n                    <p>All images that appear on a webpage need to be downloaded by the user's browser before they can be displayed. The larger an image is (in terms of file size, not dimensions), the longer it takes to download, and the more bandwidth it will will take up. If users are on a mobile device, large images will also use up a lot of their data as they download.</p>\n                    <p>Therefore, keeping images small is crucial for website performance, and website performance is extremely important for SEO and for keeping users engaged and active on a website. Google <a href='/learning/performance/how-website-speed-boosts-seo/'>prioritizes sites that load quickly</a>, and users are more likely to bounce and <a href='/learning/performance/more/website-performance-conversion-rates/'>less likely to convert</a> if a webpage takes a long time to load.</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">How is image file size reduced?</h2>\n                    <p>The first step for reducing image size is to shrink its dimensions. The typical website will not need images that are 3,000-plus pixels wide, for example. (In fact, most desktop displays are 1,920 pixels wide or smaller.) Adjustments to the dimensions of an image should reduce file size without reducing quality.</p>\n                    <p>Images can also be compressed. <a href='/learning/performance/glossary/what-is-an-image-optimizer/'>Image compressors</a> (such as Photoshop's 'Save for Web' feature) can shrink JPEG files to a much lower resolution level, and the images will look essentially the same. However, images should still look professional, not pixelated. There's a tipping point where the resolution becomes so low that the accompanying performance gains are not worth it. Testing is important; images should appear professional on large monitors and small smartphone screens alike.</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">Are there other ways to optimize images besides resizing or compressing them?</h2>\n                    <p>The file format used for an image affects how large the file is. Most images for the web should be in JPEG format, not PNG or GIF. This is because it's easiest to adjust the quality (which affects the file size) with JPEG files. JPEG files are lossy, which means they lose visual information when they are compressed. As a result, compression can shrink JPEG files to a fraction of their original sizes, which is usually not possible with GIF and PNG files (both are lossless).</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">How does a CDN speed up images?</h2>\n                    <p>A <a href='/learning/cdn/what-is-a-cdn/'>CDN</a>, or content delivery network, is a group of servers distributed around the world that store and deliver content, including images, to end users. CDN servers are optimized for speed, and they are located closer to end users than <a href='/learning/cdn/glossary/origin-server/'>origin servers</a> are, reducing <a href='/learning/performance/glossary/what-is-latency/'>latency</a> and speeding up load times for images, video, and other content delivered over the Internet. <a href='https://www.cloudflare.com/application-services/products/cdn/'>Learn more about the Cloudflare CDN.</a></p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is image SEO optimization?</h2>\n                    <p>Image search engine optimization and image optimization are separate, but related. Reducing image file size does help optimize images for search by reducing load times, and Google encourages developers to compress images when possible.</p>\n                    <p>However, for an image to be truly optimized for search, developers should:</p>\n                    <ol class=\"learning-list\">\n                        <li>Give the image file a relevant, readable name, and include a relevant keyword if possible</li>\n                        <li>Include a brief, descriptive image alt tag that is helpful for site visitors using screen readers and contains one or more keywords</li>\n                        <li>Make images responsive and mobile-friendly</li>\n                        <li>Caption images where doing so enhances the user experience and keeps users engaged</li>\n                        <li>Include Open Graph and Twitter card images for social sharing</li>\n                    </ol>",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {
@@ -599,24 +611,90 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": null,
-				"sidebarForm": null
+				"proactivePopup": {
+					"contentTypeId": "proactivePopup",
+					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
+				},
+				"sidebarForm": {
+					"contentTypeId": "learningCenterArticleSidebarForm",
+					"contentfulId": "4ad3l3edBzH8KRefyi225g",
+					"heading": "Want to keep learning?",
+					"postSubmissionHeading": "Thank you for subscribing",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
+					"postSubmissionDescription": "We're looking forward to sharing content with you.",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
+						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
+						"backgroundColor": "blue",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": null,
+						"marketoFormDefaultComment": null,
+						"showCommentBox": null,
+						"marketoFormThankYouText": "Thank you for subscribing!",
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
+						"marketoFormSubmitButtonColor": null,
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					}
+				}
 			}
 		},
 		"pageContext": {
@@ -634,6 +712,7 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

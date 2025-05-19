@@ -145,13 +145,13 @@
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6aRzsX0gbj4ceQWQiEzBOC",
-									"displayText": "Network-as-a-service (NaaS)",
+									"displayText": "What is network as a service (NaaS)?",
 									"url": "/learning/network-layer/network-as-a-service-naas/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6wi0u9frLgJN3XQlvx223h",
-									"displayText": "Enterprise networking",
+									"displayText": "What is enterprise networking?",
 									"url": "/learning/network-layer/enterprise-networking/"
 								}
 							]
@@ -367,7 +367,7 @@
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "6aRzsX0gbj4ceQWQiEzBOC",
-								"displayText": "Network-as-a-service (NaaS)",
+								"displayText": "What is network as a service (NaaS)?",
 								"url": "/learning/network-layer/network-as-a-service-naas/"
 							},
 							{
@@ -379,7 +379,7 @@
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "6wi0u9frLgJN3XQlvx223h",
-								"displayText": "Enterprise networking",
+								"displayText": "What is enterprise networking?",
 								"url": "/learning/network-layer/enterprise-networking/"
 							}
 						]
@@ -670,7 +670,7 @@
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a subnet?</h2>\n\n<p>A subnet, or subnetwork, is a <a href='/learning/network-layer/what-is-the-network-layer/'>network</a> inside a network. Subnets make networks more efficient. Through subnetting, network traffic can travel a shorter distance without passing through unnecessary <a href='/learning/network-layer/what-is-routing/'>routers</a> to reach its destination.</p>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pBqIHUTSlxI7EW9XZPKf3/551ab3390ab9ab86fee15c73fd245f6c/subnet-diagram.svg\" class=\"responsive-image\" alt=\"subnet diagram\" itemprop=\"image\"/>\n\n\n<p>Imagine Alice puts a letter in the mail that is addressed to Bob, who lives in the town right next to hers. For the letter to reach Bob as quickly as possible, it should be delivered right from Alice's post office to the post office in Bob's town, and then to Bob. If the letter is first sent to a post office hundreds of miles away, Alice's letter could take a lot longer to reach Bob.</p>\n\n<p>Like the postal service, networks are more efficient when messages travel as directly as possible. When a network receives data packets from another network, it will sort and route those packets by subnet so that the packets do not take an inefficient route to their destination.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an IP address?</h2>\n\n<p>In order to understand subnets, we must quickly define <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP addresses</a>. Every device that connects to the Internet is assigned a unique IP (<a href='/learning/ddos/glossary/internet-protocol/'>Internet Protocol</a>) address, enabling data sent over the Internet to reach the right device out of the billions of devices connected to the Internet. While computers read IP addresses as binary code (a series of 1s and 0s), IP addresses are usually written as a series of alphanumeric characters.</p>\n  \n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What do the different parts of an IP address mean?</h2>\n\n<p>This section focuses on IPv4 addresses, which are presented in the form of four decimal numbers separated by periods, like 203.0.113.112. (IPv6 addresses are longer and use letters as well as numbers.)</p>\n\n<p>Every IP address has two parts. The first part indicates which network the address belongs to. The second part specifies the device within that network. However, the length of the \"first part\" changes depending on the network's class.</p>\n\n<p>Networks are categorized into different classes, labeled A through E. Class A networks can connect millions of devices. Class B networks and Class C networks are progressively smaller in size. (Class D and Class E networks are not commonly used.)</p>\n\n<p>Let's break down how these classes affect IP address construction:</p>\n\n<p><strong>Class A network:</strong> Everything before the first period indicates the network, and everything after it specifies the device within that network. Using 203.0.113.112 as an example, the network is indicated by \"203\" and the device by \"0.113.112.\"</p>\n\n<p><strong>Class B network:</strong> Everything before the second period indicates the network. Again using 203.0.113.112 as an example, \"203.0\" indicates the network and \"113.112\" indicates the device within that network.</p>\n\n<p><strong>Class C network:</strong> For Class C networks, everything before the third period indicates the network. Using the same example, \"203.0.113\" indicates the Class C network, and \"112\" indicates the device.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why is subnetting necessary?</h2>\n\n<p>As the previous example illustrates, the way IP addresses are constructed makes it relatively simple for Internet routers to find the right network to route data into. However, in a Class A network (for instance), there could be millions of connected devices, and it could take some time for the data to find the right device. This is why subnetting comes in handy: subnetting narrows down the IP address to usage within a range of devices.</p>\n\n<p>Because an IP address is limited to indicating the network and the device address, IP addresses cannot be used to indicate which subnet an IP packet should go to. Routers within a network use something called a subnet mask to sort data into subnetworks.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a subnet mask?</h2>\n\n<p>A subnet mask is like an IP address, but for only internal usage within a network. Routers use subnet masks to route data packets to the right place. Subnet masks are not indicated within data packets traversing the Internet — those packets only indicate the destination IP address, which a router will match with a subnet.</p>\n\n<p>Suppose Bob answers Alice's letter, but he sends his reply to Alice's place of employment rather than her home. Alice's office is quite large with many different departments. To ensure employees receive their correspondence quickly, the administrative team at Alice's workplace sorts mail by department rather than by individual employee. After receiving Bob's letter, they look up Alice's department and see she works in Customer Support. They send the letter to the Customer Support department instead of to Alice, and the customer support department gives it to Alice.</p>\n\n<p>In this analogy, \"Alice\" is like an IP address and \"Customer Support\" is like a subnet mask. By matching Alice to her department, Bob's letter was quickly sorted into the right group of potential recipients. Without this step, office administrators would have to spend time laboriously looking for the exact location of Alice's desk, which could be anywhere in the building.</p>\n\n<p>For a real-world example, suppose an IP packet is addressed to the IP address 192.0.2.15. This IP address is a Class C network, so the network is identified by \"192.0.2\" (or to be technically precise, 192.0.2.0/24). Network routers forward the packet to a host on the network indicated by \"192.0.2.\"</p>\n\n<p>Once the packet arrives at that network, a router within the network consults its routing table. It does some binary mathematics using its subnet mask of 255.255.255.0, sees the device address \"15\" (the rest of the IP address indicates the network), and calculates which subnet the packet should go to. It forwards the packet to the router or <a href='/learning/network-layer/what-is-a-network-switch/'>switch</a> responsible for delivering packets within that subnet, and the packet arrives at IP address 192.0.2.15 (learn more about <a href='/learning/network-layer/what-is-routing/'>routers</a> and <a href='/learning/network-layer/what-is-a-network-switch/'>switches</a>).</p>\n\n\n\n",
+				"desktopMainContent": "<style>\n\n    .cards-wrapper-lcnew  { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}\n    .cards_item-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fMg89go9MegG1EDg39mNy/5a42817cd388ae352f77f56e53b1ff81/card-new.png'); background-repeat: no-repeat; background-size: cover;  background-position: center;  border-radius: 8px;  box-shadow: 10px 10px 20px -14px rgba(0, 0, 0, 1.0);  overflow: hidden;}\n    .btn-lcnew { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .btn:hover { background-color: rgba(255, 255, 255, 0.12);}\n    .card_content-lcnew  { padding: 1rem; display: flex; flex-direction: column;}\n    .card_title-lcnew  { color: #ffffff; font-size: 12px; margin: 0px; line-height: 18px; text-transform: uppercase;}\n    .card_title-lcnew span  {font-weight: 500}\n    .card_text-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; margin-bottom: 1rem; margin-top: 1rem; font-weight: 600;}\n     a:hover {background-size: 100% 4em !important; color: var(--inline-link-color);}\n\n    @media (max-width: 40rem) \n    {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n    .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n    .card_content-banner-lcnew { padding: 1rem;  display: grid; grid-template-rows: 1fr 1fr; grid-gap: 10px;}\n    .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n    .card_title-banner-lcnew span  {text-transform: uppercase; font-weight: 500 !important}\n    .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n    .card_content-banner-bt { align-self: center; justify-self: center;}\n\n    @media (max-width: 40rem) \n    { .cards-banner-lcnew { grid-template-columns: unset; padding: 0.75rem; display: flex; flex-direction: column; }\n      .card_text-banner-lcnew { line-height: 18px; }\n      .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n      .card_content-banner-bt {align-self: end;}\n    }\n\n    </style>  \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a subnet?</h2>\n\n<p>A subnet, or subnetwork, is a <a href='/learning/network-layer/what-is-the-network-layer/'>network</a> inside a network. Subnets make networks more efficient. Through subnetting, network traffic can travel a shorter distance without passing through unnecessary <a href='/learning/network-layer/what-is-routing/'>routers</a> to reach its destination.</p>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pBqIHUTSlxI7EW9XZPKf3/551ab3390ab9ab86fee15c73fd245f6c/subnet-diagram.svg\" class=\"responsive-image\" alt=\"subnet diagram\" itemprop=\"image\"/>\n\n<p>Imagine Alice puts a letter in the mail that is addressed to Bob, who lives in the town right next to hers. For the letter to reach Bob as quickly as possible, it should be delivered right from Alice's post office to the post office in Bob's town, and then to Bob. If the letter is first sent to a post office hundreds of miles away, Alice's letter could take a lot longer to reach Bob.</p>\n\n<p>Like the postal service, networks are more efficient when messages travel as directly as possible. When a network receives data packets from another network, it will sort and route those packets by subnet so that the packets do not take an inefficient route to their destination.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an IP address?</h2>\n\n<p>In order to understand subnets, we must quickly define <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP addresses</a>. Every device that connects to the Internet is assigned a unique IP (<a href='/learning/ddos/glossary/internet-protocol/'>Internet Protocol</a>) address, enabling data sent over the Internet to reach the right device out of the billions of devices connected to the Internet. While computers read IP addresses as binary code (a series of 1s and 0s), IP addresses are usually written as a series of alphanumeric characters.</p>\n\n<div class=\"cards-wrapper-lcnew\">\n    <div class=\"cards_item-lcnew\">\n        <div class=\"card_content-lcnew\">\n            <div class=\"card_title-lcnew\"><span>Article</span></div>\n            <div class=\"card_text-lcnew\">The Internet is the new corporate network</div>\n            <div class=\"btn-lcnew card_btn\"><a href=\"/the-net/internet-corp-network/\" data-tracking-action=\"click\" data-tracking-label=\"Learn more - /the-net/internet-corp-network/\" data-tracking-category=\"card1\">Learn more</a></div>\n        </div>\n    </div>\n\n    <div class=\"cards_item-lcnew \">\n        <div class=\"card_content-lcnew \">\n            <div class=\"card_title-lcnew\"><span>ebook</span></div>\n            <div class=\"card_text-lcnew\">Everywhere security for every phase of the attack lifecycle</div>\n            <div class=\"btn-lcnew  card_btn\"><a href=\"/lp/everywhere-security-ebook/\" data-tracking-action=\"click\"\n                    data-tracking-label=\"Read the whitepaper - /lp/everywhere-security-ebook/\" data-tracking-category=\"card2\">Read the ebook</a> </div>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What do the different parts of an IP address mean?</h2>\n\n<p>This section focuses on IPv4 addresses, which are presented in the form of four decimal numbers separated by periods, like 203.0.113.112. (IPv6 addresses are longer and use letters as well as numbers.)</p>\n\n<p>Every IP address has two parts. The first part indicates which network the address belongs to. The second part specifies the device within that network. However, the length of the \"first part\" changes depending on the network's class.</p>\n\n<p>Networks are categorized into different classes, labeled A through E. Class A networks can connect millions of devices. Class B networks and Class C networks are progressively smaller in size. (Class D and Class E networks are not commonly used.)</p>\n\n<p>Let's break down how these classes affect IP address construction:</p>\n\n<p><strong>Class A network:</strong> Everything before the first period indicates the network, and everything after it specifies the device within that network. Using 203.0.113.112 as an example, the network is indicated by \"203\" and the device by \"0.113.112.\"</p>\n\n<p><strong>Class B network:</strong> Everything before the second period indicates the network. Again using 203.0.113.112 as an example, \"203.0\" indicates the network and \"113.112\" indicates the device within that network.</p>\n\n<p><strong>Class C network:</strong> For Class C networks, everything before the third period indicates the network. Using the same example, \"203.0.113\" indicates the Class C network, and \"112\" indicates the device.</p>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Sign Up</span></div>\n        <div class=\"card_text-banner-lcnew\">Security & speed with any Cloudflare plan</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/plans/\" data-tracking-action=\"click\"\n                data-tracking-label=\"Get started free - /plans/\" data-tracking-category=\"card3\">Start for free</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why is subnetting necessary?</h2>\n\n<p>As the previous example illustrates, the way IP addresses are constructed makes it relatively simple for Internet routers to find the right network to route data into. However, in a Class A network (for instance), there could be millions of connected devices, and it could take some time for the data to find the right device. This is why subnetting comes in handy: subnetting narrows down the IP address to usage within a range of devices.</p>\n\n<p>Because an IP address is limited to indicating the network and the device address, IP addresses cannot be used to indicate which subnet an IP packet should go to. Routers within a network use something called a subnet mask to sort data into subnetworks.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a subnet mask?</h2>\n\n<p>A subnet mask is like an IP address, but for only internal usage within a network. Routers use subnet masks to route data packets to the right place. Subnet masks are not indicated within data packets traversing the Internet — those packets only indicate the destination IP address, which a router will match with a subnet.</p>\n\n<p>Suppose Bob answers Alice's letter, but he sends his reply to Alice's place of employment rather than her home. Alice's office is quite large with many different departments. To ensure employees receive their correspondence quickly, the administrative team at Alice's workplace sorts mail by department rather than by individual employee. After receiving Bob's letter, they look up Alice's department and see she works in Customer Support. They send the letter to the Customer Support department instead of to Alice, and the customer support department gives it to Alice.</p>\n\n<p>In this analogy, \"Alice\" is like an IP address and \"Customer Support\" is like a subnet mask. By matching Alice to her department, Bob's letter was quickly sorted into the right group of potential recipients. Without this step, office administrators would have to spend time laboriously looking for the exact location of Alice's desk, which could be anywhere in the building.</p>\n\n<p>For a real-world example, suppose an IP packet is addressed to the IP address 192.0.2.15. This IP address is a Class C network, so the network is identified by \"192.0.2\" (or to be technically precise, 192.0.2.0/24). Network routers forward the packet to a host on the network indicated by \"192.0.2.\"</p>\n\n<p>Once the packet arrives at that network, a router within the network consults its routing table. It does some binary mathematics using its subnet mask of 255.255.255.0, sees the device address \"15\" (the rest of the IP address indicates the network), and calculates which subnet the packet should go to. It forwards the packet to the router or <a href='/learning/network-layer/what-is-a-network-switch/'>switch</a> responsible for delivering packets within that subnet, and the packet arrives at IP address 192.0.2.15 (learn more about <a href='/learning/network-layer/what-is-routing/'>routers</a> and <a href='/learning/network-layer/what-is-a-network-switch/'>switches</a>).</p>\n",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {
@@ -679,68 +679,33 @@
 					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -762,7 +727,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -782,10 +747,12 @@
 				"zh-TW",
 				"fr-FR",
 				"de-DE",
+				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

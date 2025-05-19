@@ -16,6 +16,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -23,14 +24,13 @@
 					"nlNL": "English for Locale",
 					"idID": "English for Locale",
 					"thTH": "English for Locale",
-					"ruRU": "English for Locale",
+					"ruRU": "Translated for Locale",
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"plPL": "Translated for Locale",
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/forrester-connectivity-cloud-paper",
 				"topNavOptions": "default",
@@ -47,7 +47,12 @@
 						},
 						"description": null
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2023-11-22T17:53:10.643Z",
+					"updatedAt": "2024-08-29T20:12:23.321Z"
 				},
 				"contentfulId": "6G4HMq131MVz3J636jsYJK",
 				"contentTypeId": "page",
@@ -72,7 +77,7 @@
 							"contentfulId": "68qnXFtZ3zGsXQwIDINVOA",
 							"bladeName": "[ACQ] Q4'23 WEB - GBL - Forrester Connectivity Cloud Paper - Marketo Form",
 							"backgroundColor": "white",
-							"marketoFormId": 1341,
+							"marketoFormId": 1346,
 							"marketoFormLeadSource": "Inbound - Web Form",
 							"marketoFormLeadSourceDetail": "[ACQ] Q4'23 WEB - GBL - Forrester Connectivity Cloud Paper",
 							"marketoFormHeaderText": "Get the study",
@@ -121,7 +126,6 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"hasAdobeExperiment": false,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -146,10 +150,12 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
-				"zh-Hans-CN"
+				"es-LA",
+				"ru-RU",
+				"zh-Hans-CN",
+				"pl-PL"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": false,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

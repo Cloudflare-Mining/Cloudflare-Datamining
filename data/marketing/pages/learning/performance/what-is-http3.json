@@ -166,7 +166,7 @@
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
 									"displayText": "What is HTTP/3?",
-									"url": "/learning/performance/what-is-http3"
+									"url": "/learning/performance/what-is-http3/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -185,6 +185,12 @@
 									"contentfulId": "5R3fPgXSxwahqmd0iGD7cd",
 									"displayText": "Digital experience monitoring (DEM)",
 									"url": "/learning/performance/what-is-digital-experience-monitoring/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4hXJMYjP1hdIbiiVUwShgR",
+									"displayText": "Application availability",
+									"url": "/learning/performance/glossary/application-availability/"
 								}
 							]
 						},
@@ -428,7 +434,7 @@
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
 								"displayText": "What is HTTP/3?",
-								"url": "/learning/performance/what-is-http3"
+								"url": "/learning/performance/what-is-http3/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -441,6 +447,12 @@
 								"contentfulId": "1P8TqkuttQTb2gZBWrIBnn",
 								"displayText": "Image compression",
 								"url": "/learning/performance/glossary/what-is-image-compression/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4hXJMYjP1hdIbiiVUwShgR",
+								"displayText": "Application availability",
+								"url": "/learning/performance/glossary/application-availability/"
 							}
 						]
 					},
@@ -586,7 +598,7 @@
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is HTTP/3?</h2>\n<p>HTTP is an essential backbone of the Internet — it dictates how communications platforms and devices exchange information and fetch resources. In short, it is what allows users to load websites.</p> \n\n<p>HTTP/3 is a new standard in development that will affect how web browsers and servers communicate, with significant upgrades for user experience, including performance, reliability, and security. </p> \n\n<p>After the first hypertext transfer protocol (<a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a>) was released in 1991, subsequent iterations made websites <a href='/learning/performance/why-site-speed-matters/'>faster</a> without any changes to the underlying code.</p> \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is new in HTTP/3?</h2>\n<p>HTTP/3 will be the first major upgrade to the hypertext transfer protocol since <a href='/learning/performance/http2-vs-http1.1/'>HTTP/2</a> was approved in 2015. </p>\n\n<p>An important difference in HTTP/3 is that it runs on QUIC, a new transport protocol. QUIC is designed for mobile-heavy Internet usage in which people carry smartphones that constantly switch from one network to another as they move about their day. This was not the case when the first Internet protocols were developed: devices were less portable and did not switch networks very often.</p>\n\n<p>The use of QUIC means that HTTP/3 relies on the User Datagram Protocol (<a href='/learning/ddos/glossary/user-datagram-protocol-udp/'>UDP</a>), not the Transmission Control Protocol (<a href='/learning/ddos/glossary/tcp-ip/'>TCP</a>). Switching to UDP will enable faster connections and faster user experience when browsing online. </p>\n\n<p>The QUIC protocol was developed by Google in 2012 and was adopted by the Internet Engineering Task Force (IETF) — a vendor-neutral standards organization — as they started creating the new HTTP/3 standard. After consulting with experts around the world, the IETF has made a host of changes to develop their own version of QUIC.</p>\n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">Why is a new version of HTTP needed?</h2>\n<p>QUIC will help fix some of HTTP/2's biggest shortcomings: </p>\n<ul class=\"learning-list\">\n  <li>Developing a workaround for the sluggish performance when a smartphone switches from WiFi to cellular data (such as when leaving the house or office)</li>\n  <li>Decreasing the effects of packet loss — when one packet of information does not make it to its destination, it will no longer block all streams of information (a problem known as \"head-of-line blocking\")</li>\n  </ul>\n\n<p>Other benefits include: </p>\n<ul class=\"learning-list\">\n  <li><b>Faster connection establishment:</b> QUIC allows <a href='/learning/ssl/transport-layer-security-tls/'>TLS</a> version negotiation to happen at the same time as the cryptographic and transport <a href='/learning/ssl/what-happens-in-a-tls-handshake/'>handshakes</a></li>\n  <li><b>Zero <a href='/learning/cdn/glossary/round-trip-time-rtt/'>round-trip time</a> (0-RTT):</b> For servers they have already connected to, clients can skip the handshake requirement (the process of acknowledging and verifying each other to determine how they will communicate)</li>\n  <li><b>More comprehensive encryption:</b> QUIC's new approach to handshakes will provide <a href='/learning/ssl/what-is-encryption/'>encryption</a> by default — a huge upgrade from HTTP/2 — and will help mitigate the risk of attacks</li>\n    </ul>\n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is encrypting by default?</h2>\n<p>Requiring encryption within the transport layer, rather than at the application layer, has important implications for security. It means that the connection will always be encrypted. Previously, in HTTPS, the encryption and transport-layer connections occurred separately. TCP connections could carry data that was either encrypted or unencrypted, and the TCP handshake and TLS handshake were distinct events. However, QUIC sets up encrypted connections by default at the transport layer — application-layer data will always be encrypted.</p>\n\n<p>QUIC accomplishes this by combining the two handshakes into one action, reducing latency since applications must wait for only one handshake to finish before sending data. It also encrypts metadata about each connection, including packet numbers and some other parts of the header, to help keep information about user behavior out of attackers' hands. This feature was not included in HTTP/2. Encrypting this data helps keep actionable information about user behavior out of attackers' hands. </p>\n\n<p>HTTP's traditional use of <a href='/learning/ssl/why-is-http-not-secure/'>plaintext</a> for requests and responses has negative consequences for security, since anyone monitoring communications can read them. Encrypting by default will help keep everyone safer and protect sensitive data.</p>\n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">Is HTTP/3 available now?</h2>\n<p>While the standard is still in development, website owners and visitors can start getting support for HTTP/3 through browsers, operating systems, and other clients. Of course, there are likely more changes ahead for the standard, which has already gone through several implementations. </p>\n\n<p>After HTTP/3 is released, the entire web will not switch over at once. Many sites are not even on HTTP/2 yet.</p>\n\n<p>One potential hurdle for the new protocol is that it requires increased CPU usage for both the server and client. This will likely decrease in impact over time as the technology evolves.</p>\n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">Who decides what gets included in HTTP/3?</h2>\n<p>The IETF assembled the QUIC Working Group in 2016. People from many organizations and corporations are involved in the development process — including Cloudflare. </p>\n\n<p>Before getting its current name of HTTP/3, the standard previously went by \"HTTP-over-QUIC\" and \"HTTP/2 Semantics Using The QUIC Transport Protocol.\"</p>\n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">How can website owners turn on HTTP/3 now?</h2> \n<p>Cloudflare enables website owners to turn on support for HTTP/3 without any changes to their origin. Learn how to make the switch for <a href='https://developers.cloudflare.com/support/network/understanding-cloudflare-http2-and-http3-support/' target='_blank'>your domain</a>.</p>\n",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is HTTP/3?</h2>\n<p>The Hypertext Transfer Protocol (HTTP) is an essential backbone of the Internet — it dictates how communications platforms and devices exchange information and fetch resources. In short, it is what allows users to load websites.</p> \n\n<p>HTTP/3 is the latest major version of <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a>. Web browsers and servers can use it for significant upgrades to user experience, including performance, reliability, and security. Negotiating HTTP versions happens seamlessly, requiring no changes to website code.</p>\n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is new in HTTP/3?</h2>\n\n<p>HTTP/3 is the first major upgrade to HTTP since <a href='/learning/performance/http2-vs-http1.1/'>HTTP/2</a> was approved in 2015. It was published and made available to all Cloudflare customers in 2021.</p>\n\n<p>An important difference in HTTP/3 is that it runs on QUIC, a new transport protocol. QUIC is designed to be fast and to support switching rapidly between networks. It relies on the User Datagram Protocol (<a href='/learning/ddos/glossary/user-datagram-protocol-udp/'>UDP</a>) rather than the Transmission Control Protocol (<a href='/learning/ddos/glossary/tcp-ip/'>TCP</a>), which mitigates an issue called head-of-line blocking in TCP, where network packet loss or reordering can slow down high-transaction connections. Furthermore, QUIC separates out the layer 4 transport connection from the layer 3 IP flow, allowing for migration between different networks without disruption.</p>\n\n<p>QUIC can better support mobile-heavy Internet usage in which people carry smartphones and constantly switch from one network to another as they move about their day. This type of Internet usage was not common when the first Internet protocols were developed: devices were less portable and did not switch networks very often.</p>\n\n<p>Google started work on an early version of QUIC in 2012. In 2016 it was adopted by the Internet Engineering Task Force (IETF) — a vendor-neutral standards organization — as they started creating the new HTTP/3 standard. After consulting with experts around the world, the IETF has made a host of changes to develop the now-standard version of QUIC published as <a href='https://datatracker.ietf.org/doc/html/rfc9000' target='_blank'>RFC 9000</a>.</p>\n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">Why is a new version of HTTP needed?</h2>\n\n<p>QUIC helps fix some of HTTP/2's biggest shortcomings: </p>\n<ul class=\"learning-list\">\n\n  <li>Decreasing the effects of packet loss — when one <a href='/learning/network-layer/what-is-a-packet/'>packet</a> of information does not make it to its destination, it will no longer block all streams of information, a problem known as \"head-of-line blocking\"</li>\n  <li>Faster connection establishment: QUIC combines the cryptographic and transport <a href='/learning/ssl/what-happens-in-a-tls-handshake/'>handshakes</a></li>\n  <li>Zero <a href='/learning/cdn/glossary/round-trip-time-rtt/'>round-trip time</a> (0-RTT): For servers they have already connected to, clients can skip the handshake requirement (the process of acknowledging and verifying each other to determine how they will communicate)</li>\n  <li>More comprehensive encryption: QUIC is <a href='/learning/ssl/what-is-encryption/'>encrypted</a> by default, making HTTP/3 more secure than HTTP/2 (more on this below)</li>\n  <li>Protecting against HTTP/2 \"<a href='https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack' target='_blank'>Rapid Reset</a>\" distributed denial-of-service (DDoS) attacks, which can slow down or crash a web server, by using a credit-based system for streams (a \"stream\" is a single HTTP request and response exchange) to allow HTTP/3 servers fine-grained control over stream concurrency</li>\n  <li>Developing a workaround for the sluggish performance when a smartphone switches from WiFi to cellular data, such as when leaving the house or office</li>\n    </ul>\n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is encrypting by default?</h2>\n\n<p>Requiring encryption within the transport layer, rather than at the application layer, has important implications for security. It means that the connection will always be encrypted. Previously, in HTTPS, the encryption and transport-layer connections occurred separately. TCP connections could carry data that was either encrypted or unencrypted, and the TCP handshake and Transport Layer Security (<a href='/learning/ssl/transport-layer-security-tls/'>TLS</a>) handshake were distinct events. However, QUIC sets up encrypted connections by default at the transport layer — application-layer data will always be encrypted.</p>\n\n<p>QUIC accomplishes this by combining the two handshakes into one action, reducing latency since applications must wait for only one handshake to finish before sending data. It also encrypts metadata about each connection, including packet numbers and some other parts of the header, to help keep information about user behavior out of attackers' hands. This feature was not possible with HTTP/2 because it relied on TCP and TLS. </p>\n\n<p>HTTP historically used <a href='/learning/ssl/why-is-http-not-secure/'>plaintext</a> TCP, which has negative consequences for security, since anyone monitoring communications can read requests and responses. Today, websites and web browsers prefer to encrypt all HTTP communications to help keep everyone safer and protect sensitive data. QUIC's encryption by default supports that goal.</p>\n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">Is HTTP/3 available now?</h2>\n\n<p>Yes. HTTP/3 is implemented as standard in all major Web browsers and can be enabled by all Cloudflare customers without any changes to their origin. Learn how to make the switch for <a href='https://developers.cloudflare.com/speed/optimization/protocol/' target='_blank'>your domain</a>.</p>\n\n<p>Cloudflare Radar maintains up-to-date statistics on <a href='https://radar.cloudflare.com/adoption-and-usage' target='_blank'>HTTP version usage</a>.</p>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
@@ -600,6 +612,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -612,9 +625,7 @@
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"plPL": "English for Locale"
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
@@ -656,7 +667,7 @@
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -678,7 +689,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -702,6 +713,7 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

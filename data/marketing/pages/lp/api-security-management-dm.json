@@ -9,13 +9,14 @@
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
 					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
+					"frFR": "English for Locale",
 					"deDE": "Translated for Locale",
 					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,8 +30,7 @@
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/api-security-management-dm",
 				"topNavOptions": "empty",
@@ -47,7 +47,12 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2023-03-22T17:27:38.394Z",
+					"updatedAt": "2024-11-21T13:25:58.928Z"
 				},
 				"contentfulId": "4NzArx9Rt6P3gat8kTtPIx",
 				"contentTypeId": "page",
@@ -141,7 +146,7 @@
 							"file": {
 								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/60WcAVhY8VMxw1bwvjBFEA/e88143abf3a5992971b9c0f418e0a313/api_shield_-2.png"
 							},
-							"description": "Illustration of a shield in front of a cloud"
+							"description": "Illustration of a shield securing a cloud and APIs"
 						},
 						"imageAssetFile": null,
 						"featureList": [],
@@ -316,76 +321,6 @@
 						"featureList": null
 					},
 					{
-						"contentfulId": "SgRQOP1ev7kBfUJQIwecg",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": null,
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4dapgFanLhAR2slGYCO22r",
-								"title": "Whitepaper: The power of consolidated API protection",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "large",
-								"description": "Download this whitepaper to learn how to bolster your modern application security with an integrated API Gateway and Web Application Firewall (WAF).",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1xmtktV7hFvcn4YXkOPoIc/104ebf2497a0d35cd29a8b60b31734aa/Legacy_WAF_vs_Cloudflare_AppSec_platform_for_API_Security.pdf",
-								"learnMoreText": "Download the whitepaper",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4N5AJadsSgMj0sHJpdd1Vj",
-								"title": "Webinar: Better APIs for better business: realities of API security",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "large",
-								"description": "Learn from Cloudflare and guest Forrester about key API security risks and protections to be considered as we move forward with APIs.\n",
-								"learnMoreUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/4144560/better-apis-for-better-business-realities-of-api-security ",
-								"learnMoreText": "Register",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "1c677187-2d6b-5d7a-8bec-b856661dcec2",
-									"altText": null,
-									"title": "Better APIs for better business: realities of API security",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
 						"contentTypeId": "bladeTrustedBy",
 						"contentfulId": "7iDe2mDUE83s1tFjEcTx3A",
 						"bladeBorder": "border-top",
@@ -440,7 +375,6 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"hasAdobeExperiment": null,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -458,17 +392,16 @@
 				"en-US",
 				"zh-CN",
 				"zh-TW",
-				"fr-FR",
 				"de-DE",
 				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

@@ -117,6 +117,12 @@
 									"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
 									"displayText": "Quantum Computing",
 									"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3omkIm00BeovpskqoQQ6ne",
+									"displayText": "Post-Quantum Cryptography",
+									"url": "/learning/ssl/quantum/what-is-post-quantum-cryptography/"
 								}
 							]
 						},
@@ -185,6 +191,12 @@
 									"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
 									"displayText": "What is Domain Spoofing?",
 									"url": "/learning/ssl/what-is-domain-spoofing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "45jjpkuoXvmdkIaeGUsTHk",
+									"displayText": "SSL Certificate Errors",
+									"url": "/learning/ssl/common-errors/"
 								}
 							]
 						},
@@ -316,6 +328,12 @@
 								"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
 								"displayText": "Quantum Computing",
 								"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3omkIm00BeovpskqoQQ6ne",
+								"displayText": "Post-Quantum Cryptography",
+								"url": "/learning/ssl/quantum/what-is-post-quantum-cryptography/"
 							}
 						]
 					},
@@ -373,6 +391,12 @@
 								"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
 								"displayText": "What is Domain Spoofing?",
 								"url": "/learning/ssl/what-is-domain-spoofing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "45jjpkuoXvmdkIaeGUsTHk",
+								"displayText": "SSL Certificate Errors",
+								"url": "/learning/ssl/common-errors/"
 							}
 						]
 					},
@@ -516,39 +540,8 @@
 						"url": "/learning/ssl/what-is-an-ssl-certificate/"
 					}
 				],
-				"enablementBlade": {
-					"contentTypeId": "bladeEnablement",
-					"contentfulId": "2LzGaNZHPu82wcJPy58uFK",
-					"title": "Increase security and trust using Cloudflare's free SSL / TLS",
-					"titleSize": "medium",
-					"backgroundColor": "image-background",
-					"buttonText": null,
-					"buttonUrl": null,
-					"buttonText2": null,
-					"buttonModalId2": null,
-					"buttonUrl2": null,
-					"bladeSizeType": "large",
-					"htmlId": null,
-					"bladeBorder": "none",
-					"buttonOne": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "1epT7zW5V2EDfOSFMWYuSf",
-						"elementName": "Get Started For Free - SSL",
-						"standardText": null,
-						"text": "Get Started For Free",
-						"url": "https://www.cloudflare.com/lp/pg-all-plans-ssl-lc/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					},
-					"buttonTwo": null,
-					"sectionPadding": null,
-					"eyebrow": null
-				},
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is the difference between TLS 1.3 and TLS 1.2?</h2>\n\n<p>TLS 1.3 is the latest version of the <a href='/learning/ssl/transport-layer-security-tls/'>TLS protocol</a>. TLS, which is used by <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTPS</a> and other network protocols for <a href='/learning/ssl/what-is-encryption/'>encryption</a>, is the modern version of <a href='/learning/ssl/what-is-ssl/'>SSL</a>. TLS 1.3 dropped support for older, less secure cryptographic features, and it sped up <a href='/learning/ssl/what-happens-in-a-tls-handshake/'>TLS handshakes</a>, among other improvements.</p>\n\n<p>For context, the Internet Engineering Task Force (IETF) published TLS 1.3 in August 2018. TLS 1.2, the version it replaced, was standardized a decade previous, in 2008.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the advantages of using the latest TLS version?</h2>\n\n<p>In a nutshell, TLS 1.3 is faster and more secure than TLS 1.2. One of the changes that makes TLS 1.3 faster is an update to the way a TLS handshake works: TLS handshakes in TLS 1.3 only require one round trip (or back-and-forth communication) instead of two, shortening the process by a few milliseconds. And in cases when the client has connected to a website before, the TLS handshake will have zero round trips. This makes HTTPS connections faster, cutting down <a href='/learning/performance/glossary/what-is-latency/'>latency</a> and improving the overall user experience.</p>\n\n<p>Many of the major vulnerabilities in TLS 1.2 had to do with older cryptographic algorithms that were still supported. TLS 1.3 drops support for these vulnerable cryptographic algorithms, and as a result it is less vulnerable to cyber attacks.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why are there different TLS versions?</h2>\n\n<img src=\"/resources/images/slt3lc6tev37/6LJWu0HvkaTE5wM0bhULyI/b2415217ca87e38cc222b8ea288ad71d/tls_ssl_development_timeline.png\" class=\"responsive-image\" alt=\"TLS SSL development timeline - SSL 1996 TLS 1.2 2008 TLS 1.3 2018\" itemprop=\"image\" />\n\n<p>Updates are a natural part of software development. Computer systems are so complex that it is inevitable that they'll need repairs or improvements to be more efficient or more secure. Any software is going to have vulnerabilities – flaws that an attacker can exploit.</p>\n\n<p>In the case of TLS, parts of the protocol carried over from its early days in the 1990s resulted in several high-profile vulnerabilities persisting in TLS 1.2. Additionally, those who work on developing the protocol are continually identifying inefficiencies that can be eliminated.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do new versions of TLS get developed?</h2>\n\n<p>The IETF is in charge of developing TLS, codifying feedback and ideas via a document known as a \"Request For Comments,\" or an RFC. Most <a href='/learning/network-layer/what-is-a-protocol/'>protocols</a> on the Internet are defined via RFCs. All RFCs are numbered; TLS 1.3 is defined by <a href='https://blog.cloudflare.com/rfc-8446-aka-tls-1-3/' target='_blank'>RFC 8446</a>.</p>\n\n<p>Once a new version of a protocol is released, it's up to browsers and operating systems to build support for those protocols. All operating systems and browsers should want better performance and security, so they have incentive to do so. However, it can still take some time for support for updated protocols to be widespread, especially because private businesses and consumers may be slow to adopt the latest versions of browsers, applications, and operating systems.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a vulnerability?</h2>\n\n<p>A software vulnerability is a flaw in the design of a computer program that an attacker can take advantage of to perform malicious activity or gain illicit access. Essentially, vulnerabilities are inevitable in computer systems, just as it is practically impossible to build a bank that is impregnable to highly determined bank robbers.</p>\n\n<p>The security community documents and catalogues vulnerabilities as they are discovered and described. Known vulnerabilities are assigned a number, like CVE-2016-0701. (The first number is the year when it was discovered.)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are some important SSL and TLS vulnerabilities?</h2>\n\n<p>A number of outdated cryptography features resulted in vulnerabilities or enabled specific kinds of cyber attacks. Here is a non-exhaustive list of TLS 1.2 cryptography weaknesses, and the vulnerabilities or attacks associated with them.</p>\n\n<ul class=\"learning-list\">\n  <li>RSA key transport: <a href='https://blog.cloudflare.com/staying-on-top-of-tls-attacks/' target='_blank'>Doesn't provide forward secrecy</a></li>\n  <li>CBC mode ciphers: <a href='https://blog.cloudflare.com/taming-beast-better-ssl-now-available-across/' target='_blank'>BEAST</a> and <a href='https://en.wikipedia.org/wiki/Lucky_Thirteen_attack' target='_blank'>Lucky 13</a> attacks</li>\n  <li>RC4 stream cipher: <a href='https://blog.cloudflare.com/killing-rc4-the-long-goodbye/' target='_blank'>Not secure for use in HTTPS</a></li>\n  <li>Arbitrary Diffie-Hellman groups: <a href='http://blog.intothesymmetry.com/2016/01/openssl-key-recovery-attack-on-dh-small.html' target='_blank'>CVE-2016-0701</a></li>\n  <li>Export ciphers: <a href='https://censys.io/blog/freak' target='_blank'>FREAK</a> and <a href='https://blog.cloudflare.com/logjam-the-latest-tls-vulnerability-explained/' target='_blank'>LogJam</a> attacks</li>\n</ul>\n\n<p>A lot of TLS 1.2 features have been removed in addition to those listed above. The idea is to make it impossible for someone to enable the vulnerable aspects of TLS 1.2. This is somewhat like when the government made it illegal to manufacture new cars without seatbelts: The goal of the regulations was for seatbelt-less cars to be phased out so that everyone would be safer. For a while, drivers could still choose to use older car models and be less safe, but eventually those more dangerous cars disappeared from the roads.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Does Cloudflare support TLS 1.3?</h2>\n\n<p>Cloudflare prioritizes supporting all the latest, most secure versions of networking protocols. Cloudflare immediately offered support for TLS 1.3; in fact, Cloudflare <a href='https://blog.cloudflare.com/introducing-tls-1-3/' target='_blank'>supported TLS 1.3 back in 2016</a>, before the IETF finished fine-tuning it.</p>\n\n<p>For more technical details on TLS 1.3 and how it differs from TLS 1.2, see this <a href='https://blog.cloudflare.com/rfc-8446-aka-tls-1-3/' target='_blank'>detailed look at TLS 1.3</a> by Cloudflare Head of Cryptography Nick Sullivan.</p>",
+				"enablementBlade": null,
+				"desktopMainContent": "<style>\n    a:hover { background-size: 100% 4em !important; color: var(--inline-link-color);\n }\n\n @media (max-width: 40rem) {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;\n     background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n .card_content-banner-lcnew { padding: 1rem;  display: grid;  grid-gap: 10px;}\n .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n   .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n .card_title-banner-lcnew span  {text-transform:uppercase; font-weight: 500 !important}\n .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n .card_content-banner-bt { align-self: center; justify-self: center;}\n .helper { grid-template-columns: 70% 1fr;}\n\n @media (max-width: 40rem) {\n   .cards-banner-lcnew {\n     grid-template-columns: unset;\n     padding: 0.75rem; display: flex; flex-direction: column;\n   }\n\n   .card_text-banner-lcnew {\n     line-height: 18px;\n   }\n   .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n   .card_content-banner-bt {align-self: end;}\n }\n\n </style> \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is the difference between TLS 1.3 and TLS 1.2?</h2>\n\n<p>TLS 1.3 is the latest version of the <a href='/learning/ssl/transport-layer-security-tls/'>TLS protocol</a>. TLS, which is used by <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTPS</a> and other network protocols for <a href='/learning/ssl/what-is-encryption/'>encryption</a>, is the modern version of <a href='/learning/ssl/what-is-ssl/'>SSL</a>. TLS 1.3 dropped support for older, less secure cryptographic features, and it sped up <a href='/learning/ssl/what-happens-in-a-tls-handshake/'>TLS handshakes</a>, among other improvements.</p>\n\n<p>For context, the Internet Engineering Task Force (IETF) published TLS 1.3 in August 2018. TLS 1.2, the version it replaced, was standardized a decade previous, in 2008.</p>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Sign up</span></div>\n        <div class=\"card_text-banner-lcnew\">Security & speed with any Cloudflare plan</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/plans/\" data-tracking-action=\"click\"\n                data-tracking-label=\"Start for free - /plans/\" data-tracking-category=\"card3\">Start for free</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the advantages of using the latest TLS version?</h2>\n\n<p>In a nutshell, TLS 1.3 is faster and more secure than TLS 1.2. One of the changes that makes TLS 1.3 faster is an update to the way a TLS handshake works: TLS handshakes in TLS 1.3 only require one round trip (or back-and-forth communication) instead of two, shortening the process by a few milliseconds. And in cases when the client has connected to a website before, the TLS handshake will have zero round trips. This makes HTTPS connections faster, cutting down <a href='/learning/performance/glossary/what-is-latency/'>latency</a> and improving the overall user experience.</p>\n\n<p>Many of the major vulnerabilities in TLS 1.2 had to do with older cryptographic algorithms that were still supported. TLS 1.3 drops support for these vulnerable cryptographic algorithms, and as a result it is less vulnerable to cyber attacks.</p>\n\n<div class=\"cards-banner-lcnew helper\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Whitepaper</span></div>\n        <div class=\"card_text-banner-lcnew\">Maximize the power of TLS</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/lp/maximize-tls/\" data-tracking-action=\"click\"\n                data-tracking-label=\"Read the whitepaper - /lp/maximize-tls/\" data-tracking-category=\"card3\">Read the whitepaper</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why are there different TLS versions?</h2>\n\n<img src=\"/resources/images/slt3lc6tev37/6LJWu0HvkaTE5wM0bhULyI/b2415217ca87e38cc222b8ea288ad71d/tls_ssl_development_timeline.png\" class=\"responsive-image\" alt=\"TLS SSL development timeline - SSL 1996 TLS 1.2 2008 TLS 1.3 2018\" itemprop=\"image\" />\n\n<p>Updates are a natural part of software development. Computer systems are so complex that it is inevitable that they'll need repairs or improvements to be more efficient or more secure. Any software is going to have vulnerabilities – flaws that an attacker can exploit.</p>\n\n<p>In the case of TLS, parts of the protocol carried over from its early days in the 1990s resulted in several high-profile vulnerabilities persisting in TLS 1.2. Additionally, those who work on developing the protocol are continually identifying inefficiencies that can be eliminated.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do new versions of TLS get developed?</h2>\n\n<p>The IETF is in charge of developing TLS, codifying feedback and ideas via a document known as a \"Request For Comments,\" or an RFC. Most <a href='/learning/network-layer/what-is-a-protocol/'>protocols</a> on the Internet are defined via RFCs. All RFCs are numbered; TLS 1.3 is defined by <a href='https://blog.cloudflare.com/rfc-8446-aka-tls-1-3/' target='_blank'>RFC 8446</a>.</p>\n\n<p>Once a new version of a protocol is released, it's up to browsers and operating systems to build support for those protocols. All operating systems and browsers should want better performance and security, so they have incentive to do so. However, it can still take some time for support for updated protocols to be widespread, especially because private businesses and consumers may be slow to adopt the latest versions of browsers, applications, and operating systems.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a vulnerability?</h2>\n\n<p>A software vulnerability is a flaw in the design of a computer program that an attacker can take advantage of to perform malicious activity or gain illicit access. Essentially, vulnerabilities are inevitable in computer systems, just as it is practically impossible to build a bank that is impregnable to highly determined bank robbers.</p>\n\n<p>The security community documents and catalogues vulnerabilities as they are discovered and described. Known vulnerabilities are assigned a number, like CVE-2016-0701. (The first number is the year when it was discovered.)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are some important SSL and TLS vulnerabilities?</h2>\n\n<p>A number of outdated cryptography features resulted in vulnerabilities or enabled specific kinds of cyber attacks. Here is a non-exhaustive list of TLS 1.2 cryptography weaknesses, and the vulnerabilities or attacks associated with them.</p>\n\n<ul class=\"learning-list\">\n  <li>RSA key transport: <a href='https://blog.cloudflare.com/staying-on-top-of-tls-attacks/' target='_blank'>Doesn't provide forward secrecy</a></li>\n  <li>CBC mode ciphers: <a href='https://blog.cloudflare.com/taming-beast-better-ssl-now-available-across/' target='_blank'>BEAST</a> and <a href='https://en.wikipedia.org/wiki/Lucky_Thirteen_attack' target='_blank'>Lucky 13</a> attacks</li>\n  <li>RC4 stream cipher: <a href='https://blog.cloudflare.com/killing-rc4-the-long-goodbye/' target='_blank'>Not secure for use in HTTPS</a></li>\n  <li>Arbitrary Diffie-Hellman groups: <a href='http://blog.intothesymmetry.com/2016/01/openssl-key-recovery-attack-on-dh-small.html' target='_blank'>CVE-2016-0701</a></li>\n  <li>Export ciphers: <a href='https://censys.io/blog/freak' target='_blank'>FREAK</a> and <a href='https://blog.cloudflare.com/logjam-the-latest-tls-vulnerability-explained/' target='_blank'>LogJam</a> attacks</li>\n</ul>\n\n<p>A lot of TLS 1.2 features have been removed in addition to those listed above. The idea is to make it impossible for someone to enable the vulnerable aspects of TLS 1.2. This is somewhat like when the government made it illegal to manufacture new cars without seatbelts: The goal of the regulations was for seatbelt-less cars to be phased out so that everyone would be safer. For a while, drivers could still choose to use older car models and be less safe, but eventually those more dangerous cars disappeared from the roads.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Does Cloudflare support TLS 1.3?</h2>\n\n<p>Cloudflare prioritizes supporting all the latest, most secure versions of networking protocols. Cloudflare immediately offered support for TLS 1.3; in fact, Cloudflare <a href='https://blog.cloudflare.com/introducing-tls-1-3/' target='_blank'>supported TLS 1.3 back in 2016</a>, before the IETF finished fine-tuning it.</p>\n\n<p>For more technical details on TLS 1.3 and how it differs from TLS 1.2, see this <a href='https://blog.cloudflare.com/rfc-8446-aka-tls-1-3/' target='_blank'>detailed look at TLS 1.3</a> by Cloudflare Head of Cryptography Nick Sullivan.</p>",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {
@@ -557,11 +550,12 @@
 					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -574,51 +568,15 @@
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -640,7 +598,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -660,10 +618,12 @@
 				"zh-TW",
 				"fr-FR",
 				"de-DE",
+				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

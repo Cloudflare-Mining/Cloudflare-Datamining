@@ -159,6 +159,18 @@
 									"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
 									"displayText": "DNS Fast Flux",
 									"url": "/learning/dns/dns-fast-flux/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+									"displayText": "Domain hijacking",
+									"url": "/learning/dns/what-is-domain-hijacking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+									"displayText": "Common DNS issues",
+									"url": "/learning/dns/common-dns-issues/"
 								}
 							]
 						},
@@ -203,6 +215,18 @@
 									"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
 									"displayText": "Cloudflare Registrar",
 									"url": "/learning/dns/what-is-cloudflare-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+									"displayText": "How to buy a domain name",
+									"url": "/learning/dns/how-to-buy-a-domain-name/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+									"displayText": "How to transfer a domain name",
+									"url": "/learning/dns/how-to-transfer-a-domain-name/"
 								}
 							]
 						},
@@ -293,6 +317,38 @@
 									"url": "http://www.cloudflare.com/learning/insights-dns-landscape"
 								}
 							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5bnkrucwjePapZ8qR6nc2D",
+							"name": "DNSSEC Protection",
+							"displayText": "DNSSEC Protection",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1FwG3Iiux41pJ6OLW8kRsW",
+									"displayText": "How DNSSEC Works",
+									"url": "learning/dns/dnssec/how-dnssec-works/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6FnRKWe14VFgollBzoepo9",
+									"displayText": "The DNSSEC Root Signing Ceremony",
+									"url": "learning/dns/dnssec/root-signing-ceremony/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "apgrV3UywiWRwe78tsxSg",
+									"displayText": "ECDSA: The missing piece of DNSSEC",
+									"url": "learning/dns/dnssec/ecdsa-and-dnssec/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "59YqILiJbj7grfW3aTGPj7",
+									"displayText": "Universal DNSSEC",
+									"url": "learning/dns/dnssec/universal-dnssec/"
+								}
+							]
 						}
 					]
 				},
@@ -324,6 +380,24 @@
 								"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
 								"displayText": "DNS over TLS",
 								"url": "/learning/dns/dns-over-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+								"displayText": "How to buy a domain name",
+								"url": "/learning/dns/how-to-buy-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+								"displayText": "How to transfer a domain name",
+								"url": "/learning/dns/how-to-transfer-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+								"displayText": "Common DNS issues",
+								"url": "/learning/dns/common-dns-issues/"
 							}
 						]
 					},
@@ -549,6 +623,12 @@
 								"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
 								"displayText": "Top-Level Domain",
 								"url": "/learning/dns/top-level-domain/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+								"displayText": "Domain hijacking",
+								"url": "/learning/dns/what-is-domain-hijacking/"
 							}
 						]
 					},
@@ -659,41 +739,17 @@
 					"Understand the purpose of an SOA record",
 					"Explain zone serial numbers and zone transfers"
 				],
-				"relatedContentLinkText": null,
-				"relatedContent": [],
-				"enablementBlade": {
-					"contentTypeId": "bladeEnablement",
-					"contentfulId": "39O10GEA7PcuY8Tp6oo5tX",
-					"title": "Free DNS included with any Cloudflare plan",
-					"titleSize": null,
-					"backgroundColor": "image-background",
-					"buttonText": null,
-					"buttonUrl": null,
-					"buttonText2": null,
-					"buttonModalId2": null,
-					"buttonUrl2": null,
-					"bladeSizeType": "large",
-					"htmlId": null,
-					"bladeBorder": "none",
-					"buttonOne": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "1wd9r7mbn0QLojOExNcaf8",
-						"elementName": "Get Started For Free",
-						"standardText": null,
-						"text": "Get Started For Free",
-						"url": "https://www.cloudflare.com/lp/pg-all-plans-dns/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					},
-					"buttonTwo": null,
-					"sectionPadding": null,
-					"eyebrow": null
-				},
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a DNS SOA record?</h2>\n\n<p>The <a href='/learning/dns/what-is-dns/'>DNS</a> 'start of authority' (SOA) record stores important information about a <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain</a> or <a href='/learning/dns/glossary/dns-zone/'>zone</a> such as the email address of the administrator, when the domain was last updated, and how long the server should wait between refreshes.</p>\n\n<p>All DNS zones need an SOA record in order to conform to IETF standards. SOA records are also important for zone transfers.</p>\n\n<p>Example of an SOA record:</p>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<td>name</td>\n<td>example.com</td>\n</tr>\n<tr>\n<td>record type</td>\n<td>SOA</td>\n</tr>\n<tr>\n<td>MNAME</td>\n<td>ns.primaryserver.com</td>\n</tr>\n<tr>\n<td>RNAME</td>\n<td>admin.example.com</td>\n</tr>\n<tr>\n<td>SERIAL</td>\n<td>1111111111</td>\n</tr>\n<tr>\n<td>REFRESH</td>\n<td>86400</td>\n</tr>\n<tr>\n<td>RETRY</td>\n<td>7200</td>\n</tr>\n<tr>\n<td>EXPIRE</td>\n<td>4000000</td>\n</tr>\n<tr>\n<td>TTL</td>\n<td>11200</td>\n</tr>\n</table>\n</div>\n\n<p>The 'RNAME' value here represents the administrator's email address, which can be confusing because it is missing the '@' sign, but in an SOA record admin.example.com is the equivalent of admin@example.com.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a zone serial number?</h2>\n\n<p>In the DNS, a 'zone' is an area of control over namespace. A zone can include a single domain name, one domain and many subdomains, or many domain names. In some cases, 'zone' is essentially equivalent with 'domain,' but this is not always true.</p>\n\n<p>A zone serial number is a version number for the SOA record. In the example above, the serial number is listed next to 'SERIAL.' When the serial number changes in a zone file, this alerts secondary nameservers that they should update their copies of the zone file via a zone transfer.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the other parts of an SOA record?</h2>\n\n<ul>\n<li>MNAME: This is the name of the primary nameserver for the zone. Secondary servers that maintain duplicates of the zone's <a href='/learning/dns/dns-records/'>DNS records</a>  receive updates to the zone from this primary server.</li>\n<li>REFRESH: The length of time (in seconds) secondary servers should wait before asking primary servers for the SOA record to see if it has been updated.</li>\n<li>RETRY: The length of time a server should wait for asking an unresponsive primary nameserver for an update again.</li>\n<li>EXPIRE: If a secondary server does not get a response from the primary server for this amount of time, it should stop responding to queries for the zone.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a zone transfer?</h2>\n\n<p>A DNS zone transfer is the process of sending DNS record data from a <a href='/learning/dns/glossary/primary-secondary-dns/'>primary</a> nameserver to a secondary nameserver. The SOA record is transferred first. The serial number tells the secondary server if its version needs to be updated. Zone transfers take place over the <a href='/learning/ddos/glossary/tcp-ip/'>TCP protocol</a>.</p>\n\n<p>Learn more about various <a href='/learning/dns/dns-records/'>DNS records</a>.</p>",
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1SMJ4pF8JegIMgSOBwUWIM",
+						"displayText": "Empty related article - default sidebar form",
+						"url": "   "
+					}
+				],
+				"enablementBlade": null,
+				"desktopMainContent": "<style>\n    .container .mt5.mt9-ns.row .col-lg-3 .mb11 .ttu.f2.fw7.mt6.mb0.orange0,  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .divider.pv2.w-100,  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .below-divider{\n    display: none\n  }\n    a:hover { background-size: 100% 4em !important; color: var(--inline-link-color);\n }\n\n @media (max-width: 40rem) {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;\n     background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n .card_content-banner-lcnew { padding: 1rem;  display: grid;  grid-gap: 10px;}\n .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n   .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n .card_title-banner-lcnew span  {text-transform:uppercase; font-weight: 500 !important}\n .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n .card_content-banner-bt { align-self: center; justify-self: center;}\n .helper { grid-template-columns: 70% 1fr;}\n\n @media (max-width: 40rem) {\n   .cards-banner-lcnew {\n     grid-template-columns: unset;\n     padding: 0.75rem; display: flex; flex-direction: column;\n   }\n\n   .card_text-banner-lcnew {\n     line-height: 18px;\n   }\n   .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n   .card_content-banner-bt {align-self: end;}\n }\n\n </style> \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a DNS SOA record?</h2>\n\n<p>The <a href='/learning/dns/what-is-dns/'>DNS</a> 'start of authority' (SOA) record stores important information about a <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain</a> or <a href='/learning/dns/glossary/dns-zone/'>zone</a> such as the email address of the administrator, when the domain was last updated, and how long the server should wait between refreshes.</p>\n\n<p>All DNS zones need an SOA record in order to conform to IETF standards. SOA records are also important for zone transfers.</p>\n\n<p>Example of an SOA record:</p>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<td>name</td>\n<td>example.com</td>\n</tr>\n<tr>\n<td>record type</td>\n<td>SOA</td>\n</tr>\n<tr>\n<td>MNAME</td>\n<td>ns.primaryserver.com</td>\n</tr>\n<tr>\n<td>RNAME</td>\n<td>admin.example.com</td>\n</tr>\n<tr>\n<td>SERIAL</td>\n<td>1111111111</td>\n</tr>\n<tr>\n<td>REFRESH</td>\n<td>86400</td>\n</tr>\n<tr>\n<td>RETRY</td>\n<td>7200</td>\n</tr>\n<tr>\n<td>EXPIRE</td>\n<td>4000000</td>\n</tr>\n<tr>\n<td>TTL</td>\n<td>11200</td>\n</tr>\n</table>\n</div>\n\n<p>The 'RNAME' value here represents the administrator's email address, which can be confusing because it is missing the '@' sign, but in an SOA record admin.example.com is the equivalent of admin@example.com.</p>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Sign up</span></div>\n        <div class=\"card_text-banner-lcnew\">Security & speed with any Cloudflare plan</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/plans/\" data-tracking-action=\"click\"\n                data-tracking-label=\"Start for free - /plans/\" data-tracking-category=\"card3\">Start for free</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a zone serial number?</h2>\n\n<p>In the DNS, a 'zone' is an area of control over namespace. A zone can include a single domain name, one domain and many subdomains, or many domain names. In some cases, 'zone' is essentially equivalent with 'domain,' but this is not always true.</p>\n\n<p>A zone serial number is a version number for the SOA record. In the example above, the serial number is listed next to 'SERIAL.' When the serial number changes in a zone file, this alerts secondary nameservers that they should update their copies of the zone file via a zone transfer.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the other parts of an SOA record?</h2>\n\n<ul>\n<li>MNAME: This is the name of the primary nameserver for the zone. Secondary servers that maintain duplicates of the zone's <a href='/learning/dns/dns-records/'>DNS records</a>  receive updates to the zone from this primary server.</li>\n<li>REFRESH: The length of time (in seconds) secondary servers should wait before asking primary servers for the SOA record to see if it has been updated.</li>\n<li>RETRY: The length of time a server should wait for asking an unresponsive primary nameserver for an update again.</li>\n<li>EXPIRE: If a secondary server does not get a response from the primary server for this amount of time, it should stop responding to queries for the zone.</li>\n</ul>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Report</span></div>\n        <div class=\"card_text-banner-lcnew\">Secure your DNS infrastructure</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/lp/dns-and-the-threat-of-ddos/\" data-tracking-action=\"click\"\n                data-tracking-label=\"Get the report - /lp/dns-and-the-threat-of-ddos/\" data-tracking-category=\"card3\">Get the report</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a zone transfer?</h2>\n\n<p>A DNS zone transfer is the process of sending DNS record data from a <a href='/learning/dns/glossary/primary-secondary-dns/'>primary</a> nameserver to a secondary nameserver. The SOA record is transferred first. The serial number tells the secondary server if its version needs to be updated. Zone transfers take place over the <a href='/learning/ddos/glossary/tcp-ip/'>TCP protocol</a>.</p>\n\n<p>Learn more about various <a href='/learning/dns/dns-records/'>DNS records</a>.</p>",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {
@@ -702,68 +758,33 @@
 					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -785,7 +806,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -805,10 +826,12 @@
 				"zh-TW",
 				"fr-FR",
 				"de-DE",
+				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

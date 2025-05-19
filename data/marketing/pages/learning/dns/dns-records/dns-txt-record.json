@@ -159,6 +159,18 @@
 									"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
 									"displayText": "DNS Fast Flux",
 									"url": "/learning/dns/dns-fast-flux/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+									"displayText": "Domain hijacking",
+									"url": "/learning/dns/what-is-domain-hijacking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+									"displayText": "Common DNS issues",
+									"url": "/learning/dns/common-dns-issues/"
 								}
 							]
 						},
@@ -203,6 +215,18 @@
 									"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
 									"displayText": "Cloudflare Registrar",
 									"url": "/learning/dns/what-is-cloudflare-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+									"displayText": "How to buy a domain name",
+									"url": "/learning/dns/how-to-buy-a-domain-name/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+									"displayText": "How to transfer a domain name",
+									"url": "/learning/dns/how-to-transfer-a-domain-name/"
 								}
 							]
 						},
@@ -293,6 +317,38 @@
 									"url": "http://www.cloudflare.com/learning/insights-dns-landscape"
 								}
 							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5bnkrucwjePapZ8qR6nc2D",
+							"name": "DNSSEC Protection",
+							"displayText": "DNSSEC Protection",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1FwG3Iiux41pJ6OLW8kRsW",
+									"displayText": "How DNSSEC Works",
+									"url": "learning/dns/dnssec/how-dnssec-works/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6FnRKWe14VFgollBzoepo9",
+									"displayText": "The DNSSEC Root Signing Ceremony",
+									"url": "learning/dns/dnssec/root-signing-ceremony/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "apgrV3UywiWRwe78tsxSg",
+									"displayText": "ECDSA: The missing piece of DNSSEC",
+									"url": "learning/dns/dnssec/ecdsa-and-dnssec/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "59YqILiJbj7grfW3aTGPj7",
+									"displayText": "Universal DNSSEC",
+									"url": "learning/dns/dnssec/universal-dnssec/"
+								}
+							]
 						}
 					]
 				},
@@ -324,6 +380,24 @@
 								"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
 								"displayText": "DNS over TLS",
 								"url": "/learning/dns/dns-over-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+								"displayText": "How to buy a domain name",
+								"url": "/learning/dns/how-to-buy-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+								"displayText": "How to transfer a domain name",
+								"url": "/learning/dns/how-to-transfer-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+								"displayText": "Common DNS issues",
+								"url": "/learning/dns/common-dns-issues/"
 							}
 						]
 					},
@@ -549,6 +623,12 @@
 								"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
 								"displayText": "Top-Level Domain",
 								"url": "/learning/dns/top-level-domain/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+								"displayText": "Domain hijacking",
+								"url": "/learning/dns/what-is-domain-hijacking/"
 							}
 						]
 					},
@@ -660,41 +740,17 @@
 					"Describe the main uses of TXT records",
 					"Explain how TXT records can help prevent email spam"
 				],
-				"relatedContentLinkText": null,
-				"relatedContent": [],
-				"enablementBlade": {
-					"contentTypeId": "bladeEnablement",
-					"contentfulId": "39O10GEA7PcuY8Tp6oo5tX",
-					"title": "Free DNS included with any Cloudflare plan",
-					"titleSize": null,
-					"backgroundColor": "image-background",
-					"buttonText": null,
-					"buttonUrl": null,
-					"buttonText2": null,
-					"buttonModalId2": null,
-					"buttonUrl2": null,
-					"bladeSizeType": "large",
-					"htmlId": null,
-					"bladeBorder": "none",
-					"buttonOne": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "1wd9r7mbn0QLojOExNcaf8",
-						"elementName": "Get Started For Free",
-						"standardText": null,
-						"text": "Get Started For Free",
-						"url": "https://www.cloudflare.com/lp/pg-all-plans-dns/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					},
-					"buttonTwo": null,
-					"sectionPadding": null,
-					"eyebrow": null
-				},
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a DNS TXT record?</h2>\n\n<p>The DNS 'text' (TXT) record lets a <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain</a> administrator enter text into the <a href='/learning/dns/what-is-dns/'>Domain Name System (DNS)</a>. The TXT record was originally intended as a place for human-readable notes. However, now it is also possible to put some machine-readable data into TXT records. One domain can have many TXT records.</p>\n\n<p>Example of a TXT record:</p>\n\n<div class=\"record-table\">\n  <table>\n    <tr>\n      <th>example.com</th>\n      <th>record type:</th>\n      <th>value:</th>\n      <th>TTL</th>\n    </tr>\n    <tr>\n      <td>@</td>\n      <td>TXT</td>\n      <td>This is an awesome domain! Definitely not spammy.</td>\n      <td>32600</td>\n    </tr>\n  </table>\n</div>\n\n<p>Today, two of the most important uses for DNS TXT records are email spam prevention and domain ownership verification, although TXT records were not designed for these uses originally.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What kind of data can go in a TXT record?</h2>\n\n<p>The <a href='https://tools.ietf.org/html/rfc1035' target='_blank'>original RFC</a> only indicates that 'text strings' go in the 'value' field of a TXT record. This could be any text that an administrator wants to associate with their domain.</p>\n\n<p>Most <a href='/learning/dns/dns-server-types/'>DNS servers</a> will put a limit on how big TXT records can be and how many records they can store, so administrators cannot use TXT records for large amounts of data.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the official format for storing data in a TXT record?</h2>\n\n<p>In 1993, the Internet Engineering Task Force (IETF) defined a format for storing attributes and their corresponding values within the 'value' field of TXT records. The format was simply the attribute and the value contained within quotation marks (\") and separated by an equal sign (=), such as:</p>\n\n<pre><code>\"attribute=value\"</code></pre>\n\n<p><a href='https://tools.ietf.org/html/rfc1464' target='_blank'>RFC 1464</a>, the 1993 document that defines this format, includes these examples:</p>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<th>host.widgets.com</th>\n<th>record type:</th>\n<th>value:</th>\n</tr>\n<tr>\n<td>@</td>\n<td>TXT</td>\n<td>\"printer=lpr5\"</td>\n</tr>\n</table>\n</div>\n\n<br>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<th>sam.widgets.com</th>\n<th>record type:</th>\n<th>value:</th>\n</tr>\n<tr>\n<td>@</td>\n<td>TXT</td>\n<td>\"favorite drink=orange juice\"</td>\n</tr>\n</table>\n</div>\n\n<p>However, this definition was considered experimental, and in practice it is not often adopted. Some DNS administrators follow their own formats within TXT records, if they make use of TXT records at all. TXT records may also be formatted in a specific way for certain uses described below — for instance, DMARC policies have to be formatted in a standardized way.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do TXT records help prevent email spam?</h2>\n\n<p>Spammers often try to fake or forge the domains from which they send their email messages. TXT records are a key component of several different email authentication methods that help an email server determine if a message is from a trusted source.</p>\n\n<p>Common email authentication methods include Domain Keys Identified Mail (DKIM), Sender Policy Framework (SPF), and Domain-based Message Authentication, Reporting & Conformance (DMARC). By configuring these records, domain operators can make it more difficult for spammers to <a href='/learning/ssl/what-is-domain-spoofing/'>spoof their domains</a> and can track attempts to do so.</p>\n\n<p><a href='/learning/dns/dns-records/dns-spf-record/'>SPF records</a>: SPF TXT records list all the servers that are authorized to send email messages from a domain.</p>\n\n<p><a href='/learning/dns/dns-records/dns-dkim-record/'>DKIM records</a>: DKIM works by digitally signing each email using a public-private key pair. This helps verify that the email is actually from the domain it claims to be from. The public key is hosted in a TXT record associated with the domain. (Learn more about <a href='/learning/ssl/how-does-public-key-encryption-work/'>public key encryption</a>.)</p>\n\n<p><a href='/learning/dns/dns-records/dns-dmarc-record/'>DMARC records</a>: A DMARC TXT record references the domain's SPF and DKIM policies. It should be stored under the title _dmarc.example.com. with 'example.com' replaced with the actual domain name. The 'value' of the record is the domain's DMARC policy (a guide to creating one can be found <a href='https://dmarcguide.globalcyberalliance.org/#/dmarc/' target='_blank'>here</a>).</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do TXT records help verify domain ownership?</h2>\n\n<p>While domain ownership verification was not initially a feature of TXT records, this approach has been adopted by some webmaster tools and <a href='/learning/cloud/what-is-the-cloud/'>cloud</a> providers.</p>\n\n<p>By uploading a new TXT record with specific information included, or editing the current TXT record, an administrator can prove they control that domain. The tool or cloud provider can check the TXT record and see that it has been changed as requested. This is somewhat like when a user confirms their email address by opening and clicking a link sent to that email, proving they own the address.</p>\n\n<p>Learn more about the different types of <a href='/learning/dns/dns-records/'>DNS records</a>.</p>\n",
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1SMJ4pF8JegIMgSOBwUWIM",
+						"displayText": "Empty related article - default sidebar form",
+						"url": "   "
+					}
+				],
+				"enablementBlade": null,
+				"desktopMainContent": "<style>\n    .container .mt5.mt9-ns.row .col-lg-3 .mb11 .ttu.f2.fw7.mt6.mb0.orange0,  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .divider.pv2.w-100,  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .below-divider{\n    display: none\n  }\n    a:hover { background-size: 100% 4em !important; color: var(--inline-link-color);\n }\n\n @media (max-width: 40rem) {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;\n     background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n .card_content-banner-lcnew { padding: 1rem;  display: grid;  grid-gap: 10px;}\n .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n   .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n .card_title-banner-lcnew span  {text-transform:uppercase; font-weight: 500 !important}\n .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n .card_content-banner-bt { align-self: center; justify-self: center;}\n .helper { grid-template-columns: 70% 1fr;}\n\n @media (max-width: 40rem) {\n   .cards-banner-lcnew {\n     grid-template-columns: unset;\n     padding: 0.75rem; display: flex; flex-direction: column;\n   }\n\n   .card_text-banner-lcnew {\n     line-height: 18px;\n   }\n   .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n   .card_content-banner-bt {align-self: end;}\n }\n\n </style> \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a DNS TXT record?</h2>\n\n<p>The DNS 'text' (TXT) record lets a <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain</a> administrator enter text into the <a href='/learning/dns/what-is-dns/'>Domain Name System (DNS)</a>. Text is stored in the form of one or more strings within quotation marks. The TXT record was originally intended as a place for human-readable notes. However, now it is also possible to put some machine-readable data into TXT records. One domain can have many TXT records.</p>\n\n<p>Example of a TXT record:</p>\n\n<div class=\"record-table\">\n  <table>\n    <tr>\n      <th>example.com</th>\n      <th>record type:</th>\n      <th>value:</th>\n      <th>TTL</th>\n    </tr>\n    <tr>\n      <td>@</td>\n      <td>TXT</td>\n      <td>\"This is an awesome domain! Definitely not spammy.\"</td>\n      <td>32600</td>\n    </tr>\n  </table>\n</div>\n\n<p>Today, two of the most important uses for DNS TXT records are email spam prevention and domain ownership verification, although TXT records were not designed for these uses originally.</p>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Sign up</span></div>\n        <div class=\"card_text-banner-lcnew\">Free SSL included with any Cloudflare plan</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/plans/\" data-tracking-action=\"click\"\n                data-tracking-label=\"Start for free - /plans/\" data-tracking-category=\"card3\">Start for free</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What kind of data can go in a TXT record?</h2>\n\n<p>The <a href='https://tools.ietf.org/html/rfc1035' target='_blank'>original RFC</a> only indicates that 'text strings' go in the 'value' field of a TXT record. This could be any text that an administrator wants to associate with their domain.</p>\n\n<p>Most <a href='/learning/dns/dns-server-types/'>DNS servers</a> will put a limit on how big TXT records can be and how many strings they can store, so administrators cannot use TXT records for large amounts of data.</p>\n\n<p>Strings are limited to 255 bytes, but applications often do not care about the difference between strings and will just join them together, treating multiple strings as a single string.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the 'official' format for storing data in a TXT record?</h2>\n\n<p>In 1993, the Internet Engineering Task Force (IETF) defined a format for storing attributes and their corresponding values within the 'value' field of TXT records. The format was simply the attribute and the value contained within quotation marks (\") and separated by an equal sign (=), such as:</p>\n\n<pre><code>\"attribute=value\"</code></pre>\n\n<p><a href='https://tools.ietf.org/html/rfc1464' target='_blank'>RFC 1464</a>, the 1993 document that defines this format, includes these examples:</p>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<th>host.widgets.com</th>\n<th>record type:</th>\n<th>value:</th>\n</tr>\n<tr>\n<td>@</td>\n<td>TXT</td>\n<td>\"printer=lpr5\"</td>\n</tr>\n</table>\n</div>\n\n<br>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<th>sam.widgets.com</th>\n<th>record type:</th>\n<th>value:</th>\n</tr>\n<tr>\n<td>@</td>\n<td>TXT</td>\n<td>\"favorite drink=orange juice\"</td>\n</tr>\n</table>\n</div>\n\n<p>This definition was considered experimental, and in practice it is not often adopted. Some DNS administrators follow their own formats within TXT records, if they make use of TXT records at all. TXT records may also be formatted in a specific way for certain uses described below — for instance, DMARC policies have to be formatted in a standardized way.</p>\n\n<p>However, TXT records still store their content within quotation marks (\"\").</p>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Report</span></div>\n        <div class=\"card_text-banner-lcnew\">Secure your DNS infrastructure</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/lp/dns-and-the-threat-of-ddos/\" data-tracking-action=\"click\"\n                data-tracking-label=\"Get the report - /lp/dns-and-the-threat-of-ddos/\" data-tracking-category=\"card3\">Get the report</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do TXT records help prevent email spam?</h2>\n\n<p>Spammers often try to fake or forge the domains from which they send their email messages. TXT records are a key component of several different email authentication methods that help an email server determine if a message is from a trusted source.</p>\n\n<p>Common email authentication methods include Domain Keys Identified Mail (DKIM), Sender Policy Framework (SPF), and Domain-based Message Authentication, Reporting & Conformance (DMARC). By configuring these records, domain operators can make it more difficult for spammers to <a href='/learning/ssl/what-is-domain-spoofing/'>spoof their domains</a> and can track attempts to do so.</p>\n\n<p><a href='/learning/dns/dns-records/dns-spf-record/'>SPF records</a>: SPF TXT records list all the servers that are authorized to send email messages from a domain.</p>\n\n<p><a href='/learning/dns/dns-records/dns-dkim-record/'>DKIM records</a>: DKIM works by digitally signing each email using a public-private key pair. This helps verify that the email is actually from the domain it claims to be from. The public key is hosted in a TXT record associated with the domain. (Learn more about <a href='/learning/ssl/how-does-public-key-encryption-work/'>public key encryption</a>.)</p>\n\n<p><a href='/learning/dns/dns-records/dns-dmarc-record/'>DMARC records</a>: A DMARC TXT record references the domain's SPF and DKIM policies. It should be stored under the title _dmarc.example.com. with 'example.com' replaced with the actual domain name. The 'value' of the record is the domain's DMARC policy (a guide to creating one can be found <a href='https://dmarcguide.globalcyberalliance.org/#/dmarc/' target='_blank'>here</a>).</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do TXT records help verify domain ownership?</h2>\n\n<p>While domain ownership verification was not initially a feature of TXT records, this approach has been adopted by some webmaster tools and <a href='/learning/cloud/what-is-the-cloud/'>cloud</a> providers.</p>\n\n<p>By uploading a new TXT record with specific information included, or editing the current TXT record, an administrator can prove they control that domain. The tool or cloud provider can check the TXT record and see that it has been changed as requested. This is somewhat like when a user confirms their email address by opening and clicking a link sent to that email, proving they own the address.</p>\n\n<p>Learn more about the different types of <a href='/learning/dns/dns-records/'>DNS records</a>.</p>\n",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {
@@ -703,68 +759,33 @@
 					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
 					"nlNL": "English for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": "No Page for Locale",
-					"nbNO": "No Page for Locale"
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -786,7 +807,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -806,10 +827,12 @@
 				"zh-TW",
 				"fr-FR",
 				"de-DE",
+				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

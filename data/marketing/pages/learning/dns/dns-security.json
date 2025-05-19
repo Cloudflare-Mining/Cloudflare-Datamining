@@ -159,6 +159,18 @@
 									"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
 									"displayText": "DNS Fast Flux",
 									"url": "/learning/dns/dns-fast-flux/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+									"displayText": "Domain hijacking",
+									"url": "/learning/dns/what-is-domain-hijacking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+									"displayText": "Common DNS issues",
+									"url": "/learning/dns/common-dns-issues/"
 								}
 							]
 						},
@@ -203,6 +215,18 @@
 									"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
 									"displayText": "Cloudflare Registrar",
 									"url": "/learning/dns/what-is-cloudflare-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+									"displayText": "How to buy a domain name",
+									"url": "/learning/dns/how-to-buy-a-domain-name/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+									"displayText": "How to transfer a domain name",
+									"url": "/learning/dns/how-to-transfer-a-domain-name/"
 								}
 							]
 						},
@@ -293,6 +317,38 @@
 									"url": "http://www.cloudflare.com/learning/insights-dns-landscape"
 								}
 							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5bnkrucwjePapZ8qR6nc2D",
+							"name": "DNSSEC Protection",
+							"displayText": "DNSSEC Protection",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1FwG3Iiux41pJ6OLW8kRsW",
+									"displayText": "How DNSSEC Works",
+									"url": "learning/dns/dnssec/how-dnssec-works/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6FnRKWe14VFgollBzoepo9",
+									"displayText": "The DNSSEC Root Signing Ceremony",
+									"url": "learning/dns/dnssec/root-signing-ceremony/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "apgrV3UywiWRwe78tsxSg",
+									"displayText": "ECDSA: The missing piece of DNSSEC",
+									"url": "learning/dns/dnssec/ecdsa-and-dnssec/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "59YqILiJbj7grfW3aTGPj7",
+									"displayText": "Universal DNSSEC",
+									"url": "learning/dns/dnssec/universal-dnssec/"
+								}
+							]
 						}
 					]
 				},
@@ -324,6 +380,24 @@
 								"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
 								"displayText": "DNS over TLS",
 								"url": "/learning/dns/dns-over-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+								"displayText": "How to buy a domain name",
+								"url": "/learning/dns/how-to-buy-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+								"displayText": "How to transfer a domain name",
+								"url": "/learning/dns/how-to-transfer-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+								"displayText": "Common DNS issues",
+								"url": "/learning/dns/common-dns-issues/"
 							}
 						]
 					},
@@ -549,6 +623,12 @@
 								"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
 								"displayText": "Top-Level Domain",
 								"url": "/learning/dns/top-level-domain/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+								"displayText": "Domain hijacking",
+								"url": "/learning/dns/what-is-domain-hijacking/"
 							}
 						]
 					},
@@ -734,11 +814,12 @@
 					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -751,51 +832,15 @@
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -817,7 +862,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -837,10 +882,12 @@
 				"zh-TW",
 				"fr-FR",
 				"de-DE",
+				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

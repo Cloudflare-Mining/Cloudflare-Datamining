@@ -159,6 +159,18 @@
 									"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
 									"displayText": "DNS Fast Flux",
 									"url": "/learning/dns/dns-fast-flux/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+									"displayText": "Domain hijacking",
+									"url": "/learning/dns/what-is-domain-hijacking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+									"displayText": "Common DNS issues",
+									"url": "/learning/dns/common-dns-issues/"
 								}
 							]
 						},
@@ -203,6 +215,18 @@
 									"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
 									"displayText": "Cloudflare Registrar",
 									"url": "/learning/dns/what-is-cloudflare-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+									"displayText": "How to buy a domain name",
+									"url": "/learning/dns/how-to-buy-a-domain-name/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+									"displayText": "How to transfer a domain name",
+									"url": "/learning/dns/how-to-transfer-a-domain-name/"
 								}
 							]
 						},
@@ -293,6 +317,38 @@
 									"url": "http://www.cloudflare.com/learning/insights-dns-landscape"
 								}
 							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5bnkrucwjePapZ8qR6nc2D",
+							"name": "DNSSEC Protection",
+							"displayText": "DNSSEC Protection",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1FwG3Iiux41pJ6OLW8kRsW",
+									"displayText": "How DNSSEC Works",
+									"url": "learning/dns/dnssec/how-dnssec-works/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6FnRKWe14VFgollBzoepo9",
+									"displayText": "The DNSSEC Root Signing Ceremony",
+									"url": "learning/dns/dnssec/root-signing-ceremony/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "apgrV3UywiWRwe78tsxSg",
+									"displayText": "ECDSA: The missing piece of DNSSEC",
+									"url": "learning/dns/dnssec/ecdsa-and-dnssec/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "59YqILiJbj7grfW3aTGPj7",
+									"displayText": "Universal DNSSEC",
+									"url": "learning/dns/dnssec/universal-dnssec/"
+								}
+							]
 						}
 					]
 				},
@@ -324,6 +380,24 @@
 								"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
 								"displayText": "DNS over TLS",
 								"url": "/learning/dns/dns-over-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+								"displayText": "How to buy a domain name",
+								"url": "/learning/dns/how-to-buy-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+								"displayText": "How to transfer a domain name",
+								"url": "/learning/dns/how-to-transfer-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+								"displayText": "Common DNS issues",
+								"url": "/learning/dns/common-dns-issues/"
 							}
 						]
 					},
@@ -549,6 +623,12 @@
 								"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
 								"displayText": "Top-Level Domain",
 								"url": "/learning/dns/top-level-domain/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+								"displayText": "Domain hijacking",
+								"url": "/learning/dns/what-is-domain-hijacking/"
 							}
 						]
 					},
@@ -660,7 +740,7 @@
 					"Explain the benefits of a DNS SPF record ",
 					"Understand a DNS SPF record's components "
 				],
-				"relatedContentLinkText": null,
+				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
@@ -693,52 +773,22 @@
 						"url": "/learning/dns/dns-records/dns-dkim-record/"
 					}
 				],
-				"enablementBlade": {
-					"contentTypeId": "bladeEnablement",
-					"contentfulId": "39O10GEA7PcuY8Tp6oo5tX",
-					"title": "Free DNS included with any Cloudflare plan",
-					"titleSize": null,
-					"backgroundColor": "image-background",
-					"buttonText": null,
-					"buttonUrl": null,
-					"buttonText2": null,
-					"buttonModalId2": null,
-					"buttonUrl2": null,
-					"bladeSizeType": "large",
-					"htmlId": null,
-					"bladeBorder": "none",
-					"buttonOne": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "1wd9r7mbn0QLojOExNcaf8",
-						"elementName": "Get Started For Free",
-						"standardText": null,
-						"text": "Get Started For Free",
-						"url": "https://www.cloudflare.com/lp/pg-all-plans-dns/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					},
-					"buttonTwo": null,
-					"sectionPadding": null,
-					"eyebrow": null
-				},
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a DNS SPF record?</h2>\n\n<p>A sender policy framework (SPF) record is a type of DNS TXT record that lists all the servers authorized to send emails from a particular domain. A DNS TXT (\"text\") record lets a domain administrator enter arbitrary text into the Domain Name System (DNS). TXT records were initially created for the purpose of including important notices regarding the domain, but have since evolved to serve other purposes.</p>\n\n<p>SPF records were originally created because the standard protocol used for email — the Simple Mail Transfer Protocol (<a href='https://datatracker.ietf.org/doc/html/rfc5321'target='_blank'>SMTP</a>) — does not inherently authenticate the \"from\" address in an email. This means that without SPF or other authentication records, an attacker can easily impersonate a sender and trick the recipient into taking action or sharing information they otherwise would not. </p>\n\n<p>Think of SPF records like a guest list that is managed by a door attendant. If someone is not on the list, the door attendant will not let them in. Similarly, if an SPF record does not have a sender's IP address or domain on its list, the receiving server (door attendant) will either not deliver those emails or mark them as spam.</p>\n\n<p>SPF records are just one of many <a href='/learning/dns/what-is-dns/'>DNS</a>-based mechanisms that can help email servers confirm whether an email comes from a trusted source. Domain-based Message Authentication Reporting and Conformance (<a href='/learning/dns/dns-records/dns-dmarc-record/'>DMARC</a>) and DomainKeys Identified Mail (<a href='/learning/dns/dns-records/dns-dkim-record/'>DKIM</a>) are two other mechanisms used for email authentication. </p>\n\n<p>It is worth noting that, at one point, SPF records had a dedicated DNS record type. The dedicated record type has since been <a href='https://datatracker.ietf.org/doc/html/rfc7208#section-3.1'target='_blank'>deprecated</a> and only TXT records are to be used.  </p>\n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">How does a mail server check an SPF record?</h2>\n<p>Mail servers go through a relatively simple process when checking an SPF record:</p>\n<ul class=\"learning-list\"><li>Server One sends an email. Its IP address is <i>192.0.2.0</i> and the return-path the email uses is email@returnpath.com. (A return-path address is different from the \"from\" address and is used specifically for collecting and processing bounced messages.)</li>\n<li>The mail server that is receiving the message (Server Two) takes the return-path domain and searches for its SPF record.</li>\n<li>If Server Two finds an SPF record for the return-path's <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain</a>, it searches the SPF record for Server One's IP address in its list of authorized senders. If the IP address is listed in the SPF record, the SPF check passes and the email will go through. If the IP address is not listed in the SPF record, the SPF check fails. In this case, the email will be rejected or marked as spam. </li></ul>\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What does an SPF record look like?</h2>\n<p>SPF records must follow certain standards in order for the server to understand how to interpret its contents. Here is an example of the core components of an SPF record:</p>\n\n <pre><code>v=spf1 ip4:192.0.2.0 ip4:192.0.2.1 include:examplesender.email -all</code></pre>\n\n<p>This example lets the server know what type of record this is, states the approved IP addresses and a third-party for this domain, and tells the server what to do with non-compliant emails. Let's break down how the individual components accomplish this: </p>\n<ul class=\"learning-list\"><li><code>v=spf1</code> tells the server that this contains an SPF record. Every SPF record must begin with this string.</li>\n<li>Then comes the \"guest list\" portion of the SPF record or the list of authorized IP addresses. In this example, the SPF record is telling the server that <code>ip4:192.0.2.0</code> and <code>ip4:192.0.2.1</code> are authorized to send emails on behalf of the domain. </li>\n<li><code>include:examplesender.net</code> is an example of the include tag, which tells the server what third-party organizations are authorized to send emails on behalf of the domain. This tag signals that the content of the SPF record for the included domain (examplesender.net) should be checked and the IP addresses it contains should also be considered authorized. Multiple domains can be included within an SPF record but this tag will only work for valid domains. </li>\n  <li>Finally, <code>-all</code> tells the server that addresses not listed in the SPF record are not authorized to send emails and should be rejected. </li>\n  <ul class=\"learning-list\"><li>Alternative options here include <code>~all</code>, which states that unlisted emails will be marked as insecure or spam but still accepted, and, less commonly, <code>+all</code>, which signifies that any server can send emails on behalf of your domain. </li></ul></ul>\n\n<p>While the example used in this article is fairly straightforward, SPF records can certainly be more complex. Here are just a few things to keep in mind to ensure SPF records are valid:</p>\n<ul class=\"learning-list\"><li>There cannot be more than one SPF record associated with a domain. </li>\n<li>The record must end with the <code>all</code> component or include a <code>redirect=</code> component (which indicates that the SPF record is hosted by another domain). </li>\n<li>An SPF record cannot contain uppercase characters.</li></ul>\n\n<p>Check out the <a href='https://datatracker.ietf.org/doc/html/rfc7208'target='_blank'>official SPF record documentation</a> for more information.</p> \n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">Why are SPF records used?</h2>\n\n<p>There are many reasons domain operators use SPF records: </p>\n\n<ul class=\"learning-list\"><li><strong>Preventing attacks:</strong> If emails are not authenticated, companies and email recipients are at risk for <a href='/learning/access-management/phishing-attack/'>phishing</a> attacks, spam emails, and email spoofing. With SPF records, it is harder for attackers to imitate a domain, reducing the likelihood of these attacks. </li>\n<li><strong>Improving email deliverability:</strong> Domains without a published SPF record may have their emails bounce or be marked as spam. Over time, bounced emails or emails marked as spam can hurt a domain's ability to reach their audience's inboxes, compromising efforts to communicate with customers, employees, and other entities.</li>\n<li><strong>DMARC compliance:</strong> DMARC is an email validation system that helps ensure that emails are sent only by authorized users. DMARC policies dictate what servers should do with emails that fail SPF and DKIM checks. Based on the DMARC policy instructions, those emails will either be marked as spam, rejected, or delivered as normal. Domain administrators receive reports about their email activity that help them make adjustments to their policy. </li></ul>\n\n<p>The Cloudflare Email Security DNS Wizard makes it simple to set up the correct DNS TXT records and block spammers from using a domain. <a href='https://blog.cloudflare.com/tackling-email-spoofing/' target='_blank'>Read more about the Wizard here</a>.</p>\n\n<p>Learn more about DNS records for email:</p>\n\n<ul class=\"learning-list\"><li><a href='/learning/dns/dns-records/dns-dmarc-record/'>DMARC record</a></li>\n  <li><a href='/learning/dns/dns-records/dns-dkim-record/'>DNS DKIM record</a></li>\n  <li><a href='/learning/dns/dns-records/dns-mx-record/'>DNS MX record</a></li>\n  <li><a href='/learning/dns/dns-records/dns-txt-record/'>DNS TXT record</a></li></ul>\n",
+				"enablementBlade": null,
+				"desktopMainContent": "<style>\n\n    .cards-wrapper-lcnew  { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}\n    .cards_item-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fMg89go9MegG1EDg39mNy/5a42817cd388ae352f77f56e53b1ff81/card-new.png'); background-repeat: no-repeat; background-size: cover;  background-position: center;  border-radius: 8px;  box-shadow: 10px 10px 20px -14px rgba(0, 0, 0, 1.0);  overflow: hidden;}\n    .btn-lcnew { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .btn:hover { background-color: rgba(255, 255, 255, 0.12);}\n    .card_content-lcnew  { padding: 1rem; display: flex; flex-direction: column;}\n    .card_title-lcnew  { color: #ffffff; font-size: 12px; margin: 0px; line-height: 18px; text-transform: uppercase;}\n    .card_title-lcnew span  {font-weight: 500}\n    .card_text-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; margin-bottom: 1rem; margin-top: 1rem; font-weight: 600;}\n     a:hover {background-size: 100% 4em !important; color: var(--inline-link-color);}\n\n    @media (max-width: 40rem) \n    {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n    .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n    .card_content-banner-lcnew { padding: 1rem;  display: grid; grid-template-rows: 1fr 1fr; grid-gap: 10px;}\n    .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n    .card_title-banner-lcnew span  {text-transform: uppercase; font-weight: 500 !important}\n    .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n    .card_content-banner-bt { align-self: center; justify-self: center;}\n\n    @media (max-width: 40rem) \n    { .cards-banner-lcnew { grid-template-columns: unset; padding: 0.75rem; display: flex; flex-direction: column; }\n      .card_text-banner-lcnew { line-height: 18px; }\n      .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n      .card_content-banner-bt {align-self: end;}\n    }\n\n    </style>  \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a DNS SPF record?</h2>\n\n<p>A sender policy framework (SPF) record is a type of DNS TXT record that lists all the servers authorized to send emails from a particular domain. A DNS TXT (\"text\") record lets a domain administrator enter arbitrary text into the Domain Name System (DNS). TXT records were initially created for the purpose of including important notices regarding the domain, but have since evolved to serve other purposes.</p>\n\n<p>SPF records were originally created because the standard protocol used for email — the Simple Mail Transfer Protocol (<a href='https://datatracker.ietf.org/doc/html/rfc5321'target='_blank'>SMTP</a>) — does not inherently authenticate the \"from\" address in an email. This means that without SPF or other authentication records, an attacker can easily impersonate a sender and trick the recipient into taking action or sharing information they otherwise would not. </p>\n\n<p>Think of SPF records like a guest list that is managed by a door attendant. If someone is not on the list, the door attendant will not let them in. Similarly, if an SPF record does not have a sender's IP address or domain on its list, the receiving server (door attendant) will either not deliver those emails or mark them as spam.</p>\n\n<p>SPF records are just one of many <a href='/learning/dns/what-is-dns/'>DNS</a>-based mechanisms that can help email servers confirm whether an email comes from a trusted source. Domain-based Message Authentication Reporting and Conformance (<a href='/learning/dns/dns-records/dns-dmarc-record/'>DMARC</a>) and DomainKeys Identified Mail (<a href='/learning/dns/dns-records/dns-dkim-record/'>DKIM</a>) are two other mechanisms used for email authentication. </p>\n\n<p>It is worth noting that, at one point, SPF records had a dedicated DNS record type. The dedicated record type has since been <a href='https://datatracker.ietf.org/doc/html/rfc7208#section-3.1'target='_blank'>deprecated</a> and only TXT records are to be used.  </p>\n\n<div class=\"cards-banner-lcnew\">\n      <div class=\"card_content-banner-lcnew \">\n\n        <div class=\"card_title-banner-lcnew\"><span>Report</span></div>\n\n        <div class=\"card_text-banner-lcnew\">2024 IDC Marketscape for Edge Delivery Services</div>\n      </div>\n        <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew  card_btn\"><a href=\"/lp/idc-marketscape-for-worldwide-commercial-edge-delivery-services-2024/\" data-tracking-action=\"click\" data-tracking-label=\"Get the report - /lp/idc-marketscape-for-worldwide-commercial-edge-delivery-services-2024/\" data-tracking-category=\"card1-banner\">Get the report</a></div>\n\n    </div>\n    </div>\n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">How does a mail server check an SPF record?</h2>\n<p>Mail servers go through a relatively simple process when checking an SPF record:</p>\n<ul class=\"learning-list\"><li>Server One sends an email. Its IP address is <i>192.0.2.0</i> and the return-path the email uses is email@returnpath.com. (A return-path address is different from the \"from\" address and is used specifically for collecting and processing bounced messages.)</li>\n<li>The mail server that is receiving the message (Server Two) takes the return-path domain and searches for its SPF record.</li>\n<li>If Server Two finds an SPF record for the return-path's <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain</a>, it searches the SPF record for Server One's IP address in its list of authorized senders. If the IP address is listed in the SPF record, the SPF check passes and the email will go through. If the IP address is not listed in the SPF record, the SPF check fails. In this case, the email will be rejected or marked as spam. </li></ul>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Sign Up</span></div>\n        <div class=\"card_text-banner-lcnew\">Free DNS included with any Cloudflare plan</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/lp/pg-all-plans-dns/\" data-tracking-action=\"click\" data-tracking-label=\"Get started free - /lp/pg-all-plans-dns/\" data-tracking-category=\"card2\">Start for free</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What does an SPF record look like?</h2>\n<p>SPF records must follow certain standards in order for the server to understand how to interpret its contents. Here is an example of the core components of an SPF record:</p>\n\n <pre><code>v=spf1 ip4:192.0.2.0 ip4:192.0.2.1 include:examplesender.email -all</code></pre>\n\n<p>This example lets the server know what type of record this is, states the approved IP addresses and a third-party for this domain, and tells the server what to do with non-compliant emails. Let's break down how the individual components accomplish this: </p>\n<ul class=\"learning-list\"><li><code>v=spf1</code> tells the server that this contains an SPF record. Every SPF record must begin with this string.</li>\n<li>Then comes the \"guest list\" portion of the SPF record or the list of authorized IP addresses. In this example, the SPF record is telling the server that <code>ip4:192.0.2.0</code> and <code>ip4:192.0.2.1</code> are authorized to send emails on behalf of the domain. </li>\n<li><code>include:examplesender.net</code> is an example of the include tag, which tells the server what third-party organizations are authorized to send emails on behalf of the domain. This tag signals that the content of the SPF record for the included domain (examplesender.net) should be checked and the IP addresses it contains should also be considered authorized. Multiple domains can be included within an SPF record but this tag will only work for valid domains. </li>\n  <li>Finally, <code>-all</code> tells the server that addresses not listed in the SPF record are not authorized to send emails and should be rejected. </li>\n  <ul class=\"learning-list\"><li>Alternative options here include <code>~all</code>, which states that unlisted emails will be marked as insecure or spam but still accepted, and, less commonly, <code>+all</code>, which signifies that any server can send emails on behalf of your domain. </li></ul></ul>\n\n<p>While the example used in this article is fairly straightforward, SPF records can certainly be more complex. Here are just a few things to keep in mind to ensure SPF records are valid:</p>\n<ul class=\"learning-list\"><li>There cannot be more than one SPF record associated with a domain. </li>\n<li>The record must end with the <code>all</code> component or include a <code>redirect=</code> component (which indicates that the SPF record is hosted by another domain). </li>\n<li>An SPF record cannot contain uppercase characters.</li></ul>\n\n<p>Check out the <a href='https://datatracker.ietf.org/doc/html/rfc7208'target='_blank'>official SPF record documentation</a> for more information.</p> \n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">Why are SPF records used?</h2>\n\n<p>There are many reasons domain operators use SPF records: </p>\n\n<ul class=\"learning-list\"><li><strong>Preventing attacks:</strong> If emails are not authenticated, companies and email recipients are at risk for <a href='/learning/access-management/phishing-attack/'>phishing</a> attacks, spam emails, and email spoofing. With SPF records, it is harder for attackers to imitate a domain, reducing the likelihood of these attacks. </li>\n<li><strong>Improving email deliverability:</strong> Domains without a published SPF record may have their emails bounce or be marked as spam. Over time, bounced emails or emails marked as spam can hurt a domain's ability to reach their audience's inboxes, compromising efforts to communicate with customers, employees, and other entities.</li>\n<li><strong>DMARC compliance:</strong> DMARC is an email validation system that helps ensure that emails are sent only by authorized users. DMARC policies dictate what servers should do with emails that fail SPF and DKIM checks. Based on the DMARC policy instructions, those emails will either be marked as spam, rejected, or delivered as normal. Domain administrators receive reports about their email activity that help them make adjustments to their policy. </li></ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to set up SPF records in Cloudflare</h2>\n\n<p>To easily set up SPF records in Cloudflare, use the <a href='https://developers.cloudflare.com/dmarc-management/security-records/' target='_blank'>Email Security DNS Wizard</a>.</p>\n\n<p><em>Learn more about DNS records for email:</em></p>\n\n<ul class=\"learning-list\"><li><a href='/learning/dns/dns-records/dns-dmarc-record/'>DMARC record</a></li>\n  <li><a href='/learning/dns/dns-records/dns-dkim-record/'>DNS DKIM record</a></li>\n  <li><a href='/learning/dns/dns-records/dns-mx-record/'>DNS MX record</a></li>\n  <li><a href='/learning/dns/dns-records/dns-txt-record/'>DNS TXT record</a></li></ul>\n",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
-					"zhTW": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
-					"deDE": "English for Locale",
-					"itIT": "English for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
-					"koKR": "English for Locale",
+					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -750,52 +800,16 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "English for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"zhHansCN": "Translated for Locale",
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -817,7 +831,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -833,10 +847,17 @@
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
 				"en-US",
+				"zh-CN",
+				"zh-TW",
 				"fr-FR",
+				"de-DE",
+				"it-IT",
 				"ja-JP",
+				"ko-KR",
 				"pt-BR",
-				"es-ES"
+				"es-ES",
+				"es-LA",
+				"zh-Hans-CN"
 			]
 		}
 	}

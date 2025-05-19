@@ -35,14 +35,14 @@
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "39LIvqQCFa8iU7ITBQmaEm",
-							"name": "Cloud Header: Cloud Basics",
+							"name": "Cloud header: Cloud basics",
 							"displayText": "Cloud basics",
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5k1A20zBRQpjW2079su8uz",
-									"displayText": "What is SaaS?",
-									"url": "/learning/cloud/what-is-saas/"
+									"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+									"displayText": "What is cloud storage?",
+									"url": "/learning/cloud/what-is-cloud-storage/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -52,9 +52,21 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
-									"displayText": "What is cloud storage?",
-									"url": "/learning/cloud/what-is-cloud-storage/"
+									"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+									"displayText": "Multitenancy",
+									"url": "/learning/cloud/what-is-multitenancy/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5k1A20zBRQpjW2079su8uz",
+									"displayText": "What is SaaS?",
+									"url": "/learning/cloud/what-is-saas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "38DHkZos35DYciaxPnJk7g",
+									"displayText": "Vendor lock-in",
+									"url": "/learning/cloud/what-is-vendor-lock-in/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -64,24 +76,10 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
-									"displayText": "Multitenancy",
-									"url": "/learning/cloud/what-is-multitenancy/"
+									"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+									"displayText": "Multi-cloud vs hybrid cloud",
+									"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
 								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "38DHkZos35DYciaxPnJk7g",
-									"displayText": "Vendor lock-in",
-									"url": "/learning/cloud/what-is-vendor-lock-in/"
-								}
-							]
-						},
-						{
-							"contentTypeId": "learningCenterArticleLinkedList",
-							"contentfulId": "3X81SpcBRddDrjqw17J1l2",
-							"name": "Cloud Header: Multicloud and hybrid cloud",
-							"displayText": "Multi-cloud and hybrid cloud",
-							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
@@ -90,21 +88,15 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
-									"displayText": "What is hybrid cloud?",
-									"url": "/learning/cloud/what-is-hybrid-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
-									"displayText": "Multi-cloud vs hybrid cloud",
-									"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
 									"displayText": "Multi-cloud management",
 									"url": "/learning/cloud/what-is-multicloud-management/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
+									"displayText": "What is hybrid cloud?",
+									"url": "/learning/cloud/what-is-hybrid-cloud/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -117,9 +109,15 @@
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "486fCRIX89EKjcHElALCiw",
-							"name": "Cloud Header: Securing the Cloud",
+							"name": "Cloud header: Securing the cloud",
 							"displayText": "Securing the cloud",
 							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "kNE9anSSaRE82gAHCyVxp",
+									"displayText": "What is a cloud firewall (FWaaS)?",
+									"url": "/learning/cloud/what-is-a-cloud-firewall/"
+								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
@@ -128,9 +126,21 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "kNE9anSSaRE82gAHCyVxp",
-									"displayText": "What is a cloud firewall (FWaaS)?",
-									"url": "/learning/cloud/what-is-a-cloud-firewall/"
+									"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+									"displayText": "Cloud security posture management (CSPM)",
+									"url": "/learning/cloud/what-is-cspm/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+									"displayText": "Cloud workload protection platform (CWPP)",
+									"url": "/learning/cloud/what-is-cwpp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5xd2QLCI5QCkPAIoDk5CJ2",
+									"displayText": "Cloud-native security",
+									"url": "/learning/cloud/cloud-native-security/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -146,35 +156,47 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
-									"displayText": "Cloud security posture management (CSPM)",
-									"url": "/learning/cloud/what-is-cspm/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
 									"displayText": "SaaS security posture management (SSPM)",
 									"url": "/learning/cloud/what-is-sspm/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
-									"displayText": "Cloud workload protection platform (CWPP)",
-									"url": "/learning/cloud/what-is-cwpp/"
+									"contentfulId": "1FHXopbTiAErueuQvbAXr6",
+									"displayText": "Cloud-native application protection platform (CNAPP)",
+									"url": "/learning/cloud/cnapp/"
 								}
 							]
 						},
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
-							"contentfulId": "2OkRH9jhjm8FmxBtbYnZ9V",
-							"name": "Cloud Header: Cloud Glossary",
-							"displayText": "Glossary",
+							"contentfulId": "26g8mVCbaDb7TF4jJMGFhz",
+							"name": "Cloud header: Cloud modernization",
+							"displayText": "Cloud modernization",
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
-									"displayText": "Cloud migration",
-									"url": "/learning/cloud/what-is-cloud-migration/"
+									"contentfulId": "y0HrOCtfIQJ4B46NGM8aK",
+									"displayText": "Application modernization",
+									"url": "/learning/cloud/application-modernization/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3ogF8VqUtpwiX80xRDH9lQ",
+									"displayText": "How to rehost apps",
+									"url": "/learning/cloud/how-to-rehost-applications/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "174iXrdVMHuS7avH6ICSVG",
+									"displayText": "How to refactor apps",
+									"url": "/learning/cloud/how-to-refactor-applications/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "nypSYuLAN0fI1HcJWLwj7",
+									"displayText": "How to replatform apps",
+									"url": "/learning/cloud/how-to-replatform-applications/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -184,27 +206,35 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
-									"displayText": "What is a public cloud?",
-									"url": "/learning/cloud/what-is-a-public-cloud/"
+									"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+									"displayText": "Cloud migration",
+									"url": "/learning/cloud/what-is-cloud-migration/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
-									"displayText": "What is a private cloud?",
-									"url": "/learning/cloud/what-is-a-private-cloud/"
+									"contentfulId": "31LQEF639fG1XJWTZBqnNO",
+									"displayText": "Data migration",
+									"url": "/learning/cloud/what-is-data-migration/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2OkRH9jhjm8FmxBtbYnZ9V",
+							"name": "Cloud header: Cloud glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2poSO07sAv136qKoXulTex",
+									"displayText": "AWS data transfer pricing",
+									"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "53Auemqu8excTZE8bzc7Zk",
-									"displayText": "Virtual private cloud",
-									"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
-									"displayText": "Cloudflare and the cloud",
-									"url": "/learning/cloud/cloudflare-and-the-cloud/"
+									"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
+									"displayText": "Data egress fees",
+									"url": "/learning/cloud/what-are-data-egress-fees/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -220,6 +250,12 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5tJVSh0zDmPqvoriPMSMuO",
+									"displayText": "What is a data lake?",
+									"url": "/learning/cloud/what-is-a-data-lake/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "7u090eTI3Lc6TC6CZRHIhI",
 									"displayText": "What is object storage?",
 									"url": "/learning/cloud/what-is-object-storage/"
@@ -232,22 +268,40 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
-									"displayText": "Data egress fees",
-									"url": "/learning/cloud/what-are-data-egress-fees/"
+									"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
+									"displayText": "What is a private cloud?",
+									"url": "/learning/cloud/what-is-a-private-cloud/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "2poSO07sAv136qKoXulTex",
-									"displayText": "AWS data transfer pricing",
-									"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+									"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+									"displayText": "What is a public cloud?",
+									"url": "/learning/cloud/what-is-a-public-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+									"displayText": "Virtual private cloud",
+									"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1w22mfnOVmsjLsM3jMxaAY",
+									"displayText": "Cloud networking",
+									"url": "/learning/cloud/what-is-cloud-networking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
+									"displayText": "Cloudflare and the cloud",
+									"url": "/learning/cloud/cloudflare-and-the-cloud/"
 								}
 							]
 						},
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "7qiJLGJVI1us6Le145zRbC",
-							"name": "Cloud Header: theNET",
+							"name": "Cloud header: theNET",
 							"displayText": "theNET",
 							"links": [
 								{
@@ -258,15 +312,15 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "goUykSuhqroMEsPv5li3u",
-									"displayText": "Trading egress for opportunity",
-									"url": "https://www.cloudflare.com/learning/insights-cloud-storage-egress/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "7akEuCGGNzlr1ufpM39JJO",
 									"displayText": "The Internet is the new corporate network",
 									"url": "https://www.cloudflare.com/learning/insights-internet-corp-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "goUykSuhqroMEsPv5li3u",
+									"displayText": "Trading egress for opportunity",
+									"url": "https://www.cloudflare.com/learning/insights-cloud-storage-egress/"
 								}
 							]
 						}
@@ -280,7 +334,7 @@
 					"column1": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "2PUeZxc6Kw9UYN9rDC8IYy",
-						"name": "Cloud Footer - About the Cloud",
+						"name": "Cloud footer — About the cloud",
 						"displayText": "About the cloud",
 						"links": [
 							{
@@ -297,19 +351,13 @@
 							}
 						]
 					},
-					"column2Title": "Cloud Configurations",
+					"column2Title": "Cloud configurations",
 					"column2": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "gD760jkD40xsJ5VKKDGCY",
-						"name": "Cloud Footer - Cloud Configurations",
+						"name": "Cloud Footer - Cloud configurations",
 						"displayText": "Cloud configurations",
 						"links": [
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
-								"displayText": "What is multi-cloud?",
-								"url": "/learning/cloud/what-is-multicloud/"
-							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
@@ -318,9 +366,15 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
-								"displayText": "What is a public cloud?",
-								"url": "/learning/cloud/what-is-a-public-cloud/"
+								"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
+								"displayText": "What is multi-cloud?",
+								"url": "/learning/cloud/what-is-multicloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+								"displayText": "Multitenancy",
+								"url": "/learning/cloud/what-is-multitenancy/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -330,17 +384,35 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
-								"displayText": "Multitenancy",
-								"url": "/learning/cloud/what-is-multitenancy/"
+								"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+								"displayText": "What is a public cloud?",
+								"url": "/learning/cloud/what-is-a-public-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3ogF8VqUtpwiX80xRDH9lQ",
+								"displayText": "How to rehost apps",
+								"url": "/learning/cloud/how-to-rehost-applications/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "nypSYuLAN0fI1HcJWLwj7",
+								"displayText": "How to replatform apps",
+								"url": "/learning/cloud/how-to-replatform-applications/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "174iXrdVMHuS7avH6ICSVG",
+								"displayText": "How to refactor apps",
+								"url": "/learning/cloud/how-to-refactor-applications/"
 							}
 						]
 					},
-					"column3Title": "Cloud Security",
+					"column3Title": "Cloud security",
 					"column3": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "5jkIKbYcSS95KrnsL6yhXO",
-						"name": "Cloud Footer - Cloud security",
+						"name": "Cloud footer — Cloud security",
 						"displayText": "Cloud security",
 						"links": [
 							{
@@ -348,6 +420,18 @@
 								"contentfulId": "kNE9anSSaRE82gAHCyVxp",
 								"displayText": "What is a cloud firewall (FWaaS)?",
 								"url": "/learning/cloud/what-is-a-cloud-firewall/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+								"displayText": "Cloud security posture management (CSPM)",
+								"url": "/learning/cloud/what-is-cspm/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+								"displayText": "Cloud workload protection platform (CWPP)",
+								"url": "/learning/cloud/what-is-cwpp/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -363,102 +447,36 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
-								"displayText": "Cloud security posture management (CSPM)",
-								"url": "/learning/cloud/what-is-cspm/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
 								"displayText": "SaaS security posture management (SSPM)",
 								"url": "/learning/cloud/what-is-sspm/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
-								"displayText": "Cloud workload protection platform (CWPP)",
-								"url": "/learning/cloud/what-is-cwpp/"
+								"contentfulId": "5xd2QLCI5QCkPAIoDk5CJ2",
+								"displayText": "Cloud-native security",
+								"url": "/learning/cloud/cloud-native-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1FHXopbTiAErueuQvbAXr6",
+								"displayText": "Cloud-native application protection platform (CNAPP)",
+								"url": "/learning/cloud/cnapp/"
 							}
 						]
 					},
-					"column4Title": "Cloud Glossary",
+					"column4Title": "Cloud glossary",
 					"column4": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "4ITdD1qcb1o7qstB32QX0V",
-						"name": "Cloud Footer - Glossary",
+						"name": "Cloud footer — Glossary",
 						"displayText": "Cloud glossary",
 						"links": [
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5k1A20zBRQpjW2079su8uz",
-								"displayText": "What is SaaS?",
-								"url": "/learning/cloud/what-is-saas/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
-								"displayText": "Cloud migration",
-								"url": "/learning/cloud/what-is-cloud-migration/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
-								"displayText": "Multi-cloud management",
-								"url": "/learning/cloud/what-is-multicloud-management/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
-								"displayText": "Hybrid cloud architecture",
-								"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
-								"displayText": "Multi-cloud vs hybrid cloud",
-								"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
-								"displayText": "Virtual machine",
-								"url": "/learning/cloud/what-is-a-virtual-machine/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
-								"displayText": "What is cloud storage?",
-								"url": "/learning/cloud/what-is-cloud-storage/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
-								"displayText": "Digital transformation",
-								"url": "/learning/cloud/what-is-digital-transformation/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "38DHkZos35DYciaxPnJk7g",
-								"displayText": "Vendor lock-in",
-								"url": "/learning/cloud/what-is-vendor-lock-in/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
-								"displayText": "What is IaaS?",
-								"url": "/learning/cloud/what-is-iaas/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "53Auemqu8excTZE8bzc7Zk",
-								"displayText": "Virtual private cloud",
-								"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
-								"displayText": "Cloud security",
-								"url": "/learning/cloud/what-is-cloud-security/"
+								"contentfulId": "2poSO07sAv136qKoXulTex",
+								"displayText": "AWS data transfer pricing",
+								"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -474,9 +492,63 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+								"displayText": "Cloud migration",
+								"url": "/learning/cloud/what-is-cloud-migration/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
+								"displayText": "Cloud security",
+								"url": "/learning/cloud/what-is-cloud-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+								"displayText": "What is cloud storage?",
+								"url": "/learning/cloud/what-is-cloud-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
 								"displayText": "Data egress fees",
 								"url": "/learning/cloud/what-are-data-egress-fees/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5tJVSh0zDmPqvoriPMSMuO",
+								"displayText": "What is a data lake?",
+								"url": "/learning/cloud/what-is-a-data-lake/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
+								"displayText": "Digital transformation",
+								"url": "/learning/cloud/what-is-digital-transformation/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
+								"displayText": "Hybrid cloud architecture",
+								"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
+								"displayText": "What is IaaS?",
+								"url": "/learning/cloud/what-is-iaas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+								"displayText": "Multi-cloud vs hybrid cloud",
+								"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
+								"displayText": "Multi-cloud management",
+								"url": "/learning/cloud/what-is-multicloud-management/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -492,13 +564,49 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "2poSO07sAv136qKoXulTex",
-								"displayText": "AWS data transfer pricing",
-								"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+								"contentfulId": "5k1A20zBRQpjW2079su8uz",
+								"displayText": "What is SaaS?",
+								"url": "/learning/cloud/what-is-saas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "38DHkZos35DYciaxPnJk7g",
+								"displayText": "Vendor lock-in",
+								"url": "/learning/cloud/what-is-vendor-lock-in/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
+								"displayText": "Virtual machine",
+								"url": "/learning/cloud/what-is-a-virtual-machine/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+								"displayText": "Virtual private cloud",
+								"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1w22mfnOVmsjLsM3jMxaAY",
+								"displayText": "Cloud networking",
+								"url": "/learning/cloud/what-is-cloud-networking/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "y0HrOCtfIQJ4B46NGM8aK",
+								"displayText": "Application modernization",
+								"url": "/learning/cloud/application-modernization/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "31LQEF639fG1XJWTZBqnNO",
+								"displayText": "Data migration",
+								"url": "/learning/cloud/what-is-data-migration/"
 							}
 						]
 					},
-					"column5Title": "Learning Center Navigation",
+					"column5Title": "Learning Center navigation",
 					"column5": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "3Z0WMXrDmdWdc5R8JIkDrG",
@@ -640,7 +748,7 @@
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is cloud security?</h2>\n\n<p>Cloud security is the set of strategies and practices for protecting data and applications that are hosted in <a href='/learning/cloud/what-is-the-cloud/'>the cloud</a>. Like cyber security, cloud security is a very broad area, and it is never possible to prevent every variety of attack. However, a well-designed cloud security strategy vastly reduces the risk of cyber attacks.</p>\n\n<p>Even with these risks, cloud computing is often more secure than on-premise computing. Most cloud providers have more resources for keeping data secure than individual businesses do, which lets cloud providers keep infrastructure up to date and patch vulnerabilities as soon as possible. A single business, on the other hand, may not have enough resources to perform these tasks consistently.</p>\n\n<p>Note: Cloud security is not the same thing as Security-as-a-Service (SECaaS or SaaS), which refers to security products hosted in the cloud.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the main cloud security risks?</h2>\n\n<p>Most cloud security risks fit into one of these general categories:</p>\n\n<ul class=\"learning-list\">\n  <li>Data is exposed or leaked</li>\n  <li>An unauthorized user from outside the organization has access to internal data</li>\n  <li>An internal, authorized user has too much access to internal data</li>\n  <li>A malicious attack, such as a <a href='/learning/ddos/what-is-a-ddos-attack/'>DDoS attack</a> or a <a href='/learning/ddos/glossary/malware/'>malware</a> infection, cripples or destroys cloud infrastructure</li>\n</ul>\n\n<p>The goal of a cloud security strategy is to reduce the threat posed by these risks as much as possible by protecting data, managing <a href='/learning/access-management/what-is-access-control/'>user authentication and access</a>, and staying operational in the face of an attack.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are some of the key technologies for cloud security?</h2>\n\n<p>A cloud security strategy should include all of the following technologies:</p>\n\n<p><strong>Encryption:</strong> <a href='/learning/ssl/what-is-encryption/'>Encryption</a> is a way of scrambling data so that only authorized parties can understand the information. If an attacker hacks into a company's cloud and finds unencrypted data, they are able to do any number of malicious actions with the data: leak it, sell it, use it to carry out further attacks, etc. However, if the company's data is encrypted, the attacker will only find scrambled data that cannot be used unless they somehow discover the <a href='/learning/ssl/what-is-a-cryptographic-key/'>decryption key</a> (which should be almost impossible). In this way, encryption helps prevent data leakage and exposure, even when other security measures fail.</p>\n\n<p>Data can be encrypted both at rest (when it is stored) or in transit (while it is sent from one place to another). Cloud data should be encrypted both at rest and in transit so that attackers cannot intercept and read it. Encrypting data in transit should address both data traveling between a cloud and a user, and data traveling from one cloud to another, as in a <a href='/learning/cloud/what-is-multicloud/'>multi-cloud</a> or <a href='/learning/cloud/what-is-hybrid-cloud/'>hybrid cloud</a> environment. Additionally, data should be encrypted when it is stored in a database or via a <a href='/learning/cloud/what-is-cloud-storage/'>cloud storage</a> service.</p>\n\n<p>If the clouds in a multi-cloud or hybrid cloud environment are connected at the <a href='/learning/network-layer/what-is-the-network-layer/'>network layer</a>, a <a href='/learning/access-management/what-is-a-vpn/'>VPN</a> can encrypt traffic between them. If they are connected at the application layer, SSL/TLS encryption should be used. <a href='/learning/ssl/what-is-ssl/'>SSL</a>/<a href='/learning/ssl/transport-layer-security-tls/'>TLS</a> should also encrypt traffic between a user and a cloud (see What Is <a href='/learning/ssl/what-is-https/'>HTTPS?</a>).</p>\n\n<p><strong>Identity and access management (IAM):</strong> <a href='/learning/access-management/what-is-identity-and-access-management/'>Identity and access management (IAM)</a> products track who a user is and what they are allowed to do, and they authorize users and deny access to unauthorized users as necessary. IAM is extremely important in cloud computing because a user's <a href='/learning/access-management/what-is-identity/'>identity</a> and access privileges determine whether they can access data, not the user's device or location.</p>\n\n<p>IAM helps reduce the threats of unauthorized users gaining access to internal assets and authorized users exceeding their privileges. The right IAM solution will help mitigate several kinds of attacks, including <a href='/learning/access-management/account-takeover/'>account takeover attacks</a> and <a href='/learning/access-management/what-is-an-insider-threat/'>insider threats</a> (when a user or employee abuses their access in order to expose data).</p>\n\n<p>IAM may include several different services, or it may be a single service that combines all of the following capabilities:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Identity providers (IdP)</strong> authenticate user identity</li>\n  <li><strong><a href='/learning/access-management/what-is-sso/'>Single sign-on (SSO)</a></strong> services help authenticate user identities for multiple applications, so that users only have to sign in once to access all their cloud services</li>\n  <li><strong><a href='/learning/access-management/what-is-multi-factor-authentication/'>Multi-factor authentication (MFA)</a></strong> services strengthen the user authentication process</li>\n  <li><strong><a href='/learning/access-management/what-is-access-control/'>Access control</a></strong> services allow and restrict user access</li>\n</ul>\n\n<p><strong>Firewall:</strong> A <a href='/learning/cloud/what-is-a-cloud-firewall/'>cloud firewall</a> provides a layer of protection around cloud assets by blocking malicious web traffic. Unlike traditional <a href='/learning/security/what-is-a-firewall/'>firewalls</a>, which are hosted on-premise and defend the network perimeter, cloud firewalls are hosted in the cloud and form a virtual security barrier around cloud infrastructure.</p>\n\n<p>Cloud firewalls block DDoS attacks, <a href='/learning/bots/what-is-bot-management/'>malicious bot activity</a>, and vulnerability exploits. This reduces the chances of a cyber attack crippling an organization's cloud infrastructure.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What other practices are important for keeping cloud data secure?</h2>\n\n<p>Implementing the above technologies (plus any additional cloud security products) is not enough, on its own, to protect cloud data. In addition to standard cyber security best practices, organizations that use the cloud should follow these cloud security practices:</p>\n\n<p><strong>Proper configuration of security settings for cloud servers:</strong> When a company does not set up their security settings properly, it can result in a <a href='/learning/security/what-is-a-data-breach/'>data breach</a>. Misconfigured cloud servers can <a href='https://www.helpnetsecurity.com/2019/09/23/s3-bucket-security/' target='_blank'>expose data directly</a> to the wider Internet. Configuring cloud security settings properly requires team members who are experts in working with each cloud, and may also require close collaboration with the cloud vendor.</p>\n\n<p><strong>Consistent security policies across all clouds and data centers:</strong> Security measures have to apply across a company's entire infrastructure, including <a href='/learning/cloud/what-is-a-public-cloud/'>public clouds</a>, <a href='/learning/cloud/what-is-a-virtual-private-cloud/'>private clouds</a>, and on-premises infrastructure. If one aspect of a company's cloud infrastructure — say, their public cloud service for big data processing — is not protected by encryption and strong user authentication, attackers are more likely to find and target the weak link.</p>\n\n<p><strong>Backup plans:</strong> As with any other type of security, there must be a plan for when things go wrong. To prevent data from getting lost or tampered with, data should be backed up in another cloud or on-premise. There should also be a <a href='/learning/performance/what-is-server-failover/'>failover</a> plan in place so that business processes are not interrupted if one cloud service fails. One of the advantages of multi-cloud and hybrid cloud deployments is that different clouds can be used as backup — for instance, <a href='/learning/cloud/what-is-cloud-storage/'>data storage in the cloud</a> can back up an on-premise database.</p>\n\n<p><strong>User and employee education:</strong> A large percentage of data breaches occur because a user was victimized by a <a href='/learning/access-management/phishing-attack/'>phishing attack</a>, unknowingly installed malware, used an outdated and vulnerable device, or practiced poor password hygiene (reusing the same password, writing their password down in a visible location, etc.). By educating their internal employees about security, businesses that operate in the cloud can reduce the risk of these occurrences. (The <a href='/learning/'>Cloudflare</a> Learning Center is a good resource for security education.)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare provide cloud computing security?</h2>\n\n<p>Cloudflare acts as a unified control plane for security across all types of cloud infrastructure, including multi-cloud and hybrid cloud environments. The Cloudflare product stack runs on a <a href='/network/'>global proxy network</a> that spans %{DataCenterCount} cities in more than %{CountryCount} countries, enabling companies to apply consistent security policies across all their clouds while also blocking DDoS attacks and vulnerability exploits. Using Cloudflare also reduces the risk of <a href='/learning/cloud/what-is-vendor-lock-in/'>vendor lock-in</a>.</p>\n",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is cloud security?</h2>\n\n<p>Cloud security is the set of strategies and practices for protecting data and applications that are hosted in <a href='/learning/cloud/what-is-the-cloud/'>the cloud</a>. Like cyber security, cloud security is a very broad area, and it is never possible to prevent every variety of attack. However, a well-designed cloud security strategy vastly reduces the risk of cyber attacks.</p>\n\n<p>Even with these risks, cloud computing is often more secure than on-premise computing. Most cloud providers have more resources for keeping data secure than individual businesses do, which lets cloud providers keep infrastructure up to date and patch vulnerabilities as soon as possible. A single business, on the other hand, may not have enough resources to perform these tasks consistently.</p>\n\n<p>Note: Cloud security is not the same thing as Security-as-a-Service (SECaaS or SaaS), which refers to security products hosted in the cloud.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the main cloud security risks?</h2>\n\n<p>Most cloud security risks fit into one of these general categories:</p>\n\n<ul class=\"learning-list\">\n  <li>Data is exposed or leaked</li>\n  <li>An unauthorized user from outside the organization has access to internal data</li>\n  <li>An internal, authorized user has too much access to internal data</li>\n  <li>A malicious attack, such as a <a href='/learning/ddos/what-is-a-ddos-attack/'>DDoS attack</a> or a <a href='/learning/ddos/glossary/malware/'>malware</a> infection, cripples or destroys cloud infrastructure</li>\n</ul>\n\n<p>The goal of a cloud security strategy is to reduce the threat posed by these risks as much as possible by protecting data, managing <a href='/learning/access-management/what-is-access-control/'>user authentication and access</a>, and staying operational in the face of an attack.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are some of the key technologies for cloud security?</h2>\n\n<p>A cloud security strategy should include all of the following technologies:</p>\n\n<p><strong>Encryption:</strong> <a href='/learning/ssl/what-is-encryption/'>Encryption</a> is a way of scrambling data so that only authorized parties can understand the information. If an attacker hacks into a company's cloud and finds unencrypted data, they are able to do any number of malicious actions with the data: leak it, sell it, use it to carry out further attacks, etc. However, if the company's data is encrypted, the attacker will only find scrambled data that cannot be used unless they somehow discover the <a href='/learning/ssl/what-is-a-cryptographic-key/'>decryption key</a> (which should be almost impossible). In this way, encryption helps prevent data leakage and exposure, even when other security measures fail.</p>\n\n<p>Data can be encrypted both at rest (when it is stored) or in transit (while it is sent from one place to another). Cloud data should be encrypted both at rest and in transit so that attackers cannot intercept and read it. Encrypting data in transit should address both data traveling between a cloud and a user, and data traveling from one cloud to another, as in a <a href='/learning/cloud/what-is-multicloud/'>multi-cloud</a> or <a href='/learning/cloud/what-is-hybrid-cloud/'>hybrid cloud</a> environment. Additionally, data should be encrypted when it is stored in a database or via a <a href='/learning/cloud/what-is-cloud-storage/'>cloud storage</a> service.</p>\n\n<p>If the clouds in a multi-cloud or hybrid cloud environment are connected at the <a href='/learning/network-layer/what-is-the-network-layer/'>network layer</a>, a <a href='/learning/access-management/what-is-a-vpn/'>VPN</a> can encrypt traffic between them. If they are connected at the application layer, SSL/TLS encryption should be used. <a href='/learning/ssl/what-is-ssl/'>SSL</a>/<a href='/learning/ssl/transport-layer-security-tls/'>TLS</a> should also encrypt traffic between a user and a cloud (see What Is <a href='/learning/ssl/what-is-https/'>HTTPS?</a>).</p>\n\n<p><strong>Identity and access management (IAM):</strong> <a href='/learning/access-management/what-is-identity-and-access-management/'>Identity and access management (IAM)</a> products track who a user is and what they are allowed to do, and they authorize users and deny access to unauthorized users as necessary. IAM is extremely important in cloud computing because a user's <a href='/learning/access-management/what-is-identity/'>identity</a> and access privileges determine whether they can access data, not the user's device or location.</p>\n\n<p>IAM helps reduce the threats of unauthorized users gaining access to internal assets and authorized users exceeding their privileges. The right IAM solution will help mitigate several kinds of attacks, including <a href='/learning/access-management/account-takeover/'>account takeover attacks</a> and <a href='/learning/access-management/what-is-an-insider-threat/'>insider threats</a> (when a user or employee abuses their access in order to expose data).</p>\n\n<p>IAM may include several different services, or it may be a single service that combines all of the following capabilities:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Identity providers (IdP)</strong> authenticate user identity</li>\n  <li><strong><a href='/learning/access-management/what-is-sso/'>Single sign-on (SSO)</a></strong> services help authenticate user identities for multiple applications, so that users only have to sign in once to access all their cloud services</li>\n  <li><strong><a href='/learning/access-management/what-is-multi-factor-authentication/'>Multi-factor authentication (MFA)</a></strong> services strengthen the user authentication process</li>\n  <li><strong><a href='/learning/access-management/what-is-access-control/'>Access control</a></strong> services allow and restrict user access</li>\n</ul>\n\n<p><strong>Firewall:</strong> A <a href='/learning/cloud/what-is-a-cloud-firewall/'>cloud firewall</a> provides a layer of protection around cloud assets by blocking malicious web traffic. Unlike traditional <a href='/learning/security/what-is-a-firewall/'>firewalls</a>, which are hosted on-premise and defend the network perimeter, cloud firewalls are hosted in the cloud and form a virtual security barrier around cloud infrastructure.</p>\n\n<p>Cloud firewalls block DDoS attacks, <a href='/learning/bots/what-is-bot-management/'>malicious bot activity</a>, and vulnerability exploits. This reduces the chances of a cyber attack crippling an organization's cloud infrastructure.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What other practices are important for keeping cloud data secure?</h2>\n\n<p>Implementing the above technologies (plus any additional cloud security products) is not enough, on its own, to protect cloud data. In addition to standard cyber security best practices, organizations that use the cloud should follow these cloud security practices:</p>\n\n<p><strong>Proper configuration of security settings for cloud servers:</strong> When a company does not set up their security settings properly, it can result in a <a href='/learning/security/what-is-a-data-breach/'>data breach</a>. Misconfigured cloud servers can <a href='https://www.helpnetsecurity.com/2019/09/23/s3-bucket-security/' target='_blank'>expose data directly</a> to the wider Internet. Configuring cloud security settings properly requires team members who are experts in working with each cloud, and may also require close collaboration with the cloud vendor.</p>\n\n<p><strong>Consistent security policies across all clouds and data centers:</strong> Security measures have to apply across a company's entire infrastructure, including <a href='/learning/cloud/what-is-a-public-cloud/'>public clouds</a>, <a href='/learning/cloud/what-is-a-virtual-private-cloud/'>private clouds</a>, and on-premises infrastructure. If one aspect of a company's cloud infrastructure — say, their public cloud service for big data processing — is not protected by encryption and strong user authentication, attackers are more likely to find and target the weak link.</p>\n\n<p><strong>Backup plans:</strong> As with any other type of security, there must be a plan for when things go wrong. To prevent data from getting lost or tampered with, data should be backed up in another cloud or on-premise. There should also be a <a href='/learning/performance/what-is-server-failover/'>failover</a> plan in place so that business processes are not interrupted if one cloud service fails. One of the advantages of multi-cloud and hybrid cloud deployments is that different clouds can be used as backup — for instance, <a href='/learning/cloud/what-is-cloud-storage/'>data storage in the cloud</a> can back up an on-premise database.</p>\n\n<p><strong>User and employee education:</strong> A large percentage of data breaches occur because a user was victimized by a <a href='/learning/access-management/phishing-attack/'>phishing attack</a>, unknowingly installed malware, used an outdated and vulnerable device, or practiced poor password hygiene (reusing the same password, writing their password down in a visible location, etc.). By educating their internal employees about security, businesses that operate in the cloud can reduce the risk of these occurrences. (The <a href='/learning/'>Cloudflare</a> Learning Center is a good resource for security education.)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare provide cloud computing security?</h2>\n\n<p>Cloudflare acts as a unified control plane for security across all types of cloud infrastructure, including multi-cloud and hybrid cloud environments. The Cloudflare product stack runs on a <a href='/network/'>global proxy network</a> that spans %{DataCenterCount} cities in more than %{CountryCount} countries, enabling companies to apply consistent security policies across all their clouds while also blocking DDoS attacks and vulnerability exploits. Using Cloudflare also reduces the risk of <a href='/learning/cloud/what-is-vendor-lock-in/'>vendor lock-in</a>.</p>\n\n<p>Learn how to improve cloud security with a <a href='https://www.cloudflare.com/connectivity-cloud/'>connectivity cloud</a>.</p>\n",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {
@@ -654,24 +762,90 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": null,
-				"sidebarForm": null
+				"proactivePopup": {
+					"contentTypeId": "proactivePopup",
+					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
+				},
+				"sidebarForm": {
+					"contentTypeId": "learningCenterArticleSidebarForm",
+					"contentfulId": "4ad3l3edBzH8KRefyi225g",
+					"heading": "Want to keep learning?",
+					"postSubmissionHeading": "Thank you for subscribing",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
+					"postSubmissionDescription": "We're looking forward to sharing content with you.",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
+						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
+						"backgroundColor": "blue",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": null,
+						"marketoFormDefaultComment": null,
+						"showCommentBox": null,
+						"marketoFormThankYouText": "Thank you for subscribing!",
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
+						"marketoFormSubmitButtonColor": null,
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					}
+				}
 			}
 		},
 		"pageContext": {
@@ -689,6 +863,7 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

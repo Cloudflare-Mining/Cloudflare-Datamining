@@ -79,6 +79,12 @@
 									"contentfulId": "24MOZlRUGXzizkNkiZSWPV",
 									"displayText": "Security service edge (SSE)",
 									"url": "/learning/access-management/security-service-edge-sse/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "77GMoHfbv1pOadgxJ3XFik",
+									"displayText": "How to implement Zero Trust",
+									"url": "/learning/access-management/how-to-implement-zero-trust/"
 								}
 							]
 						},
@@ -300,7 +306,7 @@
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "4NXJJdVvXOz7XxaX8QB6QK",
 									"displayText": "Network segmentation",
-									"url": "/learning/access-management/what-is-network-segmentation"
+									"url": "/learning/access-management/what-is-network-segmentation/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -513,6 +519,12 @@
 								"contentfulId": "6mO5Xax2Dr4MOVty2psUx3",
 								"displayText": "Microsegmentation",
 								"url": "/learning/access-management/what-is-microsegmentation/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "77GMoHfbv1pOadgxJ3XFik",
+								"displayText": "How to implement Zero Trust",
+								"url": "/learning/access-management/how-to-implement-zero-trust/"
 							}
 						]
 					},
@@ -632,7 +644,7 @@
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "4NXJJdVvXOz7XxaX8QB6QK",
 								"displayText": "Network segmentation",
-								"url": "/learning/access-management/what-is-network-segmentation"
+								"url": "/learning/access-management/what-is-network-segmentation/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -810,7 +822,7 @@
 					"Understand the security and performance benefits of network segmentation",
 					"Contrast network segmentation vs. microsegmentation"
 				],
-				"relatedContentLinkText": null,
+				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
@@ -844,20 +856,21 @@
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is network segmentation?</h2>\n\n<p>Network segmentation is the practice of dividing a <a href='/learning/network-layer/enterprise-networking/'>network</a>* into smaller, isolated sections. These partitions can be created and secured via physical hardware or software, each of which come with their own implementation challenges.</p>\n\n<p>By cordoning off different segments of a network, organizations can more easily prevent <a href='/learning/security/glossary/what-is-lateral-movement/'>lateral movement</a>, exert granular control over network traffic, and improve network performance. They may even set policies for individual workloads and applications, an approach known as <em>microsegmentation</em>.</p>\n\n<p>*<em>A network is a group of computers that are connected to each other.</em></p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does network segmentation work?</h2>\n\n<p>Network segmentation divides a network into multiple sections, to which different controls can then be applied. Typically, this process is performed using one of two methods: <em>physical segmentation</em> and <em>logical segmentation</em>.</p>\n\n<h4 class=\"learning-content-h4\">Physical segmentation</h4>\n\n<p>Physical segmentation requires hardware appliances — like <a href='/learning/network-layer/what-is-a-router/'>routers</a>, <a href='/learning/network-layer/what-is-a-network-switch/'>switches</a>, and <a href='/learning/security/what-is-a-firewall/'>firewalls</a> — to separate a network into discrete sections. These appliances control the type of traffic that is allowed to enter and exit each section via segmentation policies, which can be configured according to specific criteria (e.g. traffic source, destination, and so on).</p>\n\n<p>Physical segmentation (also called <em>perimeter-based segmentation</em>) is often expensive and labor-intensive to set up and maintain. It also operates under the assumption that most organizations still maintain a physical <a href='/learning/access-management/what-is-the-network-perimeter/'>network perimeter</a>.</p>\n\n<p>With the advent of <a href='/learning/cloud/what-is-the-cloud/'>cloud</a> computing, however, this perimeter has all but disappeared, as users can access data and applications over the Internet, rather than internal, IT-managed networks. Even organizations that use on-premises infrastructure often allow users to connect to internal resources from external devices and software.</p>\n\n<h4 class=\"learning-content-h4\">Logical segmentation</h4>\n\n<p>Logical segmentation, or <em>virtual network segmentation</em>, uses software to divide a network into smaller sections. These segments may be created via <a href='/learning/network-layer/what-is-a-subnet/'>subnetting</a>, <a href='/learning/network-layer/what-is-a-lan/'>virtual local area networks (VLANs)</a>, and network addressing schemes.</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Subnets</strong> help break a network into smaller segments, thereby allowing network traffic to travel a shorter distance without passing through unnecessary routers to reach its destination</li>\n  <li><strong>VLANs</strong> split traffic on a single physical network into two networks, without requiring multiple routers or Internet connections to route network traffic to different destinations</li>\n  <li><strong>Network addressing schemes</strong> create network segments by dividing network resources among multiple <a href='/learning/network-layer/what-is-the-network-layer/'>layer 3</a> subnets</li>\n</ul>\n\n<p>Like physical segmentation, logical segmentation also uses segmentation policies to restrict the flow of traffic into and out of each network segment.</p>\n\n<p>Because logical segmentation does not depend on configuring, maintaining, and updating multiple hardware appliances, it is widely considered to be a more flexible, scalable, and cost-effective method of separating and securing a network.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the benefits of network segmentation?</h2>\n\n<p>When properly implemented, network segmentation can help organizations make security, performance, and compliance improvements with greater efficiency. Several of the most significant advantages include the following:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Reducing lateral movement:</strong> Once attackers have breached a network, they cannot freely move throughout it, since they have only breached one specific segment of the network. This in turn helps minimize an organization's attack surface</li>\n  <li><strong>Remediating malicious activity:</strong> When an attack or suspicious activity is confined within a specific area, IT teams can more effectively detect and remediate it — without impacting the rest of the network</li>\n  <li><strong>Boosting performance:</strong> Restricting certain traffic types to specific areas of the network can help reduce overall network congestion and optimize performance</li>\n  <li><strong>Ensuring compliance:</strong> Segmentation can isolate areas of the network that are subject to compliance standards, making it easier to update them on an as-needed basis</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Network segmentation vs. microsegmentation</h2>\n\n<p>Network segmentation divides a network into smaller sections, to which different security controls and policies are applied.</p>\n\n<p>Microsegmentation, by contrast, is a subset of network segmentation that allows even more granular controls to be applied to individual workloads. (A workload is a program or application — like a server, <a href='/learning/cloud/what-is-a-virtual-machine/'>virtual machine</a>, or <a href='/learning/serverless/what-is-serverless/'>serverless</a> function — that uses a certain amount of memory and computing resources.) It is part of a <a href='/learning/security/glossary/what-is-zero-trust/'>Zero Trust security</a> model, in which no user or device is trusted by default.</p>\n\n<p>To better understand the security benefits of network segmentation vs. microsegmentation, imagine that a king has a large sum of gold and jewels he wants to protect. He might put all of his treasure into several secret vaults, each of which could only be unlocked using a specific key (network segmentation). If a thief stole a key to one vault, they might be able to steal the treasure inside of it, but would not be able to access additional vaults without stealing additional keys to those rooms. In the same way, an attacker that breaches one subnetwork may compromise the data within it, but will not be able to move freely to another subnetwork.</p>\n\n<p>Alternatively, the king could not only distribute his treasure among multiple vaults, but place them into locked chests within those rooms — and ensure that each box could only be unlocked with its own key (microsegmentation). That way, if a thief stole the key to one of the treasure vaults, they could not unlock the individual treasure chests without procuring additional keys. Similarly, in a microsegmented network, even if an attacker compromises one workload, they may not be able to compromise (or even access) additional workloads.</p>\n\n<p>Learn more about how microsegmentation <a href='/learning/access-management/what-is-microsegmentation/'>helps organizations achieve a Zero Trust security posture</a>.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is network segmentation?</h2>\n\n<p>Network segmentation is the practice of dividing a <a href='/learning/network-layer/enterprise-networking/'>network</a>* into smaller, isolated sections. These partitions can be created and secured via physical hardware or software, each of which come with their own implementation challenges.</p>\n\n<p>By cordoning off different segments of a network, organizations can more easily prevent <a href='/learning/security/glossary/what-is-lateral-movement/'>lateral movement</a>, exert granular control over network traffic, and improve network performance. They may even set policies for individual workloads and applications, an approach known as <em>microsegmentation</em>.</p>\n\n<p>*<em>A network is a group of computers that are connected to each other.</em></p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does network segmentation work?</h2>\n\n<p>Network segmentation divides a network into multiple sections, to which different controls can then be applied. Typically, this process is performed using one of two methods: <em>physical segmentation</em> and <em>logical segmentation</em>.</p>\n\n<h4 class=\"learning-content-h4\">Physical segmentation</h4>\n\n<p>Physical segmentation requires hardware appliances — like <a href='/learning/network-layer/what-is-a-router/'>routers</a>, <a href='/learning/network-layer/what-is-a-network-switch/'>switches</a>, and <a href='/learning/security/what-is-a-firewall/'>firewalls</a> — to separate a network into discrete sections. These appliances control the type of traffic that is allowed to enter and exit each section via segmentation policies, which can be configured according to specific criteria (e.g. traffic source, destination, and so on).</p>\n\n<p>Physical segmentation (also called <em>perimeter-based segmentation</em>) is often expensive and labor-intensive to set up and maintain. It also operates under the assumption that most organizations still maintain a physical <a href='/learning/access-management/what-is-the-network-perimeter/'>network perimeter</a>.</p>\n\n<p>With the advent of <a href='/learning/cloud/what-is-the-cloud/'>cloud</a> computing, however, this perimeter has all but disappeared, as users can access data and applications over the Internet, rather than internal, IT-managed networks. Even organizations that use on-premises infrastructure often allow users to connect to internal resources from external devices and software.</p>\n\n<h4 class=\"learning-content-h4\">Logical segmentation</h4>\n\n<p>Logical segmentation, or <em>virtual network segmentation</em>, uses software to divide a network into smaller sections. These segments may be created via <a href='/learning/network-layer/what-is-a-subnet/'>subnetting</a>, <a href='/learning/network-layer/what-is-a-lan/'>virtual local area networks (VLANs)</a>, and network addressing schemes.</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Subnets</strong> help break a network into smaller segments, thereby allowing network traffic to travel a shorter distance without passing through unnecessary routers to reach its destination</li>\n  <li><strong>VLANs</strong> split traffic on a single physical network into two networks, without requiring multiple routers or Internet connections to route network traffic to different destinations</li>\n  <li><strong>Network addressing schemes</strong> create network segments by dividing network resources among multiple <a href='/learning/network-layer/what-is-the-network-layer/'>layer 3</a> subnets</li>\n</ul>\n\n<p>Like physical segmentation, logical segmentation also uses segmentation policies to restrict the flow of traffic into and out of each network segment.</p>\n\n<p>Because logical segmentation does not depend on configuring, maintaining, and updating multiple hardware appliances, it is widely considered to be a more flexible, scalable, and cost-effective method of separating and securing a network.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the benefits of network segmentation?</h2>\n\n<p>When properly implemented, network segmentation can help organizations make security, performance, and compliance improvements with greater efficiency. Several of the most significant advantages include the following:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Reducing lateral movement:</strong> Once attackers have breached a network, they cannot freely move throughout it, since they have only breached one specific segment of the network. This in turn helps minimize an organization's <a href='https://www.cloudflare.com/learning/security/what-is-an-attack-surface/'>attack surface</a></li>\n  <li><strong>Remediating malicious activity:</strong> When an attack or suspicious activity is confined within a specific area, IT teams can more effectively detect and remediate it — without impacting the rest of the network</li>\n  <li><strong>Boosting performance:</strong> Restricting certain traffic types to specific areas of the network can help reduce overall network congestion and optimize performance</li>\n  <li><strong>Ensuring compliance:</strong> Segmentation can isolate areas of the network that are subject to compliance standards, making it easier to update them on an as-needed basis</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Network segmentation vs. microsegmentation</h2>\n\n<p>Network segmentation divides a network into smaller sections, to which different security controls and policies are applied.</p>\n\n<p>Microsegmentation, by contrast, is a subset of network segmentation that allows even more granular controls to be applied to individual workloads. (A workload is a program or application — like a server, <a href='/learning/cloud/what-is-a-virtual-machine/'>virtual machine</a>, or <a href='/learning/serverless/what-is-serverless/'>serverless</a> function — that uses a certain amount of memory and computing resources.) It is part of a <a href='/learning/security/glossary/what-is-zero-trust/'>Zero Trust security</a> model, in which no user or device is trusted by default.</p>\n\n<p>To better understand the security benefits of network segmentation vs. microsegmentation, imagine that a king has a large sum of gold and jewels he wants to protect. He might put all of his treasure into several secret vaults, each of which could only be unlocked using a specific key (network segmentation). If a thief stole a key to one vault, they might be able to steal the treasure inside of it, but would not be able to access additional vaults without stealing additional keys to those rooms. In the same way, an attacker that breaches one subnetwork may compromise the data within it, but will not be able to move freely to another subnetwork.</p>\n\n<p>Alternatively, the king could not only distribute his treasure among multiple vaults, but place them into locked chests within those rooms — and ensure that each box could only be unlocked with its own key (microsegmentation). That way, if a thief stole the key to one of the treasure vaults, they could not unlock the individual treasure chests without procuring additional keys. Similarly, in a microsegmented network, even if an attacker compromises one workload, they may not be able to compromise (or even access) additional workloads.</p>\n\n<p>Learn more about how microsegmentation <a href='/learning/access-management/what-is-microsegmentation/'>helps organizations achieve a Zero Trust security posture</a>.</p>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
-					"zhTW": "English for Locale",
-					"frFR": "English for Locale",
-					"deDE": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "English for Locale",
-					"koKR": "English for Locale",
-					"ptBR": "English for Locale",
-					"esES": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -869,13 +882,44 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "English for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"zhHansCN": "Translated for Locale",
+					"plPL": "English for Locale"
 				},
 				"proactivePopup": null,
-				"sidebarForm": null
+				"sidebarForm": {
+					"contentTypeId": "learningCenterArticleSidebarForm",
+					"contentfulId": "4ad3l3edBzH8KRefyi225g",
+					"heading": "Want to keep learning?",
+					"postSubmissionHeading": "Thank you for subscribing",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
+					"postSubmissionDescription": "We're looking forward to sharing content with you.",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
+						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
+						"backgroundColor": "blue",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": null,
+						"marketoFormDefaultComment": null,
+						"showCommentBox": null,
+						"marketoFormThankYouText": "Thank you for subscribing!",
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
+						"marketoFormSubmitButtonColor": null,
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					}
+				}
 			}
 		},
 		"pageContext": {
@@ -884,7 +928,17 @@
 			"pathname": "/learning/access-management/what-is-network-segmentation/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US"
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"es-LA",
+				"zh-Hans-CN"
 			]
 		}
 	}

@@ -9,13 +9,14 @@
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
 					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
+					"frFR": "English for Locale",
 					"deDE": "Translated for Locale",
 					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,8 +30,7 @@
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/api-security-management-influ",
 				"topNavOptions": "empty",
@@ -47,7 +47,12 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2023-05-01T17:29:11.807Z",
+					"updatedAt": "2023-12-26T06:25:16.195Z"
 				},
 				"contentfulId": "76FxqPuv1PPnXXIcWOFMHl",
 				"contentTypeId": "page",
@@ -132,44 +137,13 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5oKiDwCCuZdyLS4mgfzlpY",
-								"title": "Webinar: The growing threat to APIs—and how Cloudflare API Gateway can help",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "large",
-								"description": "Watch this discussion and demo of API Gateway and learn how to keep your APIs secure and productive. \n",
-								"learnMoreUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/3986673/the-growing-threat-to-apisand-how-cloudflare-api-gateway-can-help ",
-								"learnMoreText": "Register",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "71731ddf-9bf0-5da9-aaaf-a5a325490a41",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "78cRKnaQupntwlDGVJVItu",
 								"title": "Whitepaper: Cloudflare API Shield",
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": "large",
 								"description": "Download this whitepaper to see how leveraging Cloudflare as your API security gateway APIs will drive business like never before. ",
-								"learnMoreUrl": "https://www.cloudflare.com/static/c9653314980421a04154e7847bb1e537/API_Shield_data_sheet.pdf",
+								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/35K29X2CAwMZW8ixSrlI5E/f6b98a75c42f6e2f2e3aeb19c381812f/API_Shield_data_sheet.pdf",
 								"learnMoreText": "Download the whitepaper",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
@@ -235,7 +209,7 @@
 							"file": {
 								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/60WcAVhY8VMxw1bwvjBFEA/e88143abf3a5992971b9c0f418e0a313/api_shield_-2.png"
 							},
-							"description": "Illustration of a shield in front of a cloud"
+							"description": "Illustration of a shield securing a cloud and APIs"
 						},
 						"imageAssetFile": null,
 						"featureList": [],
@@ -404,7 +378,6 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"hasAdobeExperiment": null,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -422,17 +395,16 @@
 				"en-US",
 				"zh-CN",
 				"zh-TW",
-				"fr-FR",
 				"de-DE",
 				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

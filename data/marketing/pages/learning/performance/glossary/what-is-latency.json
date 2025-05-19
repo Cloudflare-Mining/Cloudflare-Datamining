@@ -166,7 +166,7 @@
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
 									"displayText": "What is HTTP/3?",
-									"url": "/learning/performance/what-is-http3"
+									"url": "/learning/performance/what-is-http3/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -185,6 +185,12 @@
 									"contentfulId": "5R3fPgXSxwahqmd0iGD7cd",
 									"displayText": "Digital experience monitoring (DEM)",
 									"url": "/learning/performance/what-is-digital-experience-monitoring/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4hXJMYjP1hdIbiiVUwShgR",
+									"displayText": "Application availability",
+									"url": "/learning/performance/glossary/application-availability/"
 								}
 							]
 						},
@@ -428,7 +434,7 @@
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
 								"displayText": "What is HTTP/3?",
-								"url": "/learning/performance/what-is-http3"
+								"url": "/learning/performance/what-is-http3/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -441,6 +447,12 @@
 								"contentfulId": "1P8TqkuttQTb2gZBWrIBnn",
 								"displayText": "Image compression",
 								"url": "/learning/performance/glossary/what-is-image-compression/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4hXJMYjP1hdIbiiVUwShgR",
+								"displayText": "Application availability",
+								"url": "/learning/performance/glossary/application-availability/"
 							}
 						]
 					},
@@ -585,39 +597,8 @@
 						"url": "/learning/performance/glossary/what-is-an-image-optimizer/"
 					}
 				],
-				"enablementBlade": {
-					"contentTypeId": "bladeEnablement",
-					"contentfulId": "4ErtkWJoXBNrWQbsA1HkBO",
-					"title": "Boost website performance with Cloudflare Pro and our speed tools add-ons",
-					"titleSize": null,
-					"backgroundColor": "image-background",
-					"buttonText": null,
-					"buttonUrl": null,
-					"buttonText2": null,
-					"buttonModalId2": null,
-					"buttonUrl2": null,
-					"bladeSizeType": "large",
-					"htmlId": null,
-					"bladeBorder": "none",
-					"buttonOne": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "2Z8ZTW2FAuJkd1zrwdftlI",
-						"elementName": "Boost website performance with Cloudflare Pro and speed tools add-ons - button",
-						"standardText": null,
-						"text": "Explore Bundles",
-						"url": "https://www.cloudflare.com/plans/pro/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": true,
-						"locale": "en-US"
-					},
-					"buttonTwo": null,
-					"sectionPadding": null,
-					"eyebrow": null
-				},
-				"desktopMainContent": "<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is latency?</h2>\n\n<p>Latency is the time it takes for data to pass from one point on a network to another. Suppose Server A in New York sends a <a href='/learning/network-layer/what-is-a-packet/'>data packet</a> to Server B in London. Server A sends the packet at 04:38:00.000 GMT and Server B receives it at 04:38:00.145 GMT. The amount of latency on this path is the difference between these two times: 0.145 seconds or 145 milliseconds.</p>\n\n<p>Most often, latency is measured between a user's device (the \"client\" device) and a <a href='/learning/cdn/glossary/data-center/'>data center</a>. This measurement helps developers understand how quickly a webpage or application will load for users.</p>\n\n<p>Although data on the Internet travels at the speed of light, the effects of distance and delays caused by Internet infrastructure equipment mean that latency can never be eliminated completely. It can and should, however, be minimized. A high amount of latency results in poor website performance, <a href='/learning/performance/how-website-speed-boosts-seo/'>negatively affects SEO</a>, and can induce users to leave the site or application altogether.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What causes Internet latency?</h2>\n\n<p>One of the principal causes of network latency is distance, specifically the distance between <a href='/learning/serverless/glossary/client-side-vs-server-side/'>client</a> devices making requests and the servers responding to those requests. If a website is hosted in a data center in Columbus, Ohio, it will receive requests fairly quickly from users in Cincinnati (about 100 miles away), likely within 5-10 milliseconds. On the other hand, requests from users in Los Angeles (about 2,200 miles away) will take longer to arrive, closer to 40-50 milliseconds.</p>\n\n<p>An increase of a few milliseconds may not seem like a lot, but this is compounded by all the back-and-forth communication necessary for the client and server to establish a connection, the total size and load time of the page, and any problems with the network equipment the data passes through along the way. The amount of time it takes for a response to reach a client device after a client request is known as <a href='/learning/cdn/glossary/round-trip-time-rtt/'>round trip time (RTT)</a>. RTT is equal to double the amount of latency, since data has to travel in both directions — there and back again.</p>\n\n<p>Data traversing the Internet usually has to cross not just one, but multiple networks. The more networks that an <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a> response needs to pass through, the more opportunities there are for delays. For example, as data packets cross between networks, they go through <a href='/learning/cdn/glossary/internet-exchange-point-ixp/'>Internet Exchange Points (IXPs)</a>. There, routers have to process and route the data packets, and at times routers may need to <a href='/learning/network-layer/what-is-mtu/'>break them up into smaller packets</a>, all of which adds a few milliseconds to RTT.</p>\n\n<h4 class=\"learning-content-h4\">Network latency, throughput, and bandwidth</h4>\n\n<p>Latency, bandwidth, and throughput are all interrelated, but they all measure different things. Bandwidth is the maximum amount of data that can pass through the network at any given time. Throughput is the average amount of data that actually passes through over a given period of time. Throughput is not necessarily equivalent to bandwidth, because it is affected by latency and other factors. Latency is a measurement of time, not of how much data is downloaded over time.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How can latency be reduced?</h2>\n\n<p>Use of a <a href='/learning/cdn/what-is-a-cdn/'>CDN</a> (content delivery network) is a major step towards reducing latency. A CDN <a href='/learning/cdn/what-is-caching/'>caches</a> static content and serves it to users. (The Cloudflare CDN makes it possible to cache dynamic content as well with <a href='/products/cloudflare-workers/'>Cloudflare Workers</a>.) CDN servers are distributed in multiple locations so that content is stored closer to end users and does not need to travel as far to reach them. This means that loading a webpage will take less time, improving website speed and performance.</p>\n\n<p>Other factors aside from latency can slow down performance as well. Web developers can minimize the number of render-blocking resources (loading JavaScript last, for example), <a href='/learning/performance/glossary/what-is-an-image-optimizer/'>optimize images</a> for faster loading, and reduce file sizes wherever possible. <a href='/learning/performance/why-minify-javascript-code/'>Code minification</a> is one way of reducing the size of JavaScript and CSS files.</p>\n\n<p>It is possible to improve perceived page performance by strategically loading certain assets first. A webpage can be configured to load the above-the-fold area of a page first so that users can begin interacting with the page even before it finishes loading (above the fold refers to what appears in a browser window before the user scrolls down). Webpages can also load assets only as they are needed, using a technique known as <a href='/learning/performance/what-is-lazy-loading/'>lazy loading</a>. These approaches do not actually improve network latency, but they do improve the user's perception of page speed.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How can users fix latency on their end?</h2>\n\n<p>Sometimes, network \"latency\" (slow network performance) is caused by issues on the user's side, not the server side. Consumers always have the option of purchasing more bandwidth if slow network performance is a consistent issue, although bandwidth is not a guarantee of website performance. Switching to Ethernet instead of WiFi will result in a more consistent Internet connection and typically improves Internet speed. Users should also make sure their Internet equipment is up to date by applying firmware updates regularly and replacing equipment altogether as necessary.</p>\n",
+				"enablementBlade": null,
+				"desktopMainContent": "<style>\n    a:hover { background-size: 100% 4em !important; color: var(--inline-link-color);\n }\n\n @media (max-width: 40rem) {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;\n     background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n .card_content-banner-lcnew { padding: 1rem;  display: grid;  grid-gap: 10px;}\n .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n   .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n .card_title-banner-lcnew span  {text-transform:uppercase; font-weight: 500 !important}\n .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n .card_content-banner-bt { align-self: center; justify-self: center;}\n .helper { grid-template-columns: 70% 1fr;}\n\n @media (max-width: 40rem) {\n   .cards-banner-lcnew {\n     grid-template-columns: unset;\n     padding: 0.75rem; display: flex; flex-direction: column;\n   }\n\n   .card_text-banner-lcnew {\n     line-height: 18px;\n   }\n   .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n   .card_content-banner-bt {align-self: end;}\n }\n\n </style> \n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is latency?</h2>\n\n<p>Latency is the time it takes for data to pass from one point on a network to another. Suppose Server A in New York sends a <a href='/learning/network-layer/what-is-a-packet/'>data packet</a> to Server B in London. Server A sends the packet at 04:38:00.000 GMT and Server B receives it at 04:38:00.145 GMT. The amount of latency on this path is the difference between these two times: 0.145 seconds or 145 milliseconds.</p>\n\n<p>Most often, latency is measured between a user's device (the \"client\" device) and a <a href='/learning/cdn/glossary/data-center/'>data center</a>. This measurement helps developers understand how quickly a webpage or application will load for users.</p>\n\n<p>Although data on the Internet travels at the speed of light, the effects of distance and delays caused by Internet infrastructure equipment mean that latency can never be eliminated completely. It can and should, however, be minimized. A high amount of latency results in poor website performance, <a href='/learning/performance/how-website-speed-boosts-seo/'>negatively affects SEO</a>, and can induce users to leave the site or application altogether.</p>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Improve security</span></div>\n        <div class=\"card_text-banner-lcnew\">Defend against \"Top 10\" attack techniques</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/application-services/products/waf/\" data-tracking-action=\"click\"\n                data-tracking-label=\"Learn more - /application-services/products/waf/\" data-tracking-category=\"card3\">Learn more</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What causes Internet latency?</h2>\n\n<p>One of the principal causes of network latency is distance, specifically the distance between <a href='/learning/serverless/glossary/client-side-vs-server-side/'>client</a> devices making requests and the servers responding to those requests. If a website is hosted in a data center in Columbus, Ohio, it will receive requests fairly quickly from users in Cincinnati (about 100 miles away), likely within 5-10 milliseconds. On the other hand, requests from users in Los Angeles (about 2,200 miles away) will take longer to arrive, closer to 40-50 milliseconds.</p>\n\n<p>An increase of a few milliseconds may not seem like a lot, but this is compounded by all the back-and-forth communication necessary for the client and server to establish a connection, the total size and load time of the page, and any problems with the network equipment the data passes through along the way. The amount of time it takes for a response to reach a client device after a client request is known as <a href='/learning/cdn/glossary/round-trip-time-rtt/'>round trip time (RTT)</a>. RTT is equal to double the amount of latency, since data has to travel in both directions — there and back again.</p>\n\n<p>Data traversing the Internet usually has to cross not just one, but multiple networks. The more networks that an <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a> response needs to pass through, the more opportunities there are for delays. For example, as data packets cross between networks, they go through <a href='/learning/cdn/glossary/internet-exchange-point-ixp/'>Internet Exchange Points (IXPs)</a>. There, routers have to process and route the data packets, and at times routers may need to <a href='/learning/network-layer/what-is-mtu/'>break them up into smaller packets</a>, all of which adds a few milliseconds to RTT.</p>\n\n<h4 class=\"learning-content-h4\">Network latency, throughput, and bandwidth</h4>\n\n<p>Latency, bandwidth, and throughput are all interrelated, but they all measure different things. Bandwidth is the maximum amount of data that can pass through the network at any given time. Throughput is the average amount of data that actually passes through over a given period of time. Throughput is not necessarily equivalent to bandwidth, because it is affected by latency and other factors. Latency is a measurement of time, not of how much data is downloaded over time.</p>\n\n<div class=\"cards-banner-lcnew helper\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Whitepaper</span></div>\n        <div class=\"card_text-banner-lcnew\">Optimize web performance load balancing best practices</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/lp/load-balancing-best-practices/\" data-tracking-action=\"click\"\n                data-tracking-label=\"Read the whitepaper - /lp/load-balancing-best-practices/\" data-tracking-category=\"card3\">Read the whitepaper</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How can latency be reduced?</h2>\n\n<p>Use of a <a href='/learning/cdn/what-is-a-cdn/'>CDN</a> (content delivery network) is a major step towards reducing latency. A CDN <a href='/learning/cdn/what-is-caching/'>caches</a> static content and serves it to users. (The Cloudflare CDN makes it possible to cache dynamic content as well with <a href='/products/cloudflare-workers/'>Cloudflare Workers</a>.) CDN servers are distributed in multiple locations so that content is stored closer to end users and does not need to travel as far to reach them. This means that loading a webpage will take less time, <a href='https://www.cloudflare.com/learning/performance/speed-up-a-website/'>improving website speed and performance</a>.</p>\n\n<p>Other factors aside from latency can slow down performance as well. Web developers can minimize the number of render-blocking resources (loading JavaScript last, for example), <a href='/learning/performance/glossary/what-is-an-image-optimizer/'>optimize images</a> for faster loading, and reduce file sizes wherever possible. <a href='/learning/performance/why-minify-javascript-code/'>Code minification</a> is one way of reducing the size of JavaScript and CSS files.</p>\n\n<p>It is possible to improve perceived page performance by strategically loading certain assets first. A webpage can be configured to load the above-the-fold area of a page first so that users can begin interacting with the page even before it finishes loading (above the fold refers to what appears in a browser window before the user scrolls down). Webpages can also load assets only as they are needed, using a technique known as <a href='/learning/performance/what-is-lazy-loading/'>lazy loading</a>. These approaches do not actually improve network latency, but they do improve the user's perception of page speed.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How can users fix latency on their end?</h2>\n\n<p>Sometimes, network \"latency\" (slow network performance) is caused by issues on the user's side, not the server side. Consumers always have the option of purchasing more bandwidth if slow network performance is a consistent issue, although bandwidth is not a guarantee of website performance. Switching to Ethernet instead of WiFi will result in a more consistent Internet connection and typically improves Internet speed. Users should also make sure their Internet equipment is up to date by applying firmware updates regularly and replacing equipment altogether as necessary.</p>\n",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {
@@ -626,26 +607,25 @@
 					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"plPL": "English for Locale"
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
@@ -687,7 +667,7 @@
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -709,7 +689,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -729,10 +709,12 @@
 				"zh-TW",
 				"fr-FR",
 				"de-DE",
+				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

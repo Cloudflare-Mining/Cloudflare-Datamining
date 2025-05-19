@@ -1,0 +1,864 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/dns/what-is-domain-hijacking/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "4QfMOgpVVhpm1VA9omkATd",
+				"urlSlug": "dns/what-is-domain-hijacking",
+				"metaTags": {
+					"metaTitle": "What is domain name hijacking? | Domain hijacking",
+					"metaDescription": "Domain hijacking is when attackers steal control of a domain name and its registrar account. Read how it works and learn ways to protect your domain name.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OJFDt9k0EfXiEVDqmq43G/64b9b3e172cb83f273964e90af38e89a/Cloudflare_default_OG_.png"
+						},
+						"description": null
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "7skJGddyApM6rrCZOvn9YF",
+					"learningCenterName": "dns",
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "2j9vWGfXAwGGPl7LN1Ezi7",
+							"displayText": "What is DNS?",
+							"url": "/learning/dns/what-is-dns/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "3noj8iKecv1MxsE67u045T",
+							"displayText": "What is 1.1.1.1?",
+							"url": "/learning/dns/what-is-1.1.1.1/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5H0d0oeRRCTIjGxZR65GiF",
+							"name": "DNS Records (dropdown)",
+							"displayText": "DNS Records",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "52pTZ4IwdIcqznT6vpOg8O",
+									"displayText": "Overview",
+									"url": "/learning/dns/dns-records/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6zoT4UnozC7f0YgaA4GayP",
+									"displayText": "DNS A Record",
+									"url": "/learning/dns/dns-records/dns-a-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "216n5uGl275SXOSCgPUKYE",
+									"displayText": "DNS AAAA Record",
+									"url": "/learning/dns/dns-records/dns-aaaa-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "25IZh36P1Hroccd1Hbn0J9",
+									"displayText": "DNS CNAME Record",
+									"url": "/learning/dns/dns-records/dns-cname-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3RB9F8AcZ12cYLoa88V0tw",
+									"displayText": "DNS MX Record",
+									"url": "/learning/dns/dns-records/dns-mx-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5POxZ3Tq5wtr5nvPh3EjOa",
+									"displayText": "DNS TXT Record",
+									"url": "/learning/dns/dns-records/dns-txt-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4PwRBNlUE7MUBPZhTVrFm7",
+									"displayText": "DNS NS Record",
+									"url": "/learning/dns/dns-records/dns-ns-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7JzBM5jTjsL8wyh3HOEmZx",
+									"displayText": "DNS SOA Record",
+									"url": "/learning/dns/dns-records/dns-soa-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "54EtZ8wu9XeFUmjpP4ffcM",
+									"displayText": "DNS SRV Record",
+									"url": "/learning/dns/dns-records/dns-srv-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3ZJqZzOr67RDB035iGoFfq",
+									"displayText": "DNS PTR Record",
+									"url": "/learning/dns/dns-records/dns-ptr-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4cRZgnJnlTJ0btlrWSVDQs",
+									"displayText": "DNSKEY and DS Records",
+									"url": "/learning/dns/dns-records/dnskey-ds-records/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5qZnEhej6gYQitbACd6zyl",
+									"displayText": "DNS SPF Record",
+									"url": "/learning/dns/dns-records/dns-spf-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4xfxdFdQt99i8HyQJnxrB1",
+									"displayText": "DNS DKIM Record",
+									"url": "/learning/dns/dns-records/dns-dkim-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Q49hOQqCkiSUJkM1OpfYS",
+									"displayText": "DNS DMARC Record",
+									"url": "/learning/dns/dns-records/dns-dmarc-record/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "3ZnjBOMP0HJxvAFLXbYSzJ",
+							"name": "DNS Header: Securing DNS drop-down",
+							"displayText": "Securing DNS",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
+									"displayText": "DNS over TLS",
+									"url": "/learning/dns/dns-over-tls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6eI7dSVO2bxGNiIj6iKq0n",
+									"displayText": "DNS security",
+									"url": "/learning/dns/dns-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2PaGg8hMqJM1igspXYbvv3",
+									"displayText": "DNS Cache Poisoning",
+									"url": "/learning/dns/dns-cache-poisoning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
+									"displayText": "DNS Fast Flux",
+									"url": "/learning/dns/dns-fast-flux/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+									"displayText": "Domain hijacking",
+									"url": "/learning/dns/what-is-domain-hijacking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+									"displayText": "Common DNS issues",
+									"url": "/learning/dns/common-dns-issues/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2AtQTtUFJafy4cPr8qwVxS",
+							"name": "DNS Header: Domain Registration drop-down",
+							"displayText": "Domain Registration",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1ikXSOCWeoGFzBnkDIwuMY",
+									"displayText": "Domain Name",
+									"url": "/learning/dns/glossary/what-is-a-domain-name/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
+									"displayText": "Top-Level Domain",
+									"url": "/learning/dns/top-level-domain/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2h2AMLDpLE26iXPuwzXW9I",
+									"displayText": "Domain name registrar",
+									"url": "/learning/dns/glossary/what-is-a-domain-name-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7nawVf9j5ZfeeEDxxQkox6",
+									"displayText": "Best Domain Name Registrar",
+									"url": "/learning/dns/glossary/choose-the-best-domain-name-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4EJToFmoxmGMpGfGw62Uwb",
+									"displayText": "Expired Domains",
+									"url": "/learning/dns/glossary/expired-domains/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
+									"displayText": "Cloudflare Registrar",
+									"url": "/learning/dns/what-is-cloudflare-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+									"displayText": "How to buy a domain name",
+									"url": "/learning/dns/how-to-buy-a-domain-name/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+									"displayText": "How to transfer a domain name",
+									"url": "/learning/dns/how-to-transfer-a-domain-name/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1KSq89nu1bbMJ3FMyFOV0S",
+							"name": "DNS Header: Glossary ",
+							"displayText": "DNS Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "499ZJa7WyHPnVn7bN9oWez",
+									"displayText": "DNS Zone",
+									"url": "/learning/dns/glossary/dns-zone/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Zxjal5K4Ftso190MOHh5b",
+									"displayText": "IP Address",
+									"url": "/learning/dns/glossary/what-is-my-ip-address/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5OM8E8MngEWEbPk2z3dL8K",
+									"displayText": "What's a DNS Server?",
+									"url": "/learning/dns/what-is-a-dns-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "zUbDVzpVYeLJyroEFft7S",
+									"displayText": "DNS Root Server",
+									"url": "/learning/dns/glossary/dns-root-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "70gaOJdXvkgXzRRApB6HkS",
+									"displayText": "Dynamic DNS",
+									"url": "/learning/dns/glossary/dynamic-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5io6sFzA7GqUtf7iJ48iDZ",
+									"displayText": "Reverse DNS",
+									"url": "/learning/dns/glossary/reverse-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5IMnlrCJD7x0FVpewqkOIR",
+									"displayText": "Primary vs. secondary DNS",
+									"url": "/learning/dns/glossary/primary-secondary-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3SokyTEzCKuAzAad9haVI9",
+									"displayText": "Round-robin DNS",
+									"url": "/learning/dns/glossary/round-robin-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5n1f5p2zH49IYRP3FcVzjQ",
+									"displayText": "Anycast DNS",
+									"url": "/learning/dns/what-is-anycast-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1vco0E7j6jTBPLi9OYJ6eO",
+									"displayText": "Recursive DNS",
+									"url": "/learning/dns/what-is-recursive-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3MOZsA9003MKQ1GDZMGFY5",
+									"displayText": "DNS Server Types",
+									"url": "/learning/dns/dns-server-types/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7LEmGmCIHDsIsBT3vXJtG6",
+							"name": "DNS Header: theNET",
+							"displayText": "theNET",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1n7zfUXeehnxV53QhYGE36",
+									"displayText": "The evolving DNS threat landscape",
+									"url": "http://www.cloudflare.com/learning/insights-dns-landscape"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5bnkrucwjePapZ8qR6nc2D",
+							"name": "DNSSEC Protection",
+							"displayText": "DNSSEC Protection",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1FwG3Iiux41pJ6OLW8kRsW",
+									"displayText": "How DNSSEC Works",
+									"url": "learning/dns/dnssec/how-dnssec-works/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6FnRKWe14VFgollBzoepo9",
+									"displayText": "The DNSSEC Root Signing Ceremony",
+									"url": "learning/dns/dnssec/root-signing-ceremony/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "apgrV3UywiWRwe78tsxSg",
+									"displayText": "ECDSA: The missing piece of DNSSEC",
+									"url": "learning/dns/dnssec/ecdsa-and-dnssec/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "59YqILiJbj7grfW3aTGPj7",
+									"displayText": "Universal DNSSEC",
+									"url": "learning/dns/dnssec/universal-dnssec/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "7pedUTjJAQ6HVpZxZEQCUP",
+					"learningCenterName": "dns",
+					"column1Title": "About DNS",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5bri15IPDKK6k63oZBUMsj",
+						"name": "DNS Footer: About DNS",
+						"displayText": "About DNS",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2j9vWGfXAwGGPl7LN1Ezi7",
+								"displayText": "What is DNS?",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6eI7dSVO2bxGNiIj6iKq0n",
+								"displayText": "DNS security",
+								"url": "/learning/dns/dns-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
+								"displayText": "DNS over TLS",
+								"url": "/learning/dns/dns-over-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+								"displayText": "How to buy a domain name",
+								"url": "/learning/dns/how-to-buy-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+								"displayText": "How to transfer a domain name",
+								"url": "/learning/dns/how-to-transfer-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+								"displayText": "Common DNS issues",
+								"url": "/learning/dns/common-dns-issues/"
+							}
+						]
+					},
+					"column2Title": "DNS Servers",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "6phQ5syd9rr3QdKWNSj1D8",
+						"name": "DNS Footer: DNS Servers",
+						"displayText": "DNS Servers",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5OM8E8MngEWEbPk2z3dL8K",
+								"displayText": "What's a DNS Server?",
+								"url": "/learning/dns/what-is-a-dns-server/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "zUbDVzpVYeLJyroEFft7S",
+								"displayText": "DNS Root Server",
+								"url": "/learning/dns/glossary/dns-root-server/"
+							}
+						]
+					},
+					"column3Title": "DNS Records",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7dBB0Vi2GBftSRtz2gOXAE",
+						"name": "DNS Footer: DNS Records",
+						"displayText": "DNS Records",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52pTZ4IwdIcqznT6vpOg8O",
+								"displayText": "Overview",
+								"url": "/learning/dns/dns-records/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6zoT4UnozC7f0YgaA4GayP",
+								"displayText": "DNS A Record",
+								"url": "/learning/dns/dns-records/dns-a-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "216n5uGl275SXOSCgPUKYE",
+								"displayText": "DNS AAAA Record",
+								"url": "/learning/dns/dns-records/dns-aaaa-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "25IZh36P1Hroccd1Hbn0J9",
+								"displayText": "DNS CNAME Record",
+								"url": "/learning/dns/dns-records/dns-cname-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3RB9F8AcZ12cYLoa88V0tw",
+								"displayText": "DNS MX Record",
+								"url": "/learning/dns/dns-records/dns-mx-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5POxZ3Tq5wtr5nvPh3EjOa",
+								"displayText": "DNS TXT Record",
+								"url": "/learning/dns/dns-records/dns-txt-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4PwRBNlUE7MUBPZhTVrFm7",
+								"displayText": "DNS NS Record",
+								"url": "/learning/dns/dns-records/dns-ns-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7JzBM5jTjsL8wyh3HOEmZx",
+								"displayText": "DNS SOA Record",
+								"url": "/learning/dns/dns-records/dns-soa-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "54EtZ8wu9XeFUmjpP4ffcM",
+								"displayText": "DNS SRV Record",
+								"url": "/learning/dns/dns-records/dns-srv-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3ZJqZzOr67RDB035iGoFfq",
+								"displayText": "DNS PTR Record",
+								"url": "/learning/dns/dns-records/dns-ptr-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4cRZgnJnlTJ0btlrWSVDQs",
+								"displayText": "DNSKEY and DS Records",
+								"url": "/learning/dns/dns-records/dnskey-ds-records/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5qZnEhej6gYQitbACd6zyl",
+								"displayText": "DNS SPF Record",
+								"url": "/learning/dns/dns-records/dns-spf-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4xfxdFdQt99i8HyQJnxrB1",
+								"displayText": "DNS DKIM Record",
+								"url": "/learning/dns/dns-records/dns-dkim-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q49hOQqCkiSUJkM1OpfYS",
+								"displayText": "DNS DMARC Record",
+								"url": "/learning/dns/dns-records/dns-dmarc-record/"
+							}
+						]
+					},
+					"column4Title": "DNS Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5WMBaCE7sRnxCptrlp0KcN",
+						"name": "DNS Footer: Glossary",
+						"displayText": "DNS Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3noj8iKecv1MxsE67u045T",
+								"displayText": "What is 1.1.1.1?",
+								"url": "/learning/dns/what-is-1.1.1.1/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6v4wbr2ex8UmyM5nD2kkKL",
+								"displayText": "What is My IP Address?",
+								"url": "/learning/dns/glossary/what-is-my-ip-address/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "499ZJa7WyHPnVn7bN9oWez",
+								"displayText": "DNS Zone",
+								"url": "/learning/dns/glossary/dns-zone/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "70gaOJdXvkgXzRRApB6HkS",
+								"displayText": "Dynamic DNS",
+								"url": "/learning/dns/glossary/dynamic-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5io6sFzA7GqUtf7iJ48iDZ",
+								"displayText": "Reverse DNS",
+								"url": "/learning/dns/glossary/reverse-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5IMnlrCJD7x0FVpewqkOIR",
+								"displayText": "Primary vs. secondary DNS",
+								"url": "/learning/dns/glossary/primary-secondary-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3SokyTEzCKuAzAad9haVI9",
+								"displayText": "Round-robin DNS",
+								"url": "/learning/dns/glossary/round-robin-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5n1f5p2zH49IYRP3FcVzjQ",
+								"displayText": "Anycast DNS",
+								"url": "/learning/dns/what-is-anycast-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1vco0E7j6jTBPLi9OYJ6eO",
+								"displayText": "Recursive DNS",
+								"url": "/learning/dns/what-is-recursive-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2PaGg8hMqJM1igspXYbvv3",
+								"displayText": "DNS Cache Poisoning",
+								"url": "/learning/dns/dns-cache-poisoning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1ikXSOCWeoGFzBnkDIwuMY",
+								"displayText": "Domain Name",
+								"url": "/learning/dns/glossary/what-is-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2h2AMLDpLE26iXPuwzXW9I",
+								"displayText": "Domain name registrar",
+								"url": "/learning/dns/glossary/what-is-a-domain-name-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7nawVf9j5ZfeeEDxxQkox6",
+								"displayText": "Best Domain Name Registrar",
+								"url": "/learning/dns/glossary/choose-the-best-domain-name-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4EJToFmoxmGMpGfGw62Uwb",
+								"displayText": "Expired Domains",
+								"url": "/learning/dns/glossary/expired-domains/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
+								"displayText": "Cloudflare Registrar",
+								"url": "/learning/dns/what-is-cloudflare-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
+								"displayText": "DNS Fast Flux",
+								"url": "/learning/dns/dns-fast-flux/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
+								"displayText": "Top-Level Domain",
+								"url": "/learning/dns/top-level-domain/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+								"displayText": "Domain hijacking",
+								"url": "/learning/dns/what-is-domain-hijacking/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2FBivsdi2bchWEIqvMoEJ",
+						"name": "DNS Footer: Learning Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7CoqFqlHQVmsyV0mxgXUs2",
+								"displayText": "AI Learning Center",
+								"url": "/learning/ai/what-is-artificial-intelligence/"
+							}
+						]
+					}
+				},
+				"header": "What is domain hijacking?",
+				"blurbSubHeader": "When an attacker hijacks a domain, the owner no longer has control over the site content, email, or any other app services that rely on the domain name. \n",
+				"objectivesHeader": "Domain Hijacking",
+				"objectivesList": [
+					"Define domain hijacking",
+					"Explain how domain hijacking occurs",
+					"Differentiate between domain hijacking, DNS hijacking, and domain spoofing",
+					"Understand ways to protect against domain name hijacking"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1ikXSOCWeoGFzBnkDIwuMY",
+						"displayText": "Domain Name",
+						"url": "/learning/dns/glossary/what-is-a-domain-name/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2h2AMLDpLE26iXPuwzXW9I",
+						"displayText": "Domain name registrar",
+						"url": "/learning/dns/glossary/what-is-a-domain-name-registrar/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2j9vWGfXAwGGPl7LN1Ezi7",
+						"displayText": "What is DNS?",
+						"url": "/learning/dns/what-is-dns/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2PaGg8hMqJM1igspXYbvv3",
+						"displayText": "DNS Cache Poisoning",
+						"url": "/learning/dns/dns-cache-poisoning/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+						"displayText": "How to transfer a domain name",
+						"url": "/learning/dns/how-to-transfer-a-domain-name/"
+					}
+				],
+				"enablementBlade": null,
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">\n  What is domain hijacking?\n</h2>\n\n<p>\n  Domain hijacking is when an attacker takes control over a <a\n    href=\"/learning/dns/glossary/what-is-a-domain-name/\">domain name</a\n  >, typically through <a href=\"/learning/security/threats/social-engineering-attack/\"\n    >social engineering</a\n  >. A domain name is the unique, easy-to-remember address used to connect users to websites, and\n  the foundation upon which an organization's public-facing Internet identity is built.\n</p>\n\n<p>\n  When an attacker successfully hijacks a domain, the legitimate owner loses control over all of\n  their many domain-linked services. That includes website content, corporate email, <a\n    href=\"/learning/video/what-is-voip/\">VoIP</a\n  > call centers, <a href=\"/learning/cloud/what-is-cloud-storage/\">cloud storage</a> services, and other\n  apps associated with the domain. This makes domain name hijacking one of the biggest online threats\n  to one's brand, revenue, and reputation.\n</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do domains work?</h2>\n\n<p>\n  Domain names make it easier to access websites without having to remember alphanumeric <a\n    href=\"/learning/dns/glossary/what-is-my-ip-address/\">IP addresses</a\n  >. Domain names are matched to IP addresses thanks to the <a href=\"/learning/dns/what-is-dns/\"\n    >Domain Name System (DNS)</a\n  >, which acts as the Internet's phonebook.\n</p>\n\n<p>\n  Domains are established through <a href=\"/learning/dns/glossary/what-is-a-domain-name-registrar/\"\n    >domain name registrars</a\n  >. When it comes to obtaining a domain, there are two key players: registrars and registries.\n  Think of registries (such as VeriSign) as wholesalers, and registrars as the retailers. Registries\n  own the database of all registered domains within a TLD. They delegate the reservation of <a\n    href=\"https://domains.cloudflare.com/\"\n    target=\"_blank\">available domain names</a\n  > to registrars. In turn, registrars — of which <a\n    href=\"https://www.icann.org/en/accredited-registrars\"\n    target=\"_blank\">there are thousands</a\n  > — \"sell\" (or rather lease) domain names to end users for a certain timeframe.\n</p>\n\n<p>\n  Domain names are comprised of two or three parts, each separated by a dot. When read\n  right-to-left, the identifiers in domain names go from most general to most specific:\n</p>\n\n<ul class=\"learning-list\">\n  <li>\n    The section to the right of the last dot in a domain name is the <a\n      href=\"/learning/dns/top-level-domain/\">top-level domain (TLD)</a\n    >. Examples of TLDs include \".com\", \".net\", \".co\", \".uk\", and \".in.\"\n  </li>\n  <li>\n    To the left of the TLD is the second-level domain (2LD) — and if there is anything to the left\n    of the 2LD, it is called the third-level domain (3LD).\n  </li>\n</ul>\n\n<img\n  src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/1oiwEAYsdXxA0OzPTmmMIh/113818b759636e0711e06fc71075c6fb/domain-name-tld-2ld-3ld-example.png\"\n  class=\"responsive-image\"\n  alt=\"Examples of TLD, 2LD, and 3LD in a domain name\"\n  itemprop=\"image\"\n/>\n\n<p>\n  To help prevent unauthorized domain name modifications, domain owners can apply \"client\" locks\n  (registrar locks) through their registrar. Registries apply \"server\" locks, also known as registry\n  locks. However, if an attacker gains the proper account access, they can remove domain locks and\n  make unauthorized registrar changes.\n</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does domain hijacking occur?</h2>\n\n<p>There are many ways for a domain to be hijacked. For example:</p>\n\n<ul class=\"learning-list\">\n  <li>\n    <strong>Social engineering and phishing schemes:</strong> Broadly speaking, social engineering is\n    any attack that manipulates people into giving up sensitive information. For instance, an attacker\n    sends the intended victim a legitimate-looking <a\n      href=\"/learning/access-management/phishing-attack/\">phishing email</a\n    > that appears to be from the registrar. The recipient clicks one of the email's links, thinking\n    it will take them to the registrar's website, but it actually points them to a spoofed domain designed to steal their registrar login credentials.\n  </li>\n  <li>\n    <strong>Exploiting dormant or expiring domains:</strong> Most domain names can only be registered\n    for up to 10 years at a time. It is the responsibility of the registrar to alert its customers when\n    their <a href=\"/learning/dns/glossary/expired-domains/\">domains are set to expire</a>. However,\n    if the end user fails to properly renew their domain (or fails to properly decommission the\n    domain), an attacker can purchase and exploit the domain.\n  </li>\n  <li>\n    <strong>Registrar breaches:</strong> Attackers may also exploit registrar vulnerabilities. For example,\n    when Squarespace was in the midst of migrating roughly 10 million domain names from Google Domains,\n    <a\n      href=\"https://www.securityweek.com/hackers-exploit-flaw-in-squarespace-migration-to-hijack-domains/\"\n      target=\"_blank\">attackers exploited a flaw</a\n    > that allowed them to take over accounts and modify <a href=\"/learning/dns/dns-records/\"\n      >DNS records</a\n    > (specifically those of certain crypto and blockchain companies). Then, attackers redirected visitors\n    to phishing sites attempting to steal tokens and other digital currency.\n  </li>\n  <li>\n    <strong>Compromised API keys:</strong>\n    <a href=\"/learning/security/api/what-is-an-api/\">API</a> keys and other <a\n      href=\"/learning/access-management/token-based-authentication/\">authentication tokens</a\n    > are designed to allow applications to access online accounts — such as certain domain services\n    — via an API. If those keys are exposed or accidentally leaked, they could provide access to an organization's\n    registrar account.\n  </li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the impact of domain hijacking?</h2>\n\n<p>\n  Once a domain has been successfully compromised, attackers can disrupt a myriad of web operations.\n  For example, they can:\n</p>\n\n<ul class=\"learning-list\">\n  <li>Change the content of the original site</li>\n  <li>Redirect visitors to a different, malicious site</li>\n  <li>Divert online payments to attacker-controlled accounts</li>\n  <li>\n    Send spam and phishing emails from the domain's <a\n      href=\"/learning/email-security/what-is-a-mail-server/\">mail server</a\n    >\n  </li>\n  <li>Read sensitive emails sent to corporate inboxes</li>\n  <li>\n    Change <a href=\"/learning/security/api/what-is-api-call/\">API calls</a> to disrupt an organization's\n    mobile apps and other digital services\n  </li>\n</ul>\n\n<p>\n  It is simple enough to <a href=\"/learning/dns/how-to-transfer-a-domain-name/\">transfer domains</a>\n  between registrars, but it is very difficult to recover a stolen domain. It can take weeks, or even\n  months. It may even require legal action. Part of what makes it so difficult is that the proper documentation\n  might live in systems (such as corporate email) that the original domain owner can no longer access.\n  The domain could be recovered in a few days; or, the original (legitimate) owner may never get their\n  stolen domain back.\n</p>\n\n<p>\n  Regardless of the outcome, a hijacked domain can ultimately lead to serious financial,\n  reputational, and even regulatory consequences.\n</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Domain hijacking vs. domain spoofing</h2>\n\n<p>\n  In domain hijacking, the attacker steals the legitimately registered domain name. <a\n    href=\"/learning/ssl/what-is-domain-spoofing/\">Domain spoofing</a\n  > is when cyber criminals create a fake website or email domain to try to fool users — like a con artist\n  who shows someone fake credentials to gain their trust. Attackers do not need to take over a registrar\n  account in order to spoof a domain.\n</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Domain hijacking vs. DNS hijacking</h2>\n\n<p>\n  Domain hijacking — which compromises the domain itself — is different from <a\n    href=\"/learning/security/global-dns-hijacking-threat/\"\n    >DNS hijacking</a\n  > (also known as DNS poisoning). In DNS hijacking, an attacker targets the DNS record of the website\n  on the nameserver.\n</p>\n\n<p>\n  <a href=\"/learning/dns/dns-records/dns-ns-record/\">Nameserver records</a> basically tell the Internet\n  where to go to find out a domain's IP address. If the nameserver records are improperly configured\n  (i.e., \"<a href=\"/learning/dns/dns-cache-poisoning/\">poisoned</a>\"), attackers can divert queries\n  to a different domain nameserver. Instead of loading the correct website or application, for\n  example, user traffic may be diverted to a destination that is a replica of the original site but\n  distributes <a href=\"/learning/ddos/glossary/malware/\">malware</a>.\n</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to prevent domain hijacking</h2>\n\n<p>\n  The simplest way for organizations to protect themselves against domain hijacking is to <a\n    href=\"/learning//dns/glossary/choose-the-best-domain-name-registrar/\">choose a reputable domain registrar</a> who offers strong security measures. Look for features such as:\n</p>\n\n<ul class=\"learning-list\">\n  <li>\n    <strong>Two-factor authentication (2FA):</strong>\n    <a href=\"/learning/access-management/what-is-two-factor-authentication/\">2FA</a> requires all registrant\n    account holders to prove their identity in two different ways before being granted access.\n  </li>\n  <li>\n    <strong>Privacy for domain registration:</strong> Domain privacy services can redact domain registrant\n    contact information from public records.\n  </li>\n  <li>\n    <strong>Registrar lock:</strong> Many mass-market registrars support registrar lock, which prevents\n    the registry from altering information unless the registrant explicitly removes the lock.\n  </li>\n  <li>\n    <strong>Registry lock:</strong> Registry lock is a higher level of security that requires multiple\n    independent, offline verification sources and steps.\n  </li>\n  <li>\n    <strong>Renewal grace periods:</strong> A grace period after expiration can help customers who missed\n    the expiration deadline. This can even affect users who were on auto-renewal, if their credit card\n    on file has expired. Choosing a registrar with a grace period is essential for thwarting attackers\n    actively looking to exploit expiring domains.\n  </li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">\n  How Cloudflare helps prevent domain hijacking\n</h2>\n\n<p>\n  Cloudflare's domain name registrar service, <a href=\"/products/registrar/\" target=\"_blank\"\n    >Cloudflare Registrar</a\n  >, offers Enterprise plan customers with <a\n    href=\"/products/registrar/custom-domain-protection/\"\n    target=\"_blank\">Custom Domain Protection</a\n  > to prevent domain hijacking. With Custom Domain Protection, any changes to domain ownership or nameserver\n  are verified and executed manually. The strict change protocol helps ensure any changes are approved\n  by organizations directly.\n</p>\n\n<p>\n  Cloudflare Registrar also includes built-in, <a\n    href=\"https://developers.cloudflare.com/dns/dnssec/\"\n    target=\"_blank\">universal DNSSEC</a\n  > for all domains to protect domains against a wide spectrum of DNS-based attacks.\n</p>",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "Translated for Locale",
+					"plPL": "English for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": {
+					"contentTypeId": "learningCenterArticleSidebarForm",
+					"contentfulId": "4ad3l3edBzH8KRefyi225g",
+					"heading": "Want to keep learning?",
+					"postSubmissionHeading": "Thank you for subscribing",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
+					"postSubmissionDescription": "We're looking forward to sharing content with you.",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
+						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
+						"backgroundColor": "blue",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": null,
+						"marketoFormDefaultComment": null,
+						"showCommentBox": null,
+						"marketoFormThankYouText": "Thank you for subscribing!",
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
+						"marketoFormSubmitButtonColor": null,
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					}
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4QfMOgpVVhpm1VA9omkATd",
+			"pathname": "/learning/dns/what-is-domain-hijacking/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"es-LA",
+				"zh-Hans-CN"
+			]
+		}
+	}
+}

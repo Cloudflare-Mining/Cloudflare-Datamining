@@ -164,6 +164,18 @@
 									"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
 									"displayText": "DNS Fast Flux",
 									"url": "/learning/dns/dns-fast-flux/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+									"displayText": "Domain hijacking",
+									"url": "/learning/dns/what-is-domain-hijacking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+									"displayText": "Common DNS issues",
+									"url": "/learning/dns/common-dns-issues/"
 								}
 							]
 						},
@@ -208,6 +220,18 @@
 									"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
 									"displayText": "Cloudflare Registrar",
 									"url": "/learning/dns/what-is-cloudflare-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+									"displayText": "How to buy a domain name",
+									"url": "/learning/dns/how-to-buy-a-domain-name/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+									"displayText": "How to transfer a domain name",
+									"url": "/learning/dns/how-to-transfer-a-domain-name/"
 								}
 							]
 						},
@@ -298,6 +322,38 @@
 									"url": "http://www.cloudflare.com/learning/insights-dns-landscape"
 								}
 							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5bnkrucwjePapZ8qR6nc2D",
+							"name": "DNSSEC Protection",
+							"displayText": "DNSSEC Protection",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1FwG3Iiux41pJ6OLW8kRsW",
+									"displayText": "How DNSSEC Works",
+									"url": "learning/dns/dnssec/how-dnssec-works/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6FnRKWe14VFgollBzoepo9",
+									"displayText": "The DNSSEC Root Signing Ceremony",
+									"url": "learning/dns/dnssec/root-signing-ceremony/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "apgrV3UywiWRwe78tsxSg",
+									"displayText": "ECDSA: The missing piece of DNSSEC",
+									"url": "learning/dns/dnssec/ecdsa-and-dnssec/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "59YqILiJbj7grfW3aTGPj7",
+									"displayText": "Universal DNSSEC",
+									"url": "learning/dns/dnssec/universal-dnssec/"
+								}
+							]
 						}
 					]
 				},
@@ -329,6 +385,24 @@
 								"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
 								"displayText": "DNS over TLS",
 								"url": "/learning/dns/dns-over-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+								"displayText": "How to buy a domain name",
+								"url": "/learning/dns/how-to-buy-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+								"displayText": "How to transfer a domain name",
+								"url": "/learning/dns/how-to-transfer-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+								"displayText": "Common DNS issues",
+								"url": "/learning/dns/common-dns-issues/"
 							}
 						]
 					},
@@ -554,6 +628,12 @@
 								"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
 								"displayText": "Top-Level Domain",
 								"url": "/learning/dns/top-level-domain/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+								"displayText": "Domain hijacking",
+								"url": "/learning/dns/what-is-domain-hijacking/"
 							}
 						]
 					},
@@ -665,8 +745,15 @@
 					"Learn what information goes in an SRV record",
 					"Understand ports"
 				],
-				"relatedContentLinkText": null,
-				"relatedContent": [],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1SMJ4pF8JegIMgSOBwUWIM",
+						"displayText": "Empty related article - default sidebar form",
+						"url": "   "
+					}
+				],
 				"enablementBlade": {
 					"contentTypeId": "bladeEnablement",
 					"contentfulId": "39O10GEA7PcuY8Tp6oo5tX",
@@ -699,7 +786,7 @@
 					"sectionPadding": null,
 					"eyebrow": null
 				},
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a DNS SRV record?</h2>\n\n<p>The <a href='/learning/dns/what-is-dns/'>DNS</a> \"service\" (SRV) record specifies a host and port for specific services such as <a href='/learning/video/what-is-voip/'>voice over IP (VoIP)</a>, instant messaging, and so on. Most other <a href='/learning/dns/dns-records/'>DNS records</a> only specify a server or an <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP address</a>, but SRV records include a port at that IP address as well. Some <a href='/learning/network-layer/internet-protocol/'>Internet protocols</a> require the use of SRV records in order to function.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a port?</h2>\n\n<p>In networking, <a href='/learning/network-layer/what-is-a-computer-port/'>ports</a> are virtual places that designate what processes network traffic goes to within a computer. Ports allow computers to easily differentiate between different kinds of traffic: VoIP streams go to a different port than email messages, for instance, even though both reach a computer over the same Internet connection. Much like IP addresses, all ports are assigned a number.</p>\n\n<p>Certain Internet protocols, such as IMAP, SIP, and XMPP, need to connect to a specific port in addition to connecting with a specific server. SRV records are how a port can be specified within the DNS.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What goes in an SRV record?</h2>\n\n<p>An SRV record contains the following information. Here, we list example values for each field.</p>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<td>service</td>\n<td>XMPP</td>\n</tr>\n<tr>\n<td>proto*</td>\n<td>TCP</td>\n</tr>\n<tr>\n<td>name**</td>\n<td>example.com</td>\n</tr>\n<tr>\n<td>TTL</td>\n<td>86400</td>\n</tr>\n<tr>\n<td>class</td>\n<td>IN</td>\n</tr>\n<tr>\n<td>type</td>\n<td>SRV</td>\n</tr>\n<tr>\n<td>priority</td>\n<td>10</td>\n</tr>\n<tr>\n<td>weight</td>\n<td>5</td>\n</tr>\n<tr>\n<td>port</td>\n<td>5223</td>\n</tr>\n<tr>\n<td>target</td>\n<td>server.example.com</td>\n</tr>\n</table>\n</div>\n\n<p><i>*Short for \"protocol,\" as in transport protocol.\n  <br>\n  **<a href='/learning/dns/glossary/what-is-a-domain-name/'>Domain name</a>.</i></p>\n\n<p>However, SRV records are actually formatted in this way:</p>\n\n<pre><code>_service._proto.name. TTL class type of record priority weight port target.</code></pre>\n\n<p>So our example SRV record would actually look like:</p>\n\n<pre><code>_xmpp._tcp.example.com. 86400 IN SRV 10 5 5223 server.example.com.</code></pre>\n\n<p>In the above example, \"_xmpp\" indicates the type of service (the XMPP protocol) and \"_tcp\" indicates the <a href='/learning/ddos/glossary/tcp-ip/'>TCP</a> transport protocol, while \"example.com\" is the host, or the domain name. \"Server.example.com\" is the target server and \"5223\" indicates the port within that server.</p>\n\n<p>SRV records must point to an <a href='/learning/dns/dns-records/dns-a-record/'>A record</a> (in IPv4) or an <a href='/learning/dns/dns-records/dns-aaaa-record/'>AAAA record</a> (in IPv6). The server name they list cannot be a <a href='/learning/dns/dns-records/dns-cname-record/'>CNAME</a>. So \"server.example.com\" must lead directly to an A or AAAA record under that name.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the difference between priority and weight in SRV records?</h2>\n\n<p>SRV records indicate the \"priority\" and \"weight\" of the various servers they list. The \"priority\" value in an SRV record enables administrators to prioritize one server that supports the given service over another. A server with a lower priority value will receive more traffic than other servers. However, the \"weight\" value is similar: a server with a higher weight will receive more traffic than other servers with the same priority.</p>\n\n<p>The main difference between them is that priority is looked at first. If there are three servers, Server A, Server B, and Server C, and they have respective priorities of 10, 20, and 30, then their \"weight\" does not matter. The service will always query Server A first.</p>\n\n<p>But suppose Servers A, B, and C all have a priority of 10 — how will a service choose between them? This is where weight becomes a factor: if Server A has a \"weight\" value of 5 and Servers B and C have a \"weight\" value of 3 and 2, Server A will receive the most traffic, Server B will receive the second-most traffic, and Server C the third-most.</p>\n",
+				"desktopMainContent": "<style>\n  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .ttu.f2.fw7.mt6.mb0.orange0,  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .divider.pv2.w-100,  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .below-divider{\n    display: none\n  }\n</style>\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a DNS SRV record?</h2>\n\n<p>The <a href='/learning/dns/what-is-dns/'>DNS</a> \"service\" (SRV) record specifies a host and port for specific services such as <a href='/learning/video/what-is-voip/'>voice over IP (VoIP)</a>, instant messaging, and so on. Most other <a href='/learning/dns/dns-records/'>DNS records</a> only specify a server or an <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP address</a>, but SRV records include a port at that IP address as well. Some <a href='/learning/network-layer/internet-protocol/'>Internet protocols</a> require the use of SRV records in order to function.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a port?</h2>\n\n<p>In networking, <a href='/learning/network-layer/what-is-a-computer-port/'>ports</a> are virtual places that designate what processes network traffic goes to within a computer. Ports allow computers to easily differentiate between different kinds of traffic: VoIP streams go to a different port than email messages, for instance, even though both reach a computer over the same Internet connection. Much like IP addresses, all ports are assigned a number.</p>\n\n<p>Certain Internet protocols, such as IMAP, SIP, and XMPP, need to connect to a specific port in addition to connecting with a specific server. SRV records are how a port can be specified within the DNS.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What goes in an SRV record?</h2>\n\n<p>An SRV record contains the following information. Here, we list example values for each field.</p>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<td>service</td>\n<td>XMPP</td>\n</tr>\n<tr>\n<td>proto*</td>\n<td>TCP</td>\n</tr>\n<tr>\n<td>name**</td>\n<td>example.com</td>\n</tr>\n<tr>\n<td>TTL</td>\n<td>86400</td>\n</tr>\n<tr>\n<td>class</td>\n<td>IN</td>\n</tr>\n<tr>\n<td>type</td>\n<td>SRV</td>\n</tr>\n<tr>\n<td>priority</td>\n<td>10</td>\n</tr>\n<tr>\n<td>weight</td>\n<td>5</td>\n</tr>\n<tr>\n<td>port</td>\n<td>5223</td>\n</tr>\n<tr>\n<td>target</td>\n<td>server.example.com</td>\n</tr>\n</table>\n</div>\n\n<p><i>*Short for \"protocol,\" as in transport protocol.\n  <br>\n  **<a href='/learning/dns/glossary/what-is-a-domain-name/'>Domain name</a>.</i></p>\n\n<p>However, SRV records are actually formatted in this way:</p>\n\n<pre><code>_service._proto.name. TTL class type of record priority weight port target.</code></pre>\n\n<p>So our example SRV record would actually look like:</p>\n\n<pre><code>_xmpp._tcp.example.com. 86400 IN SRV 10 5 5223 server.example.com.</code></pre>\n\n<p>In the above example, \"_xmpp\" indicates the type of service (the XMPP protocol) and \"_tcp\" indicates the <a href='/learning/ddos/glossary/tcp-ip/'>TCP</a> transport protocol, while \"example.com\" is the host, or the domain name. \"Server.example.com\" is the target server and \"5223\" indicates the port within that server.</p>\n\n<p>SRV records must point to an <a href='/learning/dns/dns-records/dns-a-record/'>A record</a> (in IPv4) or an <a href='/learning/dns/dns-records/dns-aaaa-record/'>AAAA record</a> (in IPv6). The server name they list cannot be a <a href='/learning/dns/dns-records/dns-cname-record/'>CNAME</a>. So \"server.example.com\" must lead directly to an A or AAAA record under that name.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the difference between priority and weight in SRV records?</h2>\n\n<p>SRV records indicate the \"priority\" and \"weight\" of the various servers they list. The \"priority\" value in an SRV record enables administrators to prioritize one server that supports the given service over another. A server with a lower priority value will receive more traffic than other servers. However, the \"weight\" value is similar: a server with a higher weight will receive more traffic than other servers with the same priority.</p>\n\n<p>The main difference between them is that priority is looked at first. If there are three servers, Server A, Server B, and Server C, and they have respective priorities of 10, 20, and 30, then their \"weight\" does not matter. The service will always query Server A first.</p>\n\n<p>But suppose Servers A, B, and C all have a priority of 10 — how will a service choose between them? This is where weight becomes a factor: if Server A has a \"weight\" value of 5 and Servers B and C have a \"weight\" value of 3 and 2, Server A will receive the most traffic, Server B will receive the second-most traffic, and Server C the third-most.</p>\n",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {
@@ -713,63 +800,28 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -791,7 +843,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -815,6 +867,7 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

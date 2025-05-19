@@ -40,14 +40,14 @@
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "39LIvqQCFa8iU7ITBQmaEm",
-							"name": "Cloud Header: Cloud Basics",
+							"name": "Cloud header: Cloud basics",
 							"displayText": "Cloud basics",
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5k1A20zBRQpjW2079su8uz",
-									"displayText": "What is SaaS?",
-									"url": "/learning/cloud/what-is-saas/"
+									"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+									"displayText": "What is cloud storage?",
+									"url": "/learning/cloud/what-is-cloud-storage/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -57,9 +57,21 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
-									"displayText": "What is cloud storage?",
-									"url": "/learning/cloud/what-is-cloud-storage/"
+									"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+									"displayText": "Multitenancy",
+									"url": "/learning/cloud/what-is-multitenancy/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5k1A20zBRQpjW2079su8uz",
+									"displayText": "What is SaaS?",
+									"url": "/learning/cloud/what-is-saas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "38DHkZos35DYciaxPnJk7g",
+									"displayText": "Vendor lock-in",
+									"url": "/learning/cloud/what-is-vendor-lock-in/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -69,24 +81,10 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
-									"displayText": "Multitenancy",
-									"url": "/learning/cloud/what-is-multitenancy/"
+									"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+									"displayText": "Multi-cloud vs hybrid cloud",
+									"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
 								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "38DHkZos35DYciaxPnJk7g",
-									"displayText": "Vendor lock-in",
-									"url": "/learning/cloud/what-is-vendor-lock-in/"
-								}
-							]
-						},
-						{
-							"contentTypeId": "learningCenterArticleLinkedList",
-							"contentfulId": "3X81SpcBRddDrjqw17J1l2",
-							"name": "Cloud Header: Multicloud and hybrid cloud",
-							"displayText": "Multi-cloud and hybrid cloud",
-							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
@@ -95,21 +93,15 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
-									"displayText": "What is hybrid cloud?",
-									"url": "/learning/cloud/what-is-hybrid-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
-									"displayText": "Multi-cloud vs hybrid cloud",
-									"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
 									"displayText": "Multi-cloud management",
 									"url": "/learning/cloud/what-is-multicloud-management/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
+									"displayText": "What is hybrid cloud?",
+									"url": "/learning/cloud/what-is-hybrid-cloud/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -122,9 +114,15 @@
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "486fCRIX89EKjcHElALCiw",
-							"name": "Cloud Header: Securing the Cloud",
+							"name": "Cloud header: Securing the cloud",
 							"displayText": "Securing the cloud",
 							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "kNE9anSSaRE82gAHCyVxp",
+									"displayText": "What is a cloud firewall (FWaaS)?",
+									"url": "/learning/cloud/what-is-a-cloud-firewall/"
+								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
@@ -133,9 +131,21 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "kNE9anSSaRE82gAHCyVxp",
-									"displayText": "What is a cloud firewall (FWaaS)?",
-									"url": "/learning/cloud/what-is-a-cloud-firewall/"
+									"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+									"displayText": "Cloud security posture management (CSPM)",
+									"url": "/learning/cloud/what-is-cspm/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+									"displayText": "Cloud workload protection platform (CWPP)",
+									"url": "/learning/cloud/what-is-cwpp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5xd2QLCI5QCkPAIoDk5CJ2",
+									"displayText": "Cloud-native security",
+									"url": "/learning/cloud/cloud-native-security/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -151,35 +161,47 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
-									"displayText": "Cloud security posture management (CSPM)",
-									"url": "/learning/cloud/what-is-cspm/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
 									"displayText": "SaaS security posture management (SSPM)",
 									"url": "/learning/cloud/what-is-sspm/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
-									"displayText": "Cloud workload protection platform (CWPP)",
-									"url": "/learning/cloud/what-is-cwpp/"
+									"contentfulId": "1FHXopbTiAErueuQvbAXr6",
+									"displayText": "Cloud-native application protection platform (CNAPP)",
+									"url": "/learning/cloud/cnapp/"
 								}
 							]
 						},
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
-							"contentfulId": "2OkRH9jhjm8FmxBtbYnZ9V",
-							"name": "Cloud Header: Cloud Glossary",
-							"displayText": "Glossary",
+							"contentfulId": "26g8mVCbaDb7TF4jJMGFhz",
+							"name": "Cloud header: Cloud modernization",
+							"displayText": "Cloud modernization",
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
-									"displayText": "Cloud migration",
-									"url": "/learning/cloud/what-is-cloud-migration/"
+									"contentfulId": "y0HrOCtfIQJ4B46NGM8aK",
+									"displayText": "Application modernization",
+									"url": "/learning/cloud/application-modernization/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3ogF8VqUtpwiX80xRDH9lQ",
+									"displayText": "How to rehost apps",
+									"url": "/learning/cloud/how-to-rehost-applications/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "174iXrdVMHuS7avH6ICSVG",
+									"displayText": "How to refactor apps",
+									"url": "/learning/cloud/how-to-refactor-applications/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "nypSYuLAN0fI1HcJWLwj7",
+									"displayText": "How to replatform apps",
+									"url": "/learning/cloud/how-to-replatform-applications/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -189,27 +211,35 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
-									"displayText": "What is a public cloud?",
-									"url": "/learning/cloud/what-is-a-public-cloud/"
+									"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+									"displayText": "Cloud migration",
+									"url": "/learning/cloud/what-is-cloud-migration/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
-									"displayText": "What is a private cloud?",
-									"url": "/learning/cloud/what-is-a-private-cloud/"
+									"contentfulId": "31LQEF639fG1XJWTZBqnNO",
+									"displayText": "Data migration",
+									"url": "/learning/cloud/what-is-data-migration/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2OkRH9jhjm8FmxBtbYnZ9V",
+							"name": "Cloud header: Cloud glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2poSO07sAv136qKoXulTex",
+									"displayText": "AWS data transfer pricing",
+									"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "53Auemqu8excTZE8bzc7Zk",
-									"displayText": "Virtual private cloud",
-									"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
-									"displayText": "Cloudflare and the cloud",
-									"url": "/learning/cloud/cloudflare-and-the-cloud/"
+									"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
+									"displayText": "Data egress fees",
+									"url": "/learning/cloud/what-are-data-egress-fees/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -225,6 +255,12 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5tJVSh0zDmPqvoriPMSMuO",
+									"displayText": "What is a data lake?",
+									"url": "/learning/cloud/what-is-a-data-lake/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "7u090eTI3Lc6TC6CZRHIhI",
 									"displayText": "What is object storage?",
 									"url": "/learning/cloud/what-is-object-storage/"
@@ -237,22 +273,40 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
-									"displayText": "Data egress fees",
-									"url": "/learning/cloud/what-are-data-egress-fees/"
+									"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
+									"displayText": "What is a private cloud?",
+									"url": "/learning/cloud/what-is-a-private-cloud/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "2poSO07sAv136qKoXulTex",
-									"displayText": "AWS data transfer pricing",
-									"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+									"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+									"displayText": "What is a public cloud?",
+									"url": "/learning/cloud/what-is-a-public-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+									"displayText": "Virtual private cloud",
+									"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1w22mfnOVmsjLsM3jMxaAY",
+									"displayText": "Cloud networking",
+									"url": "/learning/cloud/what-is-cloud-networking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
+									"displayText": "Cloudflare and the cloud",
+									"url": "/learning/cloud/cloudflare-and-the-cloud/"
 								}
 							]
 						},
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "7qiJLGJVI1us6Le145zRbC",
-							"name": "Cloud Header: theNET",
+							"name": "Cloud header: theNET",
 							"displayText": "theNET",
 							"links": [
 								{
@@ -263,15 +317,15 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "goUykSuhqroMEsPv5li3u",
-									"displayText": "Trading egress for opportunity",
-									"url": "https://www.cloudflare.com/learning/insights-cloud-storage-egress/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "7akEuCGGNzlr1ufpM39JJO",
 									"displayText": "The Internet is the new corporate network",
 									"url": "https://www.cloudflare.com/learning/insights-internet-corp-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "goUykSuhqroMEsPv5li3u",
+									"displayText": "Trading egress for opportunity",
+									"url": "https://www.cloudflare.com/learning/insights-cloud-storage-egress/"
 								}
 							]
 						}
@@ -285,7 +339,7 @@
 					"column1": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "2PUeZxc6Kw9UYN9rDC8IYy",
-						"name": "Cloud Footer - About the Cloud",
+						"name": "Cloud footer — About the cloud",
 						"displayText": "About the cloud",
 						"links": [
 							{
@@ -302,19 +356,13 @@
 							}
 						]
 					},
-					"column2Title": "Cloud Configurations",
+					"column2Title": "Cloud configurations",
 					"column2": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "gD760jkD40xsJ5VKKDGCY",
-						"name": "Cloud Footer - Cloud Configurations",
+						"name": "Cloud Footer - Cloud configurations",
 						"displayText": "Cloud configurations",
 						"links": [
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
-								"displayText": "What is multi-cloud?",
-								"url": "/learning/cloud/what-is-multicloud/"
-							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
@@ -323,9 +371,15 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
-								"displayText": "What is a public cloud?",
-								"url": "/learning/cloud/what-is-a-public-cloud/"
+								"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
+								"displayText": "What is multi-cloud?",
+								"url": "/learning/cloud/what-is-multicloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+								"displayText": "Multitenancy",
+								"url": "/learning/cloud/what-is-multitenancy/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -335,17 +389,35 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
-								"displayText": "Multitenancy",
-								"url": "/learning/cloud/what-is-multitenancy/"
+								"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+								"displayText": "What is a public cloud?",
+								"url": "/learning/cloud/what-is-a-public-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3ogF8VqUtpwiX80xRDH9lQ",
+								"displayText": "How to rehost apps",
+								"url": "/learning/cloud/how-to-rehost-applications/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "nypSYuLAN0fI1HcJWLwj7",
+								"displayText": "How to replatform apps",
+								"url": "/learning/cloud/how-to-replatform-applications/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "174iXrdVMHuS7avH6ICSVG",
+								"displayText": "How to refactor apps",
+								"url": "/learning/cloud/how-to-refactor-applications/"
 							}
 						]
 					},
-					"column3Title": "Cloud Security",
+					"column3Title": "Cloud security",
 					"column3": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "5jkIKbYcSS95KrnsL6yhXO",
-						"name": "Cloud Footer - Cloud security",
+						"name": "Cloud footer — Cloud security",
 						"displayText": "Cloud security",
 						"links": [
 							{
@@ -353,6 +425,18 @@
 								"contentfulId": "kNE9anSSaRE82gAHCyVxp",
 								"displayText": "What is a cloud firewall (FWaaS)?",
 								"url": "/learning/cloud/what-is-a-cloud-firewall/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+								"displayText": "Cloud security posture management (CSPM)",
+								"url": "/learning/cloud/what-is-cspm/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+								"displayText": "Cloud workload protection platform (CWPP)",
+								"url": "/learning/cloud/what-is-cwpp/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -368,102 +452,36 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
-								"displayText": "Cloud security posture management (CSPM)",
-								"url": "/learning/cloud/what-is-cspm/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
 								"displayText": "SaaS security posture management (SSPM)",
 								"url": "/learning/cloud/what-is-sspm/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
-								"displayText": "Cloud workload protection platform (CWPP)",
-								"url": "/learning/cloud/what-is-cwpp/"
+								"contentfulId": "5xd2QLCI5QCkPAIoDk5CJ2",
+								"displayText": "Cloud-native security",
+								"url": "/learning/cloud/cloud-native-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1FHXopbTiAErueuQvbAXr6",
+								"displayText": "Cloud-native application protection platform (CNAPP)",
+								"url": "/learning/cloud/cnapp/"
 							}
 						]
 					},
-					"column4Title": "Cloud Glossary",
+					"column4Title": "Cloud glossary",
 					"column4": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "4ITdD1qcb1o7qstB32QX0V",
-						"name": "Cloud Footer - Glossary",
+						"name": "Cloud footer — Glossary",
 						"displayText": "Cloud glossary",
 						"links": [
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5k1A20zBRQpjW2079su8uz",
-								"displayText": "What is SaaS?",
-								"url": "/learning/cloud/what-is-saas/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
-								"displayText": "Cloud migration",
-								"url": "/learning/cloud/what-is-cloud-migration/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
-								"displayText": "Multi-cloud management",
-								"url": "/learning/cloud/what-is-multicloud-management/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
-								"displayText": "Hybrid cloud architecture",
-								"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
-								"displayText": "Multi-cloud vs hybrid cloud",
-								"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
-								"displayText": "Virtual machine",
-								"url": "/learning/cloud/what-is-a-virtual-machine/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
-								"displayText": "What is cloud storage?",
-								"url": "/learning/cloud/what-is-cloud-storage/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
-								"displayText": "Digital transformation",
-								"url": "/learning/cloud/what-is-digital-transformation/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "38DHkZos35DYciaxPnJk7g",
-								"displayText": "Vendor lock-in",
-								"url": "/learning/cloud/what-is-vendor-lock-in/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
-								"displayText": "What is IaaS?",
-								"url": "/learning/cloud/what-is-iaas/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "53Auemqu8excTZE8bzc7Zk",
-								"displayText": "Virtual private cloud",
-								"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
-								"displayText": "Cloud security",
-								"url": "/learning/cloud/what-is-cloud-security/"
+								"contentfulId": "2poSO07sAv136qKoXulTex",
+								"displayText": "AWS data transfer pricing",
+								"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -479,9 +497,63 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+								"displayText": "Cloud migration",
+								"url": "/learning/cloud/what-is-cloud-migration/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
+								"displayText": "Cloud security",
+								"url": "/learning/cloud/what-is-cloud-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+								"displayText": "What is cloud storage?",
+								"url": "/learning/cloud/what-is-cloud-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
 								"displayText": "Data egress fees",
 								"url": "/learning/cloud/what-are-data-egress-fees/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5tJVSh0zDmPqvoriPMSMuO",
+								"displayText": "What is a data lake?",
+								"url": "/learning/cloud/what-is-a-data-lake/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
+								"displayText": "Digital transformation",
+								"url": "/learning/cloud/what-is-digital-transformation/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
+								"displayText": "Hybrid cloud architecture",
+								"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
+								"displayText": "What is IaaS?",
+								"url": "/learning/cloud/what-is-iaas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+								"displayText": "Multi-cloud vs hybrid cloud",
+								"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
+								"displayText": "Multi-cloud management",
+								"url": "/learning/cloud/what-is-multicloud-management/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -497,13 +569,49 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "2poSO07sAv136qKoXulTex",
-								"displayText": "AWS data transfer pricing",
-								"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+								"contentfulId": "5k1A20zBRQpjW2079su8uz",
+								"displayText": "What is SaaS?",
+								"url": "/learning/cloud/what-is-saas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "38DHkZos35DYciaxPnJk7g",
+								"displayText": "Vendor lock-in",
+								"url": "/learning/cloud/what-is-vendor-lock-in/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
+								"displayText": "Virtual machine",
+								"url": "/learning/cloud/what-is-a-virtual-machine/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+								"displayText": "Virtual private cloud",
+								"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1w22mfnOVmsjLsM3jMxaAY",
+								"displayText": "Cloud networking",
+								"url": "/learning/cloud/what-is-cloud-networking/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "y0HrOCtfIQJ4B46NGM8aK",
+								"displayText": "Application modernization",
+								"url": "/learning/cloud/application-modernization/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "31LQEF639fG1XJWTZBqnNO",
+								"displayText": "Data migration",
+								"url": "/learning/cloud/what-is-data-migration/"
 							}
 						]
 					},
-					"column5Title": "Learning Center Navigation",
+					"column5Title": "Learning Center navigation",
 					"column5": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "3Z0WMXrDmdWdc5R8JIkDrG",
@@ -645,7 +753,7 @@
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">Object storage vs. block storage: How are they different?</h2>\n\n<p><a href='/learning/cloud/what-is-object-storage/'>Object storage</a> and <a href='/learning/cloud/what-is-block-storage/'>block storage</a> are two types of <a href='/learning/cloud/what-is-cloud-storage/'>cloud storage</a> — meaning, remote data storage that can be accessed via an Internet connection. Object storage is highly scalable and customizable, but not always fast. Block storage is fast, but usually more expensive than object storage. Which one better fits an organization's use case depends on a number of factors. Overall, object storage is typically used for large volumes of unstructured data, while block storage works best with transactional data and small files that need to be retrieved often.</p>\n\n<p>Think of block storage as a compact parking garage with valet parking, and object storage as a massive, open parking lot with acres of spaces. The Block Storage Garage, as we can call it, allows drivers to quickly retrieve their cars; but it has limited space for vehicles, and expanding capacity would involve constructing a new garage and hiring more valets, which is expensive. The Object Storage Lot, in contrast, allows as many drivers to park as desired. However, some of the cars may end up at the far end of the parking lot, and it could take some time for drivers to retrieve them.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How object storage and block storage work</h2>\n\n<p><strong>Block storage</strong> divides files and data into equally sized blocks. Each block has a unique identifier, stored in a data lookup table. When data needs to be retrieved, the data lookup table is used to find the required blocks, which are then reassembled into their original form.</p>\n\n<p>Think of it this way: the data lookup table is like the key box where valets keep keys for each car. When a driver needs their car, the valet grabs the key and looks up where the car is in order to retrieve it quickly. Similarly, block storage uses unique identifiers stored in the data lookup table to rapidly find and retrieve data.</p>\n\n<p>Block storage is fast, and it is often preferred for applications that regularly need to load data from the backend.</p>\n\n<p><strong>Object storage</strong> is a method for saving large volumes of unstructured data, including sensor data, audio files, logs, video and photo content, webpages, and emails. Each file or segment of data is saved as an \"object,\" and each object includes metadata and a unique name or identifier for data retrieval. (Imagine how a driver might write down their space number in a large parking lot in order to remember where their vehicle is.)</p>\n\n<p>All objects are stored together in a \"data lake\" (also called a \"data pool\"). Data lakes are flat — there is no file hierarchy, just as a large parking lot is flat, with no ramps or additional levels.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the pros and cons of object storage and block storage?</h2>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<th>Capability</th>\n<th>Block storage</th>\n<th>Object storage</th>\n</tr>\n<tr>\n  <td><strong>Storage capacity</strong></td>\n<td>Limited</td>\n<td>Nearly unlimited</td>\n</tr>\n  <tr>\n<td><strong>Storage method</strong></td>\n<td>Data stored in blocks of fixed size, reassembled on demand</td>\n<td>Unstructured data in non-hierarchical data lake</td>\n</tr>\n  <tr>\n<td><strong>Metadata</strong></td>\n<td>Limited</td>\n<td>Unlimited and customizable</td>\n</tr>\n  <tr>\n<td><strong>Data retrieval method</strong></td>\n<td>Data lookup table</td>\n<td>Customizable</td>\n</tr>\n  <tr>\n<td><strong>Performance</strong></td>\n<td>Fast, especially for small files</td>\n<td>Depends, but works well with large files</td>\n</tr>\n  <tr>\n<td><strong>Cost</strong></td>\n<td>Depends on vendor, usually more expensive</td>\n<td>Depends on vendor, usually less expensive (aside from <a href='/learning/cloud/what-are-data-egress-fees/'>egress fees</a>)</td>\n</tr>\n</table>\n</div>\n\n<p>As seen in the table above, there are many areas in which block and object storage differ. However, organizations should carefully evaluate the capabilities of each model in four primary areas: cost, performance, capacity, and metadata.</p>\n\n<p>One of the biggest advantages of object storage is its cost. Storing data via object storage is usually less expensive than doing so in block storage. Block storage requires a fair amount of processing power so that data can be reassembled and read often, and this optimization for performance tends to make it more costly.</p>\n\n<p>Conversely, performance is an advantage for block storage, particularly for smaller files. The objects in object storage are not meant to be accessed and loaded regularly, but this is the case for block storage.</p>\n\n<p>Another advantage of object storage is its unlimited — or practically unlimited — capacity. Object storage data lakes can be as large as desired, and customers only pay for what they use. Block storage is limited and costly to expand.</p>\n\n<p>Finally, metadata is an important point of difference. There are many cases where developers or organizations may want to append important information to the files they are storing, to help with finding, interpreting, and contextualizing the data within. Block storage only allows for very basic metadata, while object storage metadata is highly flexible.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Which use cases are better for block storage? For object storage?</h2>\n\n<p>Each aspect of block and object storage may be an advantage — or a disadvantage —  depending on an organization's needs.</p>\n\n<p>Returning to our parking example: large vans, semi trucks, and recreational vehicles may not fit very well in the Block Storage Garage. But with its wide open spaces, the Object Storage Lot makes a good place to park such vehicles.</p>\n\n<p>So, which type of storage a developer or organization chooses depends on the size of the vehicles they wish to \"park,\" and how often they need to take those vehicles off the lot.</p>\n\n<p>For large amounts of unstructured data, especially if that data does not need to be read regularly, object storage may work best. Common use cases for object storage include:</p>\n\n<ul class=\"learning-list\">\n  <li>Application assets</li>\n  <li>Logs and analytics</li>\n  <li>System backups</li>\n  <li>Video, audio, images, and other media</li>\n  <li>Data archives</li>\n  <li>Data sets for <a href='/learning/ai/what-is-machine-learning/'>machine learning</a></li>\n  <li>Data storage for <a href='/learning/serverless/what-is-serverless/'>serverless</a> and <a href='/learning/serverless/glossary/serverless-microservice/'>microservices</a> applications</li>\n</ul>\n\n<p>For smaller amounts of data and smaller files that need to load quickly and often, block storage may work best. Block storage usages include:</p>\n\n<ul class=\"learning-list\">\n  <li>Critical system data</li>\n  <li>Database storage</li>\n  <li>Mission-critical application data</li>\n  <li>RAID volumes (RAID, or redundant array of independent disks, is a method for storing the same data across multiple hard disks or drives)</li>\n</ul>\n\n<p>However, the use cases listed above are not meant to be definitive. There are a number of ways to use both object storage and block storage. It is worth noting that the need for storing large volumes of unstructured data (which is better with object storage) is projected to <a href='https://venturebeat.com/data-infrastructure/report-80-of-global-datasphere-will-be-unstructured-by-2025/' target='_blank'>grow</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Is Cloudflare R2 block storage or object storage?</h2>\n\n<p>Cloudflare R2 is object storage, and as such it offers all the advantages described for object storage, but with one crucial additional benefit: <a href='https://blog.cloudflare.com/introducing-r2-object-storage/' target='_blank'>no egress fees</a>. Imagine R2 as a big parking lot that does not charge a fee for leaving the lot. Meanwhile, other parking lots surprise departing drivers by making them pay exorbitant amounts to drive their cars off the lot.</p>\n\n<p>Cloudflare R2 is designed to give developers the ability to create the <a href='/learning/cloud/what-is-multicloud/'>multi-cloud</a> architectures they need with S3-compatible object storage. R2 also integrates with <a href='https://workers.cloudflare.com/' target='_blank'>Cloudflare Workers</a> (a platform for writing <a href='/learning/serverless/glossary/function-as-a-service-faas/'>functions</a> and microservices that execute on demand) for dynamic functionality. <a href='/products/r2/'>Learn more about R2</a>.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">Object storage vs. block storage: How are they different?</h2>\n\n<p><a href='/learning/cloud/what-is-object-storage/'>Object storage</a> and <a href='/learning/cloud/what-is-block-storage/'>block storage</a> are two types of <a href='/learning/cloud/what-is-cloud-storage/'>cloud storage</a> — meaning, remote data storage that can be accessed via an Internet connection. Object storage is highly scalable and customizable, but not always fast. Block storage is fast, but usually more expensive than object storage. Which one better fits an organization's use case depends on a number of factors. Overall, object storage is typically used for large volumes of unstructured data, while block storage works best with transactional data and small files that need to be retrieved often.</p>\n\n<p>Think of block storage as a compact parking garage with valet parking, and object storage as a massive, open parking lot with acres of spaces. The Block Storage Garage, as we can call it, allows drivers to quickly retrieve their cars; but it has limited space for vehicles, and expanding capacity would involve constructing a new garage and hiring more valets, which is expensive. The Object Storage Lot, in contrast, allows as many drivers to park as desired. However, some of the cars may end up at the far end of the parking lot, and it could take some time for drivers to retrieve them.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How object storage and block storage work</h2>\n\n<p><strong>Block storage</strong> divides files and data into equally sized blocks. Each block has a unique identifier, stored in a data lookup table. When data needs to be retrieved, the data lookup table is used to find the required blocks, which are then reassembled into their original form.</p>\n\n<p>Think of it this way: the data lookup table is like the key box where valets keep keys for each car. When a driver needs their car, the valet grabs the key and looks up where the car is in order to retrieve it quickly. Similarly, block storage uses unique identifiers stored in the data lookup table to rapidly find and retrieve data.</p>\n\n<p>Block storage is fast, and it is often preferred for applications that regularly need to load data from the backend.</p>\n\n<p><strong>Object storage</strong> is a method for saving large volumes of unstructured data, including sensor data, audio files, logs, video and photo content, webpages, and emails. Each file or segment of data is saved as an \"object,\" and each object includes metadata and a unique name or identifier for data retrieval. (Imagine how a driver might write down their space number in a large parking lot in order to remember where their vehicle is.)</p>\n\n<p>All objects are stored together in a \"<a href='https://www.cloudflare.com/learning/cloud/what-is-a-data-lake/'>data lake</a>\" (also called a \"data pool\"). Data lakes are flat — there is no file hierarchy, just as a large parking lot is flat, with no ramps or additional levels.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the pros and cons of object storage and block storage?</h2>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<th>Capability</th>\n<th>Block storage</th>\n<th>Object storage</th>\n</tr>\n<tr>\n  <td><strong>Storage capacity</strong></td>\n<td>Limited</td>\n<td>Nearly unlimited</td>\n</tr>\n  <tr>\n<td><strong>Storage method</strong></td>\n<td>Data stored in blocks of fixed size, reassembled on demand</td>\n<td>Unstructured data in non-hierarchical data lake</td>\n</tr>\n  <tr>\n<td><strong>Metadata</strong></td>\n<td>Limited</td>\n<td>Unlimited and customizable</td>\n</tr>\n  <tr>\n<td><strong>Data retrieval method</strong></td>\n<td>Data lookup table</td>\n<td>Customizable</td>\n</tr>\n  <tr>\n<td><strong>Performance</strong></td>\n<td>Fast, especially for small files</td>\n<td>Depends, but works well with large files</td>\n</tr>\n  <tr>\n<td><strong>Cost</strong></td>\n<td>Depends on vendor, usually more expensive</td>\n<td>Depends on vendor, usually less expensive (aside from <a href='/learning/cloud/what-are-data-egress-fees/'>egress fees</a>)</td>\n</tr>\n</table>\n</div>\n\n<p>As seen in the table above, there are many areas in which block and object storage differ. However, organizations should carefully evaluate the capabilities of each model in four primary areas: cost, performance, capacity, and metadata.</p>\n\n<p>One of the biggest advantages of object storage is its cost. Storing data via object storage is usually less expensive than doing so in block storage. Block storage requires a fair amount of processing power so that data can be reassembled and read often, and this optimization for performance tends to make it more costly.</p>\n\n<p>Conversely, performance is an advantage for block storage, particularly for smaller files. The objects in object storage are not meant to be accessed and loaded regularly, but this is the case for block storage.</p>\n\n<p>Another advantage of object storage is its unlimited — or practically unlimited — capacity. Object storage data lakes can be as large as desired, and customers only pay for what they use. Block storage is limited and costly to expand.</p>\n\n<p>Finally, metadata is an important point of difference. There are many cases where developers or organizations may want to append important information to the files they are storing, to help with finding, interpreting, and contextualizing the data within. Block storage only allows for very basic metadata, while object storage metadata is highly flexible.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Which use cases are better for block storage? For object storage?</h2>\n\n<p>Each aspect of block and object storage may be an advantage — or a disadvantage —  depending on an organization's needs.</p>\n\n<p>Returning to our parking example: large vans, semi trucks, and recreational vehicles may not fit very well in the Block Storage Garage. But with its wide open spaces, the Object Storage Lot makes a good place to park such vehicles.</p>\n\n<p>So, which type of storage a developer or organization chooses depends on the size of the vehicles they wish to \"park,\" and how often they need to take those vehicles off the lot.</p>\n\n<p>For large amounts of unstructured data, especially if that data does not need to be read regularly, object storage may work best. Common use cases for object storage include:</p>\n\n<ul class=\"learning-list\">\n  <li>Application assets</li>\n  <li>Logs and analytics</li>\n  <li>System backups</li>\n  <li>Video, audio, images, and other media</li>\n  <li>Data archives</li>\n  <li>Data sets for <a href='/learning/ai/what-is-machine-learning/'>machine learning</a></li>\n  <li>Data storage for <a href='/learning/serverless/what-is-serverless/'>serverless</a> and <a href='/learning/serverless/glossary/serverless-microservice/'>microservices</a> applications</li>\n</ul>\n\n<p>For smaller amounts of data and smaller files that need to load quickly and often, block storage may work best. Block storage usages include:</p>\n\n<ul class=\"learning-list\">\n  <li>Critical system data</li>\n  <li>Database storage</li>\n  <li>Mission-critical application data</li>\n  <li>RAID volumes (RAID, or redundant array of independent disks, is a method for storing the same data across multiple hard disks or drives)</li>\n</ul>\n\n<p>However, the use cases listed above are not meant to be definitive. There are a number of ways to use both object storage and block storage. It is worth noting that the need for storing large volumes of unstructured data (which is better with object storage) is projected to <a href='https://venturebeat.com/data-infrastructure/report-80-of-global-datasphere-will-be-unstructured-by-2025/' target='_blank'>grow</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Is Cloudflare R2 block storage or object storage?</h2>\n\n<p>Cloudflare R2 is object storage, and as such it offers all the advantages described for object storage, but with one crucial additional benefit: <a href='https://blog.cloudflare.com/introducing-r2-object-storage/' target='_blank'>no egress fees</a>. Imagine R2 as a big parking lot that does not charge a fee for leaving the lot. Meanwhile, other parking lots surprise departing drivers by making them pay exorbitant amounts to drive their cars off the lot.</p>\n\n<p>Cloudflare R2 is designed to give developers the ability to create the <a href='/learning/cloud/what-is-multicloud/'>multi-cloud</a> architectures they need with S3-compatible object storage. R2 also integrates with <a href='https://workers.cloudflare.com/' target='_blank'>Cloudflare Workers</a> (a platform for writing <a href='/learning/serverless/glossary/function-as-a-service-faas/'>functions</a> and microservices that execute on demand) for dynamic functionality. <a href='https://www.cloudflare.com/developer-platform/r2/'>Learn more about R2</a>.</p>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
@@ -659,6 +767,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -671,9 +780,7 @@
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"plPL": "English for Locale"
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
@@ -715,7 +822,7 @@
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -737,7 +844,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -761,6 +868,7 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

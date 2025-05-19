@@ -9,13 +9,14 @@
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
 					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
+					"frFR": "English for Locale",
 					"deDE": "Translated for Locale",
 					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,8 +30,7 @@
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/internet-native-transformation-wp",
 				"topNavOptions": "default",
@@ -47,7 +47,12 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2023-04-07T01:27:40.233Z",
+					"updatedAt": "2023-12-26T02:58:14.835Z"
 				},
 				"contentfulId": "3PKNGvQGhm6HZ8ZAtqmk8Q",
 				"contentTypeId": "page",
@@ -63,7 +68,7 @@
 						"contentfulId": "O84aKTCgwptrmdxcVRuzR",
 						"bladeName": "[ACQ] Q2'23 WEB - GBL - Internet-Native Transformation - Reference Architecture - Blade-Forms",
 						"formType": "formRight",
-						"formTitle": "Get the architecture",
+						"formTitle": "Get the whitepaper",
 						"buttonText": null,
 						"buttonColor": "orange",
 						"htmlId": null,
@@ -72,7 +77,7 @@
 							"contentfulId": "4NCDZwzDrICPVyW6v3NVYp",
 							"bladeName": "[ACQ] Q2'23 WEB - GBL - Internet-Native Transformation - Reference Architecture - Form-Marketo embedded",
 							"backgroundColor": "white",
-							"marketoFormId": 1341,
+							"marketoFormId": 1346,
 							"marketoFormLeadSource": "Inbound - Web Form",
 							"marketoFormLeadSourceDetail": "[ACQ] Q2'23 WEB - GBL - Internet-Native Transformation - Reference Architecture",
 							"marketoFormHeaderText": null,
@@ -82,17 +87,17 @@
 							"marketoFormCustomSuccessMessage": null,
 							"marketoFormPdfDownload": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zdZWTjDukemlpiZJ3CZbF/770905eec5bb9f12c8768aa2c7ebf532/Cloudflare_Whitepaper__Reference_Architecture_for_Internet-Native_Transformation.pdf"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zdZWTjDukemlpiZJ3CZbF/e5db0f65a3ffd45daa3e8133d931c5ca/Overview_of_Internet_Native_SASE_Architecture_-_Whitepaper.pdf"
 								},
 								"description": ""
 							},
 							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": "READ THE WHITEPAPER",
-							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7E6MO2xTUyguVbHZv3HoLK/234847b90a2bd28079a155e9b4a0a8f3/Turn-Fear-into-Opportunity-WP_Letter_BDES-3486-v2.pdf",
+							"marketoFormAssetDownloadButtonText": "Read the whitepaper",
+							"marketoFormSuccessRedirectUrl": "https://cfl.re/3XprSQP",
 							"sendAdRoll": null,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
-							"marketoFormSubmitButtonText": "READ THE WHITEPAPER",
+							"marketoFormSubmitButtonText": "Read the whitepaper",
 							"marketoFormSubmitButtonColor": null,
 							"enableEmailVerification": null,
 							"disableEnterpriseEmailNotification": null,
@@ -100,7 +105,7 @@
 						},
 						"title": null,
 						"subtitle": null,
-						"copy": "<div style= \"text-align:left; font-size: 30px; font-weight: bold; line-height:125%\" >Reference Architecture for Internet-Native Transformation \n </div><br>\n<div style= \"text-align:left; font-size: 20px; color:rgb(0, 86, 220);font-weight: normal; line-height:125%\" >\nModernize how you secure user-to-application access\n </div><br>\n <div style= \"text-align:left; font-size: 30px; font-weight: bold; line-height:125%\" >What security stack sits between users and apps?  \n </div><br>\n\n __Before Cloudflare__: Most organizations rely on a 20+ year-old hub-and-spoke architecture. Internal users and apps are connected and secured differently than external users and apps. Access depends on the location, device, role, or identity provider (aka. IdP).\n\n__With Cloudflare__: Your architecture is future-proofed with an Internet-native transformation embracing Zero Trust principles to consistently connect and secure all users and apps with a complete stack of cloud-native services that are easy to setup and operate.",
+						"copy": "<div style= \"text-align:left; font-size: 30px; font-weight: bold; line-height:125%\" >Overview of Internet-Native SASE Architecture \n </div><br>\n<div style= \"text-align:left; font-size: 20px; color:rgb(0, 86, 220);font-weight: normal; line-height:125%\" >\nModernize how you secure user-to-application access\n </div><br>\n <div style= \"text-align:left; font-size: 30px; font-weight: bold; line-height:125%\" >What security stack sits between users and apps?  \n </div><br>\n\n __Before Cloudflare__: Most organizations rely on a 20+ year-old hub-and-spoke architecture. Internal users and apps are connected and secured differently than external users and apps. Access depends on the location, device, role, or identity provider (aka. IdP).\n\n__With Cloudflare__: Your architecture is future-proofed with an Internet-native transformation embracing Zero Trust principles to consistently connect and secure all users and apps with a complete stack of cloud-native services that are easy to setup and operate.",
 						"iconList": [],
 						"iconTitleList": null,
 						"iconCopyList": null,
@@ -121,7 +126,6 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"hasAdobeExperiment": null,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -139,17 +143,16 @@
 				"en-US",
 				"zh-CN",
 				"zh-TW",
-				"fr-FR",
 				"de-DE",
 				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

@@ -35,14 +35,14 @@
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "39LIvqQCFa8iU7ITBQmaEm",
-							"name": "Cloud Header: Cloud Basics",
+							"name": "Cloud header: Cloud basics",
 							"displayText": "Cloud basics",
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5k1A20zBRQpjW2079su8uz",
-									"displayText": "What is SaaS?",
-									"url": "/learning/cloud/what-is-saas/"
+									"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+									"displayText": "What is cloud storage?",
+									"url": "/learning/cloud/what-is-cloud-storage/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -52,9 +52,21 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
-									"displayText": "What is cloud storage?",
-									"url": "/learning/cloud/what-is-cloud-storage/"
+									"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+									"displayText": "Multitenancy",
+									"url": "/learning/cloud/what-is-multitenancy/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5k1A20zBRQpjW2079su8uz",
+									"displayText": "What is SaaS?",
+									"url": "/learning/cloud/what-is-saas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "38DHkZos35DYciaxPnJk7g",
+									"displayText": "Vendor lock-in",
+									"url": "/learning/cloud/what-is-vendor-lock-in/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -64,24 +76,10 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
-									"displayText": "Multitenancy",
-									"url": "/learning/cloud/what-is-multitenancy/"
+									"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+									"displayText": "Multi-cloud vs hybrid cloud",
+									"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
 								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "38DHkZos35DYciaxPnJk7g",
-									"displayText": "Vendor lock-in",
-									"url": "/learning/cloud/what-is-vendor-lock-in/"
-								}
-							]
-						},
-						{
-							"contentTypeId": "learningCenterArticleLinkedList",
-							"contentfulId": "3X81SpcBRddDrjqw17J1l2",
-							"name": "Cloud Header: Multicloud and hybrid cloud",
-							"displayText": "Multi-cloud and hybrid cloud",
-							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
@@ -90,21 +88,15 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
-									"displayText": "What is hybrid cloud?",
-									"url": "/learning/cloud/what-is-hybrid-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
-									"displayText": "Multi-cloud vs hybrid cloud",
-									"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
 									"displayText": "Multi-cloud management",
 									"url": "/learning/cloud/what-is-multicloud-management/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
+									"displayText": "What is hybrid cloud?",
+									"url": "/learning/cloud/what-is-hybrid-cloud/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -117,9 +109,15 @@
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "486fCRIX89EKjcHElALCiw",
-							"name": "Cloud Header: Securing the Cloud",
+							"name": "Cloud header: Securing the cloud",
 							"displayText": "Securing the cloud",
 							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "kNE9anSSaRE82gAHCyVxp",
+									"displayText": "What is a cloud firewall (FWaaS)?",
+									"url": "/learning/cloud/what-is-a-cloud-firewall/"
+								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
@@ -128,9 +126,21 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "kNE9anSSaRE82gAHCyVxp",
-									"displayText": "What is a cloud firewall (FWaaS)?",
-									"url": "/learning/cloud/what-is-a-cloud-firewall/"
+									"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+									"displayText": "Cloud security posture management (CSPM)",
+									"url": "/learning/cloud/what-is-cspm/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+									"displayText": "Cloud workload protection platform (CWPP)",
+									"url": "/learning/cloud/what-is-cwpp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5xd2QLCI5QCkPAIoDk5CJ2",
+									"displayText": "Cloud-native security",
+									"url": "/learning/cloud/cloud-native-security/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -146,35 +156,47 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
-									"displayText": "Cloud security posture management (CSPM)",
-									"url": "/learning/cloud/what-is-cspm/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
 									"displayText": "SaaS security posture management (SSPM)",
 									"url": "/learning/cloud/what-is-sspm/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
-									"displayText": "Cloud workload protection platform (CWPP)",
-									"url": "/learning/cloud/what-is-cwpp/"
+									"contentfulId": "1FHXopbTiAErueuQvbAXr6",
+									"displayText": "Cloud-native application protection platform (CNAPP)",
+									"url": "/learning/cloud/cnapp/"
 								}
 							]
 						},
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
-							"contentfulId": "2OkRH9jhjm8FmxBtbYnZ9V",
-							"name": "Cloud Header: Cloud Glossary",
-							"displayText": "Glossary",
+							"contentfulId": "26g8mVCbaDb7TF4jJMGFhz",
+							"name": "Cloud header: Cloud modernization",
+							"displayText": "Cloud modernization",
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
-									"displayText": "Cloud migration",
-									"url": "/learning/cloud/what-is-cloud-migration/"
+									"contentfulId": "y0HrOCtfIQJ4B46NGM8aK",
+									"displayText": "Application modernization",
+									"url": "/learning/cloud/application-modernization/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3ogF8VqUtpwiX80xRDH9lQ",
+									"displayText": "How to rehost apps",
+									"url": "/learning/cloud/how-to-rehost-applications/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "174iXrdVMHuS7avH6ICSVG",
+									"displayText": "How to refactor apps",
+									"url": "/learning/cloud/how-to-refactor-applications/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "nypSYuLAN0fI1HcJWLwj7",
+									"displayText": "How to replatform apps",
+									"url": "/learning/cloud/how-to-replatform-applications/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -184,27 +206,35 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
-									"displayText": "What is a public cloud?",
-									"url": "/learning/cloud/what-is-a-public-cloud/"
+									"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+									"displayText": "Cloud migration",
+									"url": "/learning/cloud/what-is-cloud-migration/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
-									"displayText": "What is a private cloud?",
-									"url": "/learning/cloud/what-is-a-private-cloud/"
+									"contentfulId": "31LQEF639fG1XJWTZBqnNO",
+									"displayText": "Data migration",
+									"url": "/learning/cloud/what-is-data-migration/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2OkRH9jhjm8FmxBtbYnZ9V",
+							"name": "Cloud header: Cloud glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2poSO07sAv136qKoXulTex",
+									"displayText": "AWS data transfer pricing",
+									"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "53Auemqu8excTZE8bzc7Zk",
-									"displayText": "Virtual private cloud",
-									"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
-									"displayText": "Cloudflare and the cloud",
-									"url": "/learning/cloud/cloudflare-and-the-cloud/"
+									"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
+									"displayText": "Data egress fees",
+									"url": "/learning/cloud/what-are-data-egress-fees/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -220,6 +250,12 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5tJVSh0zDmPqvoriPMSMuO",
+									"displayText": "What is a data lake?",
+									"url": "/learning/cloud/what-is-a-data-lake/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "7u090eTI3Lc6TC6CZRHIhI",
 									"displayText": "What is object storage?",
 									"url": "/learning/cloud/what-is-object-storage/"
@@ -232,22 +268,40 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
-									"displayText": "Data egress fees",
-									"url": "/learning/cloud/what-are-data-egress-fees/"
+									"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
+									"displayText": "What is a private cloud?",
+									"url": "/learning/cloud/what-is-a-private-cloud/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "2poSO07sAv136qKoXulTex",
-									"displayText": "AWS data transfer pricing",
-									"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+									"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+									"displayText": "What is a public cloud?",
+									"url": "/learning/cloud/what-is-a-public-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+									"displayText": "Virtual private cloud",
+									"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1w22mfnOVmsjLsM3jMxaAY",
+									"displayText": "Cloud networking",
+									"url": "/learning/cloud/what-is-cloud-networking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
+									"displayText": "Cloudflare and the cloud",
+									"url": "/learning/cloud/cloudflare-and-the-cloud/"
 								}
 							]
 						},
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "7qiJLGJVI1us6Le145zRbC",
-							"name": "Cloud Header: theNET",
+							"name": "Cloud header: theNET",
 							"displayText": "theNET",
 							"links": [
 								{
@@ -258,15 +312,15 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "goUykSuhqroMEsPv5li3u",
-									"displayText": "Trading egress for opportunity",
-									"url": "https://www.cloudflare.com/learning/insights-cloud-storage-egress/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "7akEuCGGNzlr1ufpM39JJO",
 									"displayText": "The Internet is the new corporate network",
 									"url": "https://www.cloudflare.com/learning/insights-internet-corp-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "goUykSuhqroMEsPv5li3u",
+									"displayText": "Trading egress for opportunity",
+									"url": "https://www.cloudflare.com/learning/insights-cloud-storage-egress/"
 								}
 							]
 						}
@@ -280,7 +334,7 @@
 					"column1": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "2PUeZxc6Kw9UYN9rDC8IYy",
-						"name": "Cloud Footer - About the Cloud",
+						"name": "Cloud footer — About the cloud",
 						"displayText": "About the cloud",
 						"links": [
 							{
@@ -297,19 +351,13 @@
 							}
 						]
 					},
-					"column2Title": "Cloud Configurations",
+					"column2Title": "Cloud configurations",
 					"column2": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "gD760jkD40xsJ5VKKDGCY",
-						"name": "Cloud Footer - Cloud Configurations",
+						"name": "Cloud Footer - Cloud configurations",
 						"displayText": "Cloud configurations",
 						"links": [
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
-								"displayText": "What is multi-cloud?",
-								"url": "/learning/cloud/what-is-multicloud/"
-							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
@@ -318,9 +366,15 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
-								"displayText": "What is a public cloud?",
-								"url": "/learning/cloud/what-is-a-public-cloud/"
+								"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
+								"displayText": "What is multi-cloud?",
+								"url": "/learning/cloud/what-is-multicloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+								"displayText": "Multitenancy",
+								"url": "/learning/cloud/what-is-multitenancy/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -330,17 +384,35 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
-								"displayText": "Multitenancy",
-								"url": "/learning/cloud/what-is-multitenancy/"
+								"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+								"displayText": "What is a public cloud?",
+								"url": "/learning/cloud/what-is-a-public-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3ogF8VqUtpwiX80xRDH9lQ",
+								"displayText": "How to rehost apps",
+								"url": "/learning/cloud/how-to-rehost-applications/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "nypSYuLAN0fI1HcJWLwj7",
+								"displayText": "How to replatform apps",
+								"url": "/learning/cloud/how-to-replatform-applications/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "174iXrdVMHuS7avH6ICSVG",
+								"displayText": "How to refactor apps",
+								"url": "/learning/cloud/how-to-refactor-applications/"
 							}
 						]
 					},
-					"column3Title": "Cloud Security",
+					"column3Title": "Cloud security",
 					"column3": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "5jkIKbYcSS95KrnsL6yhXO",
-						"name": "Cloud Footer - Cloud security",
+						"name": "Cloud footer — Cloud security",
 						"displayText": "Cloud security",
 						"links": [
 							{
@@ -348,6 +420,18 @@
 								"contentfulId": "kNE9anSSaRE82gAHCyVxp",
 								"displayText": "What is a cloud firewall (FWaaS)?",
 								"url": "/learning/cloud/what-is-a-cloud-firewall/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+								"displayText": "Cloud security posture management (CSPM)",
+								"url": "/learning/cloud/what-is-cspm/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+								"displayText": "Cloud workload protection platform (CWPP)",
+								"url": "/learning/cloud/what-is-cwpp/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -363,102 +447,36 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
-								"displayText": "Cloud security posture management (CSPM)",
-								"url": "/learning/cloud/what-is-cspm/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
 								"displayText": "SaaS security posture management (SSPM)",
 								"url": "/learning/cloud/what-is-sspm/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
-								"displayText": "Cloud workload protection platform (CWPP)",
-								"url": "/learning/cloud/what-is-cwpp/"
+								"contentfulId": "5xd2QLCI5QCkPAIoDk5CJ2",
+								"displayText": "Cloud-native security",
+								"url": "/learning/cloud/cloud-native-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1FHXopbTiAErueuQvbAXr6",
+								"displayText": "Cloud-native application protection platform (CNAPP)",
+								"url": "/learning/cloud/cnapp/"
 							}
 						]
 					},
-					"column4Title": "Cloud Glossary",
+					"column4Title": "Cloud glossary",
 					"column4": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "4ITdD1qcb1o7qstB32QX0V",
-						"name": "Cloud Footer - Glossary",
+						"name": "Cloud footer — Glossary",
 						"displayText": "Cloud glossary",
 						"links": [
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5k1A20zBRQpjW2079su8uz",
-								"displayText": "What is SaaS?",
-								"url": "/learning/cloud/what-is-saas/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
-								"displayText": "Cloud migration",
-								"url": "/learning/cloud/what-is-cloud-migration/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
-								"displayText": "Multi-cloud management",
-								"url": "/learning/cloud/what-is-multicloud-management/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
-								"displayText": "Hybrid cloud architecture",
-								"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
-								"displayText": "Multi-cloud vs hybrid cloud",
-								"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
-								"displayText": "Virtual machine",
-								"url": "/learning/cloud/what-is-a-virtual-machine/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
-								"displayText": "What is cloud storage?",
-								"url": "/learning/cloud/what-is-cloud-storage/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
-								"displayText": "Digital transformation",
-								"url": "/learning/cloud/what-is-digital-transformation/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "38DHkZos35DYciaxPnJk7g",
-								"displayText": "Vendor lock-in",
-								"url": "/learning/cloud/what-is-vendor-lock-in/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
-								"displayText": "What is IaaS?",
-								"url": "/learning/cloud/what-is-iaas/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "53Auemqu8excTZE8bzc7Zk",
-								"displayText": "Virtual private cloud",
-								"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
-							},
-							{
-								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
-								"displayText": "Cloud security",
-								"url": "/learning/cloud/what-is-cloud-security/"
+								"contentfulId": "2poSO07sAv136qKoXulTex",
+								"displayText": "AWS data transfer pricing",
+								"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -474,9 +492,63 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+								"displayText": "Cloud migration",
+								"url": "/learning/cloud/what-is-cloud-migration/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
+								"displayText": "Cloud security",
+								"url": "/learning/cloud/what-is-cloud-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+								"displayText": "What is cloud storage?",
+								"url": "/learning/cloud/what-is-cloud-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
 								"displayText": "Data egress fees",
 								"url": "/learning/cloud/what-are-data-egress-fees/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5tJVSh0zDmPqvoriPMSMuO",
+								"displayText": "What is a data lake?",
+								"url": "/learning/cloud/what-is-a-data-lake/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
+								"displayText": "Digital transformation",
+								"url": "/learning/cloud/what-is-digital-transformation/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
+								"displayText": "Hybrid cloud architecture",
+								"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
+								"displayText": "What is IaaS?",
+								"url": "/learning/cloud/what-is-iaas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+								"displayText": "Multi-cloud vs hybrid cloud",
+								"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
+								"displayText": "Multi-cloud management",
+								"url": "/learning/cloud/what-is-multicloud-management/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -492,13 +564,49 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
-								"contentfulId": "2poSO07sAv136qKoXulTex",
-								"displayText": "AWS data transfer pricing",
-								"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+								"contentfulId": "5k1A20zBRQpjW2079su8uz",
+								"displayText": "What is SaaS?",
+								"url": "/learning/cloud/what-is-saas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "38DHkZos35DYciaxPnJk7g",
+								"displayText": "Vendor lock-in",
+								"url": "/learning/cloud/what-is-vendor-lock-in/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
+								"displayText": "Virtual machine",
+								"url": "/learning/cloud/what-is-a-virtual-machine/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+								"displayText": "Virtual private cloud",
+								"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1w22mfnOVmsjLsM3jMxaAY",
+								"displayText": "Cloud networking",
+								"url": "/learning/cloud/what-is-cloud-networking/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "y0HrOCtfIQJ4B46NGM8aK",
+								"displayText": "Application modernization",
+								"url": "/learning/cloud/application-modernization/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "31LQEF639fG1XJWTZBqnNO",
+								"displayText": "Data migration",
+								"url": "/learning/cloud/what-is-data-migration/"
 							}
 						]
 					},
-					"column5Title": "Learning Center Navigation",
+					"column5Title": "Learning Center navigation",
 					"column5": {
 						"contentTypeId": "learningCenterArticleLinkedList",
 						"contentfulId": "3Z0WMXrDmdWdc5R8JIkDrG",
@@ -640,7 +748,7 @@
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a SaaS management platform (SMP)?</h2>\n\n<p>SaaS management platforms (SMPs) allow companies to centrally manage and operate their <a href='/learning/cloud/what-is-saas/'>software-as-a-service (SaaS) applications</a>. SMPs aggregate usage, administrative, and security information from these applications onto a single dashboard.</p>\n\n<p>SaaS applications, or software that runs in the cloud as opposed to on hardware or local networks, are central to many organizations' daily operations. Google Workspace, Slack, and Salesforce are common examples of SaaS applications.</p>\n\n<p>Because SaaS applications are accessed over the Internet, they introduce many security considerations like ensuring only authorized users are able to login. And that the devices they are logging in from are secure. These concerns place additional strain on the IT teams who are responsible for managing application access policies and ensuring compliance across entire organizations.</p>\n\n<p>You can think of an SMP like the dashboard control panel in a car. The panel will signal to the driver when issues arise, like low tire pressure or a passenger not wearing a seatbelt. It would be difficult for drivers to manually check all of these areas and diagnose the issues. Similarly, SMPs enable IT teams to maintain control over SaaS applications without having to manage the settings of each individual application.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What do SMPs do?</h2>\n\n<p>According to research and consulting firm <a href='https://www.gartner.com/en'>Gartner</a>, SMPs have three primary functions:\n<ul class='learning-list'>\n  <li><strong>Application discovery:</strong> SMPs use a variety of sources — from <a href='/learning/access-management/what-is-identity-and-access-management/'>identity and access management (IAM)</a> services to browser extensions — to track all SaaS applications currently in use. They also aggregate information about who uses these applications and how frequently they do so. </li>\n <li><strong>Application management:</strong> SMPs centralize SaaS applications' management functions. This simplifies IT tasks like license management, user offboarding and onboarding, and the creation and management of user groups within applications. </li>\n <li><strong>Security and compliance:</strong> SMPs allow companies to centralize their data protection, <a href='/learning/access-management/what-is-access-control/'>access control</a>, and other security settings. Rather than having to visit each SaaS application for this information, IT teams can use their SMP as a control center.</li></ul>\n\n<p>It is worth noting that not all applications or SMPs allow administrators to make actual changes to the settings they manage. Some solely offer read-only settings. </p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the benefits of SMPs?</h2>\n\n<p>Companies use SMPs for a variety of reasons, including: \n<ul class='learning-list'>\n  <li><strong>Uncovering shadow IT:</strong> Application discovery identifies <a href='/learning/access-management/what-is-shadow-it/'>shadow IT</a>, or the unauthorized use of applications or devices. Shadow IT compromises an organization's ability to maintain visibility and control over their data, making them more susceptible to <a href='/learning/security/what-is-a-data-breach/'>data breaches</a>.\nBetter decision making and cost savings: SMPs' visibility capabilities help organizations better understand SaaS usage. With this data, organizations can make informed decisions about access levels or license distribution that may save them money.</li>\n  <li><strong>Task efficiency:</strong>  Without SMPs, IT administrators would need to visit the management consoles for each SaaS application to complete administrative tasks and tweak security settings. This not only places the burden of manual tasks on the IT team, but creates room for error. </li>\n<li><strong>Improved, centralized security:</strong> SMPs integrate with IAM, <a href='/learning/security/glossary/what-is-endpoint/'>endpoint</a> management, and other security tools. This lets administrators view (and sometimes enforce) security settings from one place — ensuring consistency across applications.</li></ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do SMPs and CASBs differ?</h2>\n\n<p>SMPs are often compared to <a href='/learning/access-management/what-is-a-casb/'>cloud access security brokers (CASBs)</a>. CASBs help secure SaaS applications, <a href='/learning/cloud/what-is-iaas/'>infrastructure-as-a-service (IaaS)</a>, and <a href='/learning/serverless/glossary/platform-as-a-service-paas/'>platform-as-a-service (PaaS)</a> services. </p>\n\n<p>Some of their functionality — like shadow IT discovery and certain access control capabilities — overlaps with SMPs. However, CASBs offer <a href='/learning/access-management/what-is-dlp/'>data loss prevention (DLP)</a> and threat protection functionality that extend beyond an SMP's more administrative role. </p>\n\n<p>That said, SMPs and CASBs can integrate with each other. For example, SMPs can use data from CASBs to create a more accurate picture of what access and usage look like across SaaS applications. </p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do SMPs contrast with SSPM tools?</h2>\n\n<p>SMPs also have similarities with <a href='/learning/cloud/what-is-sspm/'>SaaS security posture management (SSPM)</a> tools. SSPM tools can identify security issues in SaaS applications like misconfigurations, user permission concerns, and compliance risks. Like some SMPs, certain SSPMs can automatically remedy these security issues. </p>\n\n<p>Overall, SSPMs focus more on security while SMPs offer broader administrative and visibility functions.</p>\n\n<p>The following is a non-exhaustive comparison of the three types of platforms: </p>\n<div class=\"record-table\">\n  <table>\n    <tr>\n      <th>Offering</th>\n      <th>SMPs</th>\n      <th>CASBs</th>\n      <th>SSPMs</th>\n    </tr>\n      <tr>\n        <td><strong>Centralizing administrative functions</strong></td>\n      <td>Yes</td>\n      <td>No</td>\n      <td>Yes</td>\n    </tr>\n    <tr>\n        <td><strong>Shadow IT discovery</strong></td>\n      <td>Yes</td>\n      <td>Yes</td>\n      <td>Yes</td>\n    </tr>\n       <tr>\n        <td><strong>Access control</strong></td>\n      <td>Yes, to a limited extent</td>\n      <td>Yes</td>\n      <td>Yes</td>\n    </tr>\n      <tr>\n        <td><strong>DLP</strong></td>\n      <td>No</td>\n      <td>Yes</td>\n      <td>Yes</td>\n    </tr>\n    <tr>\n        <td><strong>Packet filtering</strong></td>\n      <td>No</td>\n      <td>Yes</td>\n      <td>No</td>\n    </tr>\n  </table></div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare secure SaaS applications?</h2>\n\n<p>In addition to SaaS and internal applications, <a href='/products/zero-trust/'>Cloudflare Zero Trust services</a> protect users and devices. Cloudflare Zero Trust offers shadow IT discovery and the ability to enforce <a href='https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/'>Zero Trust policies</a> as well as data protection rules across SaaS applications. </p>\n\n<p>Learn more about <a href='/products/zero-trust/secure-saas-access/'>how Cloudflare secures SaaS applications</a>.</p>\n",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a SaaS management platform (SMP)?</h2>\n\n<p>SaaS management platforms (SMPs) allow companies to centrally manage and operate their <a href='/learning/cloud/what-is-saas/'>software-as-a-service (SaaS) applications</a>. SMPs aggregate usage, administrative, and security information from these applications onto a single dashboard.</p>\n\n<p>SaaS applications, or software that runs in the cloud as opposed to on hardware or local networks, are central to many organizations' daily operations. Google Workspace, Slack, and Salesforce are common examples of SaaS applications.</p>\n\n<p>Because SaaS applications are accessed over the Internet, they introduce many security considerations like ensuring only authorized users are able to login. And that the devices they are logging in from are secure. These concerns place additional strain on the IT teams who are responsible for managing application access policies and ensuring compliance across entire organizations.</p>\n\n<p>You can think of an SMP like the dashboard control panel in a car. The panel will signal to the driver when issues arise, like low tire pressure or a passenger not wearing a seatbelt. It would be difficult for drivers to manually check all of these areas and diagnose the issues. Similarly, SMPs enable IT teams to maintain control over SaaS applications without having to manage the settings of each individual application.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What do SMPs do?</h2>\n\n<p>According to research and consulting firm <a href='https://www.gartner.com/en'>Gartner</a>, SMPs have three primary functions:\n<ul class='learning-list'>\n  <li><strong>Application discovery:</strong> SMPs use a variety of sources — from <a href='/learning/access-management/what-is-identity-and-access-management/'>identity and access management (IAM)</a> services to browser extensions — to track all SaaS applications currently in use. They also aggregate information about who uses these applications and how frequently they do so. </li>\n <li><strong>Application management:</strong> SMPs centralize SaaS applications' management functions. This simplifies IT tasks like license management, user offboarding and onboarding, and the creation and management of user groups within applications. </li>\n <li><strong>Security and compliance:</strong> SMPs allow companies to centralize their data protection, <a href='/learning/access-management/what-is-access-control/'>access control</a>, and other security settings. Rather than having to visit each SaaS application for this information, IT teams can use their SMP as a control center.</li></ul>\n\n<p>It is worth noting that not all applications or SMPs allow administrators to make actual changes to the settings they manage. Some solely offer read-only settings. </p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the benefits of SMPs?</h2>\n\n<p>Companies use SMPs for a variety of reasons, including: \n<ul class='learning-list'>\n  <li><strong>Uncovering shadow IT:</strong> Application discovery identifies <a href='/learning/access-management/what-is-shadow-it/'>shadow IT</a>, or the unauthorized use of applications or devices. Shadow IT compromises an organization's ability to maintain visibility and control over their data, making them more susceptible to <a href='/learning/security/what-is-a-data-breach/'>data breaches</a>.\nBetter decision making and cost savings: SMPs' visibility capabilities help organizations better understand SaaS usage. With this data, organizations can make informed decisions about access levels or license distribution that may save them money.</li>\n  <li><strong>Task efficiency:</strong>  Without SMPs, IT administrators would need to visit the management consoles for each SaaS application to complete administrative tasks and tweak security settings. This not only places the burden of manual tasks on the IT team, but creates room for error. </li>\n<li><strong>Improved, centralized security:</strong> SMPs integrate with IAM, <a href='/learning/security/glossary/what-is-endpoint/'>endpoint</a> management, and other security tools. This lets administrators view (and sometimes enforce) security settings from one place — ensuring consistency across applications.</li></ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do SMPs and CASBs differ?</h2>\n\n<p>SMPs are often compared to <a href='/learning/access-management/what-is-a-casb/'>cloud access security brokers (CASBs)</a>. CASBs help secure SaaS applications, <a href='/learning/cloud/what-is-iaas/'>infrastructure-as-a-service (IaaS)</a>, and <a href='/learning/serverless/glossary/platform-as-a-service-paas/'>platform-as-a-service (PaaS)</a> services. </p>\n\n<p>Some of their functionality — like shadow IT discovery and certain access control capabilities — overlaps with SMPs. However, CASBs offer <a href='/learning/access-management/what-is-dlp/'>data loss prevention (DLP)</a> and threat protection functionality that extend beyond an SMP's more administrative role. </p>\n\n<p>That said, SMPs and CASBs can integrate with each other. For example, SMPs can use data from CASBs to create a more accurate picture of what access and usage look like across SaaS applications. </p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do SMPs contrast with SSPM tools?</h2>\n\n<p>SMPs also have similarities with <a href='/learning/cloud/what-is-sspm/'>SaaS security posture management (SSPM)</a> tools. SSPM tools can identify security issues in SaaS applications like misconfigurations, user permission concerns, and compliance risks. Like some SMPs, certain SSPMs can automatically remedy these security issues. </p>\n\n<p>Overall, SSPMs focus more on security while SMPs offer broader administrative and visibility functions.</p>\n\n<p>The following is a non-exhaustive comparison of the three types of platforms: </p>\n<div class=\"record-table\">\n  <table>\n    <tr>\n      <th>Offering</th>\n      <th>SMPs</th>\n      <th>CASBs</th>\n      <th>SSPMs</th>\n    </tr>\n      <tr>\n        <td><strong>Centralizing administrative functions</strong></td>\n      <td>Yes</td>\n      <td>No</td>\n      <td>Yes</td>\n    </tr>\n    <tr>\n        <td><strong>Shadow IT discovery</strong></td>\n      <td>Yes</td>\n      <td>Yes</td>\n      <td>Yes</td>\n    </tr>\n       <tr>\n        <td><strong>Access control</strong></td>\n      <td>Yes, to a limited extent</td>\n      <td>Yes</td>\n      <td>Yes</td>\n    </tr>\n      <tr>\n        <td><strong>DLP</strong></td>\n      <td>No</td>\n      <td>Yes</td>\n      <td>Yes</td>\n    </tr>\n    <tr>\n        <td><strong>Packet filtering</strong></td>\n      <td>No</td>\n      <td>Yes</td>\n      <td>No</td>\n    </tr>\n  </table></div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare secure SaaS applications?</h2>\n\n<p>In addition to SaaS and internal applications, <a href='/zero-trust/'>Cloudflare Zero Trust services</a> protect users and devices. Cloudflare Zero Trust offers shadow IT discovery and the ability to enforce <a href='https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/'>Zero Trust policies</a> as well as data protection rules across SaaS applications. </p>\n\n<p>Learn more about <a href='/products/zero-trust/secure-saas-access/'>how Cloudflare secures SaaS applications</a>.</p>\n",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
@@ -654,21 +762,20 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"plPL": "English for Locale"
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
@@ -710,7 +817,7 @@
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -732,7 +839,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -756,6 +863,7 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

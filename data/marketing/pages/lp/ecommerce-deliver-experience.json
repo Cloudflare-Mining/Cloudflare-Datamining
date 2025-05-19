@@ -9,13 +9,14 @@
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
 					"zhTW": "English for Locale",
-					"frFR": "Translated for Locale",
+					"frFR": "English for Locale",
 					"deDE": "Translated for Locale",
 					"itIT": "Translated for Locale",
 					"jaJP": "English for Locale",
 					"koKR": "English for Locale",
 					"ptBR": "English for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,8 +30,7 @@
 					"trTR": "English for Locale",
 					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/ecommerce-deliver-experience",
 				"topNavOptions": "no-phone",
@@ -47,7 +47,12 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2023-05-05T00:31:14.728Z",
+					"updatedAt": "2024-11-20T01:05:59.791Z"
 				},
 				"contentfulId": "3z3Vd4rugmjF9kG3nWVpoE",
 				"contentTypeId": "page",
@@ -114,95 +119,6 @@
 						"featureList": null
 					},
 					{
-						"contentfulId": "5TPmLIKX6DVTUYPFjqQv0e",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": null,
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "kGXyJD7YSX9vnbyEabBlT",
-								"title": "Webinar: Make it the most wonderful time of the year….for eCommerce",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "large",
-								"description": "Watch this discussion to see how you can deliver lightning-fast experiences to your users, even during peak traffic, while mitigating online attacks.\n",
-								"learnMoreUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/3966980/make-it-the-most-wonderful-time-of-the-yearfor-ecommerce",
-								"learnMoreText": "Register",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "629c8048-0340-5565-9326-364a81f0d21a",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/15ojkWGoNICByDCxUKueRG/438fb91348a52f91d6302acb4353ac23/small_1.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4p1USyMsDvI7rHj9r2SZSX",
-								"title": "Webinar: Overcoming performance, security and privacy challenges of third-party tools",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "large",
-								"description": "Watch this discussion to learn how to secure your site with a cloud-based tool manager.",
-								"learnMoreUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/4035946/overcoming-performance-security-and-privacy-challenges-of-third-party-tools",
-								"learnMoreText": "Register",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "0047b7c8-f67f-5d7c-aeaf-6ef732a1687a",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4u9WdPCfaYCgh9EH9QrtV8/1d99c3d1b1e6a509414c3cbc23cef5da/small_2.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
 						"contentTypeId": "bladeTrustedBy",
 						"contentfulId": "3AE5Tzolv74RtvgXcJnqjH",
 						"bladeBorder": "border-top",
@@ -254,7 +170,7 @@
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mhur0vl8q716TyGFZuCIG/acb851172c83f325ae99e527ef4c216e/logo_shopify_color_32px-wrapper.svg"
 								},
-								"description": null
+								"description": "Shopify logo"
 							},
 							{
 								"file": {
@@ -382,7 +298,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVeELky7fceWRpfBvN8qr/4e13aa3d8dd73e1f091f3de966fdc9cb/logo_shopify_trusted-by_gray.svg"
 									},
-									"description": ""
+									"description": "Shopify logo"
 								},
 								"brandfolderAsset": null,
 								"brandfolderAssetMobile": null
@@ -443,7 +359,6 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"hasAdobeExperiment": null,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -459,13 +374,12 @@
 			"contentfulId": "3z3Vd4rugmjF9kG3nWVpoE",
 			"allowedHrefLangs": [
 				"en-US",
-				"fr-FR",
 				"de-DE",
 				"it-IT",
-				"es-ES"
+				"es-ES",
+				"es-LA"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

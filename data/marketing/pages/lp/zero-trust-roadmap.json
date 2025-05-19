@@ -9,28 +9,28 @@
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
 					"zhTW": "Translated for Locale",
-					"frFR": "English for Locale",
+					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
 					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "Translated for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": "No Page for Locale",
-					"nbNO": "No Page for Locale"
+					"plPL": "Translated for Locale",
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/zero-trust-roadmap",
 				"topNavOptions": "minimized",
@@ -47,7 +47,12 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2022-08-10T15:42:09.575Z",
+					"updatedAt": "2025-05-13T03:45:32.185Z"
 				},
 				"contentfulId": "5JeIdHiK6fGaRJU2NtTEsD",
 				"contentTypeId": "page",
@@ -63,7 +68,7 @@
 						"contentfulId": "5H1JQVxkxWFA4seXLJJWdA",
 						"bladeName": "[ACQ] Q3'22 WEB - NAMER - Zero Trust Roadmap - Form Blade",
 						"formType": "formRight",
-						"formTitle": null,
+						"formTitle": " ",
 						"buttonText": null,
 						"buttonColor": "orange",
 						"htmlId": null,
@@ -72,7 +77,7 @@
 							"contentfulId": "b6eFRLn15hUCsuorWVCT0",
 							"bladeName": "[ACQ] Q3'22 WEB - NAMER - Zero Trust Roadmap - Marketo Form",
 							"backgroundColor": "white",
-							"marketoFormId": 1341,
+							"marketoFormId": 1346,
 							"marketoFormLeadSource": "Inbound - Web Form",
 							"marketoFormLeadSourceDetail": "[ACQ] Q3'22 WEB - NAMER - Zero Trust Roadmap",
 							"marketoFormHeaderText": null,
@@ -80,15 +85,10 @@
 							"showCommentBox": false,
 							"marketoFormThankYouText": null,
 							"marketoFormCustomSuccessMessage": "Please use the link below to access the report.",
-							"marketoFormPdfDownload": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/9jyDLdW3VXPGwChDCCnrx/18edf82b3d4a36595e51c16ed5c62816/Zero-Trust-Roadmap-WP.pdf"
-								},
-								"description": ""
-							},
+							"marketoFormPdfDownload": null,
 							"marketoFormPdfDownloadI18n": [],
 							"marketoFormAssetDownloadButtonText": "Download Now",
-							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/9jyDLdW3VXPGwChDCCnrx/18edf82b3d4a36595e51c16ed5c62816/Zero-Trust-Roadmap-WP.pdf",
+							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/9jyDLdW3VXPGwChDCCnrx/a4b7f7825e229f2caeaa1a12a2d16b24/Whitepaper_A-Roadmap-to-Zero-Trust-Architecture.pdf",
 							"sendAdRoll": null,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
@@ -121,7 +121,6 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"hasAdobeExperiment": null,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -139,16 +138,19 @@
 				"en-US",
 				"zh-CN",
 				"zh-TW",
+				"fr-FR",
 				"de-DE",
 				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
-				"zh-Hans-CN"
+				"es-LA",
+				"ru-RU",
+				"zh-Hans-CN",
+				"pl-PL"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

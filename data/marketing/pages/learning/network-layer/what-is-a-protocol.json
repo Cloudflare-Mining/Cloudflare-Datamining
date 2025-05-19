@@ -145,13 +145,13 @@
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6aRzsX0gbj4ceQWQiEzBOC",
-									"displayText": "Network-as-a-service (NaaS)",
+									"displayText": "What is network as a service (NaaS)?",
 									"url": "/learning/network-layer/network-as-a-service-naas/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6wi0u9frLgJN3XQlvx223h",
-									"displayText": "Enterprise networking",
+									"displayText": "What is enterprise networking?",
 									"url": "/learning/network-layer/enterprise-networking/"
 								}
 							]
@@ -367,7 +367,7 @@
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "6aRzsX0gbj4ceQWQiEzBOC",
-								"displayText": "Network-as-a-service (NaaS)",
+								"displayText": "What is network as a service (NaaS)?",
 								"url": "/learning/network-layer/network-as-a-service-naas/"
 							},
 							{
@@ -379,7 +379,7 @@
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "6wi0u9frLgJN3XQlvx223h",
-								"displayText": "Enterprise networking",
+								"displayText": "What is enterprise networking?",
 								"url": "/learning/network-layer/enterprise-networking/"
 							}
 						]
@@ -670,7 +670,7 @@
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a network protocol?</h2>\n\n<p>In networking, a protocol is a set of rules for formatting and processing data. Network protocols are like a common language for computers. The computers within a network may use vastly different software and hardware; however, the use of protocols enables them to communicate with each other regardless.</p>\n\n<p>Standardized protocols are like a common language that computers can use, similar to how two people from different parts of the world may not understand each other's native languages, but they can communicate using a shared third language. If one computer uses the <a href='/learning/network-layer/internet-protocol/'>Internet Protocol (IP)</a> and a second computer does as well, they will be able to communicate — just as the United Nations relies on its 6 official languages to communicate amongst representatives from all over the globe. But if one computer uses IP and the other does not know this protocol, they will be unable to communicate.</p>\n\n<p>On the Internet, there are different protocols for different types of processes. Protocols are often discussed in terms of which OSI model layer they belong to.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the layers of the OSI model?</h2>\n\n<p>The <a href='/learning/ddos/glossary/open-systems-interconnection-model-osi/'>Open Systems Interconnection (OSI) model</a> is an abstract representation of how the Internet works. It contains 7 layers, with each layer representing a different category of networking functions.</p>\n\n<img src=\"https://cloudflare.com/img/learning/ddos/what-is-a-ddos-attack/osi-model-7-layers.svg\" class=\"responsive-image\" alt=\"The OSI Model\" itemprop=\"image\" />\n\n<p>Protocols make these networking functions possible. For instance, the Internet Protocol (IP) is responsible for <a href='/learning/network-layer/what-is-routing/'>routing</a> data by indicating where <a href='/learning/network-layer/what-is-a-packet/'>data packets</a>* come from and what their destination is. IP makes network-to-network communications possible. Hence, IP is considered a <a href='/learning/network-layer/what-is-the-network-layer/'>network layer</a> (layer 3) protocol.</p>\n\n<p>As another example, the <a href='/learning/ddos/glossary/tcp-ip/'>Transmission Control Protocol (TCP)</a> ensures that the transportation of packets of data across networks goes smoothly. Therefore, TCP is considered a transport layer (layer 4) protocol.</p>\n\n<p><i>*A packet is a small segment of data; all data sent over a network is divided into packets.</i></p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Which protocols run on the network layer?</h2>\n\n<p>As described above, IP is a network layer protocol responsible for routing. But it is not the only network layer protocol.</p>\n\n<p><a href='/learning/network-layer/what-is-ipsec/'><strong>IPsec:</strong></a> Internet Protocol Security (IPsec) sets up encrypted, authenticated IP connections over a <a href='/learning/access-management/what-is-a-vpn/'>virtual private network (VPN)</a>. Technically IPsec is not a protocol, but rather a collection of protocols that includes the Encapsulating Security Protocol (ESP), Authentication Header (AH), and Security Associations (SA).</p>\n\n  <p><a href='/learning/ddos/glossary/internet-control-message-protocol-icmp/'><strong>ICMP:</strong></a> The Internet Control Message Protocol (ICMP) reports errors and provides status updates. For example, if a router is unable to deliver a packet, it will send an ICMP message back to the packet's source.</p>\n\n  <p><strong>IGMP:</strong> The Internet Group Management Protocol (IGMP) sets up one-to-many network connections. IGMP helps set up multicasting, meaning multiple computers can receive data packets directed at one <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP address</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What other protocols are used on the Internet?</h2>\n\n<p>Some of the most important protocols to know are:</p>\n\n<p><strong>TCP:</strong> As described above, TCP is a transport layer protocol that ensures reliable data delivery. TCP is meant to be used with IP, and the two protocols are often referenced together as TCP/IP.</p>\n\n<p><strong>HTTP:</strong> The <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>Hypertext Transfer Protocol (HTTP)</a> is the foundation of the World Wide Web, the Internet that most users interact with. It is used for transferring data between devices. HTTP belongs to the <a href='/learning/ddos/what-is-layer-7/'>application layer (layer 7)</a>, because it puts data into a format that applications (e.g. a browser) can use directly, without further interpretation. The lower layers of the OSI model are handled by a computer's operating system, not applications.</p>\n\n<p><strong>HTTPS:</strong> The problem with HTTP is that it is not <a href='/learning/ssl/what-is-encryption/'>encrypted</a> — any attacker who intercepts an HTTP message can read it. <a href='/learning/ssl/what-is-https/'>HTTPS</a> (HTTP Secure) corrects this by encrypting HTTP messages.</p>\n\n<p><strong>TLS/SSL:</strong> <a href='/learning/ssl/transport-layer-security-tls/'>Transport Layer Security (TLS)</a> is the protocol HTTPS uses for encryption. TLS used to be called <a href='/learning/ssl/what-is-ssl/'>Secure Sockets Layer (SSL)</a>.</p>\n\n<p><strong>UDP:</strong> The <a href='/learning/ddos/glossary/user-datagram-protocol-udp/'>User Datagram Protocol (UDP)</a> is a faster but less reliable alternative to TCP at the transport layer. It is often used in services like <a href='https://www.cloudflare.com/products/cloudflare-stream/'>video streaming</a> and gaming, where fast data delivery is paramount.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What protocols do routers use?</h2>\n\n<p>Network routers use certain protocols to discover the most efficient network paths to other routers. These protocols are not used for transferring user data. Important network routing protocols include:</p>\n\n<p><strong>BGP:</strong> The <a href='/learning/security/glossary/what-is-bgp/'>Border Gateway Protocol (BGP)</a> is an application layer protocol networks use to broadcast which IP addresses they control. This information allows routers to decide which networks data packets should pass through on the way to their destinations.</p>\n\n<p><strong>EIGRP:</strong> The Enhanced Interior Gateway Routing Protocol (EIGRP) identifies distances between routers. EIGRP automatically updates each router's record of the best routes (called a routing table) and broadcasts those updates to other routers within the network.</p>\n\n<p><strong>OSPF:</strong> The Open Shortest Path First (OSPF) protocol calculates the most efficient network routes based on a variety of factors, including distance and bandwidth.</p>\n\n<p><strong>RIP:</strong> The Routing Information Protocol (RIP) is an older routing protocol that identifies distances between routers. RIP is an application layer protocol.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How are protocols used in cyber attacks?</h2>\n\n<p>Just as with any aspect of computing, attackers can exploit the way networking protocols function to compromise or overwhelm systems. Many of these protocols are used in distributed denial-of-service (DDoS) attacks. For example, in a <a href='/learning/ddos/syn-flood-ddos-attack/'>SYN flood attack</a>, an attacker takes advantage of the way the TCP protocol works. They send SYN packets to repeatedly initiate a <a href='/learning/ddos/glossary/tcp-ip/'>TCP handshake</a> with a server, until the server is unable to provide service to legitimate users because its resources are tied up by all the phony TCP connections.</p>\n\n<p>Cloudflare offers a number of solutions for stopping these and other cyber attacks. <a href='/magic-transit/'>Cloudflare Magic Transit</a> is able to mitigate attacks at layers 3, 4, and 7 of the OSI model. In the example case of a SYN flood attack, Cloudflare handles the TCP handshake process on the server's behalf so that the server's resources never become overwhelmed by open TCP connections.</p>\n",
+				"desktopMainContent": "<style>\n\n    .cards-wrapper-lcnew  { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}\n    .cards_item-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fMg89go9MegG1EDg39mNy/5a42817cd388ae352f77f56e53b1ff81/card-new.png'); background-repeat: no-repeat; background-size: cover;  background-position: center;  border-radius: 8px;  box-shadow: 10px 10px 20px -14px rgba(0, 0, 0, 1.0);  overflow: hidden;}\n    .btn-lcnew { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .btn:hover { background-color: rgba(255, 255, 255, 0.12);}\n    .card_content-lcnew  { padding: 1rem; display: flex; flex-direction: column;}\n    .card_title-lcnew  { color: #ffffff; font-size: 12px; margin: 0px; line-height: 18px; text-transform: uppercase;}\n    .card_title-lcnew span  {font-weight: 500}\n    .card_text-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; margin-bottom: 1rem; margin-top: 1rem; font-weight: 600;}\n     a:hover {background-size: 100% 4em !important; color: var(--inline-link-color);}\n\n    @media (max-width: 40rem) \n    {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n    .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n    .card_content-banner-lcnew { padding: 1rem;  display: grid; grid-template-rows: 1fr 1fr; grid-gap: 10px;}\n    .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n    .card_title-banner-lcnew span  {text-transform: uppercase; font-weight: 500 !important}\n    .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n    .card_content-banner-bt { align-self: center; justify-self: center;}\n\n    @media (max-width: 40rem) \n    { .cards-banner-lcnew { grid-template-columns: unset; padding: 0.75rem; display: flex; flex-direction: column; }\n      .card_text-banner-lcnew { line-height: 18px; }\n      .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n      .card_content-banner-bt {align-self: end;}\n    }\n\n    </style>  \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a network protocol?</h2>\n\n<p>In networking, a protocol is a set of rules for formatting and processing data. Network protocols are like a common language for computers. The computers within a network may use vastly different software and hardware; however, the use of protocols enables them to communicate with each other regardless.</p>\n\n<p>Standardized protocols are like a common language that computers can use, similar to how two people from different parts of the world may not understand each other's native languages, but they can communicate using a shared third language. If one computer uses the <a href='/learning/network-layer/internet-protocol/'>Internet Protocol (IP)</a> and a second computer does as well, they will be able to communicate — just as the United Nations relies on its 6 official languages to communicate amongst representatives from all over the globe. But if one computer uses IP and the other does not know this protocol, they will be unable to communicate.</p>\n\n<p>On the Internet, there are different protocols for different types of processes. Protocols are often discussed in terms of which OSI model layer they belong to.</p>\n\n<div class=\"cards-wrapper-lcnew\">\n    <div class=\"cards_item-lcnew\">\n        <div class=\"card_content-lcnew\">\n            <div class=\"card_title-lcnew\"><span>eBook</span></div>\n            <div class=\"card_text-lcnew\">Strengthen security with a unified platform</div>\n            <div class=\"btn-lcnew card_btn\"><a href=\"https://www.cloudflare.com/lp/cloudflare-strengthens-security/\" data-tracking-action=\"click\" data-tracking-label=\"Get the eBook - https://www.cloudflare.com/lp/cloudflare-strengthens-security/\" data-tracking-category=\"card1\">Get the eBook</a></div>\n        </div>\n    </div>\n\n    <div class=\"cards_item-lcnew \">\n        <div class=\"card_content-lcnew \">\n            <div class=\"card_title-lcnew\"><span>Whitepaper</span></div>\n            <div class=\"card_text-lcnew\">Developing a strategy for your network modernization</div>\n            <div class=\"btn-lcnew  card_btn\"><a href=\"/lp/developing-a-strategy-for-network-modernization/\" data-tracking-action=\"click\"\n                    data-tracking-label=\"Read the whitepaper - /lp/developing-a-strategy-for-network-modernization/\" data-tracking-category=\"card2\">Read the whitepaper</a> </div>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the layers of the OSI model?</h2>\n\n<p>The <a href='/learning/ddos/glossary/open-systems-interconnection-model-osi/'>Open Systems Interconnection (OSI) model</a> is an abstract representation of how the Internet works. It contains 7 layers, with each layer representing a different category of networking functions.</p>\n\n<img src=\"https://cloudflare.com/img/learning/ddos/what-is-a-ddos-attack/osi-model-7-layers.svg\" class=\"responsive-image\" alt=\"The OSI Model\" itemprop=\"image\" />\n\n<p>Protocols make these networking functions possible. For instance, the Internet Protocol (IP) is responsible for <a href='/learning/network-layer/what-is-routing/'>routing</a> data by indicating where <a href='/learning/network-layer/what-is-a-packet/'>data packets</a>* come from and what their destination is. IP makes network-to-network communications possible. Hence, IP is considered a <a href='/learning/network-layer/what-is-the-network-layer/'>network layer</a> (layer 3) protocol.</p>\n\n<p>As another example, the <a href='/learning/ddos/glossary/tcp-ip/'>Transmission Control Protocol (TCP)</a> ensures that the transportation of packets of data across networks goes smoothly. Therefore, TCP is considered a transport layer (layer 4) protocol.</p>\n\n<p><i>*A packet is a small segment of data; all data sent over a network is divided into packets.</i></p>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Sign Up</span></div>\n        <div class=\"card_text-banner-lcnew\">Security & speed with any Cloudflare plan</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/plans/\" data-tracking-action=\"click\" data-tracking-label=\"Get started free - /plans/\" data-tracking-category=\"card3\">Start for free</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Which protocols run on the network layer?</h2>\n\n<p>As described above, IP is a network layer protocol responsible for routing. But it is not the only network layer protocol.</p>\n\n<p><a href='/learning/network-layer/what-is-ipsec/'><strong>IPsec:</strong></a> Internet Protocol Security (IPsec) sets up encrypted, authenticated IP connections over a <a href='/learning/access-management/what-is-a-vpn/'>virtual private network (VPN)</a>. Technically IPsec is not a protocol, but rather a collection of protocols that includes the Encapsulating Security Protocol (ESP), Authentication Header (AH), and Security Associations (SA).</p>\n\n  <p><a href='/learning/ddos/glossary/internet-control-message-protocol-icmp/'><strong>ICMP:</strong></a> The Internet Control Message Protocol (ICMP) reports errors and provides status updates. For example, if a router is unable to deliver a packet, it will send an ICMP message back to the packet's source.</p>\n\n  <p><strong>IGMP:</strong> The Internet Group Management Protocol (IGMP) sets up one-to-many network connections. IGMP helps set up multicasting, meaning multiple computers can receive data packets directed at one <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP address</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What other protocols are used on the Internet?</h2>\n\n<p>Some of the most important protocols to know are:</p>\n\n<p><strong>TCP:</strong> As described above, TCP is a transport layer protocol that ensures reliable data delivery. TCP is meant to be used with IP, and the two protocols are often referenced together as TCP/IP.</p>\n\n<p><strong>HTTP:</strong> The <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>Hypertext Transfer Protocol (HTTP)</a> is the foundation of the World Wide Web, the Internet that most users interact with. It is used for transferring data between devices. HTTP belongs to the <a href='/learning/ddos/what-is-layer-7/'>application layer (layer 7)</a>, because it puts data into a format that applications (e.g. a browser) can use directly, without further interpretation. The lower layers of the OSI model are handled by a computer's operating system, not applications.</p>\n\n<p><strong>HTTPS:</strong> The problem with HTTP is that it is not <a href='/learning/ssl/what-is-encryption/'>encrypted</a> — any attacker who intercepts an HTTP message can read it. <a href='/learning/ssl/what-is-https/'>HTTPS</a> (HTTP Secure) corrects this by encrypting HTTP messages.</p>\n\n<p><strong>TLS/SSL:</strong> <a href='/learning/ssl/transport-layer-security-tls/'>Transport Layer Security (TLS)</a> is the protocol HTTPS uses for encryption. TLS used to be called <a href='/learning/ssl/what-is-ssl/'>Secure Sockets Layer (SSL)</a>.</p>\n\n<p><strong>UDP:</strong> The <a href='/learning/ddos/glossary/user-datagram-protocol-udp/'>User Datagram Protocol (UDP)</a> is a faster but less reliable alternative to TCP at the transport layer. It is often used in services like <a href='https://www.cloudflare.com/products/cloudflare-stream/'>video streaming</a> and gaming, where fast data delivery is paramount.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What protocols do routers use?</h2>\n\n<p>Network routers use certain protocols to discover the most efficient network paths to other routers. These protocols are not used for transferring user data. Important network routing protocols include:</p>\n\n<p><strong>BGP:</strong> The <a href='/learning/security/glossary/what-is-bgp/'>Border Gateway Protocol (BGP)</a> is an application layer protocol networks use to broadcast which IP addresses they control. This information allows routers to decide which networks data packets should pass through on the way to their destinations.</p>\n\n<p><strong>EIGRP:</strong> The Enhanced Interior Gateway Routing Protocol (EIGRP) identifies distances between routers. EIGRP automatically updates each router's record of the best routes (called a routing table) and broadcasts those updates to other routers within the network.</p>\n\n<p><strong>OSPF:</strong> The Open Shortest Path First (OSPF) protocol calculates the most efficient network routes based on a variety of factors, including distance and bandwidth.</p>\n\n<p><strong>RIP:</strong> The Routing Information Protocol (RIP) is an older routing protocol that identifies distances between routers. RIP is an application layer protocol.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How are protocols used in cyber attacks?</h2>\n\n<p>Just as with any aspect of computing, attackers can exploit the way networking protocols function to compromise or overwhelm systems. Many of these protocols are used in distributed denial-of-service (DDoS) attacks. For example, in a <a href='/learning/ddos/syn-flood-ddos-attack/'>SYN flood attack</a>, an attacker takes advantage of the way the TCP protocol works. They send SYN packets to repeatedly initiate a <a href='/learning/ddos/glossary/tcp-ip/'>TCP handshake</a> with a server, until the server is unable to provide service to legitimate users because its resources are tied up by all the phony TCP connections.</p>\n\n<p>Cloudflare offers a number of solutions for stopping these and other cyber attacks. <a href='/magic-transit/'>Cloudflare Magic Transit</a> is able to mitigate attacks at layers 3, 4, and 7 of the OSI model. In the example case of a SYN flood attack, Cloudflare handles the TCP handshake process on the server's behalf so that the server's resources never become overwhelmed by open TCP connections.</p>\n",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
@@ -679,68 +679,33 @@
 					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -762,7 +727,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -782,10 +747,12 @@
 				"zh-TW",
 				"fr-FR",
 				"de-DE",
+				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

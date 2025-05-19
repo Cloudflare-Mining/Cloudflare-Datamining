@@ -16,6 +16,7 @@
 					"koKR": "English for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,8 +30,7 @@
 					"trTR": "English for Locale",
 					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "/lp/redefining-browser-isolation-security/",
 				"topNavOptions": "minimized",
@@ -47,7 +47,12 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2023-06-08T14:56:04.948Z",
+					"updatedAt": "2024-02-29T01:51:30.912Z"
 				},
 				"contentfulId": "19lF45y4a6LhOGFc3S75db",
 				"contentTypeId": "page",
@@ -63,7 +68,7 @@
 						"contentfulId": "2b2CKVXJ648DM9tPu0dOH9",
 						"bladeName": "[ACQ + EXP] Q2'23 WEB - GBL - WP - Redefining Browser Isolation Security - Form",
 						"formType": "formRight",
-						"formTitle": "Get the White Paper",
+						"formTitle": null,
 						"buttonText": null,
 						"buttonColor": "orange",
 						"htmlId": null,
@@ -75,15 +80,20 @@
 							"marketoFormId": 1346,
 							"marketoFormLeadSource": "Marketing Generated - Inbound",
 							"marketoFormLeadSourceDetail": "[ACQ + EXP] Q2'23 WEB - GBL - WP - Redefining Browser Isolation Security",
-							"marketoFormHeaderText": null,
+							"marketoFormHeaderText": "Get the whitepaper",
 							"marketoFormDefaultComment": null,
 							"showCommentBox": null,
 							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": null,
-							"marketoFormPdfDownload": null,
+							"marketoFormCustomSuccessMessage": "       ",
+							"marketoFormPdfDownload": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bBldHJqyV9RZFjCYv9DA8/4703cf36da3546cf09ab8b0a0f2af1cd/Cloudflare_Browser_Isolation_whitepaper_A4.pdf"
+								},
+								"description": "Redefining browser isolation security"
+							},
 							"marketoFormPdfDownloadI18n": [],
 							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/19fjHx0VVV5a8yUooL0tKu/8c6349ce9df80485ec1639c880bfc77b/Cloudflare_Browser_Isolation_White_Paper_-_Q2_2023.pdf",
+							"marketoFormSuccessRedirectUrl": null,
 							"sendAdRoll": null,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
@@ -238,7 +248,6 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"hasAdobeExperiment": null,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -258,7 +267,6 @@
 				"es-ES"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

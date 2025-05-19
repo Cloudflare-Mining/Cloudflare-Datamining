@@ -16,21 +16,21 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "Translated for Locale",
+					"nlNL": "English for Locale",
 					"idID": "Translated for Locale",
 					"thTH": "Translated for Locale",
 					"ruRU": "Translated for Locale",
-					"svSE": "Translated for Locale",
+					"svSE": "English for Locale",
 					"viVN": "Translated for Locale",
-					"trTR": "No Page for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": "No Page for Locale",
-					"nbNO": "No Page for Locale"
+					"plPL": "Translated for Locale",
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/better",
 				"topNavOptions": "empty",
@@ -47,7 +47,12 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2020-02-24T22:08:23.304Z",
+					"updatedAt": "2025-05-17T09:03:52.400Z"
 				},
 				"contentfulId": "5k1WPqOaFlBPjPCOMDqWm4",
 				"contentTypeId": "page",
@@ -90,13 +95,13 @@
 								"sendAdRoll": null,
 								"meta_adRollCustomSegment": null,
 								"enableSandbox": null,
-								"marketoFormSubmitButtonText": null,
+								"marketoFormSubmitButtonText": "Contact us today",
 								"marketoFormSubmitButtonColor": "blue",
 								"enableEmailVerification": null,
 								"disableEnterpriseEmailNotification": null,
 								"enableRingout": null
 							},
-							"title": "Superior DDoS Mitigation. At a better price.",
+							"title": "Superior DDoS mitigation at a better price",
 							"subtitle": "Replace your DDoS mitigation solution for better performance, visibility, and reliability<sup class=\"text--black\">*</sup>.",
 							"copy": "Here are 3 reasons customers love Cloudflare and why they choose Magic Transit over alternatives:",
 							"iconList": [
@@ -122,7 +127,7 @@
 							"iconTitleList": [
 								"%{NetworkCapacity} of DDoS mitigation capacity + fast performance",
 								"Integrated solution. Single intuitive dashboard.",
-								"Lower Total Cost of Operations (TCO)"
+								"Lower total cost of operations (TCO)"
 							],
 							"iconCopyList": [
 								"That's higher than Radware, Akamai Prolexic, Neustar, and Imperva — combined (see table below). Attacks of any size and kind are no problem with Magic Transit. Better yet, get faster routing over Cloudflare's global network.",
@@ -145,9 +150,145 @@
 						},
 						{
 							"contentTypeId": "bladeHtml",
-							"contentfulId": "5eiXd3GsEU6HQLVfLjNwKr",
-							"htmlContent": "  <section id=\"pricing-details\" class=\"pv5 minw-700px\">\n    <h2 class=\"fw7 f5 f6-l tc mt5 mb6\">How Cloudflare Magic Transit compares to other vendors</h2>\n    <div class=\"js-plans-detail-nav w-100 mw9 ph2 center\">\n      <div class=\"flex flex-row mw9 center items-end bg-white bl br b--transparent\">\n        <div class=\"w-third w-third-m w-third-l\">\n          <h3 class=\"fw7 f4 lh-title ls5 brandGray5\">Feature</h3>\n        </div>\n        <div class=\"w-two-thirds flex flex-row\">\n            <div class=\"w-third-l w-100 ph3 pt4 pb4 db-l justify-center br1 br--top js-plans-detail-nav-item bg-gray9\">\n             <h4 class=\"fw7 f4 lh-title ls5 brandGray5\">RADWARE<sup>2</sup></h4>\n            </div>\n            <div class=\"w-third-l w-100 ph3 pt4 pb4 db-l justify-center br1 br--top js-plans-detail-nav-item\">\n\n              <h4 class=\"fw7 f4 lh-title ls5 brandGray5\">AKAMAI PROLEXIC<sup>3</sup></h4>\n            </div>\n            <div class=\"w-third-l w-100 ph3 pt4 pb4 db-l justify-center br1 br--top js-plans-detail-nav-item bg-gray9\">\n              <h4 class=\"fw7 f4 lh-title ls5 brandGray5\">NEUSTAR<sup>4</sup></h4>\n            </div>\n            <div class=\"w-third-l w-100 ph3 pt4 pb4 db-l justify-center br1 br--top js-plans-detail-nav-item\">\n             <h4 class=\"fw7 f4 lh-title ls5 brandGray5\">IMPERVA<sup>5</sup></h4>\n            </div>\n            <div class=\"w-third-l w-100 ph3 pt4 pb4 db-l justify-center br1 br--top js-plans-detail-nav-item bg-orange\">\n             <h4 class=\"fw7 f4 lh-title ls5 brandGray5 \">CLOUDFLARE MAGIC TRANSIT</h4>\n            </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"ph2 flex-row mw9 center items-center\">\n      <div class=\"flex flex-row bg-white bl br bb bt b--gray7\">\n        <div class=\"w-third w-third-m w-third-l flex-row items-center justify-between flex\">\n          <div class=\"w-two-thirds\">\n            <div class=\"lh-copy ls2 no-underline mv1 pl3 fw7 db\">No. of data centers for DDoS mitigation</div>\n          </div>\n        </div>\n\n        <div class=\"w-two-thirds flex flex-row tc\">\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <p class=\"f4 tc mb0\">14</p>\n              </div>\n              <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <p class=\"f4 tc mb0\">20</p>\n              </div>\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <p class=\"f4 tc mb0\">14</p>\n              </div>\n              <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <p class=\"f4 tc mb0\">50</p>\n              </div>\n              <div class=\"w-third-l pa4 bg-orange w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <p class=\"f4 tc mb0\">%{DataCenterCount}</p>\n              </div>\n        </div>\n      </div>    \n    </div>\n\n    <div class=\"ph2 flex-row mw9 center items-center\">\n      <div class=\"flex flex-row bg-white bl br bb bt b--gray7\">\n        <div class=\"w-third w-third-m w-third-l flex-row items-center justify-between flex\">\n          <div class=\"w-two-thirds\">\n            <div class=\"lh-copy ls2 no-underline mv1 pl3 fw7 db\">DDoS scrubbing capacity</div>\n          </div>\n        </div>\n\n        <div class=\"w-two-thirds flex flex-row tc\">\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                  <p class=\"f4 tc mb0\">8 Tbps</p>\n              </div>\n              <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <p class=\"f4 tc mb0\">10 Tbps</p>\n              </div>\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <p class=\"f4 tc mb0\">12 Tbps</p>\n              </div>\n              <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <p class=\"f4 tc mb0\">9 Tbps</p>\n              </div>\n              <div class=\"w-third-l pa4 bg-orange w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <p class=\"f4 tc mb0\">%{NetworkCapacity}</p>\n              </div>\n        </div>\n      </div>    \n    </div>\n\n    <div class=\"ph2 flex-row mw9 center items-center\">\n      <div class=\"flex flex-row bg-white bl br bb bt b--gray7\">\n        <div class=\"w-third w-third-m w-third-l flex-row items-center justify-between flex\">\n          <div class=\"w-two-thirds\">\n            <div class=\"lh-copy ls2 no-underline mv1 pl3 fw7 db\">Time-to-mitigation (TTM)<sup>6</sup></div>\n          </div>\n        </div>\n\n        <div class=\"w-two-thirds flex flex-row tc\">\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <p class=\"f4 tc mb0\">seconds</p>\n              </div>\n              <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <p class=\"f4 tc mb0\">&lt; 5 min</p>\n              </div>\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <p class=\"f4 tc mb0\">5-15 min</p>\n              </div>\n              <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <p class=\"f4 tc mb0\">&lt; 3 sec</p>\n              </div>\n              <div class=\"w-third-l pa4 bg-orange w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <p class=\"f4 tc mb0\">&lt; 3 sec</p>\n              </div>\n        </div>\n      </div>    \n    </div>\n  </section>",
+							"contentfulId": "5OvTh9v3RycW8dXlzxlVt4",
+							"htmlContent": "<section id=\"pricing-details\" class=\"pv5 minw-700px\">\n  <h2 class=\"fw7 f5 f6-l tc mt5 mb6\">How Cloudflare Magic Transit compares to other vendors</h2>\n\n  <!-- Header Row -->\n  <div class=\"js-plans-detail-nav w-100 mw9 ph2 center\">\n    <div class=\"flex mw9 center items-end bg-white flex-wrap\">\n      <div class=\"w-100 w-third-l mb3\">\n        <h3 class=\"fw7 f4 lh-title ls5 brandGray5 tc flex items-center justify-center h-100\">Feature</h3>\n      </div>\n      <div class=\"w-100 w-two-thirds-l flex flex-wrap\">\n        <div class=\"w-50 w-20-l pa3 bg-gray9\">\n          <h4 class=\"fw7 f4 lh-title ls5 brandGray5 tc tl-l\">RADWARE<sup>2</sup></h4>\n        </div>\n        <div class=\"w-50 w-20-l pa3\">\n          <h4 class=\"fw7 f4 lh-title ls5 brandGray5 tc tl-l\">AKAMAI PROLEXIC<sup>3</sup></h4>\n        </div>\n        <div class=\"w-50 w-20-l pa3 bg-gray9\">\n          <h4 class=\"fw7 f4 lh-title ls5 brandGray5 tc tl-l\">NETSCOUT (ARBOR)<sup>4</sup></h4>\n        </div>\n        <div class=\"w-50 w-20-l pa3\">\n          <h4 class=\"fw7 f4 lh-title ls5 brandGray5 tc tl-l\">IMPERVA<sup>5</sup></h4>\n        </div>\n        <div class=\"w-50 w-20-l pa3 bg-orange\">\n          <h4 class=\"fw7 f4 lh-title ls5 brandGray5 tc tl-l\">\n            CF MAGIC<br>TRANSIT\n          </h4>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Divider Line Above First Feature Row -->\n  <hr class=\"mw9 center mb4\">\n\n  <!-- First Feature Row -->\n  <div class=\"ph2 mw9 center\">\n    <div class=\"flex bg-white bb b--gray7 flex-wrap\">\n      <div class=\"w-100 w-third-l mb3\">\n        <div class=\"lh-copy ls2 mv1 fw7 tl flex items-center justify-center h-100\">No. of data centers for DDoS mitigation</div>\n      </div>\n      <div class=\"w-100 w-two-thirds-l flex flex-wrap\">\n        <div class=\"w-50 w-20-l pa3 bg-gray9\">\n          <p class=\"f4 mb0 tc tl-l\">21</p>\n        </div>\n        <div class=\"w-50 w-20-l pa3\">\n          <p class=\"f4 mb0 tc tl-l\">32</p>\n        </div>\n        <div class=\"w-50 w-20-l pa3 bg-gray9\">\n          <p class=\"f4 mb0 tc tl-l\">16</p>\n        </div>\n        <div class=\"w-50 w-20-l pa3\">\n          <p class=\"f4 mb0 tc tl-l\">63</p>\n        </div>\n        <div class=\"w-50 w-20-l pa3 bg-orange\">\n          <p class=\"f4 mb0 tc tl-l\">%{DataCenterCount}</p>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Second Feature Row -->\n  <div class=\"ph2 mw9 center\">\n    <div class=\"flex bg-white bb b--gray7 flex-wrap\">\n      <div class=\"w-100 w-third-l mb3\">\n        <div class=\"lh-copy ls2 mv1 fw7 tl flex items-center justify-center h-100\">DDoS scrubbing capacity</div>\n      </div>\n      <div class=\"w-100 w-two-thirds-l flex flex-wrap\">\n        <div class=\"w-50 w-20-l pa3 bg-gray9\">\n          <p class=\"f4 mb0 tc tl-l\">15 Tbps</p>\n        </div>\n        <div class=\"w-50 w-20-l pa3\">\n          <p class=\"f4 mb0 tc tl-l\">20 Tbps</p>\n        </div>\n        <div class=\"w-50 w-20-l pa3 bg-gray9\">\n          <p class=\"f4 mb0 tc tl-l\">15 Tbps</p>\n        </div>\n        <div class=\"w-50 w-20-l pa3\">\n          <p class=\"f4 mb0 tc tl-l\">13 Tbps</p>\n        </div>\n        <div class=\"w-50 w-20-l pa3 bg-orange\">\n          <p class=\"f4 mb0 tc tl-l\">%{NetworkCapacity}</p>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Third Feature Row -->\n  <div class=\"ph2 mw9 center\">\n    <div class=\"flex bg-white bb b--gray7 flex-wrap\">\n      <div class=\"w-100 w-third-l mb3\">\n        <div class=\"lh-copy ls2 mv1 fw7 tl flex items-center justify-center h-100\">Time-to-mitigation (TTM)<sup>6</sup></div>\n      </div>\n      <div class=\"w-100 w-two-thirds-l flex flex-wrap\">\n        <div class=\"w-50 w-20-l pa3 bg-gray9\">\n          <p class=\"f4 mb0 tc tl-l\">seconds</p>\n        </div>\n        <div class=\"w-50 w-20-l pa3\">\n          <p class=\"f4 mb0 tc tl-l\">minutes</p>\n        </div>\n        <div class=\"w-50 w-20-l pa3 bg-gray9\">\n          <p class=\"f4 mb0 tc tl-l\">1-5 min</p>\n        </div>\n        <div class=\"w-50 w-20-l pa3\">\n          <p class=\"f4 mb0 tc tl-l\">&lt; 3 sec</p>\n        </div>\n        <div class=\"w-50 w-20-l pa3 bg-orange\">\n          <p class=\"f4 mb0 tc tl-l\">&lt; 3 sec</p>\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n",
 							"htmlId": null
+						},
+						{
+							"contentfulId": "3Ae2sIzDIxOUSt8dS1uEEo",
+							"title": "Future-proof your investments with next gen CDN",
+							"copy": "Elevate your Digital Experience with Cloud-Native Edge Delivery",
+							"toggleText": null,
+							"button": [
+								{
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "6HnMCOQFDFEdKO7qYiKA1U",
+									"elementName": "Future-proof your investments with next gen CDN - Webinar - Button",
+									"standardText": null,
+									"text": "Watch now",
+									"url": "https://cloudflare.ondemand.goldcast.io/on-demand/03450ba1-f367-4712-92c5-090f40810594",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								}
+							],
+							"learnMoreUrl": null,
+							"learnMoreText": null,
+							"link": [],
+							"subheadline": null,
+							"button1Text": "Watch now",
+							"button1Url": "https://cloudflare.ondemand.goldcast.io/on-demand/03450ba1-f367-4712-92c5-090f40810594",
+							"button1Color": null,
+							"button2Text": null,
+							"button2Url": null,
+							"button2Color": null,
+							"streamOptions": [
+								"controls"
+							],
+							"streamCaptions": "en",
+							"streamVideoId": null,
+							"streamThumbnails": null,
+							"streamPoster": null,
+							"streamPosterAssetFile": null,
+							"image": null,
+							"imageAssetFile": {
+								"id": "1cdd765b-2db1-5f5d-8a0d-21a37cebd065",
+								"altText": "Future-proof your investments with next gen CDN",
+								"title": "Future-proof your investments with next gen CDN - Illustration",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SsqR47CSn7MkQWH8jdlnk/b115da915c4d802885333c3a1ca31095/Edg.io_Webinar_-_graphic.png"
+									},
+									"description": "Future-proof your investments with next gen CDN"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							"featureList": [],
+							"contentTypeId": "bladeImageText",
+							"sectionTitle": "Webinar",
+							"htmlId": null,
+							"titleSize": null,
+							"sectionPadding": null,
+							"backgroundColor": "white",
+							"bladeBorder": "none",
+							"imagePosition": false,
+							"imageSize": null,
+							"imageTextAlignment": null,
+							"togglesTo": []
+						},
+						{
+							"contentfulId": "6meArfVTJAgA7t35oB9FDt",
+							"title": "Cloudflare is named a Customers' Choice in the 2023 Gartner® Peer Insights™",
+							"copy": "Organizations must secure their entire environment, from applications to networks. Managing siloed tools, especially for DDoS protection, increases complexity and costs, making it harder to maintain effective security.",
+							"toggleText": null,
+							"button": [
+								{
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "fVDGgthhJ9e1zr2wUdlTS",
+									"elementName": "Button - Voice of the Customer\": DDoS Mitigation Solutions",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/lp/gartner-peer-insights-ddos/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							],
+							"learnMoreUrl": null,
+							"learnMoreText": null,
+							"link": [],
+							"subheadline": null,
+							"button1Text": null,
+							"button1Url": null,
+							"button1Color": null,
+							"button2Text": null,
+							"button2Url": null,
+							"button2Color": null,
+							"streamOptions": [
+								"controls"
+							],
+							"streamCaptions": "en",
+							"streamVideoId": null,
+							"streamThumbnails": null,
+							"streamPoster": null,
+							"streamPosterAssetFile": null,
+							"image": null,
+							"imageAssetFile": {
+								"id": "2b90af1c-6152-59d3-97cb-bfdc527a76ff",
+								"altText": "Gartner logo blue",
+								"title": "Gartner logo blue",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2s7pteYN9iqADUwX2MOVAs/b96a9914dc9dfed684581f8d194a16d8/Gartner_logo_with_transparent_rectangle_449x255.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							"featureList": [],
+							"contentTypeId": "bladeImageText",
+							"sectionTitle": "Analyst recognition",
+							"htmlId": null,
+							"titleSize": null,
+							"sectionPadding": "tile--no-bottom-padding",
+							"backgroundColor": "white",
+							"bladeBorder": "none",
+							"imagePosition": true,
+							"imageSize": null,
+							"imageTextAlignment": null,
+							"togglesTo": []
 						},
 						{
 							"contentTypeId": "bladeQuote",
@@ -158,7 +299,7 @@
 							"learnMoreText": null,
 							"sectionPadding": null,
 							"backgroundColor": "white",
-							"bladeBorder": "none",
+							"bladeBorder": "border-bottom",
 							"learnMoreUrl": null,
 							"htmlId": null,
 							"image": {
@@ -191,32 +332,6 @@
 							"quoteCarousel": []
 						},
 						{
-							"backgroundColor": "light-blue",
-							"contentfulId": "5npS9kGPphDSCVnVRvuUrk",
-							"contentTypeId": "bladeThreeFeatures",
-							"subtitle": null,
-							"bladeBorder": "none",
-							"sectionTitle": "Industry Recognition of DDoS Protection",
-							"title1": "Gartner",
-							"copy1": "Cloudflare has received the most number of 'High' ratings as compared to the other 6 DDoS vendors across 23 assessment criteria in Gartner's 2020 'Solution Comparison for DDoS Cloud Scrubbing Centers' report <sup class=\"text--black\">7</sup> ",
-							"locale": "en-US",
-							"htmlId": null,
-							"image1": null,
-							"imageAssetFile1": null,
-							"learnMoreUrl1": null,
-							"title2": "GigaOm",
-							"copy2": "Cloudflare has been recognized as Leader in the [2022 GigaOm Radar Report for DDoS Protection](https://www.cloudflare.com/gigaom-radar-ddos-protection/ \"2022 GigaOm Radar Report for DDoS Protection\"). The report evaluated nine different vendors and Cloudflare was ranked highest overall.",
-							"learnMoreUrl2": null,
-							"image2": null,
-							"imageAssetFile2": null,
-							"title3": "Forrester",
-							"copy3": "Cloudflare has been recognized as a \"Leader\" in the 2021 'Forrester Wave: DDoS Mitigation Solutions' <sup class=\"text--black\">9</sup> ",
-							"image3": null,
-							"imageAssetFile3": null,
-							"learnMoreUrl3": null,
-							"features": []
-						},
-						{
 							"contentTypeId": "bladeTrustedBy",
 							"contentfulId": "bGXZcQriItbwEaMlcrTcV",
 							"bladeBorder": "none",
@@ -232,13 +347,13 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17ovo10a1mEsAZ7ZwFKfFl/d0d561ddb71ecdb723357bb2f79bc979/logo_mars_gray_32px-wrapper.svg"
 									},
-									"description": null
+									"description": "Mars logo"
 								},
 								{
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/75Iu2nwjYyY5rckEPqO9hr/57b676a2cf5fe6c1e2b3663d7131fda5/logo_loreal_gray_32px-wrapper.svg"
 									},
-									"description": null
+									"description": "L'Oreal logo"
 								},
 								{
 									"file": {
@@ -256,7 +371,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mAzLb3ofkkG38jtcP2Ys8/094958a88df30575d79254ee6615a82f/logo_ibm_gray_32px-wrapper.svg"
 									},
-									"description": null
+									"description": "IBM logo"
 								},
 								{
 									"file": {
@@ -268,7 +383,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mhur0vl8q716TyGFZuCIG/acb851172c83f325ae99e527ef4c216e/logo_shopify_color_32px-wrapper.svg"
 									},
-									"description": null
+									"description": "Shopify logo"
 								},
 								{
 									"file": {
@@ -280,7 +395,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/47baOjkvX7lLtmTdWvCYI9/009360a8301d33def2ea3ffe22a922df/logo_labcorp_color_32px-wrapper.svg"
 									},
-									"description": null
+									"description": "LabCorp logo"
 								},
 								{
 									"file": {
@@ -312,7 +427,7 @@
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Xar1H4WcFHHkHRDzMypMh/1f8989ae11cb464cc640c7121d0be9a6/logo_mars_trusted-by_gray.svg"
 										},
-										"description": ""
+										"description": "Mars logo"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -327,7 +442,7 @@
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xn47h0gWiUSwJ0PU3Ysvk/683779108bfd6eeb62fbac5135780fe6/logo_loreal_trusted-by_gray.svg"
 										},
-										"description": ""
+										"description": "L'Oréal logo"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -372,7 +487,7 @@
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/OMwO1Fr8BxHVum0iBbatc/979c1807f5810edc903d4b07c18e0cb0/logo_ibm_trusted-by_gray.svg"
 										},
-										"description": ""
+										"description": "IBM logo"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -402,7 +517,7 @@
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVeELky7fceWRpfBvN8qr/4e13aa3d8dd73e1f091f3de966fdc9cb/logo_shopify_trusted-by_gray.svg"
 										},
-										"description": ""
+										"description": "Shopify logo"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -432,7 +547,7 @@
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AsuJijKk8EMH5s1ae56nx/b13406881aa864b7e17b2233a0d090ef/logo_labcorp_trusted-by_gray.svg"
 										},
-										"description": ""
+										"description": "LabCorp logo"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -488,7 +603,7 @@
 						{
 							"contentTypeId": "bladeHtml",
 							"contentfulId": "7kNdHqs04srWUJXOaNj5j5",
-							"htmlContent": "<p class=\"text--black text--extra-small\"><sup class=\"text--black\"><a id=\"magic_transit_terms\"><a href=\"#magic_transit_terms\">2</a></a></sup> Data as of March 2022. Radware— https://www.radware.com/newsevents/pressreleases/2021/radware-strengthens-cloud-ddos-attack-mitigation-capacity-8tbps\n\n<p class=\"text--black text--extra-small\"><sup class=\"text--black\"><a id=\"magic_transit_terms\"><a href=\"#magic_transit_terms\">3</a></a></sup> Data as of March 2022. Akamai Prolexic— https://www.akamai.com/us/en/products/security/prolexic-solutions.jsp\n\n<p class=\"text--black text--extra-small\"><sup class=\"text--black\"><a id=\"magic_transit_terms\"><a href=\"#magic_transit_terms\">4</a></a></sup> Data as of March 2022. Neustar— https://www.home.neustar/resources/product-literature/make-ddos-direct-connection-with-netprotect#:~:text=Neustar%20has%20the%20industry's%20largest,located%20to%20ensure%20minimal%20latency.\n\n<p class=\"text--black text--extra-small\"><sup class=\"text--black\"><a id=\"magic_transit_terms\"><a href=\"#magic_transit_terms\">5</a></a></sup> Data as of March 2022. Imperva— https://www.imperva.com/products/global-network-map/\n\n<p class=\"text--black text--extra-small\"><sup class=\"text--black\"><a id=\"magic_transit_terms\"><a href=\"#magic_transit_terms\">6</a></a></sup> Cloudflare Magic Transit and other vendors offer 0-sec TTM for \"proactive\" or static rules. TTM listed here is for automatic detection and mitigation.\n\n<p class=\"text--black text--extra-small\"><sup class=\"text--black\"><a id=\"magic_transit_terms\"><a href=\"#magic_transit_terms\">7</a></a></sup> Gartner \"Solution Comparison for DDoS Cloud Scrubbing Centers,\" Thomas Lintemuth,  Patrick Hevesi, Sushil Aryal, 16 April 2020. Gartner subscribers access the report at: https://www.gartner.com/document/3983636 \n\n<p class=\"text--black text--extra-small\"><sup class=\"text--black\"><a id=\"magic_transit_terms\"><a href=\"#magic_transit_terms\">8</a></a></sup> IDC MarketScape: Worldwide DDoS Prevention Solutions 2019 Vendor Assessment, by Martha Vazquez, March 2019, IDC #US43699318. Access the report at https://www.cloudflare.com/lp/idc-ddos-marketscape/ \n\n<p class=\"text--black text--extra-small\"><sup class=\"text--black\"><a id=\"magic_transit_terms\"><a href=\"#magic_transit_terms\">9</a></a></sup> Forrester Wave™: DDoS Mitigation Solutions, Q1 2021, Forrester Research, Inc., March 3, 2021. Access the report at https://www.cloudflare.com/forrester-wave-ddos-mitigation-2021/ \n\n</p>\n\n<style>\n  .page-cms__icons-data__icon-description__content {\n    margin-left: 30px;\n  }\n</style>",
+							"htmlContent": "<style>\n  .text--extra-small {\n    font-size: 0.75em; /* Adjust to make text smaller */\n    color: gray; /* Set font color to gray */\n    line-height: 1.2; /* Reduce line spacing */\n  }\n  .text--black {\n    color: gray; /* Override black color for the text */\n  }\n</style>\n\n<p class=\"text--extra-small\">\n  <sup class=\"text--extra-small\">\n    <a id=\"magic_transit_terms\"><a href=\"#magic_transit_terms\">2</a></a>\n  </sup>\n  Data as of November 2024. Radware— https://www.radware.com/products/cloud-ddos-services/\n</p>\n\n<p class=\"text--extra-small\">\n  <sup class=\"text--extra-small\">\n    <a id=\"magic_transit_terms\"><a href=\"#magic_transit_terms\">3</a></a>\n  </sup>\n  Data as of November 2024. Akamai Prolexic— https://www.akamai.com/products/prolexic-solutions\n</p>\n\n<p class=\"text--extra-small\">\n  <sup class=\"text--extra-small\">\n    <a id=\"magic_transit_terms\"><a href=\"#magic_transit_terms\">4</a></a>\n  </sup>\n  Data as of November 2024. Netscout (Arbor)— https://ir.netscout.com/investors/press-releases/press-release-details/2024/NETSCOUT-Expands-DDoS-Scrubbing-Capabilities-Into-Canada/default.aspx\n</p>\n\n<p class=\"text--extra-small\">\n  <sup class=\"text--extra-small\">\n    <a id=\"magic_transit_terms\"><a href=\"#magic_transit_terms\">5</a></a>\n  </sup>\n  Data as of November 2024. Imperva— https://www.imperva.com/products/global-network-map/\n</p>\n\n<p class=\"text--extra-small\">\n  <sup class=\"text--extra-small\">\n    <a id=\"magic_transit_terms\"><a href=\"#magic_transit_terms\">6</a></a>\n  </sup>\n  Cloudflare Magic Transit and other vendors offer 0-sec TTM for \"proactive\" or static rules. TTM listed here is for automatic detection and mitigation.\n</p>",
 							"htmlId": null
 						}
 					]
@@ -496,7 +611,6 @@
 				"relatedBlades": [],
 				"noindex": false,
 				"formModal": [],
-				"hasAdobeExperiment": null,
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
@@ -521,16 +635,15 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
-				"nl-NL",
+				"es-LA",
 				"id-ID",
 				"th-TH",
 				"ru-RU",
-				"sv-SE",
 				"vi-VN",
-				"zh-Hans-CN"
+				"zh-Hans-CN",
+				"pl-PL"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

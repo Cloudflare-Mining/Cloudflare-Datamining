@@ -117,6 +117,12 @@
 									"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
 									"displayText": "Quantum Computing",
 									"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3omkIm00BeovpskqoQQ6ne",
+									"displayText": "Post-Quantum Cryptography",
+									"url": "/learning/ssl/quantum/what-is-post-quantum-cryptography/"
 								}
 							]
 						},
@@ -185,6 +191,12 @@
 									"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
 									"displayText": "What is Domain Spoofing?",
 									"url": "/learning/ssl/what-is-domain-spoofing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "45jjpkuoXvmdkIaeGUsTHk",
+									"displayText": "SSL Certificate Errors",
+									"url": "/learning/ssl/common-errors/"
 								}
 							]
 						},
@@ -316,6 +328,12 @@
 								"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
 								"displayText": "Quantum Computing",
 								"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3omkIm00BeovpskqoQQ6ne",
+								"displayText": "Post-Quantum Cryptography",
+								"url": "/learning/ssl/quantum/what-is-post-quantum-cryptography/"
 							}
 						]
 					},
@@ -373,6 +391,12 @@
 								"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
 								"displayText": "What is Domain Spoofing?",
 								"url": "/learning/ssl/what-is-domain-spoofing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "45jjpkuoXvmdkIaeGUsTHk",
+								"displayText": "SSL Certificate Errors",
+								"url": "/learning/ssl/common-errors/"
 							}
 						]
 					},
@@ -518,39 +542,8 @@
 						"url": "/learning/ssl/how-does-public-key-encryption-work/"
 					}
 				],
-				"enablementBlade": {
-					"contentTypeId": "bladeEnablement",
-					"contentfulId": "2LzGaNZHPu82wcJPy58uFK",
-					"title": "Increase security and trust using Cloudflare's free SSL / TLS",
-					"titleSize": "medium",
-					"backgroundColor": "image-background",
-					"buttonText": null,
-					"buttonUrl": null,
-					"buttonText2": null,
-					"buttonModalId2": null,
-					"buttonUrl2": null,
-					"bladeSizeType": "large",
-					"htmlId": null,
-					"bladeBorder": "none",
-					"buttonOne": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "1epT7zW5V2EDfOSFMWYuSf",
-						"elementName": "Get Started For Free - SSL",
-						"standardText": null,
-						"text": "Get Started For Free",
-						"url": "https://www.cloudflare.com/lp/pg-all-plans-ssl-lc/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					},
-					"buttonTwo": null,
-					"sectionPadding": null,
-					"eyebrow": null
-				},
-				"desktopMainContent": "<div itemscope itemtype=\"https://schema.org/FAQPage\">\n  <div itemscope itemprop=\"mainEntity\" itemtype=\"https://schema.org/Question\">\n<h2 itemprop=\"name\">What is an SSL certificate?</h2>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/2mkpUOPzl2jEPEERn2e57B/3b180ecab3ff7e0a5da1706434722573/ssl-certificate-secure-browsing.png\" class=\"responsive-image\" alt=\"SSL Certificate Secure Browsing\" />\n    <div itemscope itemprop=\"acceptedAnswer\" itemtype=\"https://schema.org/Answer\">\n     <div itemprop=\"text\">\n<p>SSL certificates are what enable websites to use <a href='/learning/ssl/what-is-https/'>HTTPS</a>, which is more secure than <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a>. An SSL certificate is a data file hosted in a website's <a href='/learning/cdn/glossary/origin-server/'>origin server</a>. SSL certificates make <a href='/learning/ssl/what-is-ssl/'>SSL/TLS encryption</a> possible, and they contain the website's <a href='/learning/ssl/how-does-public-key-encryption-work/'>public key</a> and the website's identity, along with related information.\n       </div>\n    </div>\n  </div>\nDevices attempting to communicate with the origin server will reference this file to obtain the public key and verify the server's identity. The private key is kept secret and secure.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is SSL?</h2>\n\n<p>SSL, more commonly called TLS, is a protocol for encrypting Internet traffic and verifying server identity. Any website with an HTTPS web address uses SSL/TLS. See <a href='/learning/ssl/what-is-ssl/'>What is SSL</a>? and <a href='/learning/ssl/transport-layer-security-tls/'>What is TLS</a>? to learn more.</p>\n  <div itemscope itemprop=\"mainEntity\" itemtype=\"https://schema.org/Question\">\n<h2 itemprop=\"name\">How do SSL certificates work?</h2>\n    <div itemscope itemprop=\"acceptedAnswer\" itemtype=\"https://schema.org/Answer\">\n     <div itemprop=\"text\">\n<p>SSL certificates include the following information in a single data file:</p>\n\n<ul>\n  <li>The <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain name</a> that the certificate was issued for</li>\n  <li>Which person, organization, or device it was issued to</li>\n  <li>Which certificate authority issued it</li>\n  <li>The certificate authority's digital signature</li>\n  <li>Associated subdomains</li>\n  <li>Issue date of the certificate</li>\n  <li>Expiration date of the certificate</li>\n  <li>The public key (the private key is kept secret)</li>\n</ul>\n     </div>\n    </div>\n  </div>\n</div>\n<p>The public and private keys used for SSL are essentially long strings of characters used for encrypting and signing data. Data encrypted with the public key can only be decrypted with the private key.</p>\n\n<p>The certificate is hosted on a website's origin server, and is sent to any devices that request to load the website. Most browsers enable users to view the SSL certificate: in Chrome, this can be done by clicking on the padlock icon on the left side of the URL bar.</p>\n\n<h4 class=\"learning-h4\" itemprop=\"headline\">Why do websites need an SSL certificate?</h4>\n\n<p>A website needs an SSL certificate in order to keep user data secure, verify ownership of the website, prevent attackers from creating a fake version of the site, and gain user trust.</p>\n\n<p><strong>Encryption:</strong> SSL/TLS encryption is possible because of the public-private key pairing that SSL certificates facilitate. Clients (such as web browsers) get the public key necessary to open a TLS connection from a server's SSL certificate.</p>\n\n<p><strong>Authentication:</strong> SSL certificates verify that a client is talking to the correct server that actually owns the domain. This helps prevent domain <a href='/learning/ddos/glossary/ip-spoofing/'>spoofing</a> and other kinds of attacks.</p>\n\n<p><strong>HTTPS:</strong> Most crucially for businesses, an SSL certificate is necessary for an HTTPS web address. HTTPS is the secure form of HTTP, and HTTPS websites are websites that have their traffic encrypted by SSL/TLS.</p>\n\n<p>In addition to securing user data in transit, HTTPS makes sites more trustworthy from a user's perspective. Many users won't notice the difference between an http:// and an https:// web address, but most browsers <a href='https://blog.cloudflare.com/today-chrome-takes-another-step-forward-in-addressing-the-design-flaw-that-is-an-unencrypted-web/'>tag HTTP sites as \"not secure\"</a> in noticeable ways, attempting to provide incentive for switching to HTTPS and increasing security.</p>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wegfRUlYUggfQ409DnMaA/c7e1469930b95b5e686c46ba43578f71/ssl-certificate-not-secure-browsing.png\" class=\"responsive-image\" alt=\"SSL Certificate Not Secure Browsing\" />\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does a website obtain an SSL certificate?</h2>\n\n<p>For an SSL certificate to be valid, domains need to obtain it from a certificate authority (CA). A CA is an outside organization, a trusted third party, that generates and gives out SSL certificates. The CA will also digitally sign the certificate with their own private key, allowing client devices to verify it. Most, but not all, CAs will charge a fee for issuing an SSL certificate.</p>\n\n<p>Once the certificate is issued, it needs to be installed and activated on the website's origin server. Web hosting services can usually handle this for website operators. Once it's activated on the origin server, the website will be able to load over HTTPS and all traffic to and from the website will be encrypted and secure.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a self-signed SSL certificate?</h2>\n\n<p>Technically, anyone can create their own SSL certificate by generating a public-private key pairing and including all the information mentioned above. Such certificates are called self-signed certificates because the digital signature used, instead of being from a CA, would be the website's own private key.</p>\n\n<p>But with self-signed certificates, there's no outside authority to verify that the origin server is who it claims to be. Browsers don't consider self-signed certificates trustworthy and may still mark sites with one as \"not secure,\" despite the https:// URL. They may also terminate the connection altogether, blocking the website from loading.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Is it possible to get a free SSL certificate?</h2>\n\n<p>Cloudflare offers <a href='/ssl/'>free SSL/TLS encryption</a> and was the first company to do so, <a href='https://blog.cloudflare.com/introducing-universal-ssl/'>launching Universal SSL in September 2014</a>. The free version of SSL shares SSL certificates among multiple customer domains. Cloudflare also offers customized SSL certificates for enterprise customers.</p>\n\n<p>To get a free SSL certificate, domain owners need to sign up for Cloudflare and select an SSL option in their SSL settings. <a href='https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl' target='_blank'>This article has further instructions</a> on setting up SSL with Cloudflare.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why does Cloudflare offer free SSL certificates?</h2>\n\n<p>Cloudflare is able to offer SSL for free because of its globally distributed <a href='/cdn/'>CDN</a>, with highly efficient proxy servers running in data centers all around the world. The Cloudflare mission is to help make the Internet more secure, and widespread adoption of HTTPS is a huge step towards achieving this. SSL/TLS encryption protects user data, prevents attacks, and makes the Internet a safer place overall.</p>",
+				"enablementBlade": null,
+				"desktopMainContent": "<style>\n\n    .cards-wrapper-lcnew  { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}\n    .cards_item-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fMg89go9MegG1EDg39mNy/5a42817cd388ae352f77f56e53b1ff81/card-new.png'); background-repeat: no-repeat; background-size: cover;  background-position: center;  border-radius: 8px;  box-shadow: 10px 10px 20px -14px rgba(0, 0, 0, 1.0);  overflow: hidden;}\n    .btn-lcnew { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .btn:hover { background-color: rgba(255, 255, 255, 0.12);}\n    .card_content-lcnew  { padding: 1rem; display: flex; flex-direction: column;}\n    .card_title-lcnew  { color: #ffffff; font-size: 12px; margin: 0px; line-height: 18px; text-transform: uppercase;}\n    .card_title-lcnew span  {font-weight: 500}\n    .card_text-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; margin-bottom: 1rem; margin-top: 1rem; font-weight: 600;}\n     a:hover {background-size: 100% 4em !important; color: var(--inline-link-color);}\n\n    @media (max-width: 40rem) \n    {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n    .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n    .card_content-banner-lcnew { padding: 1rem;  display: grid; grid-template-rows: 1fr 1fr; grid-gap: 10px;}\n    .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n    .card_title-banner-lcnew span  {text-transform: uppercase; font-weight: 500 !important}\n    .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n    .card_content-banner-bt { align-self: center; justify-self: center;}\n\n    @media (max-width: 40rem) \n    { .cards-banner-lcnew { grid-template-columns: unset; padding: 0.75rem; display: flex; flex-direction: column; }\n      .card_text-banner-lcnew { line-height: 18px; }\n      .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n      .card_content-banner-bt {align-self: end;}\n    }\n\n    </style>  \n\n<div itemscope itemtype=\"https://schema.org/FAQPage\">\n  <div itemscope itemprop=\"mainEntity\" itemtype=\"https://schema.org/Question\">\n<h2 itemprop=\"name\">What is an SSL certificate?</h2>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/2mkpUOPzl2jEPEERn2e57B/3b180ecab3ff7e0a5da1706434722573/ssl-certificate-secure-browsing.png\" class=\"responsive-image\" alt=\"SSL Certificate Secure Browsing\" />\n    <div itemscope itemprop=\"acceptedAnswer\" itemtype=\"https://schema.org/Answer\">\n     <div itemprop=\"text\">\n<p>SSL certificates are what enable websites to use <a href='/learning/ssl/what-is-https/'>HTTPS</a>, which is more secure than <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a>. An SSL certificate is a data file hosted in a website's <a href='/learning/cdn/glossary/origin-server/'>origin server</a>. SSL certificates make <a href='/learning/ssl/what-is-ssl/'>SSL/TLS encryption</a> possible, and they contain the website's <a href='/learning/ssl/how-does-public-key-encryption-work/'>public key</a> and the website's identity, along with related information.\n       </div>\n    </div>\n  </div>\nDevices attempting to communicate with the origin server will reference this file to obtain the public key and verify the server's identity. The private key is kept secret and secure.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is SSL?</h2>\n\n<p>SSL, more commonly called TLS, is a protocol for encrypting Internet traffic and verifying server identity. Any website with an HTTPS web address uses SSL/TLS. See <a href='/learning/ssl/what-is-ssl/'>What is SSL</a>? and <a href='/learning/ssl/transport-layer-security-tls/'>What is TLS</a>? to learn more.</p>\n  <div itemscope itemprop=\"mainEntity\" itemtype=\"https://schema.org/Question\">\n\n<div class=\"cards-wrapper-lcnew\">\n    <div class=\"cards_item-lcnew\">\n        <div class=\"card_content-lcnew\">\n            <div class=\"card_title-lcnew\"><span>eBook</span></div>\n            <div class=\"card_text-lcnew\">5 Ways to Maximize Security & Performance</div>\n            <div class=\"btn-lcnew card_btn\"><a href=\"/lp/five-ways-maximize-performance/\" data-tracking-action=\"click\" data-tracking-label=\"Get the eBook - /lp/five-ways-maximize-performance/\" data-tracking-category=\"card1\">Get the eBook</a></div>\n        </div>\n    </div>\n    <div class=\"cards_item-lcnew \">\n        <div class=\"card_content-lcnew \">\n            <div class=\"card_title-lcnew\"><span>ebook</span></div>\n            <div class=\"card_text-lcnew\">Everywhere security for every phase of the attack lifecycle</div>\n            <div class=\"btn-lcnew  card_btn\"><a href=\"/lp/everywhere-security-ebook/\" data-tracking-action=\"click\"\n                    data-tracking-label=\"Read the whitepaper - /lp/everywhere-security-ebook/\" data-tracking-category=\"card2\">Read the ebook</a> </div>\n        </div>\n    </div>\n</div>\n\n<h2 itemprop=\"name\">How do SSL certificates work?</h2>\n    <div itemscope itemprop=\"acceptedAnswer\" itemtype=\"https://schema.org/Answer\">\n     <div itemprop=\"text\">\n<p>SSL certificates include the following information in a single data file:</p>\n\n<ul>\n  <li>The <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain name</a> that the certificate was issued for</li>\n  <li>Which person, organization, or device it was issued to</li>\n  <li>Which certificate authority issued it</li>\n  <li>The certificate authority's digital signature</li>\n  <li>Associated subdomains</li>\n  <li>Issue date of the certificate</li>\n  <li>Expiration date of the certificate</li>\n  <li>The public key (the private key is kept secret)</li>\n</ul>\n     </div>\n    </div>\n  </div>\n</div>\n<p>The public and private keys used for SSL are essentially long strings of characters used for encrypting and signing data. Data encrypted with the public key can only be decrypted with the private key.</p>\n\n<p>The certificate is hosted on a website's origin server, and is sent to any devices that request to load the website. Most browsers enable users to view the SSL certificate: in Chrome, this can be done by clicking on the padlock icon on the left side of the URL bar.</p>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Secure SSL</span></div>\n        <div class=\"card_text-banner-lcnew\">Free SSL included with any Cloudflare plan</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/plans/\" data-tracking-action=\"click\" data-tracking-label=\"Get started free - /plans/\" data-tracking-category=\"card3\">Start for free</a>\n        </div>\n    </div>\n</div>\n\n<h4 class=\"learning-h4\" itemprop=\"headline\">Why do websites need an SSL certificate?</h4>\n\n<p>A website needs an SSL certificate in order to keep user data secure, verify ownership of the website, prevent attackers from creating a fake version of the site, and gain user trust.</p>\n\n<p><strong>Encryption:</strong> SSL/TLS encryption is possible because of the public-private key pairing that SSL certificates facilitate. Clients (such as web browsers) get the public key necessary to open a TLS connection from a server's SSL certificate.</p>\n\n<p><strong>Authentication:</strong> SSL certificates verify that a client is talking to the correct server that actually owns the domain. This helps prevent domain <a href='/learning/ddos/glossary/ip-spoofing/'>spoofing</a> and other kinds of attacks.</p>\n\n<p><strong>HTTPS:</strong> Most crucially for businesses, an SSL certificate is necessary for an HTTPS web address. HTTPS is the secure form of HTTP, and HTTPS websites are websites that have their traffic encrypted by SSL/TLS.</p>\n\n<p>In addition to securing user data in transit, HTTPS makes sites more trustworthy from a user's perspective. Many users won't notice the difference between an http:// and an https:// web address, but most browsers <a href='https://blog.cloudflare.com/today-chrome-takes-another-step-forward-in-addressing-the-design-flaw-that-is-an-unencrypted-web/'>tag HTTP sites as \"not secure\"</a> in noticeable ways, attempting to provide incentive for switching to HTTPS and increasing security.</p>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wegfRUlYUggfQ409DnMaA/c7e1469930b95b5e686c46ba43578f71/ssl-certificate-not-secure-browsing.png\" class=\"responsive-image\" alt=\"SSL Certificate Not Secure Browsing\" />\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does a website obtain an SSL certificate?</h2>\n\n<p>For an SSL certificate to be valid, domains need to obtain it from a certificate authority (CA). A CA is an outside organization, a trusted third party, that generates and gives out SSL certificates. The CA will also digitally sign the certificate with their own private key, allowing client devices to verify it. Most, but not all, CAs will charge a fee for issuing an SSL certificate.</p>\n\n<p>Once the certificate is issued, it needs to be installed and activated on the website's origin server. Web hosting services can usually handle this for website operators. Once it's activated on the origin server, the website will be able to load over HTTPS and all traffic to and from the website will be encrypted and secure.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a self-signed SSL certificate?</h2>\n\n<p>Technically, anyone can create their own SSL certificate by generating a public-private key pairing and including all the information mentioned above. Such certificates are called self-signed certificates because the digital signature used, instead of being from a CA, would be the website's own private key.</p>\n\n<p>But with self-signed certificates, there's no outside authority to verify that the origin server is who it claims to be. Browsers don't consider self-signed certificates trustworthy and may still mark sites with one as \"not secure,\" despite the https:// URL. They may also terminate the connection altogether, blocking the website from loading.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Is it possible to get a free SSL certificate?</h2>\n\n<p>Cloudflare offers <a href='https://www.cloudflare.com/application-services/products/ssl/'>free SSL/TLS encryption</a> and was the first company to do so, <a href='https://blog.cloudflare.com/introducing-universal-ssl/'>launching Universal SSL in September 2014</a>.</p>\n\n<p>To get a free SSL certificate, domain owners need to sign up for Cloudflare and select an SSL option in their SSL settings. <a href='https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl' target='_blank'>This article has further instructions</a> on setting up SSL with Cloudflare.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why does Cloudflare offer free SSL certificates?</h2>\n\n<p>Cloudflare is able to offer SSL for free because of its globally distributed <a href='https://www.cloudflare.com/application-services/products/cdn/'>CDN</a>, with highly efficient proxy servers running in data centers all around the world. The Cloudflare mission is to help make the Internet more secure, and widespread adoption of HTTPS is a huge step towards achieving this. SSL/TLS encryption protects user data, prevents attacks, and makes the Internet a safer place overall.</p>",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {
@@ -559,11 +552,12 @@
 					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -576,51 +570,15 @@
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -642,7 +600,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -662,10 +620,12 @@
 				"zh-TW",
 				"fr-FR",
 				"de-DE",
+				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

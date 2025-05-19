@@ -52,6 +52,12 @@
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "N1MJ957JtXBCrL99jcUSs",
+									"displayText": "What is data compliance?",
+									"url": "/learning/privacy/what-is-data-compliance/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6YJP0GwjROAOFCJKas8ltn",
 									"displayText": "GDPR",
 									"url": "/learning/privacy/what-is-the-gdpr/"
@@ -153,6 +159,12 @@
 									"contentfulId": "6AgbWjQfVqaTkOcueAZmbi",
 									"displayText": "End-to-end encryption",
 									"url": "/learning/privacy/what-is-end-to-end-encryption/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6aOVDDbUjfrIDjTUi8VZkg",
+									"displayText": "Data governance",
+									"url": "/learning/privacy/what-is-data-governance/"
 								}
 							]
 						},
@@ -272,6 +284,12 @@
 								"contentfulId": "3nqpKFqDP1LfOMEiioSx5v",
 								"displayText": "What is data sovereignty?",
 								"url": "https://www.cloudflare.com/learning/privacy/what-is-data-sovereignty/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "N1MJ957JtXBCrL99jcUSs",
+								"displayText": "What is data compliance?",
+								"url": "/learning/privacy/what-is-data-compliance/"
 							}
 						]
 					},
@@ -317,6 +335,12 @@
 								"contentfulId": "6AgbWjQfVqaTkOcueAZmbi",
 								"displayText": "End-to-end encryption",
 								"url": "/learning/privacy/what-is-end-to-end-encryption/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6aOVDDbUjfrIDjTUi8VZkg",
+								"displayText": "Data governance",
+								"url": "/learning/privacy/what-is-data-governance/"
 							}
 						]
 					},
@@ -476,6 +500,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -488,12 +513,43 @@
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"plPL": "English for Locale"
 				},
 				"proactivePopup": null,
-				"sidebarForm": null
+				"sidebarForm": {
+					"contentTypeId": "learningCenterArticleSidebarForm",
+					"contentfulId": "4ad3l3edBzH8KRefyi225g",
+					"heading": "Want to keep learning?",
+					"postSubmissionHeading": "Thank you for subscribing",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
+					"postSubmissionDescription": "We're looking forward to sharing content with you.",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
+						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
+						"backgroundColor": "blue",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": null,
+						"marketoFormDefaultComment": null,
+						"showCommentBox": null,
+						"marketoFormThankYouText": "Thank you for subscribing!",
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
+						"marketoFormSubmitButtonColor": null,
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					}
+				}
 			}
 		},
 		"pageContext": {
@@ -511,6 +567,7 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

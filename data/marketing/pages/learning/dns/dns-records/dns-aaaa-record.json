@@ -164,6 +164,18 @@
 									"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
 									"displayText": "DNS Fast Flux",
 									"url": "/learning/dns/dns-fast-flux/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+									"displayText": "Domain hijacking",
+									"url": "/learning/dns/what-is-domain-hijacking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+									"displayText": "Common DNS issues",
+									"url": "/learning/dns/common-dns-issues/"
 								}
 							]
 						},
@@ -208,6 +220,18 @@
 									"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
 									"displayText": "Cloudflare Registrar",
 									"url": "/learning/dns/what-is-cloudflare-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+									"displayText": "How to buy a domain name",
+									"url": "/learning/dns/how-to-buy-a-domain-name/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+									"displayText": "How to transfer a domain name",
+									"url": "/learning/dns/how-to-transfer-a-domain-name/"
 								}
 							]
 						},
@@ -298,6 +322,38 @@
 									"url": "http://www.cloudflare.com/learning/insights-dns-landscape"
 								}
 							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5bnkrucwjePapZ8qR6nc2D",
+							"name": "DNSSEC Protection",
+							"displayText": "DNSSEC Protection",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1FwG3Iiux41pJ6OLW8kRsW",
+									"displayText": "How DNSSEC Works",
+									"url": "learning/dns/dnssec/how-dnssec-works/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6FnRKWe14VFgollBzoepo9",
+									"displayText": "The DNSSEC Root Signing Ceremony",
+									"url": "learning/dns/dnssec/root-signing-ceremony/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "apgrV3UywiWRwe78tsxSg",
+									"displayText": "ECDSA: The missing piece of DNSSEC",
+									"url": "learning/dns/dnssec/ecdsa-and-dnssec/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "59YqILiJbj7grfW3aTGPj7",
+									"displayText": "Universal DNSSEC",
+									"url": "learning/dns/dnssec/universal-dnssec/"
+								}
+							]
 						}
 					]
 				},
@@ -329,6 +385,24 @@
 								"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
 								"displayText": "DNS over TLS",
 								"url": "/learning/dns/dns-over-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+								"displayText": "How to buy a domain name",
+								"url": "/learning/dns/how-to-buy-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+								"displayText": "How to transfer a domain name",
+								"url": "/learning/dns/how-to-transfer-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2DHKyt6fpos9EhP7JM5avG",
+								"displayText": "Common DNS issues",
+								"url": "/learning/dns/common-dns-issues/"
 							}
 						]
 					},
@@ -554,6 +628,12 @@
 								"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
 								"displayText": "Top-Level Domain",
 								"url": "/learning/dns/top-level-domain/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+								"displayText": "Domain hijacking",
+								"url": "/learning/dns/what-is-domain-hijacking/"
 							}
 						]
 					},
@@ -665,8 +745,15 @@
 					"Contrast AAAA records vs. A records",
 					"Define IPv4 and IPv6"
 				],
-				"relatedContentLinkText": null,
-				"relatedContent": [],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6zoT4UnozC7f0YgaA4GayP",
+						"displayText": "DNS A Record",
+						"url": "/learning/dns/dns-records/dns-a-record/"
+					}
+				],
 				"enablementBlade": {
 					"contentTypeId": "bladeEnablement",
 					"contentfulId": "39O10GEA7PcuY8Tp6oo5tX",
@@ -699,7 +786,7 @@
 					"sectionPadding": null,
 					"eyebrow": null
 				},
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a DNS AAAA record?</h2>\n\n<p>DNS AAAA records match a domain name to an IPv6 address. DNS AAAA records are exactly like <a href='/learning/dns/dns-records/dns-a-record/'>DNS A records</a>, except that they store a <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain</a>'s IPv6 address instead of its IPv4 address.</p>\n\n<p>IPv6 is the latest version of the <a href='/learning/network-layer/internet-protocol/'>Internet Protocol (IP)</a>. One of the important differences between IPv6 and IPv4 is that IPv6 addresses are longer than IPv4 addresses. The Internet is running out of IPv4 addresses, just as there are only so many possible phone numbers for a given area code. But IPv6 addresses offer exponentially more permutations and thus far more possible <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP addresses</a>.</p>\n\n<p>As an example of the difference between IPv4 and IPv6 addresses, Cloudflare offers a <a href='/learning/dns/what-is-1.1.1.1/'>public DNS resolver</a> that anyone can use by setting their device's DNS to 1.1.1.1 and 1.0.0.1. These are the IPv4 addresses. The IPv6 addresses for this service are 2606:4700:4700::1111 and 2606:4700:4700::1001.</p>\n\n<h4 class=\"learning-content-h4\">DNS AAAA record example</h4>\n\n<p>Here is an example of an AAAA record:</p>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<th>example.com</th>\n<th>record type:</th>\n<th>value:</th>\n<th>TTL</th>\n</tr>\n<tr>\n<td>@</td>\n<td>AAAA</td>\n<td>2001:0db8:85a3:0000:<br>0000:8a2e:0370:7334</td>\n<td>14400</td>\n</tr>\n</table>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">When are AAAA records used?</h2>\n\n<p>Like A records, AAAA records enable client devices to learn the IP address for a domain name. The client device can then connect with and load the website.</p>\n\n<p>AAAA records are only used when a domain has an IPv6 address in addition to an IPv4 address, and when the client device in question is configured to use IPv6. While all domains have one or more IPv4 addresses and accompanying A records, not all domains have IPv6 addresses, and not all user devices are configured to use IPv6.</p>\n\n<p>However, IPv6 is growing in adoption. This will likely continue to be the case because the number of available IPv4 addresses is rapidly diminishing, often forcing multiple devices to share an IPv4 address. To combat this, Cloudflare began turning on IPv6 for all customers <a href='https://blog.cloudflare.com/98-percent-ipv6/' target='_blank'>in 2016</a>.</p>\n\n<p>It is probable that in the future, all domains will have AAAA records.</p>\n\n<p>Read more about <a href='/learning/dns/dns-records/'>DNS records</a>.</p>",
+				"desktopMainContent": "<style>\n  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .ttu.f2.fw7.mt6.mb0.orange0,  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .divider.pv2.w-100,  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .below-divider{\n    display: none\n  }\n</style>\n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a DNS AAAA record?</h2>\n\n<p>DNS AAAA records match a domain name to an IPv6 address. DNS AAAA records are exactly like <a href='/learning/dns/dns-records/dns-a-record/'>DNS A records</a>, except that they store a <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain</a>'s IPv6 address instead of its IPv4 address.</p>\n\n<p>IPv6 is the latest version of the <a href='/learning/network-layer/internet-protocol/'>Internet Protocol (IP)</a>. One of the important differences between IPv6 and IPv4 is that IPv6 addresses are longer than IPv4 addresses. The Internet is running out of IPv4 addresses, just as there are only so many possible phone numbers for a given area code. But IPv6 addresses offer exponentially more permutations and thus far more possible <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP addresses</a>.</p>\n\n<p>As an example of the difference between IPv4 and IPv6 addresses, Cloudflare offers a <a href='/learning/dns/what-is-1.1.1.1/'>public DNS resolver</a> that anyone can use by setting their device's DNS to 1.1.1.1 and 1.0.0.1. These are the IPv4 addresses. The IPv6 addresses for this service are 2606:4700:4700::1111 and 2606:4700:4700::1001.</p>\n\n<h4 class=\"learning-content-h4\">DNS AAAA record example</h4>\n\n<p>Here is an example of an AAAA record:</p>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<th>example.com</th>\n<th>record type:</th>\n<th>value:</th>\n<th>TTL</th>\n</tr>\n<tr>\n<td>@</td>\n<td>AAAA</td>\n<td>2001:0db8:85a3:0000:<br>0000:8a2e:0370:7334</td>\n<td>14400</td>\n</tr>\n</table>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">When are AAAA records used?</h2>\n\n<p>Like A records, AAAA records enable client devices to learn the IP address for a domain name. The client device can then connect with and load the website.</p>\n\n<p>AAAA records are only used when a domain has an IPv6 address in addition to an IPv4 address, and when the client device in question is configured to use IPv6. While all domains have one or more IPv4 addresses and accompanying A records, not all domains have IPv6 addresses, and not all user devices are configured to use IPv6.</p>\n\n<p>However, IPv6 is growing in adoption. This will likely continue to be the case because the number of available IPv4 addresses is rapidly diminishing, often forcing multiple devices to share an IPv4 address. To combat this, Cloudflare began turning on IPv6 for all customers <a href='https://blog.cloudflare.com/98-percent-ipv6/' target='_blank'>in 2016</a>.</p>\n\n<p>It is probable that in the future, all domains will have AAAA records.</p>\n\n<p>Read more about <a href='/learning/dns/dns-records/'>DNS records</a>.</p>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
@@ -713,63 +800,28 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -791,7 +843,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -815,6 +867,7 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

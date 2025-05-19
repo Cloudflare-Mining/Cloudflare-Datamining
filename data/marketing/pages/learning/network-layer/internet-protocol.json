@@ -145,13 +145,13 @@
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6aRzsX0gbj4ceQWQiEzBOC",
-									"displayText": "Network-as-a-service (NaaS)",
+									"displayText": "What is network as a service (NaaS)?",
 									"url": "/learning/network-layer/network-as-a-service-naas/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6wi0u9frLgJN3XQlvx223h",
-									"displayText": "Enterprise networking",
+									"displayText": "What is enterprise networking?",
 									"url": "/learning/network-layer/enterprise-networking/"
 								}
 							]
@@ -367,7 +367,7 @@
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "6aRzsX0gbj4ceQWQiEzBOC",
-								"displayText": "Network-as-a-service (NaaS)",
+								"displayText": "What is network as a service (NaaS)?",
 								"url": "/learning/network-layer/network-as-a-service-naas/"
 							},
 							{
@@ -379,7 +379,7 @@
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "6wi0u9frLgJN3XQlvx223h",
-								"displayText": "Enterprise networking",
+								"displayText": "What is enterprise networking?",
 								"url": "/learning/network-layer/enterprise-networking/"
 							}
 						]
@@ -670,7 +670,7 @@
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the Internet Protocol (IP)?</h2>\n<p>The Internet Protocol (IP) is a protocol, or set of rules, for routing and addressing packets of data so that they can travel across networks and arrive at the correct destination. Data traversing the Internet is divided into smaller pieces, called <a href='/learning/network-layer/what-is-a-packet/'>packets</a>. IP information is attached to each packet, and this information helps <a href='/learning/network-layer/what-is-a-router/'>routers</a> to send packets to the right place. Every device or <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain</a> that connects to the Internet is assigned an <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP address</a>, and as packets are directed to the IP address attached to them, data arrives where it is needed.</p>\n  <p>Once the packets arrive at their destination, they are handled differently depending on which transport protocol is used in combination with IP. The most common transport protocols are TCP and UDP.</p>\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a network protocol?</h2>\n  <p>In networking, a <a href='/learning/network-layer/what-is-a-protocol/'>protocol</a> is a standardized way of doing certain actions and formatting data so that two or more devices are able to communicate with and understand each other.</p>\n  <p>To understand why protocols are necessary, consider the process of mailing a letter. On the envelope, addresses are written in the following order: name, street address, city, state, and zip code. If an envelope is dropped into a mailbox with the zip code written first, followed by the street address, followed by the state, and so on, the post office won't deliver it. There is an agreed-upon protocol for writing addresses in order for the postal system to work. In the same way, all IP data packets must present certain information in a certain order, and all IP addresses follow a standardized format.</p>\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an IP address? How does IP addressing work?</h2>\n  <p>An IP address is a unique identifier assigned to a device or domain that connects to the Internet. Each IP address is a series of characters, such as '192.168.1.1'. Via <a href='/learning/dns/what-is-dns/'>DNS</a> resolvers, which translate human-readable domain names into IP addresses, users are able to access websites without memorizing this complex series of characters. Each IP packet will contain both the IP address of the device or domain sending the packet and the IP address of the intended recipient, much like how both the destination address and the return address are included on a piece of mail.</p>\n\n  <img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tzfU9Y5ows0uT3u4GUlWr/9d4eaa83ce372454cc14d5fec83fb5b1/internet_protocol_ip_address_diagram.svg\" class=\"responsive-image\" alt=\"IP address gets packets to their destination\" itemprop=\"image\" />\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">IPv4 vs. IPv6</h2>\n  <p>The fourth version of IP (IPv4 for short) was introduced in 1983. However, just as there are only so many possible permutations for automobile license plate numbers and they have to be reformatted periodically, the supply of available IPv4 addresses has become depleted. IPv6 addresses have many more characters and thus more permutations; however, IPv6 is not yet completely adopted, and most domains and devices still have IPv4 addresses. For more on IPv4 and IPv6, see <a href='/learning/dns/glossary/what-is-my-ip-address/'>What is my IP address?</a></p>\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an IP packet?</h2>\n  <p>IP packets are created by adding an IP header to each packet of data before it is sent on its way. An IP header is just a series of bits (ones and zeros), and it records several pieces of information about the packet, including the sending and receiving IP address. IP headers also report:</p>\n  <ul class=\"learning-list\">\n                      <li>Header length</li>\n                      <li>Packet length</li>\n                      <li><a href='/learning/cdn/glossary/time-to-live-ttl/'>Time to live (TTL)</a>, or the number of network hops a packet can make before it is discarded</li>\n                      <li>Which transport protocol is being used (TCP, UDP, etc.)</li>\n                  </ul>\n <p>In total there are 14 fields for information in IPv4 headers, although one of them is optional.</p><h2 class=\"learning-content-h2\" itemprop=\"headline\">How does IP routing work?</h2>\n <p>The Internet is made up of interconnected large networks that are each responsible for certain blocks of IP addresses; these large networks are known as <a href='/learning/network-layer/what-is-an-autonomous-system/'>autonomous systems (AS)</a>. A variety of routing protocols, including <a href='/learning/security/glossary/what-is-bgp/'>BGP</a>, help route packets across ASes based on their destination IP addresses. Routers have routing tables that indicate which ASes the packets should travel through in order to reach the desired destination as quickly as possible. Packets travel from AS to AS until they reach one that claims responsibility for the targeted IP address. That AS then internally routes the packets to the destination.</p>\n\n <p>Protocols attach packet headers at different layers of the OSI model:</p>\n\n   <img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/6htPEWbcCRIv5FMhWKYy0m/ef16a86a38a638e8fed01c326f8211f1/protocol_headers.svg\" class=\"responsive-image--60-pct-center\" alt=\"Protocols attach packet headers at different layers of OSI model\" itemprop=\"image\" />\n\n <p>Packets can take different routes to the same place if necessary, just as a group of people driving to an agreed-upon destination can take different roads to get there.</p><h2 class=\"learning-content-h2\" itemprop=\"headline\">What is TCP/IP?</h2>\n <p>The Transmission Control Protocol (TCP) is a transport protocol, meaning it dictates the way data is sent and received. A TCP header is included in the data portion of each packet that uses <a href='/learning/ddos/glossary/tcp-ip/'>TCP/IP</a>. Before transmitting data, TCP opens a connection with the recipient. TCP ensures that all packets arrive in order once transmission begins. Via TCP, the recipient will acknowledge receiving each packet that arrives. Missing packets will be sent again if receipt is not acknowledged.</p>\n <p>TCP is designed for reliability, not speed. Because TCP has to make sure all packets arrive in order, loading data via TCP/IP can take longer if some packets are missing.</p>\n <p>TCP and IP were originally designed to be used together, and these are often referred to as the TCP/IP suite. However, other transport protocols can be used with IP.</p><h2 class=\"learning-content-h2\" itemprop=\"headline\">What is UDP/IP?</h2>\n <p>The User Datagram Protocol, or <a href='/learning/ddos/glossary/user-datagram-protocol-udp/'>UDP</a>, is another widely used transport protocol. It is faster than TCP, but it is also less reliable. UDP does not make sure all packets are delivered and in order, and it does not establish a connection before beginning or receiving transmissions.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Do network switches refer to IP addresses?</h2>\n\n<p>A network switch is an appliance that forwards data packets within a <a href='/learning/network-layer/what-is-a-lan/'>local area network (LAN)</a>. Most network switches operate at layer 2, the data link layer, not layer 3, the network layer, and therefore use MAC addresses to forward packets, not IP addresses. To learn more, see <a href='/learning/network-layer/what-is-a-network-switch/'>What is a network switch?</a></p> ",
+				"desktopMainContent": "<style>\n\n    .cards-wrapper-lcnew  { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}\n    .cards_item-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fMg89go9MegG1EDg39mNy/5a42817cd388ae352f77f56e53b1ff81/card-new.png'); background-repeat: no-repeat; background-size: cover;  background-position: center;  border-radius: 8px;  box-shadow: 10px 10px 20px -14px rgba(0, 0, 0, 1.0);  overflow: hidden;}\n    .btn-lcnew { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .btn:hover { background-color: rgba(255, 255, 255, 0.12);}\n    .card_content-lcnew  { padding: 1rem; display: flex; flex-direction: column;}\n    .card_title-lcnew  { color: #ffffff; font-size: 12px; margin: 0px; line-height: 18px; text-transform: uppercase;}\n    .card_title-lcnew span  {font-weight: 500}\n    .card_text-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; margin-bottom: 1rem; margin-top: 1rem; font-weight: 600;}\n     a:hover {background-size: 100% 4em !important; color: var(--inline-link-color);}\n\n    @media (max-width: 40rem) \n    {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n    .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n    .card_content-banner-lcnew { padding: 1rem;  display: grid; grid-template-rows: 1fr 1fr; grid-gap: 10px;}\n    .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n    .card_title-banner-lcnew span  {text-transform: uppercase; font-weight: 500 !important}\n    .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n    .card_content-banner-bt { align-self: center; justify-self: center;}\n\n    @media (max-width: 40rem) \n    { .cards-banner-lcnew { grid-template-columns: unset; padding: 0.75rem; display: flex; flex-direction: column; }\n      .card_text-banner-lcnew { line-height: 18px; }\n      .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n      .card_content-banner-bt {align-self: end;}\n    }\n\n    </style> \n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the Internet Protocol (IP)?</h2>\n<p>The Internet Protocol (IP) is a protocol, or set of rules, for routing and addressing packets of data so that they can travel across networks and arrive at the correct destination. Data traversing the Internet is divided into smaller pieces, called <a href='/learning/network-layer/what-is-a-packet/'>packets</a>. IP information is attached to each packet, and this information helps <a href='/learning/network-layer/what-is-a-router/'>routers</a> to send packets to the right place. Every device or <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain</a> that connects to the Internet is assigned an <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP address</a>, and as packets are directed to the IP address attached to them, data arrives where it is needed.</p>\n  <p>Once the packets arrive at their destination, they are handled differently depending on which transport protocol is used in combination with IP. The most common transport protocols are TCP and UDP.</p>\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a network protocol?</h2>\n  <p>In networking, a <a href='/learning/network-layer/what-is-a-protocol/'>protocol</a> is a standardized way of doing certain actions and formatting data so that two or more devices are able to communicate with and understand each other.</p>\n  <p>To understand why protocols are necessary, consider the process of mailing a letter. On the envelope, addresses are written in the following order: name, street address, city, state, and zip code. If an envelope is dropped into a mailbox with the zip code written first, followed by the street address, followed by the state, and so on, the post office won't deliver it. There is an agreed-upon protocol for writing addresses in order for the postal system to work. In the same way, all IP data packets must present certain information in a certain order, and all IP addresses follow a standardized format.</p>\n\n<div class=\"cards-wrapper-lcnew\">\n    <div class=\"cards_item-lcnew\">\n        <div class=\"card_content-lcnew\">\n            <div class=\"card_title-lcnew\"><span>Resource</span></div>\n            <div class=\"card_text-lcnew\">Regain control with the Connectivity Cloud</div>\n            <div class=\"btn-lcnew card_btn\"><a href=\"https://www.cloudflare.com/connectivity-cloud/\" data-tracking-action=\"click\" data-tracking-label=\"Learn more - https://www.cloudflare.com/connectivity-cloud/\" data-tracking-category=\"card1\">Learn more</a></div>\n        </div>\n    </div>\n\n    <div class=\"cards_item-lcnew \">\n        <div class=\"card_content-lcnew \">\n            <div class=\"card_title-lcnew\"><span>Guide</span></div>\n            <div class=\"card_text-lcnew\">The Zero Trust guide to securing aplication access</div>\n            <div class=\"btn-lcnew  card_btn\"><a href=\"/lp/guide-to-zero-trust-access/\" data-tracking-action=\"click\"\n                    data-tracking-label=\"Read the guide - /lp/guide-to-zero-trust-access/\" data-tracking-category=\"card2\">Read the guide</a> </div>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an IP address? How does IP addressing work?</h2>\n  <p>An IP address is a unique identifier assigned to a device or domain that connects to the Internet. Each IP address is a series of characters, such as '192.168.1.1'. Via <a href='/learning/dns/what-is-dns/'>DNS</a> resolvers, which translate human-readable domain names into IP addresses, users are able to access websites without memorizing this complex series of characters. Each IP packet will contain both the IP address of the device or domain sending the packet and the IP address of the intended recipient, much like how both the destination address and the return address are included on a piece of mail.</p>\n\n  <img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tzfU9Y5ows0uT3u4GUlWr/9d4eaa83ce372454cc14d5fec83fb5b1/internet_protocol_ip_address_diagram.svg\" class=\"responsive-image\" alt=\"IP address gets packets to their destination\" itemprop=\"image\" />\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">IPv4 vs. IPv6</h2>\n  <p>The fourth version of IP (IPv4 for short) was introduced in 1983. However, just as there are only so many possible permutations for automobile license plate numbers and they have to be reformatted periodically, the supply of available IPv4 addresses has become depleted. IPv6 addresses have many more characters and thus more permutations; however, IPv6 is not yet completely adopted, and most domains and devices still have IPv4 addresses. For more on IPv4 and IPv6, see <a href='/learning/dns/glossary/what-is-my-ip-address/'>What is my IP address?</a></p>\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an IP packet?</h2>\n  <p>IP packets are created by adding an IP header to each packet of data before it is sent on its way. An IP header is just a series of bits (ones and zeros), and it records several pieces of information about the packet, including the sending and receiving IP address. IP headers also report:</p>\n  <ul class=\"learning-list\">\n                      <li>Header length</li>\n                      <li>Packet length</li>\n                      <li><a href='/learning/cdn/glossary/time-to-live-ttl/'>Time to live (TTL)</a>, or the number of network hops a packet can make before it is discarded</li>\n                      <li>Which transport protocol is being used (TCP, UDP, etc.)</li>\n                  </ul>\n <p>In total there are 14 fields for information in IPv4 headers, although one of them is optional.</p>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Sign Up</span></div>\n        <div class=\"card_text-banner-lcnew\">Globally accelerate your traffic with a single click</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/application-services/products/argo-smart-routing/\" data-tracking-action=\"click\" data-tracking-label=\"Get started free - /application-services/products/argo-smart-routing/\" data-tracking-category=\"card3\">Start for free</a>\n        </div>\n    </div>\n</div>\n\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">How does IP routing work?</h2>\n <p>The Internet is made up of interconnected large networks that are each responsible for certain blocks of IP addresses; these large networks are known as <a href='/learning/network-layer/what-is-an-autonomous-system/'>autonomous systems (AS)</a>. A variety of routing protocols, including <a href='/learning/security/glossary/what-is-bgp/'>BGP</a>, help route packets across ASes based on their destination IP addresses. Routers have routing tables that indicate which ASes the packets should travel through in order to reach the desired destination as quickly as possible. Packets travel from AS to AS until they reach one that claims responsibility for the targeted IP address. That AS then internally routes the packets to the destination.</p>\n\n <p>Protocols attach packet headers at different layers of the OSI model:</p>\n\n   <img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/6htPEWbcCRIv5FMhWKYy0m/ef16a86a38a638e8fed01c326f8211f1/protocol_headers.svg\" class=\"responsive-image--60-pct-center\" alt=\"Protocols attach packet headers at different layers of OSI model\" itemprop=\"image\" />\n\n <p>Packets can take different routes to the same place if necessary, just as a group of people driving to an agreed-upon destination can take different roads to get there.</p><h2 class=\"learning-content-h2\" itemprop=\"headline\">What is TCP/IP?</h2>\n <p>The Transmission Control Protocol (TCP) is a transport protocol, meaning it dictates the way data is sent and received. A TCP header is included in the data portion of each packet that uses <a href='/learning/ddos/glossary/tcp-ip/'>TCP/IP</a>. Before transmitting data, TCP opens a connection with the recipient. TCP ensures that all packets arrive in order once transmission begins. Via TCP, the recipient will acknowledge receiving each packet that arrives. Missing packets will be sent again if receipt is not acknowledged.</p>\n <p>TCP is designed for reliability, not speed. Because TCP has to make sure all packets arrive in order, loading data via TCP/IP can take longer if some packets are missing.</p>\n <p>TCP and IP were originally designed to be used together, and these are often referred to as the TCP/IP suite. However, other transport protocols can be used with IP.</p><h2 class=\"learning-content-h2\" itemprop=\"headline\">What is UDP/IP?</h2>\n <p>The User Datagram Protocol, or <a href='/learning/ddos/glossary/user-datagram-protocol-udp/'>UDP</a>, is another widely used transport protocol. It is faster than TCP, but it is also less reliable. UDP does not make sure all packets are delivered and in order, and it does not establish a connection before beginning or receiving transmissions.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Do network switches refer to IP addresses?</h2>\n\n<p>A network switch is an appliance that forwards data packets within a <a href='/learning/network-layer/what-is-a-lan/'>local area network (LAN)</a>. Most network switches operate at layer 2, the data link layer, not layer 3, the network layer, and therefore use MAC addresses to forward packets, not IP addresses. To learn more, see <a href='/learning/network-layer/what-is-a-network-switch/'>What is a network switch?</a></p> ",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
@@ -679,68 +679,33 @@
 					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -762,7 +727,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -782,10 +747,12 @@
 				"zh-TW",
 				"fr-FR",
 				"de-DE",
+				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

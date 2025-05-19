@@ -16,6 +16,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,8 +30,7 @@
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/workers-launchpad",
 				"topNavOptions": "default",
@@ -38,7 +38,7 @@
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Workers Launchpad by Cloudflare",
+					"metaTitle": "Cloudflare Workers Launchpad funding program",
 					"metaDescription": "Workers Launchpad Funding Program is designed for startups to gain access to tools, capital and resources to innovate faster or accelerate the launch of their startup.",
 					"twitterCustomImage": null,
 					"metaImage": {
@@ -47,7 +47,12 @@
 						},
 						"description": null
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2022-09-26T21:58:43.849Z",
+					"updatedAt": "2025-05-15T21:24:08.772Z"
 				},
 				"contentfulId": "5RDdw6gZ1XS0kSv5yeerPt",
 				"contentTypeId": "page",
@@ -61,11 +66,11 @@
 					{
 						"contentfulId": "3xmwc5JUWkEUz6Ki4KNyXA",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Workers Launchpad Funding Program",
+						"title": "Workers Launchpad Program",
 						"titleSize": null,
 						"subtitle": null,
 						"subtitleSize": null,
-						"copy": "Find the funding, tools, and community to help scale your startup through the Workers Launchpad. \n\nAny startup currently using Cloudflare Workers or other components of the Cloudflare developer platform is eligible to apply. \n\n__Applications for Cohort #3 are now open!__<br>\n~~Apply by September 30, 2023~~. Extended to October 13! 5 spots will also be reserved for startups using our AI announcements from Birthday Week ([learn more here](https://blog.cloudflare.com/birthday-week-2023-wrap-up/))\n",
+						"copy": "Get access to infrastructure, tools, funding introductions, and community to help scale your startup through the Workers Launchpad. \n\nAny startup currently using Cloudflare Workers or other components of the Cloudflare developer platform is eligible to apply. \n\n__Applications for Cohort #6 are now open. Apply by September 5th to qualify.__<br>\n",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
 						"buttonText1": "Apply today",
@@ -132,7 +137,7 @@
 						"subtitle": null,
 						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": null,
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
@@ -144,7 +149,7 @@
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": "small",
-								"description": "Start building with one year of free access to a suite of Cloudflare products including Workers, Pages, R2, Images, Area 1 email security, and Zero Trust. Check out [Cloudflare for Startups](https://www.cloudflare.com/forstartups/) for details. Restrictions may apply.",
+								"description": "Start building with access to the Cloudflare Startup Program, including but not limited to Workers, Pages, R2, Images, Stream, and Zero Trust. Check out [Cloudflare for Startups](https://www.cloudflare.com/forstartups/) for details. Restrictions may apply.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -153,15 +158,15 @@
 								"icon": null,
 								"iconAssetFile": {
 									"id": "35aabb7a-ab80-5f86-bb2d-c0bd82a10871",
-									"altText": "Cloud internet blue",
-									"title": "Cloud internet blue",
+									"altText": "Cloud internet ",
+									"title": "Cloud internet ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3T85OKKRCGnfnTwHlI8Qpe/ea9f2f9a3b57dc53b8066ef5a5b935cb/cloud-internet.png"
 										},
-										"description": ""
+										"description": "Cloud icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -180,7 +185,7 @@
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": "small",
-								"description": "Each quarter, we will announce the winners of our Launchpad program, who will be guaranteed the opportunity to pitch the VC partner(s) that we match you with. See below for the leading VCs supporting you and this program. ",
+								"description": "Get access to our VC network, with an opportunity to pitch to VC partner(s) that we match you with. See below for the leading VCs supporting you and this program. ",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -386,6 +391,22 @@
 						"quoteCarousel": [
 							{
 								"contentTypeId": "bladeQuote",
+								"contentfulId": "66hff34g3E1jGeg5q122qs",
+								"quote": "I've been a huge fan of Cloudflare since 2010, but building with them through the Launchpad program took it to a whole new level. It wasn't just about access to enterprise services—it was about genuine collaboration with their teams. Seeing our feedback directly shape the product was incredible. The support we received during complex network migrations was exceptional. This kind of partnership is rare and invaluable for us at Langbase.",
+								"quoteAuthor": "Ahmad Awais",
+								"quoteTitle": "Founder",
+								"learnMoreText": null,
+								"learnMoreUrl": null,
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6NKxtastLnZY0od0QmomVJ/7b7ecf3ce759656454e50876ff9dbf92/Langbase.jpeg"
+									},
+									"description": "Langbase logo"
+								}
+							},
+							{
+								"contentTypeId": "bladeQuote",
 								"contentfulId": "2XT1EWm6Ak4IBYho5Ne2tz",
 								"quote": "We're proud to have partnered with Cloudflare early on, and continue to be impressed with the company's growth and impactful initiatives at this stage of their journey. Cloudflare Workers is set to attract the same caliber of founders who are building with a long-term vision for both infrastructure and the end-user.",
 								"quoteAuthor": "Scott Sandell",
@@ -562,6 +583,22 @@
 							},
 							{
 								"contentTypeId": "bladeQuote",
+								"contentfulId": "7emO72QlRzcGyduadGFksG",
+								"quote": "Threshold supports entrepreneurs with bold visions taking on big markets. Cloudflare Workers is a powerful tool that can help them build products that scale to serve those markets globally. We're excited to partner in the Cloudflare Workers Fund and look forward to seeing what teams using this technology build.",
+								"quoteAuthor": "Emily Melton",
+								"quoteTitle": "Managing Partner and Co-Founder",
+								"learnMoreText": null,
+								"learnMoreUrl": null,
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1iaThBMh9aysd2gZ9PpBNM/c2a27ce8a1006d6d5daeef3a34aecd85/threshold-logo-color.svg"
+									},
+									"description": ""
+								}
+							},
+							{
+								"contentTypeId": "bladeQuote",
 								"contentfulId": "31uKmstY2rVhxxLCHjqaNd",
 								"quote": "Cloudflare has a strong following in the developer community, and we have no doubt that their Workers platform will continue to attract the best and brightest entrepreneurs to build tomorrow's most popular apps.",
 								"quoteAuthor": "Dafina Toncheva",
@@ -619,10 +656,31 @@
 						"htmlId": "cohort2",
 						"menuItems": [
 							{
+								"contentfulId": "4cDYUnsjR4QqlEerbpXz7j",
+								"linkText": "Cohort #5",
+								"page": null,
+								"url": "lp/workers-launchpad/cohort5",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "3cA2MiavfYdRLAVJdeEc2E",
+								"linkText": "Cohort #4",
+								"page": null,
+								"url": "lp/workers-launchpad/cohort4",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "2yN74q6ZI02pPVxrDWHBpa",
+								"linkText": "Cohort #3",
+								"page": null,
+								"url": "lp/workers-launchpad/cohort3",
+								"subMenuItems": []
+							},
+							{
 								"contentfulId": "5hMRezMX6IRMgqPvGJW1kr",
 								"linkText": "Cohort #2",
 								"page": null,
-								"url": "lp/workers-launchpad",
+								"url": "lp/workers-launchpad/cohort2",
 								"subMenuItems": []
 							},
 							{
@@ -635,33 +693,33 @@
 						]
 					},
 					{
-						"contentfulId": "476nUkAahijOJeMWUNwNEq",
+						"contentfulId": "4ZuFzkdEvzuOLCQLaWbTfR",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
-						"copy": "Congratulations to the 25 startups selected for the second cohort.",
-						"title": "Introducing the second Workers Launchpad cohort ",
+						"copy": "Congratulations to all the startups selected.",
+						"title": "Introducing the fifth Workers Launchpad cohort",
 						"subtitle": null,
-						"bladeStyle": null,
+						"bladeStyle": "Feature Blocks - 4 columns",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": null,
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3FHQSKHufjNATzp1IiZ9KW",
+								"contentfulId": "UIiyrnqGcvTJXXJ5qZNjR",
 								"title": null,
-								"makeTitleLink": null,
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "- [42able.ai](https://www.42able.ai/)\n- [ai.moda](https://ai.moda/)\n- [Arrive GG](https://arrive.gg/)\n- [Astro](https://astro.build/)\n- [Azule](https://azule.ai/)\n- [Brevity](https://brevity.io/)\n- [Buildless](https://less.build/)",
+								"description": "- [Acemate](https://www.acemate.ai/)\n- [Centillion AI](https://www.centillion.ai/)\n- [Ductize](https://www.ductize.com)\n- [Firmly](https://www.firmly.ai)\n- [Heartspace](https://www.heartspace.ai)\n- [Lamatic](https://www.lamatic.ai)\n- [Lu.ma](https://Lu.ma)\n- [Manticore](https://www.manticore.ai)",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
@@ -673,17 +731,17 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4dxXlp0axnX5cbi4AwrLAk",
+								"contentfulId": "30f2FS94h2qcqsVAiXzbFL",
 								"title": null,
-								"makeTitleLink": null,
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "- [ChainFuse](https://chainfuse.com/)\n- [ChatORG](https://www.chatorg.ai/)\n- [Clerk](https://clerk.com/)\n- [contribute.design](https://contribute.design/)\n- [Drifting in Space](https://driftingin.space/)\n- [Eclipse AI](https://eclipse-ai.com/)\n- [Embley](http://embley.com/)",
+								"description": "\n- [MC² Finance](https://mc2.fi)\n- [Muppet](https://muppet.dev)\n- [Navatech](https://www.navatech.ai)\n- [New Era](https://v0.era.new/)\n- [New Harbor](https://www.newharbor.co)\n- [Nexartis](https://nexartis.com/)\n- [Notika AI](https://www.notika.ai)\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
@@ -695,17 +753,17 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4u9bfXNZgVqzwM6mj2MVd9",
+								"contentfulId": "3ky9Y4gai96OmLoEJi4AmR",
 								"title": null,
-								"makeTitleLink": null,
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "- [Fudge](https://www.fudge.ai/)\n- [Mixer](https://www.mixer.rsvp/)\n- [Monosnap](https://monosnap.com/)\n- [Nefeli Networks](http://nefeli.io/)\n- [Smplrspace](https://www.smplrspace.com/)\n- [Speech Labs](https://speechlabs.io/)\n- [TestApp.io](https://testapp.io/)",
+								"description": "\n- [Periculum](https://www.periculum.io)\n- [Pressbox](http://pressbox.studio/)\n- [Prompteus](https://www.prompteus.com)\n- [Remix Labs](https://remixlabs.com/)\n- [Skyward](https://www.skyward.ai)\n- [Sonora](https://www.usesonora.com)\n- [SSOJet](https://ssojet.com/)",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
@@ -717,17 +775,17 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4IYMAICWds65DAd0RimmJB",
+								"contentfulId": "IwIfgjJiYvnLzLRNd3ZZM",
 								"title": null,
-								"makeTitleLink": null,
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "- [Tigris Data](https://www.tigrisdata.com/)\n- [tldraw](http://tldraw.com/)\n- [Vantyr](https://vantyr.com/)\n- [WunderGraph](http://wundergraph.com/)",
+								"description": "\n- [Syrenn](https://syrenn.co)\n- [Testdriver](https://testdriver.ai)\n- [Toddle](https://www.toddle.dev)\n- [Toolhouse](https://toolhouse.ai/)\n- [Unravo](https://www.unravo.org)\n- [Wittify.ai](https://Wittify.ai)\n- [Zero Sum Defense](https://actualize.zerosumdefense.io)\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
@@ -742,7 +800,7 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "2hNl6OEtDOx8bb7RnHieir",
-						"title": "Check out the Demo Day from our first cohort on CloudflareTV ",
+						"title": "Check out the Demo Day from our latest cohort on CloudflareTV",
 						"titleSize": null,
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -761,7 +819,7 @@
 							"elementName": "Demo Day workers launchpad btn",
 							"standardText": null,
 							"text": "Demo Day",
-							"url": "https://cloudflare.tv/event/workers-launchpad-demo-day/5ZnnPRZA",
+							"url": "https://cloudflare.tv/shows/workers-launchpad-demo-day/workers-launchpad-demo-day-cohort-3/pgx2jLal",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -920,8 +978,8 @@
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "After taking this Egghead course you'll be ready to start experimenting with your own Cloudflare Workers projects. ",
-								"learnMoreUrl": "https://egghead.io/courses/introduction-to-cloudflare-workers-5aa3",
+								"description": "After taking this Workers 101 course you'll be ready to start experimenting with your own Cloudflare Workers projects.",
+								"learnMoreUrl": "https://www.youtube.com/watch?v=H7Qe96fqg1M",
 								"learnMoreText": "Start building",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
@@ -954,7 +1012,6 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"hasAdobeExperiment": null,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -979,10 +1036,10 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

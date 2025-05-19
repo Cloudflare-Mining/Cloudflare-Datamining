@@ -16,6 +16,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,8 +30,7 @@
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/workers-launchpad/cohort2",
 				"topNavOptions": null,
@@ -38,7 +38,7 @@
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Workers Launchpad by Cloudflare",
+					"metaTitle": "Cloudflare Workers Launchpad funding program",
 					"metaDescription": "Workers Launchpad Funding Program is designed for startups to gain access to tools, capital and resources to innovate faster or accelerate the launch of their startup.",
 					"twitterCustomImage": null,
 					"metaImage": {
@@ -47,7 +47,12 @@
 						},
 						"description": null
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2023-06-13T18:32:57.607Z",
+					"updatedAt": "2024-07-22T17:45:45.526Z"
 				},
 				"contentfulId": "WW6c9FGgSvd7kiEkdSqcL",
 				"contentTypeId": "page",
@@ -71,6 +76,27 @@
 								"linkText": "Home",
 								"page": null,
 								"url": "lp/workers-launchpad",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "4cDYUnsjR4QqlEerbpXz7j",
+								"linkText": "Cohort #5",
+								"page": null,
+								"url": "lp/workers-launchpad/cohort5",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "3cA2MiavfYdRLAVJdeEc2E",
+								"linkText": "Cohort #4",
+								"page": null,
+								"url": "lp/workers-launchpad/cohort4",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "5nMqTDokSmiC8rB1fAT2l0",
+								"linkText": "Cohort #3",
+								"page": null,
+								"url": "lp/workers-launchpad/cohort3",
 								"subMenuItems": []
 							},
 							{
@@ -155,7 +181,7 @@
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "- [Fudge](https://www.fudge.ai/)\n- [Mixer](https://www.mixer.rsvp/)\n- [Monosnap](https://monosnap.com/)\n- [Nefeli Networks](http://nefeli.io/)\n- [Smplrspace](https://www.smplrspace.com/)\n- [Speech Labs](https://speechlabs.io/)\n- [TestApp.io](https://testapp.io/)",
+								"description": "- [Fudge](https://www.fudge.ai/)\n- [Mixer](https://www.mixer.rsvp/)\n- [Monosnap](https://monosnap.com/)\n- [Nefeli Networks](http://nefeli.io/)\n- [Smplrspace](https://www.smplrspace.com/)\n- Speech Labs\n- [TestApp.io](https://testapp.io/)",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -197,7 +223,7 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "2hNl6OEtDOx8bb7RnHieir",
-						"title": "Check out the Demo Day from our first cohort on CloudflareTV ",
+						"title": "Check out the Demo Day from our latest cohort on CloudflareTV",
 						"titleSize": null,
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -216,7 +242,7 @@
 							"elementName": "Demo Day workers launchpad btn",
 							"standardText": null,
 							"text": "Demo Day",
-							"url": "https://cloudflare.tv/event/workers-launchpad-demo-day/5ZnnPRZA",
+							"url": "https://cloudflare.tv/shows/workers-launchpad-demo-day/workers-launchpad-demo-day-cohort-3/pgx2jLal",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -375,8 +401,8 @@
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "After taking this Egghead course you'll be ready to start experimenting with your own Cloudflare Workers projects. ",
-								"learnMoreUrl": "https://egghead.io/courses/introduction-to-cloudflare-workers-5aa3",
+								"description": "After taking this Workers 101 course you'll be ready to start experimenting with your own Cloudflare Workers projects.",
+								"learnMoreUrl": "https://www.youtube.com/watch?v=H7Qe96fqg1M",
 								"learnMoreText": "Start building",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
@@ -409,7 +435,6 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"hasAdobeExperiment": null,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -434,10 +459,10 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

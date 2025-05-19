@@ -145,13 +145,13 @@
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6aRzsX0gbj4ceQWQiEzBOC",
-									"displayText": "Network-as-a-service (NaaS)",
+									"displayText": "What is network as a service (NaaS)?",
 									"url": "/learning/network-layer/network-as-a-service-naas/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6wi0u9frLgJN3XQlvx223h",
-									"displayText": "Enterprise networking",
+									"displayText": "What is enterprise networking?",
 									"url": "/learning/network-layer/enterprise-networking/"
 								}
 							]
@@ -367,7 +367,7 @@
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "6aRzsX0gbj4ceQWQiEzBOC",
-								"displayText": "Network-as-a-service (NaaS)",
+								"displayText": "What is network as a service (NaaS)?",
 								"url": "/learning/network-layer/network-as-a-service-naas/"
 							},
 							{
@@ -379,7 +379,7 @@
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "6wi0u9frLgJN3XQlvx223h",
-								"displayText": "Enterprise networking",
+								"displayText": "What is enterprise networking?",
 								"url": "/learning/network-layer/enterprise-networking/"
 							}
 						]
@@ -670,7 +670,7 @@
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a port?</h2>\n\n<p>A port is a virtual point where network connections start and end. Ports are software-based and managed by a computer's operating system. Each port is associated with a specific process or service. Ports allow computers to easily differentiate between different kinds of traffic: emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a port number?</h2>\n\n<p>Ports are standardized across all network-connected devices, with each port assigned a number. Most ports are reserved for certain <a href='/learning/network-layer/what-is-a-protocol/'>protocols</a> — for example, all <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>Hypertext Transfer Protocol (HTTP)</a> messages go to port 80. While <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP addresses</a> enable messages to go to and from specific devices, port numbers allow targeting of specific services or applications within those devices.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do ports make network connections more efficient?</h2>\n\n<p>Vastly different types of data flow to and from a computer over the same network connection. The use of ports helps computers understand what to do with the data they receive.</p>\n\n<p>Suppose Bob transfers an MP3 audio recording to Alice using the File Transfer Protocol (FTP). If Alice's computer passed the MP3 file data to Alice's email application, the email application would not know how to interpret it. But because Bob's file transfer uses the port designated for FTP (port 21), Alice's computer is able to receive and store the file.</p>\n\n<p>Meanwhile, Alice's computer can simultaneously load HTTP webpages using port 80, even though both the webpage files and the MP3 sound file flow to Alice's computer over the same WiFi connection.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Are ports part of the network layer?</h2>\n\n<p>The <a href='/learning/ddos/glossary/open-systems-interconnection-model-osi/'>OSI model</a> is a conceptual model of how the Internet works. It divides different Internet services and processes into 7 layers. These layers are:</p>\n\n<img class=\"responsive-image\" title=\"osi model 7 layers\" alt=\"osi model 7 layers\" src=\"/img/learning/ddos/what-is-a-ddos-attack/osi-model-7-layers.svg\" itemprop=\"image\" />\n\n<p>Ports are a transport layer (layer 4) concept. Only a transport protocol such as the <a href='/learning/ddos/glossary/tcp-ip/'>Transmission Control Protocol (TCP)</a> or <a href='/learning/ddos/glossary/user-datagram-protocol-udp/'>User Datagram Protocol (UDP)</a> can indicate which port a packet should go to. TCP and UDP headers have a section for indicating port numbers. <a href='/learning/network-layer/what-is-the-network-layer/'>Network layer</a> protocols — for instance, the <a href='/learning/network-layer/internet-protocol/'>Internet Protocol (IP)</a> — are unaware of what port is in use in a given network connection. In a standard IP header, there is no place to indicate which port the data <a href='/learning/network-layer/what-is-a-packet/'>packet</a> should go to. IP headers only indicate the destination IP address, not the port number at that IP address.</p>\n\n<p>Usually, the inability to indicate the port at the network layer has no impact on networking processes, since network layer protocols are almost always used in conjunction with a transport layer protocol. However, this does impact the functionality of testing software, which is software that \"pings\" IP addresses using <a href='/learning/ddos/glossary/internet-control-message-protocol-icmp/'>Internet Control Message Protocol (ICMP)</a> packets. ICMP is a network layer protocol that can ping networked devices — but without the ability to ping specific ports, network administrators cannot test specific services within those devices.</p>\n\n<p>Some ping software, such as <a href='/learning/network-layer/what-is-mtr/'>My Traceroute</a>, offers the option to send UDP packets. UDP is a transport layer protocol that can specify a particular port, as opposed to ICMP, which cannot specify a port. By adding a UDP header to ICMP packets, network administrators can test specific ports within a networked device.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why do firewalls sometimes block specific ports?</h2>\n\n<p>A <a href='/learning/security/what-is-a-firewall/'>firewall</a> is a security system that blocks or allows network traffic based on a set of security rules. Firewalls usually sit between a trusted network and an untrusted network; often the untrusted network is the Internet. For example, office networks often use a firewall to protect their network from online threats.</p>\n\n<p>Some attackers try to send malicious traffic to random ports in the hopes that those ports have been left \"open,\" meaning they are able to receive traffic. This action is somewhat like a car thief walking down the street and trying the doors of parked vehicles, hoping one of them is unlocked. For this reason, firewalls should be configured to block network traffic directed at most of the available ports. There is no legitimate reason for the vast majority of the available ports to receive traffic.</p>\n\n<p>Properly configured firewalls block traffic to all ports by default except for a few predetermined ports known to be in common use. For instance, a corporate firewall could only leave open ports 25 (email), 80 (web traffic), 443 (web traffic), and a few others, allowing internal employees to use these essential services, then block the rest of the 65,000+ ports.</p>\n\n<p>As a more specific example, attackers sometimes attempt to exploit vulnerabilities in the RDP protocol by sending attack traffic to port 3389. To stop these attacks, a firewall may block port 3389 by default. Since this port is only used for remote desktop connections, such a rule has little impact on day-to-day business operations unless employees need to work remotely.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the different port numbers?</h2>\n\n<p>There are 65,535 possible port numbers, although not all are in common use. Some of the most commonly used ports, along with their associated networking protocol, are:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Ports 20 and 21:</strong> File Transfer Protocol (FTP). FTP is for transferring files between a client and a server.</li>\n  <li><strong>Port 22:</strong> Secure Shell (SSH). SSH is one of many <a href='/learning/network-layer/what-is-tunneling/'>tunneling</a> protocols that create secure network connections.</li>\n  <li><a href='/learning/email-security/smtp-port-25-587/'>Port 25</a>: Historically, <a href='/learning/email-security/what-is-smtp/'>Simple Mail Transfer Protocol (SMTP)</a>. SMTP is used for <a href='/learning/email-security/what-is-email/'>email</a>.</li>\n  <li><strong>Port 53:</strong> <a href='/learning/dns/what-is-dns/'>Domain Name System (DNS)</a>. DNS is an essential process for the modern Internet; it matches human-readable <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain names</a> to machine-readable IP addresses, enabling users to load websites and applications without memorizing a long list of IP addresses.</li>\n  <li><strong>Port 80:</strong> Hypertext Transfer Protocol (HTTP). HTTP is the protocol that makes the World Wide Web possible.</li>\n  <li><strong>Port 123:</strong> <a href='https://blog.cloudflare.com/secure-time/'>Network Time Protocol (NTP)</a>. NTP allows computer clocks to sync with each other, a process that is essential for <a href='/learning/ssl/what-is-encryption/'>encryption</a>.</li>\n  <li><strong>Port 179:</strong> <a href='/learning/security/glossary/what-is-bgp/'>Border Gateway Protocol (BGP)</a>. BGP is essential for establishing efficient routes between the large networks that make up the Internet (these large networks are called <a href='/learning/network-layer/what-is-an-autonomous-system/'>autonomous systems</a>). Autonomous systems use BGP to broadcast which IP addresses they control.</li>\n  <li><strong>Port 443:</strong> <a href='/learning/ssl/what-is-https/'>HTTP Secure (HTTPS)</a>. HTTPS is the secure and encrypted version of HTTP. All HTTPS web traffic goes to port 443. Network services that use HTTPS for encryption, such as <a href='/learning/dns/dns-over-tls/'>DNS over HTTPS</a>, also connect at this port.</li>\n  <li><strong>Port 500:</strong> Internet Security Association and Key Management Protocol (ISAKMP), which is part of the process of setting up secure <a href='/learning/network-layer/what-is-ipsec/'>IPsec</a> connections.</li>\n  <li><strong>Port 587:</strong> Modern, secure SMTP that uses encryption.</li>\n  <li><strong>Port 3389:</strong> <a href='/learning/access-management/what-is-the-remote-desktop-protocol/'>Remote Desktop Protocol</a> (RDP). RDP enables users to remotely connect to their desktop computers from another device.</li>\n</ul>\n\n<p>The Internet Assigned Numbers Authority (IANA) maintains the <a href='https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml' target='_blank'>full list</a> of port numbers and protocols assigned to them.</p>\n",
+				"desktopMainContent": "<style>\n\n.cards-wrapper-lcnew  { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}\n.cards_item-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fMg89go9MegG1EDg39mNy/65bf39a8f5f7685f4baba6a7b09f5421/card-new.png'); background-repeat: no-repeat; background-size: cover;  background-position: center;  border-radius: 8px;  box-shadow: 10px 10px 20px -14px rgba(0, 0, 0, 1.0);  overflow: hidden;}\n.btn-lcnew { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n.btn-lcnew a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n.btn:hover { background-color: rgba(255, 255, 255, 0.12);}\n.card_content-lcnew  { padding: 1rem; display: flex; flex-direction: column;}\n.card_title-lcnew  { color: #ffffff; font-size: 12px; margin: 0px; line-height: 18px; text-transform: uppercase;}\n.card_title-lcnew span  {text-transform:uppercase; font-weight: 500}\n.card_text-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; margin-bottom: 1rem; margin-top: 1rem; font-weight: 600;}\n\n   a:hover {\n    background-size: 100% 4em !important;\n      color: var(--inline-link-color);\n\n}\n\n@media (max-width: 40rem) {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n.cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;\n    background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n.card_content-banner-lcnew { padding: 1rem;  display: grid; grid-template-rows: 1fr 1fr; grid-gap: 10px;}\n.btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n  .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n.card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n.card_title-banner-lcnew span  {text-transform:uppercase; font-weight: 500 !important}\n.card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n.card_content-banner-bt { align-self: center; justify-self: center;}\n\n@media (max-width: 40rem) {\n  .cards-banner-lcnew {\n    grid-template-columns: unset;\n    padding: 0.75rem; display: flex; flex-direction: column;\n  }\n\n  .card_text-banner-lcnew {\n    line-height: 18px;\n  }\n  .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n  .card_content-banner-bt {align-self: end;}\n}\n\n</style> \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a port?</h2>\n\n<p>A port is a virtual point where network connections start and end. Ports are software-based and managed by a computer's operating system. Each port is associated with a specific process or service. Ports allow computers to easily differentiate between different kinds of traffic: emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a port number?</h2>\n\n<p>Ports are standardized across all network-connected devices, with each port assigned a number. Most ports are reserved for certain <a href='/learning/network-layer/what-is-a-protocol/'>protocols</a> — for example, all <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>Hypertext Transfer Protocol (HTTP)</a> messages go to port 80. While <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP addresses</a> enable messages to go to and from specific devices, port numbers allow targeting of specific services or applications within those devices.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do ports make network connections more efficient?</h2>\n\n<p>Vastly different types of data flow to and from a computer over the same network connection. The use of ports helps computers understand what to do with the data they receive.</p>\n\n<p>Suppose Bob transfers an MP3 audio recording to Alice using the File Transfer Protocol (FTP). If Alice's computer passed the MP3 file data to Alice's email application, the email application would not know how to interpret it. But because Bob's file transfer uses the port designated for FTP (port 21), Alice's computer is able to receive and store the file.</p>\n\n<p>Meanwhile, Alice's computer can simultaneously load HTTP webpages using port 80, even though both the webpage files and the MP3 sound file flow to Alice's computer over the same WiFi connection.</p>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Whitepaper</span></div>\n        <div class=\"card_text-banner-lcnew\">How to break free from network hardware</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/lp/network-hardware/\" data-tracking-action=\"click\" data-tracking-label=\"Get the report - /lp/network-hardware/\" data-tracking-category=\"card1-banner\">Get the report</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Are ports part of the network layer?</h2>\n\n<p>The <a href='/learning/ddos/glossary/open-systems-interconnection-model-osi/'>OSI model</a> is a conceptual model of how the Internet works. It divides different Internet services and processes into 7 layers. These layers are:</p>\n\n<img class=\"responsive-image\" title=\"osi model 7 layers\" alt=\"osi model 7 layers\" src=\"/img/learning/ddos/what-is-a-ddos-attack/osi-model-7-layers.svg\" itemprop=\"image\" />\n\n<p>Ports are a transport layer (layer 4) concept. Only a transport protocol such as the <a href='/learning/ddos/glossary/tcp-ip/'>Transmission Control Protocol (TCP)</a> or <a href='/learning/ddos/glossary/user-datagram-protocol-udp/'>User Datagram Protocol (UDP)</a> can indicate which port a packet should go to. TCP and UDP headers have a section for indicating port numbers. <a href='/learning/network-layer/what-is-the-network-layer/'>Network layer</a> protocols — for instance, the <a href='/learning/network-layer/internet-protocol/'>Internet Protocol (IP)</a> — are unaware of what port is in use in a given network connection. In a standard IP header, there is no place to indicate which port the data <a href='/learning/network-layer/what-is-a-packet/'>packet</a> should go to. IP headers only indicate the destination IP address, not the port number at that IP address.</p>\n\n<p>Usually, the inability to indicate the port at the network layer has no impact on networking processes, since network layer protocols are almost always used in conjunction with a transport layer protocol. However, this does impact the functionality of testing software, which is software that \"pings\" IP addresses using <a href='/learning/ddos/glossary/internet-control-message-protocol-icmp/'>Internet Control Message Protocol (ICMP)</a> packets. ICMP is a network layer protocol that can ping networked devices — but without the ability to ping specific ports, network administrators cannot test specific services within those devices.</p>\n\n<p>Some ping software, such as <a href='/learning/network-layer/what-is-mtr/'>My Traceroute</a>, offers the option to send UDP packets. UDP is a transport layer protocol that can specify a particular port, as opposed to ICMP, which cannot specify a port. By adding a UDP header to ICMP packets, network administrators can test specific ports within a networked device.</p>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Sign Up</span></div>\n        <div class=\"card_text-banner-lcnew\">Security & speed with any Cloudflare plan</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/lp/pg-all-plans-multi-sku-lc/\" data-tracking-action=\"click\" data-tracking-label=\"Get started free - /lp/pg-all-plans-multi-sku-lc/\" data-tracking-category=\"card3\">Start for free</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why do firewalls sometimes block specific ports?</h2>\n\n<p>A <a href='/learning/security/what-is-a-firewall/'>firewall</a> is a <a href='https://www.cloudflare.com/network-security/'>network security system</a> that blocks or allows network traffic based on a set of security rules. Firewalls usually sit between a trusted network and an untrusted network; often the untrusted network is the Internet. For example, office networks often use a firewall to protect their network from online threats.</p>\n\n<p>Some attackers try to send malicious traffic to random ports in the hopes that those ports have been left \"open,\" meaning they are able to receive traffic. This action is somewhat like a car thief walking down the street and trying the doors of parked vehicles, hoping one of them is unlocked. For this reason, firewalls should be configured to block network traffic directed at most of the available ports. There is no legitimate reason for the vast majority of the available ports to receive traffic.</p>\n\n<p>Properly configured firewalls block traffic to all ports by default except for a few predetermined ports known to be in common use. For instance, a corporate firewall could only leave open ports 25 (email), 80 (web traffic), 443 (web traffic), and a few others, allowing internal employees to use these essential services, then block the rest of the 65,000+ ports.</p>\n\n<p>As a more specific example, attackers sometimes attempt to exploit vulnerabilities in the RDP protocol by sending attack traffic to port 3389. To stop these attacks, a firewall may block port 3389 by default. Since this port is only used for remote desktop connections, such a rule has little impact on day-to-day business operations unless employees need to work remotely.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the different port numbers?</h2>\n\n<p>There are 65,535 possible port numbers, although not all are in common use. Some of the most commonly used ports, along with their associated networking protocol, are:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Ports 20 and 21:</strong> File Transfer Protocol (FTP). FTP is for transferring files between a client and a server.</li>\n  <li><strong>Port 22:</strong> Secure Shell (SSH). SSH is one of many <a href='/learning/network-layer/what-is-tunneling/'>tunneling</a> protocols that create secure network connections.</li>\n  <li><a href='/learning/email-security/smtp-port-25-587/'>Port 25</a>: Historically, <a href='/learning/email-security/what-is-smtp/'>Simple Mail Transfer Protocol (SMTP)</a>. SMTP is used for <a href='/learning/email-security/what-is-email/'>email</a>.</li>\n  <li><strong>Port 53:</strong> <a href='/learning/dns/what-is-dns/'>Domain Name System (DNS)</a>. DNS is an essential process for the modern Internet; it matches human-readable <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain names</a> to machine-readable IP addresses, enabling users to load websites and applications without memorizing a long list of IP addresses.</li>\n  <li><strong>Port 80:</strong> Hypertext Transfer Protocol (HTTP). HTTP is the protocol that makes the World Wide Web possible.</li>\n  <li><strong>Port 123:</strong> <a href='https://blog.cloudflare.com/secure-time/'>Network Time Protocol (NTP)</a>. NTP allows computer clocks to sync with each other, a process that is essential for <a href='/learning/ssl/what-is-encryption/'>encryption</a>.</li>\n  <li><strong>Port 179:</strong> <a href='/learning/security/glossary/what-is-bgp/'>Border Gateway Protocol (BGP)</a>. BGP is essential for establishing efficient routes between the large networks that make up the Internet (these large networks are called <a href='/learning/network-layer/what-is-an-autonomous-system/'>autonomous systems</a>). Autonomous systems use BGP to broadcast which IP addresses they control.</li>\n  <li><strong>Port 443:</strong> <a href='/learning/ssl/what-is-https/'>HTTP Secure (HTTPS)</a>. HTTPS is the secure and encrypted version of HTTP. All HTTPS web traffic goes to port 443. Network services that use HTTPS for encryption, such as <a href='/learning/dns/dns-over-tls/'>DNS over HTTPS</a>, also connect at this port.</li>\n  <li><strong>Port 500:</strong> Internet Security Association and Key Management Protocol (ISAKMP), which is part of the process of setting up secure <a href='/learning/network-layer/what-is-ipsec/'>IPsec</a> connections.</li>\n  <li><strong>Port 587:</strong> Modern, secure SMTP that uses encryption.</li>\n  <li><strong>Port 3389:</strong> <a href='/learning/access-management/what-is-the-remote-desktop-protocol/'>Remote Desktop Protocol</a> (RDP). RDP enables users to remotely connect to their desktop computers from another device.</li>\n</ul>\n\n<p>The Internet Assigned Numbers Authority (IANA) maintains the <a href='https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml' target='_blank'>full list</a> of port numbers and protocols assigned to them.</p>\n",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
@@ -679,68 +679,33 @@
 					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
+				"proactivePopup": null,
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
 					"contentfulId": "4ad3l3edBzH8KRefyi225g",
 					"heading": "Want to keep learning?",
 					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
 					"postSubmissionDescription": "We're looking forward to sharing content with you.",
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
@@ -762,7 +727,7 @@
 						"sendAdRoll": null,
 						"meta_adRollCustomSegment": null,
 						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
 						"marketoFormSubmitButtonColor": null,
 						"enableEmailVerification": null,
 						"disableEnterpriseEmailNotification": null,
@@ -782,10 +747,12 @@
 				"zh-TW",
 				"fr-FR",
 				"de-DE",
+				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

@@ -1,0 +1,837 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/cloud/how-to-rehost-applications/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "2dwPJEmMu1SQ6mANPiNsub",
+				"urlSlug": "cloud/how-to-rehost-applications",
+				"metaTags": {
+					"metaTitle": "How to rehost applications",
+					"metaDescription": "Learn when and how to rehost applications to the cloud, with best practices for performance, security, cost optimization, and application modernization.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "4jVAWuMHyHW66VeCaAvuo",
+					"learningCenterName": "cloud",
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "5ESn5jCqN6jtX9UJgIrsRH",
+							"displayText": "What is the cloud?",
+							"url": "/learning/cloud/what-is-the-cloud/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "39LIvqQCFa8iU7ITBQmaEm",
+							"name": "Cloud header: Cloud basics",
+							"displayText": "Cloud basics",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+									"displayText": "What is cloud storage?",
+									"url": "/learning/cloud/what-is-cloud-storage/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
+									"displayText": "What is IaaS?",
+									"url": "/learning/cloud/what-is-iaas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+									"displayText": "Multitenancy",
+									"url": "/learning/cloud/what-is-multitenancy/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5k1A20zBRQpjW2079su8uz",
+									"displayText": "What is SaaS?",
+									"url": "/learning/cloud/what-is-saas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "38DHkZos35DYciaxPnJk7g",
+									"displayText": "Vendor lock-in",
+									"url": "/learning/cloud/what-is-vendor-lock-in/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
+									"displayText": "Virtual machine",
+									"url": "/learning/cloud/what-is-a-virtual-machine/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+									"displayText": "Multi-cloud vs hybrid cloud",
+									"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
+									"displayText": "What is multi-cloud?",
+									"url": "/learning/cloud/what-is-multicloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
+									"displayText": "Multi-cloud management",
+									"url": "/learning/cloud/what-is-multicloud-management/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
+									"displayText": "What is hybrid cloud?",
+									"url": "/learning/cloud/what-is-hybrid-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
+									"displayText": "Hybrid cloud architecture",
+									"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "486fCRIX89EKjcHElALCiw",
+							"name": "Cloud header: Securing the cloud",
+							"displayText": "Securing the cloud",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "kNE9anSSaRE82gAHCyVxp",
+									"displayText": "What is a cloud firewall (FWaaS)?",
+									"url": "/learning/cloud/what-is-a-cloud-firewall/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
+									"displayText": "Cloud security",
+									"url": "/learning/cloud/what-is-cloud-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+									"displayText": "Cloud security posture management (CSPM)",
+									"url": "/learning/cloud/what-is-cspm/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+									"displayText": "Cloud workload protection platform (CWPP)",
+									"url": "/learning/cloud/what-is-cwpp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5xd2QLCI5QCkPAIoDk5CJ2",
+									"displayText": "Cloud-native security",
+									"url": "/learning/cloud/cloud-native-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4R6CEXd0uFAUyNGgf2L23h",
+									"displayText": "FWaaS vs. NGFW",
+									"url": "/learning/cloud/ngfw-vs-fwaas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7gfIk2HzyB944KR3zD1mi1",
+									"displayText": "SaaS management platform (SMP)",
+									"url": "/learning/cloud/what-is-smp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
+									"displayText": "SaaS security posture management (SSPM)",
+									"url": "/learning/cloud/what-is-sspm/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1FHXopbTiAErueuQvbAXr6",
+									"displayText": "Cloud-native application protection platform (CNAPP)",
+									"url": "/learning/cloud/cnapp/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "26g8mVCbaDb7TF4jJMGFhz",
+							"name": "Cloud header: Cloud modernization",
+							"displayText": "Cloud modernization",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "y0HrOCtfIQJ4B46NGM8aK",
+									"displayText": "Application modernization",
+									"url": "/learning/cloud/application-modernization/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3ogF8VqUtpwiX80xRDH9lQ",
+									"displayText": "How to rehost apps",
+									"url": "/learning/cloud/how-to-rehost-applications/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "174iXrdVMHuS7avH6ICSVG",
+									"displayText": "How to refactor apps",
+									"url": "/learning/cloud/how-to-refactor-applications/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "nypSYuLAN0fI1HcJWLwj7",
+									"displayText": "How to replatform apps",
+									"url": "/learning/cloud/how-to-replatform-applications/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
+									"displayText": "Digital transformation",
+									"url": "/learning/cloud/what-is-digital-transformation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+									"displayText": "Cloud migration",
+									"url": "/learning/cloud/what-is-cloud-migration/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "31LQEF639fG1XJWTZBqnNO",
+									"displayText": "Data migration",
+									"url": "/learning/cloud/what-is-data-migration/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2OkRH9jhjm8FmxBtbYnZ9V",
+							"name": "Cloud header: Cloud glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2poSO07sAv136qKoXulTex",
+									"displayText": "AWS data transfer pricing",
+									"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
+									"displayText": "Data egress fees",
+									"url": "/learning/cloud/what-are-data-egress-fees/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "J93zt7n2b6WBPOCwb1NVy",
+									"displayText": "What is blob storage?",
+									"url": "/learning/cloud/what-is-blob-storage/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2Sl5qWn2qPay1wCwwwjYHj",
+									"displayText": "What is block storage?",
+									"url": "/learning/cloud/what-is-block-storage/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5tJVSh0zDmPqvoriPMSMuO",
+									"displayText": "What is a data lake?",
+									"url": "/learning/cloud/what-is-a-data-lake/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7u090eTI3Lc6TC6CZRHIhI",
+									"displayText": "What is object storage?",
+									"url": "/learning/cloud/what-is-object-storage/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5uYvlmPUWnPKLlrcDO8nyW",
+									"displayText": "Object storage vs. block storage",
+									"url": "/learning/cloud/object-storage-vs-block-storage/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
+									"displayText": "What is a private cloud?",
+									"url": "/learning/cloud/what-is-a-private-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+									"displayText": "What is a public cloud?",
+									"url": "/learning/cloud/what-is-a-public-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+									"displayText": "Virtual private cloud",
+									"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1w22mfnOVmsjLsM3jMxaAY",
+									"displayText": "Cloud networking",
+									"url": "/learning/cloud/what-is-cloud-networking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
+									"displayText": "Cloudflare and the cloud",
+									"url": "/learning/cloud/cloudflare-and-the-cloud/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7qiJLGJVI1us6Le145zRbC",
+							"name": "Cloud header: theNET",
+							"displayText": "theNET",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6LQmFiGz1KUuA6DwDNfV4F",
+									"displayText": "The challenges of network infrastructure",
+									"url": "https://www.cloudflare.com/insights-network-infrastructure/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7akEuCGGNzlr1ufpM39JJO",
+									"displayText": "The Internet is the new corporate network",
+									"url": "https://www.cloudflare.com/learning/insights-internet-corp-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "goUykSuhqroMEsPv5li3u",
+									"displayText": "Trading egress for opportunity",
+									"url": "https://www.cloudflare.com/learning/insights-cloud-storage-egress/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "39Qw8qLsrHNlQ3tqVJ1Dtt",
+					"learningCenterName": "cloud",
+					"column1Title": "About the cloud",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2PUeZxc6Kw9UYN9rDC8IYy",
+						"name": "Cloud footer — About the cloud",
+						"displayText": "About the cloud",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ESn5jCqN6jtX9UJgIrsRH",
+								"displayText": "What is the cloud?",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
+								"displayText": "Cloudflare and the cloud",
+								"url": "/learning/cloud/cloudflare-and-the-cloud/"
+							}
+						]
+					},
+					"column2Title": "Cloud configurations",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "gD760jkD40xsJ5VKKDGCY",
+						"name": "Cloud Footer - Cloud configurations",
+						"displayText": "Cloud configurations",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
+								"displayText": "What is hybrid cloud?",
+								"url": "/learning/cloud/what-is-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
+								"displayText": "What is multi-cloud?",
+								"url": "/learning/cloud/what-is-multicloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+								"displayText": "Multitenancy",
+								"url": "/learning/cloud/what-is-multitenancy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
+								"displayText": "What is a private cloud?",
+								"url": "/learning/cloud/what-is-a-private-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+								"displayText": "What is a public cloud?",
+								"url": "/learning/cloud/what-is-a-public-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3ogF8VqUtpwiX80xRDH9lQ",
+								"displayText": "How to rehost apps",
+								"url": "/learning/cloud/how-to-rehost-applications/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "nypSYuLAN0fI1HcJWLwj7",
+								"displayText": "How to replatform apps",
+								"url": "/learning/cloud/how-to-replatform-applications/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "174iXrdVMHuS7avH6ICSVG",
+								"displayText": "How to refactor apps",
+								"url": "/learning/cloud/how-to-refactor-applications/"
+							}
+						]
+					},
+					"column3Title": "Cloud security",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5jkIKbYcSS95KrnsL6yhXO",
+						"name": "Cloud footer — Cloud security",
+						"displayText": "Cloud security",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "kNE9anSSaRE82gAHCyVxp",
+								"displayText": "What is a cloud firewall (FWaaS)?",
+								"url": "/learning/cloud/what-is-a-cloud-firewall/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+								"displayText": "Cloud security posture management (CSPM)",
+								"url": "/learning/cloud/what-is-cspm/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+								"displayText": "Cloud workload protection platform (CWPP)",
+								"url": "/learning/cloud/what-is-cwpp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4R6CEXd0uFAUyNGgf2L23h",
+								"displayText": "FWaaS vs. NGFW",
+								"url": "/learning/cloud/ngfw-vs-fwaas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7gfIk2HzyB944KR3zD1mi1",
+								"displayText": "SaaS management platform (SMP)",
+								"url": "/learning/cloud/what-is-smp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
+								"displayText": "SaaS security posture management (SSPM)",
+								"url": "/learning/cloud/what-is-sspm/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5xd2QLCI5QCkPAIoDk5CJ2",
+								"displayText": "Cloud-native security",
+								"url": "/learning/cloud/cloud-native-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1FHXopbTiAErueuQvbAXr6",
+								"displayText": "Cloud-native application protection platform (CNAPP)",
+								"url": "/learning/cloud/cnapp/"
+							}
+						]
+					},
+					"column4Title": "Cloud glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "4ITdD1qcb1o7qstB32QX0V",
+						"name": "Cloud footer — Glossary",
+						"displayText": "Cloud glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2poSO07sAv136qKoXulTex",
+								"displayText": "AWS data transfer pricing",
+								"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "J93zt7n2b6WBPOCwb1NVy",
+								"displayText": "What is blob storage?",
+								"url": "/learning/cloud/what-is-blob-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2Sl5qWn2qPay1wCwwwjYHj",
+								"displayText": "What is block storage?",
+								"url": "/learning/cloud/what-is-block-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+								"displayText": "Cloud migration",
+								"url": "/learning/cloud/what-is-cloud-migration/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
+								"displayText": "Cloud security",
+								"url": "/learning/cloud/what-is-cloud-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+								"displayText": "What is cloud storage?",
+								"url": "/learning/cloud/what-is-cloud-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
+								"displayText": "Data egress fees",
+								"url": "/learning/cloud/what-are-data-egress-fees/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5tJVSh0zDmPqvoriPMSMuO",
+								"displayText": "What is a data lake?",
+								"url": "/learning/cloud/what-is-a-data-lake/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
+								"displayText": "Digital transformation",
+								"url": "/learning/cloud/what-is-digital-transformation/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
+								"displayText": "Hybrid cloud architecture",
+								"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
+								"displayText": "What is IaaS?",
+								"url": "/learning/cloud/what-is-iaas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+								"displayText": "Multi-cloud vs hybrid cloud",
+								"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
+								"displayText": "Multi-cloud management",
+								"url": "/learning/cloud/what-is-multicloud-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7u090eTI3Lc6TC6CZRHIhI",
+								"displayText": "What is object storage?",
+								"url": "/learning/cloud/what-is-object-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5uYvlmPUWnPKLlrcDO8nyW",
+								"displayText": "Object storage vs. block storage",
+								"url": "/learning/cloud/object-storage-vs-block-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5k1A20zBRQpjW2079su8uz",
+								"displayText": "What is SaaS?",
+								"url": "/learning/cloud/what-is-saas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "38DHkZos35DYciaxPnJk7g",
+								"displayText": "Vendor lock-in",
+								"url": "/learning/cloud/what-is-vendor-lock-in/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
+								"displayText": "Virtual machine",
+								"url": "/learning/cloud/what-is-a-virtual-machine/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+								"displayText": "Virtual private cloud",
+								"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1w22mfnOVmsjLsM3jMxaAY",
+								"displayText": "Cloud networking",
+								"url": "/learning/cloud/what-is-cloud-networking/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "y0HrOCtfIQJ4B46NGM8aK",
+								"displayText": "Application modernization",
+								"url": "/learning/cloud/application-modernization/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "31LQEF639fG1XJWTZBqnNO",
+								"displayText": "Data migration",
+								"url": "/learning/cloud/what-is-data-migration/"
+							}
+						]
+					},
+					"column5Title": "Learning Center navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3Z0WMXrDmdWdc5R8JIkDrG",
+						"name": "Cloud Footer - Navigationi kn",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7CoqFqlHQVmsyV0mxgXUs2",
+								"displayText": "AI Learning Center",
+								"url": "/learning/ai/what-is-artificial-intelligence/"
+							}
+						]
+					}
+				},
+				"header": "How to rehost applications",
+				"blurbSubHeader": "​​To rehost an application, migrate it between environments — typically from on-premises to cloud, or in some cases, back to on-premises for specialized workloads — without altering its core architecture or code.",
+				"objectivesHeader": "Rehosting",
+				"objectivesList": [
+					"Identify ideal scenarios for rehosting applications to the cloud",
+					"Learn best practices for planning and executing rehosting",
+					"Understand infrastructure needs beyond compute during rehosting"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "nypSYuLAN0fI1HcJWLwj7",
+						"displayText": "How to replatform apps",
+						"url": "/learning/cloud/how-to-replatform-applications/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "174iXrdVMHuS7avH6ICSVG",
+						"displayText": "How to refactor apps",
+						"url": "/learning/cloud/how-to-refactor-applications/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "y0HrOCtfIQJ4B46NGM8aK",
+						"displayText": "Application modernization",
+						"url": "/learning/cloud/application-modernization/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2mbYi4Ub0KYCderpgknwq3",
+						"displayText": "What is cloud migration?",
+						"url": "/learning/cloud/what-is-cloud-migration/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
+						"displayText": "Digital transformation",
+						"url": "/learning/cloud/what-is-digital-transformation/"
+					}
+				],
+				"enablementBlade": null,
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is application rehosting?</h2>\n\n<p>Application rehosting, also referred to as \"lift and shift,\" is the process of moving an application from an on-premises environment to <a href='/learning/cloud/what-is-the-cloud/'>the cloud</a> with little or no modification to its underlying architecture. This approach allows organizations to migrate workloads quickly without having to re-engineer or deeply modify their applications.</p>\n\n<p>By relocating applications to cloud platforms, businesses can reduce their reliance on physical hardware, cut operational costs, and improve scalability and resilience.</p>\n\n<h4 class=\"learning-content-h4\">Why organizations migrate applications to the cloud</h4>\n\n<p>There are several key drivers behind the shift to cloud environments:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Scalability:</strong> Cloud platforms offer elastic resources that adjust to demand</li>\n  <li><strong>Cost efficiency:</strong> Moving to the cloud reduces overhead expenditures and shifts spending to a more flexible, pay-as-you-go model</li>\n  <li><strong>Resilience and availability:</strong> Cloud infrastructure often provides built-in redundancy and disaster recovery capabilities</li>\n  <li><strong>Security and compliance:</strong> Major cloud providers offer security features and certifications to support <a href='/learning/privacy/what-is-data-compliance/'>compliance</a> needs</li>\n  <li><strong>Innovation:</strong> <a href='/learning/cloud/what-is-cloud-migration/'>Cloud migration</a> enables faster development cycles, easier integrations, and access to services like <a href='/learning/ai/what-is-artificial-intelligence/'>AI, analytics, and <a href='/learning/serverless/what-is-serverless/'>serverless computing</a></li>\n</ul>\n\n<p>While most organizations migrate to the cloud to unlock these benefits, a significant minority — typically large enterprises with specialized workloads — are rehosting certain applications back to on-premises environments to meet unique performance, compliance, or cost considerations.</p>\n\n<h4 class=\"learning-content-h4\">How rehosting supports application modernization</h4>\n\n<p><a href='/learning/cloud/application-modernization/'>Application modernization</a> refers to the process of updating and migrating existing software applications — and their underlying infrastructure — to better support an organization's security, performance, and scalability needs. One common approach within this broader effort is rehosting.</p>\n\n<p>While rehosting does not involve significant changes to the application itself, it unlocks the benefits of the cloud and helps support additional modernization efforts — like containerization, microservices adoption, or re-architecting.</p>\n\n<p>In some cases, rehosting is the final step for legacy applications that do not require significant upgrades. In others, it serves as a transitional phase before deeper transformation.</p>\n\n<h4 class=\"learning-content-h4\">Rehosting vs. replatforming vs. refactoring</h4>\n\n<p>There are several different ways to approach modernizing applications, including:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Rehosting:</strong> Moving an application to the cloud (with minimal changes)</li>\n  <li><a href='/learning/cloud/how-to-replatform-applications/'>Replatforming</a>: Making a few cloud-optimized changes — such as moving from a self-managed database to a managed cloud service — without altering core application code</li>\n  <li><a href='/learning/cloud/how-to-refactor-applications/'>Refactoring</a>: Redesigning or rewriting an application to take advantage of cloud-native features, like containers or serverless computing</li>\n</ul>\n\n<p>Each approach has trade-offs in terms of time, cost, and complexity. Rehosting offers speed and simplicity, making it a practical choice for organizations looking to reduce risk while accelerating their cloud adoption.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are some best practices for rehosting?</h2>\n\n<p>Rehosting is more than just moving application code from a server in a data center to a <a href='/learning/cloud/what-is-a-virtual-machine/'>virtual machine</a> in the cloud. It is a structured process that includes planning, automation, testing, and scaling — not just of compute resources, but of the entire application infrastructure.</p>\n\n<h4 class=\"learning-content-h4\">Assessment and planning</h4>\n\n<p>Before rehosting an application in cloud infrastructure, take time to understand what needs to be moved and how it interacts with other systems.</p>\n\n<h4 class=\"learning-content-h4\">Identifying application dependencies</h4>\n\n<p>During the discovery phase, map out key application components and dependencies, such as a monolithic application binary (a single deployable unit containing all logic, like a JAR, WAR, or EXE), a server-rendered presentation layer (e.g., JSP, ASP.NET), business logic embedded directly in the application, and a relational database — often a single RDBMS like Oracle, SQL Server, or MySQL.</p>\n\n<p>Also consider common dependencies including application servers (such as Tomcat, WebLogic, or IIS), external APIs, authentication systems, networking rules, hardcoded IPs or endpoints, and any other connected services. This list is not exhaustive, but it captures many of the typical elements found in traditional application architectures.</p>\n\n<p>This step helps prevent surprises during migration and ensures all moving parts are accounted for.</p>\n\n<h4 class=\"learning-content-h4\">Evaluating cloud infrastructure needs</h4>\n\n<p>Once key dependencies have been mapped, evaluate what the application needs in its new environment:</p>\n\n<ul class=\"learning-list\">\n  <li>Compute and storage requirements</li>\n  <li>Latency sensitivity</li>\n  <li>Backup and recovery objectives</li>\n  <li>Regional availability zones</li>\n  <li>Bandwidth expectations under peak load</li>\n</ul>\n\n<p>This is also the time to assess the supporting stack: <a href='/learning/dns/what-is-dns/'>DNS</a>, <a href='/learning/cdn/what-is-a-cdn/'>CDN</a>, <a href='/learning/ddos/ddos-mitigation/'>DDoS protection</a>, and <a href='/developer-platform/products/workers-observability/'>observability</a>. Rehosting is an opportunity to modernize those layers, too.</p>\n\n<h4 class=\"learning-content-h4\">Choosing the right cloud provider</h4>\n\n<p>Cloud providers play a major role in the long-term success of migration efforts. While compute pricing is often the first comparison point, look deeper.</p>\n\n<p>When evaluating cloud or modernization partners, it is important to look for a provider that offers a comprehensive set of capabilities to support performance, security, and operational efficiency. This includes scalable backend services that can grow with demand without introducing unpredictable cost spikes, as well as integrated network-level security features like <a href='/learning/ddos/glossary/web-application-firewall-waf/'>web application firewalls (WAF)</a>, DDoS protection, and granular access controls.</p>\n\n<p>A global content delivery network (CDN) is also essential to ensure fast, consistent delivery of both static and dynamic assets to users around the world. Providers should offer built-in DNS services that are not only fast and reliable, but also programmable to support automation and resilience.</p>\n\n<p>Finally, native observability tools — or seamless integration with existing logging and monitoring stacks — are critical for maintaining visibility and control as applications scale and evolve.</p>\n\n<h4 class=\"learning-content-h4\">Testing and validation post-migration</h4>\n\n<p>Migration success is when an application runs correctly, securely, and efficiently. After rehosting, it is important to benchmark key performance indicators like latency and throughput against the on-premises baseline to ensure the application meets user expectations. Running load tests can help simulate real-world demand and uncover issues that might not appear under normal conditions. Reviewing logs and alerts is also critical for identifying anomalies or misconfigurations that could impact reliability or security.</p>\n\n<p>Beyond application performance, teams should also validate supporting infrastructure components — including DNS resolution, CDN behavior, <a href='/learning/ssl/transport-layer-security-tls/'>TLS</a> configurations, and <a href='/learning/security/what-is-a-firewall/'>firewall</a> rules — to confirm they are functioning as intended in the new environment.</p>\n\n<p>As part of the migration cutover, traffic steering plays a key role in ensuring a smooth transition with no customer-facing downtime. Techniques such as DNS-based traffic shifting, weighted load balancing, and canary deployments can help gradually migrate users from the on-premises environment to the cloud-based version of the application. This allows teams to monitor system behavior in real time, identify issues early, and roll back changes if needed — all without disrupting end-user experience. Careful coordination of DNS TTLs, health checks, and monitoring coverage is essential to maintain service continuity during this critical phase.</p>\n\n<h4 class=\"learning-content-h4\">Monitoring and scaling cloud resources</h4>\n\n<p>Scaling should be proactive. Consider autoscaling groups or serverless options if appropriate for current workloads. And monitor cloud spend — cost optimization in cloud migration doesn't stop after applications are launched in the cloud.</p>\n\n<p>Post-migration, continuous observability can help:</p>\n\n<ul class=\"learning-list\">\n  <li>Detect performance issues early</li>\n  <li>Manage resource utilization</li>\n  <li>Identify security events</li>\n</ul>\n\n<p>Implement cloud-native or third-party monitoring to support:</p>\n\n<ul class=\"learning-list\">\n  <li>Application metrics (CPU, memory, errors)</li>\n  <li>Network flow and traffic anomalies</li>\n  <li>DNS performance and cache hit rates</li>\n  <li>CDN effectiveness (edge cache vs. origin pulls)</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">When to rehost applications</h2>\n\n<p>Rehosting is often ideal when organizations need to migrate quickly, avoid heavy development effort, or extend the lifespan of a legacy system. It can also be the right fit for organizations looking to reduce physical infrastructure dependencies while beginning a broader IT infrastructure transformation.</p>\n\n<h4 class=\"learning-content-h4\">Ideal scenarios for rehosting</h4>\n\n<p>Rehosting is most effective in scenarios where organizations have stable but expensive legacy applications that are becoming burdensome to maintain on-premises. It is also a strong fit when there is a need to exit a data center quickly, or when the priority is to move to the cloud with minimal disruption to the existing application codebase.</p>\n\n<p>For teams planning broader modernization efforts down the line, rehosting can serve as a strategic first step — enabling foundational changes today while preserving flexibility for future refactoring. In these cases, rehosting helps extend the value of legacy applications without requiring immediate rewrites, effectively buying time to modernize further when the organization is ready.</p>\n\n<h4 class=\"learning-content-h4\">Business and technical factors that influence rehosting</h4>\n\n<p>When evaluating rehosting as an application modernization path, consider:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Time-to-cloud:</strong> How quickly the organization needs to move applications to a new environment</li>\n  <li><strong>Budget constraints:</strong> Whether current financial resources allow for rehosting efforts or setting the stage for replatforming or refactoring efforts in the future</li>\n  <li><strong>Operational continuity:</strong> The organization's tolerance for potential service interruptions during migration</li>\n  <li><strong>Staffing:</strong> The availability of internal skills required to support deeper modernization initiatives</li>\n</ul>\n\n<p>Rehosting can help manage risk and resource constraints by providing a relatively low-friction path to the cloud.</p>\n\n<h4 class=\"learning-content-h4\">Cost optimization in cloud migration</h4>\n\n<p>Rehosting can deliver short-term cost optimization in cloud migration by reducing hardware maintenance and licensing costs, data center overhead, and infrastructure provisioning time. However, rehosting alone may not fully optimize long-term costs. Without refactoring or replatforming, applications may not use cloud-native efficiencies like autoscaling, serverless, or managed services.</p>\n\n<p>In the short term, organizations can achieve fast ROI by eliminating capital expenditures and removing the need for physical infrastructure. Over the long term, however, realizing true cost efficiency requires deeper optimization — such as tuning compute usage, rightsizing instances, and decoupling monolithic services to improve scalability and resource allocation.</p>\n\n<h4 class=\"learning-content-h4\">Managing cloud expenses post-migration</h4>\n\n<p>While rehosting can reduce some security risks, like reliance on patching vulnerable and outdated infrastructure, it also creates new ones. Applications that were secure in a controlled on-premises environment might be exposed in a less controlled cloud setting unless steps are taken to secure them properly via a <a href='/learning/cloud/cloud-native-security/'>cloud-native security</a> platform.</p>\n\n<p>Cost is another key consideration. Without proactive management, rehosted applications can generate higher-than-expected cloud bills. For example, <a href='/learning/cloud/what-are-data-egress-fees/'>egress fees</a> — charges for moving data out of a cloud provider's environment — can add up quickly, especially for data-intensive applications.</p>\n\n<p>To avoid unexpected costs after migrating to the cloud, organizations should take a proactive approach to resource and cost management. This includes closely monitoring usage trends to identify patterns and anomalies, and establishing clear cost governance policies to define ownership and accountability. Automating tasks like rightsizing and scheduling of underutilized resources can help reduce waste and optimize spend. Additionally, setting budgets and alerts within cloud platforms provides early warning signals before costs exceed acceptable thresholds, helping teams stay in control as environments scale.</p>\n\n<h4 class=\"learning-content-h4\">Security considerations in migration</h4>\n\n<p>Every migration strategy should incorporate security as a core consideration throughout the process, including:</p>\n\n<ul class=\"learning-list\">\n  <li><a href='/learning/ssl/what-is-encryption/'>Encryption</a> of data in transit and at rest</li>\n  <li><a href='/learning/access-management/what-is-identity-and-access-management/'>Access control and identity management</a></li>\n  <li>Compliance with relevant industry standards</li>\n</ul>\n\n<h4 class=\"learning-content-h4\">The importance of preparation before rehosting\n</h4>\n\n<p>A successful rehost requires more than copying an app to the cloud. Poorly executed cutovers can result in:</p>\n\n<ul class=\"learning-list\">\n  <li>Broken user experiences</li>\n  <li>Downtime during DNS propagation</li>\n  <li><a href='/learning/performance/glossary/what-is-latency/'>Latency</a> or <a href='/learning/performance/glossary/application-availability/'>availability</a> issues</li>\n  <li>Missed dependencies or outdated configuration</li>\n</ul>\n\n<p>One common issue: customers or partners may rely on static <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP addresses</a> tied to an application's old data center. If those IP addresses are not updated on their side, traffic fails. Organizations must anticipate these dependencies and proactively coordinate with stakeholders to ensure a smooth cutover.</p>\n\n<p>A well-planned rehost includes:</p>\n\n<ul class=\"learning-list\">\n  <li>Communication plans with customers and partners</li>\n  <li>Testing environments and rollback options</li>\n  <li>Clear documentation of endpoint or infrastructure changes</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How Cloudflare supports application modernization</h2>\n\n<p>Cloudflare accelerates application modernization by transforming video and images, load balancing apps, and resolving DNS globally for fast, reliable performance. Automated protection defends against bots, DDoS, and zero-day attacks, while integrated observability ensures compliance across cloud environments. With these capabilities, Cloudflare strengthens every layer of the application stack for secure, high-performing, and future-ready modernization.</p>\n\n<p>Learn more about <a href='/learning/cloud/application-modernization/'>application modernization</a>.</p>",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "Translated for Locale",
+					"plPL": "English for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": {
+					"contentTypeId": "learningCenterArticleSidebarForm",
+					"contentfulId": "4ad3l3edBzH8KRefyi225g",
+					"heading": "Want to keep learning?",
+					"postSubmissionHeading": "Thank you for subscribing",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
+					"postSubmissionDescription": "We're looking forward to sharing content with you.",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
+						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
+						"backgroundColor": "blue",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": null,
+						"marketoFormDefaultComment": null,
+						"showCommentBox": null,
+						"marketoFormThankYouText": "Thank you for subscribing!",
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
+						"marketoFormSubmitButtonColor": null,
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					}
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "2dwPJEmMu1SQ6mANPiNsub",
+			"pathname": "/learning/cloud/how-to-rehost-applications/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"es-LA",
+				"zh-Hans-CN"
+			]
+		}
+	}
+}

@@ -1,0 +1,604 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/ai/what-is-lora/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "3nfP9qKIuIwfAiHsqYj04Q",
+				"urlSlug": "ai/what-is-lora",
+				"metaTags": {
+					"metaTitle": "What is LoRA? | Low-rank adaptation",
+					"metaDescription": "Low-rank adaptation, or LoRA, is a less expensive, more efficient method for adapting large machine learning models to specific uses. Learn how LoRA works.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "5JjQb2yV1d1T7WTVZQkNEW",
+					"learningCenterName": "artificialintelligence",
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+							"displayText": "What is artificial intelligence (AI)?",
+							"url": "/learning/ai/what-is-artificial-intelligence/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+							"displayText": "What is a large language model (LLM)?",
+							"url": "/learning/ai/what-is-large-language-model/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "41JHcwdZJopZYPQOHjdkkE",
+							"name": "Machine learning",
+							"displayText": "Machine learning",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+									"displayText": "What is machine learning?",
+									"url": "/learning/ai/what-is-machine-learning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+									"displayText": "What is deep learning?",
+									"url": "/learning/ai/what-is-deep-learning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5uKuVMtEUTbsmkjOh86Dsl",
+									"displayText": "Neural networks",
+									"url": "/learning/ai/what-is-neural-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+									"displayText": "What is generative AI?",
+									"url": "/learning/ai/what-is-generative-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
+									"displayText": "Predictive AI",
+									"url": "/learning/ai/what-is-predictive-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+									"displayText": "AI image generation",
+									"url": "/learning/ai/ai-image-generation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+									"displayText": "What is big data?",
+									"url": "/learning/ai/big-data/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
+									"displayText": "What is agentic AI?",
+									"url": "/learning/ai/what-is-agentic-ai/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2WaoB1uAGPdfW9vr56U72B",
+							"name": "Glossary - AI subheader",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+									"displayText": "What are embeddings?",
+									"url": "/learning/ai/what-are-embeddings/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+									"displayText": "Vector database",
+									"url": "/learning/ai/what-is-vector-database/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "12RjN72z2wlElvMBzyICp9",
+									"displayText": "AI inference vs. training",
+									"url": "/learning/ai/inference-vs-training/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+									"displayText": "What is natural language processing (NLP)?",
+									"url": "/learning/ai/natural-language-processing-nlp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
+									"displayText": "Low-rank adaptation (LoRA)",
+									"url": "/learning/ai/what-is-lora/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+									"displayText": "AI hallucinations",
+									"url": "/learning/ai/what-are-ai-hallucinations/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4xeYgczMnCqQ0wO8ORIbVY",
+									"displayText": "AI quantization",
+									"url": "/learning/ai/what-is-quantization/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+									"displayText": "OWASP Top 10 for LLMs",
+									"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+									"displayText": "AI data poisoning",
+									"url": "/learning/ai/data-poisoning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+									"displayText": "Retrieval augmented generation (RAG)",
+									"url": "/learning/ai/retrieval-augmented-generation-rag/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7kvDdMXof90koTqWiUdRX5",
+									"displayText": "History of AI",
+									"url": "/learning/ai/history-of-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "pjgC00TeWrxtIOybBfUbh",
+									"displayText": "What is vibe coding?",
+									"url": "/learning/ai/ai-vibe-coding/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+									"displayText": "Third wave of AI",
+									"url": "/learning/ai/evolution-of-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
+									"displayText": "ChatGPT plugins",
+									"url": "/learning/ai/chatgpt-plugins/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "4fHZ91razv1xm1g6m2sAcT",
+					"learningCenterName": "artificialintelligence",
+					"column1Title": "Artificial intelligence",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "504wIqF2RxToUI652YFAHo",
+						"name": "AI Footer - Artificial intelligence",
+						"displayText": "Artificial intelligence",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+								"displayText": "What is artificial intelligence (AI)?",
+								"url": "/learning/ai/what-is-artificial-intelligence/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "12RjN72z2wlElvMBzyICp9",
+								"displayText": "AI inference vs. training",
+								"url": "/learning/ai/inference-vs-training/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7kvDdMXof90koTqWiUdRX5",
+								"displayText": "History of AI",
+								"url": "/learning/ai/history-of-ai/"
+							}
+						]
+					},
+					"column2Title": "Machine learning",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "4WbETih2OgXGNXGsvb7kMZ",
+						"name": "AI footer - Machine Learning",
+						"displayText": "Machine learning",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+								"displayText": "What is machine learning?",
+								"url": "/learning/ai/what-is-machine-learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+								"displayText": "What is deep learning?",
+								"url": "/learning/ai/what-is-deep-learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+								"displayText": "What is a large language model (LLM)?",
+								"url": "/learning/ai/what-is-large-language-model/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
+								"displayText": "Low-rank adaptation (LoRA)",
+								"url": "/learning/ai/what-is-lora/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+								"displayText": "AI image generation",
+								"url": "/learning/ai/ai-image-generation/"
+							}
+						]
+					},
+					"column3Title": "Big data",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3q3KTRPkBi7rS3aDeQoMNn",
+						"name": "AI footer - Big Data",
+						"displayText": "Big data",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+								"displayText": "What are embeddings?",
+								"url": "/learning/ai/what-are-embeddings/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+								"displayText": "What is big data?",
+								"url": "/learning/ai/big-data/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1UCfw4v8J5rpL4BsVNlgVC",
+						"name": "AI footer - Glossary",
+						"displayText": "AI glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+								"displayText": "Vector database",
+								"url": "/learning/ai/what-is-vector-database/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
+								"displayText": "Predictive AI",
+								"url": "/learning/ai/what-is-predictive-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
+								"displayText": "ChatGPT plugins",
+								"url": "/learning/ai/chatgpt-plugins/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5uKuVMtEUTbsmkjOh86Dsl",
+								"displayText": "Neural networks",
+								"url": "/learning/ai/what-is-neural-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+								"displayText": "What is generative AI?",
+								"url": "/learning/ai/what-is-generative-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+								"displayText": "What is natural language processing (NLP)?",
+								"url": "/learning/ai/natural-language-processing-nlp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+								"displayText": "AI hallucinations",
+								"url": "/learning/ai/what-are-ai-hallucinations/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4xeYgczMnCqQ0wO8ORIbVY",
+								"displayText": "AI quantization",
+								"url": "/learning/ai/what-is-quantization/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+								"displayText": "OWASP Top 10 for LLMs",
+								"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+								"displayText": "AI data poisoning",
+								"url": "/learning/ai/data-poisoning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+								"displayText": "Retrieval augmented generation (RAG)",
+								"url": "/learning/ai/retrieval-augmented-generation-rag/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
+								"displayText": "What is agentic AI?",
+								"url": "/learning/ai/what-is-agentic-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+								"displayText": "Third wave of AI",
+								"url": "/learning/ai/evolution-of-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "pjgC00TeWrxtIOybBfUbh",
+								"displayText": "What is vibe coding?",
+								"url": "/learning/ai/ai-vibe-coding/"
+							}
+						]
+					},
+					"column5Title": "Learning Center",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5kj4ISBExxQfI9CaYifpU9",
+						"name": "AI Learning Center footer",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							}
+						]
+					}
+				},
+				"header": "What is low-rank adaptation (LoRA)?",
+				"blurbSubHeader": "Low-rank adaptation (LoRA) is a way to adapt a large machine learning model for specific uses without retraining the entire model.",
+				"objectivesHeader": "LoRA",
+				"objectivesList": [
+					"Define \"low-rank adaptation\" (LoRA)",
+					"Explain in simple fashion how LoRA works",
+					"Understand the advantages of using LoRA"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+						"displayText": "What is machine learning?",
+						"url": "/learning/ai/what-is-machine-learning/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+						"displayText": "What is a large language model (LLM)?",
+						"url": "/learning/ai/what-is-large-language-model/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+						"displayText": "What is generative AI?",
+						"url": "/learning/ai/what-is-generative-ai/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+						"displayText": "What is artificial intelligence (AI)?",
+						"url": "/learning/ai/what-is-artificial-intelligence/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+						"displayText": "Retrieval augmented generation (RAG)",
+						"url": "/learning/ai/retrieval-augmented-generation-rag/"
+					}
+				],
+				"enablementBlade": null,
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is low-rank adaptation (LoRA)?</h2>\n\n<p>Low-rank adaptation (LoRA) is a technique for quickly adapting <a href='/learning/ai/what-is-machine-learning/'>machine learning</a> models to new contexts. LoRA helps make huge and complicated machine learning models much more suited for specific uses. It works by adding lightweight pieces to the original model, as opposed to changing the entire model. LoRA helps developers quickly expand the use cases for the machine learning models they build.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What does LoRA do?</h2>\n\n<p>Large and complex machine learning models, such as those used for <a href='/learning/ai/what-is-large-language-model/'>large language models (LLMs)</a> like ChatGPT, take a long time and a lot of resources to set up. They may have trillions of parameters that are set to specific values. Once this process is complete, the model may be powerful and accurate in general, but it is not necessarily fine-tuned to carry out specific tasks.</p>\n\n<p>Getting a model to work in specific contexts can require a great deal of retraining, changing all its parameters. With the amount of parameters in such models, this retraining is expensive and time-consuming. LoRA provides a quick way to adapt the model without retraining it.</p>\n\n<p>Imagine Jim moves from Europe to North America and all his appliances (microwave, hot water pot, and so on) do not fit the outlets in his new house, since these two regions follow different standards for electric plugs. Jim has two options. He could rip out and replace all the outlets in his home so that they fit the plugs on his appliances. Or, he could simply purchase a few cheap outlet adapters and plug in his appliances that way.</p>\n\n<p>LoRA is like Jim's second option. Instead of completely retraining a model from start to finish, LoRA adds a lightweight, changeable part to the model so that it fits the new context. For AI developers, this is much faster and less resource intensive, just as purchasing a few adapters at the hardware store is cheaper for Jim than hiring a contractor to go into his walls and replace the electrical outlets.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does low-rank adaptation impact a machine learning model?</h2>\n\n<p>A machine learning model is the combination of a machine learning algorithm with a data set. The result of this combination is a computer program that can identify patterns, find objects, or draw relationships between items even in data sets it has not seen before.</p>\n\n<p>For complex tasks like <a href='/learning/ai/what-is-generative-ai/'>generating text</a>, producing images, or carrying out other modern-day applications of machine learning, the models draw from a lot of data and use highly complex algorithms. Slight changes to the algorithms or the data set mean that the model will produce different results. However, getting the kinds of results that are needed in a specific context can take a lot of training.</p>\n\n<p>Instead of re-doing the whole model, LoRA freezes the weights* and parameters of the model as they are. Then on top of this original model, it adds a lightweight addition called a low-rank matrix, which is then applied to new inputs to get results specific to the context. The low-rank matrix adjusts for the weights of the original model so that outputs match the desired use case.</p>\n\n<p>*<em>In machine learning models, a \"weight\" is a mathematical value that helps determine how important different types of inputs are.</em></p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a low-rank matrix in LoRA?</h2>\n\n<p>A matrix, in mathematics, is an array or collection of numbers, like:</p>\n\n<img class=\"responsive-image--50-pct-center\" title=\"Low-Rank Matrix Example\" alt=\"Low-Rank Matrix Example: First column 2 4 6, second column 4 8 12, third column 6 12 18\" src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/VVNsQ2Ah92NypTI4c0MO5/087a575ef69de9941b1e407bad8798b1/low-rank-matrix.png\" itemprop=\"image\">\n\n<p>Matrices are an important part of how machine learning models and <a href='/learning/ai/what-is-neural-network/'>neural networks</a> work. For such uses, they can be much larger than the example above. For LoRA, the important thing to understand is that low-rank matrices are smaller and have many fewer values than larger matrices. They do not take up much memory and require fewer steps to add or multiply together. This makes them faster for computers to process.</p>\n\n<p>LoRA adds low-rank matrices to the frozen original machine learning model. These matrices contain new weights to apply to the model when generating results. This process alters the outputs that the model produces with minimal computing power and training time.</p>\n\n<p>In the analogy used above, Jim bought cheap adapters to plug his appliances into the wall. Low-rank matrices are like those cheap adapters, with the outlets being the original machine learning models.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does machine learning work?</h2>\n\n<p><a href='/learning/ai/what-is-machine-learning/'>Machine learning</a> is a term that refers to a type of statistical algorithm that can learn to find patterns in data, without receiving specific instructions from a human. Machine learning can generalize from examples to classify data it has never seen before. It is foundational for many types of <a href='/learning/ai/what-is-artificial-intelligence/'>artificial intelligence (AI)</a> applications.</p>\n\n<p>Cloudflare enables developers to quickly integrate popular machine learning models through services such as:</p>\n\n<ul class='learning-list'>\n  <li><a href='https://developers.cloudflare.com/workers-ai/' target='_blank'>Cloudflare Workers AI</a>, a global network of GPUs available to developers</li>\n  <li><a href='https://developers.cloudflare.com/vectorize/' target='_blank'>Cloudflare Vectorize</a>, a globally distributed <a href='/learning/ai/what-is-vector-database/'>vector database</a></li>\n  <li><a href='https://developers.cloudflare.com/ai-gateway/' target='_blank'>Cloudflare AI Gateway</a>, which allows developers to gain visibility and control over their AI apps</li>\n  <li><a href='/developer-platform/r2/'>Cloudflare R2</a>, <a href='/learning/cloud/what-is-object-storage/'>object storage</a> with no <a href='/learning/cloud/what-are-data-egress-fees/'>egress fees</a>, which allows developers to store and access training data sets in a cost-effective way</li>\n</ul>\n\n<p>Learn more about the full <a href='https://ai.cloudflare.com/' target='_blank'>Cloudflare for AI platform</a>.</p>",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "Translated for Locale",
+					"plPL": "English for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": {
+					"contentTypeId": "learningCenterArticleSidebarForm",
+					"contentfulId": "4ad3l3edBzH8KRefyi225g",
+					"heading": "Want to keep learning?",
+					"postSubmissionHeading": "Thank you for subscribing",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
+					"postSubmissionDescription": "We're looking forward to sharing content with you.",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
+						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
+						"backgroundColor": "blue",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": null,
+						"marketoFormDefaultComment": null,
+						"showCommentBox": null,
+						"marketoFormThankYouText": "Thank you for subscribing!",
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
+						"marketoFormSubmitButtonColor": null,
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					}
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "3nfP9qKIuIwfAiHsqYj04Q",
+			"pathname": "/learning/ai/what-is-lora/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"es-LA",
+				"zh-Hans-CN"
+			]
+		}
+	}
+}

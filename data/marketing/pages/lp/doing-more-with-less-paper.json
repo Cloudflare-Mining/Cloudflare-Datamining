@@ -9,13 +9,14 @@
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
 					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
+					"frFR": "English for Locale",
 					"deDE": "Translated for Locale",
 					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,8 +30,7 @@
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "English for Locale",
-					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "lp/doing-more-with-less-paper",
 				"topNavOptions": "no-phone",
@@ -47,7 +47,12 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2023-06-14T16:43:02.513Z",
+					"updatedAt": "2023-12-26T08:26:51.622Z"
 				},
 				"contentfulId": "4YWgVIaUaXeQpKJda7PsAu",
 				"contentTypeId": "page",
@@ -72,7 +77,7 @@
 							"contentfulId": "4ZNBV817jMKFz8Eq9baAhS",
 							"bladeName": "[ACQ] Q2'23 WEB - GBL - Doing more with less whitepaper - marketo form",
 							"backgroundColor": "white",
-							"marketoFormId": 1341,
+							"marketoFormId": 1346,
 							"marketoFormLeadSource": "Inbound - Web Form",
 							"marketoFormLeadSourceDetail": "[ACQ] Q2'23 WEB - GBL - Doing more with less whitepaper",
 							"marketoFormHeaderText": "Get the White Paper",
@@ -83,7 +88,7 @@
 							"marketoFormPdfDownload": null,
 							"marketoFormPdfDownloadI18n": [],
 							"marketoFormAssetDownloadButtonText": "Download Ebook",
-							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZEtnKt57LKPQWfYHKSt9H/f1675d99f8896e68dd4b44ff4ec5c90e/BDES-4588_English_letter_Application_Security_Whitepaper.pdf",
+							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZEtnKt57LKPQWfYHKSt9H/030f55ab2dbdf19049ff2d91fa06bfff/BDES_4764_Refresh_App_sec_ebook_Letter.pdf",
 							"sendAdRoll": true,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
@@ -95,7 +100,7 @@
 						},
 						"title": "Doing more with less",
 						"subtitle": "Cost-effective application security and performance strategies from 7 companies",
-						"copy": "Whether due to economic uncertainty, falling sales, or a host of other reasons, security and IT teams are often forced to improve operations without budget growth — or asked to do so while slashing costs.\n\nWhen facing the dual pressures of budget constraints and rising expectations, organizations need to find ways to deliver more with less. Read the Doing more with less white paper to discover:\n\n- Real-life stories of companies that have successfully created efficiencies\n- Why budget cuts often come with security trade-offs\n- How to use application security practices to streamline expenses\n\n![Doing more with less](//cf-assets.www.cloudflare.com/slt3lc6tev37/4lFyOcBh9Iwa6uC8OKUUJU/114a41bd42b4def1429bafa1963f6cd6/doing-more-with-less.png)\n",
+						"copy": "Whether due to economic uncertainty, falling sales, or a host of other reasons, security and IT teams are often forced to improve operations without budget growth — or asked to do so while slashing costs.\n\nWhen facing the dual pressures of budget constraints and rising expectations, organizations need to find ways to deliver more with less. Read the Doing more with less white paper to discover:\n\n- Real-life stories of companies that have successfully created efficiencies\n- Why budget cuts often come with security trade-offs\n- How to use application security practices to streamline expenses\n\n![Doing more with less](//cf-assets.www.cloudflare.com/slt3lc6tev37/4JyUVJL9cFMaeglYLXBmsa/03a10cc82bf39f9b01b97cdcdc5616f8/Doing_more_with_less.png)\n",
 						"iconList": [],
 						"iconTitleList": null,
 						"iconCopyList": null,
@@ -121,7 +126,7 @@
 						"copy": null,
 						"title": "Resources",
 						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 4 columns",
+						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
 						"sectionPadding": null,
 						"carouselSlidesToShow": null,
@@ -202,42 +207,6 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5wIpKlpFPW14aLyqFNLMbw",
-								"title": "Webinar - How Applications Are Attacked",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Watch Cloudflare's discussion on critical attacks that require consideration in organizational security postures.",
-								"learnMoreUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/4189980/how-applications-are-attacked-a-year-in-application-security",
-								"learnMoreText": "Register",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "0947a0ac-c55d-5bda-89ed-bbb14ee07df8",
-									"altText": "How Applications Are Attacked",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2XEU6veODQKuJkQobTeock/5ddf54ac2057f51173a3cda293e30fc7/how-apps-are-attacked.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "3Tfu63EmybOSyDxfheaqps",
 								"title": "Supercharge and secure your applications",
 								"makeTitleLink": null,
@@ -277,7 +246,6 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"hasAdobeExperiment": null,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -295,17 +263,16 @@
 				"en-US",
 				"zh-CN",
 				"zh-TW",
-				"fr-FR",
 				"de-DE",
 				"it-IT",
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
-			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}
