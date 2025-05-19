@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "bbedcbc8-143e-5672-992f-0a8c13f02695")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "251d84af-fd20-52cc-885c-577108b81d37")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1050,10 +1050,10 @@
 					t.g.build = Tn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "4f405ba967231b37b08e7da2bab4042088094897",
-						dashVersion: "33331880",
+						commit: "287c77956ceb68ef0bef0d406b91b64666724dbe",
+						dashVersion: "33338122",
 						env: "production",
-						builtAt: 1747647986676,
+						builtAt: 1747666496794,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -9235,7 +9235,7 @@
 			}
 
 			function Ce(d) {
-				return !d || d.lastKnownStatus === "pendingTransfer" || d.lastKnownStatus === "transferFOAPending" || !M(d) && d.transferConditions && !d.transferConditions.not_started || !1
+				return !d || d.lastKnownStatus === n.kd.PENDING_TRANSFER || d.lastKnownStatus === n.kd.TRANSFER_FOA_PENDING || !M(d) && d.transferConditions && !d.transferConditions.not_started || !1
 			}
 
 			function Te(d) {
@@ -19701,7 +19701,7 @@
 			e.locals && (j.exports = e.locals)
 		},
 		"../node_modules/css-loader/index.js!../react/common/out.css": function(j, _, t) {
-			_ = j.exports = t("../node_modules/css-loader/lib/css-base.js")(!1), _.push([j.id, `/*! tailwindcss v4.1.6 | MIT License | https://tailwindcss.com */
+			_ = j.exports = t("../node_modules/css-loader/lib/css-base.js")(!1), _.push([j.id, `/*! tailwindcss v4.1.7 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, components, utilities;
 @layer theme {
@@ -19829,8 +19829,6 @@
     --color-cl1-blue-2: var(--cf-blue-2);
     --color-cl1-blue-8: var(--cf-blue-8);
     --color-cl1-gray-0: var(--cf-gray-0);
-    --color-cl1-new-gray-1: var(--cf-newGray-1);
-    --color-cl1-new-gray-2: var(--cf-newGray-2);
     --color-cl1-new-gray-7: var(--cf-newGray-7);
     --color-ob-focus: var(--color-blue-400);
   }
@@ -21246,6 +21244,13 @@
   .\\*\\:w-full {
     :is(& > *) {
       width: 100%;
+    }
+  }
+  .group-hover\\:block {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        display: block;
+      }
     }
   }
   .group-hover\\:text-\\[\\#f6821f\\] {
@@ -22710,4 +22715,4 @@
 	}
 ]);
 
-//# debugId=bbedcbc8-143e-5672-992f-0a8c13f02695
+//# debugId=251d84af-fd20-52cc-885c-577108b81d37
