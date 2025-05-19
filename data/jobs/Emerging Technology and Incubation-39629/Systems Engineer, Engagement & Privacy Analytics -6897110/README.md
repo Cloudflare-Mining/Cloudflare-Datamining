@@ -5,68 +5,46 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: </strong>Munich, Germany</p>
-<h3><strong>About the Role</strong></h3>
-<p>Cloudflare is transforming the way enterprise IT operates—redefining an entire category and growing a billion-pound business with over 40% annual growth. At the heart of this expansion is our dynamic regional marketing team.</p>
-<p>We’re looking for a <strong>Senior Marketing &amp; Events Manager, EMEA</strong> to join our Events Center of Excellence. This role is perfect for someone who thrives on bringing exceptional events to life, loves fast-paced collaboration, and is driven by data, creativity, and results.</p>
-<p>In this pivotal position, you'll lead event strategy and execution across the <strong>DACH region (Germany, Austria, Switzerland)</strong> and support <strong>EMEA-wide channel events</strong>. You’ll collaborate across Marketing, Sales, and Partner teams to deliver experiences that drive engagement, build pipeline, and fuel Cloudflare’s channel growth.</p>
-<p>This role reports to the <strong>Head of Field Marketing &amp; Events, EMEA</strong>, and works closely with the broader regional marketing and sales organisation. Who you are: A proactive, positive, and high-energy team player. Curious, adaptable, and eager to grow in a <strong>tech-driven, high-growth environment</strong>.<br><br></p>
-<h3><strong>What You'll Do</strong></h3>
+<p><strong>About the Department</strong><strong><br></strong>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a hugely successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p><strong>About the Team</strong><strong><br></strong>Our team builds on top of the Cloudflare development platform, pushing its limits to deliver tooling ranging from open source dev-tooling contributions to bespoke Enterprise-grade product solutions for massive-traffic volumes and bespoke customer demands.&nbsp;</p>
+<p>What started with Cloudflare Zaraz - a solution that made third-party tooling safer, faster, and more privacy-conscious - has grown into a broader mandate. Today, our scope has broadened to include stewardship of CDNJS, the open source Managed Components project, and a range of strategic initiatives focused on empowering developers with more control over data privacy and analytics.</p>
+<p>At our core, we’re building new ways to help web application owners streamline development and accelerate growth on the Internet.</p>
+<p>We are a tight-knit team, communicating &amp; collaborating regularly. We like to celebrate our achievements, support each other when we make mistakes, and hold each other and our work to the highest standard.</p>
+<p><strong>What you'll do</strong><strong><br></strong>In this role, you will join world-class engineers in shaping new products built entirely on Cloudflare’s global network, while continuing to nurture the growing impact of existing offerings - ensuring continual reliability, best-in-class performance, and the implementation of new features and functionality.</p>
+<p>You will be encouraged to bring your ideas forward and own your code from inception to release, delivering solutions at every layer of the software stack to empower Cloudflare customers. On any given day, you might:</p>
 <ul>
-	<li>
-		<p>Lead Event Execution in DACH<br>Plan and execute impactful events—trade shows, executive dinners, Cloudflare conferences, partner gatherings, and more—to drive pipeline and customer engagement across the region.<br><br></p>
-	</li>
-	<li>
-		<p>Drive EMEA Channel Event Strategy<br>Collaborate with the Head of EMEA Events, Director of Partner Marketing, and DACH Field Marketing leads to shape and deliver strategic channel events aligned with Cloudflare’s partner ecosystem growth.<br><br></p>
-	</li>
-	<li>
-		<p>Cross-Functional Collaboration<br>Work closely with Sales, Product, Localization, and Marketing teams to align event strategy with business goals and deliver meaningful experiences.<br><br></p>
-	</li>
-	<li>
-		<p>Vendor &amp; Partner Management<br>Own relationships with agencies, venues, and regional partners—ensuring seamless execution and maximum ROI for every event.<br><br></p>
-	</li>
-	<li>
-		<p>Campaign Development &amp; Execution<br>Create event-related assets including landing pages, promotional content, and email campaigns. Ensure strong pre- and post-event strategies to drive lead conversion.<br><br></p>
-	</li>
-	<li>
-		<p>Performance Tracking &amp; Insights<br>Measure, report, and optimise events using clear KPIs and ROI metrics—continuously refining strategies for better outcomes.<br><br></p>
-	</li>
-	<li>
-		<p>Support Regional Field Marketing<br>Partner with the DACH Field Marketing Manager to ensure event initiatives are embedded within the broader EMEA marketing strategy.</p>
-	</li>
+	<li>Write a design document outlining your strategy to tackle a specific challenge.</li>
+	<li>Ship a new feature that integrates multiple technologies.</li>
+	<li>Fix a bug affecting how our user experience renders.</li>
 </ul>
-<h3><strong>Required Qualifications</strong></h3>
+<p>You can expect to work with a variety of languages and technologies including, but not limited to, TypeScript, Go, and Rust. We use Cloudflare Workers heavily and creatively. If applicable to ongoing projects, you will also help maintain the health and availability of services by participating in an on-call rotation.</p>
+<p><strong>About you</strong><strong><br></strong>We want you to love it here! This role is a great fit for you if:</p>
 <ul>
-	<li><strong>Fluent in English and German</strong> (mandatory).</li>
-	<li><strong>Based in Munich, Germany</strong>, or open to relocation.</li>
-	<li><strong>8+ years</strong> of regional marketing experience, including support for <strong>field sales teams and channel partners</strong>.</li>
-	<li>Background in <strong>cybersecurity or high-growth SaaS</strong> is a strong advantage.</li>
+	<li>You have a passion for meeting business needs while building technically innovative solutions, and you excel at balancing big-picture goals with technical detail.</li>
+	<li>You are bold and persistent in your efforts to get your work across the finish line.</li>
+	<li>You are excited to collaborate and communicate with engineers across Cloudflare, contributing across many layers of the stack.</li>
+	<li>You take pride in shipping effective, reliable code.</li>
+	<li>You are energized by learning new skills, tackling challenging debugging sessions, and sharing your knowledge with others.</li>
+	<li>You believe that thorough documentation is just as important as delivering code.</li>
+	<li>You want to join a team that upholds a culture of support, open and honest communication, and collaborative problem-solving.</li>
 </ul>
-<h3><strong>What You Bring</strong></h3>
-<h3><strong>Professional Experience</strong></h3>
+<p><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></p>
 <ul>
-	<li>Deep expertise in <strong>event, channel, or field marketing</strong>, with a proven track record of managing complex, multi-market programs.</li>
-	<li>Comfortable and expertise working closely with <strong>sales, BDRs, and partner ecosystems</strong> to align on business objectives.</li>
-	<li>Experience operating across <strong>diverse EMEA teams and cultures</strong>.</li>
+	<li>2+ years of experience working with high-volume software applications, with a strong focus on the TypeScript programming language.</li>
+	<li>Ability to scope, work on, and independently deliver initiatives.</li>
+	<li>Knowledge of at least one modern, strongly-typed programming language such as Go, Rust, or C++.</li>
+	<li>Strong written communication skills for contributing to both internal and public-facing technical documentation, as well as authoring blog posts.</li>
+	<li>Strong understanding of how web pages load and operate, including the role of cookies, browser rendering, and client-side execution models</li>
 </ul>
-<h3><strong>Core Skills</strong></h3>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Exceptional <strong>project and time management skills</strong>; detail-oriented and highly organised.</li>
-	<li>Excellent <strong>written and verbal communication</strong>, with a knack for compelling storytelling and promotional messaging.</li>
-	<li>Collaborative communicator, able to influence stakeholders across Sales, Marketing, and Partner teams.</li>
-	<li><strong>Strategic mindset</strong> with the ability to execute flawlessly in a fast-paced, evolving environment.</li>
-	<li>Strong analytical acumen, using data to inform decisions and optimise performance.</li>
+	<li>Familiarity with the ecosystem of third-party scripts (e.g., marketing pixels, analytics tags, consent managers) and their impact on performance, privacy, and user experience</li>
+	<li>Experience building reliable, high-performance distributed systems or working on cloud platforms.</li>
+	<li>Familiarity with the Cloudflare Workers development platform.</li>
+	<li>Experience contributing to or maintaining open source software projects.</li>
 </ul>
-<h3><strong>Tech &amp; Tools</strong></h3>
-<ul>
-	<li>Proficiency in <strong>Google Workspace (G Suite)</strong>.</li>
-	<li>Experience with <strong>Salesforce, Marketo, Demandbase</strong>, or other martech platforms is a plus.</li>
-</ul>
-<h3><strong>Bonus Points If You Have</strong></h3>
-<ul>
-	<li>Expertise in <strong>marketing automation platforms</strong> like Salesforce, Marketo, or Demandbase.</li>
-</ul>
-<p>Strong copywriting and <strong>content creation</strong> skills for outreach and engagement.</p>
+<p><strong>Locations:</strong> Lisbon</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
