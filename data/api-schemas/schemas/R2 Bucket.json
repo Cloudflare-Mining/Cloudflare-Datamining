@@ -1442,180 +1442,88 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"abortMultipartUploadsTransition": {
-													"description": "Transition to abort ongoing multipart uploads.",
-													"properties": {
-														"condition": {
-															"allOf": [
-																{
-																	"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds.",
-																	"properties": {
-																		"maxAge": {
-																			"type": "integer",
-																			"x-auditable": true
-																		},
-																		"type": {
-																			"enum": [
-																				"Age"
-																			],
-																			"type": "string",
-																			"x-auditable": true
-																		}
-																	},
-																	"required": [
-																		"type",
-																		"maxAge"
-																	],
-																	"type": "object"
-																}
-															]
-														}
-													},
-													"type": "object"
-												},
-												"conditions": {
-													"description": "Conditions that apply to all transitions of this rule.",
-													"properties": {
-														"prefix": {
-															"description": "Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.",
-															"type": "string",
-															"x-auditable": true
-														}
-													},
-													"required": [
-														"prefix"
-													],
-													"type": "object"
-												},
-												"deleteObjectsTransition": {
-													"description": "Transition to delete objects.",
-													"properties": {
-														"condition": {
-															"oneOf": [
-																{
-																	"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds.",
-																	"properties": {
-																		"maxAge": {
-																			"type": "integer",
-																			"x-auditable": true
-																		},
-																		"type": {
-																			"enum": [
-																				"Age"
-																			],
-																			"type": "string",
-																			"x-auditable": true
-																		}
-																	},
-																	"required": [
-																		"type",
-																		"maxAge"
-																	],
-																	"type": "object"
-																},
-																{
-																	"description": "Condition for lifecycle transitions to apply on a specific date.",
-																	"properties": {
-																		"date": {
-																			"format": "date",
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"type": {
-																			"enum": [
-																				"Date"
-																			],
-																			"type": "string",
-																			"x-auditable": true
-																		}
-																	},
-																	"required": [
-																		"type",
-																		"date"
-																	],
-																	"type": "object"
-																}
-															]
-														}
-													},
-													"type": "object"
-												},
-												"enabled": {
-													"description": "Whether or not this rule is in effect.",
-													"type": "boolean",
-													"x-auditable": true
-												},
-												"id": {
-													"description": "Unique identifier for this rule.",
-													"example": "Expire all objects older than 24 hours",
+												"queueId": {
+													"description": "Queue ID.",
+													"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
 													"type": "string",
 													"x-auditable": true
 												},
-												"storageClassTransitions": {
-													"description": "Transitions to change the storage class of objects.",
+												"queueName": {
+													"description": "Name of the queue.",
+													"example": "first-queue",
+													"type": "string",
+													"x-auditable": true
+												},
+												"rules": {
 													"items": {
 														"allOf": [
 															{
 																"properties": {
-																	"condition": {
-																		"oneOf": [
-																			{
-																				"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds.",
-																				"properties": {
-																					"maxAge": {
-																						"type": "integer",
-																						"x-auditable": true
-																					},
-																					"type": {
-																						"enum": [
-																							"Age"
-																						],
-																						"type": "string",
-																						"x-auditable": true
-																					}
-																				},
-																				"required": [
-																					"type",
-																					"maxAge"
-																				],
-																				"type": "object"
-																			},
-																			{
-																				"description": "Condition for lifecycle transitions to apply on a specific date.",
-																				"properties": {
-																					"date": {
-																						"format": "date",
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					"type": {
-																						"enum": [
-																							"Date"
-																						],
-																						"type": "string",
-																						"x-auditable": true
-																					}
-																				},
-																				"required": [
-																					"type",
-																					"date"
-																				],
-																				"type": "object"
-																			}
-																		]
-																	},
-																	"storageClass": {
-																		"enum": [
-																			"InfrequentAccess"
+																	"actions": {
+																		"description": "Array of R2 object actions that will trigger notifications.",
+																		"example": [
+																			"PutObject",
+																			"CopyObject"
 																		],
+																		"items": {
+																			"enum": [
+																				"PutObject",
+																				"CopyObject",
+																				"DeleteObject",
+																				"CompleteMultipartUpload",
+																				"LifecycleDeletion"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"type": "array",
+																		"uniqueItems": true
+																	},
+																	"description": {
+																		"description": "A description that can be used to identify the event notification rule after creation.",
+																		"example": "Notifications from source bucket to queue",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"prefix": {
+																		"description": "Notifications will be sent only for objects with this prefix.",
+																		"example": "img/",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"suffix": {
+																		"description": "Notifications will be sent only for objects with this suffix.",
+																		"example": ".jpeg",
 																		"type": "string",
 																		"x-auditable": true
 																	}
 																},
 																"required": [
-																	"condition",
-																	"storageClass"
+																	"actions"
 																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"createdAt": {
+																		"description": "Timestamp when the rule was created.",
+																		"example": "2024-09-19T21:54:48.405Z",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"description": {
+																		"description": "A description that can be used to identify the event notification rule after creation.",
+																		"example": "Notifications from source bucket to queue",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"ruleId": {
+																		"description": "Rule ID.",
+																		"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
 																"type": "object"
 															}
 														]
@@ -1623,11 +1531,6 @@
 													"type": "array"
 												}
 											},
-											"required": [
-												"id",
-												"conditions",
-												"enabled"
-											],
 											"type": "object"
 										}
 									},
