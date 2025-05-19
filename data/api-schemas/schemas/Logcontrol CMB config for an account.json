@@ -11,7 +11,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -276,7 +277,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -379,10 +381,10 @@
 											"nullable": true,
 											"properties": {
 												"regions": {
-													"description": "Comma-separated list of regions.",
+													"description": "Name of the region.",
 													"example": "eu",
 													"maxLength": 256,
-													"pattern": "^[a-z,]*$",
+													"pattern": "^[a-z]*$",
 													"type": "string"
 												}
 											},
@@ -548,7 +550,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -559,10 +562,10 @@
 						"nullable": true,
 						"properties": {
 							"regions": {
-								"description": "Comma-separated list of regions.",
+								"description": "Name of the region.",
 								"example": "eu",
 								"maxLength": 256,
-								"pattern": "^[a-z,]*$",
+								"pattern": "^[a-z]*$",
 								"type": "string"
 							}
 						},
@@ -671,10 +674,10 @@
 											"nullable": true,
 											"properties": {
 												"regions": {
-													"description": "Comma-separated list of regions.",
+													"description": "Name of the region.",
 													"example": "eu",
 													"maxLength": 256,
-													"pattern": "^[a-z,]*$",
+													"pattern": "^[a-z]*$",
 													"type": "string"
 												}
 											},
