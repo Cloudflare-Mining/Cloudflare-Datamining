@@ -188,7 +188,7 @@ const headers = signatureHeadersSync(
 			<p>Specific support for the <code>req mTLS</code> flag</p>
 		</li>
 	</ol>
-	<p>To the best of our knowledge, there is no public implementation of either scheme. Using it for bot authentication may provide a motivation to do so.</p>
+	<p>To the best of our knowledge, there is no complete public implementation of either scheme. Using it for bot authentication may provide a motivation to do so.</p>
 	<p>Using <a href="https://github.com/cloudflare/go"><u>our experimental fork of Go</u></a>, a TLS client could support req mTLS as follows:</p>
 	<pre class="language-C/C++"><code class="language-C/C++">config := &amp;tls.Config{
     	TLSFlagsSupported:  []tls.TLSFlag{0x50},
@@ -197,7 +197,7 @@ const headers = signatureHeadersSync(
     	NextProtos:    	[]string{"h2"},
 }
 trans := http.Transport{TLSClientConfig: config, ForceAttemptHTTP2: true}</code></pre>
-	<p>This example library allows you to configure Go to send r<code>eq mTLS 0xfe01 </code>bytes in the <code>TLS Flags</code> extension. If you’d like to test your implementation out, you can prompt your client for certificates against <a href="https://req-mtls.research.cloudflare.com"><u>req-mtls.research.cloudflare.com</u></a> using the Cloudflare Research client <a href="https://github.com/cloudflareresearch/req-mtls"><u>cloudflareresearch/req-mtls</u></a>. For clients, once they set the TLS Flags associated with <code>req mTLS</code>, they are done. The code section taking care of normal mTLS will take over at that point, with no need to implement something new.</p>
+	<p>This example library allows you to configure Go to send <code>req mTLS 0x50</code> bytes in the <code>TLS Flags</code> extension. If you’d like to test your implementation out, you can prompt your client for certificates against <a href="https://req-mtls.research.cloudflare.com"><u>req-mtls.research.cloudflare.com</u></a> using the Cloudflare Research client <a href="https://github.com/cloudflareresearch/req-mtls"><u>cloudflareresearch/req-mtls</u></a>. For clients, once they set the TLS Flags associated with <code>req mTLS</code>, they are done. The code section taking care of normal mTLS will take over at that point, with no need to implement something new.</p>
 	<div class="flex anchor relative">
 		<h2 id="two-approaches-one-goal">Two approaches, one goal</h2>
 		<a href="https://blog.cloudflare.com/#two-approaches-one-goal" aria-hidden="true" class="relative sm:absolute sm:-left-5">
