@@ -462,7 +462,6 @@
 														"type": "string"
 													},
 													"description": {
-														"default": "",
 														"description": "The description of the rule.",
 														"example": "Block bad websites based on their host name.",
 														"type": "string"
@@ -586,7 +585,6 @@
 																"nullable": true,
 																"properties": {
 																	"command_logging": {
-																		"default": false,
 																		"description": "Enable to turn on SSH command logging.",
 																		"example": false,
 																		"type": "boolean"
@@ -701,7 +699,6 @@
 																"nullable": true,
 																"properties": {
 																	"include_context": {
-																		"default": false,
 																		"description": "If true, context information will be passed as query parameters",
 																		"type": "boolean"
 																	},
@@ -742,7 +739,6 @@
 																		"type": "string"
 																	},
 																	"enforce": {
-																		"default": false,
 																		"description": "Set to true to enable session enforcement.",
 																		"example": true,
 																		"type": "boolean"
@@ -882,7 +878,6 @@
 																"nullable": true,
 																"properties": {
 																	"enabled": {
-																		"default": false,
 																		"description": "Set notification on",
 																		"type": "boolean"
 																	},
@@ -925,7 +920,6 @@
 																"nullable": true,
 																"properties": {
 																	"enabled": {
-																		"default": false,
 																		"description": "Set to true to enable DLP payload logging for this rule.",
 																		"example": true,
 																		"type": "boolean"
@@ -967,12 +961,10 @@
 																"nullable": true,
 																"properties": {
 																	"include_context": {
-																		"default": false,
 																		"description": "If true, context information will be passed as query parameters",
 																		"type": "boolean"
 																	},
 																	"preserve_path_and_query": {
-																		"default": false,
 																		"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																		"type": "boolean"
 																	},
@@ -992,7 +984,6 @@
 																"nullable": true,
 																"properties": {
 																	"fallback": {
-																		"default": "none",
 																		"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																		"enum": [
 																			"none",
@@ -1258,7 +1249,6 @@
 																"type": "string"
 															},
 															"description": {
-																"default": "",
 																"description": "The description of the rule.",
 																"example": "Block bad websites based on their host name.",
 																"type": "string"
@@ -1382,7 +1372,6 @@
 																		"nullable": true,
 																		"properties": {
 																			"command_logging": {
-																				"default": false,
 																				"description": "Enable to turn on SSH command logging.",
 																				"example": false,
 																				"type": "boolean"
@@ -1497,7 +1486,6 @@
 																		"nullable": true,
 																		"properties": {
 																			"include_context": {
-																				"default": false,
 																				"description": "If true, context information will be passed as query parameters",
 																				"type": "boolean"
 																			},
@@ -1538,7 +1526,6 @@
 																				"type": "string"
 																			},
 																			"enforce": {
-																				"default": false,
 																				"description": "Set to true to enable session enforcement.",
 																				"example": true,
 																				"type": "boolean"
@@ -1678,7 +1665,6 @@
 																		"nullable": true,
 																		"properties": {
 																			"enabled": {
-																				"default": false,
 																				"description": "Set notification on",
 																				"type": "boolean"
 																			},
@@ -1721,7 +1707,6 @@
 																		"nullable": true,
 																		"properties": {
 																			"enabled": {
-																				"default": false,
 																				"description": "Set to true to enable DLP payload logging for this rule.",
 																				"example": true,
 																				"type": "boolean"
@@ -1763,12 +1748,10 @@
 																		"nullable": true,
 																		"properties": {
 																			"include_context": {
-																				"default": false,
 																				"description": "If true, context information will be passed as query parameters",
 																				"type": "boolean"
 																			},
 																			"preserve_path_and_query": {
-																				"default": false,
 																				"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																				"type": "boolean"
 																			},
@@ -1788,7 +1771,6 @@
 																		"nullable": true,
 																		"properties": {
 																			"fallback": {
-																				"default": "none",
 																				"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																				"enum": [
 																					"none",
@@ -2151,7 +2133,6 @@
 													"type": "string"
 												},
 												"description": {
-													"default": "",
 													"description": "The description of the rule.",
 													"example": "Block bad websites based on their host name.",
 													"type": "string"
@@ -2275,7 +2256,6 @@
 															"nullable": true,
 															"properties": {
 																"command_logging": {
-																	"default": false,
 																	"description": "Enable to turn on SSH command logging.",
 																	"example": false,
 																	"type": "boolean"
@@ -2390,7 +2370,6 @@
 															"nullable": true,
 															"properties": {
 																"include_context": {
-																	"default": false,
 																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
@@ -2431,7 +2410,6 @@
 																	"type": "string"
 																},
 																"enforce": {
-																	"default": false,
 																	"description": "Set to true to enable session enforcement.",
 																	"example": true,
 																	"type": "boolean"
@@ -2571,7 +2549,6 @@
 															"nullable": true,
 															"properties": {
 																"enabled": {
-																	"default": false,
 																	"description": "Set notification on",
 																	"type": "boolean"
 																},
@@ -2614,7 +2591,6 @@
 															"nullable": true,
 															"properties": {
 																"enabled": {
-																	"default": false,
 																	"description": "Set to true to enable DLP payload logging for this rule.",
 																	"example": true,
 																	"type": "boolean"
@@ -2656,12 +2632,10 @@
 															"nullable": true,
 															"properties": {
 																"include_context": {
-																	"default": false,
 																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
 																"preserve_path_and_query": {
-																	"default": false,
 																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																	"type": "boolean"
 																},
@@ -2681,7 +2655,6 @@
 															"nullable": true,
 															"properties": {
 																"fallback": {
-																	"default": "none",
 																	"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																	"enum": [
 																		"none",
@@ -2915,7 +2888,6 @@
 															"type": "string"
 														},
 														"description": {
-															"default": "",
 															"description": "The description of the rule.",
 															"example": "Block bad websites based on their host name.",
 															"type": "string"
@@ -3039,7 +3011,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"command_logging": {
-																			"default": false,
 																			"description": "Enable to turn on SSH command logging.",
 																			"example": false,
 																			"type": "boolean"
@@ -3154,7 +3125,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"include_context": {
-																			"default": false,
 																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
@@ -3195,7 +3165,6 @@
 																			"type": "string"
 																		},
 																		"enforce": {
-																			"default": false,
 																			"description": "Set to true to enable session enforcement.",
 																			"example": true,
 																			"type": "boolean"
@@ -3335,7 +3304,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"enabled": {
-																			"default": false,
 																			"description": "Set notification on",
 																			"type": "boolean"
 																		},
@@ -3378,7 +3346,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"enabled": {
-																			"default": false,
 																			"description": "Set to true to enable DLP payload logging for this rule.",
 																			"example": true,
 																			"type": "boolean"
@@ -3420,12 +3387,10 @@
 																	"nullable": true,
 																	"properties": {
 																		"include_context": {
-																			"default": false,
 																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
 																		"preserve_path_and_query": {
-																			"default": false,
 																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																			"type": "boolean"
 																		},
@@ -3445,7 +3410,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"fallback": {
-																			"default": "none",
 																			"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																			"enum": [
 																				"none",
@@ -3711,7 +3675,6 @@
 								"type": "string"
 							},
 							"description": {
-								"default": "",
 								"description": "The description of the rule.",
 								"example": "Block bad websites based on their host name.",
 								"type": "string"
@@ -3829,7 +3792,6 @@
 										"nullable": true,
 										"properties": {
 											"command_logging": {
-												"default": false,
 												"description": "Enable to turn on SSH command logging.",
 												"example": false,
 												"type": "boolean"
@@ -3944,7 +3906,6 @@
 										"nullable": true,
 										"properties": {
 											"include_context": {
-												"default": false,
 												"description": "If true, context information will be passed as query parameters",
 												"type": "boolean"
 											},
@@ -3985,7 +3946,6 @@
 												"type": "string"
 											},
 											"enforce": {
-												"default": false,
 												"description": "Set to true to enable session enforcement.",
 												"example": true,
 												"type": "boolean"
@@ -4125,7 +4085,6 @@
 										"nullable": true,
 										"properties": {
 											"enabled": {
-												"default": false,
 												"description": "Set notification on",
 												"type": "boolean"
 											},
@@ -4168,7 +4127,6 @@
 										"nullable": true,
 										"properties": {
 											"enabled": {
-												"default": false,
 												"description": "Set to true to enable DLP payload logging for this rule.",
 												"example": true,
 												"type": "boolean"
@@ -4210,12 +4168,10 @@
 										"nullable": true,
 										"properties": {
 											"include_context": {
-												"default": false,
 												"description": "If true, context information will be passed as query parameters",
 												"type": "boolean"
 											},
 											"preserve_path_and_query": {
-												"default": false,
 												"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 												"type": "boolean"
 											},
@@ -4235,7 +4191,6 @@
 										"nullable": true,
 										"properties": {
 											"fallback": {
-												"default": "none",
 												"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 												"enum": [
 													"none",
@@ -4452,7 +4407,6 @@
 													"type": "string"
 												},
 												"description": {
-													"default": "",
 													"description": "The description of the rule.",
 													"example": "Block bad websites based on their host name.",
 													"type": "string"
@@ -4576,7 +4530,6 @@
 															"nullable": true,
 															"properties": {
 																"command_logging": {
-																	"default": false,
 																	"description": "Enable to turn on SSH command logging.",
 																	"example": false,
 																	"type": "boolean"
@@ -4691,7 +4644,6 @@
 															"nullable": true,
 															"properties": {
 																"include_context": {
-																	"default": false,
 																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
@@ -4732,7 +4684,6 @@
 																	"type": "string"
 																},
 																"enforce": {
-																	"default": false,
 																	"description": "Set to true to enable session enforcement.",
 																	"example": true,
 																	"type": "boolean"
@@ -4872,7 +4823,6 @@
 															"nullable": true,
 															"properties": {
 																"enabled": {
-																	"default": false,
 																	"description": "Set notification on",
 																	"type": "boolean"
 																},
@@ -4915,7 +4865,6 @@
 															"nullable": true,
 															"properties": {
 																"enabled": {
-																	"default": false,
 																	"description": "Set to true to enable DLP payload logging for this rule.",
 																	"example": true,
 																	"type": "boolean"
@@ -4957,12 +4906,10 @@
 															"nullable": true,
 															"properties": {
 																"include_context": {
-																	"default": false,
 																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
 																"preserve_path_and_query": {
-																	"default": false,
 																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																	"type": "boolean"
 																},
@@ -4982,7 +4929,6 @@
 															"nullable": true,
 															"properties": {
 																"fallback": {
-																	"default": "none",
 																	"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																	"enum": [
 																		"none",
@@ -5216,7 +5162,6 @@
 															"type": "string"
 														},
 														"description": {
-															"default": "",
 															"description": "The description of the rule.",
 															"example": "Block bad websites based on their host name.",
 															"type": "string"
@@ -5340,7 +5285,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"command_logging": {
-																			"default": false,
 																			"description": "Enable to turn on SSH command logging.",
 																			"example": false,
 																			"type": "boolean"
@@ -5455,7 +5399,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"include_context": {
-																			"default": false,
 																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
@@ -5496,7 +5439,6 @@
 																			"type": "string"
 																		},
 																		"enforce": {
-																			"default": false,
 																			"description": "Set to true to enable session enforcement.",
 																			"example": true,
 																			"type": "boolean"
@@ -5636,7 +5578,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"enabled": {
-																			"default": false,
 																			"description": "Set notification on",
 																			"type": "boolean"
 																		},
@@ -5679,7 +5620,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"enabled": {
-																			"default": false,
 																			"description": "Set to true to enable DLP payload logging for this rule.",
 																			"example": true,
 																			"type": "boolean"
@@ -5721,12 +5661,10 @@
 																	"nullable": true,
 																	"properties": {
 																		"include_context": {
-																			"default": false,
 																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
 																		"preserve_path_and_query": {
-																			"default": false,
 																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																			"type": "boolean"
 																		},
@@ -5746,7 +5684,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"fallback": {
-																			"default": "none",
 																			"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																			"enum": [
 																				"none",
@@ -6106,7 +6043,6 @@
 													"type": "string"
 												},
 												"description": {
-													"default": "",
 													"description": "The description of the rule.",
 													"example": "Block bad websites based on their host name.",
 													"type": "string"
@@ -6230,7 +6166,6 @@
 															"nullable": true,
 															"properties": {
 																"command_logging": {
-																	"default": false,
 																	"description": "Enable to turn on SSH command logging.",
 																	"example": false,
 																	"type": "boolean"
@@ -6345,7 +6280,6 @@
 															"nullable": true,
 															"properties": {
 																"include_context": {
-																	"default": false,
 																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
@@ -6386,7 +6320,6 @@
 																	"type": "string"
 																},
 																"enforce": {
-																	"default": false,
 																	"description": "Set to true to enable session enforcement.",
 																	"example": true,
 																	"type": "boolean"
@@ -6526,7 +6459,6 @@
 															"nullable": true,
 															"properties": {
 																"enabled": {
-																	"default": false,
 																	"description": "Set notification on",
 																	"type": "boolean"
 																},
@@ -6569,7 +6501,6 @@
 															"nullable": true,
 															"properties": {
 																"enabled": {
-																	"default": false,
 																	"description": "Set to true to enable DLP payload logging for this rule.",
 																	"example": true,
 																	"type": "boolean"
@@ -6611,12 +6542,10 @@
 															"nullable": true,
 															"properties": {
 																"include_context": {
-																	"default": false,
 																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
 																"preserve_path_and_query": {
-																	"default": false,
 																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																	"type": "boolean"
 																},
@@ -6636,7 +6565,6 @@
 															"nullable": true,
 															"properties": {
 																"fallback": {
-																	"default": "none",
 																	"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																	"enum": [
 																		"none",
@@ -6867,7 +6795,6 @@
 															"type": "string"
 														},
 														"description": {
-															"default": "",
 															"description": "The description of the rule.",
 															"example": "Block bad websites based on their host name.",
 															"type": "string"
@@ -6991,7 +6918,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"command_logging": {
-																			"default": false,
 																			"description": "Enable to turn on SSH command logging.",
 																			"example": false,
 																			"type": "boolean"
@@ -7106,7 +7032,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"include_context": {
-																			"default": false,
 																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
@@ -7147,7 +7072,6 @@
 																			"type": "string"
 																		},
 																		"enforce": {
-																			"default": false,
 																			"description": "Set to true to enable session enforcement.",
 																			"example": true,
 																			"type": "boolean"
@@ -7287,7 +7211,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"enabled": {
-																			"default": false,
 																			"description": "Set notification on",
 																			"type": "boolean"
 																		},
@@ -7330,7 +7253,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"enabled": {
-																			"default": false,
 																			"description": "Set to true to enable DLP payload logging for this rule.",
 																			"example": true,
 																			"type": "boolean"
@@ -7372,12 +7294,10 @@
 																	"nullable": true,
 																	"properties": {
 																		"include_context": {
-																			"default": false,
 																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
 																		"preserve_path_and_query": {
-																			"default": false,
 																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																			"type": "boolean"
 																		},
@@ -7397,7 +7317,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"fallback": {
-																			"default": "none",
 																			"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																			"enum": [
 																				"none",
@@ -7674,7 +7593,6 @@
 								"type": "string"
 							},
 							"description": {
-								"default": "",
 								"description": "The description of the rule.",
 								"example": "Block bad websites based on their host name.",
 								"type": "string"
@@ -7792,7 +7710,6 @@
 										"nullable": true,
 										"properties": {
 											"command_logging": {
-												"default": false,
 												"description": "Enable to turn on SSH command logging.",
 												"example": false,
 												"type": "boolean"
@@ -7907,7 +7824,6 @@
 										"nullable": true,
 										"properties": {
 											"include_context": {
-												"default": false,
 												"description": "If true, context information will be passed as query parameters",
 												"type": "boolean"
 											},
@@ -7948,7 +7864,6 @@
 												"type": "string"
 											},
 											"enforce": {
-												"default": false,
 												"description": "Set to true to enable session enforcement.",
 												"example": true,
 												"type": "boolean"
@@ -8088,7 +8003,6 @@
 										"nullable": true,
 										"properties": {
 											"enabled": {
-												"default": false,
 												"description": "Set notification on",
 												"type": "boolean"
 											},
@@ -8131,7 +8045,6 @@
 										"nullable": true,
 										"properties": {
 											"enabled": {
-												"default": false,
 												"description": "Set to true to enable DLP payload logging for this rule.",
 												"example": true,
 												"type": "boolean"
@@ -8173,12 +8086,10 @@
 										"nullable": true,
 										"properties": {
 											"include_context": {
-												"default": false,
 												"description": "If true, context information will be passed as query parameters",
 												"type": "boolean"
 											},
 											"preserve_path_and_query": {
-												"default": false,
 												"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 												"type": "boolean"
 											},
@@ -8198,7 +8109,6 @@
 										"nullable": true,
 										"properties": {
 											"fallback": {
-												"default": "none",
 												"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 												"enum": [
 													"none",
@@ -8415,7 +8325,6 @@
 													"type": "string"
 												},
 												"description": {
-													"default": "",
 													"description": "The description of the rule.",
 													"example": "Block bad websites based on their host name.",
 													"type": "string"
@@ -8539,7 +8448,6 @@
 															"nullable": true,
 															"properties": {
 																"command_logging": {
-																	"default": false,
 																	"description": "Enable to turn on SSH command logging.",
 																	"example": false,
 																	"type": "boolean"
@@ -8654,7 +8562,6 @@
 															"nullable": true,
 															"properties": {
 																"include_context": {
-																	"default": false,
 																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
@@ -8695,7 +8602,6 @@
 																	"type": "string"
 																},
 																"enforce": {
-																	"default": false,
 																	"description": "Set to true to enable session enforcement.",
 																	"example": true,
 																	"type": "boolean"
@@ -8835,7 +8741,6 @@
 															"nullable": true,
 															"properties": {
 																"enabled": {
-																	"default": false,
 																	"description": "Set notification on",
 																	"type": "boolean"
 																},
@@ -8878,7 +8783,6 @@
 															"nullable": true,
 															"properties": {
 																"enabled": {
-																	"default": false,
 																	"description": "Set to true to enable DLP payload logging for this rule.",
 																	"example": true,
 																	"type": "boolean"
@@ -8920,12 +8824,10 @@
 															"nullable": true,
 															"properties": {
 																"include_context": {
-																	"default": false,
 																	"description": "If true, context information will be passed as query parameters",
 																	"type": "boolean"
 																},
 																"preserve_path_and_query": {
-																	"default": false,
 																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																	"type": "boolean"
 																},
@@ -8945,7 +8847,6 @@
 															"nullable": true,
 															"properties": {
 																"fallback": {
-																	"default": "none",
 																	"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																	"enum": [
 																		"none",
@@ -9179,7 +9080,6 @@
 															"type": "string"
 														},
 														"description": {
-															"default": "",
 															"description": "The description of the rule.",
 															"example": "Block bad websites based on their host name.",
 															"type": "string"
@@ -9303,7 +9203,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"command_logging": {
-																			"default": false,
 																			"description": "Enable to turn on SSH command logging.",
 																			"example": false,
 																			"type": "boolean"
@@ -9418,7 +9317,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"include_context": {
-																			"default": false,
 																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
@@ -9459,7 +9357,6 @@
 																			"type": "string"
 																		},
 																		"enforce": {
-																			"default": false,
 																			"description": "Set to true to enable session enforcement.",
 																			"example": true,
 																			"type": "boolean"
@@ -9599,7 +9496,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"enabled": {
-																			"default": false,
 																			"description": "Set notification on",
 																			"type": "boolean"
 																		},
@@ -9642,7 +9538,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"enabled": {
-																			"default": false,
 																			"description": "Set to true to enable DLP payload logging for this rule.",
 																			"example": true,
 																			"type": "boolean"
@@ -9684,12 +9579,10 @@
 																	"nullable": true,
 																	"properties": {
 																		"include_context": {
-																			"default": false,
 																			"description": "If true, context information will be passed as query parameters",
 																			"type": "boolean"
 																		},
 																		"preserve_path_and_query": {
-																			"default": false,
 																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																			"type": "boolean"
 																		},
@@ -9709,7 +9602,6 @@
 																	"nullable": true,
 																	"properties": {
 																		"fallback": {
-																			"default": "none",
 																			"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																			"enum": [
 																				"none",
