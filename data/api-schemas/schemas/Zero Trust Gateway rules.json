@@ -481,6 +481,7 @@
 													},
 													"expiration": {
 														"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+														"nullable": true,
 														"properties": {
 															"duration": {
 																"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
@@ -571,6 +572,7 @@
 																		"somecustomvalue"
 																	]
 																},
+																"nullable": true,
 																"type": "object"
 															},
 															"allow_child_bypass": {
@@ -581,6 +583,7 @@
 															},
 															"audit_ssh": {
 																"description": "Settings for the Audit SSH action.",
+																"nullable": true,
 																"properties": {
 																	"command_logging": {
 																		"default": false,
@@ -593,6 +596,7 @@
 															},
 															"biso_admin_controls": {
 																"description": "Configure how browser isolation behaves.",
+																"nullable": true,
 																"properties": {
 																	"copy": {
 																		"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -694,6 +698,7 @@
 															},
 															"block_page": {
 																"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+																"nullable": true,
 																"properties": {
 																	"include_context": {
 																		"default": false,
@@ -712,13 +717,11 @@
 																"type": "object"
 															},
 															"block_page_enabled": {
-																"default": false,
 																"description": "Enable the custom block page.",
 																"example": true,
 																"type": "boolean"
 															},
 															"block_reason": {
-																"default": "",
 																"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																"example": "This website is a security risk",
 																"type": "string"
@@ -731,6 +734,7 @@
 															},
 															"check_session": {
 																"description": "Configure how session check behaves.",
+																"nullable": true,
 																"properties": {
 																	"duration": {
 																		"description": "Configure how fresh the session needs to be to be considered valid.",
@@ -748,6 +752,7 @@
 															},
 															"dns_resolvers": {
 																"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
+																"nullable": true,
 																"properties": {
 																	"ipv4": {
 																		"items": {
@@ -816,6 +821,7 @@
 															},
 															"egress": {
 																"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+																"nullable": true,
 																"properties": {
 																	"ipv4": {
 																		"description": "The IPv4 address to be used for egress.",
@@ -836,31 +842,28 @@
 																"type": "object"
 															},
 															"ignore_cname_category_matches": {
-																"default": false,
 																"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																"example": true,
 																"type": "boolean"
 															},
 															"insecure_disable_dnssec_validation": {
-																"default": false,
 																"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																"example": false,
 																"type": "boolean"
 															},
 															"ip_categories": {
-																"default": false,
 																"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																"example": true,
 																"type": "boolean"
 															},
 															"ip_indicator_feeds": {
-																"default": false,
 																"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																"example": true,
 																"type": "boolean"
 															},
 															"l4override": {
 																"description": "Send matching traffic to the supplied destination IP address and port.",
+																"nullable": true,
 																"properties": {
 																	"ip": {
 																		"description": "IPv4 or IPv6 address.",
@@ -876,6 +879,7 @@
 															},
 															"notification_settings": {
 																"description": "Configure a notification to display on the user's device when this rule is matched.",
+																"nullable": true,
 																"properties": {
 																	"enabled": {
 																		"default": false,
@@ -898,7 +902,6 @@
 																"type": "object"
 															},
 															"override_host": {
-																"default": "",
 																"description": "Override matching DNS queries with a hostname.",
 																"example": "example.com",
 																"type": "string"
@@ -914,10 +917,12 @@
 																	"example": "1.1.1.1",
 																	"type": "string"
 																},
+																"nullable": true,
 																"type": "array"
 															},
 															"payload_log": {
 																"description": "Configure DLP payload logging.",
+																"nullable": true,
 																"properties": {
 																	"enabled": {
 																		"default": false,
@@ -930,6 +935,7 @@
 															},
 															"quarantine": {
 																"description": "Settings that apply to quarantine rules",
+																"nullable": true,
 																"properties": {
 																	"file_types": {
 																		"description": "Types of files to sandbox.",
@@ -958,6 +964,7 @@
 															},
 															"redirect": {
 																"description": "Settings that apply to redirect rules",
+																"nullable": true,
 																"properties": {
 																	"include_context": {
 																		"default": false,
@@ -982,6 +989,7 @@
 															},
 															"resolve_dns_internally": {
 																"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
+																"nullable": true,
 																"properties": {
 																	"fallback": {
 																		"default": "none",
@@ -1000,13 +1008,14 @@
 																"type": "object"
 															},
 															"resolve_dns_through_cloudflare": {
-																"default": false,
 																"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																"example": true,
+																"nullable": true,
 																"type": "boolean"
 															},
 															"untrusted_cert": {
 																"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+																"nullable": true,
 																"properties": {
 																	"action": {
 																		"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
@@ -1026,6 +1035,7 @@
 													},
 													"schedule": {
 														"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+														"nullable": true,
 														"properties": {
 															"fri": {
 																"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
@@ -1267,6 +1277,7 @@
 															},
 															"expiration": {
 																"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+																"nullable": true,
 																"properties": {
 																	"duration": {
 																		"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
@@ -1357,6 +1368,7 @@
 																				"somecustomvalue"
 																			]
 																		},
+																		"nullable": true,
 																		"type": "object"
 																	},
 																	"allow_child_bypass": {
@@ -1367,6 +1379,7 @@
 																	},
 																	"audit_ssh": {
 																		"description": "Settings for the Audit SSH action.",
+																		"nullable": true,
 																		"properties": {
 																			"command_logging": {
 																				"default": false,
@@ -1379,6 +1392,7 @@
 																	},
 																	"biso_admin_controls": {
 																		"description": "Configure how browser isolation behaves.",
+																		"nullable": true,
 																		"properties": {
 																			"copy": {
 																				"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -1480,6 +1494,7 @@
 																	},
 																	"block_page": {
 																		"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+																		"nullable": true,
 																		"properties": {
 																			"include_context": {
 																				"default": false,
@@ -1498,13 +1513,11 @@
 																		"type": "object"
 																	},
 																	"block_page_enabled": {
-																		"default": false,
 																		"description": "Enable the custom block page.",
 																		"example": true,
 																		"type": "boolean"
 																	},
 																	"block_reason": {
-																		"default": "",
 																		"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																		"example": "This website is a security risk",
 																		"type": "string"
@@ -1517,6 +1530,7 @@
 																	},
 																	"check_session": {
 																		"description": "Configure how session check behaves.",
+																		"nullable": true,
 																		"properties": {
 																			"duration": {
 																				"description": "Configure how fresh the session needs to be to be considered valid.",
@@ -1534,6 +1548,7 @@
 																	},
 																	"dns_resolvers": {
 																		"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
+																		"nullable": true,
 																		"properties": {
 																			"ipv4": {
 																				"items": {
@@ -1602,6 +1617,7 @@
 																	},
 																	"egress": {
 																		"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+																		"nullable": true,
 																		"properties": {
 																			"ipv4": {
 																				"description": "The IPv4 address to be used for egress.",
@@ -1622,31 +1638,28 @@
 																		"type": "object"
 																	},
 																	"ignore_cname_category_matches": {
-																		"default": false,
 																		"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																		"example": true,
 																		"type": "boolean"
 																	},
 																	"insecure_disable_dnssec_validation": {
-																		"default": false,
 																		"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																		"example": false,
 																		"type": "boolean"
 																	},
 																	"ip_categories": {
-																		"default": false,
 																		"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																		"example": true,
 																		"type": "boolean"
 																	},
 																	"ip_indicator_feeds": {
-																		"default": false,
 																		"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																		"example": true,
 																		"type": "boolean"
 																	},
 																	"l4override": {
 																		"description": "Send matching traffic to the supplied destination IP address and port.",
+																		"nullable": true,
 																		"properties": {
 																			"ip": {
 																				"description": "IPv4 or IPv6 address.",
@@ -1662,6 +1675,7 @@
 																	},
 																	"notification_settings": {
 																		"description": "Configure a notification to display on the user's device when this rule is matched.",
+																		"nullable": true,
 																		"properties": {
 																			"enabled": {
 																				"default": false,
@@ -1684,7 +1698,6 @@
 																		"type": "object"
 																	},
 																	"override_host": {
-																		"default": "",
 																		"description": "Override matching DNS queries with a hostname.",
 																		"example": "example.com",
 																		"type": "string"
@@ -1700,10 +1713,12 @@
 																			"example": "1.1.1.1",
 																			"type": "string"
 																		},
+																		"nullable": true,
 																		"type": "array"
 																	},
 																	"payload_log": {
 																		"description": "Configure DLP payload logging.",
+																		"nullable": true,
 																		"properties": {
 																			"enabled": {
 																				"default": false,
@@ -1716,6 +1731,7 @@
 																	},
 																	"quarantine": {
 																		"description": "Settings that apply to quarantine rules",
+																		"nullable": true,
 																		"properties": {
 																			"file_types": {
 																				"description": "Types of files to sandbox.",
@@ -1744,6 +1760,7 @@
 																	},
 																	"redirect": {
 																		"description": "Settings that apply to redirect rules",
+																		"nullable": true,
 																		"properties": {
 																			"include_context": {
 																				"default": false,
@@ -1768,6 +1785,7 @@
 																	},
 																	"resolve_dns_internally": {
 																		"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
+																		"nullable": true,
 																		"properties": {
 																			"fallback": {
 																				"default": "none",
@@ -1786,13 +1804,14 @@
 																		"type": "object"
 																	},
 																	"resolve_dns_through_cloudflare": {
-																		"default": false,
 																		"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																		"example": true,
+																		"nullable": true,
 																		"type": "boolean"
 																	},
 																	"untrusted_cert": {
 																		"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+																		"nullable": true,
 																		"properties": {
 																			"action": {
 																				"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
@@ -1812,6 +1831,7 @@
 															},
 															"schedule": {
 																"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+																"nullable": true,
 																"properties": {
 																	"fri": {
 																		"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
@@ -2150,6 +2170,7 @@
 												},
 												"expiration": {
 													"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+													"nullable": true,
 													"properties": {
 														"duration": {
 															"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
@@ -2240,6 +2261,7 @@
 																	"somecustomvalue"
 																]
 															},
+															"nullable": true,
 															"type": "object"
 														},
 														"allow_child_bypass": {
@@ -2250,6 +2272,7 @@
 														},
 														"audit_ssh": {
 															"description": "Settings for the Audit SSH action.",
+															"nullable": true,
 															"properties": {
 																"command_logging": {
 																	"default": false,
@@ -2262,6 +2285,7 @@
 														},
 														"biso_admin_controls": {
 															"description": "Configure how browser isolation behaves.",
+															"nullable": true,
 															"properties": {
 																"copy": {
 																	"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -2363,6 +2387,7 @@
 														},
 														"block_page": {
 															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+															"nullable": true,
 															"properties": {
 																"include_context": {
 																	"default": false,
@@ -2381,13 +2406,11 @@
 															"type": "object"
 														},
 														"block_page_enabled": {
-															"default": false,
 															"description": "Enable the custom block page.",
 															"example": true,
 															"type": "boolean"
 														},
 														"block_reason": {
-															"default": "",
 															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 															"example": "This website is a security risk",
 															"type": "string"
@@ -2400,6 +2423,7 @@
 														},
 														"check_session": {
 															"description": "Configure how session check behaves.",
+															"nullable": true,
 															"properties": {
 																"duration": {
 																	"description": "Configure how fresh the session needs to be to be considered valid.",
@@ -2417,6 +2441,7 @@
 														},
 														"dns_resolvers": {
 															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
+															"nullable": true,
 															"properties": {
 																"ipv4": {
 																	"items": {
@@ -2485,6 +2510,7 @@
 														},
 														"egress": {
 															"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+															"nullable": true,
 															"properties": {
 																"ipv4": {
 																	"description": "The IPv4 address to be used for egress.",
@@ -2505,31 +2531,28 @@
 															"type": "object"
 														},
 														"ignore_cname_category_matches": {
-															"default": false,
 															"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 															"example": true,
 															"type": "boolean"
 														},
 														"insecure_disable_dnssec_validation": {
-															"default": false,
 															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 															"example": false,
 															"type": "boolean"
 														},
 														"ip_categories": {
-															"default": false,
 															"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 															"example": true,
 															"type": "boolean"
 														},
 														"ip_indicator_feeds": {
-															"default": false,
 															"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 															"example": true,
 															"type": "boolean"
 														},
 														"l4override": {
 															"description": "Send matching traffic to the supplied destination IP address and port.",
+															"nullable": true,
 															"properties": {
 																"ip": {
 																	"description": "IPv4 or IPv6 address.",
@@ -2545,6 +2568,7 @@
 														},
 														"notification_settings": {
 															"description": "Configure a notification to display on the user's device when this rule is matched.",
+															"nullable": true,
 															"properties": {
 																"enabled": {
 																	"default": false,
@@ -2567,7 +2591,6 @@
 															"type": "object"
 														},
 														"override_host": {
-															"default": "",
 															"description": "Override matching DNS queries with a hostname.",
 															"example": "example.com",
 															"type": "string"
@@ -2583,10 +2606,12 @@
 																"example": "1.1.1.1",
 																"type": "string"
 															},
+															"nullable": true,
 															"type": "array"
 														},
 														"payload_log": {
 															"description": "Configure DLP payload logging.",
+															"nullable": true,
 															"properties": {
 																"enabled": {
 																	"default": false,
@@ -2599,6 +2624,7 @@
 														},
 														"quarantine": {
 															"description": "Settings that apply to quarantine rules",
+															"nullable": true,
 															"properties": {
 																"file_types": {
 																	"description": "Types of files to sandbox.",
@@ -2627,6 +2653,7 @@
 														},
 														"redirect": {
 															"description": "Settings that apply to redirect rules",
+															"nullable": true,
 															"properties": {
 																"include_context": {
 																	"default": false,
@@ -2651,6 +2678,7 @@
 														},
 														"resolve_dns_internally": {
 															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
+															"nullable": true,
 															"properties": {
 																"fallback": {
 																	"default": "none",
@@ -2669,13 +2697,14 @@
 															"type": "object"
 														},
 														"resolve_dns_through_cloudflare": {
-															"default": false,
 															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
+															"nullable": true,
 															"type": "boolean"
 														},
 														"untrusted_cert": {
 															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+															"nullable": true,
 															"properties": {
 																"action": {
 																	"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
@@ -2695,6 +2724,7 @@
 												},
 												"schedule": {
 													"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+													"nullable": true,
 													"properties": {
 														"fri": {
 															"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
@@ -2904,6 +2934,7 @@
 														},
 														"expiration": {
 															"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+															"nullable": true,
 															"properties": {
 																"duration": {
 																	"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
@@ -2994,6 +3025,7 @@
 																			"somecustomvalue"
 																		]
 																	},
+																	"nullable": true,
 																	"type": "object"
 																},
 																"allow_child_bypass": {
@@ -3004,6 +3036,7 @@
 																},
 																"audit_ssh": {
 																	"description": "Settings for the Audit SSH action.",
+																	"nullable": true,
 																	"properties": {
 																		"command_logging": {
 																			"default": false,
@@ -3016,6 +3049,7 @@
 																},
 																"biso_admin_controls": {
 																	"description": "Configure how browser isolation behaves.",
+																	"nullable": true,
 																	"properties": {
 																		"copy": {
 																			"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -3117,6 +3151,7 @@
 																},
 																"block_page": {
 																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+																	"nullable": true,
 																	"properties": {
 																		"include_context": {
 																			"default": false,
@@ -3135,13 +3170,11 @@
 																	"type": "object"
 																},
 																"block_page_enabled": {
-																	"default": false,
 																	"description": "Enable the custom block page.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"block_reason": {
-																	"default": "",
 																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																	"example": "This website is a security risk",
 																	"type": "string"
@@ -3154,6 +3187,7 @@
 																},
 																"check_session": {
 																	"description": "Configure how session check behaves.",
+																	"nullable": true,
 																	"properties": {
 																		"duration": {
 																			"description": "Configure how fresh the session needs to be to be considered valid.",
@@ -3171,6 +3205,7 @@
 																},
 																"dns_resolvers": {
 																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
+																	"nullable": true,
 																	"properties": {
 																		"ipv4": {
 																			"items": {
@@ -3239,6 +3274,7 @@
 																},
 																"egress": {
 																	"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+																	"nullable": true,
 																	"properties": {
 																		"ipv4": {
 																			"description": "The IPv4 address to be used for egress.",
@@ -3259,31 +3295,28 @@
 																	"type": "object"
 																},
 																"ignore_cname_category_matches": {
-																	"default": false,
 																	"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"insecure_disable_dnssec_validation": {
-																	"default": false,
 																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"ip_categories": {
-																	"default": false,
 																	"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"ip_indicator_feeds": {
-																	"default": false,
 																	"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"l4override": {
 																	"description": "Send matching traffic to the supplied destination IP address and port.",
+																	"nullable": true,
 																	"properties": {
 																		"ip": {
 																			"description": "IPv4 or IPv6 address.",
@@ -3299,6 +3332,7 @@
 																},
 																"notification_settings": {
 																	"description": "Configure a notification to display on the user's device when this rule is matched.",
+																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": false,
@@ -3321,7 +3355,6 @@
 																	"type": "object"
 																},
 																"override_host": {
-																	"default": "",
 																	"description": "Override matching DNS queries with a hostname.",
 																	"example": "example.com",
 																	"type": "string"
@@ -3337,10 +3370,12 @@
 																		"example": "1.1.1.1",
 																		"type": "string"
 																	},
+																	"nullable": true,
 																	"type": "array"
 																},
 																"payload_log": {
 																	"description": "Configure DLP payload logging.",
+																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": false,
@@ -3353,6 +3388,7 @@
 																},
 																"quarantine": {
 																	"description": "Settings that apply to quarantine rules",
+																	"nullable": true,
 																	"properties": {
 																		"file_types": {
 																			"description": "Types of files to sandbox.",
@@ -3381,6 +3417,7 @@
 																},
 																"redirect": {
 																	"description": "Settings that apply to redirect rules",
+																	"nullable": true,
 																	"properties": {
 																		"include_context": {
 																			"default": false,
@@ -3405,6 +3442,7 @@
 																},
 																"resolve_dns_internally": {
 																	"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
+																	"nullable": true,
 																	"properties": {
 																		"fallback": {
 																			"default": "none",
@@ -3423,13 +3461,14 @@
 																	"type": "object"
 																},
 																"resolve_dns_through_cloudflare": {
-																	"default": false,
 																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"example": true,
+																	"nullable": true,
 																	"type": "boolean"
 																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+																	"nullable": true,
 																	"properties": {
 																		"action": {
 																			"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
@@ -3449,6 +3488,7 @@
 														},
 														"schedule": {
 															"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+															"nullable": true,
 															"properties": {
 																"fri": {
 																	"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
@@ -3690,6 +3730,7 @@
 							},
 							"expiration": {
 								"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+								"nullable": true,
 								"properties": {
 									"duration": {
 										"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
@@ -3774,6 +3815,7 @@
 												"somecustomvalue"
 											]
 										},
+										"nullable": true,
 										"type": "object"
 									},
 									"allow_child_bypass": {
@@ -3784,6 +3826,7 @@
 									},
 									"audit_ssh": {
 										"description": "Settings for the Audit SSH action.",
+										"nullable": true,
 										"properties": {
 											"command_logging": {
 												"default": false,
@@ -3796,6 +3839,7 @@
 									},
 									"biso_admin_controls": {
 										"description": "Configure how browser isolation behaves.",
+										"nullable": true,
 										"properties": {
 											"copy": {
 												"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -3897,6 +3941,7 @@
 									},
 									"block_page": {
 										"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+										"nullable": true,
 										"properties": {
 											"include_context": {
 												"default": false,
@@ -3915,13 +3960,11 @@
 										"type": "object"
 									},
 									"block_page_enabled": {
-										"default": false,
 										"description": "Enable the custom block page.",
 										"example": true,
 										"type": "boolean"
 									},
 									"block_reason": {
-										"default": "",
 										"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 										"example": "This website is a security risk",
 										"type": "string"
@@ -3934,6 +3977,7 @@
 									},
 									"check_session": {
 										"description": "Configure how session check behaves.",
+										"nullable": true,
 										"properties": {
 											"duration": {
 												"description": "Configure how fresh the session needs to be to be considered valid.",
@@ -3951,6 +3995,7 @@
 									},
 									"dns_resolvers": {
 										"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
+										"nullable": true,
 										"properties": {
 											"ipv4": {
 												"items": {
@@ -4019,6 +4064,7 @@
 									},
 									"egress": {
 										"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+										"nullable": true,
 										"properties": {
 											"ipv4": {
 												"description": "The IPv4 address to be used for egress.",
@@ -4039,31 +4085,28 @@
 										"type": "object"
 									},
 									"ignore_cname_category_matches": {
-										"default": false,
 										"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 										"example": true,
 										"type": "boolean"
 									},
 									"insecure_disable_dnssec_validation": {
-										"default": false,
 										"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 										"example": false,
 										"type": "boolean"
 									},
 									"ip_categories": {
-										"default": false,
 										"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 										"example": true,
 										"type": "boolean"
 									},
 									"ip_indicator_feeds": {
-										"default": false,
 										"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 										"example": true,
 										"type": "boolean"
 									},
 									"l4override": {
 										"description": "Send matching traffic to the supplied destination IP address and port.",
+										"nullable": true,
 										"properties": {
 											"ip": {
 												"description": "IPv4 or IPv6 address.",
@@ -4079,6 +4122,7 @@
 									},
 									"notification_settings": {
 										"description": "Configure a notification to display on the user's device when this rule is matched.",
+										"nullable": true,
 										"properties": {
 											"enabled": {
 												"default": false,
@@ -4101,7 +4145,6 @@
 										"type": "object"
 									},
 									"override_host": {
-										"default": "",
 										"description": "Override matching DNS queries with a hostname.",
 										"example": "example.com",
 										"type": "string"
@@ -4117,10 +4160,12 @@
 											"example": "1.1.1.1",
 											"type": "string"
 										},
+										"nullable": true,
 										"type": "array"
 									},
 									"payload_log": {
 										"description": "Configure DLP payload logging.",
+										"nullable": true,
 										"properties": {
 											"enabled": {
 												"default": false,
@@ -4133,6 +4178,7 @@
 									},
 									"quarantine": {
 										"description": "Settings that apply to quarantine rules",
+										"nullable": true,
 										"properties": {
 											"file_types": {
 												"description": "Types of files to sandbox.",
@@ -4161,6 +4207,7 @@
 									},
 									"redirect": {
 										"description": "Settings that apply to redirect rules",
+										"nullable": true,
 										"properties": {
 											"include_context": {
 												"default": false,
@@ -4185,6 +4232,7 @@
 									},
 									"resolve_dns_internally": {
 										"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
+										"nullable": true,
 										"properties": {
 											"fallback": {
 												"default": "none",
@@ -4203,13 +4251,14 @@
 										"type": "object"
 									},
 									"resolve_dns_through_cloudflare": {
-										"default": false,
 										"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 										"example": true,
+										"nullable": true,
 										"type": "boolean"
 									},
 									"untrusted_cert": {
 										"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+										"nullable": true,
 										"properties": {
 											"action": {
 												"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
@@ -4229,6 +4278,7 @@
 							},
 							"schedule": {
 								"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+								"nullable": true,
 								"properties": {
 									"fri": {
 										"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
@@ -4421,6 +4471,7 @@
 												},
 												"expiration": {
 													"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+													"nullable": true,
 													"properties": {
 														"duration": {
 															"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
@@ -4511,6 +4562,7 @@
 																	"somecustomvalue"
 																]
 															},
+															"nullable": true,
 															"type": "object"
 														},
 														"allow_child_bypass": {
@@ -4521,6 +4573,7 @@
 														},
 														"audit_ssh": {
 															"description": "Settings for the Audit SSH action.",
+															"nullable": true,
 															"properties": {
 																"command_logging": {
 																	"default": false,
@@ -4533,6 +4586,7 @@
 														},
 														"biso_admin_controls": {
 															"description": "Configure how browser isolation behaves.",
+															"nullable": true,
 															"properties": {
 																"copy": {
 																	"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -4634,6 +4688,7 @@
 														},
 														"block_page": {
 															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+															"nullable": true,
 															"properties": {
 																"include_context": {
 																	"default": false,
@@ -4652,13 +4707,11 @@
 															"type": "object"
 														},
 														"block_page_enabled": {
-															"default": false,
 															"description": "Enable the custom block page.",
 															"example": true,
 															"type": "boolean"
 														},
 														"block_reason": {
-															"default": "",
 															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 															"example": "This website is a security risk",
 															"type": "string"
@@ -4671,6 +4724,7 @@
 														},
 														"check_session": {
 															"description": "Configure how session check behaves.",
+															"nullable": true,
 															"properties": {
 																"duration": {
 																	"description": "Configure how fresh the session needs to be to be considered valid.",
@@ -4688,6 +4742,7 @@
 														},
 														"dns_resolvers": {
 															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
+															"nullable": true,
 															"properties": {
 																"ipv4": {
 																	"items": {
@@ -4756,6 +4811,7 @@
 														},
 														"egress": {
 															"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+															"nullable": true,
 															"properties": {
 																"ipv4": {
 																	"description": "The IPv4 address to be used for egress.",
@@ -4776,31 +4832,28 @@
 															"type": "object"
 														},
 														"ignore_cname_category_matches": {
-															"default": false,
 															"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 															"example": true,
 															"type": "boolean"
 														},
 														"insecure_disable_dnssec_validation": {
-															"default": false,
 															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 															"example": false,
 															"type": "boolean"
 														},
 														"ip_categories": {
-															"default": false,
 															"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 															"example": true,
 															"type": "boolean"
 														},
 														"ip_indicator_feeds": {
-															"default": false,
 															"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 															"example": true,
 															"type": "boolean"
 														},
 														"l4override": {
 															"description": "Send matching traffic to the supplied destination IP address and port.",
+															"nullable": true,
 															"properties": {
 																"ip": {
 																	"description": "IPv4 or IPv6 address.",
@@ -4816,6 +4869,7 @@
 														},
 														"notification_settings": {
 															"description": "Configure a notification to display on the user's device when this rule is matched.",
+															"nullable": true,
 															"properties": {
 																"enabled": {
 																	"default": false,
@@ -4838,7 +4892,6 @@
 															"type": "object"
 														},
 														"override_host": {
-															"default": "",
 															"description": "Override matching DNS queries with a hostname.",
 															"example": "example.com",
 															"type": "string"
@@ -4854,10 +4907,12 @@
 																"example": "1.1.1.1",
 																"type": "string"
 															},
+															"nullable": true,
 															"type": "array"
 														},
 														"payload_log": {
 															"description": "Configure DLP payload logging.",
+															"nullable": true,
 															"properties": {
 																"enabled": {
 																	"default": false,
@@ -4870,6 +4925,7 @@
 														},
 														"quarantine": {
 															"description": "Settings that apply to quarantine rules",
+															"nullable": true,
 															"properties": {
 																"file_types": {
 																	"description": "Types of files to sandbox.",
@@ -4898,6 +4954,7 @@
 														},
 														"redirect": {
 															"description": "Settings that apply to redirect rules",
+															"nullable": true,
 															"properties": {
 																"include_context": {
 																	"default": false,
@@ -4922,6 +4979,7 @@
 														},
 														"resolve_dns_internally": {
 															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
+															"nullable": true,
 															"properties": {
 																"fallback": {
 																	"default": "none",
@@ -4940,13 +4998,14 @@
 															"type": "object"
 														},
 														"resolve_dns_through_cloudflare": {
-															"default": false,
 															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
+															"nullable": true,
 															"type": "boolean"
 														},
 														"untrusted_cert": {
 															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+															"nullable": true,
 															"properties": {
 																"action": {
 																	"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
@@ -4966,6 +5025,7 @@
 												},
 												"schedule": {
 													"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+													"nullable": true,
 													"properties": {
 														"fri": {
 															"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
@@ -5175,6 +5235,7 @@
 														},
 														"expiration": {
 															"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+															"nullable": true,
 															"properties": {
 																"duration": {
 																	"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
@@ -5265,6 +5326,7 @@
 																			"somecustomvalue"
 																		]
 																	},
+																	"nullable": true,
 																	"type": "object"
 																},
 																"allow_child_bypass": {
@@ -5275,6 +5337,7 @@
 																},
 																"audit_ssh": {
 																	"description": "Settings for the Audit SSH action.",
+																	"nullable": true,
 																	"properties": {
 																		"command_logging": {
 																			"default": false,
@@ -5287,6 +5350,7 @@
 																},
 																"biso_admin_controls": {
 																	"description": "Configure how browser isolation behaves.",
+																	"nullable": true,
 																	"properties": {
 																		"copy": {
 																			"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -5388,6 +5452,7 @@
 																},
 																"block_page": {
 																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+																	"nullable": true,
 																	"properties": {
 																		"include_context": {
 																			"default": false,
@@ -5406,13 +5471,11 @@
 																	"type": "object"
 																},
 																"block_page_enabled": {
-																	"default": false,
 																	"description": "Enable the custom block page.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"block_reason": {
-																	"default": "",
 																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																	"example": "This website is a security risk",
 																	"type": "string"
@@ -5425,6 +5488,7 @@
 																},
 																"check_session": {
 																	"description": "Configure how session check behaves.",
+																	"nullable": true,
 																	"properties": {
 																		"duration": {
 																			"description": "Configure how fresh the session needs to be to be considered valid.",
@@ -5442,6 +5506,7 @@
 																},
 																"dns_resolvers": {
 																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
+																	"nullable": true,
 																	"properties": {
 																		"ipv4": {
 																			"items": {
@@ -5510,6 +5575,7 @@
 																},
 																"egress": {
 																	"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+																	"nullable": true,
 																	"properties": {
 																		"ipv4": {
 																			"description": "The IPv4 address to be used for egress.",
@@ -5530,31 +5596,28 @@
 																	"type": "object"
 																},
 																"ignore_cname_category_matches": {
-																	"default": false,
 																	"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"insecure_disable_dnssec_validation": {
-																	"default": false,
 																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"ip_categories": {
-																	"default": false,
 																	"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"ip_indicator_feeds": {
-																	"default": false,
 																	"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"l4override": {
 																	"description": "Send matching traffic to the supplied destination IP address and port.",
+																	"nullable": true,
 																	"properties": {
 																		"ip": {
 																			"description": "IPv4 or IPv6 address.",
@@ -5570,6 +5633,7 @@
 																},
 																"notification_settings": {
 																	"description": "Configure a notification to display on the user's device when this rule is matched.",
+																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": false,
@@ -5592,7 +5656,6 @@
 																	"type": "object"
 																},
 																"override_host": {
-																	"default": "",
 																	"description": "Override matching DNS queries with a hostname.",
 																	"example": "example.com",
 																	"type": "string"
@@ -5608,10 +5671,12 @@
 																		"example": "1.1.1.1",
 																		"type": "string"
 																	},
+																	"nullable": true,
 																	"type": "array"
 																},
 																"payload_log": {
 																	"description": "Configure DLP payload logging.",
+																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": false,
@@ -5624,6 +5689,7 @@
 																},
 																"quarantine": {
 																	"description": "Settings that apply to quarantine rules",
+																	"nullable": true,
 																	"properties": {
 																		"file_types": {
 																			"description": "Types of files to sandbox.",
@@ -5652,6 +5718,7 @@
 																},
 																"redirect": {
 																	"description": "Settings that apply to redirect rules",
+																	"nullable": true,
 																	"properties": {
 																		"include_context": {
 																			"default": false,
@@ -5676,6 +5743,7 @@
 																},
 																"resolve_dns_internally": {
 																	"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
+																	"nullable": true,
 																	"properties": {
 																		"fallback": {
 																			"default": "none",
@@ -5694,13 +5762,14 @@
 																	"type": "object"
 																},
 																"resolve_dns_through_cloudflare": {
-																	"default": false,
 																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"example": true,
+																	"nullable": true,
 																	"type": "boolean"
 																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+																	"nullable": true,
 																	"properties": {
 																		"action": {
 																			"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
@@ -5720,6 +5789,7 @@
 														},
 														"schedule": {
 															"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+															"nullable": true,
 															"properties": {
 																"fri": {
 																	"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
@@ -6055,6 +6125,7 @@
 												},
 												"expiration": {
 													"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+													"nullable": true,
 													"properties": {
 														"duration": {
 															"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
@@ -6145,6 +6216,7 @@
 																	"somecustomvalue"
 																]
 															},
+															"nullable": true,
 															"type": "object"
 														},
 														"allow_child_bypass": {
@@ -6155,6 +6227,7 @@
 														},
 														"audit_ssh": {
 															"description": "Settings for the Audit SSH action.",
+															"nullable": true,
 															"properties": {
 																"command_logging": {
 																	"default": false,
@@ -6167,6 +6240,7 @@
 														},
 														"biso_admin_controls": {
 															"description": "Configure how browser isolation behaves.",
+															"nullable": true,
 															"properties": {
 																"copy": {
 																	"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -6268,6 +6342,7 @@
 														},
 														"block_page": {
 															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+															"nullable": true,
 															"properties": {
 																"include_context": {
 																	"default": false,
@@ -6286,13 +6361,11 @@
 															"type": "object"
 														},
 														"block_page_enabled": {
-															"default": false,
 															"description": "Enable the custom block page.",
 															"example": true,
 															"type": "boolean"
 														},
 														"block_reason": {
-															"default": "",
 															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 															"example": "This website is a security risk",
 															"type": "string"
@@ -6305,6 +6378,7 @@
 														},
 														"check_session": {
 															"description": "Configure how session check behaves.",
+															"nullable": true,
 															"properties": {
 																"duration": {
 																	"description": "Configure how fresh the session needs to be to be considered valid.",
@@ -6322,6 +6396,7 @@
 														},
 														"dns_resolvers": {
 															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
+															"nullable": true,
 															"properties": {
 																"ipv4": {
 																	"items": {
@@ -6390,6 +6465,7 @@
 														},
 														"egress": {
 															"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+															"nullable": true,
 															"properties": {
 																"ipv4": {
 																	"description": "The IPv4 address to be used for egress.",
@@ -6410,31 +6486,28 @@
 															"type": "object"
 														},
 														"ignore_cname_category_matches": {
-															"default": false,
 															"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 															"example": true,
 															"type": "boolean"
 														},
 														"insecure_disable_dnssec_validation": {
-															"default": false,
 															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 															"example": false,
 															"type": "boolean"
 														},
 														"ip_categories": {
-															"default": false,
 															"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 															"example": true,
 															"type": "boolean"
 														},
 														"ip_indicator_feeds": {
-															"default": false,
 															"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 															"example": true,
 															"type": "boolean"
 														},
 														"l4override": {
 															"description": "Send matching traffic to the supplied destination IP address and port.",
+															"nullable": true,
 															"properties": {
 																"ip": {
 																	"description": "IPv4 or IPv6 address.",
@@ -6450,6 +6523,7 @@
 														},
 														"notification_settings": {
 															"description": "Configure a notification to display on the user's device when this rule is matched.",
+															"nullable": true,
 															"properties": {
 																"enabled": {
 																	"default": false,
@@ -6472,7 +6546,6 @@
 															"type": "object"
 														},
 														"override_host": {
-															"default": "",
 															"description": "Override matching DNS queries with a hostname.",
 															"example": "example.com",
 															"type": "string"
@@ -6488,10 +6561,12 @@
 																"example": "1.1.1.1",
 																"type": "string"
 															},
+															"nullable": true,
 															"type": "array"
 														},
 														"payload_log": {
 															"description": "Configure DLP payload logging.",
+															"nullable": true,
 															"properties": {
 																"enabled": {
 																	"default": false,
@@ -6504,6 +6579,7 @@
 														},
 														"quarantine": {
 															"description": "Settings that apply to quarantine rules",
+															"nullable": true,
 															"properties": {
 																"file_types": {
 																	"description": "Types of files to sandbox.",
@@ -6532,6 +6608,7 @@
 														},
 														"redirect": {
 															"description": "Settings that apply to redirect rules",
+															"nullable": true,
 															"properties": {
 																"include_context": {
 																	"default": false,
@@ -6556,6 +6633,7 @@
 														},
 														"resolve_dns_internally": {
 															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
+															"nullable": true,
 															"properties": {
 																"fallback": {
 																	"default": "none",
@@ -6574,13 +6652,14 @@
 															"type": "object"
 														},
 														"resolve_dns_through_cloudflare": {
-															"default": false,
 															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
+															"nullable": true,
 															"type": "boolean"
 														},
 														"untrusted_cert": {
 															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+															"nullable": true,
 															"properties": {
 																"action": {
 																	"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
@@ -6600,6 +6679,7 @@
 												},
 												"schedule": {
 													"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+													"nullable": true,
 													"properties": {
 														"fri": {
 															"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
@@ -6806,6 +6886,7 @@
 														},
 														"expiration": {
 															"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+															"nullable": true,
 															"properties": {
 																"duration": {
 																	"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
@@ -6896,6 +6977,7 @@
 																			"somecustomvalue"
 																		]
 																	},
+																	"nullable": true,
 																	"type": "object"
 																},
 																"allow_child_bypass": {
@@ -6906,6 +6988,7 @@
 																},
 																"audit_ssh": {
 																	"description": "Settings for the Audit SSH action.",
+																	"nullable": true,
 																	"properties": {
 																		"command_logging": {
 																			"default": false,
@@ -6918,6 +7001,7 @@
 																},
 																"biso_admin_controls": {
 																	"description": "Configure how browser isolation behaves.",
+																	"nullable": true,
 																	"properties": {
 																		"copy": {
 																			"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -7019,6 +7103,7 @@
 																},
 																"block_page": {
 																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+																	"nullable": true,
 																	"properties": {
 																		"include_context": {
 																			"default": false,
@@ -7037,13 +7122,11 @@
 																	"type": "object"
 																},
 																"block_page_enabled": {
-																	"default": false,
 																	"description": "Enable the custom block page.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"block_reason": {
-																	"default": "",
 																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																	"example": "This website is a security risk",
 																	"type": "string"
@@ -7056,6 +7139,7 @@
 																},
 																"check_session": {
 																	"description": "Configure how session check behaves.",
+																	"nullable": true,
 																	"properties": {
 																		"duration": {
 																			"description": "Configure how fresh the session needs to be to be considered valid.",
@@ -7073,6 +7157,7 @@
 																},
 																"dns_resolvers": {
 																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
+																	"nullable": true,
 																	"properties": {
 																		"ipv4": {
 																			"items": {
@@ -7141,6 +7226,7 @@
 																},
 																"egress": {
 																	"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+																	"nullable": true,
 																	"properties": {
 																		"ipv4": {
 																			"description": "The IPv4 address to be used for egress.",
@@ -7161,31 +7247,28 @@
 																	"type": "object"
 																},
 																"ignore_cname_category_matches": {
-																	"default": false,
 																	"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"insecure_disable_dnssec_validation": {
-																	"default": false,
 																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"ip_categories": {
-																	"default": false,
 																	"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"ip_indicator_feeds": {
-																	"default": false,
 																	"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"l4override": {
 																	"description": "Send matching traffic to the supplied destination IP address and port.",
+																	"nullable": true,
 																	"properties": {
 																		"ip": {
 																			"description": "IPv4 or IPv6 address.",
@@ -7201,6 +7284,7 @@
 																},
 																"notification_settings": {
 																	"description": "Configure a notification to display on the user's device when this rule is matched.",
+																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": false,
@@ -7223,7 +7307,6 @@
 																	"type": "object"
 																},
 																"override_host": {
-																	"default": "",
 																	"description": "Override matching DNS queries with a hostname.",
 																	"example": "example.com",
 																	"type": "string"
@@ -7239,10 +7322,12 @@
 																		"example": "1.1.1.1",
 																		"type": "string"
 																	},
+																	"nullable": true,
 																	"type": "array"
 																},
 																"payload_log": {
 																	"description": "Configure DLP payload logging.",
+																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": false,
@@ -7255,6 +7340,7 @@
 																},
 																"quarantine": {
 																	"description": "Settings that apply to quarantine rules",
+																	"nullable": true,
 																	"properties": {
 																		"file_types": {
 																			"description": "Types of files to sandbox.",
@@ -7283,6 +7369,7 @@
 																},
 																"redirect": {
 																	"description": "Settings that apply to redirect rules",
+																	"nullable": true,
 																	"properties": {
 																		"include_context": {
 																			"default": false,
@@ -7307,6 +7394,7 @@
 																},
 																"resolve_dns_internally": {
 																	"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
+																	"nullable": true,
 																	"properties": {
 																		"fallback": {
 																			"default": "none",
@@ -7325,13 +7413,14 @@
 																	"type": "object"
 																},
 																"resolve_dns_through_cloudflare": {
-																	"default": false,
 																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"example": true,
+																	"nullable": true,
 																	"type": "boolean"
 																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+																	"nullable": true,
 																	"properties": {
 																		"action": {
 																			"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
@@ -7351,6 +7440,7 @@
 														},
 														"schedule": {
 															"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+															"nullable": true,
 															"properties": {
 																"fri": {
 																	"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
@@ -7603,6 +7693,7 @@
 							},
 							"expiration": {
 								"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+								"nullable": true,
 								"properties": {
 									"duration": {
 										"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
@@ -7687,6 +7778,7 @@
 												"somecustomvalue"
 											]
 										},
+										"nullable": true,
 										"type": "object"
 									},
 									"allow_child_bypass": {
@@ -7697,6 +7789,7 @@
 									},
 									"audit_ssh": {
 										"description": "Settings for the Audit SSH action.",
+										"nullable": true,
 										"properties": {
 											"command_logging": {
 												"default": false,
@@ -7709,6 +7802,7 @@
 									},
 									"biso_admin_controls": {
 										"description": "Configure how browser isolation behaves.",
+										"nullable": true,
 										"properties": {
 											"copy": {
 												"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -7810,6 +7904,7 @@
 									},
 									"block_page": {
 										"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+										"nullable": true,
 										"properties": {
 											"include_context": {
 												"default": false,
@@ -7828,13 +7923,11 @@
 										"type": "object"
 									},
 									"block_page_enabled": {
-										"default": false,
 										"description": "Enable the custom block page.",
 										"example": true,
 										"type": "boolean"
 									},
 									"block_reason": {
-										"default": "",
 										"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 										"example": "This website is a security risk",
 										"type": "string"
@@ -7847,6 +7940,7 @@
 									},
 									"check_session": {
 										"description": "Configure how session check behaves.",
+										"nullable": true,
 										"properties": {
 											"duration": {
 												"description": "Configure how fresh the session needs to be to be considered valid.",
@@ -7864,6 +7958,7 @@
 									},
 									"dns_resolvers": {
 										"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
+										"nullable": true,
 										"properties": {
 											"ipv4": {
 												"items": {
@@ -7932,6 +8027,7 @@
 									},
 									"egress": {
 										"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+										"nullable": true,
 										"properties": {
 											"ipv4": {
 												"description": "The IPv4 address to be used for egress.",
@@ -7952,31 +8048,28 @@
 										"type": "object"
 									},
 									"ignore_cname_category_matches": {
-										"default": false,
 										"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 										"example": true,
 										"type": "boolean"
 									},
 									"insecure_disable_dnssec_validation": {
-										"default": false,
 										"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 										"example": false,
 										"type": "boolean"
 									},
 									"ip_categories": {
-										"default": false,
 										"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 										"example": true,
 										"type": "boolean"
 									},
 									"ip_indicator_feeds": {
-										"default": false,
 										"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 										"example": true,
 										"type": "boolean"
 									},
 									"l4override": {
 										"description": "Send matching traffic to the supplied destination IP address and port.",
+										"nullable": true,
 										"properties": {
 											"ip": {
 												"description": "IPv4 or IPv6 address.",
@@ -7992,6 +8085,7 @@
 									},
 									"notification_settings": {
 										"description": "Configure a notification to display on the user's device when this rule is matched.",
+										"nullable": true,
 										"properties": {
 											"enabled": {
 												"default": false,
@@ -8014,7 +8108,6 @@
 										"type": "object"
 									},
 									"override_host": {
-										"default": "",
 										"description": "Override matching DNS queries with a hostname.",
 										"example": "example.com",
 										"type": "string"
@@ -8030,10 +8123,12 @@
 											"example": "1.1.1.1",
 											"type": "string"
 										},
+										"nullable": true,
 										"type": "array"
 									},
 									"payload_log": {
 										"description": "Configure DLP payload logging.",
+										"nullable": true,
 										"properties": {
 											"enabled": {
 												"default": false,
@@ -8046,6 +8141,7 @@
 									},
 									"quarantine": {
 										"description": "Settings that apply to quarantine rules",
+										"nullable": true,
 										"properties": {
 											"file_types": {
 												"description": "Types of files to sandbox.",
@@ -8074,6 +8170,7 @@
 									},
 									"redirect": {
 										"description": "Settings that apply to redirect rules",
+										"nullable": true,
 										"properties": {
 											"include_context": {
 												"default": false,
@@ -8098,6 +8195,7 @@
 									},
 									"resolve_dns_internally": {
 										"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
+										"nullable": true,
 										"properties": {
 											"fallback": {
 												"default": "none",
@@ -8116,13 +8214,14 @@
 										"type": "object"
 									},
 									"resolve_dns_through_cloudflare": {
-										"default": false,
 										"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 										"example": true,
+										"nullable": true,
 										"type": "boolean"
 									},
 									"untrusted_cert": {
 										"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+										"nullable": true,
 										"properties": {
 											"action": {
 												"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
@@ -8142,6 +8241,7 @@
 							},
 							"schedule": {
 								"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+								"nullable": true,
 								"properties": {
 									"fri": {
 										"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
@@ -8334,6 +8434,7 @@
 												},
 												"expiration": {
 													"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+													"nullable": true,
 													"properties": {
 														"duration": {
 															"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
@@ -8424,6 +8525,7 @@
 																	"somecustomvalue"
 																]
 															},
+															"nullable": true,
 															"type": "object"
 														},
 														"allow_child_bypass": {
@@ -8434,6 +8536,7 @@
 														},
 														"audit_ssh": {
 															"description": "Settings for the Audit SSH action.",
+															"nullable": true,
 															"properties": {
 																"command_logging": {
 																	"default": false,
@@ -8446,6 +8549,7 @@
 														},
 														"biso_admin_controls": {
 															"description": "Configure how browser isolation behaves.",
+															"nullable": true,
 															"properties": {
 																"copy": {
 																	"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -8547,6 +8651,7 @@
 														},
 														"block_page": {
 															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+															"nullable": true,
 															"properties": {
 																"include_context": {
 																	"default": false,
@@ -8565,13 +8670,11 @@
 															"type": "object"
 														},
 														"block_page_enabled": {
-															"default": false,
 															"description": "Enable the custom block page.",
 															"example": true,
 															"type": "boolean"
 														},
 														"block_reason": {
-															"default": "",
 															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 															"example": "This website is a security risk",
 															"type": "string"
@@ -8584,6 +8687,7 @@
 														},
 														"check_session": {
 															"description": "Configure how session check behaves.",
+															"nullable": true,
 															"properties": {
 																"duration": {
 																	"description": "Configure how fresh the session needs to be to be considered valid.",
@@ -8601,6 +8705,7 @@
 														},
 														"dns_resolvers": {
 															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
+															"nullable": true,
 															"properties": {
 																"ipv4": {
 																	"items": {
@@ -8669,6 +8774,7 @@
 														},
 														"egress": {
 															"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+															"nullable": true,
 															"properties": {
 																"ipv4": {
 																	"description": "The IPv4 address to be used for egress.",
@@ -8689,31 +8795,28 @@
 															"type": "object"
 														},
 														"ignore_cname_category_matches": {
-															"default": false,
 															"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 															"example": true,
 															"type": "boolean"
 														},
 														"insecure_disable_dnssec_validation": {
-															"default": false,
 															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 															"example": false,
 															"type": "boolean"
 														},
 														"ip_categories": {
-															"default": false,
 															"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 															"example": true,
 															"type": "boolean"
 														},
 														"ip_indicator_feeds": {
-															"default": false,
 															"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 															"example": true,
 															"type": "boolean"
 														},
 														"l4override": {
 															"description": "Send matching traffic to the supplied destination IP address and port.",
+															"nullable": true,
 															"properties": {
 																"ip": {
 																	"description": "IPv4 or IPv6 address.",
@@ -8729,6 +8832,7 @@
 														},
 														"notification_settings": {
 															"description": "Configure a notification to display on the user's device when this rule is matched.",
+															"nullable": true,
 															"properties": {
 																"enabled": {
 																	"default": false,
@@ -8751,7 +8855,6 @@
 															"type": "object"
 														},
 														"override_host": {
-															"default": "",
 															"description": "Override matching DNS queries with a hostname.",
 															"example": "example.com",
 															"type": "string"
@@ -8767,10 +8870,12 @@
 																"example": "1.1.1.1",
 																"type": "string"
 															},
+															"nullable": true,
 															"type": "array"
 														},
 														"payload_log": {
 															"description": "Configure DLP payload logging.",
+															"nullable": true,
 															"properties": {
 																"enabled": {
 																	"default": false,
@@ -8783,6 +8888,7 @@
 														},
 														"quarantine": {
 															"description": "Settings that apply to quarantine rules",
+															"nullable": true,
 															"properties": {
 																"file_types": {
 																	"description": "Types of files to sandbox.",
@@ -8811,6 +8917,7 @@
 														},
 														"redirect": {
 															"description": "Settings that apply to redirect rules",
+															"nullable": true,
 															"properties": {
 																"include_context": {
 																	"default": false,
@@ -8835,6 +8942,7 @@
 														},
 														"resolve_dns_internally": {
 															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
+															"nullable": true,
 															"properties": {
 																"fallback": {
 																	"default": "none",
@@ -8853,13 +8961,14 @@
 															"type": "object"
 														},
 														"resolve_dns_through_cloudflare": {
-															"default": false,
 															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
+															"nullable": true,
 															"type": "boolean"
 														},
 														"untrusted_cert": {
 															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+															"nullable": true,
 															"properties": {
 																"action": {
 																	"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
@@ -8879,6 +8988,7 @@
 												},
 												"schedule": {
 													"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+													"nullable": true,
 													"properties": {
 														"fri": {
 															"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
@@ -9088,6 +9198,7 @@
 														},
 														"expiration": {
 															"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+															"nullable": true,
 															"properties": {
 																"duration": {
 																	"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
@@ -9178,6 +9289,7 @@
 																			"somecustomvalue"
 																		]
 																	},
+																	"nullable": true,
 																	"type": "object"
 																},
 																"allow_child_bypass": {
@@ -9188,6 +9300,7 @@
 																},
 																"audit_ssh": {
 																	"description": "Settings for the Audit SSH action.",
+																	"nullable": true,
 																	"properties": {
 																		"command_logging": {
 																			"default": false,
@@ -9200,6 +9313,7 @@
 																},
 																"biso_admin_controls": {
 																	"description": "Configure how browser isolation behaves.",
+																	"nullable": true,
 																	"properties": {
 																		"copy": {
 																			"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -9301,6 +9415,7 @@
 																},
 																"block_page": {
 																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
+																	"nullable": true,
 																	"properties": {
 																		"include_context": {
 																			"default": false,
@@ -9319,13 +9434,11 @@
 																	"type": "object"
 																},
 																"block_page_enabled": {
-																	"default": false,
 																	"description": "Enable the custom block page.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"block_reason": {
-																	"default": "",
 																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																	"example": "This website is a security risk",
 																	"type": "string"
@@ -9338,6 +9451,7 @@
 																},
 																"check_session": {
 																	"description": "Configure how session check behaves.",
+																	"nullable": true,
 																	"properties": {
 																		"duration": {
 																			"description": "Configure how fresh the session needs to be to be considered valid.",
@@ -9355,6 +9469,7 @@
 																},
 																"dns_resolvers": {
 																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
+																	"nullable": true,
 																	"properties": {
 																		"ipv4": {
 																			"items": {
@@ -9423,6 +9538,7 @@
 																},
 																"egress": {
 																	"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+																	"nullable": true,
 																	"properties": {
 																		"ipv4": {
 																			"description": "The IPv4 address to be used for egress.",
@@ -9443,31 +9559,28 @@
 																	"type": "object"
 																},
 																"ignore_cname_category_matches": {
-																	"default": false,
 																	"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"insecure_disable_dnssec_validation": {
-																	"default": false,
 																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"ip_categories": {
-																	"default": false,
 																	"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"ip_indicator_feeds": {
-																	"default": false,
 																	"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																	"example": true,
 																	"type": "boolean"
 																},
 																"l4override": {
 																	"description": "Send matching traffic to the supplied destination IP address and port.",
+																	"nullable": true,
 																	"properties": {
 																		"ip": {
 																			"description": "IPv4 or IPv6 address.",
@@ -9483,6 +9596,7 @@
 																},
 																"notification_settings": {
 																	"description": "Configure a notification to display on the user's device when this rule is matched.",
+																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": false,
@@ -9505,7 +9619,6 @@
 																	"type": "object"
 																},
 																"override_host": {
-																	"default": "",
 																	"description": "Override matching DNS queries with a hostname.",
 																	"example": "example.com",
 																	"type": "string"
@@ -9521,10 +9634,12 @@
 																		"example": "1.1.1.1",
 																		"type": "string"
 																	},
+																	"nullable": true,
 																	"type": "array"
 																},
 																"payload_log": {
 																	"description": "Configure DLP payload logging.",
+																	"nullable": true,
 																	"properties": {
 																		"enabled": {
 																			"default": false,
@@ -9537,6 +9652,7 @@
 																},
 																"quarantine": {
 																	"description": "Settings that apply to quarantine rules",
+																	"nullable": true,
 																	"properties": {
 																		"file_types": {
 																			"description": "Types of files to sandbox.",
@@ -9565,6 +9681,7 @@
 																},
 																"redirect": {
 																	"description": "Settings that apply to redirect rules",
+																	"nullable": true,
 																	"properties": {
 																		"include_context": {
 																			"default": false,
@@ -9589,6 +9706,7 @@
 																},
 																"resolve_dns_internally": {
 																	"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
+																	"nullable": true,
 																	"properties": {
 																		"fallback": {
 																			"default": "none",
@@ -9607,13 +9725,14 @@
 																	"type": "object"
 																},
 																"resolve_dns_through_cloudflare": {
-																	"default": false,
 																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"example": true,
+																	"nullable": true,
 																	"type": "boolean"
 																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+																	"nullable": true,
 																	"properties": {
 																		"action": {
 																			"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
@@ -9633,6 +9752,7 @@
 														},
 														"schedule": {
 															"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+															"nullable": true,
 															"properties": {
 																"fri": {
 																	"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
