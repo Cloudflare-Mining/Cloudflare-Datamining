@@ -5,39 +5,57 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Hybrid - Austin, TX or London, UK</p>
-<p><strong>About the team</strong></p>
-<p>Cloudflare’s mission is to help build a better internet and the Cloudforce One Platform Abuse Engineering (PLAB) team, lives at the core of that effort. The team empowers customers with products and services to combat abuse, enables deeper coordination with our external industry anti-abuse partners, and ensures that teams in the company can respond to the quickly changing legal landscape of the internet with scalable tools and services. This includes services that have a direct impact on efforts to stop the spread of CSAM (child sexual abuse material) across the internet. Read more about our CSAM Scanning tool<a href="https://blog.cloudflare.com/cloudflares-response-to-csam-online/"> here</a>.</p>
-<p><strong>About the Role</strong></p>
-<p>Engineers on the Platform Abuse Engineering team are responsible for the entire software development lifecycle for our products and services which include both internal and customer-facing software. Whether closing gaps in our abuse processing pipeline, extending our Trust &amp; Safety platform or road mapping the future of Trust &amp; Safety solutions, software engineers on the Trust &amp; Safety Engineering team are critical to Cloudflare’s ability to help make the internet a better place.&nbsp;</p>
-<p>This role will be based out of our Austin or London office</p>
-<p><strong>What you'll do</strong></p>
-<p>While the majority of our services are now written in Golang, you will also work with technologies such as Typescript, Kafka, Redis, Kubernetes, Terraform, Temporal and PostgresSQL. We are looking for great engineers regardless of experience with any of these specific technologies.</p>
-<p><strong>Responsibilities include</strong></p>
+<p><strong>Available Locations: Austin, Lisbon, and London</strong></p>
+<p><strong>About The Role</strong></p>
+<p>We announced Cloudflare Workers in 2017&nbsp; — since then it’s played a key role in Cloudflare’s strategy for entering the compute market. Until the launch of Workers, as Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than rules engines could support.</p>
+<p>Workers has grown from a simple functions-as-a-service option into a complete full-stack platform — and with this comes the need to support a broader set of <a href="https://developers.cloudflare.com/workers/runtime-apis/">Runtime APIs</a>. This spans a wide range, from TC39 standards, to Node.js APIs, to web standards. We played a key role in forming <a href="https://wintercg.org/">WinterCG</a>, and there’s still much work to do to grow a shared base of APIs across runtimes — to push forward the ecosystem and ease the burden on open-source maintainers of supporting multiple runtimes.</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>Designing, building, running and scaling tools and services that support Trust and Safety efforts</li>
-	<li>Analyzing and communicating complex technical requirements and concepts, able to identify the highest priority areas and carve a path to deliver</li>
-	<li>Collaborating with T&amp;S, legal and product teams to understand goals and develop robust and scalable solutions.</li>
-	<li>Improving system design and architecture to ensure stability and performance of the internal and customer-facing compliance and anti-abuse services</li>
-	<li>Ongoing monitoring and maintenance of production services, including participation in on call rotations</li>
-	<li>Working closely with Cloudflare's Trust and Safety team to help make the internet a safer place</li>
-	<li>Mentoring and guiding developers in the Platform Abuse Engineering team to help build collective knowledge and technical expertise</li>
+	<li>Drive the strategy and roadmap for JavaScript APIs in the Cloudflare Workers Runtime</li>
+	<li>Lead new APIs from ideation through launch, and continuing through ongoing maintenance and support</li>
+	<li>Guide teams both internal and external on developing new JavaScript APIs in Workers, including first-party Cloudflare products and external libraries seeking to increase compatibility</li>
+	<li>Develop and nurture key external relationships with open-source maintainers, and ensure their needs are heard and acted on</li>
+	<li>Partner with other departments such as Product Marketing, Marketing, Community &amp; developer advocacy, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</li>
+	<li>Ruthlessly prioritize across a complex environment of diverse customers, stakeholders and objectives</li>
+	<li>Represent the company externally as needed, including meetings with customers, speaking at external events, participating in WinterCG and more.</li>
 </ul>
-<p><strong>Desirable skills and experience</strong></p>
+<p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
+<p>The ideal candidate is entrepreneurial-minded and thrives in a fast-paced and goal-driven environment.&nbsp;</p>
+<p>You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.&nbsp;</p>
 <ul>
-	<li>1 - 3 years of experience building large-scale software applications, preferably distributed systems</li>
-	<li>Experience designing and integrating RESTful APIs and/or gRPC services</li>
-	<li>Knowledge of SQL and common relational database systems such as PostgreSQL</li>
-	<li>Prior experience working with Go</li>
-	<li>Excellent debugging and optimization skills</li>
-	<li>Experience in writing well tested code</li>
+	<li>Proven track record of shipping developer-facing products from ideation to launch, 3+ years of professional experience working on technology products</li>
+	<li>Strong knowledge of JavaScript, the NPM ecosystem, and web standards. You have built things in JavaScript and enjoy immersing yourself in the JavaScript community, engaging with new standards, libraries, and frameworks</li>
+	<li>Developer focus — you’ll be working directly, and often be a part of the customers team in helping them get their initial implementation off the ground</li>
+	<li>Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view</li>
+	<li>A desire to sweat the details and ship great developer experiences</li>
+	<li>A love for talking to developers at organizations both large and small on a daily basis so that you can build and ship products that solve real problems.</li>
 </ul>
-<p><strong>Bonus</strong></p>
-<p>(Relevant but not required - we love to learn on the job!)</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Prior experience working in the Trust &amp; Safety domain space or building abuse detection systems</li>
-	<li>Deep understanding of DNS, TLS/SSL and HTTP</li>
-	<li>Expertise in web security issues and industry standards for access control</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
