@@ -5,25 +5,61 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX, Lisbon, Portugal, London, UK<br><br>About the Position<br><br></strong>Cloudflare is seeking a talented and passionate Technical Program Manager to lead and manage various company-wide initiatives and programs spanning multiple quarters and teams within the ETI (Emerging Technology and Incubation) department, including Developer Platform suite of products. This position will be based in Austin, Tx or Remote, USA. You will be reporting into the Engineering Program Management Organization (PMO).&nbsp;</p>
-<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today, Cloudflare runs one of the world’s largest distributed networks that powers more than 10 trillion requests per month, which is nearly 10 percent of all Internet requests worldwide. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code.&nbsp;Our customers range from Fortune 500 companies and nonprofits to small businesses and budding entrepreneurs. We are working to create a faster, more secure, and more reliable experience for anyone online and given the scale at which we operate, our mission is big. Our team is hard at work shaping the future of the Internet by solving some of its toughest challenges. Come join us!</p>
-<p><strong>Responsibilities</strong><br><br>Your main role will be to partner with product, engineering, design, marketing, and technical operations teams to plan, track, and manage the execution of various ETI related programs and initiatives.&nbsp;Technical Program Management at Cloudflare provides you with a myriad of opportunities to effectively define, scope, and accomplish strategic goals. You will be the driving force to make things happen.</p>
-<p>You will also be working with various parts of the organization to deliver Cloudflare services to customers around the globe. You will actively partner with various team members on quarterly planning, process improvements, dogfooding cutting edge products, running innovation weeks, and supporting exciting new developments and initiatives, with multiple senior leads to guide you. The ideal candidate is able to implement the right level of process without over-engineering and enjoys bringing people together as a team while driving them towards success.</p>
-<p><strong>Requirements</strong></p>
+<h4><strong>Job Locations: Austin, TX</strong></h4>
+<h4><strong>To the attention of candidates (Austin TX):&nbsp;</strong></h4>
+<h4><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Wed-Sun” or “Sat-Wed” 5-day working week schedule. Candidates MUST have right-to-work in the United States.&nbsp; Visa sponsorship is NOT provided for this position.</strong></h4>
+<h4><strong>About the Department</strong></h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
+<h4><strong>What You’ll Do</strong></h4>
+<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's architecture and gain a deeper understanding of Internet technologies. You will focus on providing support for the Cloudflare One platform, including the complete Zero Trust product suite, networking solutions like Magic WAN, and associated monitoring and analytics tools.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>5-10&nbsp; years experience in technical program management.</li>
-	<li>Solid knowledge in technical program management and a desire for continuous improvement.</li>
-	<li>Strong competency with project management tools (admin-level experience strongly preferred for Confluence, JIRA).&nbsp;</li>
-	<li>Knowledge of various software development methodologies (Agile, Waterfall, Kaizen, Scrum, etc).</li>
-	<li>Proven track record on creating realistic project plans, and overseeing execution to meet commitments and deliver with predictability.</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
-	<li>Ability to collaborate with key decision-makers to develop executive reporting materials (e.g. executive steering committee, weekly updates, key artifacts, etc).</li>
-	<li>Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others.&nbsp;</li>
-	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level.</li>
-	<li>Familiarity with Cloud Technologies and Programming languages is a plus.</li>
-	<li>Role is based in Austin or Lisbon, and you will be working with teams in various time zones.</li>
+	<li>You have previous experience working as part of a team in a customer-facing role</li>
+	<li>You have experience solving troubleshooting and resolving Layer 3/4 networking issues, including routing, firewall, and transport-level connectivity problems</li>
+	<li>You understand how the Internet works</li>
+	<li>You understand and have previous experience working with Identity and Access Management protocols and technologies (SSO, SAML, OAuth, Federation, SCIM, etc.)</li>
+	<li>You understand and have previous experience supporting and troubleshooting multi-factor mechanisms (TOTP, SMS, FIDO, U2F, WebAuth, EMAIL, Push MFA, etc).</li>
+	<li>You have experience working in a support role where you thrived every time you resolved a ticket</li>
+	<li>You are comfortable communicating through various support channels and always put the customer first</li>
+	<li>You are a motivated self-starter and always looking to expand your existing skillset</li>
+	<li>Flexibility to work holidays and rotational weekend shifts</li>
 </ul>
-<p>&nbsp;</p>
+<h4><strong>Bonus Points</strong></h4>
+<ul>
+	<li>You are fluent in English, Spanish, Portuguese, German, Japanese, French or Mandarin</li>
+	<li>You are familiar with Cloudflare Zero Trust products (Zero Trust / Access / Gateway / Tunnel, WARP client) and have a site actively using our platform</li>
+	<li>You have a solid grasp of problem-solving with command line tools (dig / traceroute / curl / tcpdump)</li>
+	<li>You are familiar with Apache, Nginx, IIS, and other web servers</li>
+	<li>You are committed to gaining a deeper understanding of the following technologies: Zero Trust / Secure Web Gateway policies / Endpoint protections / security best practices (Certificates, Zero Trust, least privileged access etc)</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

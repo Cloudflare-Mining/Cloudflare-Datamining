@@ -5,25 +5,58 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX, Lisbon, Portugal, London, UK<br><br>About the Position<br><br></strong>Cloudflare is seeking a talented and passionate Technical Program Manager to lead and manage various company-wide initiatives and programs spanning multiple quarters and teams within the ETI (Emerging Technology and Incubation) department, including Developer Platform suite of products. This position will be based in Austin, Tx or Remote, USA. You will be reporting into the Engineering Program Management Organization (PMO).&nbsp;</p>
-<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today, Cloudflare runs one of the world’s largest distributed networks that powers more than 10 trillion requests per month, which is nearly 10 percent of all Internet requests worldwide. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code.&nbsp;Our customers range from Fortune 500 companies and nonprofits to small businesses and budding entrepreneurs. We are working to create a faster, more secure, and more reliable experience for anyone online and given the scale at which we operate, our mission is big. Our team is hard at work shaping the future of the Internet by solving some of its toughest challenges. Come join us!</p>
-<p><strong>Responsibilities</strong><br><br>Your main role will be to partner with product, engineering, design, marketing, and technical operations teams to plan, track, and manage the execution of various ETI related programs and initiatives.&nbsp;Technical Program Management at Cloudflare provides you with a myriad of opportunities to effectively define, scope, and accomplish strategic goals. You will be the driving force to make things happen.</p>
-<p>You will also be working with various parts of the organization to deliver Cloudflare services to customers around the globe. You will actively partner with various team members on quarterly planning, process improvements, dogfooding cutting edge products, running innovation weeks, and supporting exciting new developments and initiatives, with multiple senior leads to guide you. The ideal candidate is able to implement the right level of process without over-engineering and enjoys bringing people together as a team while driving them towards success.</p>
-<p><strong>Requirements</strong></p>
+<p><strong>Available Locations: Austin, Lisbon, and London</strong></p>
+<p><strong>About The Role</strong></p>
+<p>We announced Cloudflare Workers in 2017&nbsp; — since then it’s played a key role in Cloudflare’s strategy for entering the compute market. Until the launch of Workers, as Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than rules engines could support.</p>
+<p>Workers has grown from a simple functions-as-a-service option into a complete full-stack platform — and with this comes the need to support a broader set of <a href="https://developers.cloudflare.com/workers/runtime-apis/">Runtime APIs</a>. This spans a wide range, from TC39 standards, to Node.js APIs, to web standards. We played a key role in forming <a href="https://wintercg.org/">WinterCG</a>, and there’s still much work to do to grow a shared base of APIs across runtimes — to push forward the ecosystem and ease the burden on open-source maintainers of supporting multiple runtimes.</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>5-10&nbsp; years experience in technical program management.</li>
-	<li>Solid knowledge in technical program management and a desire for continuous improvement.</li>
-	<li>Strong competency with project management tools (admin-level experience strongly preferred for Confluence, JIRA).&nbsp;</li>
-	<li>Knowledge of various software development methodologies (Agile, Waterfall, Kaizen, Scrum, etc).</li>
-	<li>Proven track record on creating realistic project plans, and overseeing execution to meet commitments and deliver with predictability.</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
-	<li>Ability to collaborate with key decision-makers to develop executive reporting materials (e.g. executive steering committee, weekly updates, key artifacts, etc).</li>
-	<li>Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others.&nbsp;</li>
-	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level.</li>
-	<li>Familiarity with Cloud Technologies and Programming languages is a plus.</li>
-	<li>Role is based in Austin or Lisbon, and you will be working with teams in various time zones.</li>
+	<li>Drive the strategy and roadmap for JavaScript APIs in the Cloudflare Workers Runtime</li>
+	<li>Lead new APIs from ideation through launch, and continuing through ongoing maintenance and support</li>
+	<li>Guide teams both internal and external on developing new JavaScript APIs in Workers, including first-party Cloudflare products and external libraries seeking to increase compatibility</li>
+	<li>Develop and nurture key external relationships with open-source maintainers, and ensure their needs are heard and acted on</li>
+	<li>Partner with other departments such as Product Marketing, Marketing, Community &amp; developer advocacy, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</li>
+	<li>Ruthlessly prioritize across a complex environment of diverse customers, stakeholders and objectives</li>
+	<li>Represent the company externally as needed, including meetings with customers, speaking at external events, participating in WinterCG and more.</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
+<p>The ideal candidate is entrepreneurial-minded and thrives in a fast-paced and goal-driven environment.&nbsp;</p>
+<p>You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.&nbsp;</p>
+<ul>
+	<li>Proven track record of shipping developer-facing products from ideation to launch, 3+ years of professional experience working on technology products</li>
+	<li>Strong knowledge of JavaScript, the NPM ecosystem, and web standards. You have built things in JavaScript and enjoy immersing yourself in the JavaScript community, engaging with new standards, libraries, and frameworks</li>
+	<li>Developer focus — you’ll be working directly, and often be a part of the customers team in helping them get their initial implementation off the ground</li>
+	<li>Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view</li>
+	<li>A desire to sweat the details and ship great developer experiences</li>
+	<li>A love for talking to developers at organizations both large and small on a daily basis so that you can build and ship products that solve real problems.</li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

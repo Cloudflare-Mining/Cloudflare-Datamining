@@ -5,25 +5,42 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX, Lisbon, Portugal, London, UK<br><br>About the Position<br><br></strong>Cloudflare is seeking a talented and passionate Technical Program Manager to lead and manage various company-wide initiatives and programs spanning multiple quarters and teams within the ETI (Emerging Technology and Incubation) department, including Developer Platform suite of products. This position will be based in Austin, Tx or Remote, USA. You will be reporting into the Engineering Program Management Organization (PMO).&nbsp;</p>
-<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today, Cloudflare runs one of the world’s largest distributed networks that powers more than 10 trillion requests per month, which is nearly 10 percent of all Internet requests worldwide. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code.&nbsp;Our customers range from Fortune 500 companies and nonprofits to small businesses and budding entrepreneurs. We are working to create a faster, more secure, and more reliable experience for anyone online and given the scale at which we operate, our mission is big. Our team is hard at work shaping the future of the Internet by solving some of its toughest challenges. Come join us!</p>
-<p><strong>Responsibilities</strong><br><br>Your main role will be to partner with product, engineering, design, marketing, and technical operations teams to plan, track, and manage the execution of various ETI related programs and initiatives.&nbsp;Technical Program Management at Cloudflare provides you with a myriad of opportunities to effectively define, scope, and accomplish strategic goals. You will be the driving force to make things happen.</p>
-<p>You will also be working with various parts of the organization to deliver Cloudflare services to customers around the globe. You will actively partner with various team members on quarterly planning, process improvements, dogfooding cutting edge products, running innovation weeks, and supporting exciting new developments and initiatives, with multiple senior leads to guide you. The ideal candidate is able to implement the right level of process without over-engineering and enjoys bringing people together as a team while driving them towards success.</p>
-<p><strong>Requirements</strong></p>
-<ul>
-	<li>5-10&nbsp; years experience in technical program management.</li>
-	<li>Solid knowledge in technical program management and a desire for continuous improvement.</li>
-	<li>Strong competency with project management tools (admin-level experience strongly preferred for Confluence, JIRA).&nbsp;</li>
-	<li>Knowledge of various software development methodologies (Agile, Waterfall, Kaizen, Scrum, etc).</li>
-	<li>Proven track record on creating realistic project plans, and overseeing execution to meet commitments and deliver with predictability.</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
-	<li>Ability to collaborate with key decision-makers to develop executive reporting materials (e.g. executive steering committee, weekly updates, key artifacts, etc).</li>
-	<li>Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others.&nbsp;</li>
-	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level.</li>
-	<li>Familiarity with Cloud Technologies and Programming languages is a plus.</li>
-	<li>Role is based in Austin or Lisbon, and you will be working with teams in various time zones.</li>
-</ul>
+<p><strong>Available Location: Mexico City</strong></p>
 <p>&nbsp;</p>
+<p><strong>About Solutions Engineering at Cloudflare</strong></p>
+<p>The Pre-Sales Solution Engineering organization owns the technical sale of the Cloudflare solution portfolio, ensuring maximal business value, fit-for-purpose solution design and adoption roadmap for our customers. Solutions Engineering is made up of individuals from a wide range of backgrounds - from Financial Consulting to Product Management, Customer Support to Software Engineering, and we are serious about building a diverse, experienced and curious team.&nbsp;</p>
+<p>The Partner Solutions Engineer is an experienced PreSales role within the Solutions Engineering team. Partner Solutions Engineers work closely with our partners to educate, empower, and ensure their success delivering Cloudflare security, reliability and performance solutions.</p>
+<h4><strong>What you'll do as a Partner Solutions Engineer</strong></h4>
+<p>Your role will be to build passionate champions within the technology ranks at your Partner accounts, aid your Partner organizations to drive sales for identified opportunities, and collaborate with your technical champions to build revenue pipeline. As the technical partner advocate within Cloudflare, you will work closely with every team at Cloudflare, from Sales and Product, through to Engineering and Customer Support.&nbsp;</p>
+<p>You have strong experience in large Pre-Sales partner and account management as well as excellent verbal and written communications skills in both Spanish and English, suited for both technical and executive-level engagement. You are comfortable speaking about the Cloudflare vision and mission with all technical and non-technical audiences.&nbsp;</p>
+<p>Ultimately, you are passionate about technology and have the ability to explain complex technical concepts in easy-to-understand terms. You are naturally curious, and an avid builder who is not afraid to get your hands dirty. You appreciate the diversity of challenges in working with partners and customers, and look forward to helping them realize the full promise of Cloudflare. On the Solutions Engineering team, you will find a collaborative environment where everyone brings different strengths and jumps in to help each other.</p>
+<p><strong>Specifically, we are looking for you to:</strong></p>
+<ul>
+	<li>Build and maintain long term technical relationships with our LATAM partners to increase Cloudflare’s reputation and authority within the partner solution portfolio through demonstrating value, enablement, and uncovering new areas of potential revenue</li>
+	<li>Drive technical solution design conversations and guide partners in LATAM through use case qualification and collaborative technical wins through demonstrations and proofs-of-concepts</li>
+	<li>Evangelize and represent Cloudflare through technical thought leadership and expertise&nbsp;</li>
+	<li>Be the voice of the partner internally at Cloudflare, engaging with and influencing Cloudflare’s Product and Engineering teams to meet your partner and customer needs</li>
+	<li>Travel up to 40% throughout the quarter to support partner engagements, attend conferences and industry events.</li>
+	<li>Collaborate with your peers and partners in English and Spanish. Portuguese speaking is also a plus.&nbsp;</li>
+</ul>
+<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<ul>
+	<li>Fluency in Spanish and English (verbal and written); Bonus: Portuguese fluency</li>
+	<li>Experience managing technical sales within large partners and accounts:</li>
+	<ul>
+		<li>Developing champion-style relationships</li>
+		<li>Driving technical wins</li>
+		<li>Assisting with technical validation</li>
+	</ul>
+	<li>Experience with or curiosity in any of the core industry components of Cloudflare solutions (and passion to learn more):</li>
+	<ul>
+		<li>SASE concepts and Zero Trust Networking architectures</li>
+		<li>Internet security technologies including DDoS and DDoS mitigation, Firewalls, TLS, VPN, DLP</li>
+		<li>Networking technologies including TCP, UDP, DNS, IPv4 + IPv6, BGP routing, GRE, SD-WAN, MPLS, Global Traffic Management</li>
+		<li>HTTP technologies including reverse proxy (e.g., WAF and CDN), forward proxy (secure web gateway), serverless application development</li>
+		<li>Detailed understanding of workflow from user to application including hybrid architectures with Azure, AWS, GCP</li>
+	</ul>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
