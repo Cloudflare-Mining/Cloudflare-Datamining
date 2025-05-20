@@ -1846,7 +1846,7 @@
 	"firewall.tab.dos_card.deploy_ddos_override_button": "Deploy a DDoS override",
 	"firewall.tab.dos_card.deploy_ddos_empty_state": "There are no deployed ruleset overrides. To customize the default protection, deploy a DDoS override.",
 	"firewall.tab.dos_card.description_info_tooltip": "Tag or rule configurations have greater priority than ruleset configurations.",
-	"firewall.tab.dos_card.action_info_tooltip": "Ruleset configurations apply to all rules except explicit rules overrides.",
+	"firewall.tab.dos_card.action_info_tooltip": "Ruleset configurations apply to all non-read only rules. The individual rule override supersede the ruleset override.",
 	"firewall.tab.dos_card.description_rule_overrides": "%{smart_count} customized rule |||| %{smart_count} customized rules",
 	"firewall.tab.dos_card.network_layer_protection.title": "Network-layer and SSL/TLS DDoS attack protection",
 	"firewall.tab.dos_card.network_layer_protection.description": "Rulesets managed by Cloudflare that automatically mitigate SSL/TLS-based and Network-layer DDoS attacks such as SYN floods and UDP reflection attacks.\n\nNetwork-layer DDoS attack protection protects all Cloudflare customers, but only Magic Transit and Spectrum customers on an Enterprise plan can customize the managed ruleset.",
