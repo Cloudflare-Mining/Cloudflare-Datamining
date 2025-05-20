@@ -626,7 +626,6 @@
 													"paused": {
 														"default": false,
 														"description": "Indicates whether the zone is only using Cloudflare DNS services. A\ntrue value means the zone will not receive security or performance\nbenefits.\n",
-														"readOnly": true,
 														"type": "boolean"
 													},
 													"permissions": {
@@ -749,6 +748,7 @@
 														"type": "string"
 													},
 													"vanity_name_servers": {
+														"default": [],
 														"description": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans.",
 														"example": [
 															"ns1.example.com",
@@ -1148,7 +1148,6 @@
 												"paused": {
 													"default": false,
 													"description": "Indicates whether the zone is only using Cloudflare DNS services. A\ntrue value means the zone will not receive security or performance\nbenefits.\n",
-													"readOnly": true,
 													"type": "boolean"
 												},
 												"permissions": {
@@ -1271,6 +1270,7 @@
 													"type": "string"
 												},
 												"vanity_name_servers": {
+													"default": [],
 													"description": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans.",
 													"example": [
 														"ns1.example.com",
@@ -1496,7 +1496,6 @@
 							"paused": {
 								"default": false,
 								"description": "Indicates whether the zone is only using Cloudflare DNS services. A\ntrue value means the zone will not receive security or performance\nbenefits.\n",
-								"readOnly": true,
 								"type": "boolean"
 							},
 							"plan": {
@@ -1523,6 +1522,7 @@
 								"type": "string"
 							},
 							"vanity_name_servers": {
+								"default": [],
 								"description": "An array of domains used for custom name servers. This is only\navailable for Business and Enterprise plans.",
 								"example": [
 									"ns1.example.com",
@@ -1779,7 +1779,6 @@
 												"paused": {
 													"default": false,
 													"description": "Indicates whether the zone is only using Cloudflare DNS services. A\ntrue value means the zone will not receive security or performance\nbenefits.\n",
-													"readOnly": true,
 													"type": "boolean"
 												},
 												"permissions": {
@@ -1902,6 +1901,7 @@
 													"type": "string"
 												},
 												"vanity_name_servers": {
+													"default": [],
 													"description": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans.",
 													"example": [
 														"ns1.example.com",
@@ -2342,7 +2342,6 @@
 												"paused": {
 													"default": false,
 													"description": "Indicates whether the zone is only using Cloudflare DNS services. A\ntrue value means the zone will not receive security or performance\nbenefits.\n",
-													"readOnly": true,
 													"type": "boolean"
 												},
 												"permissions": {
@@ -2465,6 +2464,7 @@
 													"type": "string"
 												},
 												"vanity_name_servers": {
+													"default": [],
 													"description": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans.",
 													"example": [
 														"ns1.example.com",

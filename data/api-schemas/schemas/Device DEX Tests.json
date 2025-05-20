@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_id}/devices/dex_tests/{dex_test_id}": {
+	"DELETE /accounts/{account_id}/dex/devices/dex_tests/{dex_test_id}": {
 		"description": "Delete a Device DEX test. Returns the remaining device dex tests for the account.",
 		"operationId": "device-dex-test-delete-device-dex-test",
 		"parameters": [
@@ -547,7 +547,7 @@
 			"Cloudflare DEX Write"
 		]
 	},
-	"GET /accounts/{account_id}/devices/dex_tests": {
+	"GET /accounts/{account_id}/dex/devices/dex_tests": {
 		"description": "Fetch all DEX tests.",
 		"operationId": "device-dex-test-details",
 		"parameters": [
@@ -1078,11 +1078,13 @@
 			"Device DEX Tests"
 		],
 		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Zero Trust Report",
+			"Zero Trust Read"
 		]
 	},
-	"GET /accounts/{account_id}/devices/dex_tests/{dex_test_id}": {
+	"GET /accounts/{account_id}/dex/devices/dex_tests/{dex_test_id}": {
 		"description": "Fetch a single DEX test.",
 		"operationId": "device-dex-test-get-device-dex-test",
 		"parameters": [
@@ -1619,7 +1621,7 @@
 			"Zero Trust Read"
 		]
 	},
-	"POST /accounts/{account_id}/devices/dex_tests": {
+	"POST /accounts/{account_id}/dex/devices/dex_tests": {
 		"description": "Create a DEX test.",
 		"operationId": "device-dex-test-create-device-dex-test",
 		"parameters": [
@@ -2231,9 +2233,12 @@
 		"summary": "Create Device DEX test",
 		"tags": [
 			"Device DEX Tests"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write"
 		]
 	},
-	"PUT /accounts/{account_id}/devices/dex_tests/{dex_test_id}": {
+	"PUT /accounts/{account_id}/dex/devices/dex_tests/{dex_test_id}": {
 		"description": "Update a DEX test.",
 		"operationId": "device-dex-test-update-device-dex-test",
 		"parameters": [

@@ -1,5 +1,5 @@
 {
-	"GET /accounts/{account_id}/warp-change-events": {
+	"GET /accounts/{account_id}/dex/warp-change-events": {
 		"description": "List WARP configuration and enablement toggle change events by device.",
 		"operationId": "list-warp-change-events",
 		"parameters": [
@@ -229,7 +229,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -502,6 +503,12 @@
 		"summary": "List WARP change events.",
 		"tags": [
 			"WARP Change Events"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Zero Trust Report",
+			"Zero Trust Read"
 		]
 	}
 }
