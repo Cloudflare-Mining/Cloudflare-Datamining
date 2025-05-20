@@ -5,32 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon&nbsp;</strong></p>
-<h4><strong>About the department</strong></h4>
-<p>The Self-Serve Team is responsible for Cloudflare’s PLG business that serves 8M+ customers across 20% of the internet. Our team is responsible for growth marketing, product growth, and growth insights with the goal of building a world class experience for our self-serve customers across all product categories including Application Services, Cloudflare One and Developer Platform, and all Plans such as Free, Pro, Business &amp; Enterprise. We work to grow the business by understanding our customers’ needs at every stage of their journey from Awareness to Activation to Expansion and Retention.&nbsp;</p>
-<p>You may have heard of the cliche that teams call themselves a “startup within a startup”. Except that the self-serve engineering team is fairly young at Cloudflare with established ROI. You will be the founding data engineer for the team.</p>
-<h4><strong>What you'll do</strong></h4>
-<p>This is a highly autonomous role that enables the self-serve team to personalize user journeys through precise targeting.&nbsp;</p>
-<p>Think of a user that clicked X, visited Y, and purchased Z. We want to predict what they want to do next and then offer that next product in a live product A/B test to improve conversions. If you have worked with tools such as Posthog, Amplitude, Heap, or better yet, have built something similar, we want to hear from you. Our primary use-case is to capture and process thousands of user events in a native architecture and then serve it to internal audiences - both for productional use-cases and for internal reporting.&nbsp;</p>
-<p>You must be comfortable with setting up data lakes, understanding A/B testing architectures, and building the cloud tools that you may have otherwise used in the past. Because Cloudflare is the cloud that we sell to our developers.</p>
-<p>As the founding data engineer, you will have the opportunity to pick an existing data architecture to build upon, build a new one from scratch, or choose a hybrid approach. You tell us what the best system looks like. You will learn about the many data tools and architectures that are being used across the company - traditional databases, modern architectures to manage 20% of the internet traffic, BI summaries, real-user monitoring offered to our customers.</p>
-<p>Bonus points if you have done this to scale a startup.</p>
-<p><strong>Who you are</strong></p>
+<p><strong>Available Locations: Lisbon</strong></p>
+<p><strong>About the role</strong></p>
+<p><strong>What You Would Do Here:</strong></p>
+<p>Our focus is getting the best people to work at Cloudflare and then allowing them to do their best work. We are looking for a motivated People Services who would be the functional point of contact for the local operations team Team Leader who’s ready to support a rapidly growing organization scale with efficiency and be the technical operational focus point for their region. The main function of this role is to ensure the practices and processes are being executed and audited. You’ll train new members to the team and support them to deliver world-class employee inquiry support as you work as an escalation point for higher complexity matters involving People and Payroll questions directly from employees. This role ensures critical People and Payroll transactions are done to minimum standard and that all our people systems are auditable, clean and up to date. Along the way you will also have opportunities to help design and improve our existing processes as we align and scale across multiple regions.&nbsp;</p>
+<h3><strong>Responsibilities</strong></h3>
 <ul>
-	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>Build realtime data capturing architecture from various user events - UI events, backend events and stitch them together for advanced analytics and personalization systems</li>
-	<li>Experience building/expanding analytics systems at lakehouse scale, ideally with OSS systems - Apache Iceberg, Clickhouse, or similar</li>
-	<li>Data modeling using different methods (dimensional data modeling, ER modeling, etc)</li>
-	<li>Experience implementing quality measurement processes</li>
-	<li>Familiarity with batch-style OSS ELT/ETL system (dbt/airflow/etc) and experience managing them</li>
-	<li>Familiarity with marketing attribution system and tag management</li>
-	<li>Familiarity with global data privacy requirements governed by laws like GDPR/CCPA/etc and how it affects data capture, modeling and analysis</li>
-	<li>Solid understanding of RESTful APIs and service security</li>
-	<li>Working knowledge of SQL and relational databases such as PostgreSQL or MySQL</li>
-	<li>Experience implementing secure and highly-available distributed systems/microservices</li>
-	<li>Familiarity with event driven architecture</li>
-	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
-	<li>Strong interpersonal and communication skills with a bias towards action</li>
+	<li>Payroll Sign off - Execute the monthly checks on the region payrolls to ensure they are being submitted accurately&nbsp;</li>
+	<li>Follow schedule for the SOX Control items and ensure they are on track</li>
+	<li>Track any change / improvement required for Business Processes , with appropriate requirement gathering, being able to translate business needs into technical requirements.</li>
+	<li>Regional Offer Approval</li>
+	<li>Lead on improvement projects defined by the group</li>
+	<li>Regional Senior Mgmt Support</li>
+	<li>Analysis of support tickets and business process to provide regional status and opportunities for process improvements</li>
+	<li>Partner with COE's and other team members to test new functionality and troubleshoot technical issues.</li>
+</ul>
+<h4><br><br></h4>
+<h3><strong>Skills/experience</strong></h3>
+<ul>
+	<li>Desired 5+ years of experience in People Operations / Payroll / Employee Relation matters for EMEA</li>
+	<li>Experience with HR systems such as Workday and Zendesk. Experience with Core, Talent and Comp is a plus.</li>
+	<li>Able to lead projects for enhancing operational efficiency in the region and partner with other teams&nbsp;</li>
+	<li>Highly detailed and process oriented</li>
+	<li>Solid knowledge of EMEA countries employment law and experience operating as lead within these environments. Experience in India local practices is a must.</li>
+	<li>Strong customer focus and relentless commitment to employee experience</li>
+	<li>Strong oral and written communication skills, effectively presenting information and responding to cross-region and cross-functional customer questions&nbsp;</li>
+	<li>Able to prioritize and execute accordingly, ready to report on status on demand</li>
+	<li>Strong organizational, problem-solving and time management skills</li>
+	<li>Adaptability in a global fast-paced environment</li>
+	<li>Extensive experience with overseeing payroll changes and reports for EMEA region</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
