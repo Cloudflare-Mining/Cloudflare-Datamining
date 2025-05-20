@@ -24,7 +24,7 @@ import {
 
 const allVersions = await fs.readJson(path.resolve('../data/dashboard/versions.json'));
 
-const appScript = /(app\.[\da-z]+\.js)/;
+const appScript = /((cf-)?app\.[\da-z]+\.js)/;
 const chunkIds = /(?:\w+\.\w+\((\d+)\)(?:, )?)/g;
 const chunks = /{(?:"\d+":"[\da-f]+",)+"\d+":"[\da-f]+"}/;
 const dashVersion = /dashVersion: ?"([\da-f]+)",/;
