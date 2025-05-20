@@ -118,7 +118,7 @@
 													"type": "array"
 												},
 												"ip_subnets": {
-													"description": "CIDRs to associate with traffic decisions.",
+													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
 													"items": {
 														"allOf": [
 															{
@@ -384,7 +384,7 @@
 																"type": "array"
 															},
 															"ip_subnets": {
-																"description": "CIDRs to associate with traffic decisions.",
+																"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
 																"items": {
 																	"allOf": [
 																		{
@@ -428,7 +428,7 @@
 																"type": "array"
 															},
 															"ip_subnets": {
-																"description": "CIDRs to associate with traffic decisions.",
+																"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
 																"items": {
 																	"allOf": [
 																		{
@@ -663,7 +663,7 @@
 								"type": "array"
 							},
 							"ip_subnets": {
-								"description": "CIDRs to associate with traffic decisions.",
+								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
 								"items": {
 									"allOf": [
 										{
@@ -785,7 +785,7 @@
 													"type": "array"
 												},
 												"ip_subnets": {
-													"description": "CIDRs to associate with traffic decisions.",
+													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
 													"items": {
 														"allOf": [
 															{
@@ -980,7 +980,7 @@
 								"type": "array"
 							},
 							"ip_subnets": {
-								"description": "CIDRs to associate with traffic decisions.",
+								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
 								"items": {
 									"allOf": [
 										{
@@ -1106,7 +1106,7 @@
 													"type": "array"
 												},
 												"ip_subnets": {
-													"description": "CIDRs to associate with traffic decisions.",
+													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
 													"items": {
 														"allOf": [
 															{
@@ -1329,7 +1329,7 @@
 								"type": "array"
 							},
 							"ip_subnets": {
-								"description": "CIDRs to associate with traffic decisions.",
+								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
 								"items": {
 									"allOf": [
 										{
@@ -1451,7 +1451,7 @@
 													"type": "array"
 												},
 												"ip_subnets": {
-													"description": "CIDRs to associate with traffic decisions.",
+													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
 													"items": {
 														"allOf": [
 															{
