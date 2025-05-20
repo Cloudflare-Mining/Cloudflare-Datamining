@@ -2914,6 +2914,13 @@
 						"compatDisableFlag": "disable_request_signal",
 						"compatEnableFlag": "enable_request_signal"
 					}
+				},
+				{
+					"name": "connectPassThrough",
+					"annotations": {
+						"compatEnableFlag": "connect_pass_through",
+						"experimental": "true"
+					}
 				}
 			]
 		},
