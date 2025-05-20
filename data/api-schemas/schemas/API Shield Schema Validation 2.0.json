@@ -259,7 +259,8 @@
 											"description": "UUID.",
 											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 											"maxLength": 36,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									]
 								}
@@ -732,7 +733,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -747,7 +749,8 @@
 															{
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															{
 																"readOnly": true,
@@ -782,7 +785,8 @@
 																"description": "UUID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														]
 													},
@@ -1066,7 +1070,8 @@
 														{
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"readOnly": true,
@@ -1101,7 +1106,8 @@
 															"description": "UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													]
 												},
@@ -1481,7 +1487,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1546,7 +1553,8 @@
 																					{
 																						"example": "2014-01-01T05:20:00.12345Z",
 																						"format": "date-time",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					{
 																						"readOnly": true,
@@ -1566,7 +1574,8 @@
 																						"description": "UUID.",
 																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																						"maxLength": 36,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				]
 																			}
@@ -1604,7 +1613,8 @@
 																							"last_updated": {
 																								"example": "2014-01-01T05:20:00.12345Z",
 																								"format": "date-time",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"p50": {
 																								"description": "The p50 quantile of requests (in period_seconds).",
@@ -1667,7 +1677,8 @@
 																							"last_updated": {
 																								"example": "2014-01-01T05:20:00.12345Z",
 																								"format": "date-time",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"parameter_schemas": {
 																								"description": "An operation schema object containing a response.",
@@ -1744,7 +1755,8 @@
 																							"last_updated": {
 																								"example": "2014-01-01T05:20:00.12345Z",
 																								"format": "date-time",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"route": {
 																								"description": "Target route.",
@@ -1788,7 +1800,8 @@
 																							"last_updated": {
 																								"example": "2014-01-01T05:20:00.12345Z",
 																								"format": "date-time",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"suggested_threshold": {
 																								"properties": {
@@ -1880,7 +1893,8 @@
 																									"created_at": {
 																										"example": "2014-01-01T05:20:00.12345Z",
 																										"format": "date-time",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"id": {
 																										"allOf": [
@@ -1893,7 +1907,8 @@
 																												"description": "UUID.",
 																												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																												"maxLength": 36,
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										]
 																									},
@@ -2257,7 +2272,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -2272,7 +2288,8 @@
 															{
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															{
 																"readOnly": true,
@@ -2305,7 +2322,8 @@
 																"description": "UUID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														]
 													}
@@ -3096,7 +3114,8 @@
 														{
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"readOnly": true,
@@ -3131,7 +3150,8 @@
 															"description": "UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													]
 												},
@@ -3441,7 +3461,8 @@
 																{
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																{
 																	"readOnly": true,
@@ -3476,7 +3497,8 @@
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															]
 														},
@@ -3827,7 +3849,8 @@
 											"description": "UUID.",
 											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 											"maxLength": 36,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									]
 								}

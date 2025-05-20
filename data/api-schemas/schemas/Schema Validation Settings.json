@@ -104,7 +104,8 @@
 															"description": "UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													]
 												}
@@ -669,7 +670,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -701,7 +703,8 @@
 																"description": "UUID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														]
 													}
@@ -977,7 +980,8 @@
 															"description": "UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													]
 												}
@@ -1590,7 +1594,8 @@
 																"description": "UUID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														]
 													}
@@ -2222,7 +2227,8 @@
 															"description": "UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													]
 												}

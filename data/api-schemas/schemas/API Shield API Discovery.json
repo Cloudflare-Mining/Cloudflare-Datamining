@@ -135,7 +135,8 @@
 														{
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"readOnly": true,
@@ -297,7 +298,8 @@
 																{
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																{
 																	"readOnly": true,
@@ -697,7 +699,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -718,7 +721,8 @@
 																					{
 																						"example": "2014-01-01T05:20:00.12345Z",
 																						"format": "date-time",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					{
 																						"readOnly": true,
@@ -765,7 +769,8 @@
 																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																]
 															},
@@ -774,7 +779,8 @@
 																	{
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"readOnly": true,
