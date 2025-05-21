@@ -265,6 +265,7 @@
 	"Cloudflare": {
 		"compatibilityFlags": {
 			"allow_custom_ports": "boolean",
+			"allow_eval_during_startup": "boolean",
 			"assets_navigation_prefers_asset_serving": "boolean",
 			"blob_standard_mime_type": "boolean",
 			"brotli_content_encoding": "boolean",
@@ -280,6 +281,7 @@
 			"durable_object_fetch_requires_full_url": "boolean",
 			"dynamic_dispatch_tunnel_exceptions": "boolean",
 			"enable_navigator_language": "boolean",
+			"enable_request_signal": "boolean",
 			"enable_weak_ref": "boolean",
 			"export_commonjs_default": "boolean",
 			"fetch_refuses_unknown_protocols": "boolean",
