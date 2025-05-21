@@ -11,7 +11,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -21,7 +22,8 @@
 				"schema": {
 					"description": "Indicator feed ID",
 					"example": 12,
-					"type": "integer"
+					"type": "integer",
+					"x-auditable": true
 				}
 			}
 		],
@@ -125,17 +127,20 @@
 												"file_id": {
 													"description": "Feed id",
 													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"filename": {
 													"description": "Name of the file unified in our system",
 													"example": "snapshot_file.unified",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Current status of upload, should be unified",
 													"example": "unified",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}
@@ -270,7 +275,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -396,36 +402,44 @@
 													"created_on": {
 														"description": "The date and time when the data entry was created",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"description": {
 														"description": "The description of the example test",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "The unique identifier for the indicator feed",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"is_attributable": {
 														"description": "Whether the indicator feed can be attributed to a provider",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"is_downloadable": {
 														"description": "Whether the indicator feed can be downloaded",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"is_public": {
 														"description": "Whether the indicator feed is exposed to customers",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"modified_on": {
 														"description": "The date and time when the data entry was last modified",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "The name of the indicator feed",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												}
 											},
@@ -562,36 +576,44 @@
 															"created_on": {
 																"description": "The date and time when the data entry was created",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": {
 																"description": "The description of the example test",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "The unique identifier for the indicator feed",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"is_attributable": {
 																"description": "Whether the indicator feed can be attributed to a provider",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_downloadable": {
 																"description": "Whether the indicator feed can be downloaded",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_public": {
 																"description": "Whether the indicator feed is exposed to customers",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"modified_on": {
 																"description": "The date and time when the data entry was last modified",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The name of the indicator feed",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														}
 													},
@@ -719,7 +741,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -729,7 +752,8 @@
 				"schema": {
 					"description": "Indicator feed ID",
 					"example": 12,
-					"type": "integer"
+					"type": "integer",
+					"x-auditable": true
 				}
 			}
 		],
@@ -844,27 +868,33 @@
 												"created_on": {
 													"description": "The date and time when the data entry was created",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "The description of the example test",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The unique identifier for the indicator feed",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"is_attributable": {
 													"description": "Whether the indicator feed can be attributed to a provider",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"is_downloadable": {
 													"description": "Whether the indicator feed can be downloaded",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"is_public": {
 													"description": "Whether the indicator feed is exposed to customers",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"latest_upload_status": {
 													"description": "Status of the latest snapshot uploaded",
@@ -876,24 +906,29 @@
 														"Complete",
 														"Error"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "The date and time when the data entry was last modified",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the indicator feed",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"provider_id": {
 													"description": "The unique identifier for the provider",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"provider_name": {
 													"description": "The provider of the indicator feed",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}
@@ -1017,27 +1052,33 @@
 														"created_on": {
 															"description": "The date and time when the data entry was created",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "The description of the example test",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique identifier for the indicator feed",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"is_attributable": {
 															"description": "Whether the indicator feed can be attributed to a provider",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_downloadable": {
 															"description": "Whether the indicator feed can be downloaded",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_public": {
 															"description": "Whether the indicator feed is exposed to customers",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"latest_upload_status": {
 															"description": "Status of the latest snapshot uploaded",
@@ -1049,24 +1090,29 @@
 																"Complete",
 																"Error"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The date and time when the data entry was last modified",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the indicator feed",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"provider_id": {
 															"description": "The unique identifier for the provider",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"provider_name": {
 															"description": "The provider of the indicator feed",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -1192,7 +1238,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1202,7 +1249,8 @@
 				"schema": {
 					"description": "Indicator feed ID",
 					"example": 12,
-					"type": "integer"
+					"type": "integer",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1340,7 +1388,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1457,27 +1506,33 @@
 												"properties": {
 													"description": {
 														"description": "The description of the example test",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "The unique identifier for the indicator feed",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"is_attributable": {
 														"description": "Whether the indicator feed can be attributed to a provider",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"is_downloadable": {
 														"description": "Whether the indicator feed can be downloaded",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"is_public": {
 														"description": "Whether the indicator feed is exposed to customers",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "The name of the indicator feed",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												}
 											},
@@ -1605,27 +1660,33 @@
 														"properties": {
 															"description": {
 																"description": "The description of the example test",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "The unique identifier for the indicator feed",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"is_attributable": {
 																"description": "Whether the indicator feed can be attributed to a provider",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_downloadable": {
 																"description": "Whether the indicator feed can be downloaded",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_public": {
 																"description": "Whether the indicator feed is exposed to customers",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The name of the indicator feed",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														}
 													},
@@ -1753,7 +1814,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1768,11 +1830,13 @@
 						"properties": {
 							"description": {
 								"description": "The description of the example test",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The name of the indicator feed",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						}
 					}
@@ -1890,36 +1954,44 @@
 												"created_on": {
 													"description": "The date and time when the data entry was created",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "The description of the example test",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The unique identifier for the indicator feed",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"is_attributable": {
 													"description": "Whether the indicator feed can be attributed to a provider",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"is_downloadable": {
 													"description": "Whether the indicator feed can be downloaded",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"is_public": {
 													"description": "Whether the indicator feed is exposed to customers",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "The date and time when the data entry was last modified",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the indicator feed",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}
@@ -2042,36 +2114,44 @@
 														"created_on": {
 															"description": "The date and time when the data entry was created",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "The description of the example test",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique identifier for the indicator feed",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"is_attributable": {
 															"description": "Whether the indicator feed can be attributed to a provider",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_downloadable": {
 															"description": "Whether the indicator feed can be downloaded",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_public": {
 															"description": "Whether the indicator feed is exposed to customers",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The date and time when the data entry was last modified",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the indicator feed",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -2193,7 +2273,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2203,7 +2284,8 @@
 				"schema": {
 					"description": "Indicator feed ID",
 					"example": 12,
-					"type": "integer"
+					"type": "integer",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2215,27 +2297,32 @@
 							"description": {
 								"description": "The new description of the feed",
 								"example": "This is an example description",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"is_attributable": {
 								"description": "The new is_attributable value of the feed",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"is_downloadable": {
 								"description": "The new is_downloadable value of the feed",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"is_public": {
 								"description": "The new is_public value of the feed",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The new name of the feed",
 								"example": "indicator_list",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						}
 					}
@@ -2353,36 +2440,44 @@
 												"created_on": {
 													"description": "The date and time when the data entry was created",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "The description of the example test",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The unique identifier for the indicator feed",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"is_attributable": {
 													"description": "Whether the indicator feed can be attributed to a provider",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"is_downloadable": {
 													"description": "Whether the indicator feed can be downloaded",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"is_public": {
 													"description": "Whether the indicator feed is exposed to customers",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "The date and time when the data entry was last modified",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the indicator feed",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}
@@ -2505,36 +2600,44 @@
 														"created_on": {
 															"description": "The date and time when the data entry was created",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "The description of the example test",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique identifier for the indicator feed",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"is_attributable": {
 															"description": "Whether the indicator feed can be attributed to a provider",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_downloadable": {
 															"description": "Whether the indicator feed can be downloaded",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_public": {
 															"description": "Whether the indicator feed is exposed to customers",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The date and time when the data entry was last modified",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the indicator feed",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -2656,7 +2759,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2666,7 +2770,8 @@
 				"schema": {
 					"description": "Indicator feed ID",
 					"example": 12,
-					"type": "integer"
+					"type": "integer",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2787,17 +2892,20 @@
 												"file_id": {
 													"description": "Feed id",
 													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"filename": {
 													"description": "Name of the file unified in our system",
 													"example": "snapshot_file.unified",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Current status of upload, should be unified",
 													"example": "unified",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}
@@ -2928,7 +3036,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2940,12 +3049,14 @@
 							"account_tag": {
 								"description": "The Cloudflare account tag of the account to change permissions on",
 								"example": "823f45f16fd2f7e21e1e054aga4d2859",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"feed_id": {
 								"description": "The ID of the feed to add/remove permissions on",
 								"example": 1,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							}
 						}
 					}
@@ -3052,7 +3163,8 @@
 											"properties": {
 												"success": {
 													"description": "Whether the update succeeded or not",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											}
 										}
@@ -3164,7 +3276,8 @@
 													"properties": {
 														"success": {
 															"description": "Whether the update succeeded or not",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													}
 												}
@@ -3286,7 +3399,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3298,12 +3412,14 @@
 							"account_tag": {
 								"description": "The Cloudflare account tag of the account to change permissions on",
 								"example": "823f45f16fd2f7e21e1e054aga4d2859",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"feed_id": {
 								"description": "The ID of the feed to add/remove permissions on",
 								"example": 1,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							}
 						}
 					}
@@ -3410,7 +3526,8 @@
 											"properties": {
 												"success": {
 													"description": "Whether the update succeeded or not",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											}
 										}
@@ -3522,7 +3639,8 @@
 													"properties": {
 														"success": {
 															"description": "Whether the update succeeded or not",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													}
 												}
