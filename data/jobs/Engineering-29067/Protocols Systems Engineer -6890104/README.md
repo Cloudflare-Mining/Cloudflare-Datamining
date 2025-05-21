@@ -5,45 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available location: </strong>Lisbon, Portugal</p>
-<p><strong>Role Summary</strong></p>
-<p>The Vulnerability Management Team oversees the entire lifecycle of a vulnerability, encompassing everything from configuring and maintaining vulnerability scanners to partnering with remediation teams, optimizing and scaling processes. This intern role entails reviewing and triaging vulnerability reports, developing automated solutions, streamlining and documenting processes.</p>
-<p><strong>About the Internship Program</strong></p>
-<p>The ideal summer intern is passionate about making the Internet a better place. You will work with strong engineers. You will push code this summer that touches hundreds of millions of web surfers. We like to get things done, so we are looking for interns who are curious and can take on and complete projects. This is a great opportunity for engineers that want to learn to develop at Internet scale.</p>
-<p>What would you do as a Cloudflare intern?</p>
+<p><strong>Available Locations: Lisbon, Portugal or London, UK&nbsp;</strong></p>
+<p><strong>About the team:</strong></p>
 <ul>
-	<li>Ship and deliver projects over 12-16 weeks with autonomy and support.</li>
-	<li>Work cross-functionally with various teams.</li>
-	<li>Be assigned a mentor to guide you through the internship and help with career goals.</li>
-	<li>Build your network across the company through our various in and out of office socials, networking programs, Employee Resource Group (ERG) programs, and Activity Groups (Cat or dog lovers, we’ve got communities for you! @Catflare @Doggos).</li>
-	<li>Present your project to the entire company at the end of the internship.</li>
-	<li>Get direct access to our executives and leadership team including our co-founders.</li>
-	<li>Learn and develop skills through our professional development workshops.</li>
-	<li>Write for our&nbsp;<a href="https://blog.cloudflare.com/" target="_blank">Cloudflare blog</a>&nbsp;and be featured on&nbsp;<a class="oiM5sf" href="http://cloudflare.tv/" target="_blank">Cloudflare.tv</a>&nbsp;sessions.&nbsp;</li>
-	<li>Receive Cloudflare swag and free Cloudflare products!</li>
+	<li>We are a team of software engineers who are responsible for the services which receive tens of millions of requests per second from the internet, at millisecond latencies, terminating HTTP and TLS, filtering and routing them, and forwarding them to the appropriate upstream services.</li>
+	<li>Engineers in the team are involved in building and operating production systems at huge scale, handling the full breadth and diversity of traffic patterns on the internet. This includes accepting traffic over all HTTP protocols, working on new standards in conjunction with bodies such as the IETF and industry partners, and measuring and improving the behavior of all related systems.</li>
+	<li>The team mostly works in Rust, with some time spent supporting legacy systems built with C and Lua.</li>
 </ul>
-<p>You can check out our&nbsp;<a href="https://blog.cloudflare.com/tag/internship-experience/" target="_blank">internship blogs</a>&nbsp;to learn more about our program and hear directly from our past interns.</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Some of the first projects you’ll work on:</strong></p>
 <ul>
-	<li>Triage vulnerabilities that are identified by different vulnerability scanners, such as OS, network, web, cloud and container scanners.</li>
-	<li>Develop automated solutions that focus on removing manual tasks, eliminate inefficiencies and optimise work processes.</li>
-	<li>Support stakeholder queries regarding vulnerabilities, scanning, processes and remediation.</li>
-	<li>Streamline and document vulnerability management processes.</li>
+	<li>Measure performance of HTTP/2 and HTTP/3 at scale in many different environments. Identify areas where the performance can be improved.</li>
+	<li>Build the rust-based next-gen proxy that is replacing nginx and create a migration strategy for a functionality from old software to new software.</li>
 </ul>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p><strong>Desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Proficient at automating using scripting languages (Python, Go).</li>
-	<li>Experience with cloud services and applications (AWS, GCP, Azure).</li>
-	<li>Good understanding of common networking protocols, encryption standards and the linux operating system.</li>
-	<li>Understanding of at least one cybersecurity best practice/framework, such as NIST, MITRE, ATT&amp;CK Framework, and OWASP top 10.</li>
-	<li>Ability to effectively communicate, both verbal and written, regarding technical and security related concepts, processes and feedback.</li>
+	<li>Substantial hands-on systems level programming and troubleshooting experience.</li>
+	<li>Experience operating high performance and huge scale services.</li>
+	<li>A drive for continuous improvement when it comes to both operations and new product development</li>
+	<li>Experience of working with Product teams to balance technical agenda, operation of existing systems and new product development</li>
+	<li>Experience analyzing and communicating complex technical requirements and concepts, identify the highest priority areas, and carve a path to deliver&nbsp;</li>
+	<li>Driving communication and consensus across teams</li>
+	<li>Ability to get things done: implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
+	<li>Strong curiosity, a desire to learn new things, and teach others</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<p><strong>Nice to have</strong></p>
 <ul>
-	<li>Experience with common vulnerability scanning tools, and developing procedures, reports and processes.</li>
-	<li>Experience deploying and operating vulnerability scanners, such as Qualys, Rapid7, OpenVAS, etc.)</li>
-	<li>Experience with containerized environments.</li>
-	<li>Experience or familiarity working with Cloudflare’s products offering (e.g. Workers)</li>
+	<li>Knowledge of web server implementations (such as NGINX)</li>
+	<li>Detailed knowledge of HTTP and transport protocols (eg TCP, UDP, QUIC).</li>
+	<li>Knowledge of Layer 4-7 protocols (examples: HTTP, TCP, UDP, QUIC, gRPC).</li>
+	<li>Cryptography experience</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
