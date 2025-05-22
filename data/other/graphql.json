@@ -378,7 +378,8 @@
 		"rateLimited": "Was the request rate limited?: 1 = rate limit applied, 0 = rate limit not applied",
 		"statusCode": "HTTP Status Code of provider response",
 		"tokensIn": "Number of tokens in the request",
-		"tokensOut": "Number of tokens in the response"
+		"tokensOut": "Number of tokens in the response",
+		"wholesale": "Was the request use wholesale: 1 = applied, 0 = not applied"
 	},
 	"AccountAiGatewayRequestsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
