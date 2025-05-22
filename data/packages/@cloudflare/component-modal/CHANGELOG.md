@@ -1,5 +1,13 @@
 # Change Log
 
+## 9.0.3
+
+### Patch Changes
+
+- Updated dependencies [882eac23dc]
+  - @cloudflare/component-button@9.1.0
+  - @cloudflare/component-checkbox@6.0.2
+
 ## 9.0.2
 
 ### Patch Changes

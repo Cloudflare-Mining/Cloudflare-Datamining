@@ -1,5 +1,16 @@
 # Change Log
 
+## 6.0.3
+
+### Patch Changes
+
+- Updated dependencies [882eac23dc]
+  - @cloudflare/component-button@9.1.0
+  - @cloudflare/component-modal@9.0.3
+  - @cloudflare/component-box@5.0.2
+  - @cloudflare/component-progress@10.0.3
+  - @cloudflare/component-test-dummy@5.0.2
+
 ## 6.0.2
 
 ### Patch Changes

@@ -8,27 +8,27 @@
 			"name": "@flarelabs-net/wrangler-build-time-fs-assets-polyfilling",
 			"version": "0.0.0",
 			"devDependencies": {
-				"@types/node": "^22.14.0",
-				"esbuild": "^0.25.2",
-				"eslint": "^9.24.0",
 				"tsup": "^8.4.0",
-				"typescript": "^5.8.3"
+				"eslint": "^9.24.0",
+				"esbuild": "^0.25.2",
+				"typescript": "^5.8.3",
+				"@types/node": "^22.14.0"
 			},
 			"bin": {
 				"wrangler-build-time-fs-assets-polyfilling": "dist/index.js"
 			},
 			"dist": {
-				"integrity": "sha512-8Nq96CtZD+NHRbHl9yooHIclCDhQx3Ayg+H6P4OlapdcalZq7NQ7YRN7BIF+UVNX/uFHZiE+IZwdKVr2gR+8mA==",
 				"shasum": "e4d13544bf40e62f246b52880f3458ac07357321",
 				"tarball": "https://registry.npmjs.org/@flarelabs-net/wrangler-build-time-fs-assets-polyfilling/-/wrangler-build-time-fs-assets-polyfilling-0.0.0.tgz",
 				"fileCount": 5,
-				"unpackedSize": 13276,
+				"integrity": "sha512-8Nq96CtZD+NHRbHl9yooHIclCDhQx3Ayg+H6P4OlapdcalZq7NQ7YRN7BIF+UVNX/uFHZiE+IZwdKVr2gR+8mA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQChzpVP/m3V3KqRXAAE+RorZu107ahKDGz7HXXdyM7kRgIgN/i5L3SDMQipk3CxT023h0HpD8GnkEUNy3NUAib4aYw="
+						"sig": "MEUCIQChzpVP/m3V3KqRXAAE+RorZu107ahKDGz7HXXdyM7kRgIgN/i5L3SDMQipk3CxT023h0HpD8GnkEUNy3NUAib4aYw=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 13276
 			}
 		}
 	}

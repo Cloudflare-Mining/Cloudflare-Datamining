@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.1.0
+
+### Minor Changes
+
+- 882eac23dc: Updated Button font weight and dark mode colors to latest designs
+
 ## 6.0.1
 
 ### Patch Changes

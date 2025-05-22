@@ -1,5 +1,14 @@
 # @cloudflare/component-forms-hook-form
 
+## 3.0.3
+
+### Patch Changes
+
+- Updated dependencies [882eac23dc]
+  - @cloudflare/component-button@9.1.0
+  - @cloudflare/component-forms@7.0.3
+  - @cloudflare/elements@4.0.2
+
 ## 3.0.2
 
 ### Patch Changes
