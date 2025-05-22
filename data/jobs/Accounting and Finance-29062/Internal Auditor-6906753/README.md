@@ -5,45 +5,64 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Location: Lisbon, Portugal or London, UK</strong></h4>
-<h4><strong>About the department</strong></h4>
-<p>Cloudflare’s Application Security department builds and runs the software that detects and mitigates malicious, abusive, and fraudulent HTTP requests going through Cloudflare network before they reach our customer sites. We achieve this by harnessing the vast amount of internet traffic data available to us to create and manage products including WAF, Bot Management, Fraud Detection and more. We use state of art Artificial Intelligence and Machine Learning techniques in security attack detection and mitigation. The team is a multidisciplinary team where system and software engineers, security researchers and analysts, and data scientists work together to identify active adversaries or attackers, and design and implement machine learning models and engineering solutions to protect customers from these security attacks.&nbsp;</p>
-<h4><strong>What you'll do</strong></h4>
+<p><strong>Available Locations:</strong> Texas: Austin (preferred), Houston, San Antonio, Dallas</p>
+<p><strong>About the Department</strong></p>
+<p>The Internal Audit (IA) organization is responsible for delivering high-quality, objective, and independent assurance over the Company’s key business and financial risks to the Audit Committee and Management in a cost-effective manner and in alignment with professional standards. In addition to managing the Company’s SOX compliance program, the function is expanding its focus to include broader operational and strategic risks. Reflecting the Company’s core value of continuous improvement, Internal Audit is also exploring more efficient audit approaches and adopting industry best practices where appropriate.</p>
+<p><strong>About the Role</strong></p>
+<p>We’re looking for a curious, collaborative, and detail-oriented Internal Auditor to join our Internal Audit team. In this role, you’ll perform risk-based audits across business functions, helping evaluate the efficiency and effectiveness of processes, controls, and operations. You’ll work closely with stakeholders to identify improvement opportunities that drive value—not just compliance.</p>
+<p>This is a great opportunity for someone who thrives in fast-paced environments, enjoys learning how businesses operate end-to-end, and wants to make a visible impact.</p>
+<p><strong>What&nbsp; you’ll do</strong></p>
 <ul>
-	<li>Hands-on experience working with threat detection and prevention product engineering teams, recognizing vulnerabilities and configuring mitigations or managing risks in existing and new products.</li>
-	<li>Apply a deep understanding of security vulnerabilities in web application and application security.&nbsp;</li>
-	<li>Reverse and research n-day exploits, proactively detect patterns of bot and fraud attacks, review false positive and false negative reports, and recommend security configurations.</li>
-	<li>Excellent at communicating the details about security forensics to technical and non-technical audiences. Including writing public facing research blogs.</li>
-	<li>Authoring periodic report on trends on Internet traffic and security attack insights</li>
-	<li>Experience with modern cloud-based technologies used to deliver rapidly-changing products at scale.</li>
-	<li>Conduct penetration testing to identify security gaps and potential exploits across applications and services.</li>
-	<li>Develop, maintain, and enhance security dashboards to monitor and analyze attack trends, bot activity, and fraud detection metrics.</li>
-	<li>Leverage strong coding skills to build and automate security tools, improve system engineering workflows, and develop new security rules and heuristics.</li>
+	<li>Support the planning and execution of operational audits across various departments (e.g., Finance, Procurement, Sales, Customer Support, HR, etc.) under the guidance of senior audit team members.</li>
+	<li>Participate in process walkthroughs and assist in performing risk assessments and control testing to evaluate design and operating effectiveness.</li>
+	<li>Help document audit observations, identify potential control gaps, and contribute to the development of practical recommendations.</li>
+	<li>Assist in drafting clear and concise audit deliverables, including working papers and sections of audit reports.</li>
+	<li>Work with business stakeholders to clarify findings and support the tracking of remediation actions.</li>
+	<li>Leverage data analysis tools, automation, or AI where appropriate to support audit procedures and enhance insights.</li>
+	<li>Stay informed about company operations and emerging risks relevant to internal audit work.</li>
+	<li>Contribute to special projects, advisory reviews, investigations, and the ongoing improvement of audit processes.</li>
+	<li>Report to the Internal Audit Senior Director.</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>A degree in computer science, IT, systems engineering, or related qualification.</li>
-	<li>4 years of work experience with incident detection, incident response, forensics, reverse engineering, security research or similar.</li>
-	<li>Ability to work under pressure in a fast-paced environment.</li>
-	<li>Strong attention to detail with an analytical mind and outstanding problem-solving skills. Excellent organizational skills.</li>
-	<li>Great awareness of cybersecurity trends and hacking techniques.</li>
-	<li>Demonstrated results in identifying, tracking and resolving issues to resolution in the areas of cybersecurity.</li>
-	<li>Strong written and verbal communication skills.</li>
-	<li>Experience in OWASP, security standards and best practice</li>
-	<li>Strong SQL experience.</li>
-	<li>Proficiency in penetration testing methodologies, tools, and vulnerability assessment techniques.</li>
-	<li>Experience in building security dashboards using tools like Grafana or similar visualization platforms.</li>
-	<li>Strong programming experience with expertise in Python, Go, Rust, or JavaScript to develop security tools and automation.</li>
-	<li>Prior experience or interest in Web Security, HTTP protocols, Python, Jupyter Notebook, and JavaScript is a huge plus!</li>
-	<li>Knowledge and experience with machine learning, statistical inference, and AI in general is a huge plus</li>
+	<li>2+ years of auditing, accounting, or finance experience</li>
+	<li>Foundational knowledge of internal controls, risk assessment, and audit techniques.</li>
+	<li>Strong analytical and problem-solving skills, with an ability to quickly understand complex processes.</li>
+	<li>Excellent written and verbal communication skills.</li>
+	<li>Comfort working both independently and as part of a team.</li>
+	<li>Curiosity, integrity, and a drive to deliver high-impact results.</li>
+	<li>Bachelor's degree in accounting, finance, business, or related field.</li>
+	<li>CPA, CIA, or CISA certification (or progress toward) is a plus.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p>&nbsp;</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Knowledge and experience with columnar database like Clickhouse</li>
-	<li>Familiarity writing and optimizing advanced SQL queries</li>
-	<li>Good Linux/UNIX systems knowledge</li>
-	<li>Presented in security conferences such as Blackhat, Defcon, Bsides etc.</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
 </ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

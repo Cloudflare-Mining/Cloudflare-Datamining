@@ -5,7 +5,8 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations: Austin, TX&nbsp; OR other Texas Metro cities (Houston, Dallas, San Antonio)</h4>
+<h4>Available Locations: Austin, TX&nbsp;</h4>
+<p><strong>*Relocation: </strong>This position is based in Austin, TX and we will provide relocation assistance.</p>
 <p><strong>About the Department</strong></p>
 <p>The Internal Audit (IA) organization is responsible for delivering high-quality, objective and independent assurance over Cloudflare’s key technology and cyber risks to the Audit Committee and Management consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward deeper coverage of cybersecurity risks, exploring more efficient audit approaches and industry best practices where appropriate.&nbsp;</p>
 <p>We are seeking a highly motivated, technical, and solution-focused candidate to lead and execute against Cloudflare’s technology and cybersecurity audit plan to evaluate the effectiveness of control and management of risk. The ideal candidate will bring a deep understanding of cybersecurity risks, data analytics capabilities, and internal audit experience with best-in-class audit practices.&nbsp;</p>
@@ -33,6 +34,34 @@
 	<li>High level of integrity, professionalism, and attention to detail.</li>
 	<li>Familiarity with cybersecurity frameworks and assessing against these using advanced auditing techniques.</li>
 	<li>Professional certifications such as: CISA, CISSP, etc.</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <p><br><br></p>
 <div class="content-conclusion">
