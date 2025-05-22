@@ -11,7 +11,8 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -124,7 +125,8 @@
 														"properties": {
 															"application_type_id": {
 																"description": "The identifier for the type of this application. There can be many applications with the same type. This refers to the `id` of a returned application type.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -133,12 +135,14 @@
 															},
 															"id": {
 																"description": "The identifier for this application. There is only one application per ID.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The name of the application or application type.",
 																"example": "Facebook",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -157,12 +161,14 @@
 															},
 															"id": {
 																"description": "The identifier for the type of this application. There can be many applications with the same type. This refers to the `id` of a returned application type.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The name of the application or application type.",
 																"example": "Facebook",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -292,7 +298,8 @@
 																"properties": {
 																	"application_type_id": {
 																		"description": "The identifier for the type of this application. There can be many applications with the same type. This refers to the `id` of a returned application type.",
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
@@ -301,12 +308,14 @@
 																	},
 																	"id": {
 																		"description": "The identifier for this application. There is only one application per ID.",
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "The name of the application or application type.",
 																		"example": "Facebook",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -325,12 +334,14 @@
 																	},
 																	"id": {
 																		"description": "The identifier for the type of this application. There can be many applications with the same type. This refers to the `id` of a returned application type.",
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "The name of the application or application type.",
 																		"example": "Facebook",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"

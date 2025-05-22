@@ -1,4 +1,409 @@
 {
+	"DELETE /accounts/{account_id}/devices/settings": {
+		"description": "Resets the current device settings for a Zero Trust account.",
+		"operationId": "zero-trust-accounts-delete-device-settings-for-zero-trust-account",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true,
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"disable_for_time": {
+													"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
+													"type": "number"
+												},
+												"gateway_proxy_enabled": {
+													"description": "Enable gateway proxy filtering on TCP.",
+													"example": true,
+													"type": "boolean"
+												},
+												"gateway_udp_proxy_enabled": {
+													"description": "Enable gateway proxy filtering on UDP.",
+													"example": true,
+													"type": "boolean"
+												},
+												"root_certificate_installation_enabled": {
+													"description": "Enable installation of cloudflare managed root certificate.",
+													"example": true,
+													"type": "boolean"
+												},
+												"use_zt_virtual_ip": {
+													"description": "Enable using CGNAT virtual IPv4.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Reset response for device settings for a Zero Trust account."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true,
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"disable_for_time": {
+															"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
+															"type": "number"
+														},
+														"gateway_proxy_enabled": {
+															"description": "Enable gateway proxy filtering on TCP.",
+															"example": true,
+															"type": "boolean"
+														},
+														"gateway_udp_proxy_enabled": {
+															"description": "Enable gateway proxy filtering on UDP.",
+															"example": true,
+															"type": "boolean"
+														},
+														"root_certificate_installation_enabled": {
+															"description": "Enable installation of cloudflare managed root certificate.",
+															"example": true,
+															"type": "boolean"
+														},
+														"use_zt_virtual_ip": {
+															"description": "Enable using CGNAT virtual IPv4.",
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Reset failure response device settings for a Zero Trust account."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Reset device settings for a Zero Trust account with defaults. This turns off all proxying.",
+		"tags": [
+			"Zero Trust accounts"
+		]
+	},
 	"GET /accounts/{account_id}/devices/settings": {
 		"description": "Describes the current device settings for a Zero Trust account.",
 		"operationId": "zero-trust-accounts-get-device-settings-for-zero-trust-account",
@@ -841,7 +1246,8 @@
 																		"enabled": {
 																			"description": "Enable activity logging.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -853,17 +1259,20 @@
 																		"enabled_download_phase": {
 																			"description": "Enable anti-virus scanning on downloads.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"enabled_upload_phase": {
 																			"description": "Enable anti-virus scanning on uploads.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"fail_closed": {
 																			"description": "Block requests for files that cannot be scanned.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"notification_settings": {
 																			"description": "Configure a message to display on the user's device when an antivirus search is performed.",
@@ -871,19 +1280,23 @@
 																			"properties": {
 																				"enabled": {
 																					"description": "Set notification on",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"include_context": {
 																					"description": "If true, context information will be passed as query parameters",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"msg": {
 																					"description": "Customize the message shown in the notification.",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"support_url": {
 																					"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -897,41 +1310,49 @@
 																	"properties": {
 																		"background_color": {
 																			"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"enabled": {
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"footer_text": {
 																			"description": "If mode is customized_block_page: block page footer text.",
 																			"example": "--footer--",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"header_text": {
 																			"description": "If mode is customized_block_page: block page header text.",
 																			"example": "--header--",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"include_context": {
 																			"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"logo_path": {
 																			"description": "If mode is customized_block_page: full URL to the logo file.",
 																			"example": "https://logos.com/a.png",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"mailto_address": {
 																			"description": "If mode is customized_block_page: admin email for users to contact.",
 																			"example": "admin@example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"mailto_subject": {
 																			"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																			"example": "Blocked User Inquiry",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"mode": {
 																			"default": "customized_block_page",
@@ -940,12 +1361,14 @@
 																				"customized_block_page",
 																				"redirect_uri"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "If mode is customized_block_page: block page title.",
 																			"example": "Cloudflare",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"suppress_footer": {
 																			"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
@@ -955,7 +1378,8 @@
 																		"target_uri": {
 																			"description": "If mode is redirect_uri: URI to which the user should be redirected.",
 																			"format": "uri",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -967,7 +1391,8 @@
 																		"inspection_mode": {
 																			"description": "Set the inspection mode to either `deep` or `shallow`.",
 																			"example": "deep",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -979,12 +1404,14 @@
 																		"non_identity_enabled": {
 																			"description": "Enable non-identity onramp support for Browser Isolation.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"url_browser_isolation_enabled": {
 																			"description": "Enable Clientless Browser Isolation.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -996,7 +1423,8 @@
 																		"id": {
 																			"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
 																			"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -1013,17 +1441,20 @@
 																			"description": "Certificate status (internal).",
 																			"example": "pending_deployment",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"enabled": {
 																			"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID of certificate (ID from MTLS certificate store).",
 																			"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"updated_at": {
 																			"format": "date-time",
@@ -1043,7 +1474,8 @@
 																		"enabled": {
 																			"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1055,7 +1487,8 @@
 																		"tls": {
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1067,7 +1500,8 @@
 																		"enabled": {
 																			"description": "Enable filtering via hosts for egress policies.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1079,7 +1513,8 @@
 																		"enabled": {
 																			"description": "Enable detecting protocol on initial bytes of client traffic.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1091,7 +1526,8 @@
 																		"enabled": {
 																			"description": "Enable sandbox.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"fallback_action": {
 																			"description": "Action to take when the file cannot be scanned.",
@@ -1099,7 +1535,8 @@
 																				"allow",
 																				"block"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1111,7 +1548,8 @@
 																		"enabled": {
 																			"description": "Enable inspecting encrypted HTTP traffic.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1238,7 +1676,8 @@
 																				"enabled": {
 																					"description": "Enable activity logging.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1250,17 +1689,20 @@
 																				"enabled_download_phase": {
 																					"description": "Enable anti-virus scanning on downloads.",
 																					"example": false,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"enabled_upload_phase": {
 																					"description": "Enable anti-virus scanning on uploads.",
 																					"example": false,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"fail_closed": {
 																					"description": "Block requests for files that cannot be scanned.",
 																					"example": false,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"notification_settings": {
 																					"description": "Configure a message to display on the user's device when an antivirus search is performed.",
@@ -1268,19 +1710,23 @@
 																					"properties": {
 																						"enabled": {
 																							"description": "Set notification on",
-																							"type": "boolean"
+																							"type": "boolean",
+																							"x-auditable": true
 																						},
 																						"include_context": {
 																							"description": "If true, context information will be passed as query parameters",
-																							"type": "boolean"
+																							"type": "boolean",
+																							"x-auditable": true
 																						},
 																						"msg": {
 																							"description": "Customize the message shown in the notification.",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"support_url": {
 																							"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -1294,41 +1740,49 @@
 																			"properties": {
 																				"background_color": {
 																					"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"enabled": {
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"footer_text": {
 																					"description": "If mode is customized_block_page: block page footer text.",
 																					"example": "--footer--",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"header_text": {
 																					"description": "If mode is customized_block_page: block page header text.",
 																					"example": "--header--",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"include_context": {
 																					"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"logo_path": {
 																					"description": "If mode is customized_block_page: full URL to the logo file.",
 																					"example": "https://logos.com/a.png",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"mailto_address": {
 																					"description": "If mode is customized_block_page: admin email for users to contact.",
 																					"example": "admin@example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"mailto_subject": {
 																					"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																					"example": "Blocked User Inquiry",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"mode": {
 																					"default": "customized_block_page",
@@ -1337,12 +1791,14 @@
 																						"customized_block_page",
 																						"redirect_uri"
 																					],
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"name": {
 																					"description": "If mode is customized_block_page: block page title.",
 																					"example": "Cloudflare",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"suppress_footer": {
 																					"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
@@ -1352,7 +1808,8 @@
 																				"target_uri": {
 																					"description": "If mode is redirect_uri: URI to which the user should be redirected.",
 																					"format": "uri",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1364,7 +1821,8 @@
 																				"inspection_mode": {
 																					"description": "Set the inspection mode to either `deep` or `shallow`.",
 																					"example": "deep",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1376,12 +1834,14 @@
 																				"non_identity_enabled": {
 																					"description": "Enable non-identity onramp support for Browser Isolation.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"url_browser_isolation_enabled": {
 																					"description": "Enable Clientless Browser Isolation.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1393,7 +1853,8 @@
 																				"id": {
 																					"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
 																					"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
@@ -1410,17 +1871,20 @@
 																					"description": "Certificate status (internal).",
 																					"example": "pending_deployment",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"enabled": {
 																					"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"id": {
 																					"description": "UUID of certificate (ID from MTLS certificate store).",
 																					"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"updated_at": {
 																					"format": "date-time",
@@ -1440,7 +1904,8 @@
 																				"enabled": {
 																					"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1452,7 +1917,8 @@
 																				"tls": {
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1464,7 +1930,8 @@
 																				"enabled": {
 																					"description": "Enable filtering via hosts for egress policies.",
 																					"example": false,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1476,7 +1943,8 @@
 																				"enabled": {
 																					"description": "Enable detecting protocol on initial bytes of client traffic.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1488,7 +1956,8 @@
 																				"enabled": {
 																					"description": "Enable sandbox.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"fallback_action": {
 																					"description": "Action to take when the file cannot be scanned.",
@@ -1496,7 +1965,8 @@
 																						"allow",
 																						"block"
 																					],
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1508,7 +1978,8 @@
 																				"enabled": {
 																					"description": "Enable inspecting encrypted HTTP traffic.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1679,17 +2150,20 @@
 									"description": "Certificate status (internal).",
 									"example": "pending_deployment",
 									"readOnly": true,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"enabled": {
 									"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"x-auditable": true
 								},
 								"id": {
 									"description": "UUID of certificate (ID from MTLS certificate store).",
 									"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"updated_at": {
 									"format": "date-time",
@@ -1720,17 +2194,20 @@
 											"description": "Certificate status (internal).",
 											"example": "pending_deployment",
 											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"enabled": {
 											"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"id": {
 											"description": "UUID of certificate (ID from MTLS certificate store).",
 											"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"updated_at": {
 											"format": "date-time",
@@ -1945,7 +2422,8 @@
 													"default": false,
 													"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"settings_by_rule_type": {
 													"description": "Logging settings by rule type.",
@@ -1956,13 +2434,15 @@
 																	"default": false,
 																	"description": "Log all requests to this service.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"log_blocks": {
 																	"default": false,
 																	"description": "Log only blocking requests to this service.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -1973,13 +2453,15 @@
 																	"default": false,
 																	"description": "Log all requests to this service.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"log_blocks": {
 																	"default": false,
 																	"description": "Log only blocking requests to this service.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -1990,13 +2472,15 @@
 																	"default": false,
 																	"description": "Log all requests to this service.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"log_blocks": {
 																	"default": false,
 																	"description": "Log only blocking requests to this service.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2095,7 +2579,8 @@
 															"default": false,
 															"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"settings_by_rule_type": {
 															"description": "Logging settings by rule type.",
@@ -2106,13 +2591,15 @@
 																			"default": false,
 																			"description": "Log all requests to this service.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"log_blocks": {
 																			"default": false,
 																			"description": "Log only blocking requests to this service.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -2123,13 +2610,15 @@
 																			"default": false,
 																			"description": "Log all requests to this service.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"log_blocks": {
 																			"default": false,
 																			"description": "Log only blocking requests to this service.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -2140,13 +2629,15 @@
 																			"default": false,
 																			"description": "Log all requests to this service.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"log_blocks": {
 																			"default": false,
 																			"description": "Log only blocking requests to this service.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -2744,7 +3235,8 @@
 											"enabled": {
 												"description": "Enable activity logging.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -2756,17 +3248,20 @@
 											"enabled_download_phase": {
 												"description": "Enable anti-virus scanning on downloads.",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"enabled_upload_phase": {
 												"description": "Enable anti-virus scanning on uploads.",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"fail_closed": {
 												"description": "Block requests for files that cannot be scanned.",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"notification_settings": {
 												"description": "Configure a message to display on the user's device when an antivirus search is performed.",
@@ -2774,19 +3269,23 @@
 												"properties": {
 													"enabled": {
 														"description": "Set notification on",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"include_context": {
 														"description": "If true, context information will be passed as query parameters",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"msg": {
 														"description": "Customize the message shown in the notification.",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"support_url": {
 														"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -2800,41 +3299,49 @@
 										"properties": {
 											"background_color": {
 												"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"enabled": {
 												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"footer_text": {
 												"description": "If mode is customized_block_page: block page footer text.",
 												"example": "--footer--",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"header_text": {
 												"description": "If mode is customized_block_page: block page header text.",
 												"example": "--header--",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"include_context": {
 												"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"logo_path": {
 												"description": "If mode is customized_block_page: full URL to the logo file.",
 												"example": "https://logos.com/a.png",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"mailto_address": {
 												"description": "If mode is customized_block_page: admin email for users to contact.",
 												"example": "admin@example.com",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"mailto_subject": {
 												"description": "If mode is customized_block_page: subject line for emails created from block page.",
 												"example": "Blocked User Inquiry",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"mode": {
 												"default": "customized_block_page",
@@ -2843,12 +3350,14 @@
 													"customized_block_page",
 													"redirect_uri"
 												],
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"name": {
 												"description": "If mode is customized_block_page: block page title.",
 												"example": "Cloudflare",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"suppress_footer": {
 												"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
@@ -2858,7 +3367,8 @@
 											"target_uri": {
 												"description": "If mode is redirect_uri: URI to which the user should be redirected.",
 												"format": "uri",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -2870,7 +3380,8 @@
 											"inspection_mode": {
 												"description": "Set the inspection mode to either `deep` or `shallow`.",
 												"example": "deep",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -2882,12 +3393,14 @@
 											"non_identity_enabled": {
 												"description": "Enable non-identity onramp support for Browser Isolation.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"url_browser_isolation_enabled": {
 												"description": "Enable Clientless Browser Isolation.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -2899,7 +3412,8 @@
 											"id": {
 												"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
 												"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -2916,17 +3430,20 @@
 												"description": "Certificate status (internal).",
 												"example": "pending_deployment",
 												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"enabled": {
 												"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID of certificate (ID from MTLS certificate store).",
 												"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"updated_at": {
 												"format": "date-time",
@@ -2946,7 +3463,8 @@
 											"enabled": {
 												"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -2958,7 +3476,8 @@
 											"tls": {
 												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -2970,7 +3489,8 @@
 											"enabled": {
 												"description": "Enable filtering via hosts for egress policies.",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -2982,7 +3502,8 @@
 											"enabled": {
 												"description": "Enable detecting protocol on initial bytes of client traffic.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -2994,7 +3515,8 @@
 											"enabled": {
 												"description": "Enable sandbox.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"fallback_action": {
 												"description": "Action to take when the file cannot be scanned.",
@@ -3002,7 +3524,8 @@
 													"allow",
 													"block"
 												],
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -3014,7 +3537,8 @@
 											"enabled": {
 												"description": "Enable inspecting encrypted HTTP traffic.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -3116,7 +3640,8 @@
 																		"enabled": {
 																			"description": "Enable activity logging.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -3128,17 +3653,20 @@
 																		"enabled_download_phase": {
 																			"description": "Enable anti-virus scanning on downloads.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"enabled_upload_phase": {
 																			"description": "Enable anti-virus scanning on uploads.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"fail_closed": {
 																			"description": "Block requests for files that cannot be scanned.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"notification_settings": {
 																			"description": "Configure a message to display on the user's device when an antivirus search is performed.",
@@ -3146,19 +3674,23 @@
 																			"properties": {
 																				"enabled": {
 																					"description": "Set notification on",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"include_context": {
 																					"description": "If true, context information will be passed as query parameters",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"msg": {
 																					"description": "Customize the message shown in the notification.",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"support_url": {
 																					"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -3172,41 +3704,49 @@
 																	"properties": {
 																		"background_color": {
 																			"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"enabled": {
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"footer_text": {
 																			"description": "If mode is customized_block_page: block page footer text.",
 																			"example": "--footer--",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"header_text": {
 																			"description": "If mode is customized_block_page: block page header text.",
 																			"example": "--header--",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"include_context": {
 																			"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"logo_path": {
 																			"description": "If mode is customized_block_page: full URL to the logo file.",
 																			"example": "https://logos.com/a.png",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"mailto_address": {
 																			"description": "If mode is customized_block_page: admin email for users to contact.",
 																			"example": "admin@example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"mailto_subject": {
 																			"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																			"example": "Blocked User Inquiry",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"mode": {
 																			"default": "customized_block_page",
@@ -3215,12 +3755,14 @@
 																				"customized_block_page",
 																				"redirect_uri"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "If mode is customized_block_page: block page title.",
 																			"example": "Cloudflare",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"suppress_footer": {
 																			"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
@@ -3230,7 +3772,8 @@
 																		"target_uri": {
 																			"description": "If mode is redirect_uri: URI to which the user should be redirected.",
 																			"format": "uri",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -3242,7 +3785,8 @@
 																		"inspection_mode": {
 																			"description": "Set the inspection mode to either `deep` or `shallow`.",
 																			"example": "deep",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -3254,12 +3798,14 @@
 																		"non_identity_enabled": {
 																			"description": "Enable non-identity onramp support for Browser Isolation.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"url_browser_isolation_enabled": {
 																			"description": "Enable Clientless Browser Isolation.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -3271,7 +3817,8 @@
 																		"id": {
 																			"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
 																			"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -3288,17 +3835,20 @@
 																			"description": "Certificate status (internal).",
 																			"example": "pending_deployment",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"enabled": {
 																			"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID of certificate (ID from MTLS certificate store).",
 																			"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"updated_at": {
 																			"format": "date-time",
@@ -3318,7 +3868,8 @@
 																		"enabled": {
 																			"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -3330,7 +3881,8 @@
 																		"tls": {
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -3342,7 +3894,8 @@
 																		"enabled": {
 																			"description": "Enable filtering via hosts for egress policies.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -3354,7 +3907,8 @@
 																		"enabled": {
 																			"description": "Enable detecting protocol on initial bytes of client traffic.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -3366,7 +3920,8 @@
 																		"enabled": {
 																			"description": "Enable sandbox.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"fallback_action": {
 																			"description": "Action to take when the file cannot be scanned.",
@@ -3374,7 +3929,8 @@
 																				"allow",
 																				"block"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -3386,7 +3942,8 @@
 																		"enabled": {
 																			"description": "Enable inspecting encrypted HTTP traffic.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -3513,7 +4070,8 @@
 																				"enabled": {
 																					"description": "Enable activity logging.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -3525,17 +4083,20 @@
 																				"enabled_download_phase": {
 																					"description": "Enable anti-virus scanning on downloads.",
 																					"example": false,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"enabled_upload_phase": {
 																					"description": "Enable anti-virus scanning on uploads.",
 																					"example": false,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"fail_closed": {
 																					"description": "Block requests for files that cannot be scanned.",
 																					"example": false,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"notification_settings": {
 																					"description": "Configure a message to display on the user's device when an antivirus search is performed.",
@@ -3543,19 +4104,23 @@
 																					"properties": {
 																						"enabled": {
 																							"description": "Set notification on",
-																							"type": "boolean"
+																							"type": "boolean",
+																							"x-auditable": true
 																						},
 																						"include_context": {
 																							"description": "If true, context information will be passed as query parameters",
-																							"type": "boolean"
+																							"type": "boolean",
+																							"x-auditable": true
 																						},
 																						"msg": {
 																							"description": "Customize the message shown in the notification.",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"support_url": {
 																							"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -3569,41 +4134,49 @@
 																			"properties": {
 																				"background_color": {
 																					"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"enabled": {
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"footer_text": {
 																					"description": "If mode is customized_block_page: block page footer text.",
 																					"example": "--footer--",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"header_text": {
 																					"description": "If mode is customized_block_page: block page header text.",
 																					"example": "--header--",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"include_context": {
 																					"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"logo_path": {
 																					"description": "If mode is customized_block_page: full URL to the logo file.",
 																					"example": "https://logos.com/a.png",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"mailto_address": {
 																					"description": "If mode is customized_block_page: admin email for users to contact.",
 																					"example": "admin@example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"mailto_subject": {
 																					"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																					"example": "Blocked User Inquiry",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"mode": {
 																					"default": "customized_block_page",
@@ -3612,12 +4185,14 @@
 																						"customized_block_page",
 																						"redirect_uri"
 																					],
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"name": {
 																					"description": "If mode is customized_block_page: block page title.",
 																					"example": "Cloudflare",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"suppress_footer": {
 																					"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
@@ -3627,7 +4202,8 @@
 																				"target_uri": {
 																					"description": "If mode is redirect_uri: URI to which the user should be redirected.",
 																					"format": "uri",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -3639,7 +4215,8 @@
 																				"inspection_mode": {
 																					"description": "Set the inspection mode to either `deep` or `shallow`.",
 																					"example": "deep",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -3651,12 +4228,14 @@
 																				"non_identity_enabled": {
 																					"description": "Enable non-identity onramp support for Browser Isolation.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"url_browser_isolation_enabled": {
 																					"description": "Enable Clientless Browser Isolation.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -3668,7 +4247,8 @@
 																				"id": {
 																					"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
 																					"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
@@ -3685,17 +4265,20 @@
 																					"description": "Certificate status (internal).",
 																					"example": "pending_deployment",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"enabled": {
 																					"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"id": {
 																					"description": "UUID of certificate (ID from MTLS certificate store).",
 																					"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"updated_at": {
 																					"format": "date-time",
@@ -3715,7 +4298,8 @@
 																				"enabled": {
 																					"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -3727,7 +4311,8 @@
 																				"tls": {
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -3739,7 +4324,8 @@
 																				"enabled": {
 																					"description": "Enable filtering via hosts for egress policies.",
 																					"example": false,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -3751,7 +4337,8 @@
 																				"enabled": {
 																					"description": "Enable detecting protocol on initial bytes of client traffic.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -3763,7 +4350,8 @@
 																				"enabled": {
 																					"description": "Enable sandbox.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"fallback_action": {
 																					"description": "Action to take when the file cannot be scanned.",
@@ -3771,7 +4359,8 @@
 																						"allow",
 																						"block"
 																					],
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -3783,7 +4372,8 @@
 																				"enabled": {
 																					"description": "Enable inspecting encrypted HTTP traffic.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -4729,7 +5319,8 @@
 											"enabled": {
 												"description": "Enable activity logging.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -4741,17 +5332,20 @@
 											"enabled_download_phase": {
 												"description": "Enable anti-virus scanning on downloads.",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"enabled_upload_phase": {
 												"description": "Enable anti-virus scanning on uploads.",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"fail_closed": {
 												"description": "Block requests for files that cannot be scanned.",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"notification_settings": {
 												"description": "Configure a message to display on the user's device when an antivirus search is performed.",
@@ -4759,19 +5353,23 @@
 												"properties": {
 													"enabled": {
 														"description": "Set notification on",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"include_context": {
 														"description": "If true, context information will be passed as query parameters",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"msg": {
 														"description": "Customize the message shown in the notification.",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"support_url": {
 														"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -4785,41 +5383,49 @@
 										"properties": {
 											"background_color": {
 												"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"enabled": {
 												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"footer_text": {
 												"description": "If mode is customized_block_page: block page footer text.",
 												"example": "--footer--",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"header_text": {
 												"description": "If mode is customized_block_page: block page header text.",
 												"example": "--header--",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"include_context": {
 												"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"logo_path": {
 												"description": "If mode is customized_block_page: full URL to the logo file.",
 												"example": "https://logos.com/a.png",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"mailto_address": {
 												"description": "If mode is customized_block_page: admin email for users to contact.",
 												"example": "admin@example.com",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"mailto_subject": {
 												"description": "If mode is customized_block_page: subject line for emails created from block page.",
 												"example": "Blocked User Inquiry",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"mode": {
 												"default": "customized_block_page",
@@ -4828,12 +5434,14 @@
 													"customized_block_page",
 													"redirect_uri"
 												],
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"name": {
 												"description": "If mode is customized_block_page: block page title.",
 												"example": "Cloudflare",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"suppress_footer": {
 												"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
@@ -4843,7 +5451,8 @@
 											"target_uri": {
 												"description": "If mode is redirect_uri: URI to which the user should be redirected.",
 												"format": "uri",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -4855,7 +5464,8 @@
 											"inspection_mode": {
 												"description": "Set the inspection mode to either `deep` or `shallow`.",
 												"example": "deep",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -4867,12 +5477,14 @@
 											"non_identity_enabled": {
 												"description": "Enable non-identity onramp support for Browser Isolation.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"url_browser_isolation_enabled": {
 												"description": "Enable Clientless Browser Isolation.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -4884,7 +5496,8 @@
 											"id": {
 												"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
 												"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -4901,17 +5514,20 @@
 												"description": "Certificate status (internal).",
 												"example": "pending_deployment",
 												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"enabled": {
 												"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID of certificate (ID from MTLS certificate store).",
 												"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"updated_at": {
 												"format": "date-time",
@@ -4931,7 +5547,8 @@
 											"enabled": {
 												"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -4943,7 +5560,8 @@
 											"tls": {
 												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -4955,7 +5573,8 @@
 											"enabled": {
 												"description": "Enable filtering via hosts for egress policies.",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -4967,7 +5586,8 @@
 											"enabled": {
 												"description": "Enable detecting protocol on initial bytes of client traffic.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -4979,7 +5599,8 @@
 											"enabled": {
 												"description": "Enable sandbox.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"fallback_action": {
 												"description": "Action to take when the file cannot be scanned.",
@@ -4987,7 +5608,8 @@
 													"allow",
 													"block"
 												],
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -4999,7 +5621,8 @@
 											"enabled": {
 												"description": "Enable inspecting encrypted HTTP traffic.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -5101,7 +5724,8 @@
 																		"enabled": {
 																			"description": "Enable activity logging.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -5113,17 +5737,20 @@
 																		"enabled_download_phase": {
 																			"description": "Enable anti-virus scanning on downloads.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"enabled_upload_phase": {
 																			"description": "Enable anti-virus scanning on uploads.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"fail_closed": {
 																			"description": "Block requests for files that cannot be scanned.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"notification_settings": {
 																			"description": "Configure a message to display on the user's device when an antivirus search is performed.",
@@ -5131,19 +5758,23 @@
 																			"properties": {
 																				"enabled": {
 																					"description": "Set notification on",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"include_context": {
 																					"description": "If true, context information will be passed as query parameters",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"msg": {
 																					"description": "Customize the message shown in the notification.",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"support_url": {
 																					"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -5157,41 +5788,49 @@
 																	"properties": {
 																		"background_color": {
 																			"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"enabled": {
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"footer_text": {
 																			"description": "If mode is customized_block_page: block page footer text.",
 																			"example": "--footer--",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"header_text": {
 																			"description": "If mode is customized_block_page: block page header text.",
 																			"example": "--header--",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"include_context": {
 																			"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"logo_path": {
 																			"description": "If mode is customized_block_page: full URL to the logo file.",
 																			"example": "https://logos.com/a.png",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"mailto_address": {
 																			"description": "If mode is customized_block_page: admin email for users to contact.",
 																			"example": "admin@example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"mailto_subject": {
 																			"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																			"example": "Blocked User Inquiry",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"mode": {
 																			"default": "customized_block_page",
@@ -5200,12 +5839,14 @@
 																				"customized_block_page",
 																				"redirect_uri"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "If mode is customized_block_page: block page title.",
 																			"example": "Cloudflare",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"suppress_footer": {
 																			"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
@@ -5215,7 +5856,8 @@
 																		"target_uri": {
 																			"description": "If mode is redirect_uri: URI to which the user should be redirected.",
 																			"format": "uri",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -5227,7 +5869,8 @@
 																		"inspection_mode": {
 																			"description": "Set the inspection mode to either `deep` or `shallow`.",
 																			"example": "deep",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -5239,12 +5882,14 @@
 																		"non_identity_enabled": {
 																			"description": "Enable non-identity onramp support for Browser Isolation.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"url_browser_isolation_enabled": {
 																			"description": "Enable Clientless Browser Isolation.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -5256,7 +5901,8 @@
 																		"id": {
 																			"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
 																			"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -5273,17 +5919,20 @@
 																			"description": "Certificate status (internal).",
 																			"example": "pending_deployment",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"enabled": {
 																			"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID of certificate (ID from MTLS certificate store).",
 																			"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"updated_at": {
 																			"format": "date-time",
@@ -5303,7 +5952,8 @@
 																		"enabled": {
 																			"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -5315,7 +5965,8 @@
 																		"tls": {
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -5327,7 +5978,8 @@
 																		"enabled": {
 																			"description": "Enable filtering via hosts for egress policies.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -5339,7 +5991,8 @@
 																		"enabled": {
 																			"description": "Enable detecting protocol on initial bytes of client traffic.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -5351,7 +6004,8 @@
 																		"enabled": {
 																			"description": "Enable sandbox.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"fallback_action": {
 																			"description": "Action to take when the file cannot be scanned.",
@@ -5359,7 +6013,8 @@
 																				"allow",
 																				"block"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -5371,7 +6026,8 @@
 																		"enabled": {
 																			"description": "Enable inspecting encrypted HTTP traffic.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -5498,7 +6154,8 @@
 																				"enabled": {
 																					"description": "Enable activity logging.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -5510,17 +6167,20 @@
 																				"enabled_download_phase": {
 																					"description": "Enable anti-virus scanning on downloads.",
 																					"example": false,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"enabled_upload_phase": {
 																					"description": "Enable anti-virus scanning on uploads.",
 																					"example": false,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"fail_closed": {
 																					"description": "Block requests for files that cannot be scanned.",
 																					"example": false,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"notification_settings": {
 																					"description": "Configure a message to display on the user's device when an antivirus search is performed.",
@@ -5528,19 +6188,23 @@
 																					"properties": {
 																						"enabled": {
 																							"description": "Set notification on",
-																							"type": "boolean"
+																							"type": "boolean",
+																							"x-auditable": true
 																						},
 																						"include_context": {
 																							"description": "If true, context information will be passed as query parameters",
-																							"type": "boolean"
+																							"type": "boolean",
+																							"x-auditable": true
 																						},
 																						"msg": {
 																							"description": "Customize the message shown in the notification.",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"support_url": {
 																							"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -5554,41 +6218,49 @@
 																			"properties": {
 																				"background_color": {
 																					"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"enabled": {
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"footer_text": {
 																					"description": "If mode is customized_block_page: block page footer text.",
 																					"example": "--footer--",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"header_text": {
 																					"description": "If mode is customized_block_page: block page header text.",
 																					"example": "--header--",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"include_context": {
 																					"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"logo_path": {
 																					"description": "If mode is customized_block_page: full URL to the logo file.",
 																					"example": "https://logos.com/a.png",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"mailto_address": {
 																					"description": "If mode is customized_block_page: admin email for users to contact.",
 																					"example": "admin@example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"mailto_subject": {
 																					"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																					"example": "Blocked User Inquiry",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"mode": {
 																					"default": "customized_block_page",
@@ -5597,12 +6269,14 @@
 																						"customized_block_page",
 																						"redirect_uri"
 																					],
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"name": {
 																					"description": "If mode is customized_block_page: block page title.",
 																					"example": "Cloudflare",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"suppress_footer": {
 																					"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
@@ -5612,7 +6286,8 @@
 																				"target_uri": {
 																					"description": "If mode is redirect_uri: URI to which the user should be redirected.",
 																					"format": "uri",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -5624,7 +6299,8 @@
 																				"inspection_mode": {
 																					"description": "Set the inspection mode to either `deep` or `shallow`.",
 																					"example": "deep",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -5636,12 +6312,14 @@
 																				"non_identity_enabled": {
 																					"description": "Enable non-identity onramp support for Browser Isolation.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"url_browser_isolation_enabled": {
 																					"description": "Enable Clientless Browser Isolation.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -5653,7 +6331,8 @@
 																				"id": {
 																					"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
 																					"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
@@ -5670,17 +6349,20 @@
 																					"description": "Certificate status (internal).",
 																					"example": "pending_deployment",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"enabled": {
 																					"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"id": {
 																					"description": "UUID of certificate (ID from MTLS certificate store).",
 																					"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"updated_at": {
 																					"format": "date-time",
@@ -5700,7 +6382,8 @@
 																				"enabled": {
 																					"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -5712,7 +6395,8 @@
 																				"tls": {
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -5724,7 +6408,8 @@
 																				"enabled": {
 																					"description": "Enable filtering via hosts for egress policies.",
 																					"example": false,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -5736,7 +6421,8 @@
 																				"enabled": {
 																					"description": "Enable detecting protocol on initial bytes of client traffic.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -5748,7 +6434,8 @@
 																				"enabled": {
 																					"description": "Enable sandbox.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				},
 																				"fallback_action": {
 																					"description": "Action to take when the file cannot be scanned.",
@@ -5756,7 +6443,8 @@
 																						"allow",
 																						"block"
 																					],
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -5768,7 +6456,8 @@
 																				"enabled": {
 																					"description": "Enable inspecting encrypted HTTP traffic.",
 																					"example": true,
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -5933,7 +6622,8 @@
 								"default": false,
 								"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"settings_by_rule_type": {
 								"description": "Logging settings by rule type.",
@@ -5944,13 +6634,15 @@
 												"default": false,
 												"description": "Log all requests to this service.",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"log_blocks": {
 												"default": false,
 												"description": "Log only blocking requests to this service.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -5961,13 +6653,15 @@
 												"default": false,
 												"description": "Log all requests to this service.",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"log_blocks": {
 												"default": false,
 												"description": "Log only blocking requests to this service.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -5978,13 +6672,15 @@
 												"default": false,
 												"description": "Log all requests to this service.",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"log_blocks": {
 												"default": false,
 												"description": "Log only blocking requests to this service.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -6078,7 +6774,8 @@
 													"default": false,
 													"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"settings_by_rule_type": {
 													"description": "Logging settings by rule type.",
@@ -6089,13 +6786,15 @@
 																	"default": false,
 																	"description": "Log all requests to this service.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"log_blocks": {
 																	"default": false,
 																	"description": "Log only blocking requests to this service.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -6106,13 +6805,15 @@
 																	"default": false,
 																	"description": "Log all requests to this service.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"log_blocks": {
 																	"default": false,
 																	"description": "Log only blocking requests to this service.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -6123,13 +6824,15 @@
 																	"default": false,
 																	"description": "Log all requests to this service.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"log_blocks": {
 																	"default": false,
 																	"description": "Log only blocking requests to this service.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -6228,7 +6931,8 @@
 															"default": false,
 															"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"settings_by_rule_type": {
 															"description": "Logging settings by rule type.",
@@ -6239,13 +6943,15 @@
 																			"default": false,
 																			"description": "Log all requests to this service.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"log_blocks": {
 																			"default": false,
 																			"description": "Log only blocking requests to this service.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -6256,13 +6962,15 @@
 																			"default": false,
 																			"description": "Log all requests to this service.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"log_blocks": {
 																			"default": false,
 																			"description": "Log only blocking requests to this service.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -6273,13 +6981,15 @@
 																			"default": false,
 																			"description": "Log all requests to this service.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"log_blocks": {
 																			"default": false,
 																			"description": "Log only blocking requests to this service.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"

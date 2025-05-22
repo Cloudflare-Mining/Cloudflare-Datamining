@@ -9,7 +9,8 @@
 				"required": true,
 				"schema": {
 					"example": "ed35569b41ce4d1facfe683550f54086",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -18,7 +19,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -317,7 +319,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -404,27 +407,31 @@
 												},
 												"id": {
 													"example": "ed35569b41ce4d1facfe683550f54086",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ips": {
 													"description": "A list of CIDRs to restrict ingress connections.",
 													"items": {
 														"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
 														"example": "192.0.2.1/32",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
 												"name": {
 													"description": "The name of the proxy endpoint.",
 													"example": "Devops team",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"subdomain": {
 													"description": "The subdomain to be used as the destination in the proxy client.",
 													"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -528,27 +535,31 @@
 														},
 														"id": {
 															"example": "ed35569b41ce4d1facfe683550f54086",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ips": {
 															"description": "A list of CIDRs to restrict ingress connections.",
 															"items": {
 																"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
 																"example": "192.0.2.1/32",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
 														"name": {
 															"description": "The name of the proxy endpoint.",
 															"example": "Devops team",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"subdomain": {
 															"description": "The subdomain to be used as the destination in the proxy client.",
 															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -684,7 +695,8 @@
 				"required": true,
 				"schema": {
 					"example": "ed35569b41ce4d1facfe683550f54086",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -693,7 +705,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -810,27 +823,31 @@
 													},
 													"id": {
 														"example": "ed35569b41ce4d1facfe683550f54086",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"ips": {
 														"description": "A list of CIDRs to restrict ingress connections.",
 														"items": {
 															"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
 															"example": "192.0.2.1/32",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": "array"
 													},
 													"name": {
 														"description": "The name of the proxy endpoint.",
 														"example": "Devops team",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"subdomain": {
 														"description": "The subdomain to be used as the destination in the proxy client.",
 														"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"updated_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -969,27 +986,31 @@
 															},
 															"id": {
 																"example": "ed35569b41ce4d1facfe683550f54086",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"ips": {
 																"description": "A list of CIDRs to restrict ingress connections.",
 																"items": {
 																	"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
 																	"example": "192.0.2.1/32",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"name": {
 																"description": "The name of the proxy endpoint.",
 																"example": "Devops team",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"subdomain": {
 																"description": "The subdomain to be used as the destination in the proxy client.",
 																"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"updated_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -1127,7 +1148,8 @@
 				"required": true,
 				"schema": {
 					"example": "ed35569b41ce4d1facfe683550f54086",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1136,7 +1158,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1150,14 +1173,16 @@
 								"items": {
 									"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
 									"example": "192.0.2.1/32",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
 							"name": {
 								"description": "The name of the proxy endpoint.",
 								"example": "Devops team",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -1249,27 +1274,31 @@
 												},
 												"id": {
 													"example": "ed35569b41ce4d1facfe683550f54086",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ips": {
 													"description": "A list of CIDRs to restrict ingress connections.",
 													"items": {
 														"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
 														"example": "192.0.2.1/32",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
 												"name": {
 													"description": "The name of the proxy endpoint.",
 													"example": "Devops team",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"subdomain": {
 													"description": "The subdomain to be used as the destination in the proxy client.",
 													"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1373,27 +1402,31 @@
 														},
 														"id": {
 															"example": "ed35569b41ce4d1facfe683550f54086",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ips": {
 															"description": "A list of CIDRs to restrict ingress connections.",
 															"items": {
 																"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
 																"example": "192.0.2.1/32",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
 														"name": {
 															"description": "The name of the proxy endpoint.",
 															"example": "Devops team",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"subdomain": {
 															"description": "The subdomain to be used as the destination in the proxy client.",
 															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -1528,7 +1561,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1542,14 +1576,16 @@
 								"items": {
 									"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
 									"example": "192.0.2.1/32",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
 							"name": {
 								"description": "The name of the proxy endpoint.",
 								"example": "Devops team",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1645,27 +1681,31 @@
 												},
 												"id": {
 													"example": "ed35569b41ce4d1facfe683550f54086",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ips": {
 													"description": "A list of CIDRs to restrict ingress connections.",
 													"items": {
 														"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
 														"example": "192.0.2.1/32",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
 												"name": {
 													"description": "The name of the proxy endpoint.",
 													"example": "Devops team",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"subdomain": {
 													"description": "The subdomain to be used as the destination in the proxy client.",
 													"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1769,27 +1809,31 @@
 														},
 														"id": {
 															"example": "ed35569b41ce4d1facfe683550f54086",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ips": {
 															"description": "A list of CIDRs to restrict ingress connections.",
 															"items": {
 																"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
 																"example": "192.0.2.1/32",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
 														"name": {
 															"description": "The name of the proxy endpoint.",
 															"example": "Devops team",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"subdomain": {
 															"description": "The subdomain to be used as the destination in the proxy client.",
 															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",

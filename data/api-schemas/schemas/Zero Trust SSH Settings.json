@@ -9,7 +9,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -97,13 +98,15 @@
 												"public_key": {
 													"description": "Base64 encoded HPKE public key used to encrypt all your ssh session logs. https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging",
 													"example": "1pyl6I1tL7xfJuFYVzXlUW8uXXlpxegHXBzGCBKaSFA=",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"seed_id": {
 													"description": "Seed ID",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -208,13 +211,15 @@
 														"public_key": {
 															"description": "Base64 encoded HPKE public key used to encrypt all your ssh session logs. https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging",
 															"example": "1pyl6I1tL7xfJuFYVzXlUW8uXXlpxegHXBzGCBKaSFA=",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"seed_id": {
 															"description": "Seed ID",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -350,7 +355,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -438,13 +444,15 @@
 												"public_key": {
 													"description": "Base64 encoded HPKE public key used to encrypt all your ssh session logs. https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging",
 													"example": "1pyl6I1tL7xfJuFYVzXlUW8uXXlpxegHXBzGCBKaSFA=",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"seed_id": {
 													"description": "Seed ID",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -549,13 +557,15 @@
 														"public_key": {
 															"description": "Base64 encoded HPKE public key used to encrypt all your ssh session logs. https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging",
 															"example": "1pyl6I1tL7xfJuFYVzXlUW8uXXlpxegHXBzGCBKaSFA=",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"seed_id": {
 															"description": "Seed ID",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -690,7 +700,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -702,7 +713,8 @@
 							"public_key": {
 								"description": "Base64 encoded HPKE public key used to encrypt all your ssh session logs. https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging",
 								"example": "1pyl6I1tL7xfJuFYVzXlUW8uXXlpxegHXBzGCBKaSFA=",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -798,13 +810,15 @@
 												"public_key": {
 													"description": "Base64 encoded HPKE public key used to encrypt all your ssh session logs. https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging",
 													"example": "1pyl6I1tL7xfJuFYVzXlUW8uXXlpxegHXBzGCBKaSFA=",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"seed_id": {
 													"description": "Seed ID",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -909,13 +923,15 @@
 														"public_key": {
 															"description": "Base64 encoded HPKE public key used to encrypt all your ssh session logs. https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging",
 															"example": "1pyl6I1tL7xfJuFYVzXlUW8uXXlpxegHXBzGCBKaSFA=",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"seed_id": {
 															"description": "Seed ID",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",

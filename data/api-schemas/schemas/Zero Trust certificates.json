@@ -11,7 +11,8 @@
 					"description": "Certificate UUID tag.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -20,7 +21,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -114,7 +116,8 @@
 														"inactive"
 													],
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"certificate": {
 													"description": "The CA certificate",
@@ -138,13 +141,15 @@
 													"description": "The SHA256 fingerprint of the certificate.",
 													"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Certificate UUID tag.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"in_use": {
 													"default": false,
@@ -156,13 +161,15 @@
 													"description": "The organization that issued the certificate.",
 													"example": "Example Inc.",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"issuer_raw": {
 													"description": "The entire issuer field of the certificate.",
 													"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
@@ -172,7 +179,8 @@
 													],
 													"example": "gateway_managed",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -283,7 +291,8 @@
 																"inactive"
 															],
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"certificate": {
 															"description": "The CA certificate",
@@ -307,13 +316,15 @@
 															"description": "The SHA256 fingerprint of the certificate.",
 															"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Certificate UUID tag.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"in_use": {
 															"default": false,
@@ -325,13 +336,15 @@
 															"description": "The organization that issued the certificate.",
 															"example": "Example Inc.",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"issuer_raw": {
 															"description": "The entire issuer field of the certificate.",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
@@ -341,7 +354,8 @@
 															],
 															"example": "gateway_managed",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -481,7 +495,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -599,7 +614,8 @@
 															"inactive"
 														],
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"certificate": {
 														"description": "The CA certificate",
@@ -623,13 +639,15 @@
 														"description": "The SHA256 fingerprint of the certificate.",
 														"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Certificate UUID tag.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"in_use": {
 														"default": false,
@@ -641,13 +659,15 @@
 														"description": "The organization that issued the certificate.",
 														"example": "Example Inc.",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"issuer_raw": {
 														"description": "The entire issuer field of the certificate.",
 														"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": {
 														"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
@@ -657,7 +677,8 @@
 														],
 														"example": "gateway_managed",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"updated_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -800,7 +821,8 @@
 																	"inactive"
 																],
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"certificate": {
 																"description": "The CA certificate",
@@ -824,13 +846,15 @@
 																"description": "The SHA256 fingerprint of the certificate.",
 																"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Certificate UUID tag.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"in_use": {
 																"default": false,
@@ -842,13 +866,15 @@
 																"description": "The organization that issued the certificate.",
 																"example": "Example Inc.",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"issuer_raw": {
 																"description": "The entire issuer field of the certificate.",
 																"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": {
 																"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
@@ -858,7 +884,8 @@
 																],
 																"example": "gateway_managed",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"updated_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -1004,7 +1031,8 @@
 					"description": "Certificate UUID tag.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1013,7 +1041,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1101,7 +1130,8 @@
 														"inactive"
 													],
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"certificate": {
 													"description": "The CA certificate",
@@ -1125,13 +1155,15 @@
 													"description": "The SHA256 fingerprint of the certificate.",
 													"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Certificate UUID tag.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"in_use": {
 													"default": false,
@@ -1143,13 +1175,15 @@
 													"description": "The organization that issued the certificate.",
 													"example": "Example Inc.",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"issuer_raw": {
 													"description": "The entire issuer field of the certificate.",
 													"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
@@ -1159,7 +1193,8 @@
 													],
 													"example": "gateway_managed",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1270,7 +1305,8 @@
 																"inactive"
 															],
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"certificate": {
 															"description": "The CA certificate",
@@ -1294,13 +1330,15 @@
 															"description": "The SHA256 fingerprint of the certificate.",
 															"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Certificate UUID tag.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"in_use": {
 															"default": false,
@@ -1312,13 +1350,15 @@
 															"description": "The organization that issued the certificate.",
 															"example": "Example Inc.",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"issuer_raw": {
 															"description": "The entire issuer field of the certificate.",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
@@ -1328,7 +1368,8 @@
 															],
 															"example": "gateway_managed",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -1470,7 +1511,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1482,7 +1524,8 @@
 							"validity_period_days": {
 								"description": "Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. In terraform, validity_period_days can only be used while creating a certificate, and this CAN NOT be used to extend the validity of an already generated certificate.",
 								"example": 1826,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -1574,7 +1617,8 @@
 														"inactive"
 													],
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"certificate": {
 													"description": "The CA certificate",
@@ -1598,13 +1642,15 @@
 													"description": "The SHA256 fingerprint of the certificate.",
 													"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Certificate UUID tag.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"in_use": {
 													"default": false,
@@ -1616,13 +1662,15 @@
 													"description": "The organization that issued the certificate.",
 													"example": "Example Inc.",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"issuer_raw": {
 													"description": "The entire issuer field of the certificate.",
 													"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
@@ -1632,7 +1680,8 @@
 													],
 													"example": "gateway_managed",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1743,7 +1792,8 @@
 																"inactive"
 															],
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"certificate": {
 															"description": "The CA certificate",
@@ -1767,13 +1817,15 @@
 															"description": "The SHA256 fingerprint of the certificate.",
 															"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Certificate UUID tag.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"in_use": {
 															"default": false,
@@ -1785,13 +1837,15 @@
 															"description": "The organization that issued the certificate.",
 															"example": "Example Inc.",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"issuer_raw": {
 															"description": "The entire issuer field of the certificate.",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
@@ -1801,7 +1855,8 @@
 															],
 															"example": "gateway_managed",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -1944,7 +1999,8 @@
 					"description": "Certificate UUID tag.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1953,7 +2009,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2047,7 +2104,8 @@
 														"inactive"
 													],
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"certificate": {
 													"description": "The CA certificate",
@@ -2071,13 +2129,15 @@
 													"description": "The SHA256 fingerprint of the certificate.",
 													"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Certificate UUID tag.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"in_use": {
 													"default": false,
@@ -2089,13 +2149,15 @@
 													"description": "The organization that issued the certificate.",
 													"example": "Example Inc.",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"issuer_raw": {
 													"description": "The entire issuer field of the certificate.",
 													"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
@@ -2105,7 +2167,8 @@
 													],
 													"example": "gateway_managed",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -2216,7 +2279,8 @@
 																"inactive"
 															],
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"certificate": {
 															"description": "The CA certificate",
@@ -2240,13 +2304,15 @@
 															"description": "The SHA256 fingerprint of the certificate.",
 															"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Certificate UUID tag.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"in_use": {
 															"default": false,
@@ -2258,13 +2324,15 @@
 															"description": "The organization that issued the certificate.",
 															"example": "Example Inc.",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"issuer_raw": {
 															"description": "The entire issuer field of the certificate.",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
@@ -2274,7 +2342,8 @@
 															],
 															"example": "gateway_managed",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -2416,7 +2485,8 @@
 					"description": "Certificate UUID tag.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2425,7 +2495,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2519,7 +2590,8 @@
 														"inactive"
 													],
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"certificate": {
 													"description": "The CA certificate",
@@ -2543,13 +2615,15 @@
 													"description": "The SHA256 fingerprint of the certificate.",
 													"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Certificate UUID tag.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"in_use": {
 													"default": false,
@@ -2561,13 +2635,15 @@
 													"description": "The organization that issued the certificate.",
 													"example": "Example Inc.",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"issuer_raw": {
 													"description": "The entire issuer field of the certificate.",
 													"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
@@ -2577,7 +2653,8 @@
 													],
 													"example": "gateway_managed",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -2688,7 +2765,8 @@
 																"inactive"
 															],
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"certificate": {
 															"description": "The CA certificate",
@@ -2712,13 +2790,15 @@
 															"description": "The SHA256 fingerprint of the certificate.",
 															"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Certificate UUID tag.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"in_use": {
 															"default": false,
@@ -2730,13 +2810,15 @@
 															"description": "The organization that issued the certificate.",
 															"example": "Example Inc.",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"issuer_raw": {
 															"description": "The entire issuer field of the certificate.",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
@@ -2746,7 +2828,8 @@
 															],
 															"example": "gateway_managed",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",

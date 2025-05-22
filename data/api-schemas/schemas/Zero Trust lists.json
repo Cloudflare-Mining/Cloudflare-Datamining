@@ -11,7 +11,8 @@
 					"description": "API Resource UUID tag.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -20,7 +21,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -316,7 +318,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -332,7 +335,8 @@
 						"IP"
 					],
 					"example": "SERIAL",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -456,13 +460,15 @@
 													"description": {
 														"description": "The description of the list.",
 														"example": "The serial numbers for administrators",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "API Resource UUID tag.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"items": {
 														"description": "The items in the list.",
@@ -483,7 +489,8 @@
 																"value": {
 																	"description": "The value of the item in a list.",
 																	"example": "8GE8721REF",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -493,7 +500,8 @@
 													"name": {
 														"description": "The name of the list.",
 														"example": "Admin Serial Numbers",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": {
 														"description": "The type of list.",
@@ -505,7 +513,8 @@
 															"IP"
 														],
 														"example": "SERIAL",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"updated_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -648,13 +657,15 @@
 															"description": {
 																"description": "The description of the list.",
 																"example": "The serial numbers for administrators",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "API Resource UUID tag.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"items": {
 																"description": "The items in the list.",
@@ -675,7 +686,8 @@
 																		"value": {
 																			"description": "The value of the item in a list.",
 																			"example": "8GE8721REF",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -685,7 +697,8 @@
 															"name": {
 																"description": "The name of the list.",
 																"example": "Admin Serial Numbers",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": {
 																"description": "The type of list.",
@@ -697,7 +710,8 @@
 																	"IP"
 																],
 																"example": "SERIAL",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"updated_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -837,7 +851,8 @@
 					"description": "API Resource UUID tag.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -846,7 +861,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -940,13 +956,15 @@
 												"description": {
 													"description": "The description of the list.",
 													"example": "The serial numbers for administrators",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "API Resource UUID tag.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"items": {
 													"description": "The items in the list.",
@@ -967,7 +985,8 @@
 															"value": {
 																"description": "The value of the item in a list.",
 																"example": "8GE8721REF",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -977,7 +996,8 @@
 												"name": {
 													"description": "The name of the list.",
 													"example": "Admin Serial Numbers",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of list.",
@@ -989,7 +1009,8 @@
 														"IP"
 													],
 													"example": "SERIAL",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1003,7 +1024,8 @@
 									}
 								}
 							],
-							"type": "object"
+							"type": "object",
+							"x-auditable": true
 						}
 					}
 				},
@@ -1100,13 +1122,15 @@
 														"description": {
 															"description": "The description of the list.",
 															"example": "The serial numbers for administrators",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "API Resource UUID tag.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"items": {
 															"description": "The items in the list.",
@@ -1127,7 +1151,8 @@
 																	"value": {
 																		"description": "The value of the item in a list.",
 																		"example": "8GE8721REF",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1137,7 +1162,8 @@
 														"name": {
 															"description": "The name of the list.",
 															"example": "Admin Serial Numbers",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of list.",
@@ -1149,7 +1175,8 @@
 																"IP"
 															],
 															"example": "SERIAL",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -1163,7 +1190,8 @@
 											}
 										}
 									],
-									"type": "object"
+									"type": "object",
+									"x-auditable": true
 								},
 								{
 									"properties": {
@@ -1287,7 +1315,8 @@
 					"description": "API Resource UUID tag.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1296,7 +1325,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1422,7 +1452,8 @@
 														"value": {
 															"description": "The value of the item in a list.",
 															"example": "8GE8721REF",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1592,7 +1623,8 @@
 																"value": {
 																	"description": "The value of the item in a list.",
 																	"example": "8GE8721REF",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -1757,7 +1789,8 @@
 					"description": "API Resource UUID tag.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1766,7 +1799,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1794,7 +1828,8 @@
 										"value": {
 											"description": "The value of the item in a list.",
 											"example": "8GE8721REF",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -1806,7 +1841,8 @@
 								"items": {
 									"description": "The value of the item in a list.",
 									"example": "8GE8721REF",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							}
@@ -1907,13 +1943,15 @@
 												"description": {
 													"description": "The description of the list.",
 													"example": "The serial numbers for administrators",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "API Resource UUID tag.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"items": {
 													"description": "The items in the list.",
@@ -1934,7 +1972,8 @@
 															"value": {
 																"description": "The value of the item in a list.",
 																"example": "8GE8721REF",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1944,7 +1983,8 @@
 												"name": {
 													"description": "The name of the list.",
 													"example": "Admin Serial Numbers",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of list.",
@@ -1956,7 +1996,8 @@
 														"IP"
 													],
 													"example": "SERIAL",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1970,7 +2011,8 @@
 									}
 								}
 							],
-							"type": "object"
+							"type": "object",
+							"x-auditable": true
 						}
 					}
 				},
@@ -2067,13 +2109,15 @@
 														"description": {
 															"description": "The description of the list.",
 															"example": "The serial numbers for administrators",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "API Resource UUID tag.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"items": {
 															"description": "The items in the list.",
@@ -2094,7 +2138,8 @@
 																	"value": {
 																		"description": "The value of the item in a list.",
 																		"example": "8GE8721REF",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -2104,7 +2149,8 @@
 														"name": {
 															"description": "The name of the list.",
 															"example": "Admin Serial Numbers",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of list.",
@@ -2116,7 +2162,8 @@
 																"IP"
 															],
 															"example": "SERIAL",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -2130,7 +2177,8 @@
 											}
 										}
 									],
-									"type": "object"
+									"type": "object",
+									"x-auditable": true
 								},
 								{
 									"properties": {
@@ -2251,7 +2299,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2263,7 +2312,8 @@
 							"description": {
 								"description": "The description of the list.",
 								"example": "The serial numbers for administrators",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"items": {
 								"description": "The items in the list.",
@@ -2284,7 +2334,8 @@
 										"value": {
 											"description": "The value of the item in a list.",
 											"example": "8GE8721REF",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -2294,7 +2345,8 @@
 							"name": {
 								"description": "The name of the list.",
 								"example": "Admin Serial Numbers",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"type": {
 								"description": "The type of list.",
@@ -2306,7 +2358,8 @@
 									"IP"
 								],
 								"example": "SERIAL",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2402,13 +2455,15 @@
 												"description": {
 													"description": "The description of the list.",
 													"example": "The serial numbers for administrators",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "API Resource UUID tag.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"items": {
 													"description": "The items in the list.",
@@ -2429,7 +2484,8 @@
 															"value": {
 																"description": "The value of the item in a list.",
 																"example": "8GE8721REF",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2439,7 +2495,8 @@
 												"name": {
 													"description": "The name of the list.",
 													"example": "Admin Serial Numbers",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of list.",
@@ -2451,7 +2508,8 @@
 														"IP"
 													],
 													"example": "SERIAL",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -2555,13 +2613,15 @@
 														"description": {
 															"description": "The description of the list.",
 															"example": "The serial numbers for administrators",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "API Resource UUID tag.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"items": {
 															"description": "The items in the list.",
@@ -2582,7 +2642,8 @@
 																	"value": {
 																		"description": "The value of the item in a list.",
 																		"example": "8GE8721REF",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -2592,7 +2653,8 @@
 														"name": {
 															"description": "The name of the list.",
 															"example": "Admin Serial Numbers",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of list.",
@@ -2604,7 +2666,8 @@
 																"IP"
 															],
 															"example": "SERIAL",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -2740,7 +2803,8 @@
 					"description": "API Resource UUID tag.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2749,7 +2813,8 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2761,7 +2826,8 @@
 							"description": {
 								"description": "The description of the list.",
 								"example": "The serial numbers for administrators",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"items": {
 								"description": "The items in the list.",
@@ -2782,7 +2848,8 @@
 										"value": {
 											"description": "The value of the item in a list.",
 											"example": "8GE8721REF",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -2792,7 +2859,8 @@
 							"name": {
 								"description": "The name of the list.",
 								"example": "Admin Serial Numbers",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2893,13 +2961,15 @@
 												"description": {
 													"description": "The description of the list.",
 													"example": "The serial numbers for administrators",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "API Resource UUID tag.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"items": {
 													"description": "The items in the list.",
@@ -2920,7 +2990,8 @@
 															"value": {
 																"description": "The value of the item in a list.",
 																"example": "8GE8721REF",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2930,7 +3001,8 @@
 												"name": {
 													"description": "The name of the list.",
 													"example": "Admin Serial Numbers",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of list.",
@@ -2942,7 +3014,8 @@
 														"IP"
 													],
 													"example": "SERIAL",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -2956,7 +3029,8 @@
 									}
 								}
 							],
-							"type": "object"
+							"type": "object",
+							"x-auditable": true
 						}
 					}
 				},
@@ -3053,13 +3127,15 @@
 														"description": {
 															"description": "The description of the list.",
 															"example": "The serial numbers for administrators",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "API Resource UUID tag.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"items": {
 															"description": "The items in the list.",
@@ -3080,7 +3156,8 @@
 																	"value": {
 																		"description": "The value of the item in a list.",
 																		"example": "8GE8721REF",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -3090,7 +3167,8 @@
 														"name": {
 															"description": "The name of the list.",
 															"example": "Admin Serial Numbers",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of list.",
@@ -3102,7 +3180,8 @@
 																"IP"
 															],
 															"example": "SERIAL",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -3116,7 +3195,8 @@
 											}
 										}
 									],
-									"type": "object"
+									"type": "object",
+									"x-auditable": true
 								},
 								{
 									"properties": {
