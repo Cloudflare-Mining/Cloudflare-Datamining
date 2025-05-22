@@ -251,7 +251,6 @@ if (startDpkgIndex && endDpkgIndex) {
 	const dpkg = {};
 	for (const log of dpkgLogs) {
 		const line = log.line.split('#;SPLIT;#');
-		console.log(line);
 		if (line.length < 3) {
 			continue;
 		}
@@ -263,6 +262,36 @@ if (startDpkgIndex && endDpkgIndex) {
 	}
 	const sorted = sortObjectByKeys(dpkg);
 	await fs.writeJson(path.resolve(dir, 'deployments-logs-dpkg.json'), sorted, { spaces: '\t' });
+}
+
+const startAsdfIndex = logs.findIndex(log => log.line === '---start-asdf---');
+const endAsdfIndex = logs.findIndex(log => log.line === '---end-asdf---');
+if (startAsdfIndex && endAsdfIndex) {
+	const asdfLogs = logs.slice(startAsdfIndex + 1, endAsdfIndex);
+	const asdf = {};
+	for (const log of asdfLogs) {
+		const parts = log.line.trim().split(/\s+/);
+		// expect at least [ plugin, version, path ]
+		if (parts.length < 3) {
+			console.warn('asdf plugin version line is malformed', log);
+			continue;
+		}
+
+		const plugin = parts[0];
+		let path = parts[parts.length - 1];
+		const versionParts = parts.slice(1, -1);
+		let version = versionParts.join(' ').trim();
+		if (version.includes('No version is set')) {
+			version = 'unset';
+			path = 'unset';
+		}
+		asdf[plugin] = {
+			version,
+			path,
+		};
+	}
+	const sorted = sortObjectByKeys(asdf);
+	await fs.writeJson(path.resolve(dir, 'deployments-logs-asdf.json'), sorted, { spaces: '\t' });
 }
 
 // delete all previous deployments

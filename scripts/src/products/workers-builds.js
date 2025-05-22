@@ -210,7 +210,6 @@ if (startDpkgIndex && endDpkgIndex) {
 	const dpkg = {};
 	for (const log of dpkgLogs) {
 		const line = log.line.split('#;SPLIT;#');
-		console.log(line);
 		if (line.length < 3) {
 			continue;
 		}
@@ -231,12 +230,21 @@ if (startAsdfIndex && endAsdfIndex) {
 	const asdfLogs = logs.slice(startAsdfIndex + 1, endAsdfIndex);
 	const asdf = {};
 	for (const log of asdfLogs) {
-		const [plugin, version, ...rest] = log.line.trim().split(/\s+/);
-		if (!plugin || !version) {
+		const parts = log.line.trim().split(/\s+/);
+		// expect at least [ plugin, version, path ]
+		if (parts.length < 3) {
 			console.warn('asdf plugin version line is malformed', log);
 			continue;
 		}
-		const path = rest.join(' ');
+
+		const plugin = parts[0];
+		let path = parts[parts.length - 1];
+		const versionParts = parts.slice(1, -1);
+		let version = versionParts.join(' ').trim();
+		if (version.includes('No version is set')) {
+			version = 'unset';
+			path = 'unset';
+		}
 		asdf[plugin] = {
 			version,
 			path,

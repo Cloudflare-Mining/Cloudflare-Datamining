@@ -11,9 +11,18 @@ const packageVersions: any = await importFiles[Object.keys(importFiles).find(pat
 const CPU: any = await importFiles[Object.keys(importFiles).find(path => path.endsWith('deployments-logs-lscpu.json')) as string]();
 const env: any = await importFiles[Object.keys(importFiles).find(path => path.endsWith('deployments-logs-env.json')) as string]();
 const OS: any = await importFiles[Object.keys(importFiles).find(path => path.endsWith('deployments-logs-os-release.json')) as string]();
+const asdf = await importFiles[Object.keys(importFiles).find(path => path.endsWith('deployments-logs-asdf.json')) as string]();
+
 ---
 <Layout title="Product: Pages - Cloudflare Datamining">
 	<MainHeading title="Product: Pages" />
+
+	<!-- asdf versions -->
+	<SubHeading category="asdf Versions" />
+	<Table
+		headers = {['Key', 'Value']}
+		data = {Object.keys(asdf.default).map((item: string) => [item, asdf.default[item].version])}
+	></Table>
 
 	<!-- Environment -->
 	<SubHeading category="Environment" />
