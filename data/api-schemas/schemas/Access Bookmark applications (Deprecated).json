@@ -12,7 +12,8 @@
 					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -133,7 +134,8 @@
 													"description": "UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -415,7 +417,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -434,7 +437,8 @@
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"domain": {
 														"description": "The domain of the Bookmark application.",
@@ -461,7 +465,8 @@
 													"updated_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -627,7 +632,8 @@
 					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -747,7 +753,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"domain": {
 													"description": "The domain of the Bookmark application.",
@@ -774,7 +781,8 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -937,7 +945,8 @@
 					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1063,7 +1072,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"domain": {
 													"description": "The domain of the Bookmark application.",
@@ -1090,7 +1100,8 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1249,7 +1260,8 @@
 					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1375,7 +1387,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"domain": {
 													"description": "The domain of the Bookmark application.",
@@ -1402,7 +1415,8 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"

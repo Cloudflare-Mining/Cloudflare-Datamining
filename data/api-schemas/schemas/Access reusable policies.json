@@ -11,7 +11,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -282,7 +283,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -403,7 +405,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -420,7 +423,8 @@
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"decision": {
 																		"description": "The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.",
@@ -2118,7 +2122,8 @@
 																	"updated_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -2374,7 +2379,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2493,7 +2499,8 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"decision": {
 																	"description": "The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.",
@@ -4191,7 +4198,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -4445,7 +4453,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -6337,7 +6346,8 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"decision": {
 																	"description": "The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.",
@@ -8035,7 +8045,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -8288,7 +8299,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -10191,7 +10203,8 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"decision": {
 																	"description": "The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.",
@@ -11889,7 +11902,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"

@@ -11,7 +11,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -136,7 +137,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"custom_pages": {
 													"properties": {
@@ -208,7 +210,8 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"user_seat_expiration_inactive_time": {
 													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
@@ -377,7 +380,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -488,7 +492,8 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"duration": {
 															"default": "8760h",
@@ -500,7 +505,8 @@
 														"expires_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"allOf": [
@@ -511,14 +517,16 @@
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															]
 														},
 														"last_seen_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the service token.",
@@ -529,7 +537,8 @@
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -702,7 +711,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -924,7 +934,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"custom_pages": {
 													"properties": {
@@ -996,7 +1007,8 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"user_seat_expiration_inactive_time": {
 													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
@@ -1163,7 +1175,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1384,7 +1397,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1617,7 +1631,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"custom_pages": {
 													"properties": {
@@ -1689,7 +1704,8 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"user_seat_expiration_inactive_time": {
 													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
@@ -1856,7 +1872,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1988,7 +2005,8 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"duration": {
 															"default": "8760h",
@@ -2000,7 +2018,8 @@
 														"expires_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"allOf": [
@@ -2011,14 +2030,16 @@
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															]
 														},
 														"last_seen_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the service token.",
@@ -2029,7 +2050,8 @@
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"

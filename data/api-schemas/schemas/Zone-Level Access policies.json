@@ -11,7 +11,8 @@
 					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -22,7 +23,8 @@
 					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -33,7 +35,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -138,7 +141,8 @@
 													"description": "UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -293,7 +297,8 @@
 					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -304,7 +309,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -425,7 +431,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -489,7 +496,8 @@
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"decision": {
 														"description": "The action Access will take if a user matches this policy.",
@@ -1062,7 +1070,8 @@
 														"description": "UUID.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"include": {
 														"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
@@ -2205,7 +2214,8 @@
 													"updated_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -2364,7 +2374,8 @@
 					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2375,7 +2386,8 @@
 					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2386,7 +2398,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2541,7 +2554,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"decision": {
 													"description": "The action Access will take if a user matches this policy.",
@@ -3114,7 +3128,8 @@
 													"description": "UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"include": {
 													"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
@@ -4257,7 +4272,8 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -4414,7 +4430,8 @@
 					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4425,7 +4442,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -6352,7 +6370,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"decision": {
 													"description": "The action Access will take if a user matches this policy.",
@@ -6925,7 +6944,8 @@
 													"description": "UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"include": {
 													"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
@@ -8068,7 +8088,8 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -8223,7 +8244,8 @@
 					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -8234,7 +8256,8 @@
 					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -8245,7 +8268,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -10172,7 +10196,8 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"decision": {
 													"description": "The action Access will take if a user matches this policy.",
@@ -10745,7 +10770,8 @@
 													"description": "UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"include": {
 													"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
@@ -11888,7 +11914,8 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"

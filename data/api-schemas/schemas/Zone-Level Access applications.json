@@ -13,13 +13,15 @@
 							"description": "Identifier.",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						},
 						{
 							"description": "UUID.",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 							"maxLength": 36,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						}
 					]
 				}
@@ -32,7 +34,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -137,7 +140,8 @@
 													"description": "UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -292,7 +296,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -413,7 +418,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -437,13 +443,15 @@
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"scim_config": {
 																		"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -792,7 +800,8 @@
 																	"updated_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -979,13 +988,15 @@
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"scim_config": {
 																		"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -1334,7 +1345,8 @@
 																	"updated_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1392,7 +1404,8 @@
 																					"created_at": {
 																						"example": "2014-01-01T05:20:00.12345Z",
 																						"format": "date-time",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"custom_attributes": {
 																						"items": {
@@ -1488,7 +1501,8 @@
 																					"updated_at": {
 																						"example": "2014-01-01T05:20:00.12345Z",
 																						"format": "date-time",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"title": "SAML SaaS App",
@@ -1534,7 +1548,8 @@
 																					"created_at": {
 																						"example": "2014-01-01T05:20:00.12345Z",
 																						"format": "date-time",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"custom_claims": {
 																						"items": {
@@ -1676,7 +1691,8 @@
 																					"updated_at": {
 																						"example": "2014-01-01T05:20:00.12345Z",
 																						"format": "date-time",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"title": "OIDC SaaS App",
@@ -1712,13 +1728,15 @@
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"scim_config": {
 																		"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -2067,7 +2085,8 @@
 																	"updated_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -2267,13 +2286,15 @@
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"scim_config": {
 																		"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -2622,7 +2643,8 @@
 																	"updated_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -2822,13 +2844,15 @@
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"scim_config": {
 																		"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -3177,7 +3201,8 @@
 																	"updated_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -3276,13 +3301,15 @@
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"scim_config": {
 																		"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -3631,7 +3658,8 @@
 																	"updated_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -3730,13 +3758,15 @@
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"scim_config": {
 																		"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -4085,7 +4115,8 @@
 																	"updated_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -4184,13 +4215,15 @@
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"scim_config": {
 																		"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -4539,7 +4572,8 @@
 																	"updated_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -4741,13 +4775,15 @@
 							"description": "Identifier.",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						},
 						{
 							"description": "UUID.",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 							"maxLength": 36,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						}
 					]
 				}
@@ -4760,7 +4796,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -4875,13 +4912,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -5230,7 +5269,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -5417,13 +5457,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -5772,7 +5814,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -5830,7 +5873,8 @@
 																				"created_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
 																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"custom_attributes": {
 																					"items": {
@@ -5926,7 +5970,8 @@
 																				"updated_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
 																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"title": "SAML SaaS App",
@@ -5972,7 +6017,8 @@
 																				"created_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
 																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"custom_claims": {
 																					"items": {
@@ -6114,7 +6160,8 @@
 																				"updated_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
 																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"title": "OIDC SaaS App",
@@ -6150,13 +6197,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -6505,7 +6554,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -6705,13 +6755,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -7060,7 +7112,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -7260,13 +7313,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -7615,7 +7670,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -7714,13 +7770,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -8069,7 +8127,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -8168,13 +8227,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -8523,7 +8584,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -8622,13 +8684,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -8977,7 +9041,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -9175,13 +9240,15 @@
 							"description": "Identifier.",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						},
 						{
 							"description": "UUID.",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 							"maxLength": 36,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						}
 					]
 				}
@@ -9194,7 +9261,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -9301,7 +9369,8 @@
 															"description": "UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"aud": {
 															"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe389",
@@ -9387,7 +9456,8 @@
 															"description": "UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"version": {
 															"type": "integer"
@@ -9552,13 +9622,15 @@
 							"description": "Identifier.",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						},
 						{
 							"description": "UUID.",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 							"maxLength": 36,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						}
 					]
 				}
@@ -9571,7 +9643,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -9857,7 +9930,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -9880,13 +9954,15 @@
 											"created_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scim_config": {
 												"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -10235,7 +10311,8 @@
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -10422,13 +10499,15 @@
 											"created_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scim_config": {
 												"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -10777,7 +10856,8 @@
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -10835,7 +10915,8 @@
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"custom_attributes": {
 																"items": {
@@ -10931,7 +11012,8 @@
 															"updated_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"title": "SAML SaaS App",
@@ -10977,7 +11059,8 @@
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"custom_claims": {
 																"items": {
@@ -11119,7 +11202,8 @@
 															"updated_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"title": "OIDC SaaS App",
@@ -11155,13 +11239,15 @@
 											"created_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scim_config": {
 												"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -11510,7 +11596,8 @@
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -11710,13 +11797,15 @@
 											"created_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scim_config": {
 												"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -12065,7 +12154,8 @@
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -12265,13 +12355,15 @@
 											"created_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scim_config": {
 												"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -12620,7 +12712,8 @@
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -12719,13 +12812,15 @@
 											"created_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scim_config": {
 												"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -13074,7 +13169,8 @@
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -13173,13 +13269,15 @@
 											"created_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scim_config": {
 												"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -13528,7 +13626,8 @@
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -13627,13 +13726,15 @@
 											"created_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scim_config": {
 												"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -13982,7 +14083,8 @@
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -14143,13 +14245,15 @@
 																		"created_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scim_config": {
 																			"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -14498,7 +14602,8 @@
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -14685,13 +14790,15 @@
 																		"created_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scim_config": {
 																			"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -15040,7 +15147,8 @@
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -15098,7 +15206,8 @@
 																						"created_at": {
 																							"example": "2014-01-01T05:20:00.12345Z",
 																							"format": "date-time",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"custom_attributes": {
 																							"items": {
@@ -15194,7 +15303,8 @@
 																						"updated_at": {
 																							"example": "2014-01-01T05:20:00.12345Z",
 																							"format": "date-time",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"title": "SAML SaaS App",
@@ -15240,7 +15350,8 @@
 																						"created_at": {
 																							"example": "2014-01-01T05:20:00.12345Z",
 																							"format": "date-time",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"custom_claims": {
 																							"items": {
@@ -15382,7 +15493,8 @@
 																						"updated_at": {
 																							"example": "2014-01-01T05:20:00.12345Z",
 																							"format": "date-time",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"title": "OIDC SaaS App",
@@ -15418,13 +15530,15 @@
 																		"created_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scim_config": {
 																			"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -15773,7 +15887,8 @@
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -15973,13 +16088,15 @@
 																		"created_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scim_config": {
 																			"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -16328,7 +16445,8 @@
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -16528,13 +16646,15 @@
 																		"created_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scim_config": {
 																			"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -16883,7 +17003,8 @@
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -16982,13 +17103,15 @@
 																		"created_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scim_config": {
 																			"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -17337,7 +17460,8 @@
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -17436,13 +17560,15 @@
 																		"created_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scim_config": {
 																			"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -17791,7 +17917,8 @@
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -17890,13 +18017,15 @@
 																		"created_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scim_config": {
 																			"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -18245,7 +18374,8 @@
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -18312,13 +18442,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -18667,7 +18799,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -18854,13 +18987,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -19209,7 +19344,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -19267,7 +19403,8 @@
 																				"created_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
 																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"custom_attributes": {
 																					"items": {
@@ -19363,7 +19500,8 @@
 																				"updated_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
 																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"title": "SAML SaaS App",
@@ -19409,7 +19547,8 @@
 																				"created_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
 																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"custom_claims": {
 																					"items": {
@@ -19551,7 +19690,8 @@
 																				"updated_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
 																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"title": "OIDC SaaS App",
@@ -19587,13 +19727,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -19942,7 +20084,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -20142,13 +20285,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -20497,7 +20642,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -20697,13 +20843,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -21052,7 +21200,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -21151,13 +21300,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -21506,7 +21657,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -21605,13 +21757,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -21960,7 +22114,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -22059,13 +22214,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -22414,7 +22571,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -22609,13 +22767,15 @@
 							"description": "Identifier.",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						},
 						{
 							"description": "UUID.",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 							"maxLength": 36,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						}
 					]
 				}
@@ -22628,7 +22788,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -22806,13 +22967,15 @@
 							"description": "Identifier.",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						},
 						{
 							"description": "UUID.",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 							"maxLength": 36,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						}
 					]
 				}
@@ -22825,7 +22988,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -22848,13 +23012,15 @@
 											"created_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scim_config": {
 												"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -23203,7 +23369,8 @@
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -23390,13 +23557,15 @@
 											"created_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scim_config": {
 												"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -23745,7 +23914,8 @@
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -23803,7 +23973,8 @@
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"custom_attributes": {
 																"items": {
@@ -23899,7 +24070,8 @@
 															"updated_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"title": "SAML SaaS App",
@@ -23945,7 +24117,8 @@
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"custom_claims": {
 																"items": {
@@ -24087,7 +24260,8 @@
 															"updated_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"title": "OIDC SaaS App",
@@ -24123,13 +24297,15 @@
 											"created_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scim_config": {
 												"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -24478,7 +24654,8 @@
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -24678,13 +24855,15 @@
 											"created_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scim_config": {
 												"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -25033,7 +25212,8 @@
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -25233,13 +25413,15 @@
 											"created_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scim_config": {
 												"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -25588,7 +25770,8 @@
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -25687,13 +25870,15 @@
 											"created_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scim_config": {
 												"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -26042,7 +26227,8 @@
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -26141,13 +26327,15 @@
 											"created_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scim_config": {
 												"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -26496,7 +26684,8 @@
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -26595,13 +26784,15 @@
 											"created_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scim_config": {
 												"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -26950,7 +27141,8 @@
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
 												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -27111,13 +27303,15 @@
 																		"created_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scim_config": {
 																			"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -27466,7 +27660,8 @@
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -27653,13 +27848,15 @@
 																		"created_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scim_config": {
 																			"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -28008,7 +28205,8 @@
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -28066,7 +28264,8 @@
 																						"created_at": {
 																							"example": "2014-01-01T05:20:00.12345Z",
 																							"format": "date-time",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"custom_attributes": {
 																							"items": {
@@ -28162,7 +28361,8 @@
 																						"updated_at": {
 																							"example": "2014-01-01T05:20:00.12345Z",
 																							"format": "date-time",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"title": "SAML SaaS App",
@@ -28208,7 +28408,8 @@
 																						"created_at": {
 																							"example": "2014-01-01T05:20:00.12345Z",
 																							"format": "date-time",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"custom_claims": {
 																							"items": {
@@ -28350,7 +28551,8 @@
 																						"updated_at": {
 																							"example": "2014-01-01T05:20:00.12345Z",
 																							"format": "date-time",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"title": "OIDC SaaS App",
@@ -28386,13 +28588,15 @@
 																		"created_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scim_config": {
 																			"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -28741,7 +28945,8 @@
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -28941,13 +29146,15 @@
 																		"created_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scim_config": {
 																			"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -29296,7 +29503,8 @@
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -29496,13 +29704,15 @@
 																		"created_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scim_config": {
 																			"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -29851,7 +30061,8 @@
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -29950,13 +30161,15 @@
 																		"created_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scim_config": {
 																			"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -30305,7 +30518,8 @@
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -30404,13 +30618,15 @@
 																		"created_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scim_config": {
 																			"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -30759,7 +30975,8 @@
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -30858,13 +31075,15 @@
 																		"created_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "UUID.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scim_config": {
 																			"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -31213,7 +31432,8 @@
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -31280,13 +31500,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -31635,7 +31857,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -31822,13 +32045,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -32177,7 +32402,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -32235,7 +32461,8 @@
 																				"created_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
 																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"custom_attributes": {
 																					"items": {
@@ -32331,7 +32558,8 @@
 																				"updated_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
 																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"title": "SAML SaaS App",
@@ -32377,7 +32605,8 @@
 																				"created_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
 																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"custom_claims": {
 																					"items": {
@@ -32519,7 +32748,8 @@
 																				"updated_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
 																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"title": "OIDC SaaS App",
@@ -32555,13 +32785,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -32910,7 +33142,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -33110,13 +33343,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -33465,7 +33700,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -33665,13 +33901,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -34020,7 +34258,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -34119,13 +34358,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -34474,7 +34715,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -34573,13 +34815,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -34928,7 +35172,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -35027,13 +35272,15 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scim_config": {
 																	"description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.",
@@ -35382,7 +35629,8 @@
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -35577,13 +35825,15 @@
 							"description": "Identifier.",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						},
 						{
 							"description": "UUID.",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 							"maxLength": 36,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						}
 					]
 				}
@@ -35596,7 +35846,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
