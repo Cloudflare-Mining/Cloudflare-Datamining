@@ -5,43 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>This position is local to Austin, Texas with the expectation of 2 days/week in office.<br><br>About the Team</strong></p>
-<p>Domain management is the foundation for any online presence and Cloudflare Registrar is our answer to a simple and straightforward experience.&nbsp; The Registrar product manages the full lifecycle of the domains, including searching/registering for new domains and transferring/renewing/deleting existing ones.&nbsp; Onboarding domains on Cloudflare is the gateway to the vast array of Cloudflare services.</p>
-<p>Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.&nbsp;</p>
-<p>&nbsp;</p>
-<p><strong>What you'll do</strong></p>
-<p>We're seeking a senior UI Systems Engineer to lead the Registrar UI Team at Cloudflare.&nbsp; You'll be responsible for the core technology that drives the Cloudflare Dashboard.&nbsp; You'll be pioneering new techniques and tooling to move away from a traditional monolithic application and onto <a href="https://blog.cloudflare.com/fragment-piercing/">Cloudflare's innovative Web Fragments</a>. You will set best practices.&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p><strong>Responsibilities:&nbsp;</strong></p>
+<p><strong>About the Department</strong></p>
+<p>Account Executives, Channel Account Managers, Business Development Representatives, Solution Engineers, Product Specialists, Customer Success, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences. The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.</p>
+<p>Our Product Specialization &amp; Growth team provides deep subject matter expertise on converging Network and Security services in our Cloudflare One (CF1) portfolio, including Secure Access Service Edge (SASE), Security Service Edge (SSE), Zero Trust Network Access (ZTNA), Secure Web Gateway (SWG), Cloud Access Security Broker (CASB), Remote Browser Isolation (RBI), Data Protection (including DLP), and Email Security (CES).</p>
+<p><strong>What you’ll do</strong></p>
+<p>As a <strong>Product Specialist</strong> you will be responsible for growing CloudflareOne (CF1) revenue and product adoption. In this role, you will serve as the segment lead for CF1 sales. You will advise the sales leaders on opportunities and programs to grow CF1 revenue, partner with the technical sales teams, enable account executives on product positioning and competitive intelligence, grow partner engagement around CF1, form a tight feedback loop with product and PMM, and support strategic deals from discovery to close. The ideal candidate possesses a consultative mindset, strong selling skills, and a deep technical background to drive engagement internally among the sales organization and externally with decision-makers and influencers within security, networking, and IT and operations.</p>
 <ul>
-	<li>Lead and mentor the team to build, migrate, and scale Cloudflare Registrar UI.</li>
-	<li>Set and promote best practices for UI development and evangelize the transition across engineering teams.</li>
-	<li>Drive UI infrastructure excellence, including CI/CD, observability, and experimentation tools.</li>
-	<li>Collaborate with product and design teams to deliver self-serviceable, cohesive user experiences.</li>
-	<li>Tackle cross-cutting concerns to improve developer velocity and code quality.</li>
+	<li>Present to strategic customers as an expert of our SASE, SSE, and Email solutions.</li>
+	<li>Align Director and C-Level perceived business value with Cloudflare solutions in the transformational objectives of securing remote work, corporate network modernization, adoption of SASE/SSE, and data protection</li>
+	<li>Develop and advise on sales strategies and pipeline generation in partnership with regional and country sales leaders for US-MM.&nbsp;</li>
+	<li>Create net-new partner initiated pipeline programs</li>
+	<li>Prepare and give regular business reviews to the management team highlighting attainment progress and challenges to closing business</li>
+	<li>Generate a succinct feedback loop with PM, PMM, Demand Generation, Enablement, Programs, and Partner Organization to deliver relevant CF1 anecdotes and data points.</li>
+	<li>Lead New Product Introduction with a sales lens to ensure emerging products in the CF1 space begin and maintain healthy adoption across current and net-new customers</li>
 </ul>
-<p><strong>Technologies We Use</strong></p>
-<p>React, TypeScript, JavaScript (ES6+), Remix,, PlayWright,, Vite, Webpack,, CI/CD tools, Go, RESTful APIs</p>
-<p><strong>Qualifications</strong></p>
+<p>The Product Specialist Role is a consultative sales excellence role that directly supports sales delivery of regional CF1 quota. In order to be successful, you will need to become a thought leader, trusted advisor, and spokesperson for Cloudflare One - Cloudflare's SASE platform.</p>
+<h4><strong>Requirements</strong></h4>
 <ul>
-	<li>We want someone who understands and obsesses over front-end systems.</li>
-	<li>Has built new technology that powers important systems.</li>
-	<li>Experience leading a team</li>
-	<li>A self-directing nature, keen to take ownership of projects from start to finish.</li>
-	<li>Experience coordinating projects across multiple teams and experience with driving migrations from monolith to modular frameworks is a plus.</li>
-	<li>Empathetic and clear communication skills, verbal and written</li>
-	<li>Strong leadership, collaboration, and technical evangelism skills.</li>
-	<li>Experience building and scaling large-scale web applications.</li>
-	<li>Expertise in React.js, TypeScript, and modern front-end systems.</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience with Ruby or Go (used by the back end team)</li>
-	<li>Experience with Kibana, Grafana, and/or Prometheus</li>
-	<li>Experience with relational databases (e.g. Postgres)</li>
-	<li>Experience with DNS (and DNSSEC)</li>
-	<li>Experience in the registry/registrar industry</li>
+	<li>Minimum 7 years of experience selling or supporting the sales of cyber security, networking, identity management, cloud or SaaS solutions.</li>
+	<li>Technical expertise in SASE, SSE, ZTNA, SWG, CASB, DLP, SD-WAN, and Email Security</li>
+	<li>Experience building territory plans, prospecting and bringing in new logos in a competitive market</li>
+	<li>Experience introducing new products, services, or programs</li>
+	<li>Knowledge of key market players/competitors in the software defined networking, zero trust and cybersecurity solution spaces.</li>
+	<li>Demonstrated ability to think strategically and develop/execute corresponding objectives.</li>
+	<li>Strong verbal and written communications, as well as the ability to work effectively across internal and external organizations.</li>
+	<li>Excellent presentation and public speaking skills.</li>
+	<li>Bachelor’s Degree</li>
+	<li>10 - 20% travel</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
