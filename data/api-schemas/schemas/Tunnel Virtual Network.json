@@ -152,7 +152,8 @@
 													"description": "If `true`, this virtual network is the default for the account.",
 													"example": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "A user-friendly name for the virtual network.",
@@ -298,7 +299,8 @@
 															"description": "If `true`, this virtual network is the default for the account.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "A user-friendly name for the virtual network.",
@@ -647,7 +649,8 @@
 														"description": "If `true`, this virtual network is the default for the account.",
 														"example": true,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"name": {
 														"description": "A user-friendly name for the virtual network.",
@@ -835,7 +838,8 @@
 																"description": "If `true`, this virtual network is the default for the account.",
 																"example": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"name": {
 																"description": "A user-friendly name for the virtual network.",
@@ -1021,7 +1025,8 @@
 								"description": "If `true`, this virtual network is the default for the account.",
 								"example": true,
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"name": {
 								"description": "A user-friendly name for the virtual network.",
@@ -1154,7 +1159,8 @@
 													"description": "If `true`, this virtual network is the default for the account.",
 													"example": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "A user-friendly name for the virtual network.",
@@ -1300,7 +1306,8 @@
 															"description": "If `true`, this virtual network is the default for the account.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "A user-friendly name for the virtual network.",
@@ -1475,10 +1482,12 @@
 								"x-auditable": true
 							},
 							"is_default_network": {
+								"default": false,
 								"description": "If `true`, this virtual network is the default for the account.",
-								"example": true,
+								"example": false,
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"name": {
 								"description": "A user-friendly name for the virtual network.",
@@ -1611,7 +1620,8 @@
 													"description": "If `true`, this virtual network is the default for the account.",
 													"example": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "A user-friendly name for the virtual network.",
@@ -1757,7 +1767,8 @@
 															"description": "If `true`, this virtual network is the default for the account.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "A user-friendly name for the virtual network.",
@@ -1924,10 +1935,21 @@
 								"x-auditable": true
 							},
 							"is_default": {
+								"deprecated": true,
 								"description": "If `true`, this virtual network is the default for the account.",
 								"example": true,
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-deprecation-message": "Use the is_default_network property instead.",
+								"x-stainless-ignore": true
+							},
+							"is_default_network": {
+								"default": false,
+								"description": "If `true`, this virtual network is the default for the account.",
+								"example": false,
+								"type": "boolean",
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"name": {
 								"description": "A user-friendly name for the virtual network.",
@@ -2063,7 +2085,8 @@
 													"description": "If `true`, this virtual network is the default for the account.",
 													"example": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "A user-friendly name for the virtual network.",
@@ -2209,7 +2232,8 @@
 															"description": "If `true`, this virtual network is the default for the account.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "A user-friendly name for the virtual network.",
