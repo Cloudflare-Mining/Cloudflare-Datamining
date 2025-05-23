@@ -1317,6 +1317,10 @@
 				"read": true,
 				"edit": true
 			},
+			"subscription": {
+				"read": true,
+				"edit": true
+			},
 			"dns_records": {
 				"read": true,
 				"edit": true
@@ -1436,10 +1440,6 @@
 				"edit": true
 			},
 			"zone": {
-				"read": true,
-				"edit": true
-			},
-			"subscription": {
 				"read": true,
 				"edit": true
 			},
@@ -1806,11 +1806,11 @@
 		"name": "Billing",
 		"description": "Can edit the account’s billing profile and subscriptions.",
 		"permissions": {
-			"billing": {
+			"subscription": {
 				"read": true,
 				"edit": true
 			},
-			"subscription": {
+			"billing": {
 				"read": true,
 				"edit": true
 			},
@@ -1944,6 +1944,10 @@
 				"read": true,
 				"edit": false
 			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
 			"dns_records": {
 				"read": true,
 				"edit": false
@@ -2059,10 +2063,6 @@
 				"read": true,
 				"edit": false
 			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			},
 			"auditlogs": {
 				"read": true,
 				"edit": false
@@ -2125,7 +2125,7 @@
 			},
 			"billing": {
 				"read": true,
-				"edit": true
+				"edit": false
 			},
 			"zone_settings": {
 				"read": true,
@@ -2144,6 +2144,10 @@
 				"edit": false
 			},
 			"waf": {
+				"read": true,
+				"edit": true
+			},
+			"subscription": {
 				"read": true,
 				"edit": true
 			},
@@ -2262,10 +2266,6 @@
 				"edit": true
 			},
 			"zone": {
-				"read": true,
-				"edit": true
-			},
-			"subscription": {
 				"read": true,
 				"edit": true
 			},
