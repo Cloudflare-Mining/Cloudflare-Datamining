@@ -13,7 +13,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -23,7 +24,8 @@
 				"schema": {
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -389,7 +391,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -486,7 +489,8 @@
 																"example": 768,
 																"maximum": 1536,
 																"minimum": 1,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"metric": {
 																"description": "Specifies the type of metric to use calculating distance.",
@@ -495,7 +499,8 @@
 																	"euclidean",
 																	"dot-product"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -509,24 +514,28 @@
 														"example": "2022-11-15T18:25:44.442097Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"description": {
 														"description": "Specifies the description of the index.",
 														"example": "This is my example index.",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"modified_on": {
 														"description": "Specifies the timestamp the resource was modified as an ISO8601 string.",
 														"example": "2022-11-15T18:25:44.442097Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"example": "example-index",
 														"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -788,7 +797,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -798,7 +808,8 @@
 				"schema": {
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -915,7 +926,8 @@
 															"example": 768,
 															"maximum": 1536,
 															"minimum": 1,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"metric": {
 															"description": "Specifies the type of metric to use calculating distance.",
@@ -924,7 +936,8 @@
 																"euclidean",
 																"dot-product"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -938,24 +951,28 @@
 													"example": "2022-11-15T18:25:44.442097Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "Specifies the description of the index.",
 													"example": "This is my example index.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "Specifies the timestamp the resource was modified as an ISO8601 string.",
 													"example": "2022-11-15T18:25:44.442097Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"example": "example-index",
 													"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1215,7 +1232,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1236,7 +1254,8 @@
 														"example": 768,
 														"maximum": 1536,
 														"minimum": 1,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"metric": {
 														"description": "Specifies the type of metric to use calculating distance.",
@@ -1245,7 +1264,8 @@
 															"euclidean",
 															"dot-product"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -1266,7 +1286,8 @@
 															"cohere/embed-multilingual-v2.0"
 														],
 														"example": "@cf/baai/bge-small-en-v1.5",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -1281,12 +1302,14 @@
 							"description": {
 								"description": "Specifies the description of the index.",
 								"example": "This is my example index.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"example": "example-index",
 								"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1412,7 +1435,8 @@
 															"example": 768,
 															"maximum": 1536,
 															"minimum": 1,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"metric": {
 															"description": "Specifies the type of metric to use calculating distance.",
@@ -1421,7 +1445,8 @@
 																"euclidean",
 																"dot-product"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1435,24 +1460,28 @@
 													"example": "2022-11-15T18:25:44.442097Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "Specifies the description of the index.",
 													"example": "This is my example index.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "Specifies the timestamp the resource was modified as an ISO8601 string.",
 													"example": "2022-11-15T18:25:44.442097Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"example": "example-index",
 													"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1711,7 +1740,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1721,7 +1751,8 @@
 				"schema": {
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2126,7 +2157,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2136,7 +2168,8 @@
 				"schema": {
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2577,7 +2610,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2587,7 +2621,8 @@
 				"schema": {
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2713,7 +2748,8 @@
 												"count": {
 													"description": "Specifies the count of the vectors successfully inserted.",
 													"example": 768,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"ids": {
 													"description": "Array of vector identifiers of the vectors successfully inserted.",
@@ -2983,7 +3019,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2993,7 +3030,8 @@
 				"schema": {
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3449,7 +3487,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3459,7 +3498,8 @@
 				"schema": {
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3585,7 +3625,8 @@
 												"count": {
 													"description": "Specifies the count of the vectors successfully inserted.",
 													"example": 768,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"ids": {
 													"description": "Array of vector identifiers of the vectors successfully inserted.",
@@ -3850,7 +3891,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3860,7 +3902,8 @@
 				"schema": {
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3872,7 +3915,8 @@
 							"description": {
 								"description": "Specifies the description of the index.",
 								"example": "This is my example index.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -3997,7 +4041,8 @@
 															"example": 768,
 															"maximum": 1536,
 															"minimum": 1,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"metric": {
 															"description": "Specifies the type of metric to use calculating distance.",
@@ -4006,7 +4051,8 @@
 																"euclidean",
 																"dot-product"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -4020,24 +4066,28 @@
 													"example": "2022-11-15T18:25:44.442097Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "Specifies the description of the index.",
 													"example": "This is my example index.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "Specifies the timestamp the resource was modified as an ISO8601 string.",
 													"example": "2022-11-15T18:25:44.442097Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"example": "example-index",
 													"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
