@@ -2614,6 +2614,10 @@
 		"summary": "Create Zone",
 		"tags": [
 			"Zone"
+		],
+		"x-api-token-group": [
+			"Zone Zone Edit",
+			"Zone DNS Edit"
 		]
 	},
 	"POST /zones/{zone_id}/purge_cache": {
