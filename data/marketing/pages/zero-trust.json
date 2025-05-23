@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-05-04T18:26:59.158Z",
-					"updatedAt": "2025-05-20T21:49:17.254Z"
+					"updatedAt": "2025-05-23T17:21:29.632Z"
 				},
 				"contentfulId": "4yQgbWO9Ldinwbud6TohYm",
 				"contentTypeId": "page",
@@ -2649,6 +2649,12 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "7JU1dhdkFWaiL65FDHQLNx",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Cloudflare named in Gartner® Magic Quadrant™ for SSE for 3rd year </span>\n\n        <a class=\"link-helper\" href=\"https://blog.cloudflare.com/cloudflare-sse-gartner-magic-quadrant-2025/\">\n           <strong>Announcement ></strong>\n        </a>\n    </div>\n</section>",
+						"htmlId": null
+					},
+					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "70Il4X62A37cPxf97qmEgo",
 						"menuTitle": "SSE & SASE",
@@ -3037,8 +3043,8 @@
 								"titleUrl": null,
 								"titleSize": "medium",
 								"description": "Cloudflare received the highest score in the global network criterion. We believe this recognition validates our commitment to build SASE \"the right way,\" converging network and security services on a composable, programmable connectivity cloud.",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/forrester-wave-sse-2024/",
-								"learnMoreText": "Read the report",
+								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-sse-gartner-magic-quadrant-2025/",
+								"learnMoreText": "View related blog",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,

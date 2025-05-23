@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2021-02-01T13:22:12.028Z",
-					"updatedAt": "2024-10-04T19:30:10.669Z"
+					"updatedAt": "2025-05-23T18:04:21.344Z"
 				},
 				"contentfulId": "63TkxzKlExzFfhg51Z51gX",
 				"contentTypeId": "page",
@@ -64,36 +64,39 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "7hso5RmiHSERoCBpTkgRLh",
+						"contentfulId": "7w85MZbDVHKSsjUTBrHXho",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare for Healthcare and Life Sciences",
+						"title": "Enterprise-grade security and performance for healthcare providers",
 						"titleSize": null,
-						"subtitle": "Deliver secure, fast, and reliable digital health services",
+						"subtitle": null,
 						"subtitleSize": null,
-						"copy": "Digital health solutions and care delivery models are advancing rapidly in today's healthcare industry. \n\nProtect patient data, accelerate performance, and offer employees and third parties secure access to internal systems with Cloudflare.\n",
+						"copy": "Transform healthcare delivery and empower care teams with secure access to medical systems and protected health information (PHI). Enhance threat protection, deliver seamless patient experiences, and boost compliance, all from a single, secure cloud platform.",
 						"buttonColor": "orange",
-						"buttonColor2": null,
-						"buttonText1": "Contact us",
+						"buttonColor2": "orange",
+						"buttonText1": "Request a demo",
 						"buttonText1LoggedIn": null,
 						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "cloudflare-for-healthcare-solutions-page-modal-form",
-						"buttonText2": null,
+						"button1ExtraClass": "cloudflare-for-healthcare-modal-form",
+						"buttonText2": "Get solution brief",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": null,
+						"buttonUrl2": "https://www.cloudflare.com/lp/cloudflare-for-healthcare/",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"includeVideo": true,
+						"streamVideoId": "49802193a6acd7c3a3b1218c588e6069",
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": null,
 						"button2OpenInNewTab": null,
-						"streamThumbnails": null,
+						"streamThumbnails": "4s",
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
@@ -103,72 +106,364 @@
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Y8w2QRgvviMdzEyQv7LI4/10cbefb2eafa11f8c70379ae753dabc6/Healthcare_01.png"
-							},
-							"description": "BDES-6157 Health, Medical"
-						},
+						"image": null,
 						"imageAssetFile": null
 					},
 					{
-						"contentfulId": "MUcHX5aC9T0DRYc8iikQS",
-						"title": "Project Fair Shot helps protect vaccine registration sites from crashing",
-						"copy": "Cloudflare's new Waiting Room service helps protect vaccine registration sites from crashing. Project Fair Shot provides Waiting Room for free to any government, municipality, hospital, pharmacy, or other organization responsible for distributing COVID-19 vaccines. It is open to eligible organizations around the world and will remain free until at least July 1, 2023, or longer if there is still more demand for appointments for the vaccine than there is supply.\n\n__You can apply by visiting:__ [projectfairshot.org](https://www.projectfairshot.org)\n",
+						"contentfulId": "2v2hoGzgcsFhjMRQfO8oDm",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": null,
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3idsHPkhkL8OaFWMGqUAbs",
+								"title": "Protect patient data and strengthen compliance",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Defend against ransomware, malware and unauthorized access across cloud, SaaS, and hybrid environments, reducing risk and boosting regulatory compliance.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b914043d-ea00-5a37-81d5-dd4b3b25da06",
+									"altText": "security-lock-226x301-cfb9db4",
+									"title": "security-lock-226x301-cfb9db4",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YZDquysdwv0IC1kV0hC6n/0b1b2d81887d494047dbee2d347d2abb/security-lock_1_.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2eC6MRO7rt8z7Hw1cfvfjF",
+								"title": "Enhance clinician productivity from anywhere",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Empower remote clinical teams with fast, reliable access to medical systems from any location, without the frustrations of traditional VPNs.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "f705f70f-6061-5494-a41c-589d683ec8a2",
+									"altText": "network-scale",
+									"title": "network-scale",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6voDUQ7XmHDJ9zX0u2IrkW/e347d8fff227565dd30e1e9c85f1fe97/network-scale__1_.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5DWY7AJY1IrCVApYkphPQu",
+								"title": "Deliver secure virtual visits and digital experiences",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Safeguard patient-facing applications with a unified security platform and intelligent global network that prevents breaches while ensuring uninterrupted availability.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "0b7cd03c-c40f-5158-b2f1-51ebcde92c92",
+									"altText": "Performance cloud speed orange",
+									"title": "Performance cloud speed orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Hrl9MJuJGcsYRLaNNcCpS/3ca96c403b9a0195da1a8502d79ef76c/performance-cloud-speed.svg"
+										},
+										"description": "Cloud icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3LHjoEMjv1BwO1g216DYrp",
+								"title": "Increase IT and security efficiency",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Onboard new apps, manage user permissions, investigate incidents, and update policies faster and with more visibility from a single control plane and unified policy engine.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "242e7c8b-2bc5-5a5a-8dfa-8798e0b2b0bb",
+									"altText": "Analytics network",
+									"title": "Analytics network ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/43PVIP7xl52gR53bMu92mz/0c22ea1cf0886785421e6c426afc8748/analytics-network_outline.svg"
+										},
+										"description": "Analytics network orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentfulId": "IcxaeV9u7QvbO1uGvcwKX",
+						"title": "Stay ahead of evolving cyber threats",
+						"copy": "Cloudflare's SASE security solutions shield healthcare systems from phishing, ransomware and malware, leveraging peerless threat intelligence to preemptively block hundreds of billions of threats daily. Solutions like Magic Firewall, Remote Browser Isolation, and Cloud Email Security reduce the risk of breach, eliminate security gaps, and enhance network visibility.",
 						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": "https://blog.cloudflare.com/project-fair-shot/",
-						"learnMoreText": "Read the blog article",
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "4h2UYwBFPWE4Q7Bvqs5D52",
+								"elementName": "Cloudflare for Healthcare - Stay ahead of evolving cyber threats - Button",
+								"standardText": null,
+								"text": "Learn more",
+								"url": "https://www.cloudflare.com/cybersecurity/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							}
+						],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
 						"link": [],
 						"subheadline": null,
 						"button1Text": null,
 						"button1Url": null,
-						"button1Color": "orange",
+						"button1Color": null,
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4MjXLJyyuAqhnCBm2Kdzx9/42b8747bc0c76c3e504d47669e9d4c46/ProjectFairShot.png"
-							},
-							"description": null
-						},
+						"image": null,
 						"imageAssetFile": {
-							"id": "b77b6cb8-f561-5a4d-b9fe-3f7ef6483d3a",
-							"altText": "ProjecFairShot",
-							"title": "ProjecFairShot",
-							"activeAsset": "Brandfolder Asset",
+							"id": "66beb752-d5c3-571b-917c-93f5637d247d",
+							"altText": "Modernize security problem graphic",
+							"title": "Modernize security problem graphic",
+							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4MjXLJyyuAqhnCBm2Kdzx9/42b8747bc0c76c3e504d47669e9d4c46/ProjectFairShot.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fYIJFv08uRUvfu0AfpUhN/a4fce1e1256265ed2e24e4b608cbc7a4/BDES-7450_Modernize-Security_problem-graphic.png"
 								},
-								"description": null
+								"description": "Modernize security problem graphic"
 							},
-							"brandfolderAsset": {
-								"size": 11739,
-								"height": 523,
-								"width": 641,
-								"filename": "project-fair-shot.svg",
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/project-fair-shot.svg"
-								}
-							},
+							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "Revolutionizing digital healthcare",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "7ysw5K4GqKePUkCpSvjJxW",
+						"title": "Ensure secure access to systems and PHI",
+						"copy": "Eliminate reliance on VPNs with Cloudflare's Zero Trust services, enabling fast, secure, and reliable access to essential medical systems and PHI for internal and third-party clinicians. Products like Zero Trust Network Access and Data Loss Prevention enable healthcare organizations to control access to sensitive patient data, onboard users more quickly, and simplify policy enforcement.",
+						"toggleText": null,
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "30DNI4gXPM5a0ddjuYTrDi",
+								"elementName": "Cloudflare for Healthcare - Ensure secure access to systems and PHI - Button",
+								"standardText": null,
+								"text": "Learn more",
+								"url": "https://www.cloudflare.com/data/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							}
+						],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "ef3e9056-6814-5cba-bad0-3a7a9b4e703a",
+							"altText": "Healthcare Secondary - Images B",
+							"title": "Healthcare Secondary - Images B",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/48dAhr7VNnmSWQURQ3M4mR/75d16d86bccb787a0a9e23ec8974b9f3/Healthcare-Secondary-Images-B.png"
+								},
+								"description": "Healthcare Secondary - Images B"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "Security",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "7n3A7dAMStBvxW4ap70lrv",
+						"title": "Streamline compliance and minimize risk",
+						"copy": "Cloudflare's single composable platform and unified policy engine help you achieve compliance and manage evolving risk. Zero Trust and network services including Access, CASB, Gateway, and Magic Firewall work together to let you establish, enforce, and monitor application access while preventing malware and ransomware from getting onto your network.",
+						"toggleText": null,
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "2HeGn9NQ23QmJm2bwXtsbf",
+								"elementName": "Cloudflare for Healthcare - Streamline compliance and minimize risk - Button",
+								"standardText": null,
+								"text": "Learn more",
+								"url": "https://www.cloudflare.com/cybersecurity-risk-management/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							}
+						],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "40e29fca-988a-50b6-ace1-ee3f04106ea4",
+							"altText": "Network Performance Update",
+							"title": "Network Performance Update",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Br5L0EijimBgwzd96rzhX/ed613e6b43dead19173ec854f81fbea2/Network_Performance_Update.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "Speed",
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": null,
@@ -180,235 +475,97 @@
 						"togglesTo": []
 					},
 					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "7kT8B2lNuU9VMESKTy20Kh",
-						"quote": "\"Cloudflare Access is helping 23andMe access our internal applications securely from any device at any time without the need for VPN.\"",
-						"quoteAuthor": "Arnold de Leon",
-						"quoteTitle": "SRE Manager",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
+						"contentfulId": "3FyvnI9qFXQXiStliNzHlx",
+						"title": "Accelerate and secure patient-facing applications",
+						"copy": "Patient-facing applications require robust security to handle sensitive data and maintain availability. Cloudflare's unified application security (WAF, DDoS protection and API Security) and global network scale accelerate application performance and deliver seamless virtual care experiences while ensuring patient trust.",
+						"toggleText": null,
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "7Buwz3X9Vj0iBJ4sbnUfm",
+								"elementName": "Cloudflare for Healthcare - Accelerate and secure patient-facing applications - Button",
+								"standardText": null,
+								"text": "Learn more",
+								"url": "https://www.cloudflare.com/modernize-applications/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							}
+						],
 						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Mk9O8Tvy0S6gK8K2QUe0i/9db7d79315ea16e3776999bac4e16165/logo_23andme_color_svg.svg"
-							},
-							"description": null
-						},
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
 						"imageAssetFile": {
-							"id": "eccac24d-8340-58c0-8145-385c879b0b99",
-							"altText": "Logo 23andme",
-							"title": "Logo 23andme",
-							"activeAsset": "Brandfolder Asset",
+							"id": "fcd79419-cfe0-56ce-b16d-deb9fba2362b",
+							"altText": "Healthcare Secondary - Images C",
+							"title": "Healthcare Secondary - Images C",
+							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 7943,
-								"height": 2586,
-								"width": 3972,
-								"filename": "logo_23andme.svg",
+							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_23andme.svg"
-								}
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1rNRz9glrYn2mQI0CzkE8m/76925ed8b0b4cb2315bab64cc46accea/Healthcare-Secondary-Images-C.png"
+								},
+								"description": "Healthcare Secondary - Images C"
 							},
+							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": []
-					},
-					{
-						"contentfulId": "3TK50vgj7WFRcyHZmZL1uT",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "Scalability",
 						"htmlId": null,
-						"copy": null,
-						"title": "Why do healthcare organizations choose Cloudflare?",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4HVwHs9GEKJj9hGrf6TsTX",
-								"title": "Patient data privacy",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Healthcare organizations need to be extremely vigilant about the privacy of personal health information. Cloudflare's network and all of our products are built with data privacy in mind.\n",
-								"learnMoreUrl": "https://www.cloudflare.com/data-localization/",
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ujKa531hlAyzXP9funBit/750975332d420d0973a97720a31b26d0/icon-scanning_1-orange.png"
-									},
-									"description": "icon scanning_1 orange"
-								},
-								"iconAssetFile": {
-									"id": "c6776679-e543-5a80-9232-26ab70198b70",
-									"altText": "Security lock Orange",
-									"title": "Security lock Orange",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
-										},
-										"description": "Padlock icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1SY8TjNYki5iSeahPGoWfE",
-								"title": "Mitigate DDoS attacks",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Your network enables you to deliver patients the care they need. Protect it with Cloudflare and mitigate DDoS attacks as close to the source as possible, for faster response time.\n",
-								"learnMoreUrl": "https://www.cloudflare.com/ddos",
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/S1eKEL2dprEGNVFYxWDxw/f908d866613fe03ebe252543a1b36536/icon-DDoS-Attack-orange.png"
-									},
-									"description": "icon ddos attack orange"
-								},
-								"iconAssetFile": {
-									"id": "0e7afbfb-6bd8-53f7-862d-96d8bdc1c635",
-									"altText": "Ddos attack blue",
-									"title": "Ddos attack blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fCtDJiVXAmgSWmlKenFBR/d25c631065e2c37cc74e991740434118/ddos-attack.svg"
-										},
-										"description": "DDoS attack icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "10hsvNd62rymeoO5Dlqji1",
-								"title": "Lower operational costs",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Continue to innovate how your organization delivers care while lowering operational costs with consolidated network and security services from Cloudflare.\n",
-								"learnMoreUrl": "https://www.cloudflare.com/zero-trust/",
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/54CdVcW6TLB1pWvr188K83/9a780a90966b89525e6befd7c0b76250/icon-cost-orange.png"
-									},
-									"description": "icon cost orange"
-								},
-								"iconAssetFile": {
-									"id": "eaa35043-4f47-559a-84df-14dd2dc384bd",
-									"altText": "Price",
-									"title": "Price",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ABXXM79uTTFbsc925v8O/4b2b331f5a1475d45705d9c5fc61b85c/price.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentfulId": "6fqfK0FSqyZOGm8MZ4Yow6",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": null,
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
+						"titleSize": null,
 						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "31j6dfuBKYEggVNySAEJgb",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Protect data, streamline audits, and reduce risk with Cloudflare",
+						"eyebrowHeading": null,
+						"description": null,
+						"textLayout": "center",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "45byJNSbtm6N8HLgVEjSL5",
-								"title": "Secure access for remote workforce",
-								"makeTitleLink": null,
+								"contentfulId": "7o3FXdVkkxNv5bXIHzEMLP",
+								"title": null,
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Give physicians, administrators, developers, and contractors secure and streamlined access to internal systems. \n",
-								"learnMoreUrl": "https://www.cloudflare.com/products/zero-trust/remote-workforces/",
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
+								"description": "<div style= \"font-size: 48px; font-weight: 590; line-height:1.1;\" class=\"orange0\" >\n  65%\n</div>\n<div style=\"font-size: 16px; margin-top: 8px;\">\n  Reduced likelihood and related costs of data breach*\n</div>\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3trYya8AidVeMPTvPjxZHj/67249d9d50c57a59b6e3563205635ff3/icon-users-orange.png"
-									},
-									"description": "icon users orange"
-								},
-								"iconAssetFile": {
-									"id": "b3ff4344-a324-59a0-b8e4-414adc95e7d3",
-									"altText": "User multi ",
-									"title": "User multi ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oO1wqLlaSM1U8pwMbT3jY/e894b1327f9ec28e674794ac78b233e5/user-multi.svg"
-										},
-										"description": "User Multi - Orange"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -418,38 +575,19 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4wIqrJExcEuI8eK2G0RrzU",
-								"title": "Integrated security and performance",
-								"makeTitleLink": null,
+								"contentfulId": "5oQ4UnGWXDjEtYkFciKSNz",
+								"title": null,
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Telemedicine providers need to maintain the security, performance, and  availability of their virtual health platforms, even during periods of peak activity. \n",
-								"learnMoreUrl": "https://www.cloudflare.com/performance/",
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
+								"description": "<div style= \"font-size: 48px; font-weight: 590; line-height:1.1;\" class=\"orange0\" >\n  24%\n</div>\n<div style=\"font-size: 16px; margin-top: 8px;\">\n  Reduction on annual cyber insurance premiums*\n</div>",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qyDEBnfSjGjDAj5V6Zo1g/f8c8126789bc16fa0329943b0d414433/security-lock.svg"
-									},
-									"description": "Orange padlock icon"
-								},
-								"iconAssetFile": {
-									"id": "c6776679-e543-5a80-9232-26ab70198b70",
-									"altText": "Security lock Orange",
-									"title": "Security lock Orange",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
-										},
-										"description": "Padlock icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -459,38 +597,19 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6gthbvgRtjRNhGGEVZ0ixr",
-								"title": "Protect patient data from malicious bots",
-								"makeTitleLink": null,
+								"contentfulId": "56hMwd2rtntBaL6rftZkEx",
+								"title": null,
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Accurately identify bots by applying behavioral analysis, machine learning and fingerprinting to a diverse and vast volume of globally distributed data.\n",
-								"learnMoreUrl": "https://www.cloudflare.com/application-services/products/bot-management/",
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
+								"description": "<div style= \"font-size: 48px; font-weight: 590; line-height:1.1;\" class=\"orange0\" >\n  29%\n</div>\n<div style=\"font-size: 16px; margin-top: 8px;\">\n  Improvement in security team efficiency*\n</div>",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1JcTTzlgcHGNiIQiyN1X5I/42f2ca4b702ea040815dcf58dd764c96/icon-bot-orange.png"
-									},
-									"description": "icon bot orange"
-								},
-								"iconAssetFile": {
-									"id": "486af6c9-dbc6-5ea8-b3f7-a314995bf2bd",
-									"altText": "Security crawler blue",
-									"title": "Security crawler blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oW5o9BTJTtWUYgBeR55a0/8cd8f7c0d5684ac49e3f7ec7f53ce28f/security-crawler.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -498,7 +617,9 @@
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
-						]
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
 					},
 					{
 						"contentfulId": "7d59HckI6qHpN6Ya0esqif",
@@ -569,34 +690,33 @@
 						"togglesTo": []
 					},
 					{
-						"contentfulId": "QN1x64bgsoVdw9j2XfnuG",
-						"backgroundColor": "light-blue",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": "Info Blocks",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"contentfulId": "4Htm0Qj9y8dkDVZa6CKvo",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "ANALYST RECOGNITION",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Two Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5vvxWKmQiCsvIbravIMJ07",
-								"title": "Product guides",
-								"makeTitleLink": null,
+								"contentfulId": "yGJPhs87hkvhHmfb2ogSf",
+								"title": "Cloudflare named in the 2025 Gartner® Magic Quadrant™ for Security Service Edge (SSE)",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Learn more about Cloudflare's products and features, including the Cloudflare WAF, Cloudflare Zero Trust, and Cloudflare Bot Management via our product guides.",
-								"learnMoreUrl": "https://www.cloudflare.com/resource-hub/?resourcetype=Solution+%26+Product+Guides",
-								"learnMoreText": "Learn more",
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
+								"description": "We believe this recognition reflects our continued commitment to provide one security platform that scales seamlessly from network to cloud, protecting all users and data across applications and AI.",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/gartner-magic-quadrant-sse-2025/",
+								"learnMoreText": "Read the report",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2EpMDcOzRGz0qkeQbuOoB1/647e0c54d93967efd46237dec01b149d/gartner.svg"
+									},
+									"description": "Gartner logo"
+								},
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
@@ -607,18 +727,150 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6Zcmb7uAFlaydXTZdTQ1Ve",
-								"title": "Customer case studies",
-								"makeTitleLink": null,
+								"contentfulId": "1nVBmnYJFtD5d4otdsxNw6",
+								"title": "Cloudflare a Leader in \"The Forrester Wave™: Web Application Firewall Solutions, Q1 2025",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "See how other healthcare organizations use Cloudflare.",
-								"learnMoreUrl": "https://www.cloudflare.com/case-studies/?industry=Healthcare+%26+Life+Sciences",
-								"learnMoreText": "Learn more",
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
+								"description": "Cloudflare has been recognized as a Leader in \"The Forrester Wave™: Web Application Firewall Solutions, Q1 2025\" report. Cloudflare received the highest score in the current offering category.",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/forrester-wave-waf-2025/",
+								"learnMoreText": " Read the report",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AdmvEGP1Nssxe3RI0j9Fl/d35e24c62136bae8429dfd43805ad832/forester.svg"
+									},
+									"description": "Forrester logo"
+								},
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentfulId": "3FdIgYrPLwDCdYPPRHukbL",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Flo Health secures personal data of a global user base with help from Cloudflare",
+						"eyebrowHeading": null,
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Two Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "elementColumnContent",
+								"contentfulId": "3q39fNbojj9HKdt1jFG37V",
+								"title": null,
+								"heading": null,
+								"copy": "Flo is the #1 most popular female health app worldwide, with 400 million total installs and 75 million monthly active users. With a global user base, Flo Health must comply with numerous regulations such as the EU's General Data Protection Regulation (GDPR). At the same time, the company faces the challenge of defending itself from the rapidly evolving threat landscape which is marked by increasingly sophisticated and frequent cyber attacks.\n\nAfter migrating their traffic to the Cloudflare global network and switching on the Cloudflare Web Application Firewall (WAF), Secure DNS, and DDoS protection solutions, they saw immediate improvements—running 27% faster with higher cache rates—while estimating that Cloudflare blocked nearly 99% of all attacks before they reached their website.\n"
+							},
+							{
+								"contentTypeId": "elementColumnContent",
+								"contentfulId": "2Id0NcHIySI99chM3Z7dol",
+								"title": null,
+								"heading": null,
+								"copy": "__\"After GPT4 was released, we analyzed our statistics in Cloudflare Email Security and found that attacks had jumped by 20% within one month. We rely on Cloudflare, which is handling these attacks very well.\"__\n\n![Flo logo](//cf-assets.www.cloudflare.com/slt3lc6tev37/6JG3SgrdkCERoN8VcHqdnc/994f3411a7c19dc79edaded013454123/Flo-logo.png)\n\nRoman Bugaev <br>\nChief Technology Officer, Flo"
+							}
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "9aboVawcGW7NmGywDGtEN",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Healthcare case studies",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "64YSFVnPwFsy6sUV1J24m7",
+								"title": "Bumrungrad International Hospital",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Bumrungrad International Hospital sees bandwidth reduction while providing secure, performant access to patient services and information.",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/bumrungrad-international-hospital/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Tbsku4NNv9btQloshwHMx/7a31f641247d64fd9fc514eae5b9371a/bumrungrad_logo.svg"
+									},
+									"description": ""
+								},
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2GfClMbXZd9QogEaJZUgEv",
+								"title": "HERA Digital Health",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "\"We have an international healthcare application with strict data privacy requirements, the challenge was to address API security and data privacy issues with limited technical staff.\"\n",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/hera-digital-health/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/IsQ7GzcjlvBN6NDJYTVRi/cfce7328496f2c9990eaf486adc0d723/Updated_HERA_logo_vector_2021-2.svg"
+									},
+									"description": ""
+								},
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3srUdfEkcHQABT6gIs4MR0",
+								"title": "Global Insurance Company",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "How a global insurance services provider protects its Microsoft 365 users from advanced phishing threats.",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/global-insurance-company/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3V29aa2ZYf2kkghIAnTCYb/c7d462444e2f32c281304cb982f7aaa1/Global-insurer-logo.svg"
+									},
+									"description": "Global insurer logo"
+								},
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
@@ -630,161 +882,132 @@
 						]
 					},
 					{
-						"contentTypeId": "bladeTrustedBy",
-						"contentfulId": "6pnbdA1rccJ42GpK3cMhxC",
-						"bladeBorder": "none",
-						"textColor": "black",
-						"linkText": "View case studies",
-						"linkUrl": "https://www.cloudflare.com/case-studies/",
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"title": "Trusted by millions of Internet properties",
-						"copy": null,
-						"logoList": [
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "7wWZYjKbSGx2tiDz5SG3iV",
+						"title": "Resources",
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TfcZ86qvZor2xtI2z4Vvr/ef54112582296119f4296869c34ba025/logo_23andme_color_32px-wrapper.svg"
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3UNN9vf1LzS8lO9rh9T7Lj",
+								"heading": "Solution brief",
+								"description": "Five reasons why healthcare organizations choose Cloudflare",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5Y0jOUeMQFMebIgFprQ0vE",
+									"elementName": "Cloudflare for Healthcare - Five reasons why healthcare organizations choose Cloudflare - Link",
+									"standardText": null,
+									"text": "Read the brief",
+									"url": "https://www.cloudflare.com/lp/cloudflare-for-healthcare-secure-fast-and-reliable/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
 								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6qV8D9q0ghT3dNsE7jKD2D/10293a8f67d9b61900fffd5479a08d02/logo_flo_quote-blade_gray.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1aI2eA25ffLgRJhqnJJvhb/8974075dfabf7a5e04bfdbf98c6a54a7/GetInsured_Greyscale.png"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/47baOjkvX7lLtmTdWvCYI9/009360a8301d33def2ea3ffe22a922df/logo_labcorp_color_32px-wrapper.svg"
-								},
-								"description": "LabCorp logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6k7ffuuTIq42yl9KFQeBdP/c252ee411ff15876961afaa650db2fa9/logo_lumahealth_trusted-by_gray.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4GgvmNwu3O9axtOhw7N2Os/a57c4fcddafbec678d875198857fef64/logo_roman_gray.svg"
-								},
-								"description": null
-							}
-						],
-						"logoListAssetFile": [
-							{
-								"id": "ffd4a407-4457-5421-8b20-54433e485cc7",
-								"altText": "Logo 23andme trusted by gray",
-								"title": "Logo 23andme trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TfcZ86qvZor2xtI2z4Vvr/ef54112582296119f4296869c34ba025/logo_23andme_color_32px-wrapper.svg"
+								"image": {
+									"id": "5196cc16-126a-54ef-8070-148f4b97f5d1",
+									"altText": "Zero trust resource thumbnail",
+									"title": "Zero trust resource thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/rqASHuRQGSXW74MIXCgec/0452a9425cbc6f653969a7cdf62c48b9/Zero-trust-resource-thumbnail.webp"
+										},
+										"description": "Zero trust resource thumbnail"
 									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							},
 							{
-								"id": "4099cb16-7356-5158-b7d1-7090a97a0853",
-								"altText": "Logo flo trusted by gray",
-								"title": "Logo flo trusted by gray",
-								"activeAsset": "Brandfolder Asset",
-								"locale": "en-US",
-								"contentfulAsset": null,
-								"brandfolderAsset": {
-									"size": 3627,
-									"height": 128,
-									"width": 632,
-									"filename": "logo_flo_trusted-by_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_flo_trusted-by_gray.svg"
-									}
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "7lNaYNtLm680CalWyBE8Dq",
+								"heading": "Ebook",
+								"description": "Modernizing healthcare provider cybersecurity",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5BnQjlzmNcwEJID6ElwZcM",
+									"elementName": "Cloudflare for Healthcare - Modernizing healthcare provider cybersecurity - Link",
+									"standardText": null,
+									"text": "Read the ebook",
+									"url": "https://www.cloudflare.com/lp/modern-healthcare-cybersecurity/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
 								},
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "6f68ad17-e6c8-5155-877e-91855b51cee0",
-								"altText": "Logo labcorp trusted by gray",
-								"title": "Logo labcorp trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AsuJijKk8EMH5s1ae56nx/b13406881aa864b7e17b2233a0d090ef/logo_labcorp_trusted-by_gray.svg"
+								"image": {
+									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
+									"altText": "Whitepaper Thumbnail",
+									"title": "Whitepaper Thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
+										},
+										"description": null
 									},
-									"description": "LabCorp logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							},
 							{
-								"id": "53ab2914-a6be-5950-9cd4-99a86186d59d",
-								"altText": "Logo lumahealth trusted by gray",
-								"title": "Logo lumahealth trusted by gray",
-								"activeAsset": "Brandfolder Asset",
-								"locale": "en-US",
-								"contentfulAsset": null,
-								"brandfolderAsset": {
-									"size": 4721,
-									"height": 96,
-									"width": 632,
-									"filename": "logo_lumahealth_trusted-by_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_lumahealth_trusted-by_gray.svg"
-									}
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "6Qgrt1WWi6nTlXHg8GeV0z",
+								"heading": "Article",
+								"description": "Securing remote access for healthcare workers",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "18SZuVvIMSkNLr3oDlfs6R",
+									"elementName": "Cloudflare for Healthcare - Securing remote access for healthcare workers - Link",
+									"standardText": null,
+									"text": "Read the article",
+									"url": "https://www.cloudflare.com/the-net/remote-healthcare-cybersecurity/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
 								},
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "2330d570-c7e5-522d-8e78-f9a306dbcf8e",
-								"altText": "Logo roman trusted by gray",
-								"title": "Logo roman trusted by gray",
-								"activeAsset": "Brandfolder Asset",
-								"locale": "en-US",
-								"contentfulAsset": null,
-								"brandfolderAsset": {
-									"size": 874,
-									"height": 812,
-									"width": 812,
-									"filename": "logo_roman_trusted-by_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_roman_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAssetMobile": null
+								"image": {
+									"id": "83fc67b4-685b-5eed-b03d-f41e2519f8dd",
+									"altText": "Education book learning illustration",
+									"title": "Education book learning",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1RLEnIxmF7SDLzC2yDIqZf/d8a5b8a77a0296abbf345f8ace0cde8a/Education_01__1_.png"
+										},
+										"description": "Education book learning "
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
-						],
-						"logoUrlList": null
+						]
 					},
 					{
-						"contentfulId": "63Z2MNctWzClNxZbDCXuyR",
+						"contentfulId": "w3rOJZavHcY5n205vC8bT",
 						"contentTypeId": "bladeLeadGeneration",
-						"title": "Get started today",
-						"description": null,
+						"title": "Get started with Cloudflare",
+						"description": "Our experts will help you choose the right solution for your healthcare organization.",
 						"variant": "full-width",
 						"htmlId": null,
 						"sectionPadding": null,
 						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
+							"id": "4526a0e7-98ff-58c2-a6a8-10324e3c2948",
+							"altText": "Generic Lead Generation background",
+							"title": "Generic Lead Generation background",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/b05450aa05d6c40af93bf04309e1723c/Lead-generation-background-generic.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GXH7p3scfTG26xKndTZ0Z/fb56c78967ff82b1633b9f5386f1605f/Lead-generation-background-generic.png"
 								},
-								"description": ""
+								"description": "Lead generation background generic"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -793,49 +1016,94 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "2mfrQ3Os9WlM8kr8YBbNic",
-							"elementName": "Talk to an expert - Primary CTA",
+							"contentfulId": "2FRU0zVVZztpkQvoOR8XEs",
+							"elementName": "Cloudflare for Healthcare - GET STARTED CTA - Button 1",
 							"standardText": null,
 							"text": "Talk to an expert",
 							"url": "https://www.cloudflare.com/plans/enterprise/contact/",
 							"loggedInUrl": null,
 							"buttonModal": null,
-							"openInNewTab": true,
+							"openInNewTab": false,
 							"locale": "en-US"
 						},
 						"secondaryCtaButton": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "wE05uHW5pTTstFfKKV0Wd",
-							"elementName": "Compare plans - Secondary CTA",
+							"contentfulId": "3q3mkc5TtjMqXKz7KOvLxb",
+							"elementName": "Cloudflare for Healthcare - GET STARTED CTA - Button 2",
 							"standardText": null,
-							"text": "Compare plans",
-							"url": "https://www.cloudflare.com/plans/",
+							"text": "Request a demo",
+							"url": "#",
 							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "6iHAbFp7azUDtSH8PSueg1",
+								"modalName": "Cloudflare for Healthcare - Modal Form",
+								"modalId": "cloudflare-for-healthcare-modal-form",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "5P55gCbEt1GuS9rSuSCG2e",
+									"bladeName": "Cloudflare for Healthcare - Modal Form - Marketo",
+									"backgroundColor": "white",
+									"marketoFormId": 3989,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "25Q1-DEMO-GBL-Vertical Solutions Page-CNC-ALL-ALL-HEALTH",
+									"marketoFormHeaderText": "Request a demo",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": "Request a demo",
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
 							"locale": "en-US"
 						}
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "4BZeEevl2NEFAPRlkxMqYM",
+						"htmlContent": "  <p style=\"font-size: 10px; color: gray;\">\n    <sup>1</sup> IBM <a href=\"https://www.ibm.com/reports/data-breach\" target=\"_blank\">Cost of Breach report</a>\n  </p>\n  <p style=\"font-size: 10px; color: gray;\">\n    <sup>2</sup> TechValidate by Survey Monkey, <a href=\"https://www.techvalidate.com/product-research/cloudflare/facts\" target=\"_blank\">TechValidate Research on Cloudflare</a>\n  </p>\n  <p style=\"font-size: 10px; color: gray;\">\n    <sup>3</sup> <a href=\"https://www.cloudflare.com/lp/forrester-tei-study-2024/\" target=\"_blank\">Forrester The Total Economic Impact™ of Cloudflare's connectivity cloud</a>\n  </p>\n",
+						"htmlId": null
 					}
 				],
 				"noindex": false,
 				"formModal": [
 					{
 						"contentTypeId": "formModal",
-						"contentfulId": "6puSzeZsw1YuZFe4v7NG5z",
-						"modalName": "Cloudflare for Healthcare - Solutions Page - Modal Form",
-						"modalId": "cloudflare-for-healthcare-solutions-page-modal-form",
+						"contentfulId": "6iHAbFp7azUDtSH8PSueg1",
+						"modalName": "Cloudflare for Healthcare - Modal Form",
+						"modalId": "cloudflare-for-healthcare-modal-form",
 						"modalType": "single-form",
 						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "GnJOvRjL3tE2kdTXxfV3l",
-							"bladeName": "Cloudflare for Healthcare - Solutions Page - Marketo Form",
+							"contentfulId": "5P55gCbEt1GuS9rSuSCG2e",
+							"bladeName": "Cloudflare for Healthcare - Modal Form - Marketo",
 							"backgroundColor": "white",
-							"marketoFormId": 1341,
-							"marketoFormLeadSource": "Marketing Generated - Inbound",
-							"marketoFormLeadSourceDetail": "[ACQ] Q1'21 WEB - GBL - Healthcare Solutions Page",
-							"marketoFormHeaderText": null,
+							"marketoFormId": 3989,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "25Q1-DEMO-GBL-Vertical Solutions Page-CNC-ALL-ALL-HEALTH",
+							"marketoFormHeaderText": "Request a demo",
 							"marketoFormDefaultComment": null,
 							"showCommentBox": null,
 							"marketoFormThankYouText": null,
@@ -847,14 +1115,14 @@
 							"sendAdRoll": null,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonText": "Request a demo",
 							"marketoFormSubmitButtonColor": null,
 							"enableEmailVerification": null,
 							"disableEnterpriseEmailNotification": null,
 							"enableRingout": null
 						},
-						"title": "Contact Us!",
-						"regularCopy": "Cloudflare for Healthcare",
+						"title": null,
+						"regularCopy": null,
 						"splitFormDefaultTab": null,
 						"selfServeTabText": null,
 						"selfServeCopy": null,
