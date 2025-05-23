@@ -1612,6 +1612,25 @@
 								},
 								"type": "array"
 							},
+							"description": {
+								"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
+								"example": "Prevent multiple login failures to mitigate brute force attacks",
+								"maxLength": 1024,
+								"type": "string",
+								"x-auditable": true
+							},
+							"paused": {
+								"description": "When true, indicates that the rule is currently paused.",
+								"example": false,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"priority": {
+								"description": "The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.",
+								"example": 5,
+								"type": "number",
+								"x-auditable": true
+							},
 							"urls": {
 								"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 								"items": {
