@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "4176672d-7b45-55b9-b3ea-dd687a945862")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "6cc948eb-acb5-55ab-bd15-4e3efd9200c1")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1194,10 +1194,10 @@
 					t.g.build = wn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "0243f1ce92eb193d9de41bee49ebe68e470a99b4",
-						dashVersion: "33432279",
+						commit: "817a888919bac7e2fb4c5128a48d2687131a3c5c",
+						dashVersion: "33464775",
 						env: "production",
-						builtAt: 1747917884500,
+						builtAt: 1748008812974,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -13231,7 +13231,9 @@
 					[i.I1.MEDIA]: "firewall.page_shield.policies.table.media",
 					[i.I1.OBJECT]: "firewall.page_shield.policies.table.object",
 					[i.I1.SCRIPT]: "firewall.page_shield.policies.table.script",
+					[i.I1.SCRIPT_ELEM]: "firewall.page_shield.policies.table.script",
 					[i.I1.STYLE]: "firewall.page_shield.policies.table.style",
+					[i.I1.STYLE_ELEM]: "firewall.page_shield.policies.table.style",
 					[i.I1.UPGRADE_INSECURE_REQUESTS]: "firewall.page_shield.policies.table.upgrade_insecure_requests",
 					[i.I1.WORKER]: "firewall.page_shield.policies.table.worker"
 				},
@@ -13607,7 +13609,7 @@
 				return (p === "string" ? String : Number)(s)
 			}
 			let l = function(s) {
-				return s.BASE_URI = "base-uri", s.CHILD = "child-src", s.CONNECT = "connect-src", s.DEFAULT = "default-src", s.FONT = "font-src", s.FORM_ACTION = "form-action", s.FRAME = "frame-src", s.FRAME_ANCESTORS = "frame-ancestors", s.IMAGE = "img-src", s.MANIFEST = "manifest-src", s.MEDIA = "media-src", s.OBJECT = "object-src", s.SCRIPT = "script-src", s.STYLE = "style-src", s.WORKER = "worker-src", s.UPGRADE_INSECURE_REQUESTS = "upgrade-insecure-requests", s
+				return s.BASE_URI = "base-uri", s.CHILD = "child-src", s.CONNECT = "connect-src", s.DEFAULT = "default-src", s.FONT = "font-src", s.FORM_ACTION = "form-action", s.FRAME = "frame-src", s.FRAME_ANCESTORS = "frame-ancestors", s.IMAGE = "img-src", s.MANIFEST = "manifest-src", s.MEDIA = "media-src", s.OBJECT = "object-src", s.SCRIPT = "script-src", s.SCRIPT_ELEM = "script-src-elem", s.STYLE = "style-src", s.STYLE_ELEM = "style-src-elem", s.WORKER = "worker-src", s.UPGRADE_INSECURE_REQUESTS = "upgrade-insecure-requests", s
 			}({});
 			const f = e({}, l, {
 				BLOCK_ALL_MIXED_CONTENT: "block-all-mixed-content",
@@ -19933,8 +19935,6 @@
     --color-blue-700: oklch(48.8% 0.243 264.376);
     --color-blue-800: oklch(0.424 0.199 265.638);
     --color-blue-900: oklch(37.9% 0.146 265.522);
-    --color-purple-500: oklch(62.7% 0.265 303.9);
-    --color-pink-500: oklch(65.6% 0.241 354.308);
     --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-gray-600: oklch(44.6% 0.03 256.802);
@@ -22988,4 +22988,4 @@
 	}
 ]);
 
-//# debugId=4176672d-7b45-55b9-b3ea-dd687a945862
+//# debugId=6cc948eb-acb5-55ab-bd15-4e3efd9200c1
