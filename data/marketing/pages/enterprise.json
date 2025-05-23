@@ -52,20 +52,12 @@
 				},
 				"sys": {
 					"createdAt": "2019-08-07T14:10:16.593Z",
-					"updatedAt": "2025-02-06T18:27:59.996Z"
+					"updatedAt": "2025-05-22T18:30:57.877Z"
 				},
 				"contentfulId": "6ABBcUu1YsETXnvveDFVwR",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
-				"psaBanner": {
-					"contentTypeId": "psaBanner",
-					"contentfulId": "47TUqQxRSVeRrYNsFpOYo8",
-					"text": "Cloudflare is the only new vendor to be recognized in the 2023 GartnerⓇ Magic Quadrant™ for Security Service Edge (SSE).",
-					"learnMoreText": "Read the report",
-					"learnMoreUrl": "https://www.cloudflare.com/lp/gartner-magic-quadrant-sse-2023/",
-					"backgroundColor": "blue0",
-					"hideCloseButton": false
-				},
+				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
@@ -74,23 +66,16 @@
 					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "5z9kfqqHKy1GZn0ISnC18M",
-						"menuTitle": "Enterprise Features",
+						"menuTitle": "Cloudflare for enterprises",
 						"mobileOnlyMenuTitle": "Jump to a section",
 						"stickyNav": true,
 						"htmlId": null,
 						"menuItems": [
 							{
 								"contentfulId": "5uHGwlaPzSJRqKqKja0FxK",
-								"linkText": "Plan Features",
+								"linkText": "Premium features",
 								"page": null,
 								"url": "/plans/enterprise/#ent-plan-features ",
-								"subMenuItems": []
-							},
-							{
-								"contentfulId": "2DtoDb3P1ciCT1D7oHSTjl",
-								"linkText": "Case Studies",
-								"page": null,
-								"url": "#case_studies",
 								"subMenuItems": []
 							},
 							{
@@ -384,7 +369,7 @@
 					{
 						"contentfulId": "2Y7GOY6bNWyThxvR87vjlx",
 						"title": "Secure hybrid work",
-						"copy": "No matter where they're working, your workforce requires secure access to internal applications and tools. Cloudflare enables seamless, identity and software-defined Zero Trust security, allowing you to secure your remote teams, devices, and data. All without sacrificing performance or usability.\n- Cloudflare is the only new vendor to be recognized in the 2023 Gartner® Magic Quadrant™ for SSE<sup>1</sup>\n- Cloudflare named a Strong Performer in The Forrester Wave™: Security Service Edge Solutions, Q1 2024<sup>2</sup>\n- Cloudflare named a Strong Performer in The Forrester Wave™: Zero Trust Platforms, Q3 2023<sup>3</sup>\n- Cloudflare named a Leader in The Forrester Wave™: Enterprise Email Security, Q2 2023<sup>4</sup>",
+						"copy": "No matter where they're working, your workforce requires secure access to internal applications and tools. Cloudflare enables seamless, identity and software-defined Zero Trust security, allowing you to secure your remote teams, devices, and data. All without sacrificing performance or usability.\n- Cloudflare named a Strong Performer in The Forrester Wave™: Security Service Edge Solutions, Q1, 2024<sup>1</sup>\n- Cloudflare has been recognized in the 2024 Gartner® Magic Quadrant™ for Single-Vendor SASE<sup>2</sup>\n- Cloudflare has been recognized in the 2024 Gartner® Magic Quadrant™ for Security Service Edge (SSE)<sup>3</sup>",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": "https://www.cloudflare.com/zero-trust/",
@@ -437,7 +422,7 @@
 					{
 						"contentfulId": "29Zi9A0uGfVvJLOK3JxWaU",
 						"title": "Secure, performant application delivery",
-						"copy": "With Cloudflare, rich web application experiences never come at the expense of security or performance. We improve security posture and digital experience simultaneously by training our machine learning models on 20% of all Internet traffic.\n\n- Cloudflare named a Leader in the 2022 IDC MarketScape for WW CDN Services\n<sup>5</sup>\n- Cloudflare named a 2022 Gartner® Peer Insights™ Customers' Choice for CDN<sup>6</sup> and WAAP<sup>7</sup>",
+						"copy": "With Cloudflare, rich web application experiences never come at the expense of security or performance. We improve security posture and digital experience simultaneously by training our machine learning models on 20% of all Internet traffic.\n\n- Cloudflare named a Leader in The Forrester Wave™: Web Application Firewall Solutions, Q1, 2025<sup>4</sup>\n- Cloudflare Named A 'Leader' in the IDC MarketScape: Worldwide Edge Delivery Services 2024 Vendor Assessment<sup>5</sup>\n- Cloudflare named the leader in the Frost & Sullivan Radar for Global CDN, 2023<sup>6</sup>",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": "/application-services/",
@@ -542,9 +527,9 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "3EgvZs6KfiMlRjO3Z01udK",
-						"title": "See enterprise features",
-						"titleSize": "large",
+						"contentfulId": "5CM1MBEQAqEBzu4BF24Rxk",
+						"title": "Ready to have a conversation with a specialist?",
+						"titleSize": null,
 						"backgroundColor": "image-background",
 						"buttonText": null,
 						"buttonUrl": null,
@@ -556,15 +541,54 @@
 						"bladeBorder": "none",
 						"buttonOne": {
 							"buttonAssetFile": null,
-							"buttonTextLoggedIn": "Upgrade Today",
+							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "1dJ7Bf7USoPN3PkpzhLWSd",
-							"elementName": "Enterprise - Talk to an Expert (on page anchor to form)",
+							"contentfulId": "1bayMRGIymUkCyirht03NO",
+							"elementName": "Enterprise HUB - Sign up for demo - CTA",
 							"standardText": null,
-							"text": "Request demo",
-							"url": "#ent-demo-form",
+							"text": "Request a demo",
+							"url": null,
 							"loggedInUrl": null,
-							"buttonModal": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "QO90opzjDQWDQJgIyXHPM",
+								"modalName": "Enterprise Plan Request Demo - Form Modal",
+								"modalId": "enterprise-plan-request-demo-form-modal",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "3u90C4xsapCAku7d4iQehf",
+									"bladeName": "Enterprise Plan Request Demo - Form",
+									"backgroundColor": "blue",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Request Demo",
+									"marketoFormHeaderText": null,
+									"marketoFormDefaultComment": null,
+									"showCommentBox": true,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": false,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Request Demo",
+								"regularCopy": "Please provide your information to help us schedule a demo with you.",
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
@@ -1086,7 +1110,7 @@
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "2dj6BeZWZcPqhPJFseWfO8",
-						"htmlContent": "<div class=\"pt4 pb4\" style=\"padding-top:100px;\">\n<div class=\"container\">\n<div class=\"row\">\n<div class=\"col-lg-12\">\n  <p class=\"gray1 f2 fw4 lh-6 mb3 mt0\"><strong>Analyst Reports & Sources:</strong>\n<ol style=\"font-size:12px\">\n\n<li>2023 Forrester Wave™: Enterprise Email Security - <a href=\"https://www.cloudflare.com/lp/forrester-wave-email-security-2023/\" target=\"_blank\">Read report</a></li>\n<li>2023 IDC MarketScape for Zero Trust Network Access - <a href=\"https://www.cloudflare.com/lp/idc-marketscape-ztna-2023/\" target=\"_blank\">Read report </a></li>\n<li>2022 Forrester Wave™: Web Application Firewalls - <a href='https://www.cloudflare.com/lp/forrester-wave-for-waf-2022/'>Read report</a></li>\n\n  </ol>\n\n </p>\n\n</div>\n</div>\n</div>\n</div>",
+						"htmlContent": "<div class=\"pt4 pb4\" style=\"padding-top:100px;\">\n<div class=\"container\">\n<div class=\"row\">\n<div class=\"col-lg-12\">\n  <p class=\"gray1 f2 fw4 lh-6 mb3 mt0\"><strong>Analyst Reports & Sources:</strong>\n<ol style=\"font-size:12px\">\n\n<li>The Forrester Wave™: Security Service Edge Solutions, Q1, 2024 - <a href=\"https://www.cloudflare.com/lp/forrester-wave-sse-2024/\" target=\"_blank\">Read report</a></li>\n<li>2024 Gartner® Magic Quadrant™ for Single-Vendor SASE - <a href=\"https://www.cloudflare.com/lp/gartner-magic-quadrant-single-vendor-sase-2024/\" target=\"_blank\">Read report</a></li>\n<li>2024 Gartner® Magic Quadrant™ for Security Service Edge (SSE) - <a href=\"https://www.cloudflare.com/lp/gartner-magic-quadrant-sse-2024/\" target=\"_blank\">Read report</a></li>\n<li>The Forrester Wave™: Web Application Firewall Solutions, Q1, 2025 - <a href=\"https://www.cloudflare.com/lp/forrester-wave-waf-2025/\" target=\"_blank\">Read report</a></li>\n<li>IDC MarketScape: Worldwide Edge Delivery Services 2024 Vendor Assessment - <a href=\"https://www.cloudflare.com/lp/idc-marketscape-for-worldwide-commercial-edge-delivery-services-2024/\" target=\"_blank\">Read report</a></li>\n  <li>Frost & Sullivan Radar for Global CDN, 2023</li>\n</ol>\n\n </p>\n\n</div>\n</div>\n</div>\n</div>",
 						"htmlId": null
 					}
 				],
@@ -1162,7 +1186,7 @@
 				"zh-Hans-CN",
 				"pl-PL"
 			],
-			"hasPsaBanner": true,
+			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}
