@@ -4295,6 +4295,44 @@
 					"annotations": {}
 				}
 			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:FallbackServiceRequest.Attribute",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {}
+				},
+				{
+					"name": "value",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:FallbackServiceRequest",
+			"fields": [
+				{
+					"name": "type",
+					"annotations": {}
+				},
+				{
+					"name": "specifier",
+					"annotations": {}
+				},
+				{
+					"name": "rawSpecifier",
+					"annotations": {}
+				},
+				{
+					"name": "referrer",
+					"annotations": {}
+				},
+				{
+					"name": "attributes",
+					"annotations": {}
+				}
+			]
 		}
 	],
 	"enums": [
