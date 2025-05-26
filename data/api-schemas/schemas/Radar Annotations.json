@@ -474,7 +474,7 @@
 														"type": "string"
 													},
 													"endDate": {
-														"example": "2022-09-08T10:00:28Z",
+														"format": "date-time",
 														"type": "string"
 													},
 													"eventType": {
@@ -538,7 +538,7 @@
 														"type": "string"
 													},
 													"startDate": {
-														"example": "2022-09-06T10:00:28Z",
+														"format": "date-time",
 														"type": "string"
 													}
 												},
@@ -721,7 +721,9 @@
 														"type": "string"
 													},
 													"value": {
-														"example": "5",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													}
 												},

@@ -1045,11 +1045,15 @@
 														"type": "string"
 													},
 													"latitude": {
-														"example": 33.939116,
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"longitude": {
-														"example": 67.709953,
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"name": {
@@ -1198,11 +1202,15 @@
 													"type": "integer"
 												},
 												"latitude": {
-													"example": 33.939116,
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"longitude": {
-													"example": 67.709953,
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"name": {

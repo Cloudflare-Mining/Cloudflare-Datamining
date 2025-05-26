@@ -147,7 +147,7 @@
 														"type": "object"
 													},
 													"endDate": {
-														"example": "2023-08-03T23:15:00Z",
+														"format": "date-time",
 														"type": "string"
 													},
 													"locationDetails": {
@@ -375,7 +375,9 @@
 														"type": "string"
 													},
 													"value": {
-														"example": "5",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													}
 												},

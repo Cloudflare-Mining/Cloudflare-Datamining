@@ -557,35 +557,227 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
 											"properties": {
-												"queries": {
-													"items": {
-														"properties": {
-															"dateRange": {
+												"aggInterval": {
+													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"enum": [
+														"FIFTEEN_MINUTES",
+														"ONE_HOUR",
+														"ONE_DAY",
+														"ONE_WEEK",
+														"ONE_MONTH"
+													],
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
 																	"endTime": {
-																		"example": "2024-07-29T13:30:00Z",
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
-																		"example": "2024-07-28T13:30:00Z",
+																		"format": "date-time",
 																		"type": "string"
 																	}
 																},
 																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
 																	"startTime",
-																	"endTime"
+																	"endTime",
+																	"linkedUrl",
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
-															"entity": {
-																"example": "174",
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
 																"type": "string"
 															}
 														},
 														"required": [
-															"dateRange",
-															"entity"
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"delay": {
+													"properties": {
+														"asn_data": {
+															"properties": {
+																"delaySecs": {
+																	"type": "number"
+																},
+																"delayStr": {
+																	"type": "string"
+																},
+																"healthy": {
+																	"type": "boolean"
+																},
+																"latest": {
+																	"properties": {
+																		"entries_count": {
+																			"type": "number"
+																		},
+																		"path": {
+																			"type": "string"
+																		},
+																		"timestamp": {
+																			"type": "number"
+																		}
+																	},
+																	"required": [
+																		"timestamp",
+																		"path",
+																		"entries_count"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"delaySecs",
+																"delayStr",
+																"healthy",
+																"latest"
+															],
+															"type": "object"
+														},
+														"country_data": {
+															"properties": {
+																"delaySecs": {
+																	"type": "number"
+																},
+																"delayStr": {
+																	"type": "string"
+																},
+																"healthy": {
+																	"type": "boolean"
+																},
+																"latest": {
+																	"properties": {
+																		"count": {
+																			"type": "number"
+																		},
+																		"timestamp": {
+																			"type": "number"
+																		}
+																	},
+																	"required": [
+																		"timestamp",
+																		"count"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"delaySecs",
+																"delayStr",
+																"healthy",
+																"latest"
+															],
+															"type": "object"
+														},
+														"healthy": {
+															"type": "boolean"
+														},
+														"nowTs": {
+															"type": "number"
+														}
+													},
+													"required": [
+														"nowTs",
+														"healthy",
+														"asn_data",
+														"country_data"
+													],
+													"type": "object"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
 														],
 														"type": "object"
 													},
@@ -593,22 +785,31 @@
 												}
 											},
 											"required": [
-												"queries"
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"aggInterval",
+												"lastUpdated",
+												"units"
 											],
 											"type": "object"
 										},
-										"serie_174": {
+										"serie_0": {
 											"properties": {
 												"ipv4": {
 													"items": {
-														"example": "4",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"ipv6": {
 													"items": {
-														"example": "6",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
@@ -630,8 +831,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"serie_174"
+										"serie_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -1696,7 +1897,7 @@
 		}
 	},
 	"GET /radar/bgp/routes/realtime": {
-		"description": "Retrieves realtime routes for prefixes using public realtime data collectors (RouteViews and RIPE RIS).",
+		"description": "Retrieves real-time BGP routes for a prefix, using public real-time data collectors (RouteViews and RIPE RIS).",
 		"operationId": "radar-get-bgp-routes-realtime",
 		"parameters": [
 			{
@@ -1777,7 +1978,7 @@
 																"type": "string"
 															},
 															"latest_realtime_ts": {
-																"description": "Latest realtime stream timestamp for this collector.",
+																"description": "Latest real-time stream timestamp for this collector.",
 																"type": "string"
 															},
 															"latest_rib_ts": {
@@ -1981,7 +2182,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get realtime routes for prefixes",
+		"summary": "Get real-time BGP routes for a prefix",
 		"tags": [
 			"Radar BGP"
 		],
@@ -2371,13 +2572,19 @@
 										"meta": {
 											"properties": {
 												"aggInterval": {
-													"example": "1h",
+													"enum": [
+														"15m",
+														"1h",
+														"1d",
+														"1w"
+													],
 													"type": "string"
 												},
 												"confidenceInfo": {
 													"properties": {
 														"annotations": {
 															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"example": "ALL",
@@ -2396,10 +2603,11 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"example": true,
+																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -2411,6 +2619,9 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -2418,9 +2629,14 @@
 															"type": "array"
 														},
 														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
 															"type": "integer"
 														}
 													},
+													"required": [
+														"level",
+														"annotations"
+													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -2453,6 +2669,7 @@
 												}
 											},
 											"required": [
+												"confidenceInfo",
 												"dateRange",
 												"aggInterval",
 												"lastUpdated"
@@ -2470,7 +2687,9 @@
 												},
 												"values": {
 													"items": {
-														"example": 0.56,
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
@@ -3163,7 +3382,9 @@
 														"type": "string"
 													},
 													"value": {
-														"example": "0.73996",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													}
 												},

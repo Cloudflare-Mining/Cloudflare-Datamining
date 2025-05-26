@@ -78,11 +78,14 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
+													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"example": "ALL",
@@ -101,10 +104,11 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"example": true,
+																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -116,6 +120,9 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -123,9 +130,14 @@
 															"type": "array"
 														},
 														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
 															"type": "integer"
 														}
 													},
+													"required": [
+														"level",
+														"annotations"
+													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -153,14 +165,25 @@
 													"type": "array"
 												},
 												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
 													"type": "string"
 												},
 												"normalization": {
-													"example": "RAW",
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
 													"type": "string"
 												},
 												"units": {
+													"description": "Measurement units for the results.",
 													"items": {
 														"properties": {
 															"name": {
@@ -183,8 +206,10 @@
 											},
 											"required": [
 												"dateRange",
+												"confidenceInfo",
+												"normalization",
 												"lastUpdated",
-												"normalization"
+												"units"
 											],
 											"type": "object"
 										},
@@ -210,8 +235,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"top_0"
+										"top_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -377,11 +402,14 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
+													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"example": "ALL",
@@ -400,10 +428,11 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"example": true,
+																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -415,6 +444,9 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -422,9 +454,14 @@
 															"type": "array"
 														},
 														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
 															"type": "integer"
 														}
 													},
+													"required": [
+														"level",
+														"annotations"
+													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -452,14 +489,25 @@
 													"type": "array"
 												},
 												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
 													"type": "string"
 												},
 												"normalization": {
-													"example": "RAW",
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
 													"type": "string"
 												},
 												"units": {
+													"description": "Measurement units for the results.",
 													"items": {
 														"properties": {
 															"name": {
@@ -482,8 +530,10 @@
 											},
 											"required": [
 												"dateRange",
+												"confidenceInfo",
+												"normalization",
 												"lastUpdated",
-												"normalization"
+												"units"
 											],
 											"type": "object"
 										},
@@ -517,8 +567,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"top_0"
+										"top_0",
+										"meta"
 									],
 									"type": "object"
 								},

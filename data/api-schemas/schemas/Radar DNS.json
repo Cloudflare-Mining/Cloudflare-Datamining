@@ -289,11 +289,14 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
+													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"example": "ALL",
@@ -312,10 +315,11 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"example": true,
+																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -327,6 +331,9 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -334,9 +341,14 @@
 															"type": "array"
 														},
 														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
 															"type": "integer"
 														}
 													},
+													"required": [
+														"level",
+														"annotations"
+													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -364,29 +376,66 @@
 													"type": "array"
 												},
 												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
 													"type": "string"
 												},
 												"normalization": {
-													"example": "PERCENTAGE",
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
 													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"dateRange",
+												"confidenceInfo",
 												"normalization",
-												"lastUpdated"
+												"lastUpdated",
+												"units"
 											],
 											"type": "object"
 										},
 										"summary_0": {
 											"properties": {
 												"NEGATIVE": {
-													"example": "20",
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"POSITIVE": {
-													"example": "80",
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												}
 											},
@@ -398,8 +447,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"summary_0"
+										"summary_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -769,11 +818,14 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
+													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"example": "ALL",
@@ -792,10 +844,11 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"example": true,
+																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -807,6 +860,9 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -814,9 +870,14 @@
 															"type": "array"
 														},
 														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
 															"type": "integer"
 														}
 													},
+													"required": [
+														"level",
+														"annotations"
+													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -844,37 +905,78 @@
 													"type": "array"
 												},
 												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
 													"type": "string"
 												},
 												"normalization": {
-													"example": "PERCENTAGE",
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
 													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"dateRange",
+												"confidenceInfo",
 												"normalization",
-												"lastUpdated"
+												"lastUpdated",
+												"units"
 											],
 											"type": "object"
 										},
 										"summary_0": {
 											"properties": {
 												"INSECURE": {
-													"example": "80",
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"INVALID": {
-													"example": "5",
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"OTHER": {
+													"description": "A numeric string.",
 													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"SECURE": {
-													"example": "5",
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												}
 											},
@@ -888,8 +990,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"summary_0"
+										"summary_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -1259,11 +1361,14 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
+													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"example": "ALL",
@@ -1282,10 +1387,11 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"example": true,
+																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -1297,6 +1403,9 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -1304,9 +1413,14 @@
 															"type": "array"
 														},
 														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
 															"type": "integer"
 														}
 													},
+													"required": [
+														"level",
+														"annotations"
+													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -1334,29 +1448,66 @@
 													"type": "array"
 												},
 												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
 													"type": "string"
 												},
 												"normalization": {
-													"example": "PERCENTAGE",
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
 													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"dateRange",
+												"confidenceInfo",
 												"normalization",
-												"lastUpdated"
+												"lastUpdated",
+												"units"
 											],
 											"type": "object"
 										},
 										"summary_0": {
 											"properties": {
 												"NOT_SUPPORTED": {
-													"example": "80",
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"SUPPORTED": {
-													"example": "20",
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												}
 											},
@@ -1368,8 +1519,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"summary_0"
+										"summary_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -1739,11 +1890,14 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
+													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"example": "ALL",
@@ -1762,10 +1916,11 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"example": true,
+																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -1777,6 +1932,9 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -1784,9 +1942,14 @@
 															"type": "array"
 														},
 														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
 															"type": "integer"
 														}
 													},
+													"required": [
+														"level",
+														"annotations"
+													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -1814,29 +1977,66 @@
 													"type": "array"
 												},
 												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
 													"type": "string"
 												},
 												"normalization": {
-													"example": "PERCENTAGE",
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
 													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"dateRange",
+												"confidenceInfo",
 												"normalization",
-												"lastUpdated"
+												"lastUpdated",
+												"units"
 											],
 											"type": "object"
 										},
 										"summary_0": {
 											"properties": {
 												"NEGATIVE": {
-													"example": "80",
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"POSITIVE": {
-													"example": "20",
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												}
 											},
@@ -1848,8 +2048,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"summary_0"
+										"summary_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -2219,11 +2419,14 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
+													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"example": "ALL",
@@ -2242,10 +2445,11 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"example": true,
+																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -2257,6 +2461,9 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -2264,9 +2471,14 @@
 															"type": "array"
 														},
 														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
 															"type": "integer"
 														}
 													},
+													"required": [
+														"level",
+														"annotations"
+													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -2294,29 +2506,66 @@
 													"type": "array"
 												},
 												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
 													"type": "string"
 												},
 												"normalization": {
-													"example": "PERCENTAGE",
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
 													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"dateRange",
+												"confidenceInfo",
 												"normalization",
-												"lastUpdated"
+												"lastUpdated",
+												"units"
 											],
 											"type": "object"
 										},
 										"summary_0": {
 											"properties": {
 												"IPv4": {
-													"example": "80",
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"IPv6": {
-													"example": "20",
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												}
 											},
@@ -2328,8 +2577,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"summary_0"
+										"summary_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -2699,11 +2948,14 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
+													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"example": "ALL",
@@ -2722,10 +2974,11 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"example": true,
+																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -2737,6 +2990,9 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -2744,9 +3000,14 @@
 															"type": "array"
 														},
 														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
 															"type": "integer"
 														}
 													},
+													"required": [
+														"level",
+														"annotations"
+													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -2774,29 +3035,66 @@
 													"type": "array"
 												},
 												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
 													"type": "string"
 												},
 												"normalization": {
-													"example": "PERCENTAGE",
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
 													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"dateRange",
+												"confidenceInfo",
 												"normalization",
-												"lastUpdated"
+												"lastUpdated",
+												"units"
 											],
 											"type": "object"
 										},
 										"summary_0": {
 											"properties": {
 												"NEGATIVE": {
-													"example": "20",
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"POSITIVE": {
-													"example": "80",
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												}
 											},
@@ -2808,8 +3106,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"summary_0"
+										"summary_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -3164,11 +3462,14 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
+													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"example": "ALL",
@@ -3187,10 +3488,11 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"example": true,
+																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -3202,6 +3504,9 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -3209,9 +3514,14 @@
 															"type": "array"
 														},
 														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
 															"type": "integer"
 														}
 													},
+													"required": [
+														"level",
+														"annotations"
+													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -3239,37 +3549,78 @@
 													"type": "array"
 												},
 												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
 													"type": "string"
 												},
 												"normalization": {
-													"example": "PERCENTAGE",
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
 													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"dateRange",
+												"confidenceInfo",
 												"normalization",
-												"lastUpdated"
+												"lastUpdated",
+												"units"
 											],
 											"type": "object"
 										},
 										"summary_0": {
 											"properties": {
 												"HTTPS": {
+													"description": "A numeric string.",
 													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"TCP": {
+													"description": "A numeric string.",
 													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"TLS": {
+													"description": "A numeric string.",
 													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"UDP": {
-													"example": "70",
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												}
 											},
@@ -3283,8 +3634,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"summary_0"
+										"summary_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -3564,11 +3915,14 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
+													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"example": "ALL",
@@ -3587,10 +3941,11 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"example": true,
+																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -3602,6 +3957,9 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -3609,9 +3967,14 @@
 															"type": "array"
 														},
 														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
 															"type": "integer"
 														}
 													},
+													"required": [
+														"level",
+														"annotations"
+													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -3639,23 +4002,59 @@
 													"type": "array"
 												},
 												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
 													"type": "string"
 												},
 												"normalization": {
-													"example": "PERCENTAGE",
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
 													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"dateRange",
+												"confidenceInfo",
 												"normalization",
-												"lastUpdated"
+												"lastUpdated",
+												"units"
 											],
 											"type": "object"
 										},
 										"summary_0": {
 											"additionalProperties": {
+												"description": "A numeric string.",
+												"example": "10",
+												"pattern": "^\\d+$",
 												"type": "string"
 											},
 											"example": {
@@ -3669,8 +4068,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"summary_0"
+										"summary_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -4020,11 +4419,14 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
+													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"example": "ALL",
@@ -4043,10 +4445,11 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"example": true,
+																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -4058,6 +4461,9 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -4065,9 +4471,14 @@
 															"type": "array"
 														},
 														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
 															"type": "integer"
 														}
 													},
+													"required": [
+														"level",
+														"annotations"
+													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -4095,23 +4506,59 @@
 													"type": "array"
 												},
 												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
 													"type": "string"
 												},
 												"normalization": {
-													"example": "PERCENTAGE",
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
 													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"dateRange",
+												"confidenceInfo",
 												"normalization",
-												"lastUpdated"
+												"lastUpdated",
+												"units"
 											],
 											"type": "object"
 										},
 										"summary_0": {
 											"additionalProperties": {
+												"description": "A numeric string.",
+												"example": "10",
+												"pattern": "^\\d+$",
 												"type": "string"
 											},
 											"example": {
@@ -4125,8 +4572,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"summary_0"
+										"summary_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -4496,11 +4943,14 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
+													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"example": "ALL",
@@ -4519,10 +4969,11 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"example": true,
+																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -4534,6 +4985,9 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -4541,9 +4995,14 @@
 															"type": "array"
 														},
 														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
 															"type": "integer"
 														}
 													},
+													"required": [
+														"level",
+														"annotations"
+													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -4571,49 +5030,96 @@
 													"type": "array"
 												},
 												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
 													"type": "string"
 												},
 												"normalization": {
-													"example": "PERCENTAGE",
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
 													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"dateRange",
+												"confidenceInfo",
 												"normalization",
-												"lastUpdated"
+												"lastUpdated",
+												"units"
 											],
 											"type": "object"
 										},
 										"summary_0": {
 											"properties": {
 												"gt_15m_lte_1h": {
+													"description": "A numeric string.",
 													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"gt_1d_lte_1w": {
+													"description": "A numeric string.",
 													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"gt_1h_lte_1d": {
+													"description": "A numeric string.",
 													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"gt_1m_lte_5m": {
+													"description": "A numeric string.",
 													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"gt_1w": {
+													"description": "A numeric string.",
 													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"gt_5m_lte_15m": {
+													"description": "A numeric string.",
 													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"lte_1m": {
-													"example": "20",
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												}
 											},
@@ -4630,8 +5136,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"summary_0"
+										"summary_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -5015,17 +5521,51 @@
 						"schema": {
 							"properties": {
 								"result": {
+									"additionalProperties": {
+										"properties": {
+											"timestamps": {
+												"items": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"values": {
+												"items": {
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"timestamps",
+											"values"
+										],
+										"type": "object"
+									},
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
 											"properties": {
 												"aggInterval": {
-													"example": "1h",
+													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"enum": [
+														"FIFTEEN_MINUTES",
+														"ONE_HOUR",
+														"ONE_DAY",
+														"ONE_WEEK",
+														"ONE_MONTH"
+													],
 													"type": "string"
 												},
 												"confidenceInfo": {
 													"properties": {
 														"annotations": {
 															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"example": "ALL",
@@ -5044,10 +5584,11 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"example": true,
+																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -5059,6 +5600,9 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -5066,9 +5610,14 @@
 															"type": "array"
 														},
 														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
 															"type": "integer"
 														}
 													},
+													"required": [
+														"level",
+														"annotations"
+													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -5096,44 +5645,58 @@
 													"type": "array"
 												},
 												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
 													"format": "date-time",
 													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"dateRange",
+												"confidenceInfo",
+												"normalization",
 												"aggInterval",
-												"lastUpdated"
-											],
-											"type": "object"
-										},
-										"serie_0": {
-											"properties": {
-												"timestamps": {
-													"items": {
-														"format": "date-time",
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"values": {
-													"items": {
-														"example": 0.56,
-														"type": "string"
-													},
-													"type": "array"
-												}
-											},
-											"required": [
-												"timestamps",
-												"values"
+												"lastUpdated",
+												"units"
 											],
 											"type": "object"
 										}
 									},
 									"required": [
-										"meta",
-										"serie_0"
+										"meta"
 									],
 									"type": "object"
 								},
@@ -5519,20 +6082,168 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"aggInterval": {
+													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"enum": [
+														"FIFTEEN_MINUTES",
+														"ONE_HOUR",
+														"ONE_DAY",
+														"ONE_WEEK",
+														"ONE_MONTH"
+													],
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"aggInterval",
+												"lastUpdated",
+												"units"
+											],
 											"type": "object"
 										},
 										"serie_0": {
 											"properties": {
 												"NEGATIVE": {
 													"items": {
-														"example": "20",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"POSITIVE": {
 													"items": {
-														"example": "80",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
@@ -5546,8 +6257,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"serie_0"
+										"serie_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -5933,34 +6644,186 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"aggInterval": {
+													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"enum": [
+														"FIFTEEN_MINUTES",
+														"ONE_HOUR",
+														"ONE_DAY",
+														"ONE_WEEK",
+														"ONE_MONTH"
+													],
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"aggInterval",
+												"lastUpdated",
+												"units"
+											],
 											"type": "object"
 										},
 										"serie_0": {
 											"properties": {
 												"INSECURE": {
 													"items": {
-														"example": "80",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"INVALID": {
 													"items": {
-														"example": "5",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"OTHER": {
 													"items": {
+														"description": "A numeric string.",
 														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"SECURE": {
 													"items": {
-														"example": "5",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
@@ -5976,8 +6839,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"serie_0"
+										"serie_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -6363,20 +7226,168 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"aggInterval": {
+													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"enum": [
+														"FIFTEEN_MINUTES",
+														"ONE_HOUR",
+														"ONE_DAY",
+														"ONE_WEEK",
+														"ONE_MONTH"
+													],
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"aggInterval",
+												"lastUpdated",
+												"units"
+											],
 											"type": "object"
 										},
 										"serie_0": {
 											"properties": {
 												"NOT_SUPPORTED": {
 													"items": {
-														"example": "80",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"SUPPORTED": {
 													"items": {
-														"example": "20",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
@@ -6390,8 +7401,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"serie_0"
+										"serie_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -6777,20 +7788,168 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"aggInterval": {
+													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"enum": [
+														"FIFTEEN_MINUTES",
+														"ONE_HOUR",
+														"ONE_DAY",
+														"ONE_WEEK",
+														"ONE_MONTH"
+													],
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"aggInterval",
+												"lastUpdated",
+												"units"
+											],
 											"type": "object"
 										},
 										"serie_0": {
 											"properties": {
 												"NEGATIVE": {
 													"items": {
-														"example": "80",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"POSITIVE": {
 													"items": {
-														"example": "20",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
@@ -6804,8 +7963,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"serie_0"
+										"serie_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -7191,20 +8350,168 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"aggInterval": {
+													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"enum": [
+														"FIFTEEN_MINUTES",
+														"ONE_HOUR",
+														"ONE_DAY",
+														"ONE_WEEK",
+														"ONE_MONTH"
+													],
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"aggInterval",
+												"lastUpdated",
+												"units"
+											],
 											"type": "object"
 										},
 										"serie_0": {
 											"properties": {
 												"IPv4": {
 													"items": {
-														"example": "80",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"IPv6": {
 													"items": {
-														"example": "20",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
@@ -7218,8 +8525,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"serie_0"
+										"serie_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -7605,20 +8912,168 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"aggInterval": {
+													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"enum": [
+														"FIFTEEN_MINUTES",
+														"ONE_HOUR",
+														"ONE_DAY",
+														"ONE_WEEK",
+														"ONE_MONTH"
+													],
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"aggInterval",
+												"lastUpdated",
+												"units"
+											],
 											"type": "object"
 										},
 										"serie_0": {
 											"properties": {
 												"NEGATIVE": {
 													"items": {
-														"example": "20",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"POSITIVE": {
 													"items": {
-														"example": "80",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
@@ -7632,8 +9087,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"serie_0"
+										"serie_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -8004,34 +9459,186 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"aggInterval": {
+													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"enum": [
+														"FIFTEEN_MINUTES",
+														"ONE_HOUR",
+														"ONE_DAY",
+														"ONE_WEEK",
+														"ONE_MONTH"
+													],
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"aggInterval",
+												"lastUpdated",
+												"units"
+											],
 											"type": "object"
 										},
 										"serie_0": {
 											"properties": {
 												"HTTPS": {
 													"items": {
+														"description": "A numeric string.",
 														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"TCP": {
 													"items": {
+														"description": "A numeric string.",
 														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"TLS": {
 													"items": {
+														"description": "A numeric string.",
 														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"UDP": {
 													"items": {
-														"example": "70",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
@@ -8047,8 +9654,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"serie_0"
+										"serie_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -8344,11 +9951,158 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"aggInterval": {
+													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"enum": [
+														"FIFTEEN_MINUTES",
+														"ONE_HOUR",
+														"ONE_DAY",
+														"ONE_WEEK",
+														"ONE_MONTH"
+													],
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"aggInterval",
+												"lastUpdated",
+												"units"
+											],
 											"type": "object"
 										},
 										"serie_0": {
 											"additionalProperties": {
 												"items": {
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"type": "array"
@@ -8376,6 +10130,7 @@
 											"properties": {
 												"timestamps": {
 													"items": {
+														"format": "date-time",
 														"type": "string"
 													},
 													"type": "array"
@@ -8388,8 +10143,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"serie_0"
+										"serie_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -8755,11 +10510,158 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"aggInterval": {
+													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"enum": [
+														"FIFTEEN_MINUTES",
+														"ONE_HOUR",
+														"ONE_DAY",
+														"ONE_WEEK",
+														"ONE_MONTH"
+													],
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"aggInterval",
+												"lastUpdated",
+												"units"
+											],
 											"type": "object"
 										},
 										"serie_0": {
 											"additionalProperties": {
 												"items": {
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
 													"type": "string"
 												},
 												"type": "array"
@@ -8787,6 +10689,7 @@
 											"properties": {
 												"timestamps": {
 													"items": {
+														"format": "date-time",
 														"type": "string"
 													},
 													"type": "array"
@@ -8799,8 +10702,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"serie_0"
+										"serie_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -9186,55 +11089,213 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"aggInterval": {
+													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"enum": [
+														"FIFTEEN_MINUTES",
+														"ONE_HOUR",
+														"ONE_DAY",
+														"ONE_WEEK",
+														"ONE_MONTH"
+													],
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"aggInterval",
+												"lastUpdated",
+												"units"
+											],
 											"type": "object"
 										},
 										"serie_0": {
 											"properties": {
 												"gt_15m_lte_1h": {
 													"items": {
-														"example": "80",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"gt_1d_lte_1w": {
 													"items": {
-														"example": "80",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"gt_1h_lte_1d": {
 													"items": {
-														"example": "80",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"gt_1m_lte_5m": {
 													"items": {
-														"example": "80",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"gt_1w": {
 													"items": {
-														"example": "80",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"gt_5m_lte_15m": {
 													"items": {
-														"example": "80",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"lte_1m": {
 													"items": {
-														"example": "20",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													},
 													"type": "array"
@@ -9253,8 +11314,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"serie_0"
+										"serie_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -9362,20 +11423,6 @@
 				}
 			},
 			{
-				"description": "Filters results by domain name.",
-				"in": "query",
-				"name": "domain",
-				"schema": {
-					"description": "Filters results by domain name.",
-					"example": "google.com",
-					"items": {
-						"pattern": "^([a-zA-Z0-9]([a-zA-Z0-9-]{0,63}[a-zA-Z0-9-])?\\.)+[a-zA-Z0-9-]{2,63}$",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
 				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
@@ -9458,6 +11505,20 @@
 				}
 			},
 			{
+				"description": "Filters results by domain name.",
+				"in": "query",
+				"name": "domain",
+				"schema": {
+					"description": "Filters results by domain name.",
+					"example": "google.com",
+					"items": {
+						"pattern": "^([a-zA-Z0-9]([a-zA-Z0-9-]{0,63}[a-zA-Z0-9-])?\\.)+[a-zA-Z0-9-]{2,63}$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
@@ -9481,11 +11542,14 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
+													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"example": "ALL",
@@ -9504,10 +11568,11 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"example": true,
+																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -9519,6 +11584,9 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -9526,9 +11594,14 @@
 															"type": "array"
 														},
 														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
 															"type": "integer"
 														}
 													},
+													"required": [
+														"level",
+														"annotations"
+													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -9554,10 +11627,53 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
-												"dateRange"
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"lastUpdated",
+												"units"
 											],
 											"type": "object"
 										},
@@ -9573,7 +11689,9 @@
 														"type": "string"
 													},
 													"value": {
-														"example": "65",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													}
 												},
@@ -9588,8 +11706,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"top_0"
+										"top_0",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -9678,20 +11796,6 @@
 				}
 			},
 			{
-				"description": "Filters results by domain name.",
-				"in": "query",
-				"name": "domain",
-				"schema": {
-					"description": "Filters results by domain name.",
-					"example": "google.com",
-					"items": {
-						"pattern": "^([a-zA-Z0-9]([a-zA-Z0-9-]{0,63}[a-zA-Z0-9-])?\\.)+[a-zA-Z0-9-]{2,63}$",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
 				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
@@ -9774,6 +11878,20 @@
 				}
 			},
 			{
+				"description": "Filters results by domain name.",
+				"in": "query",
+				"name": "domain",
+				"schema": {
+					"description": "Filters results by domain name.",
+					"example": "google.com",
+					"items": {
+						"pattern": "^([a-zA-Z0-9]([a-zA-Z0-9-]{0,63}[a-zA-Z0-9-])?\\.)+[a-zA-Z0-9-]{2,63}$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
@@ -9797,11 +11915,14 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
+													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"example": "ALL",
@@ -9820,10 +11941,11 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"example": true,
+																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
+																		"format": "uri",
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -9835,6 +11957,9 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -9842,9 +11967,14 @@
 															"type": "array"
 														},
 														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
 															"type": "integer"
 														}
 													},
+													"required": [
+														"level",
+														"annotations"
+													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -9870,10 +12000,53 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
-												"dateRange"
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"lastUpdated",
+												"units"
 											],
 											"type": "object"
 										},
@@ -9889,7 +12062,9 @@
 														"type": "string"
 													},
 													"value": {
-														"example": "65",
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
 														"type": "string"
 													}
 												},
@@ -9904,8 +12079,8 @@
 										}
 									},
 									"required": [
-										"meta",
-										"top_0"
+										"top_0",
+										"meta"
 									],
 									"type": "object"
 								},
