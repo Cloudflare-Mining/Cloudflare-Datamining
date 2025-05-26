@@ -1214,7 +1214,7 @@
 	"traffic.waiting_rooms.field_errors.path.no_params": "Must not contain URL parameters or hashes (?, &, #, =)",
 	"traffic.waiting_rooms.field_errors.name.pattern": "Name must consist of alphanumeric characters, dashes, and underscores",
 	"traffic.waiting_rooms.field_errors.name.host": "Name must consist of alphanumeric characters",
-	"traffic.waiting_rooms.field_errors.name.subdomain": "Subdomain must consist of alphanumeric characters, dashes, and underscores, and shouldn't start or end with dashes",
+	"traffic.waiting_rooms.field_errors.name.subdomain": "Subdomain must consist of unicode characters and shouldn't start or end with dashes",
 	"traffic.waiting_rooms.field_errors.name.path": "Path must consist of alphanumeric characters, dashes, and underscores",
 	"traffic.waiting_rooms.field_errors.new_users_per_minute.too_high": "Must be less than or equal to total active users",
 	"traffic.waiting_rooms.field_errors.session_duration.too_high": "Must be less than %{count} minutes",

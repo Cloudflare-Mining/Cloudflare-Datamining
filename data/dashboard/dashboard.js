@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "6cc948eb-acb5-55ab-bd15-4e3efd9200c1")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "37ff323f-0174-58b1-a6e8-a552b4490621")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1031,8 +1031,8 @@
 			};
 			var pn = t("../react/utils/useDomainConnectRedirect.ts");
 			const gn = "GTM-NDGPDFZ",
-				mn = he().lazy(() => Promise.all([t.e(16691), t.e(46812), t.e(12174), t.e(1091), t.e(55554), t.e(51436), t.e(47386), t.e(7580), t.e(70618), t.e(26122), t.e(8924), t.e(77216), t.e(40517), t.e(39760), t.e(91018), t.e(83276), t.e(18733), t.e(52215), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.jsx"))),
-				fn = he().lazy(() => Promise.all([t.e(83741), t.e(65447), t.e(1091), t.e(7580), t.e(91018), t.e(69088), t.e(18733), t.e(76472)]).then(t.bind(t, "../react/UnauthenticatedApp.tsx")));
+				mn = he().lazy(() => Promise.all([t.e(16691), t.e(46812), t.e(12174), t.e(1091), t.e(55554), t.e(51436), t.e(47386), t.e(7580), t.e(70618), t.e(26122), t.e(8924), t.e(77216), t.e(40517), t.e(39760), t.e(91018), t.e(83276), t.e(91262), t.e(52215), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.jsx"))),
+				fn = he().lazy(() => Promise.all([t.e(83741), t.e(65447), t.e(1091), t.e(7580), t.e(91018), t.e(69088), t.e(91262), t.e(76472)]).then(t.bind(t, "../react/UnauthenticatedApp.tsx")));
 			var vn = ({
 					userIsAuthed: R
 				}) => {
@@ -1194,10 +1194,10 @@
 					t.g.build = wn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "817a888919bac7e2fb4c5128a48d2687131a3c5c",
-						dashVersion: "33464775",
+						commit: "b3c3ad7a7f3e9ce9010360a0a7666c31c981e0b4",
+						dashVersion: "33503630",
 						env: "production",
-						builtAt: 1748008812974,
+						builtAt: 1748265391742,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -11792,7 +11792,10 @@
 						buildCaching: "https://developers.cloudflare.com/pages/platform/build-caching/",
 						userCpuLimits: "https://developers.cloudflare.com/workers/platform/pricing/#standard-usage-model",
 						gitIntegration: "https://developers.cloudflare.com/pages/platform/git-integration/#troubleshooting",
-						configFile: "https://developers.cloudflare.com/pages/functions/wrangler-configuration/"
+						configFile: "https://developers.cloudflare.com/pages/functions/wrangler-configuration/",
+						workersStaticAssets: "https://developers.cloudflare.com/workers/static-assets/",
+						workersMigrationGuide: "https://developers.cloudflare.com/workers/static-assets/migrate-from-pages/",
+						workersCompatibilityMatrix: "https://developers.cloudflare.com/workers/static-assets/migrate-from-pages/#compatibility-matrix"
 					},
 					github: {
 						appHomepage: `https://github.com/apps/${r}`,
@@ -22988,4 +22991,4 @@
 	}
 ]);
 
-//# debugId=6cc948eb-acb5-55ab-bd15-4e3efd9200c1
+//# debugId=37ff323f-0174-58b1-a6e8-a552b4490621
