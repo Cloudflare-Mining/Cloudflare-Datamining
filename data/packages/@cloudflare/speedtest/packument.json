@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/speedtest",
 	"dist-tags": {
-		"latest": "1.5.0"
+		"latest": "1.5.1"
 	},
 	"versions": {
 		"0.0.1": {
@@ -1092,6 +1092,51 @@
 					}
 				],
 				"unpackedSize": 118450
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"1.5.1": {
+			"name": "@cloudflare/speedtest",
+			"version": "1.5.1",
+			"dependencies": {
+				"d3-scale": "^4.0.2",
+				"isomorphic-fetch": "^3.0.0",
+				"lodash.memoize": "^4.1.2"
+			},
+			"devDependencies": {
+				"@babel/core": "^7.27.1",
+				"@babel/eslint-parser": "^7.27.1",
+				"@babel/preset-env": "^7.27.2",
+				"@eslint/js": "^9.27.0",
+				"@rollup/plugin-babel": "^6.0.4",
+				"@rollup/plugin-node-resolve": "^16.0.1",
+				"eslint": "^9.27.0",
+				"eslint-plugin-compat": "^6.0.2",
+				"eslint-plugin-import": "^2.31.0",
+				"eslint-plugin-json": "^4.0.1",
+				"eslint-plugin-prettier": "^5.4.0",
+				"husky": "^9.1.7",
+				"lint-staged": "^16.0.0",
+				"prettier": "^3.5.3",
+				"rimraf": "^6.0.1",
+				"rollup": "^4.41.0",
+				"rollup-plugin-dts": "^6.2.1",
+				"typescript": "^5.8.3"
+			},
+			"dist": {
+				"integrity": "sha512-p+GXr0Im+GL2KhpZphSzfMivDwtny95nQtQ1hftzpn474mGrIS62VgV/l1bkoh+quWn8tUS02Uonjie8oLcGEQ==",
+				"shasum": "867f65204bd81ffc00d44cb3b8d60777c62f8f0f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/speedtest/-/speedtest-1.5.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 118461,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIC58LawDZv9QCI/hzEguBL53yx0ezVAyOJD08enoahJUAiBhGwy5QJ1KYieb6OURbmzUHT3+fMzk2p2+HjXjOc6EiA=="
+					}
+				]
 			},
 			"engines": {
 				"node": ">=12"
