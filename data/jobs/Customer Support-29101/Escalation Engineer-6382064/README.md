@@ -10,6 +10,7 @@
 <p>The Cloudflare Customer Support Team solves complicated problems and answers technical inquiries via email, chat, phone, and social media. From Enterprise corporations with petabytes of web traffic to Wordpress bloggers using our platform for free, we are here to help. Being the eyes and ears of Cloudflare, we act as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
 <h4><strong>What you'll do&nbsp;</strong></h4>
 <p>The Cloudflare Escalation Engineer will perform deep, technical troubleshooting for complex, escalated issues. This role owns the customer escalation process and works with various Product and Engineering teams to identify product bugs, network problems, and platform issues. Escalation Engineers foster a close relationship with SRE, Network, Engineering and Product teams. They act as an escalation point, isolate/replicate problems, and gather technical information/expectation.</p>
+<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
 <h4><strong>Responsibilities</strong></h4>
 <ul>
 	<li>Provide coverage (shift rotation including possibility of weekends and Pacific Time hours) for technical troubleshooting of escalated issues&nbsp;</li>
