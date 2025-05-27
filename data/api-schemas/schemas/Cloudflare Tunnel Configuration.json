@@ -161,12 +161,12 @@
 																						"type": "array"
 																					},
 																					"required": {
-																						"default": false,
 																						"description": "Deny traffic that has not fulfilled Access authorization.",
+																						"example": false,
 																						"type": "boolean"
 																					},
 																					"teamName": {
-																						"default": "Your Zero Trust organization name.",
+																						"example": "zero-trust-organization-name",
 																						"type": "string"
 																					}
 																				},
@@ -177,13 +177,12 @@
 																				"type": "object"
 																			},
 																			"caPool": {
-																				"default": "",
 																				"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
 																				"type": "string"
 																			},
 																			"connectTimeout": {
-																				"default": 10,
 																				"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
+																				"example": 10,
 																				"type": "integer"
 																			},
 																			"disableChunkedEncoding": {
@@ -199,50 +198,47 @@
 																				"type": "string"
 																			},
 																			"keepAliveConnections": {
-																				"default": 100,
 																				"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
+																				"example": 100,
 																				"type": "integer"
 																			},
 																			"keepAliveTimeout": {
-																				"default": 90,
 																				"description": "Timeout after which an idle keepalive connection can be discarded.",
+																				"example": 90,
 																				"type": "integer"
 																			},
 																			"noHappyEyeballs": {
-																				"default": false,
 																				"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
+																				"example": false,
 																				"type": "boolean"
 																			},
 																			"noTLSVerify": {
-																				"default": false,
 																				"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
+																				"example": false,
 																				"type": "boolean"
 																			},
 																			"originServerName": {
-																				"default": "",
 																				"description": "Hostname that cloudflared should expect from your origin server certificate.",
 																				"type": "string"
 																			},
 																			"proxyType": {
-																				"default": "",
 																				"description": "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: \"\" for the regular proxy and \"socks\" for a SOCKS5 proxy.\n",
 																				"type": "string"
 																			},
 																			"tcpKeepAlive": {
-																				"default": 30,
 																				"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
+																				"example": 30,
 																				"type": "integer"
 																			},
 																			"tlsTimeout": {
-																				"default": 10,
 																				"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
+																				"example": 10,
 																				"type": "integer"
 																			}
 																		},
 																		"type": "object"
 																	},
 																	"path": {
-																		"default": "",
 																		"description": "Requests with this path route to this public hostname.",
 																		"example": "subpath",
 																		"type": "string"
@@ -276,12 +272,12 @@
 																			"type": "array"
 																		},
 																		"required": {
-																			"default": false,
 																			"description": "Deny traffic that has not fulfilled Access authorization.",
+																			"example": false,
 																			"type": "boolean"
 																		},
 																		"teamName": {
-																			"default": "Your Zero Trust organization name.",
+																			"example": "zero-trust-organization-name",
 																			"type": "string"
 																		}
 																	},
@@ -292,13 +288,12 @@
 																	"type": "object"
 																},
 																"caPool": {
-																	"default": "",
 																	"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
 																	"type": "string"
 																},
 																"connectTimeout": {
-																	"default": 10,
 																	"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
+																	"example": 10,
 																	"type": "integer"
 																},
 																"disableChunkedEncoding": {
@@ -314,43 +309,41 @@
 																	"type": "string"
 																},
 																"keepAliveConnections": {
-																	"default": 100,
 																	"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
+																	"example": 100,
 																	"type": "integer"
 																},
 																"keepAliveTimeout": {
-																	"default": 90,
 																	"description": "Timeout after which an idle keepalive connection can be discarded.",
+																	"example": 90,
 																	"type": "integer"
 																},
 																"noHappyEyeballs": {
-																	"default": false,
 																	"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
+																	"example": false,
 																	"type": "boolean"
 																},
 																"noTLSVerify": {
-																	"default": false,
 																	"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
+																	"example": false,
 																	"type": "boolean"
 																},
 																"originServerName": {
-																	"default": "",
 																	"description": "Hostname that cloudflared should expect from your origin server certificate.",
 																	"type": "string"
 																},
 																"proxyType": {
-																	"default": "",
 																	"description": "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: \"\" for the regular proxy and \"socks\" for a SOCKS5 proxy.\n",
 																	"type": "string"
 																},
 																"tcpKeepAlive": {
-																	"default": 30,
 																	"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
+																	"example": 30,
 																	"type": "integer"
 																},
 																"tlsTimeout": {
-																	"default": 10,
 																	"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
+																	"example": 10,
 																	"type": "integer"
 																}
 															},
@@ -376,14 +369,14 @@
 													"x-auditable": true
 												},
 												"source": {
-													"default": "local",
 													"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.",
 													"enum": [
 														"local",
 														"cloudflare"
 													],
 													"example": "cloudflare",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
@@ -609,12 +602,12 @@
 																	"type": "array"
 																},
 																"required": {
-																	"default": false,
 																	"description": "Deny traffic that has not fulfilled Access authorization.",
+																	"example": false,
 																	"type": "boolean"
 																},
 																"teamName": {
-																	"default": "Your Zero Trust organization name.",
+																	"example": "zero-trust-organization-name",
 																	"type": "string"
 																}
 															},
@@ -625,13 +618,12 @@
 															"type": "object"
 														},
 														"caPool": {
-															"default": "",
 															"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
 															"type": "string"
 														},
 														"connectTimeout": {
-															"default": 10,
 															"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
+															"example": 10,
 															"type": "integer"
 														},
 														"disableChunkedEncoding": {
@@ -647,50 +639,47 @@
 															"type": "string"
 														},
 														"keepAliveConnections": {
-															"default": 100,
 															"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
+															"example": 100,
 															"type": "integer"
 														},
 														"keepAliveTimeout": {
-															"default": 90,
 															"description": "Timeout after which an idle keepalive connection can be discarded.",
+															"example": 90,
 															"type": "integer"
 														},
 														"noHappyEyeballs": {
-															"default": false,
 															"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
+															"example": false,
 															"type": "boolean"
 														},
 														"noTLSVerify": {
-															"default": false,
 															"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
+															"example": false,
 															"type": "boolean"
 														},
 														"originServerName": {
-															"default": "",
 															"description": "Hostname that cloudflared should expect from your origin server certificate.",
 															"type": "string"
 														},
 														"proxyType": {
-															"default": "",
 															"description": "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: \"\" for the regular proxy and \"socks\" for a SOCKS5 proxy.\n",
 															"type": "string"
 														},
 														"tcpKeepAlive": {
-															"default": 30,
 															"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
+															"example": 30,
 															"type": "integer"
 														},
 														"tlsTimeout": {
-															"default": 10,
 															"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
+															"example": 10,
 															"type": "integer"
 														}
 													},
 													"type": "object"
 												},
 												"path": {
-													"default": "",
 													"description": "Requests with this path route to this public hostname.",
 													"example": "subpath",
 													"type": "string"
@@ -724,12 +713,12 @@
 														"type": "array"
 													},
 													"required": {
-														"default": false,
 														"description": "Deny traffic that has not fulfilled Access authorization.",
+														"example": false,
 														"type": "boolean"
 													},
 													"teamName": {
-														"default": "Your Zero Trust organization name.",
+														"example": "zero-trust-organization-name",
 														"type": "string"
 													}
 												},
@@ -740,13 +729,12 @@
 												"type": "object"
 											},
 											"caPool": {
-												"default": "",
 												"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
 												"type": "string"
 											},
 											"connectTimeout": {
-												"default": 10,
 												"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
+												"example": 10,
 												"type": "integer"
 											},
 											"disableChunkedEncoding": {
@@ -762,43 +750,41 @@
 												"type": "string"
 											},
 											"keepAliveConnections": {
-												"default": 100,
 												"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
+												"example": 100,
 												"type": "integer"
 											},
 											"keepAliveTimeout": {
-												"default": 90,
 												"description": "Timeout after which an idle keepalive connection can be discarded.",
+												"example": 90,
 												"type": "integer"
 											},
 											"noHappyEyeballs": {
-												"default": false,
 												"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
+												"example": false,
 												"type": "boolean"
 											},
 											"noTLSVerify": {
-												"default": false,
 												"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
+												"example": false,
 												"type": "boolean"
 											},
 											"originServerName": {
-												"default": "",
 												"description": "Hostname that cloudflared should expect from your origin server certificate.",
 												"type": "string"
 											},
 											"proxyType": {
-												"default": "",
 												"description": "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: \"\" for the regular proxy and \"socks\" for a SOCKS5 proxy.\n",
 												"type": "string"
 											},
 											"tcpKeepAlive": {
-												"default": 30,
 												"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
+												"example": 30,
 												"type": "integer"
 											},
 											"tlsTimeout": {
-												"default": 10,
 												"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
+												"example": 10,
 												"type": "integer"
 											}
 										},
@@ -956,12 +942,12 @@
 																						"type": "array"
 																					},
 																					"required": {
-																						"default": false,
 																						"description": "Deny traffic that has not fulfilled Access authorization.",
+																						"example": false,
 																						"type": "boolean"
 																					},
 																					"teamName": {
-																						"default": "Your Zero Trust organization name.",
+																						"example": "zero-trust-organization-name",
 																						"type": "string"
 																					}
 																				},
@@ -972,13 +958,12 @@
 																				"type": "object"
 																			},
 																			"caPool": {
-																				"default": "",
 																				"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
 																				"type": "string"
 																			},
 																			"connectTimeout": {
-																				"default": 10,
 																				"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
+																				"example": 10,
 																				"type": "integer"
 																			},
 																			"disableChunkedEncoding": {
@@ -994,50 +979,47 @@
 																				"type": "string"
 																			},
 																			"keepAliveConnections": {
-																				"default": 100,
 																				"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
+																				"example": 100,
 																				"type": "integer"
 																			},
 																			"keepAliveTimeout": {
-																				"default": 90,
 																				"description": "Timeout after which an idle keepalive connection can be discarded.",
+																				"example": 90,
 																				"type": "integer"
 																			},
 																			"noHappyEyeballs": {
-																				"default": false,
 																				"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
+																				"example": false,
 																				"type": "boolean"
 																			},
 																			"noTLSVerify": {
-																				"default": false,
 																				"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
+																				"example": false,
 																				"type": "boolean"
 																			},
 																			"originServerName": {
-																				"default": "",
 																				"description": "Hostname that cloudflared should expect from your origin server certificate.",
 																				"type": "string"
 																			},
 																			"proxyType": {
-																				"default": "",
 																				"description": "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: \"\" for the regular proxy and \"socks\" for a SOCKS5 proxy.\n",
 																				"type": "string"
 																			},
 																			"tcpKeepAlive": {
-																				"default": 30,
 																				"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
+																				"example": 30,
 																				"type": "integer"
 																			},
 																			"tlsTimeout": {
-																				"default": 10,
 																				"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
+																				"example": 10,
 																				"type": "integer"
 																			}
 																		},
 																		"type": "object"
 																	},
 																	"path": {
-																		"default": "",
 																		"description": "Requests with this path route to this public hostname.",
 																		"example": "subpath",
 																		"type": "string"
@@ -1071,12 +1053,12 @@
 																			"type": "array"
 																		},
 																		"required": {
-																			"default": false,
 																			"description": "Deny traffic that has not fulfilled Access authorization.",
+																			"example": false,
 																			"type": "boolean"
 																		},
 																		"teamName": {
-																			"default": "Your Zero Trust organization name.",
+																			"example": "zero-trust-organization-name",
 																			"type": "string"
 																		}
 																	},
@@ -1087,13 +1069,12 @@
 																	"type": "object"
 																},
 																"caPool": {
-																	"default": "",
 																	"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
 																	"type": "string"
 																},
 																"connectTimeout": {
-																	"default": 10,
 																	"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
+																	"example": 10,
 																	"type": "integer"
 																},
 																"disableChunkedEncoding": {
@@ -1109,43 +1090,41 @@
 																	"type": "string"
 																},
 																"keepAliveConnections": {
-																	"default": 100,
 																	"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
+																	"example": 100,
 																	"type": "integer"
 																},
 																"keepAliveTimeout": {
-																	"default": 90,
 																	"description": "Timeout after which an idle keepalive connection can be discarded.",
+																	"example": 90,
 																	"type": "integer"
 																},
 																"noHappyEyeballs": {
-																	"default": false,
 																	"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
+																	"example": false,
 																	"type": "boolean"
 																},
 																"noTLSVerify": {
-																	"default": false,
 																	"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
+																	"example": false,
 																	"type": "boolean"
 																},
 																"originServerName": {
-																	"default": "",
 																	"description": "Hostname that cloudflared should expect from your origin server certificate.",
 																	"type": "string"
 																},
 																"proxyType": {
-																	"default": "",
 																	"description": "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: \"\" for the regular proxy and \"socks\" for a SOCKS5 proxy.\n",
 																	"type": "string"
 																},
 																"tcpKeepAlive": {
-																	"default": 30,
 																	"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
+																	"example": 30,
 																	"type": "integer"
 																},
 																"tlsTimeout": {
-																	"default": 10,
 																	"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
+																	"example": 10,
 																	"type": "integer"
 																}
 															},
@@ -1171,14 +1150,14 @@
 													"x-auditable": true
 												},
 												"source": {
-													"default": "local",
 													"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.",
 													"enum": [
 														"local",
 														"cloudflare"
 													],
 													"example": "cloudflare",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
