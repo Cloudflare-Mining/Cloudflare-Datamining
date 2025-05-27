@@ -5,11 +5,11 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations</strong>: Austin, Lisbon, London&nbsp;</p>
+<p><strong>Available Locations</strong>: Austin, Lisbon, London, NYC, SF</p>
 <h3><strong>About The Role</strong></h3>
-<p>You’ll be responsible for building new products that enable our customers to query, analyze, and search over the data they store in our Developer Platform.&nbsp;</p>
-<p>This role will be focused on shipping and rapidly iterating on next-generation distributed query engines, enabling customers to make the most of the structured and/or table data they already store in R2, and providing a platform for other product teams (such as <a href="https://blog.cloudflare.com/data-anywhere-events-pipelines-durable-execution-workflows/">Pipelines</a>) to tightly integrate against.</p>
-<p>This includes growing <a href="https://developers.cloudflare.com/vectorize/">Vectorize</a> (our distributed vector search database), working closely with <a href="https://developers.cloudflare.com/r2/">R2</a> (our object storage) team, and ensuring what we build ties deeply into our compute platform: <a href="https://developers.cloudflare.com/workers/">Workers</a>.</p>
+<p>You’ll be responsible for building out a platform that helps developers and data teams ingest, catalog, and query data stored on our Developer Platform.</p>
+<p>In this role, you’ll focus on shipping and growing <a href="https://developers.cloudflare.com/pipelines/">Pipelines</a>, which enables customers to ingest and transform streams of structured data, and <a href="https://developers.cloudflare.com/r2/data-catalog/">R2 Data Catalog</a>, our managed Apache Iceberg catalog that automatically optimizes tables and compacts data files.</p>
+<p>This role also involves working closely with engineering to build out our next-generation distributed query engine, enabling customers to make the most of the analytic datasets and logs they already store in <a href="https://developers.cloudflare.com/r2/">R2</a>.</p>
 <h3><strong>What You'll Do</strong></h3>
 <ul>
 	<li>Drive the strategy, roadmap &amp; ship products that expand Cloudflare’s data platform and how customers operate on the data they store on us.</li>
