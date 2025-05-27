@@ -13,7 +13,8 @@
 					"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -25,7 +26,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -53,7 +55,8 @@
 							"example": "de677e5818985db1285d0e80225f06e5",
 							"maxLength": 32,
 							"readOnly": true,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						}
 					]
 				}
@@ -256,7 +259,8 @@
 																				"description": "Defines the public description of the WAF rule.",
 																				"example": "SQL injection prevention for SELECT statements",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"group": {
 																				"description": "Defines the rule group to which the current WAF rule belongs.",
@@ -266,13 +270,15 @@
 																						"example": "de677e5818985db1285d0e80225f06e5",
 																						"maxLength": 32,
 																						"readOnly": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"name": {
 																						"description": "Defines the name of the rule group.",
 																						"example": "Project Honey Pot",
 																						"readOnly": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"readOnly": true,
@@ -283,19 +289,22 @@
 																				"example": "f939de3be84e66e757adcdcb87908023",
 																				"maxLength": 32,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"package_id": {
 																				"description": "Defines the unique identifier of a WAF package.",
 																				"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 																				"maxLength": 32,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"priority": {
 																				"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	}
@@ -316,7 +325,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"readOnly": true,
 																		"type": "array"
@@ -328,7 +338,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -355,7 +366,8 @@
 																		"description": "Defines the public description of the WAF rule.",
 																		"example": "SQL injection prevention for SELECT statements",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"group": {
 																		"description": "Defines the rule group to which the current WAF rule belongs.",
@@ -365,13 +377,15 @@
 																				"example": "de677e5818985db1285d0e80225f06e5",
 																				"maxLength": 32,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"name": {
 																				"description": "Defines the name of the rule group.",
 																				"example": "Project Honey Pot",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"readOnly": true,
@@ -382,19 +396,22 @@
 																		"example": "f939de3be84e66e757adcdcb87908023",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"package_id": {
 																		"description": "Defines the unique identifier of a WAF package.",
 																		"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"priority": {
 																		"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -419,7 +436,8 @@
 																				"challenge"
 																			],
 																			"example": "block",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"readOnly": true,
 																		"type": "array"
@@ -445,7 +463,8 @@
 																			"challenge"
 																		],
 																		"example": "block",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -472,7 +491,8 @@
 																		"description": "Defines the public description of the WAF rule.",
 																		"example": "SQL injection prevention for SELECT statements",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"group": {
 																		"description": "Defines the rule group to which the current WAF rule belongs.",
@@ -482,13 +502,15 @@
 																				"example": "de677e5818985db1285d0e80225f06e5",
 																				"maxLength": 32,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"name": {
 																				"description": "Defines the name of the rule group.",
 																				"example": "Project Honey Pot",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"readOnly": true,
@@ -499,19 +521,22 @@
 																		"example": "f939de3be84e66e757adcdcb87908023",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"package_id": {
 																		"description": "Defines the unique identifier of a WAF package.",
 																		"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"priority": {
 																		"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -530,7 +555,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"readOnly": true,
 																		"type": "array"
@@ -542,7 +568,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -692,7 +719,8 @@
 																						"description": "Defines the public description of the WAF rule.",
 																						"example": "SQL injection prevention for SELECT statements",
 																						"readOnly": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"group": {
 																						"description": "Defines the rule group to which the current WAF rule belongs.",
@@ -702,13 +730,15 @@
 																								"example": "de677e5818985db1285d0e80225f06e5",
 																								"maxLength": 32,
 																								"readOnly": true,
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"name": {
 																								"description": "Defines the name of the rule group.",
 																								"example": "Project Honey Pot",
 																								"readOnly": true,
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"readOnly": true,
@@ -719,19 +749,22 @@
 																						"example": "f939de3be84e66e757adcdcb87908023",
 																						"maxLength": 32,
 																						"readOnly": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"package_id": {
 																						"description": "Defines the unique identifier of a WAF package.",
 																						"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 																						"maxLength": 32,
 																						"readOnly": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"priority": {
 																						"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
 																						"readOnly": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				}
 																			}
@@ -752,7 +785,8 @@
 																						"off"
 																					],
 																					"example": "on",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"readOnly": true,
 																				"type": "array"
@@ -764,7 +798,8 @@
 																					"off"
 																				],
 																				"example": "on",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -791,7 +826,8 @@
 																				"description": "Defines the public description of the WAF rule.",
 																				"example": "SQL injection prevention for SELECT statements",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"group": {
 																				"description": "Defines the rule group to which the current WAF rule belongs.",
@@ -801,13 +837,15 @@
 																						"example": "de677e5818985db1285d0e80225f06e5",
 																						"maxLength": 32,
 																						"readOnly": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"name": {
 																						"description": "Defines the name of the rule group.",
 																						"example": "Project Honey Pot",
 																						"readOnly": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"readOnly": true,
@@ -818,19 +856,22 @@
 																				"example": "f939de3be84e66e757adcdcb87908023",
 																				"maxLength": 32,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"package_id": {
 																				"description": "Defines the unique identifier of a WAF package.",
 																				"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 																				"maxLength": 32,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"priority": {
 																				"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -855,7 +896,8 @@
 																						"challenge"
 																					],
 																					"example": "block",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"readOnly": true,
 																				"type": "array"
@@ -881,7 +923,8 @@
 																					"challenge"
 																				],
 																				"example": "block",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -908,7 +951,8 @@
 																				"description": "Defines the public description of the WAF rule.",
 																				"example": "SQL injection prevention for SELECT statements",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"group": {
 																				"description": "Defines the rule group to which the current WAF rule belongs.",
@@ -918,13 +962,15 @@
 																						"example": "de677e5818985db1285d0e80225f06e5",
 																						"maxLength": 32,
 																						"readOnly": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"name": {
 																						"description": "Defines the name of the rule group.",
 																						"example": "Project Honey Pot",
 																						"readOnly": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"readOnly": true,
@@ -935,19 +981,22 @@
 																				"example": "f939de3be84e66e757adcdcb87908023",
 																				"maxLength": 32,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"package_id": {
 																				"description": "Defines the unique identifier of a WAF package.",
 																				"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 																				"maxLength": 32,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"priority": {
 																				"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -966,7 +1015,8 @@
 																						"off"
 																					],
 																					"example": "on",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"readOnly": true,
 																				"type": "array"
@@ -978,7 +1028,8 @@
 																					"off"
 																				],
 																				"example": "on",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -1133,7 +1184,8 @@
 					"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1145,7 +1197,8 @@
 					"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1157,7 +1210,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1491,7 +1545,8 @@
 					"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1503,7 +1558,8 @@
 					"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1515,7 +1571,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1660,7 +1717,8 @@
 																			"description": "Defines the public description of the WAF rule.",
 																			"example": "SQL injection prevention for SELECT statements",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"group": {
 																			"description": "Defines the rule group to which the current WAF rule belongs.",
@@ -1670,13 +1728,15 @@
 																					"example": "de677e5818985db1285d0e80225f06e5",
 																					"maxLength": 32,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"name": {
 																					"description": "Defines the name of the rule group.",
 																					"example": "Project Honey Pot",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"readOnly": true,
@@ -1687,19 +1747,22 @@
 																			"example": "f939de3be84e66e757adcdcb87908023",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"package_id": {
 																			"description": "Defines the unique identifier of a WAF package.",
 																			"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"priority": {
 																			"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -1720,7 +1783,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"readOnly": true,
 																	"type": "array"
@@ -1732,7 +1796,8 @@
 																		"off"
 																	],
 																	"example": "on",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -1759,7 +1824,8 @@
 																	"description": "Defines the public description of the WAF rule.",
 																	"example": "SQL injection prevention for SELECT statements",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"group": {
 																	"description": "Defines the rule group to which the current WAF rule belongs.",
@@ -1769,13 +1835,15 @@
 																			"example": "de677e5818985db1285d0e80225f06e5",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "Defines the name of the rule group.",
 																			"example": "Project Honey Pot",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"readOnly": true,
@@ -1786,19 +1854,22 @@
 																	"example": "f939de3be84e66e757adcdcb87908023",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"package_id": {
 																	"description": "Defines the unique identifier of a WAF package.",
 																	"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"priority": {
 																	"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														},
@@ -1823,7 +1894,8 @@
 																			"challenge"
 																		],
 																		"example": "block",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"readOnly": true,
 																	"type": "array"
@@ -1849,7 +1921,8 @@
 																		"challenge"
 																	],
 																	"example": "block",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -1876,7 +1949,8 @@
 																	"description": "Defines the public description of the WAF rule.",
 																	"example": "SQL injection prevention for SELECT statements",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"group": {
 																	"description": "Defines the rule group to which the current WAF rule belongs.",
@@ -1886,13 +1960,15 @@
 																			"example": "de677e5818985db1285d0e80225f06e5",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "Defines the name of the rule group.",
 																			"example": "Project Honey Pot",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"readOnly": true,
@@ -1903,19 +1979,22 @@
 																	"example": "f939de3be84e66e757adcdcb87908023",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"package_id": {
 																	"description": "Defines the unique identifier of a WAF package.",
 																	"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"priority": {
 																	"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														},
@@ -1934,7 +2013,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"readOnly": true,
 																	"type": "array"
@@ -1946,7 +2026,8 @@
 																		"off"
 																	],
 																	"example": "on",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2090,7 +2171,8 @@
 																			"description": "Defines the public description of the WAF rule.",
 																			"example": "SQL injection prevention for SELECT statements",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"group": {
 																			"description": "Defines the rule group to which the current WAF rule belongs.",
@@ -2100,13 +2182,15 @@
 																					"example": "de677e5818985db1285d0e80225f06e5",
 																					"maxLength": 32,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"name": {
 																					"description": "Defines the name of the rule group.",
 																					"example": "Project Honey Pot",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"readOnly": true,
@@ -2117,19 +2201,22 @@
 																			"example": "f939de3be84e66e757adcdcb87908023",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"package_id": {
 																			"description": "Defines the unique identifier of a WAF package.",
 																			"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"priority": {
 																			"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -2150,7 +2237,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"readOnly": true,
 																	"type": "array"
@@ -2162,7 +2250,8 @@
 																		"off"
 																	],
 																	"example": "on",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2189,7 +2278,8 @@
 																	"description": "Defines the public description of the WAF rule.",
 																	"example": "SQL injection prevention for SELECT statements",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"group": {
 																	"description": "Defines the rule group to which the current WAF rule belongs.",
@@ -2199,13 +2289,15 @@
 																			"example": "de677e5818985db1285d0e80225f06e5",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "Defines the name of the rule group.",
 																			"example": "Project Honey Pot",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"readOnly": true,
@@ -2216,19 +2308,22 @@
 																	"example": "f939de3be84e66e757adcdcb87908023",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"package_id": {
 																	"description": "Defines the unique identifier of a WAF package.",
 																	"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"priority": {
 																	"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														},
@@ -2253,7 +2348,8 @@
 																			"challenge"
 																		],
 																		"example": "block",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"readOnly": true,
 																	"type": "array"
@@ -2279,7 +2375,8 @@
 																		"challenge"
 																	],
 																	"example": "block",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2306,7 +2403,8 @@
 																	"description": "Defines the public description of the WAF rule.",
 																	"example": "SQL injection prevention for SELECT statements",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"group": {
 																	"description": "Defines the rule group to which the current WAF rule belongs.",
@@ -2316,13 +2414,15 @@
 																			"example": "de677e5818985db1285d0e80225f06e5",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "Defines the name of the rule group.",
 																			"example": "Project Honey Pot",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"readOnly": true,
@@ -2333,19 +2433,22 @@
 																	"example": "f939de3be84e66e757adcdcb87908023",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"package_id": {
 																	"description": "Defines the unique identifier of a WAF package.",
 																	"example": "a25a9a7e9c00afc1fb2e0245519d725b",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"priority": {
 																	"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														},
@@ -2364,7 +2467,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"readOnly": true,
 																	"type": "array"
@@ -2376,7 +2480,8 @@
 																		"off"
 																	],
 																	"example": "on",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
