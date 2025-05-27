@@ -119,6 +119,7 @@
 				"required": true,
 				"schema": {
 					"description": "Dataset ID.",
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -226,6 +227,7 @@
 				"required": true,
 				"schema": {
 					"description": "Dataset ID.",
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -356,6 +358,7 @@
 				"required": true,
 				"schema": {
 					"description": "Dataset ID.",
+					"format": "uuid",
 					"type": "string"
 				}
 			}
