@@ -2926,6 +2926,14 @@
 					"annotations": {
 						"compatEnableFlag": "nonclass_entrypoint_reuses_ctx_across_invocations"
 					}
+				},
+				{
+					"name": "bindAsyncLocalStorageSnapshot",
+					"annotations": {
+						"compatDisableFlag": "do_not_bind_asynclocalstorage_snapshot_to-request",
+						"compatEnableDate": "2025-06-16",
+						"compatEnableFlag": "bind_asynclocalstorage_snapshot_to_request"
+					}
 				}
 			]
 		},
