@@ -1046,6 +1046,17 @@
 	"log-explorer": {
 		"enabled": true
 	},
+	"log-in-headline": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"welcome-back",
+			"sign-in-to-cloudflare",
+			"sign-in-to-your-account",
+			"sign-in",
+			"log-in"
+		]
+	},
 	"logpush-new-ui": {
 		"enabled": true
 	},
@@ -1715,6 +1726,17 @@
 		"branches": [
 			"control",
 			"variant-image"
+		]
+	},
+	"sign-up-headline": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"sign-up-for-cf",
+			"create-your-cf-account",
+			"create-your-account",
+			"lets-get-started",
+			"build-protect-connect"
 		]
 	},
 	"signup-form-background-illustration": {
