@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Magic Transit Product Page ",
+				"pageName": "Magic Transit Product Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2019-08-13T13:01:09.623Z",
-					"updatedAt": "2025-05-23T21:29:43.116Z"
+					"updatedAt": "2025-05-28T18:53:36.628Z"
 				},
 				"contentfulId": "4sZIe5X0bRfXzX69km1ewi",
 				"contentTypeId": "page",
@@ -78,7 +78,7 @@
 						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": "cloudflare-magic-transit-modal",
-						"buttonText2": "Get the product brief",
+						"buttonText2": "Get product brief",
 						"buttonText2LoggedIn": null,
 						"buttonUrl2": "https://cfl.re/4fzEjBX",
 						"button2ExtraClass": null,
@@ -303,7 +303,7 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "dKgtWLL0op6MBuZuTnzcx",
-						"title": "Learn how to develop a strategy for your network modernization",
+						"title": "Learn how Cloudflare protects network infrastructure, data centers, and public cloud services against DDoS attacks and other malicious traffic.",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -321,8 +321,8 @@
 							"contentfulId": "5yuMc0yyJijTeANHQZnWQZ",
 							"elementName": "Magic Transit Product Page - ADDITIONAL OFFER BLADE - CTA",
 							"standardText": null,
-							"text": "Get the whitepaper",
-							"url": "/lp/developing-a-strategy-for-network-modernization/",
+							"text": "Get solution brief",
+							"url": "https://cfl.re/network-protection-brief",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -860,127 +860,143 @@
 						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "5SAmNxM62iDC8yQgkt05Ct",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "5FL6MMTKCr4TarlzFSfne3",
 						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "5UtSY1podcdViyPiiuaUVX",
-								"title": "Deterring downtime: A guide to DDoS defense models ",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Distributed denial-of-service (DDoS) attacks are increasingly frequent, complex, and costly, with research showing that over 60% of outages cost more than $100,000 and some attacks can cost companies up to $12 million. Learn why always-on protection is the best way to avoid downtime.",
-								"learnMoreUrl": "https://cfl.re/3POPsTS",
-								"learnMoreText": "Get the ebook",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "32GnSjoFkCMbwMizZvpWv",
+								"heading": "Ebook",
+								"description": "Deterring downtime: A guide to DDoS defense models",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "1x5uHXFAmGb3LyIaTozM8l",
+									"elementName": "Deterring downtime: A guide to DDoS defense models - link",
+									"standardText": null,
+									"text": "Read ebook",
+									"url": "https://cfl.re/3POPsTS",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "199a0c46-2ff3-57ee-9cf7-06ffd387d947",
+									"altText": "Explore more ebooks in Cloudflare's Resource Hub",
+									"title": "Explore more ebooks in Cloudflare's Resource Hub",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tGnS2OjpSmmok16lr0mI3/db2a34b69b1001d0d0b529148def3c45/Ebook-generic-106x186-300dpi.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "4KVHXMxl76K2hURYazbZNJ",
-								"title": "Five best practices for mitigating DDoS attacks",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "As DDoS mitigation improves, cyber criminals are expanding their tactics. Learn how to defeat the latest layer 3, 4, and 7 DDoS attacks.",
-								"learnMoreUrl": "lp/five-best-practices-for-mitigating-ddos-attacks/",
-								"learnMoreText": "Get the whitepaper",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "ROng5ebqHysecpV1b8uSF",
+								"heading": "Whitepaper",
+								"description": "Five best practices for mitigating DDoS attacks",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5A8H4Pyu2eE4hTAGyG9BL5",
+									"elementName": "Five best practices for mitigating DDoS attacks - link",
+									"standardText": null,
+									"text": "Read whitepaper",
+									"url": "/lp/five-best-practices-for-mitigating-ddos-attacks/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "aef302d2-a7e8-57b1-b2c4-610e768f5249",
+									"altText": "Explore more whitepapers in Cloudflare's Resource Hub - thumbnail",
+									"title": "Explore more whitepapers in Cloudflare's Resource Hub - thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "4PHgTYsYug3zTjGPIHwG9J",
-								"title": "Reduce downtime with a cloud-based DDoS defense model",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Explore recent DDoS trends by industry, country, and traffic type — and see how Cloudflare mitigates even the largest attacks.",
-								"learnMoreUrl": "https://blog.cloudflare.com/tag/ddos-reports/",
-								"learnMoreText": "Get the latest report",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "4v7L868RSd0y9N1nt2PY7i",
+								"heading": "Blog",
+								"description": "Reduce downtime with a cloud-based DDoS defense model",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "4jkrJrJFLvDDRx6goC0ISM",
+									"elementName": "Reduce downtime with a cloud-based DDoS defense model - link",
+									"standardText": null,
+									"text": "Read blog",
+									"url": "https://blog.cloudflare.com/tag/ddos-reports/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "16dda4bb-a521-5d41-82ec-64ef52888d97",
+									"altText": "Blog  thumbnail",
+									"title": "Blog  thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ctAQnKr7LFaJzwd5gbbeu/dffc3ef872495ac11a0250f524a057f3/Blog-thumbnail-generic.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "6RrHmqV9GvGLRWSDNuyCf4",
+								"heading": "Product brief",
+								"description": "Cloudflare for network protection",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "6egbBMKls6VM4sO6Qc9X7k",
+									"elementName": "Cloudflare for network protection - link",
+									"standardText": null,
+									"text": "Get solution brief",
+									"url": "https://cfl.re/network-protection-brief ",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
 								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"image": {
+									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
+									"altText": "Solution brief - thumbnail",
+									"title": "Solution brief - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},
