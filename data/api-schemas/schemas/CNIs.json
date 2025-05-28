@@ -65,6 +65,15 @@
 				}
 			},
 			{
+				"description": "If specified, only show cnis associated with the specified tunnel id",
+				"in": "query",
+				"name": "tunnel_id",
+				"schema": {
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
 				"in": "query",
 				"name": "cursor",
 				"schema": {
