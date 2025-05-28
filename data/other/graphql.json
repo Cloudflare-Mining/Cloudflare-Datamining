@@ -4687,8 +4687,11 @@
 		"__description": "",
 		"date": "Message operation timestamp, truncated to start of a day",
 		"datetime": "Message operation timestamp",
+		"datetimeFifteenMinutes": "Message operation timestamp, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Message operation timestamp, truncated to five minutes",
 		"datetimeHour": "Message operation timestamp, truncated to start of an hour",
 		"datetimeMinute": "Message operation timestamp, truncated to start of an minute",
+		"datetimeSixHours": "Message operation timestamp, truncated to start of six hour window",
 		"queueId": "The ID of the Queue"
 	},
 	"AccountQueueBacklogAdaptiveGroupsFilter_InputObject": {
@@ -4709,10 +4712,13 @@
 	},
 	"AccountQueueConsumerMetricsAdaptiveGroupsDimensions": {
 		"__description": "",
-		"date": "Consumer metric timestamp, truncated to start of a day",
-		"datetime": "Consumer metric timestamp",
-		"datetimeHour": "Consumer metric timestamp, truncated to start of an hour",
-		"datetimeMinute": "Consumer metric timestamp, truncated to start of an minute",
+		"date": "Message operation timestamp, truncated to start of a day",
+		"datetime": "Message operation timestamp",
+		"datetimeFifteenMinutes": "Message operation timestamp, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Message operation timestamp, truncated to five minutes",
+		"datetimeHour": "Message operation timestamp, truncated to start of an hour",
+		"datetimeMinute": "Message operation timestamp, truncated to start of an minute",
+		"datetimeSixHours": "Message operation timestamp, truncated to start of six hour window",
 		"queueId": "The ID of the Queue"
 	},
 	"AccountQueueConsumerMetricsAdaptiveGroupsFilter_InputObject": {
@@ -4735,8 +4741,11 @@
 		"__description": "",
 		"date": "Message operation timestamp, truncated to start of a day",
 		"datetime": "Message operation timestamp",
+		"datetimeFifteenMinutes": "Message operation timestamp, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Message operation timestamp, truncated to five minutes",
 		"datetimeHour": "Message operation timestamp, truncated to start of an hour",
 		"datetimeMinute": "Message operation timestamp, truncated to start of an minute",
+		"datetimeSixHours": "Message operation timestamp, truncated to start of six hour window",
 		"queueId": "The ID of the Queue"
 	},
 	"AccountQueueDelayedBacklogAdaptiveGroupsFilter_InputObject": {
@@ -4765,8 +4774,11 @@
 		"consumerType": "The queue consumer type for the operation. Only applicable for ReadMessage and DeleteMessge action types.",
 		"date": "Message operation timestamp, truncated to start of a day",
 		"datetime": "Message operation timestamp",
+		"datetimeFifteenMinutes": "Message operation timestamp, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Message operation timestamp, truncated to five minutes",
 		"datetimeHour": "Message operation timestamp, truncated to start of an hour",
 		"datetimeMinute": "Message operation timestamp, truncated to start of an minute",
+		"datetimeSixHours": "Message operation timestamp, truncated to start of six hour window",
 		"outcome": "The outcome of the operation. Only applicable to DeleteMessage action types. Can be 'success', 'dlq', or 'fail'. Always 'none' for other operations.",
 		"queueId": "The ID of the Queue"
 	},
