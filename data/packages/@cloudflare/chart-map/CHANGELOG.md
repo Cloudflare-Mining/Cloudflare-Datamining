@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.0.0
+
+### Major Changes
+
+- 85b181429e: Switch mapbox for maplibre + protomaps tile server. Note, while this should be a compatible change, it's being marked as major because of the engine / provider change
+
 ## 10.0.2
 
 ### Patch Changes
