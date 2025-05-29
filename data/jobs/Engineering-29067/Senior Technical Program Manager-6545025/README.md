@@ -6,7 +6,6 @@
 	</div>
 </div>
 <p><strong>Available Locations: </strong>Hybrid - San Francisco, Atlanta, Denver, Austin, NYC, London, Lisbon</p>
-<h4><strong>Lead Technical Program Manager, FinTech - Engineering PMO</strong></h4>
 <p>Cloudflare has embarked on a transformation of our entire quote to cash process.&nbsp; We are seeking a highly skilled and self-motivated Technical Program Manager to lead and manage the FinTech portfolio of projects.&nbsp; Your main responsibility will be to work cross functionally across Product, Engineering, Design, Revenue Ops, Finance, BI, external vendors, and more to build and execute on the overall strategy.&nbsp;</p>
 <p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations, and working with various functions to deliver success. You will partner with various product and engineering counterparts to determine available options, manage stakeholder expectations, and execute against the roadmap.</p>
 <p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.&nbsp;</p>
