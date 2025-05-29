@@ -170,6 +170,23 @@
 														}
 													],
 													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ": Intelligent Threat Mitigation",
+													"marks": [
+														{
+															"type": "italic"
+														},
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
 												}
 											]
 										},
@@ -378,6 +395,86 @@
 														"target": null,
 														"uri": null
 													},
+													"value": "Workers AI",
+													"marks": [
+														{
+															"type": "italic"
+														},
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Workers AI offers AI inference-as-a-service on Cloudflare's global edge network. Customers can leverage pre-trained models from our ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://developers.cloudflare.com/workers-ai/models/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Workers AI catalog",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " (subject to third-party licenses) or deploy their own custom models for inference tasks. Importantly, Cloudflare does not train AI models or provide GPU access for training.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
 													"value": "AI assistants",
 													"marks": [
 														{
@@ -532,7 +629,217 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " use large language models (LLMs) to generate new content, whether it is text, images or code. Our very limited use of Generative AI is in the areas of analyzing customer configurations and suggesting configuration improvements, and in allowing customers to write technical or operational code and rules to use with our products, via our AI assistants Cursor and Cloudy.",
+													"value": " use large language models (LLMs) to generate new content, whether it is text, images or code. Our limited use of Generative AI is in the areas of analyzing customer configurations and suggesting configuration improvements, and in allowing customers to write technical or operational code and rules to use with our products, via our AI assistants Cursor and Cloudy.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://blog.cloudflare.com/introducing-cursor-the-ai-assistant-for-docs/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Cursor",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " is an AI assistant trained to answer questions about Cloudflare's Developer Platform and ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://blog.cloudflare.com/introducing-ai-agent/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Cloudy",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " helps users quickly understand and improve their WAF and Gateway configurations in Cloudflare One. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "3NHbHad8Ng3HEmgyyOf0AH",
+								"title": "Does Cloudflare train AI on customer data?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "We recognize that the privacy and security of our customers' content is paramount, and we do not use our customers' content to train any LLMs.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's strength proposition lies in the ability of our machine learning systems to analyze network traffic from the billions of requests that flow through our infrastructure. By observing cyber attacks targeting any single customer, we gain insights that enhance the security, performance, and reliability for our entire network. This allows us to proactively protect all Cloudflare customers, as our defenses evolve based on the latest threat landscape. Importantly, our systems do not train on customer content, focusing instead on the patterns within network traffic to continuously improve our services.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "In addition, customers can use Workers AI, Cloudflare's AI inference-as-a-service platform, to leverage pre-trained models from our ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://developers.cloudflare.com/workers-ai/models/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Workers AI catalog",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " (subject to third-party licenses) or deploy their own custom models for inference tasks. These models can be used to run on GPUs on Cloudflare's global network. Please note that Cloudflare neither trains its own large language models (LLMs) nor provides its customers with access to GPUs for training their own models.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudy uses publicly available LLM models via Workers AI, and it does not train any models using customer content. Rather, when customers enter their WAF rules and/or Gateway configurations as prompts, Cloudy will use this information to generate an appropriate answer. The custom rules are used as context only to generate a specific response to a specific question. We do not store this data nor do we train models using it.",
 													"marks": [],
 													"content": null
 												}
@@ -640,7 +947,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Beyond our network and application security offerings, Cloudflare provides a scalable, future-ready platform for training, developing, deploying, and optimizing AI. Specifically, Cloudflare provides the following capabilities:",
+													"value": "Beyond our network and application security offerings, Cloudflare provides a scalable, future-ready platform for our customers to train, develop, deploy, and optimize AI. Specifically, Cloudflare provides the following capabilities:",
 													"marks": [],
 													"content": null
 												}
