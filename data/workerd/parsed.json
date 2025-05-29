@@ -2934,6 +2934,14 @@
 						"compatEnableDate": "2025-06-16",
 						"compatEnableFlag": "bind_asynclocalstorage_snapshot_to_request"
 					}
+				},
+				{
+					"name": "throwOnUnrecognizedImportAssertion",
+					"annotations": {
+						"compatDisableFlag": "ignore_unrecognized_import_assertion",
+						"compatEnableDate": "2025-06-16",
+						"compatEnableFlag": "throw_on_unrecognized_import_assertion"
+					}
 				}
 			]
 		},
