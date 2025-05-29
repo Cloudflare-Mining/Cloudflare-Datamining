@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.0.1
+
+### Patch Changes
+
+- 381b18201e: Remove mapbox hotlinked icon sprite
+
 ## 11.0.0
 
 ### Major Changes
