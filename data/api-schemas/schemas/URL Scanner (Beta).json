@@ -3374,7 +3374,11 @@
 									},
 									"visibility": {
 										"description": "Submitted visibility status.",
-										"example": "Public",
+										"enum": [
+											"public",
+											"unlisted"
+										],
+										"example": "public",
 										"type": "string"
 									}
 								},
@@ -3539,6 +3543,7 @@
 					"schema": {
 						"properties": {
 							"country": {
+								"description": "Country to geo egress from",
 								"enum": [
 									"AF",
 									"AL",
@@ -3815,21 +3820,27 @@
 									"type": "object"
 								},
 								"result": {
-									"description": "URL to report.",
+									"description": "Public URL to report.",
 									"type": "string"
 								},
 								"url": {
 									"description": "Canonical form of submitted URL. Use this if you want to later search by URL.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"uuid": {
 									"description": "Scan ID.",
 									"format": "uuid",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"visibility": {
 									"description": "Submitted visibility status.",
-									"example": "Public",
+									"enum": [
+										"public",
+										"unlisted"
+									],
+									"example": "public",
 									"type": "string"
 								}
 							},

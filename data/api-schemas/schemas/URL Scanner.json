@@ -402,7 +402,11 @@
 														"type": "string"
 													},
 													"visibility": {
-														"description": "Visibility status.",
+														"description": "Submitted visibility status.",
+														"enum": [
+															"public",
+															"unlisted"
+														],
 														"example": "public",
 														"type": "string"
 													}
@@ -3050,6 +3054,7 @@
 					"schema": {
 						"properties": {
 							"country": {
+								"description": "Country to geo egress from",
 								"enum": [
 									"AF",
 									"AL",
@@ -3349,7 +3354,11 @@
 										},
 										"visibility": {
 											"description": "Submitted visibility status.",
-											"example": "Public",
+											"enum": [
+												"public",
+												"unlisted"
+											],
+											"example": "public",
 											"type": "string"
 										}
 									},
