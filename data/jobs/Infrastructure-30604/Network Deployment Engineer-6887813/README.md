@@ -11,25 +11,25 @@
 <p>To be successful in this position, you should have excellent technical skills, communication skills, and be able to navigate a range of challenges and constraints (e.g. schedule adherence, time zones, and cultures). You will have the opportunity to (literally) build a faster, safer Internet for our millions of users and the billions of web surfers that visit their sites each month.</p>
 <p><strong>Required Experience</strong></p>
 <ul>
-	<li>Minimum of 6 years of prior relevant experience in Data Center Operations, Site Reliability Engineering, Linux systems administration, Network Engineering, and/or DevOps experience</li>
+	<li>Minimum of 6 years of prior relevant experience in Data Center Infrastructure Deployment &amp; Operations, Network Engineering, and/or DevOps experience</li>
 	<li>Familiarity with day-to-day tasks and projects common in Data Center Operations.</li>
-	<li>Experience with optical transport technologies such as CWDM/DWDM</li>
+	<li>Strong understanding of BGP and anycast routing</li>
 	<li>Configuration management tool experience like Saltstack, Chef, Puppet or Ansible</li>
 	<li>Network hardware administration.</li>
 	<li>Knowledge and exposure to Network Protocols, Topologies and Enterprise architecture.&nbsp;</li>
-	<li>Experience writing network configuration and design documentation.</li>
+	<li>Experience with network configuration and design documentation.</li>
 	<li>Experience solving problems through automation.</li>
 	<li>Ability to write scripts for internal tools.</li>
-	<li>Experience running and improving operational processes in a rapidly changing environment.</li>
+	<li>Experience running and improving operational processes in a rapidly changing environment</li>
 </ul>
 <p><strong>Other Responsibilities May Include</strong></p>
 <ul>
-	<li>Provisioning, monitoring and maintaining hardware, software, and network in new Cloudflare data centers.</li>
-	<li>Creating documentation and managing remote contractors to complete datacenter installations and upgrades (rack and stack), including hardware manufacturers, datacenter and network providers, logistics partners and other service providers in support of our 275+ growing datacenter locations</li>
+	<li>Deploying, Provisioning, monitoring and maintaining hardware, software, and network infrastructure in new and existing Cloudflare data centers.</li>
+	<li>Planning and creating Bill of Materials (BOM) for infrastructure deployment in a data center environment</li>
+	<li>Creating MOP documentation and managing remote contractors to complete datacenter installations and upgrades (rack and stack), including hardware manufacturers, datacenter and network providers, logistics partners and other service providers in support of our 275+ growing datacenter locations</li>
 	<li>Aggressively seek opportunities to introduce cutting-edge technology and automation solutions that are effective, efficient and scalable in order to improve our ability to deploy and maintain our global infrastructure.</li>
 	<li>Planning and implementing network and server installations, including in the areas of facility power (AC/DC), cooling, security/access, rack layout and cable management.</li>
 	<li>Providing technical leadership and guidance during deployment activities.</li>
-	<li>Creating and maintaining documentation, plans, SOP’s, MOP’s etc.</li>
 	<li>Collaborating with internal teams (infrastructure engineering, network engineering and SRE) for day to day activities.&nbsp;</li>
 	<li>Coordinating installation of cross-connects globally in support of physical network expansion.</li>
 	<li>Assisting with the definition, documentation and implementation of consistent processes across all regions.</li>
@@ -41,7 +41,7 @@
 	<li>Direct experience executing on datacenter / infrastructure projects with many moving parts.</li>
 	<li>Previous experience installing / maintaining datacenter (and other IT) infrastructure and DCIM tools.</li>
 	<li>Experience running and improving operational processes in a rapidly changing environment.</li>
-	<li>Strong understanding of BGP and anycast routing</li>
+	<li>Experience with optical transport technologies such as CWDM/DWDM</li>
 	<li>Professional level network certification(s) (JNCIP, CCNP, etc) or higher</li>
 	<li>Good working knowledge of Juniper Junos, Cisco IOS, Cisco NX-OS and Arista EOS</li>
 	<li>Load balancing and reverse proxies such as Nginx, Varnish, HAProxy, Apache</li>
@@ -51,7 +51,7 @@
 	<li>Ability to manage MS excel and Google spreadsheets.</li>
 	<li>Comfortable handling basic program management responsibilities (prioritization, planning, scheduling, status reporting) such as JIRA</li>
 	<li>Experience managing remote contractors</li>
-	<li>Must be a team player.</li>
+	<li>Must be a team player</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
@@ -60,7 +60,7 @@
 	<li>Experience working in a 24/7/365 mission-critical service environment</li>
 	<li>Comfortable with remote “lights-out” and out-of-band access to data center resources</li>
 	<li>Linux certifications.</li>
-	<li>Knowledge of the OSI-model and experience isolating network, hardware and software issues.</li>
+	<li>Knowledge of the OSI-model and experience isolating network, hardware and software issues</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon</strong></p>
+<p><strong>Available Locations: Lisbon or Portugal Remote&nbsp;</strong></p>
 <p><strong>About the role:&nbsp;</strong></p>
 <p>We are looking for Senior Data Engineers to join our growing Data Insights team at Cloudflare and help design and scale data platforms that power decision-making across the business. Success in this role comes from marrying a strong data engineering background with product and business acumen to deliver scalable data pipelines and solutions that can self-service analytics and high-impact business outcomes in a simple and agile manner<br><br></p>
 <p><strong>What You'll Do:</strong></p>
