@@ -103,6 +103,21 @@ const navigation = {
 			hasPermission: D => (0, f.gw)(D)
 		}]
 	}, {
+		title: "navigation.common.observability",
+		url: "/observability",
+		labels: ["beta"],
+		iconType: "chart",
+		hasPermission: D => (0, s.GU)(D, "eos-navigation") && ((0, g.q)(D) || (0, V.Ko)(D)),
+		pages: [{
+			title: "navigation.account.log_explorer",
+			url: "/observability/log-explorer",
+			hasPermission: D => (0, f.iY)(D) && (0, g.q)(D)
+		}, {
+			title: "navigation.account.dashboards",
+			url: "/observability/dashboards",
+			hasPermission: D => !!(0, V.Ko)(D)
+		}]
+	}, {
 		title: "navigation.common.analytics_and_logs",
 		url: "/analytics",
 		testId: "sidenav-analytics-link",
@@ -133,7 +148,7 @@ const navigation = {
 			title: "navigation.account.log_explorer",
 			url: "/log-explorer",
 			labels: ["beta"],
-			hasPermission: D => (0, f.iY)(D) && (0, g.V)(D)
+			hasPermission: D => (0, f.iY)(D) && (0, g.q)(D) && !(0, s.GU)(D, "eos-navigation")
 		}, {
 			title: "navigation.account.carbon",
 			url: "/carbon",
@@ -145,7 +160,7 @@ const navigation = {
 		}, {
 			title: "navigation.account.dashboards",
 			url: "/dashboards",
-			hasPermission: D => !!(0, V.Ko)(D)
+			hasPermission: D => !!(0, V.Ko)(D) && !(0, s.GU)(D, "eos-navigation")
 		}]
 	}, {
 		title: "navigation.account.security_center",
@@ -213,6 +228,7 @@ const navigation = {
 	}, {
 		title: "navigation.account.internal_dns",
 		url: "/internal-dns",
+		labels: ["beta"],
 		iconType: "zerotrust-networks-logo",
 		testId: "sidenav-internal-dns-link",
 		hasPermission: D => !!(0, o.z1)("internal-dns")(D)
@@ -816,7 +832,7 @@ const navigation = {
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: D => !!(0, g.V)(D)
+			hasPermission: D => !!(0, g.q)(D)
 		}, {
 			title: "navigation.zone.analytics.dashboards",
 			url: "/analytics/dashboards",
