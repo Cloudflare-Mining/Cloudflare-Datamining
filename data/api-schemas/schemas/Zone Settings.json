@@ -7950,7 +7950,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -8028,20 +8029,24 @@
 													"properties": {
 														"editable": {
 															"description": "Whether the setting is editable",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The identifier of the caching setting",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The time when the setting was last modified",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "The value of the feature",
-															"type": "object"
+															"type": "object",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -8065,7 +8070,8 @@
 													"properties": {
 														"id": {
 															"description": "Identifier of the zone setting.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "Last time this setting was modified.",
@@ -8073,7 +8079,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -8089,19 +8096,22 @@
 																"aegis"
 															],
 															"example": "aegis",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "Value of the zone setting.",
 															"properties": {
 																"enabled": {
 																	"description": "Whether the feature is enabled or not.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"pool_id": {
 																	"description": "Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.",
 																	"example": "pool-id",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -8548,7 +8558,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -8640,20 +8651,24 @@
 													"properties": {
 														"editable": {
 															"description": "Whether the setting is editable",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The identifier of the caching setting",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The time when the setting was last modified",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "The value of the feature",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -8677,7 +8692,8 @@
 													"properties": {
 														"id": {
 															"description": "Identifier of the zone setting.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "Last time this setting was modified.",
@@ -8685,7 +8701,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -8701,14 +8718,16 @@
 																"origin_h2_max_streams"
 															],
 															"example": "origin_h2_max_streams",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "Value of the Origin H2 Max Streams Setting.",
 															"example": 50,
 															"maximum": 1000,
 															"minimum": 1,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -8887,7 +8906,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -8979,20 +8999,24 @@
 													"properties": {
 														"editable": {
 															"description": "Whether the setting is editable",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The identifier of the caching setting",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The time when the setting was last modified",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "The value of the feature",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -9016,7 +9040,8 @@
 													"properties": {
 														"id": {
 															"description": "Identifier of the zone setting.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "Last time this setting was modified.",
@@ -9024,7 +9049,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -9040,7 +9066,8 @@
 																"origin_max_http_version"
 															],
 															"example": "origin_max_http_version",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "Value of the Origin Max HTTP Version Setting.",
@@ -9048,7 +9075,8 @@
 																"2",
 																"1"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -21768,7 +21796,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -21782,12 +21811,14 @@
 								"properties": {
 									"enabled": {
 										"description": "Whether the feature is enabled or not.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"pool_id": {
 										"description": "Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.",
 										"example": "pool-id",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -21876,20 +21907,24 @@
 													"properties": {
 														"editable": {
 															"description": "Whether the setting is editable",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The identifier of the caching setting",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The time when the setting was last modified",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "The value of the feature",
-															"type": "object"
+															"type": "object",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -21913,7 +21948,8 @@
 													"properties": {
 														"id": {
 															"description": "Identifier of the zone setting.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "Last time this setting was modified.",
@@ -21921,7 +21957,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -21937,19 +21974,22 @@
 																"aegis"
 															],
 															"example": "aegis",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "Value of the zone setting.",
 															"properties": {
 																"enabled": {
 																	"description": "Whether the feature is enabled or not.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"pool_id": {
 																	"description": "Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.",
 																	"example": "pool-id",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -22417,7 +22457,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -22431,7 +22472,8 @@
 								"example": 50,
 								"maximum": 1000,
 								"minimum": 1,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -22531,20 +22573,24 @@
 													"properties": {
 														"editable": {
 															"description": "Whether the setting is editable",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The identifier of the caching setting",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The time when the setting was last modified",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "The value of the feature",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -22568,7 +22614,8 @@
 													"properties": {
 														"id": {
 															"description": "Identifier of the zone setting.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "Last time this setting was modified.",
@@ -22576,7 +22623,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -22592,14 +22640,16 @@
 																"origin_h2_max_streams"
 															],
 															"example": "origin_h2_max_streams",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "Value of the Origin H2 Max Streams Setting.",
 															"example": 50,
 															"maximum": 1000,
 															"minimum": 1,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -22776,7 +22826,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -22791,7 +22842,8 @@
 									"2",
 									"1"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -22891,20 +22943,24 @@
 													"properties": {
 														"editable": {
 															"description": "Whether the setting is editable",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The identifier of the caching setting",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The time when the setting was last modified",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "The value of the feature",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -22928,7 +22984,8 @@
 													"properties": {
 														"id": {
 															"description": "Identifier of the zone setting.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "Last time this setting was modified.",
@@ -22936,7 +22993,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -22952,7 +23010,8 @@
 																"origin_max_http_version"
 															],
 															"example": "origin_max_http_version",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "Value of the Origin Max HTTP Version Setting.",
@@ -22960,7 +23019,8 @@
 																"2",
 																"1"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"

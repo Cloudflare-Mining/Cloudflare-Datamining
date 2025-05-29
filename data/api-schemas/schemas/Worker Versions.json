@@ -161,6 +161,49 @@
 																	"modified_on": "2022-11-08T17:19:29.176266Z",
 																	"source": "api"
 																},
+																"properties": {
+																	"author_email": {
+																		"example": "user@example.com",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"author_id": {
+																		"example": "408cbcdfd4dda4617efef40b04d168a1",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"created_on": {
+																		"example": "2022-11-08T17:19:29.176266Z",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"hasPreview": {
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
+																	"modified_on": {
+																		"example": "2022-11-08T17:19:29.176266Z",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"source": {
+																		"enum": [
+																			"unknown",
+																			"api",
+																			"wrangler",
+																			"terraform",
+																			"dash",
+																			"dash_template",
+																			"integration",
+																			"quick_editor",
+																			"playground",
+																			"workersci"
+																		],
+																		"example": "api",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
 																"readOnly": true,
 																"type": "object"
 															},
@@ -297,6 +340,49 @@
 																			"created_on": "2022-11-08T17:19:29.176266Z",
 																			"modified_on": "2022-11-08T17:19:29.176266Z",
 																			"source": "api"
+																		},
+																		"properties": {
+																			"author_email": {
+																				"example": "user@example.com",
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"author_id": {
+																				"example": "408cbcdfd4dda4617efef40b04d168a1",
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"created_on": {
+																				"example": "2022-11-08T17:19:29.176266Z",
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"hasPreview": {
+																				"readOnly": true,
+																				"type": "boolean"
+																			},
+																			"modified_on": {
+																				"example": "2022-11-08T17:19:29.176266Z",
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"source": {
+																				"enum": [
+																					"unknown",
+																					"api",
+																					"wrangler",
+																					"terraform",
+																					"dash",
+																					"dash_template",
+																					"integration",
+																					"quick_editor",
+																					"playground",
+																					"workersci"
+																				],
+																				"example": "api",
+																				"readOnly": true,
+																				"type": "string"
+																			}
 																		},
 																		"readOnly": true,
 																		"type": "object"
@@ -599,6 +685,49 @@
 																"modified_on": "2022-11-08T17:19:29.176266Z",
 																"source": "api"
 															},
+															"properties": {
+																"author_email": {
+																	"example": "user@example.com",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"author_id": {
+																	"example": "408cbcdfd4dda4617efef40b04d168a1",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"created_on": {
+																	"example": "2022-11-08T17:19:29.176266Z",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"hasPreview": {
+																	"readOnly": true,
+																	"type": "boolean"
+																},
+																"modified_on": {
+																	"example": "2022-11-08T17:19:29.176266Z",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"source": {
+																	"enum": [
+																		"unknown",
+																		"api",
+																		"wrangler",
+																		"terraform",
+																		"dash",
+																		"dash_template",
+																		"integration",
+																		"quick_editor",
+																		"playground",
+																		"workersci"
+																	],
+																	"example": "api",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
 															"readOnly": true,
 															"type": "object"
 														},
@@ -630,6 +759,881 @@
 																},
 																"script_runtime": {
 																	"usage_model": "standard"
+																}
+															},
+															"properties": {
+																"bindings": {
+																	"example": [
+																		{
+																			"json": "example_binding",
+																			"name": "JSON_VAR",
+																			"type": "json"
+																		}
+																	],
+																	"properties": {
+																		"result": {
+																			"description": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.",
+																			"example": [
+																				{
+																					"name": "MY_ENV_VAR",
+																					"text": "my_data",
+																					"type": "plain_text"
+																				}
+																			],
+																			"items": {
+																				"description": "A binding to allow the Worker to communicate with resources.",
+																				"discriminator": {
+																					"mapping": {
+																						"ai": "#/components/schemas/workers_binding_kind_ai",
+																						"analytics_engine": "#/components/schemas/workers_binding_kind_analytics_engine",
+																						"assets": "#/components/schemas/workers_binding_kind_assets",
+																						"browser": "#/components/schemas/workers_binding_kind_browser",
+																						"d1": "#/components/schemas/workers_binding_kind_d1",
+																						"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
+																						"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
+																						"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
+																						"json": "#/components/schemas/workers_binding_kind_json",
+																						"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
+																						"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
+																						"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
+																						"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
+																						"queue": "#/components/schemas/workers_binding_kind_queue",
+																						"r2_bucket": "#/components/schemas/workers_binding_kind_r2_bucket",
+																						"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
+																						"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
+																						"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
+																						"service": "#/components/schemas/workers_binding_kind_service",
+																						"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
+																						"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
+																						"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata"
+																					},
+																					"propertyName": "type"
+																				},
+																				"oneOf": [
+																					{
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"ai"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"dataset": {
+																								"description": "The name of the dataset to bind to.",
+																								"example": "some_dataset",
+																								"type": "string"
+																							},
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"analytics_engine"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"dataset"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"assets"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"browser"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"id": {
+																								"description": "Identifier of the D1 database to bind to.",
+																								"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																								"type": "string"
+																							},
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"d1"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"id"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"namespace": {
+																								"description": "Namespace to bind to.",
+																								"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																								"type": "string"
+																							},
+																							"outbound": {
+																								"description": "Outbound worker.",
+																								"properties": {
+																									"params": {
+																										"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters.",
+																										"items": {
+																											"example": "url",
+																											"type": "string"
+																										},
+																										"type": "array"
+																									},
+																									"worker": {
+																										"description": "Outbound worker.",
+																										"properties": {
+																											"environment": {
+																												"description": "Environment of the outbound worker.",
+																												"type": "string"
+																											},
+																											"service": {
+																												"description": "Name of the outbound worker.",
+																												"type": "string"
+																											}
+																										},
+																										"type": "object"
+																									}
+																								},
+																								"type": "object"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"dispatch_namespace"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"namespace"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"class_name": {
+																								"description": "The exported class name of the Durable Object.",
+																								"example": "MyDurableObject",
+																								"type": "string",
+																								"x-stainless-terraform-configurability": "computed_optional"
+																							},
+																							"environment": {
+																								"description": "The environment of the script_name to bind to.",
+																								"example": "production",
+																								"type": "string"
+																							},
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"namespace_id": {
+																								"allOf": [
+																									{
+																										"description": "Namespace identifier tag.",
+																										"example": "0f2ac74b498b48028cb68387c421e279",
+																										"maxLength": 32,
+																										"type": "string"
+																									},
+																									{
+																										"type": "string",
+																										"x-stainless-terraform-configurability": "computed_optional"
+																									}
+																								]
+																							},
+																							"script_name": {
+																								"description": "The script where the Durable Object is defined, if it is external to this Worker.",
+																								"example": "my-other-worker",
+																								"type": "string",
+																								"x-stainless-terraform-configurability": "computed_optional"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"durable_object_namespace"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"id": {
+																								"description": "Identifier of the Hyperdrive connection to bind to.",
+																								"example": "57b7076f58be42419276f058a8968187",
+																								"type": "string"
+																							},
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"hyperdrive"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"id"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"json": {
+																								"description": "JSON data to use.",
+																								"example": "{ \"message\": \"Hello, world!\" }",
+																								"type": "string"
+																							},
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"json"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"json"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"namespace_id": {
+																								"description": "Namespace identifier tag.",
+																								"example": "0f2ac74b498b48028cb68387c421e279",
+																								"maxLength": 32,
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"kv_namespace"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"namespace_id"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"certificate_id": {
+																								"description": "Identifier of the certificate to bind to.",
+																								"example": "efwu2n6s-q69d-2kr9-184j-4913e8h391k6",
+																								"type": "string"
+																							},
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"mtls_certificate"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"certificate_id"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"text": {
+																								"description": "The text value to use.",
+																								"example": "Hello, world!",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"plain_text"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"text"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"pipeline": {
+																								"description": "Name of the Pipeline to bind to.",
+																								"example": "my-pipeline",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"pipelines"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"pipeline"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"queue_name": {
+																								"description": "Name of the Queue to bind to.",
+																								"example": "my-queue",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"queue"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"queue_name"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"bucket_name": {
+																								"description": "R2 bucket to bind to.",
+																								"example": "my-r2-bucket",
+																								"type": "string"
+																							},
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"r2_bucket"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"bucket_name"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"text": {
+																								"description": "The secret value to use.",
+																								"example": "My secret.",
+																								"type": "string",
+																								"writeOnly": true,
+																								"x-sensitive": true
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"secret_text"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"text"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"environment": {
+																								"description": "Optional environment if the Worker utilizes one.",
+																								"example": "production",
+																								"type": "string"
+																							},
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"service": {
+																								"description": "Name of Worker to bind to.",
+																								"example": "my-worker",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"service"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"service",
+																							"environment"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"service": {
+																								"description": "Name of Tail Worker to bind to.",
+																								"example": "my-worker",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"tail_consumer"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"service"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"index_name": {
+																								"description": "Name of the Vectorize index to bind to.",
+																								"example": "my-index-name",
+																								"type": "string"
+																							},
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"vectorize"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"index_name"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"version_metadata"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"secret_name": {
+																								"description": "Name of the secret in the store.",
+																								"example": "my_secret",
+																								"type": "string"
+																							},
+																							"store_id": {
+																								"description": "ID of the store containing the secret.",
+																								"example": "8c8b1387108e49be85669169793e7bd2",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"secrets_store_secret"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"store_id",
+																							"secret_name"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"algorithm": {
+																								"description": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).",
+																								"type": "object"
+																							},
+																							"format": {
+																								"description": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).",
+																								"enum": [
+																									"raw",
+																									"pkcs8",
+																									"spki",
+																									"jwk"
+																								],
+																								"example": "raw",
+																								"type": "string"
+																							},
+																							"key_base64": {
+																								"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
+																								"type": "string",
+																								"writeOnly": true,
+																								"x-sensitive": true
+																							},
+																							"key_jwk": {
+																								"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
+																								"type": "object",
+																								"writeOnly": true,
+																								"x-sensitive": true
+																							},
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"secret_key"
+																								],
+																								"type": "string"
+																							},
+																							"usages": {
+																								"description": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).",
+																								"example": [
+																									"encrypt",
+																									"decrypt"
+																								],
+																								"items": {
+																									"enum": [
+																										"encrypt",
+																										"decrypt",
+																										"sign",
+																										"verify",
+																										"deriveKey",
+																										"deriveBits",
+																										"wrapKey",
+																										"unwrapKey"
+																									],
+																									"type": "string"
+																								},
+																								"type": "array"
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"format",
+																							"algorithm",
+																							"usages"
+																						],
+																						"type": "object"
+																					}
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"readOnly": true,
+																	"type": "object"
+																},
+																"script": {
+																	"example": {
+																		"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+																		"handlers": [
+																			"fetch"
+																		],
+																		"last_deployed_from": "api",
+																		"named_handlers": [
+																			{
+																				"handlers": [
+																					"fetch"
+																				],
+																				"name": "MyClass"
+																			}
+																		]
+																	},
+																	"properties": {
+																		"etag": {
+																			"example": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"handlers": {
+																			"example": [
+																				"fetch"
+																			],
+																			"items": {
+																				"example": "fetch",
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"readOnly": true,
+																			"type": "array"
+																		},
+																		"last_deployed_from": {
+																			"example": "api",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"named_handlers": {
+																			"example": [
+																				{
+																					"handlers": [
+																						"fetch"
+																					],
+																					"name": "MyClass"
+																				}
+																			],
+																			"items": {
+																				"example": {
+																					"handlers": [
+																						"fetch"
+																					],
+																					"name": "MyClass"
+																				},
+																				"properties": {
+																					"handlers": {
+																						"example": [
+																							"fetch"
+																						],
+																						"items": {
+																							"example": "fetch",
+																							"readOnly": true,
+																							"type": "string"
+																						},
+																						"readOnly": true,
+																						"type": "array"
+																					},
+																					"name": {
+																						"example": "MyClass",
+																						"readOnly": true,
+																						"type": "string"
+																					}
+																				},
+																				"readOnly": true,
+																				"type": "object"
+																			},
+																			"readOnly": true,
+																			"type": "array"
+																		}
+																	},
+																	"readOnly": true,
+																	"type": "object"
+																},
+																"script_runtime": {
+																	"properties": {
+																		"compatibility_date": {
+																			"example": "2022-11-08",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"compatibility_flags": {
+																			"items": {
+																				"example": "x",
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"readOnly": true,
+																			"type": "array"
+																		},
+																		"limits": {
+																			"example": {
+																				"cpu_ms": 50
+																			},
+																			"properties": {
+																				"cpu_ms": {
+																					"example": 50,
+																					"readOnly": true,
+																					"type": "integer"
+																				}
+																			},
+																			"readOnly": true,
+																			"type": "object"
+																		},
+																		"migration_tag": {
+																			"example": "v1",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"usage_model": {
+																			"enum": [
+																				"bundled",
+																				"unbound",
+																				"standard"
+																			],
+																			"example": "standard",
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"readOnly": true,
+																	"type": "object"
 																}
 															},
 															"readOnly": true,
@@ -763,6 +1767,49 @@
 																		"modified_on": "2022-11-08T17:19:29.176266Z",
 																		"source": "api"
 																	},
+																	"properties": {
+																		"author_email": {
+																			"example": "user@example.com",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"author_id": {
+																			"example": "408cbcdfd4dda4617efef40b04d168a1",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"created_on": {
+																			"example": "2022-11-08T17:19:29.176266Z",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"hasPreview": {
+																			"readOnly": true,
+																			"type": "boolean"
+																		},
+																		"modified_on": {
+																			"example": "2022-11-08T17:19:29.176266Z",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"source": {
+																			"enum": [
+																				"unknown",
+																				"api",
+																				"wrangler",
+																				"terraform",
+																				"dash",
+																				"dash_template",
+																				"integration",
+																				"quick_editor",
+																				"playground",
+																				"workersci"
+																			],
+																			"example": "api",
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
 																	"readOnly": true,
 																	"type": "object"
 																},
@@ -794,6 +1841,881 @@
 																		},
 																		"script_runtime": {
 																			"usage_model": "standard"
+																		}
+																	},
+																	"properties": {
+																		"bindings": {
+																			"example": [
+																				{
+																					"json": "example_binding",
+																					"name": "JSON_VAR",
+																					"type": "json"
+																				}
+																			],
+																			"properties": {
+																				"result": {
+																					"description": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.",
+																					"example": [
+																						{
+																							"name": "MY_ENV_VAR",
+																							"text": "my_data",
+																							"type": "plain_text"
+																						}
+																					],
+																					"items": {
+																						"description": "A binding to allow the Worker to communicate with resources.",
+																						"discriminator": {
+																							"mapping": {
+																								"ai": "#/components/schemas/workers_binding_kind_ai",
+																								"analytics_engine": "#/components/schemas/workers_binding_kind_analytics_engine",
+																								"assets": "#/components/schemas/workers_binding_kind_assets",
+																								"browser": "#/components/schemas/workers_binding_kind_browser",
+																								"d1": "#/components/schemas/workers_binding_kind_d1",
+																								"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
+																								"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
+																								"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
+																								"json": "#/components/schemas/workers_binding_kind_json",
+																								"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
+																								"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
+																								"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
+																								"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
+																								"queue": "#/components/schemas/workers_binding_kind_queue",
+																								"r2_bucket": "#/components/schemas/workers_binding_kind_r2_bucket",
+																								"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
+																								"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
+																								"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
+																								"service": "#/components/schemas/workers_binding_kind_service",
+																								"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
+																								"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
+																								"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata"
+																							},
+																							"propertyName": "type"
+																						},
+																						"oneOf": [
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"ai"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"dataset": {
+																										"description": "The name of the dataset to bind to.",
+																										"example": "some_dataset",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"analytics_engine"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"dataset"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"assets"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"browser"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"id": {
+																										"description": "Identifier of the D1 database to bind to.",
+																										"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"d1"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"id"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"namespace": {
+																										"description": "Namespace to bind to.",
+																										"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																										"type": "string"
+																									},
+																									"outbound": {
+																										"description": "Outbound worker.",
+																										"properties": {
+																											"params": {
+																												"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters.",
+																												"items": {
+																													"example": "url",
+																													"type": "string"
+																												},
+																												"type": "array"
+																											},
+																											"worker": {
+																												"description": "Outbound worker.",
+																												"properties": {
+																													"environment": {
+																														"description": "Environment of the outbound worker.",
+																														"type": "string"
+																													},
+																													"service": {
+																														"description": "Name of the outbound worker.",
+																														"type": "string"
+																													}
+																												},
+																												"type": "object"
+																											}
+																										},
+																										"type": "object"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"dispatch_namespace"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"namespace"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"class_name": {
+																										"description": "The exported class name of the Durable Object.",
+																										"example": "MyDurableObject",
+																										"type": "string",
+																										"x-stainless-terraform-configurability": "computed_optional"
+																									},
+																									"environment": {
+																										"description": "The environment of the script_name to bind to.",
+																										"example": "production",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"namespace_id": {
+																										"allOf": [
+																											{
+																												"description": "Namespace identifier tag.",
+																												"example": "0f2ac74b498b48028cb68387c421e279",
+																												"maxLength": 32,
+																												"type": "string"
+																											},
+																											{
+																												"type": "string",
+																												"x-stainless-terraform-configurability": "computed_optional"
+																											}
+																										]
+																									},
+																									"script_name": {
+																										"description": "The script where the Durable Object is defined, if it is external to this Worker.",
+																										"example": "my-other-worker",
+																										"type": "string",
+																										"x-stainless-terraform-configurability": "computed_optional"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"durable_object_namespace"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"id": {
+																										"description": "Identifier of the Hyperdrive connection to bind to.",
+																										"example": "57b7076f58be42419276f058a8968187",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"hyperdrive"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"id"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"json": {
+																										"description": "JSON data to use.",
+																										"example": "{ \"message\": \"Hello, world!\" }",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"json"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"json"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"namespace_id": {
+																										"description": "Namespace identifier tag.",
+																										"example": "0f2ac74b498b48028cb68387c421e279",
+																										"maxLength": 32,
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"kv_namespace"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"namespace_id"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"certificate_id": {
+																										"description": "Identifier of the certificate to bind to.",
+																										"example": "efwu2n6s-q69d-2kr9-184j-4913e8h391k6",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"mtls_certificate"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"certificate_id"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"text": {
+																										"description": "The text value to use.",
+																										"example": "Hello, world!",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"plain_text"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"text"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"pipeline": {
+																										"description": "Name of the Pipeline to bind to.",
+																										"example": "my-pipeline",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"pipelines"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"pipeline"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"queue_name": {
+																										"description": "Name of the Queue to bind to.",
+																										"example": "my-queue",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"queue"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"queue_name"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"bucket_name": {
+																										"description": "R2 bucket to bind to.",
+																										"example": "my-r2-bucket",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"r2_bucket"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"bucket_name"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"text": {
+																										"description": "The secret value to use.",
+																										"example": "My secret.",
+																										"type": "string",
+																										"writeOnly": true,
+																										"x-sensitive": true
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"secret_text"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"text"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"environment": {
+																										"description": "Optional environment if the Worker utilizes one.",
+																										"example": "production",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"service": {
+																										"description": "Name of Worker to bind to.",
+																										"example": "my-worker",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"service"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"service",
+																									"environment"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"service": {
+																										"description": "Name of Tail Worker to bind to.",
+																										"example": "my-worker",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"tail_consumer"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"service"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"index_name": {
+																										"description": "Name of the Vectorize index to bind to.",
+																										"example": "my-index-name",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"vectorize"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"index_name"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"version_metadata"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"secret_name": {
+																										"description": "Name of the secret in the store.",
+																										"example": "my_secret",
+																										"type": "string"
+																									},
+																									"store_id": {
+																										"description": "ID of the store containing the secret.",
+																										"example": "8c8b1387108e49be85669169793e7bd2",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"secrets_store_secret"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"store_id",
+																									"secret_name"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"algorithm": {
+																										"description": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).",
+																										"type": "object"
+																									},
+																									"format": {
+																										"description": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).",
+																										"enum": [
+																											"raw",
+																											"pkcs8",
+																											"spki",
+																											"jwk"
+																										],
+																										"example": "raw",
+																										"type": "string"
+																									},
+																									"key_base64": {
+																										"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
+																										"type": "string",
+																										"writeOnly": true,
+																										"x-sensitive": true
+																									},
+																									"key_jwk": {
+																										"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
+																										"type": "object",
+																										"writeOnly": true,
+																										"x-sensitive": true
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"secret_key"
+																										],
+																										"type": "string"
+																									},
+																									"usages": {
+																										"description": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).",
+																										"example": [
+																											"encrypt",
+																											"decrypt"
+																										],
+																										"items": {
+																											"enum": [
+																												"encrypt",
+																												"decrypt",
+																												"sign",
+																												"verify",
+																												"deriveKey",
+																												"deriveBits",
+																												"wrapKey",
+																												"unwrapKey"
+																											],
+																											"type": "string"
+																										},
+																										"type": "array"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"format",
+																									"algorithm",
+																									"usages"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				}
+																			},
+																			"readOnly": true,
+																			"type": "object"
+																		},
+																		"script": {
+																			"example": {
+																				"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+																				"handlers": [
+																					"fetch"
+																				],
+																				"last_deployed_from": "api",
+																				"named_handlers": [
+																					{
+																						"handlers": [
+																							"fetch"
+																						],
+																						"name": "MyClass"
+																					}
+																				]
+																			},
+																			"properties": {
+																				"etag": {
+																					"example": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"handlers": {
+																					"example": [
+																						"fetch"
+																					],
+																					"items": {
+																						"example": "fetch",
+																						"readOnly": true,
+																						"type": "string"
+																					},
+																					"readOnly": true,
+																					"type": "array"
+																				},
+																				"last_deployed_from": {
+																					"example": "api",
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"named_handlers": {
+																					"example": [
+																						{
+																							"handlers": [
+																								"fetch"
+																							],
+																							"name": "MyClass"
+																						}
+																					],
+																					"items": {
+																						"example": {
+																							"handlers": [
+																								"fetch"
+																							],
+																							"name": "MyClass"
+																						},
+																						"properties": {
+																							"handlers": {
+																								"example": [
+																									"fetch"
+																								],
+																								"items": {
+																									"example": "fetch",
+																									"readOnly": true,
+																									"type": "string"
+																								},
+																								"readOnly": true,
+																								"type": "array"
+																							},
+																							"name": {
+																								"example": "MyClass",
+																								"readOnly": true,
+																								"type": "string"
+																							}
+																						},
+																						"readOnly": true,
+																						"type": "object"
+																					},
+																					"readOnly": true,
+																					"type": "array"
+																				}
+																			},
+																			"readOnly": true,
+																			"type": "object"
+																		},
+																		"script_runtime": {
+																			"properties": {
+																				"compatibility_date": {
+																					"example": "2022-11-08",
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"compatibility_flags": {
+																					"items": {
+																						"example": "x",
+																						"readOnly": true,
+																						"type": "string"
+																					},
+																					"readOnly": true,
+																					"type": "array"
+																				},
+																				"limits": {
+																					"example": {
+																						"cpu_ms": 50
+																					},
+																					"properties": {
+																						"cpu_ms": {
+																							"example": 50,
+																							"readOnly": true,
+																							"type": "integer"
+																						}
+																					},
+																					"readOnly": true,
+																					"type": "object"
+																				},
+																				"migration_tag": {
+																					"example": "v1",
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"usage_model": {
+																					"enum": [
+																						"bundled",
+																						"unbound",
+																						"standard"
+																					],
+																					"example": "standard",
+																					"readOnly": true,
+																					"type": "string"
+																				}
+																			},
+																			"readOnly": true,
+																			"type": "object"
 																		}
 																	},
 																	"readOnly": true,
@@ -1897,6 +3819,49 @@
 																		"modified_on": "2022-11-08T17:19:29.176266Z",
 																		"source": "api"
 																	},
+																	"properties": {
+																		"author_email": {
+																			"example": "user@example.com",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"author_id": {
+																			"example": "408cbcdfd4dda4617efef40b04d168a1",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"created_on": {
+																			"example": "2022-11-08T17:19:29.176266Z",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"hasPreview": {
+																			"readOnly": true,
+																			"type": "boolean"
+																		},
+																		"modified_on": {
+																			"example": "2022-11-08T17:19:29.176266Z",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"source": {
+																			"enum": [
+																				"unknown",
+																				"api",
+																				"wrangler",
+																				"terraform",
+																				"dash",
+																				"dash_template",
+																				"integration",
+																				"quick_editor",
+																				"playground",
+																				"workersci"
+																			],
+																			"example": "api",
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
 																	"readOnly": true,
 																	"type": "object"
 																},
@@ -1928,6 +3893,881 @@
 																		},
 																		"script_runtime": {
 																			"usage_model": "standard"
+																		}
+																	},
+																	"properties": {
+																		"bindings": {
+																			"example": [
+																				{
+																					"json": "example_binding",
+																					"name": "JSON_VAR",
+																					"type": "json"
+																				}
+																			],
+																			"properties": {
+																				"result": {
+																					"description": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.",
+																					"example": [
+																						{
+																							"name": "MY_ENV_VAR",
+																							"text": "my_data",
+																							"type": "plain_text"
+																						}
+																					],
+																					"items": {
+																						"description": "A binding to allow the Worker to communicate with resources.",
+																						"discriminator": {
+																							"mapping": {
+																								"ai": "#/components/schemas/workers_binding_kind_ai",
+																								"analytics_engine": "#/components/schemas/workers_binding_kind_analytics_engine",
+																								"assets": "#/components/schemas/workers_binding_kind_assets",
+																								"browser": "#/components/schemas/workers_binding_kind_browser",
+																								"d1": "#/components/schemas/workers_binding_kind_d1",
+																								"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
+																								"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
+																								"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
+																								"json": "#/components/schemas/workers_binding_kind_json",
+																								"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
+																								"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
+																								"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
+																								"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
+																								"queue": "#/components/schemas/workers_binding_kind_queue",
+																								"r2_bucket": "#/components/schemas/workers_binding_kind_r2_bucket",
+																								"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
+																								"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
+																								"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
+																								"service": "#/components/schemas/workers_binding_kind_service",
+																								"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
+																								"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
+																								"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata"
+																							},
+																							"propertyName": "type"
+																						},
+																						"oneOf": [
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"ai"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"dataset": {
+																										"description": "The name of the dataset to bind to.",
+																										"example": "some_dataset",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"analytics_engine"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"dataset"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"assets"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"browser"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"id": {
+																										"description": "Identifier of the D1 database to bind to.",
+																										"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"d1"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"id"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"namespace": {
+																										"description": "Namespace to bind to.",
+																										"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																										"type": "string"
+																									},
+																									"outbound": {
+																										"description": "Outbound worker.",
+																										"properties": {
+																											"params": {
+																												"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters.",
+																												"items": {
+																													"example": "url",
+																													"type": "string"
+																												},
+																												"type": "array"
+																											},
+																											"worker": {
+																												"description": "Outbound worker.",
+																												"properties": {
+																													"environment": {
+																														"description": "Environment of the outbound worker.",
+																														"type": "string"
+																													},
+																													"service": {
+																														"description": "Name of the outbound worker.",
+																														"type": "string"
+																													}
+																												},
+																												"type": "object"
+																											}
+																										},
+																										"type": "object"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"dispatch_namespace"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"namespace"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"class_name": {
+																										"description": "The exported class name of the Durable Object.",
+																										"example": "MyDurableObject",
+																										"type": "string",
+																										"x-stainless-terraform-configurability": "computed_optional"
+																									},
+																									"environment": {
+																										"description": "The environment of the script_name to bind to.",
+																										"example": "production",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"namespace_id": {
+																										"allOf": [
+																											{
+																												"description": "Namespace identifier tag.",
+																												"example": "0f2ac74b498b48028cb68387c421e279",
+																												"maxLength": 32,
+																												"type": "string"
+																											},
+																											{
+																												"type": "string",
+																												"x-stainless-terraform-configurability": "computed_optional"
+																											}
+																										]
+																									},
+																									"script_name": {
+																										"description": "The script where the Durable Object is defined, if it is external to this Worker.",
+																										"example": "my-other-worker",
+																										"type": "string",
+																										"x-stainless-terraform-configurability": "computed_optional"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"durable_object_namespace"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"id": {
+																										"description": "Identifier of the Hyperdrive connection to bind to.",
+																										"example": "57b7076f58be42419276f058a8968187",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"hyperdrive"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"id"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"json": {
+																										"description": "JSON data to use.",
+																										"example": "{ \"message\": \"Hello, world!\" }",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"json"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"json"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"namespace_id": {
+																										"description": "Namespace identifier tag.",
+																										"example": "0f2ac74b498b48028cb68387c421e279",
+																										"maxLength": 32,
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"kv_namespace"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"namespace_id"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"certificate_id": {
+																										"description": "Identifier of the certificate to bind to.",
+																										"example": "efwu2n6s-q69d-2kr9-184j-4913e8h391k6",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"mtls_certificate"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"certificate_id"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"text": {
+																										"description": "The text value to use.",
+																										"example": "Hello, world!",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"plain_text"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"text"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"pipeline": {
+																										"description": "Name of the Pipeline to bind to.",
+																										"example": "my-pipeline",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"pipelines"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"pipeline"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"queue_name": {
+																										"description": "Name of the Queue to bind to.",
+																										"example": "my-queue",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"queue"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"queue_name"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"bucket_name": {
+																										"description": "R2 bucket to bind to.",
+																										"example": "my-r2-bucket",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"r2_bucket"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"bucket_name"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"text": {
+																										"description": "The secret value to use.",
+																										"example": "My secret.",
+																										"type": "string",
+																										"writeOnly": true,
+																										"x-sensitive": true
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"secret_text"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"text"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"environment": {
+																										"description": "Optional environment if the Worker utilizes one.",
+																										"example": "production",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"service": {
+																										"description": "Name of Worker to bind to.",
+																										"example": "my-worker",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"service"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"service",
+																									"environment"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"service": {
+																										"description": "Name of Tail Worker to bind to.",
+																										"example": "my-worker",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"tail_consumer"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"service"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"index_name": {
+																										"description": "Name of the Vectorize index to bind to.",
+																										"example": "my-index-name",
+																										"type": "string"
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"vectorize"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"index_name"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"version_metadata"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"secret_name": {
+																										"description": "Name of the secret in the store.",
+																										"example": "my_secret",
+																										"type": "string"
+																									},
+																									"store_id": {
+																										"description": "ID of the store containing the secret.",
+																										"example": "8c8b1387108e49be85669169793e7bd2",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"secrets_store_secret"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"store_id",
+																									"secret_name"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"algorithm": {
+																										"description": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).",
+																										"type": "object"
+																									},
+																									"format": {
+																										"description": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).",
+																										"enum": [
+																											"raw",
+																											"pkcs8",
+																											"spki",
+																											"jwk"
+																										],
+																										"example": "raw",
+																										"type": "string"
+																									},
+																									"key_base64": {
+																										"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
+																										"type": "string",
+																										"writeOnly": true,
+																										"x-sensitive": true
+																									},
+																									"key_jwk": {
+																										"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
+																										"type": "object",
+																										"writeOnly": true,
+																										"x-sensitive": true
+																									},
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"secret_key"
+																										],
+																										"type": "string"
+																									},
+																									"usages": {
+																										"description": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).",
+																										"example": [
+																											"encrypt",
+																											"decrypt"
+																										],
+																										"items": {
+																											"enum": [
+																												"encrypt",
+																												"decrypt",
+																												"sign",
+																												"verify",
+																												"deriveKey",
+																												"deriveBits",
+																												"wrapKey",
+																												"unwrapKey"
+																											],
+																											"type": "string"
+																										},
+																										"type": "array"
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"format",
+																									"algorithm",
+																									"usages"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				}
+																			},
+																			"readOnly": true,
+																			"type": "object"
+																		},
+																		"script": {
+																			"example": {
+																				"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+																				"handlers": [
+																					"fetch"
+																				],
+																				"last_deployed_from": "api",
+																				"named_handlers": [
+																					{
+																						"handlers": [
+																							"fetch"
+																						],
+																						"name": "MyClass"
+																					}
+																				]
+																			},
+																			"properties": {
+																				"etag": {
+																					"example": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"handlers": {
+																					"example": [
+																						"fetch"
+																					],
+																					"items": {
+																						"example": "fetch",
+																						"readOnly": true,
+																						"type": "string"
+																					},
+																					"readOnly": true,
+																					"type": "array"
+																				},
+																				"last_deployed_from": {
+																					"example": "api",
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"named_handlers": {
+																					"example": [
+																						{
+																							"handlers": [
+																								"fetch"
+																							],
+																							"name": "MyClass"
+																						}
+																					],
+																					"items": {
+																						"example": {
+																							"handlers": [
+																								"fetch"
+																							],
+																							"name": "MyClass"
+																						},
+																						"properties": {
+																							"handlers": {
+																								"example": [
+																									"fetch"
+																								],
+																								"items": {
+																									"example": "fetch",
+																									"readOnly": true,
+																									"type": "string"
+																								},
+																								"readOnly": true,
+																								"type": "array"
+																							},
+																							"name": {
+																								"example": "MyClass",
+																								"readOnly": true,
+																								"type": "string"
+																							}
+																						},
+																						"readOnly": true,
+																						"type": "object"
+																					},
+																					"readOnly": true,
+																					"type": "array"
+																				}
+																			},
+																			"readOnly": true,
+																			"type": "object"
+																		},
+																		"script_runtime": {
+																			"properties": {
+																				"compatibility_date": {
+																					"example": "2022-11-08",
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"compatibility_flags": {
+																					"items": {
+																						"example": "x",
+																						"readOnly": true,
+																						"type": "string"
+																					},
+																					"readOnly": true,
+																					"type": "array"
+																				},
+																				"limits": {
+																					"example": {
+																						"cpu_ms": 50
+																					},
+																					"properties": {
+																						"cpu_ms": {
+																							"example": 50,
+																							"readOnly": true,
+																							"type": "integer"
+																						}
+																					},
+																					"readOnly": true,
+																					"type": "object"
+																				},
+																				"migration_tag": {
+																					"example": "v1",
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"usage_model": {
+																					"enum": [
+																						"bundled",
+																						"unbound",
+																						"standard"
+																					],
+																					"example": "standard",
+																					"readOnly": true,
+																					"type": "string"
+																				}
+																			},
+																			"readOnly": true,
+																			"type": "object"
 																		}
 																	},
 																	"readOnly": true,
@@ -2077,6 +4917,49 @@
 																				"modified_on": "2022-11-08T17:19:29.176266Z",
 																				"source": "api"
 																			},
+																			"properties": {
+																				"author_email": {
+																					"example": "user@example.com",
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"author_id": {
+																					"example": "408cbcdfd4dda4617efef40b04d168a1",
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"created_on": {
+																					"example": "2022-11-08T17:19:29.176266Z",
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"hasPreview": {
+																					"readOnly": true,
+																					"type": "boolean"
+																				},
+																				"modified_on": {
+																					"example": "2022-11-08T17:19:29.176266Z",
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"source": {
+																					"enum": [
+																						"unknown",
+																						"api",
+																						"wrangler",
+																						"terraform",
+																						"dash",
+																						"dash_template",
+																						"integration",
+																						"quick_editor",
+																						"playground",
+																						"workersci"
+																					],
+																					"example": "api",
+																					"readOnly": true,
+																					"type": "string"
+																				}
+																			},
 																			"readOnly": true,
 																			"type": "object"
 																		},
@@ -2108,6 +4991,881 @@
 																				},
 																				"script_runtime": {
 																					"usage_model": "standard"
+																				}
+																			},
+																			"properties": {
+																				"bindings": {
+																					"example": [
+																						{
+																							"json": "example_binding",
+																							"name": "JSON_VAR",
+																							"type": "json"
+																						}
+																					],
+																					"properties": {
+																						"result": {
+																							"description": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.",
+																							"example": [
+																								{
+																									"name": "MY_ENV_VAR",
+																									"text": "my_data",
+																									"type": "plain_text"
+																								}
+																							],
+																							"items": {
+																								"description": "A binding to allow the Worker to communicate with resources.",
+																								"discriminator": {
+																									"mapping": {
+																										"ai": "#/components/schemas/workers_binding_kind_ai",
+																										"analytics_engine": "#/components/schemas/workers_binding_kind_analytics_engine",
+																										"assets": "#/components/schemas/workers_binding_kind_assets",
+																										"browser": "#/components/schemas/workers_binding_kind_browser",
+																										"d1": "#/components/schemas/workers_binding_kind_d1",
+																										"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
+																										"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
+																										"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
+																										"json": "#/components/schemas/workers_binding_kind_json",
+																										"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
+																										"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
+																										"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
+																										"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
+																										"queue": "#/components/schemas/workers_binding_kind_queue",
+																										"r2_bucket": "#/components/schemas/workers_binding_kind_r2_bucket",
+																										"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
+																										"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
+																										"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
+																										"service": "#/components/schemas/workers_binding_kind_service",
+																										"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
+																										"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
+																										"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata"
+																									},
+																									"propertyName": "type"
+																								},
+																								"oneOf": [
+																									{
+																										"properties": {
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"ai"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"dataset": {
+																												"description": "The name of the dataset to bind to.",
+																												"example": "some_dataset",
+																												"type": "string"
+																											},
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"analytics_engine"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"dataset"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"assets"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"browser"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"id": {
+																												"description": "Identifier of the D1 database to bind to.",
+																												"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																												"type": "string"
+																											},
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"d1"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"id"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"namespace": {
+																												"description": "Namespace to bind to.",
+																												"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																												"type": "string"
+																											},
+																											"outbound": {
+																												"description": "Outbound worker.",
+																												"properties": {
+																													"params": {
+																														"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters.",
+																														"items": {
+																															"example": "url",
+																															"type": "string"
+																														},
+																														"type": "array"
+																													},
+																													"worker": {
+																														"description": "Outbound worker.",
+																														"properties": {
+																															"environment": {
+																																"description": "Environment of the outbound worker.",
+																																"type": "string"
+																															},
+																															"service": {
+																																"description": "Name of the outbound worker.",
+																																"type": "string"
+																															}
+																														},
+																														"type": "object"
+																													}
+																												},
+																												"type": "object"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"dispatch_namespace"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"namespace"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"class_name": {
+																												"description": "The exported class name of the Durable Object.",
+																												"example": "MyDurableObject",
+																												"type": "string",
+																												"x-stainless-terraform-configurability": "computed_optional"
+																											},
+																											"environment": {
+																												"description": "The environment of the script_name to bind to.",
+																												"example": "production",
+																												"type": "string"
+																											},
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"namespace_id": {
+																												"allOf": [
+																													{
+																														"description": "Namespace identifier tag.",
+																														"example": "0f2ac74b498b48028cb68387c421e279",
+																														"maxLength": 32,
+																														"type": "string"
+																													},
+																													{
+																														"type": "string",
+																														"x-stainless-terraform-configurability": "computed_optional"
+																													}
+																												]
+																											},
+																											"script_name": {
+																												"description": "The script where the Durable Object is defined, if it is external to this Worker.",
+																												"example": "my-other-worker",
+																												"type": "string",
+																												"x-stainless-terraform-configurability": "computed_optional"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"durable_object_namespace"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"id": {
+																												"description": "Identifier of the Hyperdrive connection to bind to.",
+																												"example": "57b7076f58be42419276f058a8968187",
+																												"type": "string"
+																											},
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"hyperdrive"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"id"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"json": {
+																												"description": "JSON data to use.",
+																												"example": "{ \"message\": \"Hello, world!\" }",
+																												"type": "string"
+																											},
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"json"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"json"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"namespace_id": {
+																												"description": "Namespace identifier tag.",
+																												"example": "0f2ac74b498b48028cb68387c421e279",
+																												"maxLength": 32,
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"kv_namespace"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"namespace_id"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"certificate_id": {
+																												"description": "Identifier of the certificate to bind to.",
+																												"example": "efwu2n6s-q69d-2kr9-184j-4913e8h391k6",
+																												"type": "string"
+																											},
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"mtls_certificate"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"certificate_id"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"text": {
+																												"description": "The text value to use.",
+																												"example": "Hello, world!",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"plain_text"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"text"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"pipeline": {
+																												"description": "Name of the Pipeline to bind to.",
+																												"example": "my-pipeline",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"pipelines"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"pipeline"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"queue_name": {
+																												"description": "Name of the Queue to bind to.",
+																												"example": "my-queue",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"queue"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"queue_name"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"bucket_name": {
+																												"description": "R2 bucket to bind to.",
+																												"example": "my-r2-bucket",
+																												"type": "string"
+																											},
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"r2_bucket"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"bucket_name"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"text": {
+																												"description": "The secret value to use.",
+																												"example": "My secret.",
+																												"type": "string",
+																												"writeOnly": true,
+																												"x-sensitive": true
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"secret_text"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"text"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"environment": {
+																												"description": "Optional environment if the Worker utilizes one.",
+																												"example": "production",
+																												"type": "string"
+																											},
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"service": {
+																												"description": "Name of Worker to bind to.",
+																												"example": "my-worker",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"service"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"service",
+																											"environment"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"service": {
+																												"description": "Name of Tail Worker to bind to.",
+																												"example": "my-worker",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"tail_consumer"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"service"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"index_name": {
+																												"description": "Name of the Vectorize index to bind to.",
+																												"example": "my-index-name",
+																												"type": "string"
+																											},
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"vectorize"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"index_name"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"version_metadata"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"secret_name": {
+																												"description": "Name of the secret in the store.",
+																												"example": "my_secret",
+																												"type": "string"
+																											},
+																											"store_id": {
+																												"description": "ID of the store containing the secret.",
+																												"example": "8c8b1387108e49be85669169793e7bd2",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"secrets_store_secret"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"store_id",
+																											"secret_name"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"algorithm": {
+																												"description": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).",
+																												"type": "object"
+																											},
+																											"format": {
+																												"description": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).",
+																												"enum": [
+																													"raw",
+																													"pkcs8",
+																													"spki",
+																													"jwk"
+																												],
+																												"example": "raw",
+																												"type": "string"
+																											},
+																											"key_base64": {
+																												"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
+																												"type": "string",
+																												"writeOnly": true,
+																												"x-sensitive": true
+																											},
+																											"key_jwk": {
+																												"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
+																												"type": "object",
+																												"writeOnly": true,
+																												"x-sensitive": true
+																											},
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"secret_key"
+																												],
+																												"type": "string"
+																											},
+																											"usages": {
+																												"description": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).",
+																												"example": [
+																													"encrypt",
+																													"decrypt"
+																												],
+																												"items": {
+																													"enum": [
+																														"encrypt",
+																														"decrypt",
+																														"sign",
+																														"verify",
+																														"deriveKey",
+																														"deriveBits",
+																														"wrapKey",
+																														"unwrapKey"
+																													],
+																													"type": "string"
+																												},
+																												"type": "array"
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"format",
+																											"algorithm",
+																											"usages"
+																										],
+																										"type": "object"
+																									}
+																								],
+																								"type": "object"
+																							},
+																							"type": "array"
+																						}
+																					},
+																					"readOnly": true,
+																					"type": "object"
+																				},
+																				"script": {
+																					"example": {
+																						"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+																						"handlers": [
+																							"fetch"
+																						],
+																						"last_deployed_from": "api",
+																						"named_handlers": [
+																							{
+																								"handlers": [
+																									"fetch"
+																								],
+																								"name": "MyClass"
+																							}
+																						]
+																					},
+																					"properties": {
+																						"etag": {
+																							"example": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+																							"readOnly": true,
+																							"type": "string"
+																						},
+																						"handlers": {
+																							"example": [
+																								"fetch"
+																							],
+																							"items": {
+																								"example": "fetch",
+																								"readOnly": true,
+																								"type": "string"
+																							},
+																							"readOnly": true,
+																							"type": "array"
+																						},
+																						"last_deployed_from": {
+																							"example": "api",
+																							"readOnly": true,
+																							"type": "string"
+																						},
+																						"named_handlers": {
+																							"example": [
+																								{
+																									"handlers": [
+																										"fetch"
+																									],
+																									"name": "MyClass"
+																								}
+																							],
+																							"items": {
+																								"example": {
+																									"handlers": [
+																										"fetch"
+																									],
+																									"name": "MyClass"
+																								},
+																								"properties": {
+																									"handlers": {
+																										"example": [
+																											"fetch"
+																										],
+																										"items": {
+																											"example": "fetch",
+																											"readOnly": true,
+																											"type": "string"
+																										},
+																										"readOnly": true,
+																										"type": "array"
+																									},
+																									"name": {
+																										"example": "MyClass",
+																										"readOnly": true,
+																										"type": "string"
+																									}
+																								},
+																								"readOnly": true,
+																								"type": "object"
+																							},
+																							"readOnly": true,
+																							"type": "array"
+																						}
+																					},
+																					"readOnly": true,
+																					"type": "object"
+																				},
+																				"script_runtime": {
+																					"properties": {
+																						"compatibility_date": {
+																							"example": "2022-11-08",
+																							"readOnly": true,
+																							"type": "string"
+																						},
+																						"compatibility_flags": {
+																							"items": {
+																								"example": "x",
+																								"readOnly": true,
+																								"type": "string"
+																							},
+																							"readOnly": true,
+																							"type": "array"
+																						},
+																						"limits": {
+																							"example": {
+																								"cpu_ms": 50
+																							},
+																							"properties": {
+																								"cpu_ms": {
+																									"example": 50,
+																									"readOnly": true,
+																									"type": "integer"
+																								}
+																							},
+																							"readOnly": true,
+																							"type": "object"
+																						},
+																						"migration_tag": {
+																							"example": "v1",
+																							"readOnly": true,
+																							"type": "string"
+																						},
+																						"usage_model": {
+																							"enum": [
+																								"bundled",
+																								"unbound",
+																								"standard"
+																							],
+																							"example": "standard",
+																							"readOnly": true,
+																							"type": "string"
+																						}
+																					},
+																					"readOnly": true,
+																					"type": "object"
 																				}
 																			},
 																			"readOnly": true,
