@@ -1,0 +1,497 @@
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5S97X9X0Cv2pBhrhD8NfTw/bef505a8d29d024f0cf4e89c7491e349/image3.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Cloudflare Workers Builds is our <a href="https://en.wikipedia.org/wiki/CI/CD"><u>CI/CD</u></a> product that makes it easy to build and deploy Workers applications every time code is pushed to GitHub or GitLab. What makes Workers Builds special is that projects can be built and deployed with minimal configuration.<a href="https://developers.cloudflare.com/workers/ci-cd/builds/#get-started"> <u>Just hook up your project and let us take care of the rest!</u></a></p>
+	<p>But what happens when things go wrong, such as failing to install tools or dependencies? What usually happens is that we don’t fix the problem until a customer contacts us about it, at which point many other customers have likely faced the same issue. This can be a frustrating experience for both us and our customers because of the lag time between issues occurring and us fixing them.</p>
+	<p>We want Workers Builds to be reliable, fast, and easy to use so that developers can focus on building, not dealing with our bugs. That’s why we recently started building an error detection system that can detect, categorize, and surface all build issues occurring on Workers Builds, enabling us to proactively fix issues and add missing features.</p>
+	<p>It’s also no secret that we’re big fans of being “Customer Zero” at Cloudflare, and Workers Builds is itself a product that’s built end-to-end on our <a href="https://www.cloudflare.com/developer-platform"><u>Developer Platform</u></a> using <a href="https://developers.cloudflare.com/workers"><u>Workers</u></a>, <a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a>, <a href="https://developers.cloudflare.com/hyperdrive"><u>Hyperdrive</u></a>, <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025"><u>Containers</u></a>, <a href="https://developers.cloudflare.com/queues"><u>Queues</u></a>, <a href="https://developers.cloudflare.com/kv"><u>Workers KV</u></a>, <a href="https://developers.cloudflare.com/r2"><u>R2</u></a>, and <a href="https://developers.cloudflare.com/workers/observability"><u>Workers Observability</u></a>.</p>
+	<p>In this post, we will dive into how we used the Cloudflare Developer Platform to check for issues across more than <b>1 million Durable Objects</b>.</p>
+	<div class="flex anchor relative">
+		<h2 id="background-workers-builds-architecture">Background: Workers Builds architecture</h2>
+		<a href="https://blog.cloudflare.com/#background-workers-builds-architecture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Back in October 2024, we wrote about<a href="https://blog.cloudflare.com/workers-builds-integrated-ci-cd-built-on-the-workers-platform"> <u>how we built Workers Builds entirely on the Workers platform</u></a>. To recap, Builds is built using Workers, Durable Objects, Workers KV, R2, Queues, Hyperdrive, and a Postgres database. Some of these things were not present when launched back in October (for example, Queues and KV). But the core of the architecture is the same.</p>
+	<p>A client Worker receives GitHub/GitLab webhooks and stores build metadata in Postgres (via Hyperdrive). A build management Worker uses two Durable Object classes: a Scheduler class to find builds in Postgres that need scheduling, and a class called BuildBuddy to manage the lifecycle of a build. When a build needs to be started, Scheduler creates a new BuildBuddy instance which is responsible for creating a container for the build (using<a href="https://blog.cloudflare.com/container-platform-preview"> <u>Cloudflare Containers</u></a>), monitoring the container with health checks, and receiving build logs so that they can be viewed in the Cloudflare Dashboard.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Zf6QSXafUJOxn6isLsqar/fd8eaa3428185c3da2ef96ddd1fdc43c/image2.png" alt="" class="kg-image" width="1999" height="1112" loading="lazy">
+	</figure>
+	<p>In addition to this core scheduling logic, we have several Workers Queues for background work such as sending PR comments to GitHub/GitLab.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-problem-builds-are-failing">The problem: builds are failing</h2>
+		<a href="https://blog.cloudflare.com/#the-problem-builds-are-failing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While this architecture has worked well for us so far, we found ourselves with a problem: compared to<a href="https://developers.cloudflare.com/pages"> <u>Cloudflare Pages</u></a>, a concerning percentage of builds were failing. We needed to dig deeper and figure out what was wrong, and understand how we could improve Workers Builds so that developers can focus more on shipping instead of build failures.</p>
+	<div class="flex anchor relative">
+		<h2 id="types-of-build-failures">Types of build failures</h2>
+		<a href="https://blog.cloudflare.com/#types-of-build-failures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Not all build failures are the same. We have several categories of failures that we monitor:</p>
+	<ul>
+		<li>
+			<p>Initialization failures: when the container fails to start.</p>
+		</li>
+		<li>
+			<p>Clone failures: failing to clone the repository from GitHub/GitLab.</p>
+		</li>
+		<li>
+			<p>Build timeouts: builds that ran past the limit and were terminated by BuildBuddy.</p>
+		</li>
+		<li>
+			<p>Builds failing health checks: the container stopped responding to health checks, e.g. the container crashed for an unknown reason.</p>
+		</li>
+		<li>
+			<p>Failure to install tools or dependencies.</p>
+		</li>
+		<li>
+			<p>Failed user build/deploy commands.</p>
+		</li>
+	</ul>
+	<p>The first few failure types were straightforward, and we’ve been able to track down and fix issues in our build system and control plane to improve what we call “build completion rate”. We define build completion as the following:</p>
+	<ol>
+		<li>
+			<p>We successfully started the build.</p>
+		</li>
+		<li>
+			<p>We attempted to install tools/dependencies (considering failures as “user error”).</p>
+		</li>
+		<li>
+			<p>We attempted to run the user-defined build/deploy commands (again, considering failures as “user error”).</p>
+		</li>
+		<li>
+			<p>We successfully marked the build as stopped in our database.</p>
+		</li>
+	</ol>
+	<p>For example, we had a bug where builds for a deleted Worker would attempt to run and continuously fail, which affected our build completion rate metric.</p>
+	<div class="flex anchor relative">
+		<h3 id="user-error">User error</h3>
+		<a href="https://blog.cloudflare.com/#user-error" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We’ve made a lot of progress improving the reliability of build and container orchestration, but we had a significant percentage of build failures in the “user error” metric. We started asking ourselves “is this actually user error? Or is there a problem with the product itself?”</p>
+	<p>This presented a challenge because questions like “did the build command fail due to a bug in the build system, or user error?” are a lot harder to answer than pass/fail issues like failing to create a container for the build. To answer these questions, we had to build something new, something smarter.</p>
+	<div class="flex anchor relative">
+		<h3 id="build-logs">Build logs</h3>
+		<a href="https://blog.cloudflare.com/#build-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The most obvious way to determine why a build failed is to look at its logs. When spot-checking build failures, we can typically identify what went wrong. For example, some builds fail to install dependencies because of an out of date lockfile (e.g. package-lock.json out of date with package.json). But looking through build failures one by one doesn’t scale. We didn’t want engineers looking through customer build logs without at least suspecting that there was an issue with our build system that we could fix.</p>
+	<div class="flex anchor relative">
+		<h2 id="automating-error-detection">Automating error detection</h2>
+		<a href="https://blog.cloudflare.com/#automating-error-detection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>At this point, next steps were clear: we needed an automated way to identify why a build failed based on build logs, and provide a way for engineers to see what the top issues were while ensuring privacy (e.g. removing account-specific identifiers and file paths from the aggregate data).</p>
+	<div class="flex anchor relative">
+		<h3 id="detecting-errors-in-build-logs-using-workers-queues">Detecting errors in build logs using Workers Queues</h3>
+		<a href="https://blog.cloudflare.com/#detecting-errors-in-build-logs-using-workers-queues" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The first thing we needed was a way to categorize build errors after a build fails. To do this, we created a queue named BuildErrorsQueue to process builds and look for errors. After a build fails, BuildBuddy will send the build ID to BuildErrorsQueue which fetches the logs, checks for issues, and saves results to Postgres.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3423WCenScTudEv27TCMnJ/86b621a957d4249449c99db43a43bb9a/image7.png" alt="" class="kg-image" width="1968" height="1386" loading="lazy">
+	</figure>
+	<p>We started out with a few static patterns to match things like Wrangler errors in log lines:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">export const DetectedErrorCodes = {
+  wrangler_error: {
+    detect: async (lines: LogLines) =&gt; {
+      const errors: DetectedError[] = []
+      for (const line of lines) {
+        if (line[2].trim().startsWith('✘ [ERROR]')) {
+          errors.push({
+            error_code: 'wrangler_error',
+            error_group: getWranglerLogGroupFromLogLine(line, wranglerRegexMatchers),
+            detected_on: new Date(),
+            lines_matched: [line],
+          })
+        }
+      }
+      return errors
+    },
+  },
+  installing_tools_or_dependencies_failed: { ... },
+}</code></pre>
+	<p>It wouldn’t be useful if all Wrangler errors were grouped under a single generic “wrangler_error” code, so we further grouped them by normalizing the log lines into groups:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">function getWranglerLogGroupFromLogLine(
+  logLine: LogLine,
+  regexMatchers: RegexMatcher[]
+): string {
+  const original = logLine[2].trim().replaceAll(/[\t\n\r]+/g, ' ')
+  let message = original
+  let group = original
+  for (const { mustMatch, patterns, stopOnMatch, name, useNameAsGroup } of regexMatchers) {
+    if (mustMatch !== undefined) {
+      const matched = matchLineToRegexes(message, mustMatch)
+      if (!matched) continue
+    }
+    if (patterns) {
+      for (const [pattern, mask] of patterns) {
+        message = message.replaceAll(pattern, mask)
+      }
+    }
+    if (useNameAsGroup === true) {
+      group = name
+    } else {
+      group = message
+    }
+    if (Boolean(stopOnMatch) &amp;&amp; message !== original) break
+  }
+  return group
+}
+
+const wranglerRegexMatchers: RegexMatcher[] = [
+  {
+    name: 'could_not_resolve',
+    // ✘ [ERROR] Could not resolve "./balance"
+    // ✘ [ERROR] Could not resolve "node:string_decoder" (originally "string_decoder/")
+    mustMatch: [/^✘ \[ERROR\] Could not resolve "[@\w :/\\.-]*"/i],
+    stopOnMatch: true,
+    patterns: [
+      [/(?&lt;=^✘ \[ERROR\] Could not resolve ")[@\w :/\\.-]*(?=")/gi, '&lt;MODULE&gt;'],
+      [/(?&lt;=\(originally ")[@\w :/\\.-]*(?=")/gi, '&lt;MODULE&gt;'],
+    ],
+  },
+  {
+    name: 'no_matching_export_for_import',
+    // ✘ [ERROR] No matching export in "src/db/schemas/index.ts" for import "someCoolTable"
+    mustMatch: [/^✘ \[ERROR\] No matching export in "/i],
+    stopOnMatch: true,
+    patterns: [
+      [/(?&lt;=^✘ \[ERROR\] No matching export in ")[@~\w:/\\.-]*(?=")/gi, '&lt;MODULE&gt;'],
+      [/(?&lt;=" for import ")[\w-]*(?=")/gi, '&lt;IMPORT&gt;'],
+    ],
+  },
+  // ...many more added over time
+]</code></pre>
+	<p>Once we had our error detection matchers and normalizing logic in place, implementing the BuildErrorsQueue consumer was easy:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">export async function handleQueue(
+  batch: MessageBatch,
+  env: Bindings,
+  ctx: ExecutionContext
+): Promise&lt;void&gt; {
+  ...
+  await pMap(batch.messages, async (msg) =&gt; {
+    try {
+      const { build_id } = BuildErrorsQueueMessageBody.parse(msg.body)
+      await store.buildErrors.deleteErrorsByBuildId({ build_id })
+      const bb = getBuildBuddy(env, build_id)
+      const errors: DetectedError[] = []
+      let cursor: LogsCursor | undefined
+      let hasMore = false
+
+      do {
+        using maybeNewLogs = await bb.getLogs(cursor, false)
+        const newLogs = LogsWithCursor.parse(maybeNewLogs)
+        cursor = newLogs.cursor
+        const newErrors = await detectErrorsInLogLines(newLogs.lines)
+        errors.push(...newErrors)
+        hasMore = Boolean(cursor) &amp;&amp; newLogs.lines.length &gt; 0
+      } while (hasMore)
+
+      if (errors.length &gt; 0) {
+        await store.buildErrors.insertErrors(
+          errors.map((e) =&gt; ({
+            build_id,
+            error_code: e.error_code,
+            error_group: e.error_group,
+          }))
+        )
+      }
+      msg.ack()
+    } catch (e) {
+      msg.retry()
+      sentry.captureException(e)
+    }
+  })
+}</code></pre>
+	<p>Here, we’re fetching logs from each build’s BuildBuddy Durable Object, detecting why it failed using the matchers we wrote, and saving errors to the Postgres DB. We also delete any existing errors for when we improve our error detection patterns to prevent subsequent runs from adding duplicate data to our database.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-about-historical-builds">What about historical builds?</h2>
+		<a href="https://blog.cloudflare.com/#what-about-historical-builds" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The BuildErrorsQueue was great for new builds, but this meant we still didn’t know why all the previous build failures happened other than “user error”. We considered only tracking errors in new builds, but this was unacceptable because it would significantly slow down our ability to improve our error detection system because each iteration would require us to wait days to identify issues we need to prioritize.</p>
+	<div class="flex anchor relative">
+		<h3 id="problem-logs-are-stored-across-one-million-durable-objects">Problem: logs are stored across one million+ Durable Objects</h3>
+		<a href="https://blog.cloudflare.com/#problem-logs-are-stored-across-one-million-durable-objects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Remember how every build has an associated BuildBuddy DO to store logs? This is a great design for ensuring our logging pipeline scales with our customers, but it presented a challenge when trying to aggregate issues based on logs because something would need to go through all historical builds (&gt;1 million at the time) to fetch logs and detect why they failed.</p>
+	<p>If we were using Go and Kubernetes, we might solve this using a long-running container that goes through all builds and runs our error detection. But how do we solve this in Workers?</p>
+	<div class="flex anchor relative">
+		<h3 id="how-do-we-backfill-errors-for-historical-builds">How do we backfill errors for historical builds?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-we-backfill-errors-for-historical-builds" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>At this point, we already had the Queue to process new builds. If we could somehow send all of the old build IDs to the queue, it could scan them all quickly using<a href="https://developers.cloudflare.com/queues/configuration/consumer-concurrency"> <u>Queues concurrent consumers</u></a> to quickly work through all builds. We thought about hacking together a local script to fetch all of the log IDs and sending them to an API to put them on a queue. But we wanted something more secure and easier to use so that running a new backfill was as simple as an API call.</p>
+	<p>That’s when an idea hit us: what if we used a Durable Object with alarms to fetch a range of builds and send them to BuildErrorsQueue? At first, it seemed far-fetched, given that Durable Object alarms have a limited amount of work they can do per invocation. But wait, if<a href="https://agents.cloudflare.com"> <u>AI Agents built on Durable Objects</u></a> can manage background tasks, why can’t we fetch millions of build IDs and forward them to queues?</p>
+	<div class="flex anchor relative">
+		<h3 id="building-a-build-errors-agent-with-durable-objects">Building a Build Errors Agent with Durable Objects</h3>
+		<a href="https://blog.cloudflare.com/#building-a-build-errors-agent-with-durable-objects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The idea was simple: create a Durable Object class named BuildErrorsAgent and run a single instance that loops through the specified range of builds in the database and sends them to BuildErrorsQueue.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3kmsS4LACzLUUoECSJT08g/b6a9ccffcbe8a41c300a74546a17ba85/image5.png" alt="" class="kg-image" width="1999" height="1119" loading="lazy">
+	</figure>
+	<p>The first thing we did was set up an RPC method to start a backfill and save the parameters in<a href="https://developers.cloudflare.com/durable-objects/api/storage-api/#kv-api"> <u>Durable Object KV storage</u></a> so that it can be read each time the alarm executes:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async start({
+  min_build_id,
+  max_build_id,
+}: {
+  min_build_id: BuildRecord['build_id']
+  max_build_id: BuildRecord['build_id']
+}): Promise&lt;void&gt; {
+  logger.setTags({ handler: 'start', environment: this.env.ENVIRONMENT })
+  try {
+    if (min_build_id &lt; 0) throw new Error('min_build_id cannot be negative')
+    if (max_build_id &lt; min_build_id) {
+      throw new Error('max_build_id cannot be less than min_build_id')
+    }
+    const [started_on, stopped_on] = await Promise.all([
+      this.kv.get('started_on'),
+      this.kv.get('stopped_on'),
+    ])
+    await match({ started_on, stopped_on })
+      .with({ started_on: P.not(null), stopped_on: P.nullish }, () =&gt; {
+        throw new Error('BuildErrorsAgent is already running')
+      })
+      .otherwise(async () =&gt; {
+        // delete all existing data and start queueing failed builds
+        await this.state.storage.deleteAlarm()
+        await this.state.storage.deleteAll()
+        this.kv.put('started_on', new Date())
+        this.kv.put('config', { min_build_id, max_build_id })
+        void this.state.storage.setAlarm(this.getNextAlarmDate())
+      })
+  } catch (e) {
+    this.sentry.captureException(e)
+    throw e
+  }
+}</code></pre>
+	<p>The most important part of the implementation is the alarm that runs every second until the job is complete. Each alarm invocation has the following steps:</p>
+	<ol>
+		<li>
+			<p>Set a new alarm (always first to ensure an error doesn’t cause it to stop).</p>
+		</li>
+		<li>
+			<p>Retrieve state from KV.</p>
+		</li>
+		<li>
+			<p>Validate that the agent is supposed to be running:</p>
+			<ol>
+				<li>
+					<p>Ensure the agent is supposed to be running.</p>
+				</li>
+				<li>
+					<p>Ensure we haven’t reached the max build ID set in the config.</p>
+				</li>
+			</ol>
+		</li>
+		<li>
+			<p>Finally, queue up another batch of builds by querying Postgres and sending to the BuildErrorsQueue.</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Ab6VC49luyio3t5QamgMD/273c77158ff4ac7af662669360d5f485/image6.png" alt="" class="kg-image" width="1999" height="1666" loading="lazy">
+	</figure>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async alarm(): Promise&lt;void&gt; {
+  logger.setTags({ handler: 'alarm', environment: this.env.ENVIRONMENT })
+  try {
+    void this.state.storage.setAlarm(Date.now() + 1000)
+    const kvState = await this.getKVState()
+    this.sentry.setContext('BuildErrorsAgent', kvState)
+    const ctxLogger = logger.withFields({ state: JSON.stringify(kvState) })
+
+    await match(kvState)
+      .with({ started_on: P.nullish }, async () =&gt; {
+        ctxLogger.info('BuildErrorsAgent is not started, cancelling alarm')
+        await this.state.storage.deleteAlarm()
+      })
+      .with({ stopped_on: P.not(null) }, async () =&gt; {
+        ctxLogger.info('BuildErrorsAgent is stopped, cancelling alarm')
+        await this.state.storage.deleteAlarm()
+      })
+      .with(
+        // we should never have started_on set without config set, but just in case
+        { started_on: P.not(null), config: P.nullish },
+        async () =&gt; {
+          const msg =
+            'BuildErrorsAgent started but config is empty, stopping and cancelling alarm'
+          ctxLogger.error(msg)
+          this.sentry.captureException(new Error(msg))
+          this.kv.put('stopped_on', new Date())
+          await this.state.storage.deleteAlarm()
+        }
+      )
+      .when(
+        // make sure there are still builds to enqueue
+        (s) =&gt;
+          s.latest_build_id !== null &amp;&amp;
+          s.config !== null &amp;&amp;
+          s.latest_build_id &gt;= s.config.max_build_id,
+        async () =&gt; {
+          ctxLogger.info('BuildErrorsAgent job complete, cancelling alarm')
+          this.kv.put('stopped_on', new Date())
+          await this.state.storage.deleteAlarm()
+        }
+      )
+      .with(
+        {
+          started_on: P.not(null),
+          stopped_on: P.nullish,
+          config: P.not(null),
+          latest_build_id: P.any,
+        },
+        async ({ config, latest_build_id }) =&gt; {
+          // 1. select batch of ~1000 builds
+          // 2. send them to Queues 100 at a time, updating
+          //    latest_build_id after each batch is sent
+          const failedBuilds = await this.store.builds.selectFailedBuilds({
+            min_build_id: latest_build_id !== null ? latest_build_id + 1 : config.min_build_id,
+            max_build_id: config.max_build_id,
+            limit: 1000,
+          })
+          if (failedBuilds.length === 0) {
+            ctxLogger.info(`BuildErrorsAgent: ran out of builds, stopping and cancelling alarm`)
+            this.kv.put('stopped_on', new Date())
+            await this.state.storage.deleteAlarm()
+          }
+
+          for (
+            let i = 0;
+            i &lt; BUILDS_PER_ALARM_RUN &amp;&amp; i &lt; failedBuilds.length;
+            i += QUEUES_BATCH_SIZE
+          ) {
+            const batch = failedBuilds
+              .slice(i, QUEUES_BATCH_SIZE)
+              .map((build) =&gt; ({ body: build }))
+
+            if (batch.length === 0) {
+              ctxLogger.info(`BuildErrorsAgent: ran out of builds in current batch`)
+              break
+            }
+            ctxLogger.info(
+              `BuildErrorsAgent: sending ${batch.length} builds to build errors queue`
+            )
+            await this.env.BUILD_ERRORS_QUEUE.sendBatch(batch)
+            this.kv.put(
+              'latest_build_id',
+              Math.max(...batch.map((m) =&gt; m.body.build_id).concat(latest_build_id ?? 0))
+            )
+
+            this.kv.put(
+              'total_builds_processed',
+              ((await this.kv.get('total_builds_processed')) ?? 0) + batch.length
+            )
+          }
+        }
+      )
+      .otherwise(() =&gt; {
+        const msg = 'BuildErrorsAgent has nothing to do - this should never happen'
+        this.sentry.captureException(msg)
+        ctxLogger.info(msg)
+      })
+  } catch (e) {
+    this.sentry.captureException(e)
+    throw e
+  }
+}</code></pre>
+	<p>Using pattern matching with <a href="https://github.com/gvergnaud/ts-pattern"><u>ts-pattern</u></a> made it much easier to understand what states we were expecting and what will happen compared to procedural code. We considered using a more powerful library like <a href="https://stately.ai/docs/xstate"><u>XState</u></a>, but decided on ts-pattern due to its simplicity.</p>
+	<div class="flex anchor relative">
+		<h3 id="running-the-backfill">Running the backfill</h3>
+		<a href="https://blog.cloudflare.com/#running-the-backfill" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Once everything rolled out, we were able to trigger an errors backfill for over a million failed builds in a couple of hours with a single API call, categorizing 80% of failed builds on the first run. With a fast backfill process, we were able to iterate on our regex matchers to further refine our error detection and improve error grouping. Here’s what the error list looks like in our staging environment:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5rdNvB1SpjGpeiCOCs86Tj/74141402e67fbd9ced673a98cb3c57f6/image4.png" alt="" class="kg-image" width="1999" height="537" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="fixes-and-improvements">Fixes and improvements</h2>
+		<a href="https://blog.cloudflare.com/#fixes-and-improvements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Having a better understanding of what’s going wrong has already enabled us to make several improvements:</p>
+	<ul>
+		<li>
+			<p>Wrangler now shows a<a href="https://github.com/cloudflare/workers-sdk/pull/8534"> <u>clearer error message when no config file is found</u></a>.</p>
+		</li>
+		<li>
+			<p>Fixed multiple edge-cases where the wrong package manager was used in TypeScript/JavaScript projects.</p>
+		</li>
+		<li>
+			<p>Added support for bun.lock (previously only checked for bun.lockb).</p>
+		</li>
+		<li>
+			<p>Fixed several edge cases where build caching did not work in monorepos.</p>
+		</li>
+		<li>
+			<p>Projects that use a runtime.txt file to specify a Python version no longer fail.</p>
+		</li>
+		<li>
+			<p>….and more!</p>
+		</li>
+	</ul>
+	<p>We’re still working on fixing other bugs we’ve found, but we’re making steady progress. Reliability is a feature we’re striving for in Workers Builds, and this project has helped us make meaningful progress towards that goal. Instead of waiting for people to contact support for issues, we’re able to proactively identify and fix issues (and catch regressions more easily).</p>
+	<p>One of the great things about building on the Developer Platform is how easy it is to ship things. The core of this error detection pipeline (the Queue and Durable Object) <b>only took two days to build</b>, which meant we could spend more time working on improving Workers Builds instead of spending weeks on the error detection pipeline itself.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In addition to continuing to improve build reliability and speed, we’ve also started thinking about other ways to help developers build their applications on Workers. For example, we built a<a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-builds"> <u>Builds MCP server</u></a> that allows users to debug builds directly in Cursor/Claude/etc. We’re also thinking about ways we can expose these detected issues in the Cloudflare Dashboard so that users can identify issues more easily without scrolling through hundreds of logs.</p>
+	<div class="flex anchor relative">
+		<h2 id="ready-to-get-started">Ready to get started?</h2>
+		<a href="https://blog.cloudflare.com/#ready-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Building applications on Workers has never been easier! Try deploying a Durable Object-backed <a href="https://github.com/cloudflare/templates/tree/staging/durable-chat-template"><u>chat application</u></a> with Workers Builds:&nbsp;</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fdurable-chat-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+	<p></p>
+</div>
