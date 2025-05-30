@@ -5,33 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon&nbsp;</strong></p>
-<p><strong>About the role:&nbsp;</strong></p>
-<p>We are looking for Senior Data Engineers to join our growing Data Insights team at Cloudflare and help design and scale data platforms that power decision-making across the business. Success in this role comes from marrying a strong data engineering background with product and business acumen to deliver scalable data pipelines and solutions that can self-service analytics and high-impact business outcomes in a simple and agile manner<br><br></p>
-<p><strong>What You'll Do:</strong></p>
+<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
+<p><strong>About the department</strong></p>
+<p>The Self-Serve Team is responsible for Cloudflare’s PLG business that serves 8M+ customers across 20% of the internet. Our team is responsible for growth marketing, product growth, and growth insights with the goal of building a world class experience for our self-serve customers across all product categories including Application Services, Cloudflare One and Developer Platform, and all Plans such as Free, Pro, Business &amp; Enterprise. We work to grow the business by understanding our customers’ needs at every stage of their journey from Awareness to Activation to Expansion and Retention.&nbsp;</p>
+<p>You may have heard of the cliche that teams call themselves a “startup within a startup”. Except that the self-serve engineering team is fairly young at Cloudflare with established ROI. You will be the founding data engineer for the team.</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>Design and implement data solutions that span across on-premise, cloud, or hybrid environments, ensuring scalability, security, and compliance across infrastructure boundaries</li>
-	<li>Develop and maintain robust data architecture and infrastructure for capturing, managing, storing, and utilizing structured and unstructured data from internal and external sources</li>
-	<li>Create technical tools and automation that leverage big data techniques to cleanse, organize, and transform data, while ensuring data quality and integrity</li>
-	<li>Collaborate closely with cross-functional teams—including Engineering, Product, Finance, Sales, Marketing, and Customer Experience—to align data initiatives with business needs</li>
-	<li>Ability to design application components and evolve architecture including UI, API/Services, Data Access, Integration, Application components etc</li>
-	<li>Work directly with business and product stakeholders to ensure data solutions meet business objectives and deliver high-quality outcomes</li>
-	<li>Analyse platform requirements and provide support for Data Science teams and their workflows</li>
-	<li>Build and maintain tools to automate platform monitoring, proactively scale infrastructure, and resolve issues before they impact performance<br><br></li>
+	<li>This is a highly autonomous role that enables the self-serve team to personalize user journeys through precise targeting.&nbsp;</li>
+	<li>Think of a user that clicked X, visited Y, and purchased Z. We want to predict what they want to do next and then offer that next product in a live product A/B test to improve conversions. If you have worked with tools such as Posthog, Amplitude, Heap, or better yet, have built something similar, we want to hear from you. Our primary use-case is to capture and process thousands of user events in a native architecture and then serve it to internal audiences - both for productional use-cases and for internal reporting.&nbsp;</li>
+	<li>You must be comfortable with setting up data lakes, understanding A/B testing architectures, and building the cloud tools that you may have otherwise used in the past. Because Cloudflare is the cloud that we sell to our developers.</li>
+	<li>As the founding data engineer, you will have the opportunity to pick an existing data architecture to build upon, build a new one from scratch, or choose a hybrid approach. You tell us what the best system looks like. You will learn about the many data tools and architectures that are being used across the company - traditional databases, modern architectures to manage 20% of the internet traffic, BI summaries, real-user monitoring offered to our customers.</li>
+	<li>Bonus points if you have done this to scale a startup.</li>
 </ul>
-<p><strong>What You’ll Bring:</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
 <ul>
-	<li>Bachelor's or Master’s degree in Computer Science, Engineering, or a related field</li>
-	<li>Experience implementing and maintaining hybrid data architectures, including data synchronization and security across on-prem and cloud environments</li>
-	<li>5+ years of experience in big data engineering, working with petabyte-scale datasets and building large-scale data solutions</li>
-	<li>Proven experience with tools and technologies such as Google Cloud Platform, Apache Spark, Airflow, Kafka, Scala, and Python</li>
-	<li>Strong backend development skills, preferably in Go (Golang) and/or Python</li>
-	<li>Familiarity with CI/CD pipelines and automation frameworks</li>
-	<li>Hands-on experience with containerization and orchestration tools like Docker and Kubernetes</li>
-	<li>Strong problem-solving skills and a proactive, collaborative mindset</li>
-	<li>Experience in the Internet security industry is preferred</li>
+	<li>BA/BS in Computer Science or equivalent experience</li>
+	<li>Build realtime data capturing architecture from various user events - UI events, backend events and stitch them together for advanced analytics and personalization systems</li>
+	<li>Experience building/expanding analytics systems at lakehouse scale, ideally with OSS systems - Apache Iceberg, Clickhouse, or similar</li>
+	<li>Data modeling using different methods (dimensional data modeling, ER modeling, etc)</li>
+	<li>Experience implementing quality measurement processes</li>
+	<li>Familiarity with batch-style OSS ELT/ETL system (dbt/airflow/etc) and experience managing them</li>
+	<li>Familiarity with marketing attribution system and tag management</li>
+	<li>Familiarity with global data privacy requirements governed by laws like GDPR/CCPA/etc and how it affects data capture, modeling and analysis</li>
+	<li>Solid understanding of RESTful APIs and service security</li>
+	<li>Working knowledge of SQL and relational databases such as PostgreSQL or MySQL</li>
+	<li>Experience implementing secure and highly-available distributed systems/microservices</li>
+	<li>Familiarity with event driven architecture</li>
+	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
+	<li>Strong interpersonal and communication skills with a bias towards action</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
