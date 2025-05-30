@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.1.0
+
+### Minor Changes
+
+- d04f73f6cb: Optional placeholder prop for listbox
+
 ## 7.0.3
 
 ### Patch Changes
