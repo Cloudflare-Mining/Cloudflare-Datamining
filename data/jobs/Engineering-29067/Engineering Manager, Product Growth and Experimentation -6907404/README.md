@@ -9,11 +9,11 @@
 <h4><strong>About the Department</strong></h4>
 <p>The Growth Engineering team is responsible for building world-class experiences that help the millions of Cloudflare self-service customers get what they need faster, from acquisition and onboarding all the way through to adoption and scale up. Our team is focused on high velocity experimentation and thoughtful optimizations to that experience on Cloudflare’s properties.</p>
 <p>This team has a dual mandate, also focusing on evolving our current marketing attribution, customer event ingress and experimentation capabilities that process billions of events across those properties to drive data-driven decision making.&nbsp;</p>
-<p>As the manager of the team responsible for Data Capture and Experimentation, your job will be to deliver on those growth-driven features and experiences while evolving our current marketing attribution, consumer event ingress and experimentation setup across these experiences, and partner with many teams on implementations, and make those capabilities more generally available across Cloudflare’s customer-facing properties.</p>
+<p>As the manager of the team responsible for Product Growth and Experimentation, your job will be to deliver on those growth-driven features and experiences while evolving our current marketing attribution, consumer event ingress and experimentation setup across these experiences, and partner with many teams on implementations, and make those capabilities more generally available across Cloudflare’s customer-facing properties.</p>
 <h4><strong>About the Role</strong></h4>
 <p>The Experimentation and Data Capture Engineering Manager will be responsible for the following:</p>
 <ul>
-	<li>Manage the engineering team and drive technical delivery for Experimentation and Data Capture capabilities intended for all of our customer-facing UI properties, driving user acquisition, engagement, and retention through data-driven strategies and technical implementations</li>
+	<li>Manage the engineering team and drive technical delivery for Experimentation and Product Growth capabilities intended for all of our customer-facing UI properties, driving user acquisition, engagement, and retention through data-driven strategies and technical implementations</li>
 	<li>Lead the team who work with a cross-functional team of engineers, data scientists, marketers, and product managers to design, implement, and optimize growth initiatives that scale our customer tools and maximize their impact</li>
 	<li>Executing as a ‘player-coach’, spending at least 20% of your time delivering alongside the team</li>
 	<li>Collaborate with product, design and stakeholders to establish outcome measurements, roadmaps and key deliverables</li>
@@ -25,7 +25,7 @@
 	<li>Analytically driven to co-own and drive up product adoption KPIs</li>
 </ul>
 <p>We are also strong believers in dog-fooding our own products. From cache configuration to Cloudflare Access, Cloudflare Workers, and Zaraz, these are all tools in our engineer's tool belt, so it is a plus if you have been a customer of ours, even as a free user.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
 <ul>
 	<li>At least 6 years of relevant experience and at least 3 years of experience managing engineers is preferred</li>
 	<li>Track record of shipping high-quality products and features at scale</li>
