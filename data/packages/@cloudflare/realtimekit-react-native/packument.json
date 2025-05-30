@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit-react-native",
 	"dist-tags": {
-		"latest": "0.0.0",
-		"staging": "0.0.1-staging.3"
+		"latest": "0.1.0",
+		"staging": "0.1.0-staging.4"
 	},
 	"versions": {
 		"0.0.0": {
@@ -88,7 +88,69 @@
 			"name": "@cloudflare/realtimekit-react-native",
 			"version": "0.0.1-staging.3",
 			"dependencies": {
+				"events": "^3.3.0",
+				"fast-base64-decode": "1.0.0",
+				"node-libs-react-native": "^1.2.1",
+				"text-encoding-polyfill": "^0.6.7",
 				"@cloudflare/realtimekit": "0.5.0-staging.123",
+				"react-native-url-polyfill": "1.3.0"
+			},
+			"peerDependencies": {
+				"react": "*",
+				"react-native": "*",
+				"@expo/config-plugins": "*",
+				"@dyteinternals/react-native-webrtc": "114.0.16"
+			},
+			"dist": {
+				"shasum": "8203d01d03aaaa157052d68c1d80b44d5ee31fc3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-native/-/realtimekit-react-native-0.0.1-staging.3.tgz",
+				"fileCount": 83,
+				"integrity": "sha512-kA1XjuBiVeBiaQIxyRQMWoHDeMNsSaQvOxVhYKgEvZQdwO7lwyCyrCsTy3X34iCh/mrhy1lZZZHNmpgPQLMQAQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIHKOp8xC+1B+20uXs7bKLqjqlVxAZ9bnduW+e4y66HK3AiEAmimEoxh4D+cva1MENaiGJbmnih1SK63bYbpmYmFpj+s=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 453233
+			}
+		},
+		"0.1.0-staging.4": {
+			"name": "@cloudflare/realtimekit-react-native",
+			"version": "0.1.0-staging.4",
+			"dependencies": {
+				"events": "^3.3.0",
+				"fast-base64-decode": "1.0.0",
+				"node-libs-react-native": "^1.2.1",
+				"text-encoding-polyfill": "^0.6.7",
+				"@cloudflare/realtimekit": "1.0.1",
+				"react-native-url-polyfill": "1.3.0"
+			},
+			"peerDependencies": {
+				"react": "*",
+				"react-native": "*",
+				"@expo/config-plugins": "*",
+				"@cloudflare/react-native-webrtc": "114.0.16"
+			},
+			"dist": {
+				"shasum": "31c5741bc0b9bedc822c864f4ff65a975856f6b2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-native/-/realtimekit-react-native-0.1.0-staging.4.tgz",
+				"fileCount": 83,
+				"integrity": "sha512-Hb3vCmZWh2nJLec9/GjyrcAU84mafvgwXim+V7mJZ60wEy2/EBlHo3EGoveLkkVX9ZdMQihVk0PYR4tO5ufnqg==",
+				"signatures": [
+					{
+						"sig": "MEUCIGHmckq9sy8sjwQ6EdA8/5Li5n5yw59xWSuMGQ4N/CPrAiEAquUtJjKbf3WrN/tViEHSVYS6oePIAMy+sOe7j+k/mkA=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 453191
+			}
+		},
+		"0.1.0": {
+			"name": "@cloudflare/realtimekit-react-native",
+			"version": "0.1.0",
+			"dependencies": {
+				"@cloudflare/realtimekit": "1.0.1",
 				"events": "^3.3.0",
 				"fast-base64-decode": "1.0.0",
 				"node-libs-react-native": "^1.2.1",
@@ -96,21 +158,21 @@
 				"text-encoding-polyfill": "^0.6.7"
 			},
 			"peerDependencies": {
-				"@dyteinternals/react-native-webrtc": "114.0.16",
+				"@cloudflare/react-native-webrtc": "114.0.16",
 				"@expo/config-plugins": "*",
 				"react": "*",
 				"react-native": "*"
 			},
 			"dist": {
-				"integrity": "sha512-kA1XjuBiVeBiaQIxyRQMWoHDeMNsSaQvOxVhYKgEvZQdwO7lwyCyrCsTy3X34iCh/mrhy1lZZZHNmpgPQLMQAQ==",
-				"shasum": "8203d01d03aaaa157052d68c1d80b44d5ee31fc3",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-native/-/realtimekit-react-native-0.0.1-staging.3.tgz",
+				"integrity": "sha512-uCragutQmf+4zERpr44rVaZ9DK2x4a+6shREpHM/xu8zWt92ut/IzyfC7TEtEdn8hZVRZgdHJIokr3hJOGQrTA==",
+				"shasum": "4d9b579eaa846aafe2ef9c3431f829907153056e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-native/-/realtimekit-react-native-0.1.0.tgz",
 				"fileCount": 83,
-				"unpackedSize": 453233,
+				"unpackedSize": 453259,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIHKOp8xC+1B+20uXs7bKLqjqlVxAZ9bnduW+e4y66HK3AiEAmimEoxh4D+cva1MENaiGJbmnih1SK63bYbpmYmFpj+s="
+						"sig": "MEUCIDq9k9k0S9wRamBhw53PCKnHjHvS/2gRo2SG6srA/rArAiEA7GT9QuADUdQxuiOfthimglXaCGapzLEmsPKHE5UyHcY="
 					}
 				]
 			}
