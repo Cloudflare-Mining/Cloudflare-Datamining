@@ -6,7 +6,7 @@
 	</div>
 </div>
 <h3><strong>Senior Manager, Performance Engineering</strong></h3>
-<p><strong>Available Locations:&nbsp;</strong>Hybrid - New York City and London</p>
+<p><strong>Available Locations:&nbsp;</strong>Hybrid - Austin and London</p>
 <h4><strong>Role Summary</strong></h4>
 <p>We're looking for a <strong>Senior Manager, Engineering</strong> to lead our <strong>Performance Engineering (PERF) team</strong>. The PERF team is crucial for ensuring Cloudflare's production systems are fast, responsive, and scalable. This includes system software, services, products, and solutions running on our infrastructure.</p>
 <p>Our core mission is to empower everyone at Cloudflare to prioritize performance. The PERF team achieves this by:</p>
