@@ -287,11 +287,11 @@
 				}
 			},
 			{
-				"description": "Filter workflows by name.",
+				"description": "Allows filtering workflows` name.",
 				"in": "query",
 				"name": "search",
 				"schema": {
-					"description": "Filter workflows by name.",
+					"description": "Allows filtering workflows` name.",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
@@ -923,21 +923,21 @@
 				}
 			},
 			{
-				"description": "In ISO 8601 with no timezone offsets and in UTC.",
+				"description": "Accepts ISO 8601 with no timezone offsets and in UTC.",
 				"in": "query",
 				"name": "date_start",
 				"schema": {
-					"description": "In ISO 8601 with no timezone offsets and in UTC.",
+					"description": "Accepts ISO 8601 with no timezone offsets and in UTC.",
 					"format": "date-time",
 					"type": "string"
 				}
 			},
 			{
-				"description": "In ISO 8601 with no timezone offsets and in UTC.",
+				"description": "Accepts ISO 8601 with no timezone offsets and in UTC.",
 				"in": "query",
 				"name": "date_end",
 				"schema": {
-					"description": "In ISO 8601 with no timezone offsets and in UTC.",
+					"description": "Accepts ISO 8601 with no timezone offsets and in UTC.",
 					"format": "date-time",
 					"type": "string"
 				}
@@ -2706,7 +2706,7 @@
 					"schema": {
 						"properties": {
 							"status": {
-								"description": "Possible actions to apply to instance.",
+								"description": "Apply action to instance.",
 								"enum": [
 									"resume",
 									"pause",
@@ -2781,7 +2781,7 @@
 											"type": "string"
 										},
 										"timestamp": {
-											"description": "In ISO 8601 with no timezone offsets and in UTC.",
+											"description": "Accepts ISO 8601 with no timezone offsets and in UTC.",
 											"format": "date-time",
 											"type": "string"
 										}
