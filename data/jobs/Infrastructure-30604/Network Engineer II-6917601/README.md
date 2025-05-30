@@ -5,33 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon or Portugal Remote&nbsp;</strong></p>
-<p><strong>About the role:&nbsp;</strong></p>
-<p>We are looking for Senior Data Engineers to join our growing Data Insights team at Cloudflare and help design and scale data platforms that power decision-making across the business. Success in this role comes from marrying a strong data engineering background with product and business acumen to deliver scalable data pipelines and solutions that can self-service analytics and high-impact business outcomes in a simple and agile manner<br><br></p>
-<p><strong>What You'll Do:</strong></p>
+<p><strong>Available Locations:</strong> Lisbon, Portugal or London, UK</p>
+<h4><strong>About the department</strong></h4>
+<p>As an engineer on one of our Production Engineering teams, you'll be building the network infrastructure that makes Cloudflare work. Our mission is to provide a reliable and flexible platform to help product teams release new services efficiently and safely.</p>
+<p><strong>About the role:</strong></p>
+<p>We are looking for a Network Engineer to join our team. Cloudflare is building one of the largest, most resilient networks that spans over 335 cities spread across all regions and we plan to continue our expansion at a rapid pace. You will have the opportunity to (literally) build a faster, safer Internet for our millions of users and the billions of web surfers that visit their sites each month. This is an opportunity to be part of the team that is building a high­-performance network that is accessible to any web property online.</p>
+<p>This position will be responsible for :&nbsp;</p>
 <ul>
-	<li>Design and implement data solutions that span across on-premise, cloud, or hybrid environments, ensuring scalability, security, and compliance across infrastructure boundaries</li>
-	<li>Develop and maintain robust data architecture and infrastructure for capturing, managing, storing, and utilizing structured and unstructured data from internal and external sources</li>
-	<li>Create technical tools and automation that leverage big data techniques to cleanse, organize, and transform data, while ensuring data quality and integrity</li>
-	<li>Collaborate closely with cross-functional teams—including Engineering, Product, Finance, Sales, Marketing, and Customer Experience—to align data initiatives with business needs</li>
-	<li>Ability to design application components and evolve architecture including UI, API/Services, Data Access, Integration, Application components etc</li>
-	<li>Work directly with business and product stakeholders to ensure data solutions meet business objectives and deliver high-quality outcomes</li>
-	<li>Analyse platform requirements and provide support for Data Science teams and their workflows</li>
-	<li>Build and maintain tools to automate platform monitoring, proactively scale infrastructure, and resolve issues before they impact performance<br><br></li>
+	<li>Technical operation,engineering and architecture of the Cloudflare network, including the provisioning and management of the network hardware and software,</li>
+	<li>Day to day network operations and monitoring, working closely with internal teams such as System Reliability Engineering, Infrastructure Engineering and Customer Support teams,</li>
+	<li>Creating and maintaining documentation,&nbsp; SOP’s, knowledge base,</li>
+	<li>Interacting with our network peers to assist with their inquiries, and subsequently provide meaningful data on performance degradation.</li>
 </ul>
-<p><strong>What You’ll Bring:</strong></p>
+<p><strong>Requirements</strong>:</p>
 <ul>
-	<li>Bachelor's or Master’s degree in Computer Science, Engineering, or a related field</li>
-	<li>Experience implementing and maintaining hybrid data architectures, including data synchronization and security across on-prem and cloud environments</li>
-	<li>5+ years of experience in big data engineering, working with petabyte-scale datasets and building large-scale data solutions</li>
-	<li>Proven experience with tools and technologies such as Google Cloud Platform, Apache Spark, Airflow, Kafka, Scala, and Python</li>
-	<li>Strong backend development skills, preferably in Go (Golang) and/or Python</li>
-	<li>Familiarity with CI/CD pipelines and automation frameworks</li>
-	<li>Hands-on experience with containerization and orchestration tools like Docker and Kubernetes</li>
-	<li>Strong problem-solving skills and a proactive, collaborative mindset</li>
-	<li>Experience in the Internet security industry is preferred</li>
+	<li>Experience working in large scale network engineering environments</li>
+	<li>Experience working with automation frameworks such as SaltStack and/or Ansible</li>
+	<li>Experience solving problems through automation</li>
+	<li>Experience with BGP and anycast routing</li>
+	<li>Understanding of MPLS and Segment Routing&nbsp;</li>
+	<li>Optimize end user experience by architecting the network to lower latency, packet loss, and jitter while increasing scale</li>
+	<li>Proficient in multiple vendor operating systems</li>
+	<li>Experience writing network configuration and design documentation</li>
+	<li>Ability to prioritize when faced with high pressure scenarios</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Bonus Points but not required:</strong></p>
+<ul>
+	<li>Experience with optical transport technologies such as CWDM/DWDM</li>
+	<li>Professional level network certification(s) (JNCIP , CCNP , etc) or higher</li>
+	<li>Linux system administration</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
