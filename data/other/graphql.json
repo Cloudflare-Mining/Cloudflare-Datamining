@@ -1156,6 +1156,80 @@
 	"AccountD1StorageAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountDnsAnalyticsAdaptive": {
+		"__description": "Analytics data for DNS queries",
+		"coloName": "IATA airport code of the data center that processed the query",
+		"date": "Date on which the query was received",
+		"datetime": "Time at which the query was received",
+		"destinationIP": "Cloudflare edge IP address that the query was received at",
+		"ipVersion": "Internet Protocol version over which the query was received",
+		"protocol": "Transport protocol over which the query was received",
+		"queryName": "DNS query name without trailing dot",
+		"querySize": "Size of the DNS query in bytes",
+		"queryType": "DNS query type",
+		"responseCached": "Whether the DNS response was served from cache",
+		"responseCode": "DNS response code",
+		"responseSize": "Size of the DNS response in bytes",
+		"responseStale": "Whether a stale DNS response was served from cache",
+		"sampleInterval": "ABR sample interval",
+		"sourceIP": "IP address of the client that sent the query (usually this is the resolver's IP address)",
+		"upstreamIP": "Upstream server that the query was forwarded to",
+		"zoneTag": "Zone query attributed to"
+	},
+	"AccountDnsAnalyticsAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountDnsAnalyticsAdaptiveGroups": {
+		"__description": "Analytics data for DNS queries",
+		"avg": "Average of a metric per dimension",
+		"count": "Number of queries per dimension",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension"
+	},
+	"AccountDnsAnalyticsAdaptiveGroupsAvg": {
+		"__description": "",
+		"processingTimeUs": "Average processing time in microseconds",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountDnsAnalyticsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"coloName": "IATA airport code of the data center that processed the query",
+		"date": "Date on which the query was received",
+		"datetime": "Time at which the query was received",
+		"datetimeFifteenMinutes": "Time at which the query was received, truncated to multiple of 15 minutes",
+		"datetimeFiveMinutes": "Time at which the query was received, truncated to multiple of 5 minutes",
+		"datetimeHalfOfHour": "Time at which the query was received, truncated to multiple of 30 minutes",
+		"datetimeHour": "Time at which the query was received, truncated to the hour",
+		"datetimeMinute": "Time at which the query was received, truncated to the minute",
+		"destinationIP": "Cloudflare edge IP address that the query was received at",
+		"ipVersion": "Internet Protocol version over which the query was received",
+		"protocol": "Transport protocol over which the query was received",
+		"queryName": "DNS query name without trailing dot",
+		"querySizeBucket": "Size of the DNS query in bytes (in multiples of 16)",
+		"queryType": "DNS query type",
+		"responseCached": "Whether the DNS response was served from cache",
+		"responseCode": "DNS response code",
+		"responseSizeBucket": "Size of the DNS response in bytes (in multiples of 16)",
+		"responseStale": "Whether a stale DNS response was served from cache",
+		"sourceIP": "IP address of the client that sent the query (usually this is the resolver's IP address)",
+		"upstreamIP": "Upstream server that the query was forwarded to",
+		"zoneTag": "Zone query attributed to"
+	},
+	"AccountDnsAnalyticsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountDnsAnalyticsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountDnsAnalyticsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"processingTimeUsP50": "50th percentile processing time in microseconds (median)",
+		"processingTimeUsP90": "90th percentile processing time in microseconds",
+		"processingTimeUsP99": "99th percentile processing time in microseconds"
+	},
+	"AccountDnsAnalyticsAdaptiveOrderBy": {
+		"__description": ""
+	},
 	"AccountDnsFirewallAnalyticsAdaptive": {
 		"__description": "Analytics data for DNS Firewall queries",
 		"clusterTag": "DNS Firewall cluster tag",
@@ -5184,6 +5258,8 @@
 		"d1AnalyticsAdaptiveGroups": "",
 		"d1QueriesAdaptiveGroups": "",
 		"d1StorageAdaptiveGroups": "",
+		"dnsAnalyticsAdaptive": "",
+		"dnsAnalyticsAdaptiveGroups": "",
 		"dnsFirewallAnalyticsAdaptive": "",
 		"dnsFirewallAnalyticsAdaptiveGroups": "",
 		"dosdAttackAnalyticsGroups": "",
@@ -8780,6 +8856,8 @@
 		"d1AnalyticsAdaptiveGroups": "Beta. Aggregated D1 analytics with adaptive sampling",
 		"d1QueriesAdaptiveGroups": "Beta. D1 query metrics with adaptive sampling",
 		"d1StorageAdaptiveGroups": "Beta. D1 storage with adaptive sampling",
+		"dnsAnalyticsAdaptive": "Analytics data for DNS queries",
+		"dnsAnalyticsAdaptiveGroups": "Analytics data for DNS queries",
 		"dnsFirewallAnalyticsAdaptive": "Analytics data for DNS Firewall queries",
 		"dnsFirewallAnalyticsAdaptiveGroups": "Analytics data for DNS Firewall queries",
 		"dosdAttackAnalyticsGroups": "Attack analytics metadata for attacks detected by dosd",
