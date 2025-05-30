@@ -376,12 +376,12 @@ const navigation = {
 		}, {
 			title: "navigation.account.magic_connectors.network_overview",
 			url: "/magic-wan/network",
-			labels: ["beta"],
+			labels: D => (0, o.z1)("magic-beta-flags-disabled")(D) ? [] : ["beta"],
 			hasPermission: D => (0, f.iY)(D) && !!(0, o.z1)("magic-cf-site")(D)
 		}, {
 			title: "navigation.account.magic_connectors.mconn_onramp",
 			url: "/magic-wan/mconn-onramp",
-			labels: ["beta"],
+			labels: D => (0, o.z1)("magic-beta-flags-disabled")(D) ? [] : ["beta"],
 			hasPermission: D => (0, f.iY)(D) && !!(0, e.Le)(D, "magic_wan", "mc_home") && !!(0, o.z1)("magic-cf-site")(D)
 		}, {
 			title: "navigation.account.magic_connectors.cloud_onramp",
@@ -672,13 +672,6 @@ const navigation = {
 			title: "navigation.account.tag_management.gmt_fp",
 			url: "/tag-management/google-tag-gateway"
 		}]
-	}, {
-		title: "navigation.account.event_hub",
-		url: "/event-subscriptions",
-		iconType: "queues",
-		testId: "sidenav-event-hub-link",
-		labels: ["beta"],
-		hasPermission: D => !!(0, o.z1)("event-hub-ui")(D)
 	}, {
 		title: "account.home",
 		url: "/",
