@@ -10,7 +10,8 @@
 				"schema": {
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -197,7 +198,8 @@
 													"disable_auto_fallback": {
 														"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"enabled": {
 														"description": "Whether the policy will be applied to matching devices.",
@@ -263,21 +265,24 @@
 																	"description": "A description of the fallback domain, displayed in the client UI.",
 																	"example": "Domain bypass for local development",
 																	"maxLength": 100,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"dns_server": {
 																	"description": "A list of IP addresses to handle domain resolution.",
 																	"items": {
 																		"description": "IPv4 or IPv6 address.",
 																		"example": "1.1.1.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
 																"suffix": {
 																	"description": "The domain suffix to match when resolving locally.",
 																	"example": "example.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -363,7 +368,8 @@
 													"policy_id": {
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"precedence": {
 														"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
@@ -385,12 +391,14 @@
 															"mode": {
 																"description": "The mode to run the WARP client under.",
 																"example": "proxy",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"port": {
 																"description": "The port number when used with proxy mode.",
 																"example": 3000,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -610,7 +618,8 @@
 															"disable_auto_fallback": {
 																"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"enabled": {
 																"description": "Whether the policy will be applied to matching devices.",
@@ -676,21 +685,24 @@
 																			"description": "A description of the fallback domain, displayed in the client UI.",
 																			"example": "Domain bypass for local development",
 																			"maxLength": 100,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"dns_server": {
 																			"description": "A list of IP addresses to handle domain resolution.",
 																			"items": {
 																				"description": "IPv4 or IPv6 address.",
 																				"example": "1.1.1.1",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
 																		"suffix": {
 																			"description": "The domain suffix to match when resolving locally.",
 																			"example": "example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -776,7 +788,8 @@
 															"policy_id": {
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"precedence": {
 																"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
@@ -798,12 +811,14 @@
 																	"mode": {
 																		"description": "The mode to run the WARP client under.",
 																		"example": "proxy",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"port": {
 																		"description": "The port number when used with proxy mode.",
 																		"example": 3000,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1103,7 +1118,8 @@
 														"description": "When the device was created.",
 														"example": "2017-06-14T00:00:00Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"deleted": {
 														"description": "True if the device was deleted.",
@@ -1120,18 +1136,21 @@
 															"chromeos"
 														],
 														"example": "windows",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Registration ID. Equal to Device ID except for accounts which enabled [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"ip": {
 														"description": "IPv4 or IPv6 address.",
 														"example": "1.1.1.1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"key": {
 														"description": "The device's public key.",
@@ -1142,12 +1161,14 @@
 														"description": "When the device last connected to Cloudflare services.",
 														"example": "2017-06-14T00:00:00Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"mac_address": {
 														"description": "The device mac address.",
 														"example": "00-00-5E-00-53-00",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"manufacturer": {
 														"description": "The device manufacturer name.",
@@ -1167,12 +1188,14 @@
 													"os_distro_name": {
 														"description": "The Linux distro name.",
 														"example": "ubuntu",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"os_distro_revision": {
 														"description": "The Linux distro revision.",
 														"example": "1.0.0",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"os_version": {
 														"description": "The operating system version.",
@@ -1188,7 +1211,8 @@
 														"description": "When the device was revoked.",
 														"example": "2017-06-14T00:00:00Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"serial_number": {
 														"description": "The device serial number.",
@@ -1199,7 +1223,8 @@
 														"description": "When the device was updated.",
 														"example": "2017-06-14T00:00:00Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"user": {
 														"properties": {
@@ -1207,14 +1232,16 @@
 																"description": "The contact email address of the user.",
 																"example": "user@example.com",
 																"maxLength": 90,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "UUID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The enrolled device user's name.",
@@ -1378,7 +1405,8 @@
 																"description": "When the device was created.",
 																"example": "2017-06-14T00:00:00Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"deleted": {
 																"description": "True if the device was deleted.",
@@ -1395,18 +1423,21 @@
 																	"chromeos"
 																],
 																"example": "windows",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Registration ID. Equal to Device ID except for accounts which enabled [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"ip": {
 																"description": "IPv4 or IPv6 address.",
 																"example": "1.1.1.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"key": {
 																"description": "The device's public key.",
@@ -1417,12 +1448,14 @@
 																"description": "When the device last connected to Cloudflare services.",
 																"example": "2017-06-14T00:00:00Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"mac_address": {
 																"description": "The device mac address.",
 																"example": "00-00-5E-00-53-00",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"manufacturer": {
 																"description": "The device manufacturer name.",
@@ -1442,12 +1475,14 @@
 															"os_distro_name": {
 																"description": "The Linux distro name.",
 																"example": "ubuntu",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"os_distro_revision": {
 																"description": "The Linux distro revision.",
 																"example": "1.0.0",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"os_version": {
 																"description": "The operating system version.",
@@ -1463,7 +1498,8 @@
 																"description": "When the device was revoked.",
 																"example": "2017-06-14T00:00:00Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"serial_number": {
 																"description": "The device serial number.",
@@ -1474,7 +1510,8 @@
 																"description": "When the device was updated.",
 																"example": "2017-06-14T00:00:00Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"user": {
 																"properties": {
@@ -1482,14 +1519,16 @@
 																		"description": "The contact email address of the user.",
 																		"example": "user@example.com",
 																		"maxLength": 90,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "The enrolled device user's name.",
@@ -1634,7 +1673,8 @@
 					"description": "Registration ID. Equal to Device ID except for accounts which enabled [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1768,7 +1808,8 @@
 														"name": {
 															"description": "The name of the enrolled account.",
 															"example": "Company",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1777,7 +1818,8 @@
 													"description": "When the device was created.",
 													"example": "2017-06-14T00:00:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"deleted": {
 													"description": "True if the device was deleted.",
@@ -1786,7 +1828,8 @@
 												},
 												"device_type": {
 													"example": "windows",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"gateway_device_id": {
 													"deprecated": true,
@@ -1797,12 +1840,14 @@
 													"description": "Registration ID. Equal to Device ID except for accounts which enabled [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ip": {
 													"description": "IPv4 or IPv6 address.",
 													"example": "1.1.1.1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"key": {
 													"description": "The device's public key.",
@@ -1812,18 +1857,21 @@
 												"key_type": {
 													"description": "Type of the key.",
 													"example": "curve25519",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_seen": {
 													"description": "When the device last connected to Cloudflare services.",
 													"example": "2017-06-14T00:00:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"mac_address": {
 													"description": "The device mac address.",
 													"example": "00-00-5E-00-53-00",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"model": {
 													"description": "The device model name.",
@@ -1848,13 +1896,15 @@
 												"tunnel_type": {
 													"description": "Type of the tunnel connection used.",
 													"example": "masque",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated": {
 													"description": "When the device was updated.",
 													"example": "2017-06-14T00:00:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"user": {
 													"properties": {
@@ -1862,14 +1912,16 @@
 															"description": "The contact email address of the user.",
 															"example": "user@example.com",
 															"maxLength": 90,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The enrolled device user's name.",
@@ -2019,7 +2071,8 @@
 																"name": {
 																	"description": "The name of the enrolled account.",
 																	"example": "Company",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2028,7 +2081,8 @@
 															"description": "When the device was created.",
 															"example": "2017-06-14T00:00:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"deleted": {
 															"description": "True if the device was deleted.",
@@ -2037,7 +2091,8 @@
 														},
 														"device_type": {
 															"example": "windows",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"gateway_device_id": {
 															"deprecated": true,
@@ -2048,12 +2103,14 @@
 															"description": "Registration ID. Equal to Device ID except for accounts which enabled [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ip": {
 															"description": "IPv4 or IPv6 address.",
 															"example": "1.1.1.1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"key": {
 															"description": "The device's public key.",
@@ -2063,18 +2120,21 @@
 														"key_type": {
 															"description": "Type of the key.",
 															"example": "curve25519",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"last_seen": {
 															"description": "When the device last connected to Cloudflare services.",
 															"example": "2017-06-14T00:00:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"mac_address": {
 															"description": "The device mac address.",
 															"example": "00-00-5E-00-53-00",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"model": {
 															"description": "The device model name.",
@@ -2099,13 +2159,15 @@
 														"tunnel_type": {
 															"description": "Type of the tunnel connection used.",
 															"example": "masque",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"updated": {
 															"description": "When the device was updated.",
 															"example": "2017-06-14T00:00:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"user": {
 															"properties": {
@@ -2113,14 +2175,16 @@
 																	"description": "The contact email address of the user.",
 																	"example": "user@example.com",
 																	"maxLength": 90,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "The enrolled device user's name.",
@@ -2263,7 +2327,8 @@
 					"description": "Registration ID. Equal to Device ID except for accounts which enabled [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2903,7 +2968,8 @@
 													"disable_auto_fallback": {
 														"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"enabled": {
 														"description": "Whether the policy will be applied to matching devices.",
@@ -2969,21 +3035,24 @@
 																	"description": "A description of the fallback domain, displayed in the client UI.",
 																	"example": "Domain bypass for local development",
 																	"maxLength": 100,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"dns_server": {
 																	"description": "A list of IP addresses to handle domain resolution.",
 																	"items": {
 																		"description": "IPv4 or IPv6 address.",
 																		"example": "1.1.1.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
 																"suffix": {
 																	"description": "The domain suffix to match when resolving locally.",
 																	"example": "example.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -3069,7 +3138,8 @@
 													"policy_id": {
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"precedence": {
 														"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
@@ -3091,12 +3161,14 @@
 															"mode": {
 																"description": "The mode to run the WARP client under.",
 																"example": "proxy",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"port": {
 																"description": "The port number when used with proxy mode.",
 																"example": 3000,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -3316,7 +3388,8 @@
 															"disable_auto_fallback": {
 																"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"enabled": {
 																"description": "Whether the policy will be applied to matching devices.",
@@ -3382,21 +3455,24 @@
 																			"description": "A description of the fallback domain, displayed in the client UI.",
 																			"example": "Domain bypass for local development",
 																			"maxLength": 100,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"dns_server": {
 																			"description": "A list of IP addresses to handle domain resolution.",
 																			"items": {
 																				"description": "IPv4 or IPv6 address.",
 																				"example": "1.1.1.1",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
 																		"suffix": {
 																			"description": "The domain suffix to match when resolving locally.",
 																			"example": "example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -3482,7 +3558,8 @@
 															"policy_id": {
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"precedence": {
 																"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
@@ -3504,12 +3581,14 @@
 																	"mode": {
 																		"description": "The mode to run the WARP client under.",
 																		"example": "proxy",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"port": {
 																		"description": "The port number when used with proxy mode.",
 																		"example": 3000,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -3817,7 +3896,8 @@
 												"disable_auto_fallback": {
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"enabled": {
 													"description": "Whether the policy will be applied to matching devices.",
@@ -3883,21 +3963,24 @@
 																"description": "A description of the fallback domain, displayed in the client UI.",
 																"example": "Domain bypass for local development",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
 																"items": {
 																	"description": "IPv4 or IPv6 address.",
 																	"example": "1.1.1.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"suffix": {
 																"description": "The domain suffix to match when resolving locally.",
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3973,12 +4056,14 @@
 														"mode": {
 															"description": "The mode to run the WARP client under.",
 															"example": "proxy",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"description": "The port number when used with proxy mode.",
 															"example": 3000,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -4153,7 +4238,8 @@
 														"disable_auto_fallback": {
 															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"enabled": {
 															"description": "Whether the policy will be applied to matching devices.",
@@ -4219,21 +4305,24 @@
 																		"description": "A description of the fallback domain, displayed in the client UI.",
 																		"example": "Domain bypass for local development",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"dns_server": {
 																		"description": "A list of IP addresses to handle domain resolution.",
 																		"items": {
 																			"description": "IPv4 or IPv6 address.",
 																			"example": "1.1.1.1",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
 																	"suffix": {
 																		"description": "The domain suffix to match when resolving locally.",
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -4309,12 +4398,14 @@
 																"mode": {
 																	"description": "The mode to run the WARP client under.",
 																	"example": "proxy",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"description": "The port number when used with proxy mode.",
 																	"example": 3000,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -4460,7 +4551,8 @@
 				"schema": {
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4620,7 +4712,8 @@
 												"disable_auto_fallback": {
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"enabled": {
 													"description": "Whether the policy will be applied to matching devices.",
@@ -4686,21 +4779,24 @@
 																"description": "A description of the fallback domain, displayed in the client UI.",
 																"example": "Domain bypass for local development",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
 																"items": {
 																	"description": "IPv4 or IPv6 address.",
 																	"example": "1.1.1.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"suffix": {
 																"description": "The domain suffix to match when resolving locally.",
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -4786,7 +4882,8 @@
 												"policy_id": {
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"precedence": {
 													"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
@@ -4808,12 +4905,14 @@
 														"mode": {
 															"description": "The mode to run the WARP client under.",
 															"example": "proxy",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"description": "The port number when used with proxy mode.",
 															"example": 3000,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -5010,7 +5109,8 @@
 														"disable_auto_fallback": {
 															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"enabled": {
 															"description": "Whether the policy will be applied to matching devices.",
@@ -5076,21 +5176,24 @@
 																		"description": "A description of the fallback domain, displayed in the client UI.",
 																		"example": "Domain bypass for local development",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"dns_server": {
 																		"description": "A list of IP addresses to handle domain resolution.",
 																		"items": {
 																			"description": "IPv4 or IPv6 address.",
 																			"example": "1.1.1.1",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
 																	"suffix": {
 																		"description": "The domain suffix to match when resolving locally.",
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -5176,7 +5279,8 @@
 														"policy_id": {
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"precedence": {
 															"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
@@ -5198,12 +5302,14 @@
 																"mode": {
 																	"description": "The mode to run the WARP client under.",
 																	"example": "proxy",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"description": "The port number when used with proxy mode.",
 																	"example": 3000,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -5365,7 +5471,8 @@
 				"schema": {
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -5856,7 +5963,8 @@
 				"schema": {
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -6002,21 +6110,24 @@
 														"description": "A description of the fallback domain, displayed in the client UI.",
 														"example": "Domain bypass for local development",
 														"maxLength": 100,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"dns_server": {
 														"description": "A list of IP addresses to handle domain resolution.",
 														"items": {
 															"description": "IPv4 or IPv6 address.",
 															"example": "1.1.1.1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": "array"
 													},
 													"suffix": {
 														"description": "The domain suffix to match when resolving locally.",
 														"example": "example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -6170,21 +6281,24 @@
 																"description": "A description of the fallback domain, displayed in the client UI.",
 																"example": "Domain bypass for local development",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
 																"items": {
 																	"description": "IPv4 or IPv6 address.",
 																	"example": "1.1.1.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"suffix": {
 																"description": "The domain suffix to match when resolving locally.",
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -6317,7 +6431,8 @@
 				"schema": {
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -7425,21 +7540,24 @@
 														"description": "A description of the fallback domain, displayed in the client UI.",
 														"example": "Domain bypass for local development",
 														"maxLength": 100,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"dns_server": {
 														"description": "A list of IP addresses to handle domain resolution.",
 														"items": {
 															"description": "IPv4 or IPv6 address.",
 															"example": "1.1.1.1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": "array"
 													},
 													"suffix": {
 														"description": "The domain suffix to match when resolving locally.",
 														"example": "example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -7593,21 +7711,24 @@
 																"description": "A description of the fallback domain, displayed in the client UI.",
 																"example": "Domain bypass for local development",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
 																"items": {
 																	"description": "IPv4 or IPv6 address.",
 																	"example": "1.1.1.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"suffix": {
 																"description": "The domain suffix to match when resolving locally.",
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -8631,7 +8752,8 @@
 							"disable_auto_fallback": {
 								"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"exclude": {
 								"description": "List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
@@ -8757,12 +8879,14 @@
 									"mode": {
 										"description": "The mode to run the WARP client under.",
 										"example": "proxy",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"port": {
 										"description": "The port number when used with proxy mode.",
 										"example": 3000,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -8931,7 +9055,8 @@
 												"disable_auto_fallback": {
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"enabled": {
 													"description": "Whether the policy will be applied to matching devices.",
@@ -8997,21 +9122,24 @@
 																"description": "A description of the fallback domain, displayed in the client UI.",
 																"example": "Domain bypass for local development",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
 																"items": {
 																	"description": "IPv4 or IPv6 address.",
 																	"example": "1.1.1.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"suffix": {
 																"description": "The domain suffix to match when resolving locally.",
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -9087,12 +9215,14 @@
 														"mode": {
 															"description": "The mode to run the WARP client under.",
 															"example": "proxy",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"description": "The port number when used with proxy mode.",
 															"example": 3000,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -9267,7 +9397,8 @@
 														"disable_auto_fallback": {
 															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"enabled": {
 															"description": "Whether the policy will be applied to matching devices.",
@@ -9333,21 +9464,24 @@
 																		"description": "A description of the fallback domain, displayed in the client UI.",
 																		"example": "Domain bypass for local development",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"dns_server": {
 																		"description": "A list of IP addresses to handle domain resolution.",
 																		"items": {
 																			"description": "IPv4 or IPv6 address.",
 																			"example": "1.1.1.1",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
 																	"suffix": {
 																		"description": "The domain suffix to match when resolving locally.",
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -9423,12 +9557,14 @@
 																"mode": {
 																	"description": "The mode to run the WARP client under.",
 																	"example": "proxy",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"description": "The port number when used with proxy mode.",
 																	"example": 3000,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -9573,7 +9709,8 @@
 				"schema": {
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -9624,7 +9761,8 @@
 							"disable_auto_fallback": {
 								"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"enabled": {
 								"description": "Whether the policy will be applied to matching devices.",
@@ -9772,12 +9910,14 @@
 									"mode": {
 										"description": "The mode to run the WARP client under.",
 										"example": "proxy",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"port": {
 										"description": "The port number when used with proxy mode.",
 										"example": 3000,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -9952,7 +10092,8 @@
 												"disable_auto_fallback": {
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"enabled": {
 													"description": "Whether the policy will be applied to matching devices.",
@@ -10018,21 +10159,24 @@
 																"description": "A description of the fallback domain, displayed in the client UI.",
 																"example": "Domain bypass for local development",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
 																"items": {
 																	"description": "IPv4 or IPv6 address.",
 																	"example": "1.1.1.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"suffix": {
 																"description": "The domain suffix to match when resolving locally.",
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -10118,7 +10262,8 @@
 												"policy_id": {
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"precedence": {
 													"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
@@ -10140,12 +10285,14 @@
 														"mode": {
 															"description": "The mode to run the WARP client under.",
 															"example": "proxy",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"description": "The port number when used with proxy mode.",
 															"example": 3000,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -10342,7 +10489,8 @@
 														"disable_auto_fallback": {
 															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"enabled": {
 															"description": "Whether the policy will be applied to matching devices.",
@@ -10408,21 +10556,24 @@
 																		"description": "A description of the fallback domain, displayed in the client UI.",
 																		"example": "Domain bypass for local development",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"dns_server": {
 																		"description": "A list of IP addresses to handle domain resolution.",
 																		"items": {
 																			"description": "IPv4 or IPv6 address.",
 																			"example": "1.1.1.1",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
 																	"suffix": {
 																		"description": "The domain suffix to match when resolving locally.",
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -10508,7 +10659,8 @@
 														"policy_id": {
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"precedence": {
 															"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
@@ -10530,12 +10682,14 @@
 																"mode": {
 																	"description": "The mode to run the WARP client under.",
 																	"example": "proxy",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"description": "The port number when used with proxy mode.",
 																	"example": 3000,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -11131,7 +11285,8 @@
 							"disable_auto_fallback": {
 								"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"enabled": {
 								"description": "Whether the policy will be applied to matching devices.",
@@ -11279,12 +11434,14 @@
 									"mode": {
 										"description": "The mode to run the WARP client under.",
 										"example": "proxy",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"port": {
 										"description": "The port number when used with proxy mode.",
 										"example": 3000,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -11464,7 +11621,8 @@
 												"disable_auto_fallback": {
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"enabled": {
 													"description": "Whether the policy will be applied to matching devices.",
@@ -11530,21 +11688,24 @@
 																"description": "A description of the fallback domain, displayed in the client UI.",
 																"example": "Domain bypass for local development",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
 																"items": {
 																	"description": "IPv4 or IPv6 address.",
 																	"example": "1.1.1.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"suffix": {
 																"description": "The domain suffix to match when resolving locally.",
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -11630,7 +11791,8 @@
 												"policy_id": {
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"precedence": {
 													"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
@@ -11652,12 +11814,14 @@
 														"mode": {
 															"description": "The mode to run the WARP client under.",
 															"example": "proxy",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"description": "The port number when used with proxy mode.",
 															"example": 3000,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -11854,7 +12018,8 @@
 														"disable_auto_fallback": {
 															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"enabled": {
 															"description": "Whether the policy will be applied to matching devices.",
@@ -11920,21 +12085,24 @@
 																		"description": "A description of the fallback domain, displayed in the client UI.",
 																		"example": "Domain bypass for local development",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"dns_server": {
 																		"description": "A list of IP addresses to handle domain resolution.",
 																		"items": {
 																			"description": "IPv4 or IPv6 address.",
 																			"example": "1.1.1.1",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
 																	"suffix": {
 																		"description": "The domain suffix to match when resolving locally.",
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -12020,7 +12188,8 @@
 														"policy_id": {
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"precedence": {
 															"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
@@ -12042,12 +12211,14 @@
 																"mode": {
 																	"description": "The mode to run the WARP client under.",
 																	"example": "proxy",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"description": "The port number when used with proxy mode.",
 																	"example": 3000,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -12220,7 +12391,8 @@
 							"description": "Registration ID. Equal to Device ID except for accounts which enabled [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 							"maxLength": 36,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						},
 						"maxLength": 200,
 						"type": "array"
@@ -12569,7 +12741,8 @@
 							"description": "Registration ID. Equal to Device ID except for accounts which enabled [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 							"maxLength": 36,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						},
 						"maxLength": 200,
 						"type": "array"
@@ -12906,7 +13079,8 @@
 				"schema": {
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -13449,7 +13623,8 @@
 				"schema": {
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -13471,21 +13646,24 @@
 									"description": "A description of the fallback domain, displayed in the client UI.",
 									"example": "Domain bypass for local development",
 									"maxLength": 100,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"dns_server": {
 									"description": "A list of IP addresses to handle domain resolution.",
 									"items": {
 										"description": "IPv4 or IPv6 address.",
 										"example": "1.1.1.1",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"type": "array"
 								},
 								"suffix": {
 									"description": "The domain suffix to match when resolving locally.",
 									"example": "example.com",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -13633,21 +13811,24 @@
 														"description": "A description of the fallback domain, displayed in the client UI.",
 														"example": "Domain bypass for local development",
 														"maxLength": 100,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"dns_server": {
 														"description": "A list of IP addresses to handle domain resolution.",
 														"items": {
 															"description": "IPv4 or IPv6 address.",
 															"example": "1.1.1.1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": "array"
 													},
 													"suffix": {
 														"description": "The domain suffix to match when resolving locally.",
 														"example": "example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -13801,21 +13982,24 @@
 																"description": "A description of the fallback domain, displayed in the client UI.",
 																"example": "Domain bypass for local development",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
 																"items": {
 																	"description": "IPv4 or IPv6 address.",
 																	"example": "1.1.1.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"suffix": {
 																"description": "The domain suffix to match when resolving locally.",
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -13947,7 +14131,8 @@
 				"schema": {
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -15035,21 +15220,24 @@
 									"description": "A description of the fallback domain, displayed in the client UI.",
 									"example": "Domain bypass for local development",
 									"maxLength": 100,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"dns_server": {
 									"description": "A list of IP addresses to handle domain resolution.",
 									"items": {
 										"description": "IPv4 or IPv6 address.",
 										"example": "1.1.1.1",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"type": "array"
 								},
 								"suffix": {
 									"description": "The domain suffix to match when resolving locally.",
 									"example": "example.com",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -15197,21 +15385,24 @@
 														"description": "A description of the fallback domain, displayed in the client UI.",
 														"example": "Domain bypass for local development",
 														"maxLength": 100,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"dns_server": {
 														"description": "A list of IP addresses to handle domain resolution.",
 														"items": {
 															"description": "IPv4 or IPv6 address.",
 															"example": "1.1.1.1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": "array"
 													},
 													"suffix": {
 														"description": "The domain suffix to match when resolving locally.",
 														"example": "example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -15365,21 +15556,24 @@
 																"description": "A description of the fallback domain, displayed in the client UI.",
 																"example": "Domain bypass for local development",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
 																"items": {
 																	"description": "IPv4 or IPv6 address.",
 																	"example": "1.1.1.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"suffix": {
 																"description": "The domain suffix to match when resolving locally.",
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [

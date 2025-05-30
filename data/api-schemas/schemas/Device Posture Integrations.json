@@ -11,7 +11,8 @@
 					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -556,17 +557,20 @@
 														"description": "API UUID.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"interval": {
 														"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 														"example": "10m",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "The name of the device posture integration.",
 														"example": "My Workspace One Integration",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": {
 														"description": "The type of device posture integration.",
@@ -581,7 +585,8 @@
 															"custom_s2s"
 														],
 														"example": "workspace_one",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -769,17 +774,20 @@
 																"description": "API UUID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"interval": {
 																"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 																"example": "10m",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The name of the device posture integration.",
 																"example": "My Workspace One Integration",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": {
 																"description": "The type of device posture integration.",
@@ -794,7 +802,8 @@
 																	"custom_s2s"
 																],
 																"example": "workspace_one",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -925,7 +934,8 @@
 					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1087,17 +1097,20 @@
 													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"interval": {
 													"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 													"example": "10m",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the device posture integration.",
 													"example": "My Workspace One Integration",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of device posture integration.",
@@ -1112,7 +1125,8 @@
 														"custom_s2s"
 													],
 													"example": "workspace_one",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1277,17 +1291,20 @@
 															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"interval": {
 															"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 															"example": "10m",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the device posture integration.",
 															"example": "My Workspace One Integration",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of device posture integration.",
@@ -1302,7 +1319,8 @@
 																"custom_s2s"
 															],
 															"example": "workspace_one",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1432,7 +1450,8 @@
 					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1496,7 +1515,8 @@
 											"api_url": {
 												"description": "The Crowdstrike API URL.",
 												"example": "https://api.us-2.crowdstrike.com",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"client_id": {
 												"description": "The Crowdstrike client ID.",
@@ -1512,7 +1532,8 @@
 											"customer_id": {
 												"description": "The Crowdstrike customer ID.",
 												"example": "example customer id",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -1529,7 +1550,8 @@
 											"api_url": {
 												"description": "The Uptycs API URL.",
 												"example": "rnd.uptycs.io",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"client_key": {
 												"description": "The Uptycs client secret.",
@@ -1621,7 +1643,8 @@
 											"api_url": {
 												"description": "The Tanium API URL.",
 												"example": "https://dummy-tanium-api.cloudflare.com/plugin/products/gateway/graphql",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"client_secret": {
 												"description": "The Tanium client secret.",
@@ -1674,7 +1697,8 @@
 											"api_url": {
 												"description": "The Custom Device Posture Integration  API URL.",
 												"example": "https://example.custom-s2s.com",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -1691,12 +1715,14 @@
 							"interval": {
 								"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 								"example": "10m",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The name of the device posture integration.",
 								"example": "My Workspace One Integration",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"type": {
 								"description": "The type of device posture integration.",
@@ -1711,7 +1737,8 @@
 									"custom_s2s"
 								],
 								"example": "workspace_one",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -1870,17 +1897,20 @@
 													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"interval": {
 													"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 													"example": "10m",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the device posture integration.",
 													"example": "My Workspace One Integration",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of device posture integration.",
@@ -1895,7 +1925,8 @@
 														"custom_s2s"
 													],
 													"example": "workspace_one",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2060,17 +2091,20 @@
 															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"interval": {
 															"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 															"example": "10m",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the device posture integration.",
 															"example": "My Workspace One Integration",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of device posture integration.",
@@ -2085,7 +2119,8 @@
 																"custom_s2s"
 															],
 															"example": "workspace_one",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2266,7 +2301,8 @@
 											"api_url": {
 												"description": "The Crowdstrike API URL.",
 												"example": "https://api.us-2.crowdstrike.com",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"client_id": {
 												"description": "The Crowdstrike client ID.",
@@ -2282,7 +2318,8 @@
 											"customer_id": {
 												"description": "The Crowdstrike customer ID.",
 												"example": "example customer id",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -2299,7 +2336,8 @@
 											"api_url": {
 												"description": "The Uptycs API URL.",
 												"example": "rnd.uptycs.io",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"client_key": {
 												"description": "The Uptycs client secret.",
@@ -2391,7 +2429,8 @@
 											"api_url": {
 												"description": "The Tanium API URL.",
 												"example": "https://dummy-tanium-api.cloudflare.com/plugin/products/gateway/graphql",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"client_secret": {
 												"description": "The Tanium client secret.",
@@ -2444,7 +2483,8 @@
 											"api_url": {
 												"description": "The Custom Device Posture Integration  API URL.",
 												"example": "https://example.custom-s2s.com",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -2461,12 +2501,14 @@
 							"interval": {
 								"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 								"example": "10m",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The name of the device posture integration.",
 								"example": "My Workspace One Integration",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"type": {
 								"description": "The type of device posture integration.",
@@ -2481,7 +2523,8 @@
 									"custom_s2s"
 								],
 								"example": "workspace_one",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2646,17 +2689,20 @@
 													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"interval": {
 													"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 													"example": "10m",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the device posture integration.",
 													"example": "My Workspace One Integration",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of device posture integration.",
@@ -2671,7 +2717,8 @@
 														"custom_s2s"
 													],
 													"example": "workspace_one",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2836,17 +2883,20 @@
 															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"interval": {
 															"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 															"example": "10m",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the device posture integration.",
 															"example": "My Workspace One Integration",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of device posture integration.",
@@ -2861,7 +2911,8 @@
 																"custom_s2s"
 															],
 															"example": "workspace_one",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"

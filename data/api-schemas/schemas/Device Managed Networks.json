@@ -11,7 +11,8 @@
 					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -177,7 +178,8 @@
 																	"tls_sockaddr": {
 																		"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
 																		"example": "foobar:1234",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -191,13 +193,15 @@
 													"name": {
 														"description": "The name of the device managed network. This name must be unique.",
 														"example": "managed-network-1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"network_id": {
 														"description": "API UUID.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": {
 														"description": "The type of device managed network.",
@@ -205,7 +209,8 @@
 															"tls"
 														],
 														"example": "tls",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -370,7 +375,8 @@
 																			"tls_sockaddr": {
 																				"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
 																				"example": "foobar:1234",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -384,13 +390,15 @@
 															"name": {
 																"description": "The name of the device managed network. This name must be unique.",
 																"example": "managed-network-1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"network_id": {
 																"description": "API UUID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": {
 																"description": "The type of device managed network.",
@@ -398,7 +406,8 @@
 																	"tls"
 																],
 																"example": "tls",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -677,7 +686,8 @@
 																	"tls_sockaddr": {
 																		"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
 																		"example": "foobar:1234",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -691,13 +701,15 @@
 													"name": {
 														"description": "The name of the device managed network. This name must be unique.",
 														"example": "managed-network-1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"network_id": {
 														"description": "API UUID.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": {
 														"description": "The type of device managed network.",
@@ -705,7 +717,8 @@
 															"tls"
 														],
 														"example": "tls",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -870,7 +883,8 @@
 																			"tls_sockaddr": {
 																				"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
 																				"example": "foobar:1234",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -884,13 +898,15 @@
 															"name": {
 																"description": "The name of the device managed network. This name must be unique.",
 																"example": "managed-network-1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"network_id": {
 																"description": "API UUID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": {
 																"description": "The type of device managed network.",
@@ -898,7 +914,8 @@
 																	"tls"
 																],
 																"example": "tls",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1029,7 +1046,8 @@
 					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1168,7 +1186,8 @@
 																"tls_sockaddr": {
 																	"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
 																	"example": "foobar:1234",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -1182,13 +1201,15 @@
 												"name": {
 													"description": "The name of the device managed network. This name must be unique.",
 													"example": "managed-network-1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"network_id": {
 													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of device managed network.",
@@ -1196,7 +1217,8 @@
 														"tls"
 													],
 													"example": "tls",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1338,7 +1360,8 @@
 																		"tls_sockaddr": {
 																			"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
 																			"example": "foobar:1234",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -1352,13 +1375,15 @@
 														"name": {
 															"description": "The name of the device managed network. This name must be unique.",
 															"example": "managed-network-1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"network_id": {
 															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of device managed network.",
@@ -1366,7 +1391,8 @@
 																"tls"
 															],
 															"example": "tls",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1532,7 +1558,8 @@
 							"name": {
 								"description": "The name of the device managed network. This name must be unique.",
 								"example": "managed-network-1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"type": {
 								"description": "The type of device managed network.",
@@ -1540,7 +1567,8 @@
 									"tls"
 								],
 								"example": "tls",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1681,7 +1709,8 @@
 																"tls_sockaddr": {
 																	"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
 																	"example": "foobar:1234",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -1695,13 +1724,15 @@
 												"name": {
 													"description": "The name of the device managed network. This name must be unique.",
 													"example": "managed-network-1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"network_id": {
 													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of device managed network.",
@@ -1709,7 +1740,8 @@
 														"tls"
 													],
 													"example": "tls",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1851,7 +1883,8 @@
 																		"tls_sockaddr": {
 																			"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
 																			"example": "foobar:1234",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -1865,13 +1898,15 @@
 														"name": {
 															"description": "The name of the device managed network. This name must be unique.",
 															"example": "managed-network-1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"network_id": {
 															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of device managed network.",
@@ -1879,7 +1914,8 @@
 																"tls"
 															],
 															"example": "tls",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2007,7 +2043,8 @@
 					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2055,7 +2092,8 @@
 							"name": {
 								"description": "The name of the device managed network. This name must be unique.",
 								"example": "managed-network-1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"type": {
 								"description": "The type of device managed network.",
@@ -2063,7 +2101,8 @@
 									"tls"
 								],
 								"example": "tls",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -2199,7 +2238,8 @@
 																"tls_sockaddr": {
 																	"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
 																	"example": "foobar:1234",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -2213,13 +2253,15 @@
 												"name": {
 													"description": "The name of the device managed network. This name must be unique.",
 													"example": "managed-network-1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"network_id": {
 													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of device managed network.",
@@ -2227,7 +2269,8 @@
 														"tls"
 													],
 													"example": "tls",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2369,7 +2412,8 @@
 																		"tls_sockaddr": {
 																			"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
 																			"example": "foobar:1234",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -2383,13 +2427,15 @@
 														"name": {
 															"description": "The name of the device managed network. This name must be unique.",
 															"example": "managed-network-1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"network_id": {
 															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of device managed network.",
@@ -2397,7 +2443,8 @@
 																"tls"
 															],
 															"example": "tls",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"

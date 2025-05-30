@@ -291,13 +291,15 @@
 											"created_at": {
 												"description": "The RFC3339 timestamp when the registration was created.",
 												"example": "2025-02-14T13:17:00Z",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"deleted_at": {
 												"description": "The RFC3339 timestamp when the registration was deleted.",
 												"example": "2025-02-14T13:17:00Z",
 												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"device": {
 												"description": "Device details embedded inside of a registration.",
@@ -305,17 +307,20 @@
 													"client_version": {
 														"description": "Version of the WARP client.",
 														"example": "1.0.0",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "The ID of the device.",
 														"example": "32aa0404-78f1-49a4-99e0-97f575081356",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "The name of the device.",
 														"example": "My Device",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -327,40 +332,47 @@
 											"id": {
 												"description": "The ID of the registration.",
 												"example": "11ffb86f-3f0c-4306-b4a2-e62f872b166a",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"key": {
 												"description": "The public key used to connect to the Cloudflare network.",
 												"example": "U+QTP50RsWfeLGHF4tlGDnmGeuwtsz46KCHr5OyhWq00Rsdfl45mgnQAuEJ6CO0YrkyTl9FUf5iB0bwYR3g4EEFEHhtu6jFaqfMrBMBSz6itv9HQXkaR9OieKQ==",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"key_type": {
 												"description": "The type of encryption key used by the WARP client for the active key. Currently 'curve25519' for WireGuard and 'secp256r1' for MASQUE.",
 												"example": "secp256r1",
 												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"last_seen_at": {
 												"description": "The RFC3339 timestamp when the registration was last seen.",
 												"example": "2025-02-14T13:17:00Z",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"revoked_at": {
 												"description": "The RFC3339 timestamp when the registration was revoked.",
 												"example": "2025-02-14T13:17:00Z",
 												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"tunnel_type": {
 												"description": "Type of the tunnel - wireguard or masque.",
 												"example": "masque",
 												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"updated_at": {
 												"description": "The RFC3339 timestamp when the registration was last updated.",
 												"example": "2025-02-14T13:17:00Z",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"user": {
 												"properties": {
@@ -368,14 +380,16 @@
 														"description": "The contact email address of the user.",
 														"example": "user@example.com",
 														"maxLength": 90,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "UUID.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "The enrolled device user's name.",
@@ -536,13 +550,15 @@
 										"created_at": {
 											"description": "The RFC3339 timestamp when the registration was created.",
 											"example": "2025-02-14T13:17:00Z",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"deleted_at": {
 											"description": "The RFC3339 timestamp when the registration was deleted.",
 											"example": "2025-02-14T13:17:00Z",
 											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"device": {
 											"description": "Device details embedded inside of a registration.",
@@ -550,17 +566,20 @@
 												"client_version": {
 													"description": "Version of the WARP client.",
 													"example": "1.0.0",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The ID of the device.",
 													"example": "32aa0404-78f1-49a4-99e0-97f575081356",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the device.",
 													"example": "My Device",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -572,40 +591,47 @@
 										"id": {
 											"description": "The ID of the registration.",
 											"example": "11ffb86f-3f0c-4306-b4a2-e62f872b166a",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"key": {
 											"description": "The public key used to connect to the Cloudflare network.",
 											"example": "U+QTP50RsWfeLGHF4tlGDnmGeuwtsz46KCHr5OyhWq00Rsdfl45mgnQAuEJ6CO0YrkyTl9FUf5iB0bwYR3g4EEFEHhtu6jFaqfMrBMBSz6itv9HQXkaR9OieKQ==",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"key_type": {
 											"description": "The type of encryption key used by the WARP client for the active key. Currently 'curve25519' for WireGuard and 'secp256r1' for MASQUE.",
 											"example": "secp256r1",
 											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"last_seen_at": {
 											"description": "The RFC3339 timestamp when the registration was last seen.",
 											"example": "2025-02-14T13:17:00Z",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"revoked_at": {
 											"description": "The RFC3339 timestamp when the registration was revoked.",
 											"example": "2025-02-14T13:17:00Z",
 											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"tunnel_type": {
 											"description": "Type of the tunnel - wireguard or masque.",
 											"example": "masque",
 											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"updated_at": {
 											"description": "The RFC3339 timestamp when the registration was last updated.",
 											"example": "2025-02-14T13:17:00Z",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"user": {
 											"properties": {
@@ -613,14 +639,16 @@
 													"description": "The contact email address of the user.",
 													"example": "user@example.com",
 													"maxLength": 90,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The enrolled device user's name.",

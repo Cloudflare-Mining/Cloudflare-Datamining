@@ -11,7 +11,8 @@
 					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -142,7 +143,8 @@
 													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -270,7 +272,8 @@
 															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -532,7 +535,8 @@
 													"description": {
 														"description": "The description of the device posture rule.",
 														"example": "The rule for admin serial numbers",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"expiration": {
 														"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.",
@@ -543,7 +547,8 @@
 														"description": "API UUID.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"input": {
 														"description": "The value to be checked against.",
@@ -558,7 +563,8 @@
 																	"exists": {
 																		"description": "Whether or not file exists.",
 																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"operating_system": {
 																		"description": "Operating system.",
@@ -568,12 +574,14 @@
 																			"mac"
 																		],
 																		"example": "mac",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"path": {
 																		"description": "File path.",
 																		"example": "/bin/cat",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"sha256": {
 																		"description": "SHA-256.",
@@ -598,7 +606,8 @@
 																	"id": {
 																		"description": "List ID.",
 																		"example": "da3de859-8f6e-47ea-a2b5-b2433858471f",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"operating_system": {
 																		"description": "Operating System.",
@@ -608,7 +617,8 @@
 																			"chromeos"
 																		],
 																		"example": "android",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -623,7 +633,8 @@
 																	"domain": {
 																		"description": "Domain.",
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"operating_system": {
 																		"description": "Operating System.",
@@ -631,7 +642,8 @@
 																			"windows"
 																		],
 																		"example": "windows",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -648,7 +660,8 @@
 																			"windows"
 																		],
 																		"example": "windows",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"operator": {
 																		"description": "Operator.",
@@ -660,27 +673,32 @@
 																			"=="
 																		],
 																		"example": "13.3.0",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"os_distro_name": {
 																		"description": "Operating System Distribution Name (linux only).",
 																		"example": "ubuntu",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"os_distro_revision": {
 																		"description": "Version of OS Distribution (linux only).",
 																		"example": "11.3.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"os_version_extra": {
 																		"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 																		"example": "(a) or -1007",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"version": {
 																		"description": "Version of OS.",
 																		"example": "13.3.0",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -696,7 +714,8 @@
 																	"enabled": {
 																		"description": "Enabled.",
 																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"operating_system": {
 																		"description": "Operating System.",
@@ -705,7 +724,8 @@
 																			"mac"
 																		],
 																		"example": "windows",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -725,22 +745,26 @@
 																			"mac"
 																		],
 																		"example": "mac",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"path": {
 																		"description": "File path.",
 																		"example": "/bin/cat",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"sha256": {
 																		"description": "SHA-256.",
 																		"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"thumbprint": {
 																		"description": "Signing certificate thumbprint.",
 																		"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -760,22 +784,26 @@
 																			"mac"
 																		],
 																		"example": "mac",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"path": {
 																		"description": "File path.",
 																		"example": "/bin/cat",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"sha256": {
 																		"description": "SHA-256.",
 																		"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"thumbprint": {
 																		"description": "Signing certificate thumbprint.",
 																		"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -791,7 +819,8 @@
 																		"description": "UUID of Access List.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -817,7 +846,8 @@
 																	"requireAll": {
 																		"description": "Whether to check all disks for encryption.",
 																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disk Encryption",
@@ -833,22 +863,26 @@
 																			"mac"
 																		],
 																		"example": "mac",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"path": {
 																		"description": "Path for the application.",
 																		"example": "/bin/cat",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"sha256": {
 																		"description": "SHA-256.",
 																		"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"thumbprint": {
 																		"description": "Signing certificate thumbprint.",
 																		"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -908,7 +942,8 @@
 																				"clientAuth",
 																				"emailProtection"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
@@ -936,7 +971,8 @@
 																						"system",
 																						"user"
 																					],
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"type": "array"
 																			}
@@ -972,12 +1008,14 @@
 																			"unknown"
 																		],
 																		"example": "compliant",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"connection_id": {
 																		"description": "Posture Integration ID.",
 																		"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -992,12 +1030,14 @@
 																	"connection_id": {
 																		"description": "Posture Integration ID.",
 																		"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"last_seen": {
 																		"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
 																		"example": "15d3h20m4s",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"operator": {
 																		"description": "Operator.",
@@ -1009,22 +1049,26 @@
 																			"=="
 																		],
 																		"example": ">",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"os": {
 																		"description": "Os Version.",
 																		"example": "13.3.0",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"overall": {
 																		"description": "Overall.",
 																		"example": 90,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"sensor_config": {
 																		"description": "SensorConfig.",
 																		"example": 90,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"state": {
 																		"description": "For more details on state, please refer to the Crowdstrike documentation.",
@@ -1034,12 +1078,14 @@
 																			"unknown"
 																		],
 																		"example": "online",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"version": {
 																		"description": "Version.",
 																		"example": "13.3.0",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"versionOperator": {
 																		"description": "Version Operator.",
@@ -1051,7 +1097,8 @@
 																			"=="
 																		],
 																		"example": ">",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -1073,12 +1120,14 @@
 																			"error"
 																		],
 																		"example": "compliant",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"connection_id": {
 																		"description": "Posture Integration ID.",
 																		"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -1093,7 +1142,8 @@
 																	"connection_id": {
 																		"description": "Posture Integration ID.",
 																		"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"countOperator": {
 																		"description": "Count Operator.",
@@ -1105,12 +1155,14 @@
 																			"=="
 																		],
 																		"example": ">",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"issue_count": {
 																		"description": "The Number of Issues.",
 																		"example": 1,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -1126,12 +1178,14 @@
 																	"connection_id": {
 																		"description": "Posture Integration ID.",
 																		"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"eid_last_seen": {
 																		"description": "For more details on eid last seen, refer to the Tanium documentation.",
 																		"example": "2023-07-20T23:16:32Z",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"operator": {
 																		"description": "Operator to evaluate risk_level or eid_last_seen.",
@@ -1143,7 +1197,8 @@
 																			"=="
 																		],
 																		"example": ">",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"risk_level": {
 																		"description": "For more details on risk level, refer to the Tanium documentation.",
@@ -1154,7 +1209,8 @@
 																			"critical"
 																		],
 																		"example": "low",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"scoreOperator": {
 																		"description": "Score Operator.",
@@ -1166,12 +1222,14 @@
 																			"=="
 																		],
 																		"example": ">",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"total_score": {
 																		"description": "For more details on total score, refer to the Tanium documentation.",
 																		"example": 1,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -1295,7 +1353,8 @@
 																		"chromeos"
 																	],
 																	"example": "windows",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -1305,12 +1364,14 @@
 													"name": {
 														"description": "The name of the device posture rule.",
 														"example": "Admin Serial Numbers",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"schedule": {
 														"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.",
 														"example": "1h",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": {
 														"description": "The type of device posture rule.",
@@ -1339,7 +1400,8 @@
 															"custom_s2s"
 														],
 														"example": "file",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -1489,7 +1551,8 @@
 															"description": {
 																"description": "The description of the device posture rule.",
 																"example": "The rule for admin serial numbers",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"expiration": {
 																"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.",
@@ -1500,7 +1563,8 @@
 																"description": "API UUID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"input": {
 																"description": "The value to be checked against.",
@@ -1515,7 +1579,8 @@
 																			"exists": {
 																				"description": "Whether or not file exists.",
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"operating_system": {
 																				"description": "Operating system.",
@@ -1525,12 +1590,14 @@
 																					"mac"
 																				],
 																				"example": "mac",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"path": {
 																				"description": "File path.",
 																				"example": "/bin/cat",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"sha256": {
 																				"description": "SHA-256.",
@@ -1555,7 +1622,8 @@
 																			"id": {
 																				"description": "List ID.",
 																				"example": "da3de859-8f6e-47ea-a2b5-b2433858471f",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"operating_system": {
 																				"description": "Operating System.",
@@ -1565,7 +1633,8 @@
 																					"chromeos"
 																				],
 																				"example": "android",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -1580,7 +1649,8 @@
 																			"domain": {
 																				"description": "Domain.",
 																				"example": "example.com",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"operating_system": {
 																				"description": "Operating System.",
@@ -1588,7 +1658,8 @@
 																					"windows"
 																				],
 																				"example": "windows",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -1605,7 +1676,8 @@
 																					"windows"
 																				],
 																				"example": "windows",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"operator": {
 																				"description": "Operator.",
@@ -1617,27 +1689,32 @@
 																					"=="
 																				],
 																				"example": "13.3.0",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"os_distro_name": {
 																				"description": "Operating System Distribution Name (linux only).",
 																				"example": "ubuntu",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"os_distro_revision": {
 																				"description": "Version of OS Distribution (linux only).",
 																				"example": "11.3.1",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"os_version_extra": {
 																				"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 																				"example": "(a) or -1007",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"version": {
 																				"description": "Version of OS.",
 																				"example": "13.3.0",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -1653,7 +1730,8 @@
 																			"enabled": {
 																				"description": "Enabled.",
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"operating_system": {
 																				"description": "Operating System.",
@@ -1662,7 +1740,8 @@
 																					"mac"
 																				],
 																				"example": "windows",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -1682,22 +1761,26 @@
 																					"mac"
 																				],
 																				"example": "mac",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"path": {
 																				"description": "File path.",
 																				"example": "/bin/cat",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"sha256": {
 																				"description": "SHA-256.",
 																				"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"thumbprint": {
 																				"description": "Signing certificate thumbprint.",
 																				"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -1717,22 +1800,26 @@
 																					"mac"
 																				],
 																				"example": "mac",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"path": {
 																				"description": "File path.",
 																				"example": "/bin/cat",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"sha256": {
 																				"description": "SHA-256.",
 																				"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"thumbprint": {
 																				"description": "Signing certificate thumbprint.",
 																				"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -1748,7 +1835,8 @@
 																				"description": "UUID of Access List.",
 																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																				"maxLength": 36,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -1774,7 +1862,8 @@
 																			"requireAll": {
 																				"description": "Whether to check all disks for encryption.",
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			}
 																		},
 																		"title": "Disk Encryption",
@@ -1790,22 +1879,26 @@
 																					"mac"
 																				],
 																				"example": "mac",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"path": {
 																				"description": "Path for the application.",
 																				"example": "/bin/cat",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"sha256": {
 																				"description": "SHA-256.",
 																				"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"thumbprint": {
 																				"description": "Signing certificate thumbprint.",
 																				"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -1865,7 +1958,8 @@
 																						"clientAuth",
 																						"emailProtection"
 																					],
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"type": "array"
 																			},
@@ -1893,7 +1987,8 @@
 																								"system",
 																								"user"
 																							],
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"type": "array"
 																					}
@@ -1929,12 +2024,14 @@
 																					"unknown"
 																				],
 																				"example": "compliant",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"connection_id": {
 																				"description": "Posture Integration ID.",
 																				"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -1949,12 +2046,14 @@
 																			"connection_id": {
 																				"description": "Posture Integration ID.",
 																				"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"last_seen": {
 																				"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
 																				"example": "15d3h20m4s",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"operator": {
 																				"description": "Operator.",
@@ -1966,22 +2065,26 @@
 																					"=="
 																				],
 																				"example": ">",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"os": {
 																				"description": "Os Version.",
 																				"example": "13.3.0",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"overall": {
 																				"description": "Overall.",
 																				"example": 90,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"sensor_config": {
 																				"description": "SensorConfig.",
 																				"example": 90,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"state": {
 																				"description": "For more details on state, please refer to the Crowdstrike documentation.",
@@ -1991,12 +2094,14 @@
 																					"unknown"
 																				],
 																				"example": "online",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"version": {
 																				"description": "Version.",
 																				"example": "13.3.0",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"versionOperator": {
 																				"description": "Version Operator.",
@@ -2008,7 +2113,8 @@
 																					"=="
 																				],
 																				"example": ">",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -2030,12 +2136,14 @@
 																					"error"
 																				],
 																				"example": "compliant",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"connection_id": {
 																				"description": "Posture Integration ID.",
 																				"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -2050,7 +2158,8 @@
 																			"connection_id": {
 																				"description": "Posture Integration ID.",
 																				"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"countOperator": {
 																				"description": "Count Operator.",
@@ -2062,12 +2171,14 @@
 																					"=="
 																				],
 																				"example": ">",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"issue_count": {
 																				"description": "The Number of Issues.",
 																				"example": 1,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -2083,12 +2194,14 @@
 																			"connection_id": {
 																				"description": "Posture Integration ID.",
 																				"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"eid_last_seen": {
 																				"description": "For more details on eid last seen, refer to the Tanium documentation.",
 																				"example": "2023-07-20T23:16:32Z",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"operator": {
 																				"description": "Operator to evaluate risk_level or eid_last_seen.",
@@ -2100,7 +2213,8 @@
 																					"=="
 																				],
 																				"example": ">",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"risk_level": {
 																				"description": "For more details on risk level, refer to the Tanium documentation.",
@@ -2111,7 +2225,8 @@
 																					"critical"
 																				],
 																				"example": "low",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"scoreOperator": {
 																				"description": "Score Operator.",
@@ -2123,12 +2238,14 @@
 																					"=="
 																				],
 																				"example": ">",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"total_score": {
 																				"description": "For more details on total score, refer to the Tanium documentation.",
 																				"example": 1,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -2252,7 +2369,8 @@
 																				"chromeos"
 																			],
 																			"example": "windows",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -2262,12 +2380,14 @@
 															"name": {
 																"description": "The name of the device posture rule.",
 																"example": "Admin Serial Numbers",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"schedule": {
 																"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.",
 																"example": "1h",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": {
 																"description": "The type of device posture rule.",
@@ -2296,7 +2416,8 @@
 																	"custom_s2s"
 																],
 																"example": "file",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2427,7 +2548,8 @@
 					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2551,7 +2673,8 @@
 												"description": {
 													"description": "The description of the device posture rule.",
 													"example": "The rule for admin serial numbers",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"expiration": {
 													"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.",
@@ -2562,7 +2685,8 @@
 													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"input": {
 													"description": "The value to be checked against.",
@@ -2577,7 +2701,8 @@
 																"exists": {
 																	"description": "Whether or not file exists.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"operating_system": {
 																	"description": "Operating system.",
@@ -2587,12 +2712,14 @@
 																		"mac"
 																	],
 																	"example": "mac",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"description": "File path.",
 																	"example": "/bin/cat",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sha256": {
 																	"description": "SHA-256.",
@@ -2617,7 +2744,8 @@
 																"id": {
 																	"description": "List ID.",
 																	"example": "da3de859-8f6e-47ea-a2b5-b2433858471f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"operating_system": {
 																	"description": "Operating System.",
@@ -2627,7 +2755,8 @@
 																		"chromeos"
 																	],
 																	"example": "android",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -2642,7 +2771,8 @@
 																"domain": {
 																	"description": "Domain.",
 																	"example": "example.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"operating_system": {
 																	"description": "Operating System.",
@@ -2650,7 +2780,8 @@
 																		"windows"
 																	],
 																	"example": "windows",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -2667,7 +2798,8 @@
 																		"windows"
 																	],
 																	"example": "windows",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"operator": {
 																	"description": "Operator.",
@@ -2679,27 +2811,32 @@
 																		"=="
 																	],
 																	"example": "13.3.0",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"os_distro_name": {
 																	"description": "Operating System Distribution Name (linux only).",
 																	"example": "ubuntu",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"os_distro_revision": {
 																	"description": "Version of OS Distribution (linux only).",
 																	"example": "11.3.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"os_version_extra": {
 																	"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 																	"example": "(a) or -1007",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"version": {
 																	"description": "Version of OS.",
 																	"example": "13.3.0",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -2715,7 +2852,8 @@
 																"enabled": {
 																	"description": "Enabled.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"operating_system": {
 																	"description": "Operating System.",
@@ -2724,7 +2862,8 @@
 																		"mac"
 																	],
 																	"example": "windows",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -2744,22 +2883,26 @@
 																		"mac"
 																	],
 																	"example": "mac",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"description": "File path.",
 																	"example": "/bin/cat",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sha256": {
 																	"description": "SHA-256.",
 																	"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"thumbprint": {
 																	"description": "Signing certificate thumbprint.",
 																	"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -2779,22 +2922,26 @@
 																		"mac"
 																	],
 																	"example": "mac",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"description": "File path.",
 																	"example": "/bin/cat",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sha256": {
 																	"description": "SHA-256.",
 																	"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"thumbprint": {
 																	"description": "Signing certificate thumbprint.",
 																	"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -2810,7 +2957,8 @@
 																	"description": "UUID of Access List.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -2836,7 +2984,8 @@
 																"requireAll": {
 																	"description": "Whether to check all disks for encryption.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"title": "Disk Encryption",
@@ -2852,22 +3001,26 @@
 																		"mac"
 																	],
 																	"example": "mac",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"description": "Path for the application.",
 																	"example": "/bin/cat",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sha256": {
 																	"description": "SHA-256.",
 																	"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"thumbprint": {
 																	"description": "Signing certificate thumbprint.",
 																	"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -2927,7 +3080,8 @@
 																			"clientAuth",
 																			"emailProtection"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
@@ -2955,7 +3109,8 @@
 																					"system",
 																					"user"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		}
@@ -2991,12 +3146,14 @@
 																		"unknown"
 																	],
 																	"example": "compliant",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -3011,12 +3168,14 @@
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"last_seen": {
 																	"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
 																	"example": "15d3h20m4s",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"operator": {
 																	"description": "Operator.",
@@ -3028,22 +3187,26 @@
 																		"=="
 																	],
 																	"example": ">",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"os": {
 																	"description": "Os Version.",
 																	"example": "13.3.0",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"overall": {
 																	"description": "Overall.",
 																	"example": 90,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sensor_config": {
 																	"description": "SensorConfig.",
 																	"example": 90,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"state": {
 																	"description": "For more details on state, please refer to the Crowdstrike documentation.",
@@ -3053,12 +3216,14 @@
 																		"unknown"
 																	],
 																	"example": "online",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"version": {
 																	"description": "Version.",
 																	"example": "13.3.0",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"versionOperator": {
 																	"description": "Version Operator.",
@@ -3070,7 +3235,8 @@
 																		"=="
 																	],
 																	"example": ">",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -3092,12 +3258,14 @@
 																		"error"
 																	],
 																	"example": "compliant",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -3112,7 +3280,8 @@
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"countOperator": {
 																	"description": "Count Operator.",
@@ -3124,12 +3293,14 @@
 																		"=="
 																	],
 																	"example": ">",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"issue_count": {
 																	"description": "The Number of Issues.",
 																	"example": 1,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -3145,12 +3316,14 @@
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"eid_last_seen": {
 																	"description": "For more details on eid last seen, refer to the Tanium documentation.",
 																	"example": "2023-07-20T23:16:32Z",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"operator": {
 																	"description": "Operator to evaluate risk_level or eid_last_seen.",
@@ -3162,7 +3335,8 @@
 																		"=="
 																	],
 																	"example": ">",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"risk_level": {
 																	"description": "For more details on risk level, refer to the Tanium documentation.",
@@ -3173,7 +3347,8 @@
 																		"critical"
 																	],
 																	"example": "low",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scoreOperator": {
 																	"description": "Score Operator.",
@@ -3185,12 +3360,14 @@
 																		"=="
 																	],
 																	"example": ">",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"total_score": {
 																	"description": "For more details on total score, refer to the Tanium documentation.",
 																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -3314,7 +3491,8 @@
 																	"chromeos"
 																],
 																"example": "windows",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -3324,12 +3502,14 @@
 												"name": {
 													"description": "The name of the device posture rule.",
 													"example": "Admin Serial Numbers",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"schedule": {
 													"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.",
 													"example": "1h",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of device posture rule.",
@@ -3358,7 +3538,8 @@
 														"custom_s2s"
 													],
 													"example": "file",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -3485,7 +3666,8 @@
 														"description": {
 															"description": "The description of the device posture rule.",
 															"example": "The rule for admin serial numbers",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"expiration": {
 															"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.",
@@ -3496,7 +3678,8 @@
 															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"input": {
 															"description": "The value to be checked against.",
@@ -3511,7 +3694,8 @@
 																		"exists": {
 																			"description": "Whether or not file exists.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"operating_system": {
 																			"description": "Operating system.",
@@ -3521,12 +3705,14 @@
 																				"mac"
 																			],
 																			"example": "mac",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"path": {
 																			"description": "File path.",
 																			"example": "/bin/cat",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sha256": {
 																			"description": "SHA-256.",
@@ -3551,7 +3737,8 @@
 																		"id": {
 																			"description": "List ID.",
 																			"example": "da3de859-8f6e-47ea-a2b5-b2433858471f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"operating_system": {
 																			"description": "Operating System.",
@@ -3561,7 +3748,8 @@
 																				"chromeos"
 																			],
 																			"example": "android",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -3576,7 +3764,8 @@
 																		"domain": {
 																			"description": "Domain.",
 																			"example": "example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"operating_system": {
 																			"description": "Operating System.",
@@ -3584,7 +3773,8 @@
 																				"windows"
 																			],
 																			"example": "windows",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -3601,7 +3791,8 @@
 																				"windows"
 																			],
 																			"example": "windows",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"operator": {
 																			"description": "Operator.",
@@ -3613,27 +3804,32 @@
 																				"=="
 																			],
 																			"example": "13.3.0",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"os_distro_name": {
 																			"description": "Operating System Distribution Name (linux only).",
 																			"example": "ubuntu",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"os_distro_revision": {
 																			"description": "Version of OS Distribution (linux only).",
 																			"example": "11.3.1",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"os_version_extra": {
 																			"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 																			"example": "(a) or -1007",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"version": {
 																			"description": "Version of OS.",
 																			"example": "13.3.0",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -3649,7 +3845,8 @@
 																		"enabled": {
 																			"description": "Enabled.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"operating_system": {
 																			"description": "Operating System.",
@@ -3658,7 +3855,8 @@
 																				"mac"
 																			],
 																			"example": "windows",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -3678,22 +3876,26 @@
 																				"mac"
 																			],
 																			"example": "mac",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"path": {
 																			"description": "File path.",
 																			"example": "/bin/cat",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sha256": {
 																			"description": "SHA-256.",
 																			"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"thumbprint": {
 																			"description": "Signing certificate thumbprint.",
 																			"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -3713,22 +3915,26 @@
 																				"mac"
 																			],
 																			"example": "mac",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"path": {
 																			"description": "File path.",
 																			"example": "/bin/cat",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sha256": {
 																			"description": "SHA-256.",
 																			"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"thumbprint": {
 																			"description": "Signing certificate thumbprint.",
 																			"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -3744,7 +3950,8 @@
 																			"description": "UUID of Access List.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -3770,7 +3977,8 @@
 																		"requireAll": {
 																			"description": "Whether to check all disks for encryption.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Disk Encryption",
@@ -3786,22 +3994,26 @@
 																				"mac"
 																			],
 																			"example": "mac",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"path": {
 																			"description": "Path for the application.",
 																			"example": "/bin/cat",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sha256": {
 																			"description": "SHA-256.",
 																			"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"thumbprint": {
 																			"description": "Signing certificate thumbprint.",
 																			"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -3861,7 +4073,8 @@
 																					"clientAuth",
 																					"emailProtection"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
@@ -3889,7 +4102,8 @@
 																							"system",
 																							"user"
 																						],
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"type": "array"
 																				}
@@ -3925,12 +4139,14 @@
 																				"unknown"
 																			],
 																			"example": "compliant",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -3945,12 +4161,14 @@
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"last_seen": {
 																			"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
 																			"example": "15d3h20m4s",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"operator": {
 																			"description": "Operator.",
@@ -3962,22 +4180,26 @@
 																				"=="
 																			],
 																			"example": ">",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"os": {
 																			"description": "Os Version.",
 																			"example": "13.3.0",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"overall": {
 																			"description": "Overall.",
 																			"example": 90,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sensor_config": {
 																			"description": "SensorConfig.",
 																			"example": 90,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"state": {
 																			"description": "For more details on state, please refer to the Crowdstrike documentation.",
@@ -3987,12 +4209,14 @@
 																				"unknown"
 																			],
 																			"example": "online",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"version": {
 																			"description": "Version.",
 																			"example": "13.3.0",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"versionOperator": {
 																			"description": "Version Operator.",
@@ -4004,7 +4228,8 @@
 																				"=="
 																			],
 																			"example": ">",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -4026,12 +4251,14 @@
 																				"error"
 																			],
 																			"example": "compliant",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -4046,7 +4273,8 @@
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"countOperator": {
 																			"description": "Count Operator.",
@@ -4058,12 +4286,14 @@
 																				"=="
 																			],
 																			"example": ">",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"issue_count": {
 																			"description": "The Number of Issues.",
 																			"example": 1,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -4079,12 +4309,14 @@
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"eid_last_seen": {
 																			"description": "For more details on eid last seen, refer to the Tanium documentation.",
 																			"example": "2023-07-20T23:16:32Z",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"operator": {
 																			"description": "Operator to evaluate risk_level or eid_last_seen.",
@@ -4096,7 +4328,8 @@
 																				"=="
 																			],
 																			"example": ">",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"risk_level": {
 																			"description": "For more details on risk level, refer to the Tanium documentation.",
@@ -4107,7 +4340,8 @@
 																				"critical"
 																			],
 																			"example": "low",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scoreOperator": {
 																			"description": "Score Operator.",
@@ -4119,12 +4353,14 @@
 																				"=="
 																			],
 																			"example": ">",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"total_score": {
 																			"description": "For more details on total score, refer to the Tanium documentation.",
 																			"example": 1,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -4248,7 +4484,8 @@
 																			"chromeos"
 																		],
 																		"example": "windows",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -4258,12 +4495,14 @@
 														"name": {
 															"description": "The name of the device posture rule.",
 															"example": "Admin Serial Numbers",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"schedule": {
 															"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.",
 															"example": "1h",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of device posture rule.",
@@ -4292,7 +4531,8 @@
 																"custom_s2s"
 															],
 															"example": "file",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -4430,7 +4670,8 @@
 							"description": {
 								"description": "The description of the device posture rule.",
 								"example": "The rule for admin serial numbers",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"expiration": {
 								"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.",
@@ -4450,7 +4691,8 @@
 											"exists": {
 												"description": "Whether or not file exists.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"operating_system": {
 												"description": "Operating system.",
@@ -4460,12 +4702,14 @@
 													"mac"
 												],
 												"example": "mac",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"path": {
 												"description": "File path.",
 												"example": "/bin/cat",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"sha256": {
 												"description": "SHA-256.",
@@ -4490,7 +4734,8 @@
 											"id": {
 												"description": "List ID.",
 												"example": "da3de859-8f6e-47ea-a2b5-b2433858471f",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"operating_system": {
 												"description": "Operating System.",
@@ -4500,7 +4745,8 @@
 													"chromeos"
 												],
 												"example": "android",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -4515,7 +4761,8 @@
 											"domain": {
 												"description": "Domain.",
 												"example": "example.com",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"operating_system": {
 												"description": "Operating System.",
@@ -4523,7 +4770,8 @@
 													"windows"
 												],
 												"example": "windows",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -4540,7 +4788,8 @@
 													"windows"
 												],
 												"example": "windows",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"operator": {
 												"description": "Operator.",
@@ -4552,27 +4801,32 @@
 													"=="
 												],
 												"example": "13.3.0",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"os_distro_name": {
 												"description": "Operating System Distribution Name (linux only).",
 												"example": "ubuntu",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"os_distro_revision": {
 												"description": "Version of OS Distribution (linux only).",
 												"example": "11.3.1",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"os_version_extra": {
 												"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 												"example": "(a) or -1007",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"version": {
 												"description": "Version of OS.",
 												"example": "13.3.0",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -4588,7 +4842,8 @@
 											"enabled": {
 												"description": "Enabled.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"operating_system": {
 												"description": "Operating System.",
@@ -4597,7 +4852,8 @@
 													"mac"
 												],
 												"example": "windows",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -4617,22 +4873,26 @@
 													"mac"
 												],
 												"example": "mac",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"path": {
 												"description": "File path.",
 												"example": "/bin/cat",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"sha256": {
 												"description": "SHA-256.",
 												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"thumbprint": {
 												"description": "Signing certificate thumbprint.",
 												"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -4652,22 +4912,26 @@
 													"mac"
 												],
 												"example": "mac",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"path": {
 												"description": "File path.",
 												"example": "/bin/cat",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"sha256": {
 												"description": "SHA-256.",
 												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"thumbprint": {
 												"description": "Signing certificate thumbprint.",
 												"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -4683,7 +4947,8 @@
 												"description": "UUID of Access List.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -4709,7 +4974,8 @@
 											"requireAll": {
 												"description": "Whether to check all disks for encryption.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"title": "Disk Encryption",
@@ -4725,22 +4991,26 @@
 													"mac"
 												],
 												"example": "mac",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"path": {
 												"description": "Path for the application.",
 												"example": "/bin/cat",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"sha256": {
 												"description": "SHA-256.",
 												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"thumbprint": {
 												"description": "Signing certificate thumbprint.",
 												"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -4800,7 +5070,8 @@
 														"clientAuth",
 														"emailProtection"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": "array"
 											},
@@ -4828,7 +5099,8 @@
 																"system",
 																"user"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": "array"
 													}
@@ -4864,12 +5136,14 @@
 													"unknown"
 												],
 												"example": "compliant",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"connection_id": {
 												"description": "Posture Integration ID.",
 												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -4884,12 +5158,14 @@
 											"connection_id": {
 												"description": "Posture Integration ID.",
 												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"last_seen": {
 												"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
 												"example": "15d3h20m4s",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"operator": {
 												"description": "Operator.",
@@ -4901,22 +5177,26 @@
 													"=="
 												],
 												"example": ">",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"os": {
 												"description": "Os Version.",
 												"example": "13.3.0",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"overall": {
 												"description": "Overall.",
 												"example": 90,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"sensor_config": {
 												"description": "SensorConfig.",
 												"example": 90,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"state": {
 												"description": "For more details on state, please refer to the Crowdstrike documentation.",
@@ -4926,12 +5206,14 @@
 													"unknown"
 												],
 												"example": "online",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"version": {
 												"description": "Version.",
 												"example": "13.3.0",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"versionOperator": {
 												"description": "Version Operator.",
@@ -4943,7 +5225,8 @@
 													"=="
 												],
 												"example": ">",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -4965,12 +5248,14 @@
 													"error"
 												],
 												"example": "compliant",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"connection_id": {
 												"description": "Posture Integration ID.",
 												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -4985,7 +5270,8 @@
 											"connection_id": {
 												"description": "Posture Integration ID.",
 												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"countOperator": {
 												"description": "Count Operator.",
@@ -4997,12 +5283,14 @@
 													"=="
 												],
 												"example": ">",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"issue_count": {
 												"description": "The Number of Issues.",
 												"example": 1,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -5018,12 +5306,14 @@
 											"connection_id": {
 												"description": "Posture Integration ID.",
 												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"eid_last_seen": {
 												"description": "For more details on eid last seen, refer to the Tanium documentation.",
 												"example": "2023-07-20T23:16:32Z",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"operator": {
 												"description": "Operator to evaluate risk_level or eid_last_seen.",
@@ -5035,7 +5325,8 @@
 													"=="
 												],
 												"example": ">",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"risk_level": {
 												"description": "For more details on risk level, refer to the Tanium documentation.",
@@ -5046,7 +5337,8 @@
 													"critical"
 												],
 												"example": "low",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scoreOperator": {
 												"description": "Score Operator.",
@@ -5058,12 +5350,14 @@
 													"=="
 												],
 												"example": ">",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"total_score": {
 												"description": "For more details on total score, refer to the Tanium documentation.",
 												"example": 1,
-												"type": "number"
+												"type": "number",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -5187,7 +5481,8 @@
 												"chromeos"
 											],
 											"example": "windows",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -5197,12 +5492,14 @@
 							"name": {
 								"description": "The name of the device posture rule.",
 								"example": "Admin Serial Numbers",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"schedule": {
 								"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.",
 								"example": "1h",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"type": {
 								"description": "The type of device posture rule.",
@@ -5231,7 +5528,8 @@
 									"custom_s2s"
 								],
 								"example": "file",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -5356,7 +5654,8 @@
 												"description": {
 													"description": "The description of the device posture rule.",
 													"example": "The rule for admin serial numbers",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"expiration": {
 													"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.",
@@ -5367,7 +5666,8 @@
 													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"input": {
 													"description": "The value to be checked against.",
@@ -5382,7 +5682,8 @@
 																"exists": {
 																	"description": "Whether or not file exists.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"operating_system": {
 																	"description": "Operating system.",
@@ -5392,12 +5693,14 @@
 																		"mac"
 																	],
 																	"example": "mac",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"description": "File path.",
 																	"example": "/bin/cat",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sha256": {
 																	"description": "SHA-256.",
@@ -5422,7 +5725,8 @@
 																"id": {
 																	"description": "List ID.",
 																	"example": "da3de859-8f6e-47ea-a2b5-b2433858471f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"operating_system": {
 																	"description": "Operating System.",
@@ -5432,7 +5736,8 @@
 																		"chromeos"
 																	],
 																	"example": "android",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -5447,7 +5752,8 @@
 																"domain": {
 																	"description": "Domain.",
 																	"example": "example.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"operating_system": {
 																	"description": "Operating System.",
@@ -5455,7 +5761,8 @@
 																		"windows"
 																	],
 																	"example": "windows",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -5472,7 +5779,8 @@
 																		"windows"
 																	],
 																	"example": "windows",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"operator": {
 																	"description": "Operator.",
@@ -5484,27 +5792,32 @@
 																		"=="
 																	],
 																	"example": "13.3.0",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"os_distro_name": {
 																	"description": "Operating System Distribution Name (linux only).",
 																	"example": "ubuntu",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"os_distro_revision": {
 																	"description": "Version of OS Distribution (linux only).",
 																	"example": "11.3.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"os_version_extra": {
 																	"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 																	"example": "(a) or -1007",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"version": {
 																	"description": "Version of OS.",
 																	"example": "13.3.0",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -5520,7 +5833,8 @@
 																"enabled": {
 																	"description": "Enabled.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"operating_system": {
 																	"description": "Operating System.",
@@ -5529,7 +5843,8 @@
 																		"mac"
 																	],
 																	"example": "windows",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -5549,22 +5864,26 @@
 																		"mac"
 																	],
 																	"example": "mac",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"description": "File path.",
 																	"example": "/bin/cat",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sha256": {
 																	"description": "SHA-256.",
 																	"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"thumbprint": {
 																	"description": "Signing certificate thumbprint.",
 																	"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -5584,22 +5903,26 @@
 																		"mac"
 																	],
 																	"example": "mac",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"description": "File path.",
 																	"example": "/bin/cat",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sha256": {
 																	"description": "SHA-256.",
 																	"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"thumbprint": {
 																	"description": "Signing certificate thumbprint.",
 																	"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -5615,7 +5938,8 @@
 																	"description": "UUID of Access List.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -5641,7 +5965,8 @@
 																"requireAll": {
 																	"description": "Whether to check all disks for encryption.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"title": "Disk Encryption",
@@ -5657,22 +5982,26 @@
 																		"mac"
 																	],
 																	"example": "mac",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"description": "Path for the application.",
 																	"example": "/bin/cat",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sha256": {
 																	"description": "SHA-256.",
 																	"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"thumbprint": {
 																	"description": "Signing certificate thumbprint.",
 																	"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -5732,7 +6061,8 @@
 																			"clientAuth",
 																			"emailProtection"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
@@ -5760,7 +6090,8 @@
 																					"system",
 																					"user"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		}
@@ -5796,12 +6127,14 @@
 																		"unknown"
 																	],
 																	"example": "compliant",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -5816,12 +6149,14 @@
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"last_seen": {
 																	"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
 																	"example": "15d3h20m4s",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"operator": {
 																	"description": "Operator.",
@@ -5833,22 +6168,26 @@
 																		"=="
 																	],
 																	"example": ">",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"os": {
 																	"description": "Os Version.",
 																	"example": "13.3.0",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"overall": {
 																	"description": "Overall.",
 																	"example": 90,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sensor_config": {
 																	"description": "SensorConfig.",
 																	"example": 90,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"state": {
 																	"description": "For more details on state, please refer to the Crowdstrike documentation.",
@@ -5858,12 +6197,14 @@
 																		"unknown"
 																	],
 																	"example": "online",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"version": {
 																	"description": "Version.",
 																	"example": "13.3.0",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"versionOperator": {
 																	"description": "Version Operator.",
@@ -5875,7 +6216,8 @@
 																		"=="
 																	],
 																	"example": ">",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -5897,12 +6239,14 @@
 																		"error"
 																	],
 																	"example": "compliant",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -5917,7 +6261,8 @@
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"countOperator": {
 																	"description": "Count Operator.",
@@ -5929,12 +6274,14 @@
 																		"=="
 																	],
 																	"example": ">",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"issue_count": {
 																	"description": "The Number of Issues.",
 																	"example": 1,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -5950,12 +6297,14 @@
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"eid_last_seen": {
 																	"description": "For more details on eid last seen, refer to the Tanium documentation.",
 																	"example": "2023-07-20T23:16:32Z",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"operator": {
 																	"description": "Operator to evaluate risk_level or eid_last_seen.",
@@ -5967,7 +6316,8 @@
 																		"=="
 																	],
 																	"example": ">",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"risk_level": {
 																	"description": "For more details on risk level, refer to the Tanium documentation.",
@@ -5978,7 +6328,8 @@
 																		"critical"
 																	],
 																	"example": "low",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scoreOperator": {
 																	"description": "Score Operator.",
@@ -5990,12 +6341,14 @@
 																		"=="
 																	],
 																	"example": ">",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"total_score": {
 																	"description": "For more details on total score, refer to the Tanium documentation.",
 																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -6119,7 +6472,8 @@
 																	"chromeos"
 																],
 																"example": "windows",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -6129,12 +6483,14 @@
 												"name": {
 													"description": "The name of the device posture rule.",
 													"example": "Admin Serial Numbers",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"schedule": {
 													"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.",
 													"example": "1h",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of device posture rule.",
@@ -6163,7 +6519,8 @@
 														"custom_s2s"
 													],
 													"example": "file",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -6290,7 +6647,8 @@
 														"description": {
 															"description": "The description of the device posture rule.",
 															"example": "The rule for admin serial numbers",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"expiration": {
 															"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.",
@@ -6301,7 +6659,8 @@
 															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"input": {
 															"description": "The value to be checked against.",
@@ -6316,7 +6675,8 @@
 																		"exists": {
 																			"description": "Whether or not file exists.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"operating_system": {
 																			"description": "Operating system.",
@@ -6326,12 +6686,14 @@
 																				"mac"
 																			],
 																			"example": "mac",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"path": {
 																			"description": "File path.",
 																			"example": "/bin/cat",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sha256": {
 																			"description": "SHA-256.",
@@ -6356,7 +6718,8 @@
 																		"id": {
 																			"description": "List ID.",
 																			"example": "da3de859-8f6e-47ea-a2b5-b2433858471f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"operating_system": {
 																			"description": "Operating System.",
@@ -6366,7 +6729,8 @@
 																				"chromeos"
 																			],
 																			"example": "android",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -6381,7 +6745,8 @@
 																		"domain": {
 																			"description": "Domain.",
 																			"example": "example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"operating_system": {
 																			"description": "Operating System.",
@@ -6389,7 +6754,8 @@
 																				"windows"
 																			],
 																			"example": "windows",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -6406,7 +6772,8 @@
 																				"windows"
 																			],
 																			"example": "windows",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"operator": {
 																			"description": "Operator.",
@@ -6418,27 +6785,32 @@
 																				"=="
 																			],
 																			"example": "13.3.0",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"os_distro_name": {
 																			"description": "Operating System Distribution Name (linux only).",
 																			"example": "ubuntu",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"os_distro_revision": {
 																			"description": "Version of OS Distribution (linux only).",
 																			"example": "11.3.1",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"os_version_extra": {
 																			"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 																			"example": "(a) or -1007",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"version": {
 																			"description": "Version of OS.",
 																			"example": "13.3.0",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -6454,7 +6826,8 @@
 																		"enabled": {
 																			"description": "Enabled.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"operating_system": {
 																			"description": "Operating System.",
@@ -6463,7 +6836,8 @@
 																				"mac"
 																			],
 																			"example": "windows",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -6483,22 +6857,26 @@
 																				"mac"
 																			],
 																			"example": "mac",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"path": {
 																			"description": "File path.",
 																			"example": "/bin/cat",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sha256": {
 																			"description": "SHA-256.",
 																			"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"thumbprint": {
 																			"description": "Signing certificate thumbprint.",
 																			"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -6518,22 +6896,26 @@
 																				"mac"
 																			],
 																			"example": "mac",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"path": {
 																			"description": "File path.",
 																			"example": "/bin/cat",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sha256": {
 																			"description": "SHA-256.",
 																			"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"thumbprint": {
 																			"description": "Signing certificate thumbprint.",
 																			"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -6549,7 +6931,8 @@
 																			"description": "UUID of Access List.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -6575,7 +6958,8 @@
 																		"requireAll": {
 																			"description": "Whether to check all disks for encryption.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Disk Encryption",
@@ -6591,22 +6975,26 @@
 																				"mac"
 																			],
 																			"example": "mac",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"path": {
 																			"description": "Path for the application.",
 																			"example": "/bin/cat",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sha256": {
 																			"description": "SHA-256.",
 																			"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"thumbprint": {
 																			"description": "Signing certificate thumbprint.",
 																			"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -6666,7 +7054,8 @@
 																					"clientAuth",
 																					"emailProtection"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
@@ -6694,7 +7083,8 @@
 																							"system",
 																							"user"
 																						],
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"type": "array"
 																				}
@@ -6730,12 +7120,14 @@
 																				"unknown"
 																			],
 																			"example": "compliant",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -6750,12 +7142,14 @@
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"last_seen": {
 																			"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
 																			"example": "15d3h20m4s",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"operator": {
 																			"description": "Operator.",
@@ -6767,22 +7161,26 @@
 																				"=="
 																			],
 																			"example": ">",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"os": {
 																			"description": "Os Version.",
 																			"example": "13.3.0",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"overall": {
 																			"description": "Overall.",
 																			"example": 90,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sensor_config": {
 																			"description": "SensorConfig.",
 																			"example": 90,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"state": {
 																			"description": "For more details on state, please refer to the Crowdstrike documentation.",
@@ -6792,12 +7190,14 @@
 																				"unknown"
 																			],
 																			"example": "online",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"version": {
 																			"description": "Version.",
 																			"example": "13.3.0",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"versionOperator": {
 																			"description": "Version Operator.",
@@ -6809,7 +7209,8 @@
 																				"=="
 																			],
 																			"example": ">",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -6831,12 +7232,14 @@
 																				"error"
 																			],
 																			"example": "compliant",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -6851,7 +7254,8 @@
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"countOperator": {
 																			"description": "Count Operator.",
@@ -6863,12 +7267,14 @@
 																				"=="
 																			],
 																			"example": ">",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"issue_count": {
 																			"description": "The Number of Issues.",
 																			"example": 1,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -6884,12 +7290,14 @@
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"eid_last_seen": {
 																			"description": "For more details on eid last seen, refer to the Tanium documentation.",
 																			"example": "2023-07-20T23:16:32Z",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"operator": {
 																			"description": "Operator to evaluate risk_level or eid_last_seen.",
@@ -6901,7 +7309,8 @@
 																				"=="
 																			],
 																			"example": ">",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"risk_level": {
 																			"description": "For more details on risk level, refer to the Tanium documentation.",
@@ -6912,7 +7321,8 @@
 																				"critical"
 																			],
 																			"example": "low",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scoreOperator": {
 																			"description": "Score Operator.",
@@ -6924,12 +7334,14 @@
 																				"=="
 																			],
 																			"example": ">",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"total_score": {
 																			"description": "For more details on total score, refer to the Tanium documentation.",
 																			"example": 1,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -7053,7 +7465,8 @@
 																			"chromeos"
 																		],
 																		"example": "windows",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -7063,12 +7476,14 @@
 														"name": {
 															"description": "The name of the device posture rule.",
 															"example": "Admin Serial Numbers",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"schedule": {
 															"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.",
 															"example": "1h",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of device posture rule.",
@@ -7097,7 +7512,8 @@
 																"custom_s2s"
 															],
 															"example": "file",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -7225,7 +7641,8 @@
 					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -7245,7 +7662,8 @@
 							"description": {
 								"description": "The description of the device posture rule.",
 								"example": "The rule for admin serial numbers",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"expiration": {
 								"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.",
@@ -7265,7 +7683,8 @@
 											"exists": {
 												"description": "Whether or not file exists.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"operating_system": {
 												"description": "Operating system.",
@@ -7275,12 +7694,14 @@
 													"mac"
 												],
 												"example": "mac",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"path": {
 												"description": "File path.",
 												"example": "/bin/cat",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"sha256": {
 												"description": "SHA-256.",
@@ -7305,7 +7726,8 @@
 											"id": {
 												"description": "List ID.",
 												"example": "da3de859-8f6e-47ea-a2b5-b2433858471f",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"operating_system": {
 												"description": "Operating System.",
@@ -7315,7 +7737,8 @@
 													"chromeos"
 												],
 												"example": "android",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -7330,7 +7753,8 @@
 											"domain": {
 												"description": "Domain.",
 												"example": "example.com",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"operating_system": {
 												"description": "Operating System.",
@@ -7338,7 +7762,8 @@
 													"windows"
 												],
 												"example": "windows",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -7355,7 +7780,8 @@
 													"windows"
 												],
 												"example": "windows",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"operator": {
 												"description": "Operator.",
@@ -7367,27 +7793,32 @@
 													"=="
 												],
 												"example": "13.3.0",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"os_distro_name": {
 												"description": "Operating System Distribution Name (linux only).",
 												"example": "ubuntu",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"os_distro_revision": {
 												"description": "Version of OS Distribution (linux only).",
 												"example": "11.3.1",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"os_version_extra": {
 												"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 												"example": "(a) or -1007",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"version": {
 												"description": "Version of OS.",
 												"example": "13.3.0",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -7403,7 +7834,8 @@
 											"enabled": {
 												"description": "Enabled.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"operating_system": {
 												"description": "Operating System.",
@@ -7412,7 +7844,8 @@
 													"mac"
 												],
 												"example": "windows",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -7432,22 +7865,26 @@
 													"mac"
 												],
 												"example": "mac",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"path": {
 												"description": "File path.",
 												"example": "/bin/cat",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"sha256": {
 												"description": "SHA-256.",
 												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"thumbprint": {
 												"description": "Signing certificate thumbprint.",
 												"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -7467,22 +7904,26 @@
 													"mac"
 												],
 												"example": "mac",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"path": {
 												"description": "File path.",
 												"example": "/bin/cat",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"sha256": {
 												"description": "SHA-256.",
 												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"thumbprint": {
 												"description": "Signing certificate thumbprint.",
 												"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -7498,7 +7939,8 @@
 												"description": "UUID of Access List.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -7524,7 +7966,8 @@
 											"requireAll": {
 												"description": "Whether to check all disks for encryption.",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"title": "Disk Encryption",
@@ -7540,22 +7983,26 @@
 													"mac"
 												],
 												"example": "mac",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"path": {
 												"description": "Path for the application.",
 												"example": "/bin/cat",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"sha256": {
 												"description": "SHA-256.",
 												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"thumbprint": {
 												"description": "Signing certificate thumbprint.",
 												"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -7615,7 +8062,8 @@
 														"clientAuth",
 														"emailProtection"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": "array"
 											},
@@ -7643,7 +8091,8 @@
 																"system",
 																"user"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": "array"
 													}
@@ -7679,12 +8128,14 @@
 													"unknown"
 												],
 												"example": "compliant",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"connection_id": {
 												"description": "Posture Integration ID.",
 												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -7699,12 +8150,14 @@
 											"connection_id": {
 												"description": "Posture Integration ID.",
 												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"last_seen": {
 												"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
 												"example": "15d3h20m4s",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"operator": {
 												"description": "Operator.",
@@ -7716,22 +8169,26 @@
 													"=="
 												],
 												"example": ">",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"os": {
 												"description": "Os Version.",
 												"example": "13.3.0",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"overall": {
 												"description": "Overall.",
 												"example": 90,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"sensor_config": {
 												"description": "SensorConfig.",
 												"example": 90,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"state": {
 												"description": "For more details on state, please refer to the Crowdstrike documentation.",
@@ -7741,12 +8198,14 @@
 													"unknown"
 												],
 												"example": "online",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"version": {
 												"description": "Version.",
 												"example": "13.3.0",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"versionOperator": {
 												"description": "Version Operator.",
@@ -7758,7 +8217,8 @@
 													"=="
 												],
 												"example": ">",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -7780,12 +8240,14 @@
 													"error"
 												],
 												"example": "compliant",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"connection_id": {
 												"description": "Posture Integration ID.",
 												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -7800,7 +8262,8 @@
 											"connection_id": {
 												"description": "Posture Integration ID.",
 												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"countOperator": {
 												"description": "Count Operator.",
@@ -7812,12 +8275,14 @@
 													"=="
 												],
 												"example": ">",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"issue_count": {
 												"description": "The Number of Issues.",
 												"example": 1,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -7833,12 +8298,14 @@
 											"connection_id": {
 												"description": "Posture Integration ID.",
 												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"eid_last_seen": {
 												"description": "For more details on eid last seen, refer to the Tanium documentation.",
 												"example": "2023-07-20T23:16:32Z",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"operator": {
 												"description": "Operator to evaluate risk_level or eid_last_seen.",
@@ -7850,7 +8317,8 @@
 													"=="
 												],
 												"example": ">",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"risk_level": {
 												"description": "For more details on risk level, refer to the Tanium documentation.",
@@ -7861,7 +8329,8 @@
 													"critical"
 												],
 												"example": "low",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"scoreOperator": {
 												"description": "Score Operator.",
@@ -7873,12 +8342,14 @@
 													"=="
 												],
 												"example": ">",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"total_score": {
 												"description": "For more details on total score, refer to the Tanium documentation.",
 												"example": 1,
-												"type": "number"
+												"type": "number",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -8002,7 +8473,8 @@
 												"chromeos"
 											],
 											"example": "windows",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -8012,12 +8484,14 @@
 							"name": {
 								"description": "The name of the device posture rule.",
 								"example": "Admin Serial Numbers",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"schedule": {
 								"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.",
 								"example": "1h",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"type": {
 								"description": "The type of device posture rule.",
@@ -8046,7 +8520,8 @@
 									"custom_s2s"
 								],
 								"example": "file",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -8171,7 +8646,8 @@
 												"description": {
 													"description": "The description of the device posture rule.",
 													"example": "The rule for admin serial numbers",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"expiration": {
 													"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.",
@@ -8182,7 +8658,8 @@
 													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"input": {
 													"description": "The value to be checked against.",
@@ -8197,7 +8674,8 @@
 																"exists": {
 																	"description": "Whether or not file exists.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"operating_system": {
 																	"description": "Operating system.",
@@ -8207,12 +8685,14 @@
 																		"mac"
 																	],
 																	"example": "mac",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"description": "File path.",
 																	"example": "/bin/cat",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sha256": {
 																	"description": "SHA-256.",
@@ -8237,7 +8717,8 @@
 																"id": {
 																	"description": "List ID.",
 																	"example": "da3de859-8f6e-47ea-a2b5-b2433858471f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"operating_system": {
 																	"description": "Operating System.",
@@ -8247,7 +8728,8 @@
 																		"chromeos"
 																	],
 																	"example": "android",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -8262,7 +8744,8 @@
 																"domain": {
 																	"description": "Domain.",
 																	"example": "example.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"operating_system": {
 																	"description": "Operating System.",
@@ -8270,7 +8753,8 @@
 																		"windows"
 																	],
 																	"example": "windows",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -8287,7 +8771,8 @@
 																		"windows"
 																	],
 																	"example": "windows",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"operator": {
 																	"description": "Operator.",
@@ -8299,27 +8784,32 @@
 																		"=="
 																	],
 																	"example": "13.3.0",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"os_distro_name": {
 																	"description": "Operating System Distribution Name (linux only).",
 																	"example": "ubuntu",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"os_distro_revision": {
 																	"description": "Version of OS Distribution (linux only).",
 																	"example": "11.3.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"os_version_extra": {
 																	"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 																	"example": "(a) or -1007",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"version": {
 																	"description": "Version of OS.",
 																	"example": "13.3.0",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -8335,7 +8825,8 @@
 																"enabled": {
 																	"description": "Enabled.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"operating_system": {
 																	"description": "Operating System.",
@@ -8344,7 +8835,8 @@
 																		"mac"
 																	],
 																	"example": "windows",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -8364,22 +8856,26 @@
 																		"mac"
 																	],
 																	"example": "mac",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"description": "File path.",
 																	"example": "/bin/cat",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sha256": {
 																	"description": "SHA-256.",
 																	"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"thumbprint": {
 																	"description": "Signing certificate thumbprint.",
 																	"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -8399,22 +8895,26 @@
 																		"mac"
 																	],
 																	"example": "mac",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"description": "File path.",
 																	"example": "/bin/cat",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sha256": {
 																	"description": "SHA-256.",
 																	"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"thumbprint": {
 																	"description": "Signing certificate thumbprint.",
 																	"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -8430,7 +8930,8 @@
 																	"description": "UUID of Access List.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -8456,7 +8957,8 @@
 																"requireAll": {
 																	"description": "Whether to check all disks for encryption.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"title": "Disk Encryption",
@@ -8472,22 +8974,26 @@
 																		"mac"
 																	],
 																	"example": "mac",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"description": "Path for the application.",
 																	"example": "/bin/cat",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sha256": {
 																	"description": "SHA-256.",
 																	"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"thumbprint": {
 																	"description": "Signing certificate thumbprint.",
 																	"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -8547,7 +9053,8 @@
 																			"clientAuth",
 																			"emailProtection"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
@@ -8575,7 +9082,8 @@
 																					"system",
 																					"user"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		}
@@ -8611,12 +9119,14 @@
 																		"unknown"
 																	],
 																	"example": "compliant",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -8631,12 +9141,14 @@
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"last_seen": {
 																	"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
 																	"example": "15d3h20m4s",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"operator": {
 																	"description": "Operator.",
@@ -8648,22 +9160,26 @@
 																		"=="
 																	],
 																	"example": ">",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"os": {
 																	"description": "Os Version.",
 																	"example": "13.3.0",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"overall": {
 																	"description": "Overall.",
 																	"example": 90,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sensor_config": {
 																	"description": "SensorConfig.",
 																	"example": 90,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"state": {
 																	"description": "For more details on state, please refer to the Crowdstrike documentation.",
@@ -8673,12 +9189,14 @@
 																		"unknown"
 																	],
 																	"example": "online",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"version": {
 																	"description": "Version.",
 																	"example": "13.3.0",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"versionOperator": {
 																	"description": "Version Operator.",
@@ -8690,7 +9208,8 @@
 																		"=="
 																	],
 																	"example": ">",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -8712,12 +9231,14 @@
 																		"error"
 																	],
 																	"example": "compliant",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -8732,7 +9253,8 @@
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"countOperator": {
 																	"description": "Count Operator.",
@@ -8744,12 +9266,14 @@
 																		"=="
 																	],
 																	"example": ">",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"issue_count": {
 																	"description": "The Number of Issues.",
 																	"example": 1,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -8765,12 +9289,14 @@
 																"connection_id": {
 																	"description": "Posture Integration ID.",
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"eid_last_seen": {
 																	"description": "For more details on eid last seen, refer to the Tanium documentation.",
 																	"example": "2023-07-20T23:16:32Z",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"operator": {
 																	"description": "Operator to evaluate risk_level or eid_last_seen.",
@@ -8782,7 +9308,8 @@
 																		"=="
 																	],
 																	"example": ">",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"risk_level": {
 																	"description": "For more details on risk level, refer to the Tanium documentation.",
@@ -8793,7 +9320,8 @@
 																		"critical"
 																	],
 																	"example": "low",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scoreOperator": {
 																	"description": "Score Operator.",
@@ -8805,12 +9333,14 @@
 																		"=="
 																	],
 																	"example": ">",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"total_score": {
 																	"description": "For more details on total score, refer to the Tanium documentation.",
 																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -8934,7 +9464,8 @@
 																	"chromeos"
 																],
 																"example": "windows",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -8944,12 +9475,14 @@
 												"name": {
 													"description": "The name of the device posture rule.",
 													"example": "Admin Serial Numbers",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"schedule": {
 													"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.",
 													"example": "1h",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of device posture rule.",
@@ -8978,7 +9511,8 @@
 														"custom_s2s"
 													],
 													"example": "file",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -9105,7 +9639,8 @@
 														"description": {
 															"description": "The description of the device posture rule.",
 															"example": "The rule for admin serial numbers",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"expiration": {
 															"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.",
@@ -9116,7 +9651,8 @@
 															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"input": {
 															"description": "The value to be checked against.",
@@ -9131,7 +9667,8 @@
 																		"exists": {
 																			"description": "Whether or not file exists.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"operating_system": {
 																			"description": "Operating system.",
@@ -9141,12 +9678,14 @@
 																				"mac"
 																			],
 																			"example": "mac",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"path": {
 																			"description": "File path.",
 																			"example": "/bin/cat",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sha256": {
 																			"description": "SHA-256.",
@@ -9171,7 +9710,8 @@
 																		"id": {
 																			"description": "List ID.",
 																			"example": "da3de859-8f6e-47ea-a2b5-b2433858471f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"operating_system": {
 																			"description": "Operating System.",
@@ -9181,7 +9721,8 @@
 																				"chromeos"
 																			],
 																			"example": "android",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -9196,7 +9737,8 @@
 																		"domain": {
 																			"description": "Domain.",
 																			"example": "example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"operating_system": {
 																			"description": "Operating System.",
@@ -9204,7 +9746,8 @@
 																				"windows"
 																			],
 																			"example": "windows",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -9221,7 +9764,8 @@
 																				"windows"
 																			],
 																			"example": "windows",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"operator": {
 																			"description": "Operator.",
@@ -9233,27 +9777,32 @@
 																				"=="
 																			],
 																			"example": "13.3.0",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"os_distro_name": {
 																			"description": "Operating System Distribution Name (linux only).",
 																			"example": "ubuntu",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"os_distro_revision": {
 																			"description": "Version of OS Distribution (linux only).",
 																			"example": "11.3.1",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"os_version_extra": {
 																			"description": "Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).",
 																			"example": "(a) or -1007",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"version": {
 																			"description": "Version of OS.",
 																			"example": "13.3.0",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -9269,7 +9818,8 @@
 																		"enabled": {
 																			"description": "Enabled.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"operating_system": {
 																			"description": "Operating System.",
@@ -9278,7 +9828,8 @@
 																				"mac"
 																			],
 																			"example": "windows",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -9298,22 +9849,26 @@
 																				"mac"
 																			],
 																			"example": "mac",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"path": {
 																			"description": "File path.",
 																			"example": "/bin/cat",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sha256": {
 																			"description": "SHA-256.",
 																			"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"thumbprint": {
 																			"description": "Signing certificate thumbprint.",
 																			"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -9333,22 +9888,26 @@
 																				"mac"
 																			],
 																			"example": "mac",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"path": {
 																			"description": "File path.",
 																			"example": "/bin/cat",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sha256": {
 																			"description": "SHA-256.",
 																			"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"thumbprint": {
 																			"description": "Signing certificate thumbprint.",
 																			"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -9364,7 +9923,8 @@
 																			"description": "UUID of Access List.",
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -9390,7 +9950,8 @@
 																		"requireAll": {
 																			"description": "Whether to check all disks for encryption.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Disk Encryption",
@@ -9406,22 +9967,26 @@
 																				"mac"
 																			],
 																			"example": "mac",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"path": {
 																			"description": "Path for the application.",
 																			"example": "/bin/cat",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sha256": {
 																			"description": "SHA-256.",
 																			"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"thumbprint": {
 																			"description": "Signing certificate thumbprint.",
 																			"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -9481,7 +10046,8 @@
 																					"clientAuth",
 																					"emailProtection"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
@@ -9509,7 +10075,8 @@
 																							"system",
 																							"user"
 																						],
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"type": "array"
 																				}
@@ -9545,12 +10112,14 @@
 																				"unknown"
 																			],
 																			"example": "compliant",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -9565,12 +10134,14 @@
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"last_seen": {
 																			"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
 																			"example": "15d3h20m4s",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"operator": {
 																			"description": "Operator.",
@@ -9582,22 +10153,26 @@
 																				"=="
 																			],
 																			"example": ">",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"os": {
 																			"description": "Os Version.",
 																			"example": "13.3.0",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"overall": {
 																			"description": "Overall.",
 																			"example": 90,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sensor_config": {
 																			"description": "SensorConfig.",
 																			"example": 90,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"state": {
 																			"description": "For more details on state, please refer to the Crowdstrike documentation.",
@@ -9607,12 +10182,14 @@
 																				"unknown"
 																			],
 																			"example": "online",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"version": {
 																			"description": "Version.",
 																			"example": "13.3.0",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"versionOperator": {
 																			"description": "Version Operator.",
@@ -9624,7 +10201,8 @@
 																				"=="
 																			],
 																			"example": ">",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -9646,12 +10224,14 @@
 																				"error"
 																			],
 																			"example": "compliant",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -9666,7 +10246,8 @@
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"countOperator": {
 																			"description": "Count Operator.",
@@ -9678,12 +10259,14 @@
 																				"=="
 																			],
 																			"example": ">",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"issue_count": {
 																			"description": "The Number of Issues.",
 																			"example": 1,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -9699,12 +10282,14 @@
 																		"connection_id": {
 																			"description": "Posture Integration ID.",
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"eid_last_seen": {
 																			"description": "For more details on eid last seen, refer to the Tanium documentation.",
 																			"example": "2023-07-20T23:16:32Z",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"operator": {
 																			"description": "Operator to evaluate risk_level or eid_last_seen.",
@@ -9716,7 +10301,8 @@
 																				"=="
 																			],
 																			"example": ">",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"risk_level": {
 																			"description": "For more details on risk level, refer to the Tanium documentation.",
@@ -9727,7 +10313,8 @@
 																				"critical"
 																			],
 																			"example": "low",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scoreOperator": {
 																			"description": "Score Operator.",
@@ -9739,12 +10326,14 @@
 																				"=="
 																			],
 																			"example": ">",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"total_score": {
 																			"description": "For more details on total score, refer to the Tanium documentation.",
 																			"example": 1,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -9868,7 +10457,8 @@
 																			"chromeos"
 																		],
 																		"example": "windows",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -9878,12 +10468,14 @@
 														"name": {
 															"description": "The name of the device posture rule.",
 															"example": "Admin Serial Numbers",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"schedule": {
 															"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.",
 															"example": "1h",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of device posture rule.",
@@ -9912,7 +10504,8 @@
 																"custom_s2s"
 															],
 															"example": "file",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
