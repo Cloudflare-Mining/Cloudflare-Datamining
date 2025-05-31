@@ -10,7 +10,8 @@
 					"description": "End date and time of requesting data period in the ISO8601 format.",
 					"example": "2016-11-11T13:00:00Z",
 					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -19,7 +20,8 @@
 				"schema": {
 					"description": "The name for the pool to filter.",
 					"example": "primary-dc",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -29,7 +31,8 @@
 					"default": true,
 					"description": "If true, filter events where the origin status is healthy. If false, filter events where the origin status is unhealthy.",
 					"example": true,
-					"type": "boolean"
+					"type": "boolean",
+					"x-auditable": true
 				}
 			},
 			{
@@ -37,7 +40,8 @@
 				"name": "pool_id",
 				"schema": {
 					"example": "17b5962d775c646f3f9725cbc7a53df4",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -205,38 +209,45 @@
 																"address": {
 																	"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
 																	"example": "0.0.0.0",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"changed": {
 																	"description": "Whether the origin has changed health status.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"enabled": {
 																	"default": true,
 																	"description": "Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"failure_reason": {
 																	"description": "Failure reason for un-healthy origin health check.",
 																	"example": "No failures",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"healthy": {
 																	"description": "Whether the origin is reported as healthy.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"ip": {
 																	"description": "The IP address (IPv4 or IPv6) of the origin.",
 																	"example": "198.51.100.4",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "A human-identifiable name for the origin.",
 																	"example": "app-server-1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -407,38 +418,45 @@
 																		"address": {
 																			"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
 																			"example": "0.0.0.0",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"changed": {
 																			"description": "Whether the origin has changed health status.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"enabled": {
 																			"default": true,
 																			"description": "Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"failure_reason": {
 																			"description": "Failure reason for un-healthy origin health check.",
 																			"example": "No failures",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"healthy": {
 																			"description": "Whether the origin is reported as healthy.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"ip": {
 																			"description": "The IP address (IPv4 or IPv6) of the origin.",
 																			"example": "198.51.100.4",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "A human-identifiable name for the origin.",
 																			"example": "app-server-1",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"

@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -184,7 +185,8 @@
 																	"referral",
 																	"referrer"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"references": {
 																"description": "A list of references to (referrer) or from (referral) this resource.",
@@ -214,7 +216,8 @@
 															"resource_name": {
 																"description": "The human-identifiable name of the resource.",
 																"example": "primary-dc-1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"resource_type": {
 																"description": "The type of the resource.",
@@ -224,7 +227,8 @@
 																	"pool"
 																],
 																"example": "pool",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -368,7 +372,8 @@
 																			"referral",
 																			"referrer"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"references": {
 																		"description": "A list of references to (referrer) or from (referral) this resource.",
@@ -398,7 +403,8 @@
 																	"resource_name": {
 																		"description": "The human-identifiable name of the resource.",
 																		"example": "primary-dc-1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"resource_type": {
 																		"description": "The type of the resource.",
@@ -408,7 +414,8 @@
 																			"pool"
 																		],
 																		"example": "pool",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"

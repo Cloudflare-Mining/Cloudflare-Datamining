@@ -1,4 +1,468 @@
 {
+	"DELETE /accounts/{account_id}/magic/connectors/{connector_id}": {
+		"operationId": "mconn-connector-delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "connector_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"messages": {
+													"items": {
+														"properties": {
+															"code": {
+																"type": "number"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"result",
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"errors": {
+													"items": {
+														"properties": {
+															"code": {
+																"type": "number"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"maxLength": 0,
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"activated": {
+													"type": "boolean"
+												},
+												"device": {
+													"properties": {
+														"id": {
+															"type": "string"
+														},
+														"serial_number": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												},
+												"id": {
+													"type": "string"
+												},
+												"interrupt_window_duration_hours": {
+													"type": "number"
+												},
+												"interrupt_window_hour_of_day": {
+													"type": "number"
+												},
+												"last_heartbeat": {
+													"type": "string"
+												},
+												"last_seen_version": {
+													"type": "string"
+												},
+												"last_updated": {
+													"type": "string"
+												},
+												"notes": {
+													"type": "string"
+												},
+												"timezone": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"notes",
+												"activated",
+												"last_updated",
+												"timezone",
+												"interrupt_window_hour_of_day",
+												"interrupt_window_duration_hours"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized"
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal Server Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Remove a connector from your account",
+		"tags": [
+			"Magic Connectors"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
 	"GET /accounts/{account_id}/magic/connectors": {
 		"operationId": "mconn-connector-list",
 		"parameters": [
@@ -6826,6 +7290,587 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /accounts/{account_id}/magic/connectors": {
+		"operationId": "mconn-connector-create",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"properties": {
+									"device": {
+										"maxProperties": 1,
+										"minProperties": 1,
+										"properties": {
+											"id": {
+												"type": "string"
+											},
+											"serial_number": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"required": [
+									"device"
+								],
+								"type": "object"
+							},
+							{
+								"properties": {
+									"activated": {
+										"type": "boolean"
+									},
+									"interrupt_window_duration_hours": {
+										"type": "number"
+									},
+									"interrupt_window_hour_of_day": {
+										"type": "number"
+									},
+									"notes": {
+										"type": "string"
+									},
+									"timezone": {
+										"type": "string"
+									}
+								},
+								"type": "object"
+							}
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"messages": {
+													"items": {
+														"properties": {
+															"code": {
+																"type": "number"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"result",
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"errors": {
+													"items": {
+														"properties": {
+															"code": {
+																"type": "number"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"maxLength": 0,
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"activated": {
+													"type": "boolean"
+												},
+												"device": {
+													"properties": {
+														"id": {
+															"type": "string"
+														},
+														"serial_number": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												},
+												"id": {
+													"type": "string"
+												},
+												"interrupt_window_duration_hours": {
+													"type": "number"
+												},
+												"interrupt_window_hour_of_day": {
+													"type": "number"
+												},
+												"last_heartbeat": {
+													"type": "string"
+												},
+												"last_seen_version": {
+													"type": "string"
+												},
+												"last_updated": {
+													"type": "string"
+												},
+												"notes": {
+													"type": "string"
+												},
+												"timezone": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"notes",
+												"activated",
+												"last_updated",
+												"timezone",
+												"interrupt_window_hour_of_day",
+												"interrupt_window_duration_hours"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized"
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal Server Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Add a connector to your account",
+		"tags": [
+			"Magic Connectors"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,

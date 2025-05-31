@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -21,7 +22,8 @@
 				"schema": {
 					"description": "Two-letter subdivision code followed in ISO 3166-2.",
 					"example": "CA",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -30,7 +32,8 @@
 				"schema": {
 					"description": "Two-letter subdivision code followed in ISO 3166-2.",
 					"example": "CA",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -387,7 +390,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
