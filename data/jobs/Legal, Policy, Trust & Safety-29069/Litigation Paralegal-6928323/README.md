@@ -5,33 +5,64 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
-<p><strong>About The Role&nbsp;</strong></p>
-<p>As an Identity and Access Management (IAM) Security Analyst you will play a key role in efficiently managing user identities and access across the enterprise. You will be responsible for implementing technologies and designing processes to ensure users have authorized access to resources and systems.&nbsp;&nbsp;&nbsp;</p>
-<p><strong>What You’ll Do</strong></p>
+<p><strong>Available Locations: Washington DC, Austin, TX</strong></p>
+<p><strong>About the role</strong></p>
+<p>As Litigation Paralegal, you will help organize and manage our global response to legal requests and litigation, work closely with all parts of the business to develop facts and respond to discovery requests, build and manage systems to scale with our growing business, and collaborate closely with internal and external counsel. The ideal candidate has the passion to keep pace with a fast moving docket, the curiosity to dive deep into evolving technology and law, the organizational skills to manage a steady flow of documents and deadlines, and the initiative to build new systems and processes to make our team better.</p>
+<p>In this role you will:</p>
 <ul>
-	<li>Establish and execute access governance programs and policies</li>
-	<li>Define and enforce access control policies, including role-based access control (RBAC), attribute based access control (ABAC), and policy based access controls (PBAC)</li>
-	<li>Ensure access adhere to the principle of least privilege and segregation of duties (SoD).</li>
-	<li>Develop and execute an access certification program and scale to all systems&nbsp;</li>
-	<li>Design, implement, and manage Identity Access &amp; Governance policies and procedures.</li>
-	<li>Define and enforce privileged access management (PAM) policies to secure sensitive systems and data.</li>
-	<li>Manage user onboarding, offboarding, and role changes, ensuring adherence to security policies and compliance requirements.</li>
-	<li>Collaborate with cross-functional teams, including IT, security, and compliance, to ensure IAM aligns with business goals.</li>
-	<li>Communicate IAM-related updates and recommendations to stakeholders.</li>
-	<li>Maintain comprehensive documentation of IAM policies, processes, and configurations.</li>
-	<li>Generate reports and metrics related to IAM activities and security posture.</li>
-	<li>Stay current with industry best practices, regulations, and compliance standards related to IAM, such as FedRamp, SOX, GDPR, PCI, and NIST.</li>
-	<li>Provide operational support of IAM systems including an on-call rotation that may include after hours calls</li>
+	<li>Help respond to discovery orders, threatened disputes, litigation, and government inquiries;</li>
+	<li>Manage the litigation hold and document collection process;</li>
+	<li>Help conduct factual investigations and collect relevant records;</li>
+	<li>Manage internal trackers for litigation, pre-litigation, and government requests for records and enforcement matters;&nbsp;</li>
+	<li>Create, manage, and improve processes to scale our litigation function within the company;</li>
+	<li>Work closely with our litigation and legal operations team to support outside counsel onboarding and billing review, and to onboard and utilize litigation-related tools;</li>
+	<li>Collaborate with legal team members to improve processes, provide training, and ensure business needs are met.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
+<p>You have:</p>
 <ul>
-	<li>In-depth understanding of access governance&nbsp;</li>
-	<li>Experience in Identity Governance &amp; Administration (IGA) solutions</li>
-	<li>Performing policy enforcement, role management, and access certifications</li>
-	<li>Experience implementing privileged access management (PAM)</li>
-	<li>Experience developing IAM security standards and policies</li>
-	<li>Preferred background in scripting and/or application development to automate identity and access management processes.</li>
+	<li>BS/BA Degree</li>
+	<li>5+ years of litigation paralegal experience either at a law firm, in the government, or in a company</li>
+	<li>Prior experience at an in-house litigation department is a plus</li>
+	<li>Experience working on litigation matters involving technology issues or for technology companies is preferred Experience with Google drive and related products preferred. Experience with other ebilling, ediscovery, and other commonly used tools a plus</li>
+	<li>Analytical, process oriented, and strong communication and organizational skills</li>
+	<li>Ability to work cross-functionally, with lawyers and non-lawyers, to establish effective solutions efficiently and in an amenable manner</li>
+	<li>Ability to operate autonomously while being a team player who brings a positive attitude to the workplace. Lead with empathy and understanding while embracing diverse points of view. Flexibility to adapt and thrive in a fast paced environment</li>
+	<li>Understanding of law firm and vendor services as it relates to process development</li>
+	<li>Interest in learning about Cloudflare’s services and technology, and how they intersect with developing law and policy</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $105,000 - $129,000.</li>
+	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $118,000 - $144,000.</li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
