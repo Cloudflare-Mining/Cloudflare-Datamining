@@ -753,20 +753,26 @@
 				"name": "account_name",
 				"schema": {
 					"description": "Filters by the account name.",
-					"type": "string"
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
 				"in": "query",
 				"name": "action_result",
 				"schema": {
-					"description": "Whether the action was successful or not.",
-					"enum": [
-						"success",
-						"failure"
-					],
+					"description": "Filters by whether the action was successful or not.",
 					"example": "success",
-					"type": "string"
+					"items": {
+						"enum": [
+							"success",
+							"failure"
+						],
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -774,14 +780,17 @@
 				"name": "action_type",
 				"schema": {
 					"description": "Filters by the action type.",
-					"enum": [
-						"create",
-						"delete",
-						"view",
-						"update"
-					],
-					"example": "create",
-					"type": "string"
+					"items": {
+						"enum": [
+							"create",
+							"delete",
+							"view",
+							"update"
+						],
+						"example": "create",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -789,15 +798,18 @@
 				"name": "actor_context",
 				"schema": {
 					"description": "Filters by the actor context.",
-					"enum": [
-						"api_key",
-						"api_token",
-						"dash",
-						"oauth",
-						"origin_ca_key"
-					],
-					"example": "api_key",
-					"type": "string"
+					"items": {
+						"enum": [
+							"api_key",
+							"api_token",
+							"dash",
+							"oauth",
+							"origin_ca_key"
+						],
+						"example": "api_key",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -805,9 +817,12 @@
 				"name": "actor_email",
 				"schema": {
 					"description": "Filters by the actor's email address.",
-					"example": "alice@example.com",
-					"format": "email",
-					"type": "string"
+					"items": {
+						"example": "alice@example.com",
+						"format": "email",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -815,8 +830,11 @@
 				"name": "actor_id",
 				"schema": {
 					"description": "Filters by the actor ID. This can be either the Account ID or User ID.",
-					"example": "1d20c3afe174f18b642710cec6298a9d",
-					"type": "string"
+					"items": {
+						"example": "1d20c3afe174f18b642710cec6298a9d",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -824,8 +842,11 @@
 				"name": "actor_ip_address",
 				"schema": {
 					"description": "The IP address where the action was initiated.",
-					"example": "17.168.228.63",
-					"type": "string"
+					"items": {
+						"example": "17.168.228.63",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -833,8 +854,11 @@
 				"name": "actor_token_id",
 				"schema": {
 					"description": "Filters by the API token ID when the actor context is an api_token or oauth.",
-					"example": "144cdb2e39c55e203cf225d8d8208647",
-					"type": "string"
+					"items": {
+						"example": "144cdb2e39c55e203cf225d8d8208647",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -842,8 +866,11 @@
 				"name": "actor_token_name",
 				"schema": {
 					"description": "Filters by the API token name when the actor context is an api_token or oauth.",
-					"example": "Test Token",
-					"type": "string"
+					"items": {
+						"example": "Test Token",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -851,13 +878,16 @@
 				"name": "actor_type",
 				"schema": {
 					"description": "Filters by the actor type.",
-					"enum": [
-						"cloudflare_admin",
-						"account",
-						"user"
-					],
-					"example": "account",
-					"type": "string"
+					"items": {
+						"enum": [
+							"cloudflare_admin",
+							"account",
+							"user"
+						],
+						"example": "account",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -865,8 +895,11 @@
 				"name": "audit_log_id",
 				"schema": {
 					"description": "Finds a specific log by its ID.",
-					"example": "f174be97-19b1-40d6-954d-70cd5fbd52db",
-					"type": "string"
+					"items": {
+						"example": "f174be97-19b1-40d6-954d-70cd5fbd52db",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -874,8 +907,11 @@
 				"name": "raw_cf_ray_id",
 				"schema": {
 					"description": "Filters by the response CF Ray ID.",
-					"example": "8e8dd2156ef28414",
-					"type": "string"
+					"items": {
+						"example": "8e8dd2156ef28414",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -883,8 +919,11 @@
 				"name": "raw_method",
 				"schema": {
 					"description": "The HTTP method for the API call.",
-					"example": "GET",
-					"type": "string"
+					"items": {
+						"example": "GET",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -892,8 +931,11 @@
 				"name": "raw_status_code",
 				"schema": {
 					"description": "The response status code that was returned.",
-					"example": 200,
-					"type": "integer"
+					"items": {
+						"example": 200,
+						"type": "integer"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -901,7 +943,10 @@
 				"name": "raw_uri",
 				"schema": {
 					"description": "Filters by the request URI.",
-					"type": "string"
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -909,7 +954,10 @@
 				"name": "resource_id",
 				"schema": {
 					"description": "Filters by the resource ID.",
-					"type": "string"
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -917,8 +965,11 @@
 				"name": "resource_product",
 				"schema": {
 					"description": "Filters audit logs by the Cloudflare product associated with the changed resource.",
-					"example": "Stream",
-					"type": "string"
+					"items": {
+						"example": "Stream",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -926,8 +977,11 @@
 				"name": "resource_type",
 				"schema": {
 					"description": "Filters audit logs based on the unique type of resource changed by the action.",
-					"example": "Video",
-					"type": "string"
+					"items": {
+						"example": "Video",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -935,13 +989,16 @@
 				"name": "resource_scope",
 				"schema": {
 					"description": "Filters by the resource scope, specifying whether the resource is associated with an user, an account, or a zone.",
-					"enum": [
-						"accounts",
-						"user",
-						"zones"
-					],
-					"example": "accounts",
-					"type": "string"
+					"items": {
+						"enum": [
+							"accounts",
+							"user",
+							"zones"
+						],
+						"example": "accounts",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -949,7 +1006,10 @@
 				"name": "zone_id",
 				"schema": {
 					"description": "Filters by the zone ID.",
-					"type": "string"
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -957,12 +1017,291 @@
 				"name": "zone_name",
 				"schema": {
 					"description": "Filters by the zone name associated with the change.",
-					"example": "example.com",
-					"type": "string"
+					"items": {
+						"example": "example.com",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
-				"description": "Filters actions based on a given timestamp in the format yyyy-mm-dd, returning only logs that occurred on and after the specified date.",
+				"in": "query",
+				"name": "account_name.not",
+				"schema": {
+					"description": "Filters out audit logs by the account name.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "action_result.not",
+				"schema": {
+					"description": "Filters out audit logs by whether the action was successful or not.",
+					"example": "success",
+					"items": {
+						"enum": [
+							"success",
+							"failure"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "action_type.not",
+				"schema": {
+					"description": "Filters out audit logs by the action type.",
+					"items": {
+						"enum": [
+							"create",
+							"delete",
+							"view",
+							"update"
+						],
+						"example": "create",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_context.not",
+				"schema": {
+					"description": "Filters out audit logs by the actor context.",
+					"items": {
+						"enum": [
+							"api_key",
+							"api_token",
+							"dash",
+							"oauth",
+							"origin_ca_key"
+						],
+						"example": "api_key",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_email.not",
+				"schema": {
+					"description": "Filters out audit logs by the actor's email address.",
+					"items": {
+						"example": "alice@example.com",
+						"format": "email",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_id.not",
+				"schema": {
+					"description": "Filters out audit logs by the actor ID. This can be either the Account ID or User ID.",
+					"items": {
+						"example": "1d20c3afe174f18b642710cec6298a9d",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_ip_address.not",
+				"schema": {
+					"description": "Filters out audit logs IP address where the action was initiated.",
+					"items": {
+						"example": "17.168.228.63",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_token_id.not",
+				"schema": {
+					"description": "Filters out audit logs by the API token ID when the actor context is an api_token or oauth.",
+					"items": {
+						"example": "144cdb2e39c55e203cf225d8d8208647",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_token_name.not",
+				"schema": {
+					"description": "Filters out audit logs by the API token name when the actor context is an api_token or oauth.",
+					"items": {
+						"example": "Test Token",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_type.not",
+				"schema": {
+					"description": "Filters out audit logs by the actor type.",
+					"items": {
+						"enum": [
+							"cloudflare_admin",
+							"account",
+							"user"
+						],
+						"example": "account",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "audit_log_id.not",
+				"schema": {
+					"description": "Filters out audit logs by their IDs.",
+					"items": {
+						"example": "f174be97-19b1-40d6-954d-70cd5fbd52db",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "raw_cf_ray_id.not",
+				"schema": {
+					"description": "Filters out audit logs by the response CF Ray ID.",
+					"items": {
+						"example": "8e8dd2156ef28414",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "raw_method.not",
+				"schema": {
+					"description": "Filters out audit logs by the HTTP method for the API call.",
+					"items": {
+						"example": "GET",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "raw_status_code.not",
+				"schema": {
+					"description": "Filters out audit logs by the response status code that was returned.",
+					"items": {
+						"example": 200,
+						"type": "integer"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "raw_uri.not",
+				"schema": {
+					"description": "Filters out audit logs by the request URI.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "resource_id.not",
+				"schema": {
+					"description": "Filters out audit logs by the resource ID.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "resource_product.not",
+				"schema": {
+					"description": "Filters out audit logs by the Cloudflare product associated with the changed resource.",
+					"items": {
+						"example": "Stream",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "resource_type.not",
+				"schema": {
+					"description": "Filters out audit logs based on the unique type of resource changed by the action.",
+					"items": {
+						"example": "Video",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "resource_scope.not",
+				"schema": {
+					"description": "Filters out audit logs by the resource scope, specifying whether the resource is associated with an user, an account, or a zone.",
+					"items": {
+						"enum": [
+							"accounts",
+							"user",
+							"zones"
+						],
+						"example": "accounts",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone_id.not",
+				"schema": {
+					"description": "Filters out audit logs by the zone ID.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone_name.not",
+				"schema": {
+					"description": "Filters out audit logs by the zone name associated with the change.",
+					"items": {
+						"example": "example.com",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Limits the returned results to logs newer than the specified date. This can be a date string 2019-04-30 (interpreted in UTC) or an absolute timestamp that conforms to RFC3339.",
 				"in": "query",
 				"name": "since",
 				"required": true,
@@ -973,7 +1312,7 @@
 				}
 			},
 			{
-				"description": "Filters actions based on a given timestamp in the format yyyy-mm-dd, returning only logs that occurred on and before the specified date.",
+				"description": "Limits the returned results to logs older than the specified date. This can be a date string 2019-04-30 (interpreted in UTC) or an absolute timestamp that conforms to RFC3339.",
 				"in": "query",
 				"name": "before",
 				"required": true,
