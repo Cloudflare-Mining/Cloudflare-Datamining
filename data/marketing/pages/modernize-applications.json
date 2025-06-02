@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2025-04-28T21:28:26.499Z",
-					"updatedAt": "2025-05-30T13:31:03.656Z"
+					"updatedAt": "2025-06-02T19:41:26.973Z"
 				},
 				"contentfulId": "4Jk3XH2lKQmdmtzrA1tocn",
 				"contentTypeId": "page",
@@ -63,6 +63,12 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "5ad85dPiHgxhhkv35vQ5iw",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Webinar: 3 strategies to modernize applications and build for what's next.</span>\n\n        <a class=\"link-helper\" href=\"https://cloudflare.registration.goldcast.io/webinar/9fd5ab3f-aa55-40a3-ad4c-19d4e74848eb\">\n           <strong>Sign up now ></strong>\n        </a>\n    </div>",
+						"htmlId": null
+					},
 					{
 						"contentfulId": "MzktC3kqLT9Oz4cMSy0Sw",
 						"contentTypeId": "bladeHeroAnimation",
@@ -1755,6 +1761,39 @@
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1RLEnIxmF7SDLzC2yDIqZf/d8a5b8a77a0296abbf345f8ace0cde8a/Education_01__1_.png"
 										},
 										"description": "Education book learning "
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "4Robw7ZfEiU349GKvZbpXR",
+								"heading": "Webinar",
+								"description": "Learn strategies to regain control and shorten the time to value on your app modernization",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "36u23as2ahfvWxhMlWzOOE",
+									"elementName": "Application modernization-Webinar - Resource 7 - link",
+									"standardText": null,
+									"text": "Register",
+									"url": "https://cloudflare.registration.goldcast.io/webinar/9fd5ab3f-aa55-40a3-ad4c-19d4e74848eb",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "b6011867-5a8b-5c2f-b567-9ebfb16f9361",
+									"altText": null,
+									"title": "Webinar 106x165 - Thumbnail for mosaic card",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/R68bUicgjCMdgEBXBM1ey/c350338abc119640172d8876202ffbf8/Webinar-106x165-thumbnail-card.svg"
+										},
+										"description": "Webinar 106x165 - Thumbnail for mosaic card"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
