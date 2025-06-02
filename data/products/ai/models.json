@@ -1540,6 +1540,20 @@
 		]
 	},
 	{
+		"id": "3972f120-93ab-4516-ab93-e743e9518c85",
+		"source": 1,
+		"name": "@cf/microsoft/omni-resnet-50",
+		"description": "50 layers deep image classification CNN trained on more than 1M images from ImageNet.",
+		"task": {
+			"id": "ccb1ca5a-043d-41a7-8a3b-61017b2796fd",
+			"name": "Dumb Pipe",
+			"description": "Internal - Dumb Pipe models don't use tensors"
+		},
+		"created_at": "2025-05-29 16:58:28.874",
+		"tags": [],
+		"properties": []
+	},
+	{
 		"id": "337170b7-bd2f-4631-9a57-688b579cf6d3",
 		"source": 1,
 		"name": "@cf/google/gemma-7b-it-lora",
