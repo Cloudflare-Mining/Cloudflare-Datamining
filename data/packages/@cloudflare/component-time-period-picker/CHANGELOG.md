@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.2.0
+
+### Minor Changes
+
+- f80b4ed626: Add callback for TimePeriodPicker open state change
+
 ## 7.1.0
 
 ### Minor Changes

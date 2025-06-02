@@ -1,5 +1,12 @@
 # Change Log
 
+## 7.0.5
+
+### Patch Changes
+
+- Updated dependencies [f80b4ed626]
+  - @cloudflare/component-time-period-picker@7.2.0
+
 ## 7.0.4
 
 ### Patch Changes
