@@ -228,78 +228,168 @@ fetchDataFromBothEndpoints();</code></pre>
 	</div>
 	<p>Following the previous improvements, the Picsart team made another significant discovery: only a small fraction of configuration data is needed to assign the experiments, while the remaining majority of the data comprises JSON values for the remote configuration payloads. While the service must deliver the latter in the response, the data is not required during the initial processing phase.</p>
 	<p>The initial implementation used <a href="https://developers.cloudflare.com/kv/api/read-key-value-pairs">KV's get()</a> method to retrieve the configuration data with the parameter type=<code>json</code>, which converts the KV value to an object. This process is very compute-intensive compared to using the <code>get()</code> method with parameter type= <code>text</code>, which simply returns the value as a string. In the context of Picsart's data, the bulk of the CPU cycles were wasted on serializing JSON data that is not needed to perform the required business logic.</p>
-	<p>What if the data structure and code could be changed in such a way that only the data needed to assign experiments was parsed as JSON, while the configuration values were treated as text? Picsart went ahead with a new approach: splitting the KV records into two, creating a small 300 KB record for the metadata, which can be quickly parsed to an object, and a 9.7 MB record of configuration values. The extracted configuration values are delimited by newline characters. The respective line number is used as reference in the metadata entry, so that the respective configuration value for an experiment can be merged back into the payload response later.</p><!--kg-card-begin: html-->
-	<table>
-		<tbody>
-			<tr>
-				<td colspan="2" style="border: none">
-					<code style="display: block">
-						{<br>
-						&nbsp;&nbsp;"name": "shape_replace_items",<br>
-						&nbsp;&nbsp;"default_value": "&lt;large json object&gt;",<br>
-						&nbsp;&nbsp;"segments": [<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;{<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "f1244",<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": "&lt;Another json object
-						json object&gt;"<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;},<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;{<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "a2lfd",<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": "&lt;Yet another large json
-						object&gt;"<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-						&nbsp;&nbsp;]<br>
-						}<br>
-					</code>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" style="border: none">
-					<figcaption style="margin: 0; margin-bottom: 1em">
-						<em>Before: Metadata and Values in one JSON object (simplified)</em>
-					</figcaption>
-				</td>
-			</tr>
-			<tr>
-				<td style="vertical-align: top; border: none">
-					<code style="display: block">
-						// com.picsart.studio_apple_am_metadata<br>
-						<br>
-						1 {<br>
-						2&nbsp;&nbsp; "name": "shape_replace_items",<br>
-						3&nbsp;&nbsp; "default_value": 1,<br>
-						4&nbsp;&nbsp; "segments": [<br>
-						5&nbsp;&nbsp;&nbsp;&nbsp; {<br>
-						6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "id": "f1244",<br>
-						7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "value": 2<br>
-						8&nbsp;&nbsp;&nbsp;&nbsp; },<br>
-						9&nbsp;&nbsp;&nbsp;&nbsp; {<br>
-						10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "id": "a2lfd",<br>
-						11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": 3<br>
-						12&nbsp;&nbsp;&nbsp;&nbsp; }<br>
-						13&nbsp;&nbsp; ]<br>
-						14 }<br>
-					</code>
-				</td>
-				<td style="vertical-align: top; border: none">
-					<code style="display: block">
-						// com.picsart.studio_apple_am_values<br>
-						<br>
-						1 "&lt;large json object&gt;"<br>
-						2 "&lt;Another json object&gt;"<br>
-						3 "&lt;Yet another json object&gt;"<br>
-					</code>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" style="border: none">
-					<figcaption style="margin: 0; margin-bottom: 1em">
-						<em>After: Metadata and Values are split (simplified)</em>
-					</figcaption>
-				</td>
-			</tr>
-		</tbody>
-	</table><!--kg-card-end: html-->
+	<p>What if the data structure and code could be changed in such a way that only the data needed to assign experiments was parsed as JSON, while the configuration values were treated as text? Picsart went ahead with a new approach: splitting the KV records into two, creating a small 300 KB record for the metadata, which can be quickly parsed to an object, and a 9.7 MB record of configuration values. The extracted configuration values are delimited by newline characters. The respective line number is used as reference in the metadata entry, so that the respective configuration value for an experiment can be merged back into the payload response later.</p>
+	<div style="margin-left:0pt;" dir="ltr" align="center">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+				<colgroup>
+					<col style="width:100%;" width="667">
+				</colgroup>
+				<tbody>
+					<tr style="height:0pt;">
+						<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">{</span></span>
+							</p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;"name": "shape_replace_items",</span></span>
+							</p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;"default_value": "&lt;large json object&gt;",</span></span>
+							</p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;"segments": [</span></span>
+							</p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span>
+							</p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "f1244",</span></span>
+							</p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": "&lt;Another json object json object&gt;"</span></span>
+							</p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;},</span></span>
+							</p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span>
+							</p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "a2lfd",</span></span>
+							</p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": "&lt;Yet another large json object&gt;"</span></span>
+							</p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span>
+							</p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;]</span></span>
+							</p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">}</span></span>
+							</p>
+							<p>
+								&nbsp;
+							</p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr">
+								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:8pt;"><i><span style="font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Before: Metadata and Values in one JSON object (simplified)</span></i></span>
+							</p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p>
+								&nbsp;
+							</p>
+							<div style="margin-left:0pt;" dir="ltr" align="center">
+								<figure class="table">
+									<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+										<colgroup>
+											<col style="width:50%;" width="333">
+											<col style="width:50%;" width="333">
+										</colgroup>
+										<tbody>
+											<tr style="height:0pt;">
+												<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">// com.picsart.studio_apple_am_metadata</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<br>
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1 {</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2 &nbsp; "name": "shape_replace_items",</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">3 &nbsp; "default_value": 1,</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">4 &nbsp; "segments": [</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">5 &nbsp; &nbsp; {</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">6 &nbsp; &nbsp; &nbsp; "id": "f1244",</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">7 &nbsp; &nbsp; &nbsp; "value": 2</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">8 &nbsp; &nbsp; },</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">9 &nbsp; &nbsp; {</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">10 &nbsp; &nbsp; &nbsp; "id": "a2lfd",</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">11&nbsp; &nbsp; &nbsp; "value": 3</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">12 &nbsp; &nbsp; }</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">13 &nbsp; ]</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">14 }</span></span>
+													</p>
+												</td>
+												<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">// com.picsart.studio_apple_am_values</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<br>
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1 "&lt;large json object&gt;"</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2 "&lt;Another json object&gt;"</span></span>
+													</p>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">3 "&lt;Yet another json object&gt;"</span></span>
+													</p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</figure>
+							</div>
+							<p>
+								&nbsp;
+							</p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr">
+								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:8pt;"><i><span style="font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">After:&nbsp; Metadata and Values are split (simplified)</span></i></span>
+							</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
 	<p>After calculating the experiments and selecting the correct variants based solely on the small metadata entry, the service constructs a JSON string for the response containing placeholders for the actual values that reference the corresponding line numbers in the separate text file. To finalize the response, the server replaces the placeholders with the corresponding serialized JSON strings from the text file. This approach circumvents the need for parsing and re-serializing large JSON objects and helps to avoid a significant computational overhead.</p>
 	<p>Note that the process of parsing the metadata JSON and determining the correct experiments as well as the loading of the large file with configuration values are executed in parallel, saving additional milliseconds.</p>
 	<p>By minimizing the size of the JSON data that needed to be parsed and leveraging a more efficient method for constructing the final response, the Picsart team managed to not only reduce the response times but also optimize the compute resource usage. This approach reflects a broader principle applicable across the tech industry: that efficiency, particularly in serverless architectures, can often be dramatically improved by rethinking data structure and utilization.</p>
