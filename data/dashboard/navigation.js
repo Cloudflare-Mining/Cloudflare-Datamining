@@ -45,7 +45,7 @@ const navigation = {
 		title: "navigation.profile.authentication",
 		url: "/authentication",
 		iconType: "key",
-		hasPermission: D => !(0, E.n3)() && !(0, o.z1)("oauth-access-management")(D)
+		hasPermission: D => !(0, h.n3)() && !(0, o.z1)("oauth-access-management")(D)
 	}, {
 		title: "navigation.profile.api_tokens",
 		url: "/api-tokens",
@@ -107,11 +107,11 @@ const navigation = {
 		url: "/observability",
 		labels: ["beta"],
 		iconType: "chart",
-		hasPermission: D => (0, s.GU)(D, "eos-navigation") && ((0, g.q)(D) || (0, V.Ko)(D)),
+		hasPermission: D => (0, s.GU)(D, "eos-navigation") && ((0, E.q)(D) || (0, V.Ko)(D)),
 		pages: [{
 			title: "navigation.account.log_explorer",
 			url: "/observability/log-explorer",
-			hasPermission: D => (0, f.iY)(D) && (0, g.q)(D)
+			hasPermission: D => (0, f.iY)(D) && (0, E.q)(D)
 		}, {
 			title: "navigation.account.dashboards",
 			url: "/observability/dashboards",
@@ -143,12 +143,12 @@ const navigation = {
 		}, {
 			title: "navigation.account.logs",
 			url: "/logs",
-			hasPermission: D => (0, f.iY)(D) && (0, C.S6)(D) && !!(0, o.z1)("account-logpush")(D)
+			hasPermission: D => (0, f.iY)(D) && (0, b.S6)(D) && !!(0, o.z1)("account-logpush")(D)
 		}, {
 			title: "navigation.account.log_explorer",
 			url: "/log-explorer",
 			labels: ["beta"],
-			hasPermission: D => (0, f.iY)(D) && (0, g.q)(D) && !(0, s.GU)(D, "eos-navigation")
+			hasPermission: D => (0, f.iY)(D) && (0, E.q)(D) && !(0, s.GU)(D, "eos-navigation")
 		}, {
 			title: "navigation.account.carbon",
 			url: "/carbon",
@@ -467,7 +467,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: D => {
 				const Z = (0, l.tJ)(D);
-				return !(0, v.ky)(Z, [h.uD.EnterpriseTrial])
+				return !(0, v.ky)(Z, [g.uD.EnterpriseTrial])
 			}
 		}]
 	}, {
@@ -814,7 +814,7 @@ const navigation = {
 			title: "navigation.zone.analytics.logs",
 			url: "/analytics/logs",
 			navigationType: "both",
-			hasPermission: D => (0, C.Xu)(D)
+			hasPermission: D => (0, b.Xu)(D)
 		}, {
 			title: "navigation.zone.analytics.instant_logs",
 			url: "/analytics/instant-logs",
@@ -825,7 +825,7 @@ const navigation = {
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: D => !!(0, g.q)(D)
+			hasPermission: D => !!(0, E.q)(D)
 		}, {
 			title: "navigation.zone.analytics.dashboards",
 			url: "/analytics/dashboards",
@@ -1051,7 +1051,7 @@ const navigation = {
 			title: "navigation.common.overview",
 			navigationType: "global-settings",
 			url: "/caching",
-			tabs: b
+			tabs: C
 		}, {
 			title: "navigation.zone.caching.configuration",
 			url: "/caching/configuration",
