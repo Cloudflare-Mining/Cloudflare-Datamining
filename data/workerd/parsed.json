@@ -3366,6 +3366,10 @@
 				{
 					"name": "static",
 					"annotations": {}
+				},
+				{
+					"name": "fastApiCompatible",
+					"annotations": {}
 				}
 			]
 		},
@@ -3493,6 +3497,14 @@
 				},
 				{
 					"name": "prototype",
+					"annotations": {}
+				},
+				{
+					"name": "getterFastApiCompatible",
+					"annotations": {}
+				},
+				{
+					"name": "setterFastApiCompatible",
 					"annotations": {}
 				}
 			]
