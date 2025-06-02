@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.2.1
+
+### Patch Changes
+
+- 218e2a32dd: Fixes onOpenChange callback for TimePeriodPicker
+
 ## 7.2.0
 
 ### Minor Changes
