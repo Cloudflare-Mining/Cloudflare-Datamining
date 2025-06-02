@@ -8,12 +8,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			},
 			{
@@ -215,7 +221,7 @@
 												"description": "A named group of permissions that map to a group of operations against resources.",
 												"properties": {
 													"id": {
-														"description": "Identifier of the group.",
+														"description": "Identifier of the permission group.",
 														"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 														"type": "string",
 														"x-auditable": true
@@ -228,16 +234,18 @@
 														},
 														"properties": {
 															"key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"value": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
 													},
 													"name": {
-														"description": "Name of the group.",
+														"description": "Name of the permission group.",
 														"example": "Load Balancer",
 														"readOnly": true,
 														"type": "string",
@@ -440,12 +448,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			},
 			{
@@ -453,12 +467,18 @@
 				"name": "permission_group_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Permission Group identifier tag.",
-					"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Permission Group Identifier"
 				}
 			}
 		],
@@ -470,7 +490,7 @@
 							"description": "A named group of permissions that map to a group of operations against resources.",
 							"properties": {
 								"id": {
-									"description": "Identifier of the group.",
+									"description": "Identifier of the permission group.",
 									"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 									"type": "string",
 									"x-auditable": true
@@ -483,16 +503,18 @@
 									},
 									"properties": {
 										"key": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"value": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
 								},
 								"name": {
-									"description": "Name of the group.",
+									"description": "Name of the permission group.",
 									"example": "Load Balancer",
 									"readOnly": true,
 									"type": "string",

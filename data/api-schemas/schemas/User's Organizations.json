@@ -12,8 +12,9 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"minLength": 32,
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -33,8 +34,9 @@
 									"description": "Identifier",
 									"example": "023e105f4ecef8ad9ca31a8372d0c353",
 									"maxLength": 32,
-									"readOnly": true,
-									"type": "string"
+									"minLength": 32,
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -402,8 +404,9 @@
 														"description": "Identifier",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
+														"minLength": 32,
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "Organization name.",
@@ -428,7 +431,8 @@
 														"items": {
 															"example": "All Privileges - Super Administrator",
 															"maxLength": 120,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"readOnly": true,
 														"type": "array"
@@ -440,7 +444,8 @@
 															"invited"
 														],
 														"example": "member",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -610,8 +615,9 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"minLength": 32,
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],

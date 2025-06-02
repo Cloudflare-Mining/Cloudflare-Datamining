@@ -8,12 +8,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			},
 			{
@@ -21,12 +27,18 @@
 				"name": "resource_group_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Resource Group identifier tag.",
-					"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Resource Group Identifier"
 				}
 			}
 		],
@@ -133,8 +145,9 @@
 													"description": "Identifier",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"minLength": 32,
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -303,23 +316,41 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			},
 			{
 				"in": "query",
 				"name": "id",
 				"schema": {
-					"description": "ID of the resource group to be fetched.",
-					"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-					"maxLength": 32,
-					"minLength": 32,
-					"type": "string"
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"description": "Identifier",
+									"example": "023e105f4ecef8ad9ca31a8372d0c353",
+									"maxLength": 32,
+									"minLength": 32,
+									"type": "string",
+									"x-auditable": true
+								}
+							],
+							"description": "Resource Group identifier tag.",
+							"title": "Resource Group Identifier"
+						}
+					],
+					"description": "ID of the resource group to be fetched."
 				}
 			},
 			{
@@ -483,7 +514,7 @@
 												"description": "A group of scoped resources.",
 												"properties": {
 													"id": {
-														"description": "Identifier of the group.",
+														"description": "Identifier of the resource group.",
 														"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 														"readOnly": true,
 														"type": "string",
@@ -519,7 +550,8 @@
 																"key": {
 																	"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
 																	"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-																	"readOnly": true
+																	"readOnly": true,
+																	"x-auditable": true
 																},
 																"objects": {
 																	"description": "A list of scope objects for additional context.",
@@ -529,7 +561,8 @@
 																			"key": {
 																				"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
 																				"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
-																				"readOnly": true
+																				"readOnly": true,
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -720,12 +753,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			},
 			{
@@ -733,12 +772,18 @@
 				"name": "resource_group_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Resource Group identifier tag.",
-					"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Resource Group Identifier"
 				}
 			}
 		],
@@ -750,7 +795,7 @@
 							"description": "A group of scoped resources.",
 							"properties": {
 								"id": {
-									"description": "Identifier of the group.",
+									"description": "Identifier of the resource group.",
 									"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 									"readOnly": true,
 									"type": "string",
@@ -786,7 +831,8 @@
 											"key": {
 												"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
 												"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-												"readOnly": true
+												"readOnly": true,
+												"x-auditable": true
 											},
 											"objects": {
 												"description": "A list of scope objects for additional context.",
@@ -796,7 +842,8 @@
 														"key": {
 															"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
 															"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
-															"readOnly": true
+															"readOnly": true,
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -979,12 +1026,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			}
 		],
@@ -1211,7 +1264,7 @@
 						}
 					}
 				},
-				"description": "Add Member response failure"
+				"description": "Add Resource Group response failure"
 			}
 		},
 		"security": [
@@ -1252,12 +1305,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			},
 			{
@@ -1265,12 +1324,18 @@
 				"name": "resource_group_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Resource Group identifier tag.",
-					"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Resource Group Identifier"
 				}
 			}
 		],
@@ -1331,7 +1396,7 @@
 							"description": "A group of scoped resources.",
 							"properties": {
 								"id": {
-									"description": "Identifier of the group.",
+									"description": "Identifier of the resource group.",
 									"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 									"readOnly": true,
 									"type": "string",
@@ -1367,7 +1432,8 @@
 											"key": {
 												"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
 												"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-												"readOnly": true
+												"readOnly": true,
+												"x-auditable": true
 											},
 											"objects": {
 												"description": "A list of scope objects for additional context.",
@@ -1377,7 +1443,8 @@
 														"key": {
 															"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
 															"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
-															"readOnly": true
+															"readOnly": true,
+															"x-auditable": true
 														}
 													},
 													"required": [

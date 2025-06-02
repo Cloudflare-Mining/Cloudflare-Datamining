@@ -110,8 +110,9 @@
 													"description": "Identifier",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"minLength": 32,
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -455,14 +456,16 @@
 														"description": "Identifier",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
+														"minLength": 32,
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "Account name",
 														"example": "Demo Account",
 														"maxLength": 100,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"settings": {
 														"description": "Account settings",
@@ -640,12 +643,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			}
 		],
@@ -758,14 +767,16 @@
 													"description": "Identifier",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"minLength": 32,
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Account name",
 													"example": "Demo Account",
 													"maxLength": 100,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"settings": {
 													"description": "Account settings",
@@ -1123,14 +1134,16 @@
 													"description": "Identifier",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"minLength": 32,
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Account name",
 													"example": "Demo Account",
 													"maxLength": 100,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"settings": {
 													"description": "Account settings",
@@ -1306,12 +1319,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			}
 		],
@@ -1334,14 +1353,16 @@
 										"description": "Identifier",
 										"example": "023e105f4ecef8ad9ca31a8372d0c353",
 										"maxLength": 32,
-										"readOnly": true,
-										"type": "string"
+										"minLength": 32,
+										"type": "string",
+										"x-auditable": true
 									},
 									"name": {
 										"description": "Account name",
 										"example": "Demo Account",
 										"maxLength": 100,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"settings": {
 										"description": "Account settings",
@@ -1482,14 +1503,16 @@
 													"description": "Identifier",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"minLength": 32,
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Account name",
 													"example": "Demo Account",
 													"maxLength": 100,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"settings": {
 													"description": "Account settings",

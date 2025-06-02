@@ -182,7 +182,8 @@
 															"locked": {
 																"description": "Shows whether a registrar lock is in place for a domain.",
 																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"registrant_contact": {
 																"allOf": [
@@ -553,7 +554,8 @@
 																	"locked": {
 																		"description": "Shows whether a registrar lock is in place for a domain.",
 																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"registrant_contact": {
 																		"allOf": [
@@ -1240,17 +1242,20 @@
 									"auto_renew": {
 										"description": "Auto-renew controls whether subscription is automatically renewed upon domain expiration.",
 										"example": true,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"locked": {
 										"description": "Shows whether a registrar lock is in place for a domain.",
 										"example": false,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"privacy": {
 										"description": "Privacy option controls redacting WHOIS information.",
 										"example": true,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									}
 								},
 								"type": "object"

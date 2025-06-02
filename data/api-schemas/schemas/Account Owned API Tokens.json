@@ -8,12 +8,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			},
 			{
@@ -25,7 +31,8 @@
 					"example": "ed17574386854bf78a67040be0a770b0",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -132,8 +139,9 @@
 													"description": "Identifier",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"minLength": 32,
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -297,12 +305,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			},
 			{
@@ -528,7 +542,8 @@
 														"example": "ed17574386854bf78a67040be0a770b0",
 														"maxLength": 32,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"issued_on": {
 														"description": "The time on which the token was created.",
@@ -558,7 +573,8 @@
 														"description": "Token name.",
 														"example": "readonly token",
 														"maxLength": 120,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"not_before": {
 														"description": "The time before which the token MUST NOT be accepted for processing.",
@@ -612,7 +628,7 @@
 																		"description": "A named group of permissions that map to a group of operations against resources.",
 																		"properties": {
 																			"id": {
-																				"description": "Identifier of the group.",
+																				"description": "Identifier of the permission group.",
 																				"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 																				"type": "string",
 																				"x-auditable": true
@@ -625,16 +641,18 @@
 																				},
 																				"properties": {
 																					"key": {
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"value": {
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
 																			},
 																			"name": {
-																				"description": "Name of the group.",
+																				"description": "Name of the permission group.",
 																				"example": "Load Balancer",
 																				"readOnly": true,
 																				"type": "string",
@@ -650,7 +668,8 @@
 																},
 																"resources": {
 																	"additionalProperties": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"description": "A list of resource names that the policy applies to.",
 																	"example": {
@@ -845,12 +864,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			},
 			{
@@ -862,7 +887,8 @@
 					"example": "ed17574386854bf78a67040be0a770b0",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1024,7 +1050,8 @@
 													"example": "ed17574386854bf78a67040be0a770b0",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"issued_on": {
 													"description": "The time on which the token was created.",
@@ -1054,7 +1081,8 @@
 													"description": "Token name.",
 													"example": "readonly token",
 													"maxLength": 120,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"not_before": {
 													"description": "The time before which the token MUST NOT be accepted for processing.",
@@ -1108,7 +1136,7 @@
 																	"description": "A named group of permissions that map to a group of operations against resources.",
 																	"properties": {
 																		"id": {
-																			"description": "Identifier of the group.",
+																			"description": "Identifier of the permission group.",
 																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 																			"type": "string",
 																			"x-auditable": true
@@ -1121,16 +1149,18 @@
 																			},
 																			"properties": {
 																				"key": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"value": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
 																		},
 																		"name": {
-																			"description": "Name of the group.",
+																			"description": "Name of the permission group.",
 																			"example": "Load Balancer",
 																			"readOnly": true,
 																			"type": "string",
@@ -1146,7 +1176,8 @@
 															},
 															"resources": {
 																"additionalProperties": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"description": "A list of resource names that the policy applies to.",
 																"example": {
@@ -1339,12 +1370,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			}
 		],
@@ -1712,12 +1749,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			}
 		],
@@ -1830,7 +1873,8 @@
 													"example": "ed17574386854bf78a67040be0a770b0",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"not_before": {
 													"description": "The time before which the token MUST NOT be accepted for processing.",
@@ -2004,12 +2048,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			}
 		],
@@ -2078,7 +2128,8 @@
 								"description": "Token name.",
 								"example": "readonly token",
 								"maxLength": 120,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"not_before": {
 								"description": "The time before which the token MUST NOT be accepted for processing.",
@@ -2132,7 +2183,7 @@
 												"description": "A named group of permissions that map to a group of operations against resources.",
 												"properties": {
 													"id": {
-														"description": "Identifier of the group.",
+														"description": "Identifier of the permission group.",
 														"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 														"type": "string",
 														"x-auditable": true
@@ -2145,16 +2196,18 @@
 														},
 														"properties": {
 															"key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"value": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
 													},
 													"name": {
-														"description": "Name of the group.",
+														"description": "Name of the permission group.",
 														"example": "Load Balancer",
 														"readOnly": true,
 														"type": "string",
@@ -2170,7 +2223,8 @@
 										},
 										"resources": {
 											"additionalProperties": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"description": "A list of resource names that the policy applies to.",
 											"example": {
@@ -2362,7 +2416,8 @@
 															"example": "ed17574386854bf78a67040be0a770b0",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"issued_on": {
 															"description": "The time on which the token was created.",
@@ -2392,7 +2447,8 @@
 															"description": "Token name.",
 															"example": "readonly token",
 															"maxLength": 120,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"not_before": {
 															"description": "The time before which the token MUST NOT be accepted for processing.",
@@ -2446,7 +2502,7 @@
 																			"description": "A named group of permissions that map to a group of operations against resources.",
 																			"properties": {
 																				"id": {
-																					"description": "Identifier of the group.",
+																					"description": "Identifier of the permission group.",
 																					"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 																					"type": "string",
 																					"x-auditable": true
@@ -2459,16 +2515,18 @@
 																					},
 																					"properties": {
 																						"key": {
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"value": {
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
 																				},
 																				"name": {
-																					"description": "Name of the group.",
+																					"description": "Name of the permission group.",
 																					"example": "Load Balancer",
 																					"readOnly": true,
 																					"type": "string",
@@ -2484,7 +2542,8 @@
 																	},
 																	"resources": {
 																		"additionalProperties": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"description": "A list of resource names that the policy applies to.",
 																		"example": {
@@ -2692,12 +2751,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			},
 			{
@@ -2709,7 +2774,8 @@
 					"example": "ed17574386854bf78a67040be0a770b0",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2781,7 +2847,8 @@
 										"example": "ed17574386854bf78a67040be0a770b0",
 										"maxLength": 32,
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"issued_on": {
 										"description": "The time on which the token was created.",
@@ -2811,7 +2878,8 @@
 										"description": "Token name.",
 										"example": "readonly token",
 										"maxLength": 120,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"not_before": {
 										"description": "The time before which the token MUST NOT be accepted for processing.",
@@ -2865,7 +2933,7 @@
 														"description": "A named group of permissions that map to a group of operations against resources.",
 														"properties": {
 															"id": {
-																"description": "Identifier of the group.",
+																"description": "Identifier of the permission group.",
 																"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 																"type": "string",
 																"x-auditable": true
@@ -2878,16 +2946,18 @@
 																},
 																"properties": {
 																	"key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
 															},
 															"name": {
-																"description": "Name of the group.",
+																"description": "Name of the permission group.",
 																"example": "Load Balancer",
 																"readOnly": true,
 																"type": "string",
@@ -2903,7 +2973,8 @@
 												},
 												"resources": {
 													"additionalProperties": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"description": "A list of resource names that the policy applies to.",
 													"example": {
@@ -3113,7 +3184,8 @@
 													"example": "ed17574386854bf78a67040be0a770b0",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"issued_on": {
 													"description": "The time on which the token was created.",
@@ -3143,7 +3215,8 @@
 													"description": "Token name.",
 													"example": "readonly token",
 													"maxLength": 120,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"not_before": {
 													"description": "The time before which the token MUST NOT be accepted for processing.",
@@ -3197,7 +3270,7 @@
 																	"description": "A named group of permissions that map to a group of operations against resources.",
 																	"properties": {
 																		"id": {
-																			"description": "Identifier of the group.",
+																			"description": "Identifier of the permission group.",
 																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 																			"type": "string",
 																			"x-auditable": true
@@ -3210,16 +3283,18 @@
 																			},
 																			"properties": {
 																				"key": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"value": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
 																		},
 																		"name": {
-																			"description": "Name of the group.",
+																			"description": "Name of the permission group.",
 																			"example": "Load Balancer",
 																			"readOnly": true,
 																			"type": "string",
@@ -3235,7 +3310,8 @@
 															},
 															"resources": {
 																"additionalProperties": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"description": "A list of resource names that the policy applies to.",
 																"example": {
@@ -3427,12 +3503,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
 					"description": "Account identifier tag.",
-					"example": "eb78d65290b24279ba6f44721b3ea3c4",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
+					"title": "Account Identifier"
 				}
 			},
 			{
@@ -3444,7 +3526,8 @@
 					"example": "ed17574386854bf78a67040be0a770b0",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],

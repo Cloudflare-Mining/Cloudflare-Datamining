@@ -2346,7 +2346,8 @@
 														"service": "#/components/schemas/workers_binding_kind_service",
 														"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
 														"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
-														"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata"
+														"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+														"workflow": "#/components/schemas/workers_binding_kind_workflow"
 													},
 													"propertyName": "type"
 												},
@@ -3031,6 +3032,33 @@
 															"format",
 															"algorithm",
 															"usages"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"name": {
+																"description": "A JavaScript variable name for the binding.",
+																"example": "myBinding",
+																"type": "string"
+															},
+															"type": {
+																"description": "The kind of resource that the binding provides.",
+																"enum": [
+																	"workflow"
+																],
+																"type": "string"
+															},
+															"workflow_name": {
+																"description": "Name of the Workflow to bind to.",
+																"example": "my-workflow",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"type",
+															"workflow_name"
 														],
 														"type": "object"
 													}
@@ -4325,7 +4353,8 @@
 																		"service": "#/components/schemas/workers_binding_kind_service",
 																		"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
 																		"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
-																		"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata"
+																		"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+																		"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																	},
 																	"propertyName": "type"
 																},
@@ -5010,6 +5039,33 @@
 																			"format",
 																			"algorithm",
 																			"usages"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string"
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"workflow"
+																				],
+																				"type": "string"
+																			},
+																			"workflow_name": {
+																				"description": "Name of the Workflow to bind to.",
+																				"example": "my-workflow",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"workflow_name"
 																		],
 																		"type": "object"
 																	}
@@ -5045,7 +5101,8 @@
 																		"service": "#/components/schemas/workers_binding_kind_service",
 																		"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
 																		"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
-																		"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata"
+																		"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+																		"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																	},
 																	"propertyName": "type"
 																},
@@ -5730,6 +5787,33 @@
 																			"format",
 																			"algorithm",
 																			"usages"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string"
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"workflow"
+																				],
+																				"type": "string"
+																			},
+																			"workflow_name": {
+																				"description": "Name of the Workflow to bind to.",
+																				"example": "my-workflow",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"workflow_name"
 																		],
 																		"type": "object"
 																	}
@@ -6645,7 +6729,8 @@
 															"service": "#/components/schemas/workers_binding_kind_service",
 															"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
 															"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
-															"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata"
+															"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+															"workflow": "#/components/schemas/workers_binding_kind_workflow"
 														},
 														"propertyName": "type"
 													},
@@ -7330,6 +7415,33 @@
 																"format",
 																"algorithm",
 																"usages"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"workflow"
+																	],
+																	"type": "string"
+																},
+																"workflow_name": {
+																	"description": "Name of the Workflow to bind to.",
+																	"example": "my-workflow",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"workflow_name"
 															],
 															"type": "object"
 														}
@@ -7365,7 +7477,8 @@
 															"service": "#/components/schemas/workers_binding_kind_service",
 															"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
 															"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
-															"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata"
+															"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+															"workflow": "#/components/schemas/workers_binding_kind_workflow"
 														},
 														"propertyName": "type"
 													},
@@ -8050,6 +8163,33 @@
 																"format",
 																"algorithm",
 																"usages"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"workflow"
+																	],
+																	"type": "string"
+																},
+																"workflow_name": {
+																	"description": "Name of the Workflow to bind to.",
+																	"example": "my-workflow",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"workflow_name"
 															],
 															"type": "object"
 														}
@@ -8593,7 +8733,8 @@
 																		"service": "#/components/schemas/workers_binding_kind_service",
 																		"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
 																		"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
-																		"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata"
+																		"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+																		"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																	},
 																	"propertyName": "type"
 																},
@@ -9278,6 +9419,33 @@
 																			"format",
 																			"algorithm",
 																			"usages"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string"
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"workflow"
+																				],
+																				"type": "string"
+																			},
+																			"workflow_name": {
+																				"description": "Name of the Workflow to bind to.",
+																				"example": "my-workflow",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"workflow_name"
 																		],
 																		"type": "object"
 																	}
@@ -9313,7 +9481,8 @@
 																		"service": "#/components/schemas/workers_binding_kind_service",
 																		"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
 																		"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
-																		"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata"
+																		"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+																		"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																	},
 																	"propertyName": "type"
 																},
@@ -9998,6 +10167,33 @@
 																			"format",
 																			"algorithm",
 																			"usages"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string"
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"workflow"
+																				],
+																				"type": "string"
+																			},
+																			"workflow_name": {
+																				"description": "Name of the Workflow to bind to.",
+																				"example": "my-workflow",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"workflow_name"
 																		],
 																		"type": "object"
 																	}
@@ -11351,7 +11547,8 @@
 													"service": "#/components/schemas/workers_binding_kind_service",
 													"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
 													"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
-													"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata"
+													"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+													"workflow": "#/components/schemas/workers_binding_kind_workflow"
 												},
 												"propertyName": "type"
 											},
@@ -12036,6 +12233,33 @@
 														"format",
 														"algorithm",
 														"usages"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string"
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"workflow"
+															],
+															"type": "string"
+														},
+														"workflow_name": {
+															"description": "Name of the Workflow to bind to.",
+															"example": "my-workflow",
+															"type": "string"
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"workflow_name"
 													],
 													"type": "object"
 												}

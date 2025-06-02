@@ -165,7 +165,8 @@
 														"maxLength": 32,
 														"nullable": true,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"invited_on": {
 														"description": "When the invite was sent.",
@@ -180,18 +181,21 @@
 														"example": "5a7805061c76ada191ed06f989cc3dac",
 														"maxLength": 32,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"organization_is_enforcing_twofactor": {
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"organization_name": {
 														"description": "Organization name.",
 														"example": "Cloudflare, Inc.",
 														"maxLength": 100,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"roles": {
 														"description": "List of role names the membership has for this account.",
@@ -212,7 +216,8 @@
 															"rejected",
 															"expired"
 														],
-														"example": "accepted"
+														"example": "accepted",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -518,7 +523,8 @@
 													"maxLength": 32,
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"invited_on": {
 													"description": "When the invite was sent.",
@@ -533,18 +539,21 @@
 													"example": "5a7805061c76ada191ed06f989cc3dac",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"organization_is_enforcing_twofactor": {
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"organization_name": {
 													"description": "Organization name.",
 													"example": "Cloudflare, Inc.",
 													"maxLength": 100,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"roles": {
 													"description": "List of role names the membership has for this account.",
@@ -565,7 +574,8 @@
 														"rejected",
 														"expired"
 													],
-													"example": "accepted"
+													"example": "accepted",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -892,7 +902,8 @@
 													"maxLength": 32,
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"invited_on": {
 													"description": "When the invite was sent.",
@@ -907,18 +918,21 @@
 													"example": "5a7805061c76ada191ed06f989cc3dac",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"organization_is_enforcing_twofactor": {
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"organization_name": {
 													"description": "Organization name.",
 													"example": "Cloudflare, Inc.",
 													"maxLength": 100,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"roles": {
 													"description": "List of role names the membership has for this account.",
@@ -939,7 +953,8 @@
 														"rejected",
 														"expired"
 													],
-													"example": "accepted"
+													"example": "accepted",
+													"x-auditable": true
 												}
 											},
 											"required": [
