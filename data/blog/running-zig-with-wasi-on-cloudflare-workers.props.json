@@ -16,7 +16,8 @@
 				"location": "United Kingdom",
 				"website": "https://djharper.dev",
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "After the recent announcement regarding WASI support in Workers I decided to see what it would take to get code written in Zig to run as a Worker, and it turned out to be pretty trivial. This post documents the process I followed",
@@ -63,6 +64,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2lM9mydTrQbZ2piGtokC1I/2b306b4103386d0ff4aef2da9e2ff1f8/running-zig-with-wasi-on-cloudflare-workers-Tmv5dN.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2022-08-01T15:12:26.000+01:00",
 		"slug": "running-zig-with-wasi-on-cloudflare-workers",
 		"tags": [

@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@filosottile",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "The Go test coverage implementation is quite ingenious: when asked to, the Go compiler will preprocess the source so that when each code portion is executed a bit is set in a coverage bitmap.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2016-01-19T18:19:59.000+00:00",
 		"slug": "go-coverage-with-external-tests",
 		"tags": [

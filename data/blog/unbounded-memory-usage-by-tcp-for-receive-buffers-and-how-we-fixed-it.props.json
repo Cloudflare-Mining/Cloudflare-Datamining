@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "We are constantly monitoring and optimizing the performance and resource utilization of our systems. Recently, we noticed that some of our TCP sessions were allocating more memory than expected. This blog post describes in detail the root cause of the problem and shows the test results of a solution",
@@ -60,6 +61,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1KG0vLTlKmdq2tSF2x6uc4/8508c21698c2bc08eb7be779b0797996/unbounded-memory-usage-by-tcp-for-receive-buffers-and-how-we-fixed-it-fm74aa.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2023-05-25T16:31:46.000+01:00",
 		"slug": "unbounded-memory-usage-by-tcp-for-receive-buffers-and-how-we-fixed-it",
 		"tags": [

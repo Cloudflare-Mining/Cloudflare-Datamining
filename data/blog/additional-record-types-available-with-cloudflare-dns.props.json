@@ -13,7 +13,8 @@
 				"location": "San Francisco",
 				"website": null,
 				"twitter": "@sgisasi",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			},
 			{
 				"name": "Etienne Labaume",
@@ -23,7 +24,8 @@
 				"location": null,
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Cloudflare recently updated the authoritative DNS service to support nine new record types. Since these records are less commonly used than what we previously supported, we thought it would be a good idea to do a brief explanation of each record type and how it is used.",
@@ -68,6 +70,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2018-08-06T17:45:17.000+01:00",
 		"slug": "additional-record-types-available-with-cloudflare-dns",
 		"tags": [

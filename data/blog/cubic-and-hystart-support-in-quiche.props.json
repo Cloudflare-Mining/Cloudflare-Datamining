@@ -15,7 +15,8 @@
 				"location": null,
 				"website": "https://saturnsoft.net",
 				"twitter": "@junhochoi",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Congestion control and loss recovery play a big role in the QUIC transport protocol performance. We recently added support for CUBIC and HyStart++ to quiche, the library powering Cloudflare's QUIC, and lab-based testing shows promising results for performance in lossy network conditions.",
@@ -60,6 +61,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2020-05-08T13:46:12.000+01:00",
 		"slug": "cubic-and-hystart-support-in-quiche",
 		"tags": [

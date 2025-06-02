@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@thedanigrant",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "One way that attackers DDoS websites is by repeatedly doing DNS lookups that have small queries, but large answers. The attackers spoof their IP address so that the DNS answers are sent to the server they are attacking, this is called a reflection attack.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2016-03-04T18:02:35.000+00:00",
 		"slug": "a-deep-dive-into-dns-packet-sizes-why-smaller-packet-sizes-keep-the-internet-safe",
 		"tags": [

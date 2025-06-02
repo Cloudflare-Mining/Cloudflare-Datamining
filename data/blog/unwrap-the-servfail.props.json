@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "We recently released a new version of Cloudflare Resolver, which adds a piece of information called “Extended DNS Errors” (EDE) along with the response code under certain circumstances. This will be helpful in tracing DNS resolution errors and figure out what went wrong behind the scenes.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2020-10-30T12:00:00.000+00:00",
 		"slug": "unwrap-the-servfail",
 		"tags": [

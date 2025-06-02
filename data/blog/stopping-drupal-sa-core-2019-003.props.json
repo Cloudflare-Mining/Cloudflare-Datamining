@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Drupal discovered a severe vulnerability and said they would release a patch. When the patch was released we analysed and created rules to mitigate these. By analysing the patch we created WAF rules to protect Cloudflare customers running Drupal.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2019-03-05T22:55:04.000+00:00",
 		"slug": "stopping-drupal-sa-core-2019-003",
 		"tags": [

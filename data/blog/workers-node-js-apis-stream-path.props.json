@@ -12,7 +12,8 @@
 				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5dR6CJtYedvLrkAZ6rxv9I/0db3d5a763a8b0a350ac04ac6410da6b/jasnell.jpg",
 				"location": "California",
 				"website": "https://bsky.app/profile/jasnell.me",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Today we are announcing support for three additional APIs from Node.js in Cloudflare Workers — stream, crypto, and http/https.request. This increases compatibility with the existing ecosystem of open source NPM packages, allowing you to use your preferred libraries in Workers.",
@@ -57,6 +58,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2023-05-19T14:00:47.000+01:00",
 		"slug": "workers-node-js-apis-stream-path",
 		"tags": [

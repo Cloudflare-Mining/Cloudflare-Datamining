@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@IcyApril",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Back in April, I wrote about how it was possible to modify a router to encrypt DNS queries over TLS using Cloudflare's 1.1.1.1 DNS Resolver and a GL.iNet router; the folks at GL.iNet read that blog post and decided to bake DNS-Over-TLS support into their new router using the 1.1.1.1 resolver.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2018-07-14T18:13:00.000+01:00",
 		"slug": "dns-over-tls-built-in",
 		"tags": [

@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@majek04",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "For some time I’ve wanted to play with coverage-guided fuzzing. I decided to have a go at the Linux Kernel netlink machinery.  It's a good target: it's an obscure part of kernel, and it's relatively easy to automatically craft valid messages.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2019-07-10T14:07:21.000+01:00",
 		"slug": "a-gentle-introduction-to-linux-kernel-fuzzing",
 		"tags": [

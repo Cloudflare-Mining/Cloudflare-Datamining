@@ -13,7 +13,8 @@
 				"location": "San Francisco, CA",
 				"website": null,
 				"twitter": "@eastdakota",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "On HTTP, caching is done at the file level. A browser will cache the JPEG, CSS, and Javascript files on a page. However, the HTML of most pages is dynamically generated. As a result, the pages cannot be cached. ",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2012-07-03T08:00:00.000+01:00",
 		"slug": "making-edge-side-includes-esi-automatic-and-e",
 		"tags": [

@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@majek04",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "A week ago we published a story about new amplification attacks using memcached protocol on UDP port 11211. A few things happened since then: Github announced it was a target of 1.3Tbps memcached attack.\nOVH and Arbor reported similar large attacks with the peak reported at 1.7Tbps.\n\n",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2018-03-06T15:46:02.000+00:00",
 		"slug": "the-root-cause-of-large-ddos-ip-spoofing",
 		"tags": [

@@ -13,7 +13,8 @@
 				"location": "San Francisco, CA",
 				"website": null,
 				"twitter": "@eastdakota",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "On Monday we mitigated a large DDoS that targeted one of our customers. The attack peaked just shy of 400Gbps. We've seen a handful of other attacks at this scale, but this is the largest attack we've seen that uses NTP amplification.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2014-02-13T01:00:00.000+00:00",
 		"slug": "technical-details-behind-a-400gbps-ntp-amplification-ddos-attack",
 		"tags": [

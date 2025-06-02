@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@filosottile",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Go native vendoring (a.k.a. GO15VENDOREXPERIMENT) allows you to freeze dependencies by putting them in a vendor folder in your project. The compiler will then look there before searching the GOPATH.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2016-04-27T16:01:15.000+01:00",
 		"slug": "building-the-simplest-go-static-analysis-tool",
 		"tags": [

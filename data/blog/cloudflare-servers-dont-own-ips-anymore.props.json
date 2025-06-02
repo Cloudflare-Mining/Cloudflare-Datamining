@@ -22,7 +22,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@majek04",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "In this blog we'll discuss how we manage Cloudflare IP addresses\nused to retrieve the data from the Internet, how our egress\nnetwork design has evolved, how we optimized it for best use\nof available IP space and introduce our soft-anycast technology",
@@ -69,6 +70,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bwhiGfP26VS4gvDPEz5pn/7034adfe97acaaa9fbc0a0ffd88e17ae/cloudflare-servers-dont-own-ips-anymore-qzKZX3.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2022-11-25T14:00:00.000+00:00",
 		"slug": "cloudflare-servers-dont-own-ips-anymore",
 		"tags": [

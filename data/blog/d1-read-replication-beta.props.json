@@ -13,12 +13,14 @@
 				"location": null,
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			},
 			{
 				"name": "Lambros Petrou",
 				"slug": "lambros-petrou",
-				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/63Ww3YmwYCAZwWWCuoJOYT/cce31b0d7c22067b39840727892cd7f2/Lambros_Petrou.jpg"
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/63Ww3YmwYCAZwWWCuoJOYT/cce31b0d7c22067b39840727892cd7f2/Lambros_Petrou.jpg",
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "D1, Cloudflare’s managed SQL database, announces read replication beta. Here's a deep dive of the read replication implementation and how your queries can remain consistent across all regions.",
@@ -65,6 +67,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4quATrNSJ5R7dmiEUIgFfS/6e82e75b37b8b3d53a55027a3bee58a1/OG_Share_2024__43_.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2025-04-10T14:00+00:00",
 		"slug": "d1-read-replication-beta",
 		"tags": [

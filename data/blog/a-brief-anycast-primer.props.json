@@ -13,7 +13,8 @@
 				"location": "San Francisco, CA",
 				"website": null,
 				"twitter": "@eastdakota",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "I wrote a blog post the other day about CloudFlare's globally distributed DNS infrastructure and how each ninja name server we give you when you signup doesn't represent just one machine, but instead a whole cluster of machines in each of the data centers we operate worldwide. ",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2011-10-21T06:33:00.000+01:00",
 		"slug": "a-brief-anycast-primer",
 		"tags": [

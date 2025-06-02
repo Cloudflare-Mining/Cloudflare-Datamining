@@ -13,7 +13,8 @@
 				"location": "Austin, TX",
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Cron parsers are everywhere, each supporting their own extensions on the cron string format, which made consistency between parts of Cron Triggers difficult to achieve. Today we’re showing how we easily solved this problem with Rust without needing to write the same code twice.",
@@ -60,6 +61,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7brjA53m0hEOGzANWrl0vg/821bbf89c0c105df4e50669f76658832/using-one-cron-parser-everywhere-with-rust-and-saffron-FkIsr5.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2020-12-25T14:00:00.000+00:00",
 		"slug": "using-one-cron-parser-everywhere-with-rust-and-saffron",
 		"tags": [

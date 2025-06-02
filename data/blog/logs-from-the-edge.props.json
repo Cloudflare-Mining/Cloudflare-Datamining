@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@MichaelTremante",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "With Cloudflare Workers, it is possible to send traffic logs to arbitrary locations. In this post we are going to discuss an example Worker implementation on how to achieve this. So if you are building or maintaining your own traffic logging/analytics environment, read on.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2018-11-29T18:45:25.000+00:00",
 		"slug": "logs-from-the-edge",
 		"tags": [

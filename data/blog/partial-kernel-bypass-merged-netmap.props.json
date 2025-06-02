@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "In a previous post we described our work on a new netmap mode called single-rx-queue. After submitting the pull request, the netmap maintainers told us that the patch was interesting, but they would prefer something more configurable instead of a tailored custom mode.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2015-12-17T14:15:37.000+00:00",
 		"slug": "partial-kernel-bypass-merged-netmap",
 		"tags": [

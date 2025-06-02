@@ -16,7 +16,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@bohrers",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			},
 			{
 				"name": "Bastien Dhiver",
@@ -26,7 +27,8 @@
 				"location": null,
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "A race condition in the virtual ethernet driver of the Linux kernel led to occasional packet content corruptions, which resulted in unwanted packet drops by one of our DDoS mitigation systems. This blogpost describes the thought process and technique we used to debug this complex issue.",
@@ -73,6 +75,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/JRLOu3ykW8Z6d8WPD2Z2m/0119e726410251e58b9c8ceda853822b/a-debugging-story-corrupt-packets-in-af_xdp-kernel-bug-or-user-error-1inXzH.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2023-01-16T13:46:45.000+00:00",
 		"slug": "a-debugging-story-corrupt-packets-in-af_xdp-kernel-bug-or-user-error",
 		"tags": [

@@ -13,12 +13,14 @@
 				"location": "France",
 				"website": null,
 				"twitter": "@jeromeschneider",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			},
 			{
 				"name": "Alex Graham",
 				"slug": "alex-graham",
-				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7JHQi5kSLLLe5Xv3UF3Wpu/78b42f6f5628c41a83ac08c537cda62f/_tmp_mini_magick20240416-2-nemxat.jpg"
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7JHQi5kSLLLe5Xv3UF3Wpu/78b42f6f5628c41a83ac08c537cda62f/_tmp_mini_magick20240416-2-nemxat.jpg",
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Vectorize was recently upgraded and made generally available, now supporting indexes of up to 5 million vectors, delivering faster responses, with lower pricing and a free tier. This post dives deep into how we built Vectorize to enable these improvements.",
@@ -65,6 +67,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YO3acC0UUI0p36wireaXr/9eb8c6f35c695f72460c1f3b2e1fd656/Building_Vectorize__a_distributed_vector_database__on_Cloudflare_s_Developer_Platform-OG.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2024-10-22T14:00+01:00",
 		"slug": "building-vectorize-a-distributed-vector-database-on-cloudflare-developer-platform",
 		"tags": [

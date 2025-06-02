@@ -13,7 +13,8 @@
 				"location": "South Riding, VA",
 				"website": "https://www.webpagetest.org/",
 				"twitter": "@patmeenan",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Getting the best end-user performance from HTTP/2 requires good support for resource prioritization.  While most web servers support HTTP/2 prioritization, getting it to work well all the way to the browser requires a fair bit of coordination across the networking stack.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2018-10-12T13:00:00.000+01:00",
 		"slug": "http-2-prioritization-with-nginx",
 		"tags": [

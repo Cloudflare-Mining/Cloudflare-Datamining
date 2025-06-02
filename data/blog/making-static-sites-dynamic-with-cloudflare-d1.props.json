@@ -21,7 +21,8 @@
 				"location": "Austin, TX",
 				"website": "https://www.signalnerve.com",
 				"twitter": "@kristianf_",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "In this blog post, I'll show you how to use D1 to add comments to a static blog site. To do this, we'll construct a new D1 database and build a simple JSON API that allows the creation and retrieval of comments.",
@@ -68,6 +69,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/AHR3WMjOLSQSNdgHLQ5Kb/a2c7f819a3cdeb37055252c5cd49a481/making-static-sites-dynamic-with-cloudflare-d1-kmNXNe.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2022-11-16T14:00:00.000+00:00",
 		"slug": "making-static-sites-dynamic-with-cloudflare-d1",
 		"tags": [

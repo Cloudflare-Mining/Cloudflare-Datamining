@@ -9,7 +9,8 @@
 				"name": "James Larisch",
 				"slug": "james-larisch",
 				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CYzjboSN2jX2JkZpzkAN0/837e9a57e77efd26c440e2b216323f0f/unnamed.jpg",
-				"twitter": "@jameslarisch"
+				"twitter": "@jameslarisch",
+				"publiclyIndex": true
 			},
 			{
 				"name": "Suleman Ahmad",
@@ -19,7 +20,8 @@
 				"location": "Austin, TX",
 				"website": null,
 				"twitter": "@sulemanahmadd",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			},
 			{
 				"name": "Marwan Fayed",
@@ -29,7 +31,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@marwanfayed",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "We describe how Cloudflare uses a custom Lisp-like programming language and formal verifier (written in Racket and Rosette) to prevent logical contradictions in our authoritative DNS nameserver’s behavior.",
@@ -76,6 +79,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7kguebziUGENWVEKYDB09P/cbd2d1758e28879bbd52b5d46fffe905/How_we_prevent_conflicts_in_authoritative_DNS_configuration_using_formal_verification-OG.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2024-11-08T14:00+00:00",
 		"slug": "topaz-policy-engine-design",
 		"tags": [

@@ -13,18 +13,21 @@
 				"location": "Chicago, IL, USA",
 				"website": "http://andrewrepp.com",
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			},
 			{
 				"name": "Emilio Assunção",
 				"slug": "emilio-assuncao",
-				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3tOkImW4PKNYEyP4o7Pkhe/ee40249c46e72656a8e2352485ec7d5e/_tmp_mini_magick20221018-42-16be3qy.jpg"
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3tOkImW4PKNYEyP4o7Pkhe/ee40249c46e72656a8e2352485ec7d5e/_tmp_mini_magick20221018-42-16be3qy.jpg",
+				"publiclyIndex": true
 			},
 			{
 				"name": "Abhishek Chanda",
 				"slug": "abhishek-chanda",
 				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3P0qYqbNeI32RV8dDNiWyr/851507446803b9f182229b98e512eb5f/_tmp_mini_magick20221012-43-o7wrnr.jpg",
-				"twitter": "@rony358"
+				"twitter": "@rony358",
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Hyperdrive (Cloudflare’s globally distributed SQL connection pooler and cache) recently added support for directing database traffic from Workers across Cloudflare Tunnels. We dive deep on what it took to add this feature.",
@@ -71,6 +74,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ut6WBHomsRN0iP92D1hpp/ecdc9573ebc09c140c865494d029f54e/image2.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2024-10-25T14:00+01:00",
 		"slug": "elephants-in-tunnels-how-hyperdrive-connects-to-databases-inside-your-vpc-networks",
 		"tags": [

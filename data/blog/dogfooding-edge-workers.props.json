@@ -13,7 +13,8 @@
 				"location": null,
 				"website": "https://zackproser.com",
 				"twitter": "@zackproser",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "We deployed a Cloudflare worker in front of www.cloudflare.com and api.cloudflare.com, that has since served over <X> million requests. Here's what we learned about debugging and \"failing open\" when writing workers.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2018-05-04T17:20:00.000+01:00",
 		"slug": "dogfooding-edge-workers",
 		"tags": [

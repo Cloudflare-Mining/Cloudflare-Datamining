@@ -15,7 +15,8 @@
 				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5dR6CJtYedvLrkAZ6rxv9I/0db3d5a763a8b0a350ac04ac6410da6b/jasnell.jpg",
 				"location": "California",
 				"website": "https://bsky.app/profile/jasnell.me",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "The ability to make TCP and QUIC client connections from within Workers and Durable Objects, as well as the ability to connect to Workers over TCP and QUIC without using HTTP, will be coming to Cloudflare Workers. Here’s a peek at what we’re working on.",
@@ -60,6 +61,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2021-11-15T13:59:16.000+00:00",
 		"slug": "introducing-socket-workers",
 		"tags": [

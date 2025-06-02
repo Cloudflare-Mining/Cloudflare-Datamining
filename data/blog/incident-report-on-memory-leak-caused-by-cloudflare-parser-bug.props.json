@@ -13,7 +13,8 @@
 				"location": "Lisbon, Portugal",
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Last Friday, Tavis Ormandy from Google’s Project Zero contacted Cloudflare to report a security problem with our edge servers. He was seeing corrupted web pages being returned by some HTTP requests run through Cloudflare.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2017-02-23T23:01:06.000+00:00",
 		"slug": "incident-report-on-memory-leak-caused-by-cloudflare-parser-bug",
 		"tags": [

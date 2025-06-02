@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@filosottile",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Here at CloudFlare we are heavy users of the github.com/miekg/dns Go DNS library and we make sure to contribute to its development as much as possible. Therefore when Dmitry Vyukov published go-fuzz and started to uncover tens of bugs in the Go standard library, our task was clear.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2015-08-06T14:40:40.000+01:00",
 		"slug": "dns-parser-meet-go-fuzzer",
 		"tags": [

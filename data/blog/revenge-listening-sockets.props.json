@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@majek04",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Back in November we wrote a blog post about one latency spike. Today I'd like to share a continuation of that story. As it turns out, the misconfigured rmem setting wasn't the only source of added latency. It looked like Mr Wolf hadn't finished his job.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2016-04-05T13:05:01.000+01:00",
 		"slug": "revenge-listening-sockets",
 		"tags": [

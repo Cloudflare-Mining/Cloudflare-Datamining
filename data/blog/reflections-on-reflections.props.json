@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@majek04",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Recently Akamai published an article about CLDAP reflection attacks. This got us thinking. We saw attacks from Connectionless LDAP servers back in November 2016 but totally ignored them because our systems were automatically dropping the attack traffic without any impact.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2017-05-24T19:16:39.000+01:00",
 		"slug": "reflections-on-reflections",
 		"tags": [

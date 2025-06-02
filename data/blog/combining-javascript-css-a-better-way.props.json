@@ -13,7 +13,8 @@
 				"location": "San Francisco, CA",
 				"website": null,
 				"twitter": "@eastdakota",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "The conventional wisdom in web performance circles is that you want to combine multiple javascript and CSS files. The reason for this is that there is significant overhead every time you setup a new HTTP request. More requests, more wasted overhead.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2011-10-03T03:30:00.000+01:00",
 		"slug": "combining-javascript-css-a-better-way",
 		"tags": [

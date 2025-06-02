@@ -13,7 +13,8 @@
 				"location": "Lisbon",
 				"website": "http://claucece.github.io/",
 				"twitter": "@claucece",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			},
 			{
 				"name": "Thom Wiggers",
@@ -23,7 +24,8 @@
 				"location": "The Netherlands",
 				"website": "https://thomwiggers.nl",
 				"twitter": "@thomwiggers",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "The TLS 1.3 protocol has been around for quite some time, but it will be broken once quantum computers arrive. What can we do? In this blog post, we will examine a technique for achieving full post-quantum security for TLS 1.3 in the face of quantum computers: KEMTLS.",
@@ -70,6 +72,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3KBkl6AGS2E9XfqBxOq5JI/5fbc39a03b8a70bd1207f0112cf82379/kemtls-post-quantum-tls-without-signatures-EN0sUm.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2021-01-15T12:00:00.000+00:00",
 		"slug": "kemtls-post-quantum-tls-without-signatures",
 		"tags": [

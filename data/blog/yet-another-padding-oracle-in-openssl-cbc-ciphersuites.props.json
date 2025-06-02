@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@filosottile",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Yesterday a new vulnerability has been announced in OpenSSL/LibreSSL. A padding oracle in CBC mode decryption, to be precise. Just like Lucky13. Actually, it’s in the code that fixes Lucky13.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2016-05-04T13:20:42.000+01:00",
 		"slug": "yet-another-padding-oracle-in-openssl-cbc-ciphersuites",
 		"tags": [

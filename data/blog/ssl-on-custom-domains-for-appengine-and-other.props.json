@@ -13,7 +13,8 @@
 				"location": "San Francisco, CA",
 				"website": null,
 				"twitter": "@eastdakota",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Note: this post is deprecated. While it worked for a while, AppEngine made a change on their side that caused it to break. Rather than playing wack-a-mole with a brittle solution, we decided to create something that would work for the long term and across a wider range or services.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2011-07-22T21:33:00.000+01:00",
 		"slug": "ssl-on-custom-domains-for-appengine-and-other",
 		"tags": [

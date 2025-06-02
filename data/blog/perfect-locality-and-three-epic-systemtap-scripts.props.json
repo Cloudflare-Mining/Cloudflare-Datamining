@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@majek04",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "In a recent blog post we discussed epoll behavior causing uneven load among NGINX worker processes. We suggested a work around - the REUSEPORT socket option.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2017-11-07T10:15:00.000+00:00",
 		"slug": "perfect-locality-and-three-epic-systemtap-scripts",
 		"tags": [

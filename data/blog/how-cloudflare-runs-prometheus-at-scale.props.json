@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Here at Cloudflare we run over 900 instances of Prometheus with a total of around 4.9 billion time series.\nOperating such a large Prometheus deployment doesn’t come without challenges .\nIn this blog post we’ll cover some of the issues we hit and how we solved them",
@@ -60,6 +61,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1oUS34Kn1MJZQ55JuBBHQM/e3b79f11fa7e3ae64fa72c6f618b1dc1/how-cloudflare-runs-prometheus-at-scale-tIZ7E2.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2023-03-03T14:00:00.000+00:00",
 		"slug": "how-cloudflare-runs-prometheus-at-scale",
 		"tags": [

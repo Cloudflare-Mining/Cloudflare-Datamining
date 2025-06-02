@@ -13,7 +13,8 @@
 				"location": "San Francisco, CA",
 				"website": null,
 				"twitter": "@eastdakota",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Earlier this week we announced how CloudFlare enabled OCSP stapling in order to improve our customers' SSL performance. OCSP stapling is awesome and improves SSL performance by as much as 30%. However, it is limited to browsers that support OCSP stapling and only benefits CloudFlare's customers.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2012-11-01T16:34:00.000+00:00",
 		"slug": "cloudflare-works-with-globalsign-to-make-ssl",
 		"tags": [

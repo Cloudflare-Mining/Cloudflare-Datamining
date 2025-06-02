@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "It may (or may not!) come as surprise, but a few months ago we migrated Cloudflare’s edge SSL connection termination stack to use BoringSSL: Google's crypto and SSL implementation that started as a fork of OpenSSL.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2017-12-06T14:00:00.000+00:00",
 		"slug": "make-ssl-boring-again",
 		"tags": [

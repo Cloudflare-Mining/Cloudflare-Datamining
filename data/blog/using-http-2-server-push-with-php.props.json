@@ -13,7 +13,8 @@
 				"location": "Lisbon, Portugal",
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Two weeks ago CloudFlare announced that it was supporting HTTP/2 Server Push for all our customers. By simply adding a Link header to an HTTP response specifying preload CloudFlare would automatically push items to web browsers that support Server Push.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2016-05-13T14:11:28.000+01:00",
 		"slug": "using-http-2-server-push-with-php",
 		"tags": [

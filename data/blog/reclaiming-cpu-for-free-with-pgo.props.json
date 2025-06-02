@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@sinkingpoint",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Golang 1.20 introduced support for Profile Guided Optimization (PGO) to the go compiler. This post covers the process we created for experimenting with PGO at Cloudflare, and measuring the CPU savings",
@@ -60,6 +61,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/22FUcBP28fsynBMDhEgCRq/e4a438f306d527bfa118feec5cb8791c/reclaiming-cpu-for-free-with-pgo-cQ4VJ7.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2024-05-14T14:00:32.000+01:00",
 		"slug": "reclaiming-cpu-for-free-with-pgo",
 		"tags": [

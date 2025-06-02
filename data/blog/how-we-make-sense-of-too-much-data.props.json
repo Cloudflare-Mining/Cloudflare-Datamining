@@ -9,12 +9,14 @@
 				"name": "Constantin Pan",
 				"slug": "constantin-pan",
 				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ICl6tt16EVQTzZBDsUY8e/ea13d3c440b722fdcd261a9240105222/_tmp_mini_magick20220928-42-1vrdnmo.jpg",
-				"location": "London"
+				"location": "London",
+				"publiclyIndex": true
 			},
 			{
 				"name": "Jim Hawkridge",
 				"slug": "jim-hawkridge",
-				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Exc0INWMvhkHxGvQWUYlK/bf19c60e186ba3457df51302858959fe/_tmp_mini_magick20220928-42-1isuz89.jpg"
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Exc0INWMvhkHxGvQWUYlK/bf19c60e186ba3457df51302858959fe/_tmp_mini_magick20220928-42-1isuz89.jpg",
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Here we explain how we made our data pipeline scale to 700 million events per second while becoming more resilient than ever before. We share some math behind our approach and some of the designs of ",
@@ -61,6 +63,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3IbyM2qrP1QNY2qYgOLZo8/f235ea2206c509938d943cdef8a084c8/BLOG-2486_OG.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2025-01-27T14:00+00:00",
 		"slug": "how-we-make-sense-of-too-much-data",
 		"tags": [

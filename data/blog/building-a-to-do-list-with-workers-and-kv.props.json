@@ -13,7 +13,8 @@
 				"location": "Austin, TX",
 				"website": "https://www.signalnerve.com",
 				"twitter": "@kristianf_",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "In this tutorial, we’ll build a todo list application in HTML, CSS and JavaScript, with a twist: all the data should be stored inside of the newly-launched Workers KV, and the application itself should be served directly from Cloudflare’s edge network, using Cloudflare Workers.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2019-05-21T14:30:00.000+01:00",
 		"slug": "building-a-to-do-list-with-workers-and-kv",
 		"tags": [

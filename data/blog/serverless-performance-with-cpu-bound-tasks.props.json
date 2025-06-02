@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "This post is a part of an ongoing series comparing the performance of Cloudflare Workers with other Serverless providers. In our past tests we intentionally chose a workload which imposes virtually no CPU load (returning the current time). ",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2018-07-09T07:08:00.000+01:00",
 		"slug": "serverless-performance-with-cpu-bound-tasks",
 		"tags": [

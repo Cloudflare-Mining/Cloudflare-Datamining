@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "This is our story of what we learned about the connect() implementation for TCP in Linux. Both its strong and weak points. How connect() latency changes under pressure, and how to open connection so that the syscall latency is deterministic and time-bound",
@@ -60,6 +61,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1kwA8zCfePd7eYmZIqkcIb/33ecf1e0a289702a23f3edcc1101bde7/linux-transport-protocol-port-selection-performance-7DJnni.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2024-02-08T14:00:27.000+00:00",
 		"slug": "linux-transport-protocol-port-selection-performance",
 		"tags": [

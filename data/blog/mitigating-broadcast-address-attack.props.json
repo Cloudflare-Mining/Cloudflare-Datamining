@@ -11,12 +11,14 @@
 			{
 				"name": "Josephine Chow",
 				"slug": "josephine-chow",
-				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/FvPR5o78CGkVBLZlFEzfC/e626e653812ecf15dc24dcc3d34f542b/Josephine_Chow.jpeg"
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/FvPR5o78CGkVBLZlFEzfC/e626e653812ecf15dc24dcc3d34f542b/Josephine_Chow.jpeg",
+				"publiclyIndex": true
 			},
 			{
 				"name": "June Slater",
 				"slug": "june-slater",
-				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1l6qTlpeXkHsEprg3W5qiq/1c6ba96fc658bf8295d8317a8a3fff9c/June-Slater.jpg"
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1l6qTlpeXkHsEprg3W5qiq/1c6ba96fc658bf8295d8317a8a3fff9c/June-Slater.jpg",
+				"publiclyIndex": true
 			},
 			{
 				"name": "Bryton Herdes",
@@ -26,7 +28,8 @@
 				"location": null,
 				"website": "https://next-hopself.net/",
 				"twitter": "@next_hopself",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			},
 			{
 				"name": "Lucas Pardue",
@@ -36,7 +39,8 @@
 				"location": "London",
 				"website": null,
 				"twitter": "@SimmerVigor",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Cloudflare was recently contacted by researchers who discovered a broadcast amplification vulnerability through their QUIC Internet measurement research. We've implemented a mitigation.",
@@ -83,6 +87,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3N6luvd1VIhl6b8ZkSS4l8/190e0e98f855efde30f0477371c1f832/QUIC_action-_patching_a_broadcast_address_amplification_vulnerability-OG.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2025-02-10T14:00+00:00",
 		"slug": "mitigating-broadcast-address-attack",
 		"tags": [

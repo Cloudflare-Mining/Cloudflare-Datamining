@@ -13,17 +13,20 @@
 				"location": "Austin, TX",
 				"website": null,
 				"twitter": "@sulemanahmadd",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			},
 			{
 				"name": "Ash Pallarito",
 				"slug": "ash-pallarito",
-				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gHzJRCWqkGJtMEBCcSoep/988a00e2d253cb358fb68f5e1592074b/Ash_Pallarito.jpg"
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gHzJRCWqkGJtMEBCcSoep/988a00e2d253cb358fb68f5e1592074b/Ash_Pallarito.jpg",
+				"publiclyIndex": true
 			},
 			{
 				"name": "Algin Martin",
 				"slug": "algin-martin",
-				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3F2O3NzYDwkh6xnRPHUYhW/56f916cf10688a1b65edc62191caa9e0/_tmp_mini_magick20230531-2-1bz4p6f.jpg"
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3F2O3NzYDwkh6xnRPHUYhW/56f916cf10688a1b65edc62191caa9e0/_tmp_mini_magick20230531-2-1bz4p6f.jpg",
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "We are closing the cleartext HTTP ports entirely for Cloudflare API traffic. This prevents the risk of clients unintentionally leaking their secret API keys in cleartext during the initial request. ",
@@ -69,6 +72,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4icDus0UiQZqBGM3Ky0CaT/d8f50abda9221631ac06c05f5c18766f/OG_Share_2024__20_.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2025-03-20T13:00+00:00",
 		"slug": "https-only-for-cloudflare-apis-shutting-the-door-on-cleartext-traffic",
 		"tags": [

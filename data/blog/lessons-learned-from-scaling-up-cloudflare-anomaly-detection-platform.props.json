@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Anomaly Detection uses an algorithm called Histogram-Based Outlier Scoring (HBOS) to detect anomalous traffic in a scalable way. While HBOS is less precise than algorithms like kNN when it comes to local outliers, it is able to score global outliers quickly (in linear time).",
@@ -60,6 +61,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7kQJbJ6bI4wwJ3hDRH7ieD/8cb12bc42ebfd382c98a158e6d0dd2e1/lessons-learned-from-scaling-up-cloudflare-anomaly-detection-platform-180qs7.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2021-03-12T15:48:32.000+00:00",
 		"slug": "lessons-learned-from-scaling-up-cloudflare-anomaly-detection-platform",
 		"tags": [

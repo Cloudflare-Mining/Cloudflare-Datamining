@@ -21,7 +21,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@dinasaur_404",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Let’s Encrypt’s cross-signed chain will be expiring in September. This will affect legacy devices with outdated trust stores (Android versions 7.1.1 or older). To prevent this change from impacting customers, Cloudflare will shift Let’s Encrypt certificates upon renewal to use a different CA",
@@ -68,6 +69,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3MCMRNOUenonAsLLWDxO5v/842288dca3f73dfffe887b440e52b8d9/shortening-lets-encrypt-change-of-trust-no-impact-to-cloudflare-customers-7YyeE7.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2024-04-12T14:00:09.000+01:00",
 		"slug": "shortening-lets-encrypt-change-of-trust-no-impact-to-cloudflare-customers",
 		"tags": [

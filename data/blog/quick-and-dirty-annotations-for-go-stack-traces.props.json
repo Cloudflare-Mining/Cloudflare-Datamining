@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@filosottile",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "CloudFlare’s DNS server, RRDNS, is entirely written in Go and typically runs tens of thousands goroutines. Since goroutines are cheap and Go I/O is blocking we run one goroutine per file descriptor we listen on and queue new packets for processing.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2015-08-03T12:26:04.000+01:00",
 		"slug": "quick-and-dirty-annotations-for-go-stack-traces",
 		"tags": [

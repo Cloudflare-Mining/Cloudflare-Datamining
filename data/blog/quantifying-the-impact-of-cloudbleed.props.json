@@ -13,7 +13,8 @@
 				"location": "San Francisco, CA",
 				"website": null,
 				"twitter": "@eastdakota",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Last Thursday we released details on a bug in Cloudflare's parser impacting our customers. It was an extremely serious bug that caused data flowing through Cloudflare's network to be leaked onto the Internet.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2017-03-01T15:27:00.000+00:00",
 		"slug": "quantifying-the-impact-of-cloudbleed",
 		"tags": [

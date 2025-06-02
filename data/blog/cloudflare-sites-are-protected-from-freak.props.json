@@ -13,7 +13,8 @@
 				"location": "Lisbon, Portugal",
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "The newly announced FREAK vulnerability is not a concern for CloudFlare's SSL customers. We do not support 'export grade' cryptography (which, by its nature, is weak) and we upgraded to the non-vulnerable version of OpenSSL the day it was released in early January.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2015-03-04T00:32:33.000+00:00",
 		"slug": "cloudflare-sites-are-protected-from-freak",
 		"tags": [

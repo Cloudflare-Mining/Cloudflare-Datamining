@@ -13,7 +13,8 @@
 				"location": "Lisboa",
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "We have recently introduced Oxy, our Rust-based framework for proxies powering many Cloudflare services and products. Today, we will explain why and how it spans various layers of the OSI model, by handling directly raw IP packets, TCP connections and UDP payloads",
@@ -60,6 +61,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/oiDeq7Xg7Pl6aNqPaiUEn/46cd909ded6659d35c5a4433657ad7d4/from-ip-packets-to-http-the-many-faces-of-our-oxy-framework-yQBmuQ.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2023-03-30T14:00:00.000+01:00",
 		"slug": "from-ip-packets-to-http-the-many-faces-of-our-oxy-framework",
 		"tags": [

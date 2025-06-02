@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "A crash in a development version of flowtrackd (the daemon that powers our Advanced TCP Protection) highlighted that libxdp (and specifically the AF_XDP part) was not Linux network namespace aware. ",
@@ -60,6 +61,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45nKQld6eq8azM1jc5tzYH/4be80abffbfa69644d93368dd2dd658d/a-story-about-af-xdp-network-namespaces-and-a-cookie-I5d1MQ.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2022-07-18T13:56:42.000+01:00",
 		"slug": "a-story-about-af-xdp-network-namespaces-and-a-cookie",
 		"tags": [

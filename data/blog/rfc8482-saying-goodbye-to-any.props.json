@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@majek04",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Ladies and gentlemen, I would like you to welcome the new shiny RFC8482, which effectively deprecates DNS ANY query type. DNS ANY was a \"meta-query\" - think about it as a similar thing to the common A, AAAA, MX or SRV query types, but unlike these it wasn't a real query type - it was special.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2019-03-15T17:01:17.000+00:00",
 		"slug": "rfc8482-saying-goodbye-to-any",
 		"tags": [

@@ -13,7 +13,8 @@
 				"location": "Lisbon, Portugal",
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "We use nginx throughout our network for front-line web serving, proxying and traffic filtering. In some cases, we've augmented the core C code of nginx with our own modules, but recently we've made a major move to using Lua in conjunction with nginx.\n\n\nOne project that's now almost entirely written in Lua is the new CloudFlare WAF that we blogged about the other day.\n\n\n\n\n\nThe Lua WAF uses the nginx Lua module to embed Lua code and execute that code as part of the normal nginx handling of phases.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2013-08-23T06:31:00.000+01:00",
 		"slug": "cloudflares-new-waf-compiling-to-lua",
 		"tags": [

@@ -13,7 +13,8 @@
 				"location": "Austin, TX",
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Today we are announcing Argo Tunnel RDP Bastion mode, a simpler way to protect RDP connections at scale. By functioning as a jump-host, cloudflared can reside on a single node in your network and proxy requests to any internal server, eliminating deployment headaches.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2020-08-07T12:00:00.000+01:00",
 		"slug": "protecting-remote-desktops-at-scale-with-cloudflare-access",
 		"tags": [

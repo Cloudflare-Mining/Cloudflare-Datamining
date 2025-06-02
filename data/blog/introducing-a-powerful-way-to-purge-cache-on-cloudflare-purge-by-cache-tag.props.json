@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@thedanigrant",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Today CloudFlare is introducing a new way to purge the cache using Cache-Tags. Cache-Tags are assigned to cached content via a Cache-Tag response header, and are stored as metadata with cached objects so that global purges take only seconds, targeting a granular, finite set of cached objects.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2015-08-19T16:46:53.000+01:00",
 		"slug": "introducing-a-powerful-way-to-purge-cache-on-cloudflare-purge-by-cache-tag",
 		"tags": [

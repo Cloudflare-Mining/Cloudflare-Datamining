@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Engineers at Cloudflare have written a replacement in Rust for one of the oldest and least-well understood parts of the Cloudflare infrastructure, cf-html, which is an NGINX module. In doing so we learned a lot about how NGINX works, and paved the way to move away from NGINX entirely.",
@@ -60,6 +61,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7wzsNH27eIdAE4rLwShCzp/b2cbca4d2b470be19e2401f641c73465/rust-nginx-module-UPyjKT.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2023-02-24T14:00:00.000+00:00",
 		"slug": "rust-nginx-module",
 		"tags": [

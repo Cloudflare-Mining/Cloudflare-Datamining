@@ -13,7 +13,8 @@
 				"location": "Lisbon, Portugal",
 				"website": null,
 				"twitter": "@edevil",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "We use Consul for service discovery, and we’ve deployed a cluster that spans several of our data centers. We were aware from the start that the DNS query latencies were not great from certain parts of the world that were furthest away from these data centers.",
@@ -60,6 +61,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GzPQpRvt88dyIYifu1Kfn/c6ec9b1c212d7862dd083753405d179e/the-benefits-of-serving-stale-dns-entries-when-using-consul-fKC6DN.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2021-03-08T14:00:00.000+00:00",
 		"slug": "the-benefits-of-serving-stale-dns-entries-when-using-consul",
 		"tags": [

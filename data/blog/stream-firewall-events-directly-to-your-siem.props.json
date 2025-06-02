@@ -13,7 +13,8 @@
 				"location": "San Francisco, CA",
 				"website": "https://www.cloudflare.com",
 				"twitter": "@prdonahue",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "As of today, customers using Cloudflare Logs can create Logpush jobs that send only Firewall Events. These events arrive much faster than our existing HTTP requests logs: they are typically delivered to your logging platform within 60 seconds of sending the response to the client.",
@@ -60,6 +61,7 @@
 			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17iwBupUTvjgC4QJZGJkLD/449a9a79c49f75ab5c6d98b09b7cf3a1/stream-firewall-events-directly-to-your-siem-pRy2BB.png"
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2020-04-24T12:00:00.000+01:00",
 		"slug": "stream-firewall-events-directly-to-your-siem",
 		"tags": [

@@ -13,7 +13,8 @@
 				"location": "Lisbon, Portugal",
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Two weeks ago we changed our TLS configuration to deprioritize the RC4 encryption method because it is widely thought to be vulnerable to attack. At the time we had an internal debate about turning off RC4 altogether, but statistics showed that we couldn't.",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2014-05-19T15:00:00.000+01:00",
 		"slug": "the-web-is-world-wide-or-who-still-needs-rc4",
 		"tags": [

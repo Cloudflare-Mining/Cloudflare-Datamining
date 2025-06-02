@@ -18,7 +18,8 @@
 				"location": null,
 				"website": null,
 				"twitter": null,
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "As was mentioned in the original 1.1.1.1 blog post, our policy is to never write client IP addresses to disk and wipe all logs within 24 hours. Still some folks might not want to reveal their IP address to the resolver at all. This is why we are launching a Tor hidden service for our resolver.",
@@ -63,6 +64,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2018-06-05T15:46:17.000+01:00",
 		"slug": "welcome-hidden-resolver",
 		"tags": [

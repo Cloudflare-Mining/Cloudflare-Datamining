@@ -13,7 +13,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@majek04",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Last week, a very small number of our users who are using IP tunnels (primarily tunneling IPv6 over IPv4) were unable to access our services because a networking change broke \"path MTU discovery\" on our servers. ",
@@ -58,6 +59,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2015-02-04T14:16:31.000+00:00",
 		"slug": "path-mtu-discovery-in-practice",
 		"tags": [

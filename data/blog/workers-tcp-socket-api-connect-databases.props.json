@@ -13,7 +13,8 @@
 				"location": "Oakland, CA",
 				"website": "https://www.cloudflare.com/products/cloudflare-stream/",
 				"twitter": "@irvinebroque",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			},
 			{
 				"name": "Matt Silverlock",
@@ -23,7 +24,8 @@
 				"location": null,
 				"website": null,
 				"twitter": "@elithrar",
-				"facebook": null
+				"facebook": null,
+				"publiclyIndex": true
 			}
 		],
 		"excerpt": "Today, we are excited to announce a new API in Cloudflare Workers for creating outbound TCP sockets, making it possible to connect directly to databases and any TCP-based service from Workers",
@@ -68,6 +70,7 @@
 			"imgPreview": ""
 		},
 		"primary_author": {},
+		"publicly_index": true,
 		"published_at": "2023-05-16T14:00:13.000+01:00",
 		"slug": "workers-tcp-socket-api-connect-databases",
 		"tags": [
