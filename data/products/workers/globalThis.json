@@ -4,6 +4,8 @@
 		"__type": "function",
 		"_prototype": {
 			"abort": "function",
+			"arguments": "undefined",
+			"caller": "undefined",
 			"length": "undefined",
 			"name": "undefined",
 			"prototype": "undefined",
@@ -94,8 +96,10 @@
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
+			"arguments": "undefined",
 			"arrayBuffer": "function",
 			"bytes": "function",
+			"caller": "undefined",
 			"length": "undefined",
 			"name": "undefined",
 			"prototype": "undefined",
@@ -229,7 +233,9 @@
 			"BUBBLING_PHASE": "number",
 			"CAPTURING_PHASE": "number",
 			"NONE": "number",
+			"arguments": "undefined",
 			"bubbles": "boolean",
+			"caller": "undefined",
 			"cancelBubble": "boolean",
 			"cancelable": "boolean",
 			"code": "number",
@@ -261,7 +267,6 @@
 			"allow_custom_ports": "boolean",
 			"allow_eval_during_startup": "boolean",
 			"assets_navigation_prefers_asset_serving": "boolean",
-			"bind_asynclocalstorage_snapshot_to_request": "boolean",
 			"blob_standard_mime_type": "boolean",
 			"brotli_content_encoding": "boolean",
 			"cache_api_compat_flags": "boolean",
@@ -317,7 +322,6 @@
 			"strict_compression_checks": "boolean",
 			"strict_crypto_checks": "boolean",
 			"tcp_sockets_support": "boolean",
-			"throw_on_unrecognized_import_assertion": "boolean",
 			"transformstream_enable_standard_constructor": "boolean",
 			"unique_ctx_per_invocation": "boolean",
 			"unwrap_custom_thenables": "boolean",
@@ -366,7 +370,9 @@
 			"BUBBLING_PHASE": "number",
 			"CAPTURING_PHASE": "number",
 			"NONE": "number",
+			"arguments": "undefined",
 			"bubbles": "boolean",
+			"caller": "undefined",
 			"cancelBubble": "boolean",
 			"cancelable": "boolean",
 			"composed": "boolean",
@@ -445,6 +451,8 @@
 			"URL_MISMATCH_ERR": "number",
 			"VALIDATION_ERR": "number",
 			"WRONG_DOCUMENT_ERR": "number",
+			"arguments": "undefined",
+			"caller": "undefined",
 			"code": "number",
 			"length": "undefined",
 			"message": "string",
@@ -477,7 +485,9 @@
 			"BUBBLING_PHASE": "number",
 			"CAPTURING_PHASE": "number",
 			"NONE": "number",
+			"arguments": "undefined",
 			"bubbles": "boolean",
+			"caller": "undefined",
 			"cancelBubble": "boolean",
 			"cancelable": "boolean",
 			"colno": "number",
@@ -518,7 +528,9 @@
 			"BUBBLING_PHASE": "number",
 			"CAPTURING_PHASE": "number",
 			"NONE": "number",
+			"arguments": "undefined",
 			"bubbles": "boolean",
+			"caller": "undefined",
 			"cancelBubble": "boolean",
 			"cancelable": "boolean",
 			"composed": "boolean",
@@ -563,6 +575,8 @@
 				"length": "number",
 				"name": "string"
 			},
+			"arguments": "undefined",
+			"caller": "undefined",
 			"dispatchEvent": {
 				"__proto": "function",
 				"__type": "function",
@@ -607,6 +621,8 @@
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
+			"arguments": "undefined",
+			"caller": "undefined",
 			"length": "undefined",
 			"name": "undefined",
 			"prototype": "undefined",
@@ -652,6 +668,8 @@
 				"length": "number",
 				"name": "string"
 			},
+			"arguments": "undefined",
+			"caller": "undefined",
 			"delete": {
 				"__proto": "function",
 				"__type": "function",
@@ -717,6 +735,8 @@
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
+			"arguments": "undefined",
+			"caller": "undefined",
 			"length": "undefined",
 			"name": "undefined",
 			"on": {
@@ -752,6 +772,8 @@
 				"length": "number",
 				"name": "string"
 			},
+			"arguments": "undefined",
+			"caller": "undefined",
 			"delete": {
 				"__proto": "function",
 				"__type": "function",
@@ -823,6 +845,8 @@
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
+			"arguments": "undefined",
+			"caller": "undefined",
 			"length": "undefined",
 			"name": "undefined",
 			"prototype": "undefined",
@@ -1181,6 +1205,8 @@
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
+			"arguments": "undefined",
+			"caller": "undefined",
 			"cancel": "function",
 			"from": "undefined",
 			"getReader": "function",
@@ -1236,11 +1262,13 @@
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
+			"arguments": "undefined",
 			"arrayBuffer": "function",
 			"blob": "function",
 			"body": "object",
 			"bodyUsed": "boolean",
 			"bytes": "function",
+			"caller": "undefined",
 			"cf": "undefined",
 			"clone": "function",
 			"error": "undefined",
@@ -1433,6 +1461,8 @@
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
+			"arguments": "undefined",
+			"caller": "undefined",
 			"decode": "function",
 			"encoding": "string",
 			"fatal": "boolean",
@@ -1448,6 +1478,8 @@
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
+			"arguments": "undefined",
+			"caller": "undefined",
 			"encoding": "string",
 			"fatal": "boolean",
 			"ignoreBOM": "boolean",
@@ -1464,6 +1496,8 @@
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
+			"arguments": "undefined",
+			"caller": "undefined",
 			"encode": "function",
 			"encodeInto": "function",
 			"encoding": "string",
@@ -1478,6 +1512,8 @@
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
+			"arguments": "undefined",
+			"caller": "undefined",
 			"encoding": "string",
 			"length": "undefined",
 			"name": "undefined",
@@ -1499,6 +1535,8 @@
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
+			"arguments": "undefined",
+			"caller": "undefined",
 			"length": "undefined",
 			"name": "undefined",
 			"prototype": "undefined",
@@ -1530,6 +1568,8 @@
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
+			"arguments": "undefined",
+			"caller": "undefined",
 			"exec": "function",
 			"hasRegExpGroups": "boolean",
 			"hash": "string",
@@ -1553,6 +1593,8 @@
 		"__type": "function",
 		"_prototype": {
 			"append": "function",
+			"arguments": "undefined",
+			"caller": "undefined",
 			"delete": "function",
 			"entries": "function",
 			"forEach": "function",
@@ -1666,6 +1708,8 @@
 		"_prototype": {
 			"0": "object",
 			"1": "object",
+			"arguments": "undefined",
+			"caller": "undefined",
 			"length": "undefined",
 			"name": "undefined",
 			"prototype": "undefined"
@@ -1694,6 +1738,8 @@
 						"length": "number",
 						"name": "string"
 					},
+					"arguments": "undefined",
+					"caller": "undefined",
 					"dispatchEvent": {
 						"__proto": "function",
 						"__type": "function",
@@ -1740,6 +1786,8 @@
 		"__type": "function",
 		"_prototype": {
 			"abort": "function",
+			"arguments": "undefined",
+			"caller": "undefined",
 			"close": "function",
 			"getWriter": "function",
 			"length": "undefined",
@@ -3089,6 +3137,8 @@
 					},
 					"length": "undefined",
 					"name": "undefined",
+					"arguments": "undefined",
+					"caller": "undefined",
 					"prototype": "undefined",
 					"bind": "undefined",
 					"snapshot": "undefined"
@@ -3128,6 +3178,8 @@
 					},
 					"length": "undefined",
 					"name": "undefined",
+					"arguments": "undefined",
+					"caller": "undefined",
 					"prototype": "undefined"
 				},
 				"bind": "function"
@@ -3203,6 +3255,8 @@
 				"_prototype": {
 					"length": "undefined",
 					"name": "undefined",
+					"arguments": "undefined",
+					"caller": "undefined",
 					"prototype": "undefined",
 					"size": "number",
 					"type": "string",
@@ -7716,6 +7770,8 @@
 				"_prototype": {
 					"length": "undefined",
 					"name": "undefined",
+					"arguments": "undefined",
+					"caller": "undefined",
 					"prototype": "undefined",
 					"hasSubscribers": "function",
 					"publish": "function",
@@ -14817,6 +14873,8 @@
 				"_prototype": {
 					"length": "undefined",
 					"name": "undefined",
+					"arguments": "undefined",
+					"caller": "undefined",
 					"prototype": "undefined",
 					"size": "number",
 					"append": "function",
@@ -14932,6 +14990,8 @@
 					"_prototype": {
 						"length": "undefined",
 						"name": "undefined",
+						"arguments": "undefined",
+						"caller": "undefined",
 						"prototype": "undefined",
 						"size": "number",
 						"append": "function",
@@ -15803,6 +15863,8 @@
 					},
 					"length": "undefined",
 					"name": "undefined",
+					"arguments": "undefined",
+					"caller": "undefined",
 					"prototype": "undefined"
 				}
 			},
@@ -15901,6 +15963,8 @@
 				"_prototype": {
 					"length": "undefined",
 					"name": "undefined",
+					"arguments": "undefined",
+					"caller": "undefined",
 					"prototype": "undefined",
 					"encode": "function",
 					"encodeInto": "function",
@@ -15915,6 +15979,8 @@
 				"_prototype": {
 					"length": "undefined",
 					"name": "undefined",
+					"arguments": "undefined",
+					"caller": "undefined",
 					"prototype": "undefined",
 					"decode": "function",
 					"encoding": "string",
