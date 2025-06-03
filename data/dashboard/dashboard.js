@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "b4acc523-f4ec-5c8b-aaf3-34ee34e34c50")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "0231fb73-dcf3-52e8-be0b-0d772553f83e")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -894,7 +894,7 @@
 			var ut = t("../react/app/components/Persistence/index.tsx"),
 				tt = t("../node_modules/@cloudflare/elements/es/index.js"),
 				Ge = t("../react/app/components/LoadingSuspense.tsx");
-			const Ut = be().lazy(() => Promise.all([t.e(16691), t.e(64484), t.e(12409), t.e(12174), t.e(1091), t.e(8612), t.e(5668), t.e(8924), t.e(77216), t.e(40517), t.e(39760), t.e(91018), t.e(83276), t.e(40453)]).then(t.bind(t, "../react/common/components/DevPanel/Main.tsx")));
+			const Ut = be().lazy(() => Promise.all([t.e(16691), t.e(64484), t.e(72691), t.e(12174), t.e(1091), t.e(86160), t.e(5668), t.e(8924), t.e(77216), t.e(40517), t.e(39760), t.e(91018), t.e(83276), t.e(40453)]).then(t.bind(t, "../react/common/components/DevPanel/Main.tsx")));
 			var Gt = () => be().createElement(Ge.Z, null, be().createElement(Ut, null));
 			const Wt = () => (Pe.useEffect(() => L, []), null);
 			var en = t("../../../../node_modules/moment/moment.js"),
@@ -1032,7 +1032,7 @@
 			};
 			var pn = t("../react/utils/useDomainConnectRedirect.ts");
 			const gn = "GTM-NDGPDFZ",
-				mn = be().lazy(() => Promise.all([t.e(16691), t.e(64484), t.e(12409), t.e(12174), t.e(1091), t.e(8612), t.e(51436), t.e(47386), t.e(7580), t.e(70618), t.e(26122), t.e(8924), t.e(77216), t.e(40517), t.e(39760), t.e(91018), t.e(83276), t.e(91262), t.e(52215), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.jsx"))),
+				mn = be().lazy(() => Promise.all([t.e(16691), t.e(64484), t.e(72691), t.e(12174), t.e(1091), t.e(86160), t.e(51436), t.e(47386), t.e(7580), t.e(70618), t.e(26122), t.e(8924), t.e(77216), t.e(40517), t.e(39760), t.e(91018), t.e(83276), t.e(91262), t.e(52215), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.jsx"))),
 				fn = be().lazy(() => Promise.all([t.e(83741), t.e(65447), t.e(1091), t.e(7580), t.e(91018), t.e(69088), t.e(91262), t.e(76472)]).then(t.bind(t, "../react/UnauthenticatedApp.tsx")));
 			var vn = ({
 					userIsAuthed: R
@@ -1195,10 +1195,10 @@
 					t.g.build = On({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "363f09b5bcaceb5a119245266606b591da19cf1e",
-						dashVersion: "33650301",
+						commit: "2cde6e85741788b306b8c71c4ea37d70e64df646",
+						dashVersion: "33681453",
 						env: "production",
-						builtAt: 1748870343890,
+						builtAt: 1748959037690,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -6191,7 +6191,7 @@
 			});
 			var e = t("webpack/sharing/consume/default/react/react"),
 				r = t.n(e),
-				o = t("../node_modules/@cloudflare/component-page/es/index.js");
+				o = t("../../../../node_modules/@cloudflare/component-page/es/index.js");
 
 			function u(l) {
 				return r().createElement(o.T3, l)
@@ -14797,12 +14797,12 @@
 				r = t("../react/app/components/Forbidden.jsx"),
 				o = t("webpack/sharing/consume/default/react/react"),
 				u = t.n(o),
-				l = t("../node_modules/@cloudflare/component-page/es/index.js"),
+				l = t("../../../../node_modules/@cloudflare/component-page/es/index.js"),
 				m = t("webpack/sharing/consume/default/@cloudflare/intl-react/@cloudflare/intl-react"),
 				s = t.n(m),
 				d = t("../react/pages/security/settings/hooks/index.ts"),
 				f = t("../react/pages/security/settings/resources/index.ts");
-			const n = u().lazy(() => Promise.all([t.e(16691), t.e(64484), t.e(12409), t.e(12174), t.e(1091), t.e(8612), t.e(51436), t.e(70618), t.e(68204), t.e(2515), t.e(65022), t.e(45275), t.e(8924), t.e(77216), t.e(40517), t.e(39760), t.e(91018), t.e(83276), t.e(5756), t.e(28861), t.e(52215), t.e(42185)]).then(t.bind(t, "../react/pages/security/settings/SettingsRoute.tsx"))),
+			const n = u().lazy(() => Promise.all([t.e(16691), t.e(64484), t.e(72691), t.e(12174), t.e(1091), t.e(86160), t.e(51436), t.e(70618), t.e(68204), t.e(2515), t.e(65022), t.e(45275), t.e(8924), t.e(77216), t.e(40517), t.e(39760), t.e(91018), t.e(5756), t.e(83276), t.e(28861), t.e(52215), t.e(42185)]).then(t.bind(t, "../react/pages/security/settings/SettingsRoute.tsx"))),
 				i = () => {
 					const {
 						t: a
@@ -23182,4 +23182,4 @@
 	}
 ]);
 
-//# debugId=b4acc523-f4ec-5c8b-aaf3-34ee34e34c50
+//# debugId=0231fb73-dcf3-52e8-be0b-0d772553f83e

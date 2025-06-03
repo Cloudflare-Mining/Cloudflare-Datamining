@@ -1977,7 +1977,7 @@
 	"overview.insights.mixed_auth_on_endpoint.suggested_action.1.description": "Check for unexpected sources and consider blocking traffic from unwanted sources until the validation process can be corrected on your origin.",
 	"overview.insights.mixed_auth_on_endpoint.suggested_action.2.description": "Monitor traffic on the identified endpoints from your origin. Modify your application to consistently enforce the authentication requirement for all traffic accessing these endpoints. Read the Cloudflare documentation to learn more about Authentication posture",
 	"overview.insights.missing_auth_on_endpoint.title": "Improve API security by adding endpoint authentication methods",
-	"overview.insights.missing_auth_on_endpoint.description": "Endpoints with no authenthications configured have been identified. Affected endpoints are recieving unrestricted traffic.",
+	"overview.insights.missing_auth_on_endpoint.description": "Endpoints with no authentication configured have been identified. Affected endpoints are receiving unrestricted traffic.",
 	"overview.insights.missing_auth_on_endpoint.detected": "No copy for this yet",
 	"overview.insights.missing_auth_on_endpoint.suggested_action_1.title": "Review traffic of these labels and their associated endpoints in Security Analytics",
 	"overview.insights.missing_auth_on_endpoint.suggested_action_2.title": "Review your origin",
