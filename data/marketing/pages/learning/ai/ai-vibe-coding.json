@@ -162,6 +162,12 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "13XGjbidrGmhw6y7WyyG4F",
+									"displayText": "Model Context Protocol (MCP)",
+									"url": "/learning/ai/what-is-model-context-protocol-mcp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "7kvDdMXof90koTqWiUdRX5",
 									"displayText": "History of AI",
 									"url": "/learning/ai/history-of-ai/"
@@ -369,6 +375,12 @@
 								"contentfulId": "pjgC00TeWrxtIOybBfUbh",
 								"displayText": "What is vibe coding?",
 								"url": "/learning/ai/ai-vibe-coding/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "13XGjbidrGmhw6y7WyyG4F",
+								"displayText": "Model Context Protocol (MCP)",
+								"url": "/learning/ai/what-is-model-context-protocol-mcp/"
 							}
 						]
 					},
@@ -519,16 +531,16 @@
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
-					"zhTW": "English for Locale",
-					"frFR": "English for Locale",
-					"deDE": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "English for Locale",
-					"koKR": "English for Locale",
-					"ptBR": "English for Locale",
-					"esES": "English for Locale",
-					"esLA": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -540,7 +552,7 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "English for Locale",
+					"zhHansCN": "Translated for Locale",
 					"plPL": "English for Locale"
 				},
 				"proactivePopup": null,
@@ -553,7 +565,17 @@
 			"pathname": "/learning/ai/ai-vibe-coding/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US"
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"es-LA",
+				"zh-Hans-CN"
 			]
 		}
 	}
