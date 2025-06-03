@@ -6,34 +6,33 @@
 	</div>
 </div>
 <p><strong>Available Locations:</strong> Lisbon, Portugal or London, UK</p>
-<h4><strong>About the department</strong></h4>
-<p>As an engineer on one of our Production Engineering teams, you'll be building the network infrastructure that makes Cloudflare work. Our mission is to provide a reliable and flexible platform to help product teams release new services efficiently and safely.</p>
-<p><strong>About the role:</strong></p>
-<p>We are looking for a Network Engineer to join our team. Cloudflare is building one of the largest, most resilient networks that spans over 335 cities spread across all regions and we plan to continue our expansion at a rapid pace. You will have the opportunity to (literally) build a faster, safer Internet for our millions of users and the billions of web surfers that visit their sites each month. This is an opportunity to be part of the team that is building a high­-performance network that is accessible to any web property online.</p>
-<p><strong>This position is responsible for:&nbsp;</strong></p>
+<p><strong>Responsibilities</strong>:</p>
+<p>We are looking for a Network Engineer to join our team. Cloudflare is building one of the largest, most resilient networks that spans over 335 cities spread across all regions and we plan to continue our expansion at a rapid pace. You will have the opportunity to (literally) build a faster, safer Internet for our millions of users and the billions of web surfers that visit their sites each month.</p>
+<p>This position will be responsible for :&nbsp;</p>
 <ul>
-	<li>Technical operation, engineering and architecture of the Cloudflare network, including the provisioning and management of the network hardware and software</li>
-	<li>Day to day network operations and monitoring, working closely with internal teams such as System Reliability Engineering, Infrastructure Engineering and Customer Support teams</li>
-	<li>Creating and maintaining documentation,&nbsp; SOP’s, knowledge base</li>
+	<li>Technical operation and engineering of the Cloudflare network, including the provisioning and management of the network hardware and software,</li>
+	<li>Day to day network operations and monitoring, working closely with internal teams such as System Reliability Engineering, Infrastructure Engineering and Customer Support teams,</li>
+	<li>Creating and maintaining documentation,&nbsp; SOP’s, knowledge base,</li>
 	<li>Interacting with our network peers to assist with their inquiries, and subsequently provide meaningful data on performance degradation.</li>
 </ul>
 <p><strong>Requirements</strong>:</p>
 <ul>
-	<li>Experience working in large scale network engineering environments</li>
-	<li>Experience working with automation frameworks such as SaltStack and/or Ansible</li>
-	<li>Experience solving problems through automation</li>
-	<li>Experience with BGP and anycast routing</li>
-	<li>Understanding of MPLS and Segment Routing&nbsp;</li>
-	<li>Optimize end user experience by architecting the network to lower latency, packet loss, and jitter while increasing scale</li>
-	<li>Proficient in multiple vendor operating systems</li>
-	<li>Experience writing network configuration and design documentation</li>
-	<li>Ability to prioritize when faced with high pressure scenarios</li>
+	<li>Capable of learning new technologies / systems / features under guidance of mentors,</li>
+	<li>Proficient in multiple network vendor operating systems , Associate level network certification(s) (JNCIA , CCNA , etc) or higher,</li>
+	<li>Understanding of BGP, Knowledge of the OSI-model and experience isolating network, hardware and software issues,</li>
+	<li>Experience writing scripts in Bash, Python, or other scripting language,</li>
+	<li>Experience in working as part of a team in a customer-facing role,</li>
+	<li>Ability to prioritise when faced with high pressure scenarios.</li>
 </ul>
 <p><strong>Bonus Points but not required:</strong></p>
 <ul>
-	<li>Experience with optical transport technologies such as CWDM/DWDM</li>
-	<li>Professional level network certification(s) (JNCIP , CCNP , etc) or higher</li>
-	<li>Linux system administration</li>
+	<li>Understanding of anycast routing,</li>
+	<li>Good working knowledge of&nbsp; Junos, IOS-XR, NX-OS, EOS and SONIC,</li>
+	<li>Experience writing network configuration and design documentation,</li>
+	<li>Experience solving problems through automation,</li>
+	<li>Experience with optical transport technologies such as CWDM/DWDM,</li>
+	<li>Linux system administration,</li>
+	<li>Multilingual.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
