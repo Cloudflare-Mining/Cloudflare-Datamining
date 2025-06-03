@@ -249,7 +249,10 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
+		]
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues": {
 		"deprecated": true,
@@ -1637,7 +1640,10 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
+		]
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/type": {
 		"deprecated": true,
