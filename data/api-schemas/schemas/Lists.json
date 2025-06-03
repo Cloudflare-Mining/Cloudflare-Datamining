@@ -124,6 +124,9 @@
 												"id": {
 													"description": "Defines the unique ID of the item in the List.",
 													"example": "34b12448945f11eaa1b71c4d701ab86e",
+													"maxLength": 32,
+													"minLength": 32,
+													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												}
@@ -228,6 +231,9 @@
 														"id": {
 															"description": "Defines the unique ID of the item in the List.",
 															"example": "34b12448945f11eaa1b71c4d701ab86e",
+															"maxLength": 32,
+															"minLength": 32,
+															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														}
@@ -395,6 +401,9 @@
 										"id": {
 											"description": "Defines the unique ID of the item in the List.",
 											"example": "34b12448945f11eaa1b71c4d701ab86e",
+											"maxLength": 32,
+											"minLength": 32,
+											"readOnly": true,
 											"type": "string",
 											"x-auditable": true
 										}
@@ -2548,6 +2557,9 @@
 				"schema": {
 					"description": "Defines the unique ID of the item in the List.",
 					"example": "34b12448945f11eaa1b71c4d701ab86e",
+					"maxLength": 32,
+					"minLength": 32,
+					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
 				}
