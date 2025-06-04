@@ -108,7 +108,195 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": null
+						"imageAssetFile": {
+							"id": "c5ba2603-c24a-55a4-af45-169d9894ea40",
+							"altText": "Build Powerful Applications - Hero",
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6elch54Rkrp0HUB7UJNNLd/0dd12730b17615dc97513c618b164973/Improving_Developer_Experience_for_Framework_Users.png"
+								},
+								"description": "Build Powerful Applications"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
+					},
+					{
+						"contentfulId": "65vyTv7olm1VFJss8ACPD",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "BENEFITS OF WORKERS",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "Ssq4V3smMC8ocEFjiloDi",
+								"title": "Increase developer productivity",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Deploy to Workers directly from any Git repository and spin up applications in hours not days without additional tooling. ",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "af141425-00b0-562b-a8d3-5e7727ecc395",
+									"altText": "Innovation thinking orange",
+									"title": "Innovation thinking orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1SWsnCv2TXMXADX1uFOe30/a9e83fe2a338d06b5f01d3bdb58b712f/innovation-thinking.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7azjMffs8nCcwV5fjCIJdl",
+								"title": "Scale automatically",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "No action is required from developers to add more compute power or worry about reaching a limit no matter how much traffic an application receives.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
+									"altText": "Optimization scale orange",
+									"title": "Optimization scale orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
+										},
+										"description": "icon scale aqua"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5D5pLfuEt5w6EIo3lZG6G0",
+								"title": "Improve performance and reliability",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Gradually deploy code to an optimal location automatically to improve performance and reliability.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "33d31860-e857-5323-98f8-8102528a9f69",
+									"altText": "Performance arrow up icon",
+									"title": "Performance arrow up icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Bv7zElyuDmw76ORWjFL8b/e12526c289fcc43ebf221959e6093a61/performance-arrow-up.svg"
+										},
+										"description": "Performance arrow up icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "8cv8aenLjM7T729tDPmCa",
+						"title": "Run serverless code from region: Earth",
+						"copy": "To enable industry-leading performance automatically, Cloudflare Workers runs on V8 isolates not containers.  Our V8 isolate architecture enables instant start up times at no additional cost as there is no delay waiting for the runtime to be loaded into an instance upon initiation. Isolates already have the runtime, all that is needed is for the code to be loaded on invocation, virtually eliminating cold starts on requests.",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "d84879cc-0696-5706-912b-40159ec9d905",
+							"altText": "Workers - How it works - image",
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2RpnQl0NtK6nbbIVO2OWQ4/1dc0a9ebc139d9a8237c1b8467b9c745/Workers_howmit_works.png"
+								},
+								"description": "Workers - How it works - image"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "HOW IT WORKS",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "medium",
+						"imageTextAlignment": "center",
+						"togglesTo": []
 					},
 					{
 						"contentfulId": "XPRWdX7opF38u8HdYzXY9",
@@ -435,6 +623,159 @@
 							}
 						],
 						"sectionPadding": null
+					},
+					{
+						"contentfulId": "4wywg6UEzUHTOBhwqwXhGV",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Focus on your code and innovate faster.",
+						"eyebrowHeading": "Top Workers use cases",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3war9iIgKQ1hs2vTPTUwae",
+								"title": "Run serverless functions",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "From fast and light to longer running and more CPU-intensive workloads, deploy and execute code globally.",
+								"learnMoreUrl": "https://workers.cloudflare.com/playground",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "0dc25a13-ecf5-503c-b3e1-4e3e6e60cd68",
+									"altText": "cloudflare-workers-80x80-0ab91d2",
+									"title": "cloudflare-workers-80x80-0ab91d2",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/329Q5Xu07lQPSczptz6AgI/f87ec76e0079903a5caf727202e4b6ff/cloudflare-workers_outline.png"
+										},
+										"description": "Cloudflare Workers icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7DOVcDnpZL0eecSZUs4OMW",
+								"title": "Build frontend applications",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Upload and serve HTML, CSS and client-side JS with native support for static files with React Router, OpenNext, or the Vite plugin.",
+								"learnMoreUrl": "https://developers.cloudflare.com/workers/frameworks/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "134a8bb8-faef-533e-96a2-dabd4762da64",
+									"altText": "Cloudflare Images",
+									"title": "Cloudflare Images Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cdHgwhn8poW5M4IegENwA/f0640421be98265b555ba988953252c2/image.svg"
+										},
+										"description": "Orange image icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2CprJFK0yGybyRx438xj9e",
+								"title": "Observability and troubleshooting",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Collect logs, filter, search, and run queries to understand what's happening across all your Workers.",
+								"learnMoreUrl": "/developer-platform/products/workers-observability/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
+									"altText": "Performance acceleration rocket ",
+									"title": "Performance acceleration rocket",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+										},
+										"description": "Performance acceleration rocket orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "69mFcT7XMNDDILYN3EdV6R",
+						"title": "Helping organizations worldwide modernize applications",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "45KLS3VsrG9rtqcZUmmNFQ",
+							"elementName": "Workers - View case studies",
+							"standardText": null,
+							"text": "View case studies",
+							"url": "https://www.cloudflare.com/case-studies/?product=Workers",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"contentfulId": "3h2IOSSRCetcpIwW0GcpWH",
@@ -2281,6 +2622,42 @@
 								"description": "Share what you're building or ask questions with the Workers community and Cloudflare employees.",
 								"learnMoreUrl": "https://discord.cloudflare.com",
 								"learnMoreText": "Join the developer community",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1kjBKAToMDfxmhTfZasv5u",
+								"title": "Observability",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Understand how your Workers are performing with logs, traces, and other analytics.",
+								"learnMoreUrl": "https://developers.cloudflare.com/workers/observability/",
+								"learnMoreText": "Read the docs",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
