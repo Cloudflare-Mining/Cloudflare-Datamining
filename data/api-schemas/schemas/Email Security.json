@@ -333,6 +333,14 @@
 																"title": "postfix_id",
 																"type": "string"
 															},
+															"properties": {
+																"properties": {
+																	"whitelisted_pattern_type": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
 															"sent_date": {
 																"nullable": true,
 																"type": "string"
@@ -444,7 +452,8 @@
 															"detection_reasons",
 															"action_log",
 															"is_quarantined",
-															"is_phish_submission"
+															"is_phish_submission",
+															"properties"
 														],
 														"type": "object"
 													},
@@ -479,6 +488,7 @@
 													"is_quarantined": false,
 													"message_id": "<4VAZPrAdg7IGNxdt1DWRNu0gvOeL_iZiwP4BQfo4DaE.Yw-woXuugQbeFhBpzwFQtqq_v2v1HOKznoMBqbciQpE@example.com>",
 													"postfix_id": "47JJcT1w6GztQV7",
+													"properties": {},
 													"sent_date": "2019-11-21T00:22:01",
 													"subject": "listen, I highly recommend u to read that email, just to ensure not a thing will take place",
 													"threat_categories": [
@@ -828,6 +838,14 @@
 															"title": "postfix_id",
 															"type": "string"
 														},
+														"properties": {
+															"properties": {
+																"whitelisted_pattern_type": {
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
 														"sent_date": {
 															"nullable": true,
 															"type": "string"
@@ -939,7 +957,8 @@
 														"detection_reasons",
 														"action_log",
 														"is_quarantined",
-														"is_phish_submission"
+														"is_phish_submission",
+														"properties"
 													],
 													"type": "object"
 												},
@@ -974,6 +993,7 @@
 												"is_quarantined": false,
 												"message_id": "<4VAZPrAdg7IGNxdt1DWRNu0gvOeL_iZiwP4BQfo4DaE.Yw-woXuugQbeFhBpzwFQtqq_v2v1HOKznoMBqbciQpE@example.com>",
 												"postfix_id": "47JJcT1w6GztQV7",
+												"properties": {},
 												"sent_date": "2019-11-21T00:22:01",
 												"subject": "listen, I highly recommend u to read that email, just to ensure not a thing will take place",
 												"threat_categories": [
