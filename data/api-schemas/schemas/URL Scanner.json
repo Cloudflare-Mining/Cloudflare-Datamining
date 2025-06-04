@@ -847,7 +847,6 @@
 												"geo": {
 													"properties": {
 														"continents": {
-															"description": "GeoIP continent location",
 															"items": {
 																"description": "GeoIP continent location",
 																"example": "North America",
@@ -856,7 +855,6 @@
 															"type": "array"
 														},
 														"locations": {
-															"description": "GeoIP country location",
 															"items": {
 																"description": "GeoIP country location",
 																"example": "US",
