@@ -1496,9 +1496,19 @@
 																					},
 																					{
 																						"properties": {
+																							"class_name": {
+																								"description": "Class name of the Workflow. Should only be provided if the Workflow belongs to this script.",
+																								"example": "my-workflow",
+																								"type": "string"
+																							},
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
+																								"type": "string"
+																							},
+																							"script_name": {
+																								"description": "Script name that contains the Workflow. If not provided, defaults to this script name.",
+																								"example": "my-workflow",
 																								"type": "string"
 																							},
 																							"type": {
@@ -2606,9 +2616,19 @@
 																							},
 																							{
 																								"properties": {
+																									"class_name": {
+																										"description": "Class name of the Workflow. Should only be provided if the Workflow belongs to this script.",
+																										"example": "my-workflow",
+																										"type": "string"
+																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"script_name": {
+																										"description": "Script name that contains the Workflow. If not provided, defaults to this script name.",
+																										"example": "my-workflow",
 																										"type": "string"
 																									},
 																									"type": {
@@ -3711,9 +3731,19 @@
 												},
 												{
 													"properties": {
+														"class_name": {
+															"description": "Class name of the Workflow. Should only be provided if the Workflow belongs to this script.",
+															"example": "my-workflow",
+															"type": "string"
+														},
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
+															"type": "string"
+														},
+														"script_name": {
+															"description": "Script name that contains the Workflow. If not provided, defaults to this script name.",
+															"example": "my-workflow",
 															"type": "string"
 														},
 														"type": {
@@ -4714,9 +4744,19 @@
 																							},
 																							{
 																								"properties": {
+																									"class_name": {
+																										"description": "Class name of the Workflow. Should only be provided if the Workflow belongs to this script.",
+																										"example": "my-workflow",
+																										"type": "string"
+																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
+																										"type": "string"
+																									},
+																									"script_name": {
+																										"description": "Script name that contains the Workflow. If not provided, defaults to this script name.",
+																										"example": "my-workflow",
 																										"type": "string"
 																									},
 																									"type": {
@@ -5840,9 +5880,19 @@
 																									},
 																									{
 																										"properties": {
+																											"class_name": {
+																												"description": "Class name of the Workflow. Should only be provided if the Workflow belongs to this script.",
+																												"example": "my-workflow",
+																												"type": "string"
+																											},
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
+																												"type": "string"
+																											},
+																											"script_name": {
+																												"description": "Script name that contains the Workflow. If not provided, defaults to this script name.",
+																												"example": "my-workflow",
 																												"type": "string"
 																											},
 																											"type": {
