@@ -499,7 +499,7 @@
 														"type": "object"
 													}
 												],
-												"description": "The last Access user to use the WARP device.",
+												"description": "The last user to use the WARP device.",
 												"nullable": true,
 												"type": "object"
 											},
@@ -790,7 +790,7 @@
 													"type": "object"
 												}
 											],
-											"description": "The last Access user to use the WARP device.",
+											"description": "The last user to use the WARP device.",
 											"nullable": true,
 											"type": "object"
 										},
@@ -897,7 +897,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/devices/physical-devices/{device_id}/revoke": {
-		"description": "Revokes all registrations associated with the specified device.",
+		"description": "Revokes all WARP registrations associated with the specified device.",
 		"operationId": "revoke-device",
 		"parameters": [
 			{
