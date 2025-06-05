@@ -898,25 +898,6 @@
 		]
 	},
 	{
-		"id": "88c5e2c0-100c-40f9-86a1-ae68ff22ffa7",
-		"source": 1,
-		"name": "@cf/facebook/omni-detr-resnet-50",
-		"description": "DEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detection (118k annotated images).",
-		"task": {
-			"id": "9c178979-90d9-49d8-9e2c-0f1cf01815d4",
-			"name": "Object Detection",
-			"description": "Object detection models can detect instances of objects like persons, faces, license plates, or others in an image. This task takes an image as input and returns a list of detected objects, each one containing a label, a probability score, and its surrounding box coordinates."
-		},
-		"created_at": "2025-05-26 22:05:25.581",
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "beta",
-				"value": "true"
-			}
-		]
-	},
-	{
 		"id": "85c5a3c6-24b0-45e7-b23a-023182578822",
 		"source": 2,
 		"name": "@hf/thebloke/llama-2-13b-chat-awq",
