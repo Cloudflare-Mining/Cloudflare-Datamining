@@ -15,15 +15,6 @@
 	"account-brand-protection-abuse-reports-enabled": {
 		"enabled": true
 	},
-	"account-home-live-training-cta": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"experiment",
-			"support-first",
-			"support-last"
-		]
-	},
 	"account-load-balancing": {
 		"enabled": true
 	},
@@ -446,16 +437,6 @@
 			"baseline",
 			"no-carets",
 			"no-carets-blue-add"
-		]
-	},
-	"dashnav-7-top-nav-right-side-changes": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"text-caret",
-			"icon-only",
-			"text-icon",
-			"icon-only-with-add-button"
 		]
 	},
 	"dashnav-developer-platform-home": {
@@ -1161,13 +1142,6 @@
 	},
 	"new-app-sec-navigation": {
 		"enabled": false
-	},
-	"new-customer-welcome-upfront-dns": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
 	},
 	"new-email-changing-flow": {
 		"enabled": true
