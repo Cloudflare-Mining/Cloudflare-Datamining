@@ -5,43 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: </strong>Austin, TX</p>
-<p><strong>About the department</strong></p>
-<p>The Chief Technology Officer (CTO) at Cloudflare is responsible for setting technical direction, leading innovation, and shipping great technology. The CTO’s team at Cloudflare includes:</p>
+<p><span style="font-size: 12pt;"><strong>Available Locations:&nbsp; Austin, TX or New York, NY</strong></span></p>
+<h3>About the Role</h3>
+<p>As Senior Director of Product Management, Application Performance, you will guide product development through all stages of the product life cycle: identifying customer needs and developing, launching, and sustaining products, shaping the next generation of Cloudflare’s offerings. You will represent Cloudflare to customers, vendors, and partners, synthesizing information and communicating what you learn to internal stakeholders. You will build, maintain, and develop a world class team of product managers and leaders who deeply care about Cloudflare’s role in helping build a better Internet.</p>
+<p>You are an expert in today’s Internet, both at a protocol and regulatory level. You have an opinionated view on application optimization, and Internet protocols and performance. You are able to have deep technical discussions with internal and external engineering stakeholders. You also have the soft skills necessary to navigate organizational dependencies and promote your team’s work.</p>
+<p>This position requires you to be a self-starter with the ability to take ownership, work with tight timelines, handle various tasks simultaneously while maintaining a positive attitude. In addition, great oral communication and written documentation skills are valuable for this role for promoting ideas throughout the company.</p>
+<h3>What You’ll Do</h3>
 <ul>
-	<li><strong>Emerging Technology and Incubation</strong>: Cloudflare’s department focused on shipping new products, built on our network, that place many small bets on the future of our industry.</li>
-	<li><strong>Developer Platform</strong>: Cloudflare’s compute, storage, media, and AI layer where millions of developers build their applications.</li>
-	<li><strong>Cloudflare Research</strong>: the team at Cloudflare responsible for preparing the firm for the next decade of technology evolution.</li>
-	<li><strong>Cloudflare Privacy</strong>: the products built at Cloudflare that help make the Internet more private for all of its users.</li>
+	<li>Lead and encourage a team of accomplished product managers and leaders around the world, enabling high performance and removing obstacles to attainment of their objectives</li>
+	<li>Hire, develop, and retain extraordinary talent to scale the function and meet business goals</li>
+	<li>Guide the development of product strategy and roadmap for a broad portfolio which includes Traffic Management, Data Localization, DNS, TLS Certificate Lifecycle, and IP Address Management.</li>
+	<li>Lead PM efforts across teams from ideation through launch, and continuing through ongoing maintenance and support</li>
+	<li>Implement best-in-class product management processes to increase team velocity, quality, and accountability</li>
+	<li>Develop and nurture relationships with engineering leadership and coordinate closely to ensure successful delivery of product</li>
+	<li>Partner with leaders in other departments such as Product Marketing, Marketing, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</li>
+	<li>Build consensus and effectively influence senior-level partners</li>
+	<li>Identify new markets and opportunities for product expansion and build the external and internal relationships required to realize them</li>
+	<li>Represent the company externally as needed, including speaking engagements and other meetings with customers and prospects</li>
 </ul>
-<p>The team operates independently from Cloudflare’s core Product and Engineering team (though those partner teams are “Customer Zero” for anything built inside of the CTO’s organization). The CTO’s team consists primarily of engineers, researchers, and Product Managers.</p>
-<p>The scope of problems tackled by the CTO range from investigating frontier technologies, like <a href="https://blog.cloudflare.com/pq-2024/">post-quantum cryptography</a>, to shipping free tools that help build a better Internet, like our 1.1.1.1 resolver, to launching the foundations of products trusted by some of the world’s largest organizations like our Zero Trust suite.</p>
-<p>New products that started inside of the ETI group in the CTO’s team include:</p>
+<h3>Desirable Skills, Knowledge And Experience</h3>
 <ul>
-	<li>Cloudflare’s <a href="https://www.cloudflare.com/developer-platform/">industry-leading Developer Platform</a> products like our serverless compute solution, our storage offering, and our AI inference and services layer.</li>
-	<li>Cloudflare’s <a href="https://www.cloudflare.com/zero-trust/products/">best-in-class Zero Trust product line</a>, including our Zero Trust Access product, our Secure Web Gateway, our private networking technology, our data loss prevention suite, and our mobile and desktop clients.</li>
-	<li>Cloudflare’s privacy solutions, like our <a href="https://one.one.one.one/">1.1.1.1 DNS resolver</a>, our consumer VPN product <a href="https://one.one.one.one/">WARP</a>, and the technologies we build with <a href="https://blog.cloudflare.com/icloud-private-relay/">partners like Apple</a> and <a href="https://blog.cloudflare.com/key-transparency/">Meta</a> to preserve privacy on the Internet.</li>
-	<li>Cloudflare’s <a href="https://www.cloudflare.com/media-and-entertainment/">Media products</a>, including our video streaming platform and real-time calls solution.</li>
-	<li>Building blocks that change the economics of traditional costs on the Internet like our <a href="https://www.cloudflare.com/products/registrar/">domain registrar</a>.</li>
+	<li>15+ years experience in product management and a proven track record of leading large successful programs that span multiple teams</li>
+	<li>Deep understanding of Enterprise Software - the products, the buyers, the opportunities and challenges specific to providing solutions to some of the largest companies in the world.</li>
+	<li>Demonstrated ability to build, lead and develop a team of high-performing product managers and product leaders (direct reports): people want to work on your team again</li>
+	<li>Proven track record shipping data-driven, secure, enterprise products at scale in a highly dynamic environment.</li>
+	<li>Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details, but can also drive 30k foot view</li>
+	<li>Tolerance for ambiguity, creativity in strategy and execution tactics, and always improving on the status quo</li>
+	<li>Strong customer and stakeholder empathy. You must be not only the voice of the customer, but at various times the voice of marketing, finance, engineering, support and ops. You must be able to channel many points of view.</li>
+	<li>A positive “get it done” attitude and the ability to effectively prioritize and advance a large number of projects simultaneously</li>
 </ul>
-<p><strong>About the role</strong></p>
-<p>You will lead the operations, strategic initiatives and communications of the group, working alongside the Product Managers and Engineering Leaders to launch new technology on Cloudflare’s network.</p>
-<p><strong>Operations and Strategic Initiatives</strong>:&nbsp; Lead the strategic initiatives that start in ETI or rely on the ETI team. These projects can include acquisition due diligence and integration, partnerships that expand Cloudflare’s technology to reach new customers, and marketing exercises that use technology built in ETI to better tell Cloudflare’s story.</p>
-<p><strong>Team and Project Management</strong>: Shape the execution of ETI’s vision for helping build a better Internet. The product and engineering teams in ETI will trust you to help set priorities across the group and to own new projects or dependencies. You will work closely with teams across Cloudflare to deliver on those goals.</p>
-<p><strong>Communications</strong>: You will help ETI tell its story, internally and collaborate cross-functionally to help tell it to the right audiences externally. You will collaborate with Communications Team to help tell stories externally and to help draft external communications. You will also create retrospectives and celebrations that we share with Cloudflare, owning the presentations and materials sent by ETI. You will also help the product, engineering, and marketing teams get the inputs they need to tell specific stories in their areas.</p>
-<p><strong>Who you are</strong></p>
-<p>A suitable candidate will have an exceptional understanding of engineering or product management, possess a deep desire to learn and communicate with grace and empathy inside and outside of Cloudflare. You have an entrepreneurial approach and solve thorny problems by getting first to the principles and then aligning the team on the goal; executing, learning and adapting.</p>
+<h3>Bonus Points</h3>
 <ul>
-	<li>Experience as a Product Manager in a technology company or a combination of technical experience plus management consulting or investment banking&nbsp;</li>
-	<li>Experience working alongside engineering and design teams</li>
-	<li>Track record of working with or reporting to senior management</li>
-	<li>Experience working with customers to deploy and capture feedback on new technologies</li>
-	<li>The ability to work in a fast-moving and ever-changing environment</li>
-	<li>Excellent written and verbal communication skills</li>
-	<li>Exceptional people skills and empathy</li>
-	<li>A high degree of attention to detail</li>
-	<li>A kind and generous attitude towards customers and co-workers alike</li>
-	<li>A desire to receive feedback and grow</li>
+	<li>Ability to validate early ideas through quantitative and qualitative methods (A/B and multivariate testing, user testing, etc).&nbsp;</li>
+	<li>Hands-on experience with managing mission critical products or services that run at internet scale.</li>
+	<li>Familiarity with Internet traffic management, the global internet and data regulatory landscape, TLS certificate lifecycles, DNS best practices and RFCs, and/or Network and IP Address Management related topics such as BGP and DHCP</li>
+	<li>Scripting/programming experience (Python, Go, etc.) and/or experience with query languages</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For New York based hires: Estimated annual salary of $286,000 - $350,000</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
@@ -49,7 +53,7 @@
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Medical/Rx Insurance</li>
+	<li>Medical/Rx Insurance0</li>
 	<li>Dental Insurance</li>
 	<li>Vision Insurance</li>
 	<li>Flexible Spending Accounts</li>
