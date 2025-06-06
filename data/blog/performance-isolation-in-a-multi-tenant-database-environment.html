@@ -103,7 +103,7 @@ user1.database1 = pool_size=90</code></pre>
 	<h5>PgBouncer Runtime Commands</h5>
 	<pre class="language-bash"><code class="language-bash">SET USER dns_service_user = ‘max_user_connections=40’;
 SET POOL dns_service_user.dns_db = ‘pool_size=30’;</code></pre>
-	<p>This required major bug fixes, refactoring and implementation work in our fork of PgBouncer. We’ve also raised multiple pull requests to contribute all of our features to PgBouncer open source. To read about all of our work in PgBouncer, read <a href="https://blog.cloudflare.com/open-sourcing-our-fork-of-pgbouncer">this blog</a>.</p>
+	<p>This required major bug fixes, <a href="https://www.cloudflare.com/learning/cloud/how-to-refactor-applications">refactoring</a> and implementation work in our fork of PgBouncer. We’ve also raised multiple pull requests to contribute all of our features to PgBouncer open source. To read about all of our work in PgBouncer, read <a href="https://blog.cloudflare.com/open-sourcing-our-fork-of-pgbouncer">this blog</a>.</p>
 	<p>These new features now allow for faster and more granular "load shedding" against a misbehaving tenant’s concurrency (connection pool, user and database pair), while enabling stricter performance isolation.</p>
 	<div class="flex anchor relative">
 		<h2 id="future-solutions">Future solutions</h2>

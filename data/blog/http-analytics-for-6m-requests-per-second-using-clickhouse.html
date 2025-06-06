@@ -363,7 +363,7 @@
 			<p><b>Scalable</b> - we can add more Kafka brokers or ClickHouse nodes and scale ingestion as we grow. We are not so confident about query performance when cluster will grow to hundreds of nodes. However, Yandex team managed to scale their cluster to 500+ nodes, distributed geographically between several data centers, using two-level sharding.</p>
 		</li>
 		<li>
-			<p><b>Reduced complexity</b> - due to removing messy crons and consumers which were doing aggregations and refactoring API code we were able to:</p>
+			<p><b>Reduced complexity</b> - due to removing messy crons and consumers which were doing aggregations and <a href="https://www.cloudflare.com/learning/cloud/how-to-refactor-applications">refactoring</a> API code we were able to:</p>
 			<ul>
 				<li>
 					<p>Shutdown Postgres RollupDB instance and free it up for reuse.</p>

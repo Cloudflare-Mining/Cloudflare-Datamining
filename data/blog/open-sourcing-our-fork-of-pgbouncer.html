@@ -59,7 +59,7 @@ user1.database1 = pool_size=90</code></pre>
 	<h5>PgBouncer Runtime Commands</h5>
 	<pre class="language-bash"><code class="language-bash">SET USER dns_service_user = ‘max_user_connections=40’;
 SET POOL dns_service_user.dns_db = ‘pool_size=30’;</code></pre>
-	<p>These new features required major refactoring around how PgBouncer stores users, databases weakly referenced and stored passwords of different users, and how we enforce killing server side connections while still in use.</p>
+	<p>These new features required <a href="https://www.cloudflare.com/learning/cloud/how-to-refactor-applications">major refactoring</a> around how PgBouncer stores users, databases weakly referenced and stored passwords of different users, and how we enforce killing server side connections while still in use.</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusion">Conclusion</h3>
 		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
