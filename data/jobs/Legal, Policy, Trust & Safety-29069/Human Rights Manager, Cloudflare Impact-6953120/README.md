@@ -5,39 +5,48 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Hybrid - Amsterdam, Netherlands | Atlanta, GA, | Austin, TX | Denver, CO | Lisbon, Portugal | London, UK | New York, NY | Seattle, WA | Toronto, ON | Washington, DC</p>
-<h4><strong>Role Summary</strong></h4>
-<p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
-<p>The ideal candidate will work alongside database engineers, software developers, and Infrastructure teams, contributing to the evolution of database platform architecture, access control, and automation strategies. They will play a critical role in enhancing PostgreSQL infrastructure and improving database reliability, automation, and tooling.&nbsp;If you are passionate about <strong>PostgreSQL, automation, and database tooling</strong>, we’d love to hear from you!</p>
-<h4><strong>Role Responsibilities</strong></h4>
+<p><strong>Available Locations: Washington , DC or Austin, TX</strong></p>
+<h4><strong>Impact at Cloudflare</strong></h4>
+<p>Cloudflare believes that a better Internet can be not only a force for good, but an engine of global sustainability. We also believe that our mission means helping make the Internet better <em>for everyone</em>. Everyone should have access to an Internet that is faster, more reliable, more private, and more secure, and we strive to live up to our core values of being principled, curious, and transparent.</p>
+<p>In 2021, we officially launched <a href="https://blog.cloudflare.com/welcome-to-cloudflare-impact-week/">Cloudflare Impact</a>, which is our comprehensive corporate responsibility, human rights, and sustainability initiative. Cloudflare Impact reflects a company-wide effort to find ways to use our network and the Internet to do good in the world.&nbsp;</p>
 <ul>
-	<li>Build, deploy, and manage PostgreSQL databases in production environments.&nbsp;</li>
-	<li>Develop and maintain database tooling for automation, monitoring and performance tuning.</li>
-	<li>Optimize database performance, indexing strategies, and query tuning.&nbsp;</li>
-	<li>Implement high availability, backup and disaster recovery solutions.&nbsp;</li>
-	<li>Work closely with SRE and Applications teams to integrate database tools.&nbsp;</li>
-	<li>Implement proactive solutions using observability tools to monitor database health.&nbsp;</li>
+	<li>For more information on Cloudflare Impact, please see our annual <a href="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bEraZE4BmpaCFfYYHxbaU/20dda9014ac14793e61daaff0783eee5/2024_Cloudflare_Impact_Report.pdf">Impact Report</a>.&nbsp;</li>
 </ul>
-<h4><strong>Must-Have Skills</strong></h4>
+<p><strong>What You’ll Do</strong>&nbsp;&nbsp;</p>
+<p>Cloudflare’s Impact team sits at the intersection of technology, international human rights, and global good. As our <strong>Human Rights Manager</strong>, you will help shape and scale initiatives that help define Cloudflare's mission and demonstrate the company's commitment to human rights, transparency, and accountability. You’ll also work cross-functionally across legal, public policy, comms, finance, marketing, product, and engineering teams, and help ensure our annual <strong>Impact Report</strong> and other reports and assessments capture meaningful progress.</p>
+<p>Your responsibilities will include:</p>
 <ul>
-	<li>Experience building large multi-tenant databases, operating, capacity planning, and designing for failover, fault tolerance, and disaster recovery.</li>
-	<li>Experience building and maintaining database tooling for automation and monitoring.</li>
-	<li>Experience optimizing database performance and query tuning.</li>
-	<li>Experience with alerting and monitoring tools such as Prometheus, Grafana, and Kibana.</li>
-	<li>Experience in scripting languages (Python, Bash) for automation.&nbsp;</li>
-	<li>Experience with infrastructure-as-code (Terraform, Ansible or Salt) .</li>
+	<li><strong>Helping lead Cloudflare’s annual Impact Report</strong>: Manage timelines, data collection, storytelling, records, and stakeholder coordination. Craft narratives that illustrate our mission and impact, in collaboration with comms, legal, public policy, product, marketing and engineering teams.<br><br></li>
+	<li><strong>Advance our human rights commitments</strong>: Support Cloudflare’s implementation of the UN Guiding Principles on Business and Human Rights, GNI Principles, and Cloudflare Human Rights Policy and coordinate related due diligence, assessments, audits, and documentation processes.<br><br></li>
+	<li><strong>Engage with global human rights partners</strong>: help manage and build relationships with strategic human rights organizations, and other related stakeholders.&nbsp;</li>
+	<li><strong>Drive program effectiveness</strong>: Work closely with cross-functional teams to develop KPIs and reporting metrics for Cloudflare’s human rights, sustainability, and Impact programs.<br><br></li>
+	<li><strong>Support stakeholder engagement</strong>: Help prepare briefing materials and represent Cloudflare at external events, multistakeholder forums, and nonprofit convenings.</li>
 </ul>
-<h4><strong>Nice-to-Have Skills</strong></h4>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>Expertise in database schema migrations and automation using tools like Flyway, Liquibase or goose.&nbsp;</li>
-	<li>Contributions to PostgreSQL or relevant open-source projects.</li>
-	<li>Experience defining and implementing security policies for a RDBMS.</li>
-	<li>Experience with connection pooling solutions such as PgBouncer, HAProxy.</li>
-	<li>Experience with non-relational data stores such as time-series databases (ex. OpenTSDB) and key-value stores (eg., Redis)&nbsp;</li>
-	<li>Experience developing software in Go, Python or C/C++</li>
+	<li>5+ years of experience working in human rights law or policy, international development, CSR, or a related field—especially with a tech company, academic institution, government agency, foundation, or international nonprofit.</li>
+	<li>A strong writer and project manager, with experience owning complex narratives and annual reports or impact assessments.</li>
+	<li>Knowledgeable about digital rights, international human rights law, human rights due diligence, and the global human rights lanscape—particularly in contexts like freedom of expression, privacy, or cybersecurity.</li>
+	<li>Comfortable working cross-functionally across legal, policy, comms, product, engineering, and infrastructure teams.</li>
+	<li>Passionate about the role of technology in advancing digital rights, transparency, and access around the world.</li>
+	<li>Bachelor's degree</li>
+	<li>Above all, you love the Internet and have a passion for making it better.</li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Law degree (JD), or graduate degree in public policy, international relations, or international human rights</li>
+	<li>Experience working directly with nonprofits, NGOs, or multistakeholder organizations is a strong plus.</li>
+	<li>Experience working with international tech and human rights organizations, including GNI, B-tech, and/or Freedom Online Coalition</li>
+	<li>Familiarity with technology policy issues, including in Europe</li>
+	<li>Familiarity with sustainability policy issues and regulations, including CSDDD, CSRD</li>
+	<li>Familiarity or strong interest in learning about Cloudflare products, global Internet standards and protocols, and global Internet and cybersecurity policy.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $117,000 - $143,000.</li>
+	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $128,000 - $156,000.</li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

@@ -31,15 +31,22 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Amsterdam, Netherlands",
+				"Atlanta, US",
 				"Austin, US",
+				"Denver, US",
 				"Lisbon, Portugal",
-				"London, UK"
+				"London, UK",
+				"New York, US",
+				"Seattle, US",
+				"Toronto, Canada",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		}
 	],
 	"id": 6628325,
-	"updated_at": "2025-05-06T10:13:48-04:00",
+	"updated_at": "2025-06-06T13:45:20-04:00",
 	"requisition_id": null,
 	"title": "Senior Database Reliability Engineer",
 	"company_name": "Cloudflare",
@@ -68,9 +75,58 @@
 			"parent_id": 74843
 		},
 		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
 			"id": 63782,
 			"name": "Lisbon, Portugal",
 			"location": "Lisboa, Lisboa, Portugal",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 66815,
+			"name": "Atlanta, GA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 73335,
+			"name": "Toronto, ON",
+			"location": "Toronto, Ontario, Canada",
+			"child_ids": [],
+			"parent_id": 75883
+		},
+		{
+			"id": 77970,
+			"name": "Amsterdam, Netherlands",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 74843
 		}
