@@ -224,6 +224,16 @@
 	"banda-workers-ui": {
 		"enabled": true
 	},
+	"banner-frequency-test": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"immediate-refresh",
+			"ten-seconds",
+			"thirty-seconds",
+			"one-minute"
+		]
+	},
 	"billing-annual-subscriptions": {
 		"enabled": false
 	},
@@ -1068,6 +1078,9 @@
 	"magic-cni-self-service-cloud-google": {
 		"enabled": true
 	},
+	"magic-dynamic-rule-config": {
+		"enabled": true
+	},
 	"magic-firewall-custom-ipv6": {
 		"enabled": true
 	},
@@ -1273,6 +1286,16 @@
 		"branches": [
 			"baseline",
 			"experiment"
+		]
+	},
+	"prg-banner-frequency-test": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"immediate-refresh",
+			"ten-seconds",
+			"thirty-seconds",
+			"one-minute"
 		]
 	},
 	"prg-bots-one-click-settings": {
