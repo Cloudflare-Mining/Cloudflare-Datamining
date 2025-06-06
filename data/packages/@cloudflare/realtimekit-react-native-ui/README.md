@@ -1,22 +1,21 @@
 <!-- PROJECT LOGO -->
 <p align="center">
-  <a href="https://dyte.io">
-    <img src="https://assets.dyte.io/logo-outlined.png" alt="Logo" width="120" />
+  <a href="https://cloudflare.com">
+    <img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EYsdkdfBcHtgPmgp3YtkD/0b203affd2053988264b9253b13de6b3/logo-thumbnail.png" alt="Logo" width="180">
   </a>
   
-  <h2 align="center">React Native UI Kit</h3>
+  <h2 align="center">RealtimeKit React Native UI</h2>
 
   <p align="center">
     A set of React Native UI components to create realtime communication applications
     <br />
-    <a href="https://www.notion.so/dyte/React-Native-UI-Kit-1a17935890c08059830cecbc0f96c932?pvs=4"><strong>Explore the docs »</strong></a>
+    <a href="https://docs.realtime.cloudflare.com/react-native"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://app.dyte.io">View Demo</a>
     ·
-    <a href="https://docs.dyte.io/discuss">Report Bug</a>
+    <a href="https://community.cloudflare.com/">Report Bug</a>
     ·
-    <a href="https://docs.dyte.io/discuss">Request Feature</a>
+    <a href="https://community.cloudflare.com/">Request Feature</a>
   </p>
 </p>
 
@@ -33,54 +32,85 @@
 ## Getting Started
 
 
-First, you will need to install the [react-native-ui-kit](https://npmjs.com/package/@dytesdk/react-native-ui-kit) along with the [react-native-core](https://npmjs.com/package/@dytesdk/react-native-core) package:
+First, you will need to install the [@cloudflare/realtimekit-react-native-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native-ui) along with the [@cloudflare/realtimekit-react-native](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native) package:
 
 ```sh
-npm i @dytesdk/react-native-ui-kit @dytesdk/react-native-core
+npm i @cloudflare/realtimekit-react-native-ui @cloudflare/realtimekit-react-native
 ```
 
-The `@dytesdk/react-native-core` package is the package which handles all the low level logic required for a meeting by interating with our servers. Use it to create a meeting object, which you can pass along to the UI Kit components.
+The `@cloudflare/realtimekit-react-native` package is the package which handles all the low level logic required for a meeting by interating with our servers. Use it to create a meeting object, which you can pass along to the UI Kit components.
 
-Install the following peer dependencies:
+Install the required **native** dependencies
 
-```sh
-npm install @dyteinternals/react-native-webrtc react-native-document-picker react-native-file-viewer react-native-fs react-native-safe-area-context react-native-sound-player react-native-svg react-native-webview
+```bash
+npm install @cloudflare/react-native-webrtc @react-native-documents/picker react-native-file-viewer react-native-fs react-native-sound-player react-native-webview
 ```
+
+Install these **required** dependencies as per your ```react-native``` version
+
+- ```react-native-safe-area-context```
+  - **react-native (0.64 - 0.74)** : 
+    ```bash
+    npm install react-native-safe-area-context@^4.0.0
+    ```
+  - **react-native (>= 0.74)** : 
+    ```bash
+    npm install react-native-safe-area-context@^5.0.0
+    ```
+
+- ```react-native-svg```
+  - Follow the [installation instructions](https://github.com/react-native-svg/react-native-svg#installation) for react-native-svg.
+  - ```bash
+    npm install react-native-svg@<compatible-version>
+    ```
 
 ## Usage
 
-Use the `useDyteClient()` hook to initialize a client
+Here's a series of steps that you need to perform:
+
+- Set up ```RealtimeKitProvider```. This provides the context that provides meeting object and other data to all the child components.
+- Set up ```RtkUIProvider```. This provides design system to child components.
+- Initialize the RealtimeKit client. Use the ```useRealtimeKitClient()``` hook and ```initMeeting``` to initialize a client.
+- Pass the meeting object to UI Kit, which will use it to retrieve meeting information and display it on the user interface.
 
 ```jsx
-function App() {
-  const [client, initClient] = useDyteClient();
+import React, { useEffect } from 'react';
+import { RealtimeKitProvider, useRealtimeKitClient } from '@cloudflare/realtimekit-react-native';
+import { RtkUIProvider, RtkMeeting, RtkWaitingScreen } from '@cloudflare/realtimekit-react-native-ui';
+
+export default function App() {
+  const [meeting, initMeeting] = useRealtimeKitClient();
 
   useEffect(() => {
-    initClient({
+    const init = async () => {
+      initMeeting({
         authToken: '<auth-token>',
         defaults: {
           audio: true,
           video: true,
         },
       });
-  },[])
+    };
+    init();
+  }, []);
 
   return (
-    <DyteProvider>
-      <DyteUIProvider>
-        <DyteMeeting meeting={client} />
-      </DyteUIProvider>
-    </DyteProvider>
+    <RealtimeKitProvider value={meeting}>
+      <RtkUIProvider>
+        { !meeting ? 
+          <RtkWaitingScreen /> : 
+          <RtkMeeting meeting={meeting} showSetupScreen={true} iOSScreenshareEnabled={true} />
+        }
+      </RtkUIProvider>
+    </RealtimeKitProvider>
   );
 }
 ```  
 
-_For more examples, please refer to the [Documentation](https://docs.dyte.in/react-native/)_  
+_For more examples, please refer to the [Documentation](https://docs.realtime.cloudflare.com/react-native)_  
 
 ## About
 
-`@dytesdk/react-native-ui-kit` is created & maintained by Dyte, Inc. You can find us on Twitter - [@dyte_io](https://twitter.com/dyte_io) or write to us at `dev@dyte.io`.
+`@cloudflare/realtimekit-react-native-ui` is created & maintained by Cloudflare, Inc.
 
-The names and logos for Dyte are trademarks of Dyte, Inc.
-
-We love open source software! See [our other projects](https://github.com/dyte-in) and [our products](https://dyte.io).
+The names and logos for Cloudflare are trademarks of Cloudflare, Inc.
