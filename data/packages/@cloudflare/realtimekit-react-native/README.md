@@ -1,21 +1,21 @@
 <!-- PROJECT LOGO --> 
 <p align="center">
-  <a href="https://dyte.io">
-    <img src="https://assets.dyte.io/logo-outlined.png" alt="Logo" width="120" />
+  <a href="https://cloudflare.com">
+    <img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EYsdkdfBcHtgPmgp3YtkD/0b203affd2053988264b9253b13de6b3/logo-thumbnail.png" alt="Logo" width="180">
   </a>
 
-  <h2 align="center">React Native Core</h3>
+  <h2 align="center">RealtimeKit React Native</h3>
 
   <p align="center">
-    React Native SDK that provides Dyte's core functionality in mobile.
+    React Native SDK that provides RealtimeKit's core functionality in mobile.
     <br />
-    <a href="https://www.notion.so/dyte/React-Native-Core-1a17935890c0806d9ea6cabc9c496fd0?pvs=4"><strong>Explore the docs »</strong></a>
+    <a href="https://docs.realtime.cloudflare.com/rn-core"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     ·
-    <a href="https://docs.dyte.io/discuss">Report Bug</a>
+    <a href="https://community.cloudflare.com/">Report Bug</a>
     ·
-    <a href="https://docs.dyte.io/discuss">Request Feature</a>
+    <a href="https://community.cloudflare.com/">Request Feature</a>
   </p>
 </p>
 
@@ -32,11 +32,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-The core SDK provides Dyte's core functionality, while letting a developer build a custom UI over it.
+The core SDK provides RealtimeKit's core functionality, while letting a developer build a custom UI over it.
 
 ### Built With
 
-- [Dyte](https://dyte.io/)
+- [Cloudflare](https://cloudflare.com/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Java](https://dev.java/learn/)
 - [Objective C](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011210)
@@ -47,37 +47,56 @@ The core SDK provides Dyte's core functionality, while letting a developer build
 1. Install NPM packages
 
 ```sh
-npm install @dytesdk/react-native-core @dyteinternals/react-native-webrtc
+npm install @cloudflare/realtimekit-react-native @cloudflare/react-native-webrtc
 ```  
 
-_Note: For platform specific installation instructions, please refer to the [Documentation](https://docs.dyte.io/rn-core)._
+_Note: For platform specific installation instructions, please refer to the [Documentation](https://docs.realtime.cloudflare.com/rn-core)._
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-A `meeting` object can be created using the `DyteClient.init()` method.
+A `meeting` object can be created using the `useRealtimeKitClient()` hook.
 
 ```ts
-const meeting = await DyteClient.init({
-    authToken: '<authToken>',
-    defaults: {
+import React from 'react';
+import { useRealtimeKitClient, RealtimeKitProvider } from '@cloudflare/realtimekit-react-native';
+
+export default function App() {
+  const [meeting, initMeeting] = useRealtimeKitClient();
+  React.useEffect(() => {
+    const init = async () => {
+      const meetingOptions = {
         audio: true,
         video: true,
-    }
-});
+      };
+      await initMeeting({
+        authToken: 'YourAuthToken',
+        defaults: meetingOptions,
+      });
+    };
+    init();
+    if (meeting) meeting.joinRoom();
+  }, []);
+
+  if (meeting)
+    return (
+      <RealtimeKitProvider value={meeting}>
+        {/* Render you Components here*/}
+        {/* Components rendered inside RealtimeKitProvider can access RealtimeKitClient object using useRealtimeKitMeeting() hook */}
+      </RealtimeKitProvider>
+    );
+}
 ```
 
-The `meeting` object is used for all interaction with Dyte's servers. For example, the following code snippet is used for a user to join a room.
+The `meeting` object is used for all interaction with Cloudflare's servers. For example, the following code snippet is used for a user to join a room.
 
 ```ts
 await meeting.joinRoom();
 ```
 
-_For more examples, please refer to the [Documentation](https://docs.dyte.in)._
+_For more examples, please refer to the [Documentation](https://docs.realtime.cloudflare.com/rn-core)._
 
 ## About
 
-`@dytesdk/react-native-core` is created & maintained by Dyte, Inc. You can find us on Twitter - [@dyte_io](https://twitter.com/dyte_io) or write to us at `dev@dyte.io`.
+`@cloudflare/realtimekit-react-native` is created & maintained by Cloudflare, Inc.
 
-The names and logos for Dyte are trademarks of Dyte, Inc.
-
-We love open source software! See [our other projects](https://github.com/dyte-in) and [our products](https://dyte.io).
+The names and logos for Cloudflare are trademarks of Cloudflare, Inc.
