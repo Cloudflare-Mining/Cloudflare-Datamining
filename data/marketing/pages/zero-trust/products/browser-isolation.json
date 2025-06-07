@@ -2805,21 +2805,7 @@
 						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
 						"sectionPadding": null,
-						"streamPosterAssetFile": {
-							"id": "8bed110a-6dab-54a7-9329-3243f141179d",
-							"altText": "Browser Isolation Product Page - hero video image thumbnail",
-							"title": "Browser Isolation Product Page - hero video image thumbnail",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TMqg0xnnaJlqx2yFjlt8M/85416c47c50beac170d2135cdd736db5/Remote-Browser-Isolation-Webinar-Thumbnail.png"
-								},
-								"description": "Remote browser isolation webinar video thumbnail"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
+						"streamPosterAssetFile": null,
 						"streamPoster": null,
 						"imageSize": "Medium",
 						"imagePosition": null,
@@ -2868,42 +2854,6 @@
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sWqRe2bVBkaYdFk0OapeM/7104c2a5381e49f73144e8a6e1095b53/performance-acceleration-bolt.svg"
 										},
 										"description": "Lightning bolt icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5lbhWIEXasWZDyB7ihhcgG",
-								"title": "Isolate resources conditionally",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Implement RBI by application, by policy, for suspicious sites only, or with additional data loss controls.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "eaeddebf-b730-5e34-b5cd-2dcca8d4cba2",
-									"altText": "security-shield-protection-230x301-664b7d5",
-									"title": "security-shield-protection-230x301-664b7d5",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LaRddEaKEWlYXXx8Y2UST/4a87c8fe7df63554665ed7b673ba5846/security-shield-protection-2.svg"
-										},
-										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -3504,127 +3454,6 @@
 							}
 						],
 						"sectionPadding": null
-					},
-					{
-						"contentfulId": "6hMxuupgtwetb7Ous9E9Xb",
-						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare Browser Isolation runs browser code far away from local devices, helping prevent attacks and deliver a fast, responsive user experience",
-						"eyebrowHeading": "TOP BROWSER ISOLATION USE CASES",
-						"description": null,
-						"textLayout": "left",
-						"columnsLayout": "Three Columns",
-						"columnContent": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3Jdj7TCKiFDz058jGDENJo",
-								"title": "Protect against ransomware",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Isolate browsing to block ransomware attacks — before they spread to internal networks.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "82677b25-7ecf-5ffc-b863-32d69b7b43a4",
-									"altText": "DDoS ransomware icon",
-									"title": "Ramson DDoS - Approved web icons",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QLUkgVKLYb0gMKMJZG8yi/710a2770bfa0e6ad07c1d14d17e287bd/ransom-ddos.svg"
-										},
-										"description": "DDoS ransomware icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "vs5WQbLFERKXMvhaV0CLC",
-								"title": "Thwart phishing attacks",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Mitigate phishing attempts by opening suspicious email links in an isolated browser.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "174a6462-5a94-50be-84a8-6baeaa8903ab",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1yNlIR3VAIUNcmnDdkPKGp/e72fe4cab3fa0fa77788b5c7a89b50c5/office-branch.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2druENgqw0wC2YNZ4ysuOh",
-								"title": "Secure third-party access",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Easily contain and protect data that external users access from BYOD or unmanaged devices.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "1b916824-7fb8-5f8f-a315-4faa6461d4d3",
-									"altText": "Optimization gear ",
-									"title": "Optimization gear ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JreowuAuIySxXXXqycY4r/746dc87c57caa9f58423af84de3fa35a/optimization-gear.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						],
-						"sectionPadding": null,
-						"htmlId": null
 					},
 					{
 						"contentTypeId": "bladeHtml",
