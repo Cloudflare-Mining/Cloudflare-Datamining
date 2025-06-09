@@ -908,7 +908,8 @@
 		"count": "Number of metrics received",
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum value of a metric per dimension",
-		"quantiles": "Quantiles of a metric per dimension"
+		"quantiles": "Quantiles of a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsAvg": {
 		"__description": "",
@@ -945,9 +946,9 @@
 		"gpuMemory": "Maximum GPU memory usage",
 		"memory": "Maximum memory usage",
 		"rxBandwidth": "Maximum RX bandwidth",
-		"rxBytes": "Total bytes received",
+		"rxBytes": "<small>DEPRECATED (Replaced by sum { rxBytes }):</small> Total bytes received",
 		"txBandwidth": "Maximum TX bandwidth",
-		"txBytes": "Total bytes transmitted"
+		"txBytes": "<small>DEPRECATED (Replaced by sum { txBytes }):</small> Total bytes transmitted"
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsOrderBy": {
 		"__description": ""
@@ -975,6 +976,11 @@
 		"txBandwidthP50": "TX bandwidth (50th percentile)",
 		"txBandwidthP90": "TX bandwidth (90th percentile)",
 		"txBandwidthP99": "TX bandwidth (99th percentile)"
+	},
+	"AccountCloudchamberMetricsAdaptiveGroupsSum": {
+		"__description": "",
+		"rxBytes": "Sum of bytes received",
+		"txBytes": "Sum of bytes transmitted"
 	},
 	"AccountCloudflareTunnelsAnalyticsAdaptiveGroups": {
 		"__description": "Cloudflare tunnel Device Analytics",
