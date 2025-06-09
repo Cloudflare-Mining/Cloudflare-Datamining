@@ -10,7 +10,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -110,19 +111,23 @@
 												"properties": {
 													"description": {
 														"example": "Rule description",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"enabled": {
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"expression": {
 														"example": "http.cookie eq \"a=b\"",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"example": "95c365e17e1b46599cd99e5b231fac4e",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"parameters": {
 														"description": "Parameters of Cloud Connector Rule",
@@ -130,7 +135,8 @@
 															"host": {
 																"description": "Host to perform Cloud Connection to",
 																"example": "examplebucket.s3.eu-north-1.amazonaws.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -139,12 +145,13 @@
 														"description": "Cloud Provider type",
 														"enum": [
 															"aws_s3",
-															"r2",
+															"cloudflare_r2",
 															"gcp_storage",
 															"azure_storage"
 														],
 														"example": "aws_s3",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"

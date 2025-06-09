@@ -138,6 +138,7 @@
 															"x-auditable": true
 														},
 														"connections": {
+															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"items": {
 																"properties": {
@@ -200,7 +201,8 @@
 																	}
 																}
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 														},
 														"conns_active_at": {
 															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -294,6 +296,7 @@
 															"x-auditable": true
 														},
 														"connections": {
+															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"items": {
 																"properties": {
@@ -356,7 +359,8 @@
 																	}
 																}
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 														},
 														"conns_active_at": {
 															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -541,6 +545,7 @@
 																	"x-auditable": true
 																},
 																"connections": {
+																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																	"items": {
 																		"properties": {
@@ -603,7 +608,8 @@
 																			}
 																		}
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																},
 																"conns_active_at": {
 																	"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -697,6 +703,7 @@
 																	"x-auditable": true
 																},
 																"connections": {
+																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																	"items": {
 																		"properties": {
@@ -759,7 +766,8 @@
 																			}
 																		}
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																},
 																"conns_active_at": {
 																	"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -1457,6 +1465,7 @@
 															"x-auditable": true
 														},
 														"connections": {
+															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"items": {
 																"properties": {
@@ -1519,7 +1528,8 @@
 																	}
 																}
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 														},
 														"conns_active_at": {
 															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -1613,6 +1623,7 @@
 															"x-auditable": true
 														},
 														"connections": {
+															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"items": {
 																"properties": {
@@ -1675,7 +1686,8 @@
 																	}
 																}
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 														},
 														"conns_active_at": {
 															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -1860,6 +1872,7 @@
 																	"x-auditable": true
 																},
 																"connections": {
+																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																	"items": {
 																		"properties": {
@@ -1922,7 +1935,8 @@
 																			}
 																		}
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																},
 																"conns_active_at": {
 																	"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -2016,6 +2030,7 @@
 																	"x-auditable": true
 																},
 																"connections": {
+																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																	"items": {
 																		"properties": {
@@ -2078,7 +2093,8 @@
 																			}
 																		}
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																},
 																"conns_active_at": {
 																	"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -2538,6 +2554,7 @@
 																"x-auditable": true
 															},
 															"connections": {
+																"deprecated": true,
 																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																"items": {
 																	"properties": {
@@ -2600,7 +2617,8 @@
 																		}
 																	}
 																},
-																"type": "array"
+																"type": "array",
+																"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 															},
 															"conns_active_at": {
 																"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -2694,6 +2712,7 @@
 																"x-auditable": true
 															},
 															"connections": {
+																"deprecated": true,
 																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																"items": {
 																	"properties": {
@@ -2756,7 +2775,8 @@
 																		}
 																	}
 																},
-																"type": "array"
+																"type": "array",
+																"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 															},
 															"conns_active_at": {
 																"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -2983,6 +3003,7 @@
 																		"x-auditable": true
 																	},
 																	"connections": {
+																		"deprecated": true,
 																		"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																		"items": {
 																			"properties": {
@@ -3045,7 +3066,8 @@
 																				}
 																			}
 																		},
-																		"type": "array"
+																		"type": "array",
+																		"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																	},
 																	"conns_active_at": {
 																		"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -3139,6 +3161,7 @@
 																		"x-auditable": true
 																	},
 																	"connections": {
+																		"deprecated": true,
 																		"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																		"items": {
 																			"properties": {
@@ -3201,7 +3224,8 @@
 																				}
 																			}
 																		},
-																		"type": "array"
+																		"type": "array",
+																		"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																	},
 																	"conns_active_at": {
 																		"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -3531,6 +3555,7 @@
 															"x-auditable": true
 														},
 														"connections": {
+															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"items": {
 																"properties": {
@@ -3593,7 +3618,8 @@
 																	}
 																}
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 														},
 														"conns_active_at": {
 															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -3687,6 +3713,7 @@
 															"x-auditable": true
 														},
 														"connections": {
+															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"items": {
 																"properties": {
@@ -3749,7 +3776,8 @@
 																	}
 																}
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 														},
 														"conns_active_at": {
 															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -3934,6 +3962,7 @@
 																	"x-auditable": true
 																},
 																"connections": {
+																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																	"items": {
 																		"properties": {
@@ -3996,7 +4025,8 @@
 																			}
 																		}
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																},
 																"conns_active_at": {
 																	"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -4090,6 +4120,7 @@
 																	"x-auditable": true
 																},
 																"connections": {
+																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																	"items": {
 																		"properties": {
@@ -4152,7 +4183,8 @@
 																			}
 																		}
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																},
 																"conns_active_at": {
 																	"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -6168,6 +6200,7 @@
 																"x-auditable": true
 															},
 															"connections": {
+																"deprecated": true,
 																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																"items": {
 																	"properties": {
@@ -6230,7 +6263,8 @@
 																		}
 																	}
 																},
-																"type": "array"
+																"type": "array",
+																"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 															},
 															"conns_active_at": {
 																"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -6324,6 +6358,7 @@
 																"x-auditable": true
 															},
 															"connections": {
+																"deprecated": true,
 																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																"items": {
 																	"properties": {
@@ -6386,7 +6421,8 @@
 																		}
 																	}
 																},
-																"type": "array"
+																"type": "array",
+																"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 															},
 															"conns_active_at": {
 																"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -6613,6 +6649,7 @@
 																		"x-auditable": true
 																	},
 																	"connections": {
+																		"deprecated": true,
 																		"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																		"items": {
 																			"properties": {
@@ -6675,7 +6712,8 @@
 																				}
 																			}
 																		},
-																		"type": "array"
+																		"type": "array",
+																		"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																	},
 																	"conns_active_at": {
 																		"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -6769,6 +6807,7 @@
 																		"x-auditable": true
 																	},
 																	"connections": {
+																		"deprecated": true,
 																		"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																		"items": {
 																			"properties": {
@@ -6831,7 +6870,8 @@
 																				}
 																			}
 																		},
-																		"type": "array"
+																		"type": "array",
+																		"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																	},
 																	"conns_active_at": {
 																		"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -7297,6 +7337,7 @@
 																"x-auditable": true
 															},
 															"connections": {
+																"deprecated": true,
 																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																"items": {
 																	"properties": {
@@ -7359,7 +7400,8 @@
 																		}
 																	}
 																},
-																"type": "array"
+																"type": "array",
+																"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 															},
 															"conns_active_at": {
 																"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -7453,6 +7495,7 @@
 																"x-auditable": true
 															},
 															"connections": {
+																"deprecated": true,
 																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																"items": {
 																	"properties": {
@@ -7515,7 +7558,8 @@
 																		}
 																	}
 																},
-																"type": "array"
+																"type": "array",
+																"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 															},
 															"conns_active_at": {
 																"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -7742,6 +7786,7 @@
 																		"x-auditable": true
 																	},
 																	"connections": {
+																		"deprecated": true,
 																		"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																		"items": {
 																			"properties": {
@@ -7804,7 +7849,8 @@
 																				}
 																			}
 																		},
-																		"type": "array"
+																		"type": "array",
+																		"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																	},
 																	"conns_active_at": {
 																		"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -7898,6 +7944,7 @@
 																		"x-auditable": true
 																	},
 																	"connections": {
+																		"deprecated": true,
 																		"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																		"items": {
 																			"properties": {
@@ -7960,7 +8007,8 @@
 																				}
 																			}
 																		},
-																		"type": "array"
+																		"type": "array",
+																		"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																	},
 																	"conns_active_at": {
 																		"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -8288,6 +8336,7 @@
 															"x-auditable": true
 														},
 														"connections": {
+															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"items": {
 																"properties": {
@@ -8350,7 +8399,8 @@
 																	}
 																}
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 														},
 														"conns_active_at": {
 															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -8444,6 +8494,7 @@
 															"x-auditable": true
 														},
 														"connections": {
+															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"items": {
 																"properties": {
@@ -8506,7 +8557,8 @@
 																	}
 																}
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 														},
 														"conns_active_at": {
 															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -8691,6 +8743,7 @@
 																	"x-auditable": true
 																},
 																"connections": {
+																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																	"items": {
 																		"properties": {
@@ -8753,7 +8806,8 @@
 																			}
 																		}
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																},
 																"conns_active_at": {
 																	"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -8847,6 +8901,7 @@
 																	"x-auditable": true
 																},
 																"connections": {
+																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																	"items": {
 																		"properties": {
@@ -8909,7 +8964,8 @@
 																			}
 																		}
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																},
 																"conns_active_at": {
 																	"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -9598,6 +9654,7 @@
 															"x-auditable": true
 														},
 														"connections": {
+															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"items": {
 																"properties": {
@@ -9660,7 +9717,8 @@
 																	}
 																}
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 														},
 														"conns_active_at": {
 															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -9754,6 +9812,7 @@
 															"x-auditable": true
 														},
 														"connections": {
+															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"items": {
 																"properties": {
@@ -9816,7 +9875,8 @@
 																	}
 																}
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 														},
 														"conns_active_at": {
 															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -10001,6 +10061,7 @@
 																	"x-auditable": true
 																},
 																"connections": {
+																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																	"items": {
 																		"properties": {
@@ -10063,7 +10124,8 @@
 																			}
 																		}
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																},
 																"conns_active_at": {
 																	"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -10157,6 +10219,7 @@
 																	"x-auditable": true
 																},
 																"connections": {
+																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																	"items": {
 																		"properties": {
@@ -10219,7 +10282,8 @@
 																			}
 																		}
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																},
 																"conns_active_at": {
 																	"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -10567,6 +10631,7 @@
 															"x-auditable": true
 														},
 														"connections": {
+															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"items": {
 																"properties": {
@@ -10629,7 +10694,8 @@
 																	}
 																}
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 														},
 														"conns_active_at": {
 															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -10723,6 +10789,7 @@
 															"x-auditable": true
 														},
 														"connections": {
+															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"items": {
 																"properties": {
@@ -10785,7 +10852,8 @@
 																	}
 																}
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 														},
 														"conns_active_at": {
 															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -10970,6 +11038,7 @@
 																	"x-auditable": true
 																},
 																"connections": {
+																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																	"items": {
 																		"properties": {
@@ -11032,7 +11101,8 @@
 																			}
 																		}
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																},
 																"conns_active_at": {
 																	"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -11126,6 +11196,7 @@
 																	"x-auditable": true
 																},
 																"connections": {
+																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																	"items": {
 																		"properties": {
@@ -11188,7 +11259,8 @@
 																			}
 																		}
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																},
 																"conns_active_at": {
 																	"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -11534,6 +11606,7 @@
 															"x-auditable": true
 														},
 														"connections": {
+															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"items": {
 																"properties": {
@@ -11596,7 +11669,8 @@
 																	}
 																}
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 														},
 														"conns_active_at": {
 															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -11690,6 +11764,7 @@
 															"x-auditable": true
 														},
 														"connections": {
+															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"items": {
 																"properties": {
@@ -11752,7 +11827,8 @@
 																	}
 																}
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 														},
 														"conns_active_at": {
 															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -11937,6 +12013,7 @@
 																	"x-auditable": true
 																},
 																"connections": {
+																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																	"items": {
 																		"properties": {
@@ -11999,7 +12076,8 @@
 																			}
 																		}
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																},
 																"conns_active_at": {
 																	"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -12093,6 +12171,7 @@
 																	"x-auditable": true
 																},
 																"connections": {
+																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																	"items": {
 																		"properties": {
@@ -12155,7 +12234,8 @@
 																			}
 																		}
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																},
 																"conns_active_at": {
 																	"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -12852,6 +12932,7 @@
 															"x-auditable": true
 														},
 														"connections": {
+															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"items": {
 																"properties": {
@@ -12914,7 +12995,8 @@
 																	}
 																}
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 														},
 														"conns_active_at": {
 															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -13008,6 +13090,7 @@
 															"x-auditable": true
 														},
 														"connections": {
+															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"items": {
 																"properties": {
@@ -13070,7 +13153,8 @@
 																	}
 																}
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 														},
 														"conns_active_at": {
 															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -13255,6 +13339,7 @@
 																	"x-auditable": true
 																},
 																"connections": {
+																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																	"items": {
 																		"properties": {
@@ -13317,7 +13402,8 @@
 																			}
 																		}
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																},
 																"conns_active_at": {
 																	"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
@@ -13411,6 +13497,7 @@
 																	"x-auditable": true
 																},
 																"connections": {
+																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																	"items": {
 																		"properties": {
@@ -13473,7 +13560,8 @@
 																			}
 																		}
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-deprecation-message": "This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`"
 																},
 																"conns_active_at": {
 																	"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",

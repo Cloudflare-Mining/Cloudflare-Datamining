@@ -368,7 +368,8 @@
 														"completed": {
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"content": {
 															"description": "Request content.",
@@ -378,7 +379,8 @@
 														"created": {
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "UUID.",
@@ -389,23 +391,27 @@
 														"message_tokens": {
 															"description": "Tokens for the request messages.",
 															"example": 1,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"priority": {
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"readable_id": {
 															"description": "Readable Request ID.",
 															"example": "RFI-2022-000001",
 															"title": "Request Readable ID",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"request": {
 															"description": "Requested information from request.",
 															"example": "Victomology",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "Request Status.",
@@ -418,12 +424,14 @@
 																"declined"
 															],
 															"title": "Request Status",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"summary": {
 															"description": "Brief description of the request.",
 															"example": "DoS attack",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"tlp": {
 															"description": "The CISA defined Traffic Light Protocol (TLP).",
@@ -435,17 +443,20 @@
 																"red"
 															],
 															"title": "TLP",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"tokens": {
 															"description": "Tokens for the request.",
 															"example": 16,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"updated": {
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -717,7 +728,8 @@
 																{
 																	"example": "2022-04-01T05:20:00Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															],
 															"description": "Anniversary date is when annual quota limit is refreshed.",
@@ -728,7 +740,8 @@
 																{
 																	"example": "2022-04-01T05:20:00Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															],
 															"description": "Quarter anniversary date is when quota limit is refreshed each quarter.",
@@ -737,12 +750,14 @@
 														"quota": {
 															"description": "Tokens for the quarter.",
 															"example": 120,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"remaining": {
 															"description": "Tokens remaining for the quarter.",
 															"example": 64,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"title": "Quota",
@@ -1029,7 +1044,8 @@
 															{
 																"example": "2022-04-01T05:20:00Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														],
 														"description": "Priority creation time."
@@ -1050,17 +1066,20 @@
 															"type": "string"
 														},
 														"title": "Labels",
-														"type": "array"
+														"type": "array",
+														"x-auditable": true
 													},
 													"priority": {
 														"description": "Priority.",
 														"example": 1,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"requirement": {
 														"description": "Requirement.",
 														"example": "DoS attacks carried out by CVEs",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"tlp": {
 														"description": "The CISA defined Traffic Light Protocol (TLP).",
@@ -1072,14 +1091,16 @@
 															"red"
 														],
 														"title": "TLP",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"updated": {
 														"allOf": [
 															{
 																"example": "2022-04-01T05:20:00Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														],
 														"description": "Priority last updated time."
@@ -1268,17 +1289,20 @@
 									"type": "string"
 								},
 								"title": "Labels",
-								"type": "array"
+								"type": "array",
+								"x-auditable": true
 							},
 							"priority": {
 								"description": "Priority.",
 								"example": 1,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"requirement": {
 								"description": "Requirement.",
 								"example": "DoS attacks carried out by CVEs",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"tlp": {
 								"description": "The CISA defined Traffic Light Protocol (TLP).",
@@ -1290,7 +1314,8 @@
 									"red"
 								],
 								"title": "TLP",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1403,7 +1428,8 @@
 														{
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													],
 													"description": "Priority creation time."
@@ -1424,17 +1450,20 @@
 														"type": "string"
 													},
 													"title": "Labels",
-													"type": "array"
+													"type": "array",
+													"x-auditable": true
 												},
 												"priority": {
 													"description": "Priority.",
 													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"requirement": {
 													"description": "Requirement.",
 													"example": "DoS attacks carried out by CVEs",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"tlp": {
 													"description": "The CISA defined Traffic Light Protocol (TLP).",
@@ -1446,14 +1475,16 @@
 														"red"
 													],
 													"title": "TLP",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated": {
 													"allOf": [
 														{
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													],
 													"description": "Priority last updated time."
@@ -1651,17 +1682,20 @@
 									"type": "string"
 								},
 								"title": "Labels",
-								"type": "array"
+								"type": "array",
+								"x-auditable": true
 							},
 							"priority": {
 								"description": "Priority.",
 								"example": 1,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"requirement": {
 								"description": "Requirement.",
 								"example": "DoS attacks carried out by CVEs",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"tlp": {
 								"description": "The CISA defined Traffic Light Protocol (TLP).",
@@ -1673,7 +1707,8 @@
 									"red"
 								],
 								"title": "TLP",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1786,7 +1821,8 @@
 														"completed": {
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"content": {
 															"description": "Request content.",
@@ -1796,7 +1832,8 @@
 														"created": {
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "UUID.",
@@ -1807,23 +1844,27 @@
 														"message_tokens": {
 															"description": "Tokens for the request messages.",
 															"example": 1,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"priority": {
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"readable_id": {
 															"description": "Readable Request ID.",
 															"example": "RFI-2022-000001",
 															"title": "Request Readable ID",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"request": {
 															"description": "Requested information from request.",
 															"example": "Victomology",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "Request Status.",
@@ -1836,12 +1877,14 @@
 																"declined"
 															],
 															"title": "Request Status",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"summary": {
 															"description": "Brief description of the request.",
 															"example": "DoS attack",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"tlp": {
 															"description": "The CISA defined Traffic Light Protocol (TLP).",
@@ -1853,17 +1896,20 @@
 																"red"
 															],
 															"title": "TLP",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"tokens": {
 															"description": "Tokens for the request.",
 															"example": 16,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"updated": {
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [

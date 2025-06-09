@@ -877,7 +877,8 @@
 												"completed": {
 													"example": "2022-04-01T05:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"content": {
 													"description": "Request content.",
@@ -887,7 +888,8 @@
 												"created": {
 													"example": "2022-04-01T05:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "UUID.",
@@ -898,23 +900,27 @@
 												"message_tokens": {
 													"description": "Tokens for the request messages.",
 													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"priority": {
 													"example": "2022-04-01T05:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"readable_id": {
 													"description": "Readable Request ID.",
 													"example": "RFI-2022-000001",
 													"title": "Request Readable ID",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"request": {
 													"description": "Requested information from request.",
 													"example": "Victomology",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Request Status.",
@@ -927,12 +933,14 @@
 														"declined"
 													],
 													"title": "Request Status",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"summary": {
 													"description": "Brief description of the request.",
 													"example": "DoS attack",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"tlp": {
 													"description": "The CISA defined Traffic Light Protocol (TLP).",
@@ -944,17 +952,20 @@
 														"red"
 													],
 													"title": "TLP",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"tokens": {
 													"description": "Tokens for the request.",
 													"example": 16,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"updated": {
 													"example": "2022-04-01T05:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1245,7 +1256,8 @@
 															{
 																"example": "2022-04-01T05:20:00Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														],
 														"description": "Defines the asset creation time.",
@@ -1254,21 +1266,25 @@
 													"description": {
 														"description": "Asset description.",
 														"example": "example description",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"file_type": {
 														"description": "Asset file type.",
 														"example": "docx",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Asset ID.",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "Asset name.",
 														"example": "example.docx",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -1540,7 +1556,8 @@
 															"urgent"
 														],
 														"title": "Request Priority",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -1564,7 +1581,8 @@
 															"declined"
 														],
 														"title": "Request Status",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -1586,7 +1604,8 @@
 															"red"
 														],
 														"title": "TLP",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												}
@@ -1846,7 +1865,8 @@
 														{
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													],
 													"description": "Anniversary date is when annual quota limit is refreshed.",
@@ -1857,7 +1877,8 @@
 														{
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													],
 													"description": "Quarter anniversary date is when quota limit is refreshed each quarter.",
@@ -1866,12 +1887,14 @@
 												"quota": {
 													"description": "Tokens for the quarter.",
 													"example": 120,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"remaining": {
 													"description": "Tokens remaining for the quarter.",
 													"example": 64,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											},
 											"title": "Quota",
@@ -2129,7 +2152,8 @@
 											],
 											"items": {
 												"description": "Request Types.",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"title": "Request Types",
 											"type": "array"
@@ -2299,7 +2323,8 @@
 									{
 										"example": "2022-04-01T05:20:00Z",
 										"format": "date-time",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								],
 								"description": "Retrieve requests completed after this time.",
@@ -2310,7 +2335,8 @@
 									{
 										"example": "2022-04-01T05:20:00Z",
 										"format": "date-time",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								],
 								"description": "Retrieve requests completed before this time.",
@@ -2321,7 +2347,8 @@
 									{
 										"example": "2022-04-01T05:20:00Z",
 										"format": "date-time",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								],
 								"description": "Retrieve requests created after this time.",
@@ -2332,7 +2359,8 @@
 									{
 										"example": "2022-04-01T05:20:00Z",
 										"format": "date-time",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								],
 								"description": "Retrieve requests created before this time.",
@@ -2350,7 +2378,8 @@
 							"request_type": {
 								"description": "Requested information from request.",
 								"example": "Victomology",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"sort_by": {
 								"description": "Field to sort results by.",
@@ -2376,7 +2405,8 @@
 									"declined"
 								],
 								"title": "Request Status",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2488,7 +2518,8 @@
 															{
 																"example": "2022-04-01T05:20:00Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														],
 														"description": "Request completion time.",
@@ -2499,7 +2530,8 @@
 															{
 																"example": "2022-04-01T05:20:00Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														],
 														"description": "Request creation time.",
@@ -2514,7 +2546,8 @@
 													"message_tokens": {
 														"description": "Tokens for the request messages.",
 														"example": 16,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"priority": {
 														"enum": [
@@ -2523,18 +2556,21 @@
 															"urgent"
 														],
 														"title": "Request Priority",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"readable_id": {
 														"description": "Readable Request ID.",
 														"example": "RFI-2022-000001",
 														"title": "Request Readable ID",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"request": {
 														"description": "Requested information from request.",
 														"example": "Victomology",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"status": {
 														"description": "Request Status.",
@@ -2547,12 +2583,14 @@
 															"declined"
 														],
 														"title": "Request Status",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"summary": {
 														"description": "Brief description of the request.",
 														"example": "DoS attack",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"tlp": {
 														"description": "The CISA defined Traffic Light Protocol (TLP).",
@@ -2564,18 +2602,21 @@
 															"red"
 														],
 														"title": "TLP",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"tokens": {
 														"description": "Tokens for the request.",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"updated": {
 														"allOf": [
 															{
 																"example": "2022-04-01T05:20:00Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														],
 														"description": "Request last updated time.",
@@ -2885,7 +2926,8 @@
 															{
 																"example": "2022-04-01T05:20:00Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														],
 														"description": "Defines the asset creation time.",
@@ -2894,21 +2936,25 @@
 													"description": {
 														"description": "Asset description.",
 														"example": "example description",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"file_type": {
 														"description": "Asset file type.",
 														"example": "docx",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Asset ID.",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "Asset name.",
 														"example": "example.docx",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -3200,7 +3246,8 @@
 														{
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													],
 													"description": "Defines the asset creation time.",
@@ -3209,21 +3256,25 @@
 												"description": {
 													"description": "Asset description.",
 													"example": "example description",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"file_type": {
 													"description": "Asset file type.",
 													"example": "docx",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Asset ID.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Asset name.",
 													"example": "example.docx",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -3408,7 +3459,8 @@
 									{
 										"example": "2022-04-01T05:20:00Z",
 										"format": "date-time",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								],
 								"description": "Retrieve mes  ges created after this time.",
@@ -3419,7 +3471,8 @@
 									{
 										"example": "2022-04-01T05:20:00Z",
 										"format": "date-time",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								],
 								"description": "Retrieve messages created before this time.",
@@ -3555,19 +3608,22 @@
 													"author": {
 														"description": "Author of message.",
 														"example": "user@domain.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"content": {
 														"description": "Content of message.",
 														"example": "Can you elaborate on the type of DoS that occurred?",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"created": {
 														"allOf": [
 															{
 																"example": "2022-04-01T05:20:00Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														],
 														"description": "Defines the message creation time.",
@@ -3575,18 +3631,21 @@
 													},
 													"id": {
 														"description": "Message ID.",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"is_follow_on_request": {
 														"description": "Whether the message is a follow-on request.",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"updated": {
 														"allOf": [
 															{
 																"example": "2022-04-01T05:20:00Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														],
 														"description": "Defines the message last updated time.",
@@ -3778,7 +3837,8 @@
 							"content": {
 								"description": "Content of message.",
 								"example": "Can you elaborate on the type of DoS that occurred?",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"title": "Request Message Editable Attributes",
@@ -3883,19 +3943,22 @@
 												"author": {
 													"description": "Author of message.",
 													"example": "user@domain.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"content": {
 													"description": "Content of message.",
 													"example": "Can you elaborate on the type of DoS that occurred?",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created": {
 													"allOf": [
 														{
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													],
 													"description": "Defines the message creation time.",
@@ -3903,18 +3966,21 @@
 												},
 												"id": {
 													"description": "Message ID.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"is_follow_on_request": {
 													"description": "Whether the message is a follow-on request.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"updated": {
 													"allOf": [
 														{
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													],
 													"description": "Defines the message last updated time.",
@@ -4099,17 +4165,20 @@
 							"priority": {
 								"description": "Priority for analyzing the request.",
 								"example": "routine",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"request_type": {
 								"description": "Requested information from request.",
 								"example": "Victomology",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"summary": {
 								"description": "Brief description of the request.",
 								"example": "DoS attack",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"tlp": {
 								"description": "The CISA defined Traffic Light Protocol (TLP).",
@@ -4121,7 +4190,8 @@
 									"red"
 								],
 								"title": "TLP",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"title": "Request Editable Parameters",
@@ -4226,7 +4296,8 @@
 												"completed": {
 													"example": "2022-04-01T05:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"content": {
 													"description": "Request content.",
@@ -4236,7 +4307,8 @@
 												"created": {
 													"example": "2022-04-01T05:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "UUID.",
@@ -4247,23 +4319,27 @@
 												"message_tokens": {
 													"description": "Tokens for the request messages.",
 													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"priority": {
 													"example": "2022-04-01T05:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"readable_id": {
 													"description": "Readable Request ID.",
 													"example": "RFI-2022-000001",
 													"title": "Request Readable ID",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"request": {
 													"description": "Requested information from request.",
 													"example": "Victomology",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Request Status.",
@@ -4276,12 +4352,14 @@
 														"declined"
 													],
 													"title": "Request Status",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"summary": {
 													"description": "Brief description of the request.",
 													"example": "DoS attack",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"tlp": {
 													"description": "The CISA defined Traffic Light Protocol (TLP).",
@@ -4293,17 +4371,20 @@
 														"red"
 													],
 													"title": "TLP",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"tokens": {
 													"description": "Tokens for the request.",
 													"example": 16,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"updated": {
 													"example": "2022-04-01T05:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -4498,17 +4579,20 @@
 							"priority": {
 								"description": "Priority for analyzing the request.",
 								"example": "routine",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"request_type": {
 								"description": "Requested information from request.",
 								"example": "Victomology",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"summary": {
 								"description": "Brief description of the request.",
 								"example": "DoS attack",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"tlp": {
 								"description": "The CISA defined Traffic Light Protocol (TLP).",
@@ -4520,7 +4604,8 @@
 									"red"
 								],
 								"title": "TLP",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"title": "Request Editable Parameters",
@@ -4625,7 +4710,8 @@
 												"completed": {
 													"example": "2022-04-01T05:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"content": {
 													"description": "Request content.",
@@ -4635,7 +4721,8 @@
 												"created": {
 													"example": "2022-04-01T05:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "UUID.",
@@ -4646,23 +4733,27 @@
 												"message_tokens": {
 													"description": "Tokens for the request messages.",
 													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"priority": {
 													"example": "2022-04-01T05:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"readable_id": {
 													"description": "Readable Request ID.",
 													"example": "RFI-2022-000001",
 													"title": "Request Readable ID",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"request": {
 													"description": "Requested information from request.",
 													"example": "Victomology",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Request Status.",
@@ -4675,12 +4766,14 @@
 														"declined"
 													],
 													"title": "Request Status",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"summary": {
 													"description": "Brief description of the request.",
 													"example": "DoS attack",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"tlp": {
 													"description": "The CISA defined Traffic Light Protocol (TLP).",
@@ -4692,17 +4785,20 @@
 														"red"
 													],
 													"title": "TLP",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"tokens": {
 													"description": "Tokens for the request.",
 													"example": 16,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"updated": {
 													"example": "2022-04-01T05:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -5009,7 +5105,8 @@
 														{
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													],
 													"description": "Defines the asset creation time.",
@@ -5018,21 +5115,25 @@
 												"description": {
 													"description": "Asset description.",
 													"example": "example description",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"file_type": {
 													"description": "Asset file type.",
 													"example": "docx",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Asset ID.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Asset name.",
 													"example": "example.docx",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -5223,7 +5324,8 @@
 							"content": {
 								"description": "Content of message.",
 								"example": "Can you elaborate on the type of DoS that occurred?",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"title": "Request Message Editable Attributes",
@@ -5328,19 +5430,22 @@
 												"author": {
 													"description": "Author of message.",
 													"example": "user@domain.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"content": {
 													"description": "Content of message.",
 													"example": "Can you elaborate on the type of DoS that occurred?",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created": {
 													"allOf": [
 														{
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													],
 													"description": "Defines the message creation time.",
@@ -5348,18 +5453,21 @@
 												},
 												"id": {
 													"description": "Message ID.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"is_follow_on_request": {
 													"description": "Whether the message is a follow-on request.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"updated": {
 													"allOf": [
 														{
 															"example": "2022-04-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													],
 													"description": "Defines the message last updated time.",

@@ -449,6 +449,7 @@
 													"dns_destination_ipv6_block_id": {
 														"description": "The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.",
 														"example": "b08f7231-d458-495c-98ef-190604c9ee83",
+														"nullable": true,
 														"type": "string",
 														"x-auditable": true
 													},
@@ -772,6 +773,7 @@
 															"dns_destination_ipv6_block_id": {
 																"description": "The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.",
 																"example": "b08f7231-d458-495c-98ef-190604c9ee83",
+																"nullable": true,
 																"type": "string",
 																"x-auditable": true
 															},
@@ -1196,6 +1198,7 @@
 												"dns_destination_ipv6_block_id": {
 													"description": "The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.",
 													"example": "b08f7231-d458-495c-98ef-190604c9ee83",
+													"nullable": true,
 													"type": "string",
 													"x-auditable": true
 												},
@@ -1487,6 +1490,7 @@
 														"dns_destination_ipv6_block_id": {
 															"description": "The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.",
 															"example": "b08f7231-d458-495c-98ef-190604c9ee83",
+															"nullable": true,
 															"type": "string",
 															"x-auditable": true
 														},
@@ -2067,6 +2071,7 @@
 												"dns_destination_ipv6_block_id": {
 													"description": "The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.",
 													"example": "b08f7231-d458-495c-98ef-190604c9ee83",
+													"nullable": true,
 													"type": "string",
 													"x-auditable": true
 												},
@@ -2358,6 +2363,7 @@
 														"dns_destination_ipv6_block_id": {
 															"description": "The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.",
 															"example": "b08f7231-d458-495c-98ef-190604c9ee83",
+															"nullable": true,
 															"type": "string",
 															"x-auditable": true
 														},
@@ -2947,6 +2953,7 @@
 												"dns_destination_ipv6_block_id": {
 													"description": "The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.",
 													"example": "b08f7231-d458-495c-98ef-190604c9ee83",
+													"nullable": true,
 													"type": "string",
 													"x-auditable": true
 												},
@@ -3238,6 +3245,7 @@
 														"dns_destination_ipv6_block_id": {
 															"description": "The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.",
 															"example": "b08f7231-d458-495c-98ef-190604c9ee83",
+															"nullable": true,
 															"type": "string",
 															"x-auditable": true
 														},
