@@ -100,6 +100,9 @@ const truncateEnvVars = new Set([
 	'CLOUDFLARE_API_TOKEN',
 	'WRANGLER_CI_MATCH_TAG',
 	'CLOUDFLARE_ACCOUNT_ID',
+	'WORKERS_CI_BUILD_UUID',
+	'WORKERS_CI_COMMIT_SHA',
+	'WORKERS_CI_BRANCH',
 ]);
 const startEnvIndex = logs.findIndex(log => log.line === '---start-env---');
 const endEnvIndex = logs.findIndex(log => log.line === '---end-env---');
