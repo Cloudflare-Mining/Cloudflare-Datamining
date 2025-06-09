@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Atlanta, GA | Austin, TX | Denver, CO | Lisbon, Portugal | London, United Kingdom&nbsp;</p>
+<p><strong>Available Locations: </strong>Atlanta, GA | Austin, TX | Denver, CO | Lisbon, Portugal | London, United Kingdom | Toronto, ON</p>
 <h4><strong>About the Role</strong></h4>
 <p>Cloudflare Registrar is a core part of the Cloudflare experience, offering customers a simple and&nbsp; secure way to register and manage their domains. Using Cloudflare, customers register and renew domains at-cost and do not pay any mark up fees.</p>
 <p>As the product leader for Cloudflare Registrar, you will own the vision, strategy, and execution for this key service, directly contributing to Cloudflare's mission and growth. You will be responsible not just for the product features, but for the overall success of the registrar business.</p>
