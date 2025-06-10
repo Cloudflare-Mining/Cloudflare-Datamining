@@ -31,13 +31,16 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Atlanta, US",
+				"Austin, US",
+				"Denver, US",
+				"Lisbon, Portugal"
 			],
 			"value_type": "multi_select"
 		}
 	],
 	"id": 6579931,
-	"updated_at": "2025-06-04T12:54:27-04:00",
+	"updated_at": "2025-06-10T14:15:16-04:00",
 	"requisition_id": null,
 	"title": "Software Engineer, API and Zones",
 	"company_name": "Cloudflare",
@@ -55,6 +58,27 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 63782,
+			"name": "Lisbon, Portugal",
+			"location": "Lisboa, Lisboa, Portugal",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 66815,
+			"name": "Atlanta, GA",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
 		}
