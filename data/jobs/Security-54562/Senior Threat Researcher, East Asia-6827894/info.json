@@ -31,13 +31,16 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Austin, US",
+				"Denver, US",
+				"Seattle, US",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		}
 	],
 	"id": 6827894,
-	"updated_at": "2025-06-09T12:41:24-04:00",
+	"updated_at": "2025-06-10T15:17:43-04:00",
 	"requisition_id": null,
 	"title": "Senior Threat Researcher, East Asia",
 	"company_name": "Cloudflare",
@@ -55,6 +58,27 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
 		}
