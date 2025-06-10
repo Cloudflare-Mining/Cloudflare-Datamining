@@ -3558,6 +3558,1200 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker",
+			"fields": []
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.PortBinding",
+			"fields": [
+				{
+					"name": "hostIp",
+					"annotations": {
+						"name": "HostIp"
+					}
+				},
+				{
+					"name": "hostPort",
+					"annotations": {
+						"name": "HostPort"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.LogConfig",
+			"fields": [
+				{
+					"name": "type",
+					"annotations": {
+						"name": "Type"
+					}
+				},
+				{
+					"name": "config",
+					"annotations": {
+						"name": "Config"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.RestartPolicy",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {
+						"name": "Name"
+					}
+				},
+				{
+					"name": "maximumRetryCount",
+					"annotations": {
+						"name": "MaximumRetryCount"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.WeightDevice",
+			"fields": [
+				{
+					"name": "path",
+					"annotations": {}
+				},
+				{
+					"name": "weight",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.ThrottleDevice",
+			"fields": [
+				{
+					"name": "path",
+					"annotations": {}
+				},
+				{
+					"name": "rate",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.DeviceMapping",
+			"fields": [
+				{
+					"name": "pathOnHost",
+					"annotations": {}
+				},
+				{
+					"name": "pathInContainer",
+					"annotations": {}
+				},
+				{
+					"name": "cgroupPermissions",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.DeviceRequest",
+			"fields": [
+				{
+					"name": "driver",
+					"annotations": {}
+				},
+				{
+					"name": "count",
+					"annotations": {}
+				},
+				{
+					"name": "deviceIds",
+					"annotations": {}
+				},
+				{
+					"name": "capabilities",
+					"annotations": {}
+				},
+				{
+					"name": "options",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.Ulimit",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {}
+				},
+				{
+					"name": "soft",
+					"annotations": {}
+				},
+				{
+					"name": "hard",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.IPAMConfig",
+			"fields": [
+				{
+					"name": "ipv4Address",
+					"annotations": {
+						"name": "IPv4Address"
+					}
+				},
+				{
+					"name": "ipv6Address",
+					"annotations": {
+						"name": "IPv6Address"
+					}
+				},
+				{
+					"name": "linkLocalIps",
+					"annotations": {
+						"name": "LinkLocalIPs"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.EndpointSettings",
+			"fields": [
+				{
+					"name": "ipamConfig",
+					"annotations": {
+						"name": "IPAMConfig"
+					}
+				},
+				{
+					"name": "links",
+					"annotations": {
+						"name": "Links"
+					}
+				},
+				{
+					"name": "aliases",
+					"annotations": {
+						"name": "Aliases"
+					}
+				},
+				{
+					"name": "networkId",
+					"annotations": {
+						"name": "NetworkID"
+					}
+				},
+				{
+					"name": "endpointId",
+					"annotations": {
+						"name": "EndpointID"
+					}
+				},
+				{
+					"name": "gateway",
+					"annotations": {
+						"name": "Gateway"
+					}
+				},
+				{
+					"name": "ipAddress",
+					"annotations": {
+						"name": "IPAddress"
+					}
+				},
+				{
+					"name": "ipPrefixLen",
+					"annotations": {
+						"name": "IPPrefixLen"
+					}
+				},
+				{
+					"name": "ipv6Gateway",
+					"annotations": {
+						"name": "IPv6Gateway"
+					}
+				},
+				{
+					"name": "globalIpv6Address",
+					"annotations": {
+						"name": "GlobalIPv6Address"
+					}
+				},
+				{
+					"name": "globalIpv6PrefixLen",
+					"annotations": {
+						"name": "GlobalIPv6PrefixLen"
+					}
+				},
+				{
+					"name": "macAddress",
+					"annotations": {
+						"name": "MacAddress"
+					}
+				},
+				{
+					"name": "driverOpts",
+					"annotations": {
+						"name": "DriverOpts"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerCreateRequest.HostConfig",
+			"fields": [
+				{
+					"name": "binds",
+					"annotations": {
+						"name": "Binds"
+					}
+				},
+				{
+					"name": "links",
+					"annotations": {
+						"name": "Links"
+					}
+				},
+				{
+					"name": "memory",
+					"annotations": {
+						"name": "Memory"
+					}
+				},
+				{
+					"name": "memorySwap",
+					"annotations": {
+						"name": "MemorySwap"
+					}
+				},
+				{
+					"name": "memoryReservation",
+					"annotations": {
+						"name": "MemoryReservation"
+					}
+				},
+				{
+					"name": "kernelMemory",
+					"annotations": {
+						"name": "KernelMemory"
+					}
+				},
+				{
+					"name": "nanoCpus",
+					"annotations": {
+						"name": "NanoCpus"
+					}
+				},
+				{
+					"name": "cpuPercent",
+					"annotations": {
+						"name": "CpuPercent"
+					}
+				},
+				{
+					"name": "cpuShares",
+					"annotations": {
+						"name": "CpuShares"
+					}
+				},
+				{
+					"name": "cpuPeriod",
+					"annotations": {
+						"name": "CpuPeriod"
+					}
+				},
+				{
+					"name": "cpuRealtimePeriod",
+					"annotations": {
+						"name": "CpuRealtimePeriod"
+					}
+				},
+				{
+					"name": "cpuRealtimeRuntime",
+					"annotations": {
+						"name": "CpuRealtimeRuntime"
+					}
+				},
+				{
+					"name": "cpuQuota",
+					"annotations": {
+						"name": "CpuQuota"
+					}
+				},
+				{
+					"name": "cpusetCpus",
+					"annotations": {
+						"name": "CpusetCpus"
+					}
+				},
+				{
+					"name": "cpusetMems",
+					"annotations": {
+						"name": "CpusetMems"
+					}
+				},
+				{
+					"name": "maximumIOps",
+					"annotations": {
+						"name": "MaximumIOps"
+					}
+				},
+				{
+					"name": "maximumIOBps",
+					"annotations": {
+						"name": "MaximumIOBps"
+					}
+				},
+				{
+					"name": "blkioWeight",
+					"annotations": {
+						"name": "BlkioWeight"
+					}
+				},
+				{
+					"name": "blkioWeightDevice",
+					"annotations": {
+						"name": "BlkioWeightDevice"
+					}
+				},
+				{
+					"name": "blkioDeviceReadBps",
+					"annotations": {
+						"name": "BlkioDeviceReadBps"
+					}
+				},
+				{
+					"name": "blkioDeviceReadIOps",
+					"annotations": {
+						"name": "BlkioDeviceReadIOps"
+					}
+				},
+				{
+					"name": "blkioDeviceWriteBps",
+					"annotations": {
+						"name": "BlkioDeviceWriteBps"
+					}
+				},
+				{
+					"name": "blkioDeviceWriteIOps",
+					"annotations": {
+						"name": "BlkioDeviceWriteIOps"
+					}
+				},
+				{
+					"name": "memorySwappiness",
+					"annotations": {
+						"name": "MemorySwappiness"
+					}
+				},
+				{
+					"name": "oomKillDisable",
+					"annotations": {
+						"name": "OomKillDisable"
+					}
+				},
+				{
+					"name": "oomScoreAdj",
+					"annotations": {
+						"name": "OomScoreAdj"
+					}
+				},
+				{
+					"name": "pidMode",
+					"annotations": {
+						"name": "PidMode"
+					}
+				},
+				{
+					"name": "pidsLimit",
+					"annotations": {
+						"name": "PidsLimit"
+					}
+				},
+				{
+					"name": "portBindings",
+					"annotations": {
+						"name": "PortBindings"
+					}
+				},
+				{
+					"name": "publishAllPorts",
+					"annotations": {
+						"name": "PublishAllPorts"
+					}
+				},
+				{
+					"name": "privileged",
+					"annotations": {
+						"name": "Privileged"
+					}
+				},
+				{
+					"name": "readonlyRootfs",
+					"annotations": {
+						"name": "ReadonlyRootfs"
+					}
+				},
+				{
+					"name": "dns",
+					"annotations": {
+						"name": "Dns"
+					}
+				},
+				{
+					"name": "dnsOptions",
+					"annotations": {
+						"name": "DnsOptions"
+					}
+				},
+				{
+					"name": "dnsSearch",
+					"annotations": {
+						"name": "DnsSearch"
+					}
+				},
+				{
+					"name": "volumesFrom",
+					"annotations": {
+						"name": "VolumesFrom"
+					}
+				},
+				{
+					"name": "capAdd",
+					"annotations": {
+						"name": "CapAdd"
+					}
+				},
+				{
+					"name": "capDrop",
+					"annotations": {
+						"name": "CapDrop"
+					}
+				},
+				{
+					"name": "groupAdd",
+					"annotations": {
+						"name": "GroupAdd"
+					}
+				},
+				{
+					"name": "restartPolicy",
+					"annotations": {
+						"name": "RestartPolicy"
+					}
+				},
+				{
+					"name": "autoRemove",
+					"annotations": {
+						"name": "AutoRemove"
+					}
+				},
+				{
+					"name": "networkMode",
+					"annotations": {
+						"name": "NetworkMode"
+					}
+				},
+				{
+					"name": "devices",
+					"annotations": {
+						"name": "Devices"
+					}
+				},
+				{
+					"name": "ulimits",
+					"annotations": {
+						"name": "Ulimits"
+					}
+				},
+				{
+					"name": "logConfig",
+					"annotations": {
+						"name": "LogConfig"
+					}
+				},
+				{
+					"name": "securityOpt",
+					"annotations": {
+						"name": "SecurityOpt"
+					}
+				},
+				{
+					"name": "storageOpt",
+					"annotations": {
+						"name": "StorageOpt"
+					}
+				},
+				{
+					"name": "cgroupParent",
+					"annotations": {
+						"name": "CgroupParent"
+					}
+				},
+				{
+					"name": "volumeDriver",
+					"annotations": {
+						"name": "VolumeDriver"
+					}
+				},
+				{
+					"name": "shmSize",
+					"annotations": {
+						"name": "ShmSize"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerCreateRequest",
+			"fields": [
+				{
+					"name": "hostname",
+					"annotations": {
+						"name": "Hostname"
+					}
+				},
+				{
+					"name": "domainname",
+					"annotations": {
+						"name": "Domainname"
+					}
+				},
+				{
+					"name": "user",
+					"annotations": {
+						"name": "User"
+					}
+				},
+				{
+					"name": "attachStdin",
+					"annotations": {
+						"name": "AttachStdin"
+					}
+				},
+				{
+					"name": "attachStdout",
+					"annotations": {
+						"name": "AttachStdout"
+					}
+				},
+				{
+					"name": "attachStderr",
+					"annotations": {
+						"name": "AttachStderr"
+					}
+				},
+				{
+					"name": "exposedPorts",
+					"annotations": {
+						"name": "ExposedPorts"
+					}
+				},
+				{
+					"name": "tty",
+					"annotations": {
+						"name": "Tty"
+					}
+				},
+				{
+					"name": "openStdin",
+					"annotations": {
+						"name": "OpenStdin"
+					}
+				},
+				{
+					"name": "stdinOnce",
+					"annotations": {
+						"name": "StdinOnce"
+					}
+				},
+				{
+					"name": "env",
+					"annotations": {
+						"name": "Env"
+					}
+				},
+				{
+					"name": "cmd",
+					"annotations": {
+						"name": "Cmd"
+					}
+				},
+				{
+					"name": "entrypoint",
+					"annotations": {
+						"name": "Entrypoint"
+					}
+				},
+				{
+					"name": "image",
+					"annotations": {
+						"name": "Image"
+					}
+				},
+				{
+					"name": "labels",
+					"annotations": {
+						"name": "Labels"
+					}
+				},
+				{
+					"name": "volumes",
+					"annotations": {
+						"name": "Volumes"
+					}
+				},
+				{
+					"name": "workingDir",
+					"annotations": {
+						"name": "WorkingDir"
+					}
+				},
+				{
+					"name": "networkDisabled",
+					"annotations": {
+						"name": "NetworkDisabled"
+					}
+				},
+				{
+					"name": "macAddress",
+					"annotations": {
+						"name": "MacAddress"
+					}
+				},
+				{
+					"name": "stopSignal",
+					"annotations": {
+						"name": "StopSignal"
+					}
+				},
+				{
+					"name": "stopTimeout",
+					"annotations": {
+						"name": "StopTimeout"
+					}
+				},
+				{
+					"name": "hostConfig",
+					"annotations": {
+						"name": "HostConfig"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerCreateResponse",
+			"fields": [
+				{
+					"name": "id",
+					"annotations": {
+						"name": "Id"
+					}
+				},
+				{
+					"name": "warnings",
+					"annotations": {
+						"name": "Warnings"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerMonitorResponse",
+			"fields": [
+				{
+					"name": "statusCode",
+					"annotations": {
+						"name": "StatusCode"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerState",
+			"fields": [
+				{
+					"name": "status",
+					"annotations": {
+						"name": "Status"
+					}
+				},
+				{
+					"name": "running",
+					"annotations": {
+						"name": "Running"
+					}
+				},
+				{
+					"name": "paused",
+					"annotations": {
+						"name": "Paused"
+					}
+				},
+				{
+					"name": "restarting",
+					"annotations": {
+						"name": "Restarting"
+					}
+				},
+				{
+					"name": "oomKilled",
+					"annotations": {
+						"name": "OOMKilled"
+					}
+				},
+				{
+					"name": "dead",
+					"annotations": {
+						"name": "Dead"
+					}
+				},
+				{
+					"name": "pid",
+					"annotations": {
+						"name": "Pid"
+					}
+				},
+				{
+					"name": "exitCode",
+					"annotations": {
+						"name": "ExitCode"
+					}
+				},
+				{
+					"name": "error",
+					"annotations": {
+						"name": "Error"
+					}
+				},
+				{
+					"name": "startedAt",
+					"annotations": {
+						"name": "StartedAt"
+					}
+				},
+				{
+					"name": "finishedAt",
+					"annotations": {
+						"name": "FinishedAt"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.GraphDriverData",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {
+						"name": "Name"
+					}
+				},
+				{
+					"name": "data",
+					"annotations": {
+						"name": "Data"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.MountPoint",
+			"fields": [
+				{
+					"name": "type",
+					"annotations": {
+						"name": "Type"
+					}
+				},
+				{
+					"name": "name",
+					"annotations": {
+						"name": "Name"
+					}
+				},
+				{
+					"name": "source",
+					"annotations": {
+						"name": "Source"
+					}
+				},
+				{
+					"name": "destination",
+					"annotations": {
+						"name": "Destination"
+					}
+				},
+				{
+					"name": "driver",
+					"annotations": {
+						"name": "Driver"
+					}
+				},
+				{
+					"name": "mode",
+					"annotations": {
+						"name": "Mode"
+					}
+				},
+				{
+					"name": "rw",
+					"annotations": {
+						"name": "RW"
+					}
+				},
+				{
+					"name": "propagation",
+					"annotations": {
+						"name": "Propagation"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.NetworkSettings",
+			"fields": [
+				{
+					"name": "bridge",
+					"annotations": {
+						"name": "Bridge"
+					}
+				},
+				{
+					"name": "sandboxId",
+					"annotations": {
+						"name": "SandboxID"
+					}
+				},
+				{
+					"name": "hairpinMode",
+					"annotations": {
+						"name": "HairpinMode"
+					}
+				},
+				{
+					"name": "linkLocalIpv6Address",
+					"annotations": {
+						"name": "LinkLocalIPv6Address"
+					}
+				},
+				{
+					"name": "linkLocalIpv6PrefixLen",
+					"annotations": {
+						"name": "LinkLocalIPv6PrefixLen"
+					}
+				},
+				{
+					"name": "sandboxKey",
+					"annotations": {
+						"name": "SandboxKey"
+					}
+				},
+				{
+					"name": "endpointId",
+					"annotations": {
+						"name": "EndpointID"
+					}
+				},
+				{
+					"name": "gateway",
+					"annotations": {
+						"name": "Gateway"
+					}
+				},
+				{
+					"name": "globalIpv6Address",
+					"annotations": {
+						"name": "GlobalIPv6Address"
+					}
+				},
+				{
+					"name": "globalIpv6PrefixLen",
+					"annotations": {
+						"name": "GlobalIPv6PrefixLen"
+					}
+				},
+				{
+					"name": "ipAddress",
+					"annotations": {
+						"name": "IPAddress"
+					}
+				},
+				{
+					"name": "ipPrefixLen",
+					"annotations": {
+						"name": "IPPrefixLen"
+					}
+				},
+				{
+					"name": "ipv6Gateway",
+					"annotations": {
+						"name": "IPv6Gateway"
+					}
+				},
+				{
+					"name": "macAddress",
+					"annotations": {
+						"name": "MacAddress"
+					}
+				},
+				{
+					"name": "networks",
+					"annotations": {
+						"name": "Networks"
+					}
+				},
+				{
+					"name": "ports",
+					"annotations": {
+						"name": "Ports"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerConfig",
+			"fields": [
+				{
+					"name": "hostname",
+					"annotations": {
+						"name": "Hostname"
+					}
+				},
+				{
+					"name": "domainname",
+					"annotations": {
+						"name": "Domainname"
+					}
+				},
+				{
+					"name": "user",
+					"annotations": {
+						"name": "User"
+					}
+				},
+				{
+					"name": "attachStdin",
+					"annotations": {
+						"name": "AttachStdin"
+					}
+				},
+				{
+					"name": "attachStdout",
+					"annotations": {
+						"name": "AttachStdout"
+					}
+				},
+				{
+					"name": "attachStderr",
+					"annotations": {
+						"name": "AttachStderr"
+					}
+				},
+				{
+					"name": "exposedPorts",
+					"annotations": {
+						"name": "ExposedPorts"
+					}
+				},
+				{
+					"name": "tty",
+					"annotations": {
+						"name": "Tty"
+					}
+				},
+				{
+					"name": "openStdin",
+					"annotations": {
+						"name": "OpenStdin"
+					}
+				},
+				{
+					"name": "stdinOnce",
+					"annotations": {
+						"name": "StdinOnce"
+					}
+				},
+				{
+					"name": "env",
+					"annotations": {
+						"name": "Env"
+					}
+				},
+				{
+					"name": "cmd",
+					"annotations": {
+						"name": "Cmd"
+					}
+				},
+				{
+					"name": "image",
+					"annotations": {
+						"name": "Image"
+					}
+				},
+				{
+					"name": "volumes",
+					"annotations": {
+						"name": "Volumes"
+					}
+				},
+				{
+					"name": "workingDir",
+					"annotations": {
+						"name": "WorkingDir"
+					}
+				},
+				{
+					"name": "entrypoint",
+					"annotations": {
+						"name": "Entrypoint"
+					}
+				},
+				{
+					"name": "networkDisabled",
+					"annotations": {
+						"name": "NetworkDisabled"
+					}
+				},
+				{
+					"name": "macAddress",
+					"annotations": {
+						"name": "MacAddress"
+					}
+				},
+				{
+					"name": "onBuild",
+					"annotations": {
+						"name": "OnBuild"
+					}
+				},
+				{
+					"name": "labels",
+					"annotations": {
+						"name": "Labels"
+					}
+				},
+				{
+					"name": "stopSignal",
+					"annotations": {
+						"name": "StopSignal"
+					}
+				},
+				{
+					"name": "stopTimeout",
+					"annotations": {
+						"name": "StopTimeout"
+					}
+				},
+				{
+					"name": "shell",
+					"annotations": {
+						"name": "Shell"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.ContainerInspectResponse",
+			"fields": [
+				{
+					"name": "id",
+					"annotations": {
+						"name": "Id"
+					}
+				},
+				{
+					"name": "created",
+					"annotations": {
+						"name": "Created"
+					}
+				},
+				{
+					"name": "path",
+					"annotations": {
+						"name": "Path"
+					}
+				},
+				{
+					"name": "args",
+					"annotations": {
+						"name": "Args"
+					}
+				},
+				{
+					"name": "state",
+					"annotations": {
+						"name": "State"
+					}
+				},
+				{
+					"name": "networkSettings",
+					"annotations": {
+						"name": "NetworkSettings"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.Command",
+			"fields": []
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.Command.ContainerCreate",
+			"fields": []
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.Command.ContainerCreate.Params",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {}
+				},
+				{
+					"name": "body",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.Command.ContainerCreate.Result",
+			"fields": [
+				{
+					"name": "response",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.Command.ContainerInspect",
+			"fields": []
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.Command.ContainerInspect.Params",
+			"fields": [
+				{
+					"name": "id",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/docker-api.capnp:Docker.Command.ContainerInspect.Result",
+			"fields": [
+				{
+					"name": "response",
+					"annotations": {}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/server/workerd.capnp:Service",
 			"fields": [
 				{
@@ -3703,6 +4897,10 @@
 				{
 					"name": "streamingTails",
 					"annotations": {}
+				},
+				{
+					"name": "containerEngine",
+					"annotations": {}
 				}
 			]
 		},
@@ -3774,6 +4972,28 @@
 				},
 				{
 					"name": "localDisk",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:Worker.DockerConfiguration",
+			"fields": [
+				{
+					"name": "socketPath",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:Worker.containerEngine",
+			"fields": [
+				{
+					"name": "none",
+					"annotations": {}
+				},
+				{
+					"name": "localDocker",
 					"annotations": {}
 				}
 			]
@@ -3950,6 +5170,10 @@
 				},
 				{
 					"name": "enableSql",
+					"annotations": {}
+				},
+				{
+					"name": "container",
 					"annotations": {}
 				}
 			]
@@ -4176,6 +5400,15 @@
 				},
 				{
 					"name": "json",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions",
+			"fields": [
+				{
+					"name": "imageName",
 					"annotations": {}
 				}
 			]
@@ -5022,6 +6255,7 @@
 		"workerd/src/workerd/io/trace.capnp",
 		"workerd/src/workerd/jsg/modules.capnp",
 		"workerd/src/workerd/jsg/rtti.capnp",
+		"workerd/src/workerd/server/docker-api.capnp",
 		"workerd/src/workerd/server/workerd-meta.capnp",
 		"workerd/src/workerd/server/workerd-meta.capnp:cppCapnpSchema",
 		"workerd/src/workerd/server/workerd-meta.capnp:workerdCapnpSchema",
