@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/6619627?gh_jid=6619627",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/6885717?gh_jid=6885717",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,8 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"education": "education_optional",
-	"internal_job_id": 3070512,
+	"internal_job_id": 3147259,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -19,7 +18,7 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "5150 - Field Sales",
+			"value": "4300 - Systems Engineering",
 			"value_type": "single_select"
 		},
 		{
@@ -28,46 +27,30 @@
 			"value": [
 				"Atlanta, US",
 				"Austin, US",
-				"Denver, US"
+				"Denver, US",
+				"Toronto, Canada",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		},
 		{
 			"id": 46546702,
 			"name": "Career Site Department",
-			"value": [
-				"Admin"
-			],
+			"value": null,
 			"value_type": "multi_select"
 		}
 	],
-	"id": 6619627,
-	"updated_at": "2025-06-11T16:39:45-04:00",
-	"requisition_id": "540",
-	"title": "Senior Administrative Assistant",
+	"id": 6885717,
+	"updated_at": "2025-06-11T18:00:42-04:00",
+	"requisition_id": null,
+	"title": "Software Engineer, Experiment and Data Capture",
 	"company_name": "Cloudflare",
-	"first_published": "2025-02-10T16:32:51-05:00",
+	"first_published": "2025-05-19T15:06:27-04:00",
 	"departments": [
 		{
-			"id": 29066,
-			"name": "Sales",
-			"child_ids": [
-				227430,
-				70661,
-				71029,
-				90946,
-				90947,
-				90948,
-				70657,
-				70662,
-				70658,
-				70659,
-				70660,
-				74075,
-				70663,
-				70664,
-				144594
-			],
+			"id": 29067,
+			"name": "Engineering",
+			"child_ids": [],
 			"parent_id": null
 		}
 	],
@@ -76,6 +59,13 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		},
@@ -92,6 +82,13 @@
 			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
+		},
+		{
+			"id": 73335,
+			"name": "Toronto, ON",
+			"location": "Toronto, Ontario, Canada",
+			"child_ids": [],
+			"parent_id": 75883
 		}
 	]
 }
