@@ -533,6 +533,7 @@
 											"items": {
 												"properties": {
 													"description": {
+														"default": "",
 														"description": "The description of the device posture rule.",
 														"example": "The rule for admin serial numbers",
 														"type": "string",
@@ -927,7 +928,7 @@
 																		"type": "boolean"
 																	},
 																	"cn": {
-																		"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+																		"description": "Certificate Common Name. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
 																		"example": "${hostname}.com.${serial_number}",
 																		"type": "string"
 																	},
@@ -988,6 +989,17 @@
 																		],
 																		"example": "windows",
 																		"type": "string"
+																	},
+																	"subject_alternative_names": {
+																		"description": "List of certificate Subject Alternative Names.",
+																		"example": [
+																			"example.com",
+																			"sample.com"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
 																	}
 																},
 																"required": [
@@ -1549,6 +1561,7 @@
 													"items": {
 														"properties": {
 															"description": {
+																"default": "",
 																"description": "The description of the device posture rule.",
 																"example": "The rule for admin serial numbers",
 																"type": "string",
@@ -1943,7 +1956,7 @@
 																				"type": "boolean"
 																			},
 																			"cn": {
-																				"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+																				"description": "Certificate Common Name. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
 																				"example": "${hostname}.com.${serial_number}",
 																				"type": "string"
 																			},
@@ -2004,6 +2017,17 @@
 																				],
 																				"example": "windows",
 																				"type": "string"
+																			},
+																			"subject_alternative_names": {
+																				"description": "List of certificate Subject Alternative Names.",
+																				"example": [
+																					"example.com",
+																					"sample.com"
+																				],
+																				"items": {
+																					"type": "string"
+																				},
+																				"type": "array"
 																			}
 																		},
 																		"required": [
@@ -2671,6 +2695,7 @@
 										"result": {
 											"properties": {
 												"description": {
+													"default": "",
 													"description": "The description of the device posture rule.",
 													"example": "The rule for admin serial numbers",
 													"type": "string",
@@ -3065,7 +3090,7 @@
 																	"type": "boolean"
 																},
 																"cn": {
-																	"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+																	"description": "Certificate Common Name. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
 																	"example": "${hostname}.com.${serial_number}",
 																	"type": "string"
 																},
@@ -3126,6 +3151,17 @@
 																	],
 																	"example": "windows",
 																	"type": "string"
+																},
+																"subject_alternative_names": {
+																	"description": "List of certificate Subject Alternative Names.",
+																	"example": [
+																		"example.com",
+																		"sample.com"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
 																}
 															},
 															"required": [
@@ -3664,6 +3700,7 @@
 												"result": {
 													"properties": {
 														"description": {
+															"default": "",
 															"description": "The description of the device posture rule.",
 															"example": "The rule for admin serial numbers",
 															"type": "string",
@@ -4058,7 +4095,7 @@
 																			"type": "boolean"
 																		},
 																		"cn": {
-																			"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+																			"description": "Certificate Common Name. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
 																			"example": "${hostname}.com.${serial_number}",
 																			"type": "string"
 																		},
@@ -4119,6 +4156,17 @@
 																			],
 																			"example": "windows",
 																			"type": "string"
+																		},
+																		"subject_alternative_names": {
+																			"description": "List of certificate Subject Alternative Names.",
+																			"example": [
+																				"example.com",
+																				"sample.com"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
 																		}
 																	},
 																	"required": [
@@ -4668,6 +4716,7 @@
 					"schema": {
 						"properties": {
 							"description": {
+								"default": "",
 								"description": "The description of the device posture rule.",
 								"example": "The rule for admin serial numbers",
 								"type": "string",
@@ -5055,7 +5104,7 @@
 												"type": "boolean"
 											},
 											"cn": {
-												"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+												"description": "Certificate Common Name. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
 												"example": "${hostname}.com.${serial_number}",
 												"type": "string"
 											},
@@ -5116,6 +5165,17 @@
 												],
 												"example": "windows",
 												"type": "string"
+											},
+											"subject_alternative_names": {
+												"description": "List of certificate Subject Alternative Names.",
+												"example": [
+													"example.com",
+													"sample.com"
+												],
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
@@ -5652,6 +5712,7 @@
 										"result": {
 											"properties": {
 												"description": {
+													"default": "",
 													"description": "The description of the device posture rule.",
 													"example": "The rule for admin serial numbers",
 													"type": "string",
@@ -6046,7 +6107,7 @@
 																	"type": "boolean"
 																},
 																"cn": {
-																	"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+																	"description": "Certificate Common Name. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
 																	"example": "${hostname}.com.${serial_number}",
 																	"type": "string"
 																},
@@ -6107,6 +6168,17 @@
 																	],
 																	"example": "windows",
 																	"type": "string"
+																},
+																"subject_alternative_names": {
+																	"description": "List of certificate Subject Alternative Names.",
+																	"example": [
+																		"example.com",
+																		"sample.com"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
 																}
 															},
 															"required": [
@@ -6645,6 +6717,7 @@
 												"result": {
 													"properties": {
 														"description": {
+															"default": "",
 															"description": "The description of the device posture rule.",
 															"example": "The rule for admin serial numbers",
 															"type": "string",
@@ -7039,7 +7112,7 @@
 																			"type": "boolean"
 																		},
 																		"cn": {
-																			"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+																			"description": "Certificate Common Name. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
 																			"example": "${hostname}.com.${serial_number}",
 																			"type": "string"
 																		},
@@ -7100,6 +7173,17 @@
 																			],
 																			"example": "windows",
 																			"type": "string"
+																		},
+																		"subject_alternative_names": {
+																			"description": "List of certificate Subject Alternative Names.",
+																			"example": [
+																				"example.com",
+																				"sample.com"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
 																		}
 																	},
 																	"required": [
@@ -7660,6 +7744,7 @@
 					"schema": {
 						"properties": {
 							"description": {
+								"default": "",
 								"description": "The description of the device posture rule.",
 								"example": "The rule for admin serial numbers",
 								"type": "string",
@@ -8047,7 +8132,7 @@
 												"type": "boolean"
 											},
 											"cn": {
-												"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+												"description": "Certificate Common Name. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
 												"example": "${hostname}.com.${serial_number}",
 												"type": "string"
 											},
@@ -8108,6 +8193,17 @@
 												],
 												"example": "windows",
 												"type": "string"
+											},
+											"subject_alternative_names": {
+												"description": "List of certificate Subject Alternative Names.",
+												"example": [
+													"example.com",
+													"sample.com"
+												],
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
@@ -8644,6 +8740,7 @@
 										"result": {
 											"properties": {
 												"description": {
+													"default": "",
 													"description": "The description of the device posture rule.",
 													"example": "The rule for admin serial numbers",
 													"type": "string",
@@ -9038,7 +9135,7 @@
 																	"type": "boolean"
 																},
 																"cn": {
-																	"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+																	"description": "Certificate Common Name. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
 																	"example": "${hostname}.com.${serial_number}",
 																	"type": "string"
 																},
@@ -9099,6 +9196,17 @@
 																	],
 																	"example": "windows",
 																	"type": "string"
+																},
+																"subject_alternative_names": {
+																	"description": "List of certificate Subject Alternative Names.",
+																	"example": [
+																		"example.com",
+																		"sample.com"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
 																}
 															},
 															"required": [
@@ -9637,6 +9745,7 @@
 												"result": {
 													"properties": {
 														"description": {
+															"default": "",
 															"description": "The description of the device posture rule.",
 															"example": "The rule for admin serial numbers",
 															"type": "string",
@@ -10031,7 +10140,7 @@
 																			"type": "boolean"
 																		},
 																		"cn": {
-																			"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+																			"description": "Certificate Common Name. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
 																			"example": "${hostname}.com.${serial_number}",
 																			"type": "string"
 																		},
@@ -10092,6 +10201,17 @@
 																			],
 																			"example": "windows",
 																			"type": "string"
+																		},
+																		"subject_alternative_names": {
+																			"description": "List of certificate Subject Alternative Names.",
+																			"example": [
+																				"example.com",
+																				"sample.com"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
 																		}
 																	},
 																	"required": [

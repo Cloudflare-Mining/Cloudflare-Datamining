@@ -160,26 +160,31 @@
 											"items": {
 												"properties": {
 													"allow_mode_switch": {
+														"default": false,
 														"description": "Whether to allow the user to switch WARP between modes.",
 														"example": true,
 														"type": "boolean"
 													},
 													"allow_updates": {
+														"default": false,
 														"description": "Whether to receive update notifications when a new version of the client is available.",
 														"example": true,
 														"type": "boolean"
 													},
 													"allowed_to_leave": {
+														"default": true,
 														"description": "Whether to allow devices to leave the organization.",
 														"example": true,
 														"type": "boolean"
 													},
 													"auto_connect": {
+														"default": 0,
 														"description": "The amount of time in seconds to reconnect after having been disabled.",
 														"example": 0,
 														"type": "number"
 													},
 													"captive_portal": {
+														"default": 180,
 														"description": "Turn on the captive portal after the specified amount of time.",
 														"example": 180,
 														"type": "number"
@@ -196,6 +201,7 @@
 														"type": "string"
 													},
 													"disable_auto_fallback": {
+														"default": false,
 														"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 														"example": true,
 														"type": "boolean",
@@ -207,6 +213,59 @@
 														"type": "boolean"
 													},
 													"exclude": {
+														"default": [
+															{
+																"address": "10.0.0.0/8"
+															},
+															{
+																"address": "100.64.0.0/10"
+															},
+															{
+																"address": "169.254.0.0/16",
+																"description": "DHCP Unspecified"
+															},
+															{
+																"address": "172.16.0.0/12"
+															},
+															{
+																"address": "192.0.0.0/24"
+															},
+															{
+																"address": "192.168.0.0/16"
+															},
+															{
+																"address": "224.0.0.0/24"
+															},
+															{
+																"address": "240.0.0.0/4"
+															},
+															{
+																"address": "255.255.255.255/32",
+																"description": "DHCP Broadcast"
+															},
+															{
+																"address": "fe80::/10",
+																"description": "IPv6 Link Local"
+															},
+															{
+																"address": "fd00::/8"
+															},
+															{
+																"address": "ff01::/16"
+															},
+															{
+																"address": "ff02::/16"
+															},
+															{
+																"address": "ff03::/16"
+															},
+															{
+																"address": "ff04::/16"
+															},
+															{
+																"address": "ff05::/16"
+															}
+														],
 														"description": "List of routes excluded in the WARP client's tunnel.",
 														"items": {
 															"oneOf": [
@@ -254,11 +313,56 @@
 														"type": "array"
 													},
 													"exclude_office_ips": {
+														"default": false,
 														"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 														"example": true,
 														"type": "boolean"
 													},
 													"fallback_domains": {
+														"default": [
+															{
+																"suffix": "intranet"
+															},
+															{
+																"suffix": "internal"
+															},
+															{
+																"suffix": "private"
+															},
+															{
+																"suffix": "localdomain"
+															},
+															{
+																"suffix": "domain"
+															},
+															{
+																"suffix": "lan"
+															},
+															{
+																"suffix": "home"
+															},
+															{
+																"suffix": "host"
+															},
+															{
+																"suffix": "corp"
+															},
+															{
+																"suffix": "local"
+															},
+															{
+																"suffix": "localhost"
+															},
+															{
+																"suffix": "home.arpa"
+															},
+															{
+																"suffix": "invalid"
+															},
+															{
+																"suffix": "test"
+															}
+														],
 														"items": {
 															"properties": {
 																"description": {
@@ -377,11 +481,13 @@
 														"type": "number"
 													},
 													"register_interface_ip_with_dns": {
+														"default": true,
 														"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 														"example": true,
 														"type": "boolean"
 													},
 													"sccm_vpn_boundary_support": {
+														"default": false,
 														"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 														"example": false,
 														"type": "boolean"
@@ -404,11 +510,13 @@
 														"type": "object"
 													},
 													"support_url": {
+														"default": "",
 														"description": "The URL to launch when the Send Feedback button is clicked.",
 														"example": "https://1.1.1.1/help",
 														"type": "string"
 													},
 													"switch_locked": {
+														"default": false,
 														"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 														"example": true,
 														"type": "boolean"
@@ -430,6 +538,7 @@
 														"type": "array"
 													},
 													"tunnel_protocol": {
+														"default": "",
 														"description": "Determines which tunnel protocol to use.",
 														"example": "wireguard",
 														"type": "string"
@@ -580,26 +689,31 @@
 													"items": {
 														"properties": {
 															"allow_mode_switch": {
+																"default": false,
 																"description": "Whether to allow the user to switch WARP between modes.",
 																"example": true,
 																"type": "boolean"
 															},
 															"allow_updates": {
+																"default": false,
 																"description": "Whether to receive update notifications when a new version of the client is available.",
 																"example": true,
 																"type": "boolean"
 															},
 															"allowed_to_leave": {
+																"default": true,
 																"description": "Whether to allow devices to leave the organization.",
 																"example": true,
 																"type": "boolean"
 															},
 															"auto_connect": {
+																"default": 0,
 																"description": "The amount of time in seconds to reconnect after having been disabled.",
 																"example": 0,
 																"type": "number"
 															},
 															"captive_portal": {
+																"default": 180,
 																"description": "Turn on the captive portal after the specified amount of time.",
 																"example": 180,
 																"type": "number"
@@ -616,6 +730,7 @@
 																"type": "string"
 															},
 															"disable_auto_fallback": {
+																"default": false,
 																"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 																"example": true,
 																"type": "boolean",
@@ -627,6 +742,59 @@
 																"type": "boolean"
 															},
 															"exclude": {
+																"default": [
+																	{
+																		"address": "10.0.0.0/8"
+																	},
+																	{
+																		"address": "100.64.0.0/10"
+																	},
+																	{
+																		"address": "169.254.0.0/16",
+																		"description": "DHCP Unspecified"
+																	},
+																	{
+																		"address": "172.16.0.0/12"
+																	},
+																	{
+																		"address": "192.0.0.0/24"
+																	},
+																	{
+																		"address": "192.168.0.0/16"
+																	},
+																	{
+																		"address": "224.0.0.0/24"
+																	},
+																	{
+																		"address": "240.0.0.0/4"
+																	},
+																	{
+																		"address": "255.255.255.255/32",
+																		"description": "DHCP Broadcast"
+																	},
+																	{
+																		"address": "fe80::/10",
+																		"description": "IPv6 Link Local"
+																	},
+																	{
+																		"address": "fd00::/8"
+																	},
+																	{
+																		"address": "ff01::/16"
+																	},
+																	{
+																		"address": "ff02::/16"
+																	},
+																	{
+																		"address": "ff03::/16"
+																	},
+																	{
+																		"address": "ff04::/16"
+																	},
+																	{
+																		"address": "ff05::/16"
+																	}
+																],
 																"description": "List of routes excluded in the WARP client's tunnel.",
 																"items": {
 																	"oneOf": [
@@ -674,11 +842,56 @@
 																"type": "array"
 															},
 															"exclude_office_ips": {
+																"default": false,
 																"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 																"example": true,
 																"type": "boolean"
 															},
 															"fallback_domains": {
+																"default": [
+																	{
+																		"suffix": "intranet"
+																	},
+																	{
+																		"suffix": "internal"
+																	},
+																	{
+																		"suffix": "private"
+																	},
+																	{
+																		"suffix": "localdomain"
+																	},
+																	{
+																		"suffix": "domain"
+																	},
+																	{
+																		"suffix": "lan"
+																	},
+																	{
+																		"suffix": "home"
+																	},
+																	{
+																		"suffix": "host"
+																	},
+																	{
+																		"suffix": "corp"
+																	},
+																	{
+																		"suffix": "local"
+																	},
+																	{
+																		"suffix": "localhost"
+																	},
+																	{
+																		"suffix": "home.arpa"
+																	},
+																	{
+																		"suffix": "invalid"
+																	},
+																	{
+																		"suffix": "test"
+																	}
+																],
 																"items": {
 																	"properties": {
 																		"description": {
@@ -797,11 +1010,13 @@
 																"type": "number"
 															},
 															"register_interface_ip_with_dns": {
+																"default": true,
 																"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 																"example": true,
 																"type": "boolean"
 															},
 															"sccm_vpn_boundary_support": {
+																"default": false,
 																"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 																"example": false,
 																"type": "boolean"
@@ -824,11 +1039,13 @@
 																"type": "object"
 															},
 															"support_url": {
+																"default": "",
 																"description": "The URL to launch when the Send Feedback button is clicked.",
 																"example": "https://1.1.1.1/help",
 																"type": "string"
 															},
 															"switch_locked": {
+																"default": false,
 																"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 																"example": true,
 																"type": "boolean"
@@ -850,6 +1067,7 @@
 																"type": "array"
 															},
 															"tunnel_protocol": {
+																"default": "",
 																"description": "Determines which tunnel protocol to use.",
 																"example": "wireguard",
 																"type": "string"
@@ -2930,26 +3148,31 @@
 											"items": {
 												"properties": {
 													"allow_mode_switch": {
+														"default": false,
 														"description": "Whether to allow the user to switch WARP between modes.",
 														"example": true,
 														"type": "boolean"
 													},
 													"allow_updates": {
+														"default": false,
 														"description": "Whether to receive update notifications when a new version of the client is available.",
 														"example": true,
 														"type": "boolean"
 													},
 													"allowed_to_leave": {
+														"default": true,
 														"description": "Whether to allow devices to leave the organization.",
 														"example": true,
 														"type": "boolean"
 													},
 													"auto_connect": {
+														"default": 0,
 														"description": "The amount of time in seconds to reconnect after having been disabled.",
 														"example": 0,
 														"type": "number"
 													},
 													"captive_portal": {
+														"default": 180,
 														"description": "Turn on the captive portal after the specified amount of time.",
 														"example": 180,
 														"type": "number"
@@ -2966,6 +3189,7 @@
 														"type": "string"
 													},
 													"disable_auto_fallback": {
+														"default": false,
 														"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 														"example": true,
 														"type": "boolean",
@@ -2977,6 +3201,59 @@
 														"type": "boolean"
 													},
 													"exclude": {
+														"default": [
+															{
+																"address": "10.0.0.0/8"
+															},
+															{
+																"address": "100.64.0.0/10"
+															},
+															{
+																"address": "169.254.0.0/16",
+																"description": "DHCP Unspecified"
+															},
+															{
+																"address": "172.16.0.0/12"
+															},
+															{
+																"address": "192.0.0.0/24"
+															},
+															{
+																"address": "192.168.0.0/16"
+															},
+															{
+																"address": "224.0.0.0/24"
+															},
+															{
+																"address": "240.0.0.0/4"
+															},
+															{
+																"address": "255.255.255.255/32",
+																"description": "DHCP Broadcast"
+															},
+															{
+																"address": "fe80::/10",
+																"description": "IPv6 Link Local"
+															},
+															{
+																"address": "fd00::/8"
+															},
+															{
+																"address": "ff01::/16"
+															},
+															{
+																"address": "ff02::/16"
+															},
+															{
+																"address": "ff03::/16"
+															},
+															{
+																"address": "ff04::/16"
+															},
+															{
+																"address": "ff05::/16"
+															}
+														],
 														"description": "List of routes excluded in the WARP client's tunnel.",
 														"items": {
 															"oneOf": [
@@ -3024,11 +3301,56 @@
 														"type": "array"
 													},
 													"exclude_office_ips": {
+														"default": false,
 														"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 														"example": true,
 														"type": "boolean"
 													},
 													"fallback_domains": {
+														"default": [
+															{
+																"suffix": "intranet"
+															},
+															{
+																"suffix": "internal"
+															},
+															{
+																"suffix": "private"
+															},
+															{
+																"suffix": "localdomain"
+															},
+															{
+																"suffix": "domain"
+															},
+															{
+																"suffix": "lan"
+															},
+															{
+																"suffix": "home"
+															},
+															{
+																"suffix": "host"
+															},
+															{
+																"suffix": "corp"
+															},
+															{
+																"suffix": "local"
+															},
+															{
+																"suffix": "localhost"
+															},
+															{
+																"suffix": "home.arpa"
+															},
+															{
+																"suffix": "invalid"
+															},
+															{
+																"suffix": "test"
+															}
+														],
 														"items": {
 															"properties": {
 																"description": {
@@ -3147,11 +3469,13 @@
 														"type": "number"
 													},
 													"register_interface_ip_with_dns": {
+														"default": true,
 														"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 														"example": true,
 														"type": "boolean"
 													},
 													"sccm_vpn_boundary_support": {
+														"default": false,
 														"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 														"example": false,
 														"type": "boolean"
@@ -3174,11 +3498,13 @@
 														"type": "object"
 													},
 													"support_url": {
+														"default": "",
 														"description": "The URL to launch when the Send Feedback button is clicked.",
 														"example": "https://1.1.1.1/help",
 														"type": "string"
 													},
 													"switch_locked": {
+														"default": false,
 														"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 														"example": true,
 														"type": "boolean"
@@ -3200,6 +3526,7 @@
 														"type": "array"
 													},
 													"tunnel_protocol": {
+														"default": "",
 														"description": "Determines which tunnel protocol to use.",
 														"example": "wireguard",
 														"type": "string"
@@ -3350,26 +3677,31 @@
 													"items": {
 														"properties": {
 															"allow_mode_switch": {
+																"default": false,
 																"description": "Whether to allow the user to switch WARP between modes.",
 																"example": true,
 																"type": "boolean"
 															},
 															"allow_updates": {
+																"default": false,
 																"description": "Whether to receive update notifications when a new version of the client is available.",
 																"example": true,
 																"type": "boolean"
 															},
 															"allowed_to_leave": {
+																"default": true,
 																"description": "Whether to allow devices to leave the organization.",
 																"example": true,
 																"type": "boolean"
 															},
 															"auto_connect": {
+																"default": 0,
 																"description": "The amount of time in seconds to reconnect after having been disabled.",
 																"example": 0,
 																"type": "number"
 															},
 															"captive_portal": {
+																"default": 180,
 																"description": "Turn on the captive portal after the specified amount of time.",
 																"example": 180,
 																"type": "number"
@@ -3386,6 +3718,7 @@
 																"type": "string"
 															},
 															"disable_auto_fallback": {
+																"default": false,
 																"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 																"example": true,
 																"type": "boolean",
@@ -3397,6 +3730,59 @@
 																"type": "boolean"
 															},
 															"exclude": {
+																"default": [
+																	{
+																		"address": "10.0.0.0/8"
+																	},
+																	{
+																		"address": "100.64.0.0/10"
+																	},
+																	{
+																		"address": "169.254.0.0/16",
+																		"description": "DHCP Unspecified"
+																	},
+																	{
+																		"address": "172.16.0.0/12"
+																	},
+																	{
+																		"address": "192.0.0.0/24"
+																	},
+																	{
+																		"address": "192.168.0.0/16"
+																	},
+																	{
+																		"address": "224.0.0.0/24"
+																	},
+																	{
+																		"address": "240.0.0.0/4"
+																	},
+																	{
+																		"address": "255.255.255.255/32",
+																		"description": "DHCP Broadcast"
+																	},
+																	{
+																		"address": "fe80::/10",
+																		"description": "IPv6 Link Local"
+																	},
+																	{
+																		"address": "fd00::/8"
+																	},
+																	{
+																		"address": "ff01::/16"
+																	},
+																	{
+																		"address": "ff02::/16"
+																	},
+																	{
+																		"address": "ff03::/16"
+																	},
+																	{
+																		"address": "ff04::/16"
+																	},
+																	{
+																		"address": "ff05::/16"
+																	}
+																],
 																"description": "List of routes excluded in the WARP client's tunnel.",
 																"items": {
 																	"oneOf": [
@@ -3444,11 +3830,56 @@
 																"type": "array"
 															},
 															"exclude_office_ips": {
+																"default": false,
 																"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 																"example": true,
 																"type": "boolean"
 															},
 															"fallback_domains": {
+																"default": [
+																	{
+																		"suffix": "intranet"
+																	},
+																	{
+																		"suffix": "internal"
+																	},
+																	{
+																		"suffix": "private"
+																	},
+																	{
+																		"suffix": "localdomain"
+																	},
+																	{
+																		"suffix": "domain"
+																	},
+																	{
+																		"suffix": "lan"
+																	},
+																	{
+																		"suffix": "home"
+																	},
+																	{
+																		"suffix": "host"
+																	},
+																	{
+																		"suffix": "corp"
+																	},
+																	{
+																		"suffix": "local"
+																	},
+																	{
+																		"suffix": "localhost"
+																	},
+																	{
+																		"suffix": "home.arpa"
+																	},
+																	{
+																		"suffix": "invalid"
+																	},
+																	{
+																		"suffix": "test"
+																	}
+																],
 																"items": {
 																	"properties": {
 																		"description": {
@@ -3567,11 +3998,13 @@
 																"type": "number"
 															},
 															"register_interface_ip_with_dns": {
+																"default": true,
 																"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 																"example": true,
 																"type": "boolean"
 															},
 															"sccm_vpn_boundary_support": {
+																"default": false,
 																"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 																"example": false,
 																"type": "boolean"
@@ -3594,11 +4027,13 @@
 																"type": "object"
 															},
 															"support_url": {
+																"default": "",
 																"description": "The URL to launch when the Send Feedback button is clicked.",
 																"example": "https://1.1.1.1/help",
 																"type": "string"
 															},
 															"switch_locked": {
+																"default": false,
 																"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 																"example": true,
 																"type": "boolean"
@@ -3620,6 +4055,7 @@
 																"type": "array"
 															},
 															"tunnel_protocol": {
+																"default": "",
 																"description": "Determines which tunnel protocol to use.",
 																"example": "wireguard",
 																"type": "string"
@@ -3864,26 +4300,31 @@
 										"result": {
 											"properties": {
 												"allow_mode_switch": {
+													"default": false,
 													"description": "Whether to allow the user to switch WARP between modes.",
 													"example": true,
 													"type": "boolean"
 												},
 												"allow_updates": {
+													"default": false,
 													"description": "Whether to receive update notifications when a new version of the client is available.",
 													"example": true,
 													"type": "boolean"
 												},
 												"allowed_to_leave": {
+													"default": true,
 													"description": "Whether to allow devices to leave the organization.",
 													"example": true,
 													"type": "boolean"
 												},
 												"auto_connect": {
+													"default": 0,
 													"description": "The amount of time in seconds to reconnect after having been disabled.",
 													"example": 0,
 													"type": "number"
 												},
 												"captive_portal": {
+													"default": 180,
 													"description": "Turn on the captive portal after the specified amount of time.",
 													"example": 180,
 													"type": "number"
@@ -3894,6 +4335,7 @@
 													"type": "boolean"
 												},
 												"disable_auto_fallback": {
+													"default": false,
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 													"example": true,
 													"type": "boolean",
@@ -3905,6 +4347,59 @@
 													"type": "boolean"
 												},
 												"exclude": {
+													"default": [
+														{
+															"address": "10.0.0.0/8"
+														},
+														{
+															"address": "100.64.0.0/10"
+														},
+														{
+															"address": "169.254.0.0/16",
+															"description": "DHCP Unspecified"
+														},
+														{
+															"address": "172.16.0.0/12"
+														},
+														{
+															"address": "192.0.0.0/24"
+														},
+														{
+															"address": "192.168.0.0/16"
+														},
+														{
+															"address": "224.0.0.0/24"
+														},
+														{
+															"address": "240.0.0.0/4"
+														},
+														{
+															"address": "255.255.255.255/32",
+															"description": "DHCP Broadcast"
+														},
+														{
+															"address": "fe80::/10",
+															"description": "IPv6 Link Local"
+														},
+														{
+															"address": "fd00::/8"
+														},
+														{
+															"address": "ff01::/16"
+														},
+														{
+															"address": "ff02::/16"
+														},
+														{
+															"address": "ff03::/16"
+														},
+														{
+															"address": "ff04::/16"
+														},
+														{
+															"address": "ff05::/16"
+														}
+													],
 													"description": "List of routes excluded in the WARP client's tunnel.",
 													"items": {
 														"oneOf": [
@@ -3952,11 +4447,56 @@
 													"type": "array"
 												},
 												"exclude_office_ips": {
+													"default": false,
 													"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 													"example": true,
 													"type": "boolean"
 												},
 												"fallback_domains": {
+													"default": [
+														{
+															"suffix": "intranet"
+														},
+														{
+															"suffix": "internal"
+														},
+														{
+															"suffix": "private"
+														},
+														{
+															"suffix": "localdomain"
+														},
+														{
+															"suffix": "domain"
+														},
+														{
+															"suffix": "lan"
+														},
+														{
+															"suffix": "home"
+														},
+														{
+															"suffix": "host"
+														},
+														{
+															"suffix": "corp"
+														},
+														{
+															"suffix": "local"
+														},
+														{
+															"suffix": "localhost"
+														},
+														{
+															"suffix": "home.arpa"
+														},
+														{
+															"suffix": "invalid"
+														},
+														{
+															"suffix": "test"
+														}
+													],
 													"items": {
 														"properties": {
 															"description": {
@@ -4042,11 +4582,13 @@
 													"type": "array"
 												},
 												"register_interface_ip_with_dns": {
+													"default": true,
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 													"example": true,
 													"type": "boolean"
 												},
 												"sccm_vpn_boundary_support": {
+													"default": false,
 													"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 													"example": false,
 													"type": "boolean"
@@ -4069,16 +4611,19 @@
 													"type": "object"
 												},
 												"support_url": {
+													"default": "",
 													"description": "The URL to launch when the Send Feedback button is clicked.",
 													"example": "https://1.1.1.1/help",
 													"type": "string"
 												},
 												"switch_locked": {
+													"default": false,
 													"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 													"example": true,
 													"type": "boolean"
 												},
 												"tunnel_protocol": {
+													"default": "",
 													"description": "Determines which tunnel protocol to use.",
 													"example": "wireguard",
 													"type": "string"
@@ -4206,26 +4751,31 @@
 												"result": {
 													"properties": {
 														"allow_mode_switch": {
+															"default": false,
 															"description": "Whether to allow the user to switch WARP between modes.",
 															"example": true,
 															"type": "boolean"
 														},
 														"allow_updates": {
+															"default": false,
 															"description": "Whether to receive update notifications when a new version of the client is available.",
 															"example": true,
 															"type": "boolean"
 														},
 														"allowed_to_leave": {
+															"default": true,
 															"description": "Whether to allow devices to leave the organization.",
 															"example": true,
 															"type": "boolean"
 														},
 														"auto_connect": {
+															"default": 0,
 															"description": "The amount of time in seconds to reconnect after having been disabled.",
 															"example": 0,
 															"type": "number"
 														},
 														"captive_portal": {
+															"default": 180,
 															"description": "Turn on the captive portal after the specified amount of time.",
 															"example": 180,
 															"type": "number"
@@ -4236,6 +4786,7 @@
 															"type": "boolean"
 														},
 														"disable_auto_fallback": {
+															"default": false,
 															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 															"example": true,
 															"type": "boolean",
@@ -4247,6 +4798,59 @@
 															"type": "boolean"
 														},
 														"exclude": {
+															"default": [
+																{
+																	"address": "10.0.0.0/8"
+																},
+																{
+																	"address": "100.64.0.0/10"
+																},
+																{
+																	"address": "169.254.0.0/16",
+																	"description": "DHCP Unspecified"
+																},
+																{
+																	"address": "172.16.0.0/12"
+																},
+																{
+																	"address": "192.0.0.0/24"
+																},
+																{
+																	"address": "192.168.0.0/16"
+																},
+																{
+																	"address": "224.0.0.0/24"
+																},
+																{
+																	"address": "240.0.0.0/4"
+																},
+																{
+																	"address": "255.255.255.255/32",
+																	"description": "DHCP Broadcast"
+																},
+																{
+																	"address": "fe80::/10",
+																	"description": "IPv6 Link Local"
+																},
+																{
+																	"address": "fd00::/8"
+																},
+																{
+																	"address": "ff01::/16"
+																},
+																{
+																	"address": "ff02::/16"
+																},
+																{
+																	"address": "ff03::/16"
+																},
+																{
+																	"address": "ff04::/16"
+																},
+																{
+																	"address": "ff05::/16"
+																}
+															],
 															"description": "List of routes excluded in the WARP client's tunnel.",
 															"items": {
 																"oneOf": [
@@ -4294,11 +4898,56 @@
 															"type": "array"
 														},
 														"exclude_office_ips": {
+															"default": false,
 															"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 															"example": true,
 															"type": "boolean"
 														},
 														"fallback_domains": {
+															"default": [
+																{
+																	"suffix": "intranet"
+																},
+																{
+																	"suffix": "internal"
+																},
+																{
+																	"suffix": "private"
+																},
+																{
+																	"suffix": "localdomain"
+																},
+																{
+																	"suffix": "domain"
+																},
+																{
+																	"suffix": "lan"
+																},
+																{
+																	"suffix": "home"
+																},
+																{
+																	"suffix": "host"
+																},
+																{
+																	"suffix": "corp"
+																},
+																{
+																	"suffix": "local"
+																},
+																{
+																	"suffix": "localhost"
+																},
+																{
+																	"suffix": "home.arpa"
+																},
+																{
+																	"suffix": "invalid"
+																},
+																{
+																	"suffix": "test"
+																}
+															],
 															"items": {
 																"properties": {
 																	"description": {
@@ -4384,11 +5033,13 @@
 															"type": "array"
 														},
 														"register_interface_ip_with_dns": {
+															"default": true,
 															"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 															"example": true,
 															"type": "boolean"
 														},
 														"sccm_vpn_boundary_support": {
+															"default": false,
 															"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 															"example": false,
 															"type": "boolean"
@@ -4411,16 +5062,19 @@
 															"type": "object"
 														},
 														"support_url": {
+															"default": "",
 															"description": "The URL to launch when the Send Feedback button is clicked.",
 															"example": "https://1.1.1.1/help",
 															"type": "string"
 														},
 														"switch_locked": {
+															"default": false,
 															"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 															"example": true,
 															"type": "boolean"
 														},
 														"tunnel_protocol": {
+															"default": "",
 															"description": "Determines which tunnel protocol to use.",
 															"example": "wireguard",
 															"type": "string"
@@ -4674,26 +5328,31 @@
 										"result": {
 											"properties": {
 												"allow_mode_switch": {
+													"default": false,
 													"description": "Whether to allow the user to switch WARP between modes.",
 													"example": true,
 													"type": "boolean"
 												},
 												"allow_updates": {
+													"default": false,
 													"description": "Whether to receive update notifications when a new version of the client is available.",
 													"example": true,
 													"type": "boolean"
 												},
 												"allowed_to_leave": {
+													"default": true,
 													"description": "Whether to allow devices to leave the organization.",
 													"example": true,
 													"type": "boolean"
 												},
 												"auto_connect": {
+													"default": 0,
 													"description": "The amount of time in seconds to reconnect after having been disabled.",
 													"example": 0,
 													"type": "number"
 												},
 												"captive_portal": {
+													"default": 180,
 													"description": "Turn on the captive portal after the specified amount of time.",
 													"example": 180,
 													"type": "number"
@@ -4710,6 +5369,7 @@
 													"type": "string"
 												},
 												"disable_auto_fallback": {
+													"default": false,
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 													"example": true,
 													"type": "boolean",
@@ -4721,6 +5381,59 @@
 													"type": "boolean"
 												},
 												"exclude": {
+													"default": [
+														{
+															"address": "10.0.0.0/8"
+														},
+														{
+															"address": "100.64.0.0/10"
+														},
+														{
+															"address": "169.254.0.0/16",
+															"description": "DHCP Unspecified"
+														},
+														{
+															"address": "172.16.0.0/12"
+														},
+														{
+															"address": "192.0.0.0/24"
+														},
+														{
+															"address": "192.168.0.0/16"
+														},
+														{
+															"address": "224.0.0.0/24"
+														},
+														{
+															"address": "240.0.0.0/4"
+														},
+														{
+															"address": "255.255.255.255/32",
+															"description": "DHCP Broadcast"
+														},
+														{
+															"address": "fe80::/10",
+															"description": "IPv6 Link Local"
+														},
+														{
+															"address": "fd00::/8"
+														},
+														{
+															"address": "ff01::/16"
+														},
+														{
+															"address": "ff02::/16"
+														},
+														{
+															"address": "ff03::/16"
+														},
+														{
+															"address": "ff04::/16"
+														},
+														{
+															"address": "ff05::/16"
+														}
+													],
 													"description": "List of routes excluded in the WARP client's tunnel.",
 													"items": {
 														"oneOf": [
@@ -4768,11 +5481,56 @@
 													"type": "array"
 												},
 												"exclude_office_ips": {
+													"default": false,
 													"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 													"example": true,
 													"type": "boolean"
 												},
 												"fallback_domains": {
+													"default": [
+														{
+															"suffix": "intranet"
+														},
+														{
+															"suffix": "internal"
+														},
+														{
+															"suffix": "private"
+														},
+														{
+															"suffix": "localdomain"
+														},
+														{
+															"suffix": "domain"
+														},
+														{
+															"suffix": "lan"
+														},
+														{
+															"suffix": "home"
+														},
+														{
+															"suffix": "host"
+														},
+														{
+															"suffix": "corp"
+														},
+														{
+															"suffix": "local"
+														},
+														{
+															"suffix": "localhost"
+														},
+														{
+															"suffix": "home.arpa"
+														},
+														{
+															"suffix": "invalid"
+														},
+														{
+															"suffix": "test"
+														}
+													],
 													"items": {
 														"properties": {
 															"description": {
@@ -4891,11 +5649,13 @@
 													"type": "number"
 												},
 												"register_interface_ip_with_dns": {
+													"default": true,
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 													"example": true,
 													"type": "boolean"
 												},
 												"sccm_vpn_boundary_support": {
+													"default": false,
 													"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 													"example": false,
 													"type": "boolean"
@@ -4918,11 +5678,13 @@
 													"type": "object"
 												},
 												"support_url": {
+													"default": "",
 													"description": "The URL to launch when the Send Feedback button is clicked.",
 													"example": "https://1.1.1.1/help",
 													"type": "string"
 												},
 												"switch_locked": {
+													"default": false,
 													"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 													"example": true,
 													"type": "boolean"
@@ -4944,6 +5706,7 @@
 													"type": "array"
 												},
 												"tunnel_protocol": {
+													"default": "",
 													"description": "Determines which tunnel protocol to use.",
 													"example": "wireguard",
 													"type": "string"
@@ -5071,26 +5834,31 @@
 												"result": {
 													"properties": {
 														"allow_mode_switch": {
+															"default": false,
 															"description": "Whether to allow the user to switch WARP between modes.",
 															"example": true,
 															"type": "boolean"
 														},
 														"allow_updates": {
+															"default": false,
 															"description": "Whether to receive update notifications when a new version of the client is available.",
 															"example": true,
 															"type": "boolean"
 														},
 														"allowed_to_leave": {
+															"default": true,
 															"description": "Whether to allow devices to leave the organization.",
 															"example": true,
 															"type": "boolean"
 														},
 														"auto_connect": {
+															"default": 0,
 															"description": "The amount of time in seconds to reconnect after having been disabled.",
 															"example": 0,
 															"type": "number"
 														},
 														"captive_portal": {
+															"default": 180,
 															"description": "Turn on the captive portal after the specified amount of time.",
 															"example": 180,
 															"type": "number"
@@ -5107,6 +5875,7 @@
 															"type": "string"
 														},
 														"disable_auto_fallback": {
+															"default": false,
 															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 															"example": true,
 															"type": "boolean",
@@ -5118,6 +5887,59 @@
 															"type": "boolean"
 														},
 														"exclude": {
+															"default": [
+																{
+																	"address": "10.0.0.0/8"
+																},
+																{
+																	"address": "100.64.0.0/10"
+																},
+																{
+																	"address": "169.254.0.0/16",
+																	"description": "DHCP Unspecified"
+																},
+																{
+																	"address": "172.16.0.0/12"
+																},
+																{
+																	"address": "192.0.0.0/24"
+																},
+																{
+																	"address": "192.168.0.0/16"
+																},
+																{
+																	"address": "224.0.0.0/24"
+																},
+																{
+																	"address": "240.0.0.0/4"
+																},
+																{
+																	"address": "255.255.255.255/32",
+																	"description": "DHCP Broadcast"
+																},
+																{
+																	"address": "fe80::/10",
+																	"description": "IPv6 Link Local"
+																},
+																{
+																	"address": "fd00::/8"
+																},
+																{
+																	"address": "ff01::/16"
+																},
+																{
+																	"address": "ff02::/16"
+																},
+																{
+																	"address": "ff03::/16"
+																},
+																{
+																	"address": "ff04::/16"
+																},
+																{
+																	"address": "ff05::/16"
+																}
+															],
 															"description": "List of routes excluded in the WARP client's tunnel.",
 															"items": {
 																"oneOf": [
@@ -5165,11 +5987,56 @@
 															"type": "array"
 														},
 														"exclude_office_ips": {
+															"default": false,
 															"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 															"example": true,
 															"type": "boolean"
 														},
 														"fallback_domains": {
+															"default": [
+																{
+																	"suffix": "intranet"
+																},
+																{
+																	"suffix": "internal"
+																},
+																{
+																	"suffix": "private"
+																},
+																{
+																	"suffix": "localdomain"
+																},
+																{
+																	"suffix": "domain"
+																},
+																{
+																	"suffix": "lan"
+																},
+																{
+																	"suffix": "home"
+																},
+																{
+																	"suffix": "host"
+																},
+																{
+																	"suffix": "corp"
+																},
+																{
+																	"suffix": "local"
+																},
+																{
+																	"suffix": "localhost"
+																},
+																{
+																	"suffix": "home.arpa"
+																},
+																{
+																	"suffix": "invalid"
+																},
+																{
+																	"suffix": "test"
+																}
+															],
 															"items": {
 																"properties": {
 																	"description": {
@@ -5288,11 +6155,13 @@
 															"type": "number"
 														},
 														"register_interface_ip_with_dns": {
+															"default": true,
 															"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 															"example": true,
 															"type": "boolean"
 														},
 														"sccm_vpn_boundary_support": {
+															"default": false,
 															"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 															"example": false,
 															"type": "boolean"
@@ -5315,11 +6184,13 @@
 															"type": "object"
 														},
 														"support_url": {
+															"default": "",
 															"description": "The URL to launch when the Send Feedback button is clicked.",
 															"example": "https://1.1.1.1/help",
 															"type": "string"
 														},
 														"switch_locked": {
+															"default": false,
 															"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 															"example": true,
 															"type": "boolean"
@@ -5341,6 +6212,7 @@
 															"type": "array"
 														},
 														"tunnel_protocol": {
+															"default": "",
 															"description": "Determines which tunnel protocol to use.",
 															"example": "wireguard",
 															"type": "string"
@@ -8725,31 +9597,37 @@
 					"schema": {
 						"properties": {
 							"allow_mode_switch": {
+								"default": false,
 								"description": "Whether to allow the user to switch WARP between modes.",
 								"example": true,
 								"type": "boolean"
 							},
 							"allow_updates": {
+								"default": false,
 								"description": "Whether to receive update notifications when a new version of the client is available.",
 								"example": true,
 								"type": "boolean"
 							},
 							"allowed_to_leave": {
+								"default": true,
 								"description": "Whether to allow devices to leave the organization.",
 								"example": true,
 								"type": "boolean"
 							},
 							"auto_connect": {
+								"default": 0,
 								"description": "The amount of time in seconds to reconnect after having been disabled.",
 								"example": 0,
 								"type": "number"
 							},
 							"captive_portal": {
+								"default": 180,
 								"description": "Turn on the captive portal after the specified amount of time.",
 								"example": 180,
 								"type": "number"
 							},
 							"disable_auto_fallback": {
+								"default": false,
 								"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 								"example": true,
 								"type": "boolean",
@@ -8803,6 +9681,7 @@
 								"type": "array"
 							},
 							"exclude_office_ips": {
+								"default": false,
 								"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 								"example": true,
 								"type": "boolean"
@@ -8865,11 +9744,13 @@
 								"type": "number"
 							},
 							"register_interface_ip_with_dns": {
+								"default": true,
 								"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 								"example": true,
 								"type": "boolean"
 							},
 							"sccm_vpn_boundary_support": {
+								"default": false,
 								"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 								"example": false,
 								"type": "boolean"
@@ -8892,16 +9773,19 @@
 								"type": "object"
 							},
 							"support_url": {
+								"default": "",
 								"description": "The URL to launch when the Send Feedback button is clicked.",
 								"example": "https://1.1.1.1/help",
 								"type": "string"
 							},
 							"switch_locked": {
+								"default": false,
 								"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 								"example": true,
 								"type": "boolean"
 							},
 							"tunnel_protocol": {
+								"default": "",
 								"description": "Determines which tunnel protocol to use.",
 								"example": "wireguard",
 								"type": "string"
@@ -9023,26 +9907,31 @@
 										"result": {
 											"properties": {
 												"allow_mode_switch": {
+													"default": false,
 													"description": "Whether to allow the user to switch WARP between modes.",
 													"example": true,
 													"type": "boolean"
 												},
 												"allow_updates": {
+													"default": false,
 													"description": "Whether to receive update notifications when a new version of the client is available.",
 													"example": true,
 													"type": "boolean"
 												},
 												"allowed_to_leave": {
+													"default": true,
 													"description": "Whether to allow devices to leave the organization.",
 													"example": true,
 													"type": "boolean"
 												},
 												"auto_connect": {
+													"default": 0,
 													"description": "The amount of time in seconds to reconnect after having been disabled.",
 													"example": 0,
 													"type": "number"
 												},
 												"captive_portal": {
+													"default": 180,
 													"description": "Turn on the captive portal after the specified amount of time.",
 													"example": 180,
 													"type": "number"
@@ -9053,6 +9942,7 @@
 													"type": "boolean"
 												},
 												"disable_auto_fallback": {
+													"default": false,
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 													"example": true,
 													"type": "boolean",
@@ -9064,6 +9954,59 @@
 													"type": "boolean"
 												},
 												"exclude": {
+													"default": [
+														{
+															"address": "10.0.0.0/8"
+														},
+														{
+															"address": "100.64.0.0/10"
+														},
+														{
+															"address": "169.254.0.0/16",
+															"description": "DHCP Unspecified"
+														},
+														{
+															"address": "172.16.0.0/12"
+														},
+														{
+															"address": "192.0.0.0/24"
+														},
+														{
+															"address": "192.168.0.0/16"
+														},
+														{
+															"address": "224.0.0.0/24"
+														},
+														{
+															"address": "240.0.0.0/4"
+														},
+														{
+															"address": "255.255.255.255/32",
+															"description": "DHCP Broadcast"
+														},
+														{
+															"address": "fe80::/10",
+															"description": "IPv6 Link Local"
+														},
+														{
+															"address": "fd00::/8"
+														},
+														{
+															"address": "ff01::/16"
+														},
+														{
+															"address": "ff02::/16"
+														},
+														{
+															"address": "ff03::/16"
+														},
+														{
+															"address": "ff04::/16"
+														},
+														{
+															"address": "ff05::/16"
+														}
+													],
 													"description": "List of routes excluded in the WARP client's tunnel.",
 													"items": {
 														"oneOf": [
@@ -9111,11 +10054,56 @@
 													"type": "array"
 												},
 												"exclude_office_ips": {
+													"default": false,
 													"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 													"example": true,
 													"type": "boolean"
 												},
 												"fallback_domains": {
+													"default": [
+														{
+															"suffix": "intranet"
+														},
+														{
+															"suffix": "internal"
+														},
+														{
+															"suffix": "private"
+														},
+														{
+															"suffix": "localdomain"
+														},
+														{
+															"suffix": "domain"
+														},
+														{
+															"suffix": "lan"
+														},
+														{
+															"suffix": "home"
+														},
+														{
+															"suffix": "host"
+														},
+														{
+															"suffix": "corp"
+														},
+														{
+															"suffix": "local"
+														},
+														{
+															"suffix": "localhost"
+														},
+														{
+															"suffix": "home.arpa"
+														},
+														{
+															"suffix": "invalid"
+														},
+														{
+															"suffix": "test"
+														}
+													],
 													"items": {
 														"properties": {
 															"description": {
@@ -9201,11 +10189,13 @@
 													"type": "array"
 												},
 												"register_interface_ip_with_dns": {
+													"default": true,
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 													"example": true,
 													"type": "boolean"
 												},
 												"sccm_vpn_boundary_support": {
+													"default": false,
 													"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 													"example": false,
 													"type": "boolean"
@@ -9228,16 +10218,19 @@
 													"type": "object"
 												},
 												"support_url": {
+													"default": "",
 													"description": "The URL to launch when the Send Feedback button is clicked.",
 													"example": "https://1.1.1.1/help",
 													"type": "string"
 												},
 												"switch_locked": {
+													"default": false,
 													"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 													"example": true,
 													"type": "boolean"
 												},
 												"tunnel_protocol": {
+													"default": "",
 													"description": "Determines which tunnel protocol to use.",
 													"example": "wireguard",
 													"type": "string"
@@ -9365,26 +10358,31 @@
 												"result": {
 													"properties": {
 														"allow_mode_switch": {
+															"default": false,
 															"description": "Whether to allow the user to switch WARP between modes.",
 															"example": true,
 															"type": "boolean"
 														},
 														"allow_updates": {
+															"default": false,
 															"description": "Whether to receive update notifications when a new version of the client is available.",
 															"example": true,
 															"type": "boolean"
 														},
 														"allowed_to_leave": {
+															"default": true,
 															"description": "Whether to allow devices to leave the organization.",
 															"example": true,
 															"type": "boolean"
 														},
 														"auto_connect": {
+															"default": 0,
 															"description": "The amount of time in seconds to reconnect after having been disabled.",
 															"example": 0,
 															"type": "number"
 														},
 														"captive_portal": {
+															"default": 180,
 															"description": "Turn on the captive portal after the specified amount of time.",
 															"example": 180,
 															"type": "number"
@@ -9395,6 +10393,7 @@
 															"type": "boolean"
 														},
 														"disable_auto_fallback": {
+															"default": false,
 															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 															"example": true,
 															"type": "boolean",
@@ -9406,6 +10405,59 @@
 															"type": "boolean"
 														},
 														"exclude": {
+															"default": [
+																{
+																	"address": "10.0.0.0/8"
+																},
+																{
+																	"address": "100.64.0.0/10"
+																},
+																{
+																	"address": "169.254.0.0/16",
+																	"description": "DHCP Unspecified"
+																},
+																{
+																	"address": "172.16.0.0/12"
+																},
+																{
+																	"address": "192.0.0.0/24"
+																},
+																{
+																	"address": "192.168.0.0/16"
+																},
+																{
+																	"address": "224.0.0.0/24"
+																},
+																{
+																	"address": "240.0.0.0/4"
+																},
+																{
+																	"address": "255.255.255.255/32",
+																	"description": "DHCP Broadcast"
+																},
+																{
+																	"address": "fe80::/10",
+																	"description": "IPv6 Link Local"
+																},
+																{
+																	"address": "fd00::/8"
+																},
+																{
+																	"address": "ff01::/16"
+																},
+																{
+																	"address": "ff02::/16"
+																},
+																{
+																	"address": "ff03::/16"
+																},
+																{
+																	"address": "ff04::/16"
+																},
+																{
+																	"address": "ff05::/16"
+																}
+															],
 															"description": "List of routes excluded in the WARP client's tunnel.",
 															"items": {
 																"oneOf": [
@@ -9453,11 +10505,56 @@
 															"type": "array"
 														},
 														"exclude_office_ips": {
+															"default": false,
 															"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 															"example": true,
 															"type": "boolean"
 														},
 														"fallback_domains": {
+															"default": [
+																{
+																	"suffix": "intranet"
+																},
+																{
+																	"suffix": "internal"
+																},
+																{
+																	"suffix": "private"
+																},
+																{
+																	"suffix": "localdomain"
+																},
+																{
+																	"suffix": "domain"
+																},
+																{
+																	"suffix": "lan"
+																},
+																{
+																	"suffix": "home"
+																},
+																{
+																	"suffix": "host"
+																},
+																{
+																	"suffix": "corp"
+																},
+																{
+																	"suffix": "local"
+																},
+																{
+																	"suffix": "localhost"
+																},
+																{
+																	"suffix": "home.arpa"
+																},
+																{
+																	"suffix": "invalid"
+																},
+																{
+																	"suffix": "test"
+																}
+															],
 															"items": {
 																"properties": {
 																	"description": {
@@ -9543,11 +10640,13 @@
 															"type": "array"
 														},
 														"register_interface_ip_with_dns": {
+															"default": true,
 															"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 															"example": true,
 															"type": "boolean"
 														},
 														"sccm_vpn_boundary_support": {
+															"default": false,
 															"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 															"example": false,
 															"type": "boolean"
@@ -9570,16 +10669,19 @@
 															"type": "object"
 														},
 														"support_url": {
+															"default": "",
 															"description": "The URL to launch when the Send Feedback button is clicked.",
 															"example": "https://1.1.1.1/help",
 															"type": "string"
 														},
 														"switch_locked": {
+															"default": false,
 															"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 															"example": true,
 															"type": "boolean"
 														},
 														"tunnel_protocol": {
+															"default": "",
 															"description": "Determines which tunnel protocol to use.",
 															"example": "wireguard",
 															"type": "string"
@@ -9728,26 +10830,31 @@
 					"schema": {
 						"properties": {
 							"allow_mode_switch": {
+								"default": false,
 								"description": "Whether to allow the user to switch WARP between modes.",
 								"example": true,
 								"type": "boolean"
 							},
 							"allow_updates": {
+								"default": false,
 								"description": "Whether to receive update notifications when a new version of the client is available.",
 								"example": true,
 								"type": "boolean"
 							},
 							"allowed_to_leave": {
+								"default": true,
 								"description": "Whether to allow devices to leave the organization.",
 								"example": true,
 								"type": "boolean"
 							},
 							"auto_connect": {
+								"default": 0,
 								"description": "The amount of time in seconds to reconnect after having been disabled.",
 								"example": 0,
 								"type": "number"
 							},
 							"captive_portal": {
+								"default": 180,
 								"description": "Turn on the captive portal after the specified amount of time.",
 								"example": 180,
 								"type": "number"
@@ -9759,6 +10866,7 @@
 								"type": "string"
 							},
 							"disable_auto_fallback": {
+								"default": false,
 								"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 								"example": true,
 								"type": "boolean",
@@ -9817,6 +10925,7 @@
 								"type": "array"
 							},
 							"exclude_office_ips": {
+								"default": false,
 								"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 								"example": true,
 								"type": "boolean"
@@ -9896,11 +11005,13 @@
 								"type": "number"
 							},
 							"register_interface_ip_with_dns": {
+								"default": true,
 								"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 								"example": true,
 								"type": "boolean"
 							},
 							"sccm_vpn_boundary_support": {
+								"default": false,
 								"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 								"example": false,
 								"type": "boolean"
@@ -9923,16 +11034,19 @@
 								"type": "object"
 							},
 							"support_url": {
+								"default": "",
 								"description": "The URL to launch when the Send Feedback button is clicked.",
 								"example": "https://1.1.1.1/help",
 								"type": "string"
 							},
 							"switch_locked": {
+								"default": false,
 								"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 								"example": true,
 								"type": "boolean"
 							},
 							"tunnel_protocol": {
+								"default": "",
 								"description": "Determines which tunnel protocol to use.",
 								"example": "wireguard",
 								"type": "string"
@@ -10054,26 +11168,31 @@
 										"result": {
 											"properties": {
 												"allow_mode_switch": {
+													"default": false,
 													"description": "Whether to allow the user to switch WARP between modes.",
 													"example": true,
 													"type": "boolean"
 												},
 												"allow_updates": {
+													"default": false,
 													"description": "Whether to receive update notifications when a new version of the client is available.",
 													"example": true,
 													"type": "boolean"
 												},
 												"allowed_to_leave": {
+													"default": true,
 													"description": "Whether to allow devices to leave the organization.",
 													"example": true,
 													"type": "boolean"
 												},
 												"auto_connect": {
+													"default": 0,
 													"description": "The amount of time in seconds to reconnect after having been disabled.",
 													"example": 0,
 													"type": "number"
 												},
 												"captive_portal": {
+													"default": 180,
 													"description": "Turn on the captive portal after the specified amount of time.",
 													"example": 180,
 													"type": "number"
@@ -10090,6 +11209,7 @@
 													"type": "string"
 												},
 												"disable_auto_fallback": {
+													"default": false,
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 													"example": true,
 													"type": "boolean",
@@ -10101,6 +11221,59 @@
 													"type": "boolean"
 												},
 												"exclude": {
+													"default": [
+														{
+															"address": "10.0.0.0/8"
+														},
+														{
+															"address": "100.64.0.0/10"
+														},
+														{
+															"address": "169.254.0.0/16",
+															"description": "DHCP Unspecified"
+														},
+														{
+															"address": "172.16.0.0/12"
+														},
+														{
+															"address": "192.0.0.0/24"
+														},
+														{
+															"address": "192.168.0.0/16"
+														},
+														{
+															"address": "224.0.0.0/24"
+														},
+														{
+															"address": "240.0.0.0/4"
+														},
+														{
+															"address": "255.255.255.255/32",
+															"description": "DHCP Broadcast"
+														},
+														{
+															"address": "fe80::/10",
+															"description": "IPv6 Link Local"
+														},
+														{
+															"address": "fd00::/8"
+														},
+														{
+															"address": "ff01::/16"
+														},
+														{
+															"address": "ff02::/16"
+														},
+														{
+															"address": "ff03::/16"
+														},
+														{
+															"address": "ff04::/16"
+														},
+														{
+															"address": "ff05::/16"
+														}
+													],
 													"description": "List of routes excluded in the WARP client's tunnel.",
 													"items": {
 														"oneOf": [
@@ -10148,11 +11321,56 @@
 													"type": "array"
 												},
 												"exclude_office_ips": {
+													"default": false,
 													"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 													"example": true,
 													"type": "boolean"
 												},
 												"fallback_domains": {
+													"default": [
+														{
+															"suffix": "intranet"
+														},
+														{
+															"suffix": "internal"
+														},
+														{
+															"suffix": "private"
+														},
+														{
+															"suffix": "localdomain"
+														},
+														{
+															"suffix": "domain"
+														},
+														{
+															"suffix": "lan"
+														},
+														{
+															"suffix": "home"
+														},
+														{
+															"suffix": "host"
+														},
+														{
+															"suffix": "corp"
+														},
+														{
+															"suffix": "local"
+														},
+														{
+															"suffix": "localhost"
+														},
+														{
+															"suffix": "home.arpa"
+														},
+														{
+															"suffix": "invalid"
+														},
+														{
+															"suffix": "test"
+														}
+													],
 													"items": {
 														"properties": {
 															"description": {
@@ -10271,11 +11489,13 @@
 													"type": "number"
 												},
 												"register_interface_ip_with_dns": {
+													"default": true,
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 													"example": true,
 													"type": "boolean"
 												},
 												"sccm_vpn_boundary_support": {
+													"default": false,
 													"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 													"example": false,
 													"type": "boolean"
@@ -10298,11 +11518,13 @@
 													"type": "object"
 												},
 												"support_url": {
+													"default": "",
 													"description": "The URL to launch when the Send Feedback button is clicked.",
 													"example": "https://1.1.1.1/help",
 													"type": "string"
 												},
 												"switch_locked": {
+													"default": false,
 													"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 													"example": true,
 													"type": "boolean"
@@ -10324,6 +11546,7 @@
 													"type": "array"
 												},
 												"tunnel_protocol": {
+													"default": "",
 													"description": "Determines which tunnel protocol to use.",
 													"example": "wireguard",
 													"type": "string"
@@ -10451,26 +11674,31 @@
 												"result": {
 													"properties": {
 														"allow_mode_switch": {
+															"default": false,
 															"description": "Whether to allow the user to switch WARP between modes.",
 															"example": true,
 															"type": "boolean"
 														},
 														"allow_updates": {
+															"default": false,
 															"description": "Whether to receive update notifications when a new version of the client is available.",
 															"example": true,
 															"type": "boolean"
 														},
 														"allowed_to_leave": {
+															"default": true,
 															"description": "Whether to allow devices to leave the organization.",
 															"example": true,
 															"type": "boolean"
 														},
 														"auto_connect": {
+															"default": 0,
 															"description": "The amount of time in seconds to reconnect after having been disabled.",
 															"example": 0,
 															"type": "number"
 														},
 														"captive_portal": {
+															"default": 180,
 															"description": "Turn on the captive portal after the specified amount of time.",
 															"example": 180,
 															"type": "number"
@@ -10487,6 +11715,7 @@
 															"type": "string"
 														},
 														"disable_auto_fallback": {
+															"default": false,
 															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 															"example": true,
 															"type": "boolean",
@@ -10498,6 +11727,59 @@
 															"type": "boolean"
 														},
 														"exclude": {
+															"default": [
+																{
+																	"address": "10.0.0.0/8"
+																},
+																{
+																	"address": "100.64.0.0/10"
+																},
+																{
+																	"address": "169.254.0.0/16",
+																	"description": "DHCP Unspecified"
+																},
+																{
+																	"address": "172.16.0.0/12"
+																},
+																{
+																	"address": "192.0.0.0/24"
+																},
+																{
+																	"address": "192.168.0.0/16"
+																},
+																{
+																	"address": "224.0.0.0/24"
+																},
+																{
+																	"address": "240.0.0.0/4"
+																},
+																{
+																	"address": "255.255.255.255/32",
+																	"description": "DHCP Broadcast"
+																},
+																{
+																	"address": "fe80::/10",
+																	"description": "IPv6 Link Local"
+																},
+																{
+																	"address": "fd00::/8"
+																},
+																{
+																	"address": "ff01::/16"
+																},
+																{
+																	"address": "ff02::/16"
+																},
+																{
+																	"address": "ff03::/16"
+																},
+																{
+																	"address": "ff04::/16"
+																},
+																{
+																	"address": "ff05::/16"
+																}
+															],
 															"description": "List of routes excluded in the WARP client's tunnel.",
 															"items": {
 																"oneOf": [
@@ -10545,11 +11827,56 @@
 															"type": "array"
 														},
 														"exclude_office_ips": {
+															"default": false,
 															"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 															"example": true,
 															"type": "boolean"
 														},
 														"fallback_domains": {
+															"default": [
+																{
+																	"suffix": "intranet"
+																},
+																{
+																	"suffix": "internal"
+																},
+																{
+																	"suffix": "private"
+																},
+																{
+																	"suffix": "localdomain"
+																},
+																{
+																	"suffix": "domain"
+																},
+																{
+																	"suffix": "lan"
+																},
+																{
+																	"suffix": "home"
+																},
+																{
+																	"suffix": "host"
+																},
+																{
+																	"suffix": "corp"
+																},
+																{
+																	"suffix": "local"
+																},
+																{
+																	"suffix": "localhost"
+																},
+																{
+																	"suffix": "home.arpa"
+																},
+																{
+																	"suffix": "invalid"
+																},
+																{
+																	"suffix": "test"
+																}
+															],
 															"items": {
 																"properties": {
 																	"description": {
@@ -10668,11 +11995,13 @@
 															"type": "number"
 														},
 														"register_interface_ip_with_dns": {
+															"default": true,
 															"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 															"example": true,
 															"type": "boolean"
 														},
 														"sccm_vpn_boundary_support": {
+															"default": false,
 															"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 															"example": false,
 															"type": "boolean"
@@ -10695,11 +12024,13 @@
 															"type": "object"
 														},
 														"support_url": {
+															"default": "",
 															"description": "The URL to launch when the Send Feedback button is clicked.",
 															"example": "https://1.1.1.1/help",
 															"type": "string"
 														},
 														"switch_locked": {
+															"default": false,
 															"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 															"example": true,
 															"type": "boolean"
@@ -10721,6 +12052,7 @@
 															"type": "array"
 														},
 														"tunnel_protocol": {
+															"default": "",
 															"description": "Determines which tunnel protocol to use.",
 															"example": "wireguard",
 															"type": "string"
@@ -11252,26 +12584,31 @@
 					"schema": {
 						"properties": {
 							"allow_mode_switch": {
+								"default": false,
 								"description": "Whether to allow the user to switch WARP between modes.",
 								"example": true,
 								"type": "boolean"
 							},
 							"allow_updates": {
+								"default": false,
 								"description": "Whether to receive update notifications when a new version of the client is available.",
 								"example": true,
 								"type": "boolean"
 							},
 							"allowed_to_leave": {
+								"default": true,
 								"description": "Whether to allow devices to leave the organization.",
 								"example": true,
 								"type": "boolean"
 							},
 							"auto_connect": {
+								"default": 0,
 								"description": "The amount of time in seconds to reconnect after having been disabled.",
 								"example": 0,
 								"type": "number"
 							},
 							"captive_portal": {
+								"default": 180,
 								"description": "Turn on the captive portal after the specified amount of time.",
 								"example": 180,
 								"type": "number"
@@ -11283,6 +12620,7 @@
 								"type": "string"
 							},
 							"disable_auto_fallback": {
+								"default": false,
 								"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 								"example": true,
 								"type": "boolean",
@@ -11341,6 +12679,7 @@
 								"type": "array"
 							},
 							"exclude_office_ips": {
+								"default": false,
 								"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 								"example": true,
 								"type": "boolean"
@@ -11420,11 +12759,13 @@
 								"type": "number"
 							},
 							"register_interface_ip_with_dns": {
+								"default": true,
 								"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 								"example": true,
 								"type": "boolean"
 							},
 							"sccm_vpn_boundary_support": {
+								"default": false,
 								"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 								"example": false,
 								"type": "boolean"
@@ -11447,16 +12788,19 @@
 								"type": "object"
 							},
 							"support_url": {
+								"default": "",
 								"description": "The URL to launch when the Send Feedback button is clicked.",
 								"example": "https://1.1.1.1/help",
 								"type": "string"
 							},
 							"switch_locked": {
+								"default": false,
 								"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 								"example": true,
 								"type": "boolean"
 							},
 							"tunnel_protocol": {
+								"default": "",
 								"description": "Determines which tunnel protocol to use.",
 								"example": "wireguard",
 								"type": "string"
@@ -11583,26 +12927,31 @@
 										"result": {
 											"properties": {
 												"allow_mode_switch": {
+													"default": false,
 													"description": "Whether to allow the user to switch WARP between modes.",
 													"example": true,
 													"type": "boolean"
 												},
 												"allow_updates": {
+													"default": false,
 													"description": "Whether to receive update notifications when a new version of the client is available.",
 													"example": true,
 													"type": "boolean"
 												},
 												"allowed_to_leave": {
+													"default": true,
 													"description": "Whether to allow devices to leave the organization.",
 													"example": true,
 													"type": "boolean"
 												},
 												"auto_connect": {
+													"default": 0,
 													"description": "The amount of time in seconds to reconnect after having been disabled.",
 													"example": 0,
 													"type": "number"
 												},
 												"captive_portal": {
+													"default": 180,
 													"description": "Turn on the captive portal after the specified amount of time.",
 													"example": 180,
 													"type": "number"
@@ -11619,6 +12968,7 @@
 													"type": "string"
 												},
 												"disable_auto_fallback": {
+													"default": false,
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 													"example": true,
 													"type": "boolean",
@@ -11630,6 +12980,59 @@
 													"type": "boolean"
 												},
 												"exclude": {
+													"default": [
+														{
+															"address": "10.0.0.0/8"
+														},
+														{
+															"address": "100.64.0.0/10"
+														},
+														{
+															"address": "169.254.0.0/16",
+															"description": "DHCP Unspecified"
+														},
+														{
+															"address": "172.16.0.0/12"
+														},
+														{
+															"address": "192.0.0.0/24"
+														},
+														{
+															"address": "192.168.0.0/16"
+														},
+														{
+															"address": "224.0.0.0/24"
+														},
+														{
+															"address": "240.0.0.0/4"
+														},
+														{
+															"address": "255.255.255.255/32",
+															"description": "DHCP Broadcast"
+														},
+														{
+															"address": "fe80::/10",
+															"description": "IPv6 Link Local"
+														},
+														{
+															"address": "fd00::/8"
+														},
+														{
+															"address": "ff01::/16"
+														},
+														{
+															"address": "ff02::/16"
+														},
+														{
+															"address": "ff03::/16"
+														},
+														{
+															"address": "ff04::/16"
+														},
+														{
+															"address": "ff05::/16"
+														}
+													],
 													"description": "List of routes excluded in the WARP client's tunnel.",
 													"items": {
 														"oneOf": [
@@ -11677,11 +13080,56 @@
 													"type": "array"
 												},
 												"exclude_office_ips": {
+													"default": false,
 													"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 													"example": true,
 													"type": "boolean"
 												},
 												"fallback_domains": {
+													"default": [
+														{
+															"suffix": "intranet"
+														},
+														{
+															"suffix": "internal"
+														},
+														{
+															"suffix": "private"
+														},
+														{
+															"suffix": "localdomain"
+														},
+														{
+															"suffix": "domain"
+														},
+														{
+															"suffix": "lan"
+														},
+														{
+															"suffix": "home"
+														},
+														{
+															"suffix": "host"
+														},
+														{
+															"suffix": "corp"
+														},
+														{
+															"suffix": "local"
+														},
+														{
+															"suffix": "localhost"
+														},
+														{
+															"suffix": "home.arpa"
+														},
+														{
+															"suffix": "invalid"
+														},
+														{
+															"suffix": "test"
+														}
+													],
 													"items": {
 														"properties": {
 															"description": {
@@ -11800,11 +13248,13 @@
 													"type": "number"
 												},
 												"register_interface_ip_with_dns": {
+													"default": true,
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 													"example": true,
 													"type": "boolean"
 												},
 												"sccm_vpn_boundary_support": {
+													"default": false,
 													"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 													"example": false,
 													"type": "boolean"
@@ -11827,11 +13277,13 @@
 													"type": "object"
 												},
 												"support_url": {
+													"default": "",
 													"description": "The URL to launch when the Send Feedback button is clicked.",
 													"example": "https://1.1.1.1/help",
 													"type": "string"
 												},
 												"switch_locked": {
+													"default": false,
 													"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 													"example": true,
 													"type": "boolean"
@@ -11853,6 +13305,7 @@
 													"type": "array"
 												},
 												"tunnel_protocol": {
+													"default": "",
 													"description": "Determines which tunnel protocol to use.",
 													"example": "wireguard",
 													"type": "string"
@@ -11980,26 +13433,31 @@
 												"result": {
 													"properties": {
 														"allow_mode_switch": {
+															"default": false,
 															"description": "Whether to allow the user to switch WARP between modes.",
 															"example": true,
 															"type": "boolean"
 														},
 														"allow_updates": {
+															"default": false,
 															"description": "Whether to receive update notifications when a new version of the client is available.",
 															"example": true,
 															"type": "boolean"
 														},
 														"allowed_to_leave": {
+															"default": true,
 															"description": "Whether to allow devices to leave the organization.",
 															"example": true,
 															"type": "boolean"
 														},
 														"auto_connect": {
+															"default": 0,
 															"description": "The amount of time in seconds to reconnect after having been disabled.",
 															"example": 0,
 															"type": "number"
 														},
 														"captive_portal": {
+															"default": 180,
 															"description": "Turn on the captive portal after the specified amount of time.",
 															"example": 180,
 															"type": "number"
@@ -12016,6 +13474,7 @@
 															"type": "string"
 														},
 														"disable_auto_fallback": {
+															"default": false,
 															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 															"example": true,
 															"type": "boolean",
@@ -12027,6 +13486,59 @@
 															"type": "boolean"
 														},
 														"exclude": {
+															"default": [
+																{
+																	"address": "10.0.0.0/8"
+																},
+																{
+																	"address": "100.64.0.0/10"
+																},
+																{
+																	"address": "169.254.0.0/16",
+																	"description": "DHCP Unspecified"
+																},
+																{
+																	"address": "172.16.0.0/12"
+																},
+																{
+																	"address": "192.0.0.0/24"
+																},
+																{
+																	"address": "192.168.0.0/16"
+																},
+																{
+																	"address": "224.0.0.0/24"
+																},
+																{
+																	"address": "240.0.0.0/4"
+																},
+																{
+																	"address": "255.255.255.255/32",
+																	"description": "DHCP Broadcast"
+																},
+																{
+																	"address": "fe80::/10",
+																	"description": "IPv6 Link Local"
+																},
+																{
+																	"address": "fd00::/8"
+																},
+																{
+																	"address": "ff01::/16"
+																},
+																{
+																	"address": "ff02::/16"
+																},
+																{
+																	"address": "ff03::/16"
+																},
+																{
+																	"address": "ff04::/16"
+																},
+																{
+																	"address": "ff05::/16"
+																}
+															],
 															"description": "List of routes excluded in the WARP client's tunnel.",
 															"items": {
 																"oneOf": [
@@ -12074,11 +13586,56 @@
 															"type": "array"
 														},
 														"exclude_office_ips": {
+															"default": false,
 															"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 															"example": true,
 															"type": "boolean"
 														},
 														"fallback_domains": {
+															"default": [
+																{
+																	"suffix": "intranet"
+																},
+																{
+																	"suffix": "internal"
+																},
+																{
+																	"suffix": "private"
+																},
+																{
+																	"suffix": "localdomain"
+																},
+																{
+																	"suffix": "domain"
+																},
+																{
+																	"suffix": "lan"
+																},
+																{
+																	"suffix": "home"
+																},
+																{
+																	"suffix": "host"
+																},
+																{
+																	"suffix": "corp"
+																},
+																{
+																	"suffix": "local"
+																},
+																{
+																	"suffix": "localhost"
+																},
+																{
+																	"suffix": "home.arpa"
+																},
+																{
+																	"suffix": "invalid"
+																},
+																{
+																	"suffix": "test"
+																}
+															],
 															"items": {
 																"properties": {
 																	"description": {
@@ -12197,11 +13754,13 @@
 															"type": "number"
 														},
 														"register_interface_ip_with_dns": {
+															"default": true,
 															"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 															"example": true,
 															"type": "boolean"
 														},
 														"sccm_vpn_boundary_support": {
+															"default": false,
 															"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 															"example": false,
 															"type": "boolean"
@@ -12224,11 +13783,13 @@
 															"type": "object"
 														},
 														"support_url": {
+															"default": "",
 															"description": "The URL to launch when the Send Feedback button is clicked.",
 															"example": "https://1.1.1.1/help",
 															"type": "string"
 														},
 														"switch_locked": {
+															"default": false,
 															"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 															"example": true,
 															"type": "boolean"
@@ -12250,6 +13811,7 @@
 															"type": "array"
 														},
 														"tunnel_protocol": {
+															"default": "",
 															"description": "Determines which tunnel protocol to use.",
 															"example": "wireguard",
 															"type": "string"
