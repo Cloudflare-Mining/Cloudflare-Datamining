@@ -128,7 +128,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Last Updated: April 25, 2025",
+													"value": "Last Updated: June 11, 2025",
 													"marks": [],
 													"content": null
 												}
@@ -192,7 +192,7 @@
 															"contentfulId": "3TGN8mcCwWXy5Mp1Uc21Dl",
 															"locale": "en-US",
 															"entryTitle": "Cloudflare Subprocessors",
-															"markdown": "\n| Sub‑Processor         | Activity     |  Location     | \n| ---------- | ---------- | ---------- |\n| Slack Technologies, Inc.       | Customer support communications       | United States       |\n| Zendesk, Inc.       | Customer support and account management       | Zendesk operates servers globally using Amazon Web Services (AWS) as described [here](https://support.zendesk.com/hc/en-us/articles/4408825765530). Current hosting locations are the United States, the European Economic Area, Japan, and Australia       |\n| Salesforce, Inc.      | Customer support and account management       | United States|\n| Google LLC        | Cloudflare Developer Platform and Cloudflare Zero Trust       | European Economic Area, United States, Australia, India       |\n| Oracle America, Inc.       | Cloudflare Developer Platform and Cache Reserve        | United States, European Economic Area, UK, Japan, Australia, Canada, Singapore        |\n| Amazon Web Services (AWS)       | Cloudflare Email Security (formerly Area 1)       | United States, European Economic Area        |"
+															"markdown": "\n| Sub‑Processor         | Activity     |  Location     | \n| ---------- | ---------- | ---------- |\n| Slack Technologies, Inc.       | Customer support communications       | United States       |\n| Zendesk, Inc.       | Customer support and account management       | Zendesk operates servers globally using Amazon Web Services (AWS) as described [here](https://support.zendesk.com/hc/en-us/articles/4408825765530). Current hosting locations are the United States, the European Economic Area, Japan, and Australia       |\n| Salesforce, Inc.      | Customer support and account management       | United States|\n| Google LLC        | Cloudflare Developer Platform, Cloudflare Zero Trust and AI Gateway      | United States      |\n| Oracle America, Inc.       | Cloudflare Developer Platform and Cache Reserve        | United States, European Economic Area, UK, Japan, Australia, Canada, Singapore        |\n| Amazon Web Services (AWS)       | Cloudflare Email Security (formerly Area 1)       | United States, European Economic Area        | \n| CoreWeave, Inc.    | Workers AI\t      | United States       |\n| Nebius BV    | Workers AI\t      | England       |\n| Anthropic PBC\t      | AI Gateway\t      | United States        |\n| OpenAI, Inc.      | AI Gateway\t      | OpenAI operates servers globally using Azure as described [here](https://openai.com/policies/sub-processor-list/).       |\n| X.AI Corp.\t      | AI Gateway\t      | United States        |\n| Groq, Inc.     | AI Gateway\t      | United States       |"
 														}
 													],
 													"entry_assetFile": [],
@@ -268,7 +268,7 @@
 															"contentfulId": "4vHkpbW7RJiPICndVqqLd6",
 															"locale": "en-US",
 															"entryTitle": "Cloudflare Entities",
-															"markdown": "\n| Cloudflare Entity    | Location     | \n| ---------- | ---------- |\n| Cloudflare Ltd.    | United Kingdom       |\n| Cloudflare Pte. Ltd.       | Singapore       |\n| Cloudflare Australia Pty Ltd        | Australia       |\n| Cloudflare Germany GmbH      | Germany       |\n| Cloudflare Portugal, Unipessoal Lda.       | Portugal       |\n| Cloudflare France SAS        | France       |\n| Cloudflare Japan K.K.       | Japan       |\n| Cloudflare (Canada) Information Technology Co., Ltd.       | Canada       |\n| Cloudflare Netherlands B.V.       | Netherlands       |\n| Cloudflare Middle East FZ-LLC       | Dubai, U.A.E.       |   \n| Cloudflare India Private Limited      | India      |   \n| Area 1 Security, LLC       | United States       |   \n| Cloudflare Korea LLC       | South Korea       |   \n| Cloudflare Mexico S. de R.L de C.V.       | Mexico      |   \n| Cloudflare Malaysia Sdn. Bhd.       | Malaysia      |   \n| Cloudflare Capability Center (India) Private Limited       | India      |   \n| Cloudflare Sweden AB       | Sweden      |   "
+															"markdown": "\n| Cloudflare Entity    | Location     | \n| ---------- | ---------- |\n| Cloudflare Ltd.    | United Kingdom       |\n| Cloudflare Pte. Ltd.       | Singapore       |\n| Cloudflare Australia Pty Ltd        | Australia       |\n| Cloudflare Germany GmbH      | Germany       |\n| Cloudflare Portugal, Unipessoal Lda.       | Portugal       |\n| Cloudflare France SAS        | France       |\n| Cloudflare Japan K.K.       | Japan       |\n| Cloudflare (Canada) Information Technology Co., Ltd.       | Canada       |\n| Cloudflare Netherlands B.V.       | Netherlands       |\n| Cloudflare Middle East FZ-LLC       | Dubai, U.A.E.       |   \n| Cloudflare India Private Limited (for India customers only)     | India      |   \n| Area 1 Security, LLC       | United States       |   \n| Cloudflare Korea LLC       | South Korea       |   \n| Cloudflare Mexico S. de R.L de C.V.       | Mexico      |   \n| Cloudflare Malaysia Sdn. Bhd.       | Malaysia      |   \n| Cloudflare Capability Center (India) Private Limited       | India      |   \n| Cloudflare Sweden AB       | Sweden      |   "
 														}
 													],
 													"entry_assetFile": [],
@@ -332,7 +332,59 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " to receive alerts whenever we make changes to this list of sub-processors.",
+													"value": " to receive alerts whenever we make changes to this list of sub-processors.  Details at ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/gdpr/subprocessors/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "https://www.cloudflare.com/gdpr/subprocessors/",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n",
 													"marks": [],
 													"content": null
 												}
