@@ -7,6 +7,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -474,6 +475,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -937,6 +939,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1405,7 +1408,11 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "number"
+					"description": "Account identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
 				}
 			},
 			{
@@ -1861,7 +1868,11 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "number"
+					"description": "Account identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
 				}
 			},
 			{
@@ -2581,7 +2592,11 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "number"
+					"description": "Account identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
 				}
 			},
 			{
@@ -3300,7 +3315,11 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "number"
+					"description": "Account identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
 				}
 			},
 			{
@@ -3746,7 +3765,11 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "number"
+					"description": "Account identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
 				}
 			},
 			{
@@ -5277,7 +5300,11 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "number"
+					"description": "Account identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
 				}
 			},
 			{
@@ -6815,6 +6842,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -7309,6 +7337,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -7893,6 +7922,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
