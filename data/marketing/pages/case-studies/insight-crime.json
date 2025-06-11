@@ -1,0 +1,107 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/insight-crime/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Insight Crime",
+				"contentfulId": "1JaBvf7MCCpHm46ctl6IjC",
+				"nameUrlSlug": "insight-crime",
+				"metaTags": {
+					"metaTitle": "Project Galileo | Insight Crime",
+					"metaDescription": "This nonprofit think tank and media organization investigates and analyzes organized crime and citizen security in Latin America and the Caribbean. ",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2025-05-28",
+				"homepageUrl": "https://insightcrime.org/",
+				"hideFromCaseStudiesPage": true,
+				"shortDescription": "This nonprofit think tank and media organization investigates and analyzes organized crime and citizen security in Latin America and the Caribbean. ",
+				"longDescription": "[Insight Crime](https://insightcrime.org/) is a hybrid organization that combines investigative journalism with academic analysis to expose and understand organized crime, corruption, and security issues across Latin America and the Caribbean. Founded in 2010, the organization combines the focus of a think tank and the activities of a media organization, seeking to deepen and inform the debate about organized crime, corruption, and citizen security. The organization has since expanded its reach globally with a U.S. office and a team of investigators embedded throughout the region.\n\nTheir work involves on-the-ground investigations, regular reporting, data analysis, and policy suggestions.  Powered by a commitment to primary-source research, Insight Crime interviews everyone from victims to criminals, and government officials to academics.\n\n\"Insight Crime's investigations often delve into the inner workings of violent and high-profile criminal organizations, making them a target for retaliation in both the physical and digital realms.\" says Juliana Manjarres, head of the Monitoring and Data Analysis Unit.\n\n\"Our investigations are very high-profile. We expose corruption and criminal groups, so cybersecurity is mission critical for us,\" explained Belmar Santanilla Gutiérrez, Webmaster and IT lead at Insight Crime.\n\nWith only a small technical team supporting a large content operation, managing cybersecurity internally was difficult. Before turning to Cloudflare, Insight Crime faced DDoS attacks that brought their site offline, malware infections via WordPress vulnerabilities, and relentless bot activity attempting to breach their systems.\n\n\"Cybersecurity is not only about protecting the information, it's about protecting the people behind it. Our monitoring system stores sensitive interviews with individuals who are often at risk simply for speaking to us and sharing how organized crime has affected their lives. These are people under threat. If that information were exposed, it wouldn't just be a data breach, it could put lives in danger.\" says Juliana. \n\nWhen it came to cybersecurity capabilities for the organization, Belmar was already familiar with Cloudflare from his private sector work and came across Project Galileo. He was looking for a sustainable cybersecurity solution that could be deployed at Insight Crime due to many attacks against the organization's website. \n\n\"We experienced all kinds of attacks. At one point, we were getting 1.2 million requests per minute and the website went offline for a full day. That really affected us,\" Belmar said. \"We just didn't have the resources to pay for high-end protection, and that's when we found Project Galileo.\"\n\nThrough Project Galileo, InSight Crime was able to integrate Cloudflare's suite of protections into their digital infrastructure:\n- __DDoS Mitigation__: Prevented site crashes and ensured 100% uptime, even during sensitive investigations and major publication events. In the last 30 days alone, Cloudflare mitigated over 100+ DDoS attempts, ensuring uninterrupted access to critical content.\n- __Web Application Firewall (WAF)__: Safeguarded against malware and blocked suspicious traffic targeting WordPress vulnerabilities. For example, after deploying custom WAF rules, we observed a 70% drop in malicious POST requests to our login endpoints.\n- __Content Delivery Network (CDN)__: Improved global access speed and reliability for readers and researchers. With over 60% of our traffic served from edge locations, latency for international visitors dropped by nearly 40%.\n- __End-to-End Encryption__: Protected communications with sources in dangerous environments. All content is served over HTTPS, and we rely on Cloudflare's SSL management to ensure secure exchanges.\n- __Zero Trust (planned)__: Will provide secure internal access for team-developed tools and sensitive platforms, especially in remote or high-risk operational contexts.\n\nThe organization uses real traffic monitoring, regular vulnerability scanning, and encrypted communication with sources to ensure that all of their sensitive internal data is secure from attacks. Insight Crime's work relies on the ability to gather, store, and share sensitive information without compromise. Prior to joining Project Galileo, Insight Crime's digital operations were constantly subject to frequent attacks that would take the website down, especially during times the organisation posted ongoing investigative reports. Cloudflare's services have transformed Insight Crime's resilience and defence against these attacks. \n\n\"Cybersecurity is not only about protecting the information, but the people behind it,\" said Juliana. \"If this information were leaked, we would be putting people such as victims, sources, and staff at risk simply for talking to us.\"\n\nFor Insight Crime, cybersecurity is not just about data integrity, it's about human safety. Much of the organization's most sensitive work involves talking to people whose lives are at risk for speaking out.\n\n\"Our impact depends on putting together different elements such as data, investigative journalism and secure platforms,\" explained Juliana. \"Cloudflare is part of that. Without it, the risks would increase not just in terms of cybersecurity, but also physical risks for our team and sources. It helps us fulfill our mission safely.\"\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": null,
+				"relatedCaseStudyLinks": [
+					{
+						"text": "Sin Embargo",
+						"url": "/case-studies/sin-embargo"
+					},
+					{
+						"text": "Bedayaa",
+						"url": "/case-studies/bedayaa"
+					},
+					{
+						"text": "Electionland",
+						"url": "/case-studies/electionland"
+					},
+					{
+						"text": "Raissa Robles",
+						"url": "/case-studies/raissa-robles"
+					},
+					{
+						"text": "Diario de Araxa",
+						"url": "/case-studies/diario-de-araxa"
+					},
+					{
+						"text": "Reporter Taiwan",
+						"url": "/case-studies/reporter-taiwan"
+					}
+				],
+				"inPartnershipWith": [],
+				"relatedCloudflareProducts": [
+					{
+						"title": "CDN",
+						"url": "/application-services/products/cdn/"
+					},
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/application-services/products/waf/"
+					},
+					{
+						"title": "Access",
+						"url": "/zero-trust/products/access/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": null,
+				"employeeQuoteText": null,
+				"employeeQuoteJobTitle": null,
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wxRrxQUiondotESkJuMx0/b18d2cd5563ce1e87f1aff5aa11c5a83/Customer_story__Zero_Trust_for_Project_Galileo_Participants.png"
+					},
+					"description": ""
+				},
+				"customCanonicalTag": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1JaBvf7MCCpHm46ctl6IjC",
+			"pathname": "/case-studies/insight-crime/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

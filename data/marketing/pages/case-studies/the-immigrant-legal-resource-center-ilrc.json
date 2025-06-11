@@ -1,0 +1,87 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/the-immigrant-legal-resource-center-ilrc/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "The Immigrant Legal Resource Center (ILRC) ",
+				"contentfulId": "3ToTnzPnimiqguRfoQqydP",
+				"nameUrlSlug": "the-immigrant-legal-resource-center-ilrc",
+				"metaTags": {
+					"metaTitle": "Project Galileo | The Immigrant Legal Resource Center (ILRC) ",
+					"metaDescription": "The ILRC trains attorneys, paralegals, and community-based advocates who work with immigrants around the country, alongside working with grassroots immigrant organizations to promote civic engagement and social change.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2025-05-28",
+				"homepageUrl": "https://www.ilrc.org/",
+				"hideFromCaseStudiesPage": true,
+				"shortDescription": "The ILRC trains advocates who work with immigrants around the country, alongside working with grassroots immigrant organizations to promote civic engagement and social change.",
+				"longDescription": "[The Immigrant Legal Resource Center (ILRC)](https://www.ilrc.org/) empowers immigrants and the organizations that support them with legal training, educational materials, policy advocacy, and community engagement. As an organization at the forefront of immigrant rights, ILRC provides critical legal resources and infrastructure for hundreds of thousands of individuals and over 10,000 partner organizations across the U.S. \n\nFounded as a technical assistance hub for immigration law, ILRC has grown into a powerhouse for legal advocacy, civic engagement, and education. With a mission rooted in justice for all immigrants, including those impacted by the criminal legal system, ILRC serves attorneys, DOJ-accredited representatives, public defenders, and community-based organizations.\n\nMany initiatives include: \n\n- __Legal webinars, training, and publications__: ILRC delivers expert-led training, some reaching thousands of attendees.\n- __Attorney of the day program__: Provides real-time legal guidance to practitioners and grassroots advocates.\n- __New Americans Campaign__: Coordinates over 200 organizations nationwide to support naturalization.\n- __Know Your Rights Materials__: Famous for distributing \"Red Cards\" that educate immigrants on their constitutional rights.\n\nAs Kat Kimmons, ILRC's Director of Technology, describes, \"We believe everyone deserves fair legal treatment, regardless of background or past involvement with the criminal legal system.\"\n\n__Cybersecurity challenges__\n\nAs ILRC's visibility and scale increased, so did the threat landscape. Kimmons recounted a significant ransomware attack in 2019 that encrypted all of the organization's files and took them days to recover. Despite a small IT team of two full-time employees and a consultant, ILRC implemented key security measures such as multi-factor authentication, device management, and organization-wide cybersecurity training to combat further possible attacks. \n\nILRC discovered Project Galileo through the NGO Information Sharing and Analysis Center (NGO-ISAC). Kimmons, already familiar with Cloudflare's services, applied immediately upon learning of the opportunity.\n\n\"Cloudflare is just such a wonderful security product that we wouldn't be able to take advantage of at the cost, it just would not fit into our budget even though we need it,\" said Kimmons.\n\nProject Galileo is filling the gap for many organisations such as the ILRC, fulfilling critical cybersecurity needs that otherwise would be out of budget for many nonprofits. Through joining Project Galileo, the ILRC can continue to focus on its mission without fear of attack.\n\n__The Impact of Cloudflare__\n\nOne of the first major wins under Project Galileo came with Cloudflare Tunnel. ILRC had previously exposed a firewall port to allow remote access to their on-site Synology NAS backup device which is a known security risk. With Tunnel, they securely closed that port and established encrypted access without compromising safety.\n\n\"The guys tested it and were super excited. It really got their juices flowing, now we're looking at what we can implement next,\" said Kimmons.\n\nThe organization is leveraging: \n\n- __Web Application Firewall (WAF)__: Blocks approximately 14,000 security threats per week, enhancing overall application security.\n- __DDoS Mitigation__: Cloudflare identified 983 threats from a single domain in France within a 24-hour period, showcasing its effective threat detection capabilities.\n- __SSL Certificates__: Estimated to save at least 10% of staff time previously spent managing SSLs across multiple providers.\n- __Cloudflare Zero Trust Network__: One of the most transformative initiatives underway is the implementation of Zero Trust for the organization. This solution will address longstanding visibility issues and combat shadow IT, areas that have historically been difficult to control.\n\nAs demand for ILRC's resources surges, like the time they received 9 million orders for \"Know Your Rights\" red cards in just days, the need for reliable, secure infrastructure only grows.\n\n\"Cloudflare gives us peace of mind knowing our systems are protected means we can focus on what really matters: serving our community. We're not constantly looking over our shoulder worrying about the next cyberattack. Instead, our staff can put their energy into helping immigrants and the organizations that support them.\"\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": null,
+				"relatedCaseStudyLinks": [
+					{
+						"text": "Majal",
+						"url": "/case-studies/majal"
+					},
+					{
+						"text": "Interfaith Enlightenment Center",
+						"url": "/case-studies/interfaith-enlightenment-center"
+					}
+				],
+				"inPartnershipWith": [],
+				"relatedCloudflareProducts": [
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/application-services/products/waf/"
+					},
+					{
+						"title": "Access",
+						"url": "/zero-trust/products/access/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": null,
+				"employeeQuoteText": null,
+				"employeeQuoteJobTitle": null,
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wxRrxQUiondotESkJuMx0/b18d2cd5563ce1e87f1aff5aa11c5a83/Customer_story__Zero_Trust_for_Project_Galileo_Participants.png"
+					},
+					"description": ""
+				},
+				"customCanonicalTag": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "3ToTnzPnimiqguRfoQqydP",
+			"pathname": "/case-studies/the-immigrant-legal-resource-center-ilrc/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}
