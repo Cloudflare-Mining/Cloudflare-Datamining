@@ -880,8 +880,9 @@
 					"description": "Filters by the actor type.",
 					"items": {
 						"enum": [
-							"cloudflare_admin",
 							"account",
+							"cloudflare_admin",
+							"system",
 							"user"
 						],
 						"example": "account",
@@ -1156,8 +1157,9 @@
 					"description": "Filters out audit logs by the actor type.",
 					"items": {
 						"enum": [
-							"cloudflare_admin",
 							"account",
+							"cloudflare_admin",
+							"system",
 							"user"
 						],
 						"example": "account",
