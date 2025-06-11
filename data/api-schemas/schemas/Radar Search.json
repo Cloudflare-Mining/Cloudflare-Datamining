@@ -41,10 +41,10 @@
 					"description": "Search types included in results.",
 					"items": {
 						"enum": [
-							"SPECIAL_EVENTS",
-							"NOTEBOOKS",
+							"ASNS",
 							"LOCATIONS",
-							"ASNS"
+							"NOTEBOOKS",
+							"SPECIAL_EVENTS"
 						],
 						"type": "string"
 					},
@@ -59,10 +59,10 @@
 					"description": "Search types excluded from results.",
 					"items": {
 						"enum": [
-							"SPECIAL_EVENTS",
-							"NOTEBOOKS",
+							"ASNS",
 							"LOCATIONS",
-							"ASNS"
+							"NOTEBOOKS",
+							"SPECIAL_EVENTS"
 						],
 						"type": "string"
 					},

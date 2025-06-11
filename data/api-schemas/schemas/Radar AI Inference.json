@@ -110,7 +110,7 @@
 																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
-																	"endTime": {
+																	"endDate": {
 																		"format": "date-time",
 																		"type": "string"
 																	},
@@ -126,7 +126,7 @@
 																		"format": "uri",
 																		"type": "string"
 																	},
-																	"startTime": {
+																	"startDate": {
 																		"format": "date-time",
 																		"type": "string"
 																	}
@@ -135,8 +135,8 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime",
+																	"startDate",
+																	"endDate",
 																	"linkedUrl",
 																	"isInstantaneous"
 																],
@@ -193,7 +193,8 @@
 														"RAW_VALUES",
 														"PERCENTAGE_CHANGE",
 														"ROLLING_AVERAGE",
-														"OVERLAPPED_PERCENTAGE"
+														"OVERLAPPED_PERCENTAGE",
+														"RATIO"
 													],
 													"type": "string"
 												},
@@ -436,7 +437,7 @@
 																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
-																	"endTime": {
+																	"endDate": {
 																		"format": "date-time",
 																		"type": "string"
 																	},
@@ -452,7 +453,7 @@
 																		"format": "uri",
 																		"type": "string"
 																	},
-																	"startTime": {
+																	"startDate": {
 																		"format": "date-time",
 																		"type": "string"
 																	}
@@ -461,8 +462,8 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime",
+																	"startDate",
+																	"endDate",
 																	"linkedUrl",
 																	"isInstantaneous"
 																],
@@ -519,7 +520,8 @@
 														"RAW_VALUES",
 														"PERCENTAGE_CHANGE",
 														"ROLLING_AVERAGE",
-														"OVERLAPPED_PERCENTAGE"
+														"OVERLAPPED_PERCENTAGE",
+														"RATIO"
 													],
 													"type": "string"
 												},
@@ -787,7 +789,7 @@
 																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
-																	"endTime": {
+																	"endDate": {
 																		"format": "date-time",
 																		"type": "string"
 																	},
@@ -803,7 +805,7 @@
 																		"format": "uri",
 																		"type": "string"
 																	},
-																	"startTime": {
+																	"startDate": {
 																		"format": "date-time",
 																		"type": "string"
 																	}
@@ -812,8 +814,8 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime",
+																	"startDate",
+																	"endDate",
 																	"linkedUrl",
 																	"isInstantaneous"
 																],
@@ -870,7 +872,8 @@
 														"RAW_VALUES",
 														"PERCENTAGE_CHANGE",
 														"ROLLING_AVERAGE",
-														"OVERLAPPED_PERCENTAGE"
+														"OVERLAPPED_PERCENTAGE",
+														"RATIO"
 													],
 													"type": "string"
 												},
@@ -1158,7 +1161,7 @@
 																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
-																	"endTime": {
+																	"endDate": {
 																		"format": "date-time",
 																		"type": "string"
 																	},
@@ -1174,7 +1177,7 @@
 																		"format": "uri",
 																		"type": "string"
 																	},
-																	"startTime": {
+																	"startDate": {
 																		"format": "date-time",
 																		"type": "string"
 																	}
@@ -1183,8 +1186,8 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime",
+																	"startDate",
+																	"endDate",
 																	"linkedUrl",
 																	"isInstantaneous"
 																],
@@ -1241,7 +1244,8 @@
 														"RAW_VALUES",
 														"PERCENTAGE_CHANGE",
 														"ROLLING_AVERAGE",
-														"OVERLAPPED_PERCENTAGE"
+														"OVERLAPPED_PERCENTAGE",
+														"RATIO"
 													],
 													"type": "string"
 												},
