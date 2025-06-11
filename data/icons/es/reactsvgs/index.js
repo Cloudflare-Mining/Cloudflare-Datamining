@@ -112,6 +112,7 @@ import MagicFirewall from './MagicFirewall';
 import MagicNetworkMonitoring from './MagicNetworkMonitoring';
 import MagicTransitLogo from './MagicTransitLogo';
 import Mail from './Mail';
+import MediaPlay from './MediaPlay';
 import Minus from './Minus';
 import More from './More';
 import NetworkAnalyticsLogo from './NetworkAnalyticsLogo';
@@ -166,6 +167,7 @@ import Stream from './Stream';
 import Subtract from './Subtract';
 import Table from './Table';
 import TailWorker from './TailWorker';
+import Target from './Target';
 import Teams from './Teams';
 import Terraform from './Terraform';
 import ThumbsDownOutline from './ThumbsDownOutline';
@@ -320,6 +322,7 @@ export default {
   'magic-network-monitoring': MagicNetworkMonitoring,
   'magic-transit-logo': MagicTransitLogo,
   mail: Mail,
+  'media-play': MediaPlay,
   minus: Minus,
   more: More,
   'network-analytics-logo': NetworkAnalyticsLogo,
@@ -374,6 +377,7 @@ export default {
   subtract: Subtract,
   table: Table,
   'tail-worker': TailWorker,
+  target: Target,
   teams: Teams,
   terraform: Terraform,
   'thumbs-down-outline': ThumbsDownOutline,

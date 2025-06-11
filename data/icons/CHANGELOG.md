@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.2.0
+
+### Minor Changes
+
+- 6784a0725a: Add target and media-play icons
+
 ## 13.1.2
 
 ## 13.1.1

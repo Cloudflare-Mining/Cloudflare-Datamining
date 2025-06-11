@@ -114,6 +114,7 @@ declare const _default: {
     'magic-network-monitoring': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'magic-transit-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     mail: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'media-play': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     minus: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     more: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'network-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -168,6 +169,7 @@ declare const _default: {
     subtract: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     table: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'tail-worker': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    target: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     teams: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     terraform: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'thumbs-down-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
