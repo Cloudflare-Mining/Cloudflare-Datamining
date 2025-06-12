@@ -3344,7 +3344,8 @@
 	"AccountMagicFirewallSamplesAdaptiveGroupsDimensions": {
 		"__description": "",
 		"datetime": "Date and time that the packet was received",
-		"datetimeFiveMinute": "Date and time that the packet was received, rounded to the start of the nearest five minutes",
+		"datetimeFiveMinute": "<small>DEPRECATED (Deprecated in favor of datetimeFiveMinutes):</small> Date and time that the packet was received, rounded to the start of the nearest five minutes",
+		"datetimeFiveMinutes": "Date and time that the packet was received, rounded to the start of the nearest five minutes",
 		"ruleId": "Unique identifier of the rule that matched the packet, if any"
 	},
 	"AccountMagicFirewallSamplesAdaptiveGroupsFilter_InputObject": {
@@ -6223,6 +6224,8 @@
 		"datetimeMinute": "Request datetime, truncated to start of an minute",
 		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
 		"environmentName": "The name of the script environment",
+		"hostname": "The hostname of the subrequest",
+		"httpResponseStatus": "Origin HTTP response code",
 		"scriptName": "The name of the script",
 		"scriptVersion": "The version of the Worker",
 		"usageModel": "Usage model of the worker invocation"
@@ -6235,7 +6238,9 @@
 	},
 	"AccountWorkersSubrequestsAdaptiveGroupsSum": {
 		"__description": "",
+		"requestBodySize": "Workers fetch request body size in bytes",
 		"requestBodySizeUncached": "Workers fetch request body size in bytes where the request was not cached",
+		"responseBodySize": "Workers fetch response body size in bytes",
 		"subrequests": "Number of subrequests"
 	},
 	"AccountWorkflowsAdaptive": {
@@ -8441,6 +8446,7 @@
 		"datetimeHour": "Request datetime, truncated to start of an hour",
 		"datetimeMinute": "Request datetime, truncated to start of an minute",
 		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
+		"hostname": "The hostname of the subrequest",
 		"httpResponseStatus": "Origin HTTP response code"
 	},
 	"ZoneWorkersZoneSubrequestsAdaptiveGroupsFilter_InputObject": {
@@ -8451,8 +8457,10 @@
 	},
 	"ZoneWorkersZoneSubrequestsAdaptiveGroupsSum": {
 		"__description": "",
-		"responseBodySize": "Bandwidth (in bytes) received via subrequests",
-		"subrequests": "Number of subrequests issued by a worker"
+		"requestBodySize": "Workers fetch request body size in bytes",
+		"requestBodySizeUncached": "Workers fetch request body size in bytes where the request was not cached",
+		"responseBodySize": "Workers fetch response body size in bytes",
+		"subrequests": "Number of sub-requests issued by the edge worker"
 	},
 	"ZoneZarazActionsAdaptiveGroups": {
 		"__description": "Zaraz Actions Analytics",
