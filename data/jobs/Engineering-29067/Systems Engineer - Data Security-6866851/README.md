@@ -5,22 +5,22 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
+<p><strong>Available Locations: Lisbon, Portugal or London, UK&nbsp;</strong></p>
 <p><strong>What you’ll do</strong></p>
-<p>In this role, you’ll help build and maintain the CASB (Cloud Access Security Broker) offering, a critical component of our Zero Trust Platform. CASB integrates with customers’ SaaS applications and Cloud infrastructure to detect and monitor for a wide range of security issues including: misconfigurations, shadow IT, critical data leakage, and access risks. As an engineer on the team, you will focus on building new functionality into our API integration-based stack while also ensuring the performance and reliability of our services which ingest millions of data points each day. You’ll be joining a team of bright, knowledge-seeking engineers who are truly missionaries in solving the security challenges our customers face across their SaaS applications.</p>
+<p>In this role, you’ll help build and maintain Data Security products as a Software Engineer. These products empower customers to gain deep visibility into Cloud/SaaS security opportunities and into trends in their network traffic and product use. As an engineer on the team, you will focus on building new functionality into our APIs and distributed code while ensuring the performance and reliability of our services which ingest millions of data points each day. You’ll be joining a team of bright, knowledge-seeking engineers who are truly missionaries in solving the security and network visibility challenges for our customers.</p>
 <p><strong>Technologies we use:</strong></p>
 <ul>
-	<li>CASB core services are written in Go.</li>
-	<li>CASB Cloud remote client services run on AWS, GCP, and Azure.</li>
+	<li>Products are written in Go, Python, and Typescript.</li>
+	<li>Code runs on Kubernetes, Cloudflare Workers, AWS, GCP, Azure.</li>
 	<li>We utilize Postgres as our data store, Redis as our cache, and Kafka as our message broker.</li>
 	<li>Our frontend is written in Typescript and React.</li>
 	<li>For service monitoring we use Prometheus and Grafana.</li>
 	<li>For service logging we use Elasticsearch and Kibana.</li>
 	<li>For product analytics we use Clickhouse and BigQuery.&nbsp;</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
 <ul>
-	<li>3+ years of professional experience building and managing reliable and performant software systems at scale, preferably with Go and/or Postgres.</li>
+	<li>3+ years of professional experience building and managing reliable and performant software systems at scale, preferably with technologies like: Go, Python, Postgres</li>
 	<li>Passion for making the digital world a more secure place</li>
 	<li>Excellent debugging and optimization skills</li>
 	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies and systems</li>
@@ -32,7 +32,6 @@
 	<li>Previous experience working with third-party API integrations</li>
 	<li>Previous experience working on security products</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
