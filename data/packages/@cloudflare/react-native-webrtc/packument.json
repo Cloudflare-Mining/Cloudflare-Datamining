@@ -2,7 +2,7 @@
 	"name": "@cloudflare/react-native-webrtc",
 	"dist-tags": {
 		"latest": "114.0.16",
-		"staging": "114.0.17-staging.2"
+		"staging": "114.0.17-staging.3"
 	},
 	"versions": {
 		"0.0.0": {
@@ -52,6 +52,32 @@
 			"name": "@cloudflare/react-native-webrtc",
 			"version": "114.0.17-staging.2",
 			"dependencies": {
+				"debug": "4.3.4",
+				"base64-js": "1.5.1",
+				"event-target-shim": "6.0.2",
+				"expo-build-properties": "0.11.0"
+			},
+			"peerDependencies": {
+				"react-native": ">=0.60.0"
+			},
+			"dist": {
+				"shasum": "80f3561e69b57040ba93b14bf2ea1f0512a99a00",
+				"tarball": "https://registry.npmjs.org/@cloudflare/react-native-webrtc/-/react-native-webrtc-114.0.17-staging.2.tgz",
+				"fileCount": 333,
+				"integrity": "sha512-r7VaIUtzixaW0OTZ/0/Kp6LpAlK+91TVTC/a3skwxKKyR6YEn3csJpN3BlQRTPzk+aR5YLnYJq95X5wrB/5UJg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDZInrZfxsdPB5cM27PO+3PzRci0LDBHJQBV3O/CBsWMQIgTjabrrV/bZEDYeFKRCBG86G4zx1uK/bHwFiLvUub3Wk=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1130725
+			}
+		},
+		"114.0.17-staging.3": {
+			"name": "@cloudflare/react-native-webrtc",
+			"version": "114.0.17-staging.3",
+			"dependencies": {
 				"base64-js": "1.5.1",
 				"debug": "4.3.4",
 				"event-target-shim": "6.0.2",
@@ -61,15 +87,15 @@
 				"react-native": ">=0.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-r7VaIUtzixaW0OTZ/0/Kp6LpAlK+91TVTC/a3skwxKKyR6YEn3csJpN3BlQRTPzk+aR5YLnYJq95X5wrB/5UJg==",
-				"shasum": "80f3561e69b57040ba93b14bf2ea1f0512a99a00",
-				"tarball": "https://registry.npmjs.org/@cloudflare/react-native-webrtc/-/react-native-webrtc-114.0.17-staging.2.tgz",
-				"fileCount": 333,
-				"unpackedSize": 1130725,
+				"integrity": "sha512-3ogHVOVrhPA3s18wtah8Fg/5J7rKoUsSUVplznpX8dA7d7sYMAHc4yWXU6BzDAnrPDbxsamdG5RLp9pH69+UMg==",
+				"shasum": "3c5d091d4cf607bf301eceb3674128626df6e2a1",
+				"tarball": "https://registry.npmjs.org/@cloudflare/react-native-webrtc/-/react-native-webrtc-114.0.17-staging.3.tgz",
+				"fileCount": 275,
+				"unpackedSize": 1006638,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDZInrZfxsdPB5cM27PO+3PzRci0LDBHJQBV3O/CBsWMQIgTjabrrV/bZEDYeFKRCBG86G4zx1uK/bHwFiLvUub3Wk="
+						"sig": "MEQCIC41RShCPfkEHm8qbvp88jg7I0wzZDn/5s/8/lFpMAZ9AiBxBQnKVHjtLvA51izhtEtWf1cue+/XHK+419f7+k0O/w=="
 					}
 				]
 			}
