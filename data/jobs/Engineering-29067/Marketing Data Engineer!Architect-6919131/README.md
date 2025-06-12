@@ -5,44 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Aarhus, Denmark | Austin, TX | Lisbon, Portugal | London, UK | Munich, Germany</strong></h3>
-<h3><strong>Principal VM Engineer – Workers Runtime Team</strong></h3>
-<h4><strong>About the Department</strong></h4>
-<p>The <strong>Emerging Technologies &amp; Incubation (ETI)</strong> team at Cloudflare builds and launches bold, new products that push the boundaries of what’s possible on the internet. By leveraging Cloudflare’s massive network and edge computing capabilities, we solve complex problems at a scale few others can achieve.</p>
-<h4><strong>About the Team</strong></h4>
-<p>The <strong>Workers Runtime team</strong> is responsible for the execution environment that runs customer code at the edge. We focus on <strong>performance, security, and scalability</strong>, enhancing <strong>JavaScript APIs, WebAssembly support, and system optimizations</strong> to prepare for the next <strong>10x scale increase</strong>. Our runtime operates in a <strong>resource-constrained, highly secure environment</strong>, requiring careful management of <strong>memory, CPU, and I/O</strong>.</p>
-<h4><strong>What You'll Do</strong></h4>
-<p>We are looking for a <strong>VM Engineer</strong> to help improve and embed the <strong>V8 virtual machine</strong> in our runtime. You’ll work on <strong>low-level optimizations, performance enhancements, garbage collection, and language support</strong> to ensure our platform remains cutting-edge. This role is ideal for engineers who love tackling <strong>high-performance, low-latency challenges</strong> in distributed environments.</p>
-<h4><strong>Key Responsibilities</strong></h4>
+<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
+<p><strong>About the department</strong></p>
+<p>The Self-Serve Team is responsible for Cloudflare’s PLG business that serves 8M+ customers across 20% of the internet. Our team is responsible for growth marketing, product growth, and growth insights with the goal of building a world class experience for our self-serve customers across all product categories including Application Services, Cloudflare One and Developer Platform, and all Plans such as Free, Pro, Business &amp; Enterprise. We work to grow the business by understanding our customers’ needs at every stage of their journey from Awareness to Activation to Expansion and Retention.&nbsp;</p>
+<p>You may have heard of the cliche that teams call themselves a “startup within a startup”. Except that the self-serve engineering team is fairly young at Cloudflare with established ROI. You will be the founding data engineer for the team.</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li><strong>Optimize and embed the V8 VM</strong> within Cloudflare’s Workers Runtime.</li>
-	<li>Improve <strong>JavaScript execution performance</strong> and <strong>WebAssembly integration</strong>.</li>
-	<li>Debug, optimize, and enhance <strong>low-latency, real-time environments</strong>.</li>
-	<li>Ensure the reliability and efficiency of <strong>large-scale, Linux-based distributed systems</strong>.</li>
-	<li>Collaborate with engineers across <strong>runtime, security, and networking teams</strong> to push the boundaries of edge computing.</li>
+	<li>This is a highly autonomous role that enables the self-serve team to personalize user journeys through precise targeting.&nbsp;</li>
+	<li>Think of a user that clicked X, visited Y, and purchased Z. We want to predict what they want to do next and then offer that next product in a live product A/B test to improve conversions. If you have worked with tools such as Posthog, Amplitude, Heap, or better yet, have built something similar, we want to hear from you. Our primary use-case is to capture and process thousands of user events in a native architecture and then serve it to internal audiences - both for productional use-cases and for internal reporting.&nbsp;</li>
+	<li>You must be comfortable with setting up data lakes, understanding A/B testing architectures, and building the cloud tools that you may have otherwise used in the past. Because Cloudflare is the cloud that we sell to our developers.</li>
+	<li>As the founding data engineer, you will have the opportunity to pick an existing data architecture to build upon, build a new one from scratch, or choose a hybrid approach. You tell us what the best system looks like. You will learn about the many data tools and architectures that are being used across the company - traditional databases, modern architectures to manage 20% of the internet traffic, BI summaries, real-user monitoring offered to our customers.</li>
+	<li>Bonus points if you have done this to scale a startup.</li>
 </ul>
-<h4><strong>What We're Looking For</strong></h4>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li><strong>6+ years of professional experience with C++.</strong></li>
-	<li><strong>4+ years of hands-on VM/compiler experience</strong>, ideally with <strong>V8</strong>.</li>
-	<li>Strong knowledge of <strong>computer science fundamentals</strong>, including <strong>data structures, algorithms, and system architecture</strong>.</li>
-	<li>Experience with <strong>low-latency environments</strong> (e.g., game streaming, trading systems, high-performance computing).</li>
-	<li>Operational mindset – you build <strong>scalable, production-ready</strong> solutions.</li>
-	<li>Deep understanding of <strong>web technologies</strong> (HTTP, JavaScript, WASM).</li>
+	<li>BA/BS, MS preferred in Computer Science, must have worked within marketing data tracking and backend architecture for 4+ years.</li>
+	<li>1+ years building realtime data capturing architecture from various user events - marketing websites, Google Analytics, Kibana, Amplitude, UI events, backend events and stitch them together for advanced analytics and personalization systems</li>
+	<li>1+ year of demonstrable experience with marketing attribution system and tag management</li>
+	<li>Experience building/expanding analytics systems at lakehouse scale, ideally with OSS systems - Apache Iceberg, Clickhouse, or similar</li>
+	<li>Data modeling using different methods (dimensional data modeling, ER modeling, etc)</li>
+	<li>Experience implementing quality measurement processes</li>
+	<li>Familiarity with batch-style OSS ELT/ETL system (dbt/airflow/etc) and experience managing them</li>
+	<li>Familiarity with global data privacy requirements governed by laws like GDPR/CCPA/etc and how it affects data capture, modeling and analysis</li>
+	<li>Solid understanding of RESTful APIs and service security</li>
+	<li>Working knowledge of SQL and relational databases such as PostgreSQL or MySQL</li>
+	<li>Experience implementing secure and highly-available distributed systems/microservices</li>
+	<li>Familiarity with event driven architecture</li>
+	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
+	<li>Strong interpersonal and communication skills with a bias towards action</li>
 </ul>
-<h4><strong>Bonus Points</strong></h4>
-<ul>
-	<li>Experience working with <strong>Rust</strong> in high-performance distributed systems.</li>
-	<li>Familiarity with <strong>serverless platforms</strong> and <strong>cloud computing</strong>.</li>
-	<li>Deep knowledge of <strong>JS engine internals</strong> (V8, SpiderMonkey, JavaScriptCore).</li>
-	<li>Experience with <strong>standalone WebAssembly runtimes</strong> (Wasmtime, Wasmer, Lucet).</li>
-	<li>Strong expertise in <strong>Linux/UNIX systems, kernels, and networking</strong>.</li>
-	<li>Contributions to <strong>large open-source projects</strong>.</li>
-</ul>
-<p>This is an exciting opportunity to work on <strong>cutting-edge compiler and runtime technologies</strong> at an <strong>unmatched scale</strong>. If you're passionate about <strong>high-performance computing, distributed systems, and compilers</strong>, we’d love to hear from you!</p>
-<h3><br><br></h3>
-<h3 id="CopyofSeniorSystemsEngineerWorkersRuntime-AbouttheDepartment"></h3>
-<h3 id="SeniorSystemsEngineerWorkersRuntime-AbouttheDepartment"></h3>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
