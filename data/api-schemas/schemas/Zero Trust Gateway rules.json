@@ -1168,6 +1168,12 @@
 														"readOnly": true,
 														"type": "integer",
 														"x-auditable": true
+													},
+													"warning_status": {
+														"description": "Warning for a misconfigured rule, if any.",
+														"nullable": true,
+														"readOnly": true,
+														"type": "string"
 													}
 												},
 												"type": "object"
@@ -2032,6 +2038,12 @@
 																"readOnly": true,
 																"type": "integer",
 																"x-auditable": true
+															},
+															"warning_status": {
+																"description": "Warning for a misconfigured rule, if any.",
+																"nullable": true,
+																"readOnly": true,
+																"type": "string"
 															}
 														},
 														"type": "object"
@@ -2995,6 +3007,12 @@
 													"readOnly": true,
 													"type": "integer",
 													"x-auditable": true
+												},
+												"warning_status": {
+													"description": "Warning for a misconfigured rule, if any.",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -3827,6 +3845,12 @@
 															"readOnly": true,
 															"type": "integer",
 															"x-auditable": true
+														},
+														"warning_status": {
+															"description": "Warning for a misconfigured rule, if any.",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -5499,6 +5523,12 @@
 													"readOnly": true,
 													"type": "integer",
 													"x-auditable": true
+												},
+												"warning_status": {
+													"description": "Warning for a misconfigured rule, if any.",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -6331,6 +6361,12 @@
 															"readOnly": true,
 															"type": "integer",
 															"x-auditable": true
+														},
+														"warning_status": {
+															"description": "Warning for a misconfigured rule, if any.",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -7291,6 +7327,12 @@
 													"readOnly": true,
 													"type": "integer",
 													"x-auditable": true
+												},
+												"warning_status": {
+													"description": "Warning for a misconfigured rule, if any.",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -8120,6 +8162,12 @@
 															"readOnly": true,
 															"type": "integer",
 															"x-auditable": true
+														},
+														"warning_status": {
+															"description": "Warning for a misconfigured rule, if any.",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -9804,6 +9852,12 @@
 													"readOnly": true,
 													"type": "integer",
 													"x-auditable": true
+												},
+												"warning_status": {
+													"description": "Warning for a misconfigured rule, if any.",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -10636,6 +10690,12 @@
 															"readOnly": true,
 															"type": "integer",
 															"x-auditable": true
+														},
+														"warning_status": {
+															"description": "Warning for a misconfigured rule, if any.",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
