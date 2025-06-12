@@ -6,7 +6,6 @@
 	</div>
 </div>
 <p><strong>Available Locations: </strong>Hybrid - Atlanta, GA | Austin, TX | Denver, CO | Lisbon, Portugal&nbsp;</p>
-<div class="right-nav">&nbsp;</div>
 <h4><strong>What you'll do</strong></h4>
 <p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
 <p>Cloudflare is looking for a backend engineer on our control plan product platform to help us build our customer APIs and our internal service APIs. This is a role for engineers that are familiar with standard backend backend architecture, and capable in database design and interaction. Our API platform is under constant load and scrutiny, so experience and commitment to easily understood and test code is also a key part of the role. Your ability to visualize the flow of data through a complex application is critical to your success, and to the team’s. You will be working closely with the product team to understand and document the functional needs of their product requirements, developing new code to solve new problems, as well as maintaining existing code to squash bugs. Our tech stack includes services built using Go, Redis, Postgres, and Cloudflare products (e.g. Workers). We are looking for proficiency in RESTful API design, relational databases (SQL), and modern containerized deployment practices.&nbsp;</p>
