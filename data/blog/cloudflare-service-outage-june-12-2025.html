@@ -108,7 +108,7 @@
 				<td>
 					<p>The Challenge platform that powers Cloudflare Challenges and Turnstile saw a high rate of failure and timeout for siteverify API requests during the incident window due to its dependencies on Workers KV and Durable Objects.</p>
 					<p>We have kill switches in place to disable these calls in case of incidents and outages such as this. We activated these kill switches as a mitigation so that eyeballs are not blocked from proceeding. Notably, while these kill switches were active, Turnstile’s siteverify API (the API that validates issued tokens) could redeem valid tokens multiple times, potentially allowing for attacks where a bad actor might try to use a previously valid token to bypass.&nbsp;</p>
-					<p>There was no impact to Turnstile’s ability to detect bots. A bot attempting to solve a challenge would still have failed the challenge and thus, not received a token.&nbsp;</p>
+					<p>There was no impact to Turnstile’s ability to detect bots. A bot attempting to solve a challenge would still have failed the challenge and thus, not receive a token.&nbsp;</p>
 				</td>
 			</tr>
 			<tr>
@@ -131,7 +131,7 @@
 					</p>
 				</td>
 				<td>
-					<p>Uploads to Cloudflare Images were impacted during the incident window, with a 100% failure rate at the peak of the incident.&nbsp;</p>
+					<p>Batch uploads to Cloudflare Images were impacted during the incident window, with a 100% failure rate at the peak of the incident. Other uploads were not impacted.</p>
 					<p>Overall image delivery dipped to around 97% success rate. Image Transformations were not significantly impacted, and Polish was not impacted.</p>
 				</td>
 			</tr>
