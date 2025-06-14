@@ -1,0 +1,97 @@
+{
+	"alias": "vite-react-template",
+	"assets": [
+		{
+			"type": "file",
+			"name": "wrangler.json",
+			"content": {
+				"$ref": "assets://wrangler.json"
+			},
+			"format": "json",
+			"json_path_replacements": [
+				{
+					"path": [
+						"name"
+					],
+					"value": {
+						"$ref": "values://target/worker/name"
+					}
+				}
+			]
+		},
+		{
+			"type": "file",
+			"name": "package.json",
+			"content": {
+				"$ref": "assets://package.json"
+			},
+			"format": "json",
+			"json_path_replacements": [
+				{
+					"path": [
+						"name"
+					],
+					"value": {
+						"$ref": "values://target/worker/name"
+					}
+				}
+			]
+		},
+		{
+			"type": "file",
+			"name": "README.md",
+			"content": {
+				"$ref": "assets://README.md"
+			},
+			"format": "text"
+		}
+	],
+	"category": "templates",
+	"description": "A template for building a React application with Vite, Hono, and Cloudflare Workers",
+	"docs_url": null,
+	"flags": [
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "Vite React Template",
+	"permissions": null,
+	"setup_steps": [],
+	"templates": [
+		{
+			"context": "create-git-connected-worker",
+			"label": "Vite React Template",
+			"products": [
+				"Workers"
+			],
+			"categories": [],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/5ca0ca32-e897-4699-d4c1-6b680512f000/public"
+			],
+			"preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/fc7b4b62-442b-4769-641b-ad4422d74300/public",
+			"deploy_resources": [
+				{
+					"name": "template-worker",
+					"type": "git-connected-worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"type": "seed_repo",
+						"seed_repo": {
+							"provider": "github",
+							"owner": "cloudflare",
+							"repository": "templates",
+							"branch": "v1.1.2",
+							"path": "vite-react-template"
+						}
+					}
+				}
+			],
+			"preview_files": []
+		}
+	],
+	"uninstall_action": null,
+	"version": "29.0.0"
+}

@@ -1,0 +1,99 @@
+{
+	"alias": "llm-chat-app-template",
+	"assets": [
+		{
+			"type": "file",
+			"name": "wrangler.jsonc",
+			"content": {
+				"$ref": "assets://wrangler.jsonc"
+			},
+			"format": "jsonc",
+			"json_path_replacements": [
+				{
+					"path": [
+						"name"
+					],
+					"value": {
+						"$ref": "values://target/worker/name"
+					}
+				}
+			]
+		},
+		{
+			"type": "file",
+			"name": "package.json",
+			"content": {
+				"$ref": "assets://package.json"
+			},
+			"format": "json",
+			"json_path_replacements": [
+				{
+					"path": [
+						"name"
+					],
+					"value": {
+						"$ref": "values://target/worker/name"
+					}
+				}
+			]
+		},
+		{
+			"type": "file",
+			"name": "README.md",
+			"content": {
+				"$ref": "assets://README.md"
+			},
+			"format": "text"
+		}
+	],
+	"category": "templates",
+	"description": "A simple chat application powered by Cloudflare Workers AI",
+	"docs_url": "https://developers.cloudflare.com/workers-ai/",
+	"flags": [
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "LLM Chat App",
+	"permissions": null,
+	"setup_steps": [],
+	"templates": [
+		{
+			"context": "create-git-connected-worker",
+			"label": "LLM Chat App",
+			"products": [
+				"Workers",
+				"Workers AI",
+				"AI Gateway"
+			],
+			"categories": [
+				"ai"
+			],
+			"icon_urls": [],
+			"preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/153a71bf-d89c-4425-e510-0c7488f22500/public",
+			"deploy_resources": [
+				{
+					"name": "template-worker",
+					"type": "git-connected-worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"type": "seed_repo",
+						"seed_repo": {
+							"provider": "github",
+							"owner": "cloudflare",
+							"repository": "templates",
+							"branch": "v1.1.2",
+							"path": "llm-chat-app-template"
+						}
+					}
+				}
+			],
+			"preview_files": []
+		}
+	],
+	"uninstall_action": null,
+	"version": "7.0.0"
+}
