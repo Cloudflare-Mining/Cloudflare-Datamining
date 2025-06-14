@@ -2845,6 +2845,71 @@
 						"addOns": [
 							{
 								"locale": "en-US",
+								"entryTitle": "Zero Trust Network Access (ZTNA)",
+								"contentfulId": "XGi19MscOrq4TfPNCeDuX",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "a0efa544-aa20-5337-8e79-d5411ea6b5ac",
+									"altText": "Cloudflare access round icon",
+									"title": "Cloudflare access round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7H02c695tAmuf4JsFZEuGt/41456dda4de5de97a71290c651405e45/cloudflare-access-round-fill.svg"
+										},
+										"description": "Cloudflare access round icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Zero Trust Network Access (ZTNA)",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Enforce default-deny, Zero Trust rules for users accessing all your applications, faster and safer than a VPN.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "70BVQ0zHpoglRhShuSf4w",
+									"elementName": "Zero Trust Network Access (ZTNA) - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/zero-trust/products/access/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
 								"entryTitle": "Secure Web Gateway (SWG)",
 								"contentfulId": "4NdsGbFzAR5v2xdZK1KziB",
 								"contentTypeId": "elementAddOn",
@@ -2893,7 +2958,20 @@
 								"category": null,
 								"pricingText": null,
 								"learnMoreLink": null,
-								"callToAction": null
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "5E6oMligV0OqzS9psrbhYQ",
+									"elementName": "Secure Web Gateway (SWG) - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/zero-trust/products/gateway/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
 							},
 							{
 								"locale": "en-US",
@@ -2954,6 +3032,71 @@
 									"standardText": null,
 									"text": "Learn more",
 									"url": "/zero-trust/products/browser-isolation/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Cloud Access Security Broker (CASB)",
+								"contentfulId": "3ihg4NiS9l7Rdf3V2E0CyP",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "dc7e426e-73dd-5545-a772-442f94d0e3c6",
+									"altText": "Cloud Access Security Broker (CASB) - outline icon",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jeu8FTyMsG86KpBZXS3LY/220c7b97085b4aba1bab566df0281b5a/cloudflare_casb.png"
+										},
+										"description": "Cloud Access Security Broker (CASB) - outline icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Cloud Access Security Broker (CASB)",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Easily secure SaaS tools, granularly control user access, and protect sensitive data.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "6HlhxpPf8l9sGooXFVTA0U",
+									"elementName": "Cloud Access Security Broker (CASB) - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/zero-trust/products/casb/",
 									"loggedInUrl": null,
 									"buttonModal": null,
 									"openInNewTab": false,
@@ -3322,6 +3465,42 @@
 							},
 							{
 								"contentTypeId": "feature",
+								"contentfulId": "4A6yJKVKTTHbKxJgKFJvCw",
+								"title": "Performance",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Provide superior user experiences with a resilient global network that is approximately 50 ms from ~95% of Internet users.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "4fd99cc4-cde1-5f4e-8b21-4ec5e6a05307",
+									"altText": "Lightning bolt icon",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tpIHSbWVmGHYltiwNqNZ8/0113bb1cdb4e813771661ceed1295707/performance-acceleration-bolt.svg"
+										},
+										"description": "Lightning bolt icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
 								"contentfulId": "56Av3YwuW0cTJQjctBoJtH",
 								"title": "Intelligence",
 								"makeTitleLink": false,
@@ -3575,7 +3754,20 @@
 						"bladeSizeType": "small",
 						"htmlId": null,
 						"bladeBorder": "none",
-						"buttonOne": null,
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "5yrwKG7eOSTZna8OMGeuZm",
+							"elementName": "Get in touch - CTA",
+							"standardText": null,
+							"text": "Get in touch ",
+							"url": "/plans/enterprise/contact/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
 						"buttonTwo": null,
 						"sectionPadding": "tile--no-top-padding",
 						"eyebrow": null
