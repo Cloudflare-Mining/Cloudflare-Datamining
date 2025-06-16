@@ -5,60 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>This Role is available in the following Locations:&nbsp;</strong></h4>
+<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
+<p><strong>About The Role&nbsp;</strong></p>
+<p>As an Identity and Access Management (IAM) Security Analyst you will play a key role in efficiently managing user identities and access across the enterprise. You will be responsible for implementing technologies and designing processes to ensure users have authorized access to resources and systems.&nbsp;&nbsp;&nbsp;</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>London, UK</li>
-	<li>Lisbon, Portugal&nbsp;</li>
-	<li>Austin, TX</li>
+	<li>Establish and execute access governance programs and policies</li>
+	<li>Define and enforce access control policies, including role-based access control (RBAC), attribute based access control (ABAC), and policy based access controls (PBAC)</li>
+	<li>Ensure access adhere to the principle of least privilege and segregation of duties (SoD).</li>
+	<li>Develop and execute an access certification program and scale to all systems&nbsp;</li>
+	<li>Design, implement, and manage Identity Access &amp; Governance policies and procedures.</li>
+	<li>Define and enforce privileged access management (PAM) policies to secure sensitive systems and data.</li>
+	<li>Manage user onboarding, offboarding, and role changes, ensuring adherence to security policies and compliance requirements.</li>
+	<li>Collaborate with cross-functional teams, including IT, security, and compliance, to ensure IAM aligns with business goals.</li>
+	<li>Communicate IAM-related updates and recommendations to stakeholders.</li>
+	<li>Maintain comprehensive documentation of IAM policies, processes, and configurations.</li>
+	<li>Generate reports and metrics related to IAM activities and security posture.</li>
+	<li>Stay current with industry best practices, regulations, and compliance standards related to IAM, such as FedRamp, SOX, GDPR, PCI, and NIST.</li>
+	<li>Provide operational support of IAM systems including an on-call rotation that may include after hours calls</li>
 </ul>
-<h4><strong>About the Department</strong></h4>
-<p>Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.&nbsp;</p>
-<h4><strong>What you'll do</strong></h4>
-<p>You will lead a team of passionate, talented engineers that are building innovative products that touch billions of web requests each day. In this role, you will introduce tools and processes to make our engineers’ lives better. You will play an active part in shaping product strategy based on what’s technically possible. You will make sure our company hits our ambitious goals from an engineering standpoint.</p>
-<p>You bring a passion for meeting business needs with technically innovative solutions and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of past teams who respect you as both a technical leader and manager.</p>
-<p><strong>About the team</strong></p>
-<p>The Engineering Productivity Team has a charter to build tools and services that help easily integrate a base set of capabilities into Cloudflare’s products. These services have cross cutting concerns that 100s of fellow engineers use as the building blocks at Cloudflare. The team also writes customer-facing software that is redundant for each product development team to build and serve high volumes of requests every day.</p>
-<h3><strong>Desirable skills, knowledge and experience</strong></h3>
+<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
 <ul>
-	<li>4+ years experience in engineering management</li>
-	<li>Solid foundation in computer science, with strong competencies in software design, and building large, distributed systems</li>
-	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Demonstrate a track record of managing a team including hiring, onboarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>Comfortable managing teams/projects with competing priorities and short release cycles</li>
-	<li>Familiarity with networking terminology, tooling, patterns, and technologies.</li>
-</ul>
-<h3><strong>Bonus Points</strong></h3>
-<ul>
-	<li>Experience building and running Platform engineering teams</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>In-depth understanding of access governance&nbsp;</li>
+	<li>Experience in Identity Governance &amp; Administration (IGA) solutions</li>
+	<li>Performing policy enforcement, role management, and access certifications</li>
+	<li>Experience implementing privileged access management (PAM)</li>
+	<li>Experience developing IAM security standards and policies</li>
+	<li>Preferred background in scripting and/or application development to automate identity and access management processes.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
