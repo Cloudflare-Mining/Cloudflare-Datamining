@@ -1,5 +1,12 @@
 # Change Log
 
+## 7.0.8
+
+### Patch Changes
+
+- @cloudflare/component-button@9.1.2
+- @cloudflare/component-forms@7.0.8
+
 ## 7.0.7
 
 ### Patch Changes
