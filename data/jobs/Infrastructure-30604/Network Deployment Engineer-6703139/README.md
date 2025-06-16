@@ -6,61 +6,52 @@
 	</div>
 </div>
 <h4><strong>Available Locations:<span class="collapsed-field-text"> Singapore, or Sydney, Australia</span></strong></h4>
-<h4><strong>About the Team</strong></h4>
-<p><span style="font-weight: 400;">In this role, you will be focused on the build out and expansion of our global network. You'll work closely with Cloudflare’s SRE (Site Reliability Engineering) team, Network Engineering team, Infrastructure Engineering team, Project Managers and with various vendors and partners (including hardware vendors, logistics, datacenter and network providers, and ISPs) to maintain and improve our global infrastructure, and to plan and aggressively execute on the expansion of our network. You will further be responsible for the development and implementation of consistent processes and visibility measurements for consistent and effective management of our infrastructure. This is a highly visible position that requires deep technical understanding of datacenter infrastructure, physical and logical networking, linux, and basic experience with data analysis and project management.</span></p>
-<p><span style="font-weight: 400;">To be successful in this position, you should have excellent technical skills, communication skills, and be able to navigate a range of challenges and constraints (e.g. schedule adherence, time zones, and cultures). You will have the opportunity to (literally) build a faster, safer Internet for our millions of users and the billions of web surfers that visit their sites each month.</span></p>
-<p><strong>Other Responsibilities May Include</strong></p>
+<p><strong>About the role</strong></p>
+<p>In this role you will be focused on the build out and expansion of our global network. His is a highly collaborative position and you'll work closely with Cloudflare’s SRE, Network Operations, Automation team, Project Managers and with various vendors and partners (including hardware vendors, logistics, capacity planning, datacenter and network providers, and ISPs) to maintain and improve our global infrastructure and to plan and aggressively expand our network. You will further be responsible for the development and implementation of consistent processes and visibility measurements for consistent and effective management of our infrastructure. This is a highly visible position that requires deep technical understanding of the datacenter infrastructure, physical and logical networking, linux, and basic experience with data analysis and project management.</p>
+<p>To be successful in this position you should possess excellent technical skills, communication skills, and be able to navigate through a range of challenges and constraints (e.g. schedule adherence, time zones and cultures). You will have the opportunity to (literally) build a faster, safer Internet for our millions of users and the billions of web surfers that visit their sites each month.</p>
+<p><strong>Primary Responsibilities:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Provisioning, monitoring and maintaining hardware, software, and network in new Cloudflare data centers.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Creating documentation and managing remote contractors to complete datacenter installations and upgrades (rack and stack), including hardware manufacturers, datacenter and network providers, logistics partners and other service providers in support of our 275+ growing datacenter locations</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Aggressively seek opportunities to introduce cutting-edge technology and automation solutions that are effective, efficient and scalable in order to improve our ability to deploy and maintain our global infrastructure.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Planning and implementing network and server installations, including in the areas of facility power (AC/DC), cooling, security/access, rack layout and cable management.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Providing technical leadership and guidance during deployment activities.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Creating and maintaining documentation, plans, SOP’s, MOP’s etc.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborating with internal teams (infrastructure engineering, network engineering and SRE) for day to day activities.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Coordinating installation of cross-connects globally in support of physical network expansion.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Assisting with the definition, documentation and implementation of consistent processes across all regions.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Limited travel</span></li>
+	<li>Building and Provisioning network infrastructure and servers in Cloudflare data centers.</li>
+	<li>Creating documentation such as SOPs, MOPs, Rack Elevations and managing remote contractors to complete datacenter installations and upgrades (rack and stack). Collaborating with hardware manufacturers, datacenter and network providers, logistics partners and other service providers in support of our 330+ growing datacenter locations.</li>
+	<li>Managing Data Center expansions, migrations, decommissions, Network and Server upgrades.</li>
+	<li>Planning and managing facility power (AC/DC), cooling, security/access, redundancy, rack layout and cable management.</li>
+	<li>Providing technical leadership and guidance during deployment and maintenance activities.</li>
+	<li>Collaborating with a myriad of cross functional teams to ensure timely end to end delivery of projects.</li>
+	<li>Coordinating installation of cross-connects globally in support of physical network expansion.</li>
+	<li>Assisting with the definition, documentation and implementation of consistent processes across all regions.</li>
 </ul>
-<p><strong>Required Experience</strong></p>
+<p><strong>Required Experience:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum of 3 years of prior relevant experience in Data Center Operations, Site Reliability Engineering, Linux systems administration, Network Engineering, and/or DevOps experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with day-to-day tasks and projects common in Data Center Operations.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with optical transport technologies such as CWDM/DWDM</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Configuration management tool experience like Saltstack, Chef, Puppet or Ansible</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Network hardware administration.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge and exposure to Network Protocols, Topologies and Enterprise architecture.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience writing network configuration and design documentation.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience solving problems through automation.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to write scripts for internal tools.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience running and improving operational processes in a rapidly changing environment.</span></li>
+	<li>Minimum of 3 years of prior relevant experience in Data Center Deployments and Operations.</li>
+	<li>Experience managing contractors remotely.</li>
+	<li>Basic Linux administration.&nbsp;</li>
+	<li>Knowledge and exposure to network protocols, topologies and enterprise architecture along with Network hardware administration.</li>
+	<li>Experience writing network configuration and design documentation.</li>
+	<li>Experience running and improving operational processes in a rapidly changing environment.</li>
+	<li>Ability to quickly adapt to and learn new tools and technologies.</li>
+	<li>Proven experience to manage and execute multifaceted datacenter and infrastructure projects. Previous experience deploying and maintaining datacenter (and other IT) infrastructure and DCIM tools.</li>
+	<li>Strong understanding of BGP and other networking protocols.&nbsp;</li>
+	<li>Associate level network certification(s) like JNCIA, CCNA etc or higher.</li>
+	<li>Good working knowledge in various Routing &amp; Switching, DWDM platforms and devices.</li>
+	<li>Demonstrated expertise in operating within a continuously available, 24/7/365 mission-critical environment.</li>
+	<li>Comfortable with remote “lights-out” and out-of-band access to data center resources.</li>
+	<li>Knowledge of the OSI-model and experience isolating network, hardware and software issues.</li>
+	<li>Ability to work with MS Excel and Google Sheets.</li>
+	<li>Comfortable handling basic program management responsibilities (prioritization, planning, scheduling, status reporting).</li>
+	<li>Shows a strong desire for growth, readily acquires new skills, and is adept at juggling multiple priorities. Strong verbal and written communication skills, problem-solving skills, attention to detail, and interpersonal skills.</li>
+	<li>Must be a team player.&nbsp;</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Bonus Points:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor’s degree, technical background in engineering, computer science, or MIS a plus.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Direct experience executing on datacenter / infrastructure projects with many moving parts.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Previous experience installing / maintaining datacenter (and other IT) infrastructure and DCIM tools.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience running and improving operational processes in a rapidly changing environment.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong understanding of BGP and anycast routing</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Professional level network certification(s) (JNCIP, CCNP, etc) or higher</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Good working knowledge of Juniper Junos, Cisco IOS, Cisco NX-OS and Arista EOS</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Load balancing and reverse proxies such as Nginx, Varnish, HAProxy, Apache</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proficient in one or more programming languages and willing to learn new ones when required</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong verbal and written communication skills, problem-solving skills, attention to detail, and interpersonal skills.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Must be proactive with proven ability to learn fast and execute on multiple tasks simultaneously.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to manage MS excel and Google spreadsheets.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable handling basic program management responsibilities (prioritization, planning, scheduling, status reporting) such as JIRA</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience managing remote contractors</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Must be a team player.</span></li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Multi-lingual; experience working with infrastructure in multiple countries.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with continuous / rapid deployment</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working in a 24/7/365 mission-critical service environment</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable with remote “lights-out” and out-of-band access to data center resources</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Linux certifications.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of the OSI-model and experience isolating network, hardware and software issues.</span></li>
+	<li>Experience with continuous / rapid deployment and orchestration tools, such as&nbsp; SaltStack, Chef, Puppet or Ansible</li>
+	<li>Site Reliability Engineering, Linux systems administration, Network Engineering, and/or DevOps experience is a plus.</li>
+	<li>Capable of scripting for internal tools and using automation to solve problems.</li>
+	<li>Comfortable with remote “lights-out” and out-of-band access to data center resources</li>
+	<li>Linux certifications.</li>
+	<li>Knowledge of the OSI-model and experience isolating network, hardware and software issues.</li>
+	<li>Bachelor’s degree, technical background in engineering, computer science, or MIS a plus</li>
+	<li>Proficient in one or more programming languages.</li>
+	<li>Aggressively seeking opportunities to introduce cutting-edge technology and automation solutions that are effective, efficient and scalable in order to improve our ability to deploy and maintain our global infrastructure.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
