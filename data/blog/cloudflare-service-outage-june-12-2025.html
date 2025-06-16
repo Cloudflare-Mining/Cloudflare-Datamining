@@ -1,9 +1,10 @@
-<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CvsaXPEHDPXb5sf0jWB1a/4e152d7ff5e4ccaa8d9d4ee09636e539/image1.png" alt="">
+<div class="mb2 gray5">10 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/es-es/cloudflare-service-outage-june-12-2025">Español</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CvsaXPEHDPXb5sf0jWB1a/4e152d7ff5e4ccaa8d9d4ee09636e539/image1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>On June 12, 2025, Cloudflare suffered a significant service outage that affected a large set of our critical services, including Workers KV, WARP, Access, Gateway, Images, Stream, Workers AI, Turnstile and Challenges, AutoRAG, Zaraz, and parts of the Cloudflare Dashboard.</p>
 	<p>This outage lasted 2 hours and 28 minutes, and globally impacted all Cloudflare customers using the affected services. The cause of this outage was due to a failure in the underlying storage infrastructure used by our Workers KV service, which is a critical dependency for many Cloudflare products and relied upon for configuration, authentication and asset delivery across the affected services. Part of this infrastructure is backed by a third-party cloud provider, which experienced an outage today and directly impacted availability of our KV service.</p>
 	<p>We’re deeply sorry for this outage: this was a failure on our part, and while the proximate cause (or trigger) for this outage was a third-party vendor failure, we are ultimately responsible for our chosen dependencies and how we choose to architect around them.</p>
-	<p>This was not the result of an attack or other security event. No data was lost as a result of this incident. Cloudflare Magic Transit and Magic WAN, DNS, cache, proxy, WAF and related services were not directly impacted by this incident.</p>
+	<p>This was not the result of an attack or other security event. No data was lost as a result of this incident. Cloudflare Magic Transit and Magic WAN, DNS, Cache, proxy, WAF and related services were not directly impacted by this incident.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-was-impacted">What was impacted?</h2>
 		<a href="https://blog.cloudflare.com/#what-was-impacted" aria-hidden="true" class="relative sm:absolute sm:-left-5">
