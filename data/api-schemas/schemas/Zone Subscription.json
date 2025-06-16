@@ -1,11 +1,11 @@
 {
-	"GET /zones/{identifier}/subscription": {
+	"GET /zones/{zone_id}/subscription": {
 		"description": "Lists zone subscription details.",
 		"operationId": "zone-subscription-zone-subscription-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Subscription identifier tag.",
@@ -121,6 +121,174 @@
 								{
 									"properties": {
 										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"app": {
+															"properties": {
+																"install_id": {
+																	"description": "app install id.",
+																	"type": "string"
+																}
+															}
+														},
+														"component_values": {
+															"description": "The list of add-ons subscribed to.",
+															"items": {
+																"description": "A component value for a subscription.",
+																"properties": {
+																	"default": {
+																		"description": "The default amount assigned.",
+																		"example": 5,
+																		"type": "number"
+																	},
+																	"name": {
+																		"description": "The name of the component value.",
+																		"example": "page_rules",
+																		"type": "string"
+																	},
+																	"price": {
+																		"description": "The unit price for the component value.",
+																		"example": 5,
+																		"type": "number"
+																	},
+																	"value": {
+																		"description": "The amount of the component value assigned.",
+																		"example": 20,
+																		"type": "number"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"currency": {
+															"description": "The monetary unit in which pricing information is displayed.",
+															"example": "USD",
+															"readOnly": true,
+															"type": "string"
+														},
+														"current_period_end": {
+															"description": "The end of the current period and also when the next billing is due.",
+															"example": "2014-03-31T12:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"current_period_start": {
+															"description": "When the current billing period started. May match initial_period_start if this is the first period.",
+															"example": "2014-05-11T12:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"frequency": {
+															"description": "How often the subscription is renewed automatically.",
+															"enum": [
+																"weekly",
+																"monthly",
+																"quarterly",
+																"yearly"
+															],
+															"example": "monthly",
+															"type": "string"
+														},
+														"id": {
+															"description": "Subscription identifier tag.",
+															"example": "506e3185e9c882d175a2d0cb0093d9f2",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"price": {
+															"description": "The price of the subscription that will be billed, in US dollars.",
+															"example": 20,
+															"readOnly": true,
+															"type": "number"
+														},
+														"rate_plan": {
+															"description": "The rate plan applied to the subscription.",
+															"properties": {
+																"currency": {
+																	"description": "The currency applied to the rate plan subscription.",
+																	"example": "USD",
+																	"type": "string"
+																},
+																"externally_managed": {
+																	"description": "Whether this rate plan is managed externally from Cloudflare.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"id": {
+																	"description": "The ID of the rate plan.",
+																	"example": "free",
+																	"type": "string"
+																},
+																"is_contract": {
+																	"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"public_name": {
+																	"description": "The full name of the rate plan.",
+																	"example": "Business Plan",
+																	"type": "string"
+																},
+																"scope": {
+																	"description": "The scope that this rate plan applies to.",
+																	"example": "zone",
+																	"type": "string"
+																},
+																"sets": {
+																	"description": "The list of sets this rate plan applies to.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
+														"state": {
+															"description": "The state that the subscription is in.",
+															"enum": [
+																"Trial",
+																"Provisioned",
+																"Paid",
+																"AwaitingPayment",
+																"Cancelled",
+																"Failed",
+																"Expired"
+															],
+															"example": "Paid",
+															"readOnly": true,
+															"type": "string"
+														},
+														"zone": {
+															"description": "A simple zone object. May have null properties if not a zone subscription.",
+															"properties": {
+																"id": {
+																	"description": "Identifier",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The domain name",
+																	"example": "example.com",
+																	"maxLength": 253,
+																	"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											],
 											"type": "object"
 										}
 									},
@@ -238,6 +406,174 @@
 										{
 											"properties": {
 												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"app": {
+																	"properties": {
+																		"install_id": {
+																			"description": "app install id.",
+																			"type": "string"
+																		}
+																	}
+																},
+																"component_values": {
+																	"description": "The list of add-ons subscribed to.",
+																	"items": {
+																		"description": "A component value for a subscription.",
+																		"properties": {
+																			"default": {
+																				"description": "The default amount assigned.",
+																				"example": 5,
+																				"type": "number"
+																			},
+																			"name": {
+																				"description": "The name of the component value.",
+																				"example": "page_rules",
+																				"type": "string"
+																			},
+																			"price": {
+																				"description": "The unit price for the component value.",
+																				"example": 5,
+																				"type": "number"
+																			},
+																			"value": {
+																				"description": "The amount of the component value assigned.",
+																				"example": 20,
+																				"type": "number"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"currency": {
+																	"description": "The monetary unit in which pricing information is displayed.",
+																	"example": "USD",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"current_period_end": {
+																	"description": "The end of the current period and also when the next billing is due.",
+																	"example": "2014-03-31T12:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"current_period_start": {
+																	"description": "When the current billing period started. May match initial_period_start if this is the first period.",
+																	"example": "2014-05-11T12:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"frequency": {
+																	"description": "How often the subscription is renewed automatically.",
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly"
+																	],
+																	"example": "monthly",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "Subscription identifier tag.",
+																	"example": "506e3185e9c882d175a2d0cb0093d9f2",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"price": {
+																	"description": "The price of the subscription that will be billed, in US dollars.",
+																	"example": 20,
+																	"readOnly": true,
+																	"type": "number"
+																},
+																"rate_plan": {
+																	"description": "The rate plan applied to the subscription.",
+																	"properties": {
+																		"currency": {
+																			"description": "The currency applied to the rate plan subscription.",
+																			"example": "USD",
+																			"type": "string"
+																		},
+																		"externally_managed": {
+																			"description": "Whether this rate plan is managed externally from Cloudflare.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"id": {
+																			"description": "The ID of the rate plan.",
+																			"example": "free",
+																			"type": "string"
+																		},
+																		"is_contract": {
+																			"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"public_name": {
+																			"description": "The full name of the rate plan.",
+																			"example": "Business Plan",
+																			"type": "string"
+																		},
+																		"scope": {
+																			"description": "The scope that this rate plan applies to.",
+																			"example": "zone",
+																			"type": "string"
+																		},
+																		"sets": {
+																			"description": "The list of sets this rate plan applies to.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
+																"state": {
+																	"description": "The state that the subscription is in.",
+																	"enum": [
+																		"Trial",
+																		"Provisioned",
+																		"Paid",
+																		"AwaitingPayment",
+																		"Cancelled",
+																		"Failed",
+																		"Expired"
+																	],
+																	"example": "Paid",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"zone": {
+																	"description": "A simple zone object. May have null properties if not a zone subscription.",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"name": {
+																			"description": "The domain name",
+																			"example": "example.com",
+																			"maxLength": 253,
+																			"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													],
 													"type": "object"
 												}
 											},
@@ -363,13 +699,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{identifier}/subscription": {
+	"POST /zones/{zone_id}/subscription": {
 		"description": "Create a zone subscription, either plan or add-ons.",
 		"operationId": "zone-subscription-create-zone-subscription",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Subscription identifier tag.",
@@ -658,6 +994,174 @@
 								{
 									"properties": {
 										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"app": {
+															"properties": {
+																"install_id": {
+																	"description": "app install id.",
+																	"type": "string"
+																}
+															}
+														},
+														"component_values": {
+															"description": "The list of add-ons subscribed to.",
+															"items": {
+																"description": "A component value for a subscription.",
+																"properties": {
+																	"default": {
+																		"description": "The default amount assigned.",
+																		"example": 5,
+																		"type": "number"
+																	},
+																	"name": {
+																		"description": "The name of the component value.",
+																		"example": "page_rules",
+																		"type": "string"
+																	},
+																	"price": {
+																		"description": "The unit price for the component value.",
+																		"example": 5,
+																		"type": "number"
+																	},
+																	"value": {
+																		"description": "The amount of the component value assigned.",
+																		"example": 20,
+																		"type": "number"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"currency": {
+															"description": "The monetary unit in which pricing information is displayed.",
+															"example": "USD",
+															"readOnly": true,
+															"type": "string"
+														},
+														"current_period_end": {
+															"description": "The end of the current period and also when the next billing is due.",
+															"example": "2014-03-31T12:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"current_period_start": {
+															"description": "When the current billing period started. May match initial_period_start if this is the first period.",
+															"example": "2014-05-11T12:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"frequency": {
+															"description": "How often the subscription is renewed automatically.",
+															"enum": [
+																"weekly",
+																"monthly",
+																"quarterly",
+																"yearly"
+															],
+															"example": "monthly",
+															"type": "string"
+														},
+														"id": {
+															"description": "Subscription identifier tag.",
+															"example": "506e3185e9c882d175a2d0cb0093d9f2",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"price": {
+															"description": "The price of the subscription that will be billed, in US dollars.",
+															"example": 20,
+															"readOnly": true,
+															"type": "number"
+														},
+														"rate_plan": {
+															"description": "The rate plan applied to the subscription.",
+															"properties": {
+																"currency": {
+																	"description": "The currency applied to the rate plan subscription.",
+																	"example": "USD",
+																	"type": "string"
+																},
+																"externally_managed": {
+																	"description": "Whether this rate plan is managed externally from Cloudflare.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"id": {
+																	"description": "The ID of the rate plan.",
+																	"example": "free",
+																	"type": "string"
+																},
+																"is_contract": {
+																	"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"public_name": {
+																	"description": "The full name of the rate plan.",
+																	"example": "Business Plan",
+																	"type": "string"
+																},
+																"scope": {
+																	"description": "The scope that this rate plan applies to.",
+																	"example": "zone",
+																	"type": "string"
+																},
+																"sets": {
+																	"description": "The list of sets this rate plan applies to.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
+														"state": {
+															"description": "The state that the subscription is in.",
+															"enum": [
+																"Trial",
+																"Provisioned",
+																"Paid",
+																"AwaitingPayment",
+																"Cancelled",
+																"Failed",
+																"Expired"
+															],
+															"example": "Paid",
+															"readOnly": true,
+															"type": "string"
+														},
+														"zone": {
+															"description": "A simple zone object. May have null properties if not a zone subscription.",
+															"properties": {
+																"id": {
+																	"description": "Identifier",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The domain name",
+																	"example": "example.com",
+																	"maxLength": 253,
+																	"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											],
 											"type": "object"
 										}
 									},
@@ -775,6 +1279,174 @@
 										{
 											"properties": {
 												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"app": {
+																	"properties": {
+																		"install_id": {
+																			"description": "app install id.",
+																			"type": "string"
+																		}
+																	}
+																},
+																"component_values": {
+																	"description": "The list of add-ons subscribed to.",
+																	"items": {
+																		"description": "A component value for a subscription.",
+																		"properties": {
+																			"default": {
+																				"description": "The default amount assigned.",
+																				"example": 5,
+																				"type": "number"
+																			},
+																			"name": {
+																				"description": "The name of the component value.",
+																				"example": "page_rules",
+																				"type": "string"
+																			},
+																			"price": {
+																				"description": "The unit price for the component value.",
+																				"example": 5,
+																				"type": "number"
+																			},
+																			"value": {
+																				"description": "The amount of the component value assigned.",
+																				"example": 20,
+																				"type": "number"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"currency": {
+																	"description": "The monetary unit in which pricing information is displayed.",
+																	"example": "USD",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"current_period_end": {
+																	"description": "The end of the current period and also when the next billing is due.",
+																	"example": "2014-03-31T12:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"current_period_start": {
+																	"description": "When the current billing period started. May match initial_period_start if this is the first period.",
+																	"example": "2014-05-11T12:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"frequency": {
+																	"description": "How often the subscription is renewed automatically.",
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly"
+																	],
+																	"example": "monthly",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "Subscription identifier tag.",
+																	"example": "506e3185e9c882d175a2d0cb0093d9f2",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"price": {
+																	"description": "The price of the subscription that will be billed, in US dollars.",
+																	"example": 20,
+																	"readOnly": true,
+																	"type": "number"
+																},
+																"rate_plan": {
+																	"description": "The rate plan applied to the subscription.",
+																	"properties": {
+																		"currency": {
+																			"description": "The currency applied to the rate plan subscription.",
+																			"example": "USD",
+																			"type": "string"
+																		},
+																		"externally_managed": {
+																			"description": "Whether this rate plan is managed externally from Cloudflare.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"id": {
+																			"description": "The ID of the rate plan.",
+																			"example": "free",
+																			"type": "string"
+																		},
+																		"is_contract": {
+																			"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"public_name": {
+																			"description": "The full name of the rate plan.",
+																			"example": "Business Plan",
+																			"type": "string"
+																		},
+																		"scope": {
+																			"description": "The scope that this rate plan applies to.",
+																			"example": "zone",
+																			"type": "string"
+																		},
+																		"sets": {
+																			"description": "The list of sets this rate plan applies to.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
+																"state": {
+																	"description": "The state that the subscription is in.",
+																	"enum": [
+																		"Trial",
+																		"Provisioned",
+																		"Paid",
+																		"AwaitingPayment",
+																		"Cancelled",
+																		"Failed",
+																		"Expired"
+																	],
+																	"example": "Paid",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"zone": {
+																	"description": "A simple zone object. May have null properties if not a zone subscription.",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"name": {
+																			"description": "The domain name",
+																			"example": "example.com",
+																			"maxLength": 253,
+																			"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													],
 													"type": "object"
 												}
 											},
@@ -900,13 +1572,13 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{identifier}/subscription": {
+	"PUT /zones/{zone_id}/subscription": {
 		"description": "Updates zone subscriptions, either plan or add-ons.",
 		"operationId": "zone-subscription-update-zone-subscription",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Subscription identifier tag.",
@@ -1195,6 +1867,174 @@
 								{
 									"properties": {
 										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"app": {
+															"properties": {
+																"install_id": {
+																	"description": "app install id.",
+																	"type": "string"
+																}
+															}
+														},
+														"component_values": {
+															"description": "The list of add-ons subscribed to.",
+															"items": {
+																"description": "A component value for a subscription.",
+																"properties": {
+																	"default": {
+																		"description": "The default amount assigned.",
+																		"example": 5,
+																		"type": "number"
+																	},
+																	"name": {
+																		"description": "The name of the component value.",
+																		"example": "page_rules",
+																		"type": "string"
+																	},
+																	"price": {
+																		"description": "The unit price for the component value.",
+																		"example": 5,
+																		"type": "number"
+																	},
+																	"value": {
+																		"description": "The amount of the component value assigned.",
+																		"example": 20,
+																		"type": "number"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"currency": {
+															"description": "The monetary unit in which pricing information is displayed.",
+															"example": "USD",
+															"readOnly": true,
+															"type": "string"
+														},
+														"current_period_end": {
+															"description": "The end of the current period and also when the next billing is due.",
+															"example": "2014-03-31T12:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"current_period_start": {
+															"description": "When the current billing period started. May match initial_period_start if this is the first period.",
+															"example": "2014-05-11T12:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"frequency": {
+															"description": "How often the subscription is renewed automatically.",
+															"enum": [
+																"weekly",
+																"monthly",
+																"quarterly",
+																"yearly"
+															],
+															"example": "monthly",
+															"type": "string"
+														},
+														"id": {
+															"description": "Subscription identifier tag.",
+															"example": "506e3185e9c882d175a2d0cb0093d9f2",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"price": {
+															"description": "The price of the subscription that will be billed, in US dollars.",
+															"example": 20,
+															"readOnly": true,
+															"type": "number"
+														},
+														"rate_plan": {
+															"description": "The rate plan applied to the subscription.",
+															"properties": {
+																"currency": {
+																	"description": "The currency applied to the rate plan subscription.",
+																	"example": "USD",
+																	"type": "string"
+																},
+																"externally_managed": {
+																	"description": "Whether this rate plan is managed externally from Cloudflare.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"id": {
+																	"description": "The ID of the rate plan.",
+																	"example": "free",
+																	"type": "string"
+																},
+																"is_contract": {
+																	"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"public_name": {
+																	"description": "The full name of the rate plan.",
+																	"example": "Business Plan",
+																	"type": "string"
+																},
+																"scope": {
+																	"description": "The scope that this rate plan applies to.",
+																	"example": "zone",
+																	"type": "string"
+																},
+																"sets": {
+																	"description": "The list of sets this rate plan applies to.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
+														"state": {
+															"description": "The state that the subscription is in.",
+															"enum": [
+																"Trial",
+																"Provisioned",
+																"Paid",
+																"AwaitingPayment",
+																"Cancelled",
+																"Failed",
+																"Expired"
+															],
+															"example": "Paid",
+															"readOnly": true,
+															"type": "string"
+														},
+														"zone": {
+															"description": "A simple zone object. May have null properties if not a zone subscription.",
+															"properties": {
+																"id": {
+																	"description": "Identifier",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The domain name",
+																	"example": "example.com",
+																	"maxLength": 253,
+																	"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											],
 											"type": "object"
 										}
 									},
@@ -1312,6 +2152,174 @@
 										{
 											"properties": {
 												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"app": {
+																	"properties": {
+																		"install_id": {
+																			"description": "app install id.",
+																			"type": "string"
+																		}
+																	}
+																},
+																"component_values": {
+																	"description": "The list of add-ons subscribed to.",
+																	"items": {
+																		"description": "A component value for a subscription.",
+																		"properties": {
+																			"default": {
+																				"description": "The default amount assigned.",
+																				"example": 5,
+																				"type": "number"
+																			},
+																			"name": {
+																				"description": "The name of the component value.",
+																				"example": "page_rules",
+																				"type": "string"
+																			},
+																			"price": {
+																				"description": "The unit price for the component value.",
+																				"example": 5,
+																				"type": "number"
+																			},
+																			"value": {
+																				"description": "The amount of the component value assigned.",
+																				"example": 20,
+																				"type": "number"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"currency": {
+																	"description": "The monetary unit in which pricing information is displayed.",
+																	"example": "USD",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"current_period_end": {
+																	"description": "The end of the current period and also when the next billing is due.",
+																	"example": "2014-03-31T12:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"current_period_start": {
+																	"description": "When the current billing period started. May match initial_period_start if this is the first period.",
+																	"example": "2014-05-11T12:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"frequency": {
+																	"description": "How often the subscription is renewed automatically.",
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly"
+																	],
+																	"example": "monthly",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "Subscription identifier tag.",
+																	"example": "506e3185e9c882d175a2d0cb0093d9f2",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"price": {
+																	"description": "The price of the subscription that will be billed, in US dollars.",
+																	"example": 20,
+																	"readOnly": true,
+																	"type": "number"
+																},
+																"rate_plan": {
+																	"description": "The rate plan applied to the subscription.",
+																	"properties": {
+																		"currency": {
+																			"description": "The currency applied to the rate plan subscription.",
+																			"example": "USD",
+																			"type": "string"
+																		},
+																		"externally_managed": {
+																			"description": "Whether this rate plan is managed externally from Cloudflare.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"id": {
+																			"description": "The ID of the rate plan.",
+																			"example": "free",
+																			"type": "string"
+																		},
+																		"is_contract": {
+																			"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"public_name": {
+																			"description": "The full name of the rate plan.",
+																			"example": "Business Plan",
+																			"type": "string"
+																		},
+																		"scope": {
+																			"description": "The scope that this rate plan applies to.",
+																			"example": "zone",
+																			"type": "string"
+																		},
+																		"sets": {
+																			"description": "The list of sets this rate plan applies to.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
+																"state": {
+																	"description": "The state that the subscription is in.",
+																	"enum": [
+																		"Trial",
+																		"Provisioned",
+																		"Paid",
+																		"AwaitingPayment",
+																		"Cancelled",
+																		"Failed",
+																		"Expired"
+																	],
+																	"example": "Paid",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"zone": {
+																	"description": "A simple zone object. May have null properties if not a zone subscription.",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"name": {
+																			"description": "The domain name",
+																			"example": "example.com",
+																			"maxLength": 253,
+																			"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													],
 													"type": "object"
 												}
 											},
