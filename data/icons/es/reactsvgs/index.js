@@ -128,6 +128,8 @@ import OptimizationScale from './OptimizationScale';
 import PagesLogo from './PagesLogo';
 import Pause from './Pause';
 import PerformanceArrowUp from './PerformanceArrowUp';
+import PinOutline from './PinOutline';
+import PinSolid from './PinSolid';
 import PlatformApps from './PlatformApps';
 import Plus from './Plus';
 import PodcastMicrophoneOutline from './PodcastMicrophoneOutline';
@@ -338,6 +340,8 @@ export default {
   'pages-logo': PagesLogo,
   pause: Pause,
   'performance-arrow-up': PerformanceArrowUp,
+  'pin-outline': PinOutline,
+  'pin-solid': PinSolid,
   'platform-apps': PlatformApps,
   plus: Plus,
   'podcast-microphone-outline': PodcastMicrophoneOutline,

@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.3.0
+
+### Minor Changes
+
+- 042176d70f: Add "Pin" icon
+
 ## 13.2.0
 
 ### Minor Changes

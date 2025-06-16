@@ -130,6 +130,8 @@ declare const _default: {
     'pages-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     pause: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'performance-arrow-up': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'pin-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'pin-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'platform-apps': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     plus: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'podcast-microphone-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
