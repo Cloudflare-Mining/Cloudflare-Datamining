@@ -5,38 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations:</strong> Lisbon, Portugal</h3>
-<h3><strong>What You’ll Do</strong></h3>
-<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced Network Security Engineer to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
-<ul>
-	<li>Self-driven and capable of learning new technologies / systems / features with little guidance</li>
-	<li>Fundamental understanding how the Internet works (OSI Model)</li>
-	<li>Advanced understanding of modern internet protocols like TCP and UDP</li>
-	<li>Computer Networking fundamentals, experience with iptables and looking glass</li>
-	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
-	<li>Packet capture analysis</li>
-	<li>Experience in command line and tools, including curl, dig, traceroute, openssl, git</li>
-	<li>Experience troubleshooting DNS, SSL / TLS, HTTP</li>
-	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
-	<li>Experience writing scripts in Bash, Python, JavaScript or other scripting language</li>
-	<li>Experience in working as part of a team in a customer-facing role</li>
-</ul>
-<h4><strong>Responsibilities</strong></h4>
-<ul>
-	<li>Communicate with customers via chat, email, and phone&nbsp;</li>
-	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
-	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
-	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</li>
-	<li>Work with Engineering and Product teams to improve the products and tools</li>
-</ul>
-<h3><strong>Bonus Points</strong></h3>
-<ul>
-	<li>You are fluent in German, Japanese, French, Spanish, Portuguese, or Mandarin</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
-	<li>You are familiar with Cloudflare and are actively using our platform</li>
-</ul>
+<p><strong>Available Locations: Lisbon, Portugal or London, UK</strong></p>
+<p><strong>About the role</strong></p>
+<p>Cloudflare is looking for a bright, proactive and detail-oriented Senior Administrative Support Specialist to support the partner and sales organization.&nbsp;</p>
 <p>&nbsp;</p>
+<p>This role is to support two senior leaders, requiring meticulous attention to detail, expert travel &amp; logistics planning skills, and the ability to anticipate needs with minimal direction. It also requires the ability to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information is important, as is a positive attitude. The ideal candidate is a seasoned EA who understands the value in cultivating relationships and prides themselves on being a career EA. The role involves complex itinerary management, visa processing, and the ability to quickly adapt to changing circumstances. Confidentiality and a proactive approach are paramount.</p>
+<p>&nbsp;</p>
+<p><strong>Responsibilities:</strong></p>
+<ul>
+	<li><strong>Admin:</strong> Provide excellent administrative support for members of the Executive Leadership team exercising high attention to detail and discretion to every matter. Plan, coordinate and execute meeting set-up and events. Including room set-ups, light catering, Audio/Visual set up, attendance tracking and materials distribution. Provide agendas, detailed data, information and resources in preparation for meetings.&nbsp;</li>
+	<li><strong>Calendar: </strong>Proactively own and flawlessly execute on calendars, prioritizing with purpose, deflecting with tact, and understanding both the short- and long-term impacts of each confirmed, declined, and rescheduled meeting. Ensure the leaders are equipped with all the necessary meeting information and manage inbound and outbound requests. If you enjoy “playing Tetris” with different Time Zones and schedules to help people get together, that would be a plus!</li>
+	<li><strong>Travel and Expenses:</strong> Plan all aspects of domestic and international travel, optimizing and balancing executives’ time with cost of travel; monitoring flights for up to the minute changes; ensuring all documents and visas are secured and up-to-date. Ensure timely submission of expense reports through Navan.</li>
+	<li><strong>EA Team: </strong>Our EA team has a high degree of camaraderie and so the ideal candidate will enjoy partnering closely with their peers and foster teamwork.</li>
+	<li><strong>Supporting the EMEA Partner Office:</strong> Providing assistance on project management tasks and ensuring smooth operation within the partner organization. Examples could be helping to compile weekly update reports, tracking of submissions, some limited report running/tracking and other tasks.&nbsp;</li>
+</ul>
+<p><strong>Requirements</strong></p>
+<ul>
+	<li>You have 5-8+ years experience as an Executive Assistant in a high growth environment, prior experience supporting senior leaders&nbsp;</li>
+	<li>Excellent verbal and written communication skills</li>
+	<li>Working knowledge of Google Suite and major airline carrier’s platforms</li>
+	<li>Exhibits a strong work ethic, professionalism, confidentiality and good judgment</li>
+	<li>Incredibly organized and resourceful, able to juggle and multi-task with acute attention to detail and follow through</li>
+	<li>Personable with a can do attitude that sees no task or project to be too small or too big. Comfortable setting boundaries and respectfully pushing back when necessary to protect time and priorities.</li>
+	<li>Handles situations with unclear instructions or changing priorities while working through ambiguity and thinking quickly to react promptly for unexpected issues</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
