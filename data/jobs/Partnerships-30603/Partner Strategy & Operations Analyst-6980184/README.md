@@ -5,38 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>At Cloudflare, we have an ambitious goal: to help build a better Internet. Our global network powers trillions of requests per month, securing and accelerating applications without requiring additional hardware, software, or code changes. Our Developer Platform, including&nbsp;<strong>Cloudflare Workers, Workers AI, R2, KV, Durable Objects, and Pages</strong>, is redefining how developers build and deploy applications at scale.</p>
-<p>We are looking for a <strong>Head of Developer Marketing</strong> to lead and scale our efforts in reaching, engaging, and converting developers—<strong>from independent developers to engineering leaders at the world’s largest enterprises.</strong> This is a <strong>high-impact leadership role</strong> responsible for defining our <strong>developer marketing strategy, owning demand generation, and leading field marketing efforts.</strong></p>
-<p><strong>About the Role</strong></p>
-<p>Since launching <strong>Cloudflare Workers</strong> in 2017, Cloudflare has become a serious player in the developer ecosystem, providing a <strong>full-stack platform</strong> that combines <strong>compute, storage, security, and networking</strong>. As we scale, we need a <strong>senior leader</strong> to drive <strong>awareness, activation, and adoption</strong> across the developer audience.</p>
-<p>This role is <strong>more than just product marketing</strong>—it’s about creating and executing <strong>a full-funnel, go-to-market strategy</strong> that <strong>drives developer engagement, pipeline, and revenue.</strong> You will lead a team responsible for <strong>developer-focused product marketing, demand generation, and field marketing.</strong></p>
-<p><strong>What You’ll Do</strong></p>
+<p><strong>Location: Bangalore, India<br><br>About The Role</strong></p>
+<p>Cloudflare is seeking a <strong>Partner Ops &amp; Strategy Specialist</strong> to support the global partner organization. We are looking for a driven, detailed, and organized professional that can help us improve operational excellence with our partner sales process, tools and increase productivity. In this role you will work closely with IT, Finance, Revenue Operations, Sales, and the Partner Executive Team to support the crucial partner automation initiatives that will lead to the evolution of our partner platforms and infrastructure.&nbsp;&nbsp;</p>
+<p>The ideal candidate will have experience working within a partner sales, partner operations, or partner analyst function, ideally within a SaaS company. If you are interested in building your career with a company that is experiencing explosive growth, while being given the responsibility and challenge to have a real impact on our company’s success, then this is the opportunity for you.</p>
+<p>This role is a great fit for you if you are a self-starter, able to thrive in an environment that requires operating with a high degree of autonomy, and are driven by the opportunity to make a significant impact in a high growth, fast paced environment.&nbsp;</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li><strong>Develop and execute a developer marketing strategy</strong> that spans <strong>awareness, activation, and conversion</strong>, ensuring measurable business impact.</li>
-	<li><strong>Own and scale developer demand generation</strong>, creating high-performing campaigns, content, and digital experiences to drive developer acquisition and growth.</li>
-	<li><strong>Lead field marketing strategy</strong> to ensure a strong Cloudflare presence at industry events, developer conferences, and technical workshops.</li>
-	<li><strong>Build and manage a high-performing team</strong> of developer marketers, demand generation experts, and field marketers.</li>
-	<li><strong>Refine our messaging and positioning</strong> to better communicate Cloudflare’s value to developers across different segments (from individual devs to enterprise engineering teams).</li>
-	<li><strong>Develop a high-impact content strategy</strong>, ensuring our blog, documentation, and community resources align with developer needs and discovery patterns.</li>
-	<li><strong>Drive end-to-end go-to-market (GTM) strategy</strong> for new developer-focused products, features, and launches.</li>
-	<li><strong>Collaborate with Product, Engineering, and Sales</strong> to ensure developer marketing efforts align with company priorities and revenue goals.</li>
-	<li><strong>Own the multi-year narrative</strong> with technology analysts, positioning Cloudflare as a leader in edge computing and modern cloud infrastructure.</li>
-	<li><strong>Measure and optimize performance</strong> across all developer marketing efforts using data and experimentation.</li>
+	<li>Directly support internal and external partner teams by resolving tickets related to partner sales process and systems</li>
+	<li>Independently review requests and troubleshoot to understand technical challenges, define root causes, and resolve problems.</li>
+	<li>Develop a deep knowledge of partner tools and processes to help document and improve effectiveness.</li>
+	<li>Assist with partner data management in Salesforce.com and Google Sheets: extract data, clean and upload data, pull reports, and perform mass data updates</li>
+	<li>Effectively liaise between Partner, Sales, Contracts, Pricing and Finance to resolve issues</li>
+	<li>Create and revise documentation for partner business processes</li>
+	<li>Assist the other members of the partner operations team to drive quarterly and annual planning process</li>
+	<li>Drive continuous improvement and operational excellence around managing partner deal registrations, pipeline and opportunities</li>
 </ul>
-<p><strong>What We’re Looking For</strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li><strong>Proven leadership experience</strong> in <strong>developer marketing, growth marketing, or demand generation</strong> for a <strong>developer-focused product</strong>.</li>
-	<li><strong>Strong team leadership skills</strong>—experience hiring, managing, and scaling high-performing teams.</li>
-	<li><strong>Deep understanding of developers</strong>—how they discover, evaluate, and adopt new technologies.</li>
-	<li><strong>Track record of executing full-funnel marketing strategies</strong>—from awareness to engagement to revenue impact.</li>
-	<li><strong>Experience driving measurable impact</strong> through campaigns, community engagement, and product-led growth.</li>
-	<li><strong>Technical fluency</strong>—you understand modern software development practices and can speak credibly with engineers.</li>
-	<li><strong>Excellent storytelling and positioning skills</strong>, with the ability to refine messaging for different developer segments.</li>
+	<li>1-2 years experience in partner operations, sales operations, partners sales, partner management, partner marketing or programs is a plus, but not required</li>
+	<li>Creative problem solver with strong attention to detail and a drive to build something better</li>
+	<li>Good verbal and written communication skills</li>
+	<li>Self-starter with a strong ability to operate in a dynamic environment&nbsp;</li>
+	<li>Proficient with Excel/Google Sheets for basic to intermediate data analysis and data manipulation (VLOOKUP, pivot tables, SUMIFS, COUNTIFS, CONCATENATE, etc)</li>
+	<li>Comfortable working with Salesforce and Google suite</li>
 </ul>
-<p><strong>Compensation</strong>:</p>
-<p>Compensation may be adjusted depending on work location.&nbsp;</p>
-<p>For New York City, Washington, DC Metro and California based (excluding Bay Area): Estimated annual salary of $260,000 - $318,000<br>For San Francisco Bay Area based hires: Estimated annual salary of $299,000 - $365,000&nbsp;</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
