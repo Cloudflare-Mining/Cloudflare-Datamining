@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "351d2b70-4048-58c5-853e-6a723a395360")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "d2e2faad-0aa2-53bf-ae8a-bced2015f826")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1195,10 +1195,10 @@
 					t.g.build = wn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "4eb1b9c4bb6af8049a1ab279bd126112d4d119ee",
-						dashVersion: "34009934",
+						commit: "c0cd539a1f29e946f98d903fc1b7a59b90270ce5",
+						dashVersion: "34031045",
 						env: "production",
-						builtAt: 1750181521770,
+						builtAt: 1750252146095,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -4896,6 +4896,8 @@
 				}, {
 					entityType: "environments"
 				}, {
+					entityType: "organizations"
+				}, {
 					entityType: "tenants"
 				}, {
 					entityType: "accountTypes"
@@ -5405,7 +5407,7 @@
 			}
 			const p = u().createContext(void 0),
 				I = 60 * 1e3,
-				O = .1,
+				O = .5,
 				h = new Set(["f65fb9c0ef5c7bd96bf22fd1e89092f8", "34f5c5fbdb0031e08410750dd4617396"]),
 				v = new Set(["b7db8a5d0e51afce2d33ea16d8219fc6", "3576b716b54efb9e7851fe9e7a22e440", "ca11caa2415c966f6fb75f025ed1f354", "56517c9d595ec8e23d789fd2c6d18990", "340188bc4fd1e745704cedf68408ff05", "3f96cb3e7cb3fa852b055b63baf69624"]);
 
@@ -20618,6 +20620,7 @@
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
+    --container-xs: 20rem;
     --text-xs: 12px;
     --text-xs--line-height: calc(1 / 0.75);
     --text-sm: 13px;
@@ -20684,10 +20687,14 @@
     --color-ob-base-1000: var(--color-neutral-900);
     --text-color-ob-inverted: var(--color-white);
     --color-cl1-white: var(--cf-white);
+    --color-cl1-gold-7: var(--cf-gold-7);
+    --color-cl1-gold-9: var(--cf-gold-9);
     --color-cl1-blue-2: var(--cf-blue-2);
     --color-cl1-blue-8: var(--cf-blue-8);
     --color-cl1-gray-0: var(--cf-gray-0);
+    --color-cl1-gray-2: var(--cf-gray-2);
     --color-cl1-gray-4: var(--cf-gray-4);
+    --color-cl1-gray-5: var(--cf-gray-5);
     --color-cl1-new-gray-7: var(--cf-newGray-7);
   }
 }
@@ -21050,6 +21057,15 @@
   .h-20 {
     height: calc(var(--spacing) * 20);
   }
+  .h-\\[15px\\] {
+    height: 15px;
+  }
+  .h-\\[18px\\] {
+    height: 18px;
+  }
+  .h-\\[24px\\] {
+    height: 24px;
+  }
   .h-\\[35px\\] {
     height: 35px;
   }
@@ -21221,14 +21237,23 @@
   .min-w-\\[8rem\\] {
     min-width: 8rem;
   }
+  .min-w-\\[170px\\] {
+    min-width: 170px;
+  }
   .min-w-\\[var\\(--trigger-width\\)\\] {
     min-width: var(--trigger-width);
+  }
+  .min-w-xs {
+    min-width: var(--container-xs);
   }
   .flex-1 {
     flex: 1;
   }
   .flex-shrink {
     flex-shrink: 1;
+  }
+  .flex-shrink-0 {
+    flex-shrink: 0;
   }
   .shrink {
     flex-shrink: 1;
@@ -21615,6 +21640,9 @@
   .border-border {
     border-color: var(--color-border);
   }
+  .border-cl1-gold-7 {
+    border-color: var(--color-cl1-gold-7);
+  }
   .border-cl1-new-gray-7 {
     border-color: var(--color-cl1-new-gray-7);
   }
@@ -21719,6 +21747,9 @@
   }
   .bg-cl1-blue-8 {
     background-color: var(--color-cl1-blue-8);
+  }
+  .bg-cl1-gold-9 {
+    background-color: var(--color-cl1-gold-9);
   }
   .bg-cl1-white {
     background-color: var(--color-cl1-white);
@@ -22184,8 +22215,14 @@
   .text-cl1-gray-0 {
     color: var(--color-cl1-gray-0);
   }
+  .text-cl1-gray-2 {
+    color: var(--color-cl1-gray-2);
+  }
   .text-cl1-gray-4 {
     color: var(--color-cl1-gray-4);
+  }
+  .text-cl1-gray-5 {
+    color: var(--color-cl1-gray-5);
   }
   .text-destructive {
     color: var(--text-color-destructive);
@@ -22923,6 +22960,11 @@
       display: block;
     }
   }
+  .sm\\:grid-cols-2 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
   .sm\\:grid-cols-4 {
     @media (width >= 40rem) {
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -22964,6 +23006,11 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
+  .lg\\:grid-cols-3 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
   .xl\\:block {
     @media (width >= 80rem) {
       display: block;
@@ -22987,6 +23034,11 @@
   .xl\\:grid-cols-3 {
     @media (width >= 80rem) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .xl\\:grid-cols-4 {
+    @media (width >= 80rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
   .xl\\:flex-row {
@@ -23980,4 +24032,4 @@ button.border {
 	}
 ]);
 
-//# debugId=351d2b70-4048-58c5-853e-6a723a395360
+//# debugId=d2e2faad-0aa2-53bf-ae8a-bced2015f826
