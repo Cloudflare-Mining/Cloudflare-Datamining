@@ -1,0 +1,178 @@
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LtVhVVAsSFzhekIF0nnt6/13c8e0249a24cf40bde2f6ae2d46d938/Open_sourcing_new_MCP_client_tooling.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>You can <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server"><u>deploy</u></a> a <a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>remote Model Context Protocol (MCP) server</u></a> on Cloudflare in just one-click. Don’t believe us? Click the button below. </p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-authless"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+	<p></p>
+	<p>This will get you started with a remote MCP server that supports the latest MCP standards and is the reason why thousands of remote MCP servers have been deployed on Cloudflare, including ones from companies like <a href="https://blog.cloudflare.com/mcp-demo-day"><u>Atlassian, Linear, PayPal, and more</u></a>.&nbsp;</p>
+	<p>But deploying servers is only half of the equation — we also wanted to make it just as easy to build and deploy remote MCP clients that can connect to these servers to enable new AI-powered service integrations. That's why we built <code>use-mcp</code>, a React library for connecting to remote MCP servers, and we're excited to contribute it to the MCP ecosystem to enable more developers to build remote MCP clients.</p>
+	<p>Today, we're open-sourcing two tools that make it easy to build and deploy MCP clients:</p>
+	<ol>
+		<li>
+			<p><a href="https://github.com/modelcontextprotocol/use-mcp"><u>use-mcp</u></a> — A React library that connects to any remote MCP server in just 3 lines of code, with transport, authentication, and session management automatically handled. We're excited to contribute this library to the <a href="https://github.com/modelcontextprotocol"><u>MCP ecosystem</u></a> to enable more developers to build remote MCP clients.&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/ai/tree/main/playground/ai"><u>The AI Playground</u></a> — Cloudflare’s <a href="https://playground.ai.cloudflare.com"><u>AI chat interface</u></a> platform that uses a number of LLM models to interact with remote MCP servers, with support for the latest MCP standard, which you can now deploy yourself.&nbsp;</p>
+		</li>
+	</ol>
+	<p>Whether you're building an AI-powered chat bot, a support agent, or an internal company interface, you can leverage these tools to connect your AI agents and applications to external services via MCP.&nbsp;</p>
+	<p>Ready to get started? Click on the button below to deploy your own instance of Cloudflare’s AI Playground to see it in action. </p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fplayground%2Fai"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+	<p></p>
+	<div class="flex anchor relative">
+		<h2 id="use-mcp-a-react-library-for-building-remote-mcp-clients">use-mcp: a React library for building remote MCP clients</h2>
+		<a href="https://blog.cloudflare.com/#use-mcp-a-react-library-for-building-remote-mcp-clients" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://github.com/modelcontextprotocol/use-mcp"><u>use-mcp</u></a> is a <a href="https://www.npmjs.com/package/use-mcp"><u>React library</u></a> that abstracts away all the complexity of building MCP clients. Add the <code>useMCP()</code> hook into any React application to connect to remote MCP servers that users can interact with.&nbsp;</p>
+	<p>Here’s all the code you need to add to connect to a remote MCP server:&nbsp;</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">mport { useMcp } from 'use-mcp/react'
+function MyComponent() {
+  const { state, tools, callTool } = useMcp({
+    url: 'https://mcp-server.example.com'
+  })
+  return &lt;div&gt;Your actual UI code&lt;/div&gt;
+}</code></pre>
+	<p>Just specify the URL, and you're instantly connected.&nbsp;</p>
+	<p>Behind the scenes, <code>use-mcp</code> handles the transport protocols (both Streamable HTTP and Server-Sent Events), authentication flows, and session management. It also includes a number of features to help you build reliable, scalable, and production-ready MCP clients.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="connection-management">Connection management&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#connection-management" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Network reliability shouldn’t impact user experience. <code>use-mcp </code>manages connection retries and reconnections with a backoff schedule to ensure your client can recover the connection during a network issue and continue where it left off. The hook exposes real-time <a href="https://github.com/modelcontextprotocol/use-mcp/tree/main?tab=readme-ov-file#return-value"><u>connection states</u></a> ("connecting", "ready", "failed"), allowing you to build responsive UIs that keep users informed without requiring you to write any custom connection handling logic.&nbsp;</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">const { state } = useMcp({ url: 'https://mcp-server.example.com' })
+
+if (state === 'connecting') {
+  return &lt;div&gt;Establishing connection...&lt;/div&gt;
+}
+if (state === 'ready') {
+  return &lt;div&gt;Connected and ready!&lt;/div&gt;
+}
+if (state === 'failed') {
+  return &lt;div&gt;Connection failed&lt;/div&gt;
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="authentication-authorization">Authentication &amp; authorization</h3>
+		<a href="https://blog.cloudflare.com/#authentication-authorization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Many MCP servers require some form of authentication in order to make tool calls. <code>use-mcp</code> supports <a href="https://oauth.net/2.1"><u>OAuth 2.1</u></a> and handles the entire OAuth flow.&nbsp; It redirects users to the login page, allows them to grant access, securely stores the access token returned by the OAuth provider, and uses it for all subsequent requests to the server. The library also provides <a href="https://github.com/modelcontextprotocol/use-mcp/tree/main?tab=readme-ov-file#api-reference"><u>methods</u></a> for users to revoke access and clear stored credentials. This gives you a complete authentication system that allows you to securely connect to remote MCP servers, without writing any of the logic.&nbsp;</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">const { clearStorage } = useMcp({ url: 'https://mcp-server.example.com' })
+
+// Revoke access and clear stored credentials
+const handleLogout = () =&gt; {
+  clearStorage() // Removes all stored tokens, client info, and auth state
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="dynamic-tool-discovery">Dynamic tool discovery</h3>
+		<a href="https://blog.cloudflare.com/#dynamic-tool-discovery" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>When you connect to an MCP server, <code>use-mcp</code> fetches the tools it exposes. If the server adds new capabilities, your app will see them without any code changes. Each tool provides type-safe metadata about its required inputs and functionality, so your client can automatically validate user input and make the right tool calls.</p>
+	<div class="flex anchor relative">
+		<h3 id="debugging-monitoring-capabilities">Debugging &amp; monitoring capabilities</h3>
+		<a href="https://blog.cloudflare.com/#debugging-monitoring-capabilities" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To help you troubleshoot MCP integrations, <code>use-mcp </code>exposes a <code>log</code> array containing structured messages at debug, info, warn, and error levels, with timestamps for each one. You can enable detailed logging with the <code>debug</code> option to track tool calls, authentication flows, connection state changes, and errors. This real-time visibility makes it easier to diagnose issues during development and production.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="future-proofed-backwards-compatible">Future-proofed &amp; backwards compatible</h3>
+		<a href="https://blog.cloudflare.com/#future-proofed-backwards-compatible" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCP is evolving rapidly, with recent updates to transport mechanisms and upcoming changes to authorization. <code>use-mcp</code> supports both Server-Sent Events (SSE) and the newer Streamable HTTP transport, automatically detecting and upgrading to newer protocols, when supported by the MCP server.&nbsp;</p>
+	<p>As the MCP specification continues to evolve, we'll keep the library updated with the latest standards, while maintaining backwards compatibility. We are also excited to contribute <code>use-mcp</code> to the <a href="https://github.com/modelcontextprotocol"><u>MCP project</u></a>, so it can grow with help from the wider community.</p>
+	<div class="flex anchor relative">
+		<h3 id="mcp-inspector-built-with-use-mcp">MCP Inspector, built with use-mcp</h3>
+		<a href="https://blog.cloudflare.com/#mcp-inspector-built-with-use-mcp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In use-mcp’s <a href="https://github.com/modelcontextprotocol/use-mcp/tree/main/examples"><u>examples directory</u></a>, you’ll see a minimal <a href="https://inspector.use-mcp.dev"><u>MCP Inspector</u></a> that was built with the <code>use-mcp</code> hook. . Enter any MCP server URL to test connections, see available tools, and monitor interactions through the debug logs. It's a great starting point for building your own MCP clients or something you can use to debug connections to your MCP server.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6PmPcZicaO39x9SuRqzqSX/b6caa6c7af1d6b03f17c41771598d1b5/image1.png" alt="" class="kg-image" width="1450" height="1100" loading="lazy">
+	</figure><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fmodelcontextprotocol%2Fuse-mcp%2Ftree%2Fmain%2Fexamples%2Finspector"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+	<p></p>
+	<div class="flex anchor relative">
+		<h2 id="open-sourcing-the-ai-playground">Open-sourcing the AI Playground&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#open-sourcing-the-ai-playground" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We initially built the <a href="https://playground.ai.cloudflare.com"><u>AI Playground</u></a> to give users a chat interface for testing different AI models supported by Workers AI. We then added MCP support, so it could be used as a remote MCP client to connect to and test MCP servers. Today, we're open-sourcing the playground, giving you the complete chat interface with the MCP client built in, so you can deploy it yourself and customize it to fit your needs.&nbsp;</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fplayground%2Fai"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+	<p></p>
+	<p>The playground comes with built-in support for the latest MCP standards, including both Streamable HTTP and Server-Sent Events transport methods, OAuth authentication flows that allow users to sign-in and grant permissions, as well as support for bearer token authentication for direct MCP server connections.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5iaUzuxBZafrH1q0VYHTJf/a7585da38f75818111b3521c9a5ef4e3/image2.png" alt="" class="kg-image" width="1999" height="1448" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="how-the-ai-playground-works">How the AI Playground works</h3>
+		<a href="https://blog.cloudflare.com/#how-the-ai-playground-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The AI Playground is built on Workers AI, giving you access to a full catalog of large language models (LLMs) running on Cloudflare's network, combined with the Agents SDK and <code>use-mcp</code> library for MCP server connections.</p>
+	<p>The AI Playground uses the <code>use-mcp</code> library to manage connections to remote MCP servers. When the playground starts up, it initializes the MCP connection system with <code>const{tools: mcpTools} = useMcp()</code>, which provides access to all tools from connected servers. At first, this list is empty because it’s not connected to any MCP servers, but once a connection to a remote MCP server is established, the tools are automatically discovered and populated into the list.&nbsp;</p>
+	<p>Once <a href="https://github.com/cloudflare/ai/blob/af1ce8be87d6a4e6bc10bb83f7959e63b28c1c8e/playground/ai/src/McpServers.tsx#L550"><u>connected</u></a>, the playground immediately has access to any tools that the MCP server exposes. The <code>use-mcp</code> library handles all the protocol communication and tool discovery, and maintains the connection state. If the MCP server requires authentication, the playground handles OAuth flows through a dedicated callback page that uses <code>onMcpAuthorization </code>from <code>use-mcp</code> to complete the authentication process.</p>
+	<p>When a user sends a chat message, the playground takes the <code>mcpTools</code> from the <code>use-mcp</code> hook and passes them directly to Workers AI, enabling the model to understand what capabilities are available and invoke them as needed.&nbsp;</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">const stream = useChat({
+  api: "/api/inference",
+  body: {
+    model: params.model,
+    tools: mcpTools, // Tools from connected MCP servers
+    max_tokens: params.max_tokens,
+    system_message: params.system_message,
+  },
+})</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="debugging-and-monitoring">Debugging and monitoring</h3>
+		<a href="https://blog.cloudflare.com/#debugging-and-monitoring" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To monitor and debug connections to MCP servers, we’ve added a Debug Log interface to the playground. This displays real-time information about the MCP server connections, including connection status, authentication state, and any connection errors.&nbsp;</p>
+	<p>During the chat interactions, the debug interface will show the raw message exchanged between the playground and the MCP server, including the tool invocation and its result. This allows you to monitor the JSON payload being sent to the MCP server, the raw response returned, and track whether the tool call succeeded or failed. This is especially helpful for anyone building remote MCP servers, as it allows you to see how your tools are behaving when integrated with different language models.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="contributing-to-the-mcp-ecosystem">Contributing to the MCP ecosystem</h2>
+		<a href="https://blog.cloudflare.com/#contributing-to-the-mcp-ecosystem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>One of the reasons why MCP has evolved so quickly is that it's an open source project, powered by the community. We're excited to contribute the <code>use-mcp</code> library to the <a href="https://github.com/modelcontextprotocol"><u>MCP ecosystem</u></a> to enable more developers to build remote MCP clients.&nbsp;</p>
+	<p>If you're looking for examples of MCP clients or MCP servers to get started with, check out the<a href="https://github.com/cloudflare/ai"> <u>Cloudflare AI GitHub repository</u></a> for working examples you can deploy and modify. This includes the complete AI Playground <a href="https://github.com/cloudflare/ai/tree/main/playground/ai"><u>source code,</u></a> a number of remote MCP servers that use different authentication &amp; authorization providers, and the <a href="https://github.com/cloudflare/ai/tree/main/demos/use-mcp-inspector"><u>MCP Inspector</u></a>.&nbsp;</p>
+	<p>We’re also building the <a href="https://github.com/cloudflare/mcp-server-cloudflare"><u>Cloudflare MCP servers</u></a> in public and welcome contributions to help make them better.&nbsp;</p>
+	<p>Whether you're building your first MCP server, integrating MCP into an existing application, or contributing to the broader ecosystem, we'd love to hear from you. If you have any questions, feedback, or ideas for collaboration, you can reach us via email at <a href="mailto:1800-mcp@cloudflare.com"><u>1800-mcp@cloudflare.com</u></a>. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7sYYS9c45orRX6SaUw5qTx/b975c5221ab538cc8f1167b706da375f/image3.png" alt="" class="kg-image" width="1200" height="267" loading="lazy">
+	</figure>
+	<p></p>
+</div>
