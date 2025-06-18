@@ -1,15 +1,15 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/network-layer/what-is-a-campus-area-network/",
+	"path": "/learning/network-layer/what-is-branch-networking/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "1KagDSuqHDkpOvzlCyU2qw",
-				"urlSlug": "network-layer/what-is-a-campus-area-network",
+				"contentfulId": "hLFVlaTOTZ6YnMoVtQJpQ",
+				"urlSlug": "network-layer/what-is-branch-networking",
 				"metaTags": {
-					"metaTitle": "What is a campus area network (CAN)?",
-					"metaDescription": "A campus area network, or CAN, is a computer network that spans a limited geographic area. Learn how CAN networks differ from wide area networks (WAN).",
+					"metaTitle": "What is branch networking?",
+					"metaDescription": "Branch networking connects an organization's various locations, enabling them to communicate. Learn about branch connectivity and branch networking security.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -19,8 +19,8 @@
 					},
 					"facebookCustomImage": null
 				},
-				"metaTitle": "What is a campus area network (CAN)?",
-				"metaDescription": "A campus area network, or CAN, is a computer network that spans a limited geographic area. Learn how CAN networks differ from wide area networks (WAN).",
+				"metaTitle": null,
+				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "2NTNgGsYPl9HfIDs724JbF",
@@ -652,27 +652,33 @@
 						]
 					}
 				},
-				"header": "What is a campus area network (CAN)?",
-				"blurbSubHeader": "Most often used on college and university campuses, a campus area network (CAN) is a computer network that connects multiple buildings within a large property.",
-				"objectivesHeader": "Campus Area Network",
+				"header": "What is branch networking?",
+				"blurbSubHeader": "Branch networking is how an organization's branch locations connect to each other and to shared internal resources, like applications, data centers, and the cloud.",
+				"objectivesHeader": "Branch Networking",
 				"objectivesList": [
-					"Define campus area network (CAN)",
-					"Tell the difference between CANs, WANs, and LANs",
-					"Identify the performance and security benefits of CANs"
+					"Define branch networking",
+					"Understand common branch connectivity and security challenges",
+					"Describe flexible branch networking models that solve these challenges"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "5fMrQ9PPNlCWoSDUWB5ODz",
-						"displayText": "Metropolitan area network (MAN)",
-						"url": "/learning/network-layer/what-is-a-metropolitan-area-network/"
+						"contentfulId": "1zXUavp2wMc1wd8R3zpAWC",
+						"displayText": "Network modernization",
+						"url": "/learning/network-layer/network-modernization/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "4bK3yl2lIJorDZQHs1H1a0",
-						"displayText": "Local area network (LAN)",
-						"url": "/learning/network-layer/what-is-a-lan/"
+						"contentfulId": "5uhocF5vOQSt8EmdiRWkq1",
+						"displayText": "What is MPLS?",
+						"url": "/learning/network-layer/what-is-mpls/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "69FyYu2Nl7lx7PPxWIxkIx",
+						"displayText": "SD-WAN",
+						"url": "/learning/network-layer/what-is-an-sd-wan/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
@@ -682,33 +688,27 @@
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "46yNBu6IQ1gCdIA8eG292m",
-						"displayText": "Network layer",
-						"url": "/learning/network-layer/what-is-the-network-layer/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "19nTg1iwyawlo5bSpU8Xe9",
-						"displayText": "Internet Protocol (IP)",
-						"url": "/learning/network-layer/internet-protocol/"
+						"contentfulId": "6aRzsX0gbj4ceQWQiEzBOC",
+						"displayText": "What is network as a service (NaaS)?",
+						"url": "/learning/network-layer/network-as-a-service-naas/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a campus area network (CAN)?</h2>\n\n<p>A campus area network (CAN) is a computer network that spans a limited geographic area. CANs interconnect multiple <a href='/learning/network-layer/what-is-a-lan/'>local area networks (LAN)</a> within an educational or corporate campus. Most CANs connect to the public <a href='/learning/network-layer/how-does-the-internet-work/'>Internet</a>.</p>\n\n<p>CANs are smaller than <a href='/learning/network-layer/what-is-a-metropolitan-area-network/'>metropolitan area networks (MAN)</a> and <a href='/learning/network-layer/what-is-a-wan/'>wide area networks (WAN)</a>, which stretch over large geographic areas. Typically, the organization that owns the campus also owns and operates all the networking equipment and infrastructure for the CAN. In contrast, MANs and WANs may combine infrastructure operated by several different providers.</p>\n\n<p>At colleges, universities, and other educational institutions, CANs provide Internet access for students and faculty. CANs also enable connected users to quickly share files and data within the network: since data does not have to leave the CAN, users experience far less <a href='/learning/performance/glossary/what-is-latency/'>latency</a> than they would when sending and receiving data within a MAN or WAN. Suppose a university's English department requests digital copies of several books from the university library. Because those digital book copies only have to travel the distance between the English building and the library building (assuming both buildings have their own servers), the English department receives them far faster than it would if the library had to send the files over the public Internet.</p>\n\n<p>Corporate facilities large enough to be considered a \"campus\" may also operate CANs for the same purposes.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the security benefits of CANs?</h2>\n\n<p>A CAN is typically managed fully by an internal IT team, giving that team a high degree of control over the network. IT teams can apply security policies across the network far more easily than if the campus used multiple disconnected networks. For instance, IT may install and manage <a href='/learning/security/what-is-a-firewall/'>firewalls</a> to protect the data within the CAN. IT can also manage access to the network by setting login requirements, blocking unsafe devices, and setting up other <a href='/learning/access-management/what-is-access-control/'>access control</a> safeguards.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare protect campus area networks?</h2>\n\n<p>Cloudflare protects networks of all sizes from malicious attacks. <a href='/magic-transit/'>Cloudflare Magic Transit</a> is Cloudflare's offering for blocking network attacks, accelerating traffic, and ensuring reliability. By offering cloud-based network functions, Magic Transit enables teams that manage networks to reduce their investment in hardware.</p>\n\n<p><a href='/network-interconnect/'>Cloudflare Network Interconnect</a> allows networks to directly interconnect with Cloudflare for increased security and performance, either through a physical cable connection or a private virtual connection.</p>\n\n<p>Learn more about different types of networks, including <a href='/learning/network-layer/what-is-a-wan/'>WANs</a>, <a href='/learning/network-layer/what-is-a-lan/'>LANs</a>, and <a href='/learning/network-layer/what-is-a-metropolitan-area-network/'>MANs</a>.</p>\n",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is branch networking?</h2>\n\n<p>Branch networking is what connects an organization's various locations, enabling them to exchange information securely. Many companies have satellite locations spread out across a given region, or around the world. For these satellite locations to connect to the same corporate network and access needed resources, they must have network connections between them. This need is filled by branch networking — it connects these locations specifically to each other and to a centralized headquarters, not just to the Internet.</p>\n\n<p>\nImagine, for instance, an enterprise has a headquarters in San Francisco with additional offices in New York and Los Angeles. Branch networking connects them to one centralized internal corporate network. It can do the same for banks with multiple locations, restaurant chains, schools with various campuses, and other distributed organizations.\n</p>\n\n<p>Typically, branch networking has used:</p>\n\n<ul class=\"learning-list\">\n  <li><a href='/learning/network-layer/what-is-a-router/'>Routers</a>, <a href='/learning/network-layer/what-is-a-network-switch/'>switches</a>, and <a href='/learning/security/what-is-a-firewall/'>firewalls</a> to securely connect local branches to the network</li>\n  <li><a href='/learning/network-layer/what-is-mpls/'>Multiprotocol label switching (MPLS)</a> routes, <a href='/learning/access-management/what-is-a-vpn/'>virtual private networks (VPN)</a>, or <a href='/learning/network-layer/what-is-an-sd-wan/'>software-defined wide area networking (SD-WAN)</a> to route network traffic among branch locations</li>\n  <li><a href='/learning/access-management/what-is-a-secure-web-gateway/'>Secure web gateways (SWG)</a> and firewalls to secure the network</li>\n</ul>\n\n<p>However, some organizations are modifying this architecture to rely less on hardware and dedicated network routes, and to allow for greater flexibility to support remote work and cloud computing. Branch networks might instead use:</p>\n\n<ul class=\"learning-list\">\n  <li><a href='/learning/network-layer/network-as-a-service-naas/'>Network-as-a-service (NaaS)</a> for connectivity among branches, data centers, and the cloud</li>\n  <li><a href='/learning/access-management/what-is-sase/'>Secure access service edge (SASE)</a> for secure distributed networking and access control, irrespective of location</li>\n  <li><a href='/learning/cloud/what-is-a-cloud-firewall/'>Firewall-as-a-service (FWaaS)</a> for stopping threats</li>\n  <li>Commodity Internet instead of leased lines or private connectivity</li>\n</ul>\n\n<p>Of course, a modernized branch networking architecture still needs some physical equipment, like routers and switches, to connect to the Internet and the corporate network.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a branch office?</h2>\n\n<p>A branch office is one of the distributed locations where an organization's work takes place. In the context of branch networking, branch offices may include data centers, stores, restaurants, campuses, banks, and any other connected locations.</p>\n\n<p>From a networking perspective, branch offices are locations where connectivity must be available. Employees, contractors, and other users connect to the network using either managed or unmanaged devices.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are some of the challenges of branch networking?</h2>\n\n<p>Organizations must make sure their branch networks are both secure and fast-performing to support productivity and protect their data.</p>\n\n<h4 class=\"learning-content-h4\">Branch office connectivity challenges</h4>\n\n<ul class=\"learning-list\">\n  <li><strong>Application performance:</strong> With branch offices potentially a great distance from each other, both in terms of miles and network hops, ensuring that traffic takes efficient paths between branches and data centers, or between branches and the cloud, can be a challenge. This can cause application performance to degrade or crash due to request timeouts.</li>\n  <li><strong>Network bottlenecks:</strong> If too much traffic must pass through chokepoints on the network (for instance, if one branch office suddenly expands its workforce or usage), this can cause performance slowdowns for users and apps.</li>\n  <li><strong>Complexity of management:</strong> Branch networks may be physically far from localized IT teams, so they have to manage multiple different networks remotely, without direct access to local equipment.</li>\n</ul>\n\n<h4 class=\"learning-content-h4\">Branch networking security challenges</h4>\n\n<p>Branch networking security involves not just protecting the data within the network, but also data as it is in transit across networks and between locations. Access control is also a core component of protecting branch networks, but it can be difficult to enforce with a combination of managed and unmanaged devices connecting. Some of the main challenges of branch networking security include:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Expanded <a href='/learning/security/glossary/attack-vector/'>attack surface:</a></strong> The spread-out nature of branch networks and the range of devices and equipment that connect make for a wide and growing range of vulnerabilities and potential attacks. Bring-your-own-device (BYOD) policies introduce unknown threats and vulnerabilities into networks as well.</li>\n  <li><strong>Visibility:</strong> Tracking malicious or unexpected network traffic across disparate networks is complex and time-consuming.</li>\n  <li><strong><a href='/learning/ddos/what-is-a-ddos-attack/'>Distributed denial-of-service (DDoS) attacks:</a></strong> Attackers can overwhelm a network's resources with junk traffic, taking the network offline or slowing service to a crawl for legitimate users. For legacy branch networks, mitigating these attacks is often a highly manual process.</li>\n  <li><strong>Regulatory compliance:</strong> For many of the reasons described previously (complexity, lack of visibility, large attack surface), enforcing <a href='/learning/privacy/what-is-data-compliance/'>compliance</a> with data security and <a href='/learning/privacy/what-is-data-privacy/'>privacy</a> standards like <a href='/learning/privacy/what-is-pci-dss-compliance/'>PCI-DSS</a> or the <a href='/learning/privacy/what-is-the-gdpr/'>GDPR</a> is a major challenge in branch networking.</li>\n  <li><strong>Enforcing security policies:</strong> With a range of users across multiple different locations, ensuring that all users and devices conform to official security policies is a challenge. </li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How is branch networking evolving to meet these challenges?</h2>\n\n<p>Branch locations still matter for many businesses, but today, large swaths of the workforce connect to company apps and resources remotely. And the adoption of software-as-a-service (SaaS) apps and cloud computing means traffic needs to leave an organization's network perimeter.</p>\n\n<p>Hard-coded network connections are not flexible enough to support these developments. In addition, the challenges described previously make legacy approaches a poor fit for many organizations.</p>\n\n<p>Therefore <a href='/learning/network-layer/network-modernization/'>branch networking is modernizing</a> by adapting more flexible, cloud-based models, such as <a href='/learning/access-management/what-is-sase/'>secure access service edge (SASE)</a>. This model includes security features natively built in, instead of added on.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare support branch networking?</h2>\n\n<p>Cloudflare offers a simple platform with a unified dashboard for managing networks. Cloudflare's cloud-based WAN services offer flexible branch office connectivity while Cloudflare's smart routing capabilities take real-time network conditions into account, routing around network congestion and outages. With Cloudflare, <a href='/learning/security/glossary/what-is-zero-trust/'>Zero Trust</a> security policies are automatically applied across all locations, users, and devices. Learn more about <a href='/zero-trust/'>Cloudflare's SASE platform</a>.</p>",
 				"availableLocales": null,
-				"localized": false,
+				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -720,97 +720,20 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
-				"sidebarForm": {
-					"contentTypeId": "learningCenterArticleSidebarForm",
-					"contentfulId": "4ad3l3edBzH8KRefyi225g",
-					"heading": "Want to keep learning?",
-					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
-					"postSubmissionDescription": "We're looking forward to sharing content with you.",
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe  to theNET",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					}
-				}
+				"proactivePopup": null,
+				"sidebarForm": null
 			}
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "1KagDSuqHDkpOvzlCyU2qw",
-			"pathname": "/learning/network-layer/what-is-a-campus-area-network/",
+			"contentfulId": "hLFVlaTOTZ6YnMoVtQJpQ",
+			"pathname": "/learning/network-layer/what-is-branch-networking/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}
