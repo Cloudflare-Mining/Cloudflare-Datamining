@@ -215,7 +215,7 @@
 		"false": 100
 	},
 	"data-dx-containers-landing": {
-		"false": 100
+		"true": 100
 	},
 	"data-dx-saved-queries": {
 		"false": 100
@@ -521,6 +521,13 @@
 	},
 	"prg-banner-color-experiment": {
 		"baseline": 100
+	},
+	"prg-banner-frequency-test": {
+		"one-minute": 20,
+		"baseline": 21,
+		"ten-seconds": 19,
+		"thirty-seconds": 19,
+		"immediate-refresh": 21
 	},
 	"prg-bots-one-click-settings": {
 		"experiment": 100
