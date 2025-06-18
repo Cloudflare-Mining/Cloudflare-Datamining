@@ -1,15 +1,15 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/network-layer/what-is-a-campus-area-network/",
+	"path": "/learning/network-layer/network-modernization/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "1KagDSuqHDkpOvzlCyU2qw",
-				"urlSlug": "network-layer/what-is-a-campus-area-network",
+				"contentfulId": "50bSvZ2hpP09hc7BXeT07H",
+				"urlSlug": "network-layer/network-modernization",
 				"metaTags": {
-					"metaTitle": "What is a campus area network (CAN)?",
-					"metaDescription": "A campus area network, or CAN, is a computer network that spans a limited geographic area. Learn how CAN networks differ from wide area networks (WAN).",
+					"metaTitle": "What is network modernization?",
+					"metaDescription": "Network modernization is the process of replacing or augmenting legacy network infrastructure with services that support cloud-based connectivity.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -19,8 +19,8 @@
 					},
 					"facebookCustomImage": null
 				},
-				"metaTitle": "What is a campus area network (CAN)?",
-				"metaDescription": "A campus area network, or CAN, is a computer network that spans a limited geographic area. Learn how CAN networks differ from wide area networks (WAN).",
+				"metaTitle": null,
+				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "2NTNgGsYPl9HfIDs724JbF",
@@ -640,27 +640,27 @@
 						]
 					}
 				},
-				"header": "What is a campus area network (CAN)?",
-				"blurbSubHeader": "Most often used on college and university campuses, a campus area network (CAN) is a computer network that connects multiple buildings within a large property.",
-				"objectivesHeader": "Campus Area Network",
+				"header": "What is network modernization?",
+				"blurbSubHeader": "Network modernization is the process of replacing or augmenting legacy network infrastructure with services that support cloud-based connectivity and security services.",
+				"objectivesHeader": "Network Modernization",
 				"objectivesList": [
-					"Define campus area network (CAN)",
-					"Tell the difference between CANs, WANs, and LANs",
-					"Identify the performance and security benefits of CANs"
+					"Define network modernization",
+					"Understand the end state of a modernized network",
+					"Understand how to start modernizing a network"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "5fMrQ9PPNlCWoSDUWB5ODz",
-						"displayText": "Metropolitan area network (MAN)",
-						"url": "/learning/network-layer/what-is-a-metropolitan-area-network/"
+						"contentfulId": "5uhocF5vOQSt8EmdiRWkq1",
+						"displayText": "What is MPLS?",
+						"url": "/learning/network-layer/what-is-mpls/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "4bK3yl2lIJorDZQHs1H1a0",
-						"displayText": "Local area network (LAN)",
-						"url": "/learning/network-layer/what-is-a-lan/"
+						"contentfulId": "7bvJN7SaSIva3Ar3sNx05x",
+						"displayText": "What is SDN?",
+						"url": "/learning/network-layer/what-is-sdn/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
@@ -670,33 +670,33 @@
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "46yNBu6IQ1gCdIA8eG292m",
-						"displayText": "Network layer",
-						"url": "/learning/network-layer/what-is-the-network-layer/"
+						"contentfulId": "69FyYu2Nl7lx7PPxWIxkIx",
+						"displayText": "SD-WAN",
+						"url": "/learning/network-layer/what-is-an-sd-wan/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "19nTg1iwyawlo5bSpU8Xe9",
-						"displayText": "Internet Protocol (IP)",
-						"url": "/learning/network-layer/internet-protocol/"
+						"contentfulId": "6wi0u9frLgJN3XQlvx223h",
+						"displayText": "What is enterprise networking?",
+						"url": "/learning/network-layer/enterprise-networking/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a campus area network (CAN)?</h2>\n\n<p>A campus area network (CAN) is a computer network that spans a limited geographic area. CANs interconnect multiple <a href='/learning/network-layer/what-is-a-lan/'>local area networks (LAN)</a> within an educational or corporate campus. Most CANs connect to the public <a href='/learning/network-layer/how-does-the-internet-work/'>Internet</a>.</p>\n\n<p>CANs are smaller than <a href='/learning/network-layer/what-is-a-metropolitan-area-network/'>metropolitan area networks (MAN)</a> and <a href='/learning/network-layer/what-is-a-wan/'>wide area networks (WAN)</a>, which stretch over large geographic areas. Typically, the organization that owns the campus also owns and operates all the networking equipment and infrastructure for the CAN. In contrast, MANs and WANs may combine infrastructure operated by several different providers.</p>\n\n<p>At colleges, universities, and other educational institutions, CANs provide Internet access for students and faculty. CANs also enable connected users to quickly share files and data within the network: since data does not have to leave the CAN, users experience far less <a href='/learning/performance/glossary/what-is-latency/'>latency</a> than they would when sending and receiving data within a MAN or WAN. Suppose a university's English department requests digital copies of several books from the university library. Because those digital book copies only have to travel the distance between the English building and the library building (assuming both buildings have their own servers), the English department receives them far faster than it would if the library had to send the files over the public Internet.</p>\n\n<p>Corporate facilities large enough to be considered a \"campus\" may also operate CANs for the same purposes.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the security benefits of CANs?</h2>\n\n<p>A CAN is typically managed fully by an internal IT team, giving that team a high degree of control over the network. IT teams can apply security policies across the network far more easily than if the campus used multiple disconnected networks. For instance, IT may install and manage <a href='/learning/security/what-is-a-firewall/'>firewalls</a> to protect the data within the CAN. IT can also manage access to the network by setting login requirements, blocking unsafe devices, and setting up other <a href='/learning/access-management/what-is-access-control/'>access control</a> safeguards.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare protect campus area networks?</h2>\n\n<p>Cloudflare protects networks of all sizes from malicious attacks. <a href='/magic-transit/'>Cloudflare Magic Transit</a> is Cloudflare's offering for blocking network attacks, accelerating traffic, and ensuring reliability. By offering cloud-based network functions, Magic Transit enables teams that manage networks to reduce their investment in hardware.</p>\n\n<p><a href='/network-interconnect/'>Cloudflare Network Interconnect</a> allows networks to directly interconnect with Cloudflare for increased security and performance, either through a physical cable connection or a private virtual connection.</p>\n\n<p>Learn more about different types of networks, including <a href='/learning/network-layer/what-is-a-wan/'>WANs</a>, <a href='/learning/network-layer/what-is-a-lan/'>LANs</a>, and <a href='/learning/network-layer/what-is-a-metropolitan-area-network/'>MANs</a>.</p>\n",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is network modernization?</h2>\n\n<p>Network modernization is the process of replacing on-premises network appliances with virtualized software, usually in the <a href='/learning/cloud/what-is-the-cloud/'>cloud</a>. A modernized network provides flexibility, scalability, and security to accommodate evolving business needs. Some parts of the network can be offloaded to the cloud or the public Internet, helping avoid the costs associated with legacy networking approaches like <a href='/learning/network-layer/what-is-mpls/'>multiprotocol label switching (MPLS)</a>.</p>\n\n<p>The end state of a network that undergoes modernization should be a simpler network architecture. Enterprise networks often increase in complexity with the passage of time, as organizations add data centers and security appliances to meet new use cases. Modernized networks, instead of adding to this complexity, replace these with simpler, more flexible cloud-delivered connectivity and security.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an enterprise network?</h2>\n\n<p><a href='/learning/network-layer/enterprise-networking/'>Enterprise networks</a> are <a href='/learning/network-layer/what-is-a-wan/'>wide area networks (WANs)</a> that serve the needs of a single large organization and may facilitate access to internal resources (apps, data stores) for employees and contractors.</p>\n\n<h4 class=\"learning-content-h4\">Why enterprise network modernization matters</h4>\n\n<p>Enterprise networks traditionally connected centralized headquarters and branch offices to each other. With traditional networking, more equipment (such as <a href='/learning/security/what-is-a-firewall/'>firewalls</a>, <a href='/learning/network-layer/what-is-a-router/'>routers</a>, and <a href='/learning/network-layer/what-is-a-network-switch/'>switches</a>), must be provisioned and purchased to support each region. MPLS routes or leased lines were used for these connections, and enterprises used perimeter-based appliances like <a href='/learning/access-management/what-is-a-vpn/'>VPNs</a> to manage access and protect sensitive data from outsiders.</p>\n\n<p>With the increase in network bandwidth costs, cloud computing, and distributed work beyond the corporate perimeter, such an architecture is insufficient and too rigid for many enterprises.</p>\n\n<p>Many enterprise networks undergo a process of modernization to transfer to a more lightweight and flexible architecture that is <a href='/learning/cloud/cloud-native-security/'>cloud-native</a> and better supports <a href='/learning/serverless/glossary/what-is-edge-computing/'>edge computing</a> for faster application performance. This process also enables support for increased <a href='/learning/cloud/what-is-saas/'>SaaS</a> usage and <a href='/learning/ai/what-is-artificial-intelligence/'>artificial intelligence (AI)</a> workloads.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What does a modernized network architecture look like?</h2>\n\n<p>Modernized network architecture can vary, but key concepts they incorporate include <a href='/learning/access-management/what-is-ztna/'>Zero Trust Network Access (ZTNA)</a>, <a href='/learning/network-layer/what-is-an-sd-wan/'>software-defined WAN (SD-WAN)</a>, or <a href='/learning/network-layer/network-as-a-service-naas/'>network-as-a-service (NaaS)</a>, and security measures like <a href='/learning/ddos/layer-3-ddos-attacks/'>network-layer DDoS protection</a> and <a href='/learning/access-management/what-is-a-secure-web-gateway/'>secure web gateways (SWG)</a>. Security is natively integrated with network connections, and network connections can take place from anywhere between any devices, servers, and clouds. The network itself is distributed, built on cloud-native services, rather than with hardware and hardcoded connections. (This type of architecture is called <a href='/learning/access-management/what-is-sase/'>\"secure access service edge,\" or SASE</a>.)</p>\n\n<p>In general, modernized networks avoid:</p>\n\n<ul class=\"learning-list\">\n  <li>Backhauling traffic to centralized data centers</li>\n  <li>One-to-one connections to public clouds</li>\n  <li>All-or-nothing, <a href='/learning/access-management/castle-and-moat-network-security/'>castle-and-moat</a> approaches to access control via VPN</li>\n  <li>Inserting appliances to add more network coverage, compute, or capacity (instead shifting to virtual services that scale up on demand without deploying additional infrastructure)</li>\n</ul>\n\n<p>This describes the ideal, but in reality many enterprises have critical services hosted in data centers or business-critical connections via MPLS, and for the sake of continued business operations, these cannot be easily ripped and replaced. Modernized networks should be able to equally serve flexible cloud services and legacy infrastructure. At the same time, network modernization also positions organizations well to eventually transition all services to the cloud if desired.</p>\n\n<p>Network modernization should not be a process of just adding yet another vendor to an already-complex internal network.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are key network modernization use cases?</h2>\n\n<p>Organizations who choose to adopt a SASE model to achieve network modernization place network and security controls on the cloud edge instead of the corporate data center. This enables key use cases such as:</p>\n\n<ul class=\"learning-list\">\n  <li>Simplifying branch connectivity compared to MPLS and traditional SD-WAN</li>\n  <li>Shifting DMZ security (the buffer between a private network and public Internet traffic) to the cloud</li>\n  <li>Accelerating connectivity during M&A integration, by decoupling application access from corporate network access</li>\n  <li>Securely connecting and managing networking across multiple public clouds (multicloud networking)</li>\n  <li>Replacing elevated trust on the <a href='/learning/network-layer/what-is-a-lan/'>local area network (LAN)</a> with a Zero Trust security model</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is coffee shop networking?</h2>\n\n<p>\"Coffee shop networking,\" a term coined by analyst firm Gartner, refers to a flexible, modernized approach to networking. It supports a \"work from anywhere\" approach to workforce management — in other words, making secure network connections available from corporate WANs, personal home LANs, and third- and fourth-party WiFi networks (such as those hosted in coffee shops).</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is network-as-a-service (NaaS)?</h2>\n\n<p>NaaS is a model for delivering networking services through the cloud. NaaS customers can operate their own networks without any of their own infrastructure. Connectivity is delivered over the Internet. This is one form a modernized network can take.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are Cloudflare Network Services?</h2>\n\n<p>Cloudflare helps enterprises embrace network modernization and reduce their network's complexity. Cloudflare offers WAN-as-a-Service, Firewall-as-a-Service, DDoS protection, and SD-WAN in one framework — <a href='/network-services/products/'>learn more about network services</a>.</p>",
 				"availableLocales": null,
-				"localized": false,
+				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -708,97 +708,20 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
-				"sidebarForm": {
-					"contentTypeId": "learningCenterArticleSidebarForm",
-					"contentfulId": "4ad3l3edBzH8KRefyi225g",
-					"heading": "Want to keep learning?",
-					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
-					"postSubmissionDescription": "We're looking forward to sharing content with you.",
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe  to theNET",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					}
-				}
+				"proactivePopup": null,
+				"sidebarForm": null
 			}
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "1KagDSuqHDkpOvzlCyU2qw",
-			"pathname": "/learning/network-layer/what-is-a-campus-area-network/",
+			"contentfulId": "50bSvZ2hpP09hc7BXeT07H",
+			"pathname": "/learning/network-layer/network-modernization/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}

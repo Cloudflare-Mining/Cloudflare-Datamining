@@ -722,6 +722,1444 @@
 													"content": null
 												}
 											]
+										},
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Tracking quantum threats already in motion",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The US government's ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "National Institute of Standards and Technology (NIST) has warned",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " that organizations should act now to avoid being caught off guard by quantum-related threats. Nation-state actors and sophisticated adversaries are already collecting encrypted traffic, intellectual property, and state secrets to decrypt later. Communications that require decade-long confidentiality (or longer) — such as healthcare records, military intelligence, and legal contracts — are especially vulnerable if they are not protected with quantum-resilient key agreements.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "As Scott Francis pointed out in our recent discussion, AI could significantly accelerate the timeline for cracking the encryption that protects data. Instead of taking years, ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/the-net/top-of-mind-security/ai/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "criminals could use AI",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " to break a key in a matter of months or weeks once they have access to quantum computers — or even enough GPUs.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "To protect sensitive data, organizations must start implementing ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/ssl/quantum/what-is-post-quantum-cryptography/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "post-quantum cryptography (PQC)",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " — that is, cryptography that can effectively resist attacks from quantum computers. Government agencies and industry groups around the world are quickly establishing new PQC regulations and standards that will drive organizations forward. \"There has been an explosion of regulatory change around the world,\" says Francis. \"Organizations that have managed to avoid post-quantum planning so far will not be able to avoid it for very long.\"",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nTrends and gaps in post-quantum cryptography adoption",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The good news is that many organizations are adopting PQC. According to an ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://radar.cloudflare.com/adoption-and-usage#post-quantum-encryption-adoption"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "analysis of network traffic",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", only 3% of HTTPS traffic was encrypted using post-quantum algorithms as of early 2024. By March 2025, that number reached 38%, following Cloudflare's rollout of hybrid post-quantum ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Transport Layer Security (TLS)",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " by default, and browser support from Chrome, Edge, and Firefox. In some European countries, usage of post-quantum algorithms is above 50%. Still, adoption is uneven and immature. Most enterprise environments are early in the discovery or pilot phases.\n\nTechnology leaders also realize that PQC requires holistic change. The move to PQC affects not only TLS endpoints but also public key infrastructure (PKI), machine identities, commercial operating systems and software, open-source supply chains, hyperscaler resources, and more. Not all organizations are ready and able to start such a large-scale transformation.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"Organizations that have managed to avoid post-quantum planning so far will not be able to avoid it for very long.\"\n",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "—Scott Francis, Americas Lead for Cyber Next, Accenture\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nSix step migration plan for post-quantum cryptography",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "How can you future-proof your organization against the threats that will be created by quantum computing — while also protecting data now? In chatting with Scott Francis and Khalid Kark, we all agreed that a multi-step game plan for PQC should include the following key points.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "ordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Understand why you are implementing changes. ",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Leaders must first clarify why a cryptographic transformation is so critical for their particular organization. Are you doing this to satisfy regulators? Are you attempting to protect data over the next 30 years? Is your business expanding to new geographies where you will need to ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/the-net/pursuing-privacy-first-security/data-localization/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "comply",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " with country-specific regulations?\n\nAs Scott Francis said, \"You need to have a plan that's driven by business risk — not your understanding of what technology you think you need to change. Start with the business risk and work backward to the technical inputs.\"",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Document all places cryptography is in use. ",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Taking an accurate inventory of where you are using cryptography across your IT environment should be the next step. Without full visibility, you risk leaving critical systems unprotected. However, cryptographic systems are often poorly documented. You'll need to survey everything, including embedded systems, cloud workloads, legacy applications, APIs, and IoT devices.\n\nEmploying detection and asset monitoring tools capable of identifying outdated or quantum-vulnerable cryptography will be essential. For example, extended detection and response (XDR) platforms with deep network and endpoint telemetry can help discover outdated cryptography, detect insecure fallback behavior, and then automate remediation workflows.\n\nOnce you have an accurate inventory, you can create a list of migration projects, prioritized by risk and level of effort.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Make post-quantum readiness part of vendor evaluation.",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " Not all vendors are equal when it comes to complying with the latest regulatory standards. You'll need to thoroughly evaluate the crypto agility of your vendors, especially security vendors that ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/learning/network-layer/what-is-tunneling/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "tunnel",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " corporate network traffic. You might have to disqualify vendors that fail to support hybrid or quantum-safe encryption — particularly if you are operating in ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/public-sector/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "government",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": ", ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/banking-and-financial-services/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "financial services",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": ", or defense sectors. Those vendors could become weak links that leave your organization exposed.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Prioritize key agreement migrations. ",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Due to the harvest now, decrypt later threat, there is a clear benefit to ensuring your key-agreement protocols are quantum-resistant now. ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/learning/ssl/why-use-tls-1.3/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "Transitioning to TLS 1.3",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " with post-quantum ML-KEM (Module-Lattice-Based Key-Encapsulation Mechanism Standard, FIPS 203) will be an important step in securing the future confidentiality of data.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Document signature migrations, but don't prioritize them yet. ",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Organizations are still working to reach a consensus on the right approach for migrating to post-quantum signatures. Fortunately, these signatures primarily protect against active ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/learning/security/threats/on-path-attack/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "on-path attacks",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": ", making this migration a lower priority.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Plan for crypto agility. ",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "As the post-quantum era continues to unfold, often in unpredictable ways, organizations must be ready for continuous change. For example, geopolitical shifts are creating more protective economies and country-specific regulations. If your organization does business in multiple countries, you will need the flexibility to adhere to multiple cryptographic standards.\n\nThe goal should be crypto agility, which ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://csrc.nist.gov/projects/crypto-agility"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "NIST defines",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " as the ability to replace and adapt cryptographic algorithms without interrupting running systems. Organizations must be able to respond to change seamlessly. But of course, that can be extremely difficult, especially given the number of workloads and applications that organizations must keep continuously available.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"Start with the business risk and work backward to the technical inputs.\"\n",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "—Scott Francis, Americas Lead for Cyber Next, Accenture\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Moving forward into the quantum era",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Most organizations are moving toward this new era like a long-overdue visit to the cryptographic dentist. And they should expect a little discomfort, some new costs, and a few surprises. But waiting only makes it worse. As Scott Francis noted in our discussion, \"Compliance might be the initial lever that drives a change. But if the outcome is long-term safety for your data and your customers, then it's worthwhile.\"",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The priority now shouldn't be to replace everything overnight, but to build visibility and start the upgrade path. Those who act early will be best positioned to manage the post-quantum shift — before it becomes a crisis. Though this type of transition could appear daunting, it should feel like many modernization projects. With the right plan and tools, you can start to modify processes gradually and then implement automation to help you iterate over time.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "As you prepare for the quantum era, Cloudflare offers advanced ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/pqc/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "PQC capabilities",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " to help you progress along that path. For example, TLS 1.3 with post-quantum ML-KEM protects websites and APIs against harvest now, decrypt later threats. The ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/zero-trust/products/gateway/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Cloudflare Secure Web Gateway (SWG)",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " supports PQC, ensuring you maintain complete visibility into encrypted traffic during your PQC migration. Additionally, ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/zero-trust/products/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Zero Trust security capabilities",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " apply post-quantum protection while the client solution enables quantum-safe tunneling for any protocol from user devices to your environments. With Cloudflare, you can protect your data today from being harvested while also preparing for the quantum future — all while reducing the complexity of cryptographic implementations.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "This article is part of a ",
+													"marks": [
+														{
+															"type": "italic"
+														},
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/the-net/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "series",
+															"marks": [
+																{
+																	"type": "italic"
+																},
+																{
+																	"type": "bold"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " on the latest trends and topics impacting today's technology decision-makers.",
+													"marks": [
+														{
+															"type": "italic"
+														},
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-2",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Dive deeper into this topic.",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Learn more about how to prepare for quantum computing threats in the ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/lp/signals-report-2025/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "2025 Cloudflare Signals Report: Resilience at Scale",
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-entry-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "NR5TIMG8h7KaYLVgxPVg7",
+														"type": "Link",
+														"linkType": "Entry"
+													},
+													"related_asset": [],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [
+														{
+															"buttonAssetFile": null,
+															"buttonTextLoggedIn": null,
+															"contentTypeId": "button",
+															"contentfulId": "NR5TIMG8h7KaYLVgxPVg7",
+															"elementName": "theNET - Game plan for the post-quantum era - Dive Deeper",
+															"standardText": null,
+															"text": "Get the report!",
+															"url": "https://www.cloudflare.com/lp/signals-report-2025/",
+															"loggedInUrl": null,
+															"buttonModal": null,
+															"openInNewTab": false,
+															"locale": "en-US"
+														}
+													],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										}
 									]
 								}
