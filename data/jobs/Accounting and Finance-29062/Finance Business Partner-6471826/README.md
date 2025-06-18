@@ -5,64 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations: Austin, TX OR Mexico City, Mexico</h4>
-<h4>About the department</h4>
-<p>The GTM Finance team works closely with our Chief Revenue Officer, Chief Marketing Officer, Regional Sales leaders and Sales Operations team to build Cloudflare’s go-to-market strategy and operations. We have a deep understanding of all aspects of Cloudflare’s go-to-market and play an important role in aligning goals, setting targets as well as bringing visibility and predictability to our top line financials. Members of the GTM Finance team possess excellent analytical, critical reasoning, interpersonal, communication, influencing and leadership skills and are passionate about both problem solving as well as building high quality repeatable processes that scale with our rapid growth. Our role extends beyond analyzing and reporting; we take pride in helping to design and implement solutions to the different challenges that can arise in our high growth environment.</p>
-<p>This role will work closely with the Global Services team, which consists of Customer Success, Professional Services, and Technical Account Managers (TAM). A successful candidate would enable Global Services leadership to attain goals such as improved customer retention and time to value, by surfacing actionable insights and serving as a thought partner to grow and optimize the business.</p>
-<h4>What you'll do</h4>
+<p><strong>Available Locations</strong>: Mexico City, Mexico, Austin TX</p>
+<p><strong>To apply for this position, submit your CV in English on our careers page.</strong></p>
+<p><strong>About the department</strong></p>
+<p>The GTM Finance team is responsible for forecasting, budgeting, planning, and performing various analyses to support our company strategy and execution.&nbsp; We are looking for an individual with strong analytical horsepower to join the team to provide actionable insights and decision-making support across Cloudflare’s GTM leadership team. The ideal candidate is passionate about problem solving and optimizing processes that scale with our rapid growth.&nbsp;</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Work closely with our Global Head of GTM Finance and VP of Global Services to build, track and optimize the Customer Success and Professional Services headcount and expense plan</li>
-	<li>Gain deep understanding of Cloudflare’s customers and prospects by country, segment and product to proactively identify areas of opportunity and risk.</li>
-	<li>Collaborate with Sales Operations to define and standardize financial reporting, success metrics and KPIs to support decision making. Own global churn forecast and collaborate with corporate finance to determine impact on GAAP revenue and Dollar Net Retention (DNR)&nbsp;</li>
-	<li>Report and explain variance of revenue and expenses in monthly financial reviews and Board materials</li>
-	<li>&nbsp;Support growth in Professional Services by owning the revenue forecast, conducting variance analysis, and calculating program margin</li>
-	<li>Focus on improving standardization, automation, and scalability initiatives to drive accuracy and efficiency within our Global Services go-to-market programs</li>
-	<li>Support strong financial management and oversight of major contracts, working with accounting, procurement and others as needed&nbsp;</li>
+	<li>Drive and optimize monthly close process across multiple GTM departments</li>
+	<li>Collaborate with Accounting and key business stakeholders to ensure forecast accuracy for a broad range of expense types</li>
+	<li>Build, maintain, and improve various forecast models and processes to maximize efficiency and streamline workflows</li>
+	<li>Support strategic data-driven decision making through analytics and strong business acumen</li>
+	<li>Support annual planning and quarterly business reviews</li>
+	<li>Provide ad-hoc analytical support to FP&amp;A, Revenue Operations, and Executive Leadership</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>8+ years of progressive experience in sales finance, strategic finance or investment banking. High growth, public company SaaS experience preferred</li>
-	<li>Finance constitution with strong operational focus to drive process and execution in a scalable and repeatable way</li>
-	<li>Experience working with post-sales teams such as Customer Success and/or Professional Services is a plus</li>
-	<li>Intellectually curious with problem-solving orientation. Strong analytical capabilities and business acumen with ability to apply rigorous logic and sound methods to solve multi-faceted problems</li>
-	<li>Strong verbal and written communication skills with proficiency in simplifying and distilling complex business information into consumable and actionable takeaways&nbsp;</li>
-	<li>Willingness to play “up and down the stack” diving into the details as well as managing Executive level communications</li>
-	<li>Ability to deal effectively with ambiguity and thrive in an unstructured, fast-paced environment</li>
-	<li>Advanced Excel and Google Slide (or Powerpoint) skills required</li>
-	<li>Expert financial modeling and analytical skills</li>
-	<li>Proficiency with financial and GTM systems. Anaplan, RevPro, Netsuite, Tableau and Salesforce experience is a plus</li>
-	<li>MBA or Masters preferred</li>
+	<li>Minimum 5 years of Accounting, Business Operations, Strategic Finance, FP&amp;A, Investment Banking or Consulting experience</li>
+	<li>Bachelor’s degree, MBA a plus</li>
+	<li>Advanced / working proficiency with English mandatory, both written and verbal</li>
+	<li>Strategic thinker, balancing near term deliverables with long-term considerations&nbsp;</li>
+	<li>Experience using data and metrics to drive process improvements and decision making</li>
+	<li>Modeling: Advanced proficiency with MS Excel and Google Sheets, SQL a plus; ability to build thoughtful, complex and auditable business model and present the outcome in an easy-to-understand format&nbsp;</li>
+	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable insights to drive results</li>
+	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
+	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
+	<li>System skills: Google Workspace, Anaplan, NetSuite, Workday, Greenhouse, Salesforce, Tableau</li>
 </ul>
-<p></p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p></p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
