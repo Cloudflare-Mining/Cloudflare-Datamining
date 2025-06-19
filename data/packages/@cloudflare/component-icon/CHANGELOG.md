@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.3.1
+
+### Patch Changes
+
+- 240793fed9: Standardized pin icon size & a11y attributes
+
 ## 13.3.0
 
 ### Minor Changes
