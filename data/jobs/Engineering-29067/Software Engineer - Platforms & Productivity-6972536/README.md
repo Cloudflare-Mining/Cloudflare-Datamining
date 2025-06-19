@@ -7,29 +7,29 @@
 </div>
 <p><span style="font-size: 10pt;"><strong>Available Locations: <span class="il">Bengaluru</span></strong></span></p>
 <p><span style="font-size: 10pt;"><strong>About the Department</strong></span></p>
-<p><span style="font-size: 10pt;">Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external. &nbsp;</span></p>
+<p>Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.</p>
 <p><span style="font-size: 10pt;"><strong>About the team and the role</strong></span></p>
-<p><span style="font-size: 10pt;">The Engineering Platform and Productivity team has a charter to build a self-service, resilient, and scalable platform using a combination of Open Source projects, intellectual property, and internal infrastructure. The charter includes to build tools and services that help easily integrate a base set of capabilities into Cloudflare’s products. These services have cross cutting concerns that 100s of fellow engineers use as the building blocks at Cloudflare. The team also writes services that are redundant for each product development team to build and that serve high volumes of requests every day.</span></p>
-<p><span style="font-size: 10pt;">As an engineer in the Engineering Productivity and Platforms organization, you'll be building and managing tools to help engineers deploy and operate the services that make Cloudflare work. Our mission is to provide a reliable, yet flexible, platform to help product teams release new software efficiently and safely. The role includes both software engineering and DevOps operational responsibilities. The ideal candidate will care deeply about providing other engineers with an excellent development experience.&nbsp; </span></p>
+<p>The Engineering Platform and Productivity team has a charter to build a self-service, resilient, and scalable platform using a combination of Open Source projects, intellectual property, and internal infrastructure. The charter includes to build tools and services that help easily integrate a base set of capabilities into Cloudflare’s products. These services have cross cutting concerns that 100s of fellow engineers use as the building blocks at Cloudflare. The team also writes services that are redundant for each product development team to build and that serve high volumes of requests every day.</p>
+<p>As an engineer in the Engineering Productivity and Platforms organization, you'll be building and managing tools to help engineers deploy and operate the services that make Cloudflare work. Our mission is to provide a reliable, yet flexible, platform to help product teams release new software efficiently and safely. The role includes both software engineering and DevOps operational responsibilities. The ideal candidate will care deeply about providing other engineers with an excellent development experience.&nbsp;</p>
 <p><span style="font-size: 10pt;"><strong>What You’ll Do</strong></span></p>
 <ul>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Design and build developer productivity tooling including MCP servers and agents</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Harden the platform against security threats and resource contention issues</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Improve our GitOps systems and practices</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Improve the efficiency of managing resources such as CPU, bandwidth and storage</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Work with app teams to understand their potential challenges and help them choose the best way to architect their systems</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Drive initiatives that make our engineers happier and more productive</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Help respond and prevent incidents impacting core platforms</span></li>
+	<li>Design and build developer productivity tooling including MCP servers and agents.</li>
+	<li>Drive initiatives that make our engineers happier and more productive.</li>
+	<li>Help respond and prevent incidents impacting core platforms.</li>
+	<li>Harden the platform against security threats and resource contention issues.</li>
+	<li>Improve our GitOps systems and practices.</li>
+	<li>Work with app teams to understand their potential challenges and help them choose the best way to architect their systems.</li>
 </ul>
-<p><span style="font-size: 10pt;"><strong>Examples of desirable skills, knowledge and experience.</strong></span></p>
+<p><span style="font-size: 10pt;"><strong>Desirable skills, knowledge and experience.</strong></span></p>
 <ul>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Ability to work with codebases in Bash, TypeScript and Go</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Excellent debugging skillsSource control experience including branching, merging and rebasing</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">The ability to break down complex problems into smaller pieces, provide options, talk through trade-offs and drive the effort to solve the problem</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Ability to work with codebases in Bash, TypeScript and Go.</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Excellent debugging skills.</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Source control experience including branching, merging and rebasing.</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">The ability to break down complex problems into smaller pieces, provide options, talk through trade-offs and drive the effort to solve the problem.</span></li>
 </ul>
 <h3><span style="font-size: 10pt;"><strong>Bonus Points</strong></span></h3>
 <ul>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Providing guidance and building platforms across multiple zones and regions as foundation for other teams to build distributed highly-available applications&nbsp;</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Providing guidance and building platforms across multiple zones and regions as foundation for other teams to build distributed highly-available applications.</span></li>
 	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Worked in a platform engineering team/ engineering productivity team in the past.</span></li>
 </ul>
 <div class="content-conclusion">
