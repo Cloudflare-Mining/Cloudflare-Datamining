@@ -1,0 +1,97 @@
+{
+	"alias": "react-router-hono-fullstack-template",
+	"assets": [
+		{
+			"type": "file",
+			"name": "wrangler.jsonc",
+			"content": {
+				"$ref": "assets://wrangler.jsonc"
+			},
+			"format": "jsonc",
+			"json_path_replacements": [
+				{
+					"path": [
+						"name"
+					],
+					"value": {
+						"$ref": "values://target/worker/name"
+					}
+				}
+			]
+		},
+		{
+			"type": "file",
+			"name": "package.json",
+			"content": {
+				"$ref": "assets://package.json"
+			},
+			"format": "json",
+			"json_path_replacements": [
+				{
+					"path": [
+						"name"
+					],
+					"value": {
+						"$ref": "values://target/worker/name"
+					}
+				}
+			]
+		},
+		{
+			"type": "file",
+			"name": "README.md",
+			"content": {
+				"$ref": "assets://README.md"
+			},
+			"format": "text"
+		}
+	],
+	"category": "templates",
+	"description": "A modern full-stack template powered by Cloudflare Workers, using Hono for backend APIs, React Router for frontend routing, and shadcn/ui for beautiful, accessible components styled with Tailwind CSS",
+	"docs_url": "https://developers.cloudflare.com/workers",
+	"flags": [
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "React Router + Hono Fullstack App",
+	"permissions": null,
+	"setup_steps": [],
+	"templates": [
+		{
+			"context": "create-git-connected-worker",
+			"label": "React Router + Hono Fullstack App",
+			"products": [
+				"Workers"
+			],
+			"categories": [
+				"starter"
+			],
+			"icon_urls": [],
+			"preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/cd71c67a-253f-477d-022c-2f90cb4b3d00/public",
+			"deploy_resources": [
+				{
+					"name": "template-worker",
+					"type": "git-connected-worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"type": "seed_repo",
+						"seed_repo": {
+							"provider": "github",
+							"owner": "cloudflare",
+							"repository": "templates",
+							"branch": "v4.0.0",
+							"path": "react-router-hono-fullstack-template"
+						}
+					}
+				}
+			],
+			"preview_files": []
+		}
+	],
+	"uninstall_action": null,
+	"version": "7.0.0"
+}

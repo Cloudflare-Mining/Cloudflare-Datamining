@@ -1,0 +1,199 @@
+{
+	"alias": "d1-template",
+	"assets": [
+		{
+			"type": "file",
+			"name": "wrangler.json",
+			"content": {
+				"$ref": "assets://wrangler.json"
+			},
+			"format": "json",
+			"json_path_replacements": [
+				{
+					"path": [
+						"d1_databases",
+						0,
+						"database_id"
+					],
+					"value": {
+						"$ref": "values://resources/DBD1Database/result/id"
+					}
+				},
+				{
+					"path": [
+						"d1_databases",
+						0,
+						"database_name"
+					],
+					"value": {
+						"$ref": "values://resources/DBD1Database/result/name"
+					}
+				},
+				{
+					"path": [
+						"name"
+					],
+					"value": {
+						"$ref": "values://target/worker/name"
+					}
+				}
+			]
+		},
+		{
+			"type": "file",
+			"name": "package.json",
+			"content": {
+				"$ref": "assets://package.json"
+			},
+			"format": "json",
+			"json_path_replacements": [
+				{
+					"path": [
+						"name"
+					],
+					"value": {
+						"$ref": "values://target/worker/name"
+					}
+				}
+			]
+		},
+		{
+			"type": "file",
+			"name": "README.md",
+			"content": {
+				"$ref": "assets://README.md"
+			},
+			"format": "text"
+		}
+	],
+	"category": "templates",
+	"description": "Cloudflare's native serverless SQL database.",
+	"docs_url": "https://developers.cloudflare.com/d1/",
+	"flags": [
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "Worker + D1 Database",
+	"permissions": null,
+	"setup_steps": [
+		{
+			"title": "Create D1 Database",
+			"type": "form",
+			"components": [
+				{
+					"type": "text_input",
+					"name": "DBD1DatabaseName",
+					"label": "Name your D1 Database",
+					"required": true,
+					"default_value": "d1-template-database"
+				},
+				{
+					"type": "select_input",
+					"name": "DBD1DatabaseLocationHint",
+					"label": "Database location hint",
+					"required": true,
+					"default_value": "automatic",
+					"options": {
+						"type": "static",
+						"static": [
+							{
+								"label": "Automatic: D1 auto-assigns your database to the nearest available region.",
+								"value": "automatic"
+							},
+							{
+								"label": "Western North America (WNAM)",
+								"value": "WNAM"
+							},
+							{
+								"label": "Eastern North America (ENAM)",
+								"value": "ENAM"
+							},
+							{
+								"label": "Western Europe (WEUR)",
+								"value": "WEUR"
+							},
+							{
+								"label": "Eastern Europe (EEUR)",
+								"value": "EEUR"
+							},
+							{
+								"label": "Asia-Pacific (APAC)",
+								"value": "APAC"
+							},
+							{
+								"label": "Oceania (OC)",
+								"value": "OC"
+							}
+						]
+					}
+				},
+				{
+					"type": "checkbox_input",
+					"name": "DBD1DatabaseReadReplicationEnabled",
+					"label": "Read replication enabled",
+					"required": false,
+					"default_value": false
+				}
+			],
+			"resources": [
+				{
+					"name": "DBD1Database",
+					"type": "d1",
+					"params": {
+						"name": {
+							"$ref": "values://data/DBD1DatabaseName"
+						},
+						"locationHint": {
+							"$ref": "values://data/DBD1DatabaseLocationHint"
+						},
+						"readReplicationEnabled": {
+							"$ref": "values://data/DBD1DatabaseReadReplicationEnabled"
+						}
+					}
+				}
+			]
+		}
+	],
+	"templates": [
+		{
+			"context": "create-git-connected-worker",
+			"label": "Worker + D1 Database",
+			"products": [
+				"Workers",
+				"D1"
+			],
+			"categories": [
+				"storage"
+			],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/c6fc5da3-1e0a-4608-b2f1-9628577ec800/public",
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/5ca0ca32-e897-4699-d4c1-6b680512f000/public"
+			],
+			"preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/cb7cb0a9-6102-4822-633c-b76b7bb25900/public",
+			"deploy_resources": [
+				{
+					"name": "template-worker",
+					"type": "git-connected-worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"type": "seed_repo",
+						"seed_repo": {
+							"provider": "github",
+							"owner": "cloudflare",
+							"repository": "templates",
+							"branch": "v4.0.0",
+							"path": "d1-template"
+						}
+					}
+				}
+			],
+			"preview_files": []
+		}
+	],
+	"uninstall_action": null,
+	"version": "77.0.0"
+}
