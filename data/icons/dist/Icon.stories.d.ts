@@ -97,3 +97,4 @@ export declare const Table: () => JSX.Element;
 export declare const ThumbsUp: () => JSX.Element;
 export declare const ThumbsDown: () => JSX.Element;
 export declare const CaretReorder2: () => JSX.Element;
+export declare const Pin: () => JSX.Element;

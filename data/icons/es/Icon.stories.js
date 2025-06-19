@@ -58,3 +58,10 @@ export var CaretReorder2 = () => /*#__PURE__*/React.createElement(Icon, {
   type: "caret-reorder2",
   size: 36
 });
+export var Pin = () => /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Icon, {
+  type: "pin-solid",
+  size: 36
+}), /*#__PURE__*/React.createElement(Icon, {
+  type: "pin-outline",
+  size: 36
+}));
