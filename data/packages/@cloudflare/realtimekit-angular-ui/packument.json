@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit-angular-ui",
 	"dist-tags": {
-		"staging": "1.0.2-staging.1",
-		"latest": "1.0.1"
+		"latest": "1.0.1",
+		"staging": "1.0.2-staging.2"
 	},
 	"versions": {
 		"0.0.0": {
@@ -455,19 +455,44 @@
 				"@cloudflare/realtimekit-ui": "1.0.2-staging.1"
 			},
 			"peerDependencies": {
+				"@angular/core": ">=12",
+				"@angular/common": ">=12"
+			},
+			"dist": {
+				"shasum": "53d59246d800e4b8a53aa5097d210f7e41a5484f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.2-staging.1.tgz",
+				"fileCount": 10,
+				"integrity": "sha512-MZvLo1FJ9fXDbebV6bB2pXgQT0wLbMnTs1LnBgB11nq8ZTV3IdKttP8A4mSDaNCd+DTTl2DpGM2sbJuDL/+cVQ==",
+				"signatures": [
+					{
+						"sig": "MEQCICe4kmX1P0QRdxzhKoymlJT9zzWLdRVJnSvOOUK82j1XAiBKaGLODWnJAuOvip5B0uSaQLLnX/v+h8Xr3qx4YeGyNg==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 678112
+			}
+		},
+		"1.0.2-staging.2": {
+			"name": "@cloudflare/realtimekit-angular-ui",
+			"version": "1.0.2-staging.2",
+			"dependencies": {
+				"tslib": "^2.3.0",
+				"@cloudflare/realtimekit-ui": "1.0.2-staging.2"
+			},
+			"peerDependencies": {
 				"@angular/common": ">=12",
 				"@angular/core": ">=12"
 			},
 			"dist": {
-				"integrity": "sha512-MZvLo1FJ9fXDbebV6bB2pXgQT0wLbMnTs1LnBgB11nq8ZTV3IdKttP8A4mSDaNCd+DTTl2DpGM2sbJuDL/+cVQ==",
-				"shasum": "53d59246d800e4b8a53aa5097d210f7e41a5484f",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.2-staging.1.tgz",
-				"fileCount": 10,
-				"unpackedSize": 678112,
+				"integrity": "sha512-KhSJZ97Qw278TeT3QwfCVqA7QDXxQNBTs0q85MAzunS+SzHZc0vQyefna9Tz+m4tyUvSBPSZfimXYwZd5F6jfg==",
+				"shasum": "09f7b1cf3c37fe09dd230a59dd51b24cb6aec466",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.2-staging.2.tgz",
+				"fileCount": 18,
+				"unpackedSize": 1731574,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCICe4kmX1P0QRdxzhKoymlJT9zzWLdRVJnSvOOUK82j1XAiBKaGLODWnJAuOvip5B0uSaQLLnX/v+h8Xr3qx4YeGyNg=="
+						"sig": "MEQCIF4uLCjb7jkDIro3VBV6C7DWZi1g+b6A/PXOlnAWi9tYAiB5RPzaVT7uB9wjOj3xSRXt0bfJy1iUSg2g/nK+06m9mw=="
 					}
 				]
 			}
