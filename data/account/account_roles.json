@@ -1,5 +1,60 @@
 [
 	{
+		"id": "e58cefd75d7adae0b761796c28815e5c",
+		"name": "Workers Platform (Read-only)",
+		"description": "Can read all resources in the Workers Platform.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"worker": {
+				"read": true,
+				"edit": false
+			},
+			"vectorize": {
+				"read": true,
+				"edit": false
+			},
+			"query_cache": {
+				"read": true,
+				"edit": false
+			},
+			"r2_bucket_item": {
+				"read": true,
+				"edit": false
+			},
+			"integration": {
+				"read": true,
+				"edit": false
+			},
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
+			"r2_bucket": {
+				"read": true,
+				"edit": false
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"legal": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "a4154d230e664f8b3e6e5c95a8cc812f",
 		"name": "Cloudchamber Admin Read Only",
 		"description": "Can manage Cloudchamber deployments in read only mode",
