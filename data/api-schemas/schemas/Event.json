@@ -1,4 +1,107 @@
 {
+	"DELETE /accounts/{account_id}/cloudforce-one/events/{dataset_id}/delete": {
+		"operationId": "delete_EventDeleteDO",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Dataset UUID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"description": "Dataset UUID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of Event IDs to delete.",
+				"in": "query",
+				"name": "eventIds",
+				"required": true,
+				"schema": {
+					"description": "Array of Event IDs to delete.",
+					"items": {
+						"minLength": 1,
+						"type": "string"
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Number of deleted events",
+							"type": "number"
+						}
+					}
+				},
+				"description": "Returns the number of deleted events."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Deletes one or more events",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/{event_id}": {
 		"description": "The `datasetId` parameter must be defined. To list existing datasets (and their IDs) in your account, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
 		"operationId": "delete_EventDelete",
@@ -2330,6 +2433,121 @@
 			"Cloudforce One Read"
 		]
 	},
+	"POST /accounts/{account_id}/cloudforce-one/events/{dataset_id}/move": {
+		"operationId": "post_EventMoveToNewDS",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Dataset UUID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"description": "Dataset UUID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"destID": {
+								"example": "12345678-1234-1234-1234-1234567890ab",
+								"type": "string"
+							},
+							"eventIds": {
+								"items": {
+									"example": "7632a037-fdef-4899-9b12-148470aae772",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"destID"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"example": 150,
+							"type": "number"
+						}
+					}
+				},
+				"description": "Returns the number of moved events "
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Moves specified events from one dataset to another dataset",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}": {
 		"operationId": "post_EventUpdate",
 		"parameters": [
@@ -3482,162 +3700,12 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"items": {
-								"properties": {
-									"accountId": {
-										"example": 1234,
-										"type": "number"
-									},
-									"attacker": {
-										"example": "Flying Yeti",
-										"type": "string"
-									},
-									"attackerCountry": {
-										"example": "CN",
-										"type": "string"
-									},
-									"category": {
-										"example": "Domain Resolution",
-										"type": "string"
-									},
-									"categoryId": {
-										"example": 1,
-										"type": "number"
-									},
-									"date": {
-										"example": "2022-04-01T00:00:00Z",
-										"type": "string"
-									},
-									"event": {
-										"example": "An attacker registered the domain domain.com",
-										"type": "string"
-									},
-									"id": {
-										"example": 1223,
-										"type": "number"
-									},
-									"indicator": {
-										"example": "domain",
-										"type": "string"
-									},
-									"indicatorType": {
-										"example": "domain",
-										"type": "string"
-									},
-									"indicatorTypeId": {
-										"example": 5,
-										"type": "number"
-									},
-									"insight": {
-										"type": "string"
-									},
-									"killChain": {
-										"type": "number"
-									},
-									"mitreAttack": {
-										"items": {
-											"example": " ",
-											"type": "string"
-										},
-										"type": "array"
-									},
-									"numReferenced": {
-										"type": "number"
-									},
-									"numReferences": {
-										"type": "number"
-									},
-									"rawId": {
-										"example": "453gw34w3",
-										"type": "string"
-									},
-									"referenced": {
-										"items": {
-											"example": " ",
-											"type": "string"
-										},
-										"type": "array"
-									},
-									"referencedIds": {
-										"items": {
-											"type": "number"
-										},
-										"type": "array"
-									},
-									"references": {
-										"items": {
-											"example": " ",
-											"type": "string"
-										},
-										"type": "array"
-									},
-									"referencesIds": {
-										"items": {
-											"type": "number"
-										},
-										"type": "array"
-									},
-									"releasabilityId": {
-										"type": "string"
-									},
-									"tags": {
-										"items": {
-											"example": "malware",
-											"type": "string"
-										},
-										"type": "array"
-									},
-									"targetCountry": {
-										"example": "US",
-										"type": "string"
-									},
-									"targetIndustry": {
-										"example": "Agriculture",
-										"type": "string"
-									},
-									"tlp": {
-										"example": "amber",
-										"type": "string"
-									},
-									"uuid": {
-										"example": "12345678-1234-1234-1234-1234567890ab",
-										"type": "string"
-									}
-								},
-								"required": [
-									"id",
-									"uuid",
-									"accountId",
-									"date",
-									"categoryId",
-									"targetCountry",
-									"attacker",
-									"attackerCountry",
-									"targetIndustry",
-									"rawId",
-									"indicatorTypeId",
-									"indicator",
-									"event",
-									"numReferenced",
-									"numReferences",
-									"tlp",
-									"category",
-									"indicatorType",
-									"referenced",
-									"references",
-									"tags",
-									"killChain",
-									"mitreAttack",
-									"referencedIds",
-									"referencesIds"
-								],
-								"type": "object"
-							},
-							"type": "array"
+							"description": "Number of created bulk events",
+							"type": "number"
 						}
 					}
 				},
-				"description": "Returns the created bulk events."
+				"description": "Returns the number of created bulk events."
 			},
 			"400": {
 				"content": {
