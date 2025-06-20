@@ -5,40 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>Location: Austin, TX or San Francisco Bay Area</p>
-<h4>About the department:</h4>
-<p>Cloudflare Enterprise Information Technology department architects, implements, and supports technology for our internal infrastructure, enterprise applications, and end user community.</p>
-<p>The IT Infrastructure Team manages and supports our global end user computing fleet along with the services and infrastructure that empowers our business to operate at a global scale.&nbsp; Onboarding, maintenance lifecycle, platform integrations, security, secure disposal, as well as physical and cloud asset management are parts of the puzzle we're working on.&nbsp; Automating and implementing the most efficient processes to manage all of this in a scalable, high growth environment is our northstar.</p>
-<p><strong>About this Role:</strong></p>
-<p>We are seeking a highly experienced and technical leader to join our IT team as a Director, Enterprise Operations and Infrastructure. In this role, you will be responsible for leading teams of IT Ops Engineers and Enterprise Systems Developers to design, build, integrate, and optimize new and existing IT tools and processes around cloud infrastructure, end user computing device configuration, physical and virtual asset deployment, as well as employee onboarding and collaboration.</p>
-<p>Responsibilities:</p>
+<p><strong>Available Locations: Lisbon</strong></p>
+<p><strong>About the role</strong></p>
+<p>As an Engineering Manager for our Intel analysis team, you will lead a highly skilled group of analysts focused on combating sophisticated email threats targeting Cloudflare's customers and maintaining/reviewing our threat intelligence data. Your team is at the forefront of identifying novel attack techniques, working with engineering to developing advanced AI and machine learning models for scalable defenses, and ensuring the precision and efficacy of our threat intelligence data. This role offers the opportunity to shape the future of email security within Cloudflare, working closely with threat researchers, data scientists, and product teams to deliver impactful solutions.</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Craft a clear and compelling long-term vision for IT Infrastructure and Operations, establishing OKRs and capabilities roadmaps that enable the organization's overall strategic goals and incorporate modern technology trends and innovations..</li>
-	<li>Establish a culture of operational excellence and automation by designing and maintaining a portfolio of cloud and self-hosted applications/infrastructure, leveraging practices such as CI/CD and Infrastructure-as-Code.</li>
-	<li>Ensure consistent delivery of core infrastructure and network services using modern observability engineering technology to establish SLOs with automated monitoring and effective incident response using a tiered service framework.</li>
-	<li>Develop and maintain comprehensive runbooks and documentation to ensure efficient IT operations, streamline troubleshooting, and support consistent, high-quality service delivery.</li>
-	<li>Lead a team of engineers committed to optimizing the onboarding and lifecycle management of Enterprise physical and virtual assets.</li>
-	<li>Lead a team of engineers to design and implement a resilient multi-cloud architecture, enhancing performance and scale by leveraging Cloudflare's flagship products.</li>
-	<li>Design integrations using in-house and SaaS applications to automate workflows for endpoint provisioning and management, reducing user friction and enhancing efficiency.</li>
-	<li>Partner with Security and Compliance teams to ensure a secure and compliant endpoint fleet, leveraging precise integrations with identity and management solutions using Cloudflare's products.</li>
-	<li>Work with Enterprise Apps and People teams in partnership with IT Customer Zero to&nbsp; develop automations around user onboarding, offboarding and curated user experiences including leveraging cloudflare products in achieving positive outcomes.</li>
-	<li>Work cross functionality closely with Devtools, Engineering and Platform teams where infrastructure capabilities can support and enhance our Go-To-Market velocity.</li>
-	<li>Leverage your experience in partnering with key stakeholders to scope and deliver cross-functional objectives</li>
-	<li>Serve as the highest technical escalation point for our Ops Engineers</li>
-	<li>Participate in on-call rotation for after-hours support as necessary</li>
+	<li><strong>Team Leadership &amp; Development:</strong> Lead, mentor, and grow a team of talented email detection analysts. Foster a culture of technical excellence, collaboration, continuous learning, and innovation within the team. Conduct regular 1:1s, provide constructive feedback, and support career development.</li>
+	<li><strong>Strategic Planning &amp; Roadmap:</strong> Define and drive the team's roadmap, prioritizing improving detection efficacy. Align team goals with broader organizational objectives and contribute to the overall Intel team strategy.</li>
+	<li><strong>Technical Guidance &amp; Oversight:</strong> Provide technical leadership and guidance on complex email threat analysis, detection methodologies, and data quality initiatives.&nbsp;</li>
+	<li><strong>Cross-functional Collaboration:</strong> Partner closely with data science, product, and engineering teams to translate threat intelligence into actionable product features and scalable defense mechanisms. Collaborate with external stakeholders and security communities to stay ahead of emerging threats.</li>
+	<li><strong>Operational Excellence:</strong> Guide the team in defining and implementing robust processes and automations for 24x7 coverage of miscategorizations and streamlining daily operational tasks. Ensure the team proactively monitors data quality and identifies areas for improvement.</li>
+	<li><strong>Communication &amp; Reporting:</strong> Effectively communicate team progress, challenges, and strategic direction to senior leadership, stakeholders, and the wider organization. Represent the team's work internally and externally, including through blog posts and presentations.</li>
+	<li><strong>Hiring &amp; Growth:</strong> Actively participate in the hiring process to expand the team, identifying and attracting top talent who can contribute to Cloudflare's mission and culture.</li>
 </ul>
-<p>Requirements:</p>
+<p><strong>Desirable Skills &amp; Experience</strong></p>
 <ul>
-	<li>7-10+ years of experience with design, development, and management of Enterprise Cloud and Endpoint Infrastructure at scale including implementing observability, SDLC, and security best practices.&nbsp;&nbsp;</li>
-	<li>3-5+ years of strategic technical leadership experience with design, development, and management of Enterprise processes, including automation of endpoint and user lifecycle.</li>
-	<li>Strong knowledge and experience with configuration management tools and Infrastructure as Code methods, such as Terraform, Ansible, Chef, etc.</li>
-	<li>Strong knowledge and experience with build-deploy pipeline development and multiple environment deployment practices</li>
-	<li>Experience and expertise in Agile methodology, Agile or Scrum certifications preferred</li>
-	<li>Moderate to advanced programming experience (Python, Golang, Bash, etc.)</li>
-	<li>Ability to extend functionality of existing off-the-shelf endpoint management products, such as JAMF/Intune/Google</li>
-	<li>Excellent interpersonal and communication skills in written and spoken English</li>
-	<li>Prior management experience, preferably with enterprise engineering teams</li>
+	<li>2+ years of experience in an Management role</li>
+	<li>3+ years of experience in cybersecurity, with a strong focus on email security, threat intelligence, or detection engineering.</li>
+	<li>Deep understanding of the email threat landscape, common attack vectors, and the latest security trends related to email-borne threats (e.g., phishing, malware, BEC).</li>
+	<li>Solid technical background, with a strong understanding of email authentication protocols (SPF, DMARC, DKIM), email header analysis, and experience with detection development (e.g., YARA rules, regular expressions).</li>
+	<li>Proven ability to mentor, coach, and develop staff.</li>
+	<li>Exceptional communication, interpersonal, and stakeholder management skills.</li>
+	<li>A strong passion for cybersecurity and a deep commitment to building a more secure Internet.</li>
 </ul>
+<p><strong>Bonus</strong></p>
+<ul>
+	<li>Working knowledge of SQL and version control systems (e.g., Git).</li>
+	<li>Familiarity with AI/Machine Learning concepts and their application in security detection.</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
