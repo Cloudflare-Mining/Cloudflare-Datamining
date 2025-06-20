@@ -711,6 +711,13 @@
 	"dx-chunkload-repro": {
 		"enabled": true
 	},
+	"dx-consent-to-crawl-toggle": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
 	"dx-discover-page": {
 		"enabled": true,
 		"branches": [
