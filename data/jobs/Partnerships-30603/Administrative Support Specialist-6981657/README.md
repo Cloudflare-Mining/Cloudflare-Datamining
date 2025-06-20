@@ -7,7 +7,7 @@
 </div>
 <p><strong>Available Locations: Lisbon, Portugal or London, UK</strong></p>
 <p><strong>About the role</strong></p>
-<p>Cloudflare is looking for a bright, proactive and detail-oriented Senior Administrative Support Specialist to support the partner and sales organization.&nbsp;</p>
+<p>Cloudflare is looking for a bright, proactive and detail-oriented Administrative Support Specialist to support the partner and sales organization.&nbsp;</p>
 <p>&nbsp;</p>
 <p>This role is to support two senior leaders, requiring meticulous attention to detail, expert travel &amp; logistics planning skills, and the ability to anticipate needs with minimal direction. It also requires the ability to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information is important, as is a positive attitude. The ideal candidate is a seasoned EA who understands the value in cultivating relationships and prides themselves on being a career EA. The role involves complex itinerary management, visa processing, and the ability to quickly adapt to changing circumstances. Confidentiality and a proactive approach are paramount.</p>
 <p>&nbsp;</p>
