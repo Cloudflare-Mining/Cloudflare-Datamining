@@ -1,7 +1,7 @@
 {
 	"name": "solarflare-theme",
 	"dist-tags": {
-		"latest": "0.0.4"
+		"latest": "0.0.5"
 	},
 	"versions": {
 		"0.0.1": {
@@ -69,15 +69,35 @@
 			"name": "solarflare-theme",
 			"version": "0.0.4",
 			"dist": {
-				"integrity": "sha512-vtGHSoC8HgMKx5J07gu+EFRkmAfDlp1RbJYLLQ6sf9anXgb84/EwV0fVqwgz/AsuixhDdz76UuLU0mIy+CfOyg==",
 				"shasum": "21148b6a94e6a2cbf334898c79f31fbd44175f43",
 				"tarball": "https://registry.npmjs.org/solarflare-theme/-/solarflare-theme-0.0.4.tgz",
 				"fileCount": 8,
-				"unpackedSize": 34954,
+				"integrity": "sha512-vtGHSoC8HgMKx5J07gu+EFRkmAfDlp1RbJYLLQ6sf9anXgb84/EwV0fVqwgz/AsuixhDdz76UuLU0mIy+CfOyg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDvoFvbcxjFvncEV3x9qfJtms1Wri4SCJNEKcjmDph/zgIgZUAb1cJujJFzQYadQ3sX+DPjfzedBZhu1C/h8k+xeyc=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 34954
+			},
+			"engines": {
+				"vscode": "^1.76.0"
+			}
+		},
+		"0.0.5": {
+			"name": "solarflare-theme",
+			"version": "0.0.5",
+			"dist": {
+				"integrity": "sha512-eyFqRAiktWBXA5HgYFOnvqtcDWrgu6pOZIsnj5n6DhiuDGCaKl0nJPZcG8KHwLRxlEKaQ87EwjzXJYYRiSYd9g==",
+				"shasum": "5db6dcc40f220dfeb952b913c465d57082b74778",
+				"tarball": "https://registry.npmjs.org/solarflare-theme/-/solarflare-theme-0.0.5.tgz",
+				"fileCount": 8,
+				"unpackedSize": 35255,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDvoFvbcxjFvncEV3x9qfJtms1Wri4SCJNEKcjmDph/zgIgZUAb1cJujJFzQYadQ3sX+DPjfzedBZhu1C/h8k+xeyc="
+						"sig": "MEQCIHgEFRmaPSLFcru6fGefsxTsxkLPzxEzUvRgnVKHyKQKAiAo5e/YqAdj+fCbVpyxW1i5aSQIxRWx7hNYufDonagiYQ=="
 					}
 				]
 			},
