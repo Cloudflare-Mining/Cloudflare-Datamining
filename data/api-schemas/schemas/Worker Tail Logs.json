@@ -23,7 +23,8 @@
 					"description": "Name of the script, used in URLs and route configuration.",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -290,7 +291,8 @@
 					"description": "Name of the script, used in URLs and route configuration.",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -582,7 +584,8 @@
 					"description": "Name of the script, used in URLs and route configuration.",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],

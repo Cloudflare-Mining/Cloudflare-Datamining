@@ -21,7 +21,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -60,10 +60,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"example": [],
@@ -81,13 +81,13 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -116,7 +116,7 @@
 						}
 					}
 				},
-				"description": "Remove a Namespace response"
+				"description": "Remove a Namespace response."
 			},
 			"4XX": {
 				"content": {
@@ -141,10 +141,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": [
@@ -173,10 +173,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": []
@@ -187,7 +187,7 @@
 									"x-stainless-empty-object": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -205,7 +205,7 @@
 						}
 					}
 				},
-				"description": "Remove a Namespace response failure"
+				"description": "Remove a Namespace response failure."
 			}
 		},
 		"security": [
@@ -248,7 +248,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -299,10 +299,10 @@
 															"code",
 															"message"
 														],
-														"type": "object",
-														"uniqueItems": true
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"messages": {
 													"example": [],
@@ -320,13 +320,13 @@
 															"code",
 															"message"
 														],
-														"type": "object",
-														"uniqueItems": true
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -358,7 +358,7 @@
 										"result": {
 											"properties": {
 												"successful_key_count": {
-													"description": "Number of keys successfully updated",
+													"description": "Number of keys successfully updated.",
 													"example": 100,
 													"type": "number"
 												},
@@ -372,13 +372,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete multiple key-value pairs response"
+				"description": "Delete multiple key-value pairs response."
 			},
 			"4XX": {
 				"content": {
@@ -405,10 +406,10 @@
 															"code",
 															"message"
 														],
-														"type": "object",
-														"uniqueItems": true
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"messages": {
 													"example": [],
@@ -426,13 +427,13 @@
 															"code",
 															"message"
 														],
-														"type": "object",
-														"uniqueItems": true
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -464,7 +465,7 @@
 										"result": {
 											"properties": {
 												"successful_key_count": {
-													"description": "Number of keys successfully updated",
+													"description": "Number of keys successfully updated.",
 													"example": 100,
 													"type": "number"
 												},
@@ -478,13 +479,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete multiple key-value pairs response failure"
+				"description": "Delete multiple key-value pairs response failure."
 			}
 		},
 		"security": [
@@ -537,7 +539,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -576,10 +578,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"example": [],
@@ -597,13 +599,13 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -632,7 +634,7 @@
 						}
 					}
 				},
-				"description": "Delete key-value pair response"
+				"description": "Delete key-value pair response."
 			},
 			"4XX": {
 				"content": {
@@ -657,10 +659,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": [
@@ -689,10 +691,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": []
@@ -703,7 +705,7 @@
 									"x-stainless-empty-object": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -721,7 +723,7 @@
 						}
 					}
 				},
-				"description": "Delete key-value pair response failure"
+				"description": "Delete key-value pair response failure."
 			}
 		},
 		"security": [
@@ -750,7 +752,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -788,7 +790,8 @@
 						"id",
 						"title"
 					],
-					"example": "id"
+					"example": "id",
+					"type": "string"
 				}
 			},
 			{
@@ -800,7 +803,8 @@
 						"asc",
 						"desc"
 					],
-					"example": "asc"
+					"example": "asc",
+					"type": "string"
 				}
 			}
 		],
@@ -830,10 +834,10 @@
 															"code",
 															"message"
 														],
-														"type": "object",
-														"uniqueItems": true
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"messages": {
 													"example": [],
@@ -851,13 +855,13 @@
 															"code",
 															"message"
 														],
-														"type": "object",
-														"uniqueItems": true
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -877,22 +881,22 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
@@ -955,7 +959,7 @@
 						}
 					}
 				},
-				"description": "List Namespaces response"
+				"description": "List Namespaces response."
 			},
 			"4XX": {
 				"content": {
@@ -980,10 +984,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": [
@@ -1012,10 +1016,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": []
@@ -1026,7 +1030,7 @@
 									"x-stainless-empty-object": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -1044,7 +1048,7 @@
 						}
 					}
 				},
-				"description": "List Namespaces response failure"
+				"description": "List Namespaces response failure."
 			}
 		},
 		"security": [
@@ -1087,7 +1091,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1120,10 +1124,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"example": [],
@@ -1141,13 +1145,13 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -1209,7 +1213,7 @@
 						}
 					}
 				},
-				"description": "Get a Namespace response"
+				"description": "Get a Namespace response."
 			},
 			"4XX": {
 				"content": {
@@ -1234,10 +1238,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": [
@@ -1266,10 +1270,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": []
@@ -1280,7 +1284,7 @@
 									"x-stainless-empty-object": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -1298,7 +1302,7 @@
 						}
 					}
 				},
-				"description": "Get a Namespace response failure"
+				"description": "Get a Namespace response failure."
 			}
 		},
 		"security": [
@@ -1341,7 +1345,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1354,7 +1358,7 @@
 				"name": "limit",
 				"schema": {
 					"default": 1000,
-					"description": "The number of keys to return. The cursor attribute may be used to iterate over the next batch of keys if there are more than the limit.",
+					"description": "Limits the number of keys returned in the response. The cursor attribute may be used to iterate over the next batch of keys if there are more than the limit.",
 					"maximum": 1000,
 					"minimum": 10,
 					"type": "number"
@@ -1364,7 +1368,7 @@
 				"in": "query",
 				"name": "prefix",
 				"schema": {
-					"description": "A string prefix used to filter down which keys will be returned. Exact matches and any key names that begin with the prefix will be returned.",
+					"description": "Filters returned keys by a name prefix. Exact matches and any key names that begin with the prefix will be returned.",
 					"example": "My-Prefix",
 					"type": "string"
 				}
@@ -1403,10 +1407,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"example": [],
@@ -1424,13 +1428,13 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -1457,12 +1461,42 @@
 														"type": "number"
 													},
 													"metadata": {
-														"additionalProperties": true,
-														"description": "Arbitrary JSON that is associated with a key.",
-														"example": {
-															"someMetadataKey": "someMetadataValue"
-														},
-														"type": "object"
+														"allOf": [
+															{
+																"anyOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "integer"
+																	},
+																	{
+																		"type": "boolean"
+																	},
+																	{
+																		"additionalProperties": true,
+																		"nullable": true,
+																		"type": "object"
+																	},
+																	{
+																		"items": "[Circular ~.GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/keys.responses.200.content.application/json.schema.allOf.1.properties.result.items.properties.metadata.allOf.0]",
+																		"type": "array"
+																	}
+																],
+																"x-stainless-override-schema": {
+																	"type": "unknown"
+																}
+															},
+															{
+																"description": "Arbitrary JSON that is associated with a key.",
+																"example": {
+																	"someMetadataKey": "someMetadataValue"
+																}
+															}
+														]
 													},
 													"name": {
 														"description": "A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.",
@@ -1490,15 +1524,17 @@
 													"example": "6Ck1la0VxJ0djhidm1MdX2FyDGxLKVeeHZZmORS_8XeSuhz9SjIJRaSa2lnsF01tQOHrfTGAP3R5X1Kv5iVUuMbNKhWNAXHOl6ePB0TUL8nw",
 													"type": "string"
 												}
-											}
+											},
+											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List a Namespace's Keys response"
+				"description": "List a Namespace's Keys response."
 			},
 			"4XX": {
 				"content": {
@@ -1523,10 +1559,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": [
@@ -1555,10 +1591,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": []
@@ -1569,7 +1605,7 @@
 									"x-stainless-empty-object": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -1587,7 +1623,7 @@
 						}
 					}
 				},
-				"description": "List a Namespace's Keys response failure"
+				"description": "List a Namespace's Keys response failure."
 			}
 		},
 		"security": [
@@ -1641,7 +1677,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1674,10 +1710,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"example": [],
@@ -1695,13 +1731,13 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -1719,20 +1755,51 @@
 								{
 									"properties": {
 										"result": {
-											"additionalProperties": true,
-											"description": "Arbitrary JSON that is associated with a key.",
-											"example": {
-												"someMetadataKey": "someMetadataValue"
-											},
-											"type": "object"
+											"allOf": [
+												{
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"type": "number"
+														},
+														{
+															"type": "integer"
+														},
+														{
+															"type": "boolean"
+														},
+														{
+															"additionalProperties": true,
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"items": "[Circular ~.GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/metadata/{key_name}.responses.200.content.application/json.schema.allOf.1.properties.result.allOf.0]",
+															"type": "array"
+														}
+													],
+													"x-stainless-override-schema": {
+														"type": "unknown"
+													}
+												},
+												{
+													"description": "Arbitrary JSON that is associated with a key.",
+													"example": {
+														"someMetadataKey": "someMetadataValue"
+													}
+												}
+											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Read the metadata for a key response"
+				"description": "Read the metadata for a key response."
 			},
 			"4XX": {
 				"content": {
@@ -1757,10 +1824,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": [
@@ -1789,10 +1856,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": []
@@ -1803,7 +1870,7 @@
 									"x-stainless-empty-object": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -1821,7 +1888,7 @@
 						}
 					}
 				},
-				"description": "Read the metadata for a key response failure"
+				"description": "Read the metadata for a key response failure."
 			}
 		},
 		"security": [
@@ -1875,7 +1942,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1889,13 +1956,21 @@
 				"content": {
 					"application/octet-stream": {
 						"schema": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"format": "binary",
+									"type": "string"
+								}
+							],
 							"description": "A byte sequence to be stored, up to 25 MiB in length.",
-							"example": "Some Value",
-							"type": "string"
+							"example": "Some Value"
 						}
 					}
 				},
-				"description": "Read key-value pair response"
+				"description": "Read key-value pair response."
 			},
 			"4XX": {
 				"content": {
@@ -1920,10 +1995,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": [
@@ -1952,10 +2027,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": []
@@ -1966,7 +2041,7 @@
 									"x-stainless-empty-object": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -1984,7 +2059,7 @@
 						}
 					}
 				},
-				"description": "Read key-value pair response failure"
+				"description": "Read key-value pair response failure."
 			}
 		},
 		"security": [
@@ -2014,7 +2089,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2069,10 +2144,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"example": [],
@@ -2090,13 +2165,13 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -2158,7 +2233,7 @@
 						}
 					}
 				},
-				"description": "Create a Namespace response"
+				"description": "Create a Namespace response."
 			},
 			"4XX": {
 				"content": {
@@ -2183,10 +2258,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": [
@@ -2215,10 +2290,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": []
@@ -2229,7 +2304,7 @@
 									"x-stainless-empty-object": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -2247,7 +2322,7 @@
 						}
 					}
 				},
-				"description": "Create a Namespace response failure"
+				"description": "Create a Namespace response failure."
 			}
 		},
 		"security": [
@@ -2289,7 +2364,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2340,10 +2415,10 @@
 															"code",
 															"message"
 														],
-														"type": "object",
-														"uniqueItems": true
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"messages": {
 													"example": [],
@@ -2361,13 +2436,13 @@
 															"code",
 															"message"
 														],
-														"type": "object",
-														"uniqueItems": true
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2399,7 +2474,7 @@
 										"result": {
 											"properties": {
 												"successful_key_count": {
-													"description": "Number of keys successfully updated",
+													"description": "Number of keys successfully updated.",
 													"example": 100,
 													"type": "number"
 												},
@@ -2413,13 +2488,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete multiple key-value pairs response"
+				"description": "Delete multiple key-value pairs response."
 			},
 			"4XX": {
 				"content": {
@@ -2446,10 +2522,10 @@
 															"code",
 															"message"
 														],
-														"type": "object",
-														"uniqueItems": true
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"messages": {
 													"example": [],
@@ -2467,13 +2543,13 @@
 															"code",
 															"message"
 														],
-														"type": "object",
-														"uniqueItems": true
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2505,7 +2581,7 @@
 										"result": {
 											"properties": {
 												"successful_key_count": {
-													"description": "Number of keys successfully updated",
+													"description": "Number of keys successfully updated.",
 													"example": 100,
 													"type": "number"
 												},
@@ -2519,13 +2595,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete multiple key-value pairs response failure"
+				"description": "Delete multiple key-value pairs response failure."
 			}
 		},
 		"security": [
@@ -2546,7 +2623,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/get": {
-		"description": "Get multiple KV pairs from the namespace. Body should contain keys to retrieve at most 100. Keys must contain text-based values. If value is json, it can be requested to return in JSON, instead of string. Metadata can be return if withMetadata is true.",
+		"description": "Retrieve up to 100 KV pairs from the namespace. Keys must contain text-based values. JSON values can optionally be parsed instead of being returned as a string value. Metadata can be included if `withMetadata` is true.",
 		"operationId": "workers-kv-namespace-get-multiple-key-value-pairs",
 		"parameters": [
 			{
@@ -2567,7 +2644,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2582,26 +2659,28 @@
 					"schema": {
 						"properties": {
 							"keys": {
-								"description": "Array of keys to retrieve (maximum 100)",
+								"description": "Array of keys to retrieve (maximum of 100).",
 								"items": {
 									"description": "A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.",
 									"example": "My-Key",
 									"maxLength": 512,
 									"type": "string"
 								},
+								"maxItems": 100,
 								"type": "array"
 							},
 							"type": {
 								"default": "text",
-								"description": "Whether to parse JSON values in the response",
+								"description": "Whether to parse JSON values in the response.",
 								"enum": [
 									"text",
 									"json"
-								]
+								],
+								"type": "string"
 							},
 							"withMetadata": {
 								"default": false,
-								"description": "Whether to include metadata in the response",
+								"description": "Whether to include metadata in the response.",
 								"type": "boolean"
 							}
 						},
@@ -2640,10 +2719,10 @@
 															"code",
 															"message"
 														],
-														"type": "object",
-														"uniqueItems": true
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"messages": {
 													"example": [],
@@ -2661,13 +2740,13 @@
 															"code",
 															"message"
 														],
-														"type": "object",
-														"uniqueItems": true
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2702,7 +2781,7 @@
 													"properties": {
 														"values": {
 															"additionalProperties": {
-																"description": "The value associated with the key",
+																"description": "The value associated with the key.",
 																"oneOf": [
 																	{
 																		"type": "string"
@@ -2719,7 +2798,7 @@
 																	}
 																]
 															},
-															"description": "Requested keys are paired with their values in an object",
+															"description": "Requested keys are paired with their values in an object.",
 															"example": {
 																"key1": "value1",
 																"key2": "value2"
@@ -2736,31 +2815,77 @@
 																"nullable": true,
 																"properties": {
 																	"expiration": {
-																		"description": "The time, measured in number of seconds since the UNIX epoch, at which the key should expire.",
+																		"description": "Expires the key at a certain time, measured in number of seconds since the UNIX epoch.",
 																		"example": 1578435000,
 																		"type": "number"
 																	},
 																	"metadata": {
-																		"additionalProperties": true,
-																		"description": "The metadata associated with the key",
-																		"nullable": true,
-																		"type": "object"
+																		"allOf": [
+																			{
+																				"anyOf": [
+																					{
+																						"type": "string"
+																					},
+																					{
+																						"type": "number"
+																					},
+																					{
+																						"type": "integer"
+																					},
+																					{
+																						"type": "boolean"
+																					},
+																					{
+																						"additionalProperties": true,
+																						"nullable": true,
+																						"type": "object"
+																					},
+																					{
+																						"items": "[Circular ~.POST /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/get.responses.200.content.application/json.schema.allOf.1.properties.result.oneOf.1.properties.values.additionalProperties.properties.metadata.allOf.0]",
+																						"type": "array"
+																					}
+																				],
+																				"x-stainless-override-schema": {
+																					"type": "unknown"
+																				}
+																			},
+																			{
+																				"description": "The metadata associated with the key."
+																			}
+																		]
 																	},
 																	"value": {
-																		"description": "The value associated with the key",
-																		"oneOf": [
+																		"allOf": [
 																			{
-																				"type": "string"
+																				"anyOf": [
+																					{
+																						"type": "string"
+																					},
+																					{
+																						"type": "number"
+																					},
+																					{
+																						"type": "integer"
+																					},
+																					{
+																						"type": "boolean"
+																					},
+																					{
+																						"additionalProperties": true,
+																						"nullable": true,
+																						"type": "object"
+																					},
+																					{
+																						"items": "[Circular ~.POST /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/get.responses.200.content.application/json.schema.allOf.1.properties.result.oneOf.1.properties.values.additionalProperties.properties.value.allOf.0]",
+																						"type": "array"
+																					}
+																				],
+																				"x-stainless-override-schema": {
+																					"type": "unknown"
+																				}
 																			},
 																			{
-																				"type": "number"
-																			},
-																			{
-																				"type": "boolean"
-																			},
-																			{
-																				"additionalProperties": true,
-																				"type": "object"
+																				"description": "The value associated with the key."
 																			}
 																		]
 																	}
@@ -2771,7 +2896,7 @@
 																],
 																"type": "object"
 															},
-															"description": "Requested keys are paired with their values and metadata in an object",
+															"description": "Requested keys are paired with their values and metadata in an object.",
 															"example": {
 																"key1": {
 																	"expiration": 1577836800,
@@ -2794,13 +2919,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get multiple key-value pairs response"
+				"description": "Get multiple key-value pairs response."
 			},
 			"4XX": {
 				"content": {
@@ -2825,10 +2951,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": [
@@ -2857,10 +2983,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": []
@@ -2871,7 +2997,7 @@
 									"x-stainless-empty-object": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -2889,7 +3015,7 @@
 						}
 					}
 				},
-				"description": "Get multiple key-value pairs response failure"
+				"description": "Get multiple key-value pairs response failure."
 			}
 		},
 		"security": [
@@ -2932,7 +3058,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2987,10 +3113,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"example": [],
@@ -3008,13 +3134,13 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -3079,7 +3205,7 @@
 						}
 					}
 				},
-				"description": "Rename a Namespace response"
+				"description": "Rename a Namespace response."
 			},
 			"4XX": {
 				"content": {
@@ -3104,10 +3230,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": [
@@ -3136,10 +3262,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": []
@@ -3150,7 +3276,7 @@
 									"x-stainless-empty-object": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -3168,7 +3294,7 @@
 						}
 					}
 				},
-				"description": "Rename a Namespace response failure"
+				"description": "Rename a Namespace response failure."
 			}
 		},
 		"security": [
@@ -3210,7 +3336,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -3227,17 +3353,18 @@
 							"properties": {
 								"base64": {
 									"default": false,
-									"description": "Whether or not the server should base64 decode the value before storing it. Useful for writing values that wouldn't otherwise be valid JSON strings, such as images.",
+									"description": "Indicates whether or not the server should base64 decode the value before storing it. Useful for writing values that wouldn't otherwise be valid JSON strings, such as images.",
 									"type": "boolean"
 								},
 								"expiration": {
-									"description": "The time, measured in number of seconds since the UNIX epoch, at which the key should expire.",
+									"description": "Expires the key at a certain time, measured in number of seconds since the UNIX epoch.",
 									"example": 1578435000,
 									"type": "number"
 								},
 								"expiration_ttl": {
-									"description": "The number of seconds for which the key should be visible before it expires. At least 60.",
+									"description": "Expires the key after a number of seconds. Must be at least 60.",
 									"example": 300,
+									"minimum": 60,
 									"type": "number"
 								},
 								"key": {
@@ -3247,12 +3374,42 @@
 									"type": "string"
 								},
 								"metadata": {
-									"additionalProperties": true,
-									"description": "Arbitrary JSON that is associated with a key.",
-									"example": {
-										"someMetadataKey": "someMetadataValue"
-									},
-									"type": "object"
+									"allOf": [
+										{
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "integer"
+												},
+												{
+													"type": "boolean"
+												},
+												{
+													"additionalProperties": true,
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": "[Circular ~.PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk.requestBody.content.application/json.schema.items.properties.metadata.allOf.0]",
+													"type": "array"
+												}
+											],
+											"x-stainless-override-schema": {
+												"type": "unknown"
+											}
+										},
+										{
+											"description": "Arbitrary JSON that is associated with a key.",
+											"example": {
+												"someMetadataKey": "someMetadataValue"
+											}
+										}
+									]
 								},
 								"value": {
 									"description": "A UTF-8 encoded string to be stored, up to 25 MiB in length.",
@@ -3261,12 +3418,12 @@
 									"type": "string"
 								}
 							},
+							"required": [
+								"key",
+								"value"
+							],
 							"type": "object"
 						},
-						"required": [
-							"key",
-							"value"
-						],
 						"type": "array"
 					}
 				}
@@ -3299,10 +3456,10 @@
 															"code",
 															"message"
 														],
-														"type": "object",
-														"uniqueItems": true
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"messages": {
 													"example": [],
@@ -3320,13 +3477,13 @@
 															"code",
 															"message"
 														],
-														"type": "object",
-														"uniqueItems": true
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3358,7 +3515,7 @@
 										"result": {
 											"properties": {
 												"successful_key_count": {
-													"description": "Number of keys successfully updated",
+													"description": "Number of keys successfully updated.",
 													"example": 100,
 													"type": "number"
 												},
@@ -3372,13 +3529,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Write multiple key-value pairs response"
+				"description": "Write multiple key-value pairs response."
 			},
 			"4XX": {
 				"content": {
@@ -3405,10 +3563,10 @@
 															"code",
 															"message"
 														],
-														"type": "object",
-														"uniqueItems": true
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"messages": {
 													"example": [],
@@ -3426,13 +3584,13 @@
 															"code",
 															"message"
 														],
-														"type": "object",
-														"uniqueItems": true
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3464,7 +3622,7 @@
 										"result": {
 											"properties": {
 												"successful_key_count": {
-													"description": "Number of keys successfully updated",
+													"description": "Number of keys successfully updated.",
 													"example": 100,
 													"type": "number"
 												},
@@ -3478,13 +3636,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Write multiple key-value pairs response failure"
+				"description": "Write multiple key-value pairs response failure."
 			}
 		},
 		"security": [
@@ -3537,7 +3696,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -3549,7 +3708,7 @@
 				"in": "query",
 				"name": "expiration",
 				"schema": {
-					"description": "The time, measured in number of seconds since the UNIX epoch, at which the key should expire.",
+					"description": "Expires the key at a certain time, measured in number of seconds since the UNIX epoch.",
 					"example": 1578435000,
 					"type": "number"
 				}
@@ -3558,38 +3717,92 @@
 				"in": "query",
 				"name": "expiration_ttl",
 				"schema": {
-					"description": "The number of seconds for which the key should be visible before it expires. At least 60.",
+					"description": "Expires the key after a number of seconds. Must be at least 60.",
 					"example": 300,
+					"minimum": 60,
 					"type": "number"
 				}
 			}
 		],
 		"requestBody": {
 			"content": {
-				"*/*": {
+				"application/octet-stream": {
 					"schema": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"format": "binary",
+								"type": "string"
+							}
+						],
 						"description": "A byte sequence to be stored, up to 25 MiB in length.",
-						"example": "Some Value",
-						"type": "string"
+						"example": "Some Value"
 					}
 				},
 				"multipart/form-data": {
+					"encoding": {
+						"metadata": {
+							"contentType": "application/json"
+						}
+					},
 					"schema": {
 						"properties": {
 							"metadata": {
-								"description": "Arbitrary JSON to be associated with a key/value pair.",
-								"example": "{\"someMetadataKey\": \"someMetadataValue\"}",
-								"type": "string"
+								"allOf": [
+									{
+										"anyOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "number"
+											},
+											{
+												"type": "integer"
+											},
+											{
+												"type": "boolean"
+											},
+											{
+												"additionalProperties": true,
+												"nullable": true,
+												"type": "object"
+											},
+											{
+												"items": "[Circular ~.PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}.requestBody.content.multipart/form-data.schema.properties.metadata.allOf.0]",
+												"type": "array"
+											}
+										],
+										"x-stainless-override-schema": {
+											"type": "unknown"
+										}
+									},
+									{
+										"description": "Associates arbitrary JSON data with a key/value pair.",
+										"example": {
+											"someMetadataKey": "someMetadataValue"
+										}
+									}
+								]
 							},
 							"value": {
+								"anyOf": [
+									{
+										"type": "string"
+									},
+									{
+										"format": "binary",
+										"type": "string"
+									}
+								],
 								"description": "A byte sequence to be stored, up to 25 MiB in length.",
-								"example": "Some Value",
-								"type": "string"
+								"example": "Some Value"
 							}
 						},
 						"required": [
-							"value",
-							"metadata"
+							"value"
 						],
 						"type": "object"
 					}
@@ -3621,10 +3834,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"example": [],
@@ -3642,13 +3855,13 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -3677,7 +3890,7 @@
 						}
 					}
 				},
-				"description": "Write key-value pair with metadata response"
+				"description": "Write key-value pair with metadata response."
 			},
 			"4XX": {
 				"content": {
@@ -3702,10 +3915,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": [
@@ -3734,10 +3947,10 @@
 													"code",
 													"message"
 												],
-												"type": "object",
-												"uniqueItems": true
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										}
 									],
 									"example": []
@@ -3748,7 +3961,7 @@
 									"x-stainless-empty-object": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -3766,7 +3979,7 @@
 						}
 					}
 				},
-				"description": "Write key-value pair with metadata response failure"
+				"description": "Write key-value pair with metadata response failure."
 			}
 		},
 		"security": [

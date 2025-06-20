@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -26,7 +27,8 @@
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"readOnly": true,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						}
 					],
 					"description": "defines the unique ID for this custom scan expression.",
@@ -148,7 +150,8 @@
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														],
 														"description": "defines the unique ID for this custom scan expression.",
@@ -157,7 +160,8 @@
 													"payload": {
 														"description": "Defines the ruleset expression to use in matching content objects.",
 														"example": "lookup_json_string(http.request.body.raw, \"file\")",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -288,7 +292,8 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																],
 																"description": "defines the unique ID for this custom scan expression.",
@@ -297,7 +302,8 @@
 															"payload": {
 																"description": "Defines the ruleset expression to use in matching content objects.",
 																"example": "lookup_json_string(http.request.body.raw, \"file\")",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -429,7 +435,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -547,7 +554,8 @@
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														],
 														"description": "defines the unique ID for this custom scan expression.",
@@ -556,7 +564,8 @@
 													"payload": {
 														"description": "Defines the ruleset expression to use in matching content objects.",
 														"example": "lookup_json_string(http.request.body.raw, \"file\")",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -687,7 +696,8 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																],
 																"description": "defines the unique ID for this custom scan expression.",
@@ -696,7 +706,8 @@
 															"payload": {
 																"description": "Defines the ruleset expression to use in matching content objects.",
 																"example": "lookup_json_string(http.request.body.raw, \"file\")",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -830,7 +841,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -948,12 +960,14 @@
 												"modified": {
 													"description": "Defines the last modification date (ISO 8601) of the Content Scanning status.",
 													"example": "2024-12-02T09:57:23.150259Z",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "Defines the status of Content Scanning.",
 													"example": "enabled",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1090,7 +1104,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1305,7 +1320,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1520,7 +1536,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1533,7 +1550,8 @@
 								"payload": {
 									"description": "Defines the ruleset expression to use in matching content objects.",
 									"example": "lookup_json_string(http.request.body.raw, \"file\")",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -1662,7 +1680,8 @@
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														],
 														"description": "defines the unique ID for this custom scan expression.",
@@ -1671,7 +1690,8 @@
 													"payload": {
 														"description": "Defines the ruleset expression to use in matching content objects.",
 														"example": "lookup_json_string(http.request.body.raw, \"file\")",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -1802,7 +1822,8 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																],
 																"description": "defines the unique ID for this custom scan expression.",
@@ -1811,7 +1832,8 @@
 															"payload": {
 																"description": "Defines the ruleset expression to use in matching content objects.",
 																"example": "lookup_json_string(http.request.body.raw, \"file\")",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"

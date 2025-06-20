@@ -109,10 +109,12 @@
 										"result": {
 											"properties": {
 												"default_usage_model": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"green_compute": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -311,10 +313,12 @@
 					"schema": {
 						"properties": {
 							"default_usage_model": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"green_compute": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -416,10 +420,12 @@
 										"result": {
 											"properties": {
 												"default_usage_model": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"green_compute": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"

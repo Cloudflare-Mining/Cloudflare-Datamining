@@ -656,7 +656,7 @@
 																"properties": {
 																	"type": {
 																		"enum": [
-																			"document_template"
+																			"document_fingerprint"
 																		],
 																		"type": "string"
 																	}
@@ -667,7 +667,7 @@
 																"type": "object"
 															}
 														],
-														"title": "Document Template Entry"
+														"title": "Document Fingerprint Entry"
 													},
 													{
 														"allOf": [
@@ -1274,7 +1274,7 @@
 															"properties": {
 																"type": {
 																	"enum": [
-																		"document_template"
+																		"document_fingerprint"
 																	],
 																	"type": "string"
 																}
@@ -1285,7 +1285,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Document Template Entry"
+													"title": "Document Fingerprint Entry"
 												},
 												{
 													"allOf": [
@@ -2352,7 +2352,7 @@
 															"properties": {
 																"type": {
 																	"enum": [
-																		"document_template"
+																		"document_fingerprint"
 																	],
 																	"type": "string"
 																}
@@ -2363,7 +2363,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Document Template Entry"
+													"title": "Document Fingerprint Entry"
 												},
 												{
 													"allOf": [

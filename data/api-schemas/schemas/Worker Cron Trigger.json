@@ -23,7 +23,8 @@
 					"description": "Name of the script, used in URLs and route configuration.",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -124,11 +125,13 @@
 														"properties": {
 															"created_on": {
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"cron": {
 																"example": "*/30 * * * *",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"modified_on": {
 																"readOnly": true,
@@ -316,7 +319,8 @@
 					"description": "Name of the script, used in URLs and route configuration.",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -328,11 +332,13 @@
 							"properties": {
 								"created_on": {
 									"readOnly": true,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"cron": {
 									"example": "*/30 * * * *",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"modified_on": {
 									"readOnly": true,
@@ -447,11 +453,13 @@
 														"properties": {
 															"created_on": {
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"cron": {
 																"example": "*/30 * * * *",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"modified_on": {
 																"readOnly": true,

@@ -816,14 +816,16 @@
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"ai"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -837,19 +839,22 @@
 																							"dataset": {
 																								"description": "The name of the dataset to bind to.",
 																								"example": "some_dataset",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"analytics_engine"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -864,14 +869,16 @@
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"assets"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -885,14 +892,16 @@
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"browser"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -906,19 +915,22 @@
 																							"id": {
 																								"description": "Identifier of the D1 database to bind to.",
 																								"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"d1"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -933,12 +945,14 @@
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"namespace": {
 																								"description": "Namespace to bind to.",
 																								"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"outbound": {
 																								"description": "Outbound worker.",
@@ -947,7 +961,8 @@
 																										"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters.",
 																										"items": {
 																											"example": "url",
-																											"type": "string"
+																											"type": "string",
+																											"x-auditable": true
 																										},
 																										"type": "array"
 																									},
@@ -956,11 +971,13 @@
 																										"properties": {
 																											"environment": {
 																												"description": "Environment of the outbound worker.",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"service": {
 																												"description": "Name of the outbound worker.",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"type": "object"
@@ -973,7 +990,8 @@
 																								"enum": [
 																									"dispatch_namespace"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -989,17 +1007,20 @@
 																								"description": "The exported class name of the Durable Object.",
 																								"example": "MyDurableObject",
 																								"type": "string",
+																								"x-auditable": true,
 																								"x-stainless-terraform-configurability": "computed_optional"
 																							},
 																							"environment": {
 																								"description": "The environment of the script_name to bind to.",
 																								"example": "production",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"namespace_id": {
 																								"allOf": [
@@ -1007,10 +1028,12 @@
 																										"description": "Namespace identifier tag.",
 																										"example": "0f2ac74b498b48028cb68387c421e279",
 																										"maxLength": 32,
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									{
 																										"type": "string",
+																										"x-auditable": true,
 																										"x-stainless-terraform-configurability": "computed_optional"
 																									}
 																								]
@@ -1019,6 +1042,7 @@
 																								"description": "The script where the Durable Object is defined, if it is external to this Worker.",
 																								"example": "my-other-worker",
 																								"type": "string",
+																								"x-auditable": true,
 																								"x-stainless-terraform-configurability": "computed_optional"
 																							},
 																							"type": {
@@ -1026,7 +1050,8 @@
 																								"enum": [
 																									"durable_object_namespace"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -1040,19 +1065,22 @@
 																							"id": {
 																								"description": "Identifier of the Hyperdrive connection to bind to.",
 																								"example": "57b7076f58be42419276f058a8968187",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"hyperdrive"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -1072,14 +1100,16 @@
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"json"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -1094,20 +1124,23 @@
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"namespace_id": {
 																								"description": "Namespace identifier tag.",
 																								"example": "0f2ac74b498b48028cb68387c421e279",
 																								"maxLength": 32,
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"kv_namespace"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -1122,19 +1155,22 @@
 																							"certificate_id": {
 																								"description": "Identifier of the certificate to bind to.",
 																								"example": "efwu2n6s-q69d-2kr9-184j-4913e8h391k6",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"mtls_certificate"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -1149,19 +1185,22 @@
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"text": {
 																								"description": "The text value to use.",
 																								"example": "Hello, world!",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"plain_text"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -1176,19 +1215,22 @@
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"pipeline": {
 																								"description": "Name of the Pipeline to bind to.",
 																								"example": "my-pipeline",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"pipelines"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -1203,7 +1245,8 @@
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"queue_name": {
 																								"description": "Name of the Queue to bind to.",
@@ -1215,7 +1258,8 @@
 																								"enum": [
 																									"queue"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -1230,19 +1274,22 @@
 																							"bucket_name": {
 																								"description": "R2 bucket to bind to.",
 																								"example": "my-r2-bucket",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"r2_bucket"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -1257,7 +1304,8 @@
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"text": {
 																								"description": "The secret value to use.",
@@ -1271,7 +1319,8 @@
 																								"enum": [
 																									"secret_text"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -1286,24 +1335,28 @@
 																							"environment": {
 																								"description": "Optional environment if the Worker utilizes one.",
 																								"example": "production",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"service": {
 																								"description": "Name of Worker to bind to.",
 																								"example": "my-worker",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"service"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -1319,19 +1372,22 @@
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"service": {
 																								"description": "Name of Tail Worker to bind to.",
 																								"example": "my-worker",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"tail_consumer"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -1346,19 +1402,22 @@
 																							"index_name": {
 																								"description": "Name of the Vectorize index to bind to.",
 																								"example": "my-index-name",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"vectorize"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -1373,14 +1432,16 @@
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"version_metadata"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -1394,24 +1455,28 @@
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"secret_name": {
 																								"description": "Name of the secret in the store.",
 																								"example": "my_secret",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"store_id": {
 																								"description": "ID of the store containing the secret.",
 																								"example": "8c8b1387108e49be85669169793e7bd2",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"secrets_store_secret"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -1426,7 +1491,8 @@
 																						"properties": {
 																							"algorithm": {
 																								"description": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).",
-																								"type": "object"
+																								"type": "object",
+																								"x-auditable": true
 																							},
 																							"format": {
 																								"description": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).",
@@ -1437,7 +1503,8 @@
 																									"jwk"
 																								],
 																								"example": "raw",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"key_base64": {
 																								"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
@@ -1454,14 +1521,16 @@
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
 																								"enum": [
 																									"secret_key"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"usages": {
 																								"description": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).",
@@ -1482,7 +1551,8 @@
 																									],
 																									"type": "string"
 																								},
-																								"type": "array"
+																								"type": "array",
+																								"x-auditable": true
 																							}
 																						},
 																						"required": [
@@ -1504,12 +1574,14 @@
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"example": "myBinding",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"script_name": {
 																								"description": "Script name that contains the Workflow. If not provided, defaults to this script name.",
 																								"example": "my-workflow",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": {
 																								"description": "The kind of resource that the binding provides.",
@@ -1936,14 +2008,16 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"ai"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -1957,19 +2031,22 @@
 																									"dataset": {
 																										"description": "The name of the dataset to bind to.",
 																										"example": "some_dataset",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"analytics_engine"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -1984,14 +2061,16 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"assets"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2005,14 +2084,16 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"browser"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2026,19 +2107,22 @@
 																									"id": {
 																										"description": "Identifier of the D1 database to bind to.",
 																										"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"d1"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2053,12 +2137,14 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"namespace": {
 																										"description": "Namespace to bind to.",
 																										"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"outbound": {
 																										"description": "Outbound worker.",
@@ -2067,7 +2153,8 @@
 																												"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters.",
 																												"items": {
 																													"example": "url",
-																													"type": "string"
+																													"type": "string",
+																													"x-auditable": true
 																												},
 																												"type": "array"
 																											},
@@ -2076,11 +2163,13 @@
 																												"properties": {
 																													"environment": {
 																														"description": "Environment of the outbound worker.",
-																														"type": "string"
+																														"type": "string",
+																														"x-auditable": true
 																													},
 																													"service": {
 																														"description": "Name of the outbound worker.",
-																														"type": "string"
+																														"type": "string",
+																														"x-auditable": true
 																													}
 																												},
 																												"type": "object"
@@ -2093,7 +2182,8 @@
 																										"enum": [
 																											"dispatch_namespace"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2109,17 +2199,20 @@
 																										"description": "The exported class name of the Durable Object.",
 																										"example": "MyDurableObject",
 																										"type": "string",
+																										"x-auditable": true,
 																										"x-stainless-terraform-configurability": "computed_optional"
 																									},
 																									"environment": {
 																										"description": "The environment of the script_name to bind to.",
 																										"example": "production",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"namespace_id": {
 																										"allOf": [
@@ -2127,10 +2220,12 @@
 																												"description": "Namespace identifier tag.",
 																												"example": "0f2ac74b498b48028cb68387c421e279",
 																												"maxLength": 32,
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											{
 																												"type": "string",
+																												"x-auditable": true,
 																												"x-stainless-terraform-configurability": "computed_optional"
 																											}
 																										]
@@ -2139,6 +2234,7 @@
 																										"description": "The script where the Durable Object is defined, if it is external to this Worker.",
 																										"example": "my-other-worker",
 																										"type": "string",
+																										"x-auditable": true,
 																										"x-stainless-terraform-configurability": "computed_optional"
 																									},
 																									"type": {
@@ -2146,7 +2242,8 @@
 																										"enum": [
 																											"durable_object_namespace"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2160,19 +2257,22 @@
 																									"id": {
 																										"description": "Identifier of the Hyperdrive connection to bind to.",
 																										"example": "57b7076f58be42419276f058a8968187",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"hyperdrive"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2192,14 +2292,16 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"json"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2214,20 +2316,23 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"namespace_id": {
 																										"description": "Namespace identifier tag.",
 																										"example": "0f2ac74b498b48028cb68387c421e279",
 																										"maxLength": 32,
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"kv_namespace"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2242,19 +2347,22 @@
 																									"certificate_id": {
 																										"description": "Identifier of the certificate to bind to.",
 																										"example": "efwu2n6s-q69d-2kr9-184j-4913e8h391k6",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"mtls_certificate"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2269,19 +2377,22 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"text": {
 																										"description": "The text value to use.",
 																										"example": "Hello, world!",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"plain_text"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2296,19 +2407,22 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"pipeline": {
 																										"description": "Name of the Pipeline to bind to.",
 																										"example": "my-pipeline",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"pipelines"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2323,7 +2437,8 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"queue_name": {
 																										"description": "Name of the Queue to bind to.",
@@ -2335,7 +2450,8 @@
 																										"enum": [
 																											"queue"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2350,19 +2466,22 @@
 																									"bucket_name": {
 																										"description": "R2 bucket to bind to.",
 																										"example": "my-r2-bucket",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"r2_bucket"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2377,7 +2496,8 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"text": {
 																										"description": "The secret value to use.",
@@ -2391,7 +2511,8 @@
 																										"enum": [
 																											"secret_text"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2406,24 +2527,28 @@
 																									"environment": {
 																										"description": "Optional environment if the Worker utilizes one.",
 																										"example": "production",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"service": {
 																										"description": "Name of Worker to bind to.",
 																										"example": "my-worker",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"service"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2439,19 +2564,22 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"service": {
 																										"description": "Name of Tail Worker to bind to.",
 																										"example": "my-worker",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"tail_consumer"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2466,19 +2594,22 @@
 																									"index_name": {
 																										"description": "Name of the Vectorize index to bind to.",
 																										"example": "my-index-name",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"vectorize"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2493,14 +2624,16 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"version_metadata"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2514,24 +2647,28 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"secret_name": {
 																										"description": "Name of the secret in the store.",
 																										"example": "my_secret",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"store_id": {
 																										"description": "ID of the store containing the secret.",
 																										"example": "8c8b1387108e49be85669169793e7bd2",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"secrets_store_secret"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2546,7 +2683,8 @@
 																								"properties": {
 																									"algorithm": {
 																										"description": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).",
-																										"type": "object"
+																										"type": "object",
+																										"x-auditable": true
 																									},
 																									"format": {
 																										"description": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).",
@@ -2557,7 +2695,8 @@
 																											"jwk"
 																										],
 																										"example": "raw",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"key_base64": {
 																										"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
@@ -2574,14 +2713,16 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"secret_key"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"usages": {
 																										"description": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).",
@@ -2602,7 +2743,8 @@
 																											],
 																											"type": "string"
 																										},
-																										"type": "array"
+																										"type": "array",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -2624,12 +2766,14 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"script_name": {
 																										"description": "Script name that contains the Workflow. If not provided, defaults to this script name.",
 																										"example": "my-workflow",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
@@ -3051,14 +3195,16 @@
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"ai"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3072,19 +3218,22 @@
 														"dataset": {
 															"description": "The name of the dataset to bind to.",
 															"example": "some_dataset",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"analytics_engine"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3099,14 +3248,16 @@
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"assets"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3120,14 +3271,16 @@
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"browser"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3141,19 +3294,22 @@
 														"id": {
 															"description": "Identifier of the D1 database to bind to.",
 															"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"d1"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3168,12 +3324,14 @@
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"namespace": {
 															"description": "Namespace to bind to.",
 															"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"outbound": {
 															"description": "Outbound worker.",
@@ -3182,7 +3340,8 @@
 																	"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters.",
 																	"items": {
 																		"example": "url",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
@@ -3191,11 +3350,13 @@
 																	"properties": {
 																		"environment": {
 																			"description": "Environment of the outbound worker.",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"service": {
 																			"description": "Name of the outbound worker.",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -3208,7 +3369,8 @@
 															"enum": [
 																"dispatch_namespace"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3224,17 +3386,20 @@
 															"description": "The exported class name of the Durable Object.",
 															"example": "MyDurableObject",
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"environment": {
 															"description": "The environment of the script_name to bind to.",
 															"example": "production",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"namespace_id": {
 															"allOf": [
@@ -3242,10 +3407,12 @@
 																	"description": "Namespace identifier tag.",
 																	"example": "0f2ac74b498b48028cb68387c421e279",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																{
 																	"type": "string",
+																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															]
@@ -3254,6 +3421,7 @@
 															"description": "The script where the Durable Object is defined, if it is external to this Worker.",
 															"example": "my-other-worker",
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"type": {
@@ -3261,7 +3429,8 @@
 															"enum": [
 																"durable_object_namespace"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3275,19 +3444,22 @@
 														"id": {
 															"description": "Identifier of the Hyperdrive connection to bind to.",
 															"example": "57b7076f58be42419276f058a8968187",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"hyperdrive"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3307,14 +3479,16 @@
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"json"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3329,20 +3503,23 @@
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"namespace_id": {
 															"description": "Namespace identifier tag.",
 															"example": "0f2ac74b498b48028cb68387c421e279",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"kv_namespace"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3357,19 +3534,22 @@
 														"certificate_id": {
 															"description": "Identifier of the certificate to bind to.",
 															"example": "efwu2n6s-q69d-2kr9-184j-4913e8h391k6",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"mtls_certificate"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3384,19 +3564,22 @@
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"text": {
 															"description": "The text value to use.",
 															"example": "Hello, world!",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"plain_text"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3411,19 +3594,22 @@
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"pipeline": {
 															"description": "Name of the Pipeline to bind to.",
 															"example": "my-pipeline",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"pipelines"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3438,7 +3624,8 @@
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"queue_name": {
 															"description": "Name of the Queue to bind to.",
@@ -3450,7 +3637,8 @@
 															"enum": [
 																"queue"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3465,19 +3653,22 @@
 														"bucket_name": {
 															"description": "R2 bucket to bind to.",
 															"example": "my-r2-bucket",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"r2_bucket"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3492,7 +3683,8 @@
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"text": {
 															"description": "The secret value to use.",
@@ -3506,7 +3698,8 @@
 															"enum": [
 																"secret_text"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3521,24 +3714,28 @@
 														"environment": {
 															"description": "Optional environment if the Worker utilizes one.",
 															"example": "production",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"service": {
 															"description": "Name of Worker to bind to.",
 															"example": "my-worker",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"service"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3554,19 +3751,22 @@
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"service": {
 															"description": "Name of Tail Worker to bind to.",
 															"example": "my-worker",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"tail_consumer"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3581,19 +3781,22 @@
 														"index_name": {
 															"description": "Name of the Vectorize index to bind to.",
 															"example": "my-index-name",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"vectorize"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3608,14 +3811,16 @@
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"version_metadata"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3629,24 +3834,28 @@
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"secret_name": {
 															"description": "Name of the secret in the store.",
 															"example": "my_secret",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"store_id": {
 															"description": "ID of the store containing the secret.",
 															"example": "8c8b1387108e49be85669169793e7bd2",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"secrets_store_secret"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3661,7 +3870,8 @@
 													"properties": {
 														"algorithm": {
 															"description": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).",
-															"type": "object"
+															"type": "object",
+															"x-auditable": true
 														},
 														"format": {
 															"description": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).",
@@ -3672,7 +3882,8 @@
 																"jwk"
 															],
 															"example": "raw",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"key_base64": {
 															"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
@@ -3689,14 +3900,16 @@
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"secret_key"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"usages": {
 															"description": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).",
@@ -3717,7 +3930,8 @@
 																],
 																"type": "string"
 															},
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3739,12 +3953,14 @@
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"example": "myBinding",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"script_name": {
 															"description": "Script name that contains the Workflow. If not provided, defaults to this script name.",
 															"example": "my-workflow",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "The kind of resource that the binding provides.",
@@ -3774,7 +3990,8 @@
 									"compatibility_date": {
 										"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 										"example": "2021-01-01",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"compatibility_flags": {
 										"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
@@ -3784,7 +4001,8 @@
 										"items": {
 											"description": "Flag that enables or disables a specific feature in the Workers runtime.",
 											"example": "nodejs_compat",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": "array"
 									},
@@ -3806,7 +4024,8 @@
 											"standard"
 										],
 										"example": "standard",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"required": [
@@ -4064,14 +4283,16 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"ai"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4085,19 +4306,22 @@
 																									"dataset": {
 																										"description": "The name of the dataset to bind to.",
 																										"example": "some_dataset",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"analytics_engine"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4112,14 +4336,16 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"assets"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4133,14 +4359,16 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"browser"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4154,19 +4382,22 @@
 																									"id": {
 																										"description": "Identifier of the D1 database to bind to.",
 																										"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"d1"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4181,12 +4412,14 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"namespace": {
 																										"description": "Namespace to bind to.",
 																										"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"outbound": {
 																										"description": "Outbound worker.",
@@ -4195,7 +4428,8 @@
 																												"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters.",
 																												"items": {
 																													"example": "url",
-																													"type": "string"
+																													"type": "string",
+																													"x-auditable": true
 																												},
 																												"type": "array"
 																											},
@@ -4204,11 +4438,13 @@
 																												"properties": {
 																													"environment": {
 																														"description": "Environment of the outbound worker.",
-																														"type": "string"
+																														"type": "string",
+																														"x-auditable": true
 																													},
 																													"service": {
 																														"description": "Name of the outbound worker.",
-																														"type": "string"
+																														"type": "string",
+																														"x-auditable": true
 																													}
 																												},
 																												"type": "object"
@@ -4221,7 +4457,8 @@
 																										"enum": [
 																											"dispatch_namespace"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4237,17 +4474,20 @@
 																										"description": "The exported class name of the Durable Object.",
 																										"example": "MyDurableObject",
 																										"type": "string",
+																										"x-auditable": true,
 																										"x-stainless-terraform-configurability": "computed_optional"
 																									},
 																									"environment": {
 																										"description": "The environment of the script_name to bind to.",
 																										"example": "production",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"namespace_id": {
 																										"allOf": [
@@ -4255,10 +4495,12 @@
 																												"description": "Namespace identifier tag.",
 																												"example": "0f2ac74b498b48028cb68387c421e279",
 																												"maxLength": 32,
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											{
 																												"type": "string",
+																												"x-auditable": true,
 																												"x-stainless-terraform-configurability": "computed_optional"
 																											}
 																										]
@@ -4267,6 +4509,7 @@
 																										"description": "The script where the Durable Object is defined, if it is external to this Worker.",
 																										"example": "my-other-worker",
 																										"type": "string",
+																										"x-auditable": true,
 																										"x-stainless-terraform-configurability": "computed_optional"
 																									},
 																									"type": {
@@ -4274,7 +4517,8 @@
 																										"enum": [
 																											"durable_object_namespace"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4288,19 +4532,22 @@
 																									"id": {
 																										"description": "Identifier of the Hyperdrive connection to bind to.",
 																										"example": "57b7076f58be42419276f058a8968187",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"hyperdrive"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4320,14 +4567,16 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"json"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4342,20 +4591,23 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"namespace_id": {
 																										"description": "Namespace identifier tag.",
 																										"example": "0f2ac74b498b48028cb68387c421e279",
 																										"maxLength": 32,
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"kv_namespace"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4370,19 +4622,22 @@
 																									"certificate_id": {
 																										"description": "Identifier of the certificate to bind to.",
 																										"example": "efwu2n6s-q69d-2kr9-184j-4913e8h391k6",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"mtls_certificate"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4397,19 +4652,22 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"text": {
 																										"description": "The text value to use.",
 																										"example": "Hello, world!",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"plain_text"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4424,19 +4682,22 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"pipeline": {
 																										"description": "Name of the Pipeline to bind to.",
 																										"example": "my-pipeline",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"pipelines"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4451,7 +4712,8 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"queue_name": {
 																										"description": "Name of the Queue to bind to.",
@@ -4463,7 +4725,8 @@
 																										"enum": [
 																											"queue"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4478,19 +4741,22 @@
 																									"bucket_name": {
 																										"description": "R2 bucket to bind to.",
 																										"example": "my-r2-bucket",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"r2_bucket"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4505,7 +4771,8 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"text": {
 																										"description": "The secret value to use.",
@@ -4519,7 +4786,8 @@
 																										"enum": [
 																											"secret_text"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4534,24 +4802,28 @@
 																									"environment": {
 																										"description": "Optional environment if the Worker utilizes one.",
 																										"example": "production",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"service": {
 																										"description": "Name of Worker to bind to.",
 																										"example": "my-worker",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"service"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4567,19 +4839,22 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"service": {
 																										"description": "Name of Tail Worker to bind to.",
 																										"example": "my-worker",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"tail_consumer"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4594,19 +4869,22 @@
 																									"index_name": {
 																										"description": "Name of the Vectorize index to bind to.",
 																										"example": "my-index-name",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"vectorize"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4621,14 +4899,16 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"version_metadata"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4642,24 +4922,28 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"secret_name": {
 																										"description": "Name of the secret in the store.",
 																										"example": "my_secret",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"store_id": {
 																										"description": "ID of the store containing the secret.",
 																										"example": "8c8b1387108e49be85669169793e7bd2",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"secrets_store_secret"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4674,7 +4958,8 @@
 																								"properties": {
 																									"algorithm": {
 																										"description": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).",
-																										"type": "object"
+																										"type": "object",
+																										"x-auditable": true
 																									},
 																									"format": {
 																										"description": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).",
@@ -4685,7 +4970,8 @@
 																											"jwk"
 																										],
 																										"example": "raw",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"key_base64": {
 																										"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
@@ -4702,14 +4988,16 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
 																										"enum": [
 																											"secret_key"
 																										],
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"usages": {
 																										"description": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).",
@@ -4730,7 +5018,8 @@
 																											],
 																											"type": "string"
 																										},
-																										"type": "array"
+																										"type": "array",
+																										"x-auditable": true
 																									}
 																								},
 																								"required": [
@@ -4752,12 +5041,14 @@
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"example": "myBinding",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"script_name": {
 																										"description": "Script name that contains the Workflow. If not provided, defaults to this script name.",
 																										"example": "my-workflow",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": {
 																										"description": "The kind of resource that the binding provides.",
@@ -5200,14 +5491,16 @@
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"ai"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5221,19 +5514,22 @@
 																											"dataset": {
 																												"description": "The name of the dataset to bind to.",
 																												"example": "some_dataset",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"analytics_engine"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5248,14 +5544,16 @@
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"assets"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5269,14 +5567,16 @@
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"browser"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5290,19 +5590,22 @@
 																											"id": {
 																												"description": "Identifier of the D1 database to bind to.",
 																												"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"d1"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5317,12 +5620,14 @@
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"namespace": {
 																												"description": "Namespace to bind to.",
 																												"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"outbound": {
 																												"description": "Outbound worker.",
@@ -5331,7 +5636,8 @@
 																														"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters.",
 																														"items": {
 																															"example": "url",
-																															"type": "string"
+																															"type": "string",
+																															"x-auditable": true
 																														},
 																														"type": "array"
 																													},
@@ -5340,11 +5646,13 @@
 																														"properties": {
 																															"environment": {
 																																"description": "Environment of the outbound worker.",
-																																"type": "string"
+																																"type": "string",
+																																"x-auditable": true
 																															},
 																															"service": {
 																																"description": "Name of the outbound worker.",
-																																"type": "string"
+																																"type": "string",
+																																"x-auditable": true
 																															}
 																														},
 																														"type": "object"
@@ -5357,7 +5665,8 @@
 																												"enum": [
 																													"dispatch_namespace"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5373,17 +5682,20 @@
 																												"description": "The exported class name of the Durable Object.",
 																												"example": "MyDurableObject",
 																												"type": "string",
+																												"x-auditable": true,
 																												"x-stainless-terraform-configurability": "computed_optional"
 																											},
 																											"environment": {
 																												"description": "The environment of the script_name to bind to.",
 																												"example": "production",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"namespace_id": {
 																												"allOf": [
@@ -5391,10 +5703,12 @@
 																														"description": "Namespace identifier tag.",
 																														"example": "0f2ac74b498b48028cb68387c421e279",
 																														"maxLength": 32,
-																														"type": "string"
+																														"type": "string",
+																														"x-auditable": true
 																													},
 																													{
 																														"type": "string",
+																														"x-auditable": true,
 																														"x-stainless-terraform-configurability": "computed_optional"
 																													}
 																												]
@@ -5403,6 +5717,7 @@
 																												"description": "The script where the Durable Object is defined, if it is external to this Worker.",
 																												"example": "my-other-worker",
 																												"type": "string",
+																												"x-auditable": true,
 																												"x-stainless-terraform-configurability": "computed_optional"
 																											},
 																											"type": {
@@ -5410,7 +5725,8 @@
 																												"enum": [
 																													"durable_object_namespace"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5424,19 +5740,22 @@
 																											"id": {
 																												"description": "Identifier of the Hyperdrive connection to bind to.",
 																												"example": "57b7076f58be42419276f058a8968187",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"hyperdrive"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5456,14 +5775,16 @@
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"json"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5478,20 +5799,23 @@
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"namespace_id": {
 																												"description": "Namespace identifier tag.",
 																												"example": "0f2ac74b498b48028cb68387c421e279",
 																												"maxLength": 32,
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"kv_namespace"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5506,19 +5830,22 @@
 																											"certificate_id": {
 																												"description": "Identifier of the certificate to bind to.",
 																												"example": "efwu2n6s-q69d-2kr9-184j-4913e8h391k6",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"mtls_certificate"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5533,19 +5860,22 @@
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"text": {
 																												"description": "The text value to use.",
 																												"example": "Hello, world!",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"plain_text"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5560,19 +5890,22 @@
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"pipeline": {
 																												"description": "Name of the Pipeline to bind to.",
 																												"example": "my-pipeline",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"pipelines"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5587,7 +5920,8 @@
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"queue_name": {
 																												"description": "Name of the Queue to bind to.",
@@ -5599,7 +5933,8 @@
 																												"enum": [
 																													"queue"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5614,19 +5949,22 @@
 																											"bucket_name": {
 																												"description": "R2 bucket to bind to.",
 																												"example": "my-r2-bucket",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"r2_bucket"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5641,7 +5979,8 @@
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"text": {
 																												"description": "The secret value to use.",
@@ -5655,7 +5994,8 @@
 																												"enum": [
 																													"secret_text"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5670,24 +6010,28 @@
 																											"environment": {
 																												"description": "Optional environment if the Worker utilizes one.",
 																												"example": "production",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"service": {
 																												"description": "Name of Worker to bind to.",
 																												"example": "my-worker",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"service"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5703,19 +6047,22 @@
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"service": {
 																												"description": "Name of Tail Worker to bind to.",
 																												"example": "my-worker",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"tail_consumer"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5730,19 +6077,22 @@
 																											"index_name": {
 																												"description": "Name of the Vectorize index to bind to.",
 																												"example": "my-index-name",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"vectorize"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5757,14 +6107,16 @@
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"version_metadata"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5778,24 +6130,28 @@
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"secret_name": {
 																												"description": "Name of the secret in the store.",
 																												"example": "my_secret",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"store_id": {
 																												"description": "ID of the store containing the secret.",
 																												"example": "8c8b1387108e49be85669169793e7bd2",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"secrets_store_secret"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5810,7 +6166,8 @@
 																										"properties": {
 																											"algorithm": {
 																												"description": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).",
-																												"type": "object"
+																												"type": "object",
+																												"x-auditable": true
 																											},
 																											"format": {
 																												"description": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).",
@@ -5821,7 +6178,8 @@
 																													"jwk"
 																												],
 																												"example": "raw",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"key_base64": {
 																												"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
@@ -5838,14 +6196,16 @@
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",
 																												"enum": [
 																													"secret_key"
 																												],
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"usages": {
 																												"description": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).",
@@ -5866,7 +6226,8 @@
 																													],
 																													"type": "string"
 																												},
-																												"type": "array"
+																												"type": "array",
+																												"x-auditable": true
 																											}
 																										},
 																										"required": [
@@ -5888,12 +6249,14 @@
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
 																												"example": "myBinding",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"script_name": {
 																												"description": "Script name that contains the Workflow. If not provided, defaults to this script name.",
 																												"example": "my-workflow",
-																												"type": "string"
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"type": {
 																												"description": "The kind of resource that the binding provides.",

@@ -335,7 +335,11 @@
 															},
 															"properties": {
 																"properties": {
+																	"allowlisted_pattern_type": {
+																		"type": "string"
+																	},
 																	"whitelisted_pattern_type": {
+																		"deprecated": true,
 																		"type": "string"
 																	}
 																},
@@ -840,7 +844,11 @@
 														},
 														"properties": {
 															"properties": {
+																"allowlisted_pattern_type": {
+																	"type": "string"
+																},
 																"whitelisted_pattern_type": {
+																	"deprecated": true,
 																	"type": "string"
 																}
 															},

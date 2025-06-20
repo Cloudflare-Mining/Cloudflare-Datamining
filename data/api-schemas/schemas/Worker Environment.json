@@ -22,7 +22,8 @@
 				"schema": {
 					"description": "Name of Worker to bind to.",
 					"example": "my-worker",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -32,7 +33,8 @@
 				"schema": {
 					"description": "Optional environment if the Worker utilizes one.",
 					"example": "production",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -204,7 +206,8 @@
 				"schema": {
 					"description": "Name of Worker to bind to.",
 					"example": "my-worker",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -214,7 +217,8 @@
 				"schema": {
 					"description": "Optional environment if the Worker utilizes one.",
 					"example": "production",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -315,11 +319,13 @@
 														{
 															"description": "Whether Logpush is turned on for the Worker.",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														{
 															"default": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													]
 												},
@@ -331,13 +337,15 @@
 																"enabled": {
 																	"description": "Whether observability is enabled for the Worker.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"head_sampling_rate": {
 																	"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
 																	"example": 0.1,
 																	"nullable": true,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"logs": {
 																	"description": "Log settings for the Worker.",
@@ -346,18 +354,21 @@
 																		"enabled": {
 																			"description": "Whether logs are enabled for the Worker.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"head_sampling_rate": {
 																			"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
 																			"example": 0.1,
 																			"nullable": true,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"invocation_logs": {
 																			"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -374,7 +385,8 @@
 														},
 														{
 															"nullable": true,
-															"type": "object"
+															"type": "object",
+															"x-auditable": true
 														}
 													]
 												},
@@ -386,17 +398,20 @@
 															"environment": {
 																"description": "Optional environment if the Worker utilizes one.",
 																"example": "production",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"namespace": {
 																"description": "Optional dispatch namespace the script belongs to.",
 																"example": "my-namespace",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"service": {
 																"description": "Name of Worker that is to be the consumer.",
 																"example": "my-log-consumer",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -578,7 +593,8 @@
 				"schema": {
 					"description": "Name of Worker to bind to.",
 					"example": "my-worker",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -588,7 +604,8 @@
 				"schema": {
 					"description": "Optional environment if the Worker utilizes one.",
 					"example": "production",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -688,11 +705,13 @@
 													{
 														"description": "Whether Logpush is turned on for the Worker.",
 														"example": false,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													{
 														"default": false,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												]
 											},
@@ -704,13 +723,15 @@
 															"enabled": {
 																"description": "Whether observability is enabled for the Worker.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"head_sampling_rate": {
 																"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
 																"example": 0.1,
 																"nullable": true,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"logs": {
 																"description": "Log settings for the Worker.",
@@ -719,18 +740,21 @@
 																	"enabled": {
 																		"description": "Whether logs are enabled for the Worker.",
 																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"head_sampling_rate": {
 																		"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
 																		"example": 0.1,
 																		"nullable": true,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"invocation_logs": {
 																		"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
 																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -747,7 +771,8 @@
 													},
 													{
 														"nullable": true,
-														"type": "object"
+														"type": "object",
+														"x-auditable": true
 													}
 												]
 											},
@@ -759,17 +784,20 @@
 														"environment": {
 															"description": "Optional environment if the Worker utilizes one.",
 															"example": "production",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"namespace": {
 															"description": "Optional dispatch namespace the script belongs to.",
 															"example": "my-namespace",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"service": {
 															"description": "Name of Worker that is to be the consumer.",
 															"example": "my-log-consumer",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -892,11 +920,13 @@
 														{
 															"description": "Whether Logpush is turned on for the Worker.",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														{
 															"default": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													]
 												},
@@ -908,13 +938,15 @@
 																"enabled": {
 																	"description": "Whether observability is enabled for the Worker.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"head_sampling_rate": {
 																	"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
 																	"example": 0.1,
 																	"nullable": true,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"logs": {
 																	"description": "Log settings for the Worker.",
@@ -923,18 +955,21 @@
 																		"enabled": {
 																			"description": "Whether logs are enabled for the Worker.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"head_sampling_rate": {
 																			"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
 																			"example": 0.1,
 																			"nullable": true,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"invocation_logs": {
 																			"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -951,7 +986,8 @@
 														},
 														{
 															"nullable": true,
-															"type": "object"
+															"type": "object",
+															"x-auditable": true
 														}
 													]
 												},
@@ -963,17 +999,20 @@
 															"environment": {
 																"description": "Optional environment if the Worker utilizes one.",
 																"example": "production",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"namespace": {
 																"description": "Optional dispatch namespace the script belongs to.",
 																"example": "my-namespace",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"service": {
 																"description": "Name of Worker that is to be the consumer.",
 																"example": "my-log-consumer",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1150,7 +1189,8 @@
 				"schema": {
 					"description": "Name of Worker to bind to.",
 					"example": "my-worker",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1160,7 +1200,8 @@
 				"schema": {
 					"description": "Optional environment if the Worker utilizes one.",
 					"example": "production",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1321,7 +1362,8 @@
 													"example": "2017-01-01T00:00:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"etag": {
 													"description": "Hashed script content, can be used in a If-None-Match header when updating.",
@@ -1332,30 +1374,35 @@
 												"has_assets": {
 													"description": "Whether a Worker contains assets.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"has_modules": {
 													"description": "Whether a Worker contains modules.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The id of the script in the Workers system. Usually the script name.",
 													"example": "my-workers-script",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"logpush": {
 													"description": "Whether Logpush is turned on for the Worker.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "When the script was last modified.",
 													"example": "2017-01-01T00:00:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"placement": {
 													"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
@@ -1372,7 +1419,8 @@
 															"enum": [
 																"smart"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
@@ -1382,7 +1430,8 @@
 																"INSUFFICIENT_INVOCATIONS"
 															],
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1394,7 +1443,8 @@
 															"enum": [
 																"smart"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"deprecated": true,
@@ -1412,7 +1462,8 @@
 																"INSUFFICIENT_INVOCATIONS"
 															],
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"deprecated": true,
@@ -1428,17 +1479,20 @@
 															"environment": {
 																"description": "Optional environment if the Worker utilizes one.",
 																"example": "production",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"namespace": {
 																"description": "Optional dispatch namespace the script belongs to.",
 																"example": "my-namespace",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"service": {
 																"description": "Name of Worker that is to be the consumer.",
 																"example": "my-log-consumer",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1454,7 +1508,8 @@
 														"standard"
 													],
 													"example": "standard",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}

@@ -23,7 +23,8 @@
 					"description": "Name of the script.",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -130,7 +131,8 @@
 																				"description": "Human-readable message about the deployment. Truncated to 100 bytes.",
 																				"example": "Deploy bug fix.",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -138,19 +140,22 @@
 																	"author_email": {
 																		"example": "user@example.com",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"created_on": {
 																		"example": "2022-11-08T17:19:29.176266Z",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"allOf": [
 																			{
 																				"example": "dc78f0bc-05c5-46b7-bb4e-137f55930378",
 																				"maxLength": 36,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		],
 																		"readOnly": true
@@ -158,10 +163,12 @@
 																	"source": {
 																		"example": "api",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"strategy": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -174,7 +181,8 @@
 																				"enum": [
 																					"percentage"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"versions": {
 																				"items": {
@@ -183,12 +191,14 @@
 																							"example": 100,
 																							"maximum": 100,
 																							"minimum": 0.01,
-																							"type": "number"
+																							"type": "number",
+																							"x-auditable": true
 																						},
 																						"version_id": {
 																							"example": "bcf48806-b317-4351-9ee7-36e7d557d4de",
 																							"maxLength": 36,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"required": [
@@ -328,7 +338,8 @@
 																						"description": "Human-readable message about the deployment. Truncated to 100 bytes.",
 																						"example": "Deploy bug fix.",
 																						"maxLength": 100,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -336,19 +347,22 @@
 																			"author_email": {
 																				"example": "user@example.com",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"created_on": {
 																				"example": "2022-11-08T17:19:29.176266Z",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"id": {
 																				"allOf": [
 																					{
 																						"example": "dc78f0bc-05c5-46b7-bb4e-137f55930378",
 																						"maxLength": 36,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				],
 																				"readOnly": true
@@ -356,10 +370,12 @@
 																			"source": {
 																				"example": "api",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"strategy": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -372,7 +388,8 @@
 																						"enum": [
 																							"percentage"
 																						],
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"versions": {
 																						"items": {
@@ -381,12 +398,14 @@
 																									"example": 100,
 																									"maximum": 100,
 																									"minimum": 0.01,
-																									"type": "number"
+																									"type": "number",
+																									"x-auditable": true
 																								},
 																								"version_id": {
 																									"example": "bcf48806-b317-4351-9ee7-36e7d557d4de",
 																									"maxLength": 36,
-																									"type": "string"
+																									"type": "string",
+																									"x-auditable": true
 																								}
 																							},
 																							"required": [
@@ -574,7 +593,8 @@
 					"description": "Name of the script.",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -599,7 +619,8 @@
 												"description": "Human-readable message about the deployment. Truncated to 100 bytes.",
 												"example": "Deploy bug fix.",
 												"maxLength": 100,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -607,19 +628,22 @@
 									"author_email": {
 										"example": "user@example.com",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"created_on": {
 										"example": "2022-11-08T17:19:29.176266Z",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"id": {
 										"allOf": [
 											{
 												"example": "dc78f0bc-05c5-46b7-bb4e-137f55930378",
 												"maxLength": 36,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										],
 										"readOnly": true
@@ -627,10 +651,12 @@
 									"source": {
 										"example": "api",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"strategy": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -643,7 +669,8 @@
 												"enum": [
 													"percentage"
 												],
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"versions": {
 												"items": {
@@ -652,12 +679,14 @@
 															"example": 100,
 															"maximum": 100,
 															"minimum": 0.01,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"version_id": {
 															"example": "bcf48806-b317-4351-9ee7-36e7d557d4de",
 															"maxLength": 36,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -783,7 +812,8 @@
 																	"description": "Human-readable message about the deployment. Truncated to 100 bytes.",
 																	"example": "Deploy bug fix.",
 																	"maxLength": 100,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -791,19 +821,22 @@
 														"author_email": {
 															"example": "user@example.com",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_on": {
 															"example": "2022-11-08T17:19:29.176266Z",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"allOf": [
 																{
 																	"example": "dc78f0bc-05c5-46b7-bb4e-137f55930378",
 																	"maxLength": 36,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															],
 															"readOnly": true
@@ -811,10 +844,12 @@
 														"source": {
 															"example": "api",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"strategy": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -827,7 +862,8 @@
 																	"enum": [
 																		"percentage"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"versions": {
 																	"items": {
@@ -836,12 +872,14 @@
 																				"example": 100,
 																				"maximum": 100,
 																				"minimum": 0.01,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"version_id": {
 																				"example": "bcf48806-b317-4351-9ee7-36e7d557d4de",
 																				"maxLength": 36,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -973,7 +1011,8 @@
 																			"description": "Human-readable message about the deployment. Truncated to 100 bytes.",
 																			"example": "Deploy bug fix.",
 																			"maxLength": 100,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -981,19 +1020,22 @@
 																"author_email": {
 																	"example": "user@example.com",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"created_on": {
 																	"example": "2022-11-08T17:19:29.176266Z",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"allOf": [
 																		{
 																			"example": "dc78f0bc-05c5-46b7-bb4e-137f55930378",
 																			"maxLength": 36,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	],
 																	"readOnly": true
@@ -1001,10 +1043,12 @@
 																"source": {
 																	"example": "api",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"strategy": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -1017,7 +1061,8 @@
 																			"enum": [
 																				"percentage"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"versions": {
 																			"items": {
@@ -1026,12 +1071,14 @@
 																						"example": 100,
 																						"maximum": 100,
 																						"minimum": 0.01,
-																						"type": "number"
+																						"type": "number",
+																						"x-auditable": true
 																					},
 																					"version_id": {
 																						"example": "bcf48806-b317-4351-9ee7-36e7d557d4de",
 																						"maxLength": 36,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [

@@ -992,7 +992,7 @@
 																							"properties": {
 																								"type": {
 																									"enum": [
-																										"document_template"
+																										"document_fingerprint"
 																									],
 																									"type": "string"
 																								}
@@ -1003,7 +1003,7 @@
 																							"type": "object"
 																						}
 																					],
-																					"title": "Document Template Entry"
+																					"title": "Document Fingerprint Entry"
 																				},
 																				{
 																					"allOf": [
@@ -1454,7 +1454,7 @@
 																							"properties": {
 																								"type": {
 																									"enum": [
-																										"document_template"
+																										"document_fingerprint"
 																									],
 																									"type": "string"
 																								}
@@ -1465,7 +1465,7 @@
 																							"type": "object"
 																						}
 																					],
-																					"title": "Document Template Entry"
+																					"title": "Document Fingerprint Entry"
 																				},
 																				{
 																					"allOf": [
@@ -1872,7 +1872,7 @@
 																							"properties": {
 																								"type": {
 																									"enum": [
-																										"document_template"
+																										"document_fingerprint"
 																									],
 																									"type": "string"
 																								}
@@ -1883,7 +1883,7 @@
 																							"type": "object"
 																						}
 																					],
-																					"title": "Document Template Entry"
+																					"title": "Document Fingerprint Entry"
 																				},
 																				{
 																					"allOf": [
@@ -2601,7 +2601,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -2612,7 +2612,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -3063,7 +3063,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -3074,7 +3074,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -3481,7 +3481,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -3492,7 +3492,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -4208,7 +4208,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -4219,7 +4219,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -4670,7 +4670,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -4681,7 +4681,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -5088,7 +5088,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -5099,7 +5099,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -5815,7 +5815,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -5826,7 +5826,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -6277,7 +6277,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -6288,7 +6288,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -6695,7 +6695,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -6706,7 +6706,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -7171,6 +7171,29 @@
 												"entry_type": {
 													"enum": [
 														"exact_data"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"entry_id",
+												"enabled",
+												"entry_type"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"enabled": {
+													"type": "boolean"
+												},
+												"entry_id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"entry_type": {
+													"enum": [
+														"document_fingerprint"
 													],
 													"type": "string"
 												}
@@ -7651,7 +7674,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -7662,7 +7685,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -8113,7 +8136,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -8124,7 +8147,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -8531,7 +8554,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -8542,7 +8565,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -9339,7 +9362,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -9350,7 +9373,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -9801,7 +9824,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -9812,7 +9835,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -10219,7 +10242,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -10230,7 +10253,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -10721,6 +10744,29 @@
 												"entry_type"
 											],
 											"type": "object"
+										},
+										{
+											"properties": {
+												"enabled": {
+													"type": "boolean"
+												},
+												"entry_id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"entry_type": {
+													"enum": [
+														"document_fingerprint"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"entry_id",
+												"enabled",
+												"entry_type"
+											],
+											"type": "object"
 										}
 									]
 								},
@@ -11190,7 +11236,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -11201,7 +11247,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -11652,7 +11698,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -11663,7 +11709,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -12070,7 +12116,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -12081,7 +12127,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -12871,7 +12917,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -12882,7 +12928,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -13333,7 +13379,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -13344,7 +13390,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [
@@ -13751,7 +13797,7 @@
 																						"properties": {
 																							"type": {
 																								"enum": [
-																									"document_template"
+																									"document_fingerprint"
 																								],
 																								"type": "string"
 																							}
@@ -13762,7 +13808,7 @@
 																						"type": "object"
 																					}
 																				],
-																				"title": "Document Template Entry"
+																				"title": "Document Fingerprint Entry"
 																			},
 																			{
 																				"allOf": [

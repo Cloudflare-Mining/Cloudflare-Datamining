@@ -10,7 +10,8 @@
 				"schema": {
 					"description": "Identifer of the account.",
 					"example": "9a7806061c88ada191ed06f989cc3dac",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -20,7 +21,8 @@
 				"schema": {
 					"description": "Identifer of the Worker Domain.",
 					"example": "dbe10b4bc17c295377eabd600e1787fd",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -72,7 +74,8 @@
 				"schema": {
 					"description": "Identifer of the account.",
 					"example": "9a7806061c88ada191ed06f989cc3dac",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -81,7 +84,8 @@
 				"schema": {
 					"description": "Name of the zone.",
 					"example": "example.com",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -90,7 +94,8 @@
 				"schema": {
 					"description": "Worker service associated with the zone and hostname.",
 					"example": "foo",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -99,7 +104,8 @@
 				"schema": {
 					"description": "Identifier of the zone.",
 					"example": "593c9c94de529bbbfaac7c53ced0447d",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -217,32 +223,38 @@
 													"environment": {
 														"description": "Worker environment associated with the zone and hostname.",
 														"example": "production",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"hostname": {
 														"description": "Hostname of the Worker Domain.",
 														"example": "foo.example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifer of the Worker Domain.",
 														"example": "dbe10b4bc17c295377eabd600e1787fd",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"service": {
 														"description": "Worker service associated with the zone and hostname.",
 														"example": "foo",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"zone_id": {
 														"description": "Identifier of the zone.",
 														"example": "593c9c94de529bbbfaac7c53ced0447d",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"zone_name": {
 														"description": "Name of the zone.",
 														"example": "example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -355,32 +367,38 @@
 															"environment": {
 																"description": "Worker environment associated with the zone and hostname.",
 																"example": "production",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"hostname": {
 																"description": "Hostname of the Worker Domain.",
 																"example": "foo.example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifer of the Worker Domain.",
 																"example": "dbe10b4bc17c295377eabd600e1787fd",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"service": {
 																"description": "Worker service associated with the zone and hostname.",
 																"example": "foo",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"zone_id": {
 																"description": "Identifier of the zone.",
 																"example": "593c9c94de529bbbfaac7c53ced0447d",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"zone_name": {
 																"description": "Name of the zone.",
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -534,7 +552,8 @@
 				"schema": {
 					"description": "Identifer of the account.",
 					"example": "9a7806061c88ada191ed06f989cc3dac",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -544,7 +563,8 @@
 				"schema": {
 					"description": "Identifer of the Worker Domain.",
 					"example": "dbe10b4bc17c295377eabd600e1787fd",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -643,32 +663,38 @@
 												"environment": {
 													"description": "Worker environment associated with the zone and hostname.",
 													"example": "production",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"hostname": {
 													"description": "Hostname of the Worker Domain.",
 													"example": "foo.example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifer of the Worker Domain.",
 													"example": "dbe10b4bc17c295377eabd600e1787fd",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"service": {
 													"description": "Worker service associated with the zone and hostname.",
 													"example": "foo",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"zone_id": {
 													"description": "Identifier of the zone.",
 													"example": "593c9c94de529bbbfaac7c53ced0447d",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"zone_name": {
 													"description": "Name of the zone.",
 													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -778,32 +804,38 @@
 														"environment": {
 															"description": "Worker environment associated with the zone and hostname.",
 															"example": "production",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"hostname": {
 															"description": "Hostname of the Worker Domain.",
 															"example": "foo.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifer of the Worker Domain.",
 															"example": "dbe10b4bc17c295377eabd600e1787fd",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"service": {
 															"description": "Worker service associated with the zone and hostname.",
 															"example": "foo",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zone_id": {
 															"description": "Identifier of the zone.",
 															"example": "593c9c94de529bbbfaac7c53ced0447d",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zone_name": {
 															"description": "Name of the zone.",
 															"example": "example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -955,7 +987,8 @@
 				"schema": {
 					"description": "Identifer of the account.",
 					"example": "9a7806061c88ada191ed06f989cc3dac",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -967,22 +1000,26 @@
 							"environment": {
 								"description": "Worker environment associated with the zone and hostname.",
 								"example": "production",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"hostname": {
 								"description": "Hostname of the Worker Domain.",
 								"example": "foo.example.com",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"service": {
 								"description": "Worker service associated with the zone and hostname.",
 								"example": "foo",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"zone_id": {
 								"description": "Identifier of the zone.",
 								"example": "593c9c94de529bbbfaac7c53ced0447d",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1092,32 +1129,38 @@
 												"environment": {
 													"description": "Worker environment associated with the zone and hostname.",
 													"example": "production",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"hostname": {
 													"description": "Hostname of the Worker Domain.",
 													"example": "foo.example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifer of the Worker Domain.",
 													"example": "dbe10b4bc17c295377eabd600e1787fd",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"service": {
 													"description": "Worker service associated with the zone and hostname.",
 													"example": "foo",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"zone_id": {
 													"description": "Identifier of the zone.",
 													"example": "593c9c94de529bbbfaac7c53ced0447d",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"zone_name": {
 													"description": "Name of the zone.",
 													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1227,32 +1270,38 @@
 														"environment": {
 															"description": "Worker environment associated with the zone and hostname.",
 															"example": "production",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"hostname": {
 															"description": "Hostname of the Worker Domain.",
 															"example": "foo.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifer of the Worker Domain.",
 															"example": "dbe10b4bc17c295377eabd600e1787fd",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"service": {
 															"description": "Worker service associated with the zone and hostname.",
 															"example": "foo",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zone_id": {
 															"description": "Identifier of the zone.",
 															"example": "593c9c94de529bbbfaac7c53ced0447d",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zone_name": {
 															"description": "Name of the zone.",
 															"example": "example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"

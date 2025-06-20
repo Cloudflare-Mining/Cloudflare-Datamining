@@ -399,12 +399,14 @@
 													"pattern": {
 														"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
 														"example": "example.com/*",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"script": {
 														"description": "Name of the script to run if the route matches.",
 														"example": "my-workers-script",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -696,12 +698,14 @@
 												"pattern": {
 													"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
 													"example": "example.com/*",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"script": {
 													"description": "Name of the script to run if the route matches.",
 													"example": "my-workers-script",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -892,12 +896,14 @@
 							"pattern": {
 								"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
 								"example": "example.com/*",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"script": {
 								"description": "Name of the script to run if the route matches.",
 								"example": "my-workers-script",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1017,12 +1023,14 @@
 												"pattern": {
 													"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
 													"example": "example.com/*",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"script": {
 													"description": "Name of the script to run if the route matches.",
 													"example": "my-workers-script",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1224,12 +1232,14 @@
 							"pattern": {
 								"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
 								"example": "example.com/*",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"script": {
 								"description": "Name of the script to run if the route matches.",
 								"example": "my-workers-script",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1349,12 +1359,14 @@
 												"pattern": {
 													"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
 													"example": "example.com/*",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"script": {
 													"description": "Name of the script to run if the route matches.",
 													"example": "my-workers-script",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [

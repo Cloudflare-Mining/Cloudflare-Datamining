@@ -8,7 +8,8 @@
 				"required": true,
 				"schema": {
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -16,7 +17,8 @@
 				"name": "queueRequest",
 				"schema": {
 					"example": "true",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -177,7 +179,8 @@
 				"required": true,
 				"schema": {
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -185,7 +188,8 @@
 				"name": "queueRequest",
 				"schema": {
 					"example": "true",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -294,6 +298,153 @@
 			}
 		],
 		"summary": "Execute @cf/huggingface/distilbert-sst-2-int8 model.",
+		"tags": [
+			"Workers AI Text Classification"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/huggingface/omni-distilbert-sst-2-int8": {
+		"operationId": "workers-ai-post-run-cf-huggingface-omni-distilbert-sst-2-int8",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"text": {
+								"description": "The text that you want to classify",
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"text"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"description": "An array of classification results for the input text",
+									"items": {
+										"properties": {
+											"label": {
+												"description": "The classification label assigned to the text (e.g., 'POSITIVE' or 'NEGATIVE')",
+												"type": "string"
+											},
+											"score": {
+												"description": "Confidence score indicating the likelihood that the text belongs to the specified label",
+												"type": "number"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"default": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/huggingface/omni-distilbert-sst-2-int8 model.",
 		"tags": [
 			"Workers AI Text Classification"
 		],

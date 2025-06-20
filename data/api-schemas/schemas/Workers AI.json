@@ -1746,19 +1746,24 @@
 									"items": {
 										"properties": {
 											"data": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"format": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"mimeType": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"name": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"tokens": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [

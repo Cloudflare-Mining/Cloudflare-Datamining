@@ -2310,15 +2310,9 @@
 								"x-auditable": true
 							},
 							"items": {
-								"description": "The items in the list.",
+								"description": "items to add to the list.",
 								"items": {
 									"properties": {
-										"created_at": {
-											"example": "2014-01-01T05:20:00.12345Z",
-											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
-										},
 										"description": {
 											"description": "The description of the list item, if present",
 											"example": "Austin office IP",
@@ -2824,15 +2818,9 @@
 								"x-auditable": true
 							},
 							"items": {
-								"description": "The items in the list.",
+								"description": "items to add to the list.",
 								"items": {
 									"properties": {
-										"created_at": {
-											"example": "2014-01-01T05:20:00.12345Z",
-											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
-										},
 										"description": {
 											"description": "The description of the list item, if present",
 											"example": "Austin office IP",

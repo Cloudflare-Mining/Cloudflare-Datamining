@@ -8,7 +8,8 @@
 				"required": true,
 				"schema": {
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -16,7 +17,8 @@
 				"name": "queueRequest",
 				"schema": {
 					"example": "true",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -164,7 +166,8 @@
 				"required": true,
 				"schema": {
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -172,7 +175,8 @@
 				"name": "queueRequest",
 				"schema": {
 					"example": "true",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -190,7 +194,6 @@
 								"type": "string"
 							},
 							"language": {
-								"default": "en",
 								"description": "The language of the audio being transcribed or translated.",
 								"type": "string"
 							},
@@ -204,9 +207,9 @@
 								"type": "string"
 							},
 							"vad_filter": {
-								"default": "false",
+								"default": false,
 								"description": "Preprocess the audio with a voice activity detection model.",
-								"type": "string"
+								"type": "boolean"
 							}
 						},
 						"required": [
@@ -411,7 +414,8 @@
 				"required": true,
 				"schema": {
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -419,7 +423,8 @@
 				"name": "queueRequest",
 				"schema": {
 					"example": "true",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],

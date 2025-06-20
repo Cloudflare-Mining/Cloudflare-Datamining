@@ -3180,6 +3180,11 @@
 								"format": "binary",
 								"x-auditable": true
 							},
+							"id": {
+								"description": "An optional custom unique identifier for your image.",
+								"format": "string",
+								"x-auditable": true
+							},
 							"metadata": {
 								"description": "User modifiable key-value store. Can use used for keeping references to another system of record for managing images.",
 								"type": "object"
