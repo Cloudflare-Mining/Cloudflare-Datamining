@@ -1,7 +1,7 @@
 {
 	"containers.page_title": "Containers",
 	"containers.page_title.empty": "Welcome to Containers!",
-	"containers.description": "Enhance your Workers with serverless containerized applications.",
+	"containers.description": "Enhance your Workers with serverless containers.",
 	"containers.documentation": "Documentation",
 	"containers.overview.search_label": "Search",
 	"containers.overview.search.empty": "No Containers match your search",
@@ -28,8 +28,8 @@
 	"containers.logs": "Logs",
 	"containers.metrics": "Metrics",
 	"containers.metrics.aggregate": "Aggregate metrics",
-	"containers.metrics.aggregate.tooltip": "Aggregate metrics across all instances in the application",
-	"containers.metrics.aggregate.disabled.tooltip": "Metrics aggregation cannot be disabled when there are more than %{limit} instances",
+	"containers.metrics.aggregate.tooltip": "Toggle between metrics for each instance and aggregate metrics across all instances",
+	"containers.metrics.aggregate.disabled.tooltip": "You can only see aggregate metrics when there are over %{limit} instances",
 	"containers.metrics.summary": "Summary",
 	"containers.metrics.summary.image": "Image",
 	"containers.metrics.summary.containers": "Containers",
@@ -57,7 +57,7 @@
 	"containers.metrics.charts.network.bandwidth.tx.tooltip": "Bytes Transmitted (Egress)",
 	"containers.metrics.charts.memory.average.tooltip": "Average memory usage across %{instances} instances",
 	"containers.metrics.charts.cpu.average.tooltip": "Average CPU load across %{instances} instances",
-	"containers.metrics.charts.diskUsage.average.tooltip": "Average disk usage across %{instances} instances",
+	"containers.metrics.charts.diskUsage.average.tooltip": "Average disk usage across %{instances} instances (includes both container and host VM disk)",
 	"containers.metrics.charts.network.bandwidth.average.tooltip": "Average network bandwidth across %{instances} instances",
 	"containers.container.no_instances": "This Container has no instances. If you have just deployed the Container, it may take a few minutes for the instances to be provisioned.",
 	"containers.container.no_instances.ready": "You have no running containers (but they are ready to go)",
@@ -65,5 +65,7 @@
 	"containers.tutorials.title": "Tutorials",
 	"containers.tutorials.title_empty": "Get Started with Containers",
 	"containers.tutorials.description": "Learn how to use Containers with step-by-step tutorials.",
-	"containers.tutorials.description_empty": "Learn how to build and deploy your first Container with step-by-step tutorials."
+	"containers.tutorials.description_empty": "Learn how to build and deploy your first Container with step-by-step tutorials.",
+	"containers.container.logs_disabled.desctiption.part-1": "To enabled Container logs, add the snippet below to your Worker's <0>wrangler.jsonc</0> config:",
+	"containers.container.logs_disabled.desctiption.part-2": "Then redeploy your Worker with <0>wrangler deploy</0>."
 }
