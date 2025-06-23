@@ -5,35 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon</strong></p>
+<p><strong>Location -&nbsp;</strong>Austin, TX Must be willing to relocate if not in area.&nbsp;</p>
+<hr>
+<p><strong>About the team</strong></p>
+<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
 <p><strong>About the role</strong></p>
-<p><strong>What You Would Do Here:</strong></p>
-<p>Our focus is getting the best people to work at Cloudflare and then allowing them to do their best work. We are looking for a motivated People Services who would be the functional point of contact for the local operations team Team Leader who’s ready to support a rapidly growing organization scale with efficiency and be the technical operational focus point for their region. The main function of this role is to ensure the practices and processes are being executed and audited. You’ll train new members to the team and support them to deliver world-class employee inquiry support as you work as an escalation point for higher complexity matters involving People and Payroll questions directly from employees. This role ensures critical People and Payroll transactions are done to minimum standard and that all our people systems are auditable, clean and up to date. Along the way you will also have opportunities to help design and improve our existing processes as we align and scale across multiple regions.&nbsp;</p>
-<h3><strong>Responsibilities</strong></h3>
+<p>We are looking for a Systems Engineer to join our Austin team to scale our development efforts on Platform Tooling initiatives. You will work on building data application tools and frameworks which empowers our Internal Teams. You&nbsp; will work closely with the Data Engineers on the team to add new features and maintain our data pipelines written in Go. You can expect to interact with various languages and technologies including, but not limited to Go, React, and Clickhouse.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Payroll Sign off - Execute the monthly checks on the region payrolls to ensure they are being submitted accurately&nbsp;</li>
-	<li>Follow schedule for the SOX Control items and ensure they are on track</li>
-	<li>Track any change / improvement required for Business Processes , with appropriate requirement gathering, being able to translate business needs into technical requirements.</li>
-	<li>Regional Offer Approval</li>
-	<li>Lead on improvement projects defined by the group</li>
-	<li>Regional Senior Mgmt Support</li>
-	<li>Analysis of support tickets and business process to provide regional status and opportunities for process improvements</li>
-	<li>Partner with COE's and other team members to test new functionality and troubleshoot technical issues.</li>
+	<li>Design and implement key features of our internal applications</li>
+	<li>Work closely with a cross functional team to design features and solutions that solve critical business problems</li>
+	<li>Contribute in improving an evolving platform architecture for scalability, observability and reliability</li>
+	<li>Continuously involved in knowledge sharing and mentorship</li>
 </ul>
-<h4><br><br></h4>
-<h3><strong>Skills/experience</strong></h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Desired 5+ years of experience in People Operations / Payroll / Employee Relation matters for EMEA</li>
-	<li>Experience with HR systems such as Workday and Zendesk. Experience with Core, Talent and Comp is a plus.</li>
-	<li>Able to lead projects for enhancing operational efficiency in the region and partner with other teams&nbsp;</li>
-	<li>Highly detailed and process oriented</li>
-	<li>Solid knowledge of EMEA countries employment law and experience operating as lead within these environments. Experience in India local practices is a must.</li>
-	<li>Strong customer focus and relentless commitment to employee experience</li>
-	<li>Strong oral and written communication skills, effectively presenting information and responding to cross-region and cross-functional customer questions&nbsp;</li>
-	<li>Able to prioritize and execute accordingly, ready to report on status on demand</li>
-	<li>Strong organizational, problem-solving and time management skills</li>
-	<li>Adaptability in a global fast-paced environment</li>
-	<li>Extensive experience with overseeing payroll changes and reports for EMEA region</li>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields&nbsp;</li>
+	<li>Experience working with Go, Python, Java, or equivalent programming languages</li>
+	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
+	<li>Experience with CI/CD, Gitlab CI</li>
+	<li>Excellent communication &amp; problem solving skills&nbsp;</li>
+	<li>Ability to collaborate with cross functional teams and work through ambiguous business requirements</li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Familiarity with container based deployments such as Docker &amp; Kubernetes</li>
+	<li>Familiarity with Google Cloud Platform or something similar</li>
+	<li>Familiarity with Javascript, Typescript, and React</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
