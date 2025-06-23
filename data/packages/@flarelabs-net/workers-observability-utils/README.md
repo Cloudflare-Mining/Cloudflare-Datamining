@@ -17,7 +17,7 @@ A lightweight, zero-dependency package for capturing and exporting metrics from 
 The main worker will capture metrics and publish them through a diagnostics channel. The `metrics` object provides methods for recording different types of metrics:
 
 ```typescript
-import * as metrics from 'workers-observability-utils/metrics';
+import { metrics } from '@flarelabs-net/workers-observability-utils';
 
 export default {
   async fetch(request, env, ctx) {
@@ -93,6 +93,7 @@ With this library, you can send metrics to multiple destinations simultaneously.
 
 - **Datadog** - Export metrics to Datadog for visualization and alerting
 - **Workers Analytics Engine** - Store metrics in Cloudflare's Analytics Engine for custom queries and analysis
+- **Otel Metrics** - Send your Metrics to any OpenTelemetry compatible collector
 
 When using multiple sinks, metrics will be sent to all configured sinks in parallel. If one sink fails, the others will still receive the metrics.
 
@@ -102,7 +103,7 @@ When using multiple sinks, metrics will be sent to all configured sinks in paral
 
 ```typescript
 // tail-worker/src/index.ts
-import { TailExporter, DatadogMetricSink, WorkersAnalyticsEngineSink } from 'workers-observability-utils/tail';
+import { TailExporter, DatadogMetricSink, WorkersAnalyticsEngineSink, OtelMetricSink} from '@flarelabs-net/workers-observability-utils';
 
 export default new TailExporter({
   metrics: {
@@ -114,7 +115,13 @@ export default new TailExporter({
       }),
       new WorkersAnalyticsEngineSink({
         datasetBinding: env.ANALYTICS_ENGINE_DATASET
-      })
+      }),
+      new OtelMetricSink({
+				url: 'https://my-otel-exporter.io',
+				headers: {
+					
+				},
+			}),
     ],
     // Optional default metrics to collect automatically
     defaultMetrics: {
