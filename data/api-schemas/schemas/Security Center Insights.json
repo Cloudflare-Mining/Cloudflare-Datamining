@@ -10,7 +10,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -249,10 +250,7 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
-		]
+		"x-api-token-group": null
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues": {
 		"deprecated": true,
@@ -266,7 +264,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -274,7 +273,8 @@
 				"name": "dismissed",
 				"schema": {
 					"example": false,
-					"type": "boolean"
+					"type": "boolean",
+					"x-auditable": true
 				}
 			},
 			{
@@ -287,7 +287,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -308,7 +309,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -322,7 +324,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -341,7 +344,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -352,7 +356,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -367,7 +372,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -388,7 +394,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -402,7 +409,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -421,7 +429,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -432,7 +441,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -565,21 +575,25 @@
 														"count": {
 															"description": "Total number of results",
 															"example": 1,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"issues": {
 															"items": {
 																"properties": {
 																	"dismissed": {
 																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"issue_class": {
 																		"example": "always_use_https_not_enabled",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"issue_type": {
 																		"enum": [
@@ -589,16 +603,19 @@
 																			"insecure_configuration",
 																			"weak_authentication"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"payload": {
 																		"type": "object"
 																	},
 																	"resolve_link": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"resolve_text": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"severity": {
 																		"enum": [
@@ -606,19 +623,23 @@
 																			"Moderate",
 																			"Critical"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"since": {
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"subject": {
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"timestamp": {
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -777,7 +798,10 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
+		]
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/class": {
 		"deprecated": true,
@@ -791,7 +815,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -799,7 +824,8 @@
 				"name": "dismissed",
 				"schema": {
 					"example": false,
-					"type": "boolean"
+					"type": "boolean",
+					"x-auditable": true
 				}
 			},
 			{
@@ -812,7 +838,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -833,7 +860,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -847,7 +875,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -866,7 +895,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -877,7 +907,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -892,7 +923,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -913,7 +945,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -927,7 +960,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -946,7 +980,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -957,7 +992,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1060,10 +1096,12 @@
 														"properties": {
 															"count": {
 																"example": 1,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"value": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1207,7 +1245,10 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
+		]
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/severity": {
 		"deprecated": true,
@@ -1221,7 +1262,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1229,7 +1271,8 @@
 				"name": "dismissed",
 				"schema": {
 					"example": false,
-					"type": "boolean"
+					"type": "boolean",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1242,7 +1285,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1263,7 +1307,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1277,7 +1322,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1296,7 +1342,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1307,7 +1354,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1322,7 +1370,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1343,7 +1392,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1357,7 +1407,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1376,7 +1427,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1387,7 +1439,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1490,10 +1543,12 @@
 														"properties": {
 															"count": {
 																"example": 1,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"value": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1654,7 +1709,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1662,7 +1718,8 @@
 				"name": "dismissed",
 				"schema": {
 					"example": false,
-					"type": "boolean"
+					"type": "boolean",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1675,7 +1732,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1696,7 +1754,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1710,7 +1769,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1729,7 +1789,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1740,7 +1801,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1755,7 +1817,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1776,7 +1839,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1790,7 +1854,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1809,7 +1874,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1820,7 +1886,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -1923,10 +1990,12 @@
 														"properties": {
 															"count": {
 																"example": 1,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"value": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2070,7 +2139,10 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
+		]
 	},
 	"GET /accounts/{account_id}/security-center/insights": {
 		"operationId": "get-security-center-insights",
@@ -2083,7 +2155,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2091,7 +2164,8 @@
 				"name": "dismissed",
 				"schema": {
 					"example": false,
-					"type": "boolean"
+					"type": "boolean",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2104,7 +2178,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2125,7 +2200,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2139,7 +2215,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2158,7 +2235,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2169,7 +2247,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2184,7 +2263,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2205,7 +2285,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2219,7 +2300,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2238,7 +2320,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2249,7 +2332,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2382,21 +2466,25 @@
 														"count": {
 															"description": "Total number of results",
 															"example": 1,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"issues": {
 															"items": {
 																"properties": {
 																	"dismissed": {
 																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"issue_class": {
 																		"example": "always_use_https_not_enabled",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"issue_type": {
 																		"enum": [
@@ -2406,16 +2494,19 @@
 																			"insecure_configuration",
 																			"weak_authentication"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"payload": {
 																		"type": "object"
 																	},
 																	"resolve_link": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"resolve_text": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"severity": {
 																		"enum": [
@@ -2423,19 +2514,23 @@
 																			"Moderate",
 																			"Critical"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"since": {
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"subject": {
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"timestamp": {
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -2606,7 +2701,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2614,7 +2710,8 @@
 				"name": "dismissed",
 				"schema": {
 					"example": false,
-					"type": "boolean"
+					"type": "boolean",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2627,7 +2724,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2648,7 +2746,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2662,7 +2761,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2681,7 +2781,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2692,7 +2793,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2707,7 +2809,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2728,7 +2831,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2742,7 +2846,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2761,7 +2866,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2772,7 +2878,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -2875,10 +2982,12 @@
 														"properties": {
 															"count": {
 																"example": 1,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"value": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -3034,7 +3143,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3042,7 +3152,8 @@
 				"name": "dismissed",
 				"schema": {
 					"example": false,
-					"type": "boolean"
+					"type": "boolean",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3055,7 +3166,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3076,7 +3188,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3090,7 +3203,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3109,7 +3223,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3120,7 +3235,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3135,7 +3251,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3156,7 +3273,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3170,7 +3288,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3189,7 +3308,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3200,7 +3320,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3303,10 +3424,12 @@
 														"properties": {
 															"count": {
 																"example": 1,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"value": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -3462,7 +3585,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3470,7 +3594,8 @@
 				"name": "dismissed",
 				"schema": {
 					"example": false,
-					"type": "boolean"
+					"type": "boolean",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3483,7 +3608,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3504,7 +3630,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3518,7 +3645,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3537,7 +3665,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3548,7 +3677,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3563,7 +3693,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3584,7 +3715,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3598,7 +3730,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3617,7 +3750,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3628,7 +3762,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3731,10 +3866,12 @@
 														"properties": {
 															"count": {
 																"example": 1,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"value": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -3890,7 +4027,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3898,7 +4036,8 @@
 				"name": "dismissed",
 				"schema": {
 					"example": false,
-					"type": "boolean"
+					"type": "boolean",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3911,7 +4050,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3932,7 +4072,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3946,7 +4087,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3965,7 +4107,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3976,7 +4119,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -3991,7 +4135,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4012,7 +4157,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4026,7 +4172,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4045,7 +4192,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4056,7 +4204,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4189,21 +4338,25 @@
 														"count": {
 															"description": "Total number of results",
 															"example": 1,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"issues": {
 															"items": {
 																"properties": {
 																	"dismissed": {
 																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"issue_class": {
 																		"example": "always_use_https_not_enabled",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"issue_type": {
 																		"enum": [
@@ -4213,16 +4366,19 @@
 																			"insecure_configuration",
 																			"weak_authentication"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"payload": {
 																		"type": "object"
 																	},
 																	"resolve_link": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"resolve_text": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"severity": {
 																		"enum": [
@@ -4230,19 +4386,23 @@
 																			"Moderate",
 																			"Critical"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"since": {
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"subject": {
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"timestamp": {
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -4417,7 +4577,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4425,7 +4586,8 @@
 				"name": "dismissed",
 				"schema": {
 					"example": false,
-					"type": "boolean"
+					"type": "boolean",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4438,7 +4600,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4459,7 +4622,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4473,7 +4637,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4492,7 +4657,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4503,7 +4669,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4518,7 +4685,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4539,7 +4707,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4553,7 +4722,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4572,7 +4742,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4583,7 +4754,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4686,10 +4858,12 @@
 														"properties": {
 															"count": {
 																"example": 1,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"value": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -4849,7 +5023,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4857,7 +5032,8 @@
 				"name": "dismissed",
 				"schema": {
 					"example": false,
-					"type": "boolean"
+					"type": "boolean",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4870,7 +5046,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4891,7 +5068,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4905,7 +5083,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4924,7 +5103,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4935,7 +5115,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4950,7 +5131,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4971,7 +5153,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -4985,7 +5168,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -5004,7 +5188,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -5015,7 +5200,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -5118,10 +5304,12 @@
 														"properties": {
 															"count": {
 																"example": 1,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"value": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -5281,7 +5469,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -5289,7 +5478,8 @@
 				"name": "dismissed",
 				"schema": {
 					"example": false,
-					"type": "boolean"
+					"type": "boolean",
+					"x-auditable": true
 				}
 			},
 			{
@@ -5302,7 +5492,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -5323,7 +5514,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -5337,7 +5529,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -5356,7 +5549,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -5367,7 +5561,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -5382,7 +5577,8 @@
 					],
 					"items": {
 						"example": "always_use_https_not_enabled",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -5403,7 +5599,8 @@
 							"insecure_configuration",
 							"weak_authentication"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -5417,7 +5614,8 @@
 						"dns"
 					],
 					"items": {
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -5436,7 +5634,8 @@
 							"moderate",
 							"critical"
 						],
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -5447,7 +5646,8 @@
 				"schema": {
 					"items": {
 						"example": "example.com",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -5550,10 +5750,12 @@
 														"properties": {
 															"count": {
 																"example": 1,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"value": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -5714,7 +5916,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -5733,7 +5936,8 @@
 						"properties": {
 							"dismiss": {
 								"default": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -5967,8 +6171,7 @@
 		"summary": "Archive Security Center Insight",
 		"tags": [
 			"Security Center Insights"
-		],
-		"x-api-token-group": null
+		]
 	},
 	"PUT /accounts/{account_id}/security-center/insights/{issue_id}/dismiss": {
 		"operationId": "archive-security-center-insight",
@@ -5981,7 +6184,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -6000,7 +6204,8 @@
 						"properties": {
 							"dismiss": {
 								"default": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -6247,7 +6452,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -6266,7 +6472,8 @@
 						"properties": {
 							"dismiss": {
 								"default": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							}
 						},
 						"type": "object"

@@ -10,7 +10,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -255,7 +256,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -359,7 +361,8 @@
 															],
 															"items": {
 																"format": "uri",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -369,7 +372,8 @@
 															],
 															"items": {
 																"format": "uri",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -381,13 +385,15 @@
 															],
 															"items": {
 																"format": "uri",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
 														"enabled": {
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"encryption": {
 															"example": [
@@ -403,7 +409,8 @@
 														},
 														"expires": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"hiring": {
 															"example": [
@@ -411,7 +418,8 @@
 															],
 															"items": {
 																"format": "uri",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -421,13 +429,15 @@
 															],
 															"items": {
 																"format": "uri",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
 														"preferredLanguages": {
 															"example": "en, es, fr",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -585,7 +595,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -600,7 +611,8 @@
 								],
 								"items": {
 									"format": "uri",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -610,7 +622,8 @@
 								],
 								"items": {
 									"format": "uri",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -622,13 +635,15 @@
 								],
 								"items": {
 									"format": "uri",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
 							"enabled": {
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"encryption": {
 								"example": [
@@ -644,7 +659,8 @@
 							},
 							"expires": {
 								"format": "date-time",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"hiring": {
 								"example": [
@@ -652,7 +668,8 @@
 								],
 								"items": {
 									"format": "uri",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -662,13 +679,15 @@
 								],
 								"items": {
 									"format": "uri",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
 							"preferredLanguages": {
 								"example": "en, es, fr",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
