@@ -1,5 +1,11 @@
 # @cloudflare/sandbox
 
+## 0.0.3
+
+### Patch Changes
+
+- [`2b087c4`](https://github.com/cloudflare/sandbox-sdk/commit/2b087c40a29697c20dad19b4e3b8512f5d404bd3) Thanks [@ghostwriternr](https://github.com/ghostwriternr)! - Fix worker unable to find container port
+
 ## 0.0.2
 
 ### Patch Changes
