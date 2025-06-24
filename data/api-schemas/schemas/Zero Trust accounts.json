@@ -1307,19 +1307,6 @@
 																	},
 																	"type": "object"
 																},
-																"app-control-settings": {
-																	"description": "Setting to enable App Control",
-																	"nullable": true,
-																	"properties": {
-																		"enabled": {
-																			"description": "Enable App Control",
-																			"example": false,
-																			"type": "boolean",
-																			"x-auditable": true
-																		}
-																	},
-																	"type": "object"
-																},
 																"block_page": {
 																	"description": "Block page layout settings.",
 																	"nullable": true,
@@ -1746,19 +1733,6 @@
 																						}
 																					},
 																					"type": "object"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"app-control-settings": {
-																			"description": "Setting to enable App Control",
-																			"nullable": true,
-																			"properties": {
-																				"enabled": {
-																					"description": "Enable App Control",
-																					"example": false,
-																					"type": "boolean",
-																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -3322,19 +3296,6 @@
 										},
 										"type": "object"
 									},
-									"app-control-settings": {
-										"description": "Setting to enable App Control",
-										"nullable": true,
-										"properties": {
-											"enabled": {
-												"description": "Enable App Control",
-												"example": false,
-												"type": "boolean",
-												"x-auditable": true
-											}
-										},
-										"type": "object"
-									},
 									"block_page": {
 										"description": "Block page layout settings.",
 										"nullable": true,
@@ -3736,19 +3697,6 @@
 																				}
 																			},
 																			"type": "object"
-																		}
-																	},
-																	"type": "object"
-																},
-																"app-control-settings": {
-																	"description": "Setting to enable App Control",
-																	"nullable": true,
-																	"properties": {
-																		"enabled": {
-																			"description": "Enable App Control",
-																			"example": false,
-																			"type": "boolean",
-																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -4179,19 +4127,6 @@
 																						}
 																					},
 																					"type": "object"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"app-control-settings": {
-																			"description": "Setting to enable App Control",
-																			"nullable": true,
-																			"properties": {
-																				"enabled": {
-																					"description": "Enable App Control",
-																					"example": false,
-																					"type": "boolean",
-																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -5445,19 +5380,6 @@
 										},
 										"type": "object"
 									},
-									"app-control-settings": {
-										"description": "Setting to enable App Control",
-										"nullable": true,
-										"properties": {
-											"enabled": {
-												"description": "Enable App Control",
-												"example": false,
-												"type": "boolean",
-												"x-auditable": true
-											}
-										},
-										"type": "object"
-									},
 									"block_page": {
 										"description": "Block page layout settings.",
 										"nullable": true,
@@ -5859,19 +5781,6 @@
 																				}
 																			},
 																			"type": "object"
-																		}
-																	},
-																	"type": "object"
-																},
-																"app-control-settings": {
-																	"description": "Setting to enable App Control",
-																	"nullable": true,
-																	"properties": {
-																		"enabled": {
-																			"description": "Enable App Control",
-																			"example": false,
-																			"type": "boolean",
-																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -6302,19 +6211,6 @@
 																						}
 																					},
 																					"type": "object"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"app-control-settings": {
-																			"description": "Setting to enable App Control",
-																			"nullable": true,
-																			"properties": {
-																				"enabled": {
-																					"description": "Enable App Control",
-																					"example": false,
-																					"type": "boolean",
-																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
