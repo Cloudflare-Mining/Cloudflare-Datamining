@@ -1,0 +1,34 @@
+{
+	"name": "@cloudflare/actors",
+	"dist-tags": {
+		"latest": "0.0.1-alpha.1"
+	},
+	"versions": {
+		"0.0.1-alpha.1": {
+			"name": "@cloudflare/actors",
+			"version": "0.0.1-alpha.1",
+			"devDependencies": {
+				"@cloudflare/vite-plugin": "1.2.2",
+				"typescript": "^5.5.2",
+				"vite": "^6.3.5",
+				"wrangler": "^4.16.0"
+			},
+			"dist": {
+				"integrity": "sha512-2iBmVEf0vs8NTzCmB9RIdqfrohc5m3mjFXnf1LvPED5kqgwyBwyzrneN7oR4TK1qgRPCZswWxsT9f2sEabCdYg==",
+				"shasum": "c83af5de494d13b0d99c39a38bdb3198ea14ebc6",
+				"tarball": "https://registry.npmjs.org/@cloudflare/actors/-/actors-0.0.1-alpha.1.tgz",
+				"fileCount": 28,
+				"unpackedSize": 123425,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCICduWBzXw9l6Y3nMTHxqSn6v5tyXdEmDZ0qj40VL4hhAAiEArFI1oV150JvYQvKcMRp0NAFBsEFfTusNYeW2Su3XlAE="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=18.0.0"
+			}
+		}
+	}
+}
