@@ -111,7 +111,21 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": null
+						"imageAssetFile": {
+							"id": "97128dcc-e474-5b54-b2bd-5ed3e47be738",
+							"altText": "Advanced DNS protection  illustration",
+							"title": "Advanced DNS protection - Hero  illustration",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/27K8asGdojRJb6ysPoLcuD/5d2a65da2fd976741d9727ca740a911c/Advanced-DNS-Protection.svg"
+								},
+								"description": null
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
 						"contentfulId": "2MpAdcJYNhskKPnkf2w3gA",
@@ -153,6 +167,42 @@
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tpIHSbWVmGHYltiwNqNZ8/0113bb1cdb4e813771661ceed1295707/performance-acceleration-bolt.svg"
 										},
 										"description": "Lightning bolt icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "64T9TY8VY48K0oDHfiaYvi",
+								"title": "Protection from DNS attacks",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Integrated security features help you address critical DNS-related threats. Built-in DDoS protection makes it simple to safeguard web applications while DNSSEC adds a layer of trust to the DNS process. Email security stops attackers from sending fraudulent emails on behalf of your domain.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6bb3285c-bf75-5bac-82dd-58c220479c42",
+									"altText": "Reliability dns orange",
+									"title": "Reliability dns orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1IEgns2aHgVGiOuTOHIzv2/9eff990dd5e65ad51f5847a7612953d5/reliability-dns.svg"
+										},
+										"description": "DNS analytics icon\n"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -337,6 +387,15 @@
 								"buttonUrl": null,
 								"commonElements": null,
 								"imageAssetFile": null
+							},
+							{
+								"cellText": "Google Cloud DNS",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": null,
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
 							}
 						],
 						"groupsInTable": [],
@@ -439,8 +498,35 @@
 							},
 							{
 								"contentfulId": "1pqKWMqEJbLjXrmWInS42X",
-								"rowHeader2": null,
-								"cellsInRow": []
+								"rowHeader2": {
+									"contentfulId": "45lc3inOCxWKbxuV69iF2E",
+									"cellText": "Security",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6gnXgrvGIuyEUlevdcDC4W",
+										"cellText": " Includes integrated security features such as DDoS protection, DNSSEC, DNS Firewall, and access control.",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "kDN43kHrNfJCTX9ZjcGRa",
+										"cellText": "Offers DNSSEC and access control, but no DDoS protection.",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
 							}
 						],
 						"dataSource": null
@@ -508,6 +594,38 @@
 								"supportResponseTime": null,
 								"ctaButtonText": "Get started",
 								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up?to=/:account/:zone/billing/checkout&add=argo_zone_basic&add=cf_free",
+								"ctaButton": null,
+								"additionalTermsText": null,
+								"learnMoreText": null,
+								"plansPageLinkText": null,
+								"plansPageLinkUrl": null,
+								"activatedKeyFeatures": null,
+								"deactivatedKeyFeatures": null,
+								"coreFeatures": null,
+								"supportResponse": null,
+								"bottomCtaLinkUrl": null,
+								"bottomCtaLinkText": null,
+								"bottomCtaLink": null,
+								"hideTopDivider": false,
+								"featureList1": null,
+								"featureList2": null,
+								"featureList3": null
+							},
+							{
+								"contentTypeId": "plan",
+								"contentfulId": "WDgTK3i0mkKpJgJYQTgDL",
+								"type": "DNS",
+								"priceCurrencySymbol": null,
+								"price": "$0/month",
+								"priceDurationPeriod": null,
+								"billingSubtext": null,
+								"description": "For users primarily focused on fast response times, unparalleled redundancy, and advanced security.",
+								"shortDescription": null,
+								"mediumDescription": null,
+								"supportResponseTitleText": null,
+								"supportResponseTime": null,
+								"ctaButtonText": "Get started",
+								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up",
 								"ctaButton": null,
 								"additionalTermsText": null,
 								"learnMoreText": null,
@@ -708,6 +826,39 @@
 														"uri": null
 													},
 													"value": "Yes, Cloudflare offers free DNS services as part of all plans. Cloudflare Free, Pro, Business, and Enterprise plans offer different levels of bot mitigation, rules, and support options. Enterprise organizations can choose Cloudflare Foundation DNS for the most advanced features.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "1a2F2mEN0YVhZGTl8xlCdX",
+								"title": "What is a good alternative to Google DNS?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " In addition to Google, several cloud and content delivery network (CDN) providers offer authoritative DNS services, such as Cloudflare DNS, AWS (Amazon Route 53), Akamai (Akamai Edge DNS), and Azure (Azure DNS). But for organizations looking for exceptional performance coupled with high availability and robust security capabilities, Cloudflare DNS will be the best choice for an authoritative DNS.",
 													"marks": [],
 													"content": null
 												}
