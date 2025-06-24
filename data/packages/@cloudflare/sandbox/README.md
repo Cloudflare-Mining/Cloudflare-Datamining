@@ -1,5 +1,7 @@
 ## @cloudflare/sandbox
 
+> **⚠️ Experimental** - This library is currently experimental and we're actively seeking feedback. Please try it out and let us know what you think!
+
 A library to spin up a sandboxed environment.
 
 First, setup your wrangler.json to use the sandbox:

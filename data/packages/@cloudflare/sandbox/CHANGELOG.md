@@ -1,5 +1,13 @@
 # @cloudflare/sandbox
 
+## 0.0.4
+
+### Patch Changes
+
+- [`c0d9d33`](https://github.com/cloudflare/sandbox-sdk/commit/c0d9d3396badee1eab45e6b4a73d48957f31409b) Thanks [@threepointone](https://github.com/threepointone)! - actually work
+
+- [`444d2da`](https://github.com/cloudflare/sandbox-sdk/commit/444d2dafde9a0f190e50c879b0e768da1b289b51) Thanks [@threepointone](https://github.com/threepointone)! - add experimental label
+
 ## 0.0.3
 
 ### Patch Changes
