@@ -2142,10 +2142,7 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
-		]
+		"x-api-token-group": null
 	},
 	"GET /accounts/{account_id}/security-center/insights": {
 		"operationId": "get-security-center-insights",
@@ -6174,8 +6171,7 @@
 		"summary": "Archive Security Center Insight",
 		"tags": [
 			"Security Center Insights"
-		],
-		"x-api-token-group": null
+		]
 	},
 	"PUT /accounts/{account_id}/security-center/insights/{issue_id}/dismiss": {
 		"operationId": "archive-security-center-insight",
