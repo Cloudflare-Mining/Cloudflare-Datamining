@@ -250,10 +250,7 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
-		]
+		"x-api-token-group": null
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues": {
 		"deprecated": true,
@@ -1245,10 +1242,7 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
-		]
+		"x-api-token-group": null
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/severity": {
 		"deprecated": true,
@@ -1692,10 +1686,7 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
-		]
+		"x-api-token-group": null
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/type": {
 		"deprecated": true,
@@ -6168,7 +6159,8 @@
 		"summary": "Archive Security Center Insight",
 		"tags": [
 			"Security Center Insights"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"PUT /accounts/{account_id}/security-center/insights/{issue_id}/dismiss": {
 		"operationId": "archive-security-center-insight",

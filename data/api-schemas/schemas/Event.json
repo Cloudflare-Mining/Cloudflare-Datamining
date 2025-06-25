@@ -725,10 +725,6 @@
 										"example": "Domain Resolution",
 										"type": "string"
 									},
-									"categoryId": {
-										"example": 1,
-										"type": "number"
-									},
 									"date": {
 										"example": "2022-04-01T00:00:00Z",
 										"type": "string"
@@ -834,7 +830,6 @@
 									"uuid",
 									"accountId",
 									"date",
-									"categoryId",
 									"targetCountry",
 									"attacker",
 									"attackerCountry",
@@ -963,10 +958,6 @@
 									"example": "Domain Resolution",
 									"type": "string"
 								},
-								"categoryId": {
-									"example": 1,
-									"type": "number"
-								},
 								"date": {
 									"example": "2022-04-01T00:00:00Z",
 									"type": "string"
@@ -1072,7 +1063,6 @@
 								"uuid",
 								"accountId",
 								"date",
-								"categoryId",
 								"targetCountry",
 								"attacker",
 								"attackerCountry",
@@ -1638,10 +1628,6 @@
 									"example": "Domain Resolution",
 									"type": "string"
 								},
-								"categoryId": {
-									"example": 1,
-									"type": "number"
-								},
 								"date": {
 									"example": "2022-04-01T00:00:00Z",
 									"type": "string"
@@ -1747,7 +1733,6 @@
 								"uuid",
 								"accountId",
 								"date",
-								"categoryId",
 								"targetCountry",
 								"attacker",
 								"attackerCountry",
@@ -2241,10 +2226,6 @@
 										"example": "Domain Resolution",
 										"type": "string"
 									},
-									"categoryId": {
-										"example": 1,
-										"type": "number"
-									},
 									"date": {
 										"example": "2022-04-01T00:00:00Z",
 										"type": "string"
@@ -2350,7 +2331,6 @@
 									"uuid",
 									"accountId",
 									"date",
-									"categoryId",
 									"targetCountry",
 									"attacker",
 									"attackerCountry",
@@ -2463,7 +2443,7 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"destID": {
+							"destDatasetId": {
 								"example": "12345678-1234-1234-1234-1234567890ab",
 								"type": "string"
 							},
@@ -2476,7 +2456,7 @@
 							}
 						},
 						"required": [
-							"destID"
+							"destDatasetId"
 						],
 						"type": "object"
 					}
@@ -2646,10 +2626,6 @@
 									"example": "Domain Resolution",
 									"type": "string"
 								},
-								"categoryId": {
-									"example": 1,
-									"type": "number"
-								},
 								"date": {
 									"example": "2022-04-01T00:00:00Z",
 									"type": "string"
@@ -2755,7 +2731,6 @@
 								"uuid",
 								"accountId",
 								"date",
-								"categoryId",
 								"targetCountry",
 								"attacker",
 								"attackerCountry",
@@ -3378,10 +3353,6 @@
 									"example": "Domain Resolution",
 									"type": "string"
 								},
-								"categoryId": {
-									"example": 1,
-									"type": "number"
-								},
 								"date": {
 									"example": "2022-04-01T00:00:00Z",
 									"type": "string"
@@ -3487,7 +3458,6 @@
 								"uuid",
 								"accountId",
 								"date",
-								"categoryId",
 								"targetCountry",
 								"attacker",
 								"attackerCountry",
