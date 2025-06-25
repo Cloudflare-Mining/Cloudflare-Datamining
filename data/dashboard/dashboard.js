@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "7b7f1319-c8d2-56a7-965f-d2a7fe629a4d")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "6e603906-616b-5d0b-864a-7e7c426680c7")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1195,10 +1195,10 @@
 					t.g.build = wn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "048399b8b79512b16871576b251a95c0acb61b36",
-						dashVersion: "34156402",
+						commit: "142e8adf8668baf4eabdf66ba8deed32ee9f1ee1",
+						dashVersion: "34181666",
 						env: "production",
-						builtAt: 1750773574547,
+						builtAt: 1750865982395,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -15288,7 +15288,7 @@
 				s = t.n(_),
 				c = t("../react/pages/security/settings/hooks/index.ts"),
 				m = t("../react/pages/security/settings/resources/index.ts");
-			const n = l().lazy(() => Promise.all([t.e(16691), t.e(9616), t.e(12174), t.e(1091), t.e(42290), t.e(51436), t.e(70618), t.e(68204), t.e(65022), t.e(45275), t.e(92898), t.e(8924), t.e(77216), t.e(40517), t.e(39760), t.e(2868), t.e(5756), t.e(83276), t.e(28861), t.e(52215), t.e(42185)]).then(t.bind(t, "../react/pages/security/settings/SettingsRoute.tsx"))),
+			const n = l().lazy(() => Promise.all([t.e(16691), t.e(9616), t.e(12174), t.e(1091), t.e(42290), t.e(51436), t.e(70618), t.e(68204), t.e(2515), t.e(65022), t.e(45275), t.e(8924), t.e(77216), t.e(40517), t.e(39760), t.e(2868), t.e(5756), t.e(83276), t.e(28861), t.e(52215), t.e(42185)]).then(t.bind(t, "../react/pages/security/settings/SettingsRoute.tsx"))),
 				o = () => {
 					const {
 						t: i
@@ -21546,12 +21546,6 @@
       border-color: var(--color-neutral-200);
     }
   }
-  .place-self-end-safe {
-    place-self: safe end;
-  }
-  .self-end-safe {
-    align-self: safe flex-end;
-  }
   .self-start {
     align-self: flex-start;
   }
@@ -24112,4 +24106,4 @@ button.border {
 	}
 ]);
 
-//# debugId=7b7f1319-c8d2-56a7-965f-d2a7fe629a4d
+//# debugId=6e603906-616b-5d0b-864a-7e7c426680c7
