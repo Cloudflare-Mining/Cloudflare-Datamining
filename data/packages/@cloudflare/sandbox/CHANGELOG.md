@@ -1,5 +1,11 @@
 # @cloudflare/sandbox
 
+## 0.0.5
+
+### Patch Changes
+
+- [#5](https://github.com/cloudflare/sandbox-sdk/pull/5) [`7c15b81`](https://github.com/cloudflare/sandbox-sdk/commit/7c15b817899e4d9e1f25747aaf439e5e9e880d15) Thanks [@ghostwriternr](https://github.com/ghostwriternr)! - Make package ready for deployment
+
 ## 0.0.4
 
 ### Patch Changes
