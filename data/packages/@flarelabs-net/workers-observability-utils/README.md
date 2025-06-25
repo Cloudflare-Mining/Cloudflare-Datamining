@@ -1,14 +1,12 @@
 # Workers Observability Utils
 
-A lightweight, zero-dependency package for capturing and exporting metrics from Cloudflare Workers.
+A lightweight package for capturing and exporting metrics and logs from Cloudflare Workers.
 
 ## Features
 
-- Collect and track `COUNT`, `GAUGE`, and `HISTOGRAM` metrics
-- Auto-aggregation of metrics based on type
-- Tag support for all metrics
-- Export metrics to multiple sinks (Datadog, Workers Analytics Engine)
-- Separate Tail Worker architecture for efficient metrics exporting
+- Centralized export via configurable Tail Worker to multiple sinks (Datadog, Workers Analytics Engine, OpenTelemetry)
+- Comprehensive metric support: `COUNT`, `GAUGE`, and `HISTOGRAM` with auto-aggregation and tagging
+- Native `console.log()` support - works with existing logging, no code changes required
 
 ## Basic Usage
 
@@ -83,6 +81,29 @@ metrics.count('worker.request', 1, {
 });
 ```
 
+### Setting Up Logs in Your Worker
+
+This library automatically captures all `console.log()` calls from your worker - no code changes required! Your existing logging will be collected and exported through the Tail Worker.
+
+```typescript
+export default {
+  async fetch(request, env, ctx) {
+    // These logs will be automatically captured and exported
+    console.log('Processing request', { method: request.method, url: request.url });
+    console.error('Something went wrong', { error: 'details' });
+    console.warn('This is a warning');
+    
+    return new Response('Hello World');
+  },
+};
+```
+
+### Log Sinks
+
+Currently supported log destination:
+
+- **OpenTelemetry** - Forward logs to any OpenTelemetry compatible collector
+
 ## Setting Up the Tail Worker
 
 To efficiently export metrics to external providers, you should set up a dedicated Tail Worker. This architecture allows your main worker to focus on handling requests, while the Tail Worker handles metric collection and export. For more information, see the [Cloudflare Tail Workers documentation](https://developers.cloudflare.com/workers/observability/logs/tail-workers/).
@@ -92,7 +113,7 @@ To efficiently export metrics to external providers, you should set up a dedicat
 With this library, you can send metrics to multiple destinations simultaneously. The TailExporter supports an array of metric sinks, and each sink receives the same metrics data. Currently supported sinks include:
 
 - **Datadog** - Export metrics to Datadog for visualization and alerting
-- **Workers Analytics Engine** - Store metrics in Cloudflare's Analytics Engine for custom queries and analysis
+- **Workers Analytics Engine** - Store metrics in Cloudflare's Analytics Engine for custom queries and analysis - WARNING: the default number of writes to workers analytics engine per request is 25.
 - **Otel Metrics** - Send your Metrics to any OpenTelemetry compatible collector
 
 When using multiple sinks, metrics will be sent to all configured sinks in parallel. If one sink fails, the others will still receive the metrics.
@@ -103,7 +124,7 @@ When using multiple sinks, metrics will be sent to all configured sinks in paral
 
 ```typescript
 // tail-worker/src/index.ts
-import { TailExporter, DatadogMetricSink, WorkersAnalyticsEngineSink, OtelMetricSink} from '@flarelabs-net/workers-observability-utils';
+import { TailExporter, DatadogMetricSink, WorkersAnalyticsEngineSink, OtelMetricSink, OtelLogSink } from '@flarelabs-net/workers-observability-utils';
 
 export default new TailExporter({
   metrics: {
@@ -132,6 +153,18 @@ export default new TailExporter({
     // When using Workers Analytics Engine, a value of 20 or less is recommended due to soft limits
     maxBufferSize: 20,
     // Maximum duration in seconds to buffer before flushing (default: 5, max: 30)
+    maxBufferDuration: 5
+  },
+  logs: {
+    sinks: [
+      new OtelLogSink({
+				url: 'https://my-otel-exporter.io',
+				headers: {
+					
+				},
+			}),
+    ],
+    maxBufferSize: 20,
     maxBufferDuration: 5
   }
 });
@@ -165,7 +198,8 @@ wrangler secret put DD_API_KEY
 The Tail Worker supports the following environment variables and bindings:
 
 #### For Datadog
-- `DD_API_KEY` or `DATADOG_API_KEY`: Your Datadog API key
+- `DD_API_KEY`: Your Datadog API key
+- `DD_SITE`: the datadog url i.e. us3.datadoghq.com
 
 #### For Workers Analytics Engine
 - Requires an Analytics Engine dataset binding in your wrangler.jsonc:
