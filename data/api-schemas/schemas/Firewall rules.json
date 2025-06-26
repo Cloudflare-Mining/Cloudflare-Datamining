@@ -170,152 +170,142 @@
 											"items": {
 												"allOf": [
 													{
-														"allOf": [
-															{
-																"properties": {
-																	"action": {
-																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																		"enum": [
-																			"block",
-																			"challenge",
-																			"js_challenge",
-																			"managed_challenge",
-																			"allow",
-																			"log",
-																			"bypass"
-																		],
-																		"example": "block",
-																		"type": "string"
-																	},
-																	"description": {
-																		"description": "An informative summary of the firewall rule.",
-																		"example": "Blocks traffic identified during investigation for MIR-31",
-																		"maxLength": 500,
-																		"type": "string"
-																	},
-																	"id": {
-																		"description": "The unique identifier of the firewall rule.",
-																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																		"maxLength": 32,
-																		"readOnly": true,
-																		"type": "string"
-																	},
-																	"paused": {
-																		"description": "When true, indicates that the firewall rule is currently paused.",
-																		"example": false,
-																		"type": "boolean"
-																	},
-																	"priority": {
-																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																		"example": 50,
-																		"maximum": 2147483647,
-																		"minimum": 0,
-																		"type": "number"
-																	},
-																	"products": {
-																		"items": {
-																			"description": "A list of products to bypass for a request when using the `bypass` action.",
-																			"enum": [
-																				"zoneLockdown",
-																				"uaBlock",
-																				"bic",
-																				"hot",
-																				"securityLevel",
-																				"rateLimit",
-																				"waf"
-																			],
-																			"example": "waf",
-																			"type": "string"
-																		},
-																		"type": "array"
-																	},
-																	"ref": {
-																		"description": "A short reference tag. Allows you to select related firewall rules.",
-																		"example": "MIR-31",
-																		"maxLength": 50,
-																		"type": "string"
-																	}
-																},
-																"type": "object"
+														"properties": {
+															"action": {
+																"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+																"enum": [
+																	"block",
+																	"challenge",
+																	"js_challenge",
+																	"managed_challenge",
+																	"allow",
+																	"log",
+																	"bypass"
+																],
+																"example": "block",
+																"type": "string"
 															},
-															{
-																"properties": {
-																	"filter": {
-																		"oneOf": [
-																			{
-																				"additionalProperties": false,
-																				"properties": {
-																					"description": {
-																						"description": "An informative summary of the filter.",
-																						"example": "Restrict access from these browsers on this address range.",
-																						"maxLength": 500,
-																						"type": "string"
-																					},
-																					"expression": {
-																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-																						"type": "string"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true,
-																						"type": "string"
-																					},
-																					"paused": {
-																						"description": "When true, indicates that the filter is currently paused.",
-																						"example": false,
-																						"type": "boolean"
-																					},
-																					"ref": {
-																						"description": "A short reference tag. Allows you to select related filters.",
-																						"example": "FIL-100",
-																						"maxLength": 50,
-																						"type": "string"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			{
-																				"additionalProperties": false,
-																				"properties": {
-																					"deleted": {
-																						"description": "When true, indicates that the firewall rule was deleted.",
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true,
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id",
-																					"deleted"
-																				],
-																				"type": "object"
-																			}
-																		]
-																	}
+															"description": {
+																"description": "An informative summary of the firewall rule.",
+																"example": "Blocks traffic identified during investigation for MIR-31",
+																"maxLength": 500,
+																"type": "string"
+															},
+															"id": {
+																"description": "The unique identifier of the firewall rule.",
+																"example": "372e67954025e0ba6aaa6d586b9e0b60",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"paused": {
+																"description": "When true, indicates that the firewall rule is currently paused.",
+																"example": false,
+																"type": "boolean"
+															},
+															"priority": {
+																"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+																"example": 50,
+																"maximum": 2147483647,
+																"minimum": 0,
+																"type": "number"
+															},
+															"products": {
+																"items": {
+																	"description": "A list of products to bypass for a request when using the `bypass` action.",
+																	"enum": [
+																		"zoneLockdown",
+																		"uaBlock",
+																		"bic",
+																		"hot",
+																		"securityLevel",
+																		"rateLimit",
+																		"waf"
+																	],
+																	"example": "waf",
+																	"type": "string"
 																},
-																"type": "object"
+																"type": "array"
+															},
+															"ref": {
+																"description": "A short reference tag. Allows you to select related firewall rules.",
+																"example": "MIR-31",
+																"maxLength": 50,
+																"type": "string"
 															}
-														],
+														},
 														"type": "object"
 													},
 													{
-														"required": [
-															"id"
-														],
+														"properties": {
+															"filter": {
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"description": {
+																				"description": "An informative summary of the filter.",
+																				"example": "Restrict access from these browsers on this address range.",
+																				"maxLength": 500,
+																				"type": "string"
+																			},
+																			"expression": {
+																				"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																				"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																				"type": "string"
+																			},
+																			"id": {
+																				"description": "The unique identifier of the filter.",
+																				"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"paused": {
+																				"description": "When true, indicates that the filter is currently paused.",
+																				"example": false,
+																				"type": "boolean"
+																			},
+																			"ref": {
+																				"description": "A short reference tag. Allows you to select related filters.",
+																				"example": "FIL-100",
+																				"maxLength": 50,
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"deleted": {
+																				"description": "When true, indicates that the firewall rule was deleted.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"id": {
+																				"description": "The unique identifier of the filter.",
+																				"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"deleted"
+																		],
+																		"type": "object"
+																	}
+																]
+															}
+														},
 														"type": "object"
 													}
-												]
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -463,152 +453,142 @@
 													"items": {
 														"allOf": [
 															{
-																"allOf": [
-																	{
-																		"properties": {
-																			"action": {
-																				"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																				"enum": [
-																					"block",
-																					"challenge",
-																					"js_challenge",
-																					"managed_challenge",
-																					"allow",
-																					"log",
-																					"bypass"
-																				],
-																				"example": "block",
-																				"type": "string"
-																			},
-																			"description": {
-																				"description": "An informative summary of the firewall rule.",
-																				"example": "Blocks traffic identified during investigation for MIR-31",
-																				"maxLength": 500,
-																				"type": "string"
-																			},
-																			"id": {
-																				"description": "The unique identifier of the firewall rule.",
-																				"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																				"maxLength": 32,
-																				"readOnly": true,
-																				"type": "string"
-																			},
-																			"paused": {
-																				"description": "When true, indicates that the firewall rule is currently paused.",
-																				"example": false,
-																				"type": "boolean"
-																			},
-																			"priority": {
-																				"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																				"example": 50,
-																				"maximum": 2147483647,
-																				"minimum": 0,
-																				"type": "number"
-																			},
-																			"products": {
-																				"items": {
-																					"description": "A list of products to bypass for a request when using the `bypass` action.",
-																					"enum": [
-																						"zoneLockdown",
-																						"uaBlock",
-																						"bic",
-																						"hot",
-																						"securityLevel",
-																						"rateLimit",
-																						"waf"
-																					],
-																					"example": "waf",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"ref": {
-																				"description": "A short reference tag. Allows you to select related firewall rules.",
-																				"example": "MIR-31",
-																				"maxLength": 50,
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
+																"properties": {
+																	"action": {
+																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+																		"enum": [
+																			"block",
+																			"challenge",
+																			"js_challenge",
+																			"managed_challenge",
+																			"allow",
+																			"log",
+																			"bypass"
+																		],
+																		"example": "block",
+																		"type": "string"
 																	},
-																	{
-																		"properties": {
-																			"filter": {
-																				"oneOf": [
-																					{
-																						"additionalProperties": false,
-																						"properties": {
-																							"description": {
-																								"description": "An informative summary of the filter.",
-																								"example": "Restrict access from these browsers on this address range.",
-																								"maxLength": 500,
-																								"type": "string"
-																							},
-																							"expression": {
-																								"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																								"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-																								"type": "string"
-																							},
-																							"id": {
-																								"description": "The unique identifier of the filter.",
-																								"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																								"maxLength": 32,
-																								"minLength": 32,
-																								"readOnly": true,
-																								"type": "string"
-																							},
-																							"paused": {
-																								"description": "When true, indicates that the filter is currently paused.",
-																								"example": false,
-																								"type": "boolean"
-																							},
-																							"ref": {
-																								"description": "A short reference tag. Allows you to select related filters.",
-																								"example": "FIL-100",
-																								"maxLength": 50,
-																								"type": "string"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					{
-																						"additionalProperties": false,
-																						"properties": {
-																							"deleted": {
-																								"description": "When true, indicates that the firewall rule was deleted.",
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"id": {
-																								"description": "The unique identifier of the filter.",
-																								"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																								"maxLength": 32,
-																								"minLength": 32,
-																								"readOnly": true,
-																								"type": "string"
-																							}
-																						},
-																						"required": [
-																							"id",
-																							"deleted"
-																						],
-																						"type": "object"
-																					}
-																				]
-																			}
+																	"description": {
+																		"description": "An informative summary of the firewall rule.",
+																		"example": "Blocks traffic identified during investigation for MIR-31",
+																		"maxLength": 500,
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "The unique identifier of the firewall rule.",
+																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"paused": {
+																		"description": "When true, indicates that the firewall rule is currently paused.",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"priority": {
+																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+																		"example": 50,
+																		"maximum": 2147483647,
+																		"minimum": 0,
+																		"type": "number"
+																	},
+																	"products": {
+																		"items": {
+																			"description": "A list of products to bypass for a request when using the `bypass` action.",
+																			"enum": [
+																				"zoneLockdown",
+																				"uaBlock",
+																				"bic",
+																				"hot",
+																				"securityLevel",
+																				"rateLimit",
+																				"waf"
+																			],
+																			"example": "waf",
+																			"type": "string"
 																		},
-																		"type": "object"
+																		"type": "array"
+																	},
+																	"ref": {
+																		"description": "A short reference tag. Allows you to select related firewall rules.",
+																		"example": "MIR-31",
+																		"maxLength": 50,
+																		"type": "string"
 																	}
-																],
+																},
 																"type": "object"
 															},
 															{
-																"required": [
-																	"id"
-																],
+																"properties": {
+																	"filter": {
+																		"oneOf": [
+																			{
+																				"additionalProperties": false,
+																				"properties": {
+																					"description": {
+																						"description": "An informative summary of the filter.",
+																						"example": "Restrict access from these browsers on this address range.",
+																						"maxLength": 500,
+																						"type": "string"
+																					},
+																					"expression": {
+																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																						"type": "string"
+																					},
+																					"id": {
+																						"description": "The unique identifier of the filter.",
+																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																						"maxLength": 32,
+																						"minLength": 32,
+																						"readOnly": true,
+																						"type": "string"
+																					},
+																					"paused": {
+																						"description": "When true, indicates that the filter is currently paused.",
+																						"example": false,
+																						"type": "boolean"
+																					},
+																					"ref": {
+																						"description": "A short reference tag. Allows you to select related filters.",
+																						"example": "FIL-100",
+																						"maxLength": 50,
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"additionalProperties": false,
+																				"properties": {
+																					"deleted": {
+																						"description": "When true, indicates that the firewall rule was deleted.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"id": {
+																						"description": "The unique identifier of the filter.",
+																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																						"maxLength": 32,
+																						"minLength": 32,
+																						"readOnly": true,
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"deleted"
+																				],
+																				"type": "object"
+																			}
+																		]
+																	}
+																},
 																"type": "object"
 															}
-														]
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -888,6 +868,264 @@
 										"result": {
 											"allOf": [
 												{
+													"properties": {
+														"action": {
+															"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+															"enum": [
+																"block",
+																"challenge",
+																"js_challenge",
+																"managed_challenge",
+																"allow",
+																"log",
+																"bypass"
+															],
+															"example": "block",
+															"type": "string"
+														},
+														"description": {
+															"description": "An informative summary of the firewall rule.",
+															"example": "Blocks traffic identified during investigation for MIR-31",
+															"maxLength": 500,
+															"type": "string"
+														},
+														"id": {
+															"description": "The unique identifier of the firewall rule.",
+															"example": "372e67954025e0ba6aaa6d586b9e0b60",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"paused": {
+															"description": "When true, indicates that the firewall rule is currently paused.",
+															"example": false,
+															"type": "boolean"
+														},
+														"priority": {
+															"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+															"example": 50,
+															"maximum": 2147483647,
+															"minimum": 0,
+															"type": "number"
+														},
+														"products": {
+															"items": {
+																"description": "A list of products to bypass for a request when using the `bypass` action.",
+																"enum": [
+																	"zoneLockdown",
+																	"uaBlock",
+																	"bic",
+																	"hot",
+																	"securityLevel",
+																	"rateLimit",
+																	"waf"
+																],
+																"example": "waf",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"ref": {
+															"description": "A short reference tag. Allows you to select related firewall rules.",
+															"example": "MIR-31",
+															"maxLength": 50,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"filter": {
+															"oneOf": [
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"description": {
+																			"description": "An informative summary of the filter.",
+																			"example": "Restrict access from these browsers on this address range.",
+																			"maxLength": 500,
+																			"type": "string"
+																		},
+																		"expression": {
+																			"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																			"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																			"type": "string"
+																		},
+																		"id": {
+																			"description": "The unique identifier of the filter.",
+																			"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																			"maxLength": 32,
+																			"minLength": 32,
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"paused": {
+																			"description": "When true, indicates that the filter is currently paused.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"ref": {
+																			"description": "A short reference tag. Allows you to select related filters.",
+																			"example": "FIL-100",
+																			"maxLength": 50,
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"deleted": {
+																			"description": "When true, indicates that the firewall rule was deleted.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"id": {
+																			"description": "The unique identifier of the filter.",
+																			"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																			"maxLength": 32,
+																			"minLength": 32,
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"deleted"
+																	],
+																	"type": "object"
+																}
+															]
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete a firewall rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Defines whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
 													"allOf": [
 														{
 															"properties": {
@@ -1026,284 +1264,6 @@
 														}
 													],
 													"type": "object"
-												},
-												{
-													"required": [
-														"id"
-													],
-													"type": "object"
-												}
-											]
-										}
-									},
-									"required": [
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Delete a firewall rule response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"allOf": [
-														{
-															"allOf": [
-																{
-																	"properties": {
-																		"action": {
-																			"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																			"enum": [
-																				"block",
-																				"challenge",
-																				"js_challenge",
-																				"managed_challenge",
-																				"allow",
-																				"log",
-																				"bypass"
-																			],
-																			"example": "block",
-																			"type": "string"
-																		},
-																		"description": {
-																			"description": "An informative summary of the firewall rule.",
-																			"example": "Blocks traffic identified during investigation for MIR-31",
-																			"maxLength": 500,
-																			"type": "string"
-																		},
-																		"id": {
-																			"description": "The unique identifier of the firewall rule.",
-																			"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																			"maxLength": 32,
-																			"readOnly": true,
-																			"type": "string"
-																		},
-																		"paused": {
-																			"description": "When true, indicates that the firewall rule is currently paused.",
-																			"example": false,
-																			"type": "boolean"
-																		},
-																		"priority": {
-																			"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																			"example": 50,
-																			"maximum": 2147483647,
-																			"minimum": 0,
-																			"type": "number"
-																		},
-																		"products": {
-																			"items": {
-																				"description": "A list of products to bypass for a request when using the `bypass` action.",
-																				"enum": [
-																					"zoneLockdown",
-																					"uaBlock",
-																					"bic",
-																					"hot",
-																					"securityLevel",
-																					"rateLimit",
-																					"waf"
-																				],
-																				"example": "waf",
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"ref": {
-																			"description": "A short reference tag. Allows you to select related firewall rules.",
-																			"example": "MIR-31",
-																			"maxLength": 50,
-																			"type": "string"
-																		}
-																	},
-																	"type": "object"
-																},
-																{
-																	"properties": {
-																		"filter": {
-																			"oneOf": [
-																				{
-																					"additionalProperties": false,
-																					"properties": {
-																						"description": {
-																							"description": "An informative summary of the filter.",
-																							"example": "Restrict access from these browsers on this address range.",
-																							"maxLength": 500,
-																							"type": "string"
-																						},
-																						"expression": {
-																							"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																							"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-																							"type": "string"
-																						},
-																						"id": {
-																							"description": "The unique identifier of the filter.",
-																							"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																							"maxLength": 32,
-																							"minLength": 32,
-																							"readOnly": true,
-																							"type": "string"
-																						},
-																						"paused": {
-																							"description": "When true, indicates that the filter is currently paused.",
-																							"example": false,
-																							"type": "boolean"
-																						},
-																						"ref": {
-																							"description": "A short reference tag. Allows you to select related filters.",
-																							"example": "FIL-100",
-																							"maxLength": 50,
-																							"type": "string"
-																						}
-																					},
-																					"type": "object"
-																				},
-																				{
-																					"additionalProperties": false,
-																					"properties": {
-																						"deleted": {
-																							"description": "When true, indicates that the firewall rule was deleted.",
-																							"example": true,
-																							"type": "boolean"
-																						},
-																						"id": {
-																							"description": "The unique identifier of the filter.",
-																							"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																							"maxLength": 32,
-																							"minLength": 32,
-																							"readOnly": true,
-																							"type": "string"
-																						}
-																					},
-																					"required": [
-																						"id",
-																						"deleted"
-																					],
-																					"type": "object"
-																				}
-																			]
-																		}
-																	},
-																	"type": "object"
-																}
-															],
-															"type": "object"
-														},
-														{
-															"required": [
-																"id"
-															],
-															"type": "object"
-														}
-													]
 												}
 											},
 											"required": [
@@ -1633,155 +1593,142 @@
 											"items": {
 												"allOf": [
 													{
-														"allOf": [
-															{
-																"properties": {
-																	"action": {
-																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																		"enum": [
-																			"block",
-																			"challenge",
-																			"js_challenge",
-																			"managed_challenge",
-																			"allow",
-																			"log",
-																			"bypass"
-																		],
-																		"example": "block",
-																		"type": "string"
-																	},
-																	"description": {
-																		"description": "An informative summary of the firewall rule.",
-																		"example": "Blocks traffic identified during investigation for MIR-31",
-																		"maxLength": 500,
-																		"type": "string"
-																	},
-																	"id": {
-																		"description": "The unique identifier of the firewall rule.",
-																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																		"maxLength": 32,
-																		"readOnly": true,
-																		"type": "string"
-																	},
-																	"paused": {
-																		"description": "When true, indicates that the firewall rule is currently paused.",
-																		"example": false,
-																		"type": "boolean"
-																	},
-																	"priority": {
-																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																		"example": 50,
-																		"maximum": 2147483647,
-																		"minimum": 0,
-																		"type": "number"
-																	},
-																	"products": {
-																		"items": {
-																			"description": "A list of products to bypass for a request when using the `bypass` action.",
-																			"enum": [
-																				"zoneLockdown",
-																				"uaBlock",
-																				"bic",
-																				"hot",
-																				"securityLevel",
-																				"rateLimit",
-																				"waf"
-																			],
-																			"example": "waf",
-																			"type": "string"
-																		},
-																		"type": "array"
-																	},
-																	"ref": {
-																		"description": "A short reference tag. Allows you to select related firewall rules.",
-																		"example": "MIR-31",
-																		"maxLength": 50,
-																		"type": "string"
-																	}
-																},
-																"type": "object"
+														"properties": {
+															"action": {
+																"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+																"enum": [
+																	"block",
+																	"challenge",
+																	"js_challenge",
+																	"managed_challenge",
+																	"allow",
+																	"log",
+																	"bypass"
+																],
+																"example": "block",
+																"type": "string"
 															},
-															{
-																"properties": {
-																	"filter": {
-																		"oneOf": [
-																			{
-																				"additionalProperties": false,
-																				"properties": {
-																					"description": {
-																						"description": "An informative summary of the filter.",
-																						"example": "Restrict access from these browsers on this address range.",
-																						"maxLength": 500,
-																						"type": "string"
-																					},
-																					"expression": {
-																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-																						"type": "string"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true,
-																						"type": "string"
-																					},
-																					"paused": {
-																						"description": "When true, indicates that the filter is currently paused.",
-																						"example": false,
-																						"type": "boolean"
-																					},
-																					"ref": {
-																						"description": "A short reference tag. Allows you to select related filters.",
-																						"example": "FIL-100",
-																						"maxLength": 50,
-																						"type": "string"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			{
-																				"additionalProperties": false,
-																				"properties": {
-																					"deleted": {
-																						"description": "When true, indicates that the firewall rule was deleted.",
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true,
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id",
-																					"deleted"
-																				],
-																				"type": "object"
-																			}
-																		]
-																	}
+															"description": {
+																"description": "An informative summary of the firewall rule.",
+																"example": "Blocks traffic identified during investigation for MIR-31",
+																"maxLength": 500,
+																"type": "string"
+															},
+															"id": {
+																"description": "The unique identifier of the firewall rule.",
+																"example": "372e67954025e0ba6aaa6d586b9e0b60",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"paused": {
+																"description": "When true, indicates that the firewall rule is currently paused.",
+																"example": false,
+																"type": "boolean"
+															},
+															"priority": {
+																"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+																"example": 50,
+																"maximum": 2147483647,
+																"minimum": 0,
+																"type": "number"
+															},
+															"products": {
+																"items": {
+																	"description": "A list of products to bypass for a request when using the `bypass` action.",
+																	"enum": [
+																		"zoneLockdown",
+																		"uaBlock",
+																		"bic",
+																		"hot",
+																		"securityLevel",
+																		"rateLimit",
+																		"waf"
+																	],
+																	"example": "waf",
+																	"type": "string"
 																},
-																"type": "object"
+																"type": "array"
+															},
+															"ref": {
+																"description": "A short reference tag. Allows you to select related firewall rules.",
+																"example": "MIR-31",
+																"maxLength": 50,
+																"type": "string"
 															}
-														],
+														},
 														"type": "object"
 													},
 													{
-														"required": [
-															"id",
-															"filter",
-															"action",
-															"paused"
-														],
+														"properties": {
+															"filter": {
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"description": {
+																				"description": "An informative summary of the filter.",
+																				"example": "Restrict access from these browsers on this address range.",
+																				"maxLength": 500,
+																				"type": "string"
+																			},
+																			"expression": {
+																				"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																				"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																				"type": "string"
+																			},
+																			"id": {
+																				"description": "The unique identifier of the filter.",
+																				"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"paused": {
+																				"description": "When true, indicates that the filter is currently paused.",
+																				"example": false,
+																				"type": "boolean"
+																			},
+																			"ref": {
+																				"description": "A short reference tag. Allows you to select related filters.",
+																				"example": "FIL-100",
+																				"maxLength": 50,
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"deleted": {
+																				"description": "When true, indicates that the firewall rule was deleted.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"id": {
+																				"description": "The unique identifier of the filter.",
+																				"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"deleted"
+																		],
+																		"type": "object"
+																	}
+																]
+															}
+														},
 														"type": "object"
 													}
-												]
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -1929,155 +1876,142 @@
 													"items": {
 														"allOf": [
 															{
-																"allOf": [
-																	{
-																		"properties": {
-																			"action": {
-																				"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																				"enum": [
-																					"block",
-																					"challenge",
-																					"js_challenge",
-																					"managed_challenge",
-																					"allow",
-																					"log",
-																					"bypass"
-																				],
-																				"example": "block",
-																				"type": "string"
-																			},
-																			"description": {
-																				"description": "An informative summary of the firewall rule.",
-																				"example": "Blocks traffic identified during investigation for MIR-31",
-																				"maxLength": 500,
-																				"type": "string"
-																			},
-																			"id": {
-																				"description": "The unique identifier of the firewall rule.",
-																				"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																				"maxLength": 32,
-																				"readOnly": true,
-																				"type": "string"
-																			},
-																			"paused": {
-																				"description": "When true, indicates that the firewall rule is currently paused.",
-																				"example": false,
-																				"type": "boolean"
-																			},
-																			"priority": {
-																				"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																				"example": 50,
-																				"maximum": 2147483647,
-																				"minimum": 0,
-																				"type": "number"
-																			},
-																			"products": {
-																				"items": {
-																					"description": "A list of products to bypass for a request when using the `bypass` action.",
-																					"enum": [
-																						"zoneLockdown",
-																						"uaBlock",
-																						"bic",
-																						"hot",
-																						"securityLevel",
-																						"rateLimit",
-																						"waf"
-																					],
-																					"example": "waf",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"ref": {
-																				"description": "A short reference tag. Allows you to select related firewall rules.",
-																				"example": "MIR-31",
-																				"maxLength": 50,
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
+																"properties": {
+																	"action": {
+																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+																		"enum": [
+																			"block",
+																			"challenge",
+																			"js_challenge",
+																			"managed_challenge",
+																			"allow",
+																			"log",
+																			"bypass"
+																		],
+																		"example": "block",
+																		"type": "string"
 																	},
-																	{
-																		"properties": {
-																			"filter": {
-																				"oneOf": [
-																					{
-																						"additionalProperties": false,
-																						"properties": {
-																							"description": {
-																								"description": "An informative summary of the filter.",
-																								"example": "Restrict access from these browsers on this address range.",
-																								"maxLength": 500,
-																								"type": "string"
-																							},
-																							"expression": {
-																								"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																								"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-																								"type": "string"
-																							},
-																							"id": {
-																								"description": "The unique identifier of the filter.",
-																								"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																								"maxLength": 32,
-																								"minLength": 32,
-																								"readOnly": true,
-																								"type": "string"
-																							},
-																							"paused": {
-																								"description": "When true, indicates that the filter is currently paused.",
-																								"example": false,
-																								"type": "boolean"
-																							},
-																							"ref": {
-																								"description": "A short reference tag. Allows you to select related filters.",
-																								"example": "FIL-100",
-																								"maxLength": 50,
-																								"type": "string"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					{
-																						"additionalProperties": false,
-																						"properties": {
-																							"deleted": {
-																								"description": "When true, indicates that the firewall rule was deleted.",
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"id": {
-																								"description": "The unique identifier of the filter.",
-																								"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																								"maxLength": 32,
-																								"minLength": 32,
-																								"readOnly": true,
-																								"type": "string"
-																							}
-																						},
-																						"required": [
-																							"id",
-																							"deleted"
-																						],
-																						"type": "object"
-																					}
-																				]
-																			}
+																	"description": {
+																		"description": "An informative summary of the firewall rule.",
+																		"example": "Blocks traffic identified during investigation for MIR-31",
+																		"maxLength": 500,
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "The unique identifier of the firewall rule.",
+																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"paused": {
+																		"description": "When true, indicates that the firewall rule is currently paused.",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"priority": {
+																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+																		"example": 50,
+																		"maximum": 2147483647,
+																		"minimum": 0,
+																		"type": "number"
+																	},
+																	"products": {
+																		"items": {
+																			"description": "A list of products to bypass for a request when using the `bypass` action.",
+																			"enum": [
+																				"zoneLockdown",
+																				"uaBlock",
+																				"bic",
+																				"hot",
+																				"securityLevel",
+																				"rateLimit",
+																				"waf"
+																			],
+																			"example": "waf",
+																			"type": "string"
 																		},
-																		"type": "object"
+																		"type": "array"
+																	},
+																	"ref": {
+																		"description": "A short reference tag. Allows you to select related firewall rules.",
+																		"example": "MIR-31",
+																		"maxLength": 50,
+																		"type": "string"
 																	}
-																],
+																},
 																"type": "object"
 															},
 															{
-																"required": [
-																	"id",
-																	"filter",
-																	"action",
-																	"paused"
-																],
+																"properties": {
+																	"filter": {
+																		"oneOf": [
+																			{
+																				"additionalProperties": false,
+																				"properties": {
+																					"description": {
+																						"description": "An informative summary of the filter.",
+																						"example": "Restrict access from these browsers on this address range.",
+																						"maxLength": 500,
+																						"type": "string"
+																					},
+																					"expression": {
+																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																						"type": "string"
+																					},
+																					"id": {
+																						"description": "The unique identifier of the filter.",
+																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																						"maxLength": 32,
+																						"minLength": 32,
+																						"readOnly": true,
+																						"type": "string"
+																					},
+																					"paused": {
+																						"description": "When true, indicates that the filter is currently paused.",
+																						"example": false,
+																						"type": "boolean"
+																					},
+																					"ref": {
+																						"description": "A short reference tag. Allows you to select related filters.",
+																						"example": "FIL-100",
+																						"maxLength": 50,
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"additionalProperties": false,
+																				"properties": {
+																					"deleted": {
+																						"description": "When true, indicates that the firewall rule was deleted.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"id": {
+																						"description": "The unique identifier of the filter.",
+																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																						"maxLength": 32,
+																						"minLength": 32,
+																						"readOnly": true,
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"deleted"
+																				],
+																				"type": "object"
+																			}
+																		]
+																	}
+																},
 																"type": "object"
 															}
-														]
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -2357,6 +2291,264 @@
 										"result": {
 											"allOf": [
 												{
+													"properties": {
+														"action": {
+															"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+															"enum": [
+																"block",
+																"challenge",
+																"js_challenge",
+																"managed_challenge",
+																"allow",
+																"log",
+																"bypass"
+															],
+															"example": "block",
+															"type": "string"
+														},
+														"description": {
+															"description": "An informative summary of the firewall rule.",
+															"example": "Blocks traffic identified during investigation for MIR-31",
+															"maxLength": 500,
+															"type": "string"
+														},
+														"id": {
+															"description": "The unique identifier of the firewall rule.",
+															"example": "372e67954025e0ba6aaa6d586b9e0b60",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"paused": {
+															"description": "When true, indicates that the firewall rule is currently paused.",
+															"example": false,
+															"type": "boolean"
+														},
+														"priority": {
+															"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+															"example": 50,
+															"maximum": 2147483647,
+															"minimum": 0,
+															"type": "number"
+														},
+														"products": {
+															"items": {
+																"description": "A list of products to bypass for a request when using the `bypass` action.",
+																"enum": [
+																	"zoneLockdown",
+																	"uaBlock",
+																	"bic",
+																	"hot",
+																	"securityLevel",
+																	"rateLimit",
+																	"waf"
+																],
+																"example": "waf",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"ref": {
+															"description": "A short reference tag. Allows you to select related firewall rules.",
+															"example": "MIR-31",
+															"maxLength": 50,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"filter": {
+															"oneOf": [
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"description": {
+																			"description": "An informative summary of the filter.",
+																			"example": "Restrict access from these browsers on this address range.",
+																			"maxLength": 500,
+																			"type": "string"
+																		},
+																		"expression": {
+																			"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																			"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																			"type": "string"
+																		},
+																		"id": {
+																			"description": "The unique identifier of the filter.",
+																			"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																			"maxLength": 32,
+																			"minLength": 32,
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"paused": {
+																			"description": "When true, indicates that the filter is currently paused.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"ref": {
+																			"description": "A short reference tag. Allows you to select related filters.",
+																			"example": "FIL-100",
+																			"maxLength": 50,
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"deleted": {
+																			"description": "When true, indicates that the firewall rule was deleted.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"id": {
+																			"description": "The unique identifier of the filter.",
+																			"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																			"maxLength": 32,
+																			"minLength": 32,
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"deleted"
+																	],
+																	"type": "object"
+																}
+															]
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a firewall rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Defines whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
 													"allOf": [
 														{
 															"properties": {
@@ -2495,290 +2687,6 @@
 														}
 													],
 													"type": "object"
-												},
-												{
-													"required": [
-														"id",
-														"filter",
-														"action",
-														"paused"
-													],
-													"type": "object"
-												}
-											]
-										}
-									},
-									"required": [
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Get a firewall rule response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"allOf": [
-														{
-															"allOf": [
-																{
-																	"properties": {
-																		"action": {
-																			"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																			"enum": [
-																				"block",
-																				"challenge",
-																				"js_challenge",
-																				"managed_challenge",
-																				"allow",
-																				"log",
-																				"bypass"
-																			],
-																			"example": "block",
-																			"type": "string"
-																		},
-																		"description": {
-																			"description": "An informative summary of the firewall rule.",
-																			"example": "Blocks traffic identified during investigation for MIR-31",
-																			"maxLength": 500,
-																			"type": "string"
-																		},
-																		"id": {
-																			"description": "The unique identifier of the firewall rule.",
-																			"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																			"maxLength": 32,
-																			"readOnly": true,
-																			"type": "string"
-																		},
-																		"paused": {
-																			"description": "When true, indicates that the firewall rule is currently paused.",
-																			"example": false,
-																			"type": "boolean"
-																		},
-																		"priority": {
-																			"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																			"example": 50,
-																			"maximum": 2147483647,
-																			"minimum": 0,
-																			"type": "number"
-																		},
-																		"products": {
-																			"items": {
-																				"description": "A list of products to bypass for a request when using the `bypass` action.",
-																				"enum": [
-																					"zoneLockdown",
-																					"uaBlock",
-																					"bic",
-																					"hot",
-																					"securityLevel",
-																					"rateLimit",
-																					"waf"
-																				],
-																				"example": "waf",
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"ref": {
-																			"description": "A short reference tag. Allows you to select related firewall rules.",
-																			"example": "MIR-31",
-																			"maxLength": 50,
-																			"type": "string"
-																		}
-																	},
-																	"type": "object"
-																},
-																{
-																	"properties": {
-																		"filter": {
-																			"oneOf": [
-																				{
-																					"additionalProperties": false,
-																					"properties": {
-																						"description": {
-																							"description": "An informative summary of the filter.",
-																							"example": "Restrict access from these browsers on this address range.",
-																							"maxLength": 500,
-																							"type": "string"
-																						},
-																						"expression": {
-																							"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																							"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-																							"type": "string"
-																						},
-																						"id": {
-																							"description": "The unique identifier of the filter.",
-																							"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																							"maxLength": 32,
-																							"minLength": 32,
-																							"readOnly": true,
-																							"type": "string"
-																						},
-																						"paused": {
-																							"description": "When true, indicates that the filter is currently paused.",
-																							"example": false,
-																							"type": "boolean"
-																						},
-																						"ref": {
-																							"description": "A short reference tag. Allows you to select related filters.",
-																							"example": "FIL-100",
-																							"maxLength": 50,
-																							"type": "string"
-																						}
-																					},
-																					"type": "object"
-																				},
-																				{
-																					"additionalProperties": false,
-																					"properties": {
-																						"deleted": {
-																							"description": "When true, indicates that the firewall rule was deleted.",
-																							"example": true,
-																							"type": "boolean"
-																						},
-																						"id": {
-																							"description": "The unique identifier of the filter.",
-																							"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																							"maxLength": 32,
-																							"minLength": 32,
-																							"readOnly": true,
-																							"type": "string"
-																						}
-																					},
-																					"required": [
-																						"id",
-																						"deleted"
-																					],
-																					"type": "object"
-																				}
-																			]
-																		}
-																	},
-																	"type": "object"
-																}
-															],
-															"type": "object"
-														},
-														{
-															"required": [
-																"id",
-																"filter",
-																"action",
-																"paused"
-															],
-															"type": "object"
-														}
-													]
 												}
 											},
 											"required": [
@@ -3062,155 +2970,142 @@
 											"items": {
 												"allOf": [
 													{
-														"allOf": [
-															{
-																"properties": {
-																	"action": {
-																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																		"enum": [
-																			"block",
-																			"challenge",
-																			"js_challenge",
-																			"managed_challenge",
-																			"allow",
-																			"log",
-																			"bypass"
-																		],
-																		"example": "block",
-																		"type": "string"
-																	},
-																	"description": {
-																		"description": "An informative summary of the firewall rule.",
-																		"example": "Blocks traffic identified during investigation for MIR-31",
-																		"maxLength": 500,
-																		"type": "string"
-																	},
-																	"id": {
-																		"description": "The unique identifier of the firewall rule.",
-																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																		"maxLength": 32,
-																		"readOnly": true,
-																		"type": "string"
-																	},
-																	"paused": {
-																		"description": "When true, indicates that the firewall rule is currently paused.",
-																		"example": false,
-																		"type": "boolean"
-																	},
-																	"priority": {
-																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																		"example": 50,
-																		"maximum": 2147483647,
-																		"minimum": 0,
-																		"type": "number"
-																	},
-																	"products": {
-																		"items": {
-																			"description": "A list of products to bypass for a request when using the `bypass` action.",
-																			"enum": [
-																				"zoneLockdown",
-																				"uaBlock",
-																				"bic",
-																				"hot",
-																				"securityLevel",
-																				"rateLimit",
-																				"waf"
-																			],
-																			"example": "waf",
-																			"type": "string"
-																		},
-																		"type": "array"
-																	},
-																	"ref": {
-																		"description": "A short reference tag. Allows you to select related firewall rules.",
-																		"example": "MIR-31",
-																		"maxLength": 50,
-																		"type": "string"
-																	}
-																},
-																"type": "object"
+														"properties": {
+															"action": {
+																"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+																"enum": [
+																	"block",
+																	"challenge",
+																	"js_challenge",
+																	"managed_challenge",
+																	"allow",
+																	"log",
+																	"bypass"
+																],
+																"example": "block",
+																"type": "string"
 															},
-															{
-																"properties": {
-																	"filter": {
-																		"oneOf": [
-																			{
-																				"additionalProperties": false,
-																				"properties": {
-																					"description": {
-																						"description": "An informative summary of the filter.",
-																						"example": "Restrict access from these browsers on this address range.",
-																						"maxLength": 500,
-																						"type": "string"
-																					},
-																					"expression": {
-																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-																						"type": "string"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true,
-																						"type": "string"
-																					},
-																					"paused": {
-																						"description": "When true, indicates that the filter is currently paused.",
-																						"example": false,
-																						"type": "boolean"
-																					},
-																					"ref": {
-																						"description": "A short reference tag. Allows you to select related filters.",
-																						"example": "FIL-100",
-																						"maxLength": 50,
-																						"type": "string"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			{
-																				"additionalProperties": false,
-																				"properties": {
-																					"deleted": {
-																						"description": "When true, indicates that the firewall rule was deleted.",
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true,
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id",
-																					"deleted"
-																				],
-																				"type": "object"
-																			}
-																		]
-																	}
+															"description": {
+																"description": "An informative summary of the firewall rule.",
+																"example": "Blocks traffic identified during investigation for MIR-31",
+																"maxLength": 500,
+																"type": "string"
+															},
+															"id": {
+																"description": "The unique identifier of the firewall rule.",
+																"example": "372e67954025e0ba6aaa6d586b9e0b60",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"paused": {
+																"description": "When true, indicates that the firewall rule is currently paused.",
+																"example": false,
+																"type": "boolean"
+															},
+															"priority": {
+																"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+																"example": 50,
+																"maximum": 2147483647,
+																"minimum": 0,
+																"type": "number"
+															},
+															"products": {
+																"items": {
+																	"description": "A list of products to bypass for a request when using the `bypass` action.",
+																	"enum": [
+																		"zoneLockdown",
+																		"uaBlock",
+																		"bic",
+																		"hot",
+																		"securityLevel",
+																		"rateLimit",
+																		"waf"
+																	],
+																	"example": "waf",
+																	"type": "string"
 																},
-																"type": "object"
+																"type": "array"
+															},
+															"ref": {
+																"description": "A short reference tag. Allows you to select related firewall rules.",
+																"example": "MIR-31",
+																"maxLength": 50,
+																"type": "string"
 															}
-														],
+														},
 														"type": "object"
 													},
 													{
-														"required": [
-															"id",
-															"filter",
-															"action",
-															"paused"
-														],
+														"properties": {
+															"filter": {
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"description": {
+																				"description": "An informative summary of the filter.",
+																				"example": "Restrict access from these browsers on this address range.",
+																				"maxLength": 500,
+																				"type": "string"
+																			},
+																			"expression": {
+																				"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																				"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																				"type": "string"
+																			},
+																			"id": {
+																				"description": "The unique identifier of the filter.",
+																				"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"paused": {
+																				"description": "When true, indicates that the filter is currently paused.",
+																				"example": false,
+																				"type": "boolean"
+																			},
+																			"ref": {
+																				"description": "A short reference tag. Allows you to select related filters.",
+																				"example": "FIL-100",
+																				"maxLength": 50,
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"deleted": {
+																				"description": "When true, indicates that the firewall rule was deleted.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"id": {
+																				"description": "The unique identifier of the filter.",
+																				"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"deleted"
+																		],
+																		"type": "object"
+																	}
+																]
+															}
+														},
 														"type": "object"
 													}
-												]
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -3358,155 +3253,142 @@
 													"items": {
 														"allOf": [
 															{
-																"allOf": [
-																	{
-																		"properties": {
-																			"action": {
-																				"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																				"enum": [
-																					"block",
-																					"challenge",
-																					"js_challenge",
-																					"managed_challenge",
-																					"allow",
-																					"log",
-																					"bypass"
-																				],
-																				"example": "block",
-																				"type": "string"
-																			},
-																			"description": {
-																				"description": "An informative summary of the firewall rule.",
-																				"example": "Blocks traffic identified during investigation for MIR-31",
-																				"maxLength": 500,
-																				"type": "string"
-																			},
-																			"id": {
-																				"description": "The unique identifier of the firewall rule.",
-																				"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																				"maxLength": 32,
-																				"readOnly": true,
-																				"type": "string"
-																			},
-																			"paused": {
-																				"description": "When true, indicates that the firewall rule is currently paused.",
-																				"example": false,
-																				"type": "boolean"
-																			},
-																			"priority": {
-																				"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																				"example": 50,
-																				"maximum": 2147483647,
-																				"minimum": 0,
-																				"type": "number"
-																			},
-																			"products": {
-																				"items": {
-																					"description": "A list of products to bypass for a request when using the `bypass` action.",
-																					"enum": [
-																						"zoneLockdown",
-																						"uaBlock",
-																						"bic",
-																						"hot",
-																						"securityLevel",
-																						"rateLimit",
-																						"waf"
-																					],
-																					"example": "waf",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"ref": {
-																				"description": "A short reference tag. Allows you to select related firewall rules.",
-																				"example": "MIR-31",
-																				"maxLength": 50,
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
+																"properties": {
+																	"action": {
+																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+																		"enum": [
+																			"block",
+																			"challenge",
+																			"js_challenge",
+																			"managed_challenge",
+																			"allow",
+																			"log",
+																			"bypass"
+																		],
+																		"example": "block",
+																		"type": "string"
 																	},
-																	{
-																		"properties": {
-																			"filter": {
-																				"oneOf": [
-																					{
-																						"additionalProperties": false,
-																						"properties": {
-																							"description": {
-																								"description": "An informative summary of the filter.",
-																								"example": "Restrict access from these browsers on this address range.",
-																								"maxLength": 500,
-																								"type": "string"
-																							},
-																							"expression": {
-																								"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																								"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-																								"type": "string"
-																							},
-																							"id": {
-																								"description": "The unique identifier of the filter.",
-																								"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																								"maxLength": 32,
-																								"minLength": 32,
-																								"readOnly": true,
-																								"type": "string"
-																							},
-																							"paused": {
-																								"description": "When true, indicates that the filter is currently paused.",
-																								"example": false,
-																								"type": "boolean"
-																							},
-																							"ref": {
-																								"description": "A short reference tag. Allows you to select related filters.",
-																								"example": "FIL-100",
-																								"maxLength": 50,
-																								"type": "string"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					{
-																						"additionalProperties": false,
-																						"properties": {
-																							"deleted": {
-																								"description": "When true, indicates that the firewall rule was deleted.",
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"id": {
-																								"description": "The unique identifier of the filter.",
-																								"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																								"maxLength": 32,
-																								"minLength": 32,
-																								"readOnly": true,
-																								"type": "string"
-																							}
-																						},
-																						"required": [
-																							"id",
-																							"deleted"
-																						],
-																						"type": "object"
-																					}
-																				]
-																			}
+																	"description": {
+																		"description": "An informative summary of the firewall rule.",
+																		"example": "Blocks traffic identified during investigation for MIR-31",
+																		"maxLength": 500,
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "The unique identifier of the firewall rule.",
+																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"paused": {
+																		"description": "When true, indicates that the firewall rule is currently paused.",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"priority": {
+																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+																		"example": 50,
+																		"maximum": 2147483647,
+																		"minimum": 0,
+																		"type": "number"
+																	},
+																	"products": {
+																		"items": {
+																			"description": "A list of products to bypass for a request when using the `bypass` action.",
+																			"enum": [
+																				"zoneLockdown",
+																				"uaBlock",
+																				"bic",
+																				"hot",
+																				"securityLevel",
+																				"rateLimit",
+																				"waf"
+																			],
+																			"example": "waf",
+																			"type": "string"
 																		},
-																		"type": "object"
+																		"type": "array"
+																	},
+																	"ref": {
+																		"description": "A short reference tag. Allows you to select related firewall rules.",
+																		"example": "MIR-31",
+																		"maxLength": 50,
+																		"type": "string"
 																	}
-																],
+																},
 																"type": "object"
 															},
 															{
-																"required": [
-																	"id",
-																	"filter",
-																	"action",
-																	"paused"
-																],
+																"properties": {
+																	"filter": {
+																		"oneOf": [
+																			{
+																				"additionalProperties": false,
+																				"properties": {
+																					"description": {
+																						"description": "An informative summary of the filter.",
+																						"example": "Restrict access from these browsers on this address range.",
+																						"maxLength": 500,
+																						"type": "string"
+																					},
+																					"expression": {
+																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																						"type": "string"
+																					},
+																					"id": {
+																						"description": "The unique identifier of the filter.",
+																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																						"maxLength": 32,
+																						"minLength": 32,
+																						"readOnly": true,
+																						"type": "string"
+																					},
+																					"paused": {
+																						"description": "When true, indicates that the filter is currently paused.",
+																						"example": false,
+																						"type": "boolean"
+																					},
+																					"ref": {
+																						"description": "A short reference tag. Allows you to select related filters.",
+																						"example": "FIL-100",
+																						"maxLength": 50,
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"additionalProperties": false,
+																				"properties": {
+																					"deleted": {
+																						"description": "When true, indicates that the firewall rule was deleted.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"id": {
+																						"description": "The unique identifier of the filter.",
+																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																						"maxLength": 32,
+																						"minLength": 32,
+																						"readOnly": true,
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"deleted"
+																				],
+																				"type": "object"
+																			}
+																		]
+																	}
+																},
 																"type": "object"
 															}
-														]
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -3813,155 +3695,142 @@
 											"items": {
 												"allOf": [
 													{
-														"allOf": [
-															{
-																"properties": {
-																	"action": {
-																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																		"enum": [
-																			"block",
-																			"challenge",
-																			"js_challenge",
-																			"managed_challenge",
-																			"allow",
-																			"log",
-																			"bypass"
-																		],
-																		"example": "block",
-																		"type": "string"
-																	},
-																	"description": {
-																		"description": "An informative summary of the firewall rule.",
-																		"example": "Blocks traffic identified during investigation for MIR-31",
-																		"maxLength": 500,
-																		"type": "string"
-																	},
-																	"id": {
-																		"description": "The unique identifier of the firewall rule.",
-																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																		"maxLength": 32,
-																		"readOnly": true,
-																		"type": "string"
-																	},
-																	"paused": {
-																		"description": "When true, indicates that the firewall rule is currently paused.",
-																		"example": false,
-																		"type": "boolean"
-																	},
-																	"priority": {
-																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																		"example": 50,
-																		"maximum": 2147483647,
-																		"minimum": 0,
-																		"type": "number"
-																	},
-																	"products": {
-																		"items": {
-																			"description": "A list of products to bypass for a request when using the `bypass` action.",
-																			"enum": [
-																				"zoneLockdown",
-																				"uaBlock",
-																				"bic",
-																				"hot",
-																				"securityLevel",
-																				"rateLimit",
-																				"waf"
-																			],
-																			"example": "waf",
-																			"type": "string"
-																		},
-																		"type": "array"
-																	},
-																	"ref": {
-																		"description": "A short reference tag. Allows you to select related firewall rules.",
-																		"example": "MIR-31",
-																		"maxLength": 50,
-																		"type": "string"
-																	}
-																},
-																"type": "object"
+														"properties": {
+															"action": {
+																"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+																"enum": [
+																	"block",
+																	"challenge",
+																	"js_challenge",
+																	"managed_challenge",
+																	"allow",
+																	"log",
+																	"bypass"
+																],
+																"example": "block",
+																"type": "string"
 															},
-															{
-																"properties": {
-																	"filter": {
-																		"oneOf": [
-																			{
-																				"additionalProperties": false,
-																				"properties": {
-																					"description": {
-																						"description": "An informative summary of the filter.",
-																						"example": "Restrict access from these browsers on this address range.",
-																						"maxLength": 500,
-																						"type": "string"
-																					},
-																					"expression": {
-																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-																						"type": "string"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true,
-																						"type": "string"
-																					},
-																					"paused": {
-																						"description": "When true, indicates that the filter is currently paused.",
-																						"example": false,
-																						"type": "boolean"
-																					},
-																					"ref": {
-																						"description": "A short reference tag. Allows you to select related filters.",
-																						"example": "FIL-100",
-																						"maxLength": 50,
-																						"type": "string"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			{
-																				"additionalProperties": false,
-																				"properties": {
-																					"deleted": {
-																						"description": "When true, indicates that the firewall rule was deleted.",
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true,
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id",
-																					"deleted"
-																				],
-																				"type": "object"
-																			}
-																		]
-																	}
+															"description": {
+																"description": "An informative summary of the firewall rule.",
+																"example": "Blocks traffic identified during investigation for MIR-31",
+																"maxLength": 500,
+																"type": "string"
+															},
+															"id": {
+																"description": "The unique identifier of the firewall rule.",
+																"example": "372e67954025e0ba6aaa6d586b9e0b60",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"paused": {
+																"description": "When true, indicates that the firewall rule is currently paused.",
+																"example": false,
+																"type": "boolean"
+															},
+															"priority": {
+																"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+																"example": 50,
+																"maximum": 2147483647,
+																"minimum": 0,
+																"type": "number"
+															},
+															"products": {
+																"items": {
+																	"description": "A list of products to bypass for a request when using the `bypass` action.",
+																	"enum": [
+																		"zoneLockdown",
+																		"uaBlock",
+																		"bic",
+																		"hot",
+																		"securityLevel",
+																		"rateLimit",
+																		"waf"
+																	],
+																	"example": "waf",
+																	"type": "string"
 																},
-																"type": "object"
+																"type": "array"
+															},
+															"ref": {
+																"description": "A short reference tag. Allows you to select related firewall rules.",
+																"example": "MIR-31",
+																"maxLength": 50,
+																"type": "string"
 															}
-														],
+														},
 														"type": "object"
 													},
 													{
-														"required": [
-															"id",
-															"filter",
-															"action",
-															"paused"
-														],
+														"properties": {
+															"filter": {
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"description": {
+																				"description": "An informative summary of the filter.",
+																				"example": "Restrict access from these browsers on this address range.",
+																				"maxLength": 500,
+																				"type": "string"
+																			},
+																			"expression": {
+																				"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																				"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																				"type": "string"
+																			},
+																			"id": {
+																				"description": "The unique identifier of the filter.",
+																				"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"paused": {
+																				"description": "When true, indicates that the filter is currently paused.",
+																				"example": false,
+																				"type": "boolean"
+																			},
+																			"ref": {
+																				"description": "A short reference tag. Allows you to select related filters.",
+																				"example": "FIL-100",
+																				"maxLength": 50,
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"deleted": {
+																				"description": "When true, indicates that the firewall rule was deleted.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"id": {
+																				"description": "The unique identifier of the filter.",
+																				"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"deleted"
+																		],
+																		"type": "object"
+																	}
+																]
+															}
+														},
 														"type": "object"
 													}
-												]
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -4109,155 +3978,142 @@
 													"items": {
 														"allOf": [
 															{
-																"allOf": [
-																	{
-																		"properties": {
-																			"action": {
-																				"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																				"enum": [
-																					"block",
-																					"challenge",
-																					"js_challenge",
-																					"managed_challenge",
-																					"allow",
-																					"log",
-																					"bypass"
-																				],
-																				"example": "block",
-																				"type": "string"
-																			},
-																			"description": {
-																				"description": "An informative summary of the firewall rule.",
-																				"example": "Blocks traffic identified during investigation for MIR-31",
-																				"maxLength": 500,
-																				"type": "string"
-																			},
-																			"id": {
-																				"description": "The unique identifier of the firewall rule.",
-																				"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																				"maxLength": 32,
-																				"readOnly": true,
-																				"type": "string"
-																			},
-																			"paused": {
-																				"description": "When true, indicates that the firewall rule is currently paused.",
-																				"example": false,
-																				"type": "boolean"
-																			},
-																			"priority": {
-																				"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																				"example": 50,
-																				"maximum": 2147483647,
-																				"minimum": 0,
-																				"type": "number"
-																			},
-																			"products": {
-																				"items": {
-																					"description": "A list of products to bypass for a request when using the `bypass` action.",
-																					"enum": [
-																						"zoneLockdown",
-																						"uaBlock",
-																						"bic",
-																						"hot",
-																						"securityLevel",
-																						"rateLimit",
-																						"waf"
-																					],
-																					"example": "waf",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"ref": {
-																				"description": "A short reference tag. Allows you to select related firewall rules.",
-																				"example": "MIR-31",
-																				"maxLength": 50,
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
+																"properties": {
+																	"action": {
+																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+																		"enum": [
+																			"block",
+																			"challenge",
+																			"js_challenge",
+																			"managed_challenge",
+																			"allow",
+																			"log",
+																			"bypass"
+																		],
+																		"example": "block",
+																		"type": "string"
 																	},
-																	{
-																		"properties": {
-																			"filter": {
-																				"oneOf": [
-																					{
-																						"additionalProperties": false,
-																						"properties": {
-																							"description": {
-																								"description": "An informative summary of the filter.",
-																								"example": "Restrict access from these browsers on this address range.",
-																								"maxLength": 500,
-																								"type": "string"
-																							},
-																							"expression": {
-																								"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																								"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-																								"type": "string"
-																							},
-																							"id": {
-																								"description": "The unique identifier of the filter.",
-																								"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																								"maxLength": 32,
-																								"minLength": 32,
-																								"readOnly": true,
-																								"type": "string"
-																							},
-																							"paused": {
-																								"description": "When true, indicates that the filter is currently paused.",
-																								"example": false,
-																								"type": "boolean"
-																							},
-																							"ref": {
-																								"description": "A short reference tag. Allows you to select related filters.",
-																								"example": "FIL-100",
-																								"maxLength": 50,
-																								"type": "string"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					{
-																						"additionalProperties": false,
-																						"properties": {
-																							"deleted": {
-																								"description": "When true, indicates that the firewall rule was deleted.",
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"id": {
-																								"description": "The unique identifier of the filter.",
-																								"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																								"maxLength": 32,
-																								"minLength": 32,
-																								"readOnly": true,
-																								"type": "string"
-																							}
-																						},
-																						"required": [
-																							"id",
-																							"deleted"
-																						],
-																						"type": "object"
-																					}
-																				]
-																			}
+																	"description": {
+																		"description": "An informative summary of the firewall rule.",
+																		"example": "Blocks traffic identified during investigation for MIR-31",
+																		"maxLength": 500,
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "The unique identifier of the firewall rule.",
+																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"paused": {
+																		"description": "When true, indicates that the firewall rule is currently paused.",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"priority": {
+																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+																		"example": 50,
+																		"maximum": 2147483647,
+																		"minimum": 0,
+																		"type": "number"
+																	},
+																	"products": {
+																		"items": {
+																			"description": "A list of products to bypass for a request when using the `bypass` action.",
+																			"enum": [
+																				"zoneLockdown",
+																				"uaBlock",
+																				"bic",
+																				"hot",
+																				"securityLevel",
+																				"rateLimit",
+																				"waf"
+																			],
+																			"example": "waf",
+																			"type": "string"
 																		},
-																		"type": "object"
+																		"type": "array"
+																	},
+																	"ref": {
+																		"description": "A short reference tag. Allows you to select related firewall rules.",
+																		"example": "MIR-31",
+																		"maxLength": 50,
+																		"type": "string"
 																	}
-																],
+																},
 																"type": "object"
 															},
 															{
-																"required": [
-																	"id",
-																	"filter",
-																	"action",
-																	"paused"
-																],
+																"properties": {
+																	"filter": {
+																		"oneOf": [
+																			{
+																				"additionalProperties": false,
+																				"properties": {
+																					"description": {
+																						"description": "An informative summary of the filter.",
+																						"example": "Restrict access from these browsers on this address range.",
+																						"maxLength": 500,
+																						"type": "string"
+																					},
+																					"expression": {
+																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																						"type": "string"
+																					},
+																					"id": {
+																						"description": "The unique identifier of the filter.",
+																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																						"maxLength": 32,
+																						"minLength": 32,
+																						"readOnly": true,
+																						"type": "string"
+																					},
+																					"paused": {
+																						"description": "When true, indicates that the filter is currently paused.",
+																						"example": false,
+																						"type": "boolean"
+																					},
+																					"ref": {
+																						"description": "A short reference tag. Allows you to select related filters.",
+																						"example": "FIL-100",
+																						"maxLength": 50,
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"additionalProperties": false,
+																				"properties": {
+																					"deleted": {
+																						"description": "When true, indicates that the firewall rule was deleted.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"id": {
+																						"description": "The unique identifier of the filter.",
+																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																						"maxLength": 32,
+																						"minLength": 32,
+																						"readOnly": true,
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"deleted"
+																				],
+																				"type": "object"
+																			}
+																		]
+																	}
+																},
 																"type": "object"
 															}
-														]
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -4638,155 +4494,142 @@
 											"items": {
 												"allOf": [
 													{
-														"allOf": [
-															{
-																"properties": {
-																	"action": {
-																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																		"enum": [
-																			"block",
-																			"challenge",
-																			"js_challenge",
-																			"managed_challenge",
-																			"allow",
-																			"log",
-																			"bypass"
-																		],
-																		"example": "block",
-																		"type": "string"
-																	},
-																	"description": {
-																		"description": "An informative summary of the firewall rule.",
-																		"example": "Blocks traffic identified during investigation for MIR-31",
-																		"maxLength": 500,
-																		"type": "string"
-																	},
-																	"id": {
-																		"description": "The unique identifier of the firewall rule.",
-																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																		"maxLength": 32,
-																		"readOnly": true,
-																		"type": "string"
-																	},
-																	"paused": {
-																		"description": "When true, indicates that the firewall rule is currently paused.",
-																		"example": false,
-																		"type": "boolean"
-																	},
-																	"priority": {
-																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																		"example": 50,
-																		"maximum": 2147483647,
-																		"minimum": 0,
-																		"type": "number"
-																	},
-																	"products": {
-																		"items": {
-																			"description": "A list of products to bypass for a request when using the `bypass` action.",
-																			"enum": [
-																				"zoneLockdown",
-																				"uaBlock",
-																				"bic",
-																				"hot",
-																				"securityLevel",
-																				"rateLimit",
-																				"waf"
-																			],
-																			"example": "waf",
-																			"type": "string"
-																		},
-																		"type": "array"
-																	},
-																	"ref": {
-																		"description": "A short reference tag. Allows you to select related firewall rules.",
-																		"example": "MIR-31",
-																		"maxLength": 50,
-																		"type": "string"
-																	}
-																},
-																"type": "object"
+														"properties": {
+															"action": {
+																"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+																"enum": [
+																	"block",
+																	"challenge",
+																	"js_challenge",
+																	"managed_challenge",
+																	"allow",
+																	"log",
+																	"bypass"
+																],
+																"example": "block",
+																"type": "string"
 															},
-															{
-																"properties": {
-																	"filter": {
-																		"oneOf": [
-																			{
-																				"additionalProperties": false,
-																				"properties": {
-																					"description": {
-																						"description": "An informative summary of the filter.",
-																						"example": "Restrict access from these browsers on this address range.",
-																						"maxLength": 500,
-																						"type": "string"
-																					},
-																					"expression": {
-																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-																						"type": "string"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true,
-																						"type": "string"
-																					},
-																					"paused": {
-																						"description": "When true, indicates that the filter is currently paused.",
-																						"example": false,
-																						"type": "boolean"
-																					},
-																					"ref": {
-																						"description": "A short reference tag. Allows you to select related filters.",
-																						"example": "FIL-100",
-																						"maxLength": 50,
-																						"type": "string"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			{
-																				"additionalProperties": false,
-																				"properties": {
-																					"deleted": {
-																						"description": "When true, indicates that the firewall rule was deleted.",
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true,
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id",
-																					"deleted"
-																				],
-																				"type": "object"
-																			}
-																		]
-																	}
+															"description": {
+																"description": "An informative summary of the firewall rule.",
+																"example": "Blocks traffic identified during investigation for MIR-31",
+																"maxLength": 500,
+																"type": "string"
+															},
+															"id": {
+																"description": "The unique identifier of the firewall rule.",
+																"example": "372e67954025e0ba6aaa6d586b9e0b60",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"paused": {
+																"description": "When true, indicates that the firewall rule is currently paused.",
+																"example": false,
+																"type": "boolean"
+															},
+															"priority": {
+																"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+																"example": 50,
+																"maximum": 2147483647,
+																"minimum": 0,
+																"type": "number"
+															},
+															"products": {
+																"items": {
+																	"description": "A list of products to bypass for a request when using the `bypass` action.",
+																	"enum": [
+																		"zoneLockdown",
+																		"uaBlock",
+																		"bic",
+																		"hot",
+																		"securityLevel",
+																		"rateLimit",
+																		"waf"
+																	],
+																	"example": "waf",
+																	"type": "string"
 																},
-																"type": "object"
+																"type": "array"
+															},
+															"ref": {
+																"description": "A short reference tag. Allows you to select related firewall rules.",
+																"example": "MIR-31",
+																"maxLength": 50,
+																"type": "string"
 															}
-														],
+														},
 														"type": "object"
 													},
 													{
-														"required": [
-															"id",
-															"filter",
-															"action",
-															"paused"
-														],
+														"properties": {
+															"filter": {
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"description": {
+																				"description": "An informative summary of the filter.",
+																				"example": "Restrict access from these browsers on this address range.",
+																				"maxLength": 500,
+																				"type": "string"
+																			},
+																			"expression": {
+																				"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																				"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																				"type": "string"
+																			},
+																			"id": {
+																				"description": "The unique identifier of the filter.",
+																				"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"paused": {
+																				"description": "When true, indicates that the filter is currently paused.",
+																				"example": false,
+																				"type": "boolean"
+																			},
+																			"ref": {
+																				"description": "A short reference tag. Allows you to select related filters.",
+																				"example": "FIL-100",
+																				"maxLength": 50,
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"deleted": {
+																				"description": "When true, indicates that the firewall rule was deleted.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"id": {
+																				"description": "The unique identifier of the filter.",
+																				"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"deleted"
+																		],
+																		"type": "object"
+																	}
+																]
+															}
+														},
 														"type": "object"
 													}
-												]
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -4934,155 +4777,142 @@
 													"items": {
 														"allOf": [
 															{
-																"allOf": [
-																	{
-																		"properties": {
-																			"action": {
-																				"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																				"enum": [
-																					"block",
-																					"challenge",
-																					"js_challenge",
-																					"managed_challenge",
-																					"allow",
-																					"log",
-																					"bypass"
-																				],
-																				"example": "block",
-																				"type": "string"
-																			},
-																			"description": {
-																				"description": "An informative summary of the firewall rule.",
-																				"example": "Blocks traffic identified during investigation for MIR-31",
-																				"maxLength": 500,
-																				"type": "string"
-																			},
-																			"id": {
-																				"description": "The unique identifier of the firewall rule.",
-																				"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																				"maxLength": 32,
-																				"readOnly": true,
-																				"type": "string"
-																			},
-																			"paused": {
-																				"description": "When true, indicates that the firewall rule is currently paused.",
-																				"example": false,
-																				"type": "boolean"
-																			},
-																			"priority": {
-																				"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																				"example": 50,
-																				"maximum": 2147483647,
-																				"minimum": 0,
-																				"type": "number"
-																			},
-																			"products": {
-																				"items": {
-																					"description": "A list of products to bypass for a request when using the `bypass` action.",
-																					"enum": [
-																						"zoneLockdown",
-																						"uaBlock",
-																						"bic",
-																						"hot",
-																						"securityLevel",
-																						"rateLimit",
-																						"waf"
-																					],
-																					"example": "waf",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"ref": {
-																				"description": "A short reference tag. Allows you to select related firewall rules.",
-																				"example": "MIR-31",
-																				"maxLength": 50,
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
+																"properties": {
+																	"action": {
+																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+																		"enum": [
+																			"block",
+																			"challenge",
+																			"js_challenge",
+																			"managed_challenge",
+																			"allow",
+																			"log",
+																			"bypass"
+																		],
+																		"example": "block",
+																		"type": "string"
 																	},
-																	{
-																		"properties": {
-																			"filter": {
-																				"oneOf": [
-																					{
-																						"additionalProperties": false,
-																						"properties": {
-																							"description": {
-																								"description": "An informative summary of the filter.",
-																								"example": "Restrict access from these browsers on this address range.",
-																								"maxLength": 500,
-																								"type": "string"
-																							},
-																							"expression": {
-																								"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																								"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-																								"type": "string"
-																							},
-																							"id": {
-																								"description": "The unique identifier of the filter.",
-																								"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																								"maxLength": 32,
-																								"minLength": 32,
-																								"readOnly": true,
-																								"type": "string"
-																							},
-																							"paused": {
-																								"description": "When true, indicates that the filter is currently paused.",
-																								"example": false,
-																								"type": "boolean"
-																							},
-																							"ref": {
-																								"description": "A short reference tag. Allows you to select related filters.",
-																								"example": "FIL-100",
-																								"maxLength": 50,
-																								"type": "string"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					{
-																						"additionalProperties": false,
-																						"properties": {
-																							"deleted": {
-																								"description": "When true, indicates that the firewall rule was deleted.",
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"id": {
-																								"description": "The unique identifier of the filter.",
-																								"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																								"maxLength": 32,
-																								"minLength": 32,
-																								"readOnly": true,
-																								"type": "string"
-																							}
-																						},
-																						"required": [
-																							"id",
-																							"deleted"
-																						],
-																						"type": "object"
-																					}
-																				]
-																			}
+																	"description": {
+																		"description": "An informative summary of the firewall rule.",
+																		"example": "Blocks traffic identified during investigation for MIR-31",
+																		"maxLength": 500,
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "The unique identifier of the firewall rule.",
+																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"paused": {
+																		"description": "When true, indicates that the firewall rule is currently paused.",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"priority": {
+																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+																		"example": 50,
+																		"maximum": 2147483647,
+																		"minimum": 0,
+																		"type": "number"
+																	},
+																	"products": {
+																		"items": {
+																			"description": "A list of products to bypass for a request when using the `bypass` action.",
+																			"enum": [
+																				"zoneLockdown",
+																				"uaBlock",
+																				"bic",
+																				"hot",
+																				"securityLevel",
+																				"rateLimit",
+																				"waf"
+																			],
+																			"example": "waf",
+																			"type": "string"
 																		},
-																		"type": "object"
+																		"type": "array"
+																	},
+																	"ref": {
+																		"description": "A short reference tag. Allows you to select related firewall rules.",
+																		"example": "MIR-31",
+																		"maxLength": 50,
+																		"type": "string"
 																	}
-																],
+																},
 																"type": "object"
 															},
 															{
-																"required": [
-																	"id",
-																	"filter",
-																	"action",
-																	"paused"
-																],
+																"properties": {
+																	"filter": {
+																		"oneOf": [
+																			{
+																				"additionalProperties": false,
+																				"properties": {
+																					"description": {
+																						"description": "An informative summary of the filter.",
+																						"example": "Restrict access from these browsers on this address range.",
+																						"maxLength": 500,
+																						"type": "string"
+																					},
+																					"expression": {
+																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																						"type": "string"
+																					},
+																					"id": {
+																						"description": "The unique identifier of the filter.",
+																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																						"maxLength": 32,
+																						"minLength": 32,
+																						"readOnly": true,
+																						"type": "string"
+																					},
+																					"paused": {
+																						"description": "When true, indicates that the filter is currently paused.",
+																						"example": false,
+																						"type": "boolean"
+																					},
+																					"ref": {
+																						"description": "A short reference tag. Allows you to select related filters.",
+																						"example": "FIL-100",
+																						"maxLength": 50,
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"additionalProperties": false,
+																				"properties": {
+																					"deleted": {
+																						"description": "When true, indicates that the firewall rule was deleted.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"id": {
+																						"description": "The unique identifier of the filter.",
+																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																						"maxLength": 32,
+																						"minLength": 32,
+																						"readOnly": true,
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"deleted"
+																				],
+																				"type": "object"
+																			}
+																		]
+																	}
+																},
 																"type": "object"
 															}
-														]
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -5367,155 +5197,142 @@
 											"items": {
 												"allOf": [
 													{
-														"allOf": [
-															{
-																"properties": {
-																	"action": {
-																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																		"enum": [
-																			"block",
-																			"challenge",
-																			"js_challenge",
-																			"managed_challenge",
-																			"allow",
-																			"log",
-																			"bypass"
-																		],
-																		"example": "block",
-																		"type": "string"
-																	},
-																	"description": {
-																		"description": "An informative summary of the firewall rule.",
-																		"example": "Blocks traffic identified during investigation for MIR-31",
-																		"maxLength": 500,
-																		"type": "string"
-																	},
-																	"id": {
-																		"description": "The unique identifier of the firewall rule.",
-																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																		"maxLength": 32,
-																		"readOnly": true,
-																		"type": "string"
-																	},
-																	"paused": {
-																		"description": "When true, indicates that the firewall rule is currently paused.",
-																		"example": false,
-																		"type": "boolean"
-																	},
-																	"priority": {
-																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																		"example": 50,
-																		"maximum": 2147483647,
-																		"minimum": 0,
-																		"type": "number"
-																	},
-																	"products": {
-																		"items": {
-																			"description": "A list of products to bypass for a request when using the `bypass` action.",
-																			"enum": [
-																				"zoneLockdown",
-																				"uaBlock",
-																				"bic",
-																				"hot",
-																				"securityLevel",
-																				"rateLimit",
-																				"waf"
-																			],
-																			"example": "waf",
-																			"type": "string"
-																		},
-																		"type": "array"
-																	},
-																	"ref": {
-																		"description": "A short reference tag. Allows you to select related firewall rules.",
-																		"example": "MIR-31",
-																		"maxLength": 50,
-																		"type": "string"
-																	}
-																},
-																"type": "object"
+														"properties": {
+															"action": {
+																"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+																"enum": [
+																	"block",
+																	"challenge",
+																	"js_challenge",
+																	"managed_challenge",
+																	"allow",
+																	"log",
+																	"bypass"
+																],
+																"example": "block",
+																"type": "string"
 															},
-															{
-																"properties": {
-																	"filter": {
-																		"oneOf": [
-																			{
-																				"additionalProperties": false,
-																				"properties": {
-																					"description": {
-																						"description": "An informative summary of the filter.",
-																						"example": "Restrict access from these browsers on this address range.",
-																						"maxLength": 500,
-																						"type": "string"
-																					},
-																					"expression": {
-																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-																						"type": "string"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true,
-																						"type": "string"
-																					},
-																					"paused": {
-																						"description": "When true, indicates that the filter is currently paused.",
-																						"example": false,
-																						"type": "boolean"
-																					},
-																					"ref": {
-																						"description": "A short reference tag. Allows you to select related filters.",
-																						"example": "FIL-100",
-																						"maxLength": 50,
-																						"type": "string"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			{
-																				"additionalProperties": false,
-																				"properties": {
-																					"deleted": {
-																						"description": "When true, indicates that the firewall rule was deleted.",
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true,
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id",
-																					"deleted"
-																				],
-																				"type": "object"
-																			}
-																		]
-																	}
+															"description": {
+																"description": "An informative summary of the firewall rule.",
+																"example": "Blocks traffic identified during investigation for MIR-31",
+																"maxLength": 500,
+																"type": "string"
+															},
+															"id": {
+																"description": "The unique identifier of the firewall rule.",
+																"example": "372e67954025e0ba6aaa6d586b9e0b60",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"paused": {
+																"description": "When true, indicates that the firewall rule is currently paused.",
+																"example": false,
+																"type": "boolean"
+															},
+															"priority": {
+																"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+																"example": 50,
+																"maximum": 2147483647,
+																"minimum": 0,
+																"type": "number"
+															},
+															"products": {
+																"items": {
+																	"description": "A list of products to bypass for a request when using the `bypass` action.",
+																	"enum": [
+																		"zoneLockdown",
+																		"uaBlock",
+																		"bic",
+																		"hot",
+																		"securityLevel",
+																		"rateLimit",
+																		"waf"
+																	],
+																	"example": "waf",
+																	"type": "string"
 																},
-																"type": "object"
+																"type": "array"
+															},
+															"ref": {
+																"description": "A short reference tag. Allows you to select related firewall rules.",
+																"example": "MIR-31",
+																"maxLength": 50,
+																"type": "string"
 															}
-														],
+														},
 														"type": "object"
 													},
 													{
-														"required": [
-															"id",
-															"filter",
-															"action",
-															"paused"
-														],
+														"properties": {
+															"filter": {
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"description": {
+																				"description": "An informative summary of the filter.",
+																				"example": "Restrict access from these browsers on this address range.",
+																				"maxLength": 500,
+																				"type": "string"
+																			},
+																			"expression": {
+																				"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																				"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																				"type": "string"
+																			},
+																			"id": {
+																				"description": "The unique identifier of the filter.",
+																				"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"paused": {
+																				"description": "When true, indicates that the filter is currently paused.",
+																				"example": false,
+																				"type": "boolean"
+																			},
+																			"ref": {
+																				"description": "A short reference tag. Allows you to select related filters.",
+																				"example": "FIL-100",
+																				"maxLength": 50,
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"deleted": {
+																				"description": "When true, indicates that the firewall rule was deleted.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"id": {
+																				"description": "The unique identifier of the filter.",
+																				"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"deleted"
+																		],
+																		"type": "object"
+																	}
+																]
+															}
+														},
 														"type": "object"
 													}
-												]
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -5663,155 +5480,142 @@
 													"items": {
 														"allOf": [
 															{
-																"allOf": [
-																	{
-																		"properties": {
-																			"action": {
-																				"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																				"enum": [
-																					"block",
-																					"challenge",
-																					"js_challenge",
-																					"managed_challenge",
-																					"allow",
-																					"log",
-																					"bypass"
-																				],
-																				"example": "block",
-																				"type": "string"
-																			},
-																			"description": {
-																				"description": "An informative summary of the firewall rule.",
-																				"example": "Blocks traffic identified during investigation for MIR-31",
-																				"maxLength": 500,
-																				"type": "string"
-																			},
-																			"id": {
-																				"description": "The unique identifier of the firewall rule.",
-																				"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																				"maxLength": 32,
-																				"readOnly": true,
-																				"type": "string"
-																			},
-																			"paused": {
-																				"description": "When true, indicates that the firewall rule is currently paused.",
-																				"example": false,
-																				"type": "boolean"
-																			},
-																			"priority": {
-																				"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																				"example": 50,
-																				"maximum": 2147483647,
-																				"minimum": 0,
-																				"type": "number"
-																			},
-																			"products": {
-																				"items": {
-																					"description": "A list of products to bypass for a request when using the `bypass` action.",
-																					"enum": [
-																						"zoneLockdown",
-																						"uaBlock",
-																						"bic",
-																						"hot",
-																						"securityLevel",
-																						"rateLimit",
-																						"waf"
-																					],
-																					"example": "waf",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"ref": {
-																				"description": "A short reference tag. Allows you to select related firewall rules.",
-																				"example": "MIR-31",
-																				"maxLength": 50,
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
+																"properties": {
+																	"action": {
+																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+																		"enum": [
+																			"block",
+																			"challenge",
+																			"js_challenge",
+																			"managed_challenge",
+																			"allow",
+																			"log",
+																			"bypass"
+																		],
+																		"example": "block",
+																		"type": "string"
 																	},
-																	{
-																		"properties": {
-																			"filter": {
-																				"oneOf": [
-																					{
-																						"additionalProperties": false,
-																						"properties": {
-																							"description": {
-																								"description": "An informative summary of the filter.",
-																								"example": "Restrict access from these browsers on this address range.",
-																								"maxLength": 500,
-																								"type": "string"
-																							},
-																							"expression": {
-																								"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																								"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-																								"type": "string"
-																							},
-																							"id": {
-																								"description": "The unique identifier of the filter.",
-																								"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																								"maxLength": 32,
-																								"minLength": 32,
-																								"readOnly": true,
-																								"type": "string"
-																							},
-																							"paused": {
-																								"description": "When true, indicates that the filter is currently paused.",
-																								"example": false,
-																								"type": "boolean"
-																							},
-																							"ref": {
-																								"description": "A short reference tag. Allows you to select related filters.",
-																								"example": "FIL-100",
-																								"maxLength": 50,
-																								"type": "string"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					{
-																						"additionalProperties": false,
-																						"properties": {
-																							"deleted": {
-																								"description": "When true, indicates that the firewall rule was deleted.",
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"id": {
-																								"description": "The unique identifier of the filter.",
-																								"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																								"maxLength": 32,
-																								"minLength": 32,
-																								"readOnly": true,
-																								"type": "string"
-																							}
-																						},
-																						"required": [
-																							"id",
-																							"deleted"
-																						],
-																						"type": "object"
-																					}
-																				]
-																			}
+																	"description": {
+																		"description": "An informative summary of the firewall rule.",
+																		"example": "Blocks traffic identified during investigation for MIR-31",
+																		"maxLength": 500,
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "The unique identifier of the firewall rule.",
+																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"paused": {
+																		"description": "When true, indicates that the firewall rule is currently paused.",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"priority": {
+																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+																		"example": 50,
+																		"maximum": 2147483647,
+																		"minimum": 0,
+																		"type": "number"
+																	},
+																	"products": {
+																		"items": {
+																			"description": "A list of products to bypass for a request when using the `bypass` action.",
+																			"enum": [
+																				"zoneLockdown",
+																				"uaBlock",
+																				"bic",
+																				"hot",
+																				"securityLevel",
+																				"rateLimit",
+																				"waf"
+																			],
+																			"example": "waf",
+																			"type": "string"
 																		},
-																		"type": "object"
+																		"type": "array"
+																	},
+																	"ref": {
+																		"description": "A short reference tag. Allows you to select related firewall rules.",
+																		"example": "MIR-31",
+																		"maxLength": 50,
+																		"type": "string"
 																	}
-																],
+																},
 																"type": "object"
 															},
 															{
-																"required": [
-																	"id",
-																	"filter",
-																	"action",
-																	"paused"
-																],
+																"properties": {
+																	"filter": {
+																		"oneOf": [
+																			{
+																				"additionalProperties": false,
+																				"properties": {
+																					"description": {
+																						"description": "An informative summary of the filter.",
+																						"example": "Restrict access from these browsers on this address range.",
+																						"maxLength": 500,
+																						"type": "string"
+																					},
+																					"expression": {
+																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																						"type": "string"
+																					},
+																					"id": {
+																						"description": "The unique identifier of the filter.",
+																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																						"maxLength": 32,
+																						"minLength": 32,
+																						"readOnly": true,
+																						"type": "string"
+																					},
+																					"paused": {
+																						"description": "When true, indicates that the filter is currently paused.",
+																						"example": false,
+																						"type": "boolean"
+																					},
+																					"ref": {
+																						"description": "A short reference tag. Allows you to select related filters.",
+																						"example": "FIL-100",
+																						"maxLength": 50,
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"additionalProperties": false,
+																				"properties": {
+																					"deleted": {
+																						"description": "When true, indicates that the firewall rule was deleted.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"id": {
+																						"description": "The unique identifier of the filter.",
+																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																						"maxLength": 32,
+																						"minLength": 32,
+																						"readOnly": true,
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"deleted"
+																				],
+																				"type": "object"
+																			}
+																		]
+																	}
+																},
 																"type": "object"
 															}
-														]
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -6191,6 +5995,264 @@
 										"result": {
 											"allOf": [
 												{
+													"properties": {
+														"action": {
+															"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+															"enum": [
+																"block",
+																"challenge",
+																"js_challenge",
+																"managed_challenge",
+																"allow",
+																"log",
+																"bypass"
+															],
+															"example": "block",
+															"type": "string"
+														},
+														"description": {
+															"description": "An informative summary of the firewall rule.",
+															"example": "Blocks traffic identified during investigation for MIR-31",
+															"maxLength": 500,
+															"type": "string"
+														},
+														"id": {
+															"description": "The unique identifier of the firewall rule.",
+															"example": "372e67954025e0ba6aaa6d586b9e0b60",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"paused": {
+															"description": "When true, indicates that the firewall rule is currently paused.",
+															"example": false,
+															"type": "boolean"
+														},
+														"priority": {
+															"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+															"example": 50,
+															"maximum": 2147483647,
+															"minimum": 0,
+															"type": "number"
+														},
+														"products": {
+															"items": {
+																"description": "A list of products to bypass for a request when using the `bypass` action.",
+																"enum": [
+																	"zoneLockdown",
+																	"uaBlock",
+																	"bic",
+																	"hot",
+																	"securityLevel",
+																	"rateLimit",
+																	"waf"
+																],
+																"example": "waf",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"ref": {
+															"description": "A short reference tag. Allows you to select related firewall rules.",
+															"example": "MIR-31",
+															"maxLength": 50,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"filter": {
+															"oneOf": [
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"description": {
+																			"description": "An informative summary of the filter.",
+																			"example": "Restrict access from these browsers on this address range.",
+																			"maxLength": 500,
+																			"type": "string"
+																		},
+																		"expression": {
+																			"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																			"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																			"type": "string"
+																		},
+																		"id": {
+																			"description": "The unique identifier of the filter.",
+																			"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																			"maxLength": 32,
+																			"minLength": 32,
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"paused": {
+																			"description": "When true, indicates that the filter is currently paused.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"ref": {
+																			"description": "A short reference tag. Allows you to select related filters.",
+																			"example": "FIL-100",
+																			"maxLength": 50,
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"deleted": {
+																			"description": "When true, indicates that the firewall rule was deleted.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"id": {
+																			"description": "The unique identifier of the filter.",
+																			"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																			"maxLength": 32,
+																			"minLength": 32,
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"deleted"
+																	],
+																	"type": "object"
+																}
+															]
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a firewall rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Defines whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
 													"allOf": [
 														{
 															"properties": {
@@ -6329,290 +6391,6 @@
 														}
 													],
 													"type": "object"
-												},
-												{
-													"required": [
-														"id",
-														"filter",
-														"action",
-														"paused"
-													],
-													"type": "object"
-												}
-											]
-										}
-									},
-									"required": [
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Update a firewall rule response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"allOf": [
-														{
-															"allOf": [
-																{
-																	"properties": {
-																		"action": {
-																			"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																			"enum": [
-																				"block",
-																				"challenge",
-																				"js_challenge",
-																				"managed_challenge",
-																				"allow",
-																				"log",
-																				"bypass"
-																			],
-																			"example": "block",
-																			"type": "string"
-																		},
-																		"description": {
-																			"description": "An informative summary of the firewall rule.",
-																			"example": "Blocks traffic identified during investigation for MIR-31",
-																			"maxLength": 500,
-																			"type": "string"
-																		},
-																		"id": {
-																			"description": "The unique identifier of the firewall rule.",
-																			"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																			"maxLength": 32,
-																			"readOnly": true,
-																			"type": "string"
-																		},
-																		"paused": {
-																			"description": "When true, indicates that the firewall rule is currently paused.",
-																			"example": false,
-																			"type": "boolean"
-																		},
-																		"priority": {
-																			"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																			"example": 50,
-																			"maximum": 2147483647,
-																			"minimum": 0,
-																			"type": "number"
-																		},
-																		"products": {
-																			"items": {
-																				"description": "A list of products to bypass for a request when using the `bypass` action.",
-																				"enum": [
-																					"zoneLockdown",
-																					"uaBlock",
-																					"bic",
-																					"hot",
-																					"securityLevel",
-																					"rateLimit",
-																					"waf"
-																				],
-																				"example": "waf",
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"ref": {
-																			"description": "A short reference tag. Allows you to select related firewall rules.",
-																			"example": "MIR-31",
-																			"maxLength": 50,
-																			"type": "string"
-																		}
-																	},
-																	"type": "object"
-																},
-																{
-																	"properties": {
-																		"filter": {
-																			"oneOf": [
-																				{
-																					"additionalProperties": false,
-																					"properties": {
-																						"description": {
-																							"description": "An informative summary of the filter.",
-																							"example": "Restrict access from these browsers on this address range.",
-																							"maxLength": 500,
-																							"type": "string"
-																						},
-																						"expression": {
-																							"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																							"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-																							"type": "string"
-																						},
-																						"id": {
-																							"description": "The unique identifier of the filter.",
-																							"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																							"maxLength": 32,
-																							"minLength": 32,
-																							"readOnly": true,
-																							"type": "string"
-																						},
-																						"paused": {
-																							"description": "When true, indicates that the filter is currently paused.",
-																							"example": false,
-																							"type": "boolean"
-																						},
-																						"ref": {
-																							"description": "A short reference tag. Allows you to select related filters.",
-																							"example": "FIL-100",
-																							"maxLength": 50,
-																							"type": "string"
-																						}
-																					},
-																					"type": "object"
-																				},
-																				{
-																					"additionalProperties": false,
-																					"properties": {
-																						"deleted": {
-																							"description": "When true, indicates that the firewall rule was deleted.",
-																							"example": true,
-																							"type": "boolean"
-																						},
-																						"id": {
-																							"description": "The unique identifier of the filter.",
-																							"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																							"maxLength": 32,
-																							"minLength": 32,
-																							"readOnly": true,
-																							"type": "string"
-																						}
-																					},
-																					"required": [
-																						"id",
-																						"deleted"
-																					],
-																					"type": "object"
-																				}
-																			]
-																		}
-																	},
-																	"type": "object"
-																}
-															],
-															"type": "object"
-														},
-														{
-															"required": [
-																"id",
-																"filter",
-																"action",
-																"paused"
-															],
-															"type": "object"
-														}
-													]
 												}
 											},
 											"required": [
