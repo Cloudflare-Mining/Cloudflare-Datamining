@@ -5,68 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Mexico City, Mexico or Austin, TX</strong></p>
-<p><strong>About the role</strong></p>
-<p><strong>What You'll Do</strong></p>
-<p>We are looking for a Sales Compensation Analyst to join our team within the Finance &amp; Business Operations Function. As a key team member of a high-visibility organization, the Sales Compensation Operations Analyst will provide technical and operational assistance in support of Cloudflare’s Global Sales Compensation Program. Working closely with the existing Sales Compensation team and partnering with GTM Finance and Sales Operations, the Sales Compensation Analyst will play an active role in managing and testing the ICM platform, commissions calculations and validations, submission to payroll, and inquiry resolution.&nbsp;</p>
-<p><strong>Responsibilities:</strong></p>
+<h3><strong>Locations: Austin, TX</strong></h3>
+<h3 id="SystemsEngineer-R2Storage-Austin,TX-AbouttheDepartment"><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.&nbsp;</p>
+<h3><strong>What you'll do</strong></h3>
+<p>As a Principal Engineer focused on Cloudflare's storage and database products, you will shape the future of industry-leading services that redefine what is possible for developers. We don't just copy what other cloud providers do; we work backward from developer needs, reimagining solutions by leveraging our unique global network. This network brings data closer to users for unparalleled performance, allows for granular control to meet data residency requirements, and provides a platform for truly innovative data products.</p>
+<p>You will be at the forefront of this innovation, architecting and building the next generation of serverless and edge data solutions.&nbsp;</p>
+<h3><strong>This includes:</strong></h3>
 <ul>
-	<li>
-		<p>Support accurate and timely distribution of commission payments and statements for the Global Cloudflare Sales Team</p>
-	</li>
-	<li>
-		<p>Drive alignment amongst cross-functional stakeholders and project manage commissions calculation inputs</p>
-	</li>
-	<li>
-		<p>Build consistent practices, documentation and desktop procedures for all commissions processes</p>
-	</li>
-	<li>
-		<p>Participate in ICM User Acceptance Testing (UAT) and assisting in identifying and troubleshooting defects</p>
-	</li>
-	<li>
-		<p>Manage and calculate sales commissions for special programs</p>
-	</li>
-	<li>
-		<p>Work directly with the Global Cloudflare Sales Team to assist in timely dispute resolution, leading with empathy and employing a customer-focused approach</p>
-	</li>
-	<li>
-		<p>Ensure SOX compliance, collaborating with business partners and Internal Audit on execution of controls</p>
-	</li>
+	<li>R2, our exabyte-scale object storage that revolutionizes the market by eliminating egress fees.</li>
+	<li>Durable Objects, our unique implementation of the Actor model as a service, providing strongly consistent, stateful compute co-located with storage.</li>
+	<li>Workers KV, our high-performance, low-latency global key-value store designed for high-read applications.</li>
+	<li>Hyperdrive, a service that makes existing regional databases feel global by intelligently caching queries and managing connection pools from the edge.</li>
+	<li>Cloudflare Queues, our global message queuing service with guaranteed delivery that enables reliable asynchronous processing.</li>
+	<li>AI services that empower developers to build intelligent applications on the edge. This includes Vectorize, our globally distributed vector database for powering semantic search and Retrieval-Augmented Generation (RAG), and AutoRAG, a fully managed solution that automates the complex pipeline of ingesting data from R2, embedding it, and generating context-aware responses with Workers AI.</li>
+	<li>Our evolving Data Platform, which adds value to every gigabyte stored on our infrastructure through services like Pipelines and Data Catalog.</li>
 </ul>
-<p><strong>Experience, desired skills, requirements:</strong></p>
+<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might be architecting a new globally distributed data consistency model, optimizing storage engine performance, or designing a novel API for a new data-centric product. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</p>
+<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>
-		<p>Bachelor’s degree - Business Administration, Finance, Accounting or other related field</p>
-	</li>
-	<li>
-		<p>3+ years of either Sales Compensation, Commissions, FP&amp;A, Consulting or Sales Operations experience. Experience in a growth technology company is a plus.</p>
-	</li>
-	<li>
-		<p>Proven track record of building strong relationships and influencing business partners. You are comfortable interfacing with business partners outside of your direct team, and understand the rigor and caliber of deliverables required to work with them.</p>
-	</li>
-	<li>
-		<p>You are a data-driven, truth seeker: analytics and data are your currency for facilitating informed decision making.</p>
-	</li>
-	<li>
-		<p>Firm grasp of the commission administrative process flow, including transaction crediting; incentive calculations; payment file preparation; and issue resolution.&nbsp;</p>
-	</li>
-	<li>
-		<p>Highly proficient in Excel / Google Sheets, system-based analytical tools</p>
-	</li>
-	<li>
-		<p>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</p>
-	</li>
-	<li>
-		<p>Operations: You seek out efficiency, leveraging tools, automation or other means to scale process and deliver more accurate results</p>
-	</li>
-	<li>
-		<p>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</p>
-	</li>
-	<li>
-		<p>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</p>
-	</li>
+	<li>Minimum 8 years of experience working with distributed systems.</li>
+	<li>Experience building and managing high volume software applications.</li>
+	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
+	<li>Knowledge of at least one modern strongly-typed programming language: we primarily use Go, TypeScript, and Rust.</li>
+	<li>Experience debugging, optimizing and identifying failure modes in a large-scale distributed system.</li>
 </ul>
-<h4>&nbsp;</h4>
+<h3><strong>Bonus Points</strong></h3>
+<ul>
+	<li>Experience building and managing a large scale data storage platform.</li>
+	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems</li>
+	<li>Experience working in a non-garbage collected language such as Rust or C++.</li>
+	<li>Experience writing Javascript and Typescript.</li>
+	<li>Deep Linux / UNIX systems knowledge.</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
