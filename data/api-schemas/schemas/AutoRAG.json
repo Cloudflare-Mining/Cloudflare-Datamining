@@ -46,7 +46,7 @@
 						}
 					}
 				},
-				"description": "Returns the autorag fullscan status"
+				"description": "Returns the autorag sync status"
 			},
 			"404": {
 				"content": {
@@ -100,7 +100,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "FullScan",
+		"summary": "Sync",
 		"tags": [
 			"AutoRAG"
 		],
@@ -120,7 +120,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/autorag/rags/{id}/ai-search": {
-		"operationId": "air-config-ai-search",
+		"operationId": "autorag-config-ai-search",
 		"parameters": [
 			{
 				"in": "path",
@@ -248,8 +248,8 @@
 								]
 							},
 							"max_num_results": {
-								"default": 50,
-								"maximum": 50,
+								"default": 20,
+								"maximum": 20,
 								"minimum": 1,
 								"type": "integer"
 							},
@@ -444,7 +444,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Search",
+		"summary": "AI Search",
 		"tags": [
 			"AutoRAG"
 		],
@@ -592,8 +592,8 @@
 								]
 							},
 							"max_num_results": {
-								"default": 50,
-								"maximum": 50,
+								"default": 10,
+								"maximum": 20,
 								"minimum": 1,
 								"type": "integer"
 							},
