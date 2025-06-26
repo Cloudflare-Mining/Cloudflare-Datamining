@@ -1,0 +1,202 @@
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TqipmCq3owmvsZUWMAeG5/e327491e1853cf8e26e3717e2e7ba819/image5.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Developing a new video conferencing application often begins with a peer-to-peer setup using <a href="https://webrtc.org"><u>WebRTC</u></a>, facilitating direct data exchange between clients. While effective for small demonstrations, this method encounters scalability hurdles with increased participants. The data transmission load for each client escalates significantly in proportion to the number of users, as each client is required to send data to every other client except themselves (n-1).</p>
+	<p>In the scaling of video conferencing applications, Selective Forwarding Units (SFUs) are essential.&nbsp; Essentially a media stream routing hub, an SFU receives media and data flows from participants and intelligently determines which streams to forward. By strategically distributing media based on network conditions and participant needs, this mechanism minimizes bandwidth usage and greatly enhances scalability. Nearly every video conferencing application today uses SFUs.</p>
+	<p>In 2024, we announced <a href="https://blog.cloudflare.com/cloudflare-calls-anycast-webrtc"><u>Cloudflare Realtime</u></a> (then called Cloudflare Calls), our suite of WebRTC products, and we also released <a href="https://github.com/cloudflare/orange"><u>Orange Meets</u></a>, an open source video chat application built on top of our SFU.</p>
+	<p>We also realized that use of an SFU often comes with a privacy cost, as there is now a centralized hub that could see and listen to all the media contents, even though its sole job is to forward media bytes between clients as a data plane.</p>
+	<p>We believe end-to-end encryption should be the industry standard for secure communication and that’s why today we’re excited to share that we’ve implemented and open sourced end-to-end encryption in Orange Meets. Our generic implementation is client-only, so it can be used with any WebRTC infrastructure. Finally, our new <i>designated committer </i>distributed algorithm is verified in a bounded model checker to verify this algorithm handles edge cases gracefully.</p>
+	<div class="flex anchor relative">
+		<h2 id="end-to-end-encryption-for-video-conferencing-is-different-than-for-text-messaging">End-to-end encryption for video conferencing is different than for text messaging</h2>
+		<a href="https://blog.cloudflare.com/#end-to-end-encryption-for-video-conferencing-is-different-than-for-text-messaging" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>End-to-end encryption describes a secure communication channel whereby only the intended participants can read, see, or listen to the contents of the conversation, not anybody else. WhatsApp and iMessage, for example, are end-to-end-encrypted, which means that the companies that operate those apps or any other infrastructure can’t see the contents of your messages.&nbsp;</p>
+	<p>Whereas encrypted group chats are usually long-lived, highly asynchronous, and low bandwidth sessions, video and audio calls are short-lived, highly synchronous, and require high bandwidth. This difference comes with plenty of interesting tradeoffs, which influenced the design of our system.</p>
+	<p>We had to consider how factors like the ephemeral nature of calls, compared to the persistent nature of group text messages, also influenced the way we designed E2EE for Orange Meets. In chat messages, users must be able to decrypt messages sent to them while they were offline (e.g. while taking a flight). This is not a problem for real-time communication.</p>
+	<p>The bandwidth limitations around audio/video communication and the use of an SFU prevented us from using some of the E2EE technologies already available for text messages. Apple’s iMessage, for example, encrypts a message N-1 times for an N-user group chat. We can't encrypt the video for each recipient, as that could saturate the upload capacity of Internet connections as well as slow down the client. Media has to be encrypted once and decrypted by each client while preserving secrecy around only the current participants of the call.</p>
+	<div class="flex anchor relative">
+		<h2 id="messaging-layer-security-mls">Messaging Layer Security (MLS)</h2>
+		<a href="https://blog.cloudflare.com/#messaging-layer-security-mls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Around the same time we were working on Orange Meets, we saw a lot of excitement around new apps being built with <a href="https://messaginglayersecurity.rocks"><u>Messaging Layer Security</u></a> (MLS), an IETF-standardized protocol that describes how you can do a group key exchange in order to establish end-to-end-encryption for group communication.&nbsp;</p>
+	<p>Previously, the only way to achieve these properties was to essentially run your own fork of the <a href="https://signal.org/docs"><u>Signal protocol</u></a>, which itself is more of a living protocol than a solidified standard. Since MLS is standardized, we’ve now seen multiple high-quality implementations appear, and we’re able to use them to achieve Signal-level security with far less effort.</p>
+	<p>Implementing MLS here wasn’t easy: it required a moderate amount of client modification, and the development and verification of an encrypted room-joining protocol. Nonetheless, we’re excited to be pioneering a standards-based approach that any customer can run on our network, and to share more details about how our implementation works.&nbsp;</p>
+	<p>We did not have to make any changes to the SFU to get end-to-end encryption working. Cloudflare’s SFU doesn’t care about the contents of the data forwarded on our data plane and whether it’s encrypted or not.</p>
+	<div class="flex anchor relative">
+		<h2 id="orange-meets-the-basics">Orange Meets: the basics&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#orange-meets-the-basics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Orange Meets is a video calling application built on <a href="https://workers.cloudflare.com"><u>Cloudflare Workers</u></a> that uses the <a href="https://developers.cloudflare.com/realtime/calls-vs-sfus"><u>Cloudflare Realtime SFU service</u></a> as the data plane. The roles played by the three main entities in the application are as follows:</p>
+	<ul>
+		<li>
+			<p>The <i>user</i> is a participant in the video call. They connect to the Orange Meets server and SFU, described below.</p>
+		</li>
+		<li>
+			<p>The <i>Orange Meets Server </i>is a simple service run on a Cloudflare Worker that runs the small-scale coordination logic of Orange Meets, which is concerned with which user is in which video call — called a <i>room </i>— and what the state of the room is. Whenever something in the room changes, like a participant joining or leaving, or someone muting themselves, the app server broadcasts the change to all room participants. You can use any backend server for this component, we just chose Cloudflare Workers for its convenience.</p>
+		</li>
+		<li>
+			<p>Cloudflare Realtime <i>Selective Forwarding Unit</i> (SFU) is a service that Cloudflare runs, which takes everyone’s audio and video and broadcasts it to everyone else. These connections are potentially lossy, using UDP for transmission. This is done because a dropped video frame from five seconds ago is not very important in the context of a video call, and so should not be re-sent, as it would be in a TCP connection.</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61htaksggj580PqX02XoVB/3b0f1ed34ee681e41b2009257fdc8525/image2.png" alt="The network topology of Orange Meets" class="kg-image" width="962" height="780" loading="lazy">
+	</figure>
+	<p><sup><i>The network topology of Orange Meets</i></sup></p>
+	<p>Next, we have to define what we mean by end-to-end encryption in the context of video chat.</p>
+	<div class="flex anchor relative">
+		<h2 id="end-to-end-encrypting-orange-meets">End-to-end encrypting Orange Meets&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#end-to-end-encrypting-orange-meets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The most immediate way to end-to-end encrypt Orange Meets is to simply have the initial users agree on a symmetric encryption/decryption key at the beginning of a call, and just encrypt every video frame using that key. This is sufficient to hide calls from Cloudflare’s SFU. Some source-encrypted video conferencing implementations, such as <a href="https://jitsi.org/e2ee-in-jitsi"><u>Jitsi Meet</u></a>, work this way.</p>
+	<p>The issue, however, is that kicking a malicious user from a call does not invalidate their key, since the keys are negotiated just once. A joining user learns the key that was used to encrypt video from before they joined. These failures are more formally referred to as failures of <i>post-compromise security</i> and <i>perfect forward secrecy</i>. When a protocol successfully implements these in a group setting, we call the protocol a <b>continuous group key agreement protocol</b>.</p>
+	<p>Fortunately for us, MLS is a continuous group key agreement protocol that works out of the box, and the nice folks at <a href="https://phnx.im"><u>Phoenix R&amp;D</u></a> and <a href="https://cryspen.com"><u>Cryspen</u></a> have a well-documented <a href="https://github.com/openmls/openmls/tree/main"><u>open-source Rust implementation</u></a> of most of the MLS protocol.&nbsp;</p>
+	<p>All we needed to do was write an MLS client and compile it to WASM, so we could decrypt video streams in-browser. We’re using WASM since that’s one way of running Rust code in the browser. If you’re running a video conferencing application on a desktop or mobile native environment, there are other MLS implementations in your preferred programming language.</p>
+	<p>Our setup for encryption is as follows:</p>
+	<p><b>Make a web worker for encryption.</b> We wrote a web worker in Rust that accepts a WebRTC video stream, broken into individual frames, and encrypts each frame. This code is quite simple, as it’s just an MLS encryption:</p>
+	<pre class="language-Rust"><code class="language-Rust">group.create_message(
+	&amp;self.mls_provider,
+	self.my_signing_keys.as_ref()?,
+	frame,
+)</code></pre>
+	<p><b>Postprocess outgoing audio/video.</b> We take our normal stream and, using some newer features of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API"><u>WebRTC API</u></a>, add a transform step to it. This transform step simply sends the stream to the worker:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const senderStreams = sender.createEncodedStreams()
+const { readable, writable } = senderStreams
+this.worker.postMessage(
+	{
+    	    type: 'encryptStream',
+    	    in: readable,
+    	    out: writable,
+	},
+	[readable, writable]
+)</code></pre>
+	<p>And the same for decryption:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const receiverStreams = receiver.createEncodedStreams()
+const { readable, writable } = receiverStreams
+this.worker.postMessage(
+	{
+    	    type: 'decryptStream',
+    	    in: readable,
+    	    out: writable,
+	},
+	[readable, writable]
+)</code></pre>
+	<p>Once we do this for both audio and video streams, we’re done.</p>
+	<div class="flex anchor relative">
+		<h2 id="handling-different-codec-behaviors">Handling different codec behaviors</h2>
+		<a href="https://blog.cloudflare.com/#handling-different-codec-behaviors" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The streams are now encrypted before sending and decrypted before rendering, but the browser doesn’t know this. To the browser, the stream is still an ordinary video or audio stream. This can cause errors to occur in the browser’s depacketizing logic, which expects to see certain bytes in certain places, depending on the codec. This results in some extremely cypherpunk artifacts every dozen seconds or so:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72baLJkLPZPdbjHjGVxSU5/2ea34b02826aacc2b23086b463a4938f/image3.png" alt="" class="kg-image" width="1999" height="1655" loading="lazy">
+	</figure>
+	<p>Fortunately, this exact issue was discovered by engineers at Discord, who handily documented it in their <a href="https://github.com/discord/dave-protocol/blob/main/protocol.md"><u>DAVE</u></a> E2EE videocalling protocol. For the VP8 codec, which we use by default, the solution is simple: split off the first 1–10 bytes of each packet, and send them unencrypted:</p>
+	<pre class="language-Rust"><code class="language-Rust">fn split_vp8_header(frame: &amp;[u8]) -&gt; Option&lt;(&amp;[u8], &amp;[u8])&gt; {
+    // If this is a keyframe, keep 10 bytes unencrypted. Otherwise, 1 is enough
+    let is_keyframe = frame[0] &gt;&gt; 7 == 0;
+    let unencrypted_prefix_size = if is_keyframe { 10 } else { 1 };
+    frame.split_at_checked(unencrypted_prefix_size)
+}</code></pre>
+	<p>These bytes are not particularly important to encrypt, since they only contain versioning info, whether or not this frame is a keyframe, some constants, and the width and height of the video.</p>
+	<p>And that’s truly it for the stream encryption part! The only thing remaining is to figure out how we will let new users join a room.</p>
+	<div class="flex anchor relative">
+		<h2 id="join-my-orange-meet">“Join my Orange Meet”&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#join-my-orange-meet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Usually, the only way to join the call is to click a link. And since the protocol is encrypted, a joining user needs to have some cryptographic information in order to decrypt any messages. How do they receive this information, though? There are a few options.</p>
+	<p>DAVE does it by using an MLS feature called <i>external proposals</i>. In short, the Discord server registers itself as an <i>external sender</i>, i.e., a party that can send administrative messages to the group, but cannot receive any. When a user wants to join a room, they provide their own cryptographic material, called a <i>key package</i>, and the server constructs and sends an MLS <a href="https://www.rfc-editor.org/rfc/rfc9420.html#section-12.1.8"><u>External Add message</u></a> to the group to let them know about the new user joining. Eventually, a group member will <i>commit</i> this External Add, sending the joiner a <i>Welcome</i> message containing all information necessary to send and receive video.
+	</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gQm3r3Bai8Rks4M82JuSh/87ff851a12505f5c17c241e3f1eade6a/image4.png" alt="A user joining a group via MLS external proposals. Recall the Orange Meets app server functions as a broadcast channel for the whole group. We consider a group of 3 members. We write member #2 as the one committing to the proposal, but this can be done by any member. Member #2 also sends a Commit message to the other members, but we omit this for space.&nbsp;" class="kg-image" width="1999" height="1250" loading="lazy">
+	</figure>
+	<p><sup><i>A user joining a group via MLS external proposals. Recall the Orange Meets app server functions as a broadcast channel for the whole group. We consider a group of 3 members. We write member #2 as the one committing to the proposal, but this can be done by any member. Member #2 also sends a Commit message to the other members, but we omit this for space.</i></sup><sup>&nbsp;</sup></p>
+	<p>This is a perfectly viable way to implement room joining, but implementing it would require us to extend the Orange Meets server logic to have some concept of MLS. Since part of our goal is to keep things as simple as possible, we would like to do all our cryptography client-side.</p>
+	<p>So instead we do what we call the <i>designated committer</i> algorithm. When a user joins a group, they send their cryptographic material to one group member, the <i>designated committer</i>, who then constructs and sends the Add message to the rest of the group. Similarly, when notified of a user’s exit, the designated committer constructs and sends a Remove message to the rest of the group. With this setup, the server’s job remains nothing more than broadcasting messages! It’s quite simple too—the full implementation of the designated committer state machine comes out to <a href="https://github.com/cloudflare/orange/blob/66e80d6d9146e2aedd4668e581810c0ee6aeb4a0/rust-mls-worker/src/mls_ops.rs#L90-L446"><u>300 lines of Rust</u></a>, including the MLS boilerplate, and it’s about as efficient.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3k3U7kFcYTwY81XzSrggt8/c27945dec311f251493826542704d370/image1.png" alt="A user joining a group via the designated committer algorithm." class="kg-image" width="1999" height="1250" loading="lazy">
+	</figure>
+	<p><sup><i>A user joining a group via the designated committer algorithm.</i></sup></p>
+	<p>One cool property of the designated committer algorithm is that something like this isn’t possible in a text group chat setting, since any given user (in particular, the designated committer) may be offline for an arbitrary period of time. Our method works because it leverages the fact that video calls are an inherently synchronous medium.</p>
+	<div class="flex anchor relative">
+		<h3 id="verifying-the-designated-committer-algorithm-with-tla">Verifying the Designated Committer Algorithm with TLA<sup>+</sup></h3>
+		<a href="https://blog.cloudflare.com/#verifying-the-designated-committer-algorithm-with-tla" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The designated committer algorithm is a pretty neat simplification, but it comes with some non-trivial edge cases that we need to make sure we handle, such as:</p>
+	<ul>
+		<li>
+			<p><i>How do we make sure there is only one designated committer at a time?</i> The designated committer is the alive user with the smallest index in the MLS group state, which all users share.</p>
+		</li>
+		<li>
+			<p><i>What happens if the designated committer exits?</i> Then the next user will take its place. Every user keeps track of pending Adds and Removes, so it can continue where the previous designated committer left off.</p>
+		</li>
+		<li>
+			<p><i>If a user has not caught up to all messages, could they think they’re the designated committer?</i> No, they have to believe first that all prior eligible designated committers are disconnected.</p>
+		</li>
+	</ul>
+	<p>To make extra sure that this algorithm was correct, we formally modeled it and put it through the <a href="https://lamport.azurewebsites.net/tla/high-level-view.html"><u>TLA</u><u><sup>+</sup></u></a> model checker. To our surprise, it caught some low-level bugs! In particular, it found that, if the designated committer dies while adding a user, the protocol does not recover. We fixed these by breaking up MLS operations and enforcing a strict ordering on messages locally (e.g., a Welcome is always sent before its corresponding Add).</p>
+	<p>You can find an explainer, lessons learned, and the full <a href="https://learntla.com/core/index.html"><u>PlusCal</u></a> program (a high-level language that compiles to TLA<sup>+</sup>) <a href="https://github.com/cloudflareresearch/orange-e2ee-model-check"><u>here</u></a>. The caveat, as with any use of a bounded model checker, is that the checking is, well, bounded. We verified that no invalid protocol states are possible in a group of up to five users. We think this is good evidence that the protocol is correct for an arbitrary number of users. Because there are only two distinct roles in the protocol (designated committer and other group member), any weird behavior ought to be reproducible with two or three users, max.</p>
+	<div class="flex anchor relative">
+		<h2 id="preventing-man-in-the-middle-attacks">Preventing Man-in-the-Middle attacks</h2>
+		<a href="https://blog.cloudflare.com/#preventing-man-in-the-middle-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>One important concern to address in any end-to-end encryption setup is how to prevent the service provider from replacing users’ key packages with their own. If the Orange Meets app server did this, and colluded with a malicious SFU to decrypt and re-encrypt video frames on the fly, then the SFU could see all the video sent through the network, and nobody would know.</p>
+	<p>To resolve this, like DAVE, we include a <i>safety number</i> in the corner of the screen for all calls. This number uniquely represents the cryptographic state of the group. If you check out-of-band (e.g., in a Signal group chat) that everyone agrees on the safety number, then you can be sure nobody’s key material has been secretly replaced.</p>
+	<p>In fact, you could also read the safety number aloud in the video call itself, but doing this is not provably secure. Reading a safety number aloud is an <i>in-band verification</i> mechanism, i.e., one where a party authenticates a channel within that channel. If a malicious app server colluding with a malicious SFU were able to construct believable video and audio of the user reading the safety number aloud, it could bypass this safety mechanism. So if your threat model includes adversaries that are able to break into a Worker and Cloudflare’s SFU, and simultaneously generate real-time deep-fakes, you should use out-of-band verification 😄.</p>
+	<div class="flex anchor relative">
+		<h2 id="future-work">Future work</h2>
+		<a href="https://blog.cloudflare.com/#future-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>There are some areas we could improve on:</p>
+	<ul>
+		<li>
+			<p>There is another attack vector for a malicious app server: it is possible to simply serve users malicious Javascript. This problem, more generally called the <a href="https://web.archive.org/web/20200731144044/https://www.nccgroup.com/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful"><u>Javascript Cryptography Problem</u></a>, affects any in-browser application where the client wants to hide data from the server. Fortunately, we are working on a standard to address this, called <a href="https://github.com/beurdouche/explainers/blob/main/waict-explainer.md"><u>Web Application Manifest Consistency, Integrity, and Transparency</u></a>. In short, like our <a href="https://blog.cloudflare.com/key-transparency"><u>Code Verify</u></a> solution for WhatsApp, this would allow every website to commit to the Javascript it serves, and have a third party create an auditable log of the code. With transparency, malicious Javascript can still be distributed, but at least now there is a log that records the code.</p>
+		</li>
+		<li>
+			<p>We can make out-of-band authentication easier by placing trust in an identity provider. Using <a href="https://www.bastionzero.com/openpubkey"><u>OpenPubkey</u></a>, it would be possible for a user to get the identity provider to sign their cryptographic material, and then present that. Then all the users would check the signature before using the material. Transparency would also help here to ensure no signatures were made in secret.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We built end-to-end encryption into the Orange Meets video chat app without a lot of engineering time, and by modifying just the client code. To do so, we built a WASM (compiled from Rust) <a href="https://github.com/cloudflare/orange/blob/e2ee/rust-mls-worker"><u>service worker</u></a> that sets up an <a href="https://www.rfc-editor.org/rfc/rfc9420.html"><u>MLS</u></a> group and does stream encryption and decryption, and designed a new joining protocol for groups, called the <i>designated committer algorithm</i>, and <a href="https://github.com/cloudflareresearch/orange-e2ee-model-check"><u>formally modeled it in TLA</u><u><sup>+</sup></u></a>. We made comments for all kinds of optimizations that are left to do, so please send us a PR if you’re so inclined!</p>
+	<p>Try using Orange Meets with E2EE enabled at <a href="https://e2ee.orange.cloudflare.dev"><u>e2ee.orange.cloudflare.dev</u></a>, or deploy your own instance using the <a href="https://github.com/cloudflare/orange"><u>open source repository</u></a> on Github.</p>
+</div>
