@@ -1,7 +1,7 @@
 {
 	"name": "@flarelabs-net/workers-observability-utils",
 	"dist-tags": {
-		"latest": "0.3.1"
+		"latest": "0.3.2"
 	},
 	"versions": {
 		"0.1.0": {
@@ -88,6 +88,34 @@
 				"ulid-workers": "^2.1.0"
 			},
 			"devDependencies": {
+				"vitest": "^3.1.4",
+				"typescript": "^5.2.2",
+				"@types/node": "^22.15.19",
+				"@cloudflare/workers-types": "^4.20250519.0",
+				"@cloudflare/vitest-pool-workers": "^0.8.32"
+			},
+			"dist": {
+				"shasum": "e5074b326dba9ea330fd098ad0aa20f33fdcd63d",
+				"tarball": "https://registry.npmjs.org/@flarelabs-net/workers-observability-utils/-/workers-observability-utils-0.3.1.tgz",
+				"fileCount": 64,
+				"integrity": "sha512-1NY/+jguLu6sVN+SnMMUVG+4YisuAEcwRZQZ1kahk5OTauUU4TIJqA/OPYuVvtz1Na2LCFTSIkQxRXBX+ChO0g==",
+				"signatures": [
+					{
+						"sig": "MEUCICiqkhohofZqqnAW6Fktj05OaHxvHd3L2QpoiPPSCcx0AiEA6CGGWgPPpE+SM9Azh4Dl5HDMF2q2c6tYhxHpfKP/LhI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 122138
+			}
+		},
+		"0.3.2": {
+			"name": "@flarelabs-net/workers-observability-utils",
+			"version": "0.3.2",
+			"dependencies": {
+				"flat": "^6.0.1",
+				"ulid-workers": "^2.1.0"
+			},
+			"devDependencies": {
 				"@cloudflare/vitest-pool-workers": "^0.8.32",
 				"@cloudflare/workers-types": "^4.20250519.0",
 				"@types/node": "^22.15.19",
@@ -95,15 +123,15 @@
 				"vitest": "^3.1.4"
 			},
 			"dist": {
-				"integrity": "sha512-1NY/+jguLu6sVN+SnMMUVG+4YisuAEcwRZQZ1kahk5OTauUU4TIJqA/OPYuVvtz1Na2LCFTSIkQxRXBX+ChO0g==",
-				"shasum": "e5074b326dba9ea330fd098ad0aa20f33fdcd63d",
-				"tarball": "https://registry.npmjs.org/@flarelabs-net/workers-observability-utils/-/workers-observability-utils-0.3.1.tgz",
+				"integrity": "sha512-mF/T/b4GnvXPlCm56c3E1VWfjPUT42yAG0v1vEDfz5HgGntFA1jSf6aIrtuf0Z22Kzb0rYHyTaa6WplCpHWw6A==",
+				"shasum": "10216c3152e9a1a984e68cda912d051b3d95392f",
+				"tarball": "https://registry.npmjs.org/@flarelabs-net/workers-observability-utils/-/workers-observability-utils-0.3.2.tgz",
 				"fileCount": 64,
-				"unpackedSize": 122138,
+				"unpackedSize": 122188,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCICiqkhohofZqqnAW6Fktj05OaHxvHd3L2QpoiPPSCcx0AiEA6CGGWgPPpE+SM9Azh4Dl5HDMF2q2c6tYhxHpfKP/LhI="
+						"sig": "MEUCIQC7ukB9mM+nOhYnYEToH21lJkNV/h9xv1gCWYpnZ2T2TQIgco8EYbYEEx28qO5zW1ses/d0WunAIzHMg1PQq9YxDhc="
 					}
 				]
 			}
