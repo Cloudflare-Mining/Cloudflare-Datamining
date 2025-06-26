@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-06-26T21:13:21.238Z",
-					"updatedAt": "2025-06-25T01:49:15.175Z"
+					"updatedAt": "2025-06-26T00:38:12.673Z"
 				},
 				"contentfulId": "7vn8IYMuz5hCYgndLhX6Yj",
 				"contentTypeId": "page",
@@ -63,70 +63,6 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
-					{
-						"contentfulId": "1Ca86b8EcvvX3YHaS54Ci2",
-						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare DNS vs. Google Cloud DNS",
-						"titleSize": null,
-						"subtitle": "Cloudflare DNS delivers superior performance, high availability, and robust security",
-						"subtitleSize": null,
-						"copy": "Cloudflare DNS is an authoritative DNS service that offers significantly better query response performance than Google Cloud DNS. Coupling that performance with robust security and unparalleled redundancy, Cloudflare DNS is a better choice for most organizations.\n\nAccelerate web experiences with Cloudflare: ",
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
-						"buttonText1": "Get started",
-						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
-						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": null,
-						"buttonText2": "Learn more",
-						"buttonText2LoggedIn": null,
-						"buttonUrl2": "#comparison-table",
-						"button2ExtraClass": null,
-						"bladeBorder": "none",
-						"htmlId": null,
-						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
-						"streamOptions": [
-							"controls",
-							"captions"
-						],
-						"streamCaptions": "en",
-						"popupStreamId": null,
-						"popupText": null,
-						"button1OpenInNewTab": true,
-						"button2OpenInNewTab": null,
-						"streamThumbnails": null,
-						"sectionPadding": null,
-						"streamPosterAssetFile": null,
-						"streamPoster": null,
-						"imageSize": "Medium",
-						"imagePosition": null,
-						"leftLinkUrl": null,
-						"leftLink": null,
-						"leftLinkLoggedIn": null,
-						"leftLinkOptions": "hide",
-						"backgroundColor": "white",
-						"textlayoutMode": null,
-						"backgroundAssetFile": null,
-						"imageLayout": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "97128dcc-e474-5b54-b2bd-5ed3e47be738",
-							"altText": "Advanced DNS protection  illustration",
-							"title": "Advanced DNS protection - Hero  illustration",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/27K8asGdojRJb6ysPoLcuD/5d2a65da2fd976741d9727ca740a911c/Advanced-DNS-Protection.svg"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						}
-					},
 					{
 						"contentfulId": "2MpAdcJYNhskKPnkf2w3gA",
 						"backgroundColor": "white",
@@ -342,30 +278,6 @@
 						"togglesTo": []
 					},
 					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "1jMqLK2TDoNjjS0HPk4Sja",
-						"quote": "\"Cloudflare has an incredibly large network and infrastructure to stop really large attacks on the DNS system. We just get clean requests and never have to deal with malicious traffic or attacks on the DNS infrastructure.\"",
-						"quoteAuthor": "Sam Kottler",
-						"quoteTitle": "Engineer",
-						"learnMoreText": null,
-						"sectionPadding": "tile--no-top-padding",
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/9IWNhDdzP2xnOtDysmQ0J/8cf09eb7a09cde02bdb02b3e26addaa2/logo-digital-ocean-600.png"
-							},
-							"description": "Logo digital ocean"
-						},
-						"imageAssetFile": null,
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": []
-					},
-					{
 						"contentTypeId": "bladeTable",
 						"contentfulId": "2bZBIS3Y3xxGsm8uMEbGPx",
 						"locale": "en-US",
@@ -447,15 +359,6 @@
 									{
 										"contentfulId": "5umHWOlXwy6BkXEv24ypNK",
 										"cellText": "Offers Free, Pro, Business, and Enterprise plans to support a wide range of organizations.",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "28fkFgJmQVVi6c0u7K7snX",
-										"cellText": "Has only one pricing plan, which includes charges per zone per month with fees for the numbers of queries.",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -737,39 +640,6 @@
 							},
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "2Ae5j3Z01t77w1qDUG8xpH",
-								"title": " Is Cloudflare DNS faster than Google?",
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Yes. Cloudflare DNS regularly delivers query responses that are more than three times faster than Google Cloud DNS. The Cloudflare global Anycast network, which has more than 320 data center locations, helps ensure the rapid delivery of DNS lookup responses anywhere in the world.  ",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
 								"contentfulId": "2RZG5IwqMFbzS5PWXhPxm",
 								"title": "Is Cloudflare DNS safe?",
 								"htmlId": null,
@@ -826,39 +696,6 @@
 														"uri": null
 													},
 													"value": "Yes, Cloudflare offers free DNS services as part of all plans. Cloudflare Free, Pro, Business, and Enterprise plans offer different levels of bot mitigation, rules, and support options. Enterprise organizations can choose Cloudflare Foundation DNS for the most advanced features.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "1a2F2mEN0YVhZGTl8xlCdX",
-								"title": "What is a good alternative to Google DNS?",
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " In addition to Google, several cloud and content delivery network (CDN) providers offer authoritative DNS services, such as Cloudflare DNS, AWS (Amazon Route 53), Akamai (Akamai Edge DNS), and Azure (Azure DNS). But for organizations looking for exceptional performance coupled with high availability and robust security capabilities, Cloudflare DNS will be the best choice for an authoritative DNS.",
 													"marks": [],
 													"content": null
 												}

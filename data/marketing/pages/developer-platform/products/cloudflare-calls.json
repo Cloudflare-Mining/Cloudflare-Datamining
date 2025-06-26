@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/waiting-room/",
+	"path": "/developer-platform/products/cloudflare-calls/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Waiting Room Product Page",
+				"pageName": "Cloudflare Realtime",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -27,39 +27,34 @@
 					"ruRU": "Translated for Locale",
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
-					"trTR": "Translated for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/waiting-room/",
-				"topNavOptions": null,
+				"relativePath": "developer-platform/products/cloudflare-calls",
+				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Waiting Room |  Virtual waiting rooms",
-					"metaDescription": "Cloudflare Waiting Room lets you direct users to a custom-branded virtual 'waiting room' during traffic surges, improving their experience while they wait.",
+					"metaTitle": "Cloudflare Realtime | Build real-time audio & video apps",
+					"metaDescription": "Cloudflare Realtime allows developers to build real-time audio and video apps on a global scale. Start building with Cloudflare Realtime today.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/60bG9LEPCtF3G2tOcCCtCv/5d4f73889734bdb634c57b9c9116961f/waiting_room_product.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
 						},
-						"description": null
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/60bG9LEPCtF3G2tOcCCtCv/5d4f73889734bdb634c57b9c9116961f/waiting_room_product.png"
-						},
-						"description": null
-					},
+					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2021-01-21T23:30:29.913Z",
-					"updatedAt": "2025-06-25T08:11:47.959Z"
+					"createdAt": "2024-09-24T19:02:12.329Z",
+					"updatedAt": "2025-05-28T16:56:07.386Z"
 				},
-				"contentfulId": "6UobIFQgEGwKBcpU5p2u9D",
+				"contentfulId": "1djnuT1uIsWoCHKeIwhnky",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -69,40 +64,43 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "wjLMKvJKE9DVKHu8wOKx9",
+						"contentfulId": "y3ngqwMEPzwHyVWmfqdGk",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Waiting Room ",
+						"title": "Cloudflare Realtime ",
 						"titleSize": null,
-						"subtitle": "A virtual waiting room to manage peak traffic",
+						"subtitle": "Build real-time audio and video apps",
 						"subtitleSize": null,
-						"copy": "Sudden increases in traffic can overwhelm your applications and infrastructure, leading to slow performance or complete disruption to your online presence.\n\nCloudflare Waiting Room allows organizations to route excess users to a custom-branded waiting room, helping preserve the customer experience and protecting origin servers from being overwhelmed with requests. ",
+						"copy": "Choose from an all-in-one realtime SDK or build WebRTC services with a managed TURN server and Selective Forwarding Units (SFUs). All running from Cloudflare's %{DataCenterCount} global locations.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
-						"buttonText1": "Get started",
-						"buttonText1LoggedIn": "Activate in Dash",
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
-						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/?to=/:account/:zone/traffic/waiting-rooms",
+						"buttonText1": "Start building",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "https://dash.cloudflare.com",
+						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Read the product brief",
-						"buttonText2LoggedIn": "Need more than one Waiting Room? ",
-						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/IydVtIa13olmKwJ1Dv8KW/43dc4e3cc26f9a2578750fab360172be/2_Pager___Layout_A_-_Standard_Cloudflare_-_A4.pdf",
+						"buttonText2": null,
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": null,
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
 						"includeVideo": false,
 						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": true,
-						"button2OpenInNewTab": true,
+						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": "Medium",
+						"imageSize": "Large",
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
@@ -114,38 +112,38 @@
 						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "1ca4d18f-d74b-5a65-a81a-cc7cc802ca7b",
-							"altText": "Cloudflare waiting room hero illustration",
-							"title": "Cloudflare waiting room hero illustration",
+							"id": "2d5655c6-4adb-507a-9559-0ba13a56b739",
+							"altText": "Cloudflare Calls - Hero image",
+							"title": "Cloudflare Calls - Hero image",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wyW25sYVxRcl9x8cJVWoG/48d3e6ecc30cdf27a5b633e285799311/cloudflare-waiting-room-hero-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/rs5ElFqxpUEWshCPnje33/a8bde064c48990fe1c498ff7a5f17950/Cloudflare-Calls-Hero-image.png"
 								},
-								"description": ""
+								"description": "Cloudflare Calls - Hero image"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						}
 					},
 					{
-						"contentfulId": "2dj2Nnk15m0gWLrut1wJ8R",
+						"contentfulId": "5MrRDnGuIf0cI9KE9keODM",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE WAITING ROOM",
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE REALTIME",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1kSSkgykb1A8wL5utczOFs",
-								"title": "Stay online",
+								"contentfulId": "792aupG8ERiujaonRtwn2M",
+								"title": "Ship Fast",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Protect your application from legitimate traffic surges and ensure you are able to scale to meet high demand.",
+								"description": "Go from idea to v1 in days using RealtimeKIt's SDKs for iOS, Android and Web",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -153,16 +151,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b81f14af-5749-5ed0-ba32-c9f27ea1c4a2",
-									"altText": "Traffic legit orange",
-									"title": "Traffic legit orange",
+									"id": "4ad77fba-3ae1-5ad0-a850-d814c56d9d9d",
+									"altText": "Reliability timer blue",
+									"title": "Reliability timer blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nC4blUcOffvGbQwA4Z1is/d9f36076577d83bef87ab2042ce8b3d2/traffic-legit-browser.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/41aBOr3gowykuADnSlJuCp/897c938c653f6d736e3832afe4fcab59/reliability-timer.svg"
 										},
-										"description": "Global traffic management icon"
+										"description": "Stopwatch icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -176,12 +174,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6vk2Kv0Q93rCVEvVBq9JJR",
-								"title": "Reduce your infrastructure costs",
+								"contentfulId": "3L5v1d8hEGPxewfvuQRSGQ",
+								"title": "Global scale",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Eliminate costs associated with maintaining additional servers and purchasing extra bandwidth to serve peak traffic.",
+								"description": "Automatically scale call volume and global WebRTC connections with no regional constraints. ",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -189,52 +187,52 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
-									"altText": "Dollar",
-									"title": "Dollar",
+									"id": "ff8961fa-ef8b-5b0d-b999-e0c79b5bbe93",
+									"altText": "internet globe",
+									"title": "internet globe",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b3ukfoY9BpcbnxK1cEvJs/78b3069991fa76f7b062113f6db17576/internet-globe.svg"
+										},
+										"description": "Orange icon of a globe"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7bYcPHspNt9K8nqyqZ67tr",
+								"title": "Private and Secure",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Your data remains secure with the same privacy standards that support our global network, including end-to-end encryption.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b914043d-ea00-5a37-81d5-dd4b3b25da06",
+									"altText": "security-lock-226x301-cfb9db4",
+									"title": "security-lock-226x301-cfb9db4",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YZDquysdwv0IC1kV0hC6n/0b1b2d81887d494047dbee2d347d2abb/security-lock_1_.svg"
 										},
 										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "lSg8VZyBXladyiIzpMwji",
-								"title": "Deliver a consistent brand experience",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Waiting Room acts as an extension of your brand, ensuring that users get a seamless online experience even while waiting.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "6fd865fc-5f0b-5650-a5a5-9ae0a9d24d1f",
-									"altText": "Yes check blue",
-									"title": "Yes check blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oiO40TBTzUSAm1i5gAc7W/ae5829bb7b71eb63edeb8c87a02135f5/yes-check.svg"
-										},
-										"description": "Checkmark icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -251,9 +249,9 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "5C4daK6b9UNQFIOCghUljC",
-						"title": "Create queues to gracefully manage user traffic",
-						"copy": "Waiting Room keeps wait times low by dynamically managing traffic. As soon as a user leaves an application or their cookie expires, a new user is let in.\n\nYou can set activation thresholds based on incoming rate of traffic or total active users. Admit queued visitors using multiple queuing options — first-in-first-out, random, or lottery.",
+						"contentfulId": "DIPxepxubDMqT4jNEhGcr",
+						"title": "Build immersive realtime applications",
+						"copy": "Cloudflare's RealtimeKit leverages our SFU and Anycast network to automatically connect users to the closest point of presence across over %{DataCenterCount} global locations. Pre-built modular components for chat, video, and real-time collaboration reduce the time needed to build and deploy your realtime app. \n",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -276,16 +274,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "bad5b234-e6f8-519e-8984-004b66844ac3",
-							"altText": "Illustration depicting users entering an application from the waiting room. ",
-							"title": "Keep Wait Times Low",
+							"id": "e1b0a0b6-35b3-542e-8679-9f5c0876e81a",
+							"altText": "Cloudflare Realtime - How it works - diagram",
+							"title": "Cloudflare Realtime - How it works - diagram",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/STFxPFTXo1ekvxrCtw9Ei/8951fdb56aa5833c60856397f8577e90/keep-wait-times-low-spot-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FKwqHGcPPraDY0z1ftYCe/9281ed5e2ca4ff5304eacc3eeeb8dec3/RealtimeArchitecture_1.png"
 								},
-								"description": null
+								"description": "Cloudflare Realtime - How it works - diagram"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -300,13 +298,13 @@
 						"bladeBorder": "none",
 						"imagePosition": true,
 						"imageSize": "medium",
-						"imageTextAlignment": "center",
+						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "7MCao4zbqudEFxu9c06PAD",
-						"title": "Learn about strategies for handling traffic spikes and bot attacks",
+						"contentfulId": "76OM8aiTcsldWAxRh2ss0o",
+						"title": "Learn how to build a video calling application",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -321,138 +319,19 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "59JA8xyeX50LBTJ3WkIEgS",
-							"elementName": "Waiting Room - Additional offer - CTA",
+							"contentfulId": "5WU2nyvnhh4Hiua7B7LpPn",
+							"elementName": "Cloudflare Calls - Additional offer blade - CTA",
 							"standardText": null,
-							"text": "Watch the webinar",
-							"url": "https://cloudflare.ondemand.goldcast.io/on-demand/c115a940-aa7b-4c3a-9ff8-6f68d502cbdc",
+							"text": "See reference architecture",
+							"url": "https://developers.cloudflare.com/calls/example-architecture/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": true,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"eyebrow": null
-					},
-					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "1rbQlyUNsnh6l2RB2gW2og",
-						"htmlId": null,
-						"mainHeadline": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "5FVi34e2l3K400yEMX8kKN",
-								"title": null,
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-4",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "What our customers are saying",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "blockquote",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "paragraph",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "\"If we are hosting a game that is very popular, and we end up getting hundreds of thousands more users than anticipated, we know that our infrastructure will have time to scale, thanks to Cloudflare Waiting Room.\"",
-															"marks": [],
-															"content": null
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "CEO — FanHero",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
 					},
 					{
 						"contentTypeId": "bladeFeaturedCompanyLogos",
@@ -644,22 +523,22 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "79lvOhwPSXxIbpe89d0z8l",
+						"contentfulId": "2pxPJAPL5ICZwwWXbUF5G1",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare Waiting Room ensures that applications remain available and usable even when demand surges to unexpected levels.",
-						"eyebrowHeading": "Top Waiting Room use cases",
+						"title": null,
+						"eyebrowHeading": "Realtime offerings ",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "20FhjeEEdtnrF0T57eJpsW",
-								"title": "Reduce cart abandonment rate",
+								"contentfulId": "2qL7vZoj212TftiXdSxGnE",
+								"title": "Selective forwarding units",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Ensure that your online transactions are not impacted by downtime or slow application performance during peak traffic hours.",
+								"description": "Decentralized global infrastructure to manage WebRTC connections ensuring scalability and reliability. ",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -667,16 +546,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "a27a111c-85d5-596e-b074-e5cd44bf35ce",
-									"altText": "Shop cart blue",
-									"title": "Shop cart blue",
-									"activeAsset": "Brandfolder Asset",
+									"id": "6656e9bc-7b5a-5bd4-9fcd-b0b36e7d42c8",
+									"altText": "Arrow twoway ",
+									"title": "Arrow twoway ",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3xeOjnsQHBnFlh6ClUh6Sm/7c7e1c62f0e3d65715268aba5f044bab/shop-cart.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/vvAAIipXArJjc16UV2PZ4/e04ce1b49a190f34ca1db25553de1040/arrow-twoway.svg"
 										},
-										"description": ""
+										"description": "arrow-twoway"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -690,12 +569,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "210uyXX61h7Qe7zwsKS5l6",
-								"title": "Holiday traffic and special events",
+								"contentfulId": "4telFMRomOXjSfTC346DC8",
+								"title": "Managed TURN service  ",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Prevent your infrastructure from becoming overwhelmed when traffic surges during holidays and events.",
+								"description": "Relay traffic between WebRTC clients and SFUs through NATs and firewalls.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -726,12 +605,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5a3jvdTgKlkAdsyChwvFdF",
-								"title": "Product launches and limited time sales",
+								"contentfulId": "5VRCjS4VVGvqRdvWqfmlBP",
+								"title": "RealtimeKit",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Ensure users can still access and use your website even during periods of extremely high traffic.",
+								"description": "Build and scale real-time WebRTC applications on global infrastructure with SDKs for seamless client-side integration.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -739,16 +618,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "774fed19-c3c8-5b1a-996e-e5217c014f4e",
-									"altText": "Pages shield blue",
-									"title": "Pages shield blue",
+									"id": "704abe21-eca6-5bf6-926c-5984a0e121f8",
+									"altText": "Realtime Kit icon",
+									"title": "Realtime Kit icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ygGtWlEN0N5inPgmxPucE/ac30e4bd2a63904fa66bb28ddc24ac3b/page-shield.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mr28iUn8I4RLsli9DS1bA/652b72016069b58f20b094804373add5/performance-1.svg"
 										},
-										"description": ""
+										"description": "Realtime Kit icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -765,167 +644,172 @@
 						"htmlId": null
 					},
 					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "7is9KWlcBWAciTtxhhnn9h",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/application-services/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
-						"htmlId": null
-					},
-					{
-						"contentfulId": "4xJuCr1Lop4HwNkubGgl22",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Helping organizations worldwide manage user queues",
-						"description": "Helping organizations worldwide manage user queues",
-						"variant": "inline",
+						"contentTypeId": "bladeTable",
+						"contentfulId": "p6EjtNLTHrqc09efv39im",
+						"locale": "en-US",
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"displayHeader": null,
+						"showFilter": null,
+						"sectionTitle": null,
+						"title": "SFU and Turn Server pricing",
+						"copy": null,
 						"htmlId": null,
-						"sectionPadding": "tile--no-top-padding",
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/b05450aa05d6c40af93bf04309e1723c/Lead-generation-background-generic.png"
-								},
-								"description": ""
+						"columnHeaders": [
+							{
+								"cellText": "Free plans",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": null,
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
 							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "27RMyTPYMUkUbkpvBE2jaN",
-							"elementName": "Case studies (Waiting Room)",
-							"standardText": null,
-							"text": "See case studies",
-							"url": "/case-studies/?product=Waiting+Room",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"secondaryCtaButton": null
+							{
+								"cellText": "Paid plans",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": null,
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
+							}
+						],
+						"groupsInTable": [],
+						"rowsInTable": [
+							{
+								"contentfulId": "4uTPM1g8A4H8kn4StawX7s",
+								"rowHeader2": {
+									"contentfulId": "2ZMUzQaioIAjNhmj6AftG3",
+									"cellText": "Data transfer to client",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "57X5N4ufBVEMPU6TcMVoPg",
+										"cellText": "1,000 GB / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "4xDYWEdDjiUBcbYB9bzxok",
+										"cellText": "1,000 GB / month free then $.05 / GB used",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "6YVOGdF99enYqnw01ptWK3",
+								"rowHeader2": {
+									"contentfulId": "2rpzdept0konYn2ptTjioi",
+									"cellText": "Data transfer from client",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "4jvDwkW4TiY6VV7VC5hpS1",
+										"cellText": "Free",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "6C7Bf3v4Qsv1r85RlBuHDD",
+										"cellText": "Free",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							}
+						],
+						"dataSource": null
 					},
 					{
-						"contentTypeId": "bladeCardCarousel",
-						"contentfulId": "56EFcoFcmAYB7eUjMY8M4O",
+						"contentfulId": "4l4MlGylNQxaJuBGMqvm3P",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
 						"title": "Resources",
-						"htmlId": null,
-						"backgroundImage": null,
-						"cards": [
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 2 columns",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
 							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "1xy0uZEv6a0lYzat455QR8",
-								"heading": "Product brief",
-								"description": "Waiting Room overview",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "6lHyUqYV823b2Krz8lgjRK",
-									"elementName": "Waiting Room - Resources cards carousel - Waiting Room overview - Link",
-									"standardText": null,
-									"text": "Get product brief",
-									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/IydVtIa13olmKwJ1Dv8KW/43dc4e3cc26f9a2578750fab360172be/2_Pager___Layout_A_-_Standard_Cloudflare_-_A4.pdf",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "3b7d1ba1-b13a-521a-90cb-cc3cd98a6e12",
-									"altText": "Product brief thumbnail",
-									"title": "Product brief thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lUAsz5YsJICKhBWy6Rl9v/2e039f96c66c926b60c9c9668377ab47/Product_brief_99x180.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
+								"contentTypeId": "feature",
+								"contentfulId": "1V7ArXTI3hLAZBvRnx9jhK",
+								"title": "Orange Meets demo app ",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Download source code for a WebRTC application built using Cloudflare Realtime. ",
+								"learnMoreUrl": "https://github.com/cloudflare/orange",
+								"learnMoreText": "See the code",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "1W202iozf5OCw1vNUP7kkA",
-								"heading": "Blog",
-								"description": "Cloudflare Waiting Room announcement blog",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "3Bf9GbPnTeqLw5LROHGMhe",
-									"elementName": "Waiting Room - Resources cards carousel - Cloudflare Waiting Room announcement blog - Link",
-									"standardText": null,
-									"text": "Read blog post",
-									"url": "https://blog.cloudflare.com/cloudflare-waiting-room/",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "16dda4bb-a521-5d41-82ec-64ef52888d97",
-									"altText": "Blog  thumbnail",
-									"title": "Blog  thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ctAQnKr7LFaJzwd5gbbeu/dffc3ef872495ac11a0250f524a057f3/Blog-thumbnail-generic.png"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "7bbBVj6Ycc3cPvPcjfUinq",
-								"heading": "Solution brief",
-								"description": "Solution brief: Cloudflare for ecommerce",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "4B2maSAEv49BVHavRxRv9q",
-									"elementName": "Waiting Room - Resources cards carousel - Solution brief: Cloudflare for ecommerce - Link",
-									"standardText": null,
-									"text": "Get solution brief",
-									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iHRb5mLKGbtdXBz0u61cI/60766a4ac2cb7091798f456c4d2496e6/Cloudflare_for_Ecommerce__Brief_.pdf",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": null
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "3sfkG4CseeNqV1QzFLJ0EN",
-								"heading": "Article",
-								"description": "Website security guide: A 10-step checklist",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "lbPDzmYd0aAY1hGAykgM7",
-									"elementName": "Advanced Certificate Manager - Resources card carousel - Website security guide: A 10-step checklist - Link",
-									"standardText": null,
-									"text": "Learn more",
-									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
-									"elementModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								},
-								"image": null
+								"contentTypeId": "feature",
+								"contentfulId": "W7zK33XIhMPTRVMfb7umz",
+								"title": "Minimize last mile latency",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Learn how our anycast network spreads out connections to minimize last mile latency. ",
+								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-calls-anycast-webrtc/",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						]
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "73oQ0zzNth40TNQNfSYLsd",
-						"title": "Get Cloudflare Waiting Room for your enterprise",
+						"contentfulId": "62xP0QD6RefsXcLzhaA5AT",
+						"title": "Get Cloudflare Realtime for your enterprise",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -940,27 +824,27 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "1fLiWAHkQqZOwpjs7aU3Nw",
-							"elementName": "Talk to an expert (modal form)",
+							"contentfulId": "7EvGFJJsKVZgYeN38ajPTa",
+							"elementName": "Talk to an expert ",
 							"standardText": null,
 							"text": "Talk to an expert",
-							"url": null,
+							"url": "/plans/enterprise/contact/",
 							"loggedInUrl": null,
 							"buttonModal": {
 								"contentTypeId": "formModal",
-								"contentfulId": "4X33NKLPG0gT4v6Vb1X0ca",
-								"modalName": "ZT Access Talk to an expert",
-								"modalId": "zt-access-talk-to-an-expert",
+								"contentfulId": "1vPRNya1LleNRDVspQv5dk",
+								"modalName": "Enterprise General Sales Inquiry",
+								"modalId": "enterprise-general-sales-inquiry",
 								"modalType": "single-form",
 								"marketoForm": {
 									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "5daBy41JohWg0zdFI6JHW",
-									"bladeName": "ZT Access - Talk to an expert - Marketo",
+									"contentfulId": "4tTjsBLF0mNsBJLLtM7OoP",
+									"bladeName": "Web Form - Enterprise General Sales Inquiry - Marketo form",
 									"backgroundColor": "white",
 									"marketoFormId": 1341,
 									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-									"marketoFormHeaderText": "Talk to an expert",
+									"marketoFormLeadSourceDetail": "Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": null,
 									"marketoFormDefaultComment": null,
 									"showCommentBox": null,
 									"marketoFormThankYouText": null,
@@ -996,7 +880,7 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"keepHashUrlSyncedWithScrollPosition": null
+				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
 				"siteMetadata": {
@@ -1007,8 +891,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/waiting-room/",
-			"contentfulId": "6UobIFQgEGwKBcpU5p2u9D",
+			"pathname": "/developer-platform/products/cloudflare-calls/",
+			"contentfulId": "1djnuT1uIsWoCHKeIwhnky",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
@@ -1022,7 +906,6 @@
 				"es-ES",
 				"es-LA",
 				"ru-RU",
-				"tr-TR",
 				"zh-Hans-CN",
 				"pl-PL"
 			],
