@@ -17,6 +17,8 @@
 	<li>Support strategic data-driven decision making through analytics and strong business acumen</li>
 	<li>Support annual planning and quarterly business reviews</li>
 	<li>Provide ad-hoc analytical support to FP&amp;A, Revenue Operations, and Executive Leadership</li>
+	<li>experience building ROI models from ground-up (e.g. CAC/LTV)</li>
+	<li>experience scaling and automating processes</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
