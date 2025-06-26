@@ -64,6 +64,12 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "2DCyMvLAYe4P0B18yr9kK1",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span\n            >Get a free PCI DSS 4.0 client-side risk assessment.\n        </span>\n        <a\n            class=\"link-helper\"\n            href=\"https://www.cloudflare.com/lp/client-side-risk-assessment/\"\n        >\n            <strong>Sign up ></strong></a\n        >\n    </div>\n</section>\n",
+						"htmlId": null
+					},
+					{
 						"contentfulId": "2wmP1gFic8ONI1vSOi7Hf6",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare Page Shield",
