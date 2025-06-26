@@ -630,13 +630,35 @@
 																},
 																"resources": {
 																	"additionalProperties": {
-																		"type": "string",
+																		"oneOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"additionalProperties": {
+																					"type": "string"
+																				},
+																				"type": "object"
+																			}
+																		],
 																		"x-auditable": true
 																	},
 																	"description": "A list of resource names that the policy applies to.",
 																	"example": {
-																		"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
-																		"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
+																		"object": {
+																			"summary": "Nested object value",
+																			"value": {
+																				"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
+																					"com.cloudflare.api.account.zone.*": "*"
+																				}
+																			}
+																		},
+																		"string": {
+																			"summary": "Single string value",
+																			"value": {
+																				"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
+																			}
+																		}
 																	},
 																	"type": "object"
 																}
@@ -1119,13 +1141,35 @@
 															},
 															"resources": {
 																"additionalProperties": {
-																	"type": "string",
+																	"oneOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"additionalProperties": {
+																				"type": "string"
+																			},
+																			"type": "object"
+																		}
+																	],
 																	"x-auditable": true
 																},
 																"description": "A list of resource names that the policy applies to.",
 																"example": {
-																	"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
-																	"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
+																	"object": {
+																		"summary": "Nested object value",
+																		"value": {
+																			"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
+																				"com.cloudflare.api.account.zone.*": "*"
+																			}
+																		}
+																	},
+																	"string": {
+																		"summary": "Single string value",
+																		"value": {
+																			"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
+																		}
+																	}
 																},
 																"type": "object"
 															}
@@ -2103,13 +2147,35 @@
 										},
 										"resources": {
 											"additionalProperties": {
-												"type": "string",
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"additionalProperties": {
+															"type": "string"
+														},
+														"type": "object"
+													}
+												],
 												"x-auditable": true
 											},
 											"description": "A list of resource names that the policy applies to.",
 											"example": {
-												"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
-												"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
+												"object": {
+													"summary": "Nested object value",
+													"value": {
+														"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
+															"com.cloudflare.api.account.zone.*": "*"
+														}
+													}
+												},
+												"string": {
+													"summary": "Single string value",
+													"value": {
+														"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
+													}
+												}
 											},
 											"type": "object"
 										}
@@ -2422,13 +2488,35 @@
 																	},
 																	"resources": {
 																		"additionalProperties": {
-																			"type": "string",
+																			"oneOf": [
+																				{
+																					"type": "string"
+																				},
+																				{
+																					"additionalProperties": {
+																						"type": "string"
+																					},
+																					"type": "object"
+																				}
+																			],
 																			"x-auditable": true
 																		},
 																		"description": "A list of resource names that the policy applies to.",
 																		"example": {
-																			"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
-																			"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
+																			"object": {
+																				"summary": "Nested object value",
+																				"value": {
+																					"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
+																						"com.cloudflare.api.account.zone.*": "*"
+																					}
+																				}
+																			},
+																			"string": {
+																				"summary": "Single string value",
+																				"value": {
+																					"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
+																				}
+																			}
 																		},
 																		"type": "object"
 																	}
@@ -2834,13 +2922,35 @@
 												},
 												"resources": {
 													"additionalProperties": {
-														"type": "string",
+														"oneOf": [
+															{
+																"type": "string"
+															},
+															{
+																"additionalProperties": {
+																	"type": "string"
+																},
+																"type": "object"
+															}
+														],
 														"x-auditable": true
 													},
 													"description": "A list of resource names that the policy applies to.",
 													"example": {
-														"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
-														"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
+														"object": {
+															"summary": "Nested object value",
+															"value": {
+																"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
+																	"com.cloudflare.api.account.zone.*": "*"
+																}
+															}
+														},
+														"string": {
+															"summary": "Single string value",
+															"value": {
+																"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
+															}
+														}
 													},
 													"type": "object"
 												}
@@ -2876,7 +2986,6 @@
 							{
 								"required": [
 									"name",
-									"status",
 									"policies"
 								]
 							}
@@ -3171,13 +3280,35 @@
 															},
 															"resources": {
 																"additionalProperties": {
-																	"type": "string",
+																	"oneOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"additionalProperties": {
+																				"type": "string"
+																			},
+																			"type": "object"
+																		}
+																	],
 																	"x-auditable": true
 																},
 																"description": "A list of resource names that the policy applies to.",
 																"example": {
-																	"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
-																	"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
+																	"object": {
+																		"summary": "Nested object value",
+																		"value": {
+																			"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
+																				"com.cloudflare.api.account.zone.*": "*"
+																			}
+																		}
+																	},
+																	"string": {
+																		"summary": "Single string value",
+																		"value": {
+																			"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
+																		}
+																	}
 																},
 																"type": "object"
 															}
