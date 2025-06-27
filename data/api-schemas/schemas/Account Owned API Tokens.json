@@ -667,6 +667,22 @@
 																	"type": "array"
 																},
 																"resources": {
+																	"additionalProperties": {
+																		"oneOf": [
+																			{
+																				"description": "A simple wildcard permission, e.g., \"*\".",
+																				"type": "string"
+																			},
+																			{
+																				"additionalProperties": {
+																					"type": "string"
+																				},
+																				"description": "A nested permission grant for further scoping.",
+																				"type": "object"
+																			}
+																		],
+																		"x-auditable": true
+																	},
 																	"description": "A list of resource names that the policy applies to.",
 																	"example": {
 																		"object": {
@@ -684,23 +700,7 @@
 																			}
 																		}
 																	},
-																	"oneOf": [
-																		{
-																			"additionalProperties": {
-																				"type": "string"
-																			},
-																			"type": "object"
-																		},
-																		{
-																			"additionalProperties": {
-																				"additionalProperties": {
-																					"type": "string"
-																				},
-																				"type": "object"
-																			},
-																			"type": "object"
-																		}
-																	]
+																	"type": "object"
 																}
 															},
 															"required": [
@@ -1200,6 +1200,22 @@
 																"type": "array"
 															},
 															"resources": {
+																"additionalProperties": {
+																	"oneOf": [
+																		{
+																			"description": "A simple wildcard permission, e.g., \"*\".",
+																			"type": "string"
+																		},
+																		{
+																			"additionalProperties": {
+																				"type": "string"
+																			},
+																			"description": "A nested permission grant for further scoping.",
+																			"type": "object"
+																		}
+																	],
+																	"x-auditable": true
+																},
 																"description": "A list of resource names that the policy applies to.",
 																"example": {
 																	"object": {
@@ -1217,23 +1233,7 @@
 																		}
 																	}
 																},
-																"oneOf": [
-																	{
-																		"additionalProperties": {
-																			"type": "string"
-																		},
-																		"type": "object"
-																	},
-																	{
-																		"additionalProperties": {
-																			"additionalProperties": {
-																				"type": "string"
-																			},
-																			"type": "object"
-																		},
-																		"type": "object"
-																	}
-																]
+																"type": "object"
 															}
 														},
 														"required": [
@@ -2273,6 +2273,22 @@
 											"type": "array"
 										},
 										"resources": {
+											"additionalProperties": {
+												"oneOf": [
+													{
+														"description": "A simple wildcard permission, e.g., \"*\".",
+														"type": "string"
+													},
+													{
+														"additionalProperties": {
+															"type": "string"
+														},
+														"description": "A nested permission grant for further scoping.",
+														"type": "object"
+													}
+												],
+												"x-auditable": true
+											},
 											"description": "A list of resource names that the policy applies to.",
 											"example": {
 												"object": {
@@ -2290,23 +2306,7 @@
 													}
 												}
 											},
-											"oneOf": [
-												{
-													"additionalProperties": {
-														"type": "string"
-													},
-													"type": "object"
-												},
-												{
-													"additionalProperties": {
-														"additionalProperties": {
-															"type": "string"
-														},
-														"type": "object"
-													},
-													"type": "object"
-												}
-											]
+											"type": "object"
 										}
 									},
 									"required": [
@@ -2616,6 +2616,22 @@
 																		"type": "array"
 																	},
 																	"resources": {
+																		"additionalProperties": {
+																			"oneOf": [
+																				{
+																					"description": "A simple wildcard permission, e.g., \"*\".",
+																					"type": "string"
+																				},
+																				{
+																					"additionalProperties": {
+																						"type": "string"
+																					},
+																					"description": "A nested permission grant for further scoping.",
+																					"type": "object"
+																				}
+																			],
+																			"x-auditable": true
+																		},
 																		"description": "A list of resource names that the policy applies to.",
 																		"example": {
 																			"object": {
@@ -2633,23 +2649,7 @@
 																				}
 																			}
 																		},
-																		"oneOf": [
-																			{
-																				"additionalProperties": {
-																					"type": "string"
-																				},
-																				"type": "object"
-																			},
-																			{
-																				"additionalProperties": {
-																					"additionalProperties": {
-																						"type": "string"
-																					},
-																					"type": "object"
-																				},
-																				"type": "object"
-																			}
-																		]
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -3072,6 +3072,22 @@
 													"type": "array"
 												},
 												"resources": {
+													"additionalProperties": {
+														"oneOf": [
+															{
+																"description": "A simple wildcard permission, e.g., \"*\".",
+																"type": "string"
+															},
+															{
+																"additionalProperties": {
+																	"type": "string"
+																},
+																"description": "A nested permission grant for further scoping.",
+																"type": "object"
+															}
+														],
+														"x-auditable": true
+													},
 													"description": "A list of resource names that the policy applies to.",
 													"example": {
 														"object": {
@@ -3089,23 +3105,7 @@
 															}
 														}
 													},
-													"oneOf": [
-														{
-															"additionalProperties": {
-																"type": "string"
-															},
-															"type": "object"
-														},
-														{
-															"additionalProperties": {
-																"additionalProperties": {
-																	"type": "string"
-																},
-																"type": "object"
-															},
-															"type": "object"
-														}
-													]
+													"type": "object"
 												}
 											},
 											"required": [
@@ -3433,6 +3433,22 @@
 																"type": "array"
 															},
 															"resources": {
+																"additionalProperties": {
+																	"oneOf": [
+																		{
+																			"description": "A simple wildcard permission, e.g., \"*\".",
+																			"type": "string"
+																		},
+																		{
+																			"additionalProperties": {
+																				"type": "string"
+																			},
+																			"description": "A nested permission grant for further scoping.",
+																			"type": "object"
+																		}
+																	],
+																	"x-auditable": true
+																},
 																"description": "A list of resource names that the policy applies to.",
 																"example": {
 																	"object": {
@@ -3450,23 +3466,7 @@
 																		}
 																	}
 																},
-																"oneOf": [
-																	{
-																		"additionalProperties": {
-																			"type": "string"
-																		},
-																		"type": "object"
-																	},
-																	{
-																		"additionalProperties": {
-																			"additionalProperties": {
-																				"type": "string"
-																			},
-																			"type": "object"
-																		},
-																		"type": "object"
-																	}
-																]
+																"type": "object"
 															}
 														},
 														"required": [
