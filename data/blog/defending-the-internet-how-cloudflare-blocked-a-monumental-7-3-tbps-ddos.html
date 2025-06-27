@@ -6,7 +6,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ANdNP7alw2BkWu5hiXaTa/4e6c32c48c5b48ed1943ddb9c9819d18/1.png" alt="" class="kg-image" width="1796" height="810" loading="lazy">
 	</figure>
 	<p><sup><i>New world record: 7.3 Tbps DDoS attack autonomously blocked by Cloudflare</i></sup></p>
-	<p>The attack targeted a Cloudflare customer, a hosting provider, that uses <a href="https://www.cloudflare.com/network-services/products/magic-transit"><u>Magic Transit</u></a> to defend their IP network. Hosting providers and critical Internet infrastructure have increasingly become targets of DDoS attacks, as we reported in our <a href="https://blog.cloudflare.com/ddos-threat-report-for-2025-q1/#attacks-target-the-cloudflare-network-and-internet-infrastructure"><u>latest DDoS threat report</u></a>. Pictured below is an attack campaign from January and February 2025 that blasted over 13.5 million DDoS attacks against Cloudflare’s infrastructure and hosting providers protected by Cloudflare.</p>
+	<p>The attack targeted a Cloudflare customer, a hosting provider, that uses <a href="https://www.cloudflare.com/network-services/products/magic-transit"><u>Magic Transit</u></a> to defend their IP network. Hosting providers and critical Internet infrastructure have increasingly become targets of <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attacks</a>, as we reported in our <a href="https://blog.cloudflare.com/ddos-threat-report-for-2025-q1/#attacks-target-the-cloudflare-network-and-internet-infrastructure"><u>latest DDoS threat report</u></a>. Pictured below is an attack campaign from January and February 2025 that blasted over 13.5 million DDoS attacks against Cloudflare’s infrastructure and hosting providers protected by Cloudflare.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fbj7Uvc4g61ag7FdNpsVY/e0911256cdda102d394f04467922989e/2.png" alt="" class="kg-image" width="1999" height="778" loading="lazy">
 	</figure>
@@ -46,7 +46,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The 7.3 Tbps attack was a multivector DDoS attack. Around 99.996% of the attack traffic was categorized as UDP floods. However, the remaining 0.004%, which accounted for 1.3 GB of the attack traffic, were identified as QOTD reflection attacks, Echo reflection attack, NTP reflection attack, Mirai UDP flood attack, Portmap flood, and RIPv1 amplification attacks.</p>
+	<p>The 7.3 Tbps attack was a multivector DDoS attack. Around 99.996% of the attack traffic was categorized as <a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack">UDP floods</a>. However, the remaining 0.004%, which accounted for 1.3 GB of the attack traffic, were identified as QOTD reflection attacks, Echo reflection attack, NTP reflection attack, Mirai UDP flood attack, Portmap flood, and RIPv1 amplification attacks.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11Vi16gyvOnkCK9XCjkiW7/5453372518abfe68982ff3450245a295/5.png" alt="" class="kg-image" width="1240" height="728" loading="lazy">
 	</figure>
@@ -138,10 +138,10 @@
 			<p><b>How it works: </b>The <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet"><u>Mirai botnet</u></a>, made up of compromised IoT devices, floods victims using random or service-specific UDP packets (e.g., DNS, game services).</p>
 		</li>
 		<li>
-			<p><b>How to prevent becoming part of the botnet:</b> Secure your IoT devices, change default passwords, upgrade to the latest firmware versions, and follow <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/iot-security"><u>IoT security best practices</u></a> to avoid becoming part of the botnet. When possible, monitor outbound traffic to detect irregularities.</p>
+			<p><b>How to prevent becoming part of the botnet:</b> Secure your IoT devices, change default passwords, upgrade to the latest firmware versions, and follow <a href="https://www.cloudflare.com/learning/security/glossary/iot-security"><u>IoT security best practices</u></a> to avoid becoming part of the <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet">botnet</a>. When possible, monitor outbound traffic to detect irregularities.</p>
 		</li>
 		<li>
-			<p><b>How to defend against the attack: </b>Deploy cloud-based volumetric DDoS protection and rate-limiting for UDP traffic.</p>
+			<p><b>How to defend against the attack: </b>Deploy cloud-based volumetric DDoS protection and <a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting">rate-limiting</a> for UDP traffic.</p>
 		</li>
 		<li>
 			<p><b>How to avoid unintended impact:</b> First, understand your network and the type of traffic that you receive, specifically the protocols, their sources and their destinations. Identify services that run over UDP that you want to avoid impacting. Once you have identified those, you can apply rate-limiting in a way that excludes those end points, or takes into account your regular traffic levels. Otherwise, aggressively rate-limiting UDP traffic can impact your legitimate traffic and impact services that run over UDP such as VoIP calls and VPN traffic.</p>
@@ -282,7 +282,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>As we mentioned, each server detects and mitigates attacks fully autonomously — making our network highly efficient, resilient, and fast at blocking attacks. In addition, each server <i>gossips</i> (<a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-igmp/#:~:text=What%20is%20multicasting%3F"><i><u>multicasts</u></i></a>) the top fingerprint permutations within a data center, and globally. This sharing of real-time threat intelligence helps improve the mitigation efficacy within a data center and globally.&nbsp;</p>
+	<p>As we mentioned, each server detects and mitigates attacks fully autonomously — making our network highly efficient, resilient, and fast at blocking attacks. In addition, each server <i>gossips</i> (<a href="https://www.cloudflare.com/learning/network-layer/what-is-igmp"><i><u>multicasts</u></i></a>) the top fingerprint permutations within a data center, and globally. This sharing of real-time threat intelligence helps improve the mitigation efficacy within a data center and globally.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="protecting-the-internet">Protecting the Internet</h2>
 		<a href="https://blog.cloudflare.com/#protecting-the-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -291,5 +291,5 @@
 			</svg>
 		</a>
 	</div>
-	<p>Our systems successfully blocked this record-breaking 7.3 Tbps DDoS attack fully autonomously without requiring any human intervention, without triggering any alerts, and without causing any incidents. This demonstrates the effectiveness of our world-leading DDoS protection systems. We built this system as part of our mission to help build a better Internet committed to provide free unmetered DDoS protection.</p>
+	<p>Our systems successfully blocked this record-breaking 7.3 Tbps DDoS attack fully autonomously without requiring any human intervention, without triggering any alerts, and without causing any incidents. This demonstrates the effectiveness of our world-leading DDoS protection systems. We built this system as part of our mission to help build a better Internet committed to provide <a href="https://www.cloudflare.com/ddos">free unmetered DDoS protection</a>.</p>
 </div>
