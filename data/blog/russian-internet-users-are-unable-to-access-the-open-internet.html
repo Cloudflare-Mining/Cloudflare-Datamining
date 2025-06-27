@@ -1,0 +1,82 @@
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/XNNFOLNzIbB8VaUzfUscl/9fb95db75eb9930497d278c6b8962f73/BLOG-2859_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Since June 9, 2025, Internet users located in Russia and connecting to web services protected by Cloudflare have been throttled by Russian Internet Service Providers (ISPs).</p>
+	<p>As the throttling is being applied by local ISPs, the action is outside of Cloudflare’s control and we are unable, at this time, to restore reliable, high performance access to Cloudflare products and protected websites for Russian users in a lawful manner.&nbsp;</p>
+	<p>Internal data analysis suggests that the throttling allows Internet users to load only the first 16 KB of any web asset, rendering most web navigation impossible.</p>
+	<p>Cloudflare has not received any formal outreach or communication from Russian government entities about the motivation for such an action. Unfortunately, the actions are consistent with <a href="https://blog.cloudflare.com/what-cloudflare-is-doing-to-keep-the-open-internet-flowing-into-russia-and-keep-attacks-from-getting-out"><u>longstanding</u></a> Russian efforts to isolate the Internet within its borders and reduce reliance on Western technology by replacing it with domestic alternatives. Indeed, Russian President Vladimir Putin recently publicly <a href="https://www.barrons.com/news/putin-threatens-to-throttle-western-firms-remaining-in-russia-8bb06070"><u>threatened</u></a> to throttle US tech companies operating inside Russia.&nbsp;</p>
+	<p><a href="https://en.zona.media/article/2025/06/19/cloudflare"><u>External reports</u></a> corroborate our analysis, and further suggest that a number of other service providers are also affected by throttling or other disruptive actions in Russia, including at least Hetzner, DigitalOcean, and OVH.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-impact">The impact</h2>
+		<a href="https://blog.cloudflare.com/#the-impact" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare is seeing disruptions across connections initiated from inside Russia, even when the connection reaches our servers outside of Russia. Consistent with <a href="https://dl.acm.org/doi/10.1145/3517745.3561461"><u>public reporting</u></a> on Russia's practices, this suggests that the disruption is happening inside Russian ISPs, close to users.</p>
+	<p>Russian Internet Services Providers (ISPs) confirmed to be implementing these disruptive actions include, but are not limited to, Rostelecom, Megafon, Vimpelcom, MTS, and MGTS.</p>
+	<p>Based on our observations, Russian ISPs are using several throttling and blocking mechanisms affecting sites protected by Cloudflare, including injected packets to halt the connection and blocking packets so the connection times out. A new tactic that began on June 9 limits the amount of content served to 16 KB, which renders many websites barely usable.</p>
+	<p>The throttling affects all connection methods and protocols, including HTTP/1.1 and HTTP/2 on TCP and TLS, as well as HTTP/3 on QUIC.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-view-from-cloudflare-data">The view from Cloudflare data</h2>
+		<a href="https://blog.cloudflare.com/#the-view-from-cloudflare-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="traffic-trends">Traffic trends</h3>
+		<a href="https://blog.cloudflare.com/#traffic-trends" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Radar exists to share insights and bring transparency to Internet trends. The high rate of connectivity errors to all our data centers has resulted in an overall decrease in traffic served to Russian users. The reduction in traffic can be observed on <a href="https://radar.cloudflare.com/ru?dateStart=2025-06-01&amp;dateEnd=2025-06-26"><u>Cloudflare Radar</u></a>:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64iapMiGlMvgHJXPyPH9Xo/bec47ff9147019ffa01e365f9bc11309/BLOG-2859_2.png" alt="Cloudflare Radar chart showing reduction in traffic served to Russian users" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="client-side-reports-via-network-error-logging">Client-side reports via Network Error Logging</h3>
+		<a href="https://blog.cloudflare.com/#client-side-reports-via-network-error-logging" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Some customers elect to enable <a href="https://www.w3.org/TR/network-error-logging"><u>W3C</u></a>-defined <a href="https://developers.cloudflare.com/network-error-logging"><u>Network Error Logging</u></a> (NEL), a feature that embeds error-reporting instructions inside the headers of web content that users request. The instructions tell web browsers what errors to report, and how to do so. Below is a view of NEL reports that show an increase of TCP connections being ‘reset’ prematurely (as explained in our <a href="https://blog.cloudflare.com/connection-tampering"><u>tampering</u></a> and Radar <a href="https://blog.cloudflare.com/tcp-resets-timeouts"><u>resets</u></a> blogs). Separately, the large growth in h3.protocol.error shows that QUIC connections have been greatly affected:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hduiNgSSfVk6FaJ4JLyGN/9f4f014796d000e919b5794c37eda18c/BLOG-2859_3.png" alt="Network Error LoggingNEL errors by NEL type" class="kg-image" width="1999" height="792" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="corroboration-of-throttling-using-internal-data">Corroboration of throttling using internal data</h3>
+		<a href="https://blog.cloudflare.com/#corroboration-of-throttling-using-internal-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The effects of the throttling can also be observed in our internal tooling. The chart below shows packet loss to our Russian data centers, each data center represented by a different line. The Y-axis is the proportion of packet loss:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DIMgYxjPniMlPS2q2PIbP/c9762738b31278bfd9809457546303c6/BLOG-2859_4.png" alt="packet loss by Cloudflare data center, p99" class="kg-image" width="1999" height="831" loading="lazy">
+	</figure>
+	<p>High packet loss is a strong signal but does not on its own indicate throttling, since there might be other explanations. For example, an explanation may be our servers trying to resend packets multiple times in during some other mass failure that hinders, but does not completely halt, communication.</p>
+	<p>However, we have two additional pieces of information to work with. The first consists of public reports that “throttling” in this case means blocking all connections after <a href="https://en.zona.media/article/2025/06/19/cloudflare"><u>16 KB of data</u></a> has been transmitted, which takes 10 to 14 packets (depending on the underlying technology). Second, we have our recently deployed “<a href="https://blog.cloudflare.com/tcp-resets-timeouts"><u>Resets and Timeouts</u></a>” data that captures anomalous behaviour in TCP when it occurs within the first 10 packets. Since 10 packets can contain 16 KB of data, some connections that are blocked around 16 KB will be visible at the “Post PSH” stage in the Radar data. In TCP, the ‘PSH’ message means Cloudflare got the initial request and data transfer has begun. If the connection is blocked at this stage, then many of the sent packets will be lost.&nbsp;</p>
+	<p>The graph below uses Radar’s <a href="https://radar.cloudflare.com/embed/DataExplorerVisualizer?path=tcp_resets_timeouts%2Ftimeseries_groups&amp;dateRange=28d&amp;mainLocation=ru&amp;locale=en-US&amp;widgetState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%22Post+SYN%22%2C%22Later%22%2C%22Post+ACK%22%2C%22No+match%22%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.hoveredSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D"><u>Data Explorer</u></a> to focus on just the Post-PSH stage, where there is a dip followed by an immediate and proportionally large increase before June 11. This pattern corresponds closely with the loss data seen above:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3RNvY4vrO6LQZ8qFeW5ENK/1f0f79701a46e2c2d43eb1b5aa812351/BLOG-2859_5.png" alt="TCP resets and timeouts for Russia" class="kg-image" width="1600" height="1238" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="if-you-run-internet-sites-for-russian-users">If you run Internet sites for Russian users</h2>
+		<a href="https://blog.cloudflare.com/#if-you-run-internet-sites-for-russian-users" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If you are using Cloudflare to protect your sites, unfortunately, at this time, Cloudflare does not have the ability to restore Internet connectivity for Russia-based users. We advise you to reach out and solicit Russian entities to lift the throttling measures that have been put in place.</p>
+	<p>If you are a Cloudflare enterprise customer, please reach out to your account team for further assistance.</p>
+	<p>Access to a free and open Internet is critical for individual rights and economic development. We condemn any attempt to prevent Russian citizens from accessing it.</p>
+</div>
