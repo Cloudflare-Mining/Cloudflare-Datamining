@@ -629,20 +629,23 @@
 																	"type": "array"
 																},
 																"resources": {
-																	"additionalProperties": {
-																		"oneOf": [
-																			{
+																	"allOf": [
+																		{
+																			"additionalProperties": {
 																				"type": "string"
 																			},
-																			{
+																			"type": "object"
+																		},
+																		{
+																			"additionalProperties": {
 																				"additionalProperties": {
 																					"type": "string"
 																				},
 																				"type": "object"
-																			}
-																		],
-																		"x-auditable": true
-																	},
+																			},
+																			"type": "object"
+																		}
+																	],
 																	"description": "A list of resource names that the policy applies to.",
 																	"example": {
 																		"object": {
@@ -659,8 +662,7 @@
 																				"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 																			}
 																		}
-																	},
-																	"type": "object"
+																	}
 																}
 															},
 															"required": [
@@ -1140,20 +1142,23 @@
 																"type": "array"
 															},
 															"resources": {
-																"additionalProperties": {
-																	"oneOf": [
-																		{
+																"allOf": [
+																	{
+																		"additionalProperties": {
 																			"type": "string"
 																		},
-																		{
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": {
 																			"additionalProperties": {
 																				"type": "string"
 																			},
 																			"type": "object"
-																		}
-																	],
-																	"x-auditable": true
-																},
+																		},
+																		"type": "object"
+																	}
+																],
 																"description": "A list of resource names that the policy applies to.",
 																"example": {
 																	"object": {
@@ -1170,8 +1175,7 @@
 																			"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 																		}
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2146,20 +2150,23 @@
 											"type": "array"
 										},
 										"resources": {
-											"additionalProperties": {
-												"oneOf": [
-													{
+											"allOf": [
+												{
+													"additionalProperties": {
 														"type": "string"
 													},
-													{
+													"type": "object"
+												},
+												{
+													"additionalProperties": {
 														"additionalProperties": {
 															"type": "string"
 														},
 														"type": "object"
-													}
-												],
-												"x-auditable": true
-											},
+													},
+													"type": "object"
+												}
+											],
 											"description": "A list of resource names that the policy applies to.",
 											"example": {
 												"object": {
@@ -2176,8 +2183,7 @@
 														"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"required": [
@@ -2487,20 +2493,23 @@
 																		"type": "array"
 																	},
 																	"resources": {
-																		"additionalProperties": {
-																			"oneOf": [
-																				{
+																		"allOf": [
+																			{
+																				"additionalProperties": {
 																					"type": "string"
 																				},
-																				{
+																				"type": "object"
+																			},
+																			{
+																				"additionalProperties": {
 																					"additionalProperties": {
 																						"type": "string"
 																					},
 																					"type": "object"
-																				}
-																			],
-																			"x-auditable": true
-																		},
+																				},
+																				"type": "object"
+																			}
+																		],
 																		"description": "A list of resource names that the policy applies to.",
 																		"example": {
 																			"object": {
@@ -2517,8 +2526,7 @@
 																					"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 																				}
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -2921,20 +2929,23 @@
 													"type": "array"
 												},
 												"resources": {
-													"additionalProperties": {
-														"oneOf": [
-															{
+													"allOf": [
+														{
+															"additionalProperties": {
 																"type": "string"
 															},
-															{
+															"type": "object"
+														},
+														{
+															"additionalProperties": {
 																"additionalProperties": {
 																	"type": "string"
 																},
 																"type": "object"
-															}
-														],
-														"x-auditable": true
-													},
+															},
+															"type": "object"
+														}
+													],
 													"description": "A list of resource names that the policy applies to.",
 													"example": {
 														"object": {
@@ -2951,8 +2962,7 @@
 																"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 															}
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"required": [
@@ -3279,20 +3289,23 @@
 																"type": "array"
 															},
 															"resources": {
-																"additionalProperties": {
-																	"oneOf": [
-																		{
+																"allOf": [
+																	{
+																		"additionalProperties": {
 																			"type": "string"
 																		},
-																		{
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": {
 																			"additionalProperties": {
 																				"type": "string"
 																			},
 																			"type": "object"
-																		}
-																	],
-																	"x-auditable": true
-																},
+																		},
+																		"type": "object"
+																	}
+																],
 																"description": "A list of resource names that the policy applies to.",
 																"example": {
 																	"object": {
@@ -3309,8 +3322,7 @@
 																			"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 																		}
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
