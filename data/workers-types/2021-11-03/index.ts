@@ -5837,7 +5837,7 @@ export declare abstract class Ai<
 > {
   aiGatewayLogId: string | null;
   gateway(gatewayId: string): AiGateway;
-  autorag(autoragId: string): AutoRAG;
+  autorag(autoragId?: string): AutoRAG;
   run<
     Name extends keyof AiModelList,
     Options extends AiOptions,
@@ -7246,6 +7246,22 @@ export declare type EmailExportedHandler<Env = unknown> = (
   env: Env,
   ctx: ExecutionContext,
 ) => void | Promise<void>;
+/**
+ * Hello World binding to serve as an explanatory example. DO NOT USE
+ */
+export interface HelloWorldBinding {
+  /**
+   * Retrieve the current stored value
+   */
+  get(): Promise<{
+    value: string;
+    ms?: number;
+  }>;
+  /**
+   * Set a new stored value
+   */
+  set(value: string): Promise<void>;
+}
 export interface Hyperdrive {
   /**
    * Connect directly to Hyperdrive as if it's your database, returning a TCP socket.

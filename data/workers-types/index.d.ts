@@ -5821,7 +5821,7 @@ type AiModelListType = Record<string, any>;
 declare abstract class Ai<AiModelList extends AiModelListType = AiModels> {
   aiGatewayLogId: string | null;
   gateway(gatewayId: string): AiGateway;
-  autorag(autoragId: string): AutoRAG;
+  autorag(autoragId?: string): AutoRAG;
   run<
     Name extends keyof AiModelList,
     Options extends AiOptions,
@@ -7224,6 +7224,22 @@ declare module "cloudflare:email" {
     new (from: string, to: string, raw: ReadableStream | string): EmailMessage;
   };
   export { _EmailMessage as EmailMessage };
+}
+/**
+ * Hello World binding to serve as an explanatory example. DO NOT USE
+ */
+interface HelloWorldBinding {
+  /**
+   * Retrieve the current stored value
+   */
+  get(): Promise<{
+    value: string;
+    ms?: number;
+  }>;
+  /**
+   * Set a new stored value
+   */
+  set(value: string): Promise<void>;
 }
 interface Hyperdrive {
   /**
