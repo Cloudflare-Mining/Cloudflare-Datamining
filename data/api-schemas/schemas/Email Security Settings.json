@@ -1497,39 +1497,48 @@
 															"comments": {
 																"maxLength": 1024,
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"is_acceptable_sender": {
 																"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_exempt_recipient": {
 																"description": "Messages to this recipient will bypass all detections.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_recipient": {
 																"deprecated": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_regex": {
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_sender": {
 																"deprecated": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_spoof": {
 																"deprecated": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_trusted_sender": {
 																"description": "Messages from this sender will bypass all detections and link following.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"pattern": {
 																"maxLength": 1024,
 																"minLength": 1,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"pattern_type": {
 																"enum": [
@@ -1542,7 +1551,8 @@
 															},
 															"verify_sender": {
 																"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1560,7 +1570,8 @@
 														"properties": {
 															"created_at": {
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "The unique identifier for the allow policy.",
@@ -1571,7 +1582,8 @@
 															},
 															"last_modified": {
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1853,39 +1865,48 @@
 														"comments": {
 															"maxLength": 1024,
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_acceptable_sender": {
 															"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_exempt_recipient": {
 															"description": "Messages to this recipient will bypass all detections.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_recipient": {
 															"deprecated": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_regex": {
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_sender": {
 															"deprecated": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_spoof": {
 															"deprecated": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_trusted_sender": {
 															"description": "Messages from this sender will bypass all detections and link following.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"pattern": {
 															"maxLength": 1024,
 															"minLength": 1,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"pattern_type": {
 															"enum": [
@@ -1898,7 +1919,8 @@
 														},
 														"verify_sender": {
 															"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1916,7 +1938,8 @@
 													"properties": {
 														"created_at": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique identifier for the allow policy.",
@@ -1927,7 +1950,8 @@
 														},
 														"last_modified": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2228,15 +2252,18 @@
 															"comments": {
 																"maxLength": 1024,
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"is_regex": {
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"pattern": {
 																"maxLength": 1024,
 																"minLength": 1,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"pattern_type": {
 																"enum": [
@@ -2259,7 +2286,8 @@
 														"properties": {
 															"created_at": {
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "The unique identifier for the allow policy.",
@@ -2270,7 +2298,8 @@
 															},
 															"last_modified": {
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2538,15 +2567,18 @@
 														"comments": {
 															"maxLength": 1024,
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_regex": {
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"pattern": {
 															"maxLength": 1024,
 															"minLength": 1,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"pattern_type": {
 															"enum": [
@@ -2569,7 +2601,8 @@
 													"properties": {
 														"created_at": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique identifier for the allow policy.",
@@ -2580,7 +2613,8 @@
 														},
 														"last_modified": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3816,14 +3850,17 @@
 													{
 														"properties": {
 															"email": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"is_email_regex": {
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"name": {
 																"maxLength": 1024,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -4133,14 +4170,17 @@
 												{
 													"properties": {
 														"email": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_email_regex": {
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"name": {
 															"maxLength": 1024,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -4485,23 +4525,28 @@
 															"comments": {
 																"maxLength": 1024,
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"is_recent": {
 																"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_regex": {
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_similarity": {
 																"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"pattern": {
 																"maxLength": 1024,
 																"minLength": 1,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -4516,7 +4561,8 @@
 														"properties": {
 															"created_at": {
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "The unique identifier for the trusted domain.",
@@ -4527,7 +4573,8 @@
 															},
 															"last_modified": {
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -4797,23 +4844,28 @@
 														"comments": {
 															"maxLength": 1024,
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_recent": {
 															"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_regex": {
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_similarity": {
 															"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"pattern": {
 															"maxLength": 1024,
 															"minLength": 1,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -4828,7 +4880,8 @@
 													"properties": {
 														"created_at": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique identifier for the trusted domain.",
@@ -4839,7 +4892,8 @@
 														},
 														"last_modified": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -5001,32 +5055,38 @@
 							"comments": {
 								"maxLength": 1024,
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"is_acceptable_sender": {
 								"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
 								"nullable": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"is_exempt_recipient": {
 								"description": "Messages to this recipient will bypass all detections.",
 								"nullable": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"is_regex": {
 								"nullable": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"is_trusted_sender": {
 								"description": "Messages from this sender will bypass all detections and link following.",
 								"nullable": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"pattern": {
 								"maxLength": 1024,
 								"minLength": 1,
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"pattern_type": {
 								"allOf": [
@@ -5048,7 +5108,8 @@
 							"verify_sender": {
 								"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
 								"nullable": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -5142,39 +5203,48 @@
 														"comments": {
 															"maxLength": 1024,
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_acceptable_sender": {
 															"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_exempt_recipient": {
 															"description": "Messages to this recipient will bypass all detections.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_recipient": {
 															"deprecated": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_regex": {
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_sender": {
 															"deprecated": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_spoof": {
 															"deprecated": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_trusted_sender": {
 															"description": "Messages from this sender will bypass all detections and link following.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"pattern": {
 															"maxLength": 1024,
 															"minLength": 1,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"pattern_type": {
 															"enum": [
@@ -5187,7 +5257,8 @@
 														},
 														"verify_sender": {
 															"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -5205,7 +5276,8 @@
 													"properties": {
 														"created_at": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique identifier for the allow policy.",
@@ -5216,7 +5288,8 @@
 														},
 														"last_modified": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -5382,16 +5455,19 @@
 						"properties": {
 							"comments": {
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"is_regex": {
 								"nullable": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"pattern": {
 								"minLength": 1,
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"pattern_type": {
 								"allOf": [
@@ -5495,15 +5571,18 @@
 														"comments": {
 															"maxLength": 1024,
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_regex": {
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"pattern": {
 															"maxLength": 1024,
 															"minLength": 1,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"pattern_type": {
 															"enum": [
@@ -5526,7 +5605,8 @@
 													"properties": {
 														"created_at": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique identifier for the allow policy.",
@@ -5537,7 +5617,8 @@
 														},
 														"last_modified": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -5707,8 +5788,8 @@
 								"type": "array"
 							},
 							"domain": {
-								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"drop_dispositions": {
 								"items": {
@@ -5741,8 +5822,8 @@
 							},
 							"integration_id": {
 								"format": "uuid",
-								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"ip_restrictions": {
 								"example": [
@@ -5750,7 +5831,8 @@
 									"2001:db8::/32"
 								],
 								"items": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -5758,17 +5840,20 @@
 								"format": "int32",
 								"maximum": 20,
 								"minimum": 1,
-								"nullable": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"require_tls_inbound": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"require_tls_outbound": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"transport": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -6193,16 +6278,19 @@
 						"properties": {
 							"email": {
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"is_email_regex": {
 								"nullable": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"name": {
 								"maxLength": 1024,
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -6280,14 +6368,17 @@
 												{
 													"properties": {
 														"email": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_email_regex": {
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"name": {
 															"maxLength": 1024,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -6498,28 +6589,28 @@
 						"properties": {
 							"comments": {
 								"maxLength": 1024,
-								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"is_recent": {
 								"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
-								"nullable": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"is_regex": {
-								"nullable": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"is_similarity": {
 								"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
-								"nullable": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"pattern": {
 								"maxLength": 1024,
 								"minLength": 1,
-								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -6607,23 +6698,28 @@
 														"comments": {
 															"maxLength": 1024,
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_recent": {
 															"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_regex": {
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_similarity": {
 															"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"pattern": {
 															"maxLength": 1024,
 															"minLength": 1,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -6638,7 +6734,8 @@
 													"properties": {
 														"created_at": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique identifier for the trusted domain.",
@@ -6649,7 +6746,8 @@
 														},
 														"last_modified": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -6811,39 +6909,48 @@
 							"comments": {
 								"maxLength": 1024,
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"is_acceptable_sender": {
 								"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"is_exempt_recipient": {
 								"description": "Messages to this recipient will bypass all detections.",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"is_recipient": {
 								"deprecated": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"is_regex": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"is_sender": {
 								"deprecated": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"is_spoof": {
 								"deprecated": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"is_trusted_sender": {
 								"description": "Messages from this sender will bypass all detections and link following.",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"pattern": {
 								"maxLength": 1024,
 								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"pattern_type": {
 								"enum": [
@@ -6856,7 +6963,8 @@
 							},
 							"verify_sender": {
 								"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -6959,39 +7067,48 @@
 														"comments": {
 															"maxLength": 1024,
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_acceptable_sender": {
 															"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_exempt_recipient": {
 															"description": "Messages to this recipient will bypass all detections.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_recipient": {
 															"deprecated": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_regex": {
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_sender": {
 															"deprecated": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_spoof": {
 															"deprecated": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"is_trusted_sender": {
 															"description": "Messages from this sender will bypass all detections and link following.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"pattern": {
 															"maxLength": 1024,
 															"minLength": 1,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"pattern_type": {
 															"enum": [
@@ -7004,7 +7121,8 @@
 														},
 														"verify_sender": {
 															"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -7022,7 +7140,8 @@
 													"properties": {
 														"created_at": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique identifier for the allow policy.",
@@ -7033,7 +7152,8 @@
 														},
 														"last_modified": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -7194,15 +7314,18 @@
 							"comments": {
 								"maxLength": 1024,
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"is_regex": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"pattern": {
 								"maxLength": 1024,
 								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"pattern_type": {
 								"enum": [
@@ -7303,15 +7426,18 @@
 														"comments": {
 															"maxLength": 1024,
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_regex": {
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"pattern": {
 															"maxLength": 1024,
 															"minLength": 1,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"pattern_type": {
 															"enum": [
@@ -7334,7 +7460,8 @@
 													"properties": {
 														"created_at": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique identifier for the allow policy.",
@@ -7345,7 +7472,8 @@
 														},
 														"last_modified": {
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -7490,14 +7618,17 @@
 					"schema": {
 						"properties": {
 							"email": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"is_email_regex": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"name": {
 								"maxLength": 1024,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -7580,14 +7711,17 @@
 												{
 													"properties": {
 														"email": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_email_regex": {
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"name": {
 															"maxLength": 1024,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -7796,23 +7930,28 @@
 									"comments": {
 										"maxLength": 1024,
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"is_recent": {
 										"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"is_regex": {
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"is_similarity": {
 										"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"pattern": {
 										"maxLength": 1024,
 										"minLength": 1,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"required": [
@@ -7837,23 +7976,28 @@
 										"comments": {
 											"maxLength": 1024,
 											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"is_recent": {
 											"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"is_regex": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"is_similarity": {
 											"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"pattern": {
 											"maxLength": 1024,
 											"minLength": 1,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -7953,23 +8097,28 @@
 																"comments": {
 																	"maxLength": 1024,
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"is_recent": {
 																	"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"is_regex": {
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"is_similarity": {
 																	"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"pattern": {
 																	"maxLength": 1024,
 																	"minLength": 1,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -7984,7 +8133,8 @@
 															"properties": {
 																"created_at": {
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "The unique identifier for the trusted domain.",
@@ -7995,7 +8145,8 @@
 																},
 																"last_modified": {
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -8033,23 +8184,28 @@
 																	"comments": {
 																		"maxLength": 1024,
 																		"nullable": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_recent": {
 																		"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"is_regex": {
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"is_similarity": {
 																		"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"pattern": {
 																		"maxLength": 1024,
 																		"minLength": 1,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -8064,7 +8220,8 @@
 																"properties": {
 																	"created_at": {
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "The unique identifier for the trusted domain.",
@@ -8075,7 +8232,8 @@
 																	},
 																	"last_modified": {
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [

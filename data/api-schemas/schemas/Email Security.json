@@ -19,7 +19,7 @@
 			},
 			{
 				"description": "The beginning of the search date range.\nDefaults to `now - 30 days`.",
-				"example": "2022-07-25T14:30:00Z",
+				"example": "2022-06-25T14:30:00Z",
 				"in": "query",
 				"name": "start",
 				"schema": {
@@ -29,7 +29,7 @@
 			},
 			{
 				"description": "The end of the search date range.\nDefaults to `now`.",
-				"example": "2022-06-25T14:30:00Z",
+				"example": "2022-07-25T14:30:00Z",
 				"in": "query",
 				"name": "end",
 				"schema": {
@@ -464,7 +464,8 @@
 													{
 														"properties": {
 															"id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -973,7 +974,8 @@
 												{
 													"properties": {
 														"id": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2303,7 +2305,7 @@
 			},
 			{
 				"description": "The beginning of the search date range.\nDefaults to `now - 30 days`.",
-				"example": "2022-07-25T14:30:00Z",
+				"example": "2022-06-25T14:30:00Z",
 				"in": "query",
 				"name": "start",
 				"schema": {
@@ -2313,7 +2315,7 @@
 			},
 			{
 				"description": "The end of the search date range.\nDefaults to `now`.",
-				"example": "2022-06-25T14:30:00Z",
+				"example": "2022-07-25T14:30:00Z",
 				"in": "query",
 				"name": "end",
 				"schema": {
