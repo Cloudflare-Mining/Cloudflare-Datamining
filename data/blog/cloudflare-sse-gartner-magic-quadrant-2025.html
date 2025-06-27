@@ -13,19 +13,19 @@
 	<p>In general, a <a href="https://www.cloudflare.com/learning/access-management/security-service-edge-sse"><u>Security Service Edge (SSE)</u></a> provides a helpful framing that gives teams guardrails as they adopt a Zero Trust architecture. The concept breaks down into a few typical buckets:</p>
 	<ul>
 		<li>
-			<p><b>Zero Trust access control</b>: Protect applications that hold sensitive data by creating least privilege rules that check for identity, device posture, and other signals on each and every request or connection.</p>
+			<p><b>Zero Trust access control</b>: Protect applications that hold sensitive data by creating <a href="https://www.cloudflare.com/learning/access-management/principle-of-least-privilege">least privilege</a> rules that check for identity, device posture, and other signals on each and every request or connection.</p>
 		</li>
 		<li>
 			<p><b>Outbound filtering</b>: Keep people and devices safe as they connect to the rest of the Internet by filtering and logging network traffic, DNS queries, and HTTP requests.</p>
 		</li>
 		<li>
-			<p><b>Secure SaaS usage</b>: Analyze traffic to SaaS applications and scan the data sitting inside of SaaS applications for potential Shadow IT policy violations, misconfigurations, or data mishandling.</p>
+			<p><b>Secure SaaS usage</b>: Analyze traffic to SaaS applications and scan the data sitting inside of SaaS applications for potential <a href="https://www.cloudflare.com/learning/access-management/what-is-shadow-it">Shadow IT policy violations</a>, misconfigurations, or data mishandling.</p>
 		</li>
 		<li>
-			<p><b>Data protection</b>: Scan for data leaving your organization towards destinations that do not comply with your organization’s policies. Find data stored inside your organization, even in trusted tools, that should not be retained or that needs tighter access controls.</p>
+			<p><b>Data protection</b>: Scan for data leaving your organization towards destinations that do not comply with your organization’s policies. Find data stored inside your organization, even in trusted tools, that should not be retained or that needs tighter <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control">access controls</a>.</p>
 		</li>
 		<li>
-			<p><b>Employee experience</b>: Monitor and improve the experience that your team members have when using tools and applications on the Internet or hosted inside your own organization.</p>
+			<p><b>Employee experience</b>: <a href="https://www.cloudflare.com/learning/performance/what-is-digital-experience-monitoring">Monitor and improve the experience</a> that your team members have when using tools and applications on the Internet or hosted inside your own organization.</p>
 		</li>
 	</ul>
 	<p>The SSE space is a component of the larger <a href="https://www.cloudflare.com/learning/access-management/what-is-sase"><u>Secure Access Service Edge (SASE)</u></a> market. You can think of the SSE capabilities as the security half of SASE, while the other half consists of the networking technologies that connect offices and data centers to each other along with everything that SSE connects. Some vendors only focus on the SSE side and rely on partners to connect customers to their security solutions. Other companies just provide the networking pieces. While today’s announcement highlights our SSE capabilities, Cloudflare offers both components as a unified SASE platform.</p>
@@ -39,7 +39,7 @@
 	</div>
 	<p>Cloudflare’s global network was built for this. We’ve developed a unified, programmable <a href="https://www.cloudflare.com/network"><u>network</u></a> in which every service runs in every data center, spanning more than 330 cities across the globe. Cloudflare operates within approximately 50 milliseconds of 95% of the Internet-connected population globally. That means that regardless of where your people, apps, and data are located, your Security Service Edge is not far away.</p>
 	<p>Our SSE services operate on the same infrastructure and locations that support many of the world's most prominent Internet platforms. We've integrated proven strengths including the <a href="https://1.1.1.1"><u>world’s fastest DNS resolver</u></a>, our robust <a href="https://workers.cloudflare.com/?_gl=1*1fqsg8y*_gcl_au*MTU0MzQ4NzIwMS4xNzQyMjE4OTk0*_ga*NjkzNTc3NzkzLjE3NDIyMTg5OTQ.*_ga_SQCRB0TXZW*MTc0NTU3ODIzOC4yNS4xLjE3NDU1NzkwMTEuMTkuMC4w"><u>serverless compute platform</u></a>, intelligence from our leading <a href="https://www.cloudflare.com/application-services/products/?_gl=1*1fqsg8y*_gcl_au*MTU0MzQ4NzIwMS4xNzQyMjE4OTk0*_ga*NjkzNTc3NzkzLjE3NDIyMTg5OTQ.*_ga_SQCRB0TXZW*MTc0NTU3ODIzOC4yNS4xLjE3NDU1NzkwMTEuMTkuMC4w"><u>Web Application and API Protection (WAAP) platform</u></a> and <a href="https://blog.cloudflare.com/network-performance-update-cio-edition"><u>advanced global traffic routing</u></a> capabilities developed as a result of proxying and protecting <a href="https://w3techs.com/technologies/overview/proxy"><u>approximately 20% of websites</u></a>. Our architecture ensures single-pass inspection, regardless of how customers connect. We also consistently hear that this <a href="https://blog.cloudflare.com/spotlight-on-zero-trust"><u>performance is core</u></a> to why customers chose Cloudflare. When customers choose Cloudflare, they’re choosing a unified, resilient platform built for the future.</p>
-	<p>By building our SSE platform on top of our own network, it puts Cloudflare in the driver’s seat. Whether that’s implementing best practices like IPv6, incorporating new technologies like WireGuard or <a href="https://blog.cloudflare.com/masque-building-a-new-protocol-into-cloudflare-warp"><u>MASQUE</u></a>, or safeguarding against the future with <a href="https://blog.cloudflare.com/post-quantum-tunnel"><u>post-quantum encryption</u></a>, by building on our own network we’re able to react quickly as new Internet security standards mature.</p>
+	<p>By building our SSE platform on top of our own network, it puts Cloudflare in the driver’s seat. Whether that’s implementing best practices like IPv6, incorporating new technologies like WireGuard or <a href="https://blog.cloudflare.com/masque-building-a-new-protocol-into-cloudflare-warp"><u>MASQUE</u></a>, or safeguarding against the future with <a href="https://www.cloudflare.com/learning/ssl/quantum/what-is-post-quantum-cryptography"><u>post-quantum encryption</u></a>, by building on our own network we’re able to react quickly as new Internet security standards mature.</p>
 	<p>Customers can rely on Cloudflare to solve a broad range of security problems represented by the SSE category. They can also just start with a single component. We know that an entire modernization journey can be an overwhelming prospect for any organization. While all the use cases below are built to work better together, we make it simple for teams to start by just solving one problem at a time.</p>
 	<div class="flex anchor relative">
 		<h3 id="zero-trust-access-control">Zero Trust access control</h3>
@@ -49,7 +49,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Traditional VPNs have been the backbone of enterprise remote access for decades. However, organizations are rapidly moving away from VPNs due to security vulnerabilities, performance bottlenecks, and poor user experience. As businesses adopt Zero Trust principles, they expect modern solutions that:</p>
+	<p>Traditional VPNs have been the backbone of enterprise remote access for decades. However, organizations are <a href="https://www.cloudflare.com/zero-trust/solutions/vpn-replacement">rapidly moving away from VPNs</a> due to security vulnerabilities, performance bottlenecks, and poor user experience. As businesses adopt <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust principles</a>, they expect modern solutions that:</p>
 	<ul>
 		<li>
 			<p>Improve security posture by enforcing least privilege access and per-resource authorization, eliminating dependence on perimeter-based defenses</p>
@@ -58,7 +58,7 @@
 			<p>Enhance user experience with seamless, high-performance connectivity.</p>
 		</li>
 		<li>
-			<p>Reduce complexity and operational overhead by consolidating tools and automating access policies.</p>
+			<p><a href="https://www.cloudflare.com/the-net/everywhere-security">Reduce complexity and operational overhead</a> by consolidating tools and automating access policies.</p>
 		</li>
 	</ul>
 	<p>Cloudflare enables identity-driven, context-aware policies which replace the traditional <a href="https://www.cloudflare.com/learning/access-management/castle-and-moat-network-security/?_gl=1*q87nt7*_gcl_au*MTcyNTU4My4xNzQyMjIwMTA5*_ga*MTUyNTE2MzE3NC4xNzQyMjIwMTM2*_ga_SQCRB0TXZW*MTc0NTUwMzg1OS4yMS4xLjE3NDU1MDM5MjguNjAuMC4w"><u>castle-and-moat</u></a> model that come with VPN-based solutions. Applications can be made available to employees as well as third parties through a completely clientless deployment. Policies can also be applied to the applications that sit outside your infrastructure to ensure a consistent experience across SaaS applications as well.&nbsp;</p>
@@ -82,7 +82,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>For decades, organizations relied on on-prem hardware firewalls to secure Internet access. Like applications, users have moved beyond the perimeter and cloud-based security services have become essential. Modern businesses expect solutions that:</p>
+	<p>For decades, organizations relied on on-prem hardware firewalls to secure Internet access. Like applications, users have moved beyond the perimeter and <a href="https://www.cloudflare.com/learning/cloud/cloud-native-security">cloud-based security services</a> have become essential. Modern businesses expect solutions that:</p>
 	<ul>
 		<li>
 			<p>Protect users across locations from malware, ransomware, and other Internet threats</p>
@@ -94,7 +94,7 @@
 			<p>Reduce management complexity while maintaining granular policy control across the entire network</p>
 		</li>
 	</ul>
-	<p><a href="https://www.cloudflare.com/zero-trust/products/gateway"><u>Cloudflare Gateway</u></a>, our secure web gateway (SWG), inspects and filters DNS, network, HTTP, and egress traffic with consistent protections across the Internet and internal resources. Customers adopt our SWG to block threats across remote and office workers, enforce acceptable use policies, encrypt traffic, and block unauthorized SaaS and cloud destinations. In a single-pass architecture, all traffic is verified, filtered, and inspected without the performance penalties seen with hardware-based firewalls and proxies. Threat intelligence is derived from unique real-time visibility across our global network, including 4.3 trillion DNS queries per day, which powers AI-backed threat hunting models to identify, for example, new / newly seen domains before other vendors.&nbsp;</p>
+	<p><a href="https://www.cloudflare.com/zero-trust/products/gateway"><u>Cloudflare Gateway</u></a>, our <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">secure web gateway (SWG)</a>, inspects and filters DNS, network, HTTP, and egress traffic with consistent protections across the Internet and internal resources. Customers adopt our SWG to block threats across remote and office workers, enforce acceptable use policies, encrypt traffic, and block unauthorized SaaS and cloud destinations. In a single-pass architecture, all traffic is verified, filtered, and inspected without the performance penalties seen with hardware-based firewalls and proxies. Threat intelligence is derived from unique real-time visibility across our global network, including 4.3 trillion DNS queries per day, which powers AI-backed threat hunting models to identify, for example, new / newly seen domains before other vendors.&nbsp;</p>
 	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation"><u>Browser isolation</u></a> capabilities are also natively built-in, enabling organizations to insulate users from threats online and protect data in applications with a seamless user experience. For example, isolating web browsing safeguards users from unknown threats, including zero-days, while isolating apps like AI tools can restrict oversharing of proprietary information.</p>
 	<p>Customers can get started with a variety of deployment methods including device agents, network locations, PAC files, or DNS over HTTPS (DoH) endpoints. Regardless of implementation, consistent policy enforcement and comprehensive logging is easily accessible through our dashboard, our SQL-based Log Explorer experience, or third-party tools via LogPush.</p>
 	<p>By mid-2026, we plan to ship a number of new filtering and traffic handling capabilities, including:</p>
@@ -117,7 +117,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Our comprehensive cloud firewall delivers “firewall as a service” protection that helps organizations manage traffic flows globally. All traffic passing through Cloudflare has firewall policies evaluated first, thus providing the first layer of defense, eliminating unnecessary/unwanted traffic before being further evaluated against security policies. The Cloudflare firewall applies configuration changes globally in seconds, thus providing immediate response to emerging needs. With Cloudflare’s network and data center capacity, you get virtually limitless firewall capacity, without the constraints of traditional hardware firewalls, making it a vital component of your Zero Trust and defense-in-depth architecture.</p>
+	<p>Our comprehensive cloud firewall delivers <a href="https://www.cloudflare.com/learning/cloud/what-is-a-cloud-firewall">“firewall as a service” protection</a> that helps organizations manage traffic flows globally. All traffic passing through Cloudflare has firewall policies evaluated first, thus providing the first layer of defense, eliminating unnecessary/unwanted traffic before being further evaluated against security policies. The Cloudflare firewall applies configuration changes globally in seconds, thus providing immediate response to emerging needs. With Cloudflare’s network and data center capacity, you get virtually limitless firewall capacity, without the constraints of traditional hardware firewalls, making it a vital component of your Zero Trust and <a href="https://www.cloudflare.com/learning/security/glossary/what-is-defense-in-depth">defense-in-depth architecture</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="inline-and-api-based-casb">Inline and API-based CASB</h3>
 		<a href="https://blog.cloudflare.com/#inline-and-api-based-casb" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -138,9 +138,9 @@
 			<p>Automate discovery and remediation of security misconfigurations in approved SaaS tools</p>
 		</li>
 	</ul>
-	<p>Any user in an enterprise now needs to connect to an application on the public Internet to do their work, and some users prefer to use their favorite application rather than the ones vetted and approved by the IT department. This kind of Shadow IT infrastructure can lead to surprise fees, compliance violations, and data loss.</p>
+	<p>Any user in an enterprise now needs to connect to an application on the public Internet to do their work, and some users prefer to use their favorite application rather than the ones vetted and approved by the IT department. This kind of Shadow IT infrastructure can lead to <a href="https://www.cloudflare.com/the-net/shadow-it">surprise fees, compliance violations, and data loss</a>.</p>
 	<p>Cloudflare offers comprehensive scanning and filtering to detect when team members are using unapproved tools. With a single click, administrators can block those tools outright or control how those applications can be used. If your marketing team needs to use Google Drive to collaborate with a vendor, you can quickly apply a rule that makes sure they can only download files and never upload. Alternatively, you can allow users to visit an application and read from it while blocking all text input. Cloudflare's Shadow IT policies offer easy-to-deploy controls to help manage how your organization uses the Internet.</p>
-	<p>Beyond unsanctioned applications, even approved resources can cause trouble. Your organization might rely on Microsoft OneDrive for day-to-day work, but your compliance policies prohibit your HR department from storing files with employee Social Security numbers in the tool. Cloudflare's Cloud Access Security Broker (CASB) can routinely scan the SaaS applications your team relies on to detect improper usage, missing controls, or potential misconfiguration.</p>
+	<p>Beyond unsanctioned applications, even approved resources can cause trouble. Your organization might rely on Microsoft OneDrive for day-to-day work, but your compliance policies prohibit your HR department from storing files with employee Social Security numbers in the tool. Cloudflare's <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb">Cloud Access Security Broker (CASB) </a>can routinely scan the SaaS applications your team relies on to detect improper usage, missing controls, or potential misconfiguration.</p>
 	<p>By mid-2026, we look forward to bringing our customers a slew of new capabilities designed to give teams even better visibility and control over their SaaS and cloud applications, including:</p>
 	<ul>
 		<li>
@@ -161,7 +161,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Over the past year, CIOs and CISOs have consistently identified data protection as a top concern, particularly regarding artificial intelligence and large language models. As organizations increasingly rely on cloud services and AI tools, they require modern solutions that:</p>
+	<p>Over the past year, <a href="https://www.cloudflare.com/cio">CIOs</a> and <a href="https://www.cloudflare.com/ciso">CISOs</a> have consistently identified data protection as a top concern, particularly regarding artificial intelligence and large language models. As organizations increasingly rely on cloud services and AI tools, they require modern solutions that:</p>
 	<ul>
 		<li>
 			<p>Protect sensitive information across all environments without hampering productivity</p>
@@ -173,7 +173,7 @@
 			<p>Enforce consistent security policies that adapt to evolving regulatory requirements</p>
 		</li>
 	</ul>
-	<p>Cloudflare provides comprehensive visibility and control over data movement and data at rest. This helps organizations avoid the financial impact and reputational consequences of data loss and theft.</p>
+	<p>Cloudflare provides comprehensive visibility and control over data movement and data at rest. This helps organizations avoid the <a href="https://www.cloudflare.com/the-net/pursuing-privacy-first-security/privacy-led-security">financial impact and reputational consequences of data loss and theft</a>.</p>
 	<p>Our data security is an integral component of our SASE platform, providing granular control over how users interact with applications. This approach allows organizations to establish nuanced policies that safeguard sensitive information without completely blocking access to productivity-enhancing technologies.</p>
 	<p>We are introducing a number of exciting data protection capabilities by mid-2026, including <a href="https://blog.cloudflare.com/improving-data-loss-prevention-accuracy-with-ai-context-analysis"><u>AI-based DLP detections</u></a>, <a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-policies/logging-options/#send-http-requests-to-logpush-destination"><u>delivering simple, innovative forensics</u></a>, <a href="https://blog.cloudflare.com/scan-cloud-dlp-with-casb"><u>classifying sensitive data in the public cloud</u></a>, and <a href="https://blog.cloudflare.com/cloudflare-acquires-kivera"><u>innovative, preventative cloud security controls</u></a>. These features provide administrators with robust controls while maintaining the seamless performance and user experience that organizations expect from Cloudflare.&nbsp;</p>
 	<div class="flex anchor relative">
@@ -198,7 +198,7 @@
 		</li>
 	</ul>
 	<p>Cloudflare provides unmatched insight into Internet outages and performance trends that affect your users. This intelligence allows administrators to refine their deployments and quickly identify whether issues are localized to their environment or part of broader global disruptions.</p>
-	<p>By mid-2026, we plan to ship a number of new digital experience monitoring capabilities, including:</p>
+	<p>By mid-2026, we plan to ship a number of new <a href="https://www.cloudflare.com/learning/performance/what-is-digital-experience-monitoring">digital experience monitoring capabilities</a>, including:</p>
 	<ul>
 		<li>
 			<p>Real user monitoring (RUM) that measures the performance of every user’s request.</p>
