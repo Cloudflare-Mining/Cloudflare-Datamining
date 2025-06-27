@@ -629,23 +629,6 @@
 																	"type": "array"
 																},
 																"resources": {
-																	"allOf": [
-																		{
-																			"additionalProperties": {
-																				"type": "string"
-																			},
-																			"type": "object"
-																		},
-																		{
-																			"additionalProperties": {
-																				"additionalProperties": {
-																					"type": "string"
-																				},
-																				"type": "object"
-																			},
-																			"type": "object"
-																		}
-																	],
 																	"description": "A list of resource names that the policy applies to.",
 																	"example": {
 																		"object": {
@@ -662,7 +645,24 @@
 																				"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 																			}
 																		}
-																	}
+																	},
+																	"oneOf": [
+																		{
+																			"additionalProperties": {
+																				"type": "string"
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"additionalProperties": {
+																				"additionalProperties": {
+																					"type": "string"
+																				},
+																				"type": "object"
+																			},
+																			"type": "object"
+																		}
+																	]
 																}
 															},
 															"required": [
@@ -685,7 +685,8 @@
 														],
 														"example": "active",
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-configurability": "computed_optional"
 													}
 												},
 												"type": "object"
@@ -1142,23 +1143,6 @@
 																"type": "array"
 															},
 															"resources": {
-																"allOf": [
-																	{
-																		"additionalProperties": {
-																			"type": "string"
-																		},
-																		"type": "object"
-																	},
-																	{
-																		"additionalProperties": {
-																			"additionalProperties": {
-																				"type": "string"
-																			},
-																			"type": "object"
-																		},
-																		"type": "object"
-																	}
-																],
 																"description": "A list of resource names that the policy applies to.",
 																"example": {
 																	"object": {
@@ -1175,7 +1159,24 @@
 																			"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 																		}
 																	}
-																}
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": {
+																			"type": "string"
+																		},
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": {
+																			"additionalProperties": {
+																				"type": "string"
+																			},
+																			"type": "object"
+																		},
+																		"type": "object"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -1198,7 +1199,8 @@
 													],
 													"example": "active",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-configurability": "computed_optional"
 												}
 											},
 											"type": "object"
@@ -1841,7 +1843,8 @@
 													],
 													"example": "active",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -2150,23 +2153,6 @@
 											"type": "array"
 										},
 										"resources": {
-											"allOf": [
-												{
-													"additionalProperties": {
-														"type": "string"
-													},
-													"type": "object"
-												},
-												{
-													"additionalProperties": {
-														"additionalProperties": {
-															"type": "string"
-														},
-														"type": "object"
-													},
-													"type": "object"
-												}
-											],
 											"description": "A list of resource names that the policy applies to.",
 											"example": {
 												"object": {
@@ -2183,7 +2169,24 @@
 														"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 													}
 												}
-											}
+											},
+											"oneOf": [
+												{
+													"additionalProperties": {
+														"type": "string"
+													},
+													"type": "object"
+												},
+												{
+													"additionalProperties": {
+														"additionalProperties": {
+															"type": "string"
+														},
+														"type": "object"
+													},
+													"type": "object"
+												}
+											]
 										}
 									},
 									"required": [
@@ -2493,23 +2496,6 @@
 																		"type": "array"
 																	},
 																	"resources": {
-																		"allOf": [
-																			{
-																				"additionalProperties": {
-																					"type": "string"
-																				},
-																				"type": "object"
-																			},
-																			{
-																				"additionalProperties": {
-																					"additionalProperties": {
-																						"type": "string"
-																					},
-																					"type": "object"
-																				},
-																				"type": "object"
-																			}
-																		],
 																		"description": "A list of resource names that the policy applies to.",
 																		"example": {
 																			"object": {
@@ -2526,7 +2512,24 @@
 																					"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 																				}
 																			}
-																		}
+																		},
+																		"oneOf": [
+																			{
+																				"additionalProperties": {
+																					"type": "string"
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"additionalProperties": {
+																					"additionalProperties": {
+																						"type": "string"
+																					},
+																					"type": "object"
+																				},
+																				"type": "object"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2549,7 +2552,8 @@
 															],
 															"example": "active",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-configurability": "computed_optional"
 														}
 													},
 													"type": "object"
@@ -2929,23 +2933,6 @@
 													"type": "array"
 												},
 												"resources": {
-													"allOf": [
-														{
-															"additionalProperties": {
-																"type": "string"
-															},
-															"type": "object"
-														},
-														{
-															"additionalProperties": {
-																"additionalProperties": {
-																	"type": "string"
-																},
-																"type": "object"
-															},
-															"type": "object"
-														}
-													],
 													"description": "A list of resource names that the policy applies to.",
 													"example": {
 														"object": {
@@ -2962,7 +2949,24 @@
 																"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 															}
 														}
-													}
+													},
+													"oneOf": [
+														{
+															"additionalProperties": {
+																"type": "string"
+															},
+															"type": "object"
+														},
+														{
+															"additionalProperties": {
+																"additionalProperties": {
+																	"type": "string"
+																},
+																"type": "object"
+															},
+															"type": "object"
+														}
+													]
 												}
 											},
 											"required": [
@@ -2985,7 +2989,8 @@
 										],
 										"example": "active",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-configurability": "computed_optional"
 									}
 								},
 								"type": "object"
@@ -3289,23 +3294,6 @@
 																"type": "array"
 															},
 															"resources": {
-																"allOf": [
-																	{
-																		"additionalProperties": {
-																			"type": "string"
-																		},
-																		"type": "object"
-																	},
-																	{
-																		"additionalProperties": {
-																			"additionalProperties": {
-																				"type": "string"
-																			},
-																			"type": "object"
-																		},
-																		"type": "object"
-																	}
-																],
 																"description": "A list of resource names that the policy applies to.",
 																"example": {
 																	"object": {
@@ -3322,7 +3310,24 @@
 																			"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 																		}
 																	}
-																}
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": {
+																			"type": "string"
+																		},
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": {
+																			"additionalProperties": {
+																				"type": "string"
+																			},
+																			"type": "object"
+																		},
+																		"type": "object"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -3345,7 +3350,8 @@
 													],
 													"example": "active",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-configurability": "computed_optional"
 												}
 											},
 											"type": "object"
