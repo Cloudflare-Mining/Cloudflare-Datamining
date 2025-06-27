@@ -1,5 +1,11 @@
 # @cloudflare/sandbox
 
+## 0.0.6
+
+### Patch Changes
+
+- [#9](https://github.com/cloudflare/sandbox-sdk/pull/9) [`24f5470`](https://github.com/cloudflare/sandbox-sdk/commit/24f547048d5a26137de4656cea13d83ad2cc0b43) Thanks [@ItsWendell](https://github.com/ItsWendell)! - fix baseUrl for stub and stub forwarding
+
 ## 0.0.5
 
 ### Patch Changes
