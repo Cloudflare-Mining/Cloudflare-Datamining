@@ -7,7 +7,18 @@
 				"contentTypeId": "learningCenterArticle",
 				"contentfulId": "58EhtUPPChmHqZhI0LoWyv",
 				"urlSlug": "dns/dnssec/ecdsa-and-dnssec/",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "ECDSA: The missing piece of DNSSEC",
+					"metaDescription": "DNSSEC is a complicated topic, and making things even more confusing is the availability of several standard security algorithms for signing DNS records, defined by IANA. Algorithm 13 is a variant of the Elliptic Curve Digital Signing Algorithm (ECDSA). While currently used by less than 0.01% of domains, we'd like to argue that ECDSA helped us eliminate the final two barriers for widespread DNSSEC adoption: zone enumeration and DDoS amplification.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null
+				},
 				"metaTitle": null,
 				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
@@ -330,6 +341,12 @@
 									"contentfulId": "apgrV3UywiWRwe78tsxSg",
 									"displayText": "ECDSA: The missing piece of DNSSEC",
 									"url": "learning/dns/dnssec/ecdsa-and-dnssec/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "59YqILiJbj7grfW3aTGPj7",
+									"displayText": "Universal DNSSEC",
+									"url": "learning/dns/dnssec/universal-dnssec/"
 								}
 							]
 						}
