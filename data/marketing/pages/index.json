@@ -2784,7 +2784,20 @@
 								"openInNewTab": false,
 								"locale": "en-US"
 							},
-							"buttonSecondary": null,
+							"buttonSecondary": {
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "6zSGV8tc0Df27F2AUEPoiJ",
+								"elementName": "Free sign up Secondary CTA",
+								"standardText": null,
+								"text": "Start for free",
+								"url": "https://dash.cloudflare.com/sign-up",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": true,
+								"locale": "en-US"
+							},
 							"buttonTertiary": {
 								"buttonAssetFile": null,
 								"buttonTextLoggedIn": null,
@@ -4061,7 +4074,50 @@
 									"heading": "Ebook",
 									"description": "Explore more ebooks in Cloudflare's Resource Hub\n",
 									"category": "Library",
-									"link": null,
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "4rMaRkpvNpFDxLMzfC81Qu",
+										"elementName": "Explore more ebooks in Cloudflare's Resource Hub - CTA",
+										"standardText": null,
+										"text": "View ebooks",
+										"url": "https://www.cloudflare.com/resource-hub/?resourcetype=Ebook",
+										"elementModal": null,
+										"openInNewTab": false,
+										"locale": "en-US"
+									},
+									"image": {
+										"id": "d1b12ae8-2555-557d-81e9-8eebecec2c1f",
+										"altText": "Ebook Thumbnail",
+										"title": "Ebook Thumbnail",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tGnS2OjpSmmok16lr0mI3/db2a34b69b1001d0d0b529148def3c45/Ebook-generic-106x186-300dpi.png"
+											},
+											"description": null
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									}
+								},
+								{
+									"contentTypeId": "elementResourceCard",
+									"contentfulId": "55EQAvKdiSLnXVF9ONbxSm",
+									"heading": "Ebook",
+									"description": "Increase developer velocity with a connectivity cloud\n",
+									"category": "Library",
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "6ZSz6HHrbdPXXEAPmnr5Qb",
+										"elementName": "CC Resources - CTA - /lp/increase-developer-velocity-with-a-connectivity-cloud/",
+										"standardText": null,
+										"text": "Get the ebook",
+										"url": "https://www.cloudflare.com/lp/increase-developer-velocity-with-a-connectivity-cloud/",
+										"elementModal": null,
+										"openInNewTab": false,
+										"locale": "en-US"
+									},
 									"image": {
 										"id": "d1b12ae8-2555-557d-81e9-8eebecec2c1f",
 										"altText": "Ebook Thumbnail",
@@ -4117,7 +4173,17 @@
 									"heading": "Whitepaper",
 									"description": "Explore more whitepapers in Cloudflare's Resource Hub\n",
 									"category": "Library",
-									"link": null,
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "5lvfgWg3qMpZO2vKdTAbND",
+										"elementName": "Explore more whitepapers in Cloudflare's Resource Hub -  CTA - resource-hub/?resourcetype=Whitepaper",
+										"standardText": null,
+										"text": "View whitepapers",
+										"url": "https://www.cloudflare.com/resource-hub/?resourcetype=Whitepaper",
+										"elementModal": null,
+										"openInNewTab": false,
+										"locale": "en-US"
+									},
 									"image": {
 										"id": "aef302d2-a7e8-57b1-b2c4-610e768f5249",
 										"altText": "Explore more whitepapers in Cloudflare's Resource Hub - thumbnail",
