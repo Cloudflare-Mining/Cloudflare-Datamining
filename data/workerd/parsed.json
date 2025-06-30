@@ -2942,6 +2942,13 @@
 						"compatEnableDate": "2025-06-16",
 						"compatEnableFlag": "throw_on_unrecognized_import_assertion"
 					}
+				},
+				{
+					"name": "pythonWorkflows",
+					"annotations": {
+						"compatEnableFlag": "python_workflows",
+						"experimental": "true"
+					}
 				}
 			]
 		},
