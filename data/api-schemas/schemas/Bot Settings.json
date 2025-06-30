@@ -11,7 +11,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -122,11 +123,13 @@
 																			"description": "Enable rule to block AI Scrapers and Crawlers.",
 																			"enum": [
 																				"block",
-																				"disabled"
+																				"disabled",
+																				"only_on_ad_pages"
 																			],
 																			"example": "block",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -136,20 +139,23 @@
 																			],
 																			"example": "enabled",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
 																			"readOnly": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	}
 																}
@@ -162,7 +168,8 @@
 																	"description": "Whether to enable Bot Fight Mode.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"stale_zone_configuration": {
 																	"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -171,7 +178,8 @@
 																			"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 																			"title": "optimize_wordpress",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_definitely_automated": {
 																			"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
@@ -195,13 +203,15 @@
 																			"description": "Indicates that the zone's verified bot requests are being blocked.",
 																			"title": "sbfm_verified_bots",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"suppress_session_score": {
 																			"description": "Indicates that the zone's session score tracking is disabled.",
 																			"title": "suppress_session_score",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"readOnly": true,
@@ -223,11 +233,13 @@
 																			"description": "Enable rule to block AI Scrapers and Crawlers.",
 																			"enum": [
 																				"block",
-																				"disabled"
+																				"disabled",
+																				"only_on_ad_pages"
 																			],
 																			"example": "block",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -237,20 +249,23 @@
 																			],
 																			"example": "enabled",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
 																			"readOnly": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	}
 																}
@@ -263,7 +278,8 @@
 																	"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sbfm_definitely_automated": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -274,13 +290,15 @@
 																	],
 																	"example": "allow",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sbfm_static_resource_protection": {
 																	"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sbfm_verified_bots": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -290,7 +308,8 @@
 																	],
 																	"example": "allow",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"stale_zone_configuration": {
 																	"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -299,7 +318,8 @@
 																			"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																			"title": "fight_mode",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_likely_automated": {
 																			"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
@@ -327,11 +347,13 @@
 																			"description": "Enable rule to block AI Scrapers and Crawlers.",
 																			"enum": [
 																				"block",
-																				"disabled"
+																				"disabled",
+																				"only_on_ad_pages"
 																			],
 																			"example": "block",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -341,20 +363,23 @@
 																			],
 																			"example": "enabled",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
 																			"readOnly": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	}
 																}
@@ -367,7 +392,8 @@
 																	"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sbfm_definitely_automated": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -378,7 +404,8 @@
 																	],
 																	"example": "allow",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sbfm_likely_automated": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
@@ -389,13 +416,15 @@
 																	],
 																	"example": "allow",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sbfm_static_resource_protection": {
 																	"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sbfm_verified_bots": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -405,7 +434,8 @@
 																	],
 																	"example": "allow",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"stale_zone_configuration": {
 																	"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -414,7 +444,8 @@
 																			"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																			"title": "fight_mode",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"readOnly": true,
@@ -436,11 +467,13 @@
 																			"description": "Enable rule to block AI Scrapers and Crawlers.",
 																			"enum": [
 																				"block",
-																				"disabled"
+																				"disabled",
+																				"only_on_ad_pages"
 																			],
 																			"example": "block",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -450,20 +483,23 @@
 																			],
 																			"example": "enabled",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
 																			"readOnly": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	}
 																}
@@ -476,7 +512,8 @@
 																	"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"stale_zone_configuration": {
 																	"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -485,13 +522,15 @@
 																			"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																			"title": "fight_mode",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"optimize_wordpress": {
 																			"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 																			"title": "optimize_wordpress",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_definitely_automated": {
 																			"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
@@ -515,7 +554,8 @@
 																			"description": "Indicates that the zone's verified bot requests are being blocked.",
 																			"title": "sbfm_verified_bots",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"readOnly": true,
@@ -527,7 +567,8 @@
 																	"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
 																	"example": false,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															}
 														}
@@ -653,11 +694,13 @@
 																					"description": "Enable rule to block AI Scrapers and Crawlers.",
 																					"enum": [
 																						"block",
-																						"disabled"
+																						"disabled",
+																						"only_on_ad_pages"
 																					],
 																					"example": "block",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -667,20 +710,23 @@
 																					],
 																					"example": "enabled",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
 																					"readOnly": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			}
 																		}
@@ -693,7 +739,8 @@
 																			"description": "Whether to enable Bot Fight Mode.",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"stale_zone_configuration": {
 																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -702,7 +749,8 @@
 																					"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 																					"title": "optimize_wordpress",
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"sbfm_definitely_automated": {
 																					"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
@@ -726,13 +774,15 @@
 																					"description": "Indicates that the zone's verified bot requests are being blocked.",
 																					"title": "sbfm_verified_bots",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"suppress_session_score": {
 																					"description": "Indicates that the zone's session score tracking is disabled.",
 																					"title": "suppress_session_score",
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"readOnly": true,
@@ -754,11 +804,13 @@
 																					"description": "Enable rule to block AI Scrapers and Crawlers.",
 																					"enum": [
 																						"block",
-																						"disabled"
+																						"disabled",
+																						"only_on_ad_pages"
 																					],
 																					"example": "block",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -768,20 +820,23 @@
 																					],
 																					"example": "enabled",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
 																					"readOnly": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			}
 																		}
@@ -794,7 +849,8 @@
 																			"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_definitely_automated": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -805,13 +861,15 @@
 																			],
 																			"example": "allow",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_static_resource_protection": {
 																			"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_verified_bots": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -821,7 +879,8 @@
 																			],
 																			"example": "allow",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"stale_zone_configuration": {
 																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -830,7 +889,8 @@
 																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																					"title": "fight_mode",
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"sbfm_likely_automated": {
 																					"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
@@ -858,11 +918,13 @@
 																					"description": "Enable rule to block AI Scrapers and Crawlers.",
 																					"enum": [
 																						"block",
-																						"disabled"
+																						"disabled",
+																						"only_on_ad_pages"
 																					],
 																					"example": "block",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -872,20 +934,23 @@
 																					],
 																					"example": "enabled",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
 																					"readOnly": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			}
 																		}
@@ -898,7 +963,8 @@
 																			"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_definitely_automated": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -909,7 +975,8 @@
 																			],
 																			"example": "allow",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_likely_automated": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
@@ -920,13 +987,15 @@
 																			],
 																			"example": "allow",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_static_resource_protection": {
 																			"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_verified_bots": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -936,7 +1005,8 @@
 																			],
 																			"example": "allow",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"stale_zone_configuration": {
 																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -945,7 +1015,8 @@
 																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																					"title": "fight_mode",
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"readOnly": true,
@@ -967,11 +1038,13 @@
 																					"description": "Enable rule to block AI Scrapers and Crawlers.",
 																					"enum": [
 																						"block",
-																						"disabled"
+																						"disabled",
+																						"only_on_ad_pages"
 																					],
 																					"example": "block",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -981,20 +1054,23 @@
 																					],
 																					"example": "enabled",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
 																					"readOnly": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			}
 																		}
@@ -1007,7 +1083,8 @@
 																			"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"stale_zone_configuration": {
 																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -1016,13 +1093,15 @@
 																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																					"title": "fight_mode",
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"optimize_wordpress": {
 																					"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 																					"title": "optimize_wordpress",
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"sbfm_definitely_automated": {
 																					"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
@@ -1046,7 +1125,8 @@
 																					"description": "Indicates that the zone's verified bot requests are being blocked.",
 																					"title": "sbfm_verified_bots",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"readOnly": true,
@@ -1058,7 +1138,8 @@
 																			"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	}
 																}
@@ -1221,7 +1302,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1304,6 +1386,12 @@
 								"sbfm_static_resource_protection": false,
 								"sbfm_verified_bots": "allow"
 							}
+						},
+						"example9": {
+							"summary": "Block AI Bots on Ad pages only",
+							"value": {
+								"ai_bots_protection": "only_on_ad_pages"
+							}
 						}
 					},
 					"schema": {
@@ -1318,11 +1406,13 @@
 														"description": "Enable rule to block AI Scrapers and Crawlers.",
 														"enum": [
 															"block",
-															"disabled"
+															"disabled",
+															"only_on_ad_pages"
 														],
 														"example": "block",
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"crawler_protection": {
 														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -1332,20 +1422,23 @@
 														],
 														"example": "enabled",
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"enable_js": {
 														"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 														"example": true,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"using_latest_model": {
 														"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 														"example": true,
 														"readOnly": true,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													}
 												}
 											}
@@ -1358,7 +1451,8 @@
 												"description": "Whether to enable Bot Fight Mode.",
 												"example": true,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"stale_zone_configuration": {
 												"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -1367,7 +1461,8 @@
 														"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 														"title": "optimize_wordpress",
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"sbfm_definitely_automated": {
 														"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
@@ -1391,13 +1486,15 @@
 														"description": "Indicates that the zone's verified bot requests are being blocked.",
 														"title": "sbfm_verified_bots",
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"suppress_session_score": {
 														"description": "Indicates that the zone's session score tracking is disabled.",
 														"title": "suppress_session_score",
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													}
 												},
 												"readOnly": true,
@@ -1419,11 +1516,13 @@
 														"description": "Enable rule to block AI Scrapers and Crawlers.",
 														"enum": [
 															"block",
-															"disabled"
+															"disabled",
+															"only_on_ad_pages"
 														],
 														"example": "block",
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"crawler_protection": {
 														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -1433,20 +1532,23 @@
 														],
 														"example": "enabled",
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"enable_js": {
 														"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 														"example": true,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"using_latest_model": {
 														"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 														"example": true,
 														"readOnly": true,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													}
 												}
 											}
@@ -1459,7 +1561,8 @@
 												"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 												"example": true,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"sbfm_definitely_automated": {
 												"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -1470,13 +1573,15 @@
 												],
 												"example": "allow",
 												"type": "string",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"sbfm_static_resource_protection": {
 												"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 												"example": true,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"sbfm_verified_bots": {
 												"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -1486,7 +1591,8 @@
 												],
 												"example": "allow",
 												"type": "string",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"stale_zone_configuration": {
 												"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -1495,7 +1601,8 @@
 														"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 														"title": "fight_mode",
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"sbfm_likely_automated": {
 														"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
@@ -1523,11 +1630,13 @@
 														"description": "Enable rule to block AI Scrapers and Crawlers.",
 														"enum": [
 															"block",
-															"disabled"
+															"disabled",
+															"only_on_ad_pages"
 														],
 														"example": "block",
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"crawler_protection": {
 														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -1537,20 +1646,23 @@
 														],
 														"example": "enabled",
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"enable_js": {
 														"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 														"example": true,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"using_latest_model": {
 														"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 														"example": true,
 														"readOnly": true,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													}
 												}
 											}
@@ -1563,7 +1675,8 @@
 												"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 												"example": true,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"sbfm_definitely_automated": {
 												"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -1574,7 +1687,8 @@
 												],
 												"example": "allow",
 												"type": "string",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"sbfm_likely_automated": {
 												"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
@@ -1585,13 +1699,15 @@
 												],
 												"example": "allow",
 												"type": "string",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"sbfm_static_resource_protection": {
 												"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 												"example": true,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"sbfm_verified_bots": {
 												"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -1601,7 +1717,8 @@
 												],
 												"example": "allow",
 												"type": "string",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"stale_zone_configuration": {
 												"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -1610,7 +1727,8 @@
 														"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 														"title": "fight_mode",
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													}
 												},
 												"readOnly": true,
@@ -1632,11 +1750,13 @@
 														"description": "Enable rule to block AI Scrapers and Crawlers.",
 														"enum": [
 															"block",
-															"disabled"
+															"disabled",
+															"only_on_ad_pages"
 														],
 														"example": "block",
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"crawler_protection": {
 														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -1646,20 +1766,23 @@
 														],
 														"example": "enabled",
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"enable_js": {
 														"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 														"example": true,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"using_latest_model": {
 														"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 														"example": true,
 														"readOnly": true,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													}
 												}
 											}
@@ -1672,7 +1795,8 @@
 												"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
 												"example": true,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"stale_zone_configuration": {
 												"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -1681,13 +1805,15 @@
 														"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 														"title": "fight_mode",
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"optimize_wordpress": {
 														"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 														"title": "optimize_wordpress",
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"sbfm_definitely_automated": {
 														"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
@@ -1711,7 +1837,8 @@
 														"description": "Indicates that the zone's verified bot requests are being blocked.",
 														"title": "sbfm_verified_bots",
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													}
 												},
 												"readOnly": true,
@@ -1723,7 +1850,8 @@
 												"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
 												"example": false,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										}
 									}
@@ -1844,11 +1972,13 @@
 																			"description": "Enable rule to block AI Scrapers and Crawlers.",
 																			"enum": [
 																				"block",
-																				"disabled"
+																				"disabled",
+																				"only_on_ad_pages"
 																			],
 																			"example": "block",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -1858,20 +1988,23 @@
 																			],
 																			"example": "enabled",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
 																			"readOnly": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	}
 																}
@@ -1884,7 +2017,8 @@
 																	"description": "Whether to enable Bot Fight Mode.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"stale_zone_configuration": {
 																	"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -1893,7 +2027,8 @@
 																			"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 																			"title": "optimize_wordpress",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_definitely_automated": {
 																			"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
@@ -1917,13 +2052,15 @@
 																			"description": "Indicates that the zone's verified bot requests are being blocked.",
 																			"title": "sbfm_verified_bots",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"suppress_session_score": {
 																			"description": "Indicates that the zone's session score tracking is disabled.",
 																			"title": "suppress_session_score",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"readOnly": true,
@@ -1945,11 +2082,13 @@
 																			"description": "Enable rule to block AI Scrapers and Crawlers.",
 																			"enum": [
 																				"block",
-																				"disabled"
+																				"disabled",
+																				"only_on_ad_pages"
 																			],
 																			"example": "block",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -1959,20 +2098,23 @@
 																			],
 																			"example": "enabled",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
 																			"readOnly": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	}
 																}
@@ -1985,7 +2127,8 @@
 																	"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sbfm_definitely_automated": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -1996,13 +2139,15 @@
 																	],
 																	"example": "allow",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sbfm_static_resource_protection": {
 																	"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sbfm_verified_bots": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -2012,7 +2157,8 @@
 																	],
 																	"example": "allow",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"stale_zone_configuration": {
 																	"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -2021,7 +2167,8 @@
 																			"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																			"title": "fight_mode",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_likely_automated": {
 																			"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
@@ -2049,11 +2196,13 @@
 																			"description": "Enable rule to block AI Scrapers and Crawlers.",
 																			"enum": [
 																				"block",
-																				"disabled"
+																				"disabled",
+																				"only_on_ad_pages"
 																			],
 																			"example": "block",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -2063,20 +2212,23 @@
 																			],
 																			"example": "enabled",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
 																			"readOnly": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	}
 																}
@@ -2089,7 +2241,8 @@
 																	"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sbfm_definitely_automated": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -2100,7 +2253,8 @@
 																	],
 																	"example": "allow",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sbfm_likely_automated": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
@@ -2111,13 +2265,15 @@
 																	],
 																	"example": "allow",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sbfm_static_resource_protection": {
 																	"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sbfm_verified_bots": {
 																	"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -2127,7 +2283,8 @@
 																	],
 																	"example": "allow",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"stale_zone_configuration": {
 																	"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -2136,7 +2293,8 @@
 																			"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																			"title": "fight_mode",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"readOnly": true,
@@ -2158,11 +2316,13 @@
 																			"description": "Enable rule to block AI Scrapers and Crawlers.",
 																			"enum": [
 																				"block",
-																				"disabled"
+																				"disabled",
+																				"only_on_ad_pages"
 																			],
 																			"example": "block",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -2172,20 +2332,23 @@
 																			],
 																			"example": "enabled",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
 																			"readOnly": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	}
 																}
@@ -2198,7 +2361,8 @@
 																	"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"stale_zone_configuration": {
 																	"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -2207,13 +2371,15 @@
 																			"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																			"title": "fight_mode",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"optimize_wordpress": {
 																			"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 																			"title": "optimize_wordpress",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_definitely_automated": {
 																			"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
@@ -2237,7 +2403,8 @@
 																			"description": "Indicates that the zone's verified bot requests are being blocked.",
 																			"title": "sbfm_verified_bots",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"readOnly": true,
@@ -2249,7 +2416,8 @@
 																	"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
 																	"example": false,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															}
 														}
@@ -2375,11 +2543,13 @@
 																					"description": "Enable rule to block AI Scrapers and Crawlers.",
 																					"enum": [
 																						"block",
-																						"disabled"
+																						"disabled",
+																						"only_on_ad_pages"
 																					],
 																					"example": "block",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -2389,20 +2559,23 @@
 																					],
 																					"example": "enabled",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
 																					"readOnly": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			}
 																		}
@@ -2415,7 +2588,8 @@
 																			"description": "Whether to enable Bot Fight Mode.",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"stale_zone_configuration": {
 																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -2424,7 +2598,8 @@
 																					"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 																					"title": "optimize_wordpress",
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"sbfm_definitely_automated": {
 																					"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
@@ -2448,13 +2623,15 @@
 																					"description": "Indicates that the zone's verified bot requests are being blocked.",
 																					"title": "sbfm_verified_bots",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"suppress_session_score": {
 																					"description": "Indicates that the zone's session score tracking is disabled.",
 																					"title": "suppress_session_score",
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"readOnly": true,
@@ -2476,11 +2653,13 @@
 																					"description": "Enable rule to block AI Scrapers and Crawlers.",
 																					"enum": [
 																						"block",
-																						"disabled"
+																						"disabled",
+																						"only_on_ad_pages"
 																					],
 																					"example": "block",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -2490,20 +2669,23 @@
 																					],
 																					"example": "enabled",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
 																					"readOnly": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			}
 																		}
@@ -2516,7 +2698,8 @@
 																			"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_definitely_automated": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -2527,13 +2710,15 @@
 																			],
 																			"example": "allow",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_static_resource_protection": {
 																			"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_verified_bots": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -2543,7 +2728,8 @@
 																			],
 																			"example": "allow",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"stale_zone_configuration": {
 																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -2552,7 +2738,8 @@
 																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																					"title": "fight_mode",
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"sbfm_likely_automated": {
 																					"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
@@ -2580,11 +2767,13 @@
 																					"description": "Enable rule to block AI Scrapers and Crawlers.",
 																					"enum": [
 																						"block",
-																						"disabled"
+																						"disabled",
+																						"only_on_ad_pages"
 																					],
 																					"example": "block",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -2594,20 +2783,23 @@
 																					],
 																					"example": "enabled",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
 																					"readOnly": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			}
 																		}
@@ -2620,7 +2812,8 @@
 																			"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_definitely_automated": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
@@ -2631,7 +2824,8 @@
 																			],
 																			"example": "allow",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_likely_automated": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
@@ -2642,13 +2836,15 @@
 																			],
 																			"example": "allow",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_static_resource_protection": {
 																			"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sbfm_verified_bots": {
 																			"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
@@ -2658,7 +2854,8 @@
 																			],
 																			"example": "allow",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"stale_zone_configuration": {
 																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -2667,7 +2864,8 @@
 																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																					"title": "fight_mode",
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"readOnly": true,
@@ -2689,11 +2887,13 @@
 																					"description": "Enable rule to block AI Scrapers and Crawlers.",
 																					"enum": [
 																						"block",
-																						"disabled"
+																						"disabled",
+																						"only_on_ad_pages"
 																					],
 																					"example": "block",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
@@ -2703,20 +2903,23 @@
 																					],
 																					"example": "enabled",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
 																					"readOnly": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			}
 																		}
@@ -2729,7 +2932,8 @@
 																			"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
 																			"example": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"stale_zone_configuration": {
 																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
@@ -2738,13 +2942,15 @@
 																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
 																					"title": "fight_mode",
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"optimize_wordpress": {
 																					"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
 																					"title": "optimize_wordpress",
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"sbfm_definitely_automated": {
 																					"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
@@ -2768,7 +2974,8 @@
 																					"description": "Indicates that the zone's verified bot requests are being blocked.",
 																					"title": "sbfm_verified_bots",
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"readOnly": true,
@@ -2780,7 +2987,8 @@
 																			"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	}
 																}
