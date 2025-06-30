@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations</strong>: Mexico City, Mexico, Austin TX</p>
+<p><strong>Available Locations</strong>: <strong>Mexico City Mexico, Austin, Dallas, Houston, San Antonio</strong></p>
 <p><strong>To apply for this position, submit your CV in English on our careers page.</strong></p>
 <p><strong>About the department</strong></p>
 <p>The GTM Finance team is responsible for forecasting, budgeting, planning, and performing various analyses to support our company strategy and execution.&nbsp; We are looking for an individual with strong analytical horsepower to join the team to provide actionable insights and decision-making support across Cloudflare’s GTM leadership team. The ideal candidate is passionate about problem solving and optimizing processes that scale with our rapid growth.&nbsp;</p>
