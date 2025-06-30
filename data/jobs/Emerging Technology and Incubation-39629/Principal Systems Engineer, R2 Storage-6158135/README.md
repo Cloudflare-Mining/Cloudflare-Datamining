@@ -5,56 +5,63 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: London</strong></p>
-<p><strong>About the Role</strong></p>
-<p>As an IT Operations Associate, you will play a dual role in ensuring the seamless operation of our company's IT infrastructure and providing top-notch service desk support. You will be instrumental in installing, configuring, monitoring, and maintaining computer systems, while also serving as the first point of contact for IT support, handling inquiries, and resolving technical issues for end-users. Your responsibilities will span across troubleshooting hardware and software faults, offering timely solutions, and contributing to our IT knowledge base.&nbsp; This role will provide support for our corporate events, on-site management of computer inventory, new hire onboarding, and work with teams across the organization.&nbsp; This role reports to the IT Service Desk Manager..</p>
-<p><strong>About the Team</strong></p>
-<p>You will join a team of technical support professionals that provide enterprise level service for our corporate teams globally.&nbsp; We strive to provide helpful and knowledgeable technical assistance on a daily basis.&nbsp; We’re focused on providing a positive customer service and user experience.&nbsp; Also, we’re obsessed with providing the best user experience possible.</p>
-<p><strong>What You'll Do</strong></p>
+<h3><strong>Locations: Austin, TX | New York, NY | San Francisco, CA | London, UK</strong></h3>
+<h3><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3><strong>About the Team</strong></h3>
+<p>R2 is Cloudflare’s object storage platform, designed to offer developers a durable and reliable storage solution that integrates seamlessly with Cloudflare’s Developer Platform, including Workers and other compute products. The R2 team builds foundational infrastructure that operates at massive scale and powers critical workloads across Cloudflare’s global network–designing and maintaining distributed systems that handle high throughput, provide strong consistency and durability guarantees, and support a growing number of developer-facing features.</p>
+<p>You’ll be joining a highly motivated team that owns the full stack of R2: tackling complex problems in distributed systems with a focus on reliability and performance at a global scale.</p>
+<h3><strong>What You’ll Do</strong></h3>
 <ul>
-	<li>Act as the primary contact for IT support within the organization, managing service desk tickets and responding to user requests in a timely manner.</li>
-	<li>Install, configure, and update hardware and software, ensuring optimal workstation performance.</li>
-	<li>Troubleshoot system and network problems, diagnosing and solving hardware or software faults with a focus on minimizing downtime.</li>
-	<li>Maintain security through monitoring access and adherence to IT policies, including internet security and data privacy protocols.</li>
-	<li>Guide and support users in the use of IT equipment and software, providing necessary training and documentation.</li>
-	<li>Organize and perform regular maintenance and system upgrades to ensure technology infrastructure runs smoothly.</li>
-	<li>Record and document issues and resolutions within the IT service management system, maintaining detailed logs of all IT incidents.</li>
-	<li>Evaluate user needs and system functionality, ensuring that IT facilities meet these needs.</li>
-	<li>Stay current with system information, changes, and updates to provide effective advice and solutions.</li>
-	<li>Support the development and implementation of new systems and services, including user acceptance testing.</li>
-	<li>Provide on-site and remote technical support</li>
-	<li>Seek guidance from the team when needed</li>
-	<li>Provide audio and video support for company events</li>
-	<li>Create and update technical documentation</li>
+	<li>Set the technical direction for some of our most critical and complex infrastructure projects.</li>
+	<li>Drive large-scale architectural decisions that span multiple teams and services.</li>
+	<li>Design and implement systems that operate reliably under heavy load and at massive scale.</li>
+	<li>Lead technical investigations and break down ambiguous problems into clear plans of action.</li>
+	<li>Collaborate closely with engineers across teams, product managers, and infrastructure stakeholders to align goals and deliver on timelines.</li>
+	<li>Be a key contributor to our roadmap — helping shape the future of R2’s architecture, performance, and reliability.</li>
 </ul>
-<p><strong>What You'll Bring</strong></p>
+<h3><strong>Exam</strong><strong>ples of desirable skills, knowledge, and experience</strong></h3>
 <ul>
-	<li>Proven experience in IT support, with a solid foundation in both IT operations and service desk responsibilities.</li>
-	<li>Strong problem-solving skills and the ability to diagnose and resolve technical issues efficiently.</li>
-	<li>Familiarity with computer operating systems, hardware, networking, and software applications.</li>
-	<li>Experience with IT service desk software and IT service management principles.</li>
-	<li>Knowledge of internet security and data protection standards.</li>
-	<li>Relevant IT certifications (e.g., CompTIA A+, ITIL Foundation, Microsoft Certified IT Professional) are highly desirable.</li>
-	<li>A degree in Computer Science, Information Technology, or a related field.</li>
-	<li>Excellent communication skills, with an emphasis on providing exceptional customer service.</li>
-	<li>Ability to manage time effectively and work under pressure to meet deadlines.</li>
-	<li>Commitment to continuous learning and improvement in IT service delivery.</li>
+	<li>Experience setting the architecture and technical direction for large, cross-team, and cross-functional engineering efforts.</li>
+	<li>Strong systems-level programming skills.</li>
+	<li>A deep understanding of distributed systems concepts such as consistency, consensus, data replication, and partition tolerance.</li>
+	<li>Proven experience building and maintaining high-throughput, low-latency systems.</li>
+	<li>Strong written and verbal communication skills; ability to explain technical decisions clearly and drive alignment.</li>
+	<li>Comfortable operating in fast-paced environments with tight deadlines and evolving priorities.</li>
+	<li>Experience with storage systems, networking, or large-scale cloud infrastructure is a strong plus.</li>
 </ul>
-<p><strong>Working Conditions</strong></p>
+<h3><strong>Compensation</strong></h3>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>Flexibility to work varying shifts, including evenings and weekends, to accommodate business needs and support 24/7 operations.</li>
-	<li>May involve lifting and transporting IT equipment and peripherals.</li>
+	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $230,000 - $281,000</li>
+	<li>For Bay Area-based hires: Estimated annual salary of $234,000 - $286,000</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h3><strong>Equity</strong></h3>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<h3><strong>Benefits</strong></h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<h3><strong>Health &amp; Welfare Benefits</strong></h3>
 <ul>
-	<li>Experience with Jira Service Desk, JAMF, InTune</li>
-	<li>Experience working in the technology industry</li>
-	<li>Experience working in a Service Desk, Help Desk, or Call Center environment</li>
-	<li>Microsoft Support Certification</li>
-	<li>Apple Support Certification</li>
-	<li>ITIL Foundations</li>
-	<li>HDI Support Center Agent</li>
-	<li>CompTIA A+ Certified</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<h3><strong>Financial Benefits</strong></h3>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<h3><strong>Time Off</strong></h3>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

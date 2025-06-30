@@ -5,56 +5,59 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: London</strong></p>
-<p><strong>About the Role</strong></p>
-<p>As an IT Operations Associate, you will play a dual role in ensuring the seamless operation of our company's IT infrastructure and providing top-notch service desk support. You will be instrumental in installing, configuring, monitoring, and maintaining computer systems, while also serving as the first point of contact for IT support, handling inquiries, and resolving technical issues for end-users. Your responsibilities will span across troubleshooting hardware and software faults, offering timely solutions, and contributing to our IT knowledge base.&nbsp; This role will provide support for our corporate events, on-site management of computer inventory, new hire onboarding, and work with teams across the organization.&nbsp; This role reports to the IT Service Desk Manager..</p>
-<p><strong>About the Team</strong></p>
-<p>You will join a team of technical support professionals that provide enterprise level service for our corporate teams globally.&nbsp; We strive to provide helpful and knowledgeable technical assistance on a daily basis.&nbsp; We’re focused on providing a positive customer service and user experience.&nbsp; Also, we’re obsessed with providing the best user experience possible.</p>
-<p><strong>What You'll Do</strong></p>
+<p><strong>Available Locations: Austin, Dallas, Houston, and San Antonio TX</strong></p>
+<p><span style="font-size: 12pt;"><strong>About the role</strong></span></p>
+<p>We are looking for an experienced Senior Sales Compensation Analyst to join our team within the Finance &amp; Business Operations Function. As a key team member of a high-visibility organization, this role will provide both technical and operational support to Cloudflare’s Global Commissions Program &amp; Strategy, in close collaboration with the Sales Compensation Design team, GTM Finance, and Sales Operations teams.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Act as the primary contact for IT support within the organization, managing service desk tickets and responding to user requests in a timely manner.</li>
-	<li>Install, configure, and update hardware and software, ensuring optimal workstation performance.</li>
-	<li>Troubleshoot system and network problems, diagnosing and solving hardware or software faults with a focus on minimizing downtime.</li>
-	<li>Maintain security through monitoring access and adherence to IT policies, including internet security and data privacy protocols.</li>
-	<li>Guide and support users in the use of IT equipment and software, providing necessary training and documentation.</li>
-	<li>Organize and perform regular maintenance and system upgrades to ensure technology infrastructure runs smoothly.</li>
-	<li>Record and document issues and resolutions within the IT service management system, maintaining detailed logs of all IT incidents.</li>
-	<li>Evaluate user needs and system functionality, ensuring that IT facilities meet these needs.</li>
-	<li>Stay current with system information, changes, and updates to provide effective advice and solutions.</li>
-	<li>Support the development and implementation of new systems and services, including user acceptance testing.</li>
-	<li>Provide on-site and remote technical support</li>
-	<li>Seek guidance from the team when needed</li>
-	<li>Provide audio and video support for company events</li>
-	<li>Create and update technical documentation</li>
+	<li>Ensure the accurate and timely delivery of Compensation Plans, Incentive Statements, and commission payments for Cloudflare’s Global Sales organization.</li>
+	<li>Serve as a trusted partner to the Sales Team by resolving inquiries, clarifying plan policies, and managing disputes with empathy and a customer-first mindset.</li>
+	<li>Drive alignment amongst cross-functional stakeholders and project manage timely collection of key calculation inputs such as quotas, organizational updates, attainment data.</li>
+	<li>Own sales performance analytics by uncovering actionable insights and enhancing systematic visibility for Sales leadership and key business stakeholders.</li>
+	<li>Lead User Acceptance Testing (UAT) and support ongoing configuration, design, and enhancements within the Varicent ICM platform.</li>
+	<li>Collaborate with the Sales Compensation Design team to evaluate the feasibility of proposed plan changes and ensure timely, accurate implementation.</li>
+	<li>Develop and scale standardized processes, documentation, and desktop procedures to ensure consistency and operational efficiency across all commission-related workflows.</li>
 </ul>
-<p><strong>What You'll Bring</strong></p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Proven experience in IT support, with a solid foundation in both IT operations and service desk responsibilities.</li>
-	<li>Strong problem-solving skills and the ability to diagnose and resolve technical issues efficiently.</li>
-	<li>Familiarity with computer operating systems, hardware, networking, and software applications.</li>
-	<li>Experience with IT service desk software and IT service management principles.</li>
-	<li>Knowledge of internet security and data protection standards.</li>
-	<li>Relevant IT certifications (e.g., CompTIA A+, ITIL Foundation, Microsoft Certified IT Professional) are highly desirable.</li>
-	<li>A degree in Computer Science, Information Technology, or a related field.</li>
-	<li>Excellent communication skills, with an emphasis on providing exceptional customer service.</li>
-	<li>Ability to manage time effectively and work under pressure to meet deadlines.</li>
-	<li>Commitment to continuous learning and improvement in IT service delivery.</li>
+	<li>5+ years of either FP&amp;A, Consulting, Sales Operations, Data Analytics, Sales Compensation experience. Experience in a growth technology company is a plus.</li>
+	<li>You are a highly detail-oriented, data-driven truth-seeker with a passion for uncovering discrepancies, identifying edge cases, and validating complex calculations to ensure precision and accuracy.</li>
+	<li>Demonstrated expertise in Excel or Google Sheets, including advanced financial modeling, data analysis, and scenario planning to support strategic decision-making</li>
+	<li>Firm grasp of the commission administrative process flow, including plan document distribution; transaction crediting; incentive calculations; payment file preparation; and issue resolution.&nbsp;</li>
+	<li>Proven track record of building strong relationships and influencing business partners. You are comfortable interfacing with business partners outside of your direct team, and understand the rigor and caliber of deliverables required to work with them.</li>
+	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</li>
+	<li>Operations: You seek out efficiency, leveraging tools, automation or other means to scale process and deliver more accurate results</li>
+	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
+	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
+	<li>Experience with the Varicent ICM tool is a plus.</li>
 </ul>
-<p><strong>Working Conditions</strong></p>
+<p>&nbsp;</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Flexibility to work varying shifts, including evenings and weekends, to accommodate business needs and support 24/7 operations.</li>
-	<li>May involve lifting and transporting IT equipment and peripherals.</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p><strong>Financial Benefits</strong></p>
 <ul>
-	<li>Experience with Jira Service Desk, JAMF, InTune</li>
-	<li>Experience working in the technology industry</li>
-	<li>Experience working in a Service Desk, Help Desk, or Call Center environment</li>
-	<li>Microsoft Support Certification</li>
-	<li>Apple Support Certification</li>
-	<li>ITIL Foundations</li>
-	<li>HDI Support Center Agent</li>
-	<li>CompTIA A+ Certified</li>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
