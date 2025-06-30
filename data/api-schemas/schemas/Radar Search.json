@@ -1,6 +1,6 @@
 {
 	"GET /radar/search/global": {
-		"description": "Searches for locations, autonomous systems, and reports.",
+		"description": "Searches for locations, autonomous systems, reports, and bots.",
 		"operationId": "radar-get-search-global",
 		"parameters": [
 			{
@@ -42,6 +42,7 @@
 					"items": {
 						"enum": [
 							"ASNS",
+							"BOTS",
 							"LOCATIONS",
 							"NOTEBOOKS",
 							"SPECIAL_EVENTS"
@@ -60,6 +61,7 @@
 					"items": {
 						"enum": [
 							"ASNS",
+							"BOTS",
 							"LOCATIONS",
 							"NOTEBOOKS",
 							"SPECIAL_EVENTS"
@@ -184,7 +186,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Search for locations, ASes, and reports",
+		"summary": "Search for locations, ASes, reports, and more",
 		"tags": [
 			"Radar Search"
 		],

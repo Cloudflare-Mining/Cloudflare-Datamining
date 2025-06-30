@@ -1,5 +1,6 @@
 {
 	"GET /radar/verified_bots/top/bots": {
+		"deprecated": true,
 		"description": "Retrieves the top verified bots by HTTP requests, with owner and category.",
 		"operationId": "radar-get-verified-bots-top-by-http-requests",
 		"parameters": [
@@ -362,9 +363,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Bots API](https://developers.cloudflare.com/api/resources/radar/subresources/bots/) instead."
 	},
 	"GET /radar/verified_bots/top/categories": {
+		"deprecated": true,
 		"description": "Retrieves the top verified bot categories by HTTP requests, along with their corresponding percentage, over the total verified bot HTTP requests.",
 		"operationId": "radar-get-verified-bots-top-categories-by-http-requests",
 		"parameters": [
@@ -717,6 +720,7 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Bots API](https://developers.cloudflare.com/api/resources/radar/subresources/bots/) instead."
 	}
 }

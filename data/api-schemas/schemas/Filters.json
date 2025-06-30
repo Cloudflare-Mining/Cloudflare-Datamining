@@ -644,40 +644,50 @@
 								{
 									"properties": {
 										"result": {
-											"additionalProperties": false,
-											"properties": {
-												"description": {
-													"description": "An informative summary of the filter.",
-													"example": "Restrict access from these browsers on this address range.",
-													"maxLength": 500,
-													"type": "string"
+											"allOf": [
+												{
+													"additionalProperties": false,
+													"properties": {
+														"description": {
+															"description": "An informative summary of the filter.",
+															"example": "Restrict access from these browsers on this address range.",
+															"maxLength": 500,
+															"type": "string"
+														},
+														"expression": {
+															"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+															"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+															"type": "string"
+														},
+														"id": {
+															"description": "The unique identifier of the filter.",
+															"example": "372e67954025e0ba6aaa6d586b9e0b61",
+															"maxLength": 32,
+															"minLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"paused": {
+															"description": "When true, indicates that the filter is currently paused.",
+															"example": false,
+															"type": "boolean"
+														},
+														"ref": {
+															"description": "A short reference tag. Allows you to select related filters.",
+															"example": "FIL-100",
+															"maxLength": 50,
+															"type": "string"
+														}
+													},
+													"type": "object"
 												},
-												"expression": {
-													"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-													"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-													"type": "string"
-												},
-												"id": {
-													"description": "The unique identifier of the filter.",
-													"example": "372e67954025e0ba6aaa6d586b9e0b61",
-													"maxLength": 32,
-													"minLength": 32,
-													"readOnly": true,
-													"type": "string"
-												},
-												"paused": {
-													"description": "When true, indicates that the filter is currently paused.",
-													"example": false,
-													"type": "boolean"
-												},
-												"ref": {
-													"description": "A short reference tag. Allows you to select related filters.",
-													"example": "FIL-100",
-													"maxLength": 50,
-													"type": "string"
+												{
+													"required": [
+														"id"
+													],
+													"type": "object"
 												}
-											},
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -800,40 +810,50 @@
 										{
 											"properties": {
 												"result": {
-													"additionalProperties": false,
-													"properties": {
-														"description": {
-															"description": "An informative summary of the filter.",
-															"example": "Restrict access from these browsers on this address range.",
-															"maxLength": 500,
-															"type": "string"
+													"allOf": [
+														{
+															"additionalProperties": false,
+															"properties": {
+																"description": {
+																	"description": "An informative summary of the filter.",
+																	"example": "Restrict access from these browsers on this address range.",
+																	"maxLength": 500,
+																	"type": "string"
+																},
+																"expression": {
+																	"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																	"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "The unique identifier of the filter.",
+																	"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																	"maxLength": 32,
+																	"minLength": 32,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"paused": {
+																	"description": "When true, indicates that the filter is currently paused.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"ref": {
+																	"description": "A short reference tag. Allows you to select related filters.",
+																	"example": "FIL-100",
+																	"maxLength": 50,
+																	"type": "string"
+																}
+															},
+															"type": "object"
 														},
-														"expression": {
-															"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-															"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-															"type": "string"
-														},
-														"id": {
-															"description": "The unique identifier of the filter.",
-															"example": "372e67954025e0ba6aaa6d586b9e0b61",
-															"maxLength": 32,
-															"minLength": 32,
-															"readOnly": true,
-															"type": "string"
-														},
-														"paused": {
-															"description": "When true, indicates that the filter is currently paused.",
-															"example": false,
-															"type": "boolean"
-														},
-														"ref": {
-															"description": "A short reference tag. Allows you to select related filters.",
-															"example": "FIL-100",
-															"maxLength": 50,
-															"type": "string"
+														{
+															"required": [
+																"id"
+															],
+															"type": "object"
 														}
-													},
-													"type": "object"
+													]
 												}
 											},
 											"required": [
