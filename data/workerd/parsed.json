@@ -5140,6 +5140,10 @@
 				{
 					"name": "durableObjectClass",
 					"annotations": {}
+				},
+				{
+					"name": "workerLoader",
+					"annotations": {}
 				}
 			]
 		},
@@ -5318,6 +5322,15 @@
 				},
 				{
 					"name": "limits",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.workerLoader",
+			"fields": [
+				{
+					"name": "id",
 					"annotations": {}
 				}
 			]
