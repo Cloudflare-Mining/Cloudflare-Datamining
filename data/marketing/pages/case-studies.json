@@ -5842,39 +5842,6 @@
 						]
 					},
 					{
-						"id": "ed62405e-7f53-57fb-92d1-9f8b8d79be09",
-						"contentfulId": "yMbdpE1L3wNfshNrcwPrT",
-						"logo": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/c4WtfuzD1fSsYH0okOjbL/3e1170614d9c05a37d613150f1311923/Bitpanda_Black_Horizontal.png"
-							},
-							"description": null
-						},
-						"nameUrlSlug": "bitpanda",
-						"shortDescription": "Bitpanda depends on Cloudflare to secure its platform from automated attacks and account takeovers",
-						"longDescription": "## __Cloudflare helps Bitpanda boost their app and IT security without performance trade-offs as they grow from small startup to major fintech player__ \n\nBitpanda makes investing accessible for everyone. Founded in 2014 in Vienna, Austria by Eric Demuth, Paul Klanschek and Christian Trummer, Bitpanda removes the barriers to investing by harnessing the innovative power of digitized assets and blockchain technology.\n\nWith more than 500 team members and over 2 million users, the company is one of Europe's fastest-growing fintechs.\n\nThe user-friendly, trade-everything platform empowers both first-time investors and seasoned experts to invest in the stocks, cryptocurrencies and metals they want — with any amount of money.\n\n### __Challenge: Mitigate increasingly frequent and severe DDoS and other automated attacks__ \n\nWhen Bitpanda started experiencing DDoS attacks, it had been in business for only about two months and had a very small customer base. To mitigate the attacks, Bitpanda signed up for the [free plan](https://www.cloudflare.com/plans/free/) on Cloudflare, which includes Cloudflare DNS, Cloudflare CDN, basic DDoS protection, and a limited number of Cloudflare Rules which trigger certain actions whenever a request matches one of the URL patterns a user defines. As Bitpanda grew, it upgraded to a paid subscription and added Rate Limiting, which helps protect against DDoS and other automated cyber attacks.\n\nOver the past two years, Bitpanda experienced a significant growth spurt, and the company saw a corresponding rise in automated attacks against its APIs and customer accounts. Cyber criminals were scanning Bitpanda's APIs for vulnerabilities and launching credential-stuffing attacks against its customers. These automated attacks degraded performance and put customers at risk of [account takeovers (ATOs)](https://www.cloudflare.com/zero-trust/solutions/account-takeover-prevention/).\n\nChristian Trummer, CTO and co-founder of Bitpanda, knew it was time for them to upgrade to a Cloudflare Enterprise plan, which offers the most robust toolset that Cloudflare has to offer, as well as 24/7, prioritized customer support by phone, chat, and email. Because Bitpanda was migrating to a Zero Trust security architecture, Trummer also added Cloudflare Access, which uses Zero Trust rules to help teams [secure corporate applications](https://www.cloudflare.com/application-services/solutions/). Access provides simple, secure access to digital assets in specialized use cases\n\nBitpanda leverages Cloudflare Access to restrict access to internal assets. For example, Bitpanda used Access when the company deployed a beta version of a certain product and needed to limit access to a select group of beta testers. \n\nPreviously, Bitpanda had used a VPN, which was complex to configure and maintain and difficult for end users to use. Access eliminated the administrative overhead associated with the VPN, freeing up Bitpanda's team to focus on internal projects instead of maintaining a VPN, and reduced the company's [potential cyber attack surface](https://www.cloudflare.com/learning/security/what-is-an-attack-surface/).\n\n\"Access is much simpler and more secure than a VPN for limiting access to internal assets. We just activate it and add users,\" Trummer says. \"It just works!\"\n\nIn addition to authenticating users and preventing malicious actors from accessing Bitpanda's network, Access also gives the company visibility into user activity inside the system, which supports Bitpanda's Zero Trust model.\n\n\"Access provides us with Zero Trust user authentication, granular control over user access, and complete visibility into user activity,\" Trummer says. \"This is key to Zero Trust, which recognizes that threats can be internal as well as external.\"\n\n### __The Cloudflare security suite stops DDoS and other automated attacks that threaten both site performance and integrity of customer accounts__\n\nShortly before upgrading to Cloudflare Enterprise, Bitpanda experienced a massive DDoS attack that took its systems offline. When the internal team was unable to mitigate the attack on their own, Trummer contacted Cloudflare, and a support representative suggested adding some Cloudflare Rules, which stopped the attack. \n\n\"That attack was the catalyst for us to upgrade to Enterprise,\" Trummer recalls. \"Bitpanda had grown to the point where we needed the most comprehensive solution available, and there was no question that we were going to buy it from Cloudflare.\"\n\nSince upgrading, Trummer is elated that his team no longer has to spend so much time monitoring threats and [mitigating](https://www.cloudflare.com/products/zero-trust/threat-defense/) them. Freed from having to engage in security monitoring and defense, Bitpanda's engineers can spend their time developing new products and enhancing current ones.\n\n\"I can't imagine not having Cloudflare as a security partner. Our software engineers want to spend time building products for our customers, so we need a partner with that expertise who can focus on security for us,\" Trummer says. \"Our cloud services provider offers a WAF and other security tools, but we haven't looked at them because we're so happy with Cloudflare. We have no reason to shop around.\"\n\nIn addition to the Cloudflare Web Application Firewall (WAF), DDoS protection, Cloudflare Rules, and Rate Limiting, Bitpanda depends on Cloudflare DNS services to secure its domains from DNS attacks and keep its platform online. Prior to Cloudflare, Bitpanda had used another DNS provider, but they had several incidents where their DNS went offline for hours, and the provider's support team provided no help.\n\n\"They lost our trust,\" Trummer says. \"We trust Cloudflare to provide a secure environment. Over the years, Cloudflare has consistently provided us with professional, top-quality service, and I look forward to expanding our partnership as Bitpanda continues to grow.\"\n",
-						"cloudflareStreamVideoId": null,
-						"orderDate": "2021-07-20",
-						"ref_streamVideoThumbnail": null,
-						"twoCardPreviewImage": null,
-						"industryNew52420": [
-							"Financial Services"
-						],
-						"regionNew52520": [
-							"Europe, Middle East & Africa"
-						],
-						"primaryUseCases": [
-							"Enable zero trust security for workforce",
-							"Secure workforce applications, devices and networks"
-						],
-						"product": [
-							"Access",
-							"WAF",
-							"Rate Limiting",
-							"Zero Trust"
-						]
-					},
-					{
 						"id": "cbb9d818-d0d6-553d-be25-88d39ec77122",
 						"contentfulId": "185ImQl7TR8fuwem2PtQqB",
 						"logo": {
@@ -5961,40 +5928,6 @@
 						],
 						"product": [
 							"Waiting Room"
-						]
-					},
-					{
-						"id": "2300aae0-3aa2-5059-b823-8a05c2c6c455",
-						"contentfulId": "1NLkrqd8Kt3sykNcunmaHl",
-						"logo": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5f9BiHI1ZI4pGuhVdp45Mp/e662f6fdf42e58cd36688276e394de0d/bitso_logo.png"
-							},
-							"description": "Bitso logo"
-						},
-						"nameUrlSlug": "bitso",
-						"shortDescription": "Bitso uses Cloudflare to improve performance and adopt Zero Trust as the company experiences exponential growth",
-						"longDescription": "## __Cloudflare supports Bitso's rapid expansion with Zero Trust security and performance optimization__\n\nMexico-based Bitso is the largest cryptocurrency platform in Latin America and the region's first \"crypto unicorn,\" having [secured $250 million in a recent Series C investment round that valued the company at $2.2 billion.](https://www.forbes.com/sites/ninabambysheva/2021/05/05/mexican-bitcoin-exchange-bitso-raises-250-million-becomes-latin-americas-first-crypto-unicorn/?sh=2304969964af) Over two million customers use Bitso to buy, sell, send, and receive bitcoin and eight other cryptocurrencies. Bitso has a 95% market share in Mexico and over 60% in Argentina. In 2020, Bitso processed more than USD $1.2B of cross-border payments.\n\n### __Challenge: Implement Zero Trust security and optimize performance to support exponential company growth__\n\nCyber security must be paramount for crypto exchanges in order to create a transparent and reliable industry. Bitso started operations in 2014, since then, security has been a fundamental part of the business. Bitso started working with Cloudflare in 2016 and it is now a key component of their operation and security strategy.\n\n\"We understood that, as a nascent company, we wouldn't be able to ensure security at a global scale on our own,\" recalls Mario A Pérez Alejo, Cybersecurity Lead. \"Cloudflare has been a key partner for Bitso since Day 1.\"\n\nBitso initially used Cloudflare's Web Application Firewall (WAF), Distributed Denial of Service (DDoS) protection, and Content Delivery Network (CDN). As Bitso's product offerings and customer base expanded, the company upgraded to the Cloudflare Business Plan to access more advanced security features and prioritized customer support. \n\nCloudflare Business Plan served Bitso's needs well until 2020, when the company began experiencing exponential growth. It took six years for Bitso to reach one million users, but only 10 more months to reach the next million. In addition to straining its network resources, Bitso's expansion made the company a very attractive target for threat actors and cyber attacks.\n\nAdditionally, during this time Bitso became a fully remote company due to the COVID-19 pandemic, which brought about another challenge: remote access to services and applications through VPN, which became difficult to configure and manage. Plus, performance was not optimal, and it allowed for lateral movement across data and applications, which represented a risk for data loss.\n\nTo address these concerns, Bitso upgraded to the Cloudflare Enterprise Plan, which offers the most advanced security, performance and reliability solutions on the market. The company also added Cloudflare Access, which uses a Zero Trust model to help teams [secure corporate applications](https://www.cloudflare.com/application-services/solutions/) with better performance and security than a VPN; Argo Smart Routing, which detects real-time network congestion and routes web traffic across the fastest and most reliable network paths; and Cloudflare Rate Limiting, which helps protect against DDoS and other automated cyber attacks.\n\n\"Cloudflare has given us the ability to route, keep and place in sync all our sites. Also, one of the biggest advantages of Cloudflare, is that it allowed us to handle our Infrastructure as a Code (IaC) with terraform, which led us to scale, maintain and ramp up our systems quickly,\"  says Zahid Fernandez Rodriguez, DevOps Engineer at Bitso.\n\n### __Cloudflare Access supports Zero Trust by ensuring the right people have the right level of access to internal resources__\n\nPrior to deploying Cloudflare Access, Bitso's employees used a VPN to connect to internal apps. The VPN was difficult to maintain and had suffered from frequent outages, which limited employee work. Additionally, creating new user accounts took hours, and often more than a day, which further affected efficiency.\n\nIt took Bitso only 10 minutes to deploy and integrate Cloudflare Access with its identity provider (IdP). Bitso can now provide access to internal resources within minutes. \n\n\"Cloudflare Access was a game-changer for Bitso. It made Zero Trust much easier,\" Mario Perez said. \"We now manage access to internal resources more efficiently, ensuring the right people have the right level of access to the right resources, regardless of their location, device or network.\"\n\nBitso operates internationally, with collaborators in more than 30 countries around the world. In addition to enhancing efficiency by eliminating the outages associated with VPN, Access has helped to significantly improve their user provisioning procedures, regardless of geographic location and network of new employees.\n\n### __Cloudflare WAF, DDoS, and Rate Limiting block millions of threats each month__\n\nWhile Bitso is the target of DDoS attacks of different magnitudes and the company often receives malicious requests, Cloudflare has effectively stopped these threats, allowing Bitso to continue servicing its customers without interruption.\n\n\"Cloudflare has been there when cyber attacks happen. Not only to help us block attacks, but also to provide the team with useful analytics that we can use to strengthen our security controls,\" says Emilio Revelo, Security Engineering Manager at Bitso.\n\nNext, Bitso plans to deploy Cloudflare Bot Management, which uses threat intelligence at scale to help organizations [prevent attacks](https://www.cloudflare.com/products/zero-trust/threat-defense/) from malicious bots. \"Bad bots are getting more sophisticated, and we need a sophisticated solution to mitigate them,\" adds Mario Perez.\n\n### __Argo ensures fast response times regardless of the customer's geographic location__\n\nWith 70TB of traffic monthly, Bitso's bandwidth resources are constantly being taxed. The cryptocurrency trading market is highly competitive, and cryptocurrency traders are extremely demanding customers.\n\n\"We're dealing with people's money. If our platform is slow, our customers will get very concerned,\" Mario Perez explained. \"In this industry, a good customer experience is key to building trust, and low latency is key for a good experience.\"\n\nAfter deploying Argo Smart Routing and integrating it with the Cloudflare CDN, Bitso saw an immediate improvement of up to 42% in site speed for users in Argentina, a country that's notorious for slow internet. In Mexico, Argo improved speeds by 38%. \n\n\"In the past five months alone, Bitso's traffic has doubled, but Argo Smart Routing ensures fast response times for all of our customers, regardless of their geographic location, even in countries with slow internet speeds,\" Mario Perez said.\n\nMario Perez points to the teamwork between Cloudflare and Bitso as a key element of a successful partnership. \"Our local customer success team in Mexico is phenomenal. They've helped us strengthen our security and optimize performance,\" he said. \"I'm enormously grateful. Bitso has ambitious goals, and our partnership with Cloudflare is essential in achieving them.\"\n",
-						"cloudflareStreamVideoId": null,
-						"orderDate": "2021-06-30",
-						"ref_streamVideoThumbnail": null,
-						"twoCardPreviewImage": null,
-						"industryNew52420": [
-							"Financial Services"
-						],
-						"regionNew52520": [
-							"Latin America & the Caribbean"
-						],
-						"primaryUseCases": [
-							"Enable zero trust security for workforce",
-							"Accelerate digital properties",
-							"Secure websites & applications"
-						],
-						"product": [
-							"Argo Smart Routing",
-							"Teams",
-							"Access",
-							"Zero Trust"
 						]
 					},
 					{
