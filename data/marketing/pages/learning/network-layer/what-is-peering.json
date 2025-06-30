@@ -1,15 +1,15 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/network-layer/how-does-the-internet-work/",
+	"path": "/learning/network-layer/what-is-peering/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "1uetKRPPK2JyyqLVxq8KGz",
-				"urlSlug": "network-layer/how-does-the-internet-work",
+				"contentfulId": "55yEhZJBF8bbWlZS4YaZCu",
+				"urlSlug": "network-layer/what-is-peering",
 				"metaTags": {
-					"metaTitle": "How does the Internet work?",
-					"metaDescription": "What does 'Internet' mean, and how does it work? Explore how the Internet works and how computer networks across the globe can connect to each other. ",
+					"metaTitle": "What is peering?",
+					"metaDescription": "Peering is a way for two large networks to connect and exchange traffic. Read more to understand how peering shortens network paths and reduces latency.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -17,15 +17,10 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
-						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
-					}
+					"facebookCustomImage": null
 				},
-				"metaTitle": "How does the Internet work?",
-				"metaDescription": "What does 'Internet' mean, and how does it work? Explore how the Internet works and how computer networks across the globe can connect to each other. ",
+				"metaTitle": null,
+				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "2NTNgGsYPl9HfIDs724JbF",
@@ -669,28 +664,28 @@
 						]
 					}
 				},
-				"header": "How does the Internet work?",
-				"blurbSubHeader": "The Internet is a network of networks. It works by using a technique called packet switching, and by relying on standardized networking protocols that all computers can interpret.\n",
-				"objectivesHeader": "How the Internet Works",
+				"header": "What is peering?",
+				"blurbSubHeader": "Peering is a cost-efficient way for two large networks to connect and exchange traffic. Peering can shorten network paths and reduce latency.",
+				"objectivesHeader": "Peering",
 				"objectivesList": [
-					"Define what 'Internet' means",
-					"Learn how computer networks work",
-					"Learn about packet switching and networking protocols",
-					"Get introduced to networking hardware"
+					"Define peering",
+					"Differentiate between public peering and private peering",
+					"Contrast IP transit vs. peering",
+					"Understand the advantages of BGP peering with Cloudflare"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "46yNBu6IQ1gCdIA8eG292m",
-						"displayText": "Network layer",
-						"url": "/learning/network-layer/what-is-the-network-layer/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "31YdKHPLe2rGKcikXmvaIW",
 						"displayText": "Autonomous system (AS)",
 						"url": "/learning/network-layer/what-is-an-autonomous-system/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "19nTg1iwyawlo5bSpU8Xe9",
+						"displayText": "Internet Protocol (IP)",
+						"url": "/learning/network-layer/internet-protocol/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
@@ -700,33 +695,33 @@
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "4A5YGXVcY3aDIb48dP0WhH",
-						"displayText": "What is MSS?",
-						"url": "/learning/network-layer/what-is-mss/"
+						"contentfulId": "5uhocF5vOQSt8EmdiRWkq1",
+						"displayText": "What is MPLS?",
+						"url": "/learning/network-layer/what-is-mpls/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "4bK3yl2lIJorDZQHs1H1a0",
-						"displayText": "Local area network (LAN)",
-						"url": "/learning/network-layer/what-is-a-lan/"
+						"contentfulId": "1zXUavp2wMc1wd8R3zpAWC",
+						"displayText": "Network modernization",
+						"url": "/learning/network-layer/network-modernization/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<style>\n\n    .cards-wrapper-lcnew  { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}\n    .cards_item-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fMg89go9MegG1EDg39mNy/5a42817cd388ae352f77f56e53b1ff81/card-new.png'); background-repeat: no-repeat; background-size: cover;  background-position: center;  border-radius: 8px;  box-shadow: 10px 10px 20px -14px rgba(0, 0, 0, 1.0);  overflow: hidden;}\n    .btn-lcnew { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .btn:hover { background-color: rgba(255, 255, 255, 0.12);}\n    .card_content-lcnew  { padding: 1rem; display: flex; flex-direction: column;}\n    .card_title-lcnew  { color: #ffffff; font-size: 12px; margin: 0px; line-height: 18px; text-transform: uppercase;}\n    .card_title-lcnew span  {font-weight: 500}\n    .card_text-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; margin-bottom: 1rem; margin-top: 1rem; font-weight: 600;}\n     a:hover {background-size: 100% 4em !important; color: var(--inline-link-color);}\n\n    @media (max-width: 40rem) \n    {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n    .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n    .card_content-banner-lcnew { padding: 1rem;  display: grid; grid-template-rows: 1fr 1fr; grid-gap: 10px;}\n    .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n    .card_title-banner-lcnew span  {text-transform: uppercase; font-weight: 500 !important}\n    .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n    .card_content-banner-bt { align-self: center; justify-self: center;}\n\n    @media (max-width: 40rem) \n    { .cards-banner-lcnew { grid-template-columns: unset; padding: 0.75rem; display: flex; flex-direction: column; }\n      .card_text-banner-lcnew { line-height: 18px; }\n      .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n      .card_content-banner-bt {align-self: end;}\n    }\n\n    </style> \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is the Internet?</h2>\n\n<img class=\"responsive-image\" title=\"how the interent works\" alt=\"how the Internet works\" src=\"/resources/images/slt3lc6tev37/2a78t2NoIFtHxWhkfJO1ww/4b072af86f41b9955ad62092a53f40be/how-does-internet-work.png\" itemprop=\"image\">\n\n<p>Before we cover what the Internet is, we must define what a \"network\" is. A network is a group of connected computers that are able to send data to each other. A computer network is much like a social circle, which is a group of people who all know each other, regularly exchange information, and coordinate activities together.</p>\n\n<p>The Internet is a vast, sprawling collection of networks that connect to each other. In fact, the word \"Internet\" could be said to come from this concept: <i>inter</i>connected <i>net</i>works.</p>\n\n<p>Since computers connect to each other within networks and these networks also all connect with each other, one computer can talk to another computer in a faraway network thanks to the Internet. This makes it possible to rapidly exchange information between computers across the world.</p>\n\n<p>Computers connect to each other and to the Internet via wires, cables, radio waves, and other types of networking infrastructure. All data sent over the Internet is translated into pulses of light or electricity, also called \"bits,\" and then interpreted by the receiving computer. The wires, cables, and radio waves conduct these bits at the speed of light. The more bits that can pass over these wires and cables at once, the faster the Internet works.</p>\n\n<div class=\"cards-wrapper-lcnew\">\n    <div class=\"cards_item-lcnew\">\n        <div class=\"card_content-lcnew\">\n            <div class=\"card_title-lcnew\"><span>eBook</span></div>\n            <div class=\"card_text-lcnew\">5 Ways to Maximize Security & Performance</div>\n            <div class=\"btn-lcnew card_btn\"><a href=\"https://www.cloudflare.com/lp/five-ways-maximize-performance/\" data-tracking-action=\"click\" data-tracking-label=\"Get the eBook - https://www.cloudflare.com/lp/five-ways-maximize-performance/\" data-tracking-category=\"card1\">Get the eBook</a></div>\n        </div>\n    </div>\n\n    <div class=\"cards_item-lcnew \">\n        <div class=\"card_content-lcnew \">\n            <div class=\"card_title-lcnew\"><span>ebook</span></div>\n            <div class=\"card_text-lcnew\">Everywhere security for every phase of the attack lifecycle</div>\n            <div class=\"btn-lcnew  card_btn\"><a href=\"/lp/everywhere-security-ebook/\" data-tracking-action=\"click\"\n                    data-tracking-label=\"Read the whitepaper - /lp/everywhere-security-ebook/\" data-tracking-category=\"card2\">Read the ebook</a> </div>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is distributed networking, and why is this concept important for the Internet?</h2>\n\n<p>There is no control center for the Internet. Instead, it is a distributed networking system, meaning it is not dependent on any individual machine. Any computer or hardware that can send and receive data in the correct fashion (e.g. using the correct networking protocols) can be part of the Internet.</p>\n\n<p>The Internet's distributed nature makes it resilient. Computers, servers, and other pieces of networking hardware connect and disconnect from the Internet all the time without impacting how the Internet functions — unlike a computer, which may not function at all if it is missing a component. This applies even at a large scale: if a server, an entire data center, or an entire region of data centers goes down, the rest of the Internet can still function (if more slowly).</p>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Sign Up</span></div>\n        <div class=\"card_text-banner-lcnew\">Security & speed with any Cloudflare plan</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/plans/\" data-tracking-action=\"click\" data-tracking-label=\"Get started free - /plans/\" data-tracking-category=\"card3\">Start for free</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does the Internet work?</h2>\n\n<p>There are two main concepts that are fundamental to the way the Internet functions: <i>packets</i> and <i>protocols</i>.</p>\n\n<h4 class=\"learning-content-h4\">Packets</h4>\n\n<p>In networking, a packet is a small segment of a larger message. Each packet contains both data and information about that data. The information about the packet's contents is known as the \"header,\" and it goes at the front of the packet so that the receiving machine knows what to do with the packet. To understand the purpose of a packet header, think of how some consumer products come with assembly instructions.</p>\n\n<p>When data gets sent over the Internet, it is first broken up into smaller packets, which are then translated into bits. The packets get routed to their destination by various networking devices such as routers and switches. When the packets arrive at their destination, the receiving device reassembles the packets in order and can then use or display the data.</p>\n\n<p>Compare this process to the way the United States' Statue of Liberty was constructed. The Statue of Liberty was first designed and built in France. However, it was too large to fit onto a ship, so it was shipped to the United States in pieces, along with instructions about where each piece belonged. Workers who received the pieces reassembled them into the statue that stands today in New York.</p>\n\n<p>While this took a long time for the Statue of Liberty, sending digital information in smaller pieces is extremely fast over the Internet. For instance, a photo of the Statue of Liberty stored on a web server can travel across the world one packet at a time and load on someone's computer within milliseconds.</p>\n\n<p>Packets are sent across the Internet using a technique called packet switching. Intermediary routers and switches are able to process packets independently from each other, without accounting for their source or destination. This is by design so that no single connection dominates the network. If data was sent between computers all at once with no packet switching, a connection between two computers could occupy multiple cables, routers, and switches for minutes at a time. Essentially, only two people would be able to use the Internet at a time — instead of an almost unlimited number of people, as is the case in reality.</p>\n\n<h4 class=\"learning-content-h4\">Protocols</h4>\n\n<p>Connecting two computers, both of which may use different hardware and run different software, is one of the main challenges that the creators of the Internet had to solve. It requires the use of communications techniques that are understandable by all connected computers, just as two people who grew up in different parts of the world may need to speak a common language to understand each other.</p>\n\n<p>This problem is solved with standardized protocols. In networking, a protocol is a standardized way of doing certain actions and formatting data so that two or more devices are able to communicate with and understand each other.</p>\n\n<p>There are protocols for sending packets between devices on the same network (Ethernet), for sending packets from network to network (<a href='/learning/ddos/glossary/internet-protocol/'>IP</a>), for ensuring those packets successfully arrive in order (<a href='/learning/ddos/glossary/tcp-ip/'>TCP</a>), and for formatting data for websites and applications (<a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a>). In addition to these foundational protocols, there are also protocols for routing, testing, and <a href='/learning/ssl/what-is-encryption/'>encryption</a>. And there are alternatives to the protocols listed above for different types of content — for instance, streaming video often uses <a href='/learning/ddos/glossary/user-datagram-protocol-udp/'>UDP</a> instead of TCP.</p>\n\n<p>Because all Internet-connected computers and other devices can interpret and understand these protocols, the Internet works no matter who or what connects to it.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What physical infrastructure makes the Internet work?</h2>\n\n<p>A lot of different kinds of hardware and infrastructure go into making the Internet work for everyone. Some of the most important types include the following:</p>\n\n<ul class=\"learning-list\">\n  <li><a href='/learning/network-layer/what-is-a-router/'>Routers</a> forward packets to different computer networks based on their destination. Routers are like the traffic cops of the Internet, making sure that Internet traffic goes to the right networks.</li>\n  <li><a href='/learning/network-layer/what-is-a-network-switch/'>Switches</a> connect devices that share a single network. They use packet switching to forward packets to the correct devices. They also receive outbound packets from those devices and pass them along to the right destination.</li>\n  <li>Web servers are specialized high-powered computers that store and serve content (webpages, images, videos) to users, in addition to hosting applications and databases. Servers also respond to <a href='/learning/dns/what-is-dns/'>DNS</a> queries and perform other important tasks to keep the Internet up and running. Most servers are kept in large data centers, which are located throughout the world.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do these concepts relate to websites and applications users access over the Internet?</h2>\n\n<img class=\"responsive-image\" title=\"website loading\" alt=\"website loading\" src=\"/resources/images/slt3lc6tev37/5higstotKUWSRPvUc9g7Aj/5b3e03849f5ffb25de2572ebef523fd6/loading-website.png\" itemprop=\"image\">\n\n<p>Consider this article. In order for you to see it, it was sent over the Internet piece by piece in the form of several thousand data packets. These packets traveled over cables and radio waves and through routers and switches from our web server to your computer or device. Your computer or smartphone received those packets and passed them to your device's browser, and your browser interpreted the data within the packets in order to display the text you are reading now.</p>\n\n<p>The specific steps involved in this process are:</p>\n\n<ol class=\"learning-list\">\n  <li><strong>DNS query:</strong> When your browser started to load this webpage, it likely first made a DNS query to find out the Cloudflare website's IP address.</li>\n  <li><strong>TCP handshake:</strong> Your browser opened a connection with that IP address.</li>\n  <li><strong>TLS handshake:</strong> Your browser also set up encryption between a Cloudflare web server and your device so that attackers cannot read the data packets that travel between those two endpoints.</li>\n  <li><strong>HTTP request:</strong> Your browser requested the content that appears on this webpage.</li>\n  <li><strong>HTTP response:</strong> Cloudflare's server transmitted the content in the form of HTML, CSS, and JavaScript code, broken up into a series of data packets. Once your device received the packets and verified it had received all of them, your browser interpreted the HTML, CSS, and JavaScript code contained in the packets to render this article about how the Internet works. The whole process took only a second or two.</li>\n</ol>\n\n<p>As you can see, several different processes and protocols are involved in loading a webpage. You can learn more about these technologies in other parts of the Cloudflare Learning Center:</p>\n\n<ul class=\"learning-list\">\n  <li><a href='/learning/dns/what-is-dns/'>DNS</a></li>\n  <li><a href='/learning/ddos/glossary/tcp-ip/'>TCP</a></li>\n  <li><a href='/learning/ssl/transport-layer-security-tls/'>TLS</a></li>\n  <li><a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a></li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What does 'helping build a better Internet' mean?</h2>\n\n<p>The creation of the Internet was an incredible achievement that involved the collective efforts of thousands of individuals and organizations. The fact that the Internet functions today at a far bigger scale than its founders anticipated is a testament to their work.</p>\n\n<p>However, the Internet does not always work as well as it should. Networking issues and malicious activity can slow down Internet access or block it altogether. Third parties can spy on user activities, leading to abuse and, in some cases, government repression. Internet protocols and processes were not designed with security and privacy in mind, since the people who first designed and built the Internet were more concerned with getting it to work than making it perfect.</p>\n\n<p>The Cloudflare mission is to help build a better Internet. Cloudflare aims to accomplish this in a number of ways, including:</p>\n\n<ul class=\"learning-list\">\n  <li>Contributing to the development of newer, faster, and more secure protocols for the Internet</li>\n  <li>Putting privacy first by building it into all products and offering free services to increase user privacy (such as <a href='https://one.one.one.one/'>1.1.1.1</a> and <a href='/learning/dns/dns-over-tls/'>DNS over HTTPS</a>)</li>\n  <li>Extending Cloudflare services to a global audience through an ever-expanding international <a href='/network/'>network of data centers</a></li>\n  <li>Offering products that increase security, performance, and reliability for web properties and network infrastructure (many of these products are offered for free to anyone with a website or API)</li>\n  <li>Enabling developers to build faster, more efficient <a href='/learning/serverless/what-is-serverless/'>serverless applications</a> to better serve users</li>\n  <li>Educating users about how Internet technology works through the Learning Center and the <a href='https://blog.cloudflare.com/'>Cloudflare Blog</a></li>\n</ul>\n\n<p>To learn more about Cloudflare's ongoing efforts to contribute to a better Internet, visit our <a href='/'>homepage</a> or <a href='https://blog.cloudflare.com/'>follow our blog</a>.</p>\n\n<p>To learn in more detail about how networking works, see <a href='/learning/network-layer/what-is-the-network-layer/'>What is the network layer?</a></p>\n",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is peering?</h2>\n\n<p>Peering is a connection between two networks that allows each network to send traffic to destinations within the other network, or to downstream destinations connected to that network. Peering occurs between very large networks, especially <a href='/learning/network-layer/what-is-an-autonomous-system/'>autonomous systems (ASes)</a> — mostly Internet service providers (ISPs) or large organizations managing hundreds or thousands of <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP addresses</a>.</p>\n\n<p>Peering results in more efficient <a href='/learning/network-layer/what-is-routing/'>routing</a>, as networks can send traffic more directly to its destination instead of sending it through additional intermediary backbone networks. Because it is mutually beneficial, peering is free in over 99% of cases. Free peering is called \"settlement-free peering\" to differentiate it from the (comparatively rarer) paid arrangements. Peering agreements can be as informal as a handshake agreement, or defined by contractual terms.</p>\n\n<p>Imagine two neighbors who decide to remove the fence between their houses and use each other's yards. This is somewhat like peering: they can use the other's space, even though their properties are still their own. Ideally, the result is beneficial for both neighbors.</p>\n\n<p>For network operators, the alternative to peering is called transit or IP transit. This is a paid arrangement with another network that gives the paying network access to the rest of the Internet, allowing the network's traffic to pass through. Imagine if one of the neighbors from the above example moved to a house that bordered a paid arboretum or zoo; this is like the difference between peering and transit.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does peering work?</h2>\n\n<p>Peering relies on the use of the <a href='/learning/security/glossary/what-is-bgp/'>Border Gateway Protocol (BGP)</a>. This <a href='/learning/network-layer/what-is-a-protocol/'>protocol</a> allows networks to communicate with other networks, announcing which blocks of IP addresses (these blocks are called \"prefixes\") they control.</p>\n\n<p>Peering typically takes place through physical interconnections. The two methods used are public peering at locations called <a href='/learning/cdn/glossary/internet-exchange-point-ixp/'>Internet exchange points (IxPs)</a>, and private peering through private network interconnections.</p>\n\n<h4 class=\"learning-content-h4\">Public peering: The role of Internet exchange points (IxPs) in peering</h4>\n\n<p>IxPs are hosted in colocation facilities, which are <a href='/learning/cdn/glossary/data-center/'>data centers</a> where multiple businesses can host networking equipment and servers. Essentially, IxPs are large <a href='/learning/network-layer/what-is-a-lan/'>local area networks (LAN)</a> connected via Ethernet cables and <a href='/learning/network-layer/what-is-a-network-switch/'>switches</a>. Within this local network, ASes connect via BGP. They announce their IP addresses to each other, along with the IP addresses that are connected downstream (for an ISP, this would be their customers). With this information communicated, the networks can exchange traffic through the cables and switches.</p>\n\n<h4 class=\"learning-content-h4\">Private peering: How peering works via PNI</h4>\n\n<p>A private network interconnection (PNI) is a direct connection between networks. Some PNI connections are simply a large fiber optic cable that plugs into a physical port on each network. Some PNI connections are virtual, running through a third-party network. Just as in a public peering connections, the networks use BGP to announce their IP prefixes and downstream connections to each other.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is depeering?</h2>\n\n<p>Depeering is the process of ending a peering agreement. The two networks may unplug from each other altogether, or one network may simply decide to start charging the other network for transit. The latter is more likely to happen if one network is larger than the other and has an advantage in the market.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How network peering improves cloud performance</h2>\n\n<p>Since peering results in the most direct connection possible between networks, peering with a <a href='/learning/cloud/what-is-a-public-cloud/'>public cloud</a> can vastly improve cloud performance.</p>\n\n<p>Traffic to and from the cloud ordinarily goes over the public Internet, which means it may take different routes each time and can get slowed down by network congestion or outages. It may also be expensive if an organization has to send a lot of traffic to the cloud via paid IP transit. Directly peering with a public cloud provider, in contrast, allows traffic to pass immediately to destinations in the cloud, for a more reliable and faster connection.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to peer (or interconnect) with Cloudflare</h2>\n\n<p>Cloudflare has an <a href='/peering-policy/' target='_blank'>open peering policy</a>: in fact, there is no need to be a Cloudflare customer to peer with Cloudflare. Today Cloudflare interconnects with over %{NetworkInterconnects} networks globally. The result is that Cloudflare is tightly connected with networks and ISPs all over the globe for extraordinarily fast traffic routing anywhere.</p>\n\n<p>For customers, Cloudflare offers <a href='/network-services/products/network-interconnect/'>Cloudflare Network Interconnect</a>, the most direct connection possible to the <a href='/connectivity-cloud/'>connectivity cloud</a>. Connections can be physical or virtual, and can take place at any of a number of IxPs or through several partners. Cloudflare also enables customers to set up BGP peering, which can improve performance and reduce the <a href='/learning/cdn/how-cdns-reduce-bandwidth-cost/'>bandwidth</a> used via Internet transit links.</p>\n\n<p>Peering or interconnecting with Cloudflare can help organizations begin to modernize their networks, optimizing for cloud usage and hybrid workforces. Learn more about getting started with <a href='/learning/network-layer/network-modernization/'>network modernization</a>.</p>",
 				"availableLocales": null,
-				"localized": true,
+				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
-					"itIT": "Translated for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -738,64 +733,20 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale"
 				},
 				"proactivePopup": null,
-				"sidebarForm": {
-					"contentTypeId": "learningCenterArticleSidebarForm",
-					"contentfulId": "4ad3l3edBzH8KRefyi225g",
-					"heading": "Want to keep learning?",
-					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
-					"postSubmissionDescription": "We're looking forward to sharing content with you.",
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe  to theNET",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					}
-				}
+				"sidebarForm": null
 			}
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "1uetKRPPK2JyyqLVxq8KGz",
-			"pathname": "/learning/network-layer/how-does-the-internet-work/",
+			"contentfulId": "55yEhZJBF8bbWlZS4YaZCu",
+			"pathname": "/learning/network-layer/what-is-peering/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"it-IT",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}

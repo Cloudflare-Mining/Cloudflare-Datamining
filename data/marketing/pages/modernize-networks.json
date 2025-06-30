@@ -167,7 +167,21 @@
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
 						"image": null,
-						"imageAssetFile": null,
+						"imageAssetFile": {
+							"id": "06f59e8f-e898-58df-89c3-12f829dfc2bf",
+							"altText": "Modernize networks - Diagram",
+							"title": "Modernize networks - Diagram",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5LxySO4Wyd7xo5CJKZNQ3E/53141ddff04f44a2bbdd001dacbc2ac7/BDES-7450_Modernize-networks-solution-page_before-diagram.svg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": "Problem",
@@ -937,6 +951,77 @@
 						"sectionPadding": "tile--no-top-padding"
 					},
 					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "4Ll6RikuQY5rfqVN5VmJCu",
+						"title": "Ready to have a conversation with a specialist?",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "5Mmos4mMteGcmZuoEYrvd6",
+							"elementName": "Modernize networks - Ready to have a conversation with a specialist? - Button",
+							"standardText": null,
+							"text": "Request a consultation",
+							"url": "#",
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "1gIuFeZWlTb46Sla351kji",
+								"modalName": "Modernize networks - Request a consultation - modal form ",
+								"modalId": "modernize-networks-request-a-consultation-modal-form",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "269j6JOENhb4qsIA20uFtJ",
+									"bladeName": "Modernize networks - Request a consultation - marketo",
+									"backgroundColor": "light-blue",
+									"marketoFormId": 4116,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "25Q2-GBL-CNTC-Network Modernization Consultation",
+									"marketoFormHeaderText": "Request a consultation",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": "Submit",
+									"marketoFormSubmitButtonColor": "orange",
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
+					},
+					{
 						"contentfulId": "4wZigWZ19GiFXKo6sz0YEa",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": " Instead of building network infrastructure, use Cloudflare's global network",
@@ -964,6 +1049,174 @@
 						"sectionPadding": "tile--no-top-padding",
 						"columnLayout": "Half & Half",
 						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "18tjXsCif3CgCnfZWbGskZ",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Credit Saison India sought a security infrastructure that did not require extensive equipment upgrades or a patchwork of third-party software solutions to support a hybrid workforce of employees, partners, and contractors. Simplifying management was another priority.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Credit Saison India selected ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/zero-trust/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Cloudflare One",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", the unified platform that brings together Cloudflare's ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/zero-trust/solutions/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "ZTNA",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " and ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/network-services/solutions/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "networking solutions",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Credit Saison India now secures employees, and public and private networks , without additional hardware, VPNs, or excessive infrastructure investments. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
 							{
 								"contentTypeId": "elementRichText",
 								"contentfulId": "78RFYGIC2ZUeEucbwVPMDE",
