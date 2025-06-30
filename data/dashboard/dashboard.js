@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "1b21a846-37f5-5f35-b0cf-ffef02dd5e57")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "2b6268e9-a8a4-595e-a1fb-3fa28f7860ea")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1195,10 +1195,10 @@
 					t.g.build = Tn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "1dc8be69d7fc9270c41a45fdd7e3d9e2c0481840",
-						dashVersion: "34268173",
+						commit: "5cfa77030a13699b82daa795ed38a62eef5af944",
+						dashVersion: "34276065",
 						env: "production",
-						builtAt: 1751295522757,
+						builtAt: 1751312733528,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -7976,9 +7976,6 @@
 				d2: function() {
 					return ce
 				},
-				e3: function() {
-					return $
-				},
 				il: function() {
 					return ee
 				},
@@ -13560,9 +13557,6 @@
 					return u
 				},
 				YC: function() {
-					return _
-				},
-				aC: function() {
 					return i
 				},
 				aR: function() {
@@ -13648,51 +13642,9 @@
 						label: "time.num_years",
 						smartCount: 1
 					}
-				},
-				i = {
-					[e.At.AILabyrinth]: 220,
-					[e.At.BlockAIBots]: 337,
-					[e.At.BrowserIntegrity]: 228,
-					[e.At.ChallengePassage]: 385,
-					[e.At.ClientCertificates]: 204,
-					[e.At.CloudflareManagedRuleset]: 240,
-					[e.At.CreateDeveloperPortal]: 228,
-					[e.At.CustomFallthrough]: 252,
-					[e.At.EndpointDiscovery]: 348,
-					[e.At.FirewallAi]: 204,
-					[e.At.HttpDdos]: 263,
-					[e.At.IpAccessRules]: 228,
-					[e.At.IpLists]: 204,
-					[e.At.JwtValidation]: 356,
-					[e.At.Labels]: 204,
-					[e.At.LeakedCredentialCheck]: 204,
-					[e.At.MaliciousUploadDetection]: 204,
-					[e.At.ManagedRuleset]: 252,
-					[e.At.Mtls]: 228,
-					[e.At.NetworkDdos]: 231,
-					[e.At.OwaspCore]: 252,
-					[e.At.RateLimitAuthentication]: 228,
-					[e.At.ReplaceInsecureJavascript]: 220,
-					[e.At.RobotsTxt]: 220,
-					[e.At.SequenceDetection]: 320,
-					[e.At.SchemaDiscovery]: 348,
-					[e.At.SchemaValidation]: 429,
-					[e.At.SecurityLevel]: 337,
-					[e.At.SecurityTxt]: 204,
-					[e.At.SensitiveDataDetection]: 204,
-					[e.At.SessionIdentifiers]: 228,
-					[e.At.SslDdos]: 207,
-					[e.At.TokenConfigurations]: 228,
-					[e.At.UserAgentBlocking]: 204,
-					[e.At.VolumetricAbuse]: 180,
-					[e.At.ZoneLockdown]: 228,
-					[e.At.ContinuousScriptMonitoring]: 361,
-					[e.At.BotManagement]: 380,
-					[e.At.SuperBotFightMode]: 204,
-					[e.At.BotFightMode]: 204
 				};
-			let _ = function(c) {
-				return c.LOAD_SETTINGS = "load setting", c.OPEN_SIDE_MODAL_SETTING = "open side modal setting", c.CLOSE_SIDE_MODAL_SETTING = "close side modal setting", c.CHANGE_SETTING = "change setting", c.FILTER_SETTING = "filter setting", c
+			let i = function(_) {
+				return _.LOAD_SETTINGS = "load setting", _.OPEN_SIDE_MODAL_SETTING = "open side modal setting", _.CLOSE_SIDE_MODAL_SETTING = "close side modal setting", _.CHANGE_SETTING = "change setting", _.FILTER_SETTING = "filter setting", _
 			}({})
 		},
 		"../react/pages/security/detections/pages/root/components/new-settings/resources/types.ts": function(W, y, t) {
@@ -14825,7 +14777,7 @@
 				}
 			});
 			let T = function(M) {
-				return M.APP_SEC_MVP = "app-security-navigation-mvp", M.APP_SEC_SETTINGS_UI = "new-security-settings-ui", M
+				return M.APP_SEC_MVP = "app-security-navigation-mvp", M
 			}({})
 		},
 		"../react/pages/security/resources/types.ts": function(W, y, t) {
@@ -24422,4 +24374,4 @@ button.border {
 	}
 ]);
 
-//# debugId=1b21a846-37f5-5f35-b0cf-ffef02dd5e57
+//# debugId=2b6268e9-a8a4-595e-a1fb-3fa28f7860ea
