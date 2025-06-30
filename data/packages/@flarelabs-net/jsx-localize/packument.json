@@ -1,7 +1,7 @@
 {
 	"name": "@flarelabs-net/jsx-localize",
 	"dist-tags": {
-		"latest": "0.0.4"
+		"latest": "0.1.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -152,6 +152,36 @@
 					}
 				],
 				"unpackedSize": 1257700
+			}
+		},
+		"0.1.0": {
+			"name": "@flarelabs-net/jsx-localize",
+			"version": "0.1.0",
+			"dependencies": {
+				"recast": "^0.23.9"
+			},
+			"devDependencies": {
+				"@types/react": "^19.0.8",
+				"typescript": "^5.8.3",
+				"vite": "^6.3.3",
+				"vitest": "^3.1.1"
+			},
+			"peerDependencies": {
+				"react": "^19.0.0",
+				"@angular/localize": "^19.1.4"
+			},
+			"dist": {
+				"integrity": "sha512-w0c9CnLDG1eoedrkTrrBeHnvE6mo1cn6h8V4m+kWHf1x58eieDzAN0Ijxdq+a7+swF1ozpYhEDfYpW2UL8Yc+Q==",
+				"shasum": "2e4f06376c3c62a0e8963b00c8a8c7c5e252d397",
+				"tarball": "https://registry.npmjs.org/@flarelabs-net/jsx-localize/-/jsx-localize-0.1.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 1253408,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIGAP4j7dC7LMORK7Pba3HzLzm8hUZ74gEAgfYjblyuTvAiBVGCqqrOBEPgDwXwStHduziJM6z2wsPCJi36hPn7HEkg=="
+					}
+				]
 			}
 		}
 	}
