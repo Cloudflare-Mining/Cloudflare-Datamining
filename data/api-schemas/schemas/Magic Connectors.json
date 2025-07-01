@@ -19,7 +19,8 @@
 				"name": "connector_id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -95,15 +96,18 @@
 										"result": {
 											"properties": {
 												"activated": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"device": {
 													"properties": {
 														"id": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"serial_number": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -112,28 +116,36 @@
 													"type": "object"
 												},
 												"id": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"interrupt_window_duration_hours": {
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"interrupt_window_hour_of_day": {
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"last_heartbeat": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_seen_version": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_updated": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"notes": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"timezone": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -556,15 +568,18 @@
 											"items": {
 												"properties": {
 													"activated": {
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"device": {
 														"properties": {
 															"id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"serial_number": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -573,28 +588,36 @@
 														"type": "object"
 													},
 													"id": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"interrupt_window_duration_hours": {
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"interrupt_window_hour_of_day": {
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"last_heartbeat": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"last_seen_version": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"last_updated": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"notes": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"timezone": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -951,7 +974,8 @@
 				"name": "connector_id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1027,15 +1051,18 @@
 										"result": {
 											"properties": {
 												"activated": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"device": {
 													"properties": {
 														"id": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"serial_number": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1044,28 +1071,36 @@
 													"type": "object"
 												},
 												"id": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"interrupt_window_duration_hours": {
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"interrupt_window_hour_of_day": {
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"last_heartbeat": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_seen_version": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_updated": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"notes": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"timezone": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -6854,7 +6889,8 @@
 				"name": "connector_id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -6864,19 +6900,24 @@
 					"schema": {
 						"properties": {
 							"activated": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"interrupt_window_duration_hours": {
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"interrupt_window_hour_of_day": {
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"notes": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"timezone": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -6957,15 +6998,18 @@
 										"result": {
 											"properties": {
 												"activated": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"device": {
 													"properties": {
 														"id": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"serial_number": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -6974,28 +7018,36 @@
 													"type": "object"
 												},
 												"id": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"interrupt_window_duration_hours": {
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"interrupt_window_hour_of_day": {
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"last_heartbeat": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_seen_version": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_updated": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"notes": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"timezone": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -7315,7 +7367,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update Connector",
+		"summary": "Edit Connector to update specific properties",
 		"tags": [
 			"Magic Connectors"
 		],
@@ -7357,10 +7409,12 @@
 										"minProperties": 1,
 										"properties": {
 											"id": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"serial_number": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -7374,19 +7428,24 @@
 							{
 								"properties": {
 									"activated": {
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"interrupt_window_duration_hours": {
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"interrupt_window_hour_of_day": {
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"notes": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"timezone": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -7470,15 +7529,18 @@
 										"result": {
 											"properties": {
 												"activated": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"device": {
 													"properties": {
 														"id": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"serial_number": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -7487,28 +7549,36 @@
 													"type": "object"
 												},
 												"id": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"interrupt_window_duration_hours": {
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"interrupt_window_hour_of_day": {
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"last_heartbeat": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_seen_version": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_updated": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"notes": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"timezone": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -7934,7 +8004,8 @@
 				"name": "connector_id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -7944,19 +8015,24 @@
 					"schema": {
 						"properties": {
 							"activated": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"interrupt_window_duration_hours": {
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"interrupt_window_hour_of_day": {
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"notes": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"timezone": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -8037,15 +8113,18 @@
 										"result": {
 											"properties": {
 												"activated": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"device": {
 													"properties": {
 														"id": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"serial_number": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -8054,28 +8133,36 @@
 													"type": "object"
 												},
 												"id": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"interrupt_window_duration_hours": {
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"interrupt_window_hour_of_day": {
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"last_heartbeat": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_seen_version": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_updated": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"notes": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"timezone": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
