@@ -85,16 +85,4 @@ declare const _default: ComponentMeta<React.ComponentType<{
     gridJustify?: ("start" | "end" | "center" | "stretch") | undefined;
 }>>;
 export default _default;
-export declare const AIAudit: () => JSX.Element;
-export declare const Captcha: () => JSX.Element;
-export declare const CloudflareEmailSecurity: () => JSX.Element;
-export declare const CloudMulti: () => JSX.Element;
-export declare const CloudInternet: () => JSX.Element;
-export declare const Garbage: () => JSX.Element;
-export declare const Inbox: () => JSX.Element;
-export declare const Spectrum: () => JSX.Element;
-export declare const Table: () => JSX.Element;
-export declare const ThumbsUp: () => JSX.Element;
-export declare const ThumbsDown: () => JSX.Element;
-export declare const CaretReorder2: () => JSX.Element;
-export declare const Pin: () => JSX.Element;
+export declare const AllIcons: () => JSX.Element;

@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.3.2
+
+### Patch Changes
+
+- 5393268e6c: Add Icon Storybook stories dynamically
+
 ## 13.3.1
 
 ### Patch Changes
