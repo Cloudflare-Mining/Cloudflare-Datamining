@@ -916,8 +916,10 @@
 		"cpuLoad": "Average CPU load",
 		"gpuMemory": "Average GPU memory usage",
 		"memory": "Average memory usage",
-		"rxBandwidth": "Average RX bandwidth",
-		"txBandwidth": "Average TX bandwidth"
+		"rxBandwidth": "<small>DEPRECATED (Replaced by rxBandwidthBps):</small> Average RX bandwidth",
+		"rxBandwidthBps": "Average RX bandwidth in bps",
+		"txBandwidth": "<small>DEPRECATED (Replaced by txBandwidthBps):</small> Average TX bandwidth",
+		"txBandwidthBps": "Average TX bandwidth in bps"
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -945,9 +947,11 @@
 		"diskUsagePercentage": "Disk usage as a percentage of total disk space",
 		"gpuMemory": "Maximum GPU memory usage",
 		"memory": "Maximum memory usage",
-		"rxBandwidth": "Maximum RX bandwidth",
+		"rxBandwidth": "<small>DEPRECATED (Replaced by rxBandwidthBps):</small> Maximum RX bandwidth",
+		"rxBandwidthBps": "Maximum RX bandwidth",
 		"rxBytes": "<small>DEPRECATED (Replaced by sum { rxBytes }):</small> Total bytes received",
-		"txBandwidth": "Maximum TX bandwidth",
+		"txBandwidth": "<small>DEPRECATED (Replaced by txBandwidthBps):</small> Maximum TX bandwidth",
+		"txBandwidthBps": "Maximum TX bandwidth",
 		"txBytes": "<small>DEPRECATED (Replaced by sum { txBytes }):</small> Total bytes transmitted"
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsOrderBy": {
@@ -970,12 +974,18 @@
 		"memoryP50": "Memory usage (50th percentile)",
 		"memoryP90": "Memory usage (90th percentile)",
 		"memoryP99": "Memory usage (99th percentile)",
-		"rxBandwidthP50": "RX bandwidth (50th percentile)",
-		"rxBandwidthP90": "RX bandwidth (90th percentile)",
-		"rxBandwidthP99": "RX bandwidth (99th percentile)",
-		"txBandwidthP50": "TX bandwidth (50th percentile)",
-		"txBandwidthP90": "TX bandwidth (90th percentile)",
-		"txBandwidthP99": "TX bandwidth (99th percentile)"
+		"rxBandwidthBpsP50": "RX bandwidth (50th percentile)",
+		"rxBandwidthBpsP90": "RX bandwidth (90th percentile)",
+		"rxBandwidthBpsP99": "RX bandwidth (99th percentile)",
+		"rxBandwidthP50": "<small>DEPRECATED (Replaced by rxBandwidthBpsP50):</small> RX bandwidth (50th percentile)",
+		"rxBandwidthP90": "<small>DEPRECATED (Replaced by rxBandwidthBpsP90):</small> RX bandwidth (90th percentile)",
+		"rxBandwidthP99": "<small>DEPRECATED (Replaced by rxBandwidthBpsP99):</small> RX bandwidth (99th percentile)",
+		"txBandwidthBpsP50": "TX bandwidth (50th percentile)",
+		"txBandwidthBpsP90": "TX bandwidth (90th percentile)",
+		"txBandwidthBpsP99": "TX bandwidth (99th percentile)",
+		"txBandwidthP50": "<small>DEPRECATED (Replaced by txBandwidthBpsP50):</small> TX bandwidth (50th percentile)",
+		"txBandwidthP90": "<small>DEPRECATED (Replaced by txBandwidthBpsP90):</small> TX bandwidth (90th percentile)",
+		"txBandwidthP99": "<small>DEPRECATED (Replaced by txBandwidthBpsP99):</small> TX bandwidth (99th percentile)"
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsSum": {
 		"__description": "",
