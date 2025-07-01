@@ -5,35 +5,50 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon</strong></p>
-<p><strong>About the role</strong></p>
-<h3><strong>What You Would Do Here:</strong></h3>
-<p>At Cloudflare, our mission is to empower our people to do their best work. We're looking for a motivated and detail-oriented <strong>People Experience Manager</strong> to join our growing team. In this entry-level management role, you'll play a crucial part in supporting our rapidly expanding organization by ensuring the seamless and efficient experience for our employees, from inquiry resolution to accurate data management, and auditing of critical People and Payroll processes within your region.</p>
-<p>You'll be instrumental in <strong>guiding and developing a team</strong> focused on delivering world-class employee inquiry support. This includes acting as an <strong>escalation point for more complex matters</strong> involving People and Payroll questions, and ensuring that all transactions meet minimum standards, keeping our people systems auditable, clean, and up-to-date. A key focus will be on <strong>providing high-quality customer support to our internal clients and stakeholders</strong>, ensuring their needs are met with efficiency and accuracy. As we scale, you'll also have exciting opportunities to <strong>contribute to the design and improvement of our existing processes</strong>, aligning our operations across multiple regions.</p>
-<p><strong>Responsibilities:</strong></p>
+<p><strong>Available Locations: </strong>Hybrid - Atlanta, GA | Austin, TX | Denver, CO | Lisbon, Portugal&nbsp;</p>
+<h4><strong>What you'll do</strong></h4>
+<p>Cloudflare is looking for a backend engineer on our control plan product platform to help us build our customer APIs and our internal service APIs. This is a role for engineers that are familiar with standard backend backend architecture, and capable in database design and interaction. Our API platform is under constant load and scrutiny, so experience and commitment to easily understood and test code is also a key part of the role. Your ability to visualize the flow of data through a complex application is critical to your success, and to the team’s. You will be working closely with the product team to understand and document the functional needs of their product requirements, developing new code to solve new problems, as well as maintaining existing code to squash bugs. Our tech stack includes services built using Go, Redis, Postgres, and Cloudflare products (e.g. Workers). We are looking for proficiency in RESTful API design, relational databases (SQL), and modern containerized deployment practices.&nbsp;</p>
+<p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
+<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
 <ul>
-	<li><strong>Lead HR Service Delivery:</strong> Guide and develop a team focused on providing world-class employee inquiry support, serving as an escalation point for complex People and Payroll matters.</li>
-	<li><strong>Ensure Data Integrity &amp; Compliance:</strong> Oversee HR transactions to ensure they meet minimum standards, maintaining auditable, clean, and up-to-date people systems.</li>
-	<li><strong>Drive Operational Excellence:</strong> Partner with regional senior management and stakeholders to address their specific HR operational needs with high responsiveness and accuracy.</li>
-	<li><strong>Manage Payroll Operations:</strong> Oversee monthly payroll checks for your assigned region, ensuring accuracy and timely submission.</li>
-	<li><strong>Uphold Compliance Standards:</strong> Manage adherence to SOX Control &amp; Compliance, ensuring all Standard Operating Procedure (SOP) requirements are meticulously followed and documented.</li>
-	<li><strong>Optimize HR Processes:</strong> Contribute to the design, tracking, and implementation of improvements for HR business processes, translating operational needs into technical requirements.</li>
-	<li><strong>Facilitate Regional Approvals:</strong> Manage the regional offer approval process, ensuring strict compliance with internal guidelines.</li>
-	<li><strong>Support System Enhancements:</strong> Contribute to the implementation of improvement projects defined by the People Services group, collaborating with Centers of Excellence (COEs) and other internal teams to test new functionality and troubleshoot technical issues within HR systems.</li>
-	<li><strong>Analyze &amp; Report:</strong> Analyze support tickets and HR business processes to provide regional status insights and identify opportunities for continuous process enhancements.</li>
+	<li>3-5 years of professional experience building and managing software applications at large scale.</li>
+	<li>Deep knowledge of at least one modern programming language such as Go, Rust, JavaScript, PHP with strong computer science fundamentals.</li>
+	<li>Experience in designing and architecting large-scale distributed systems.</li>
+	<li>Passion for Observability (experience with Prometheus, Grafana, and Kibana are a plus, but not required).</li>
+	<li>Experience designing, implementing, and documenting customer-facing APIs are a huge plus.</li>
+	<li>Solid knowledge of SQL and common relational database systems such as PostgreSQL.</li>
+	<li>Experience debugging, optimizing and identifying possible failures in a large-scale distributed system.</li>
+	<li>Some understanding of the Cloudflare developers platform (Workers, Durable Objects, Queues, etc).</li>
+	<li>Experience with containers (Docker &amp; Kubernetes)&nbsp;</li>
 </ul>
-<h3><strong>What You'll Bring:</strong></h3>
+<h4><strong>Compensation</strong></h4>
+<p>Compensation may be adjusted depending on work location.</p>
+<h4><strong>Equity</strong></h4>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<h4><strong>Benefits</strong></h4>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<h4><strong>Health &amp; Welfare Benefits</strong></h4>
 <ul>
-	<li><strong>Experience:</strong> 2+ years of leadership experience in <strong>People Operations, HR Service Delivery, or Payroll</strong>, preferably within the EMEA region.</li>
-	<li><strong>HR Systems Expertise:</strong> Familiarity with HR systems such as <strong>Workday and Zendesk</strong>. Experience with Core HR, Talent, and Compensation modules is a plus.</li>
-	<li><strong>Process Improvement Mindset:</strong> Proven ability to support and contribute to projects aimed at enhancing operational efficiency and service delivery.</li>
-	<li><strong>Attention to Detail &amp; Accuracy:</strong> Highly detailed and process-oriented with a strong commitment to accuracy in all HR transactions and data management.</li>
-	<li><strong>Compliance Knowledge:</strong> Foundational knowledge of EMEA countries' employment law and a clear understanding of operating within these regulatory environments.</li>
-	<li><strong>Customer Focus:</strong> A strong customer service orientation and a dedication to delivering a positive internal client and employee experience.</li>
-	<li><strong>Communication Skills:</strong> Excellent oral and written communication skills, with the ability to clearly present information and respond to cross-regional and cross-functional inquiries.</li>
-	<li><strong>Prioritization &amp; Execution:</strong> Adept at prioritizing tasks, executing effectively, and providing clear status reports as needed.</li>
-	<li><strong>Organizational &amp; Problem-Solving Skills:</strong> Strong organizational, problem-solving, and time management abilities.</li>
-	<li><strong>Adaptability:</strong> Highly adaptable in a global, fast-paced environment with a proven ability to oversee payroll changes and reports for the EMEA region.</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<h4><strong>Financial Benefits</strong></h4>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<h4><strong>Time Off</strong></h4>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

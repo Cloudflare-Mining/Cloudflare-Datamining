@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/6890082?gh_jid=6890082",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/6579931?gh_jid=6579931",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3148681,
+	"internal_job_id": 3059305,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -18,13 +18,16 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "6500 - Human Resources",
+			"value": "4300 - Systems Engineering",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Atlanta, US",
+				"Austin, US",
+				"Denver, US",
 				"Lisbon, Portugal"
 			],
 			"value_type": "multi_select"
@@ -36,31 +39,48 @@
 			"value_type": "multi_select"
 		}
 	],
-	"id": 6890082,
-	"updated_at": "2025-06-26T10:14:15-04:00",
+	"id": 6579931,
+	"updated_at": "2025-07-01T12:51:04-04:00",
 	"requisition_id": null,
-	"title": "EMEA People Experience Manager",
+	"title": "Software Engineer, API and Zones",
 	"company_name": "Cloudflare",
-	"first_published": "2025-05-20T06:24:54-04:00",
+	"first_published": "2025-01-30T12:07:15-05:00",
 	"departments": [
 		{
-			"id": 29068,
-			"name": "People & Places",
-			"child_ids": [
-				78547,
-				78548,
-				81474
-			],
+			"id": 29067,
+			"name": "Engineering",
+			"child_ids": [],
 			"parent_id": null
 		}
 	],
 	"offices": [
+		{
+			"id": 19983,
+			"name": "Austin, TX",
+			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
 		{
 			"id": 63782,
 			"name": "Lisbon, Portugal",
 			"location": "Lisboa, Lisboa, Portugal",
 			"child_ids": [],
 			"parent_id": 74843
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 66815,
+			"name": "Atlanta, GA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
 		}
 	]
 }
