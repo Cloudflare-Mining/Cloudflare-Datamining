@@ -629,6 +629,14 @@
 																	}
 																],
 																"type": "object"
+															},
+															"origin_connection_limit": {
+																"description": "The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.",
+																"example": 60,
+																"maximum": 100,
+																"minimum": 5,
+																"type": "integer",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1147,6 +1155,14 @@
 																}
 															],
 															"type": "object"
+														},
+														"origin_connection_limit": {
+															"description": "The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.",
+															"example": 60,
+															"maximum": 100,
+															"minimum": 5,
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1502,6 +1518,14 @@
 									}
 								],
 								"type": "object"
+							},
+							"origin_connection_limit": {
+								"description": "The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.",
+								"example": 60,
+								"maximum": 100,
+								"minimum": 5,
+								"type": "integer",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -1851,6 +1875,14 @@
 																}
 															],
 															"type": "object"
+														},
+														"origin_connection_limit": {
+															"description": "The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.",
+															"example": 60,
+															"maximum": 100,
+															"minimum": 5,
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2277,6 +2309,14 @@
 									}
 								],
 								"type": "object"
+							},
+							"origin_connection_limit": {
+								"description": "The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.",
+								"example": 60,
+								"maximum": 100,
+								"minimum": 5,
+								"type": "integer",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2636,6 +2676,14 @@
 																}
 															],
 															"type": "object"
+														},
+														"origin_connection_limit": {
+															"description": "The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.",
+															"example": 60,
+															"maximum": 100,
+															"minimum": 5,
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3075,6 +3123,14 @@
 									}
 								],
 								"type": "object"
+							},
+							"origin_connection_limit": {
+								"description": "The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.",
+								"example": 60,
+								"maximum": 100,
+								"minimum": 5,
+								"type": "integer",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -3434,6 +3490,14 @@
 																}
 															],
 															"type": "object"
+														},
+														"origin_connection_limit": {
+															"description": "The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.",
+															"example": 60,
+															"maximum": 100,
+															"minimum": 5,
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"required": [
