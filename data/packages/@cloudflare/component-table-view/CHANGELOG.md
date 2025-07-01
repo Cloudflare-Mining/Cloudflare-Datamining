@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.7
+
+### Patch Changes
+
+- @cloudflare/builder-table@5.0.7
+
 ## 3.0.6
 
 ### Patch Changes

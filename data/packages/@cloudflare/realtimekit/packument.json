@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit",
 	"dist-tags": {
-		"latest": "1.1.1",
-		"staging": "1.1.1-staging.1"
+		"staging": "1.1.1-staging.1",
+		"latest": "1.1.1"
 	},
 	"versions": {
 		"0.0.0": {
@@ -2935,25 +2935,25 @@
 			"name": "@cloudflare/realtimekit",
 			"version": "1.1.1",
 			"dependencies": {
-				"@protobuf-ts/runtime": "^2.7.0",
+				"uuid": "^8.3.2",
 				"bowser": "^2.11.0",
 				"sdp-transform": "^2.14.1",
-				"uuid": "^8.3.2",
-				"worker-timers": "7.0.60"
+				"worker-timers": "7.0.60",
+				"@protobuf-ts/runtime": "^2.7.0"
 			},
 			"devDependencies": {},
 			"dist": {
-				"integrity": "sha512-wkxlEC1XYi7Ofxe6B9LaantpFxiVxCqX/D3zuv8yJn8bjvL1/Pqc9UfI/B5FX/CSPQ4JNtK2N9DA4LQgwHDNJg==",
 				"shasum": "5b96ead5505b2538a422d275c800b4639986b194",
 				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-1.1.1.tgz",
 				"fileCount": 16,
-				"unpackedSize": 3727774,
+				"integrity": "sha512-wkxlEC1XYi7Ofxe6B9LaantpFxiVxCqX/D3zuv8yJn8bjvL1/Pqc9UfI/B5FX/CSPQ4JNtK2N9DA4LQgwHDNJg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDG2WrqsTCLvRWtNuDtu/oMXZuTl7358bjp2OYQqMQNoQIhAI7w7gDg0JNaARQQgefULrvWGk63uxyTEriNnqr8vus/"
+						"sig": "MEYCIQDG2WrqsTCLvRWtNuDtu/oMXZuTl7358bjp2OYQqMQNoQIhAI7w7gDg0JNaARQQgefULrvWGk63uxyTEriNnqr8vus/",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 3727774
 			}
 		}
 	}

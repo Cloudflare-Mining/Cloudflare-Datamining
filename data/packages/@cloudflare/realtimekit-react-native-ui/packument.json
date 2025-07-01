@@ -554,40 +554,40 @@
 			"version": "0.1.2-staging.9",
 			"dependencies": {
 				"lodash": "^4.17.21",
-				"radio-buttons-react-native": "^1.0.4",
-				"react-native-element-dropdown": "^2.0.0",
-				"react-native-gifted-chat": "~2.4.0",
-				"react-native-svg-transformer": "^1.0.0",
+				"initials": "^3.0.1",
 				"react-native-switch": "^1.5.1",
-				"react-native-url-polyfill": "^1.3.0",
 				"abortcontroller-polyfill": "^1.4.0",
-				"initials": "^3.0.1"
+				"react-native-gifted-chat": "~2.4.0",
+				"react-native-url-polyfill": "^1.3.0",
+				"radio-buttons-react-native": "^1.0.4",
+				"react-native-svg-transformer": "^1.0.0",
+				"react-native-element-dropdown": "^2.0.0"
 			},
 			"peerDependencies": {
-				"@cloudflare/realtimekit-react-native": "*",
-				"@cloudflare/react-native-webrtc": "*",
 				"react": "*",
 				"react-native": "*",
-				"@react-native-documents/picker": "*",
-				"react-native-file-viewer": "*",
 				"react-native-fs": "*",
-				"react-native-safe-area-context": "*",
-				"react-native-sound-player": "*",
 				"react-native-svg": "*",
-				"react-native-webview": "*"
+				"react-native-webview": "*",
+				"react-native-file-viewer": "*",
+				"react-native-sound-player": "*",
+				"@react-native-documents/picker": "*",
+				"react-native-safe-area-context": "*",
+				"@cloudflare/react-native-webrtc": "*",
+				"@cloudflare/realtimekit-react-native": "*"
 			},
 			"dist": {
-				"integrity": "sha512-+DaIjBcBNt5oSLgLYcBnU98t8HznlqjahAton55fXH8zUzgoy/iFPtxHVePk+HxkPur7IuX3z+/1Fh/6RLOEVQ==",
 				"shasum": "b1c99365bcc1bd066421bf818638ff1907cf482c",
 				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-native-ui/-/realtimekit-react-native-ui-0.1.2-staging.9.tgz",
 				"fileCount": 669,
-				"unpackedSize": 3501294,
+				"integrity": "sha512-+DaIjBcBNt5oSLgLYcBnU98t8HznlqjahAton55fXH8zUzgoy/iFPtxHVePk+HxkPur7IuX3z+/1Fh/6RLOEVQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIHhBkU8E+2NH68/VbYUzqkMeZWmKP7kJ4gPH53YD+a0rAiEAppiS0ctzYmTLPrLgqb0YIm3XWCLBg2Sj+UXyq64gDxk="
+						"sig": "MEUCIHhBkU8E+2NH68/VbYUzqkMeZWmKP7kJ4gPH53YD+a0rAiEAppiS0ctzYmTLPrLgqb0YIm3XWCLBg2Sj+UXyq64gDxk=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 3501294
 			}
 		}
 	}

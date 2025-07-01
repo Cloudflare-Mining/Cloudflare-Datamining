@@ -1,5 +1,11 @@
 # Change Log
 
+## 10.0.7
+
+### Patch Changes
+
+- @cloudflare/component-link@9.0.7
+
 ## 10.0.6
 
 ### Patch Changes
