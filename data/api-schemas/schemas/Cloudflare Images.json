@@ -3178,11 +3178,12 @@
 							"file": {
 								"description": "An image binary data. Only needed when type is uploading a file.",
 								"format": "binary",
+								"type": "string",
 								"x-auditable": true
 							},
 							"id": {
 								"description": "An optional custom unique identifier for your image.",
-								"format": "string",
+								"type": "string",
 								"x-auditable": true
 							},
 							"metadata": {
