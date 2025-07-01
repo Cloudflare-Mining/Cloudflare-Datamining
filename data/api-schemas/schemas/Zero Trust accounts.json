@@ -1373,6 +1373,18 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
+																		"read_only": {
+																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"readOnly": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"source_account": {
+																			"description": "Account tag of account that shared this setting",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
 																		"suppress_footer": {
 																			"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																			"example": false,
@@ -1478,6 +1490,18 @@
 																			"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																			"example": true,
 																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"read_only": {
+																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"readOnly": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"source_account": {
+																			"description": "Account tag of account that shared this setting",
+																			"readOnly": true,
+																			"type": "string",
 																			"x-auditable": true
 																		}
 																	},
@@ -1803,6 +1827,18 @@
 																					"type": "string",
 																					"x-auditable": true
 																				},
+																				"read_only": {
+																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"readOnly": true,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"source_account": {
+																					"description": "Account tag of account that shared this setting",
+																					"readOnly": true,
+																					"type": "string",
+																					"x-auditable": true
+																				},
 																				"suppress_footer": {
 																					"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																					"example": false,
@@ -1908,6 +1944,18 @@
 																					"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																					"example": true,
 																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"read_only": {
+																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"readOnly": true,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"source_account": {
+																					"description": "Account tag of account that shared this setting",
+																					"readOnly": true,
+																					"type": "string",
 																					"x-auditable": true
 																				}
 																			},
@@ -3362,6 +3410,18 @@
 												"type": "string",
 												"x-auditable": true
 											},
+											"read_only": {
+												"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+												"readOnly": true,
+												"type": "boolean",
+												"x-auditable": true
+											},
+											"source_account": {
+												"description": "Account tag of account that shared this setting",
+												"readOnly": true,
+												"type": "string",
+												"x-auditable": true
+											},
 											"suppress_footer": {
 												"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 												"example": false,
@@ -3467,6 +3527,18 @@
 												"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 												"example": true,
 												"type": "boolean",
+												"x-auditable": true
+											},
+											"read_only": {
+												"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+												"readOnly": true,
+												"type": "boolean",
+												"x-auditable": true
+											},
+											"source_account": {
+												"description": "Account tag of account that shared this setting",
+												"readOnly": true,
+												"type": "string",
 												"x-auditable": true
 											}
 										},
@@ -3767,6 +3839,18 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
+																		"read_only": {
+																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"readOnly": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"source_account": {
+																			"description": "Account tag of account that shared this setting",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
 																		"suppress_footer": {
 																			"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																			"example": false,
@@ -3872,6 +3956,18 @@
 																			"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																			"example": true,
 																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"read_only": {
+																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"readOnly": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"source_account": {
+																			"description": "Account tag of account that shared this setting",
+																			"readOnly": true,
+																			"type": "string",
 																			"x-auditable": true
 																		}
 																	},
@@ -4197,6 +4293,18 @@
 																					"type": "string",
 																					"x-auditable": true
 																				},
+																				"read_only": {
+																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"readOnly": true,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"source_account": {
+																					"description": "Account tag of account that shared this setting",
+																					"readOnly": true,
+																					"type": "string",
+																					"x-auditable": true
+																				},
 																				"suppress_footer": {
 																					"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																					"example": false,
@@ -4302,6 +4410,18 @@
 																					"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																					"example": true,
 																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"read_only": {
+																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"readOnly": true,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"source_account": {
+																					"description": "Account tag of account that shared this setting",
+																					"readOnly": true,
+																					"type": "string",
 																					"x-auditable": true
 																				}
 																			},
@@ -5446,6 +5566,18 @@
 												"type": "string",
 												"x-auditable": true
 											},
+											"read_only": {
+												"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+												"readOnly": true,
+												"type": "boolean",
+												"x-auditable": true
+											},
+											"source_account": {
+												"description": "Account tag of account that shared this setting",
+												"readOnly": true,
+												"type": "string",
+												"x-auditable": true
+											},
 											"suppress_footer": {
 												"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 												"example": false,
@@ -5551,6 +5683,18 @@
 												"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 												"example": true,
 												"type": "boolean",
+												"x-auditable": true
+											},
+											"read_only": {
+												"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+												"readOnly": true,
+												"type": "boolean",
+												"x-auditable": true
+											},
+											"source_account": {
+												"description": "Account tag of account that shared this setting",
+												"readOnly": true,
+												"type": "string",
 												"x-auditable": true
 											}
 										},
@@ -5851,6 +5995,18 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
+																		"read_only": {
+																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"readOnly": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"source_account": {
+																			"description": "Account tag of account that shared this setting",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
 																		"suppress_footer": {
 																			"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																			"example": false,
@@ -5956,6 +6112,18 @@
 																			"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																			"example": true,
 																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"read_only": {
+																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"readOnly": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"source_account": {
+																			"description": "Account tag of account that shared this setting",
+																			"readOnly": true,
+																			"type": "string",
 																			"x-auditable": true
 																		}
 																	},
@@ -6281,6 +6449,18 @@
 																					"type": "string",
 																					"x-auditable": true
 																				},
+																				"read_only": {
+																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"readOnly": true,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"source_account": {
+																					"description": "Account tag of account that shared this setting",
+																					"readOnly": true,
+																					"type": "string",
+																					"x-auditable": true
+																				},
 																				"suppress_footer": {
 																					"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																					"example": false,
@@ -6386,6 +6566,18 @@
 																					"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																					"example": true,
 																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"read_only": {
+																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"readOnly": true,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"source_account": {
+																					"description": "Account tag of account that shared this setting",
+																					"readOnly": true,
+																					"type": "string",
 																					"x-auditable": true
 																				}
 																			},
