@@ -1,0 +1,141 @@
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2efLy9f8GZ7f7wDsn9nZSx/2c1c678bb0ee7cf69add01e7cc1b1802/unnamed__7_.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>As a site owner, how do you know which bots to allow on your site, and which you’d like to block? Existing identification methods rely on a combination of IP address range (which may be shared by other services, or change over time) and user-agent header (easily spoofable). These have limitations and deficiencies. In our <a href="https://blog.cloudflare.com/web-bot-auth"><u>last blog post</u></a>, we proposed using HTTP Message Signatures: a way for developers of bots, agents, and crawlers to clearly identify themselves by cryptographically signing requests originating from their service.&nbsp;</p>
+	<p>Since we published the blog post on Message Signatures and the <a href="https://datatracker.ietf.org/doc/html/draft-meunier-web-bot-auth-architecture"><u>IETF draft for Web Bot Auth</u></a> in May 2025, we’ve seen significant interest around implementing and deploying Message Signatures at scale. It’s clear that well-intentioned bot owners want a clear way to identify their bots to site owners, and site owners want a clear way to identify and manage bot traffic. Both parties seem to agree that deploying cryptography for the purposes of authentication is the right solution.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+	<p>Today, we’re announcing that we’re integrating HTTP Message Signatures directly into our <b>Verified Bots Program</b>. This announcement has two main parts: (1) for bots, crawlers, and agents, we’re simplifying enrollment into the Verified Bots program for those who sign requests using Message Signatures, and (2) we’re encouraging <i>all bot operators moving forward </i>to use Message Signatures over existing verification mechanisms. Because Verified Bots are considered authenticated, they do not face challenges from our Bot Management to identify as bots, given they’re already identified as such.</p>
+	<p>For site owners, no additional action is required – Cloudflare will automatically validate signatures on our edge, and if that validation is a success, that traffic will be marked as verified so that site owners can use the <a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots/categories"><u>verified bot fields</u></a> to create Bot Management and <a href="https://developers.cloudflare.com/waf/custom-rules"><u>WAF rules</u></a> based on it.&nbsp;&nbsp;</p>
+	<p>This isn't just about simplifying things for bot operators — it’s about giving website owners unparalleled accuracy in identifying trusted bot traffic, cutting down on the overhead for cryptographic verification, and fundamentally transforming how we manage authentication across the Cloudflare network.</p>
+	<div class="flex anchor relative">
+		<h2 id="become-a-verified-bot-with-message-signatures">Become a Verified Bot with Message Signatures</h2>
+		<a href="https://blog.cloudflare.com/#become-a-verified-bot-with-message-signatures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare’s existing <a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots"><u>Verified Bots program</u></a> is for bots that are transparent about who they are and what they do, like indexing sites for search or scanning for security vulnerabilities. You can see a list of these verified bots in <a href="https://radar.cloudflare.com/bots#verified-bots"><u>Cloudflare Radar</u></a>:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2lMYno3QOwtwfTDDgeqFx8/c69088229dcf9fc08f5a76ce7e0a0354/1.png" alt="A preview of the Verified Bots page on Cloudflare Radar.&nbsp;" class="kg-image" width="1999" height="1070" loading="lazy">
+	</figure>
+	<p><sup><i>A preview of the Verified Bots page on Cloudflare Radar.&nbsp;</i></sup></p>
+	<p>In the past, in order to <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fconfigurations%2Fverified-bots"><u>apply</u></a> to be a verified bot, we used to ask for IP address ranges or reverse DNS names so that we could verify your identity. This required some manual steps like checking that the IP address range is valid and is associated with the appropriate <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system"><u>ASN</u></a>.&nbsp;</p>
+	<p>With the integration of Message Signatures, we’re aiming to streamline applications into our Verified Bot program. Bots applying with well-formed Message Signatures will be prioritized, and approved more quickly!&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="getting-started">Getting started</h2>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In order to make generating Message Signatures as easy as possible, Cloudflare is providing two open source libraries: a <a href="https://crates.io/crates/web-bot-auth"><u>web-bot-auth library in rust</u></a>, and a <a href="https://www.npmjs.com/package/web-bot-auth"><u>web-bot-auth npm package in TypeScript</u></a>. If you’re working on a different implementation, <a href="https://www.cloudflare.com/lp/verified-bots"><u>let us know</u></a> – we’d love to add it to our <a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots/web-bot-auth"><u>developer docs</u></a>!</p>
+	<p>At a high level, signing your requests with web bot auth consists of the following steps:&nbsp;</p>
+	<ul>
+		<li>
+			<p>Generate a valid signing key. See <a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots/web-bot-auth/#1-generate-a-valid-signing-key"><u>Signing Key section</u></a> for step-by-step instructions.</p>
+		</li>
+		<li>
+			<p>Host a JSON web key set containing your public key under <code>/.well-known/http-message-signature-directory</code> of your website.</p>
+		</li>
+		<li>
+			<p>Sign responses for that URL using a Web Bot Auth library, one signature for each key contained in it, to prove you own it. See the <a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots/web-bot-auth/#2-host-a-key-directory"><u>Hosting section</u></a> for step-by-step instructions.</p>
+		</li>
+		<li>
+			<p>Register that URL with us, using our Verified Bots form. This can be done directly in your Cloudflare account. See <a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots/overview"><u>our documentation</u></a>.</p>
+		</li>
+		<li>
+			<p>Sign requests using a Web Bot Auth library.&nbsp;</p>
+		</li>
+	</ul>
+	<p>
+		As an example, <a href="https://radar.cloudflare.com/scan"><u>Cloudflare Radar's URL Scanner</u></a> lets you scan any URL and get a publicly shareable report with security, performance, technology, and network information. Here’s an example of what a well-formed signature looks like for requests coming from URL Scanner:</p>
+	<pre class="language-Rust"><code class="language-Rust">GET /path/to/resource HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36
+Signature-Agent: "https://web-bot-auth-directory.radar-cfdata-org.workers.dev"
+Signature-Input: sig=("@authority" "signature-agent");\
+             	 created=1700000000;\
+             	 expires=1700011111;\
+             	 keyid="poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U";\
+             	 tag="web-bot-auth"
+Signature:sig=jdq0SqOwHdyHr9+r5jw3iYZH6aNGKijYp/EstF4RQTQdi5N5YYKrD+mCT1HA1nZDsi6nJKuHxUi/5Syp3rLWBA==:</code></pre>
+	<p>Since we’ve already registered URLScanner as a Verified Bot, Cloudflare will now automatically verify that the signature in the <code>Signature</code> header matches the request — more on that later.</p>
+	<div class="flex anchor relative">
+		<h2 id="register-your-bot">Register your bot</h2>
+		<a href="https://blog.cloudflare.com/#register-your-bot" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Access the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fconfigurations%2Fverified-bots"><u>Verified Bots submission form</u></a> on your account. If that link does not immediately take you there, go to <i>your Cloudflare account</i> →&nbsp; <i>Account Home</i>&nbsp; → <i>the three dots next to your account name</i>&nbsp; → <i>Configurations</i> → <i>Verified Bots.</i></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73yQcvLmiVDe19HJXYvBIc/ca2bdb2bb81addc29583568087c2ccc2/3.png" alt="" class="kg-image" width="1560" height="1718" loading="lazy">
+	</figure>
+	<p>If you do not have a Cloudflare account, you can <a href="https://dash.cloudflare.com/sign-up"><u>sign up for a free one</u></a>.</p>
+	<p>For the verification method, select "Request Signature", then enter the URL of your key directory in Validation Instructions. Specifying the User-Agent values is optional if you’re submitting a Request Signature bot.&nbsp;</p>
+	<p>Once your application has gone through our (now shortened) review process, you don’t need to take any further action.</p>
+	<div class="flex anchor relative">
+		<h2 id="message-signature-verification-for-origins">Message Signature verification for origins</h2>
+		<a href="https://blog.cloudflare.com/#message-signature-verification-for-origins" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Starting today, Cloudflare is ramping up verification of <a href="https://datatracker.ietf.org/doc/html/draft-meunier-web-bot-auth-architecture"><u>cryptographic signatures provided by automated crawlers and bots</u></a>. This is currently available for all Free and Pro plans, and as we continue to test and validate at scale, will be released to all Business and Enterprise plans. This means that as time passes, the number of unauthenticated web crawlers should diminish, ensuring most bot traffic is authenticated before it reaches your website’s servers, helping to prevent spoofing attacks.&nbsp;</p>
+	<p>At a high level, signature verification works like this:&nbsp;</p>
+	<ol>
+		<li>
+			<p>A bot or agent sends a request to a website behind Cloudflare.</p>
+		</li>
+		<li>
+			<p>Cloudflare’s Message Signature verification service checks for the <code>Signature</code>, <code>Signature-Input</code>, and <code>Signature-Agent</code> headers.</p>
+		</li>
+		<li>
+			<p>It checks that the incoming request presents a <code>keyid</code> parameter in your Signature-Input that points to a key we already know.</p>
+		</li>
+		<li>
+			<p>It looks at the <code>expires</code> parameter in the incoming bot request. If the current time is after expiration, verification fails. This guards against replay attacks, preventing malicious agents from trying to pass as a bot by retrying messages they captured in the past.</p>
+		</li>
+		<li>
+			<p>It checks that you’ve specified a <code>tag</code> parameter indicating <code>web-bot-auth</code>, to indicate your intent that the message be handled using web bot authentication specifically</p>
+		</li>
+		<li>
+			<p>It looks at all the <a href="https://www.rfc-editor.org/rfc/rfc9421#covered-components"><u>components</u></a> chosen in your <code>Signature-Input</code> header, and constructs <a href="https://www.rfc-editor.org/rfc/rfc9421#name-creating-the-signature-base"><u>a signature base</u></a> from it.&nbsp;</p>
+		</li>
+		<li>
+			<p>If all pre-flight checks pass, Cloudflare attempts to verify the signature base against the value in Signature field using an <a href="https://www.rfc-editor.org/rfc/rfc9421#name-eddsa-using-curve-edwards25"><u>ed25519 verification algorithm</u></a> and the key supplied in <code>keyid</code>.</p>
+		</li>
+		<li>
+			<p>Verified Bots and other systems at Cloudflare use a successful verification as proof of your identity, and apply rules corresponding to that identity.&nbsp;</p>
+		</li>
+	</ol>
+	<p>If any of the above steps fail, Cloudflare falls back to existing bot identification and mitigation mechanisms. As the system matures, we would strengthen these requirements, and limit the possibilities of a soft downgrade.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/128Ox15wBqBPVKUUzvn4gA/acca9b9e6df243b8317b8964285ce57c/2.png" alt="" class="kg-image" width="1396" height="764" loading="lazy">
+	</figure>
+	<p>As a site owner, you can segment your Verified Bot traffic by its type and purpose by adding the <a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots/categories"><u>Verified Bot Categories</u></a> field <code>cf.verified_bot_category</code> as a filter criterion in <a href="https://developers.cloudflare.com/waf/custom-rules"><u>WAF Custom rules</u></a>, <a href="https://developers.cloudflare.com/waf/rate-limiting-rules"><u>Advanced Rate Limiting</u></a>, and Late <a href="https://developers.cloudflare.com/rules/transform"><u>Transform rules</u></a>. For instance, to allow the Bibliothèque nationale de France and the Library of Congress, and institutions dedicated to academic research, you can add a rule that allows bots in the <code>Academic Research</code> category.</p>
+	<div class="flex anchor relative">
+		<h2 id="where-were-going-next">Where we’re going next</h2>
+		<a href="https://blog.cloudflare.com/#where-were-going-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>HTTP Message Signatures is a primitive that is useful beyond Cloudflare – the IETF standardized it as part of <a href="https://datatracker.ietf.org/doc/html/rfc9421"><u>RFC 9421</u></a>.</p>
+	<p>As discussed in our <a href="https://blog.cloudflare.com/web-bot-auth/#introducing-http-message-signatures"><u>previous blog post</u></a>, Cloudflare believes that making Message Signatures a core component of bot authentication on the web should follow the same path. The <a href="https://www.ietf.org/archive/id/draft-meunier-web-bot-auth-architecture-02.html"><u>specifications</u></a> for the protocol are being built in the open, and they have already evolved following feedback.</p>
+	<p>Moreover, due to widespread interest, the IETF is considering forming a working group around <a href="https://datatracker.ietf.org/wg/webbotauth/about"><u>Web Bot Auth</u></a>. Should you be a crawler, an origin, or even a CDN, we invite you to provide feedback to ensure the solution gets stronger, and suits your needs.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-better-more-trusted-internet">A better, more trusted Internet</h2>
+		<a href="https://blog.cloudflare.com/#a-better-more-trusted-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>For bot, agent, and crawler operators that act transparently and provide vital services for the Internet, we’re providing a faster and more automated path to being recognized as a Verified Bot, reducing manual processes. We trust that this approach improves bot authentication from what were formerly brittle and unreliable authentication methods, to a secure and reliable alternative. It should reduce the overall volume of friction and hurdles genuinely useful bots face.</p>
+	<p>For site owners, Message Signatures provides better assurance that the bot traffic is legitimate — automatically recognized and allowed, minimizing disruption to essential services (e.g., search engine indexing, monitoring). In line with our commitments to making TLS/<a href="https://blog.cloudflare.com/introducing-universal-ssl"><u>SSL</u></a> and <a href="https://blog.cloudflare.com/pt-br/post-quantum-zero-trust"><u>Post-Quantum</u></a> certificates available for everyone, we’ll always offer the cryptographic verification of Message Signatures for all sites because we believe in a safer and more efficient Internet by fostering a trusted environment for both human and automated traffic.</p>
+	<p>If you have a feature request, feedback, or are interested in partnering with us, please <a href="https://www.cloudflare.com/lp/verified-bots"><u>reach out</u></a>.</p>
+</div>
