@@ -11928,12 +11928,27 @@
 														"type": "string"
 													},
 													"run_worker_first": {
-														"description": "Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.",
-														"example": "[\"/api/*\", \"/oauth/callback\", \"!/api/assets/*\"]",
-														"items": {
-															"type": "string"
-														},
-														"type": "array"
+														"oneOf": [
+															{
+																"description": "Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.",
+																"example": "[\"/api/*\", \"/oauth/callback\", \"!/api/assets/*\"]",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															{
+																"description": "Enables routing to always invoke the Worker script ahead of all requests. When true, this is equivalent to `[\"/*\"]` in the string array version of this field.",
+																"example": true,
+																"type": "boolean"
+															}
+														]
+													},
+													"serve_directly": {
+														"deprecated": true,
+														"description": "When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.",
+														"example": true,
+														"type": "boolean"
 													}
 												},
 												"type": "object"
