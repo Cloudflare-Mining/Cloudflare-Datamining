@@ -5,35 +5,65 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, New York, Lisbon, London (Hybrid)</p>
-<h4><strong>About the Department</strong></h4>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p><strong>About the Team</strong></p>
-<p>Workers AI is Cloudflare’s AI inference service, enabling customers to use a wide variety of AI models both within Cloudflare’s Workers development platform and via API. The Workers AI team owns the whole stack that powers the product, from front-end development all the way to low-level inference code. Accordingly we’re a team with a diverse array of technical skills, but everyone on the team is curious and passionate about the possibilities of generative AI.</p>
-<p><strong>What You’ll Do</strong></p>
-<p>The Workers AI platform team is responsible for scheduling models and routing requests to the best model instance to handle it. Our stack is built using Rust and Typescript and takes advantage of Cloudflare’s internal container platform. You will be a technical leader using quantitative metrics to help the team deliver improved flexibility and performance across the platform. This is a distributed systems role, and you will bring experience and expertise to the team in the areas of load balancing, scheduling, and resource sharing.</p>
-<p><strong>What You’ll Do</strong></p>
-<p>The Workers AI platform team is responsible for scheduling models and routing requests to the best model instance to handle it. Our stack is built using Rust and Typescript and takes advantage of Cloudflare’s internal container platform. You will be a technical leader using quantitative metrics to help the team deliver improved flexibility and performance across the platform. This is a distributed systems role, and you will bring experience and expertise to the team in the areas of load balancing, scheduling, and resource sharing.</p>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>About the Department</strong></p>
+<p>The Internal Audit (IA) organization is responsible for delivering high-quality, objective, and independent assurance over the Company’s key business and financial risks to the Audit Committee and Management in a cost-effective manner and in alignment with professional standards. In addition to managing the Company’s SOX compliance program, the function is expanding its focus to include broader operational and strategic risks. Reflecting the Company’s core value of continuous improvement, Internal Audit is also exploring more efficient audit approaches and adopting industry best practices where appropriate.</p>
+<p><strong>About the Role</strong></p>
+<p>We are seeking a highly organized and strategic SOX PMO Manager to support the ongoing transformation of our internal controls environment, with an immediate focus on our Oracle ERP implementation. This role will play a key part in driving SOX compliance readiness throughout the system implementation lifecycle, while also contributing to the long-term development and sustainability of the company’s enterprise-wide SOX program.</p>
+<p>This is a highly cross-functional role requiring close collaboration with stakeholders in Finance, IT and external auditors to ensure that compliance requirements are embedded into business processes, systems, and controls—both during implementation and as part of our ongoing controls framework.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Experience setting the architecture and technical direction of large, cross-team and cross-functional engineering projects</li>
-	<li>Strong communication skills</li>
-	<li>Comfortable with tight deadlines and short release cycles</li>
-	<li>Strong systems-level programming skills</li>
-	<li>Experience building large-scale distributed systems</li>
-	<li>Expert-level knowledge in a modern compiled language like Go, Rust or modern C++</li>
+	<li>Serve as the primary liaison for SOX-related activities within the Oracle ERP implementation, ensuring key controls are designed, documented, and tested to meet compliance requirements.</li>
+	<li>Collaborate with Finance, IT and implementation partners to integrate SOX requirements into process design, configuration, and user acceptance testing (UAT) and System Integration Testing (SIT) activities.</li>
+	<li>Collaborate with IT and business teams to ensure user roles, segregation of duties (SoD), and access controls meet compliance standards.</li>
+	<li>Partner with stakeholders to identify and implement automated controls, ensuring effective control coverage while reducing manual effort and increasing reliability.</li>
+	<li>Support the development of a strategy for automating control testing using Oracle’s reporting capabilities and advanced tools such as AI and data analytics.</li>
+	<li>Maintain and update SOX documentation, including risk-control matrices (RCMs), narratives, and process flows in response to system and process changes.</li>
+	<li>Coordinate walkthroughs, testing activities, and remediation plans in collaboration with internal stakeholders and external auditors.</li>
+	<li>Track SOX program milestones, manage status reporting, and drive timely completion of testing and issue resolution.</li>
 </ul>
+<ul>
+	<li>Report to the Director, SOX Program Management</li>
+</ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>5 to 8+ years of experience in SOX compliance, internal audit, or external audit with a focus on public company environments.</li>
+	<li>Experience supporting Oracle ERP implementations with a focus on compliance and control design.</li>
+	<li>Deep understanding of internal controls over financial reporting (ICFR), including business process, ITGCs and automated controls.</li>
+	<li>Knowledge of automated controls, control testing automation, and emerging technologies such as AI or advanced analytics within an ERP context.</li>
+	<li>Excellent communication, organization, and stakeholder management skills.</li>
+	<li>Proficiency with GRC tools (e.g., AuditBoard, Workiva, Archer) and collaboration platforms.</li>
+	<li>CPA, CIA, CISA, or equivalent certification is a plus.</li>
+</ul>
+<p></p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
-<p>Medical/Rx Insurance, Dental Insurance, Vision Insurance ,Flexible Spending Accounts, Commuter Spending Accounts, Fertility &amp; Family Forming Benefits, On-demand mental health support and Employee Assistance Program, Global Travel Medical Insurance</p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
 <p><strong>Financial Benefits</strong></p>
-<p>Short and Long Term Disability Insurance, Life &amp; Accident Insurance401(k) Retirement Savings Plan, Employee Stock Participation Plan</p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
 <p><strong>Time Off</strong></p>
-<p>Flexible paid time off covering vacation and sick leave.&nbsp;Leave programs, including parental, pregnancy health, medical, and bereavement leave</p>
-<p>&nbsp;</p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
