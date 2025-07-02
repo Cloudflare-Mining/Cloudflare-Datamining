@@ -5953,7 +5953,7 @@
 									{
 										"contentfulId": "5RIJiFrT5odIQfXSVV0pNp",
 										"contentTypeId": "planElementFeatures",
-										"name": "Log retention",
+										"name": "Standard log retention",
 										"description": "Zero Trust logs are stored for a varying period of time based on the plan type and service used. Contract users can export logs via Logpush.\n\n[See tech docs >](https://developers.cloudflare.com/cloudflare-one/insights/logs/)",
 										"planValues": [
 											{
@@ -6934,6 +6934,119 @@
 												"contentTypeId": "planElementFeatureValueText",
 												"contentfulId": "7lc9r3JwVVojIs3b6iUR27",
 												"textValue": "Full-featured (add-on)",
+												"plan": {
+													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Contract",
+													"name": "Contract Plan",
+													"description": "Best for organizations building toward a full-featured SSE or SASE deployment that also desire maximum support.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "Annual custom price per user",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "70fOWLJrcnV0CyXw322wDA",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Enterprise_Plan-CTA",
+														"standardText": null,
+														"text": "Talk to an expert",
+														"url": "/products/zero-trust/plans/enterprise/",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "CeNaVOiQzauyrIbsMJyMh",
+										"contentTypeId": "planElementFeatures",
+										"name": "Log Explorer",
+										"description": "Log Explorer provides native log storage, retention, and analytics of HTTP and security event logs. Learn more at [https://www.cloudflare.com/application-services/products/log-explorer/](https://www.cloudflare.com/application-services/products/log-explorer/)\n<br><br>\nPRICING\n- Pay-as-you-go: Free for the first 10 GB, $1 per GB per month after.\n- Contract: Custom pricing",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "JZoX2QvNEMiUaUO91Qxnf",
+												"value": false,
+												"plan": {
+													"contentfulId": "kFF1UZHLyJ67qlqJFQPqr",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Free Plan",
+													"name": "Free Plan",
+													"description": "Best for teams under 50 users or enterprise proof-of-concept tests.",
+													"pricingDescription": "Add-ons billed monthly",
+													"price": 0,
+													"currency": "$",
+													"customPricingText": "$0 forever",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "1b1zcvHXVhf5RnmejD8Q8c",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Free_Plan-CTA",
+														"standardText": null,
+														"text": "Get started",
+														"url": "https://dash.cloudflare.com/sign-up/teams",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "5dqNj3TWupOYug0yM26y4U",
+												"textValue": "Add on",
+												"plan": {
+													"contentfulId": "3C1bIOtMfHrC9NVKhAmiYw",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Pay as you go",
+													"name": "Pay-as-you-go",
+													"description": "Best for teams over 50 users solving narrow SSE use cases and do not require enterprise support services.",
+													"pricingDescription": "Billed monthly",
+													"price": 7,
+													"currency": "$",
+													"customPricingText": "$7/user/month",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3aVc8bojzITFwNl96YpnNM",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Standard_Plan-CTA",
+														"standardText": null,
+														"text": "Get started",
+														"url": "https://dash.cloudflare.com/sign-up/teams",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "25BQwqq5wjfVv7PVH4MNiN",
+												"textValue": "Add on",
 												"plan": {
 													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
 													"contentTypeId": "planElementPlan",
@@ -11977,7 +12090,7 @@
 									{
 										"contentfulId": "5VCpU1Dpp8wj51aDfAE5iB",
 										"contentTypeId": "planElementFeatures",
-										"name": "Activity log retention",
+										"name": "Standard activity log retention",
 										"description": "On contract plans, DNS logs are stored 6 months, and HTTP and network logs for 30 days.",
 										"planValues": [
 											{
@@ -13297,6 +13410,119 @@
 												"contentTypeId": "planElementFeatureValueBoolean",
 												"contentfulId": "3p7RszoXcXC9o7gXlEjc5b",
 												"value": true,
+												"plan": {
+													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Contract",
+													"name": "Contract Plan",
+													"description": "Best for organizations building toward a full-featured SSE or SASE deployment that also desire maximum support.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "Annual custom price per user",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "70fOWLJrcnV0CyXw322wDA",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Enterprise_Plan-CTA",
+														"standardText": null,
+														"text": "Talk to an expert",
+														"url": "/products/zero-trust/plans/enterprise/",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "CeNaVOiQzauyrIbsMJyMh",
+										"contentTypeId": "planElementFeatures",
+										"name": "Log Explorer",
+										"description": "Log Explorer provides native log storage, retention, and analytics of HTTP and security event logs. Learn more at [https://www.cloudflare.com/application-services/products/log-explorer/](https://www.cloudflare.com/application-services/products/log-explorer/)\n<br><br>\nPRICING\n- Pay-as-you-go: Free for the first 10 GB, $1 per GB per month after.\n- Contract: Custom pricing",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "JZoX2QvNEMiUaUO91Qxnf",
+												"value": false,
+												"plan": {
+													"contentfulId": "kFF1UZHLyJ67qlqJFQPqr",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Free Plan",
+													"name": "Free Plan",
+													"description": "Best for teams under 50 users or enterprise proof-of-concept tests.",
+													"pricingDescription": "Add-ons billed monthly",
+													"price": 0,
+													"currency": "$",
+													"customPricingText": "$0 forever",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "1b1zcvHXVhf5RnmejD8Q8c",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Free_Plan-CTA",
+														"standardText": null,
+														"text": "Get started",
+														"url": "https://dash.cloudflare.com/sign-up/teams",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "5dqNj3TWupOYug0yM26y4U",
+												"textValue": "Add on",
+												"plan": {
+													"contentfulId": "3C1bIOtMfHrC9NVKhAmiYw",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Pay as you go",
+													"name": "Pay-as-you-go",
+													"description": "Best for teams over 50 users solving narrow SSE use cases and do not require enterprise support services.",
+													"pricingDescription": "Billed monthly",
+													"price": 7,
+													"currency": "$",
+													"customPricingText": "$7/user/month",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3aVc8bojzITFwNl96YpnNM",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Standard_Plan-CTA",
+														"standardText": null,
+														"text": "Get started",
+														"url": "https://dash.cloudflare.com/sign-up/teams",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "25BQwqq5wjfVv7PVH4MNiN",
+												"textValue": "Add on",
 												"plan": {
 													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
 													"contentTypeId": "planElementPlan",
