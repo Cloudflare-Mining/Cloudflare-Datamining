@@ -2,7 +2,12 @@
 	"footerBlurb": "Cloudflare's connectivity cloud protects <a target='_blank' href='https://www.cloudflare.com/network-services/' rel='noreferrer'>entire corporate networks</a>, helps customers build <a target='_blank' href='https://workers.cloudflare.com/' rel='noreferrer'>Internet-scale applications efficiently</a>, accelerates any <a target='_blank' href='https://www.cloudflare.com/performance/accelerate-internet-applications/' rel='noreferrer'>website or Internet application</a>, <a target='_blank' href='https://www.cloudflare.com/ddos/' rel='noreferrer'>wards off DDoS attacks</a>, keeps <a target='_blank' href='https://www.cloudflare.com/application-security/' rel='noreferrer'>hackers at bay</a>, and can help you on <a target='_blank' href='https://www.cloudflare.com/products/zero-trust/' rel='noreferrer'>your journey to Zero Trust</a>.<br/><br/>Visit <a target='_blank' href='https://one.one.one.one/' rel='noreferrer'>1.1.1.1</a> from any device to get started with our free app that makes your Internet faster and safer.<br/><br/>To learn more about our mission to help build a better Internet, <a target='_blank' href='https://www.cloudflare.com/learning/what-is-cloudflare/' rel='noreferrer'>start here</a>. If you&apos;re looking for a new career direction, check out <a target='_blank' href='http://www.cloudflare.com/careers' rel='noreferrer'>our open positions</a>.",
 	"initialReadingTime": "4",
 	"locale": "en-us",
-	"localesAvailable": [],
+	"localesAvailable": [
+		"zh-cn",
+		"ja-jp",
+		"ko-kr",
+		"es-la"
+	],
 	"post": {
 		"authors": [
 			{
@@ -23,18 +28,18 @@
 		"html": "<p>Almost 30 years ago, two graduate students at Stanford University — Larry Page and Sergey Brin — began working on a research project they called Backrub. That, of course, was the project that resulted in Google. But also something more: it created the business model for the web.</p><p>The deal that Google made with content creators was simple: let us copy your content for search, and we&#39;ll send you traffic. You, as a content creator, could then derive value from that traffic in one of three ways: running ads against it, selling subscriptions for it, or just getting the pleasure of knowing that someone was consuming your stuff.</p><p>Google facilitated all of this. Search generated traffic. They acquired DoubleClick and built AdSense to help content creators serve ads. And acquired Urchin to launch Google Analytics to let you measure just who was viewing your content at any given moment in time.</p><p>For nearly thirty years, that relationship was what defined the web and allowed it to flourish.</p><p>But that relationship is changing. For the first time in its history, the number of searches run on Google is declining. What&#39;s taking its place? AI.</p><p>If you&#39;re like me, you&#39;ve been amazed at the new AI systems that have launched over the last two years and find yourself turning to them to answer questions that, in the past, you may have previously looked to Google. While it&#39;s still early, it seems clear that the interface of the future of the web will look more like ChatGPT than a spartan search box and ten blue links.</p><p>Google itself has changed. While ten years ago they presented a list of links and said that success was getting you off their site as quickly as possible, today they&#39;ve added an answer box and more recently AI Overviews which answer users&#39; questions without them having to leave Google.com. With the answer box they reported that 75 percent of queries were answered without users leaving Google. With the more recent launch of AI Overviews it&#39;s even higher.</p><p>While Google’s users may like that, it&#39;s hurting content creators. Google still copies creators’ content, but over the last 10 years, because of the changes to the UI of “search” it&#39;s gotten almost 10 times more difficult for a content creator to get the same volume of traffic. That means it&#39;s 10 times more difficult to generate value from ads, subscriptions, or the ego of knowing someone cares about what you created.</p><p>And that&#39;s the good news. It’s even worse with <a href=\"https://blog.cloudflare.com/ai-search-crawl-refer-ratio-on-radar/#how-does-this-measurement-work\"><u>today’s AI tools</u></a>. With OpenAI, it&#39;s 750 times more difficult to get traffic than it was with the Google of old. With Anthropic, it&#39;s 30,000 times more difficult. The reason is simple: increasingly we aren&#39;t consuming originals, we&#39;re consuming derivatives.</p><p>The problem is whether you create content to sell ads, sell subscriptions, or just to know that people value what you&#39;ve created, an AI-driven web doesn&#39;t reward content creators the way that the old search-driven web did. And that means the deal that Google made to take content in exchange for sending you traffic just doesn&#39;t make sense anymore.</p><p>Instead of being a fair trade, the web is being stripmined by AI crawlers with content creators seeing almost no traffic and therefore almost no value.</p><p>That changes today, July 1, what we’re calling Content Independence Day. Cloudflare, along with a majority of the world&#39;s leading publishers and AI companies, is changing the default to block AI crawlers unless they pay creators for their content. That content is the fuel that powers AI engines, and so it&#39;s only fair that content creators are compensated directly for it.</p>\n          <figure class=\"kg-card kg-image-card\">\n          <Image src=\"https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6GFFa6knU0nKGjhJVh8Ar8/8a1b4c0661146596cc844cdd9dd900ea/BLOG-2860_2.png\" alt=\"BLOG-2860 2\" class=\"kg-image\" width=\"1200\" height=\"186\" loading=\"lazy\"/>\n          </figure><p>But that&#39;s just the beginning. Next, we&#39;ll work on a marketplace where content creators and AI companies, large and small, can come together. Traffic was always a poor proxy for value. We think we can do better. Let me explain.</p><p>Imagine an AI engine like a block of swiss cheese. New, original content that fills one of the holes in the AI engine’s block of cheese is more valuable than repetitive, low-value content that unfortunately dominates much of the web today.</p>\n          <figure class=\"kg-card kg-image-card\">\n          <Image src=\"https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vUAgbW7FzzHSKA8tB8f8c/ea78e7cb4858602a32a91523800b882c/BLOG-2860_3.png\" alt=\"BLOG-2860 3\" class=\"kg-image\" width=\"1200\" height=\"193\" loading=\"lazy\"/>\n          </figure><p>We believe that if we can begin to score and value content not on how much traffic it generates, but on how much it furthers knowledge — measured by how much it fills the current holes in AI engines “swiss cheese” — we not only will help AI engines get better faster, but also potentially facilitate a new golden age of high-value content creation.</p><p>We don’t know all the answers yet, but we’re working with some of the leading economists and computer scientists to figure them out.</p>\n          <figure class=\"kg-card kg-image-card\">\n          <Image src=\"https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VNIoN0740jhfO8lu6XDpJ/98829d238884cde3bcd345779a15df89/BLOG-2860_4.png\" alt=\"BLOG-2860 4\" class=\"kg-image\" width=\"1200\" height=\"187\" loading=\"lazy\"/>\n          </figure><p>The web is changing. Its business model will change. And, in the process, we have an opportunity to learn from what was great about the web of the last 30 years and what we can make better for the web of the future.</p><p>Cloudflare&#39;s mission is to help build a better Internet. I&#39;m proud of the role we&#39;re playing in doing exactly that as the web evolves. And I’m proud that we’re helping content creators stick up and demand value for the content they worked hard to create.</p><p>Happy Content Independence Day!</p>\n          <figure class=\"kg-card kg-image-card\">\n          <Image src=\"https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Xme0Af7HqeJpdQbapzApG/6ff9ea29b7506e10867ed9c7ac5a2280/BLOG-2860_5.png\" alt=\"BLOG-2860 5\" class=\"kg-image\" width=\"1200\" height=\"262\" loading=\"lazy\"/>\n          </figure><p></p>",
 		"id": "1pmK0OnvzPIip01yjWXj0x",
 		"localeList": {
-			"name": "blog-english-only",
+			"name": "LOC: Content Independence day",
 			"enUS": "English for Locale",
-			"zhCN": "No Page for Locale",
+			"zhCN": "Translated for Locale",
 			"zhHansCN": "No Page for Locale",
-			"zhTW": "No Page for Locale",
+			"zhTW": "English for Locale",
 			"frFR": "No Page for Locale",
 			"deDE": "No Page for Locale",
 			"itIT": "No Page for Locale",
-			"jaJP": "No Page for Locale",
-			"koKR": "No Page for Locale",
+			"jaJP": "Translated for Locale",
+			"koKR": "Translated for Locale",
 			"ptBR": "No Page for Locale",
-			"esLA": "No Page for Locale",
+			"esLA": "Translated for Locale",
 			"esES": "No Page for Locale",
 			"enAU": "No Page for Locale",
 			"enCA": "No Page for Locale",
@@ -82,7 +87,7 @@
 			}
 		],
 		"title": "Content Independence Day: no AI crawl without compensation!",
-		"updated_at": "2025-07-02T14:44:22.839Z",
+		"updated_at": "2025-07-02T20:12:43.870Z",
 		"url": "https://blog.cloudflare.com/content-independence-day-no-ai-crawl-without-compensation"
 	},
 	"translations": {
