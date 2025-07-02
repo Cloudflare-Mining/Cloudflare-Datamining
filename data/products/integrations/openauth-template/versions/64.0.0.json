@@ -1,0 +1,234 @@
+{
+	"alias": "openauth-template",
+	"assets": [
+		{
+			"type": "file",
+			"name": "wrangler.json",
+			"content": {
+				"$ref": "assets://wrangler.json"
+			},
+			"format": "json",
+			"json_path_replacements": [
+				{
+					"path": [
+						"kv_namespaces",
+						0,
+						"id"
+					],
+					"value": {
+						"$ref": "values://resources/AUTH_STORAGEKVNamespace/result/id"
+					}
+				},
+				{
+					"path": [
+						"d1_databases",
+						0,
+						"database_id"
+					],
+					"value": {
+						"$ref": "values://resources/AUTH_DBD1Database/result/id"
+					}
+				},
+				{
+					"path": [
+						"d1_databases",
+						0,
+						"database_name"
+					],
+					"value": {
+						"$ref": "values://resources/AUTH_DBD1Database/result/name"
+					}
+				},
+				{
+					"path": [
+						"name"
+					],
+					"value": {
+						"$ref": "values://target/worker/name"
+					}
+				}
+			]
+		},
+		{
+			"type": "file",
+			"name": "package.json",
+			"content": {
+				"$ref": "assets://package.json"
+			},
+			"format": "json",
+			"json_path_replacements": [
+				{
+					"path": [
+						"name"
+					],
+					"value": {
+						"$ref": "values://target/worker/name"
+					}
+				}
+			]
+		},
+		{
+			"type": "file",
+			"name": "README.md",
+			"content": {
+				"$ref": "assets://README.md"
+			},
+			"format": "text"
+		}
+	],
+	"bindings": [
+		"kv_namespaces",
+		"d1_databases"
+	],
+	"category": "templates",
+	"description": "Deploy an OpenAuth server on Cloudflare Workers.",
+	"docs_url": null,
+	"flags": [
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "OpenAuth Server",
+	"permissions": null,
+	"setup_steps": [
+		{
+			"title": "Create KV Namespace",
+			"type": "form",
+			"components": [
+				{
+					"type": "text_input",
+					"name": "AUTH_STORAGEKVNamespaceName",
+					"label": "Name your KV namespace",
+					"required": true
+				}
+			],
+			"resources": [
+				{
+					"name": "AUTH_STORAGEKVNamespace",
+					"type": "kv_namespace",
+					"params": {
+						"title": {
+							"$ref": "values://data/AUTH_STORAGEKVNamespaceName"
+						}
+					}
+				}
+			]
+		},
+		{
+			"title": "Create D1 Database",
+			"type": "form",
+			"components": [
+				{
+					"type": "text_input",
+					"name": "AUTH_DBD1DatabaseName",
+					"label": "Name your D1 Database",
+					"required": true,
+					"default_value": "openauth-template-auth-db"
+				},
+				{
+					"type": "select_input",
+					"name": "AUTH_DBD1DatabaseLocationHint",
+					"label": "Database location hint",
+					"required": true,
+					"default_value": "automatic",
+					"options": {
+						"type": "static",
+						"static": [
+							{
+								"label": "Automatic: D1 auto-assigns your database to the nearest available region.",
+								"value": "automatic"
+							},
+							{
+								"label": "Western North America (WNAM)",
+								"value": "WNAM"
+							},
+							{
+								"label": "Eastern North America (ENAM)",
+								"value": "ENAM"
+							},
+							{
+								"label": "Western Europe (WEUR)",
+								"value": "WEUR"
+							},
+							{
+								"label": "Eastern Europe (EEUR)",
+								"value": "EEUR"
+							},
+							{
+								"label": "Asia-Pacific (APAC)",
+								"value": "APAC"
+							},
+							{
+								"label": "Oceania (OC)",
+								"value": "OC"
+							}
+						]
+					}
+				},
+				{
+					"type": "checkbox_input",
+					"name": "AUTH_DBD1DatabaseReadReplicationEnabled",
+					"label": "Read replication enabled",
+					"required": false,
+					"default_value": false
+				}
+			],
+			"resources": [
+				{
+					"name": "AUTH_DBD1Database",
+					"type": "d1",
+					"params": {
+						"name": {
+							"$ref": "values://data/AUTH_DBD1DatabaseName"
+						},
+						"locationHint": {
+							"$ref": "values://data/AUTH_DBD1DatabaseLocationHint"
+						},
+						"readReplicationEnabled": {
+							"$ref": "values://data/AUTH_DBD1DatabaseReadReplicationEnabled"
+						}
+					}
+				}
+			]
+		}
+	],
+	"templates": [
+		{
+			"context": "create-git-connected-worker",
+			"label": "OpenAuth Server",
+			"products": [
+				"Workers",
+				"D1",
+				"KV"
+			],
+			"categories": [],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/5ca0ca32-e897-4699-d4c1-6b680512f000/public"
+			],
+			"preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/b2ff10c6-8f7c-419f-8757-e2ccf1c84500/public",
+			"deploy_resources": [
+				{
+					"name": "template-worker",
+					"type": "git-connected-worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"type": "seed_repo",
+						"seed_repo": {
+							"provider": "github",
+							"owner": "cloudflare",
+							"repository": "templates",
+							"branch": "v5.0.0",
+							"path": "openauth-template"
+						}
+					}
+				}
+			],
+			"preview_files": []
+		}
+	],
+	"uninstall_action": null,
+	"version": "64.0.0"
+}

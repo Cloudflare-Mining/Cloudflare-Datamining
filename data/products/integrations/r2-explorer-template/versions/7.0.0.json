@@ -1,0 +1,176 @@
+{
+	"alias": "r2-explorer-template",
+	"assets": [
+		{
+			"type": "file",
+			"name": "wrangler.json",
+			"content": {
+				"$ref": "assets://wrangler.json"
+			},
+			"format": "json",
+			"json_path_replacements": [
+				{
+					"path": [
+						"r2_buckets",
+						0,
+						"bucket_name"
+					],
+					"value": {
+						"$ref": "values://resources/bucketR2Bucket/result/name"
+					}
+				},
+				{
+					"path": [
+						"name"
+					],
+					"value": {
+						"$ref": "values://target/worker/name"
+					}
+				}
+			]
+		},
+		{
+			"type": "file",
+			"name": "package.json",
+			"content": {
+				"$ref": "assets://package.json"
+			},
+			"format": "json",
+			"json_path_replacements": [
+				{
+					"path": [
+						"name"
+					],
+					"value": {
+						"$ref": "values://target/worker/name"
+					}
+				}
+			]
+		},
+		{
+			"type": "file",
+			"name": "README.md",
+			"content": {
+				"$ref": "assets://README.md"
+			},
+			"format": "text"
+		}
+	],
+	"bindings": [
+		"assets",
+		"r2_buckets"
+	],
+	"category": "templates",
+	"description": "A Google Drive Interface for your Cloudflare R2 Buckets!",
+	"docs_url": null,
+	"flags": [
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "R2-Explorer App",
+	"permissions": null,
+	"setup_steps": [
+		{
+			"title": "Create R2 Bucket",
+			"type": "form",
+			"components": [
+				{
+					"type": "text_input",
+					"name": "bucketR2BucketName",
+					"label": "Name your R2 Bucket",
+					"required": true,
+					"default_value": "r2-explorer-bucket"
+				},
+				{
+					"type": "select_input",
+					"name": "bucketR2BucketLocationHint",
+					"label": "Location hint",
+					"required": false,
+					"options": {
+						"type": "static",
+						"static": [
+							{
+								"label": "Western North America (WNAM)",
+								"value": "WNAM"
+							},
+							{
+								"label": "Eastern North America (ENAM)",
+								"value": "ENAM"
+							},
+							{
+								"label": "Western Europe (WEUR)",
+								"value": "WEUR"
+							},
+							{
+								"label": "Eastern Europe (EEUR)",
+								"value": "EEUR"
+							},
+							{
+								"label": "Asia-Pacific (APAC)",
+								"value": "APAC"
+							},
+							{
+								"label": "Oceania (OC)",
+								"value": "OC"
+							}
+						]
+					}
+				}
+			],
+			"resources": [
+				{
+					"name": "bucketR2Bucket",
+					"type": "r2_bucket",
+					"params": {
+						"name": {
+							"$ref": "values://data/bucketR2BucketName"
+						},
+						"location_hint": {
+							"$ref": "values://data/bucketR2BucketLocationHint"
+						}
+					}
+				}
+			]
+		}
+	],
+	"templates": [
+		{
+			"context": "create-git-connected-worker",
+			"label": "R2-Explorer App",
+			"products": [
+				"R2",
+				"Access",
+				"Workers"
+			],
+			"categories": [
+				"storage"
+			],
+			"icon_urls": [],
+			"preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/e3c4ab7e-43f2-49df-6317-437f4ae8ce00/public",
+			"deploy_resources": [
+				{
+					"name": "template-worker",
+					"type": "git-connected-worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"type": "seed_repo",
+						"seed_repo": {
+							"provider": "github",
+							"owner": "cloudflare",
+							"repository": "templates",
+							"branch": "v5.0.0",
+							"path": "r2-explorer-template"
+						}
+					}
+				}
+			],
+			"preview_files": []
+		}
+	],
+	"uninstall_action": null,
+	"version": "7.0.0"
+}
