@@ -3061,6 +3061,9 @@
 								"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 								"type": "string"
 							},
+							"instance_retention": {
+								"type": "object"
+							},
 							"params": {
 								"type": "object"
 							}
@@ -3642,6 +3645,9 @@
 									"minimum": 1,
 									"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 									"type": "string"
+								},
+								"instance_retention": {
+									"type": "object"
 								},
 								"params": {
 									"type": "object"
