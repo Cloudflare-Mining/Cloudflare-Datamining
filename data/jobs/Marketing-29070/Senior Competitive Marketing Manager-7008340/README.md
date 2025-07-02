@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX&nbsp;</strong></p>
+<p><strong>Available Locations: Austin, TX or San Francisco</strong></p>
 <ul>
 	<li>
 		<p>We are seeking a highly motivated and technically proficient Senior Competitive Marketing Manager to join our Competitive Intelligence team and support our <a href="https://www.cloudflare.com/application-services/products/#Application">Application Services</a>. This is a hands-on technical role within the leading connectivity cloud company recognized as a leader in App Security and Performance. You will be responsible for in-depth analysis of competitor solutions, encompassing both Application Security (DDoS protection, WAF, API security, Bot management, … ) and App Performance (CDN, DNS, load balancing, ..).</p>
