@@ -6,21 +6,31 @@
 	</div>
 </div>
 <p><strong>Available Locations: </strong>Lisbon, Portugal&nbsp;</p>
-<p><strong>About the team:&nbsp;</strong><br><br>The <strong>Order-to-Cash AR Accountant</strong> processes all facets of Cloudflare’s<br>worldwide Billing and Accounts Receivable (A/R) functions. This role<br>facilitates prompt, correct, and complete billing, collection, and cash<br>application of Cloudflare receivables to support preparation of accurate<br>financial statements, compliance with customer contracts, and optimization of<br>cash flow. Additionally, this position participates in certain regulatory<br>compliance activities including sales tax assessment and reporting, and<br>unclaimed property remittance.<br><br><strong>What You'll Do</strong><br><br>Direct preparation and issuance of customer invoices to ensure prompt and<br>accurate billing in compliance with contract terms.<br><br>Oversee response to billing and A/R inquiries in a manner that cultivates a<br>culture of exemplary customer service both internal and external.<br><br>Support Order-to-Cash Accounting team by running credit checks and monitoring<br>credit worthiness of new and existing customers.<br><br>Participate in month-end close processes associated with Accounts Receivable to<br>support timely and accurate preparation and delivery of financial statements.<br><br>Facilitate cash receipt and application processes to ensure prompt and accurate<br>deposit of all funds and application to customer accounts.<br><br>Execute process for managing and refunding customer credit balances in a timely<br>manner, partnering with Accounts Payable to escalate or resolve any A/R related<br>unclaimed property issues.<br><br>Oversee maintenance of customer account information within Billing System(s) to<br>ensure up-to-date address, terms, tax, and contact information.<br><br>Collaborate with cross-functional teams on various systems projects including<br>selection, implementation, and upgrades to A/R and Billing systems.<br><br>Execute policies and procedures for Billing and A/R, driving toward<br>implementation of best practices and business process improvements.<br><br>Support overall organization’s SOX compliance requirements through adherence to<br>key controls and timely completion of reporting.<br><br><strong>Experience</strong></p>
+<p><strong>About the team:&nbsp;</strong><br><br>The <strong>Order-to-Cash AR Accountant</strong> processes all facets of Cloudflare’s&nbsp;worldwide Billing and Accounts Receivable (A/R) functions. This role&nbsp;facilitates prompt, correct, and complete billing, collection, and cash&nbsp;application of Cloudflare receivables to support preparation of accurate&nbsp;financial statements, compliance with customer contracts, and optimization of&nbsp;cash flow. Additionally, this position participates in certain regulator&nbsp;compliance activities including sales tax assessment and reporting, and&nbsp;unclaimed property remittance.<br><br><strong>What You'll Do</strong></p>
 <ul>
+	<li>Direct preparation and issuance of customer invoices to ensure prompt and accurate billing in compliance with contract terms.</li>
+	<li>Oversee response to billing and A/R inquiries in a manner that cultivates a culture of exemplary customer service both internal and external.</li>
+	<li>Support Order-to-Cash Accounting team by running credit checks and monitoring credit worthiness of new and existing customers.</li>
+	<li>Participate in month-end close processes associated with Accounts Receivable to support timely and accurate preparation and delivery of financial statements.</li>
+	<li>Facilitate cash receipt and application processes to ensure prompt and accurate deposit of all funds and application to customer accounts.</li>
+	<li>Execute process for managing and refunding customer credit balances in a timely manner, partnering with Accounts Payable to escalate or resolve any A/R related unclaimed property issues.</li>
+	<li>Oversee maintenance of customer account information within Billing System(s) to ensure up-to-date address, terms, tax, and contact information.</li>
+	<li>Collaborate with cross-functional teams on various systems projects including selection, implementation, and upgrades to A/R and Billing systems.</li>
+	<li>Execute policies and procedures for Billing and A/R, driving toward implementation of best practices and business process improvements.</li>
+	<li>Support overall organization’s SOX compliance requirements through adherence to key controls and timely completion of reporting.<br><br><strong>Experience</strong></li>
 	<li>Bachelor’s degree required, with emphasis in Accounting or Finance preferred.</li>
-	<li>2+ years of experience in Billing and A/R functions in a high volume<br>environment.</li>
+	<li>2+ years of experience in Billing and A/R functions in a high volume&nbsp;environment.</li>
 	<li>Exposure to international operations preferred.</li>
 	<li>Experience participating in system evaluation and implementation preferred.</li>
-	<li>Demonstrated effective written, verbal and interpersonal communication skills<br>at all levels of the organization.</li>
+	<li>Demonstrated effective written, verbal and interpersonal communication skills&nbsp;at all levels of the organization.</li>
 	<li>Creative problem solving skills coupled with good judgment.</li>
-	<li>Effective communication skills, verbal and written, in order to research, prepare<br>and present information to Management, as well as effective communication<br>skills with co-workers.</li>
+	<li>Effective communication skills, verbal and written, in order to research, prepare&nbsp;and present information to Management, as well as effective communication&nbsp;skills with co-workers.</li>
 	<li>Critical thinking and strong analytical skills.</li>
-	<li>Ability to exercise sound judgment, provide leadership, and take initiative<br>under minimal supervision.</li>
+	<li>Ability to exercise sound judgment, provide leadership, and take initiative&nbsp;under minimal supervision.</li>
 	<li>Advanced Microsoft office skills.</li>
-	<li>Comfort in a fast paced work environment, with multiple concurrent projects and<br>priorities.</li>
-	<li>Ability to plan, execute and deliver on projects in a timely manner; plus the<br>ability to multitask on varying projects and initiatives.</li>
-	<li>Very high attention to detail; organized and thorough with a desire for<br>continuous improvement.</li>
+	<li>Comfort in a fast paced work environment, with multiple concurrent projects and&nbsp;priorities.</li>
+	<li>Ability to plan, execute and deliver on projects in a timely manner; plus the&nbsp;ability to multitask on varying projects and initiatives.</li>
+	<li>Very high attention to detail; organized and thorough with a desire for&nbsp;continuous improvement.</li>
 	<li>Stellar work ethic.</li>
 	<li>CPA/CA a plus.</li>
 </ul>
