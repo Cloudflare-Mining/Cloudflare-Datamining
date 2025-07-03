@@ -124,7 +124,21 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": null
+						"imageAssetFile": {
+							"id": "98ac76d1-1d10-58fb-9112-70e97742e164",
+							"altText": "Cloudflare for Government - hero image",
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/V0ANPE4lkkYP5rLiw9xwW/0814b5d9ffbba45a0efe4aecd91c14c3/Government_Building.svg"
+								},
+								"description": "Cloudflare for Government - hero image"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
 						"contentfulId": "3ArclDyqGFOQzF98dpTJOG",
@@ -541,7 +555,21 @@
 								"openLinkInNewTab": null,
 								"removeCardBorder": false,
 								"icon": null,
-								"iconAssetFile": null,
+								"iconAssetFile": {
+									"id": "18c4c62a-8477-5f2c-89cf-b54d8d82f69c",
+									"altText": "Innovation globe - icon orange",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Gbnb2vhoeAfuuIzoSzlSw/3ebde21372e97bccb01aee9d0d264564/innovation-globe_2.png"
+										},
+										"description": "Innovation globe - icon orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -624,6 +652,527 @@
 						],
 						"sectionPadding": "tile--no-top-padding",
 						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "522grNighjXZDJyB39BGLE",
+						"htmlContent": "<div align=\"center\"><h1><b>Cloudflare makes your teams more efficient and effective</b></h1>\n<br></div>",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "7x2Ina2dhX9d6Xg1ri8uP",
+						"quote": "\"Cloudflare provides an additional layer of defense for our critical government sites. With Cloudflare, I see that nothing got through and none of our services were interrupted. So I sleep better at night.\"",
+						"quoteAuthor": "Tõnu Tammer",
+						"quoteTitle": "Director of CERT Estonia",
+						"learnMoreText": "Learn more",
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"learnMoreUrl": "https://www.cloudflare.com/case-studies/republic-of-estonian-information-security-authority/",
+						"htmlId": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MMvGfzJX7iiL1vODboE80/a6f79385deb79776f0f104912e12c3d8/CERT_logo.webp"
+							},
+							"description": "Republic of Estonia Information Security Authority - logo\n"
+						},
+						"imageAssetFile": null,
+						"imageLinkUrl": null,
+						"logoList": [],
+						"logoListAssetFile": [],
+						"quoteCarousel": [
+							{
+								"contentTypeId": "bladeQuote",
+								"contentfulId": "3BcrCHpTnWNFRkWAYAsqx1",
+								"quote": "\"Security is much simpler when everybody has the same tooling. With the services and expertise of Cloudflare universally available, we can identify, contain, and minimize damage before it happens.\"",
+								"quoteAuthor": "Michael Toland",
+								"quoteTitle": "Chief Information Security Officer, Oklahoma Office of Management & Enterprise Services (OMES)",
+								"learnMoreText": "Learn more",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/state-of-oklahoma-omes/",
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1hScPGHXJW5Dze6PzJOb5B/d7d7b533271128dbc2bef1aaeb177517/OMES_Logo.webp"
+									},
+									"description": "State of Oklahoma OMES - logo"
+								}
+							}
+						]
+					},
+					{
+						"locale": "en-US",
+						"entryTitle": "Cloudflare for Government - Cloudflare achieved global government certifications",
+						"htmlId": null,
+						"contentfulId": "6BMnxYfbLbGoPFq3lQKmgc",
+						"contentTypeId": "bladeAddOns",
+						"caption": null,
+						"title": "Cloudflare achieved global government certifications",
+						"grouped": false,
+						"description": null,
+						"variant": null,
+						"callToAction": null,
+						"sectionPadding": "default",
+						"bladeBorder": "none",
+						"backgroundColor": "blue5",
+						"addOns": [
+							{
+								"locale": "en-US",
+								"entryTitle": "FedRAMP®",
+								"contentfulId": "2DrYcigkDc6RchssVmWI3q",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": null,
+								"title": "Federal Risk and Authorization Management Program",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "FedRAMP authorized cloud services for the U.S. government and is vital for research institutions subject to CMMC compliance.\n\nCloudflare achieved a FedRAMP Moderate authorization and we are actively working toward FedRAMP High.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "6j952fYw14Z4S2GNzxoIRf",
+									"elementName": "Learn more - FedRAMP",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://www.cloudflare.com/federal/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "IRAP",
+								"contentfulId": "geQzAPiKtHtVXHSFjHk1j",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": null,
+								"title": "Infosec Registered Assessors Program",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The IRAP security assessment helps Australian organizations validate that vital security controls are in place.\n\nCloudflare has been assessed at the IRAP Protected level for high-impact, non-secret government data.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "7BAsXLkmTbjDsmwtNHZ88j",
+									"elementName": "Learn more - IRAP",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://blog.cloudflare.com/irap-protected-assessment/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "ENS",
+								"contentfulId": "1fUrxOCWFSLDXJWadVSyR1",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": null,
+								"title": "Esquema Nacional de Seguridad",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The IRAP security assessment helps Australian organizations validate that vital security controls are in place.\n\nCloudflare has been assessed at the IRAP Protected level for high-impact, non-secret government data.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "475kN5fkevWHXUH1W6sl41",
+									"elementName": "Learn more - ENS",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://www.cloudflare.com/trust-hub/compliance-resources/ens/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							}
+						]
+					},
+					{
+						"contentfulId": "2tulw6fmZZoyeJfC04Wp4q",
+						"title": "Prepare today for the risks of tomorrow's quantum computers",
+						"copy": "Defend against \"harvest now, decrypt later\" attacks by transitioning to post-quantum cryptography with Cloudflare",
+						"toggleText": null,
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "jUMSFS4YBdUOdPffDHp9N",
+								"elementName": "Learn more - Quantum",
+								"standardText": null,
+								"text": "Learn more",
+								"url": "https://www.cloudflare.com/pqc/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							}
+						],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "19d98054-48f6-5d36-83a7-901539735dad",
+							"altText": "Post Quantum Cryptography goes GA",
+							"title": "Post Quantum Cryptography goes GA",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iJccfkC4TZkORAQejiAGb/7672f9bc2e6d45b1370d2bc6128ed6a0/Cloudflare_Goes_Post_Quantum.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "Ready for the future",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-bottom-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "medium",
+						"imageTextAlignment": "center",
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "1P4PW3DseRFGKwffxZwBVc",
+						"title": "Harness the power of AI to accelerate mission innovation",
+						"copy": "Build and deploy ambitious applications to Cloudflare's global network with full-stack AI building blocks",
+						"toggleText": null,
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "5GhfePIrEthSZVRParz1sb",
+								"elementName": "Learn more - AI",
+								"standardText": null,
+								"text": "Learn more",
+								"url": "https://ai.cloudflare.com/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": true,
+								"locale": "en-US"
+							}
+						],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "07b50546-6e81-53b7-9879-21c1794b315c",
+							"altText": "Cloudflare Announces WAF for AI, Becomes One of the First Providers to Safeguard Models in the Era of AI",
+							"title": "Cloudflare Announces WAF for AI, Becomes One of the First Providers to Safeguard Models in the Era of AI",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7apclvEzw1C9s7irIlKjnC/0d1537141082ac4a0b4e3941563016d7/WAF_for_AI.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "medium",
+						"imageTextAlignment": "center",
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "4p9sYb9zLGPOTmJ7vYjRcx",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Cloudflare helps government organizations solve their greatest challenges",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "70suSG9JS0fCg2ULeoygyI",
+								"title": "UK Government Agency",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "CDS partners with Cloudflare to ensure the security and performance of a solution for the UK Government",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/cds-uk-government/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "49f2c630-f16e-58d6-b310-ab05dc1381a4",
+									"altText": "UK Government Agency",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4um5Qn5857uGEuyDIMqZJo/b8110892375c251504e22aac32ebee82/Uk_Gov.webp"
+										},
+										"description": "UK Government Agency"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "e0pABzEa2c7kcwnbgCvsU",
+								"title": "Berkeley Lab",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Lawrence Berkeley National Laboratory chooses Cloudflare as its Zero Trust security partner to protect critical research data.",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/lawrence-berkeley-national-laboratory/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "f86fef43-71c5-5102-af57-212a13a09023",
+									"altText": "Lawrence Berkeley National Laboratory - logo",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KmQ6oABtwKkoJODUHlkC6/03ead2ecb4b5e5a8313872c09f2ebcec/5_BL_Horiz_Tile_rgb.webp"
+										},
+										"description": "Lawrence Berkeley National Laboratory - logo"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2rrXbpDI6PtA1qqKGflbvA",
+								"title": "Estonian Railways ",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Estonian Railways reduces complexity by modernizing application access and network security with Cloudflare",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/estonian-railways/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "581a9c53-3a59-5d2a-a0f9-7df0dec18711",
+									"altText": "Estonian Railways",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3zqpCWutabKhDLzH3KwNUe/6db41b4a2d44ef5d7bd4cf461b531394/Estonian.webp"
+										},
+										"description": "Estonian Railways\n"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
 					},
 					{
 						"contentfulId": "2sxGfYkDCV9KlQgu7ISZe0",
@@ -838,6 +1387,39 @@
 						"cards": [
 							{
 								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5bAdh5scPskYtOtSF6t9cf",
+								"heading": "Solution brief",
+								"description": "Discover how the NIST CSF and  Cloudflare helps agencies manage cyber risk\n",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "10elQ6XXXhBfOrHf2ajv7F",
+									"elementName": "Read now",
+									"standardText": null,
+									"text": "Read now",
+									"url": "https://cfl.re/cloudflare-for-NIST-CSF",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
+									"altText": "Solution brief - thumbnail",
+									"title": "Solution brief - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
 								"contentfulId": "1yCZgF8NKiwd6mJ515LuFV",
 								"heading": "Solution brief",
 								"description": "Learn how Cloudflare helps accelerate the NASCIO Top 10 priorities for 2025",
@@ -1033,6 +1615,93 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "elementColumnStackedContent",
+								"contentfulId": "3bbvqbpSyMhJ2Cz4AaeXZq",
+								"contentList": [
+									{
+										"contentTypeId": "feature",
+										"contentfulId": "5TcVx3SYezytiQgxGGIsqO",
+										"title": "Get started now",
+										"makeTitleLink": false,
+										"titleUrl": null,
+										"titleSize": null,
+										"description": "Get easy, instant access to Cloudflare security and performance services.",
+										"learnMoreUrl": "https://dash.cloudflare.com/sign-up/",
+										"learnMoreText": "Start here",
+										"displayBorder": false,
+										"openLinkInNewTab": true,
+										"removeCardBorder": false,
+										"icon": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74GDwwyKnKfYYz1QQEQh1P/c7232082d74a2cb16d2197596662f593/security-shield-protection-2.svg"
+											},
+											"description": null
+										},
+										"iconAssetFile": null,
+										"imageOverlaySuperheader": null,
+										"imageOverlayText": null,
+										"imageAssetFile": null,
+										"streamId": null,
+										"streamThumbnail": null,
+										"streamThumbnailAssetFile": null
+									},
+									{
+										"contentTypeId": "feature",
+										"contentfulId": "4eQXk8O0R1DJP03Gz9RccF",
+										"title": "Need help choosing?",
+										"makeTitleLink": false,
+										"titleUrl": null,
+										"titleSize": null,
+										"description": "Get a personalized recommendation for your specific needs.",
+										"learnMoreUrl": "https://www.cloudflare.com/about-your-website/",
+										"learnMoreText": "Find the right plan",
+										"displayBorder": false,
+										"openLinkInNewTab": false,
+										"removeCardBorder": false,
+										"icon": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/69tNrTgBhqfzPRIPu8Gwid/fb23c2d12223eaeb989f9266929c196d/help-question.svg"
+											},
+											"description": ""
+										},
+										"iconAssetFile": null,
+										"imageOverlaySuperheader": null,
+										"imageOverlayText": null,
+										"imageAssetFile": null,
+										"streamId": null,
+										"streamThumbnail": null,
+										"streamThumbnailAssetFile": null
+									},
+									{
+										"contentTypeId": "feature",
+										"contentfulId": "7u0XaVb3OXzJ1c7G688uy0",
+										"title": "Talk to an expert",
+										"makeTitleLink": false,
+										"titleUrl": null,
+										"titleSize": null,
+										"description": "Have questions or want to get a demo? Connect with one of our experts.",
+										"learnMoreUrl": "https://www.cloudflare.com/plans/enterprise/contact/",
+										"learnMoreText": "Talk to us",
+										"displayBorder": false,
+										"openLinkInNewTab": false,
+										"removeCardBorder": false,
+										"icon": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6tcvski4oLcMsNtT4gLKKL/befd9c43cababb41097bf7eef2d9fb07/innovation-thinking.svg"
+											},
+											"description": "Icon of illuminated light bulb"
+										},
+										"iconAssetFile": null,
+										"imageOverlaySuperheader": null,
+										"imageOverlayText": null,
+										"imageAssetFile": null,
+										"streamId": null,
+										"streamThumbnail": null,
+										"streamThumbnailAssetFile": null
+									}
+								]
 							}
 						],
 						"sectionPadding": null,
