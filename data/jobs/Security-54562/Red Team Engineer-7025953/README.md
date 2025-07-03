@@ -5,31 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Singapore</strong></p>
-<p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</span></p>
-<p><strong>What You’ll do</strong></p>
-<p><span style="font-weight: 400;">Do you love solving complex problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Support Engineer to join our team. You will work with our customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare’s technology and gain a deeper understanding of internet technologies.</span></p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
+<p><strong>About The Role&nbsp;</strong></p>
+<p>A Red Team Engineer at Cloudflare will be a key member in the development of an adversarial emulation program and capabilities. This program and capabilities sole purpose is to help gauge the effectiveness of Cloudflare’s people, processes and technologies in use to drive continuous&nbsp; improvements into the security posture of Cloudflare by thinking and acting as an adversary would.&nbsp;</p>
+<p><strong>What You’ll Do</strong></p>
+<p>You will be a key member of the Red Team within the Cloudflare security organization. As a member of the Red Team you will be expected to be a contributing member to develop and drive comprehensive red team strategies, roadmaps, innovation, resourcing, and budgeting aligned with Cloudflare’s Security goals and objectives. Partnering with Security, IT and Engineering leadership to set and execute on Red team goals and objectives. You will also have to track industry trends and emerging technologies to ensure the program remains innovative and effective.</p>
+<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
 <ul>
-	<li style="font-weight: 400;"><strong>Ability to speak either Mandarin or Cantonese is a must-have</strong></li>
-	<li style="font-weight: 400;">
-		<div><strong>Ability and willingness to work occasional weekends, holidays, and after hours</strong></div>
-	</li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are comfortable communicating in writing and always put the customer first</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are a motivated self-starter who always looking to expand your skill sets</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You take initiatives and capable of learning new technologies / systems / features with little guidance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You enjoy troubleshooting and solving unknown technical problems and issues</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are inquisitive and able to communicate to different kind of audiences</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You have a solid grasp of problem solving with command line tools (dig/traceroute/curl/tcpdump)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You understand how the Internet works</span></li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You have experience writing scripts in Bash, Python, JavaScript, or other scripting language</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You have experience installing and configuring web servers like Apache, Nginx, and IIS</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are familiar with Cloudflare and have a site actively using our platform</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You have web development, hosting, or customer support experience</span></li>
+	<li>Effective communicator to all levels of the organization</li>
+	<li>Expertise adversary techniques and tooling</li>
+	<li>Experience developing Red Team/Purple Team Scenarios</li>
+	<li>Experience executing Red Team/Purple Team scenarios</li>
+	<li>Knowledge and experience of Vulnerabilities and configurations in the following areas:</li>
+	<ul>
+		<li>MacOS/Linux(server and desktop)</li>
+		<li>Windows workstations</li>
+		<li>Cloud Systems(GGP/Azure/AD)</li>
+		<li>Software Development and distribution</li>
+		<li>Web Applications/API’s&nbsp;</li>
+		<li>Server/Networking hardware</li>
+		<li>Cloudflare Products</li>
+	</ul>
+	<li>Knowledge and experience in the physical security domain</li>
+	<li>Experience developing and complying with policies, standards, and processes.&nbsp;</li>
+	<li>Ability to automate tasks</li>
+	<li>Ability to influence and motivate cross functional teams.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
