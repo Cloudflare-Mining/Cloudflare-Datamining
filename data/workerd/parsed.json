@@ -2385,7 +2385,8 @@
 					"name": "nodeJsCompat",
 					"annotations": {
 						"compatDisableFlag": "no_nodejs_compat",
-						"compatEnableFlag": "nodejs_compat"
+						"compatEnableFlag": "nodejs_compat",
+						"impliedByAfterDate": "unhandled type"
 					}
 				},
 				{
@@ -2947,6 +2948,20 @@
 					"name": "pythonWorkflows",
 					"annotations": {
 						"compatEnableFlag": "python_workflows",
+						"experimental": "true"
+					}
+				},
+				{
+					"name": "unsupportedProcessActualPlatform",
+					"annotations": {
+						"compatEnableFlag": "unsupported_process_actual_platform",
+						"experimental": "true"
+					}
+				},
+				{
+					"name": "enableNodeJsProcessV2",
+					"annotations": {
+						"compatEnableFlag": "enable_nodejs_process_v2",
 						"experimental": "true"
 					}
 				}
@@ -6274,8 +6289,8 @@
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.neededByFl",
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.compatEnableAllDates",
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.experimental",
-		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.pythonSnapshotRelease",
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.impliedByAfterDate",
+		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.pythonSnapshotRelease",
 		"workerd/src/workerd/io/features.capnp",
 		"workerd/src/workerd/io/frankenvalue.capnp",
 		"workerd/src/workerd/io/outcome.capnp",
