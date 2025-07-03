@@ -7778,7 +7778,8 @@
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
-				"name": "string"
+				"name": "string",
+				"_prototype": {}
 			},
 			"lookup": {
 				"__proto": "function",
@@ -7907,7 +7908,8 @@
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
-				"name": "string"
+				"name": "string",
+				"_prototype": {}
 			},
 			"Resolver": {
 				"__proto": "function",
@@ -8117,30 +8119,16 @@
 						"_prototype": {}
 					},
 					"getServers": {
-						"__proto": "function",
+						"__proto": "object",
 						"__type": "function",
 						"length": "number",
-						"name": "string",
-						"_prototype": {
-							"0": "string",
-							"1": "string",
-							"2": "string",
-							"3": "string",
-							"length": "number",
-							"name": "undefined",
-							"prototype": "undefined",
-							"isArray": "undefined",
-							"from": "undefined",
-							"fromAsync": "undefined",
-							"of": "undefined"
-						}
+						"name": "string"
 					},
 					"setServers": {
-						"__proto": "function",
+						"__proto": "object",
 						"__type": "function",
 						"length": "number",
-						"name": "string",
-						"_prototype": {}
+						"name": "string"
 					},
 					"getDefaultResultOrder": {
 						"__proto": "function",
@@ -8309,23 +8297,10 @@
 					}
 				},
 				"getServers": {
-					"__proto": "function",
+					"__proto": "object",
 					"__type": "function",
 					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"0": "string",
-						"1": "string",
-						"2": "string",
-						"3": "string",
-						"length": "number",
-						"name": "undefined",
-						"prototype": "undefined",
-						"isArray": "undefined",
-						"from": "undefined",
-						"fromAsync": "undefined",
-						"of": "undefined"
-					}
+					"name": "string"
 				},
 				"lookup": {
 					"__proto": "function",
@@ -8445,11 +8420,10 @@
 					"_prototype": {}
 				},
 				"setServers": {
-					"__proto": "function",
+					"__proto": "object",
 					"__type": "function",
 					"length": "number",
-					"name": "string",
-					"_prototype": {}
+					"name": "string"
 				}
 			},
 			"ADDRCONFIG": "number",
