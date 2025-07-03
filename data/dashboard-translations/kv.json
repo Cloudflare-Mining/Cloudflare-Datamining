@@ -30,5 +30,7 @@
 	"kv.metrics.not_found.label": "Not found",
 	"kv.metrics.operations.timeseries_chart.request_rate": "Requests/second",
 	"kv.metrics.operations.timeseries_chart.request_count": "Request count",
-	"kv.metrics.operations.request_count.title": "Requests"
+	"kv.metrics.operations.request_count.title": "Requests",
+	"kv.config.connect.title": "Connect your Worker to KV",
+	"kv.config.connect.description": "Connect to KV from your Worker using the KV namespace binding. Configure the KV binding in your Wrangler configuration file with the ID of your KV namespace. Then, access the binding variable within your Worker code to store and retrieve key-value pairs."
 }

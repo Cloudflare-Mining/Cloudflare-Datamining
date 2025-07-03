@@ -731,6 +731,8 @@
 	"log_explorer.feedback_survey": "Help us improve Log Explorer by <0>giving feedback</0>",
 	"log_explorer.sql.error.ray_id": "The format of the RayID is not correct: it should be 16 characters long and contains only numbers and letters.",
 	"log_explorer.sql.error.ray_id.airport_code": "The format of the RayID is not correct: it should be 16 characters long and contains only numbers and letters. Please remove the -%{airportCode} at the end",
+	"log_explorer.sql.error.field_not_recognized": "Field %{fieldName} is not recognized on the dataset %{tableName}",
+	"log_explorer.sql.error.table_not_recognized": "Dataset %{tableName} is not recognized",
 	"log_explorer.no_datasets_enabled.title": "No datasets enabled",
 	"log_explorer.no_datasets_enabled.description": "You have %{count} dataset(s) available, enable them to query their logs.",
 	"log_explorer.no_datasets_enabled.action_button": "Enable a dataset",
