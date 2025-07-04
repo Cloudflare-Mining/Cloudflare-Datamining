@@ -24,7 +24,7 @@
 	<li>You have a minimum of 4 years experience working as a Support Engineer / Sr. Support Engineer supporting networking or web security products.</li>
 	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
 	<li>Strong customer service orientation and communication skills, both written and verbal, and you are fluent in English.</li>
-	<li>Fluency in Mandarin, Korean or Japanese is a strong plus.</li>
+	<li style="font-weight: bold;"><strong>Fluency in Mandarin, Korean or Japanese is a strong plus.</strong></li>
 	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
 	<li>You are a motivated self-starter who always looking to expand your skill sets, you take initiatives and capable of learning new technologies / systems / features with little guidance</li>
 	<li>You have a solid grasp of problem solving with command line tools (dig/traceroute/curl/tcpdump)</li>
