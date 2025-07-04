@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2025-02-28T23:35:51.624Z",
-					"updatedAt": "2025-05-12T16:20:16.379Z"
+					"updatedAt": "2025-07-04T16:59:25.535Z"
 				},
 				"contentfulId": "7yWaAhGb1cx7gSmTVneF6S",
 				"contentTypeId": "page",
@@ -126,6 +126,57 @@
 						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": null
+					},
+					{
+						"contentTypeId": "bladeHalfWidthHero",
+						"contentfulId": "77dFzQhgHiCxYfTELELVl0",
+						"entityTitle": "Cloudflare events hub - Featured",
+						"leftHalf": {
+							"contentTypeId": "elementHalfWidthHeroContent",
+							"contentfulId": "3O5tbHzyFkttERcRe27ZIv",
+							"title": "Black Hat 2025",
+							"eyebrow": "Upcoming Events",
+							"copy": "### __August 2 - 7__\n\nJoin Cloudflare at Black Hat 2025 to discover how our unified security platform, powered by an intelligent global network and AI-driven threat intelligence, protects and optimizes your digital assets.",
+							"primaryCta": {
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "6VxF3jCDfh7TwUZ8YmXsaW",
+								"elementName": "Cloudfare events - Featured - CTA",
+								"standardText": null,
+								"text": "Learn more",
+								"url": "/blackhat2025/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							},
+							"secondaryCta": null,
+							"tertiaryCta": null
+						},
+						"rightHalf": {
+							"contentTypeId": "elementHalfWidthHeroImage",
+							"contentfulId": "1kKh36GB1EltoD0HaqKh3f",
+							"entityTitle": "Cloudflare events hub - Connect London image",
+							"imageAsset": {
+								"id": "53a0ee78-0505-5a7d-a376-5f205ea7d211",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5VYtQEsbDEwYq29DgzTdt8/f14e60e3d06f67f638b405945daa8793/las-vegas-thumbnail-3.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						},
+						"promotionalBanner": null,
+						"sectionPadding": null,
+						"htmlId": "featured-event"
 					},
 					{
 						"contentfulId": "3rRoll0inJAq9E4BJ1uBSi",
@@ -223,7 +274,38 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Coming soon",
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/blackhat2025/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "Learn more",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
 																	"marks": [],
 																	"content": null
 																}
@@ -717,128 +799,6 @@
 								"title": "EMEA",
 								"description": null,
 								"tabContent": [
-									{
-										"contentTypeId": "bladeRichTextColumnGroup",
-										"contentfulId": "6xSBYsOROx8OsSicdDLHyz",
-										"htmlId": null,
-										"mainHeadline": null,
-										"backgroundColor": "white",
-										"bladeBorder": "none",
-										"sectionPadding": null,
-										"columnLayout": "One Column Wide",
-										"columns": [
-											{
-												"contentTypeId": "elementRichText",
-												"contentfulId": "6ufkBY8PAlwN9lJhboWyCG",
-												"title": null,
-												"htmlId": null,
-												"elementPosition": "relative",
-												"column": {
-													"nodeType": "document",
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Paris, France",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																}
-															]
-														},
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Cloudflare Immerse • July 3",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														},
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "hyperlink",
-																	"data": {
-																		"target": null,
-																		"uri": "https://immerse-paris-2025.splashthat.com/"
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "Learn more",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												}
-											}
-										]
-									},
 									{
 										"contentTypeId": "bladeRichTextColumnGroup",
 										"contentfulId": "6D6nnEgK3UFoTAFg26kUGI",
