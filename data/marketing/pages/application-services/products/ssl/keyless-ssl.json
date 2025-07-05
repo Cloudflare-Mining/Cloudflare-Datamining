@@ -340,6 +340,45 @@
 						"togglesTo": []
 					},
 					{
+						"contentfulId": "1Ms5t2MeNvC8ZDBEXeR3U8",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "Maximize the power of TLS",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/b05450aa05d6c40af93bf04309e1723c/Lead-generation-background-generic.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "3PRyrl7bj67ruqzNLrPdsi",
+							"elementName": "Keyless SSL - ADDITIONAL OFFER BLADE - CTA",
+							"standardText": null,
+							"text": "Get whitepaper",
+							"url": "/lp/maximize-tls/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
+					},
+					{
 						"contentTypeId": "bladeFeaturedCompanyLogos",
 						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
 						"title": " ",
@@ -559,6 +598,91 @@
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
+					},
+					{
+						"contentfulId": "7C8jH7s9zSzjUlRG61cYPF",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Move to the cloud while keeping your keys in your own environment",
+						"eyebrowHeading": "Top Keyless SSL use cases",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Two Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5tgDl72M5cTxGR9EuG0JlI",
+								"title": "Store private keys on your own hardware",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Use Cloudflare Tunnels or Public DNS to send traffic to the key server through a secure channel, without publicly exposing it to the rest of the Internet.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "2ed0dfda-ff08-5e39-aabf-ae9a5c9259c0",
+									"altText": "Geo key manager blue",
+									"title": "Geo key manager blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/YwClinJ4KlFYZUCrCammU/9d4c3fa4f44a14d4b5dbd45a00741d57/geo-key-manager.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "57R2d11pviXBEohYB5Qkit",
+								"title": "Accommodate geographic needs",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Keyless SSL allows Cloudflare to honor preferences about the country in which your keys are stored, either ourselves or in partnership with trusted third parties serving as key storage agents.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "2d2824a8-bb61-5964-9353-cf496e347032",
+									"altText": "Server origin blue",
+									"title": "Server origin blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rgAX5Pezx1EHevEZ8b9vc/67012f637f6d9f7741c8d6aeb7fcfbfb/server-origin.svg"
+										},
+										"description": "Origin server icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
 					},
 					{
 						"contentTypeId": "bladeCardCarousel",
