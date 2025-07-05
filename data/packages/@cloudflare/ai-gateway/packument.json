@@ -1,6 +1,7 @@
 {
 	"name": "@cloudflare/ai-gateway",
 	"dist-tags": {
+		"beta": "0.0.1",
 		"latest": "0.0.0"
 	},
 	"versions": {
@@ -8,17 +9,47 @@
 			"name": "@cloudflare/ai-gateway",
 			"version": "0.0.0",
 			"dist": {
-				"integrity": "sha512-eRgLa7Es+PZDki/2TBDNqKUkrDrMZcOOXoPXqm9fyZl4H+DUsdbynGVRs7AdWkGoELb8Zym2T4+V6pLhCosA5Q==",
 				"shasum": "2e3e2362c1eeef87f03c70b28dd940b756fd81c4",
 				"tarball": "https://registry.npmjs.org/@cloudflare/ai-gateway/-/ai-gateway-0.0.0.tgz",
 				"fileCount": 1,
-				"unpackedSize": 98,
+				"integrity": "sha512-eRgLa7Es+PZDki/2TBDNqKUkrDrMZcOOXoPXqm9fyZl4H+DUsdbynGVRs7AdWkGoELb8Zym2T4+V6pLhCosA5Q==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCOHWkAfUy+v7iLWtvHCrwZMyidgaJtvkVrFqwyyR9FaAIgGoPgaF/1faBzI0WaiD3uztdQ9hHbB9DNIe+HM9x5zyE="
+						"sig": "MEUCIQCOHWkAfUy+v7iLWtvHCrwZMyidgaJtvkVrFqwyyR9FaAIgGoPgaF/1faBzI0WaiD3uztdQ9hHbB9DNIe+HM9x5zyE=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 98
+			}
+		},
+		"0.0.1": {
+			"name": "@cloudflare/ai-gateway",
+			"version": "0.0.1",
+			"dependencies": {
+				"zod": "^3.25.55",
+				"zod-to-json-schema": "file:./src/_vendor/zod-to-json/zod-to-json-schema/"
+			},
+			"devDependencies": {
+				"vite": "^6.3.5",
+				"typescript": "~5.8.3",
+				"@types/node": "^22.15.30",
+				"downlevel-dts": "^0.11.0",
+				"@biomejs/biome": "1.9.4",
+				"semantic-release": "^24.2.6",
+				"rollup-plugin-license": "^3.6.0"
+			},
+			"dist": {
+				"shasum": "81018f7b74923b70a78eeaa44ef564d0715ad348",
+				"tarball": "https://registry.npmjs.org/@cloudflare/ai-gateway/-/ai-gateway-0.0.1.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-bxweYp4z7vi3iT6aCU5TCoJ3npX38dZBt+F52dRdARLDMlcT4QLWr01u7pUVOjJvN77FwxSrOi0uc+y3dX308g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD0RD6U9lwNbjSkgELYyQNOpRLRdeCGznvSVpu9fDHmMAIhAMIaFPVNd2KyRF8++3A16VyY6HlIAvioUHjSHnWEqWQ0",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 120994
 			}
 		}
 	}
