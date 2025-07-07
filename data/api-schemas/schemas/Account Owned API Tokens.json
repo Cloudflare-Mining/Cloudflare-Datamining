@@ -724,7 +724,7 @@
 														"example": "active",
 														"type": "string",
 														"x-auditable": true,
-														"x-stainless-configurability": "computed_optional"
+														"x-stainless-terraform-configurability": "computed_optional"
 													}
 												},
 												"type": "object"
@@ -1257,7 +1257,7 @@
 													"example": "active",
 													"type": "string",
 													"x-auditable": true,
-													"x-stainless-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"type": "object"
@@ -1943,7 +1943,7 @@
 													"example": "active",
 													"type": "string",
 													"x-auditable": true,
-													"x-stainless-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -2673,7 +2673,7 @@
 															"example": "active",
 															"type": "string",
 															"x-auditable": true,
-															"x-stainless-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
 													"type": "object"
@@ -3129,7 +3129,7 @@
 										"example": "active",
 										"type": "string",
 										"x-auditable": true,
-										"x-stainless-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "computed_optional"
 									}
 								},
 								"type": "object"
@@ -3490,7 +3490,7 @@
 													"example": "active",
 													"type": "string",
 													"x-auditable": true,
-													"x-stainless-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"type": "object"
