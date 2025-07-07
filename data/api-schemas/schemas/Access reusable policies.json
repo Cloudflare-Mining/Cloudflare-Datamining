@@ -967,6 +967,41 @@
 																					"type": "object"
 																				},
 																				{
+																					"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+																					"properties": {
+																						"oidc": {
+																							"properties": {
+																								"claim_name": {
+																									"description": "The name of the OIDC claim.",
+																									"example": "group",
+																									"type": "string"
+																								},
+																								"claim_value": {
+																									"description": "The OIDC claim value to look for.",
+																									"example": "devs@cloudflare.com",
+																									"type": "string"
+																								},
+																								"identity_provider_id": {
+																									"description": "The ID of your OIDC identity provider.",
+																									"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"claim_name",
+																								"claim_value",
+																								"identity_provider_id"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"oidc"
+																					],
+																					"title": "OIDC claim",
+																					"type": "object"
+																				},
+																				{
 																					"description": "Matches a specific Access Service Token",
 																					"properties": {
 																						"service_token": {
@@ -1530,6 +1565,41 @@
 																					"type": "object"
 																				},
 																				{
+																					"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+																					"properties": {
+																						"oidc": {
+																							"properties": {
+																								"claim_name": {
+																									"description": "The name of the OIDC claim.",
+																									"example": "group",
+																									"type": "string"
+																								},
+																								"claim_value": {
+																									"description": "The OIDC claim value to look for.",
+																									"example": "devs@cloudflare.com",
+																									"type": "string"
+																								},
+																								"identity_provider_id": {
+																									"description": "The ID of your OIDC identity provider.",
+																									"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"claim_name",
+																								"claim_value",
+																								"identity_provider_id"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"oidc"
+																					],
+																					"title": "OIDC claim",
+																					"type": "object"
+																				},
+																				{
 																					"description": "Matches a specific Access Service Token",
 																					"properties": {
 																						"service_token": {
@@ -2089,6 +2159,41 @@
 																						"saml"
 																					],
 																					"title": "SAML group",
+																					"type": "object"
+																				},
+																				{
+																					"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+																					"properties": {
+																						"oidc": {
+																							"properties": {
+																								"claim_name": {
+																									"description": "The name of the OIDC claim.",
+																									"example": "group",
+																									"type": "string"
+																								},
+																								"claim_value": {
+																									"description": "The OIDC claim value to look for.",
+																									"example": "devs@cloudflare.com",
+																									"type": "string"
+																								},
+																								"identity_provider_id": {
+																									"description": "The ID of your OIDC identity provider.",
+																									"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"claim_name",
+																								"claim_value",
+																								"identity_provider_id"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"oidc"
+																					],
+																					"title": "OIDC claim",
 																					"type": "object"
 																				},
 																				{
@@ -3042,6 +3147,41 @@
 																				"type": "object"
 																			},
 																			{
+																				"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+																				"properties": {
+																					"oidc": {
+																						"properties": {
+																							"claim_name": {
+																								"description": "The name of the OIDC claim.",
+																								"example": "group",
+																								"type": "string"
+																							},
+																							"claim_value": {
+																								"description": "The OIDC claim value to look for.",
+																								"example": "devs@cloudflare.com",
+																								"type": "string"
+																							},
+																							"identity_provider_id": {
+																								"description": "The ID of your OIDC identity provider.",
+																								"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"claim_name",
+																							"claim_value",
+																							"identity_provider_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"oidc"
+																				],
+																				"title": "OIDC claim",
+																				"type": "object"
+																			},
+																			{
 																				"description": "Matches a specific Access Service Token",
 																				"properties": {
 																					"service_token": {
@@ -3605,6 +3745,41 @@
 																				"type": "object"
 																			},
 																			{
+																				"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+																				"properties": {
+																					"oidc": {
+																						"properties": {
+																							"claim_name": {
+																								"description": "The name of the OIDC claim.",
+																								"example": "group",
+																								"type": "string"
+																							},
+																							"claim_value": {
+																								"description": "The OIDC claim value to look for.",
+																								"example": "devs@cloudflare.com",
+																								"type": "string"
+																							},
+																							"identity_provider_id": {
+																								"description": "The ID of your OIDC identity provider.",
+																								"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"claim_name",
+																							"claim_value",
+																							"identity_provider_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"oidc"
+																				],
+																				"title": "OIDC claim",
+																				"type": "object"
+																			},
+																			{
 																				"description": "Matches a specific Access Service Token",
 																				"properties": {
 																					"service_token": {
@@ -4164,6 +4339,41 @@
 																					"saml"
 																				],
 																				"title": "SAML group",
+																				"type": "object"
+																			},
+																			{
+																				"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+																				"properties": {
+																					"oidc": {
+																						"properties": {
+																							"claim_name": {
+																								"description": "The name of the OIDC claim.",
+																								"example": "group",
+																								"type": "string"
+																							},
+																							"claim_value": {
+																								"description": "The OIDC claim value to look for.",
+																								"example": "devs@cloudflare.com",
+																								"type": "string"
+																							},
+																							"identity_provider_id": {
+																								"description": "The ID of your OIDC identity provider.",
+																								"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"claim_name",
+																							"claim_value",
+																							"identity_provider_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"oidc"
+																				],
+																				"title": "OIDC claim",
 																				"type": "object"
 																			},
 																			{
@@ -5004,6 +5214,41 @@
 													"type": "object"
 												},
 												{
+													"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+													"properties": {
+														"oidc": {
+															"properties": {
+																"claim_name": {
+																	"description": "The name of the OIDC claim.",
+																	"example": "group",
+																	"type": "string"
+																},
+																"claim_value": {
+																	"description": "The OIDC claim value to look for.",
+																	"example": "devs@cloudflare.com",
+																	"type": "string"
+																},
+																"identity_provider_id": {
+																	"description": "The ID of your OIDC identity provider.",
+																	"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"claim_name",
+																"claim_value",
+																"identity_provider_id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"oidc"
+													],
+													"title": "OIDC claim",
+													"type": "object"
+												},
+												{
 													"description": "Matches a specific Access Service Token",
 													"properties": {
 														"service_token": {
@@ -5558,6 +5803,41 @@
 														"saml"
 													],
 													"title": "SAML group",
+													"type": "object"
+												},
+												{
+													"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+													"properties": {
+														"oidc": {
+															"properties": {
+																"claim_name": {
+																	"description": "The name of the OIDC claim.",
+																	"example": "group",
+																	"type": "string"
+																},
+																"claim_value": {
+																	"description": "The OIDC claim value to look for.",
+																	"example": "devs@cloudflare.com",
+																	"type": "string"
+																},
+																"identity_provider_id": {
+																	"description": "The ID of your OIDC identity provider.",
+																	"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"claim_name",
+																"claim_value",
+																"identity_provider_id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"oidc"
+													],
+													"title": "OIDC claim",
 													"type": "object"
 												},
 												{
@@ -6120,6 +6400,41 @@
 														"saml"
 													],
 													"title": "SAML group",
+													"type": "object"
+												},
+												{
+													"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+													"properties": {
+														"oidc": {
+															"properties": {
+																"claim_name": {
+																	"description": "The name of the OIDC claim.",
+																	"example": "group",
+																	"type": "string"
+																},
+																"claim_value": {
+																	"description": "The OIDC claim value to look for.",
+																	"example": "devs@cloudflare.com",
+																	"type": "string"
+																},
+																"identity_provider_id": {
+																	"description": "The ID of your OIDC identity provider.",
+																	"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"claim_name",
+																"claim_value",
+																"identity_provider_id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"oidc"
+													],
+													"title": "OIDC claim",
 													"type": "object"
 												},
 												{
@@ -6888,6 +7203,41 @@
 																				"type": "object"
 																			},
 																			{
+																				"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+																				"properties": {
+																					"oidc": {
+																						"properties": {
+																							"claim_name": {
+																								"description": "The name of the OIDC claim.",
+																								"example": "group",
+																								"type": "string"
+																							},
+																							"claim_value": {
+																								"description": "The OIDC claim value to look for.",
+																								"example": "devs@cloudflare.com",
+																								"type": "string"
+																							},
+																							"identity_provider_id": {
+																								"description": "The ID of your OIDC identity provider.",
+																								"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"claim_name",
+																							"claim_value",
+																							"identity_provider_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"oidc"
+																				],
+																				"title": "OIDC claim",
+																				"type": "object"
+																			},
+																			{
 																				"description": "Matches a specific Access Service Token",
 																				"properties": {
 																					"service_token": {
@@ -7451,6 +7801,41 @@
 																				"type": "object"
 																			},
 																			{
+																				"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+																				"properties": {
+																					"oidc": {
+																						"properties": {
+																							"claim_name": {
+																								"description": "The name of the OIDC claim.",
+																								"example": "group",
+																								"type": "string"
+																							},
+																							"claim_value": {
+																								"description": "The OIDC claim value to look for.",
+																								"example": "devs@cloudflare.com",
+																								"type": "string"
+																							},
+																							"identity_provider_id": {
+																								"description": "The ID of your OIDC identity provider.",
+																								"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"claim_name",
+																							"claim_value",
+																							"identity_provider_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"oidc"
+																				],
+																				"title": "OIDC claim",
+																				"type": "object"
+																			},
+																			{
 																				"description": "Matches a specific Access Service Token",
 																				"properties": {
 																					"service_token": {
@@ -8010,6 +8395,41 @@
 																					"saml"
 																				],
 																				"title": "SAML group",
+																				"type": "object"
+																			},
+																			{
+																				"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+																				"properties": {
+																					"oidc": {
+																						"properties": {
+																							"claim_name": {
+																								"description": "The name of the OIDC claim.",
+																								"example": "group",
+																								"type": "string"
+																							},
+																							"claim_value": {
+																								"description": "The OIDC claim value to look for.",
+																								"example": "devs@cloudflare.com",
+																								"type": "string"
+																							},
+																							"identity_provider_id": {
+																								"description": "The ID of your OIDC identity provider.",
+																								"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"claim_name",
+																							"claim_value",
+																							"identity_provider_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"oidc"
+																				],
+																				"title": "OIDC claim",
 																				"type": "object"
 																			},
 																			{
@@ -8860,6 +9280,41 @@
 													"type": "object"
 												},
 												{
+													"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+													"properties": {
+														"oidc": {
+															"properties": {
+																"claim_name": {
+																	"description": "The name of the OIDC claim.",
+																	"example": "group",
+																	"type": "string"
+																},
+																"claim_value": {
+																	"description": "The OIDC claim value to look for.",
+																	"example": "devs@cloudflare.com",
+																	"type": "string"
+																},
+																"identity_provider_id": {
+																	"description": "The ID of your OIDC identity provider.",
+																	"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"claim_name",
+																"claim_value",
+																"identity_provider_id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"oidc"
+													],
+													"title": "OIDC claim",
+													"type": "object"
+												},
+												{
 													"description": "Matches a specific Access Service Token",
 													"properties": {
 														"service_token": {
@@ -9414,6 +9869,41 @@
 														"saml"
 													],
 													"title": "SAML group",
+													"type": "object"
+												},
+												{
+													"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+													"properties": {
+														"oidc": {
+															"properties": {
+																"claim_name": {
+																	"description": "The name of the OIDC claim.",
+																	"example": "group",
+																	"type": "string"
+																},
+																"claim_value": {
+																	"description": "The OIDC claim value to look for.",
+																	"example": "devs@cloudflare.com",
+																	"type": "string"
+																},
+																"identity_provider_id": {
+																	"description": "The ID of your OIDC identity provider.",
+																	"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"claim_name",
+																"claim_value",
+																"identity_provider_id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"oidc"
+													],
+													"title": "OIDC claim",
 													"type": "object"
 												},
 												{
@@ -9976,6 +10466,41 @@
 														"saml"
 													],
 													"title": "SAML group",
+													"type": "object"
+												},
+												{
+													"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+													"properties": {
+														"oidc": {
+															"properties": {
+																"claim_name": {
+																	"description": "The name of the OIDC claim.",
+																	"example": "group",
+																	"type": "string"
+																},
+																"claim_value": {
+																	"description": "The OIDC claim value to look for.",
+																	"example": "devs@cloudflare.com",
+																	"type": "string"
+																},
+																"identity_provider_id": {
+																	"description": "The ID of your OIDC identity provider.",
+																	"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"claim_name",
+																"claim_value",
+																"identity_provider_id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"oidc"
+													],
+													"title": "OIDC claim",
 													"type": "object"
 												},
 												{
@@ -10744,6 +11269,41 @@
 																				"type": "object"
 																			},
 																			{
+																				"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+																				"properties": {
+																					"oidc": {
+																						"properties": {
+																							"claim_name": {
+																								"description": "The name of the OIDC claim.",
+																								"example": "group",
+																								"type": "string"
+																							},
+																							"claim_value": {
+																								"description": "The OIDC claim value to look for.",
+																								"example": "devs@cloudflare.com",
+																								"type": "string"
+																							},
+																							"identity_provider_id": {
+																								"description": "The ID of your OIDC identity provider.",
+																								"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"claim_name",
+																							"claim_value",
+																							"identity_provider_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"oidc"
+																				],
+																				"title": "OIDC claim",
+																				"type": "object"
+																			},
+																			{
 																				"description": "Matches a specific Access Service Token",
 																				"properties": {
 																					"service_token": {
@@ -11307,6 +11867,41 @@
 																				"type": "object"
 																			},
 																			{
+																				"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+																				"properties": {
+																					"oidc": {
+																						"properties": {
+																							"claim_name": {
+																								"description": "The name of the OIDC claim.",
+																								"example": "group",
+																								"type": "string"
+																							},
+																							"claim_value": {
+																								"description": "The OIDC claim value to look for.",
+																								"example": "devs@cloudflare.com",
+																								"type": "string"
+																							},
+																							"identity_provider_id": {
+																								"description": "The ID of your OIDC identity provider.",
+																								"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"claim_name",
+																							"claim_value",
+																							"identity_provider_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"oidc"
+																				],
+																				"title": "OIDC claim",
+																				"type": "object"
+																			},
+																			{
 																				"description": "Matches a specific Access Service Token",
 																				"properties": {
 																					"service_token": {
@@ -11866,6 +12461,41 @@
 																					"saml"
 																				],
 																				"title": "SAML group",
+																				"type": "object"
+																			},
+																			{
+																				"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+																				"properties": {
+																					"oidc": {
+																						"properties": {
+																							"claim_name": {
+																								"description": "The name of the OIDC claim.",
+																								"example": "group",
+																								"type": "string"
+																							},
+																							"claim_value": {
+																								"description": "The OIDC claim value to look for.",
+																								"example": "devs@cloudflare.com",
+																								"type": "string"
+																							},
+																							"identity_provider_id": {
+																								"description": "The ID of your OIDC identity provider.",
+																								"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"claim_name",
+																							"claim_value",
+																							"identity_provider_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"oidc"
+																				],
+																				"title": "OIDC claim",
 																				"type": "object"
 																			},
 																			{
