@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/playwright-mcp",
 	"dist-tags": {
-		"latest": "0.0.3"
+		"latest": "0.0.4"
 	},
 	"versions": {
 		"0.0.1": {
@@ -103,6 +103,37 @@
 					}
 				],
 				"unpackedSize": 117699
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"0.0.4": {
+			"name": "@cloudflare/playwright-mcp",
+			"version": "0.0.4",
+			"dependencies": {
+				"@cloudflare/playwright": "^0.0.10",
+				"@modelcontextprotocol/sdk": "^1.13.3",
+				"agents": "^0.0.101",
+				"yaml": "^2.7.1",
+				"zod-to-json-schema": "^3.24.5"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20250420.0",
+				"vite": "^6.3.4"
+			},
+			"dist": {
+				"integrity": "sha512-ykmRf2oSIpHty2iOhFrWfpFI8lzVSbtUzANEQaOIxuH7T1ZN/C64xj3mwrRnB4w5z6V1o/9X+ZEAPywI1siKNg==",
+				"shasum": "068de53f5d5f4128e2885eeab66640427d6551bc",
+				"tarball": "https://registry.npmjs.org/@cloudflare/playwright-mcp/-/playwright-mcp-0.0.4.tgz",
+				"fileCount": 45,
+				"unpackedSize": 117744,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQCFeELgOafURKF19VeB98s4pMFYBJspvII8F6sCZcU1YgIhANFQLCLaSsgoui4iG8ETL5RLZy1qjrf+Jzh9nsMvxj6X"
+					}
+				]
 			},
 			"engines": {
 				"node": ">=18"
