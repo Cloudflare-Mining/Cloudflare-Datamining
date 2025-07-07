@@ -5,66 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Hybrid - Amsterdam, Netherlands | Atlanta, GA, | Austin, TX | Denver, CO | Lisbon, Portugal | London, UK | New York, NY | Seattle, WA | Toronto, ON | Washington, DC</p>
-<h4><strong>Role Summary</strong></h4>
-<p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
-<p>The ideal candidate will work alongside database engineers, software developers, and Infrastructure teams, contributing to the evolution of database platform architecture, access control, and automation strategies. They will play a critical role in enhancing PostgreSQL infrastructure and improving database reliability, automation, and tooling.&nbsp;If you are passionate about <strong>PostgreSQL, automation, and database tooling</strong>, we’d love to hear from you!</p>
-<h4><strong>Role Responsibilities</strong></h4>
+<p><strong>Available Locations:&nbsp;</strong>Austin, TX | Lisbon, Portugal | London, United Kingdom&nbsp;</p>
+<h4><strong>About the Role</strong></h4>
+<p>Cloudflare is seeking a dynamic and experienced product manager to join our platform product team, overseeing marketing engineering and growth initiatives. You will be responsible for defining and executing the product roadmap for the platform capabilities that empower our marketing and growth teams. This high-impact role requires a strategic thinker with a strong technical acumen, a deep understanding of marketing technology and growth principles, and the ability to collaborate effectively with engineering, marketing, analytics, and other product teams.&nbsp;</p>
+<p>Problems you may face:</p>
 <ul>
-	<li>Build, deploy, and manage PostgreSQL databases in production environments.&nbsp;</li>
-	<li>Develop and maintain database tooling for automation, monitoring and performance tuning.</li>
-	<li>Optimize database performance, indexing strategies, and query tuning.&nbsp;</li>
-	<li>Implement high availability, backup and disaster recovery solutions.&nbsp;</li>
-	<li>Work closely with SRE and Applications teams to integrate database tools.&nbsp;</li>
-	<li>Implement proactive solutions using observability tools to monitor database health.&nbsp;</li>
+	<li>How do we drive awareness, engagement, and retention throughout a customer’s Cloudflare journey and set them up for success faster?</li>
+	<li>How can we deliver a best-in-class experience for site authors that balances their short-term needs for business impact with user experience and long-term performance, reliability, and scalability goals</li>
+	<li>What’s the best way to balance competing priorities to optimize for impact, and what are the key KPIs to measure ongoing impact?</li>
 </ul>
-<h4><strong>Must-Have Skills</strong></h4>
+<h4><strong>Key Competencies</strong></h4>
+<p>We are looking for someone who is curious, customer-centered, can learn quickly, think creatively, and work cross-functionally. Key responsibilities include:</p>
 <ul>
-	<li>Experience building large multi-tenant databases, operating, capacity planning, and designing for failover, fault tolerance, and disaster recovery.</li>
-	<li>Experience building and maintaining database tooling for automation and monitoring.</li>
-	<li>Experience optimizing database performance and query tuning.</li>
-	<li>Experience with alerting and monitoring tools such as Prometheus, Grafana, and Kibana.</li>
-	<li>Experience in scripting languages (Python, Bash) for automation.&nbsp;</li>
-	<li>Experience with infrastructure-as-code (Terraform, Ansible or Salt) .</li>
+	<li><strong>Business &amp; Product Vision and Strategy:</strong> Define and communicate the vision, strategic direction, and goals for the marketing engineering and growth initiatives.</li>
+	<li><strong>Roadmap Prioritization:</strong> Develop and maintain a product roadmap that optimizes both short-term wins with long-term version with investments in platform capabilities and&nbsp; customer experience improvements.</li>
+	<li><strong>Champion of the customer:</strong> Develop a deep understanding of the marketing technology landscape, growth best practices, and the needs and behaviors of Cloudflare's target users and customers.&nbsp;</li>
+	<li><strong>Cross-Functional Collaboration:</strong> Act as a central point of contact between various product, marketing, engineering, and analytics teams throughout the product lifecycle to successfully execute the roadmap and impact for customers.</li>
+	<li><strong>Data-informed Decisions:</strong> Define key metrics, establish tracking mechanisms, and analyze product performance to identify areas for improvement.</li>
+	<li><strong>First-class Execution:</strong> Gets things done and has a track record of driving excellence, impact, and managing complex projects end-to-end.</li>
 </ul>
-<h4><strong>Nice-to-Have Skills</strong></h4>
+<h4><strong>Bonus Points</strong></h4>
 <ul>
-	<li>Expertise in database schema migrations and automation using tools like Flyway, Liquibase or goose.&nbsp;</li>
-	<li>Contributions to PostgreSQL or relevant open-source projects.</li>
-	<li>Experience defining and implementing security policies for a RDBMS.</li>
-	<li>Experience with connection pooling solutions such as PgBouncer, HAProxy.</li>
-	<li>Experience with non-relational data stores such as time-series databases (ex. OpenTSDB) and key-value stores (eg., Redis)&nbsp;</li>
-	<li>Experience developing software in Go, Python or C/C++</li>
+	<li>Proven track record of successfully defining and launching impactful platform products and driving growth</li>
+	<li>Excellent analytical and problem-solving skills, with the ability to interpret data and translate it into actionable insights.</li>
+	<li>Data-fluency – There is no team of analysts at Cloudflare. Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
+	<li>Engineering fluency – While it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen would be super helpful</li>
+	<li>Exceptional communication – Strong interpersonal skills with the ability to influence and build consensus across diverse teams.&nbsp;&nbsp;</li>
+	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
