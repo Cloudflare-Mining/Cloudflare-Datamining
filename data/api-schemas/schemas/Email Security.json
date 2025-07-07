@@ -2869,6 +2869,7 @@
 														"type": "string"
 													},
 													"destination": {
+														"nullable": true,
 														"type": "string"
 													},
 													"item_count": {
@@ -2876,26 +2877,25 @@
 														"type": "integer"
 													},
 													"message_id": {
+														"nullable": true,
 														"type": "string"
 													},
 													"operation": {
+														"nullable": true,
 														"type": "string"
 													},
 													"recipient": {
+														"nullable": true,
 														"type": "string"
 													},
 													"status": {
+														"nullable": true,
 														"type": "string"
 													}
 												},
 												"required": [
-													"destination",
 													"item_count",
-													"completed_timestamp",
-													"message_id",
-													"recipient",
-													"operation",
-													"status"
+													"completed_timestamp"
 												],
 												"type": "object"
 											},
@@ -3349,6 +3349,7 @@
 														"type": "string"
 													},
 													"destination": {
+														"nullable": true,
 														"type": "string"
 													},
 													"item_count": {
@@ -3356,26 +3357,25 @@
 														"type": "integer"
 													},
 													"message_id": {
+														"nullable": true,
 														"type": "string"
 													},
 													"operation": {
+														"nullable": true,
 														"type": "string"
 													},
 													"recipient": {
+														"nullable": true,
 														"type": "string"
 													},
 													"status": {
+														"nullable": true,
 														"type": "string"
 													}
 												},
 												"required": [
-													"destination",
 													"item_count",
-													"completed_timestamp",
-													"message_id",
-													"recipient",
-													"operation",
-													"status"
+													"completed_timestamp"
 												],
 												"type": "object"
 											},

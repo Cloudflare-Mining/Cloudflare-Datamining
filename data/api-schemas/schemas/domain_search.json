@@ -1,0 +1,647 @@
+{
+	"DELETE /api/accounts/{account_id}/queries": {
+		"description": "Return a success message after deleting saved string queries by ID",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "scan",
+				"schema": {
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"204": {
+				"description": "No Content"
+			},
+			"422": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unprocessable Content"
+			},
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete saved string queries by ID",
+		"tags": [
+			"domain_search"
+		]
+	},
+	"GET /api/accounts/{account_id}/matches": {
+		"description": "Return matches for string queries based on ID",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "include_domain_id",
+				"schema": {
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"matches": {
+									"items": {
+										"additionalProperties": {},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"total": {
+									"type": "integer"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"422": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unprocessable Content"
+			},
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Read matches for string queries by ID",
+		"tags": [
+			"domain_search"
+		]
+	},
+	"GET /api/accounts/{account_id}/matches/download": {
+		"description": "Return matches as CSV for string queries based on ID",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "include_domain_id",
+				"schema": {
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"matches": {
+									"items": {
+										"additionalProperties": {},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"total": {
+									"type": "integer"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"422": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unprocessable Content"
+			},
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Download matches for string queries by ID",
+		"tags": [
+			"domain_search"
+		]
+	},
+	"GET /api/accounts/{account_id}/queries": {
+		"description": "Return string queries based on ID",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Read string queries by ID",
+		"tags": [
+			"domain_search"
+		]
+	},
+	"GET /api/accounts/{account_id}/total-queries": {
+		"description": "Return the total number of saved string queries",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Read the total number of saved string queries",
+		"tags": [
+			"domain_search"
+		]
+	},
+	"PATCH /api/accounts/{account_id}/queries": {
+		"description": "Return a success message after updating saved string queries by ID",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update saved string queries by ID",
+		"tags": [
+			"domain_search"
+		]
+	},
+	"POST /api/accounts/{account_id}/queries": {
+		"description": "Return a success message after creating new saved string queries",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "scan",
+				"schema": {
+					"type": "boolean"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"max_time": {
+								"format": "date-time",
+								"nullable": true,
+								"type": "string"
+							},
+							"min_time": {
+								"format": "date-time",
+								"nullable": true,
+								"type": "string"
+							},
+							"scan": {
+								"type": "boolean"
+							},
+							"string_matches": {},
+							"tag": {
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"204": {
+				"description": "No Content"
+			},
+			"422": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unprocessable Content"
+			},
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create new saved string queries",
+		"tags": [
+			"domain_search"
+		]
+	},
+	"POST /api/accounts/{account_id}/search": {
+		"description": "Return new string queries",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create new string queries",
+		"tags": [
+			"domain_search"
+		]
+	}
+}

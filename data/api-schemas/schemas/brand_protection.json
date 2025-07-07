@@ -1,0 +1,990 @@
+{
+	"DELETE /api/accounts/{account_id}/brands": {
+		"description": "Return a success message after deleting brands by ID",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete brands by ID",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"DELETE /api/accounts/{account_id}/brands/patterns": {
+		"description": "Return a success message after deleting patterns for brands by ID",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete patterns for brands by ID",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"GET /api/accounts/{account_id}/alerts": {
+		"description": "Return all alerts on submitted domains",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Read all alerts on submitted domains",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"GET /api/accounts/{account_id}/brands": {
+		"description": "Return all brands",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Read all brands",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"GET /api/accounts/{account_id}/brands/patterns": {
+		"description": "Return patterns for brands based on ID",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Read patterns for brands by ID",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"GET /api/accounts/{account_id}/domain-info": {
+		"description": "Return submitted domains based on ID",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Read submitted domains by ID",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"GET /api/accounts/{account_id}/recent-submissions": {
+		"description": "Return recent URL submissions",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Read recent URL submissions",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"GET /api/accounts/{account_id}/submission-info": {
+		"description": "Return URL submissions based on ID",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Read URL submissions by ID",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"GET /api/accounts/{account_id}/tracked-domains": {
+		"description": "Return submitted domains based on pattern",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Read submitted domains by pattern",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"GET /api/accounts/{account_id}/url-info": {
+		"description": "Return submitted URLs based on ID",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Read submitted URLs by ID",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"GET /live": {
+		"description": "Return a success message after running liveness checks",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Run liveness checks",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"GET /ready": {
+		"description": "Return a success message after running readiness checks",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Run readiness checks",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"PATCH /api/accounts/{account_id}/alerts": {
+		"description": "Return a success message after updating alerts on submitted domains by ID",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update alerts on submitted domains by ID",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"PATCH /api/accounts/{account_id}/alerts/clear": {
+		"description": "Return a success message after updating verification statuses of tracked URLs to awaiting by ID",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update verification statuses of tracked URLs to awaiting by ID",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"PATCH /api/accounts/{account_id}/alerts/refute": {
+		"description": "Return a success message after updating verification statuses of tracked URLs to disproven by ID",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update verification statuses of tracked URLs to disproven by ID",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"PATCH /api/accounts/{account_id}/alerts/verify": {
+		"description": "Return a success message after updating verification statuses of tracked URLs to confirmed by ID",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update verification statuses of tracked URLs to confirmed by ID",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"PATCH /api/accounts/{account_id}/clear": {
+		"description": "Return a success message after updating verification statuses of submitted URLs to awaiting by ID",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update verification statuses of submitted URLs to awaiting by ID",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"PATCH /api/accounts/{account_id}/refute": {
+		"description": "Return a success message after updating verification statuses of submitted URLs to disproven by ID",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update verification statuses of submitted URLs to disproven by ID",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"PATCH /api/accounts/{account_id}/verify": {
+		"description": "Return a success message after updating verification statuses of submitted URLs to confirmed by ID",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update verification statuses of submitted URLs to confirmed by ID",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"POST /api/accounts/{account_id}/brands": {
+		"description": "Return new brands",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create new brands",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"POST /api/accounts/{account_id}/brands/patterns": {
+		"description": "Return a success message after creating new patterns for brands by ID",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create new patterns for brands by ID",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"POST /api/accounts/{account_id}/submit": {
+		"description": "Return new URL submissions",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create new URL submissions",
+		"tags": [
+			"brand_protection"
+		]
+	},
+	"POST /api/internal/submit": {
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Internal route for testing URL submissions",
+		"tags": [
+			"brand_protection"
+		]
+	}
+}

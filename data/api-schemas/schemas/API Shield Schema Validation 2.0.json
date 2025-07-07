@@ -1,5 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/api_gateway/user_schemas/{schema_id}": {
+		"deprecated": true,
 		"operationId": "api-shield-schema-delete-a-schema",
 		"responses": {
 			"200": {
@@ -224,9 +225,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation": {
+		"deprecated": true,
 		"description": "Retrieves operation-level schema validation settings on the zone",
 		"operationId": "api-shield-schema-validation-retrieve-operation-level-settings",
 		"responses": {
@@ -401,9 +404,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/settings/schema_validation": {
+		"deprecated": true,
 		"description": "Retrieves zone level schema validation settings currently set on the zone",
 		"operationId": "api-shield-schema-validation-retrieve-zone-level-settings",
 		"responses": {
@@ -571,9 +576,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas": {
+		"deprecated": true,
 		"operationId": "api-shield-schema-validation-retrieve-information-about-all-schemas",
 		"parameters": [
 			{
@@ -958,9 +965,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/{schema_id}": {
+		"deprecated": true,
 		"operationId": "api-shield-schema-validation-retrieve-information-about-specific-schema",
 		"parameters": [
 			{
@@ -1273,9 +1282,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/{schema_id}/operations": {
+		"deprecated": true,
 		"description": "Retrieves all operations from the schema. Operations that already exist in API Shield Endpoint Management will be returned as full operations.",
 		"operationId": "api-shield-schema-validation-extract-operations-from-schema",
 		"parameters": [
@@ -2151,9 +2162,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/hosts": {
+		"deprecated": true,
 		"operationId": "api-shield-schema-validation-retrieve-user-schema-hosts",
 		"responses": {
 			"200": {
@@ -2476,9 +2489,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation) instead."
 	},
 	"PATCH /zones/{zone_id}/api_gateway/operations/schema_validation": {
+		"deprecated": true,
 		"description": "Updates multiple operation-level schema validation settings on the zone",
 		"operationId": "api-shield-schema-validation-update-multiple-operation-level-settings",
 		"requestBody": {
@@ -2782,9 +2797,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation) instead."
 	},
 	"PATCH /zones/{zone_id}/api_gateway/settings/schema_validation": {
+		"deprecated": true,
 		"description": "Updates zone level schema validation settings on the zone",
 		"operationId": "api-shield-schema-validation-patch-zone-level-settings",
 		"requestBody": {
@@ -2987,9 +3004,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation) instead."
 	},
 	"PATCH /zones/{zone_id}/api_gateway/user_schemas/{schema_id}": {
+		"deprecated": true,
 		"operationId": "api-shield-schema-validation-enable-validation-for-a-schema",
 		"requestBody": {
 			"content": {
@@ -3315,9 +3334,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation) instead."
 	},
 	"POST /zones/{zone_id}/api_gateway/user_schemas": {
+		"deprecated": true,
 		"operationId": "api-shield-schema-validation-post-schema",
 		"requestBody": {
 			"content": {
@@ -3789,9 +3810,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation) instead."
 	},
 	"PUT /zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation": {
+		"deprecated": true,
 		"description": "Updates operation-level schema validation settings on the zone",
 		"operationId": "api-shield-schema-validation-update-operation-level-settings",
 		"requestBody": {
@@ -3989,9 +4012,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation) instead."
 	},
 	"PUT /zones/{zone_id}/api_gateway/settings/schema_validation": {
+		"deprecated": true,
 		"description": "Updates zone level schema validation settings on the zone",
 		"operationId": "api-shield-schema-validation-update-zone-level-settings",
 		"requestBody": {
@@ -4195,6 +4220,7 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation) instead."
 	}
 }

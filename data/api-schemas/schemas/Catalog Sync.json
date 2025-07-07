@@ -8,7 +8,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -192,7 +193,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -203,7 +205,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -212,7 +215,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -220,13 +224,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -241,7 +248,8 @@
 													"type": "array"
 												},
 												"success": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -408,7 +416,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -419,7 +428,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -428,7 +438,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -436,13 +447,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -648,7 +662,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -659,7 +674,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -668,7 +684,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -676,13 +693,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -697,7 +717,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -864,7 +885,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -875,7 +897,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -884,7 +907,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -892,13 +916,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1091,7 +1118,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1102,7 +1130,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -1111,7 +1140,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1119,13 +1149,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1140,7 +1173,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1307,7 +1341,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1318,7 +1353,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -1327,7 +1363,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1335,13 +1372,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1534,7 +1574,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1545,7 +1586,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -1554,7 +1596,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1562,13 +1605,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1583,7 +1629,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1750,7 +1797,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1761,7 +1809,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -1770,7 +1819,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1778,13 +1828,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1977,7 +2030,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1988,7 +2042,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -1997,7 +2052,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2005,13 +2061,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2026,7 +2085,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2193,7 +2253,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2204,7 +2265,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -2213,7 +2275,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2221,13 +2284,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2420,7 +2486,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2431,7 +2498,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -2440,7 +2508,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2448,13 +2517,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2469,7 +2541,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2636,7 +2709,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2647,7 +2721,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -2656,7 +2731,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2664,13 +2740,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2863,7 +2942,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2874,7 +2954,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -2883,7 +2964,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2891,13 +2973,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2912,7 +2997,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -3079,7 +3165,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3090,7 +3177,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -3099,7 +3187,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -3107,13 +3196,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -3170,7 +3262,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3338,7 +3431,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3349,7 +3443,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -3358,7 +3453,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -3366,13 +3462,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -3387,7 +3486,8 @@
 													"type": "array"
 												},
 												"success": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -3554,7 +3654,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3565,7 +3666,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -3574,7 +3676,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -3582,13 +3685,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -3619,14 +3725,16 @@
 													},
 													"destination_id": {
 														"format": "uuid",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"destination_type": {
 														"enum": [
 															"NONE",
 															"ZERO_TRUST_LIST"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"errors": {
 														"additionalProperties": {
@@ -3782,7 +3890,8 @@
 																		103007,
 																		103008
 																	],
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																},
 																"documentation_url": {
 																	"type": "string"
@@ -3793,7 +3902,8 @@
 																"meta": {
 																	"properties": {
 																		"l10n_key": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"loggable_error": {
 																			"type": "string"
@@ -3802,7 +3912,8 @@
 																			"type": "object"
 																		},
 																		"trace_id": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -3810,13 +3921,16 @@
 																"source": {
 																	"properties": {
 																		"parameter": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"parameter_value_index": {
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		},
 																		"pointer": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -3857,7 +3971,8 @@
 															"AUTO",
 															"MANUAL"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -4046,7 +4161,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -4057,7 +4173,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -4066,7 +4183,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -4074,13 +4192,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -4095,7 +4216,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -4262,7 +4384,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -4273,7 +4396,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -4282,7 +4406,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -4290,13 +4415,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -4489,7 +4617,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -4500,7 +4629,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -4509,7 +4639,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -4517,13 +4648,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -4538,7 +4672,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -4705,7 +4840,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -4716,7 +4852,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -4725,7 +4862,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -4733,13 +4871,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -4932,7 +5073,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -4943,7 +5085,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -4952,7 +5095,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -4960,13 +5104,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -4981,7 +5128,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -5148,7 +5296,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -5159,7 +5308,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -5168,7 +5318,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -5176,13 +5327,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -5375,7 +5529,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -5386,7 +5541,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -5395,7 +5551,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -5403,13 +5560,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -5424,7 +5584,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -5591,7 +5752,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -5602,7 +5764,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -5611,7 +5774,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -5619,13 +5783,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -5818,7 +5985,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -5829,7 +5997,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -5838,7 +6007,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -5846,13 +6016,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -5867,7 +6040,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -6034,7 +6208,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -6045,7 +6220,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -6054,7 +6230,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -6062,13 +6239,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -6126,7 +6306,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -6303,7 +6484,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -6314,7 +6496,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -6323,7 +6506,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -6331,13 +6515,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -6352,7 +6539,8 @@
 													"type": "array"
 												},
 												"success": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -6519,7 +6707,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -6530,7 +6719,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -6539,7 +6729,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -6547,13 +6738,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -6583,14 +6777,16 @@
 												},
 												"destination_id": {
 													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"destination_type": {
 													"enum": [
 														"NONE",
 														"ZERO_TRUST_LIST"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"errors": {
 													"additionalProperties": {
@@ -6746,7 +6942,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -6757,7 +6954,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -6766,7 +6964,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -6774,13 +6973,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -6821,7 +7023,8 @@
 														"AUTO",
 														"MANUAL"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -7008,7 +7211,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -7019,7 +7223,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -7028,7 +7233,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -7036,13 +7242,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -7057,7 +7266,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -7224,7 +7434,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -7235,7 +7446,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -7244,7 +7456,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -7252,13 +7465,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -7451,7 +7667,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -7462,7 +7679,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -7471,7 +7689,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -7479,13 +7698,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -7500,7 +7722,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -7667,7 +7890,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -7678,7 +7902,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -7687,7 +7912,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -7695,13 +7921,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -7894,7 +8123,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -7905,7 +8135,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -7914,7 +8145,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -7922,13 +8154,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -7943,7 +8178,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -8110,7 +8346,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -8121,7 +8358,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -8130,7 +8368,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -8138,13 +8377,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -8337,7 +8579,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -8348,7 +8591,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -8357,7 +8601,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -8365,13 +8610,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -8386,7 +8634,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -8553,7 +8802,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -8564,7 +8814,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -8573,7 +8824,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -8581,13 +8833,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -8780,7 +9035,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -8791,7 +9047,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -8800,7 +9057,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -8808,13 +9066,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -8829,7 +9090,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -8996,7 +9258,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -9007,7 +9270,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -9016,7 +9280,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -9024,13 +9289,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -9088,7 +9356,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -9100,7 +9369,8 @@
 						"NONE",
 						"ZERO_TRUST_LIST"
 					],
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -9268,7 +9538,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -9279,7 +9550,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -9288,7 +9560,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -9296,13 +9569,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -9317,7 +9593,8 @@
 													"type": "array"
 												},
 												"success": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -9484,7 +9761,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -9495,7 +9773,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -9504,7 +9783,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -9512,13 +9792,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -9550,7 +9833,8 @@
 																"NONE",
 																"ZERO_TRUST_LIST"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": "array"
 													},
@@ -9745,7 +10029,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -9756,7 +10041,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -9765,7 +10051,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -9773,13 +10060,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -9794,7 +10084,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -9961,7 +10252,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -9972,7 +10264,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -9981,7 +10274,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -9989,13 +10283,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -10188,7 +10485,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -10199,7 +10497,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -10208,7 +10507,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -10216,13 +10516,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -10237,7 +10540,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -10404,7 +10708,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -10415,7 +10720,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -10424,7 +10730,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -10432,13 +10739,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -10631,7 +10941,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -10642,7 +10953,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -10651,7 +10963,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -10659,13 +10972,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -10680,7 +10996,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -10847,7 +11164,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -10858,7 +11176,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -10867,7 +11186,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -10875,13 +11195,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -11074,7 +11397,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -11085,7 +11409,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -11094,7 +11419,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -11102,13 +11428,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -11123,7 +11452,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -11290,7 +11620,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -11301,7 +11632,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -11310,7 +11642,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -11318,13 +11651,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -11382,7 +11718,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -11414,7 +11751,8 @@
 									"AUTO",
 									"MANUAL"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -11587,7 +11925,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -11598,7 +11937,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -11607,7 +11947,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -11615,13 +11956,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -11636,7 +11980,8 @@
 													"type": "array"
 												},
 												"success": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -11803,7 +12148,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -11814,7 +12160,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -11823,7 +12170,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -11831,13 +12179,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -11867,14 +12218,16 @@
 												},
 												"destination_id": {
 													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"destination_type": {
 													"enum": [
 														"NONE",
 														"ZERO_TRUST_LIST"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"errors": {
 													"additionalProperties": {
@@ -12030,7 +12383,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -12041,7 +12395,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -12050,7 +12405,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -12058,13 +12414,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -12105,7 +12464,8 @@
 														"AUTO",
 														"MANUAL"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -12292,7 +12652,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -12303,7 +12664,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -12312,7 +12674,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -12320,13 +12683,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -12341,7 +12707,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -12508,7 +12875,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -12519,7 +12887,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -12528,7 +12897,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -12536,13 +12906,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -12735,7 +13108,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -12746,7 +13120,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -12755,7 +13130,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -12763,13 +13139,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -12784,7 +13163,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -12951,7 +13331,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -12962,7 +13343,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -12971,7 +13353,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -12979,13 +13362,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -13178,7 +13564,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -13189,7 +13576,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -13198,7 +13586,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -13206,13 +13595,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -13227,7 +13619,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -13394,7 +13787,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -13405,7 +13799,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -13414,7 +13809,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -13422,13 +13818,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -13621,7 +14020,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -13632,7 +14032,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -13641,7 +14042,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -13649,13 +14051,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -13670,7 +14075,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -13837,7 +14243,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -13848,7 +14255,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -13857,7 +14265,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -13865,13 +14274,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -14064,7 +14476,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -14075,7 +14488,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -14084,7 +14498,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -14092,13 +14507,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -14113,7 +14531,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -14280,7 +14699,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -14291,7 +14711,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -14300,7 +14721,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -14308,13 +14730,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -14507,7 +14932,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -14518,7 +14944,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -14527,7 +14954,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -14535,13 +14963,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -14556,7 +14987,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -14723,7 +15155,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -14734,7 +15167,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -14743,7 +15177,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -14751,13 +15186,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -14950,7 +15388,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -14961,7 +15400,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -14970,7 +15410,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -14978,13 +15419,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -14999,7 +15443,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -15166,7 +15611,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -15177,7 +15623,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -15186,7 +15633,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -15194,13 +15642,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -15257,7 +15708,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -15281,7 +15733,8 @@
 									"NONE",
 									"ZERO_TRUST_LIST"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"type": "string"
@@ -15294,7 +15747,8 @@
 									"AUTO",
 									"MANUAL"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -15472,7 +15926,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -15483,7 +15938,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -15492,7 +15948,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -15500,13 +15957,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -15521,7 +15981,8 @@
 													"type": "array"
 												},
 												"success": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -15688,7 +16149,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -15699,7 +16161,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -15708,7 +16171,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -15716,13 +16180,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -15752,14 +16219,16 @@
 												},
 												"destination_id": {
 													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"destination_type": {
 													"enum": [
 														"NONE",
 														"ZERO_TRUST_LIST"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"errors": {
 													"additionalProperties": {
@@ -15915,7 +16384,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -15926,7 +16396,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -15935,7 +16406,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -15943,13 +16415,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -15990,7 +16465,8 @@
 														"AUTO",
 														"MANUAL"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -16185,7 +16661,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -16196,7 +16673,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -16205,7 +16683,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -16213,13 +16692,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -16234,7 +16716,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -16401,7 +16884,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -16412,7 +16896,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -16421,7 +16906,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -16429,13 +16915,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -16628,7 +17117,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -16639,7 +17129,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -16648,7 +17139,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -16656,13 +17148,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -16677,7 +17172,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -16844,7 +17340,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -16855,7 +17352,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -16864,7 +17362,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -16872,13 +17371,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -17071,7 +17573,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -17082,7 +17585,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -17091,7 +17595,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -17099,13 +17604,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -17120,7 +17628,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -17287,7 +17796,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -17298,7 +17808,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -17307,7 +17818,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -17315,13 +17827,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -17514,7 +18029,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -17525,7 +18041,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -17534,7 +18051,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -17542,13 +18060,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -17563,7 +18084,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -17730,7 +18252,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -17741,7 +18264,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -17750,7 +18274,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -17758,13 +18283,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -17957,7 +18485,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -17968,7 +18497,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -17977,7 +18507,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -17985,13 +18516,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -18006,7 +18540,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -18173,7 +18708,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -18184,7 +18720,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -18193,7 +18730,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -18201,13 +18739,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -18400,7 +18941,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -18411,7 +18953,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -18420,7 +18963,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -18428,13 +18972,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -18449,7 +18996,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -18616,7 +19164,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -18627,7 +19176,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -18636,7 +19186,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -18644,13 +19195,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -18707,7 +19261,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -18884,7 +19439,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -18895,7 +19451,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -18904,7 +19461,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -18912,13 +19470,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -18933,7 +19494,8 @@
 													"type": "array"
 												},
 												"success": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -19100,7 +19662,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -19111,7 +19674,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -19120,7 +19684,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -19128,13 +19693,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -19331,7 +19899,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -19342,7 +19911,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -19351,7 +19921,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -19359,13 +19930,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -19380,7 +19954,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -19547,7 +20122,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -19558,7 +20134,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -19567,7 +20144,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -19575,13 +20153,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -19774,7 +20355,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -19785,7 +20367,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -19794,7 +20377,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -19802,13 +20386,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -19823,7 +20410,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -19990,7 +20578,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -20001,7 +20590,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -20010,7 +20600,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -20018,13 +20609,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -20217,7 +20811,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -20228,7 +20823,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -20237,7 +20833,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -20245,13 +20842,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -20266,7 +20866,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -20433,7 +21034,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -20444,7 +21046,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -20453,7 +21056,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -20461,13 +21065,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -20660,7 +21267,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -20671,7 +21279,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -20680,7 +21289,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -20688,13 +21298,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -20709,7 +21322,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -20876,7 +21490,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -20887,7 +21502,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -20896,7 +21512,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -20904,13 +21521,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -21103,7 +21723,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -21114,7 +21735,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -21123,7 +21745,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -21131,13 +21754,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -21152,7 +21778,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -21319,7 +21946,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -21330,7 +21958,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -21339,7 +21968,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -21347,13 +21977,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -21546,7 +22179,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -21557,7 +22191,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -21566,7 +22201,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -21574,13 +22210,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -21595,7 +22234,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -21762,7 +22402,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -21773,7 +22414,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -21782,7 +22424,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -21790,13 +22433,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -21989,7 +22635,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -22000,7 +22647,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -22009,7 +22657,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -22017,13 +22666,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -22038,7 +22690,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -22205,7 +22858,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -22216,7 +22870,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -22225,7 +22880,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -22233,13 +22889,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -22296,7 +22955,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -22328,7 +22988,8 @@
 									"AUTO",
 									"MANUAL"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -22501,7 +23162,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -22512,7 +23174,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -22521,7 +23184,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -22529,13 +23193,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -22550,7 +23217,8 @@
 													"type": "array"
 												},
 												"success": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -22717,7 +23385,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -22728,7 +23397,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -22737,7 +23407,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -22745,13 +23416,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -22781,14 +23455,16 @@
 												},
 												"destination_id": {
 													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"destination_type": {
 													"enum": [
 														"NONE",
 														"ZERO_TRUST_LIST"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"errors": {
 													"additionalProperties": {
@@ -22944,7 +23620,8 @@
 																	103007,
 																	103008
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"documentation_url": {
 																"type": "string"
@@ -22955,7 +23632,8 @@
 															"meta": {
 																"properties": {
 																	"l10n_key": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"loggable_error": {
 																		"type": "string"
@@ -22964,7 +23642,8 @@
 																		"type": "object"
 																	},
 																	"trace_id": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -22972,13 +23651,16 @@
 															"source": {
 																"properties": {
 																	"parameter": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"parameter_value_index": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"pointer": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -23019,7 +23701,8 @@
 														"AUTO",
 														"MANUAL"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -23206,7 +23889,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -23217,7 +23901,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -23226,7 +23911,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -23234,13 +23920,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -23255,7 +23944,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -23422,7 +24112,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -23433,7 +24124,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -23442,7 +24134,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -23450,13 +24143,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -23649,7 +24345,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -23660,7 +24357,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -23669,7 +24367,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -23677,13 +24376,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -23698,7 +24400,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -23865,7 +24568,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -23876,7 +24580,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -23885,7 +24590,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -23893,13 +24599,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -24092,7 +24801,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -24103,7 +24813,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -24112,7 +24823,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -24120,13 +24832,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -24141,7 +24856,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -24308,7 +25024,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -24319,7 +25036,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -24328,7 +25046,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -24336,13 +25055,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -24535,7 +25257,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -24546,7 +25269,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -24555,7 +25279,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -24563,13 +25288,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -24584,7 +25312,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -24751,7 +25480,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -24762,7 +25492,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -24771,7 +25502,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -24779,13 +25511,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -24978,7 +25713,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -24989,7 +25725,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -24998,7 +25735,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -25006,13 +25744,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -25027,7 +25768,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -25194,7 +25936,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -25205,7 +25948,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -25214,7 +25958,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -25222,13 +25967,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -25421,7 +26169,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -25432,7 +26181,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -25441,7 +26191,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -25449,13 +26200,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -25470,7 +26224,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -25637,7 +26392,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -25648,7 +26404,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -25657,7 +26414,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -25665,13 +26423,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -25864,7 +26625,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -25875,7 +26637,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -25884,7 +26647,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -25892,13 +26656,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -25913,7 +26680,8 @@
 											"type": "array"
 										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -26080,7 +26848,8 @@
 															103007,
 															103008
 														],
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"documentation_url": {
 														"type": "string"
@@ -26091,7 +26860,8 @@
 													"meta": {
 														"properties": {
 															"l10n_key": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loggable_error": {
 																"type": "string"
@@ -26100,7 +26870,8 @@
 																"type": "object"
 															},
 															"trace_id": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -26108,13 +26879,16 @@
 													"source": {
 														"properties": {
 															"parameter": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"parameter_value_index": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"pointer": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"

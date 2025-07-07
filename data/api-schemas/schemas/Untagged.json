@@ -118,6 +118,290 @@
 			}
 		}
 	],
+	"PARAMETERS /api/accounts/{account_id}/alerts": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/alerts/clear": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/alerts/refute": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/alerts/verify": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/brands": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/brands/patterns": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/clear": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/domain-info": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/logo-matches": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/logo-matches/download": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/logos": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/logos/{logo_id}": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		},
+		{
+			"in": "path",
+			"name": "logo_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/matches": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/matches/download": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/queries": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/recent-submissions": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/refute": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/scan-logo": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/search": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/submission-info": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/submit": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/total-queries": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/tracked-domains": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/url-info": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /api/accounts/{account_id}/verify": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /zones/{zone_id}/api_gateway/configuration": [
 		{
 			"in": "path",
