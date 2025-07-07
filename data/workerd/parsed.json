@@ -2964,6 +2964,14 @@
 						"compatEnableFlag": "enable_nodejs_process_v2",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "setEventTargetThis",
+					"annotations": {
+						"compatDisableFlag": "no_set_event_target_this",
+						"compatEnableDate": "2025-08-01",
+						"compatEnableFlag": "set_event_target_this"
+					}
 				}
 			]
 		},
