@@ -114,7 +114,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": " April 27, 2021",
+														"value": " July 8, 2025",
 														"marks": [],
 														"content": null
 													}
@@ -486,7 +486,52 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "1.6. ",
+														"value": "1.6 \"",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "Monthly Fees",
+														"marks": [
+															{
+																"type": "bold"
+															}
+														],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "\" means the Fees actually paid by Customer to Cloudflare in the billing month preceding the Incident, exclusive of any Fees for Services subject to a Service-Specific SLA.",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "1.7. ",
 														"marks": [],
 														"content": null
 													},
@@ -531,7 +576,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "1.7. ",
+														"value": "1.8. ",
 														"marks": [],
 														"content": null
 													},
@@ -576,7 +621,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "1.8. ",
+														"value": "1.9. ",
 														"marks": [],
 														"content": null
 													},
@@ -621,7 +666,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "1.9. ",
+														"value": "1.10. ",
 														"marks": [],
 														"content": null
 													},
@@ -666,7 +711,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "1.10. ",
+														"value": "1.11. ",
 														"marks": [],
 														"content": null
 													},
@@ -711,7 +756,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "1.11. ",
+														"value": "1.12. ",
 														"marks": [],
 														"content": null
 													},
@@ -756,7 +801,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "1.12. ",
+														"value": "1.13. ",
 														"marks": [],
 														"content": null
 													},
@@ -801,7 +846,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "1.13. ",
+														"value": "1.14. ",
 														"marks": [],
 														"content": null
 													},
@@ -981,7 +1026,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": ". If the Service fails to meet the above service level commitments, Customer will receive a credit from Cloudflare as set-forth in ",
+														"value": ". If the Service fails to meet the relevant service level commitments, Customer will receive a credit from Cloudflare as set-forth in ",
 														"marks": [],
 														"content": null
 													},
@@ -1005,7 +1050,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": " of these Terms (the ",
+														"value": " of these Terms or the relevant Service-Specific SLA  (the ",
 														"marks": [],
 														"content": null
 													},
@@ -1450,7 +1495,31 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "5.2. Emergency Telephone Support is available all day, every day, for P1 Issues only. Online support is available all day, every day, for all other Issues regardless of severity.",
+														"value": "5.2. Emergency Telephone Support is available all day, every day, for P1 Issues only. Online support is available all day, every day, for all other Issues regardless of severity.  For Customers who have purchased Cloudflare's Technical Account Management Service (\"",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "TAM Service",
+														"marks": [
+															{
+																"type": "bold"
+															}
+														],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "\"), Cloudflare will provide an initial response to notification of a P1 Issue within 30 minutes.",
 														"marks": [],
 														"content": null
 													}
@@ -1471,7 +1540,31 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "5.3. For Customers who have purchased Cloudflare's Security Operations Center Service (\"SOC Service\") the following notification response times will apply to all security incidents for Services monitored by the SOC Service:",
+														"value": "5.3. For Customers who have purchased Cloudflare's Security Operations Center Service (\"",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "SOC Service",
+														"marks": [
+															{
+																"type": "bold"
+															}
+														],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "\") the following notification response times will apply to all security incidents for Services monitored by the SOC Service:",
 														"marks": [],
 														"content": null
 													}
@@ -1964,7 +2057,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "7.2. To submit a Claim, Customer must contact Cloudflare as detailed above in Section 7.1 Customer must provide to Cloudflare, reasonable details and sufficient evidence to support any Claim, including but not limited to, detailed descriptions of an Incident, the duration of such Incident, network traceroutes, the URL(s) affected, and any steps taken, or attempts made, by Customer to resolve the Incident. Customer must submit a Claim before the end of the billing month immediately following the billing month in which the Incident which is the subject of such Claim occurs.",
+														"value": "7.2. To submit a Claim, Customer must contact Cloudflare as detailed above in Section 7.1 Customer must provide to Cloudflare, reasonable details and sufficient evidence to support any Claim, including but not limited to, detailed descriptions of an Incident, the duration of such Incident, network traceroutes, the URL(s) affected, and any steps taken, or attempts made, by Customer to resolve the Incident. Customer must submit a Claim before the end of the billing month immediately following the billing month in which the Incident which is the subject of such Claim occurs. ",
 														"marks": [],
 														"content": null
 													}
@@ -2027,7 +2120,28 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "8.1. This SLA does not apply to any performance or availability issues: (a) Due to events outside of Cloudflare's control, including but not limited to, Issues caused solely by:",
+														"value": "8.1. This SLA does not apply to any performance or availability issues: ",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "(a) Due to events outside of Cloudflare's control, including but not limited to, Issues caused solely by:",
 														"marks": [],
 														"content": null
 													}
@@ -2162,13 +2276,55 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "(iv) a third party gaining access to the Service by means of Customer's Authorized Users' accounts or equipment; (b) Caused by Customer's continued use of the Service after Cloudflare has advised Customer to modify such use, if Customer did not modify its use as advised; or (c) Occurring during beta and trial services, unless otherwise agreed to in writing by Cloudflare.",
+																		"value": "(iv) a third party gaining access to the Service by means of Customer's Authorized Users' accounts or equipment; ",
 																		"marks": [],
 																		"content": null
 																	}
 																]
 															}
 														]
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "(b) Caused by Customer's continued use of the Service after Cloudflare has advised Customer to modify such use, if Customer did not modify its use as advised; or",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "(c) Occurring during beta and trial services, unless otherwise agreed to in writing by Cloudflare.",
+														"marks": [],
+														"content": null
 													}
 												]
 											},
@@ -2187,7 +2343,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "9. SERVICE CREDITS",
+														"value": "\n9. SERVICE CREDITS",
 														"marks": [],
 														"content": null
 													}
@@ -2218,7 +2374,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "Section 10",
+														"value": "Section 10 ",
 														"marks": [
 															{
 																"type": "bold"
@@ -2232,7 +2388,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": ".",
+														"value": "or the applicable Service-Specific SLA.",
 														"marks": [],
 														"content": null
 													}
@@ -2295,7 +2451,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "9.4. Service Credits for this SLA will only be calculated against Customer's fixed Monthly Fees.",
+														"value": "9.4. Service Credits for this SLA will only be calculated against Customer's fixed Monthly Fees unless otherwise stated in the applicable Service-Specific SLA.",
 														"marks": [],
 														"content": null
 													}
@@ -2337,7 +2493,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "10.1. For any and each Outage Period experienced by Customer during a monthly billing period, Cloudflare will provide a Service Credit calculated in accordance with the formula below that is applicable to the Customer's success package: ",
+														"value": "10.1. Except with respect to Services subject to a Service-Specific SLA, for any and each Outage Period experienced by Customer during a monthly billing period, Cloudflare will provide a Service Credit calculated in accordance with the formula below that is applicable to the Customer's success package: ",
 														"marks": [],
 														"content": null
 													}
@@ -2465,6 +2621,293 @@
 														"content": null
 													}
 												]
+											},
+											{
+												"nodeType": "heading-3",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "12. SERVICE-SPECIFIC SLAs",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "12.1. The following Cloudflare Services are subject to a service-specific SLA (\"",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "Service-Specific SLA",
+														"marks": [
+															{
+																"type": "bold"
+															}
+														],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "\"). In the event of a conflict between this Cloudflare Enterprise Customer Support and Service Level Agreement and a Service-Specific SLA, the Service-Specific SLA shall control for Claims related to the applicable Service only: ",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "table",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "table-row",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "table-cell",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "paragraph",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": null,
+																		"marks": null,
+																		"content": [
+																			{
+																				"nodeType": "text",
+																				"data": {
+																					"target": null,
+																					"uri": null
+																				},
+																				"value": "Service",
+																				"marks": [
+																					{
+																						"type": "bold"
+																					}
+																				],
+																				"content": null
+																			}
+																		]
+																	}
+																]
+															},
+															{
+																"nodeType": "table-cell",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "paragraph",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": null,
+																		"marks": null,
+																		"content": [
+																			{
+																				"nodeType": "text",
+																				"data": {
+																					"target": null,
+																					"uri": null
+																				},
+																				"value": "Service-Specific SLA Link",
+																				"marks": [
+																					{
+																						"type": "bold"
+																					}
+																				],
+																				"content": null
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"nodeType": "table-row",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "table-cell",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "paragraph",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": null,
+																		"marks": null,
+																		"content": [
+																			{
+																				"nodeType": "text",
+																				"data": {
+																					"target": null,
+																					"uri": null
+																				},
+																				"value": "R2",
+																				"marks": [],
+																				"content": null
+																			}
+																		]
+																	}
+																]
+															},
+															{
+																"nodeType": "table-cell",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "paragraph",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": null,
+																		"marks": null,
+																		"content": [
+																			{
+																				"nodeType": "text",
+																				"data": {
+																					"target": null,
+																					"uri": null
+																				},
+																				"value": "",
+																				"marks": [],
+																				"content": null
+																			},
+																			{
+																				"nodeType": "hyperlink",
+																				"data": {
+																					"target": null,
+																					"uri": "https://cloudflare.com/r2-service-level-agreement/"
+																				},
+																				"value": null,
+																				"marks": null,
+																				"content": [
+																					{
+																						"nodeType": "text",
+																						"data": {
+																							"target": null,
+																							"uri": null
+																						},
+																						"value": "R2 - Service Level Agreement",
+																						"marks": [],
+																						"content": null
+																					}
+																				]
+																			},
+																			{
+																				"nodeType": "text",
+																				"data": {
+																					"target": null,
+																					"uri": null
+																				},
+																				"value": "",
+																				"marks": [],
+																				"content": null
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													}
+												]
 											}
 										]
 									}
@@ -2545,7 +2988,274 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "\n+1 (650) 319-8930",
+														"value": "Contact the team\n",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "1 (888) 99 FLARE ",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "1 (888) 993 5273 ",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "UK callers: ",
+														"marks": [
+															{
+																"type": "bold"
+															}
+														],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "+44 (0)20 3514 6970 ",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "Singapore callers: ",
+														"marks": [
+															{
+																"type": "bold"
+															}
+														],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "+65 3158 3954 ",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "International callers: ",
+														"marks": [
+															{
+																"type": "bold"
+															}
+														],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "+1 (650) 319 8930 ",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "101 Townsend St. ",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "San Francisco, CA 94107 ",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "USA ",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "Policy date: ",
+														"marks": [
+															{
+																"type": "bold"
+															}
+														],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "March 3, 2016 ",
 														"marks": [],
 														"content": null
 													}
@@ -2567,30 +3277,6 @@
 															"uri": null
 														},
 														"value": "\n",
-														"marks": [],
-														"content": null
-													},
-													{
-														"nodeType": "text",
-														"data": {
-															"target": null,
-															"uri": null
-														},
-														"value": "Cloudflare, Inc.",
-														"marks": [
-															{
-																"type": "bold"
-															}
-														],
-														"content": null
-													},
-													{
-														"nodeType": "text",
-														"data": {
-															"target": null,
-															"uri": null
-														},
-														"value": "\n101 Townsend St,\nSan Francisco, CA 94107\nUSA",
 														"marks": [],
 														"content": null
 													}
