@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-06-02T19:26:51.758Z",
-					"updatedAt": "2025-07-05T04:06:28.904Z"
+					"updatedAt": "2025-07-08T07:16:11.895Z"
 				},
 				"contentfulId": "5sfy0lFRunNgkrnElG4nKu",
 				"contentTypeId": "page",
@@ -324,59 +324,6 @@
 						"quoteCarousel": []
 					},
 					{
-						"contentfulId": "5wF8o6yAmLTZZbZOIaxWfK",
-						"title": "The Exceptional Capabilities of R2",
-						"copy": "- __Automatic region selection__ provides you with optimized performance, high availability, and efficient data transfer by automatically determining the best storage region based on where data is uploaded from. \n\n- __S3-compatible API__ enables your existing tools to operate seamlessly after migration. \n\n- __Object lifecycles__ empowers you to automate data management, optimize storage costs, enforce compliance, and streamline workflows by defining rules that govern the lifecycle stages and actions performed on objects.\n\n- __Public and private buckets__ give you control over data accessibility, enabling convenient sharing for public resources and ensuring security and privacy for sensitive or confidential data.\n\n- __Undiscoverable bucket names__ strengthen data security by reducing the risk of unauthorized access and targeted attacks, safeguarding the confidentiality and integrity of stored data.\n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "0522f72b-8363-5743-b2b9-2a025c93b795",
-							"altText": "Illustration of a cloud with various shapes inside it",
-							"title": "R2-Hero",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5OHya7vfRfEpPYsrvMXi5k/3050708e3d2b8acfffca578bf6d65a39/R2_Open_Beta.png"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "large",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
 						"contentfulId": "Ttm9QQ8N0xvVTAWrZgvA4",
 						"contentTypeId": "bladePlansMatrix",
 						"hasFilter": false,
@@ -478,110 +425,6 @@
 												"contentTypeId": "planElementFeatureValueText",
 												"contentfulId": "7EIzdEGCdc0bvBJv7RpMhK",
 												"textValue": "5 GB per month",
-												"plan": {
-													"contentfulId": "66TAyowgjpPOaaErq8Usor",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "Free Tier | Storage | Amazon S3",
-													"name": "Amazon S3",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											}
-										]
-									},
-									{
-										"contentfulId": "4tU1ExfBC2JUzV6WHUr2gt",
-										"contentTypeId": "planElementFeatures",
-										"name": "Class A Operations (POST)",
-										"description": null,
-										"planValues": [
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "1KlXJwfTvKTsO9221sM9Xe",
-												"textValue": "1 Million per month",
-												"plan": {
-													"contentfulId": "5XAaszeVndmH4SDpEskMK",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "R2 vs S3 - Free Tier  - Cloudflare - Element Plan ",
-													"name": "Cloudflare R2",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": "       ",
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											},
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "4PTH79sRYCnZJFHXJnzPX6",
-												"textValue": "2,000 per month",
-												"plan": {
-													"contentfulId": "66TAyowgjpPOaaErq8Usor",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "Free Tier | Storage | Amazon S3",
-													"name": "Amazon S3",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											}
-										]
-									},
-									{
-										"contentfulId": "2b6rYapioxSIg3MeGrYWaK",
-										"contentTypeId": "planElementFeatures",
-										"name": "Class B Operations (GET)",
-										"description": null,
-										"planValues": [
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "6zC9RU5u7govbqvOdm2Knb",
-												"textValue": "10 Million per month",
-												"plan": {
-													"contentfulId": "5XAaszeVndmH4SDpEskMK",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "R2 vs S3 - Free Tier  - Cloudflare - Element Plan ",
-													"name": "Cloudflare R2",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": "       ",
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											},
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "6FdyCdT0A7uCHJMxjZn87U",
-												"textValue": "20,000 per month",
 												"plan": {
 													"contentfulId": "66TAyowgjpPOaaErq8Usor",
 													"contentTypeId": "planElementPlan",
@@ -766,58 +609,6 @@
 										]
 									},
 									{
-										"contentfulId": "1xlHHEW7S8Dh172bmzHoK0",
-										"contentTypeId": "planElementFeatures",
-										"name": "Class B Operations (GET)",
-										"description": null,
-										"planValues": [
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "2rGGlVs4xs4cOj0bCjZ79d",
-												"textValue": "$0.00036 per 1,000",
-												"plan": {
-													"contentfulId": "5XAaszeVndmH4SDpEskMK",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "R2 vs S3 - Free Tier  - Cloudflare - Element Plan ",
-													"name": "Cloudflare R2",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": "       ",
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											},
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "3TF8DEQU5fWrT4toppHNeB",
-												"textValue": "$0.0004 per 1,000",
-												"plan": {
-													"contentfulId": "66TAyowgjpPOaaErq8Usor",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "Free Tier | Storage | Amazon S3",
-													"name": "Amazon S3",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											}
-										]
-									},
-									{
 										"contentfulId": "1AA87uoBoghuYuQq0Jv9ru",
 										"contentTypeId": "planElementFeatures",
 										"name": "Egress Fees",
@@ -872,12 +663,6 @@
 								]
 							}
 						]
-					},
-					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "2MN8DuwqNRbwdvaQ1y4bTE",
-						"htmlContent": "<br>\n<IMG style= \"float: left; margin: 18.25px 10px 0px 0px;\" src=\"https://paygo-webflow-lps.builtforthis.workers.dev/images/627166964dba1c2aa8c2d5b5_performance-cloud-speed.png\" width=\"23\" />\n<p style=\"text-align: left;\"><span style=\"font-size: 12px; font-weight: normal; line-height: 9px;\"><span style=\"color: #000000;\">This comparison table is provided for informational purposes only. Prices are limited to the public fees as of 10/10/2024, and do not include taxes and any other fees. Amazon S3 price and egress fees are based on the tiered rates for S3 Standard in the US East region and data transfer fees from Amazon S3 to Internet as published on <a href=\"https://aws.amazon.com/s3/pricing/\" target=\"blank\">https://aws.amazon.com/s3/pricing/</a></span><br /><br /></span></p>\n",
-						"htmlId": null
 					},
 					{
 						"contentTypeId": "bladeEnablement",
