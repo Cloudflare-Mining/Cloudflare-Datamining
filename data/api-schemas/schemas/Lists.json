@@ -45,6 +45,25 @@
 							"allOf": [
 								{
 									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "Defines the unique ID of the item in the List.",
+													"example": "34b12448945f11eaa1b71c4d701ab86e",
+													"maxLength": 32,
+													"minLength": 32,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
 										"errors": {
 											"example": [],
 											"items": {
@@ -116,25 +135,6 @@
 										"result"
 									],
 									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"id": {
-													"description": "Defines the unique ID of the item in the List.",
-													"example": "34b12448945f11eaa1b71c4d701ab86e",
-													"maxLength": 32,
-													"minLength": 32,
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												}
-											},
-											"type": "object"
-										}
-									},
-									"type": "object"
 								}
 							],
 							"type": "object"
@@ -150,6 +150,25 @@
 							"allOf": [
 								{
 									"allOf": [
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"description": "Defines the unique ID of the item in the List.",
+															"example": "34b12448945f11eaa1b71c4d701ab86e",
+															"maxLength": 32,
+															"minLength": 32,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
 										{
 											"properties": {
 												"errors": {
@@ -222,25 +241,6 @@
 												"messages",
 												"result"
 											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"id": {
-															"description": "Defines the unique ID of the item in the List.",
-															"example": "34b12448945f11eaa1b71c4d701ab86e",
-															"maxLength": 32,
-															"minLength": 32,
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														}
-													},
-													"type": "object"
-												}
-											},
 											"type": "object"
 										}
 									],
@@ -359,7 +359,7 @@
 		}
 	},
 	"DELETE /accounts/{account_id}/rules/lists/{list_id}/items": {
-		"description": "Removes one or more items from a list.\n\nThis operation is asynchronous. To get current the operation status, invoke the [Get bulk operation status](/operations/lists-get-bulk-operation-status) endpoint with the returned `operation_id`.",
+		"description": "Removes one or more items from a list.\n\nThis operation is asynchronous. To get current the operation status, invoke the `Get bulk operation status` endpoint with the returned `operation_id`.",
 		"operationId": "lists-delete-list-items",
 		"parameters": [
 			{
@@ -427,7 +427,36 @@
 						"schema": {
 							"allOf": [
 								{
+									"properties": {
+										"result": {
+											"properties": {
+												"operation_id": {
+													"description": "The unique operation ID of the asynchronous action.",
+													"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								{
 									"allOf": [
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"type": "object"
+													},
+													"nullable": true,
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
 										{
 											"properties": {
 												"errors": {
@@ -501,37 +530,8 @@
 												"result"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {
-														"type": "object"
-													},
-													"nullable": true,
-													"type": "array"
-												}
-											},
-											"type": "object"
 										}
 									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"operation_id": {
-													"description": "The unique operation ID of the asynchronous action.",
-													"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												}
-											},
-											"type": "object"
-										}
-									},
 									"type": "object"
 								}
 							]
@@ -548,7 +548,36 @@
 								{
 									"allOf": [
 										{
+											"properties": {
+												"result": {
+													"properties": {
+														"operation_id": {
+															"description": "The unique operation ID of the asynchronous action.",
+															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
+										{
 											"allOf": [
+												{
+													"properties": {
+														"result": {
+															"items": {
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
 												{
 													"properties": {
 														"errors": {
@@ -622,37 +651,8 @@
 														"result"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {
-																"type": "object"
-															},
-															"nullable": true,
-															"type": "array"
-														}
-													},
-													"type": "object"
 												}
 											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"operation_id": {
-															"description": "The unique operation ID of the asynchronous action.",
-															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														}
-													},
-													"type": "object"
-												}
-											},
 											"type": "object"
 										}
 									]
@@ -794,7 +794,90 @@
 						"schema": {
 							"allOf": [
 								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"created_on": {
+														"description": "The RFC 3339 timestamp of when the list was created.",
+														"example": "2020-01-01T08:00:00Z",
+														"type": "string",
+														"x-auditable": true
+													},
+													"description": {
+														"description": "An informative summary of the list.",
+														"example": "This is a note",
+														"maxLength": 500,
+														"type": "string",
+														"x-auditable": true
+													},
+													"id": {
+														"description": "The unique ID of the list.",
+														"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+														"maxLength": 32,
+														"minLength": 32,
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"kind": {
+														"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
+														"enum": [
+															"ip",
+															"redirect",
+															"hostname",
+															"asn"
+														],
+														"example": "ip"
+													},
+													"modified_on": {
+														"description": "The RFC 3339 timestamp of when the list was last modified.",
+														"example": "2020-01-10T14:00:00Z",
+														"type": "string",
+														"x-auditable": true
+													},
+													"name": {
+														"description": "An informative name for the list. Use this name in filter and rule expressions.",
+														"example": "list1",
+														"maxLength": 50,
+														"pattern": "^[a-zA-Z0-9_]+$",
+														"type": "string",
+														"x-auditable": true
+													},
+													"num_items": {
+														"description": "The number of items in the list.",
+														"example": 10,
+														"type": "number",
+														"x-auditable": true
+													},
+													"num_referencing_filters": {
+														"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
+														"example": 2,
+														"type": "number",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								},
+								{
 									"allOf": [
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"type": "object"
+													},
+													"nullable": true,
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
 										{
 											"properties": {
 												"errors": {
@@ -868,28 +951,28 @@
 												"result"
 											],
 											"type": "object"
-										},
+										}
+									],
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get lists response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"type": "object"
-													},
-													"nullable": true,
-													"type": "array"
-												}
-											},
-											"type": "object"
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"items": {
-												"allOf": [
-													{
 														"properties": {
 															"created_on": {
 																"description": "The RFC 3339 timestamp of when the list was created.",
@@ -952,40 +1035,25 @@
 														},
 														"type": "object"
 													},
-													{
-														"required": [
-															"id",
-															"name",
-															"kind",
-															"num_items",
-															"created_on",
-															"modified_on"
-														],
-														"type": "object"
-													}
-												]
+													"type": "array"
+												}
 											},
-											"type": "array"
-										}
-									},
-									"type": "object"
-								}
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Get lists response."
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
+											"type": "object"
+										},
 										{
 											"allOf": [
+												{
+													"properties": {
+														"result": {
+															"items": {
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
 												{
 													"properties": {
 														"errors": {
@@ -1059,106 +1127,8 @@
 														"result"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {
-																"type": "object"
-															},
-															"nullable": true,
-															"type": "array"
-														}
-													},
-													"type": "object"
 												}
 											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {
-														"allOf": [
-															{
-																"properties": {
-																	"created_on": {
-																		"description": "The RFC 3339 timestamp of when the list was created.",
-																		"example": "2020-01-01T08:00:00Z",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"description": {
-																		"description": "An informative summary of the list.",
-																		"example": "This is a note",
-																		"maxLength": 500,
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"id": {
-																		"description": "The unique ID of the list.",
-																		"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-																		"maxLength": 32,
-																		"minLength": 32,
-																		"readOnly": true,
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"kind": {
-																		"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
-																		"enum": [
-																			"ip",
-																			"redirect",
-																			"hostname",
-																			"asn"
-																		],
-																		"example": "ip"
-																	},
-																	"modified_on": {
-																		"description": "The RFC 3339 timestamp of when the list was last modified.",
-																		"example": "2020-01-10T14:00:00Z",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"name": {
-																		"description": "An informative name for the list. Use this name in filter and rule expressions.",
-																		"example": "list1",
-																		"maxLength": 50,
-																		"pattern": "^[a-zA-Z0-9_]+$",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"num_items": {
-																		"description": "The number of items in the list.",
-																		"example": 10,
-																		"type": "number",
-																		"x-auditable": true
-																	},
-																	"num_referencing_filters": {
-																		"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
-																		"example": 2,
-																		"type": "number",
-																		"x-auditable": true
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"required": [
-																	"id",
-																	"name",
-																	"kind",
-																	"num_items",
-																	"created_on",
-																	"modified_on"
-																],
-																"type": "object"
-															}
-														]
-													},
-													"type": "array"
-												}
-											},
 											"type": "object"
 										}
 									],
@@ -1317,6 +1287,74 @@
 							"allOf": [
 								{
 									"properties": {
+										"result": {
+											"properties": {
+												"created_on": {
+													"description": "The RFC 3339 timestamp of when the list was created.",
+													"example": "2020-01-01T08:00:00Z",
+													"type": "string",
+													"x-auditable": true
+												},
+												"description": {
+													"description": "An informative summary of the list.",
+													"example": "This is a note",
+													"maxLength": 500,
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "The unique ID of the list.",
+													"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+													"maxLength": 32,
+													"minLength": 32,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"kind": {
+													"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
+													"enum": [
+														"ip",
+														"redirect",
+														"hostname",
+														"asn"
+													],
+													"example": "ip"
+												},
+												"modified_on": {
+													"description": "The RFC 3339 timestamp of when the list was last modified.",
+													"example": "2020-01-10T14:00:00Z",
+													"type": "string",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "An informative name for the list. Use this name in filter and rule expressions.",
+													"example": "list1",
+													"maxLength": 50,
+													"pattern": "^[a-zA-Z0-9_]+$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"num_items": {
+													"description": "The number of items in the list.",
+													"example": 10,
+													"type": "number",
+													"x-auditable": true
+												},
+												"num_referencing_filters": {
+													"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
+													"example": 2,
+													"type": "number",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
 										"errors": {
 											"example": [],
 											"items": {
@@ -1388,74 +1426,6 @@
 										"result"
 									],
 									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"created_on": {
-													"description": "The RFC 3339 timestamp of when the list was created.",
-													"example": "2020-01-01T08:00:00Z",
-													"type": "string",
-													"x-auditable": true
-												},
-												"description": {
-													"description": "An informative summary of the list.",
-													"example": "This is a note",
-													"maxLength": 500,
-													"type": "string",
-													"x-auditable": true
-												},
-												"id": {
-													"description": "The unique ID of the list.",
-													"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-													"maxLength": 32,
-													"minLength": 32,
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												},
-												"kind": {
-													"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
-													"enum": [
-														"ip",
-														"redirect",
-														"hostname",
-														"asn"
-													],
-													"example": "ip"
-												},
-												"modified_on": {
-													"description": "The RFC 3339 timestamp of when the list was last modified.",
-													"example": "2020-01-10T14:00:00Z",
-													"type": "string",
-													"x-auditable": true
-												},
-												"name": {
-													"description": "An informative name for the list. Use this name in filter and rule expressions.",
-													"example": "list1",
-													"maxLength": 50,
-													"pattern": "^[a-zA-Z0-9_]+$",
-													"type": "string",
-													"x-auditable": true
-												},
-												"num_items": {
-													"description": "The number of items in the list.",
-													"example": 10,
-													"type": "number",
-													"x-auditable": true
-												},
-												"num_referencing_filters": {
-													"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
-													"example": 2,
-													"type": "number",
-													"x-auditable": true
-												}
-											},
-											"type": "object"
-										}
-									},
-									"type": "object"
 								}
 							],
 							"type": "object"
@@ -1471,6 +1441,74 @@
 							"allOf": [
 								{
 									"allOf": [
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"created_on": {
+															"description": "The RFC 3339 timestamp of when the list was created.",
+															"example": "2020-01-01T08:00:00Z",
+															"type": "string",
+															"x-auditable": true
+														},
+														"description": {
+															"description": "An informative summary of the list.",
+															"example": "This is a note",
+															"maxLength": 500,
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "The unique ID of the list.",
+															"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+															"maxLength": 32,
+															"minLength": 32,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"kind": {
+															"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
+															"enum": [
+																"ip",
+																"redirect",
+																"hostname",
+																"asn"
+															],
+															"example": "ip"
+														},
+														"modified_on": {
+															"description": "The RFC 3339 timestamp of when the list was last modified.",
+															"example": "2020-01-10T14:00:00Z",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "An informative name for the list. Use this name in filter and rule expressions.",
+															"example": "list1",
+															"maxLength": 50,
+															"pattern": "^[a-zA-Z0-9_]+$",
+															"type": "string",
+															"x-auditable": true
+														},
+														"num_items": {
+															"description": "The number of items in the list.",
+															"example": 10,
+															"type": "number",
+															"x-auditable": true
+														},
+														"num_referencing_filters": {
+															"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
+															"example": 2,
+															"type": "number",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
 										{
 											"properties": {
 												"errors": {
@@ -1543,74 +1581,6 @@
 												"messages",
 												"result"
 											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"created_on": {
-															"description": "The RFC 3339 timestamp of when the list was created.",
-															"example": "2020-01-01T08:00:00Z",
-															"type": "string",
-															"x-auditable": true
-														},
-														"description": {
-															"description": "An informative summary of the list.",
-															"example": "This is a note",
-															"maxLength": 500,
-															"type": "string",
-															"x-auditable": true
-														},
-														"id": {
-															"description": "The unique ID of the list.",
-															"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-															"maxLength": 32,
-															"minLength": 32,
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"kind": {
-															"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
-															"enum": [
-																"ip",
-																"redirect",
-																"hostname",
-																"asn"
-															],
-															"example": "ip"
-														},
-														"modified_on": {
-															"description": "The RFC 3339 timestamp of when the list was last modified.",
-															"example": "2020-01-10T14:00:00Z",
-															"type": "string",
-															"x-auditable": true
-														},
-														"name": {
-															"description": "An informative name for the list. Use this name in filter and rule expressions.",
-															"example": "list1",
-															"maxLength": 50,
-															"pattern": "^[a-zA-Z0-9_]+$",
-															"type": "string",
-															"x-auditable": true
-														},
-														"num_items": {
-															"description": "The number of items in the list.",
-															"example": 10,
-															"type": "number",
-															"x-auditable": true
-														},
-														"num_referencing_filters": {
-															"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
-															"example": 2,
-															"type": "number",
-															"x-auditable": true
-														}
-													},
-													"type": "object"
-												}
-											},
 											"type": "object"
 										}
 									],
@@ -1795,97 +1765,6 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {
-																"type": "object"
-															},
-															"type": "array"
-														}
-													]
-												},
-												"success": {
-													"description": "Defines whether the API call was successful.",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {
-														"type": "object"
-													},
-													"nullable": true,
-													"type": "array"
-												}
-											},
-											"type": "object"
-										}
-									],
-									"type": "object"
-								},
-								{
 									"properties": {
 										"result": {
 											"items": {
@@ -1896,83 +1775,6 @@
 													"ip": "10.0.0.1",
 													"modified_on": "2020-01-10T14:00:00Z"
 												},
-												"oneOf": [
-													{
-														"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
-														"example": "10.0.0.1",
-														"type": "string",
-														"x-auditable": true
-													},
-													{
-														"description": "The definition of the redirect.",
-														"properties": {
-															"include_subdomains": {
-																"default": false,
-																"type": "boolean",
-																"x-auditable": true
-															},
-															"preserve_path_suffix": {
-																"default": false,
-																"type": "boolean",
-																"x-auditable": true
-															},
-															"preserve_query_string": {
-																"default": false,
-																"type": "boolean",
-																"x-auditable": true
-															},
-															"source_url": {
-																"example": "example.com/arch",
-																"type": "string",
-																"x-auditable": true
-															},
-															"status_code": {
-																"default": 301,
-																"enum": [
-																	301,
-																	302,
-																	307,
-																	308
-																],
-																"type": "integer",
-																"x-auditable": true
-															},
-															"subpath_matching": {
-																"default": false,
-																"type": "boolean",
-																"x-auditable": true
-															},
-															"target_url": {
-																"example": "https://archlinux.org/",
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"source_url",
-															"target_url"
-														]
-													},
-													{
-														"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
-														"properties": {
-															"url_hostname": {
-																"example": "example.com",
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"url_hostname"
-														]
-													},
-													{
-														"description": "Defines a non-negative 32 bit integer.",
-														"example": 5567,
-														"type": "integer",
-														"x-auditable": true
-													}
-												],
 												"properties": {
 													"asn": {
 														"description": "Defines a non-negative 32 bit integer.",
@@ -2105,6 +1907,97 @@
 										}
 									},
 									"type": "object"
+								},
+								{
+									"allOf": [
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"type": "object"
+													},
+													"nullable": true,
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
+												},
+												"success": {
+													"description": "Defines whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
 								}
 							]
 						}
@@ -2120,97 +2013,6 @@
 								{
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {
-																"type": "object"
-															},
-															"nullable": true,
-															"type": "array"
-														}
-													},
-													"type": "object"
-												}
-											],
-											"type": "object"
-										},
-										{
 											"properties": {
 												"result": {
 													"items": {
@@ -2221,83 +2023,6 @@
 															"ip": "10.0.0.1",
 															"modified_on": "2020-01-10T14:00:00Z"
 														},
-														"oneOf": [
-															{
-																"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
-																"example": "10.0.0.1",
-																"type": "string",
-																"x-auditable": true
-															},
-															{
-																"description": "The definition of the redirect.",
-																"properties": {
-																	"include_subdomains": {
-																		"default": false,
-																		"type": "boolean",
-																		"x-auditable": true
-																	},
-																	"preserve_path_suffix": {
-																		"default": false,
-																		"type": "boolean",
-																		"x-auditable": true
-																	},
-																	"preserve_query_string": {
-																		"default": false,
-																		"type": "boolean",
-																		"x-auditable": true
-																	},
-																	"source_url": {
-																		"example": "example.com/arch",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"status_code": {
-																		"default": 301,
-																		"enum": [
-																			301,
-																			302,
-																			307,
-																			308
-																		],
-																		"type": "integer",
-																		"x-auditable": true
-																	},
-																	"subpath_matching": {
-																		"default": false,
-																		"type": "boolean",
-																		"x-auditable": true
-																	},
-																	"target_url": {
-																		"example": "https://archlinux.org/",
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"required": [
-																	"source_url",
-																	"target_url"
-																]
-															},
-															{
-																"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
-																"properties": {
-																	"url_hostname": {
-																		"example": "example.com",
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"required": [
-																	"url_hostname"
-																]
-															},
-															{
-																"description": "Defines a non-negative 32 bit integer.",
-																"example": 5567,
-																"type": "integer",
-																"x-auditable": true
-															}
-														],
 														"properties": {
 															"asn": {
 																"description": "Defines a non-negative 32 bit integer.",
@@ -2429,6 +2154,97 @@
 													"type": "object"
 												}
 											},
+											"type": "object"
+										},
+										{
+											"allOf": [
+												{
+													"properties": {
+														"result": {
+															"items": {
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															]
+														},
+														"success": {
+															"description": "Defines whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												}
+											],
 											"type": "object"
 										}
 									]
@@ -2599,97 +2415,6 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {
-																"type": "object"
-															},
-															"type": "array"
-														}
-													]
-												},
-												"success": {
-													"description": "Defines whether the API call was successful.",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {
-														"type": "object"
-													},
-													"nullable": true,
-													"type": "array"
-												}
-											},
-											"type": "object"
-										}
-									],
-									"type": "object"
-								},
-								{
 									"properties": {
 										"result": {
 											"example": {
@@ -2699,83 +2424,6 @@
 												"ip": "10.0.0.1",
 												"modified_on": "2020-01-10T14:00:00Z"
 											},
-											"oneOf": [
-												{
-													"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
-													"example": "10.0.0.1",
-													"type": "string",
-													"x-auditable": true
-												},
-												{
-													"description": "The definition of the redirect.",
-													"properties": {
-														"include_subdomains": {
-															"default": false,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"preserve_path_suffix": {
-															"default": false,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"preserve_query_string": {
-															"default": false,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"source_url": {
-															"example": "example.com/arch",
-															"type": "string",
-															"x-auditable": true
-														},
-														"status_code": {
-															"default": 301,
-															"enum": [
-																301,
-																302,
-																307,
-																308
-															],
-															"type": "integer",
-															"x-auditable": true
-														},
-														"subpath_matching": {
-															"default": false,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"target_url": {
-															"example": "https://archlinux.org/",
-															"type": "string",
-															"x-auditable": true
-														}
-													},
-													"required": [
-														"source_url",
-														"target_url"
-													]
-												},
-												{
-													"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
-													"properties": {
-														"url_hostname": {
-															"example": "example.com",
-															"type": "string",
-															"x-auditable": true
-														}
-													},
-													"required": [
-														"url_hostname"
-													]
-												},
-												{
-													"description": "Defines a non-negative 32 bit integer.",
-													"example": 5567,
-													"type": "integer",
-													"x-auditable": true
-												}
-											],
 											"properties": {
 												"asn": {
 													"description": "Defines a non-negative 32 bit integer.",
@@ -2886,6 +2534,97 @@
 										}
 									},
 									"type": "object"
+								},
+								{
+									"allOf": [
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"type": "object"
+													},
+													"nullable": true,
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
+												},
+												"success": {
+													"description": "Defines whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
 								}
 							]
 						}
@@ -2901,97 +2640,6 @@
 								{
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {
-																"type": "object"
-															},
-															"nullable": true,
-															"type": "array"
-														}
-													},
-													"type": "object"
-												}
-											],
-											"type": "object"
-										},
-										{
 											"properties": {
 												"result": {
 													"example": {
@@ -3001,83 +2649,6 @@
 														"ip": "10.0.0.1",
 														"modified_on": "2020-01-10T14:00:00Z"
 													},
-													"oneOf": [
-														{
-															"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
-															"example": "10.0.0.1",
-															"type": "string",
-															"x-auditable": true
-														},
-														{
-															"description": "The definition of the redirect.",
-															"properties": {
-																"include_subdomains": {
-																	"default": false,
-																	"type": "boolean",
-																	"x-auditable": true
-																},
-																"preserve_path_suffix": {
-																	"default": false,
-																	"type": "boolean",
-																	"x-auditable": true
-																},
-																"preserve_query_string": {
-																	"default": false,
-																	"type": "boolean",
-																	"x-auditable": true
-																},
-																"source_url": {
-																	"example": "example.com/arch",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"status_code": {
-																	"default": 301,
-																	"enum": [
-																		301,
-																		302,
-																		307,
-																		308
-																	],
-																	"type": "integer",
-																	"x-auditable": true
-																},
-																"subpath_matching": {
-																	"default": false,
-																	"type": "boolean",
-																	"x-auditable": true
-																},
-																"target_url": {
-																	"example": "https://archlinux.org/",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"required": [
-																"source_url",
-																"target_url"
-															]
-														},
-														{
-															"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
-															"properties": {
-																"url_hostname": {
-																	"example": "example.com",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"required": [
-																"url_hostname"
-															]
-														},
-														{
-															"description": "Defines a non-negative 32 bit integer.",
-															"example": 5567,
-															"type": "integer",
-															"x-auditable": true
-														}
-													],
 													"properties": {
 														"asn": {
 															"description": "Defines a non-negative 32 bit integer.",
@@ -3187,6 +2758,97 @@
 													"type": "object"
 												}
 											},
+											"type": "object"
+										},
+										{
+											"allOf": [
+												{
+													"properties": {
+														"result": {
+															"items": {
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															]
+														},
+														"success": {
+															"description": "Defines whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												}
+											],
 											"type": "object"
 										}
 									]
@@ -3341,7 +3003,67 @@
 						"schema": {
 							"allOf": [
 								{
+									"properties": {
+										"result": {
+											"properties": {
+												"completed": {
+													"description": "The RFC 3339 timestamp of when the operation was completed.",
+													"example": "2020-01-01T08:00:00Z",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"error": {
+													"description": "A message describing the error when the status is `failed`.",
+													"example": "This list is at the maximum number of items",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "The unique operation ID of the asynchronous action.",
+													"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "The current status of the asynchronous operation.",
+													"enum": [
+														"pending",
+														"running",
+														"completed",
+														"failed"
+													],
+													"example": "failed",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id",
+												"status"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								{
 									"allOf": [
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"type": "object"
+													},
+													"nullable": true,
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
 										{
 											"properties": {
 												"errors": {
@@ -3415,68 +3137,8 @@
 												"result"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {
-														"type": "object"
-													},
-													"nullable": true,
-													"type": "array"
-												}
-											},
-											"type": "object"
 										}
 									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"completed": {
-													"description": "The RFC 3339 timestamp of when the operation was completed.",
-													"example": "2020-01-01T08:00:00Z",
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												},
-												"error": {
-													"description": "A message describing the error when the status is `failed`.",
-													"example": "This list is at the maximum number of items",
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												},
-												"id": {
-													"description": "The unique operation ID of the asynchronous action.",
-													"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												},
-												"status": {
-													"description": "The current status of the asynchronous operation.",
-													"enum": [
-														"pending",
-														"running",
-														"completed",
-														"failed"
-													],
-													"example": "failed",
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												}
-											},
-											"required": [
-												"id",
-												"status"
-											],
-											"type": "object"
-										}
-									},
 									"type": "object"
 								}
 							]
@@ -3493,7 +3155,67 @@
 								{
 									"allOf": [
 										{
+											"properties": {
+												"result": {
+													"properties": {
+														"completed": {
+															"description": "The RFC 3339 timestamp of when the operation was completed.",
+															"example": "2020-01-01T08:00:00Z",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"error": {
+															"description": "A message describing the error when the status is `failed`.",
+															"example": "This list is at the maximum number of items",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "The unique operation ID of the asynchronous action.",
+															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"status": {
+															"description": "The current status of the asynchronous operation.",
+															"enum": [
+																"pending",
+																"running",
+																"completed",
+																"failed"
+															],
+															"example": "failed",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"status"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
+										{
 											"allOf": [
+												{
+													"properties": {
+														"result": {
+															"items": {
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
 												{
 													"properties": {
 														"errors": {
@@ -3567,68 +3289,8 @@
 														"result"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {
-																"type": "object"
-															},
-															"nullable": true,
-															"type": "array"
-														}
-													},
-													"type": "object"
 												}
 											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"completed": {
-															"description": "The RFC 3339 timestamp of when the operation was completed.",
-															"example": "2020-01-01T08:00:00Z",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"error": {
-															"description": "A message describing the error when the status is `failed`.",
-															"example": "This list is at the maximum number of items",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"id": {
-															"description": "The unique operation ID of the asynchronous action.",
-															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"status": {
-															"description": "The current status of the asynchronous operation.",
-															"enum": [
-																"pending",
-																"running",
-																"completed",
-																"failed"
-															],
-															"example": "failed",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														}
-													},
-													"required": [
-														"id",
-														"status"
-													],
-													"type": "object"
-												}
-											},
 											"type": "object"
 										}
 									]
@@ -3813,6 +3475,74 @@
 							"allOf": [
 								{
 									"properties": {
+										"result": {
+											"properties": {
+												"created_on": {
+													"description": "The RFC 3339 timestamp of when the list was created.",
+													"example": "2020-01-01T08:00:00Z",
+													"type": "string",
+													"x-auditable": true
+												},
+												"description": {
+													"description": "An informative summary of the list.",
+													"example": "This is a note",
+													"maxLength": 500,
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "The unique ID of the list.",
+													"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+													"maxLength": 32,
+													"minLength": 32,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"kind": {
+													"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
+													"enum": [
+														"ip",
+														"redirect",
+														"hostname",
+														"asn"
+													],
+													"example": "ip"
+												},
+												"modified_on": {
+													"description": "The RFC 3339 timestamp of when the list was last modified.",
+													"example": "2020-01-10T14:00:00Z",
+													"type": "string",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "An informative name for the list. Use this name in filter and rule expressions.",
+													"example": "list1",
+													"maxLength": 50,
+													"pattern": "^[a-zA-Z0-9_]+$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"num_items": {
+													"description": "The number of items in the list.",
+													"example": 10,
+													"type": "number",
+													"x-auditable": true
+												},
+												"num_referencing_filters": {
+													"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
+													"example": 2,
+													"type": "number",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
 										"errors": {
 											"example": [],
 											"items": {
@@ -3884,74 +3614,6 @@
 										"result"
 									],
 									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"created_on": {
-													"description": "The RFC 3339 timestamp of when the list was created.",
-													"example": "2020-01-01T08:00:00Z",
-													"type": "string",
-													"x-auditable": true
-												},
-												"description": {
-													"description": "An informative summary of the list.",
-													"example": "This is a note",
-													"maxLength": 500,
-													"type": "string",
-													"x-auditable": true
-												},
-												"id": {
-													"description": "The unique ID of the list.",
-													"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-													"maxLength": 32,
-													"minLength": 32,
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												},
-												"kind": {
-													"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
-													"enum": [
-														"ip",
-														"redirect",
-														"hostname",
-														"asn"
-													],
-													"example": "ip"
-												},
-												"modified_on": {
-													"description": "The RFC 3339 timestamp of when the list was last modified.",
-													"example": "2020-01-10T14:00:00Z",
-													"type": "string",
-													"x-auditable": true
-												},
-												"name": {
-													"description": "An informative name for the list. Use this name in filter and rule expressions.",
-													"example": "list1",
-													"maxLength": 50,
-													"pattern": "^[a-zA-Z0-9_]+$",
-													"type": "string",
-													"x-auditable": true
-												},
-												"num_items": {
-													"description": "The number of items in the list.",
-													"example": 10,
-													"type": "number",
-													"x-auditable": true
-												},
-												"num_referencing_filters": {
-													"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
-													"example": 2,
-													"type": "number",
-													"x-auditable": true
-												}
-											},
-											"type": "object"
-										}
-									},
-									"type": "object"
 								}
 							],
 							"type": "object"
@@ -3967,6 +3629,74 @@
 							"allOf": [
 								{
 									"allOf": [
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"created_on": {
+															"description": "The RFC 3339 timestamp of when the list was created.",
+															"example": "2020-01-01T08:00:00Z",
+															"type": "string",
+															"x-auditable": true
+														},
+														"description": {
+															"description": "An informative summary of the list.",
+															"example": "This is a note",
+															"maxLength": 500,
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "The unique ID of the list.",
+															"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+															"maxLength": 32,
+															"minLength": 32,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"kind": {
+															"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
+															"enum": [
+																"ip",
+																"redirect",
+																"hostname",
+																"asn"
+															],
+															"example": "ip"
+														},
+														"modified_on": {
+															"description": "The RFC 3339 timestamp of when the list was last modified.",
+															"example": "2020-01-10T14:00:00Z",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "An informative name for the list. Use this name in filter and rule expressions.",
+															"example": "list1",
+															"maxLength": 50,
+															"pattern": "^[a-zA-Z0-9_]+$",
+															"type": "string",
+															"x-auditable": true
+														},
+														"num_items": {
+															"description": "The number of items in the list.",
+															"example": 10,
+															"type": "number",
+															"x-auditable": true
+														},
+														"num_referencing_filters": {
+															"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
+															"example": 2,
+															"type": "number",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
 										{
 											"properties": {
 												"errors": {
@@ -4039,74 +3769,6 @@
 												"messages",
 												"result"
 											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"created_on": {
-															"description": "The RFC 3339 timestamp of when the list was created.",
-															"example": "2020-01-01T08:00:00Z",
-															"type": "string",
-															"x-auditable": true
-														},
-														"description": {
-															"description": "An informative summary of the list.",
-															"example": "This is a note",
-															"maxLength": 500,
-															"type": "string",
-															"x-auditable": true
-														},
-														"id": {
-															"description": "The unique ID of the list.",
-															"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-															"maxLength": 32,
-															"minLength": 32,
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"kind": {
-															"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
-															"enum": [
-																"ip",
-																"redirect",
-																"hostname",
-																"asn"
-															],
-															"example": "ip"
-														},
-														"modified_on": {
-															"description": "The RFC 3339 timestamp of when the list was last modified.",
-															"example": "2020-01-10T14:00:00Z",
-															"type": "string",
-															"x-auditable": true
-														},
-														"name": {
-															"description": "An informative name for the list. Use this name in filter and rule expressions.",
-															"example": "list1",
-															"maxLength": 50,
-															"pattern": "^[a-zA-Z0-9_]+$",
-															"type": "string",
-															"x-auditable": true
-														},
-														"num_items": {
-															"description": "The number of items in the list.",
-															"example": 10,
-															"type": "number",
-															"x-auditable": true
-														},
-														"num_referencing_filters": {
-															"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
-															"example": 2,
-															"type": "number",
-															"x-auditable": true
-														}
-													},
-													"type": "object"
-												}
-											},
 											"type": "object"
 										}
 									],
@@ -4225,7 +3887,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/rules/lists/{list_id}/items": {
-		"description": "Appends new items to the list.\n\nThis operation is asynchronous. To get current the operation status, invoke the [Get bulk operation status](/operations/lists-get-bulk-operation-status) endpoint with the returned `operation_id`.",
+		"description": "Appends new items to the list.\n\nThis operation is asynchronous. To get current the operation status, invoke the `Get bulk operation status` endpoint with the returned `operation_id`.",
 		"operationId": "lists-create-list-items",
 		"parameters": [
 			{
@@ -4363,7 +4025,36 @@
 						"schema": {
 							"allOf": [
 								{
+									"properties": {
+										"result": {
+											"properties": {
+												"operation_id": {
+													"description": "The unique operation ID of the asynchronous action.",
+													"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								{
 									"allOf": [
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"type": "object"
+													},
+													"nullable": true,
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
 										{
 											"properties": {
 												"errors": {
@@ -4437,37 +4128,8 @@
 												"result"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {
-														"type": "object"
-													},
-													"nullable": true,
-													"type": "array"
-												}
-											},
-											"type": "object"
 										}
 									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"operation_id": {
-													"description": "The unique operation ID of the asynchronous action.",
-													"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												}
-											},
-											"type": "object"
-										}
-									},
 									"type": "object"
 								}
 							]
@@ -4484,7 +4146,36 @@
 								{
 									"allOf": [
 										{
+											"properties": {
+												"result": {
+													"properties": {
+														"operation_id": {
+															"description": "The unique operation ID of the asynchronous action.",
+															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
+										{
 											"allOf": [
+												{
+													"properties": {
+														"result": {
+															"items": {
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
 												{
 													"properties": {
 														"errors": {
@@ -4558,37 +4249,8 @@
 														"result"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {
-																"type": "object"
-															},
-															"nullable": true,
-															"type": "array"
-														}
-													},
-													"type": "object"
 												}
 											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"operation_id": {
-															"description": "The unique operation ID of the asynchronous action.",
-															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														}
-													},
-													"type": "object"
-												}
-											},
 											"type": "object"
 										}
 									]
@@ -4764,6 +4426,74 @@
 							"allOf": [
 								{
 									"properties": {
+										"result": {
+											"properties": {
+												"created_on": {
+													"description": "The RFC 3339 timestamp of when the list was created.",
+													"example": "2020-01-01T08:00:00Z",
+													"type": "string",
+													"x-auditable": true
+												},
+												"description": {
+													"description": "An informative summary of the list.",
+													"example": "This is a note",
+													"maxLength": 500,
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "The unique ID of the list.",
+													"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+													"maxLength": 32,
+													"minLength": 32,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"kind": {
+													"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
+													"enum": [
+														"ip",
+														"redirect",
+														"hostname",
+														"asn"
+													],
+													"example": "ip"
+												},
+												"modified_on": {
+													"description": "The RFC 3339 timestamp of when the list was last modified.",
+													"example": "2020-01-10T14:00:00Z",
+													"type": "string",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "An informative name for the list. Use this name in filter and rule expressions.",
+													"example": "list1",
+													"maxLength": 50,
+													"pattern": "^[a-zA-Z0-9_]+$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"num_items": {
+													"description": "The number of items in the list.",
+													"example": 10,
+													"type": "number",
+													"x-auditable": true
+												},
+												"num_referencing_filters": {
+													"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
+													"example": 2,
+													"type": "number",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
 										"errors": {
 											"example": [],
 											"items": {
@@ -4835,74 +4565,6 @@
 										"result"
 									],
 									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"created_on": {
-													"description": "The RFC 3339 timestamp of when the list was created.",
-													"example": "2020-01-01T08:00:00Z",
-													"type": "string",
-													"x-auditable": true
-												},
-												"description": {
-													"description": "An informative summary of the list.",
-													"example": "This is a note",
-													"maxLength": 500,
-													"type": "string",
-													"x-auditable": true
-												},
-												"id": {
-													"description": "The unique ID of the list.",
-													"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-													"maxLength": 32,
-													"minLength": 32,
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												},
-												"kind": {
-													"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
-													"enum": [
-														"ip",
-														"redirect",
-														"hostname",
-														"asn"
-													],
-													"example": "ip"
-												},
-												"modified_on": {
-													"description": "The RFC 3339 timestamp of when the list was last modified.",
-													"example": "2020-01-10T14:00:00Z",
-													"type": "string",
-													"x-auditable": true
-												},
-												"name": {
-													"description": "An informative name for the list. Use this name in filter and rule expressions.",
-													"example": "list1",
-													"maxLength": 50,
-													"pattern": "^[a-zA-Z0-9_]+$",
-													"type": "string",
-													"x-auditable": true
-												},
-												"num_items": {
-													"description": "The number of items in the list.",
-													"example": 10,
-													"type": "number",
-													"x-auditable": true
-												},
-												"num_referencing_filters": {
-													"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
-													"example": 2,
-													"type": "number",
-													"x-auditable": true
-												}
-											},
-											"type": "object"
-										}
-									},
-									"type": "object"
 								}
 							],
 							"type": "object"
@@ -4918,6 +4580,74 @@
 							"allOf": [
 								{
 									"allOf": [
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"created_on": {
+															"description": "The RFC 3339 timestamp of when the list was created.",
+															"example": "2020-01-01T08:00:00Z",
+															"type": "string",
+															"x-auditable": true
+														},
+														"description": {
+															"description": "An informative summary of the list.",
+															"example": "This is a note",
+															"maxLength": 500,
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "The unique ID of the list.",
+															"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+															"maxLength": 32,
+															"minLength": 32,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"kind": {
+															"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
+															"enum": [
+																"ip",
+																"redirect",
+																"hostname",
+																"asn"
+															],
+															"example": "ip"
+														},
+														"modified_on": {
+															"description": "The RFC 3339 timestamp of when the list was last modified.",
+															"example": "2020-01-10T14:00:00Z",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "An informative name for the list. Use this name in filter and rule expressions.",
+															"example": "list1",
+															"maxLength": 50,
+															"pattern": "^[a-zA-Z0-9_]+$",
+															"type": "string",
+															"x-auditable": true
+														},
+														"num_items": {
+															"description": "The number of items in the list.",
+															"example": 10,
+															"type": "number",
+															"x-auditable": true
+														},
+														"num_referencing_filters": {
+															"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
+															"example": 2,
+															"type": "number",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
 										{
 											"properties": {
 												"errors": {
@@ -4990,74 +4720,6 @@
 												"messages",
 												"result"
 											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"created_on": {
-															"description": "The RFC 3339 timestamp of when the list was created.",
-															"example": "2020-01-01T08:00:00Z",
-															"type": "string",
-															"x-auditable": true
-														},
-														"description": {
-															"description": "An informative summary of the list.",
-															"example": "This is a note",
-															"maxLength": 500,
-															"type": "string",
-															"x-auditable": true
-														},
-														"id": {
-															"description": "The unique ID of the list.",
-															"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-															"maxLength": 32,
-															"minLength": 32,
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"kind": {
-															"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
-															"enum": [
-																"ip",
-																"redirect",
-																"hostname",
-																"asn"
-															],
-															"example": "ip"
-														},
-														"modified_on": {
-															"description": "The RFC 3339 timestamp of when the list was last modified.",
-															"example": "2020-01-10T14:00:00Z",
-															"type": "string",
-															"x-auditable": true
-														},
-														"name": {
-															"description": "An informative name for the list. Use this name in filter and rule expressions.",
-															"example": "list1",
-															"maxLength": 50,
-															"pattern": "^[a-zA-Z0-9_]+$",
-															"type": "string",
-															"x-auditable": true
-														},
-														"num_items": {
-															"description": "The number of items in the list.",
-															"example": 10,
-															"type": "number",
-															"x-auditable": true
-														},
-														"num_referencing_filters": {
-															"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
-															"example": 2,
-															"type": "number",
-															"x-auditable": true
-														}
-													},
-													"type": "object"
-												}
-											},
 											"type": "object"
 										}
 									],
@@ -5176,7 +4838,7 @@
 		}
 	},
 	"PUT /accounts/{account_id}/rules/lists/{list_id}/items": {
-		"description": "Removes all existing items from the list and adds the provided items to the list.\n\nThis operation is asynchronous. To get current the operation status, invoke the [Get bulk operation status](/operations/lists-get-bulk-operation-status) endpoint with the returned `operation_id`.",
+		"description": "Removes all existing items from the list and adds the provided items to the list.\n\nThis operation is asynchronous. To get current the operation status, invoke the `Get bulk operation status` endpoint with the returned `operation_id`.",
 		"operationId": "lists-update-all-list-items",
 		"parameters": [
 			{
@@ -5314,7 +4976,36 @@
 						"schema": {
 							"allOf": [
 								{
+									"properties": {
+										"result": {
+											"properties": {
+												"operation_id": {
+													"description": "The unique operation ID of the asynchronous action.",
+													"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								{
 									"allOf": [
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"type": "object"
+													},
+													"nullable": true,
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
 										{
 											"properties": {
 												"errors": {
@@ -5388,37 +5079,8 @@
 												"result"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {
-														"type": "object"
-													},
-													"nullable": true,
-													"type": "array"
-												}
-											},
-											"type": "object"
 										}
 									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"operation_id": {
-													"description": "The unique operation ID of the asynchronous action.",
-													"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												}
-											},
-											"type": "object"
-										}
-									},
 									"type": "object"
 								}
 							]
@@ -5435,7 +5097,36 @@
 								{
 									"allOf": [
 										{
+											"properties": {
+												"result": {
+													"properties": {
+														"operation_id": {
+															"description": "The unique operation ID of the asynchronous action.",
+															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
+										{
 											"allOf": [
+												{
+													"properties": {
+														"result": {
+															"items": {
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
 												{
 													"properties": {
 														"errors": {
@@ -5509,37 +5200,8 @@
 														"result"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {
-																"type": "object"
-															},
-															"nullable": true,
-															"type": "array"
-														}
-													},
-													"type": "object"
 												}
 											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"operation_id": {
-															"description": "The unique operation ID of the asynchronous action.",
-															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														}
-													},
-													"type": "object"
-												}
-											},
 											"type": "object"
 										}
 									]
