@@ -1,5 +1,12 @@
 # @cloudflare/component-forms-hook-form
 
+## 3.0.11
+
+### Patch Changes
+
+- @cloudflare/component-button@9.1.5
+- @cloudflare/component-forms@7.0.11
+
 ## 3.0.10
 
 ### Patch Changes
