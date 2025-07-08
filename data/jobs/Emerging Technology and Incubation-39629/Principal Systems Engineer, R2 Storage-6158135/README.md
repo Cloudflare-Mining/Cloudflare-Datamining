@@ -5,12 +5,12 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Locations: Austin, TX | New York, NY | San Francisco, CA | London, UK | Seattle, WA</strong></h3>
-<h3><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3><strong>About the Team</strong></h3>
-<p>R2 is Cloudflare’s object storage platform, designed to offer developers a durable and reliable storage solution that integrates seamlessly with Cloudflare’s Developer Platform, including Workers and other compute products. The R2 team builds foundational infrastructure that operates at massive scale and powers critical workloads across Cloudflare’s global network–designing and maintaining distributed systems that handle high throughput, provide strong consistency and durability guarantees, and support a growing number of developer-facing features.</p>
-<p>You’ll be joining a highly motivated team that owns the full stack of R2: tackling complex problems in distributed systems with a focus on reliability and performance at a global scale.</p>
+<h3><strong>Locations: Austin, TX | New York, NY | San Francisco, CA | Seattle, WA | London, UK&nbsp;</strong></h3>
+<h3><span class="selected">About the Department: Emerging Technologies &amp; Incubation (ETI)</span></h3>
+<p><strong><span class="selected">Emerging Technologies &amp; Incubation (ETI)</span></strong><span class="selected"> at Cloudflare is where we build and launch bold new products. We leverage Cloudflare's unique global network and edge to deliver innovative tools and solutions, solving problems at a scale impossible for most organizations. Join us to work on the bleeding edge.</span></p>
+<h3><span class="selected">About the Team: R2</span></h3>
+<p><span class="selected">The </span><strong><span class="selected">R2 team</span></strong><span class="selected"> builds Cloudflare's object storage platform, offering developers durable, reliable storage seamlessly integrated with our Developer Platform (e.g., Workers). We own foundational infrastructure operating at massive scale, powering critical workloads across Cloudflare's global network. This involves designing and maintaining distributed systems for high throughput, strong consistency, durability, and a growing number of developer features.</span></p>
+<p><span class="selected">You'll join a </span><strong><span class="selected">highly motivated and collaborative team</span></strong><span class="selected"> that owns the </span><strong><span class="selected">full R2 stack</span></strong><span class="selected">, tackling complex distributed systems problems with a focus on global reliability and performance.</span></p>
 <h3><strong>What You’ll Do</strong></h3>
 <ul>
 	<li>Set the technical direction for some of our most critical and complex infrastructure projects.</li>
