@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.4.0
+
+### Minor Changes
+
+- fd420c1579: Add preemptive-outline, bookmark-outline, corner-down-right, updated pin icon
+
 ## 13.3.2
 
 ### Patch Changes

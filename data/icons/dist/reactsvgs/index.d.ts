@@ -14,6 +14,7 @@ declare const _default: {
     'arrow-external-link': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     backward: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     bolt: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'bookmark-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     byoip: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     calendar: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     calls: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -53,6 +54,7 @@ declare const _default: {
     code: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     connector: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     copy: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'corner-down-right': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'credit-card': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     d1: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'ddos-attack-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -136,6 +138,7 @@ declare const _default: {
     plus: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'podcast-microphone-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'podcast-microphone-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'preemptive-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     printer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     processing: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'product-security-center': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

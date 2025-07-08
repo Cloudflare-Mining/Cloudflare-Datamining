@@ -12,6 +12,7 @@ import ArrowDown from './ArrowDown';
 import ArrowExternalLink from './ArrowExternalLink';
 import Backward from './Backward';
 import Bolt from './Bolt';
+import BookmarkOutline from './BookmarkOutline';
 import Byoip from './Byoip';
 import Calendar from './Calendar';
 import Calls from './Calls';
@@ -51,6 +52,7 @@ import CodeEdit from './CodeEdit';
 import Code from './Code';
 import Connector from './Connector';
 import Copy from './Copy';
+import CornerDownRight from './CornerDownRight';
 import CreditCard from './CreditCard';
 import D1 from './D1';
 import DdosAttackOutline from './DdosAttackOutline';
@@ -134,6 +136,7 @@ import PlatformApps from './PlatformApps';
 import Plus from './Plus';
 import PodcastMicrophoneOutline from './PodcastMicrophoneOutline';
 import PodcastMicrophoneSolid from './PodcastMicrophoneSolid';
+import PreemptiveOutline from './PreemptiveOutline';
 import Printer from './Printer';
 import Processing from './Processing';
 import ProductSecurityCenter from './ProductSecurityCenter';
@@ -224,6 +227,7 @@ export default {
   'arrow-external-link': ArrowExternalLink,
   backward: Backward,
   bolt: Bolt,
+  'bookmark-outline': BookmarkOutline,
   byoip: Byoip,
   calendar: Calendar,
   calls: Calls,
@@ -263,6 +267,7 @@ export default {
   code: Code,
   connector: Connector,
   copy: Copy,
+  'corner-down-right': CornerDownRight,
   'credit-card': CreditCard,
   d1: D1,
   'ddos-attack-outline': DdosAttackOutline,
@@ -346,6 +351,7 @@ export default {
   plus: Plus,
   'podcast-microphone-outline': PodcastMicrophoneOutline,
   'podcast-microphone-solid': PodcastMicrophoneSolid,
+  'preemptive-outline': PreemptiveOutline,
   printer: Printer,
   processing: Processing,
   'product-security-center': ProductSecurityCenter,
