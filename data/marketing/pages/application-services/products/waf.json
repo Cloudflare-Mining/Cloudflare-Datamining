@@ -64,6 +64,12 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "6Zl80fEq8FKDcpOfvPVYV6",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper application-security-performance-psa-banner\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Cloudflare named a Leader in Forrester Wave for WAF for 2025 </span>\n\n        <a class=\"link-helper\" href=\"https://cloudflare.com/lp/forrester-wave-waf-2025/\">\n           <strong>Get report></strong>\n        </a>\n    </div>\n</section>",
+						"htmlId": null
+					},
+					{
 						"contentfulId": "kPLDjweatWw35dBm5NYNI",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare WAF",
