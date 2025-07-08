@@ -2972,6 +2972,14 @@
 						"compatEnableDate": "2025-08-01",
 						"compatEnableFlag": "set_event_target_this"
 					}
+				},
+				{
+					"name": "enableForwardableEmailFullHeaders",
+					"annotations": {
+						"compatDisableFlag": "set_forwardable_email_single_headers",
+						"compatEnableDate": "2025-08-01",
+						"compatEnableFlag": "set_forwardable_email_full_headers"
+					}
 				}
 			]
 		},
