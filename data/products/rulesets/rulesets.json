@@ -9,15 +9,6 @@
 		"version": "6"
 	},
 	{
-		"description": "Automatic mitigation of HTTP-based DDoS attacks. Cloudflare routinely adds signatures to address new attack vectors. Additional configuration allows you to customize the sensitivity of each rule and the performed mitigation action.",
-		"id": "4d21379b4f9f4bb088e0729962c8b3cf",
-		"kind": "managed",
-		"last_updated": "2025-07-01T19:59:48.505475Z",
-		"name": "DDoS L7 ruleset",
-		"phase": "ddos_l7",
-		"version": "2886"
-	},
-	{
 		"description": "Created by the Cloudflare security team, this ruleset is designed to provide protection for free zones",
 		"id": "77454fe2d30c4220b5701f6fdfb893ba",
 		"kind": "managed",
@@ -26,5 +17,14 @@
 		"phase": "http_request_firewall_managed",
 		"source": "firewall_managed",
 		"version": "61"
+	},
+	{
+		"description": "Automatic mitigation of HTTP-based DDoS attacks. Cloudflare routinely adds signatures to address new attack vectors. Additional configuration allows you to customize the sensitivity of each rule and the performed mitigation action.",
+		"id": "4d21379b4f9f4bb088e0729962c8b3cf",
+		"kind": "managed",
+		"last_updated": "2025-07-01T19:59:48.505475Z",
+		"name": "DDoS L7 ruleset",
+		"phase": "ddos_l7",
+		"version": "2886"
 	}
 ]
