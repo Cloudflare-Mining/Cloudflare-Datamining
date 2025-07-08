@@ -5,42 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Locations: Austin, TX | New York, NY | San Francisco, CA | London, UK | Seattle, WA</strong></h3>
-<h3><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3><strong>About the Team</strong></h3>
-<p>R2 is Cloudflare’s object storage platform, designed to offer developers a durable and reliable storage solution that integrates seamlessly with Cloudflare’s Developer Platform, including Workers and other compute products. The R2 team builds foundational infrastructure that operates at massive scale and powers critical workloads across Cloudflare’s global network–designing and maintaining distributed systems that handle high throughput, provide strong consistency and durability guarantees, and support a growing number of developer-facing features.</p>
-<p>You’ll be joining a highly motivated team that owns the full stack of R2: tackling complex problems in distributed systems with a focus on reliability and performance at a global scale.</p>
-<h3><strong>What You’ll Do</strong></h3>
+<p><strong>Locations: Atlanta, Austin, Chicago, Denver, New York, San Francisco, Seattle, Washington DC</strong></p>
+<p><strong>About Solutions Engineering at Cloudflare</strong></p>
+<p>The Pre-Sales Solution Engineering organization owns the technical sale of the Cloudflare solution portfolio, ensuring maximal business value, fit-for-purpose solution design and adoption roadmap for our customers. Solutions Engineering is made up of individuals from a wide range of backgrounds - from Financial Consulting to Product Management, Customer Support to Software Engineering, and we are serious about building a diverse, experienced and curious team.&nbsp;</p>
+<h4><strong>What you'll do as a Partner Solutions Architect</strong></h4>
+<p>The Partner Solutions Architect is a senior role within the Solutions Engineering team aligned with Global System Integrators (GSIs). You have deep experience influencing enterprise solution architecture across various senior stakeholders at partner and customer organizations. You are a partner and customer-facing hands-on technologist with credibility built on industry expertise across Cloudflare’s security, reliability and performance solutions.&nbsp;</p>
+<p>Your role will be to build passionate champions within the technology ranks at your Global Partner accounts, aid your Partner organizations to drive sales for identified opportunities, and collaborate with your technical champions to build revenue pipeline. As the technical partner advocate within Cloudflare, you will work closely with every team at Cloudflare, from Sales and Product, through to Engineering and Customer Support.&nbsp;</p>
+<p>You have strong experience in large Pre-Sales partner and account management as well as excellent verbal and written communications skills suited for both technical and executive-level engagement. You are comfortable speaking about the Cloudflare vision and mission with all technical and non-technical audiences.&nbsp;</p>
+<p>Ultimately, you are passionate about technology and have the ability to explain complex technical concepts in easy-to-understand terms. You are naturally curious, and an avid builder who is not afraid to get your hands dirty. You appreciate the diversity of challenges in working with Global Partners and customers, and look forward to helping them realize the full promise of Cloudflare. On the Solutions Engineering team, you will find a collaborative environment where everyone brings different strengths and jumps in to help each other.</p>
+<p><strong>Specifically, we are looking for you to:</strong></p>
 <ul>
-	<li>Set the technical direction for some of our most critical and complex infrastructure projects.</li>
-	<li>Drive large-scale architectural decisions that span multiple teams and services.</li>
-	<li>Design and implement systems that operate reliably under heavy load and at massive scale.</li>
-	<li>Lead technical investigations and break down ambiguous problems into clear plans of action.</li>
-	<li>Collaborate closely with engineers across teams, product managers, and infrastructure stakeholders to align goals and deliver on timelines.</li>
-	<li>Be a key contributor to our roadmap — helping shape the future of R2’s architecture, performance, and reliability.</li>
+	<li>Evangelize and represent Cloudflare with GSI partners through technical thought leadership and expertise on Cloudflare solutions</li>
+	<li>Build and maintain long term technical relationships with our partners to increase Cloudflare’s reputation and authority within the partner solution portfolio through demonstrating value, enablement, and uncovering new areas of potential revenue</li>
+	<li>Drive technical solution design conversations and guide partners through use case qualification and collaborative technical wins through demonstrations and proofs-of-concepts</li>
+	<li>Engage with GSI partners to qualify opportunities, define Scope of Work for service offerings, and design reference architectures incorporating Cloudflare solutions</li>
+	<li>Be the voice of GSI partners internally at Cloudflare, engaging with and influencing Cloudflare’s Product and Engineering teams to meet your partner and customer needs</li>
+	<li>Travel occasionally throughout the quarter to support partner engagements, attend conferences and industry events, and to collaborate with your Cloudflare teammates</li>
+	<li>Be flexible in this global role. Meetings supporting time zones around the world will occasionally occur early and late in the work day. While this is not a regular occurrence, flexibility will be required</li>
 </ul>
-<h3><strong>Exam</strong><strong>ples of desirable skills, knowledge, and experience</strong></h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Experience setting the architecture and technical direction for large, cross-team, and cross-functional engineering efforts.</li>
-	<li>Strong systems-level programming skills.</li>
-	<li>A deep understanding of distributed systems concepts such as consistency, consensus, data replication, and partition tolerance.</li>
-	<li>Proven experience building and maintaining high-throughput, low-latency systems.</li>
-	<li>Strong written and verbal communication skills; ability to explain technical decisions clearly and drive alignment.</li>
-	<li>Comfortable operating in fast-paced environments with tight deadlines and evolving priorities.</li>
-	<li>Experience with storage systems, networking, or large-scale cloud infrastructure is a strong plus.</li>
+	<li>Deep experience with any of the core industry components of Cloudflare solutions (and passion to learn more):</li>
+	<ul>
+		<li>Internet security and networking technologies</li>
+		<li>SASE concepts and Zero Trust Networking architectures</li>
+		<li>Detailed understanding of workflow from user to application including hybrid architectures with Azure, AWS, GCP</li>
+		<li>Internet security technologies including DDoS and DDoS mitigation, Firewalls, TLS, VPN, DLP</li>
+		<li>Networking technologies including TCP, UDP, DNS, IPv4 + IPv6, BGP routing, GRE, SD-WAN, MPLS, Global Traffic Management</li>
+		<li>HTTP technologies including reverse proxy (e.g., WAF and CDN), forward proxy (secure web gateway), serverless application development</li>
+		<li>SASE concepts and Zero Trust Networking architectures</li>
+		<li>Detailed understanding of workflow from user to application including hybrid architectures with Azure, AWS, GCP</li>
+	</ul>
 </ul>
-<h3><strong>Compensation</strong></h3>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $230,000 - $281,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $234,000 - $286,000</li>
-</ul>
-<h3><strong>Equity</strong></h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3><strong>Benefits</strong></h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3><strong>Health &amp; Welfare Benefits</strong></h3>
+<p><strong>Compensation/</strong><strong>Commissions</strong></p>
+<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.<br><br><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.<br><br><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.<br><br><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -51,14 +49,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<h3><strong>Financial Benefits</strong></h3>
+<p><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<h3><strong>Time Off</strong></h3>
+<p><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
