@@ -5,32 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Lisbon, Portugal&nbsp;</p>
-<h4>About the department</h4>
-<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that handles about 10% of HTTP requests on the Internet today. We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 102 cities worldwide.</span></p>
+<p><strong>Available Location: London or Lisbon (Hybrid)</strong></p>
+<p><strong>About the team:</strong></p>
+<p>We’re a group of people that love to learn, collaborate, and solve large-scale problems. 2022 is a big year for us, and we’re looking for an inquisitive, curious and talented design manager to join our team.</p>
+<p>Your work will impact and influence the user experience of a product used by millions of people daily. As a Manager of Product Design, you will work closely with other designers, engineers, product managers, and other cross-functional stakeholders.&nbsp;</p>
+<p>If you’re a logical, people-oriented, creative design leader who’s excited to help tackle meaningful and complex problems with real-world impact, come help us make the Internet better! We’d love to hear from you.</p>
+<p>This position reports to the Director, Product Design.</p>
+<p>&nbsp;</p>
 <p><strong>What you'll do</strong></p>
-<p><span style="font-weight: 400;">We’re looking to grow our front-end product team with highly motivated individuals who are excited to work with product owners, designers, and systems engineers to build new and, in some cases, rebuild existing products and features. You should have experience working with large-scale JavaScript applications and a track record of building great products. You must care deeply not only about the quality of your and the team's code, but also the product functionality and user experience.&nbsp;</span></p>
-<p><span style="font-weight: 400;">We believe that great design is at the heart of any successful product. You will work closely with our design/UX team and must be comfortable seeking feedback from non-technical sources. We work iteratively and deploy often (can be several times a day). We build and maintain the Cloudflare Dashboard, a large TypeScript / React application, maintain a suite of common components published on npm, and build/package with Webpack. Other technologies we use include Redux, Fela, GraphQL, Apollo, Jest, Enzyme, Cypress, D3 and more.&nbsp;</span></p>
-<p><strong>Desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum of 2 years experience building product</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong knowledge of HTML, CSS, and TypeScript</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong knowledge of React.js</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with JS frameworks and writing reusable/modular code</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Track record of building great interfaces and being detail oriented</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to work in cross-functional teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Mentoring other team members to help bring out their best work</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Willingness to dive deep and understand product internals</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent debugging skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Unit/integration testing experience</span></li>
+	<li>Manage and lead a growing and business-critical team of product designers</li>
+	<li>Mentoring individual contributors</li>
+	<li>Inspire, empower and motivate designers to do the best work of their career. Help build a successful team by mentoring, coaching, and elevating others</li>
+	<li>Continuous collaboration and process improvement with Design, Design Operations, Content, Research, Engineering, Product, and Business teams throughout the product life cycles&nbsp;</li>
+	<li>Distill complex problems into digestible steps, and communicate proactively</li>
+	<li>Contribute to the larger design team culture</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity building products with design systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working alongside user researchers to build products</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proficient in interviewing engineering candidates</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">History of building products in complex systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of the networking stack (such as DNS, firewalls, etc.)</span></li>
+	<li>8+ years of experience in Product Design. The ideal candidate has 2+ years experience in leading a product design team</li>
+	<li>Experience leading and scaling a team in a rapidly scaling complex organization</li>
+	<li>People-focused, critical and strategic analytical thinker</li>
+	<li>Proactive and clear communicator with excellent analytical skills, facilitation, and organizational understanding</li>
+	<li>Successful track record of building and managing impactful, collaborative product design teams</li>
+	<li>Experience facilitating design thinking workshops with cross-functional teams</li>
+	<li>Highly collaborative and relentlessly customer-focused</li>
+	<li>Experience managing remote, geographically distributed teams is a plus.</li>
+	<li>Deep thinker and natural communicator who can tell compelling stories that inspire action</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
