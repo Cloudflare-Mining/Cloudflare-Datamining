@@ -4790,6 +4790,41 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/server/log-schema.capnp:LogEntry",
+			"fields": [
+				{
+					"name": "timestamp",
+					"annotations": {
+						"name": "timestamp"
+					}
+				},
+				{
+					"name": "level",
+					"annotations": {
+						"name": "level"
+					}
+				},
+				{
+					"name": "source",
+					"annotations": {
+						"name": "source"
+					}
+				},
+				{
+					"name": "message",
+					"annotations": {
+						"name": "message"
+					}
+				},
+				{
+					"name": "contextDepth",
+					"annotations": {
+						"name": "context_depth"
+					}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/server/workerd.capnp:Service",
 			"fields": [
 				{
@@ -4873,6 +4908,10 @@
 				},
 				{
 					"name": "autogates",
+					"annotations": {}
+				},
+				{
+					"name": "structuredLogging",
 					"annotations": {}
 				}
 			]
@@ -6109,6 +6148,41 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/server/log-schema.capnp:LogEntry.LogLevel",
+			"enumerants": [
+				{
+					"name": "debug",
+					"annotations": {
+						"name": "debug"
+					}
+				},
+				{
+					"name": "info",
+					"annotations": {
+						"name": "info"
+					}
+				},
+				{
+					"name": "warning",
+					"annotations": {
+						"name": "warning"
+					}
+				},
+				{
+					"name": "error",
+					"annotations": {
+						"name": "error"
+					}
+				},
+				{
+					"name": "fatal",
+					"annotations": {
+						"name": "fatal"
+					}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.CryptoKey.Usage",
 			"enumerants": [
 				{
@@ -6315,6 +6389,7 @@
 		"workerd/src/workerd/jsg/modules.capnp",
 		"workerd/src/workerd/jsg/rtti.capnp",
 		"workerd/src/workerd/server/docker-api.capnp",
+		"workerd/src/workerd/server/log-schema.capnp",
 		"workerd/src/workerd/server/workerd-meta.capnp",
 		"workerd/src/workerd/server/workerd-meta.capnp:cppCapnpSchema",
 		"workerd/src/workerd/server/workerd-meta.capnp:workerdCapnpSchema",
