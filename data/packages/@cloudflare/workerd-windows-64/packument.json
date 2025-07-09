@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-windows-64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20250708.0"
+		"latest": "1.20250709.0"
 	},
 	"versions": {
 		"0.20230404.0": {
@@ -4174,15 +4174,35 @@
 			"name": "@cloudflare/workerd-windows-64",
 			"version": "1.20250708.0",
 			"dist": {
-				"integrity": "sha512-V4PEUBjrPwkCsDZegByd/redx+3xXRUL9K0u/7tVTx19znsQK4qU3mj20AK+z3jwtkDNu4BW8VNDNGaGcnWlOA==",
 				"shasum": "7a0d2705c78f96389681eb565b8f14f5968b0b50",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-windows-64/-/workerd-windows-64-1.20250708.0.tgz",
 				"fileCount": 3,
-				"unpackedSize": 74185331,
+				"integrity": "sha512-V4PEUBjrPwkCsDZegByd/redx+3xXRUL9K0u/7tVTx19znsQK4qU3mj20AK+z3jwtkDNu4BW8VNDNGaGcnWlOA==",
+				"signatures": [
+					{
+						"sig": "MEUCIGvNEDXUUfRWcpeS40StPZPsCSks7CG2VLE6FuGDto8jAiEA6CaTn5I8DcOu+xhp4EesXqn/3xh/pEoX63LvwGQQZOQ=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 74185331
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20250709.0": {
+			"name": "@cloudflare/workerd-windows-64",
+			"version": "1.20250709.0",
+			"dist": {
+				"integrity": "sha512-j1AyO8V/62Q23EJplWgzBlRCqo/diXgox58AbDqSqgyzCBAlvUzXQRDBab/FPNG/erRqt7I1zQhahrBhrM0uLA==",
+				"shasum": "9df9c475cc483a0a395b19a471fcc1c167380fb8",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-windows-64/-/workerd-windows-64-1.20250709.0.tgz",
+				"fileCount": 3,
+				"unpackedSize": 74205811,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIGvNEDXUUfRWcpeS40StPZPsCSks7CG2VLE6FuGDto8jAiEA6CaTn5I8DcOu+xhp4EesXqn/3xh/pEoX63LvwGQQZOQ="
+						"sig": "MEQCICVupykOHQOHItgqRh5+9DeYLlf66T1KBS3SGC3xsOXlAiBO7Nw6LL9IkRZPLouanQktUA4A8uZR7Y/RshRZ8I+J0w=="
 					}
 				]
 			},
