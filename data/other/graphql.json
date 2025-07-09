@@ -3034,6 +3034,94 @@
 	"AccountKvStorageAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountLiveInputEventsAdaptive": {
+		"__description": "Live input events with adaptive sampling",
+		"coloCode": "Ingest colo",
+		"datetime": "The time of the event",
+		"eventCode": "Event code",
+		"eventDescription": "Event description",
+		"inputId": "Live input ID"
+	},
+	"AccountLiveInputEventsAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountLiveInputEventsAdaptiveGroups": {
+		"__description": "Aggregated live input events with adaptive sampling",
+		"avg": "The average of values for a metric per dimension",
+		"count": "Number of segments stored",
+		"dimensions": "List of dimensions to group by",
+		"max": "The maximum value for a metric per dimension",
+		"min": "The minimum value for a metric per dimension"
+	},
+	"AccountLiveInputEventsAdaptiveGroupsAvg": {
+		"__description": "",
+		"bitRate": "Per-second bit rate when grouped by datetime",
+		"bitRateFifteenMinutes": "Per-second bit rate when grouped by datetimeFifteenMinutes",
+		"bitRateFiveMinutes": "Per-second bit rate when grouped by datetimeFiveMinutes",
+		"bitRateHour": "Per-second bit rate when grouped by datetimeHour",
+		"bitRateMinute": "Per-second bit rate when grouped by datetimeMinute",
+		"gopByteSize": "Average GOP size in bytes",
+		"gopDuration": "Average GOP duration in ms",
+		"gopUploadTime": "Average GOP upload time in ms",
+		"uploadDurationRatio": "Average upload to duration ratio"
+	},
+	"AccountLiveInputEventsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"datetime": "Live input events timestamp",
+		"datetimeFifteenMinutes": "The date and time of the event truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time of the event truncated to five minutes",
+		"datetimeHour": "The date and time of the event truncated to the hour",
+		"datetimeMinute": "The date and time of the event truncated to the minute",
+		"eventCode": "Event code",
+		"inputId": "Live input ID"
+	},
+	"AccountLiveInputEventsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountLiveInputEventsAdaptiveGroupsMax": {
+		"__description": "",
+		"gopByteSize": "Max GOP size in bytes",
+		"gopDuration": "Max GOP duration in ms",
+		"gopUploadTime": "Max GOP upload time in ms",
+		"uploadDurationRatio": "Max upload to duration ratio"
+	},
+	"AccountLiveInputEventsAdaptiveGroupsMin": {
+		"__description": "",
+		"gopByteSize": "Min GOP size in bytes",
+		"gopDuration": "Min GOP duration in ms",
+		"gopUploadTime": "Min GOP upload time in ms",
+		"uploadDurationRatio": "Min upload to duration ratio"
+	},
+	"AccountLiveInputEventsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountLiveInputEventsAdaptiveOrderBy": {
+		"__description": ""
+	},
+	"AccountLogExplorerIngestionAdaptiveGroups": {
+		"__description": "Ingestion metrics for Log Explorer",
+		"dimensions": "List of dimensions to group by",
+		"sum": ""
+	},
+	"AccountLogExplorerIngestionAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Ingestion date",
+		"datetimeFifteenMinutes": "Ingestion time, truncated to multiple of 15 minutes",
+		"datetimeFiveMinutes": "Ingestion time, truncated to multiple of 5 minutes",
+		"datetimeHour": "Ingestion time, truncated to the hour",
+		"datetimeMinute": "Ingestion time, truncated to the minute"
+	},
+	"AccountLogExplorerIngestionAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountLogExplorerIngestionAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountLogExplorerIngestionAdaptiveGroupsSum": {
+		"__description": "",
+		"billableBytes": "Total billable bytes ingested to Log Explorer",
+		"totalBytes": "Total bytes ingested to Log Explorer"
+	},
 	"AccountLogpushHealthAdaptiveGroups": {
 		"__description": "Beta. Logpush job health metrics",
 		"avg": "",
@@ -5310,6 +5398,9 @@
 		"imagesUniqueTransformations": "",
 		"kvOperationsAdaptiveGroups": "",
 		"kvStorageAdaptiveGroups": "",
+		"liveInputEventsAdaptive": "",
+		"liveInputEventsAdaptiveGroups": "",
+		"logExplorerIngestionAdaptiveGroups": "",
 		"logpushHealthAdaptiveGroups": "",
 		"magicEndpointHealthCheckAdaptiveGroups": "",
 		"magicFirewallNetworkAnalyticsAdaptiveGroups": "",
@@ -8915,6 +9006,9 @@
 		"imagesUniqueTransformations": "Image unique transfromations per day",
 		"kvOperationsAdaptiveGroups": "KV operations data with adaptive sampling",
 		"kvStorageAdaptiveGroups": "KV stored data with adaptive sampling",
+		"liveInputEventsAdaptive": "Live input events with adaptive sampling",
+		"liveInputEventsAdaptiveGroups": "Aggregated live input events with adaptive sampling",
+		"logExplorerIngestionAdaptiveGroups": "Ingestion metrics for Log Explorer",
 		"logpushHealthAdaptiveGroups": "Beta. Logpush job health metrics",
 		"magicEndpointHealthCheckAdaptiveGroups": "Magic Endpoint Healthcheck events with adaptive sampling.",
 		"magicFirewallNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic Firewall",
