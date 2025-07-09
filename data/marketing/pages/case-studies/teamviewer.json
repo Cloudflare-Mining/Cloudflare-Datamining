@@ -1,0 +1,104 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/teamviewer/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "TeamViewer",
+				"contentfulId": "4G0nxGweyRjHbIFExJo1hH",
+				"nameUrlSlug": "teamviewer",
+				"metaTags": {
+					"metaTitle": "TeamViewer & Cloudflare | Customer Story",
+					"metaDescription": "TeamViewer deploys Cloudflare WAF, Workers, and CDN to decrease latency for its website and downloads and protect against DDoS attacks",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4VmQJVd6brbRRKpwms9CmE/e0a06810c9b40a3fc2d12f8c11875793/teamviewer_logo.png"
+						},
+						"description": "TeamViewer - Meta image"
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2025-07-04",
+				"homepageUrl": "https://www.teamviewer.com/",
+				"hideFromCaseStudiesPage": false,
+				"shortDescription": "TeamViewer deploys Cloudflare WAF, Workers, and CDN to decrease latency for its website and downloads and protect against DDoS attacks",
+				"longDescription": "## TeamViewer enhances website and download performance with help from Cloudflare\n\nTeamViewer provides a Digital Workplace platform that connects people with technology—enabling, improving and automating digital processes to make work work better. In 2005, TeamViewer started with software to connect to computers from anywhere to eliminate travel and enhance productivity. It rapidly became the de facto standard for remote access and support and the preferred solution for hundreds of millions of users across the world to help others with IT issues. \n\nToday, more than 660,000 customers across industries rely on TeamViewer to optimize their digital workplaces—from small to medium sized businesses to the world's largest enterprises—empowering both desk-based employees and frontline workers.\n\n### Challenge: Ensuring website and download performance for a global audience\n\nTeamViewer has customers around the globe, but its IT infrastructure was centralized. The company was concerned that latency and potential downtime would cause prospects visiting its website and downloading its software to switch to other providers. According to Eduardo Bernal, TeamViewer's VP of Digital Delivery, \"As we have millions and millions of customers and free users downloading our software, providing it at speed was a challenge. Our download servers were not sufficiently performant, which is why we started to look into Cloudflare.\"\n\n### Cloudflare Workers and WAF reduce latency and DDoS exposure\n\nPreviously, TeamViewer was serving its website and downloads directly from its origin servers. However, this created issues with latency and accessibility in certain markets, like China. Bernal commented, \"The latency to deliver software in China meant that our downloads were terribly slow. Cloudflare's global network and China network enable us to better serve our customers.\"\n\nTransitioning applications from the company's servers to Cloudflare Workers, Cloudflare's serverless platform, has dramatically reduced load on the company's infrastructure while enhancing performance. \"Currently, we deliver between six to eight petabytes per month, but the infrastructure in the background is always the same,' explained Franc Lambrecht, Enterprise Architect at TeamViewer. 'We don't need to scale on our side because Cloudflare scales for us.\"\n\nDistributed denial-of-service (DDoS) attacks were also a major concern for TeamViewer. Bernal said, \"We face many DDoS attacks. The Cloudflare web application firewall helps us sleep at night knowing that our website is protected.\"\n\n### Improved website performance and reduced origin server load\n\nThe Cloudflare Connectivity Cloud has reduced network latency for TeamViewer's website and downloads alike. According to Lambrecht, \"With Cloudflare Workers and CDN, we were able to achieve a cache hit rate of 99% for downloads. For visitors to our website, over 95% of requests hit the cache.\"\n\nCloudflare's China Network also fixed TeamViewer's challenges with reaching its Chinese customers. Bernal says, \"The China network enables us to improve our download speeds by five times in mainland China.\"\n\n### Mitigating emerging and evolving cyber threats\n\nWhile web performance and DDoS attacks were the initial impetus to partner with Cloudflare, TeamViewer has also adopted additional Cloudflare solutions to meet its needs. \"As the cybersecurity industry and threat landscape evolve, we've adopted more Cloudflare solutions, such as Cloudflare's WAF, Workers, and Bot Management,\" Bernal said. \"There are many things that Cloudflare has that no other company can provide to us, and we're always excited to test new offerings.\"\n",
+				"cloudflareStreamVideoId": "7e9217d9620f8bdb04d65453a83f094e",
+				"keyResults": "\n- 95% and 99% cache hit rate for website and downloads, respectively\n\n- 5x improvement in download speeds in mainland China\n",
+				"relatedCaseStudyLinks": [
+					{
+						"text": "Zendesk",
+						"url": "/case-studies/zendesk"
+					},
+					{
+						"text": "Ivanti",
+						"url": "/case-studies/ivanti"
+					},
+					{
+						"text": "8x8",
+						"url": "/case-studies/8x8"
+					}
+				],
+				"inPartnershipWith": [],
+				"relatedCloudflareProducts": [
+					{
+						"title": "Content Delivery Network (CDN)",
+						"url": "/application-services/products/cdn/"
+					},
+					{
+						"title": "Workers",
+						"url": "/products/cloudflare-workers/"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/application-services/products/waf/"
+					},
+					{
+						"title": "Bot Management",
+						"url": "/application-services/products/bot-management/"
+					},
+					{
+						"title": "China Network",
+						"url": "/network/china/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Franc Lambrecht",
+				"employeeQuoteText": "With Cloudflare Workers and CDN, we were able to achieve a cache hit rate of 99% for downloads. For visitors to our website, over 95% of requests hit the cache.",
+				"employeeQuoteJobTitle": "Enterprise Architect at TeamViewer",
+				"employeeQuoteName2": "Eduardo Bernal",
+				"employeeQuoteText2": "The China network enables us to improve our download speeds by five times in mainland China.",
+				"employeeQuoteJobTitle2": "VP of Digital Delivery at TeamViewer",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": {
+					"file": {
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44B0oYnbMW6ShdQy7MChG2/65a3e5a12bd41dc4ffbb33998b06d4a5/teamviewer_thumbnail.png"
+					},
+					"description": "TeamViewer - video thumbnail"
+				},
+				"logo": {
+					"file": {
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4VmQJVd6brbRRKpwms9CmE/e0a06810c9b40a3fc2d12f8c11875793/teamviewer_logo.png"
+					},
+					"description": "TeamViewer - Meta image"
+				},
+				"customCanonicalTag": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4G0nxGweyRjHbIFExJo1hH",
+			"pathname": "/case-studies/teamviewer/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}
