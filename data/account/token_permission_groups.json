@@ -1704,6 +1704,22 @@
 		]
 	},
 	{
+		"id": "ba6ce7d23a9544ccad0816691ba38e21",
+		"name": "Realtime Admin",
+		"description": "Grants admin access to Realtime configuration",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "de62b15d79cc4d8d9c7b443c656eadbd",
+		"name": "Realtime",
+		"description": "Grants access to Realtime configuration excluding sensitive data",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "93ae59e7a40c4287a57ff6e501186a63",
 		"name": "Response Compression Read",
 		"description": "Grants read access to the response compression phase",
