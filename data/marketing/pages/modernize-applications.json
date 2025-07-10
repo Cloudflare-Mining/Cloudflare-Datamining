@@ -66,7 +66,7 @@
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "5ad85dPiHgxhhkv35vQ5iw",
-						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Webinar: 3 strategies to modernize applications and build for what's next.</span>\n\n        <a class=\"link-helper\" href=\"https://cloudflare.registration.goldcast.io/webinar/9fd5ab3f-aa55-40a3-ad4c-19d4e74848eb\">\n           <strong>Sign up now ></strong>\n        </a>\n    </div>",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Webinar: App Modernization Best Practices in a Serverless World.</span>\n\n        <a class=\"link-helper\" href=\"https://cloudflare.registration.goldcast.io/webinar/539901f6-3687-4edb-9019-b45e163d2ac4\">\n           <strong>Sign up now ></strong>\n        </a>\n    </div>",
 						"htmlId": null
 					},
 					{
@@ -134,14 +134,14 @@
 								"buttonAssetFile": null,
 								"buttonTextLoggedIn": null,
 								"contentTypeId": "button",
-								"contentfulId": "4rbAnyBa6rMXFFTKZuMoSF",
-								"elementName": "Modernize applications -  Read Forrester study - button",
+								"contentfulId": "2Ly6o0uzDFpBZgOSaewain",
+								"elementName": "Modernize applications -  Read the whitepaper",
 								"standardText": null,
-								"text": "Read Forrester study",
-								"url": "https://reprint.forrester.com/reprints/the-forrester-guide-to-cloud-modernization-a9100458",
+								"text": "Read eBook",
+								"url": "/lp/3-rs-overview-ebook",
 								"loggedInUrl": null,
 								"buttonModal": null,
-								"openInNewTab": true,
+								"openInNewTab": false,
 								"locale": "en-US"
 							}
 						],
@@ -1924,6 +1924,39 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "72nGZZgKYuj9ljBn6a0Fzr",
+								"heading": "Ebook",
+								"description": "3 paths to modernize applications and build AI services",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "22DnwImJ90UKJSiJsqHRuH",
+									"elementName": "Application modernization - Resource 9 - Link",
+									"standardText": null,
+									"text": "Read ebook",
+									"url": "/lp/3-rs-overview-ebook",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "199a0c46-2ff3-57ee-9cf7-06ffd387d947",
+									"altText": "Explore more ebooks in Cloudflare's Resource Hub",
+									"title": "Explore more ebooks in Cloudflare's Resource Hub",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tGnS2OjpSmmok16lr0mI3/db2a34b69b1001d0d0b529148def3c45/Ebook-generic-106x186-300dpi.png"
 										},
 										"description": null
 									},
