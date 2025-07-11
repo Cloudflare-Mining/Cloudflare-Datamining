@@ -5,60 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Job Locations: Austin, TX</strong></h4>
-<h4><strong>To the attention of candidates (Austin TX):&nbsp;</strong></h4>
-<h4><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Wed-Sun” or “Sat-Wed” 5-day working week schedule. Candidates MUST have right-to-work in the United States.&nbsp; Visa sponsorship is NOT provided for this position.</strong></h4>
-<h4><strong>About the Department</strong></h4>
-<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<h4><strong>What You’ll Do</strong></h4>
-<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's architecture and gain a deeper understanding of Internet technologies. You will focus on providing support for the Cloudflare One platform, including the complete Zero Trust product suite, networking solutions like Magic WAN, and associated monitoring and analytics tools.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h3><strong>Locations: Austin, TX</strong></h3>
+<h3><strong>About the Department</strong></h3>
+<p><strong><span class="selected">Emerging Technologies &amp; Incubation (ETI)</span></strong><span class="selected"> at Cloudflare is where we build and launch bold new products. We leverage Cloudflare's unique global network and edge to deliver innovative tools and solutions, solving problems at a scale impossible for most organizations. Join us to work on the bleeding edge.</span></p>
+<h3><span class="selected">What You'll Do</span></h3>
+<p><span class="selected">As a </span><strong><span class="selected">Senior Manager, Engineering</span></strong><span class="selected">, you will lead, grow, and inspire one or more teams of high-performing engineers who are redefining what is possible for developers on Cloudflare's platform. You will be responsible for the execution and delivery of industry-leading products that form the core of Cloudflare's developer offerings. We don't just replicate existing solutions; we innovate by working backward from developer needs, and you will guide your teams to imagine and build these new solutions by leveraging our unique global network.</span></p>
+<h3><strong><span class="selected">In this role, you will:</span></strong></h3>
 <ul>
-	<li>You have previous experience working as part of a team in a customer-facing role</li>
-	<li>You have experience solving troubleshooting and resolving Layer 3/4 networking issues, including routing, firewall, and transport-level connectivity problems</li>
-	<li>You understand how the Internet works</li>
-	<li>You understand and have previous experience working with Identity and Access Management protocols and technologies (SSO, SAML, OAuth, Federation, SCIM, etc.)</li>
-	<li>You understand and have previous experience supporting and troubleshooting multi-factor mechanisms (TOTP, SMS, FIDO, U2F, WebAuth, EMAIL, Push MFA, etc).</li>
-	<li>You have experience working in a support role where you thrived every time you resolved a ticket</li>
-	<li>You are comfortable communicating through various support channels and always put the customer first</li>
-	<li>You are a motivated self-starter and always looking to expand your existing skillset</li>
-	<li>Flexibility to work holidays and rotational weekend shifts</li>
+	<li><strong><span class="selected">Lead, Mentor, and Grow Teams:</span></strong><span class="selected"> Foster a culture of innovation, accountability, and inclusivity while leading, mentoring, and developing talented engineers.</span></li>
+	<li><strong><span class="selected">Recruit World-Class Talent:</span></strong><span class="selected"> Build a diverse and high-performing organization by recruiting and developing top-tier engineering talent.</span></li>
+	<li><strong><span class="selected">Strategic Partnership:</span></strong><span class="selected"> Collaborate with engineers, product managers, and other stakeholders to set technical direction, architect innovative solutions, and ensure your teams deliver high-impact results.</span></li>
+	<li><strong><span class="selected">Drive Product Execution:</span></strong><span class="selected"> Oversee the execution and delivery of a critical product portfolio that includes R2, Durable Objects, Vectorize, Hyperdrive, Queues, and our evolving Data Platform.</span></li>
+	<li><strong><span class="selected">Cross-Functional Alignment:</span></strong><span class="selected"> Work across functions and teams to align on strategy, manage dependencies, and deliver on a shared vision for Cloudflare's comprehensive storage and database offerings.</span></li>
 </ul>
-<h4><strong>Bonus Points</strong></h4>
+<h3><span class="selected">What You Bring</span></h3>
+<p><span class="selected">We are looking for an experienced engineering leader passionate about building foundational infrastructure and empowering developers.</span></p>
+<p><strong><span class="selected">Examples of desirable skills, knowledge, and experience:</span></strong></p>
 <ul>
-	<li>You are fluent in English, Spanish, Portuguese, German, Japanese, French or Mandarin</li>
-	<li>You are familiar with Cloudflare Zero Trust products (Zero Trust / Access / Gateway / Tunnel, WARP client) and have a site actively using our platform</li>
-	<li>You have a solid grasp of problem-solving with command line tools (dig / traceroute / curl / tcpdump)</li>
-	<li>You are familiar with Apache, Nginx, IIS, and other web servers</li>
-	<li>You are committed to gaining a deeper understanding of the following technologies: Zero Trust / Secure Web Gateway policies / Endpoint protections / security best practices (Certificates, Zero Trust, least privileged access etc)</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
+	<li><strong><span class="selected">Leadership Experience:</span></strong><span class="selected"> A minimum of 8 years of relevant industry experience, including at least 4 years in an engineering management role leading software engineers.</span></li>
+	<li><strong><span class="selected">Distributed Systems Expertise:</span></strong><span class="selected"> Proven track record of leading teams that have shipped and operated complex, large-scale distributed systems, preferably in the storage, database, or cloud infrastructure space.</span></li>
+	<li><strong><span class="selected">Team Development:</span></strong><span class="selected"> Demonstrated ability to hire, coach, and develop senior engineers, and build high-performing, inclusive teams.</span></li>
+	<li><strong><span class="selected">Execution Excellence:</span></strong><span class="selected"> Exceptional project management and execution skills, with extensive experience planning, building, and overseeing delivery to meet commitments.</span></li>
+	<li><strong><span class="selected">Technical Depth:</span></strong><span class="selected"> Significant technical depth in distributed systems, sufficient to be a credible leader, guide architectural discussions, and effectively unblock your team.</span></li>
+	<li><strong><span class="selected">Collaboration &amp; Influence:</span></strong><span class="selected"> Excellent cross-functional collaboration skills, with the ability to partner effectively with Product Management, other engineering teams, and leadership.</span></li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p><strong><span class="selected">Bonus Points:</span></strong></p>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li><span class="selected">Experience building and managing a large-scale data storage platform.</span></li>
+	<li><span class="selected">Experience managing globally distributed teams.</span></li>
+	<li><span class="selected">A passion for making the lives of developers easier and more productive.</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
