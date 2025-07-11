@@ -7,7 +7,7 @@
 </div>
 <p><strong>Available Location: London or Lisbon (Hybrid)</strong></p>
 <p><strong>About the team:</strong></p>
-<p>We’re a group of people that love to learn, collaborate, and solve large-scale problems. 2022 is a big year for us, and we’re looking for an inquisitive, curious and talented design manager to join our team.</p>
+<p>We’re a group of people that love to learn, collaborate, and solve large-scale problems. 2025 is a big year for us, and we’re looking for an inquisitive, curious and talented design manager to join our team.</p>
 <p>Your work will impact and influence the user experience of a product used by millions of people daily. As a Manager of Product Design, you will work closely with other designers, engineers, product managers, and other cross-functional stakeholders.&nbsp;</p>
 <p>If you’re a logical, people-oriented, creative design leader who’s excited to help tackle meaningful and complex problems with real-world impact, come help us make the Internet better! We’d love to hear from you.</p>
 <p>This position reports to the Director, Product Design.</p>
