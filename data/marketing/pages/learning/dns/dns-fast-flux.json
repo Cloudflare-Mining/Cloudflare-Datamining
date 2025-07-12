@@ -143,6 +143,12 @@
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
+									"displayText": "DNS over TLS",
+									"url": "/learning/dns/dns-over-tls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6eI7dSVO2bxGNiIj6iKq0n",
 									"displayText": "DNS security",
 									"url": "/learning/dns/dns-security/"
@@ -285,9 +291,21 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5n1f5p2zH49IYRP3FcVzjQ",
+									"displayText": "Anycast DNS",
+									"url": "/learning/dns/what-is-anycast-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "1vco0E7j6jTBPLi9OYJ6eO",
 									"displayText": "Recursive DNS",
 									"url": "/learning/dns/what-is-recursive-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3MOZsA9003MKQ1GDZMGFY5",
+									"displayText": "DNS Server Types",
+									"url": "/learning/dns/dns-server-types/"
 								}
 							]
 						},
@@ -361,6 +379,12 @@
 								"contentfulId": "6eI7dSVO2bxGNiIj6iKq0n",
 								"displayText": "DNS security",
 								"url": "/learning/dns/dns-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
+								"displayText": "DNS over TLS",
+								"url": "/learning/dns/dns-over-tls/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -497,7 +521,122 @@
 						]
 					},
 					"column4Title": "DNS Glossary",
-					"column4": null,
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5WMBaCE7sRnxCptrlp0KcN",
+						"name": "DNS Footer: Glossary",
+						"displayText": "DNS Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3noj8iKecv1MxsE67u045T",
+								"displayText": "What is 1.1.1.1?",
+								"url": "/learning/dns/what-is-1.1.1.1/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6v4wbr2ex8UmyM5nD2kkKL",
+								"displayText": "What is My IP Address?",
+								"url": "/learning/dns/glossary/what-is-my-ip-address/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "499ZJa7WyHPnVn7bN9oWez",
+								"displayText": "DNS Zone",
+								"url": "/learning/dns/glossary/dns-zone/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "70gaOJdXvkgXzRRApB6HkS",
+								"displayText": "Dynamic DNS",
+								"url": "/learning/dns/glossary/dynamic-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5io6sFzA7GqUtf7iJ48iDZ",
+								"displayText": "Reverse DNS",
+								"url": "/learning/dns/glossary/reverse-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5IMnlrCJD7x0FVpewqkOIR",
+								"displayText": "Primary vs. secondary DNS",
+								"url": "/learning/dns/glossary/primary-secondary-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3SokyTEzCKuAzAad9haVI9",
+								"displayText": "Round-robin DNS",
+								"url": "/learning/dns/glossary/round-robin-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5n1f5p2zH49IYRP3FcVzjQ",
+								"displayText": "Anycast DNS",
+								"url": "/learning/dns/what-is-anycast-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1vco0E7j6jTBPLi9OYJ6eO",
+								"displayText": "Recursive DNS",
+								"url": "/learning/dns/what-is-recursive-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2PaGg8hMqJM1igspXYbvv3",
+								"displayText": "DNS Cache Poisoning",
+								"url": "/learning/dns/dns-cache-poisoning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1ikXSOCWeoGFzBnkDIwuMY",
+								"displayText": "Domain Name",
+								"url": "/learning/dns/glossary/what-is-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2h2AMLDpLE26iXPuwzXW9I",
+								"displayText": "Domain name registrar",
+								"url": "/learning/dns/glossary/what-is-a-domain-name-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7nawVf9j5ZfeeEDxxQkox6",
+								"displayText": "Best Domain Name Registrar",
+								"url": "/learning/dns/glossary/choose-the-best-domain-name-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4EJToFmoxmGMpGfGw62Uwb",
+								"displayText": "Expired Domains",
+								"url": "/learning/dns/glossary/expired-domains/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
+								"displayText": "Cloudflare Registrar",
+								"url": "/learning/dns/what-is-cloudflare-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
+								"displayText": "DNS Fast Flux",
+								"url": "/learning/dns/dns-fast-flux/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
+								"displayText": "Top-Level Domain",
+								"url": "/learning/dns/top-level-domain/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+								"displayText": "Domain hijacking",
+								"url": "/learning/dns/what-is-domain-hijacking/"
+							}
+						]
+					},
 					"column5Title": "Learning Center Navigation",
 					"column5": {
 						"contentTypeId": "learningCenterArticleLinkedList",
@@ -613,6 +752,12 @@
 						"contentfulId": "2PaGg8hMqJM1igspXYbvv3",
 						"displayText": "DNS Cache Poisoning",
 						"url": "/learning/dns/dns-cache-poisoning/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
+						"displayText": "DNS over TLS",
+						"url": "/learning/dns/dns-over-tls/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
