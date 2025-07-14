@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/realtimekit-recording-sdk",
 	"dist-tags": {
-		"latest": "0.0.1-staging.1"
+		"latest": "0.0.1-staging.2"
 	},
 	"versions": {
 		"0.0.0": {
@@ -26,6 +26,46 @@
 			"version": "0.0.1-staging.1",
 			"dependencies": {},
 			"devDependencies": {
+				"vite": "^4.3.0",
+				"cypress": "^12.12.0",
+				"typescript": "^5.0.2",
+				"@types/jest": "^29.5.1",
+				"@types/node": "^18.16.0",
+				"@types/cypress": "^1.1.3",
+				"vite-plugin-dts": "^2.3.0",
+				"semantic-release": "^21.0.2",
+				"@semantic-release/git": "^10.0.1",
+				"@semantic-release/npm": "^10.0.3",
+				"@semantic-release/exec": "^6.0.3",
+				"@cloudflare/realtimekit": ">=1.0.1",
+				"@semantic-release/changelog": "^6.0.3",
+				"rollup-plugin-polyfill-node": "^0.12.0",
+				"rollup-plugin-node-polyfills": "^0.2.1",
+				"@semantic-release/commit-analyzer": "^9.0.2",
+				"@semantic-release/release-notes-generator": "^11.0.1"
+			},
+			"peerDependencies": {
+				"@cloudflare/realtimekit": ">=1.0.1"
+			},
+			"dist": {
+				"shasum": "d17ed049034950548cbd17c0513b1e4e776c5603",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-recording-sdk/-/realtimekit-recording-sdk-0.0.1-staging.1.tgz",
+				"fileCount": 14,
+				"integrity": "sha512-NcMeWa4NhfHsR71qXvsvQi0mUcgdgBbMDyuCnncJeuOx4dno3aKgEqVD7GXw70fe0ZZi1LCaTYKa+hpHE7vVpg==",
+				"signatures": [
+					{
+						"sig": "MEQCIBZDgsjrv3tZsj3If2vHJ0q8vMeKcN9p4nZ3MrUD31VjAiAYX5RHExAXmNmmmVWNqngAkCudNRcqdP0dToh8e13DzA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 239330
+			}
+		},
+		"0.0.1-staging.2": {
+			"name": "@cloudflare/realtimekit-recording-sdk",
+			"version": "0.0.1-staging.2",
+			"dependencies": {},
+			"devDependencies": {
 				"@semantic-release/changelog": "^6.0.3",
 				"@semantic-release/commit-analyzer": "^9.0.2",
 				"@semantic-release/exec": "^6.0.3",
@@ -48,15 +88,15 @@
 				"@cloudflare/realtimekit": ">=1.0.1"
 			},
 			"dist": {
-				"integrity": "sha512-NcMeWa4NhfHsR71qXvsvQi0mUcgdgBbMDyuCnncJeuOx4dno3aKgEqVD7GXw70fe0ZZi1LCaTYKa+hpHE7vVpg==",
-				"shasum": "d17ed049034950548cbd17c0513b1e4e776c5603",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-recording-sdk/-/realtimekit-recording-sdk-0.0.1-staging.1.tgz",
+				"integrity": "sha512-+8TJn05QCuTMYqbzfxdnhjbTsUGAht+w72ghpRsIJ0Ix7h71hO5U/u9JmAw+Fpf1htV8HS51ufqKjF6//Bs7mw==",
+				"shasum": "aab4431f90d9d2200b55f7ad20ce57d1e1623f69",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-recording-sdk/-/realtimekit-recording-sdk-0.0.1-staging.2.tgz",
 				"fileCount": 14,
-				"unpackedSize": 239330,
+				"unpackedSize": 239219,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIBZDgsjrv3tZsj3If2vHJ0q8vMeKcN9p4nZ3MrUD31VjAiAYX5RHExAXmNmmmVWNqngAkCudNRcqdP0dToh8e13DzA=="
+						"sig": "MEUCIBHBgI7B2cIQQkE8rBTZUS7NFT7uEGBnvKDVLLEgdH7eAiEAoz9oqzpeS0ElYbJwqEgjhS8W9nUPPi6du+OCFk2u8Gg="
 					}
 				]
 			}
