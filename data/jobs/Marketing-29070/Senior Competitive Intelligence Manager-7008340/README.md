@@ -8,7 +8,7 @@
 <p><strong>Available Locations: Austin, TX or San Francisco</strong></p>
 <ul>
 	<li>
-		<p>We are seeking a highly motivated and technically proficient Senior Competitive Marketing Manager to join our Competitive Intelligence team and support our <a href="https://www.cloudflare.com/application-services/products/#Application">Application Services</a>. This is a hands-on technical role within the leading connectivity cloud company recognized as a leader in App Security and Performance. You will be responsible for in-depth analysis of competitor solutions, encompassing both Application Security (DDoS protection, WAF, API security, Bot management, … ) and App Performance (CDN, DNS, load balancing, ..).</p>
+		<p>We are seeking a highly motivated and technically proficient Senior Competitive Intelligence Manager to join our Competitive Intelligence team and support our&nbsp;<a href="https://www.cloudflare.com/application-services/products/#Application">Application Services</a>. This is a hands-on technical role within the leading connectivity cloud company recognized as a leader in App Security and Performance. You will be responsible for in-depth analysis of competitor solutions, encompassing both Application Security (DDoS protection, WAF, API security, Bot management, … ) and App Performance (CDN, DNS, load balancing, ..).</p>
 		<h1><strong>Responsibilities</strong></h1>
 		<ul>
 			<li>Conduct deep-dive technical analysis of competitor offerings, track relevant announcements, identify impacts, and communicate with relevant stakeholders.</li>
