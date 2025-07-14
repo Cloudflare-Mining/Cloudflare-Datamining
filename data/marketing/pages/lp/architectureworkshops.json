@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-08-23T21:29:11.705Z",
-					"updatedAt": "2025-04-23T00:22:39.934Z"
+					"updatedAt": "2025-07-14T19:11:50.977Z"
 				},
 				"contentfulId": "3lYPHsldYNPARHVdAboxzX",
 				"contentTypeId": "page",
@@ -128,59 +128,70 @@
 						}
 					},
 					{
-						"contentTypeId": "bladeSignUpForm",
-						"contentfulId": "1G6lytulrHmDamerxxQAzW",
-						"bladeName": "[ACQ] Q3'24 VE - NAMER - Architecture Workshops - Form Blade",
-						"formType": "formRight",
-						"formTitle": null,
-						"buttonText": null,
-						"buttonColor": "orange",
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "4gKUgmFhP0jJAWVcl4MIuF",
 						"htmlId": null,
-						"marketoEmbeddedForm": {
-							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "h1zXTAI6T3juUG8GKZh14",
-							"bladeName": "[ACQ] Q3'24 VE - NAMER - Architecture Workshops - Marketo Form",
-							"backgroundColor": "white",
-							"marketoFormId": 4601,
-							"marketoFormLeadSource": "Marketing Generated - Events",
-							"marketoFormLeadSourceDetail": "25Q2-NAMER-VE-Architecture Workshop-Parent",
-							"marketoFormHeaderText": null,
-							"marketoFormDefaultComment": null,
-							"showCommentBox": false,
-							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": " ",
-							"marketoFormPdfDownload": null,
-							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": null,
-							"meta_adRollCustomSegment": null,
-							"enableSandbox": null,
-							"marketoFormSubmitButtonText": "Register now",
-							"marketoFormSubmitButtonColor": null,
-							"enableEmailVerification": null,
-							"disableEnterpriseEmailNotification": null,
-							"enableRingout": null
-						},
-						"title": " ",
-						"subtitle": "Workshops at 11 AM PT / 2 PM ET",
-						"copy": "Get hands-on with our exciting whiteboarding platform, where you and Cloudflare experts can collaborate in real-time, sharing innovative strategies and best practices for integrating Cloudflare solutions into your specific environments.\n\nUpcoming sessions:\n\n__June 17th: How Cloudflare uses defensive AI to protect your web apps__<br>\nIn this workshop, we will discuss how Cloudflare uses machine learning-enhanced threat protection to protect your web apps and other web assets such as APIs, third-party components, and user-facing LLMs. You'll also learn more about how Cloudflare's AI assistant features can improve SOC workflows and speed incident investigation.<br><br>",
-						"iconList": [],
-						"iconTitleList": null,
-						"iconCopyList": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamOptions": null,
-						"rightSideCopy": null,
-						"rightSideCopyPosition": null,
+						"mainHeadline": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"textColor": "black",
-						"extraClass": null,
-						"sectionPadding": "tile--no-top-padding",
-						"customPrivacyPolicy": false,
-						"customPrivacyPolicyText": null,
-						"featureList": null
+						"sectionPadding": null,
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "Y3ruu7uwbBuOiwqdhZ7j3",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Stay tuned for more exciting topics in our upcoming Architecture Workshops!",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
 					}
 				],
 				"noindex": false,
