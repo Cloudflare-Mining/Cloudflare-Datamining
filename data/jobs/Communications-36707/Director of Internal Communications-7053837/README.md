@@ -7,7 +7,7 @@
 </div>
 <p><strong>Available Locations: Austin, TX</strong></p>
 <p><strong>What you'll do</strong></p>
-<p>Cloudflare is looking for a Director, Internal Communications to join our team and lead our internal communications strategy and initiatives.This is an exciting role for someone ready to take Cloudflare’s global internal communications programs to the next level and make a real impact across the organization.</p>
+<p>Cloudflare is looking for a Director, Internal Communications to join our team and lead our internal communications strategy and initiatives. This is an exciting role for someone ready to take Cloudflare’s global internal communications program to the next level and make a real impact across the organization.</p>
 <p>This role will be responsible for developing and executing a world-class internal communications strategy that aligns with company priorities and key moments in time. This person will play a critical role in delivering thoughtful, timely, and consistent communications across a variety of internal channels—ensuring employees around the world stay connected to our mission and culture. This is a high-impact role for a purposeful communicator with exceptional writing skills—someone who can craft compelling narratives, drive cross-functional initiatives, and help inspire a global workforce. Reporting to the Vice President, Global Head of Communications at Cloudflare, this role will be part of an award-winning communications team.</p>
 <p><strong>Key Responsibilities:</strong></p>
 <ul>
