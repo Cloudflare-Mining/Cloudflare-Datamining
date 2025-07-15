@@ -2980,6 +2980,14 @@
 						"compatEnableDate": "2025-08-01",
 						"compatEnableFlag": "set_forwardable_email_full_headers"
 					}
+				},
+				{
+					"name": "enableNodejsHttpModules",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_http_modules",
+						"compatEnableFlag": "enable_nodejs_http_modules",
+						"impliedByAfterDate": "unhandled type"
+					}
 				}
 			]
 		},
