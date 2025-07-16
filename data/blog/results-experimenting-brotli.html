@@ -12,7 +12,14 @@
 		</a>
 	</div>
 	<p>Many popular lossless compression algorithms rely on LZ77 and Huffman coding, so it’s important to have a basic understanding of these two techniques before getting into gzip or Brotli.</p>
-	<h4>LZ77</h4>
+	<div class="flex anchor relative">
+		<h4 id="lz77">LZ77</h4>
+		<a href="https://blog.cloudflare.com/#lz77" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>LZ77 is a simple technique developed by Abraham Lempel and Jacob Ziv in 1977 (hence the original name). Let's call the input to the algorithm a string (a sequence of bytes, not necessarily letters) and each consecutive sequence of bytes in the input a substring. LZ77 compresses the input string by replacing some of its substrings by pointers (or backreferences) to an identical substring previously encountered in the input.</p>
 	<p>The pointer usually has the form of <code>&lt;length, distance&gt;</code>, where length indicates the number of identical bytes found, and distance indicates how many bytes separate the current occurrence of the substring from the previous one. For example the string <code>abcdeabcdf</code> can be compressed with LZ77 to <code>abcde&lt;4,5&gt;f</code> and <code>aaaaaaaaaa</code> can be compressed to simply <code>a&lt;9, 1&gt;</code>. The decompressor when encountering a backreference will simply copy the required number of bytes from the already decompressed output, which makes it very fast for decompression. This is a nice illustration of LZ77 from my previous blog <a href="https://blog.cloudflare.com/improving-compression-with-preset-deflate-dictionary">Improving compression with a preset DEFLATE dictionary</a>:</p>
 	<table>
@@ -1327,7 +1334,14 @@
 		</tbody>
 	</table>
 	<p>The deflate algorithm managed to reduce the original text from 251 characters, to just 152 tokens! Those tokens are later compressed further by Huffman coding.</p>
-	<h4>Huffman Coding</h4>
+	<div class="flex anchor relative">
+		<h4 id="huffman-coding">Huffman Coding</h4>
+		<a href="https://blog.cloudflare.com/#huffman-coding" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Huffman coding is another lossless compression algorithm. Developed by David Huffman back in the 50s, it is used for many compression algorithms, including JPEG. A Huffman code is a type of prefix coding, where, given an alphabet and an input, frequently occurring characters are replaced by shorter bit sequences and rarely occurring characters are replaced with longer sequences.</p>
 	<p>The code can be expressed as a binary tree, where the leaf nodes are the literals of the alphabet and the two edges from each node are marked with 0 and 1. To decode the next character, the decompressor can parse the tree from the root until it encounters a literal in the tree.</p>
 	<p>Each compression format uses Huffman coding differently, and for our little example we will create a Huffman code for an alphabet that includes only the literals and the length codes we actually used. To start, we must count the frequency of each letter in the LZ77 compressed text:</p>
@@ -1338,7 +1352,14 @@
 	<p>Now apply the code to the LZ77 output, (leaving the distance tokens untouched) and we get:</p>
 	<p>100000 11100 0011 0011 011100 1101 101 011101 10010 0101 0101 111110 101 010000 000 000 01111 4 0010101 1101 0101 0011 101 10001 000 110011 110011 11100 0101 010011 101 0011 10001 110010 000 10010 010011 01100 8 10001 1101 101 1001111 000 110010 1101 11000 0011 101 0010100 00100 000 000 01111 28 10010 110011 1001101 23 11100 1101 011100 11110 101 111111 11100 00100 1101 101 0100011 0101 11110 101 011101 1000010 58 1101 111111 101 000 0101 01111 35 10001 1101 11101 11110 101 0100010 000 011011 0101 101 00100 11101 111111 1101 01111 19 1000011 000 000 11110 101 010000 11101 11100 110010 111110 1001110 101 11101 01100 55 11000 01100 20 11000 11101 11100 11110 101 011010 100000 0010111 149 0010110 101 11110 000 0101 0100101 0011 101 011011 11101 01100 157 0011 000 101 11000 1101 1101 101 111110 000 10010 0100100 141 1001100 011010</p>
 	<p>Assuming all the distance tokens require one byte to store, the total output length is 898 bits. Compared to the 1356 bits we would require to store the LZ77 output, and 2008 bits for the original input. We achieved a compression ratio of 31% which is very good. In reality this is not the case, since we must also encode the Huffman tree we used, otherwise it would be impossible to decompress the text.</p>
-	<h4>gzip</h4>
+	<div class="flex anchor relative">
+		<h4 id="gzip">gzip</h4>
+		<a href="https://blog.cloudflare.com/#gzip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The compression algorithm used in gzip is called "deflate," and it’s a combination of the LZ77 and Huffman algorithms discussed above.</p>
 	<p>On the LZ77 side, gzip has a minimum size of 3 bytes and a maximum of 258 bytes for the length tokens and a maximum of 32768 bytes for the distance tokens. The maximum distance also defines the sliding window size the implementation uses for compression and decompression.</p>
 	<p>For Huffman coding, deflate has two alphabets. The first alphabet includes the input literals ("letters" 0-255), the end-of-block symbol (the "letter" 256) and the length tokens ("letters" 257-285). There are only 29 letters to encode all the possible lengths and the tokens 265-284 will always have additional bits encoded in the stream to cover the entire range from 3 to 258. For example the letter 257 indicates the minimal length of 3, whereas the letter 265 will indicate the length 11 if followed by the bit 0, and the length 12 if followed by the bit 1.</p>
@@ -1358,15 +1379,43 @@
 	<p>A very decent compression rate can be observed at levels 3-4, which are also quite fast. Increasing compression quality from level 4 and up gives incrementally smaller compression gains, while requiring substantially more time. Often, levels 8 and 9 will produce similarly compressed output, but level 9 will require more time to do it.</p>
 	<p>It is important to understand that the zlib implementation does not guarantee the best compression possible with the format, even when the quality setting is set to 9. Instead, it uses a set of heuristics and optimizations that allow for very good compression at reasonable speed.</p>
 	<p>Better gzip compression can be achieved by the <a href="https://github.com/google/zopfli">zopfli</a> library, but it is significantly slower than zlib.</p>
-	<h4>Brotli</h4>
+	<div class="flex anchor relative">
+		<h4 id="brotli">Brotli</h4>
+		<a href="https://blog.cloudflare.com/#brotli" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Brotli format was developed by Google and has been refined for a while now. Here at CloudFlare, we built an nginx module that performs dynamic Brotli compression, and we deployed it on our <a href="https://http2.cloudflare.com">test server</a> that supports HTTP2 and other new features.</p>
 	<p>To check the Brotli compression on the test server you can use the nightly build of the Firefox browser, which also supports this format.</p>
-	<h4>Brotli, deflate, and gzip</h4>
+	<div class="flex anchor relative">
+		<h4 id="brotli-deflate-and-gzip">Brotli, deflate, and gzip</h4>
+		<a href="https://blog.cloudflare.com/#brotli-deflate-and-gzip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Brotli and deflate are very closely related. Brotli also uses the LZ77 and Huffman algorithms for compression. Both algorithms use a sliding window for backreferences. Gzip uses a fixed size, 32KB window, and Brotli can use any window size from 1KB to 16MB, in powers of 2 (minus 16 bytes). This means that the Brotli window can be up to 512 times larger window than the deflate window. This difference is almost irrelevant in web-server context, as text files larger than 32KB are the minority.</p>
 	<p>Other differences include smaller minimal match length (2 bytes minimum in Brotli, compared to 3 bytes minimum in deflate) and larger maximal match length (16779333 bytes in Broli, compared to 258 bytes in deflate).</p>
-	<h4>Static dictionary</h4>
+	<div class="flex anchor relative">
+		<h4 id="static-dictionary">Static dictionary</h4>
+		<a href="https://blog.cloudflare.com/#static-dictionary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Brotli also features a static dictionary. The "dictionary" supported by deflate can greatly improve compression, but has to be supplied independently and can only be addressed as part of the sliding window. The Brotli dictionary is part of the implementation and can be referenced from anywhere in the stream, somewhat increasing its efficiency for larger files. Moreover, different transformations can be applied to words of the dictionary effectively increasing its size.</p>
-	<h4>Context modeling</h4>
+	<div class="flex anchor relative">
+		<h4 id="context-modeling">Context modeling</h4>
+		<a href="https://blog.cloudflare.com/#context-modeling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Brotli also supports something called context modeling. Context modeling is a feature that allows multiple Huffman trees for the same alphabet in the same block. For example, in deflate each block consists of a series of literals (bytes that could not be compressed by backreferencing) and <code>&lt;length, distance&gt;</code> pairs that define a backreference for copying. Literals and lengths form a single alphabet, while the distances are a different alphabet.</p>
 	<p>In Brotli, each block is composed of "commands". A command consists of 3 parts. The first part of each command is a word <code>&lt;insert, copy&gt;</code>. "Insert" defines the number of literals that will follow the word, and it may have the value of 0. "Copy" defines the number of literals to copy from a back reference. The word <code>&lt;insert,copy&gt;</code> is followed by a sequence of "insert" literals: <code>&lt;lit&gt; … &lt;lit&gt;</code>. Finally, the command ends with a <code>&lt;distance&gt;</code>. Distance defines the backreference from which to copy the previously defined number of bytes. Unlike the distance in deflate, Brotli distance can have additional meanings, such as references to the static dictionary, or references to recently used distances.</p>
 	<p>There are three alphabets here. One is for <code>&lt;lit&gt;</code>s and it simply covers all the possible byte values from 0 to 255. The other one is for <code>&lt;distance&gt;</code>s, and its size depends on the size of the sliding window and other parameters. The third alphabet is for the <code>&lt;insert,copy&gt;</code> length pairs, with 704 letters. Here <code>&lt;insert, copy&gt;</code> indicates a single letter in the alphabet, as opposed to <code>&lt;length,distance&gt;</code> pairs in deflate where length and distance are letters in distinct alphabets.</p>

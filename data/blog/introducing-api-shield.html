@@ -342,14 +342,36 @@ Response status code: 201</code></pre>
 	</div>
 	<p>Now that temperature requests have been sent to our API endpoint, it’s time to read them securely from our mobile application using one of the client certificates.</p>
 	<p>For purposes of brevity, we’re going to embed a “bootstrap” certificate and key as a PKCS#12 file within the application bundle. In a real world deployment, this bootstrap certificate should only be used alongside users’ credentials to authenticate to an API endpoint that can return a unique user certificate. Corporate users will want to use MDM to distribute certificates for additional control and persistence options.</p>
-	<h4>Package the certificate and private key</h4>
+	<div class="flex anchor relative">
+		<h4 id="package-the-certificate-and-private-key">Package the certificate and private key</h4>
+		<a href="https://blog.cloudflare.com/#package-the-certificate-and-private-key" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before adding the bootstrap certificate and private key, we need to combine them into a binary PKCS#12 file. This binary file will then be added to our iOS application bundle.</p>
 	<pre class="language-bash"><code class="language-bash">$ openssl pkcs12 -export -out bootstrap-cert.pfx -inkey ios-key.pem -in ios.pem
 Enter Export Password:
 Verifying - Enter Export Password:</code></pre>
-	<h4>Add the certificate bundle to your iOS application</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="add-the-certificate-bundle-to-your-ios-application">Add the certificate bundle to your iOS application</h4>
+		<a href="https://blog.cloudflare.com/#add-the-certificate-bundle-to-your-ios-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Within XCode, click File → Add Files To "[Project Name]" and select your .pfx file. Make sure to check "Add to target" before confirming.</p>
-	<h4>Modify your URLSession code to use the client certificate</h4>
+	<div class="flex anchor relative">
+		<h4 id="modify-your-urlsession-code-to-use-the-client-certificate">Modify your URLSession code to use the client certificate</h4>
+		<a href="https://blog.cloudflare.com/#modify-your-urlsession-code-to-use-the-client-certificate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://leenarts.net/2020/02/28/client-certificate-with-urlsession-in-swift">This article</a> provides a nice walkthrough of using a PKCS#11 class and <a href="https://developer.apple.com/documentation/foundation/urlsessiondelegate">URLSessionDelegate</a> &nbsp;to modify your application to complete mutual TLS authentication when connecting to an API that requires it.</p>
 	<div class="flex anchor relative">
 		<h2 id="looking-forward">Looking Forward</h2>

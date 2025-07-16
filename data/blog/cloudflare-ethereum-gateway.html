@@ -66,7 +66,14 @@
 	</div>
 	<p>You can write smart contracts in a number of languages, some of which are Turing complete, e.g. <a href="https://solidity.readthedocs.io">Solidity</a>. A Turing complete language lets you write code that can evaluate any computable function. This puts Solidity in the same class of languages as Python and Java. The compiled bytecode is then run on the EVM.</p>
 	<p>The EVM differs from a standard VM in a number of ways:</p>
-	<h5>The EVM is distributed</h5>
+	<div class="flex anchor relative">
+		<h5 id="the-evm-is-distributed">The EVM is distributed</h5>
+		<a href="https://blog.cloudflare.com/#the-evm-is-distributed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Each piece of code is run by numerous nodes. Nodes verify the computation before accepting a block, and therefore ensure that miners who want their blocks accepted must always run the EVM honestly. A block is only considered accepted when more than half of the network accepts it. This is the consensus part of Ethereum.</p>
 	<h6>The EVM is entirely deterministic</h6>
 	<p>This means that the same inputs to a function always produce the same outputs. Because regular VMs have access to file storage and the network, the results of a function call can be non-deterministic. Every EVM has the same start state, thus a given set of inputs always gives the same outputs. This makes the EVM more reliable than a standard VM.</p>

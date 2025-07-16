@@ -31,7 +31,14 @@ sudo dpkg -i apt-transport-https.deb</code></pre>
 	<p>To confirm which APT transports are installed on your system, you can list each “method binary” that is installed:</p>
 	<pre class="language-bash"><code class="language-bash">ls /usr/lib/apt/methods</code></pre>
 	<p>With apt-transport-https installed you should now see ‘https’ in that list.</p>
-	<h4>The state of APT &amp; HTTPS on Debian</h4>
+	<div class="flex anchor relative">
+		<h4 id="the-state-of-apt-https-on-debian">The state of APT &amp; HTTPS on Debian</h4>
+		<a href="https://blog.cloudflare.com/#the-state-of-apt-https-on-debian" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You may be wondering how relevant this APT HTTPS transport is today. Given the prevalence of HTTPS on the web today, I was surprised when I found out exactly how relevant it is.</p>
 	<p>Up until a couple of weeks ago, Debian <a href="https://www.debian.org/releases/stretch">Stretch</a> (9.x) was the current stable release; 9.0 was first released in June 2017 - and the latest version (9.9) includes <a href="https://packages.debian.org/stretch/apt">apt 1.4.9</a> by default - meaning that <b>securing your APT communication for Debian Stretch requires installing the optional </b><a href="https://packages.debian.org/stretch/apt-transport-https"><b>apt-transport-https</b></a><b> package</b>.</p>
 	<p>Thankfully, on July 6 of this year, Debian released the latest version - <a href="https://www.debian.org/releases/buster">Buster</a> - which currently includes <a href="https://packages.debian.org/buster/apt">apt 1.8.2</a> with HTTPS support built-in by default, negating the need for installing the <a href="https://packages.debian.org/buster/apt-transport-https">apt-transport-https</a> package - and removing the bootstrapping challenge of installing HTTPS support via HTTPS!</p>
@@ -108,13 +115,27 @@ sudo cp ${GOPATH:-~/go}/bin/cfd /usr/lib/apt/methods/cfd</code></pre>
 	<pre class="language-bash"><code class="language-bash">$ cat /etc/apt/sources.list.d/example.list 
 deb [arch=amd64] cfd://apt.example.com/v2/stretch stable common</code></pre>
 	<p>Next time you do `apt-get update` and `apt-get install`, a browser window will open asking you to log-in over Cloudflare Access, and your package will be retrieved using the token returned by `cloudflared`.</p>
-	<h4>Fetching a GPG Key over Access</h4>
+	<div class="flex anchor relative">
+		<h4 id="fetching-a-gpg-key-over-access">Fetching a GPG Key over Access</h4>
+		<a href="https://blog.cloudflare.com/#fetching-a-gpg-key-over-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Usually, private APT repositories will use <a href="https://wiki.debian.org/SecureApt">SecureApt</a> and have their own GPG public key that users must install to verify the integrity of data retrieved from that repository.</p>
 	<p>Users can also leverage cloudflared for securely downloading and installing those keys, e.g:</p>
 	<pre class="language-bash"><code class="language-bash">cloudflared access login https://apt.example.com
 cloudflared access curl https://apt.example.com/public.gpg | sudo apt-key add -</code></pre>
 	<p>The first command will open your web browser allowing you to authenticate for your domain. The second command wraps curl to download the GPG key, and hands it off to `apt-key add`.</p>
-	<h4>Cloudflare Access on "headless" servers</h4>
+	<div class="flex anchor relative">
+		<h4 id="cloudflare-access-on-headless-servers">Cloudflare Access on "headless" servers</h4>
+		<a href="https://blog.cloudflare.com/#cloudflare-access-on-headless-servers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you’re looking to deploy APT repositories protected by Cloudflare Access to non-user-facing machines (a.k.a. “headless” servers), opening a browser does not work. The good news is since February, <a href="https://blog.cloudflare.com/give-your-automated-services-credentials-with-access-service-tokens">Cloudflare Access supports service tokens</a> - and we’ve built support for them into our APT transport from day one.</p>
 	<p>If you’d like to use service tokens with our APT transport, it’s as simple as placing the token in a file in the correct path; because the machine already has a token, there is also no dependency on `cloudflared` for authentication. You can find details on how to set-up a service token in the APT transport <a href="https://github.com/cloudflare/apt-transport-cloudflared/blob/master/README.md">README</a>.</p>
 	<div class="flex anchor relative">

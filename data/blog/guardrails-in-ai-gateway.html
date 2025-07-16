@@ -71,7 +71,14 @@
 	</figure>
 	<p><sup><i>Figure 2. Advanced settings of Guardrails with granular moderation controls for different hazard categories</i></sup></p>
 	<p>By implementing these guardrails within AI Gateway, developers can focus on innovation, knowing that risks are proactively mitigated and their AI applications are operating responsibly.</p>
-	<h4>Leveraging Llama Guard on Workers AI</h4>
+	<div class="flex anchor relative">
+		<h4 id="leveraging-llama-guard-on-workers-ai">Leveraging Llama Guard on Workers AI</h4>
+		<a href="https://blog.cloudflare.com/#leveraging-llama-guard-on-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Guardrails feature is currently powered by <a href="https://ai.meta.com/research/publications/llama-guard-llm-based-input-output-safeguard-for-human-ai-conversations"><u>Llama Guard</u></a>, Meta’s open-source content moderation and safety tool, designed to detect harmful or unsafe content in both user inputs and AI-generated outputs. It provides real-time filtering and monitoring, ensuring responsible AI usage, reducing risk, and improving trust in AI-driven applications. Notably, organizations like <a href="https://mlcommons.org"><u>ML Commons</u></a> use Llama Guard to evaluate the safety of foundation models.&nbsp;</p>
 	<p>Llama Guard can be used to provide protection over a wide range of content such as violence and sexually explicit material. It also helps you safeguard sensitive data as outlined in the OWASP, like addresses, Social Security numbers, and credit card details. Specifically, Guardrails on AI Gateway utilizes the <a href="https://github.com/meta-llama/PurpleLlama/blob/main/Llama-Guard3/8B/MODEL_CARD.md"><u>Llama Guard 3 8B</u></a> model hosted on <a href="https://developers.cloudflare.com/workers-ai"><u>Workers AI</u></a> — Cloudflare’s serverless, GPU-powered inference engine. Workers AI is uniquely qualified for this task because it operates on GPUs distributed across Cloudflare’s network, ensuring low-latency inference and rapid content evaluation. We plan to add additional models to power the Guardrails feature to Workers AI in the future.&nbsp;</p>
 	<p>Using Guardrails incurs <a href="https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b"><u>Workers AI usage</u></a>, and that usage is reflected in your <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fworkers-ai"><u>Workers AI dashboard</u></a>, allowing developers to track their inference consumption effectively.&nbsp;</p>

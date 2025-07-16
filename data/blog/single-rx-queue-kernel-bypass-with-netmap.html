@@ -20,7 +20,14 @@
 	<p>It’s important to emphasize that the kernel bypass is enabled only for selected flows, which means that all other packets go to the kernel as usual.</p>
 	<p>This setup works perfectly on our servers with Solarflare network cards - we can use the <code>ef_vi</code> API to achieve the kernel bypass. Unfortunately, we don’t have this functionality on our servers with Intel IXGBE NIC’s.</p>
 	<p>This is when <a href="http://info.iet.unipi.it/~luigi/netmap">Netmap</a> comes in.</p>
-	<h4>Netmap</h4>
+	<div class="flex anchor relative">
+		<h4 id="netmap">Netmap</h4>
+		<a href="https://blog.cloudflare.com/#netmap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Over the last few months we’ve been thinking hard about how to achieve bypass for selected flows (aka: bifurcated driver) on non-Solarflare network cards.</p>
 	<p>We’ve considered PF_RING, DPDK and other custom solutions, but sadly all of them take over the whole network card. Eventually we decided that the best way would be to patch Netmap with the functionality we need.</p>
 	<p>We chose Netmap because:</p>
@@ -106,7 +113,14 @@ while (1) {
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2a0bUYxkJn3js1Nnve8vV6/cabf675555d51efb16d90372405aa07e/RX_bypass.png" alt="" class="kg-image" width="1024" height="500" loading="lazy">
 
 	</figure>
-	<h4>Isolating a queue</h4>
+	<div class="flex anchor relative">
+		<h4 id="isolating-a-queue">Isolating a queue</h4>
+		<a href="https://blog.cloudflare.com/#isolating-a-queue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In multiqueue network cards, any packet can end up in almost any RX queue due to RSS. This is why before enabling the single RX mode it is necessary to make sure only the selected flow goes to the Netmap queue.</p>
 	<p>To do so it is necessary to:</p>
 	<ul>
@@ -125,7 +139,14 @@ while (1) {
 $ ethtool -K eth3 ntuple on
 $ ethtool -N eth3 flow-type udp4 dst-port 53 action 4</code></pre>
 	<p>Here we are setting the indirection table to prevent traffic from going to RX queue #4. Then we are enabling flow steering to enqueue all UDP traffic with destination port 53 into queue #4.</p>
-	<h4>Trying it out</h4>
+	<div class="flex anchor relative">
+		<h4 id="trying-it-out">Trying it out</h4>
+		<a href="https://blog.cloudflare.com/#trying-it-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here's how to run it with the IXGBE NIC. First grab the sources:</p>
 	<pre class="language-bash"><code class="language-bash">$ git clone https://github.com/jibi/netmap.git
 $ cd netmap
@@ -172,10 +193,24 @@ $ ethtool -N eth3 flow-type udp4 dst-port 53 action 4</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72C2hRcoZTkoaTJZLaqgoi/5563f1256fe254287e9d77272da0ea97/htop2-1.png" alt="" class="kg-image" width="246" height="335" loading="lazy">
 
 	</figure>
-	<h4>Thanks</h4>
+	<div class="flex anchor relative">
+		<h4 id="thanks">Thanks</h4>
+		<a href="https://blog.cloudflare.com/#thanks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We would like to thank Pavel Odintsov who suggested the possibility of using Netmap this way. He even prepared <a href="http://www.stableit.ru/2015/06/how-to-run-netmap-on-single-queue-and.html">the initial hack</a> we based our work on.</p>
 	<p>We would also like to thank Luigi Rizzo, for his Netmap work and great feedback on our patches.</p>
-	<h4>Final words</h4>
+	<div class="flex anchor relative">
+		<h4 id="final-words">Final words</h4>
+		<a href="https://blog.cloudflare.com/#final-words" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At CloudFlare our application stack is based on open source software. We’re grateful to so many open source programmers for their awesome work. Whenever we can we try to contribute back to the community - we hope "the single RX Netmap mode" will be useful to others.</p>
 	<p>You can find more CloudFlare open source <a href="https://cloudflare.github.io">here</a>.</p>
 </div>

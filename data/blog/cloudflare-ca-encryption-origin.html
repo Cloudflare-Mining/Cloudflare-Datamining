@@ -34,7 +34,15 @@
 			</svg>
 		</a>
 	</div>
-	<h4>1. Ease of issuance and renewal</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="1-ease-of-issuance-and-renewal">1. Ease of issuance and renewal</h4>
+		<a href="https://blog.cloudflare.com/#1-ease-of-issuance-and-renewal" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The most difficult and time-consuming part of securing your origin with TLS is obtaining—and renewing—a certificate. Or many certificates if you’re using a provider that doesn’t support wildcards. Often this process requires intimate knowledge of OpenSSL or related command line tools, a reconfiguration of your web or DNS server to accommodate domain control validation, and a regularly scheduled reminder or cron job to perform this process again every year (or even every few months). With Origin CA, we took the opportunity to remove as many of these obstacles as possible.</p>
 	<p>Customers more comfortable in the GUI can, with just two clicks, securely generate a private key and wildcard certificate that will be trusted by our systems for anywhere from 7 days to 15 years. And those who prefer more control over the process can use our API or CLI to issue certificates of specified validity, key type, and key size. Regardless of the user interface chosen, the potentially complicated validation process has been replaced by a simple API key now available in your account on the CloudFlare dashboard; we’ve already verified you control your zone, there’s no need to prove it again.</p>
 	<figure class="kg-card kg-image-card ">
@@ -42,10 +50,24 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4aKKwwFmI91bim9WOmJ0HE/4709fb9705866b7185b4dccebdfe4865/strict-ssl.png" alt="" class="kg-image" width="1000" height="480" loading="lazy">
 
 	</figure>
-	<h4>2. Wildcard certificates reduce complexity</h4>
+	<div class="flex anchor relative">
+		<h4 id="2-wildcard-certificates-reduce-complexity">2. Wildcard certificates reduce complexity</h4>
+		<a href="https://blog.cloudflare.com/#2-wildcard-certificates-reduce-complexity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If your origin server handles traffic for more than a few hostnames, it can get unwieldy to place a long list of SANs on each certificate request. The alternative—placing just one SAN on each certificate and using Server Name Indication (SNI) extension to lazy load the correct certificate—can easily get out of hand. In this deployment scenario the number of certificates required is a non-trivial fraction of the the number of hostnames you wish to protect (not to mention you may not even be allowed to do so on shared hosts).</p>
 	<p>Beyond provisioning efforts, placing too many SANs on a single certificate can <a href="https://cabforum.org/pipermail/performance/2014-May/000047.html">significantly increase the size</a> of the certificate. Larger certificates consume more bandwidth at your origin (which, unlike CloudFlare, may bill you for marginal bandwidth consumption). The obvious answer for protecting more than a few hostnames (or even domains) on your origin is to use wildcard certificates. With Origin CA, you can request a single certificate containing wildcards for any and all of the zones registered in your account; you can even add wildcards covering multiple levels of a domain, e.g., <code>*.example.com</code>, <code>*.secure.example.com</code>, and <code>*.another-example.com</code> can all co-exist on the same certificate.</p>
-	<h4>3. Speed and simplicity of revocation</h4>
+	<div class="flex anchor relative">
+		<h4 id="3-speed-and-simplicity-of-revocation">3. Speed and simplicity of revocation</h4>
+		<a href="https://blog.cloudflare.com/#3-speed-and-simplicity-of-revocation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you’ve ever tried revoking a publicly trusted certificate—or relying on browsers to distrust a revoked certificate—you know how unreliable the process can be. Take your pick of explanations from Google crypto-wunderkind Adam Langley—<a href="https://www.imperialviolet.org/2011/03/18/revocation.html">Revocation doesn’t work</a> (2011); <a href="https://www.imperialviolet.org/2014/04/19/revchecking.html">No, don’t enable revocation checking</a> (2014); or <a href="https://www.imperialviolet.org/2014/04/29/revocationagain.html">Revocation still doesn’t work</a> (2014)—they all reach the same conclusion: browser-based revocation checking is broken and useless without hard fails. (The advent of the OCSP Must-Staple extension should improve the situation, but if history is any indication it will be quite a while before sufficient browsers, certificate authorities, and issued certificates support it.)</p>
 	<p>Fortunately with Origin CA, we only need one "browser" to respect revocation: our edge. Failing hard—the only acceptable way to fail from a security perspective—is incredibly simple (and fast) when your user agent has an in-memory list of all valid certificates. (Try doing that with the millions of certificates issued by dozens of CAs over the past few years!) Rather than fire requests across the public Internet and praying they return quickly enough, our NGINX instances can just query a local database for each new HTTPS session and confirm in microseconds whether you’ve revoked the certificate for any reason.</p>
 	<p>And if/when the time comes to revoke, a single click and confirmation is all that’s required for our edge to distrust the certificate. If you expose or misplace your private key (and can’t find it under the couch or in the pockets of yesterday’s pants), simply navigate to the Crypto tab and click the "x" icon next to the compromised certificate. Within seconds we’ll push this revocation status worldwide and our edge servers will refuse to communicate with origins serving the revoked certificate. Such speed, security, and reliability is impossible without total control over the CA and browser ecosystem.</p>
@@ -55,10 +77,24 @@
 
 	</figure>
 	<p>Even if published to the world, to abuse your CloudFlare Origin CA certificate an attacker would either need to compromise your CloudFlare account or take control of your <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrar</a> or DNS provider account. In any case, you'd have a lot more to worry about than just a compromised certificate.</p>
-	<h4>4. Widely supported install base</h4>
+	<div class="flex anchor relative">
+		<h4 id="4-widely-supported-install-base">4. Widely supported install base</h4>
+		<a href="https://blog.cloudflare.com/#4-widely-supported-install-base" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While most web server operators will elect to download the default PEM format for their certificate (as expected by Apache httpd and NGINX), many others will require a different variation. As illustrated in the screenshots below, certificates can be downloaded in several different formats, including DER, the binary equivalent of PEM’s ASCII, and PKCS#7, the Microsoft IIS Server and Apache Tomcat-compatible choice. Simply pick what works for your server and download it; there’s no need to learn cryptic command-line methods for converting.</p>
 	<p>Besides additional formats, we also have <a href="https://support.cloudflare.com/hc/en-us/articles/218408028">instructions for a wide variety of operating systems and web servers</a>. After generating your certificate simply select your desired destination from the 80+ different options and instructions specific to your environment will be displayed.</p>
-	<h4>5. Optimized certificates increase performance and reduce origin bandwidth consumption</h4>
+	<div class="flex anchor relative">
+		<h4 id="5-optimized-certificates-increase-performance-and-reduce-origin-bandwidth-consumption">5. Optimized certificates increase performance and reduce origin bandwidth consumption</h4>
+		<a href="https://blog.cloudflare.com/#5-optimized-certificates-increase-performance-and-reduce-origin-bandwidth-consumption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before a user agent can securely transmit HTTP actions like GET and POST to a web server, it must first establish the TLS session. To do so, the client kicks off a handshake by <a href="https://blog.cloudflare.com/tls-certificate-optimization-technical-details#step1clienthello">sending its own capabilities</a> and the server responds with the negotiated cipher suite and certificate that should be used to protect the conversation agreeing upon a symmetric key.</p>
 	<p>Until the client receives—and validates—the certificate(s) sent across the network by the origin, it is unable to complete the handshake and commence with requesting data. As such, it’s in the best interest of performance-sensitive users to make this certificate as small and unencumbered as possible. (Ideally the packet containing the certificate even fits within a single frame and is not fragmented during transmission.) One <a href="https://cabforum.org/pipermail/performance/2014-May/000047.html">brief survey</a> by a member of the <a href="https://cabforum.org">CA/B Forum</a> found that while the majority of certificates were between 1-2 kB, several thousand were found in the wild at least 10 kB in size, with one even over 50(!) kB.</p>
 	<p>With Origin CA certificates, we’ve stripped everything that’s extraneous to communication between our servers and yours to produce the smallest possible certificate and handshake. For example, we have no need to bundle intermediate certificates to assist browsers in building paths to trusted roots; no need to include signed certificate timestamps (SCTs) for purposes of certificate transparency and EV treatment; no need to include links to Certification Practice Statements or other URLs; and no need to listen to Online Certificate Status Protocol (OCSP) responses from third-parties.</p>
@@ -81,7 +117,14 @@ SSL handshake has read 1289 bytes and written 496 bytes</code></pre>
 		</a>
 	</div>
 	<p>Now that you've learned why you may want to use Origin CA-issued certificates on your origin, let’s explore the various interfaces you have for issuing (and revoking) them. Effective immediately, certificates for your origin can be issued in an automated fashion through our <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin/#2apiapplicationprogramminginterface">API</a> or <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin#3clicommandlineinterfacelinuxonly">CLI</a>, or through a guided wizard in the Crypto app on the <a href="https://www.cloudflare.com">CloudFlare Dashboard</a>. Each of the three available methods is described below along with examples:</p>
-	<h4>1. GUI: Crypto app in the CloudFlare Dashboard</h4>
+	<div class="flex anchor relative">
+		<h4 id="1-gui-crypto-app-in-the-cloudflare-dashboard">1. GUI: Crypto app in the CloudFlare Dashboard</h4>
+		<a href="https://blog.cloudflare.com/#1-gui-crypto-app-in-the-cloudflare-dashboard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To get started, login to <a href="https://www.cloudflare.com/a/login">the dashboard</a> and click on the Crypto icon.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -109,16 +152,39 @@ SSL handshake has read 1289 bytes and written 496 bytes</code></pre>
 
 	</figure>
 	<p>Lastly, choose your web server from the select box at the bottom of the window and click "Show instructions". Doing so will open installation instructions in a new browser window that, once followed, will allow you to adjust your SSL setting (at the top of the Crypto app) to "Strict" mode.</p>
-	<h4>2. API: Application Programming Interface</h4>
+	<div class="flex anchor relative">
+		<h4 id="2-api-application-programming-interface">2. API: Application Programming Interface</h4>
+		<a href="https://blog.cloudflare.com/#2-api-application-programming-interface" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you would like to automate the process of issuing certificates for your origin, or require more control over the parameters (e.g., shorter-lived certificates, greater key size, etc.), you can make use of our <a href="https://api.cloudflare.com/#origin-ca-properties">certificates API endpoint</a>.</p>
 	<p>Before calling the <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a> you will first need to generate a certificate signing request. To do so, you can use <a href="https://github.com/cloudflare/cfssl">cfssl</a> or <a href="https://www.openssl.org">OpenSSL</a>. Instructions for the former can be <a href="https://blog.cloudflare.com/universal-ssl-encryption-all-the-way-to-the-origin-for-free">found here</a>, while our friends at DigiCert have provided an <a href="https://www.digicert.com/easy-csr/openssl.htm">easy-to-use wizard</a> for the latter. Don't worry about including subject alternative names (SANs) in the CSR —&nbsp;we’ll take those in separately through the JSON payload.</p>
-	<h5>i. Generate a private key and CSR</h5>
+	<div class="flex anchor relative">
+		<h5 id="i-generate-a-private-key-and-csr">i. Generate a private key and CSR</h5>
+		<a href="https://blog.cloudflare.com/#i-generate-a-private-key-and-csr" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">$ openssl req -new -newkey rsa:2048 -nodes -out www_example_com.csr -keyout www_example_com.key -subj "/C=US/ST=California/L=/O=/CN=www.example.com"
 Generating a 2048 bit RSA private key
 .............................+++
 .....................................................................................................................................+++
 writing new private key to 'www_example_com.key'</code></pre>
-	<h5>ii. Obtain your Certificate API token</h5>
+
+	<div class="flex anchor relative">
+		<h5 id="ii-obtain-your-certificate-api-token">ii. Obtain your Certificate API token</h5>
+		<a href="https://blog.cloudflare.com/#ii-obtain-your-certificate-api-token" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Log in to the CloudFlare dashboard, and click My Settings under your username in the top-right &nbsp;hand corner. Scroll down to the API Key panel and click "View API Key".</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -132,14 +198,31 @@ writing new private key to 'www_example_com.key'</code></pre>
 
 	</figure>
 	<pre class="language-bash"><code class="language-bash">$ &nbsp;&nbsp;export CF_API_KEY="v1.0-c9..."</code></pre>
-	<h5>iii. Make the API call</h5>
+
+	<div class="flex anchor relative">
+		<h5 id="iii-make-the-api-call">iii. Make the API call</h5>
+		<a href="https://blog.cloudflare.com/#iii-make-the-api-call" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Note that you will need to remove newlines from the CSR as newlines are not permitted in JSON and add them back into the certificate that’s returned. When you remove them you should replace the newline character (hex code 0A) with the string "\n".</p>
 	<pre class="language-bash"><code class="language-bash">$ curl -sX POST https://api.cloudflare.com/client/v4/certificates/ \
 -H "Content-Type: application/json" \
 -H "Accept: application/json" \
 -H "X-AUTH-USER-SERVICE-KEY: $CF_API_KEY" \
 --data '{"hostnames":["example.com","*.example.com"],"requested_validity":"365","request_type":"origin-rsa","csr":"-----BEGIN CERTIFICATE REQUEST-----...-----END CERTIFICATE REQUEST-----"}'</code></pre>
-	<h5>iv. Extract certificate from API response</h5>
+
+	<div class="flex anchor relative">
+		<h5 id="iv-extract-certificate-from-api-response">iv. Extract certificate from API response</h5>
+		<a href="https://blog.cloudflare.com/#iv-extract-certificate-from-api-response" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">{
  &nbsp;"success": true, "errors": [], "messages": [],
  &nbsp;"result": {
@@ -152,10 +235,26 @@ writing new private key to 'www_example_com.key'</code></pre>
  &nbsp;&nbsp;&nbsp;"csr": "-----BEGIN CERTIFICATE REQUEST-----...-----END CERTIFICATE REQUEST-----"
  &nbsp;}
 }</code></pre>
-	<h4>3. CLI: Command Line Interface (Linux only)</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="3-cli-command-line-interface-linux-only">3. CLI: Command Line Interface (Linux only)</h4>
+		<a href="https://blog.cloudflare.com/#3-cli-command-line-interface-linux-only" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Lastly, if you’re using a Linux platform that supports RPM or DEB packages, the easiest way to request certificates is with the Origin CA CLI. Before proceeding, make sure you follow the instructions above in the API example to save your API key in the CF_API_KEY environment variable.</p>
 	<p>To get started, browse to <a href="https://pkg.cloudflare.com">https://pkg.cloudflare.com/</a> and follow the instructions to add the CloudFlare Package Repository to your system. With the new package server in place, use apt or yum to install the "cfca" package (binary placed in /usr/local/bin on DEbian, e.g.,) and then issue a certificate in a manner similar to the following examples:</p>
-	<h5>i. Default parameters (RSA key, 15 year validity)</h5>
+	<div class="flex anchor relative">
+		<h5 id="i-default-parameters-rsa-key-15-year-validity">i. Default parameters (RSA key, 15 year validity)</h5>
+		<a href="https://blog.cloudflare.com/#i-default-parameters-rsa-key-15-year-validity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">$ /usr/local/bin/cfca getcert -hostnames example.com,*.example.com
 2016/04/25 19:47:23 [INFO] generate received request
 2016/04/25 19:47:23 [INFO] received CSR
@@ -167,7 +266,16 @@ writing new private key to 'www_example_com.key'</code></pre>
 example.com
 2016/04/25 19:47:25 [INFO] Saved generated private key to wildcard.example.com.key
 2016/04/25 19:47:25 [INFO] Saved issued certificate to wildcard.example.com.pem</code></pre>
-	<h5>ii. Short-lived multi-zone ECC example (ECDSA key, 7 day validity)</h5>
+
+	<div class="flex anchor relative">
+		<h5 id="ii-short-lived-multi-zone-ecc-example-ecdsa-key-7-day-validity">ii. Short-lived multi-zone ECC example (ECDSA key, 7 day validity)</h5>
+		<a href="https://blog.cloudflare.com/#ii-short-lived-multi-zone-ecc-example-ecdsa-key-7-day-validity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">$ /usr/local/bin/cfca getcert -days 7 -hostnames *.foo.com,*.bar.com -key-type ecdsa -key-size 256
 2016/04/26 12:24:24 [INFO] generate received request
 2016/04/26 12:24:24 [INFO] received CSR

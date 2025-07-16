@@ -31,14 +31,28 @@
 
 	</figure>
 	<p>There's a similar extension for <a href="https://addons.mozilla.org/en-GB/firefox/addon/spdy-indicator">Firefox</a>.</p>
-	<h4>Online testing</h4>
+	<div class="flex anchor relative">
+		<h4 id="online-testing">Online testing</h4>
+		<a href="https://blog.cloudflare.com/#online-testing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There's also a handy <a href="https://tools.keycdn.com/http2-test">online tool</a> to check any individual web site.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/DwWwyYZflqaees6W4aJaw/fea382962f1dbb50827f29b480cb72a8/Screen-Shot-2015-12-03-at-12-22-11.png" alt="" class="kg-image" width="1746" height="592" loading="lazy">
 
 	</figure>
-	<h4>Claire</h4>
+	<div class="flex anchor relative">
+		<h4 id="claire">Claire</h4>
+		<a href="https://blog.cloudflare.com/#claire" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare also has a Google Chrome extension called <a href="https://chrome.google.com/webstore/detail/claire/fgbpcgddpmjmamlibbaobboigaijnmkl">Claire</a> that gives information about how a web page was loaded. For example here's the information that Claire shows for a site using CloudFlare that uses <a href="https://www.cloudflare.com/ipv6">IPv6</a>, <a href="https://www.cloudflare.com/railgun">Railgun</a>, and HTTP/2.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -64,7 +78,14 @@ $ is-http2 www.amazon.com
 × HTTP/2 not supported by www.amazon.com
 Supported protocols: http/1.1</code></pre>
 	<p>The <code>is-http</code> tool is also useful because it gives you a list of the protocols advertised by the server. As you can see <a href="https://www.cloudflare.com">www.cloudflare.com</a> supports HTTP/2, HTTP/1.1 and SPDY/3.1.</p>
-	<h4>curl</h4>
+	<div class="flex anchor relative">
+		<h4 id="curl">curl</h4>
+		<a href="https://blog.cloudflare.com/#curl" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In version 7.43.0 the venerable <code>curl</code> tool got HTTP/2 support when it's linked with the <a href="https://nghttp2.org">nghttp</a> library. To build <code>curl</code> from sources you'll need OpenSSL, zlib, nghttp2 and libev. I used the following sequence of commands.</p>
 	<pre class="language-bash"><code class="language-bash">$ curl -LO http://dist.schmorp.de/libev/libev-4.20.tar.gz
 $ tar zvxf libev-4.20.tar.gz
@@ -110,7 +131,15 @@ $ sudo ldconfig</code></pre>
 * Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
 * Using Stream ID: 1 (easy handle 0xc3dba0)
 [...]</code></pre>
-	<h4>nghttp2</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="nghttp2">nghttp2</h4>
+		<a href="https://blog.cloudflare.com/#nghttp2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you built <code>curl</code> using my instructions above you will have built and installed some tools that come with the <a href="https://nghttp2.org">nghttp2</a> library. One of those is a command-line client called <code>nghttp</code>. It can be used like <code>curl</code> to download from the web using HTTP/2 but it also has a handy verbose option that shows that actual HTTP/2 frames sent and received.</p>
 	<p>By running it with <code>-nv</code> you get HTTP/2 and throw away the actual downloaded page. Here's its output when downloading <a href="https://www.cloudflare.com">www.cloudflare.com</a> using HTTP/2. On a terminal with color support it uses coloring to highlight different parts of the log.</p>
 	<figure class="kg-card kg-image-card ">
@@ -118,7 +147,14 @@ $ sudo ldconfig</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XhV2QcvnnoVSUERRpyGgP/d204e9ebeaff7da0cac4ead13aa053a5/Screen-Shot-2015-12-03-at-13-24-46.png" alt="" class="kg-image" width="1265" height="1259" loading="lazy">
 
 	</figure>
-	<h4>h2c</h4>
+	<div class="flex anchor relative">
+		<h4 id="h2c">h2c</h4>
+		<a href="https://blog.cloudflare.com/#h2c" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another curl-like command-line tool for HTTP/2 is <a href="https://github.com/fstab/h2c">h2c</a>. It also enables dumping of HTTP/2 frames and has a nice feature that it runs in the background and keeps connections to servers alive and has a useful 'wiretap' feature for intercepting an HTTP/2 for debugging.</p>
 	<p>If you have <a href="https://golang.org/dl">Go 1.5.1</a> installed then you can download it as follows:</p>
 	<pre class="language-bash"><code class="language-bash">$ export GO15VENDOREXPERIMENT=1
@@ -136,13 +172,27 @@ $ go get github.com/fstab/h2c</code></pre>
 
 	</figure>
 	<p>Details of the wiretap feature are in [this blog post](<a href="http://unrestful.io/2015/08/28/wiretap.html">http://unrestful.io/2015/08/28/wiretap.html</a>).</p>
-	<h4>openssl s_client</h4>
+	<div class="flex anchor relative">
+		<h4 id="openssl-s_client">openssl s_client</h4>
+		<a href="https://blog.cloudflare.com/#openssl-s_client" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you just want to find out what protocols a web site supports OpenSSL's <code>s_client</code> can be used. If you specify an empty <code>-nextprotoneg</code> option OpenSSL sends an empty TLS option asking for negotiation of the next protocol and the server responds with a complete list of protocols it supports.</p>
 	<pre class="language-bash"><code class="language-bash">$ openssl s_client -connect www.cloudflare.com:443 -nextprotoneg ''
 CONNECTED(00000003)
 Protocols advertised by server: h2, spdy/3.1, http/1.1</code></pre>
 	<p>There you can see that <a href="https://www.cloudflare.com">www.cloudflare.com</a> support HTTP/2 (the h2), SPDY/3.1 and HTTP/1.1.</p>
-	<h4>h2i</h4>
+	<div class="flex anchor relative">
+		<h4 id="h2i">h2i</h4>
+		<a href="https://blog.cloudflare.com/#h2i" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you want to do low level HTTP/2 debugging there's an interactive client call <a href="https://github.com/golang/net/tree/master/http2/h2i">h2i</a>. Once again it requires that you have Go installed. To get it, run</p>
 	<pre class="language-bash"><code class="language-bash">$ go get github.com/golang/net/http2/h2i</code></pre>
 	<p>You can then use <code>h2i</code> to connect to a site that uses HTTP/2 and send it individual HTTP/2 frames. For example, here's the start of session connecting to <a href="https://www.cloudflare.com">www.cloudflare.com</a> and requesting the home page using the <code>headers</code> command which allows you to type in a standard HTTP/1.1 request.</p>

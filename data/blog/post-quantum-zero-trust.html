@@ -30,9 +30,23 @@
 		</a>
 	</div>
 	<p>There are two key reasons to adopt post-quantum cryptography now:</p>
-	<h4>1. The challenge of deprecating cryptography</h4>
+	<div class="flex anchor relative">
+		<h4 id="1-the-challenge-of-deprecating-cryptography">1. The challenge of deprecating cryptography</h4>
+		<a href="https://blog.cloudflare.com/#1-the-challenge-of-deprecating-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>History shows that updating or removing outdated cryptographic algorithms from live systems is extremely difficult. For example, although the MD5 hash function was <a href="https://iacr.org/archive/eurocrypt2005/34940019/34940019.pdf"><u>deemed insecure in 2004</u></a> and long since deprecated, it was still in use with the RADIUS enterprise authentication protocol as recently as 2024. In July 2024, Cloudflare contributed to research revealing an <a href="https://blog.cloudflare.com/radius-udp-vulnerable-md5-attack"><u>attack on RADIUS</u></a> that exploited its reliance on MD5. This example underscores the enormous challenge of updating legacy systems — this difficulty in achieving <a href="https://en.wikipedia.org/wiki/Cryptographic_agility"><i><u>crypto-agility</u></i></a> — which will be just as demanding when it’s time to transition to post-quantum cryptography. So it makes sense to start this process now.</p>
-	<h4>2. The “harvest now, decrypt later” threat</h4>
+	<div class="flex anchor relative">
+		<h4 id="2-the-harvest-now-decrypt-later-threat">2. The “harvest now, decrypt later” threat</h4>
+		<a href="https://blog.cloudflare.com/#2-the-harvest-now-decrypt-later-threat" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Even though quantum computers lack enough qubits to break conventional cryptography today, adversaries can harvest and store encrypted communications or steal datasets with the intent of decrypting them once quantum technology matures. If your encrypted data today could become a liability in 10 to 15 years, planning for a post-quantum future is essential. For this reason, we have already started working with some of the most innovative <a href="https://www.cloudflare.com/banking-and-financial-services">banks</a>, ISPs, and <a href="https://www.cloudflare.com/public-sector">governments</a> around the world as they begin their journeys to quantum safety.&nbsp;</p>
 	<p>The U.S. government is already addressing these risks. On January 16, 2025, the White House issued <a href="https://www.federalregister.gov/documents/2025/01/17/2025-01470/strengthening-and-promoting-innovation-in-the-nations-cybersecurity"><u>Executive Order 14144</u></a> on Strengthening and Promoting Innovation in the Nation’s Cybersecurity. This order requires government agencies to “<i>regularly update a list of product categories in which products that support post-quantum cryptography (PQC) are widely available…. Within 90 days of a product category being placed on the list … agencies shall take steps to include in any solicitations for products in that category a requirement that products support PQC.</i>”</p>
 	<p>At Cloudflare, we’ve been <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment"><u>researching</u></a>, <a href="https://blog.cloudflare.com/securing-the-post-quantum-world"><u>developing</u></a>, and <a href="https://www.ietf.org/archive/id/draft-kwiatkowski-tls-ecdhe-mlkem-02.html"><u>standardizing</u></a> post-quantum cryptography <a href="https://blog.cloudflare.com/tag/post-quantum"><u>since 2017</u></a>. Our strategy is simple:</p>
@@ -48,7 +62,14 @@
 	</div>
 	<p>At Cloudflare, we’ve largely focused on migrating the <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls"><u>TLS (Transport Layer Security) 1.3</u></a> protocol to post-quantum cryptography. &nbsp; TLS primarily secures the communications for web applications, but it is also widely used to secure email, messaging, <a href="https://blog.cloudflare.com/zero-trust-warp-with-a-masque"><u>VPN connections</u></a>, <a href="https://www.cloudflare.com/learning/dns/dns-over-tls"><u>DNS</u></a>, and many other protocols.&nbsp; This makes TLS an ideal protocol to focus on when migrating to post-quantum cryptography.</p>
 	<p>The migration involves updating two critical components of TLS 1.3: <a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate"><u>digital signatures used in certificates</u></a> and <a href="https://blog.cloudflare.com/post-quantum-key-encapsulation"><u>key agreement mechanisms</u></a>. We’ve made significant progress on key agreement, but the migration to post-quantum digital signatures is still in its early stages.</p>
-	<h4>Phase 1: Migrating key agreement</h4>
+	<div class="flex anchor relative">
+		<h4 id="phase-1-migrating-key-agreement">Phase 1: Migrating key agreement</h4>
+		<a href="https://blog.cloudflare.com/#phase-1-migrating-key-agreement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Key agreement protocols enable two parties to securely establish a shared secret key that they can use to secure and encrypt their communications. Today, vendors have largely converged on transitioning TLS 1.3 to support a post-quantum key exchange protocol known as <a href="https://blog.cloudflare.com/nists-first-post-quantum-standards"><u>ML-KEM</u></a> (Module-lattice based Key-Encapsulation Mechanism Standard). There are two main reasons for prioritizing migration of key agreement:</p>
 	<ul>
 		<li>
@@ -67,7 +88,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EoD5jFMXJeWFeRtG9w6Uy/85aa13123d64f21ea93313f674d4378f/image1.png" alt="" class="kg-image" width="1388" height="814" loading="lazy">
 	</figure>
 	<p>This indicates that your browser is using key-agreement protocol ML-KEM <i>in combination with</i> conventional <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography"><u>elliptic curve cryptography</u></a> on curve <a href="https://en.wikipedia.org/wiki/Curve25519"><u>X25519</u></a>. This provides the protection of the tried-and-true conventional cryptography (<a href="https://en.wikipedia.org/wiki/Curve25519"><u>X25519</u></a>) alongside the new post-quantum key agreement (<a href="https://blog.cloudflare.com/nists-first-post-quantum-standards"><u>ML-KEM</u></a>).</p>
-	<h4>Phase 2: Migrating digital signatures</h4>
+	<div class="flex anchor relative">
+		<h4 id="phase-2-migrating-digital-signatures">Phase 2: Migrating digital signatures</h4>
+		<a href="https://blog.cloudflare.com/#phase-2-migrating-digital-signatures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate"><u>Digital signatures are used in TLS certificates</u></a> to validate the authenticity of connections — allowing the client to be sure that it is really communicating with the server, and not with an adversary that is impersonating the server.&nbsp;</p>
 	<p>Post-quantum digital signatures, however, are significantly larger, and thus slower, than their current counterparts. This performance impact has slowed their adoption, particularly because they slow down short-lived TLS connections.&nbsp;</p>
 	<p>Fortunately, post-quantum signatures are not needed to prevent harvest-now-decrypt-later attacks. Instead, they primarily protect against attacks by an adversary that is actively using a quantum computer to tamper with a live TLS connection. We still have some time before quantum computers are able to do this, making the migration of digital signatures a lower priority.</p>
@@ -81,7 +109,14 @@
 		</a>
 	</div>
 	<p>The Cloudflare Zero Trust platform replaces legacy corporate security perimeters with Cloudflare's global network, making access to the Internet and to corporate resources faster and safer for teams around the world. Today, we’re thrilled to announce that Cloudflare's Zero Trust platform protects your data from quantum threats as it travels over the public Internet.&nbsp; There are three key quantum-safe use cases supported by our Zero Trust platform in this first phase of quantum readiness.</p>
-	<h4>Quantum-safe clientless Access</h4>
+	<div class="flex anchor relative">
+		<h4 id="quantum-safe-clientless-access">Quantum-safe clientless Access</h4>
+		<a href="https://blog.cloudflare.com/#quantum-safe-clientless-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless"><u>Clientless</u></a> <a href="https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-public-app"><u>Cloudflare Access</u></a> now protects an organization’s Internet traffic to internal web applications against quantum threats, even if the applications themselves have not yet migrated to post-quantum cryptography. ("Clientless access" is a method of accessing network resources without installing a dedicated client application on the user's device. Instead, users connect and access information through a web browser.)</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mKiboLMsIEuNt1MaXlWsy/dad0956066e97db69401757b18e8ce5f/image4.png" alt="" class="kg-image" width="1548" height="525" loading="lazy">
@@ -102,7 +137,14 @@
 		</li>
 	</ul>
 	<p>Putting it together, clientless Access provides <b>end-to-end</b> quantum safety for accessing corporate HTTPS applications, without requiring customers to upgrade the security of corporate web applications.</p>
-	<h4>Quantum-safe Zero Trust with Cloudflare’s WARP Client-to-Tunnel configuration (as a VPN replacement)</h4>
+	<div class="flex anchor relative">
+		<h4 id="quantum-safe-zero-trust-with-cloudflares-warp-client-to-tunnel-configuration-as-a-vpn-replacement">Quantum-safe Zero Trust with Cloudflare’s WARP Client-to-Tunnel configuration (as a VPN replacement)</h4>
+		<a href="https://blog.cloudflare.com/#quantum-safe-zero-trust-with-cloudflares-warp-client-to-tunnel-configuration-as-a-vpn-replacement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By mid-2025, organizations will be able to protect <b>any protocol</b>, not just HTTPS, by tunneling it through Cloudflare's Zero Trust platform with post quantum cryptography, thus providing quantum safety as traffic travels across the Internet from the end-user’s device to the corporate office/data center/cloud environment.</p>
 	<p>Cloudflare’s Zero Trust platform is ideal for replacing traditional VPNs, and enabling <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust"><u>Zero Trust architectures</u></a> with modern authentication and authorization polices.&nbsp; Cloudflare’s WARP client-to-tunnel is a popular network configuration for our Zero Trust platform: organizations deploy Cloudflare’s <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp"><u>WARP device client</u></a> on their end users’ devices, and then use <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks"><u>Cloudflare Tunnel</u></a> to connect to their corporate office, cloud, or data center environments.&nbsp;&nbsp;&nbsp;</p>
 	<figure class="kg-card kg-image-card">
@@ -124,7 +166,14 @@
 		</li>
 	</ul>
 	<p>Once the upcoming post-quantum enhancements to the WARP device client are complete, customers can encapsulate their traffic in quantum-safe tunnels, effectively mitigating the risk of harvest-now-decrypt-later attacks without any heavy lifting to individually upgrade their networks or applications.&nbsp; And this provides comprehensive protection for any protocol that can be sent through these tunnels, not just for HTTPS!</p>
-	<h4>Quantum-safe SWG (end-to-end PQC for access to third-party web applications)</h4>
+	<div class="flex anchor relative">
+		<h4 id="quantum-safe-swg-end-to-end-pqc-for-access-to-third-party-web-applications">Quantum-safe SWG (end-to-end PQC for access to third-party web applications)</h4>
+		<a href="https://blog.cloudflare.com/#quantum-safe-swg-end-to-end-pqc-for-access-to-third-party-web-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/http-policies"><u>Secure Web Gateway</u></a> (SWG) is used to secure access to third-party websites on the public Internet by intercepting and inspecting TLS traffic.&nbsp;</p>
 	<p>Cloudflare Gateway is now a quantum-safe SWG for HTTPS traffic. As long as the third-party website that is being inspected supports post-quantum key agreement, then Cloudflare’s SWG also supports post-quantum key agreement. This holds regardless of the onramp that the customer uses to get to Cloudflare's network (i.e. <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless"><u>web browser</u></a>, <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp"><u>WARP device client</u></a>, <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector"><u>WARP Connector</u></a>, <a href="https://developers.cloudflare.com/magic-wan"><u>Magic WAN</u></a>), and only requires the use of a browser that supports post-quantum key agreement.</p>
 	<figure class="kg-card kg-image-card">

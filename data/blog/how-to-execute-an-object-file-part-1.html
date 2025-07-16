@@ -23,7 +23,14 @@
 	</figure>
 	<p>This process is called <i>runtime linking</i>: when our executable is being started, the operating system will invoke the <i>dynamic loader</i>, which should find all the needed libraries, copy/map their code into our target process address space, and resolve all the dependencies our code has on them.</p>
 	<p>One interesting thing to note about this overall process is that we get the executable machine code directly from step 1 (compiling the source code), but if any of the later steps fail, we still can't execute our program. So, in this series of blog posts we will investigate if it is possible to execute machine code directly from object files skipping all the later steps.</p>
-	<h4>Why would we want to execute an object file?</h4>
+	<div class="flex anchor relative">
+		<h4 id="why-would-we-want-to-execute-an-object-file">Why would we want to execute an object file?</h4>
+		<a href="https://blog.cloudflare.com/#why-would-we-want-to-execute-an-object-file" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There may be many reasons. Perhaps we're writing an open-source replacement for a proprietary Linux driver or an application, and want to compare if the behaviour of some code is the same. Or we have a piece of a rare, obscure program and we can't link to it, because it was compiled with a rare, obscure compiler. Maybe we have a source file, but cannot create a full featured executable, because of the missing build time or runtime dependencies. Malware analysis, code from a different operating system etc - all these scenarios may put us in a position, where either linking is not possible or the runtime environment is not suitable.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-simple-toy-object-file">A simple toy object file</h3>
@@ -151,7 +158,14 @@ static void load_obj(void)
 		</a>
 	</div>
 	<p>To use some code from an object file, we need to find it first. As I've leaked above, object files are actually <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF files</a> (the same format as Linux executables and shared libraries) and luckily they’re easy to parse on Linux with the help of the standard <code>elf.h</code> header, which includes many useful definitions related to the ELF file structure. But we actually need to know what we’re looking for, so a high-level understanding of an ELF file is needed.</p>
-	<h4>ELF segments and sections</h4>
+	<div class="flex anchor relative">
+		<h4 id="elf-segments-and-sections">ELF segments and sections</h4>
+		<a href="https://blog.cloudflare.com/#elf-segments-and-sections" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Segments (also known as program headers) and sections are probably the main parts of an ELF file and usually a starting point of any ELF tutorial. However, there is often some confusion between the two. Different sections contain different types of ELF data: executable code (which we are most interested in in this post), constant data, global variables etc. Segments, on the other hand, do not contain any data themselves - they just describe to the operating system how to properly load sections into RAM for the executable to work correctly. Some tutorials say "a segment may include 0 or more sections", which is not entirely accurate: segments do not contain sections, rather they just indicate to the OS where in memory a particular section should be loaded and what is the access pattern for this memory (read, write or execute):</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -162,7 +176,15 @@ static void load_obj(void)
 	<pre class="language-bash"><code class="language-bash">$ readelf --segments obj.o
 
 There are no program headers in this file.</code></pre>
-	<h4>Object file sections</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="object-file-sections">Object file sections</h4>
+		<a href="https://blog.cloudflare.com/#object-file-sections" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The same <a href="https://man7.org/linux/man-pages/man1/readelf.1.html">readelf command</a> can be used to get all the sections from our object file:</p>
 	<pre class="language-bash"><code class="language-bash">$ readelf --sections obj.o
 There are 11 section headers, starting at offset 0x268:
@@ -215,7 +237,14 @@ Key to Flags:
 			<p><code>.strtab</code> and <code>.shstrtab</code>: contain packed strings for the ELF file. Note, that these are not the strings we may define in our source code (those go to the <code>.rodata</code> section). These are the strings describing the names of other ELF structures, like symbols from <code>.symtab</code> or even section names from the table above. ELF binary format aims to make its structures compact and of a fixed size, so all strings are stored in one place and the respective data structures just reference them as an offset in either <code>.shstrtab</code> or <code>.strtab</code> sections instead of storing the full string locally.</p>
 		</li>
 	</ul>
-	<h4>The <code>.symtab</code> section</h4>
+	<div class="flex anchor relative">
+		<h4 id="the-symtab-section">The <code>.symtab</code> section</h4>
+		<a href="https://blog.cloudflare.com/#the-symtab-section" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At this point, we know that the code we want to import and execute is located in the <code>obj.o</code>'s <code>.text</code> section. But we have two functions, <code>add5</code> and <code>add10</code>, remember? At this level the <code>.text</code> section is just a byte blob - how do we know where each of these functions is located? This is where the <code>.symtab</code> (the "symbol table") comes in handy. It is so important that it has its own dedicated parameter in <a href="https://man7.org/linux/man-pages/man1/readelf.1.html">readelf</a>:</p>
 	<pre class="language-bash"><code class="language-bash">$ readelf --symbols obj.o
 
@@ -521,7 +550,14 @@ add5(42) = 47
 Executing add10...
 add10(42) = 52</code></pre>
 	<p>Voila! We have successfully imported code from <code>obj.o</code> and executed it. Of course, the example above is simplified: the code in the object file is self-contained, does not reference any global variables or constants, and does not have any external dependencies. In future posts we will look into more complex code and how to handle such cases.</p>
-	<h4>Security considerations</h4>
+	<div class="flex anchor relative">
+		<h4 id="security-considerations">Security considerations</h4>
+		<a href="https://blog.cloudflare.com/#security-considerations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Processing external inputs, like parsing an ELF file from the disk above, should be handled with care. The code from <i>loader.c</i> omits a lot of bounds checking and additional ELF integrity checks, when parsing the object file. The code is simplified for the purposes of this post, but most likely not production ready, as it can probably be exploited by specifically crafted malicious inputs. Use it only for educational purposes!</p>
 	<p>The complete source code from this post can be found <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/1">here</a>.</p>
 </div>

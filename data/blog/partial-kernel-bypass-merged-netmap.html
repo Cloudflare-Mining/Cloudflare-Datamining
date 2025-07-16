@@ -3,7 +3,14 @@
 	<p>In <a href="https://blog.cloudflare.com/single-rx-queue-kernel-bypass-with-netmap">a previous post</a> we described our work on a new netmap mode called <i>single-rx-queue</i>.</p>
 	<p>After submitting the pull request, the netmap maintainers told us that the patch was interesting, but they would prefer something more configurable instead of a tailored custom mode.</p>
 	<p>After an exchange of ideas and some more work, our patch just got merged to mainline netmap.</p>
-	<h4>Meet the new netmap</h4>
+	<div class="flex anchor relative">
+		<h4 id="meet-the-new-netmap">Meet the new netmap</h4>
+		<a href="https://blog.cloudflare.com/#meet-the-new-netmap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before our patch netmap used to be an all-or-nothing deal. That is: there was no way to put a network adapter partially in netmap mode. All of the queues would have to be detached from the host network stack. Even a netmap mode called “single ring pair” didn't help.</p>
 	<p>Our final patch is extended and more generic, while still supporting the simple functionality of our original single-rx-queue mode.</p>
 	<p>First we modified netmap to leave queues that are not explicitly requested to be in netmap mode attached to the host stack. In this way, if a user requests a pair of rings (for example using <code>nm_open(“netmap:eth0-4”)</code>) it will actually get a reference to both the number 4 RX and TX rings, while keeping the other rings attached to the kernel stack.</p>
@@ -14,7 +21,14 @@
 	<p>becomes this:</p>
 	<pre class="language-c"><code class="language-c">snprintf(nm_if, sizeof(nm_if), “netmap:%s-%d/R”, iface_name, ring_nr);</code></pre>
 	<p>and everything kept working as expected!</p>
-	<h4>Try it out</h4>
+	<div class="flex anchor relative">
+		<h4 id="try-it-out">Try it out</h4>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can follow these instructions to build a test program under Linux. In this example we are using the ixgbe driver.</p>
 	<p>The test program source code is available on github:</p>
 	<ul>
@@ -36,6 +50,14 @@ $ sudo insmod netmap.ko
 $ sudo insmod ixgbe/ixgbe.ko</code></pre>
 	<p>and launch the application:</p>
 	<pre class="language-sh"><code class="language-sh">$ sudo ./nm-single-rx-queue eth0 1</code></pre>
-	<h4>Thanks</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="thanks">Thanks</h4>
+		<a href="https://blog.cloudflare.com/#thanks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We would like to thanks Luigi and Giuseppe for their great help shaping the final patch and their work on netmap.</p>
 </div>

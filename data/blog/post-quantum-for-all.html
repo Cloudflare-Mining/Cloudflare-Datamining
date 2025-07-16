@@ -63,7 +63,14 @@
 
 	</figure>
 	<p>Protocol flow for server-authenticated TLS 1.3 with a supported client keyshare on the left and a HelloRetryRequest on the right.</p>
-	<h4><b>Key agreement</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="key-agreement"><b>Key agreement</b></h4>
+		<a href="https://blog.cloudflare.com/#key-agreement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we explain the rest of this interaction, let’s dig into the key agreement: what is a keyshare? The way the key agreement for Kyber and X25519 work <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/#kem-versus-diffie-hellman">is different</a>: the first is a Key Encapsulation Mechanism (KEM), while the latter is a Diffie–Hellman (DH) style agreement. The latter is more flexible, but for TLS it doesn’t make a difference.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -73,23 +80,58 @@
 	<p>The shape of a KEM and Diffie–Hellman key agreement in TLS-compatible handshake is the same.</p>
 	<p>In both cases the client sends a <i>client keyshare</i> to the server. From this <i>client keyshare</i> the server generates the <i>shared key</i>. The server then returns a <i>server keyshare</i> with which the client can also compute the shared key.</p>
 	<p>Going back to the TLS 1.3 flow: when the server receives the <i>ClientHello</i> message it picks an AEAD (cipher), signature algorithm and client keyshare that it supports. It replies with a <i>ServerHello</i> message that contains the chosen AEAD and the <i>server keyshare</i> for the selected key agreement. With the AEAD and shared key locked in, the server starts encrypting data (shown with blue boxes).</p>
-	<h4><b>Authentication</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="authentication"><b>Authentication</b></h4>
+		<a href="https://blog.cloudflare.com/#authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Together with the AEAD and server keyshare, the server sends a signature, the <i>handshake signature</i>, on the transcript of the communication so far together with a <a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate"><i>certificate</i></a><i> (chain)</i> for the public key that it used to create the signature. This allows the client to authenticate the server: it checks whether it trusts the <i>certificate authority</i> (e.g. <a href="https://letsencrypt.org">Let’s Encrypt</a>) that certified the public key and whether the signature verifies for the messages it sent and received so far. This not only authenticates the server, but it also protects against downgrade attacks.</p>
-	<h4><b>Downgrade protection</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="downgrade-protection"><b>Downgrade protection</b></h4>
+		<a href="https://blog.cloudflare.com/#downgrade-protection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We cannot upgrade all clients and servers to post-quantum cryptography at once. Instead, there will be a transition period where only some clients and some servers support post-quantum cryptography. The key agreement negotiation in TLS 1.3 allows this: during the transition servers and clients will still support non post-quantum key agreements, and can fall back to it if necessary.</p>
 	<p>This flexibility is great, but also scary: if both client and server support post-quantum key agreement, we want to be sure that they also negotiate the post-quantum key agreement. This is the case in TLS 1.3, but it is not obvious: the keyshares, the chosen keyshare and the list of supported key agreements are all sent in plain text. Isn’t it possible for an attacker in the middle to remove the post-quantum key agreements? This is called a <i>downgrade attack</i>.</p>
 	<p>This is where the transcript comes in: the handshake signature is taken over all messages received and sent by the server so far. This includes the supported key agreements and the key agreement that was picked. If an attacker changes the list of supported key agreements that the client sends, then the server will not notice. However, the client checks the server’s handshake signature against the list of supported key agreements it has actually sent and thus will detect the mischief.</p>
 	<p>The downgrade attack problems are <a href="https://eprint.iacr.org/2018/298">much</a> <a href="https://eprint.iacr.org/2016/072.pdf">more</a> <a href="https://www.rfc-editor.org/rfc/rfc7627">complicated</a> for TLS 1.2, which is one of the reasons we’re hesitant to retrofit post-quantum security in TLS 1.2.</p>
-	<h4><b>Wrapping up the handshake</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="wrapping-up-the-handshake"><b>Wrapping up the handshake</b></h4>
+		<a href="https://blog.cloudflare.com/#wrapping-up-the-handshake" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The last part of the server’s response is <i>“server finished”,</i> a <i>message authentication code</i> (MAC) on the whole transcript so far. Most of the work has been done by the handshake signature, but in other operating modes of TLS without handshake signature, such as session resumption, it’s important.</p>
 	<p>With the chosen AEAD and server keyshare, the client can compute the shared key and decrypt and verify the certificate chain, handshake signature and handshake MAC. We did not mention it before, but the shared key is not used directly for encryption. Instead, for good measure, <a href="https://www.rfc-editor.org/rfc/rfc8446.html#page-93">it’s mixed together</a> with communication transcripts, to derive several specific keys for use during the handshake and the main connection afterwards.</p>
 	<p>To wrap up the handshake, the client sends its own handshake MAC, and can then proceed to send application-specific data encrypted with the keys derived during the handshake.</p>
-	<h4><b>Hello! Retry Request?</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="hello-retry-request"><b>Hello! Retry Request?</b></h4>
+		<a href="https://blog.cloudflare.com/#hello-retry-request" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What we just sketched is the desirable flow where the client sends a keyshare that is supported by the server. That might not be the case. If the server doesn’t accept any key agreements advertised by the client, then it will tell the client and abort the connection.</p><!--kg-card-begin: html-->If there is a key agreement that both support, but for which the client did not send a keyshare, then the server will respond with a HelloRetryRequest (HRR) message requesting a keyshare of a specific key agreement that the client supports as shown <a href="https://blog.cloudflare.com/#tls-anchor">on the diagram on the right</a>. In turn, the client responds with a new ClientHello with the selected keyshare.
 	<p></p><!--kg-card-end: html-->
 	<p>This is not the whole story: a server is also allowed to send a <i>HelloRetryRequest</i> to request a different key agreement that it prefers over those for which the client sent shares. For instance, a server can send a <i>HelloRetryRequest</i> to a post-quantum key agreement if the client supports it, but didn’t send a keyshare for it.</p>
 	<p>_HelloRetryRequest_s are rare today. Almost every server supports the X25519 key-agreement and almost every client (98% today) sends a X25519 keyshare. Earlier P-256 was the de facto standard and for a long time many browsers would send both a P-256 and X25519 keyshare to prevent a HelloRetryRequest. As we will discuss later, we might not have the luxury to send two post-quantum keyshares.</p>
-	<h4><b>That’s the theory</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="thats-the-theory"><b>That’s the theory</b></h4>
+		<a href="https://blog.cloudflare.com/#thats-the-theory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TLS 1.3 is designed to be flexible in the cryptography it uses without sacrificing security or performance, which is convenient for our migration to post-quantum cryptography. That is the theory, but there are some serious issues in practice — we’ll go into detail later on. But first, let’s check out the post-quantum key agreements we’ve deployed.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-we-deployed">What we deployed</h3>
@@ -233,9 +275,23 @@
 		</a>
 	</div>
 	<p>Protocols are often designed with flexibility in mind, but if that flexibility is not exercised in practice, it’s often lost. This is called <i>protocol ossification</i>. The roll-out of TLS 1.3 <a href="https://blog.cloudflare.com/why-tls-1-3-isnt-in-browsers-yet">was difficult</a> because of several instances of ossification. One poignant example is TLS’ version negotiation: there is a version field in the ClientHello message that indicates the latest version supported by the client. A new version was assigned to TLS 1.3, but in testing it turned out that many servers would not fallback properly to TLS 1.2, but crash the connection instead. How do we deal with ossification?</p>
-	<h4><b>Workaround</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="workaround"><b>Workaround</b></h4>
+		<a href="https://blog.cloudflare.com/#workaround" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, TLS 1.3 masquerades itself as TLS 1.2 down to including many legacy fields in the <i>ClientHello</i>. The actual version negotiation is moved into a new <i>extension</i> to the message. A TLS 1.2 server will ignore the new extension and ignorantly continue with TLS 1.2, while a TLS 1.3 server picks up on the extension and continues with TLS 1.3 proper.</p>
-	<h4><b>Protocol grease</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="protocol-grease"><b>Protocol grease</b></h4>
+		<a href="https://blog.cloudflare.com/#protocol-grease" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>How do we prevent ossification? Having learnt from this experience, browsers will regularly advertise dummy versions in this new version field, so that misbehaving servers are caught early on. This is not only done for the new version field, but in many other places in the TLS handshake, and presciently also for the key agreement identifiers. Today, 40% of browsers send two client keyshares: one X25519 and another a bogus 1-byte keyshare to keep key agreement flexibility.</p>
 	<p>This behavior is standardized in <a href="https://datatracker.ietf.org/doc/html/rfc8701">RFC 8701</a>: <i>Generate Random Extensions And Sustain Extensibility</i> (GREASE) and we call it protocol <i>greasing</i>, as in “greasing the joints” from Adam Langley’s metaphor of <a href="https://www.imperialviolet.org/2016/05/16/agility.html">protocols having rusty joints</a> in need of oil.</p>
 	<p>This keyshare grease helps, but it is not perfect, because it is the size of the keyshare that in this case causes the most concern.</p>

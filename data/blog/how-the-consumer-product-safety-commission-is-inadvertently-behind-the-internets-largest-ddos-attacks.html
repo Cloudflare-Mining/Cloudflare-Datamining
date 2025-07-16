@@ -7,13 +7,34 @@
 
 	</figure>
 	<p><i>Logo of the </i><a href="https://www.cpsc.gov"><i>Consumer Product Safety Commission</i></a></p>
-	<h4>Amplification</h4>
+	<div class="flex anchor relative">
+		<h4 id="amplification">Amplification</h4>
+		<a href="https://blog.cloudflare.com/#amplification" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>DDoS attacks are inherently about an attacker sending more traffic to a victim than the victim can handle. The challenge for an attacker is to find a way to generate a large amount of traffic. Launching a DDoS attack is a criminal act, so an attacker can't simply go sign up for large transit contracts. Instead, attackers find ways to leverage other people's resources.</p>
 	<p>One of the most effective strategies is known as an amplification attack. In these attacks, an attacker can amplify their resources by reflecting them off other resources online that magnify the level of traffic. The most popular amplification vector is known as DNS reflection.</p>
-	<h4>DNS Reflection</h4>
+	<div class="flex anchor relative">
+		<h4 id="dns-reflection">DNS Reflection</h4>
+		<a href="https://blog.cloudflare.com/#dns-reflection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We've written about DNS reflection attacks <a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">in detail</a> before. The basics are that an attacker generates DNS requests from a network that allows source IP address spoofing. The attacker forges the victim's IP as the source of the DNS requests. The attacker sends these requests to DNS resolvers that aren't locked down and respond to requests from any network. The DNS resolvers receive the requests and then send the responses back to the spoofed IP of the victim.</p>
 	<p>This technique "amplifies" an attack because a small DNS request will generate a larger response. How much larger depends on the size of the DNS record that's being queried. And here's where the Consumer Product Safety Commission comes in.</p>
-	<h4>#1 Among DDoS Attackers</h4>
+	<div class="flex anchor relative">
+		<h4 id="1-among-ddos-attackers">#1 Among DDoS Attackers</h4>
+		<a href="https://blog.cloudflare.com/#1-among-ddos-attackers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You see, the CPSC’s DNS server will respond with a very large DNS record when sent a very small DNS query. This DNS query is only 65 bytes:</p>
 	<pre class="language-bash"><code class="language-bash">dig ANY cpsc.gov +notcp +bufsize=65535 @X.X.X.X</code></pre>
 	<p>Substitute X.X.X.X for one of the 13 million currently <a href="http://openresolverproject.org">open DNS resolvers</a> and you'll get back a response that is 4,426 bytes. To generate 68Gbps of traffic to a victim requires only 1Gbps of requests with a spoofed source IP address to open resolvers for the CPSC.gov DNS record. That's an amplification factor of 68x.</p>
@@ -230,7 +251,14 @@ to be some value other than 3.</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5yP9O73PZbNI3SPS7jqO6Q/98e26bc0fb69b2211b61b374b82e5191/cpsc_dnssec_diagram.png" alt="CPSC's DNSSEC Diagram" class="kg-image" width="890" height="299" loading="lazy">
 
 	</figure>
-	<h4>A Better CPSC Zone</h4>
+	<div class="flex anchor relative">
+		<h4 id="a-better-cpsc-zone">A Better CPSC Zone</h4>
+		<a href="https://blog.cloudflare.com/#a-better-cpsc-zone" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are a handful of other minor optimizations. Add them all up and the CPSC Zone could be much smaller. At CloudFlare, we've worked to optimize the size and performance of our zone records. We used our automated zone generator on the CPSC and got the following zone file:</p>
 	<pre class="language-bash"><code class="language-bash">cpsc.gov.		281	IN	A	104.27.142.66
 cpsc.gov.		281	IN	A	104.27.143.66
@@ -257,7 +285,14 @@ cpsc.gov.		3324	IN	RRSIG	NSEC 13 2 3600 20160402121810 20160331101810 35273 cpsc
 	<p>But we can do better than that. Unlike the CPSC's current DNS provider (Verizon/UU.net), CloudFlare has anti-DNS reflection protections in place. Specifically, we automatically upgrade from UDP to TCP when a DNS response is particularly large (generally, over 512 bytes). Since TCP requires a handshake, it prevents source IP address spoofing which is necessary for a DNS amplification attack.</p>
 	<p>In addition, we rate limit unknown resolvers. Again, this helps ensure that our infrastructure can't be abused to amplify attacks.</p>
 	<p>Finally, across our DNS infrastructure we have <a href="https://blog.cloudflare.com/what-happened-next-the-deprecation-of-any">deprecated ANY queries</a> and have <a href="https://tools.ietf.org/html/draft-ogud-dnsop-acl-metaqueries-00">proposed to the IETF</a> to restrict ANY queries to only authorized parties. By neutering ANY, we've significantly reduced the maximum size of responses even for zone files that need to be large due to a large number of records.</p>
-	<h4>Denouement</h4>
+	<div class="flex anchor relative">
+		<h4 id="denouement">Denouement</h4>
+		<a href="https://blog.cloudflare.com/#denouement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>DNSSEC is complicated and it's easy to get wrong. Unfortunately, getting your DNSSEC configuration wrong creates a real potential harm to the rest of the Internet by making your domain's zone file into a potential weapon to be abused by attackers. That's why, in <a href="https://www.cloudflare.com/dnssec/universal-dnssec">CloudFlare's implementation</a>, we spent a significant amount of time to optimize our automatic DNSSEC configuration to be as efficient as possible while still being easy and free for all our customers.</p>
 	<p>As Clint Eastwood says in the final scene of the movie "The Good, the Bad, and the Ugly": "You see in this world there's two kinds of people, my friend, those with loaded guns and those who dig. You dig." Pardon the puns but… we hope the CPSC will fix their zone and unload the giant gun attackers have used to launch some of the biggest DDoS attacks on the Internet. When they do, it'll be a relief to "<a href="https://en.wikipedia.org/wiki/Dig_(command)">dig</a>" their domain and get back a reasonably sized answer.</p>
 	<p>If the instructions above aren't enough on their own, we'd be happy to work with the CPSC to help them get their DNS record under control and ensure they are no longer inadvertently facilitating the Internet's largest DDoS attacks. Of course, when the CPSC does get its <a href="https://www.cloudflare.com/learning/dns/common-dns-issues">DNS issues</a> fixed, undoubtedly attackers will find another misconfigured and bloated zone they can abuse to launch DNS amplification DDoS attacks. And, when that happens, we'll be happy to work with them too — until the whole Internet has the well-configured DNS foundation it needs to be safe and secure.</p>

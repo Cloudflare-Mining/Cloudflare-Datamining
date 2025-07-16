@@ -16,7 +16,14 @@
 		</a>
 	</div>
 	<p>Mirage and Rocket Loader both optimise the loading of a web page by reducing and deferring the number of assets the browser needs to request for it to complete HTML parsing and rendering on screen.</p>
-	<h4>Mirage</h4>
+	<div class="flex anchor relative">
+		<h4 id="mirage">Mirage</h4>
+		<a href="https://blog.cloudflare.com/#mirage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>.has_images { overflow: auto; } @media (min-width: 600px) { .has_images p { float: left; width: 50%; } .has_images img { float: right; margin: 1em; width: 40% } }</p>
 	<p>With Mirage, users on slow mobile connections will be quickly shown a full page of content, using placeholder images with a low file-size which will load much faster. Without Mirage visitors on a slow mobile connection will have to wait a long time to download high-quality images. Since it’ll take a long time, they will perceive your website as slow:</p>
 	<figure class="kg-card kg-image-card ">
@@ -25,7 +32,14 @@
 
 	</figure>
 	<p>With Mirage visitors will see content much faster, will thus perceive that the content is loading quickly, and will be less likely to give up:</p>
-	<h4>Rocket Loader</h4>
+	<div class="flex anchor relative">
+		<h4 id="rocket-loader">Rocket Loader</h4>
+		<a href="https://blog.cloudflare.com/#rocket-loader" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Browsers will not show content that until all the Javascript that might affect it has been loaded and run. This can mean users wait a significant time before seeing any content at all, even if that content is the only reason they’re on visiting the page!</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -63,7 +77,14 @@
 		</a>
 	</div>
 	<p>The Javascript for both products was written years ago, when <a href="https://github.com/rollup/rollup">‘rollup’</a> brought to mind a poor lifestyle choice rather than an excellent build-tool. With the big changes we’ve seen in browsers, protocols, and JS, there were many opportunities to optimise.</p>
-	<h4>Dynamically... slowing things down</h4>
+	<div class="flex anchor relative">
+		<h4 id="dynamically-slowing-things-down">Dynamically... slowing things down</h4>
+		<a href="https://blog.cloudflare.com/#dynamically-slowing-things-down" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Designed for the ecosystem of the time, both products were loaded by Cloudflare’s <a href="https://github.com/amdjs/amdjs-api/wiki/AMD">asynchronous-module-definition</a> (AMD) loader, called CloudflareJS, which also bundled some shared libraries.</p>
 	<p>This meant the process of loading Mirage or Rocket Loader looked like:</p>
 	<ol>
@@ -77,7 +98,14 @@
 			<p>Rocket/Mirage are loaded and run</p>
 		</li>
 	</ol>
-	<h4>Fighting browsers</h4>
+	<div class="flex anchor relative">
+		<h4 id="fighting-browsers">Fighting browsers</h4>
+		<a href="https://blog.cloudflare.com/#fighting-browsers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Dynamic loading meant the products could not benefit from optimisations present in modern browsers. Browsers now scan HTML as they receive it instead of waiting for it all to arrive, identifying and loading external resources like script tags as quickly as possible. This process is called <a href="https://andydavies.me/blog/2013/10/22/how-the-browser-pre-loader-makes-pages-load-faster">preload scanning</a>, and is one of the most important optimisations performed by the brower. Since we used dynamic code inside CFJS to load Mirage and Rocket Loader, we were preventing them from benefitting from the preload scanner.</p>
 	<p>To make matters worse, Rocket Loader was being dynamically inserted using that villain of the DOM API, <code>document.write</code> - a technique that creates huge performance problems. Understanding exactly why is involved, so I’ve created a diagram. Skim it, and refer back to it as you read the next paragraph:</p>
 	<figure class="kg-card kg-image-card ">
@@ -88,7 +116,14 @@
 	<p>As said, using <code>document.write</code> to insert scripts is be particularly damaging to page load performance. Since the <code>document.write</code> that inserts the script is invisible to the preload scanner (even if the script is inline, which ours isn’t, preload scanning <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=575850">doesn’t</a> even attempt to scan JS), at the instant it is inserted the browser will already be busy requesting resources the scanner found elsewhere in the page (other script tags, images etc). This matters because a browser encountering a non-deferred or asynchronous Javascript, like Rocket Loader, must block all further building of the DOM tree until that script is loaded and executed, to give the script a chance to modify the DOM. So Rocket Loader was being inserted at an instant in which it was going to be very slow to load, due to the backlog of requests from the preload scan, and therefore causes a very long delay until the DOM parser can resume!</p>
 	<p>Aside from this grave performance issue, it became more urgent to remove <code>document.write</code> when <a href="https://www.chromestatus.com/feature/5718547946799104">Chrome began to intervene against it in version 55</a> triggering a <a href="https://github.com/WICG/interventions/issues/17">very interesting discussion</a>. This intervention would sometimes prevent Rocket Loader from being inserted on slow 2G connections, stopping any other Javascript from loading at all!</p>
 	<p>Clearly, <code>document.write</code> needed to be extirpated!</p>
-	<h4>Unused and over-general code</h4>
+	<div class="flex anchor relative">
+		<h4 id="unused-and-over-general-code">Unused and over-general code</h4>
+		<a href="https://blog.cloudflare.com/#unused-and-over-general-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CFJS was authored as a shared library for Cloudflare client-side code, including the original Cloudflare app store. This meant it had quite a large set of APIs. Although both Mirage and Rocket Loader depended on some of them, the overlap was actually small. Since we've launched the new, shiny <a href="https://blog.cloudflare.com/cloudflare-apps-2">Cloudflare Apps</a>, CFJS had no other important products dependant upon it.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-plan-of-action">A plan of action</h3>
@@ -125,7 +160,14 @@
 		</li>
 	</ul>
 	<p>Sweating kilobytes out of the minified + Gzipped Javascript files is be a waste of time for most applications. However, in the context of code that'll be run literally millions of times in the time you read this article, it really pays off. This is a process we’ll be continuing in 2018.</p>
-	<h4>Switching out AMD</h4>
+	<div class="flex anchor relative">
+		<h4 id="switching-out-amd">Switching out AMD</h4>
+		<a href="https://blog.cloudflare.com/#switching-out-amd" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Switching out Gulp, Grunt and AMD was a fairly mechanical process of replacing syntax like this:</p>
 	<pre class="language-bash"><code class="language-bash">define(['cloudflare/iterator', 'cloudflare/dom'], function(iterator, dom) {
     // ...
@@ -140,10 +182,25 @@ import { isHighLatency } from './connection';
 // ...
 
 export { Mirage }</code></pre>
-	<h4>Post refactor weigh-in</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="post-refactor-weigh-in">Post refactor weigh-in</h4>
+		<a href="https://blog.cloudflare.com/#post-refactor-weigh-in" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once the parts of CFJS used by the projects were inlined into the projects, we ended up with both Rocket and Mirage being slightly <a href="https://blog.cloudflare.com/#badge">larger</a> (all numbers minified + GZipped):</p>
 	<p>So we made a significant file-size saving (about <a href="https://mathiasbynens.be/demo/jquery-size">half a jQuery’s worth</a>) vs the original file-size required to completely load either product.</p>
-	<h4>New insertion flow</h4>
+	<div class="flex anchor relative">
+		<h4 id="new-insertion-flow">New insertion flow</h4>
+		<a href="https://blog.cloudflare.com/#new-insertion-flow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before, our original insertion flow looked something like this:</p>
 	<pre class="language-bash"><code class="language-bash">// on page embed, injected into customers' pages
 &lt;script&gt;
@@ -186,7 +243,14 @@ if(cloudflare.rocket) {
 			<p>Overall - this is Lighthouse's aggregate score for a page - the closer to 100, the better</p>
 		</li>
 	</ol>
-	<h4>Assessment</h4>
+	<div class="flex anchor relative">
+		<h4 id="assessment">Assessment</h4>
+		<a href="https://blog.cloudflare.com/#assessment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So, improved metrics across the board! We can see the changes have resulted in solid improvements, e.g a reduction in our average time till first meaningful paint of 694ms for Rocket, and 49ms for Mirage.</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusion">Conclusion</h3>
@@ -197,7 +261,14 @@ if(cloudflare.rocket) {
 		</a>
 	</div>
 	<p>The optimisations to Mirage and Rocket Loader have resulted in less bandwidth use, and measurably better performance for visitors to Cloudflare optimised sites.</p>
-	<h4>Footnotes</h4>
+	<div class="flex anchor relative">
+		<h4 id="footnotes">Footnotes</h4>
+		<a href="https://blog.cloudflare.com/#footnotes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>a:not([href]) { text-decoration: inherit !important; color: inherit !important; }</p>
 	<ol>
 		<li>

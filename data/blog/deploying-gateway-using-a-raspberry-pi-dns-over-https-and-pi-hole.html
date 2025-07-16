@@ -322,7 +322,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EfgD0BegLWgPRQNo1xQ0E/4fb6700631b3c5459d21d5eea30570db/14.png" alt="" class="kg-image" width="1999" height="547" loading="lazy">
 
 	</figure>
-	<h4>Configuring DNS and DHCP in the Pi-hole administrative console</h4>
+	<div class="flex anchor relative">
+		<h4 id="configuring-dns-and-dhcp-in-the-pi-hole-administrative-console">Configuring DNS and DHCP in the Pi-hole administrative console</h4>
+		<a href="https://blog.cloudflare.com/#configuring-dns-and-dhcp-in-the-pi-hole-administrative-console" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Open your browser and navigate to the Pi-hole’s administrative console. In my case, it’s <a href="http://192.168.1.6/admin">http://192.168.1.6/admin</a></p>
 	<p>Go to Settings → DNS to modify the upstream DNS provider, which we’ve just configured to be dnscrypt-proxy.</p>
 	<figure class="kg-card kg-image-card ">
@@ -359,9 +366,23 @@
 	</figure>
 	<p>Done!</p>
 	<p>Now that our entire network is using Gateway, we can configure <a href="https://developers.cloudflare.com/gateway/policies">Gateway Policies</a> to secure our DNS queries!</p>
-	<h4>IPv4 check and lookup based on source IPv4 address</h4>
+	<div class="flex anchor relative">
+		<h4 id="ipv4-check-and-lookup-based-on-source-ipv4-address">IPv4 check and lookup based on source IPv4 address</h4>
+		<a href="https://blog.cloudflare.com/#ipv4-check-and-lookup-based-on-source-ipv4-address" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For this method to work properly, Gateway requires that your network has a static IPv4 address. If your IP address does not change, then this is the quickest solution (but still does not prevent third-parties from seeing what domains you are going to). However, if you are configuring Gateway in your home, like I am, and you don’t explicitly pay for this service, then most likely you have a dynamic IP address. These addresses will always change when your router restarts, intentionally or not.</p>
-	<h4><b>Lookup based on IPv6 destination address</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="lookup-based-on-ipv6-destination-address"><b>Lookup based on IPv6 destination address</b></h4>
+		<a href="https://blog.cloudflare.com/#lookup-based-on-ipv6-destination-address" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another option for matching requests in Gateway is to configure your DNS server to point to a unique IPv6 address provided to you by Cloudflare. Any DNS query pointed to this address will be matched properly on our edge.</p>
 	<p>This might be a good option if you want to use Cloudflare Gateway on your entire laptop by setting your local DNS resolution to this address. However, if your home router or ISP does not support IPv6, DNS resolution won’t work.</p>
 	<div class="flex anchor relative">

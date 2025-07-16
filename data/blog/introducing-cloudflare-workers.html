@@ -18,13 +18,27 @@
 	<p>Then, in 2001, everything changed. The first GPU with a programmable shading pipeline was released. Now you could write little programs that ran directly on the hardware, processing each vertex or pixel in arbitrary ways. Now people could experiment with algorithms for rendering realistic skin, or cartoon shading, or so much else, without waiting for hardware vendors to implement their ideas for them.</p>
 	<p>Cloudflare is about to go through a similar transition. At its most basic level, Cloudflare is an HTTP cache that runs in 117 locations worldwide (and growing). The HTTP standard defines a fixed feature set for HTTP caches. Cloudflare, of course, does much more, such as providing <a href="https://www.cloudflare.com/dns">DNS</a> and <a href="https://www.cloudflare.com/ssl">SSL</a>, shielding your site against attacks, load balancing across your origin servers, and so much else.</p>
 	<p>But, these are all fixed functions. What if you want to load balance with a custom affinity algorithm? What if standard HTTP caching rules aren't quite right, and you need some custom logic to boost your cache hit rate? What if you want to write custom <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> rules tailored for your application?</p>
-	<h4>You want to write code</h4>
+	<div class="flex anchor relative">
+		<h4 id="you-want-to-write-code">You want to write code</h4>
+		<a href="https://blog.cloudflare.com/#you-want-to-write-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We can keep adding features forever, but we'll never cover every possible use case this way. Instead, we're making <a href="https://www.cloudflare.com/network">Cloudflare's edge network</a> programmable. We provide servers in 117+ locations around the world -- you decide how to use them.</p>
 	<p>Of course, when you have hundreds of locations and millions of customers, traditional means of hosting software don't quite work. We can't very well give every customer their own virtual machine in each location -- or even their own container. We need something both more scalable and easier for developers to manage. Of course, security is also a concern: we must ensure that code deployed to Cloudflare cannot damage our network nor harm other customers.</p>
 	<p>After looking at many possibilities, we settled on the most ubiquitous language on the web today: JavaScript.</p>
 	<p>We run JavaScript using V8, the JavaScript engine developed for Google Chrome. That means we can securely run scripts from multiple customers on our servers in much the same way Chrome runs scripts from multiple web sites -- using technology that has had nearly a decade of scrutiny. (Of course, we add a few sandboxing layers of our own on top of this.)</p>
 	<p>But what API is this JavaScript written against? For this, we looked to web standards -- specifically, the Service Worker API. Service Workers are a feature implemented by modern browsers which allow you to load a script which intercepts web requests destined for your server before they hit the network, allowing you a chance to rewrite them, redirect them, or even respond directly. Service Workers were designed to run in browsers, but it turns out that the Service Worker API is a perfect fit for what we wanted to support on the edge. If you've ever written a Service Worker, then you already know how to write a Cloudflare Service Worker.</p>
-	<h4>What it looks like</h4>
+	<div class="flex anchor relative">
+		<h4 id="what-it-looks-like">What it looks like</h4>
+		<a href="https://blog.cloudflare.com/#what-it-looks-like" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here are some examples of Service Workers you might run on Cloudflare.</p>
 	<p>Remember: these are written against the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">standard Service Workers API</a>. The only difference is that they run on Cloudflare's edge rather than in the browser.</p>
 	<p>Here is a worker which skips the cache for requests that have a <code>Cookie</code> header (e.g. because the user is logged in). Of course, a real-life site would probably have more complicated conditions for caching, but this is code, so you can do anything.</p>
@@ -127,7 +141,15 @@ async function fetchAndInclude(request) {
     headers: response.headers
   })
 }</code></pre>
-	<h4>Play with it yourself!</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="play-with-it-yourself">Play with it yourself!</h4>
+		<a href="https://blog.cloudflare.com/#play-with-it-yourself" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We've created the Cloudflare Workers playground at <a href="https://cloudflareworkers.com">cloudflareworkers.com</a> where you can try writing your own script and applying it to your site.</p>
 	<p><a href="https://cloudflareworkers.com">Try it out now »</a></p>
 	<div class="flex anchor relative">
@@ -138,9 +160,24 @@ async function fetchAndInclude(request) {
 			</svg>
 		</a>
 	</div>
-	<h4>Is it "Cloudflare Workers" or "Cloudflare Service Workers"?</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="is-it-cloudflare-workers-or-cloudflare-service-workers">Is it "Cloudflare Workers" or "Cloudflare Service Workers"?</h4>
+		<a href="https://blog.cloudflare.com/#is-it-cloudflare-workers-or-cloudflare-service-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A "Cloudflare Worker" is JavaScript you write that runs on Cloudflare's edge. A "Cloudflare Service Worker" is specifically a worker which handles HTTP traffic and is written against the Service Worker API. Currently, this is the only kind of worker we've implemented, but in the future we may introduce other worker types for certain specialized tasks.</p>
-	<h4>What can I do with Service Workers on the edge?</h4>
+	<div class="flex anchor relative">
+		<h4 id="what-can-i-do-with-service-workers-on-the-edge">What can I do with Service Workers on the edge?</h4>
+		<a href="https://blog.cloudflare.com/#what-can-i-do-with-service-workers-on-the-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Anything and everything. You're writing code, so the possibilities are infinite. Your Service Worker will intercept all HTTP requests destined for your domain, and can return any valid HTTP response. Your worker can make outgoing HTTP requests to any server on the public internet.</p>
 	<p>Here are just a few ideas how to use Service Workers on Cloudflare:</p>
 	<p><b>Improve performance</b></p>
@@ -180,7 +217,14 @@ async function fetchAndInclude(request) {
 		</li>
 	</ul>
 	<p>But these are just examples. The whole point of Cloudflare Workers is that you can do things we haven't thought of!</p>
-	<h4>Why JavaScript?</h4>
+	<div class="flex anchor relative">
+		<h4 id="why-javascript">Why JavaScript?</h4>
+		<a href="https://blog.cloudflare.com/#why-javascript" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Workers are written in JavaScript, executed using the V8 JavaScript engine (from Google Chrome). We chose JavaScript and V8 for two main reasons:</p>
 	<ul>
 		<li>
@@ -206,11 +250,25 @@ async function fetchAndInclude(request) {
 		</li>
 	</ul>
 	<p>Ultimately, it became clear to us that V8 was the best choice. The final nail in the coffin was the realization that V8 includes WebAssembly out-of-the-box, meaning that people who really need to deploy code written in other languages can still do so.</p>
-	<h4>Why not Node.js?</h4>
+	<div class="flex anchor relative">
+		<h4 id="why-not-node-js">Why not Node.js?</h4>
+		<a href="https://blog.cloudflare.com/#why-not-node-js" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Node.js is a server-oriented JavaScript runtime that also uses V8. At first glance, it would seem to make a lot of sense to reuse Node.js rather than build on V8 directly.</p>
 	<p>However, as it turns out, despite being built on V8, Node is not designed to be a sandbox. Yes, we know about the <a href="https://nodejs.org/api/vm.html">vm module</a>, but if you look closely, it says right there on the page: "Note: The vm module is not a security mechanism. <b>Do not use it to run untrusted code.</b>"</p>
 	<p>As such, if we were to build on Node, we'd lose the benefits of V8's sandbox. We'd instead have to do process-level (a.k.a. container-based) sandboxing, which, as discussed above, is less secure and less efficient.</p>
-	<h4>Why the Service Worker API?</h4>
+	<div class="flex anchor relative">
+		<h4 id="why-the-service-worker-api">Why the Service Worker API?</h4>
+		<a href="https://blog.cloudflare.com/#why-the-service-worker-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Early on in the design process, we nearly made a big mistake.</p>
 	<p>Nearly everyone who has spent a lot of time scripting nginx or otherwise working with HTTP proxy services (so, basically everyone at Cloudflare) tends to have a very specific idea of what the API should look like. We all start from the assumption that we'd provide two main "hooks" where the developer could insert a callback: a request hook and a response hook. The request hook callback could modify the request, and the response hook callback modify the response. Then we think about the cache, and we say: ah, some hooks should run pre-cache and some post-cache. So now we have four hooks. Generally, it was assumed these hooks would be pure, non-blocking functions.</p>
 	<p>Then, between design meetings at our London office, I had lunch with Ingvar Stepanyan, who among other things had been doing work with Service Workers in the browser. Ingvar pointed out the obvious: This is exactly the use case for which the W3C Service Workers API was designed. Service Workers implement proxies and control caching, traditionally in the browser.</p>
@@ -218,7 +276,14 @@ async function fetchAndInclude(request) {
 	<p>But a Service Worker is much more powerful. It can make multiple subrequests, in series or in parallel, and combine the results. It can respond directly without making a subrequest at all. It can even make an asynchronous subrequest after it has already responded to the original request. A Service Worker can also directly manipulate the cache through the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">Cache API</a>. So, there's no need for "pre cache" and "post cache" hooks. You just stick the cache lookup into your code where you want it.</p>
 	<p>To add icing to the cake, the Service Worker API, and related modern web APIs like Fetch and Streams, have been designed very carefully by some incredibly smart people. It uses modern JavaScript idioms like Promises, and it is well-documented by MDN and others. Had we designed our own API, it would surely have been worse on all counts.</p>
 	<p>It quickly became obvious to us that the Service Worker API was the correct API for our use case.</p>
-	<h4>When can I use it?</h4>
+	<div class="flex anchor relative">
+		<h4 id="when-can-i-use-it">When can I use it?</h4>
+		<a href="https://blog.cloudflare.com/#when-can-i-use-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://workers.cloudflare.com">Cloudflare Workers</a> are a big change to Cloudflare and we're rolling it out slowly. If you'd like to get early access -- or just want to be notified when it's ready:</p>
 	<p>If you want to read more, refer to our <a href="https://developers.cloudflare.com/workers">documentation</a>.</p>
 </div>

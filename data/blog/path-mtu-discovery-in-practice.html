@@ -158,7 +158,14 @@ echo 1024 &gt; /proc/sys/net/ipv4/tcp_base_mss</code></pre>
 		</li>
 	</ul>
 	<p>Found this article interesting? <a href="https://www.cloudflare.com/join-our-team">Join our team</a>, including to our <a href="https://blog.cloudflare.com/cloudflare-london-were-hiring">elite office in London</a>. We're constantly looking for talented developers and network engineers!</p>
-	<h4>Appendix</h4>
+	<div class="flex anchor relative">
+		<h4 id="appendix">Appendix</h4>
+		<a href="https://blog.cloudflare.com/#appendix" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To simulate a black hole we used this iptables rule:</p>
 	<pre class="language-bash"><code class="language-bash">iptables -I INPUT -s &lt;src_ip&gt; -m length --length 1400:1500 -j DROP</code></pre>
 	<p>And this <a href="http://www.secdev.org/projects/scapy">Scapy</a> snippet to simulate MTU ICMP messages:</p>

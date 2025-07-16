@@ -151,15 +151,50 @@
 		</a>
 	</div>
 	<p>Lots of vendors have emerged to tackle the challenges introduced by these major shifts, often focusing on one or a handful of use cases. Some providers offer virtualized versions of hardware appliances, delivered over different cloud platforms; others have cloud-native approaches that address a specific problem like application access or <a href="https://www.cloudflare.com/learning/access-management/what-is-url-filtering">web filtering</a>. But stitching together a patchwork of point solutions has caused even more headaches for CIOs and most products available focused only on shoring up identity, endpoint, and application security without truly addressing <a href="https://www.cloudflare.com/learning/network-layer/network-security">network security</a>.</p>
-	<h4><b>Gaps in visibility</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="gaps-in-visibility"><b>Gaps in visibility</b></h4>
+		<a href="https://blog.cloudflare.com/#gaps-in-visibility" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Compared to the castle and moat model, where traffic all flowed through a central stack of appliances, modern networks have extremely fragmented visibility. IT teams need to piece together information from multiple tools to understand what’s happening with their traffic. Often, a full picture is impossible to assemble, even with the support of tools including SIEM and SOAR applications that consolidate data from multiple sources. This makes troubleshooting issues challenging: IT support ticket queues are full of unsolved mysteries. How do you manage what you can’t see?</p>
-	<h4><b>Gaps in security</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="gaps-in-security"><b>Gaps in security</b></h4>
+		<a href="https://blog.cloudflare.com/#gaps-in-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This patchwork architecture — coupled with the visibility gaps it introduced — also creates security challenges. The concept of “Shadow IT” emerged to describe services that employees have adopted and are using without explicit IT permission or integration into the corporate network’s traffic flow and security policies. Exceptions to filtering policies for specific users and use cases have become unmanageable, and our customers have described a general “wild west” feeling about their networks as Internet use grew faster than anyone could have anticipated. And it’s not just gaps in filtering that scare CIOs — the proliferation of Shadow IT means company data can and does now exist in a huge number of unmanaged places across the Internet.</p>
-	<h4><b>Poor user experience</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="poor-user-experience"><b>Poor user experience</b></h4>
+		<a href="https://blog.cloudflare.com/#poor-user-experience" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Backhauling traffic through central locations to enforce security introduces latency for end users, amplified as they work in locations farther and farther away from their former offices. And the Internet, while it’s come a long way, is still fundamentally unpredictable and unreliable, leaving IT teams struggling to ensure availability and performance of apps for users with many factors (even down to shaky coffee shop Wi-Fi) out of their control.</p>
-	<h4><b>High (and growing) cost</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="high-and-growing-cost"><b>High (and growing) cost</b></h4>
+		<a href="https://blog.cloudflare.com/#high-and-growing-cost" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CIOs are still paying for MPLS links and hardware to enforce security across as much traffic as possible, but they’ve now taken on additional costs of point solutions to secure increasingly complex networks. And because of fragmented visibility and security gaps, coupled with performance challenges and rising expectations for a higher quality of user experience, the cost of providing IT support is growing.</p>
-	<h4><b>Network fragility</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="network-fragility"><b>Network fragility</b></h4>
+		<a href="https://blog.cloudflare.com/#network-fragility" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All this complexity means that making changes can be really hard. On the legacy side of current hybrid architectures, provisioning MPLS lines and deploying new security hardware come with long lead times, only worsened by recent issues in the global hardware supply chain. And with the medley of point solutions introduced to manage various aspects of the network, a change to one tool can have unintended consequences for another. These effects compound in IT departments often being the bottleneck for business changes, limiting the flexibility of organizations to adapt to an only-accelerating rate of change.</p>
 	<p><b>Network Architecture Scorecard: Generation 2</b></p>
 	<table>

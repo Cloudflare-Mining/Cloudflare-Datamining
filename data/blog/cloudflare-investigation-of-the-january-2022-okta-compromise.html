@@ -13,7 +13,14 @@
 	<p>Our <a href="https://twitter.com/toddmckinnon/status/1506184721922859010">understanding</a> is that during January 2022, hackers outside Okta had access to an Okta support employee’s account and were able to take actions as if they were that employee. In a screenshot shared on social media, a Cloudflare employee’s email address was visible, along with a popup indicating the hacker was posing as an Okta employee and could have initiated a password reset.</p>
 	<p>We learnt of this incident via Cloudflare’s internal SIRT. SIRT is our Security Incident Response Team and any employee at Cloudflare can alert SIRT to a potential problem. At exactly 03:30 UTC, a Cloudflare employee emailed SIRT with a link to a <a href="https://twitter.com/_MG_/status/1506109152665382920">tweet</a> that had been sent at 03:22 UTC. The tweet indicated that Okta had potentially been breached. Multiple other Cloudflare employees contacted SIRT over the following two hours.</p>
 	<p>The following timeline outlines the major steps we took following that initial 03:30 UTC email to SIRT.</p>
-	<h4>Timeline (times in UTC)</h4>
+	<div class="flex anchor relative">
+		<h4 id="timeline-times-in-utc">Timeline (times in UTC)</h4>
+		<a href="https://blog.cloudflare.com/#timeline-times-in-utc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>03:30 - SIRT receives the first warning of the existence of the tweets.</p>
 	<p>03:38 - SIRT sees that the tweets contain information about Cloudflare (logo, user information).</p>
 	<p>03:41 - SIRT creates an incident room to start the investigation and starts gathering the necessary people.</p>

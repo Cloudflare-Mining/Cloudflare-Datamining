@@ -19,7 +19,14 @@
 	<p>But why are they making this change (now)? Google’s primary motivation for driving HTTPS adoption is simple: a safe browsing experience is good for business. Users that feel safe on the web spend more time viewing and interacting with ads and other services that Google gets paid to deliver. (To be clear: these motivations do not in any way diminish the outstanding work of the Chrome team, whose members are passionate about protecting users for a myriad of non-business reasons. We applaud their efforts in making the web a safer place and are excited to see other browsers follow their lead.)</p>
 	<p>Google must feel the time is right to make the change thanks to HTTPS page loads continuing to climb steadily and minimal fallout from their <a href="https://blog.cloudflare.com/#importantmilestonestowardshttpsubiquityalongsidepercentofpageloadsusinghttps">previous, incremental steps</a>. Emily Schechter, the Chrome Security Product Manager who announced the change, <a href="https://twitter.com/emschec/status/961719363223957504">writes</a>: “we believe https usage will be high enough by july [2018] that this will be OK”. Currently, the ratio of user interaction with secure origins to non-secure sits at 69.7%; five months ago it was just 62.5% and thus it’s easy to imagine Chris Palmer’s <a href="https://groups.google.com/a/chromium.org/forum/#!topic/security-dev/DHQLv76QaEM%5B1-25%5D">suggested threshold of 75%</a> will have been met by July.</p>
 	<p>Such a change would have been far too disruptive just one year ago, but thanks to the efforts of Google and other participants in the webPKI ecosystem (including Cloudflare), a path has been paved towards 100% adoption. Today, HTTPS is <a href="https://istlsfastyet.com/#cdn-paas">fast</a>, simple to deploy, and cost-effective if not free—and there’s no longer an excuse for not using SSL/TLS. Even static sites need encryption to prevent malicious third-parties from <a href="https://www.wired.com/2014/10/verizons-perma-cookie">tracking your users</a> or <a href="https://arstechnica.com/tech-policy/2014/09/why-comcasts-javascript-ad-injections-threaten-security-net-neutrality">injecting ads</a> into your site.</p>
-	<h4>Important milestones towards HTTPS ubiquity, alongside percent of page loads using HTTPS</h4>
+	<div class="flex anchor relative">
+		<h4 id="important-milestones-towards-https-ubiquity-alongside-percent-of-page-loads-using-https">Important milestones towards HTTPS ubiquity, alongside percent of page loads using HTTPS</h4>
+		<a href="https://blog.cloudflare.com/#important-milestones-towards-https-ubiquity-alongside-percent-of-page-loads-using-https" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<table class="table-with-last-column-right-aligned">
 		<tbody>
 			<tr>
@@ -138,7 +145,14 @@
 	</div>
 	<p>The "lock" in the address bar was always about motivating sites to migrate to HTTPS, but along the way <a href="http://www.usablesecurity.org//emperor/emperor.pdf">studies</a> <a href="https://www.usenix.org/system/files/conference/soups2016/soups2016-paper-porter-felt.pdf">showed</a> that positive trust indicators don’t work. Google’s introduction of "Not secure" is one important step towards the ultimate goal of deprecating HTTP, but as mentioned earlier, will not be their last.</p>
 	<p>We expect Google’s assault on HTTP to continue throughout the year, culminating with an announcement that the lock will be removed entirely (and replaced by a negative indicator shown only when a site does not utilize HTTPS). Below is some additional detail on this expected next step, along with some additional predictions for the webPKI ecosystem.</p>
-	<h4>1. Google will announce the lock icon’s demise in 2018 and remove it in January 2019 with the release of Chrome 72</h4>
+	<div class="flex anchor relative">
+		<h4 id="1-google-will-announce-the-lock-icons-demise-in-2018-and-remove-it-in-january-2019-with-the-release-of-chrome-72">1. Google will announce the lock icon’s demise in 2018 and remove it in January 2019 with the release of Chrome 72</h4>
+		<a href="https://blog.cloudflare.com/#1-google-will-announce-the-lock-icons-demise-in-2018-and-remove-it-in-january-2019-with-the-release-of-chrome-72" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Chris Palmer’s <a href="https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/DHQLv76QaEM%5B1-25%5D">email to blink-dev</a> in 2014 included this "strawman proposal" for introducing negative indicators and phasing out the marking of secure origins entirely:</p>
 	<blockquote>
 		<p>Secure &gt; 65%: Non-secure origins marked as DubiousSecure &gt; 75%: Non-secure origins marked as Non-secureSecure &gt; 85%: Secure origins unmarked</p>
@@ -157,19 +171,54 @@
 		</li>
 	</ul>
 	<p>At approximately 6-7 weeks between stable releases, Chrome 72 should hit sometime in late January 2019. By this time, we expect HTTPS page loads to be &gt;85%, a high enough ratio where Google can be confident the change won’t be too disruptive. Given the significance of this UI change we expect they’ll announce it sometime in mid 2018.</p>
-	<h4>2. Firefox will soon announce their own schedule for marking insecure origins</h4>
+	<div class="flex anchor relative">
+		<h4 id="2-firefox-will-soon-announce-their-own-schedule-for-marking-insecure-origins">2. Firefox will soon announce their own schedule for marking insecure origins</h4>
+		<a href="https://blog.cloudflare.com/#2-firefox-will-soon-announce-their-own-schedule-for-marking-insecure-origins" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Google is not the only major browser taking steps to drive the web to HTTPS only.</p>
 	<p>Back in April 2015, the Mozilla team <a href="https://blog.mozilla.org/security/2015/04/30/deprecating-non-secure-http">announced</a> their intent to (eventually) deprecate HTTP. Since then, Firefox has adopted <a href="https://blog.mozilla.org/security/2017/01/20/communicating-the-dangers-of-non-secure-http">similar UI indications</a> to Chrome for pages with passwords, <a href="https://blog.mozilla.org/security/2018/01/15/secure-contexts-everywhere">announced</a> that “all new features that are web-exposed are to be restricted to secure contexts”, and merged (default disabled) <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1310447">code</a> to mark sites loaded over HTTP as “not secure”.</p>
 	<p>Beginning in Firefox 59, this “not secure” labeling can be manually enabled (instructions shown below), but no date has officially been set by Mozilla for when this will turned on by default. We expect them to announce a date shortly.</p>
-	<h4>3. Microsoft and Apple will continue to lag Google and Mozilla, but will start to enact similar changes</h4>
+	<div class="flex anchor relative">
+		<h4 id="3-microsoft-and-apple-will-continue-to-lag-google-and-mozilla-but-will-start-to-enact-similar-changes">3. Microsoft and Apple will continue to lag Google and Mozilla, but will start to enact similar changes</h4>
+		<a href="https://blog.cloudflare.com/#3-microsoft-and-apple-will-continue-to-lag-google-and-mozilla-but-will-start-to-enact-similar-changes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Historically, Microsoft and Apple have moved slower in adopting new browser security policies due in part to the fact they release (and update) their browsers far less frequently than Google and Mozilla.</p>
 	<p>However, Apple in the past shown shown leadership in driving HTTPS adoption, as can be seen by their <a href="https://developer.apple.com/videos/play/wwdc2016/706">WWDC2016 announcement</a> requiring iOS applications to use ATS and TLS 1.2. Our hope is that Microsoft and Apple follow Google and Mozilla’s lead as Edge, IE, and Safari collectively represent almost 20% of the desktop requests hitting Cloudflare’s edge.</p>
-	<h4>4. Browsers will start attempting connections over HTTPS before trying HTTP</h4>
+	<div class="flex anchor relative">
+		<h4 id="4-browsers-will-start-attempting-connections-over-https-before-trying-http">4. Browsers will start attempting connections over HTTPS before trying HTTP</h4>
+		<a href="https://blog.cloudflare.com/#4-browsers-will-start-attempting-connections-over-https-before-trying-http" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Analogous to how Apple <a href="https://www.ietf.org/mail-archive/web/v6ops/current/msg22455.html">prioritizes IPv6 over IPv4</a>, major browsers will start to try addresses entered without a scheme over HTTPS before falling back to HTTP. The Google Chrome team has <a href="https://twitter.com/emschec/status/961748992051720192">already indicated</a> they plan to do this, and we expect (hope!) they’ll announce a timeline for this change sometime in 2018.</p>
-	<h4>5. More CAs (including nascent ones) will follow Let’s Encrypt’s lead in issuing free certs using the ACME protocol</h4>
+	<div class="flex anchor relative">
+		<h4 id="5-more-cas-including-nascent-ones-will-follow-lets-encrypts-lead-in-issuing-free-certs-using-the-acme-protocol">5. More CAs (including nascent ones) will follow Let’s Encrypt’s lead in issuing free certs using the ACME protocol</h4>
+		<a href="https://blog.cloudflare.com/#5-more-cas-including-nascent-ones-will-follow-lets-encrypts-lead-in-issuing-free-certs-using-the-acme-protocol" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the primary complaints from site operators as they react to Chrome and Firefox’s user-facing changes (with the potential to affect their traffic) is that “SSL certificates are expensive”. Even though Cloudflare began issuing free certificates for our reverse proxy users in late 2014 and Let’s Encrypt followed not too long after, there still aren’t many other easy, free options available.</p>
 	<p>We expect that additional CAs will begin to embrace the <a href="https://github.com/ietf-wg-acme/acme/blob/master/draft-ietf-acme-acme.md">ACME protocol</a> for validation and issuance, helping to harden the protocol and increase its adoption. We further expect that new, free-of-charge CAs will enter the market and at least one will be operated by a large, well-funded incumbent such as Google.</p>
-	<h4>6. The CA/B Forum will vote in 2018 to further reduce certificate lifetimes from 27 months to 18 months or less, encouraging more automation</h4>
+	<div class="flex anchor relative">
+		<h4 id="6-the-ca-b-forum-will-vote-in-2018-to-further-reduce-certificate-lifetimes-from-27-months-to-18-months-or-less-encouraging-more-automation">6. The CA/B Forum will vote in 2018 to further reduce certificate lifetimes from 27 months to 18 months or less, encouraging more automation</h4>
+		<a href="https://blog.cloudflare.com/#6-the-ca-b-forum-will-vote-in-2018-to-further-reduce-certificate-lifetimes-from-27-months-to-18-months-or-less-encouraging-more-automation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The CA/Browser Forum is a group of CAs and browsers that collaborate on (among other things) a document known as the "<a href="https://cabforum.org/baseline-requirements-documents">Baseline Requirements</a>" or the "BRs". These BRs dictate the minimum requirements that CAs are to adhere to, and a <a href="https://cabforum.org/2017/03/17/ballot-193-825-day-certificate-lifetimes">recent change</a> to them goes into affect March 1, 2018; as of that date, the maximum validity period for a certificate drops from 39 months to ~27 months (825 days).</p>
 	<p>The <a href="https://cabforum.org/pipermail/public/2017-January/009373.html">initial proposal</a>, by Ryan Sleevi of Google, was to reduce the lifetime to 12 months, but this was met with strong opposition by the CAs (outside of Let's Encrypt which already caps lifetimes at 3 months and DigiCert who supported 13 months). A compromise was reached and goes into affect shortly, but we expect this topic to come to a vote again for either 18 or 13 months. CAs will again likely oppose this cap (with a few exceptions for the more automated ones), but browsers and root trust store operators may force the change anyway as it strengthens user security.</p>
 	<p>As site operators manually replace their expiring 3 year certificates, our hope and expectation is that they see the <a href="https://www.cloudflare.com/application-services/solutions/certificate-lifecycle-management">benefits and ease of automating the certificate lifecycle</a>, encouraging them to deploy HTTPS more broadly across their organizations.</p>
@@ -182,7 +231,14 @@
 		</a>
 	</div>
 	<p>The simplest way to tell if your site will soon show a "Not secure" label is by viewing it in a current version of Chrome or Firefox. If you do not see a lock, your site will soon have a more ominous warning. To get a preview of this warning, you can try browsing your site with a development version of either of these browsers by following the instructions below.</p>
-	<h4>Chrome</h4>
+	<div class="flex anchor relative">
+		<h4 id="chrome">Chrome</h4>
+		<a href="https://blog.cloudflare.com/#chrome" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p>Use Chrome 65 or later.</p>
@@ -207,7 +263,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3cOV0Q8QiU8jqO67Xup8Xx/f512efbc4cf0bdfe05421bd0cc8715a5/chrome-notsecure.png" alt="chrome-notsecure" class="kg-image" width="686" height="119" loading="lazy">
 
 	</figure>
-	<h4>Firefox</h4>
+	<div class="flex anchor relative">
+		<h4 id="firefox">Firefox</h4>
+		<a href="https://blog.cloudflare.com/#firefox" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><i>Firefox has not announced a date yet when this change will go into effect, but you can preview what it will look like when they do.</i></p>
 	<ul>
 		<li>

@@ -34,7 +34,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xRPCYci9Oe5uZ7Pc5iIeF/34e45982965978da43155ab1bd9e4c4a/Screen-Shot-2018-06-21-at-10.08.50-AM.png" alt="Screen-Shot-2018-06-21-at-10.08.50-AM" class="kg-image" width="1026" height="982" loading="lazy">
 
 	</figure>
-	<h4>So how is DroneDeploy using Workers? And why is it important to DroneDeploy?</h4>
+	<div class="flex anchor relative">
+		<h4 id="so-how-is-dronedeploy-using-workers-and-why-is-it-important-to-dronedeploy">So how is DroneDeploy using Workers? And why is it important to DroneDeploy?</h4>
+		<a href="https://blog.cloudflare.com/#so-how-is-dronedeploy-using-workers-and-why-is-it-important-to-dronedeploy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It’s important to understand that they want to maintain architectural freedom around the many services they use to make their service. As with many software stacks today, they use GCP, AWS, and others, but they want to maintain flexibility in their network routing and authentication layer.</p>
 	<p>By offering a dramatically better experience to drone users in the field, they can both push the authentication out in front of a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> and also serve collected images directly from our CDN (typically hundreds or thousands of tiles used to render maps or 3D models). Many of DroneDeploy’s users operate in highly variable network conditions on job sites or in the field. Workers allows them to push their authentication to the edge; and use Workers to build a custom signed URL to ensure the correct images are surfaced to the correct consumer - in effect ensuring their multi-tenancy image storage model is safe guarded at the edge. To do this, DroneDeploy employs a URL authentication method commonly known as request signing which uses the Web Crypto API.</p>
 	<p>Commenting on this Eric Hauser, VP Engineering of DroneDeploy detailed the upside of Cloudflare Workers for his team:</p>
@@ -193,7 +200,14 @@ function createMessage(url, headers) {
   ].join('\n')
 }</code></pre>
 	<p>So the upside is clear - Authentication at the Edge provides flexibility, and scale but also means that DroneDeploy is not locked into an architecture that would prevent their ability to choose the best-in-class capabilities they need from GCP, AWS and more.</p>
-	<h4>So where to from here?</h4>
+	<div class="flex anchor relative">
+		<h4 id="so-where-to-from-here">So where to from here?</h4>
+		<a href="https://blog.cloudflare.com/#so-where-to-from-here" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This Worker is the first of a few DroneDeploy are exploring. In next generation Workers, DroneDeploy is looking to deliver a range of improvements all with a view of optimizing their customers experience by using Cloudflare’s cache in addition to other features Cloudflare has to offer. We’ll update the blog at that time.</p>
 	<hr>
 	<p><i>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the </i><a href="https://community.cloudflare.com/tags/recipe-exchange"><i>“Recipe Exchange”</i></a><i> in the Workers section of the </i><a href="https://community.cloudflare.com/c/developers/workers"><i>Cloudflare Community Forum</i></a><i>.</i></p>

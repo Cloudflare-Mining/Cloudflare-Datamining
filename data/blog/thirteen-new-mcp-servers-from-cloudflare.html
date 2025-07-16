@@ -144,49 +144,112 @@
 		</a>
 	</div>
 	<p>These <a href="https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp">MCP servers</a> allow your <a href="https://modelcontextprotocol.io/clients"><u>MCP Client</u></a> to read configurations from your account, process information, make suggestions based on data, and even make those suggested changes for you. All of these actions can happen across Cloudflare's many services including application development, security, and performance.</p>
-	<h4><b>Cloudflare Documentation Server: </b>Get up-to-date reference information on Cloudflare&nbsp;</h4>
+	<div class="flex anchor relative">
+		<h4 id="cloudflare-documentation-server-get-up-to-date-reference-information-on-cloudflare"><b>Cloudflare Documentation Server: </b>Get up-to-date reference information on Cloudflare&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#cloudflare-documentation-server-get-up-to-date-reference-information-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our <a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-vectorize"><u>Cloudflare Documentation server</u></a> enables any MCP Client to access up-to-date <a href="https://developers.cloudflare.com"><u>documentation</u></a> in real-time, rather than relying on potentially outdated information from the model's training data. If you’re new to building with Cloudflare, this server synthesizes information right from our documentation and exposes it to your MCP Client, so you can get reliable, up-to-date responses to any complex question like “Search Cloudflare for the best way to build an AI Agent”.&nbsp;&nbsp;</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3vanQPwy6YSwI7bsDTk2md/09cb4763ddbd4858fcd90aca00106bb9/BLOG-2808_2.png" alt="BLOG-2808 2" class="kg-image" width="762" height="806" loading="lazy">
 	</figure>
-	<h4><b>Workers Bindings server: </b>Build with developer resources&nbsp;</h4>
+	<div class="flex anchor relative">
+		<h4 id="workers-bindings-server-build-with-developer-resources"><b>Workers Bindings server: </b>Build with developer resources&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#workers-bindings-server-build-with-developer-resources" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Connecting to the <a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-bindings"><u>Bindings MCP server</u></a> lets you leverage application development primitives like D1 databases, R2 object storage and Key Value stores on the fly as you build out a Workers application. If you're leveraging your MCP Client to generate code, the bindings server provides access to read existing resources from your account or create fresh resources to implement in your application. In combination with our <a href="https://developers.cloudflare.com/workers/get-started/prompting"><u>base prompt</u></a> designed to help you build robust Workers applications, you can add the Bindings MCP server to give your client all it needs to start generating full stack applications from natural language.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6N0Y8BCBz5ULSHbj0JCIkL/3a6a9ef269202a6c05d18444f313ce87/BLOG-2808_3.png" alt="BLOG-2808 3" class="kg-image" width="1358" height="1116" loading="lazy">
 	</figure>
 	<p>
 		Full example output using the Workers Bindings MCP server can be found <a href="https://claude.ai/share/273dadf7-b060-422d-b2b6-4f436d537136"><u>here</u></a>.</p>
-	<h4><b>Workers Observability server: </b>Debug your application&nbsp;</h4>
+	<div class="flex anchor relative">
+		<h4 id="workers-observability-server-debug-your-application"><b>Workers Observability server: </b>Debug your application&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#workers-observability-server-debug-your-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-observability"><u>Workers Observability MCP server</u></a> integrates with <a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs"><u>Workers Logs</u></a> to browse invocation logs and errors, compute statistics across invocations, and find specific invocations matching specific criteria. By querying logs across all of your Workers, this MCP server can help isolate errors and trends quickly. The telemetry data that the MCP server returns can also be used to create new visualizations and improve observability.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1rydyUALBbwtPrT477xAKM/81547e1fb3cec5ffadd90ee5e68e1a5e/BLOG-2808_4.png" alt="BLOG-2808 4" class="kg-image" width="1505" height="895" loading="lazy">
 	</figure>
-	<h4><b>Container server:</b> Spin up a development environment</h4>
+	<div class="flex anchor relative">
+		<h4 id="container-server-spin-up-a-development-environment"><b>Container server:</b> Spin up a development environment</h4>
+		<a href="https://blog.cloudflare.com/#container-server-spin-up-a-development-environment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/sandbox-container"><u>Container MCP server</u></a> provides any MCP client with access to a secure, isolated execution environment running on Cloudflare’s network where it can run and test code if your MCP client does not have a built in development environment (e.g. claude.ai). When building and generating application code, this lets the AI run its own commands and validate its assumptions in real time.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1rXgpQ3znIE01ccY1Qd2cQ/058902719a90af14175b8e838b09b78e/BLOG-2808_5.png" alt="BLOG-2808 5" class="kg-image" width="657" height="804" loading="lazy">
 	</figure>
-	<h4><b>Browser Rendering server: </b>Fetch and convert web pages, take screenshots&nbsp;</h4>
+	<div class="flex anchor relative">
+		<h4 id="browser-rendering-server-fetch-and-convert-web-pages-take-screenshots"><b>Browser Rendering server: </b>Fetch and convert web pages, take screenshots&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#browser-rendering-server-fetch-and-convert-web-pages-take-screenshots" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://developers.cloudflare.com/browser-rendering"><u>Browser Rendering</u></a> MCP server provides AI friendly tools from our <a href="https://developers.cloudflare.com/browser-rendering/rest-api"><u>RESTful interface</u></a> for common browser actions such as capturing screenshots, extracting HTML content, and converting pages to Markdown. These are particularly useful when building agents that require interacting with a web browser.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3aQtQxzj1hP6cbtbY4CHXI/27535e9f9a041187c12f6b41ba36afdb/BLOG-2808_6.png" alt="BLOG-2808 6" class="kg-image" width="1999" height="1515" loading="lazy">
 	</figure>
-	<h4><b>Radar server: </b>Ask questions about how we see the Internet and Scan URLs</h4>
+	<div class="flex anchor relative">
+		<h4 id="radar-server-ask-questions-about-how-we-see-the-internet-and-scan-urls"><b>Radar server: </b>Ask questions about how we see the Internet and Scan URLs</h4>
+		<a href="https://blog.cloudflare.com/#radar-server-ask-questions-about-how-we-see-the-internet-and-scan-urls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/radar"><u>Cloudflare Radar MCP server</u></a> exposes tools that allow any MCP client to explore our aggregated <a href="https://radar.cloudflare.com/traffic#http-traffic"><u>HTTP traffic data</u></a>, get information on <a href="https://radar.cloudflare.com/traffic/as701"><u>Autonomous Systems</u></a> (AS) and <a href="https://radar.cloudflare.com/ip/72.74.50.251"><u>IP addresses</u></a>, list traffic anomalies from our <a href="https://radar.cloudflare.com/outage-center"><u>Outage Center</u></a>, get <a href="https://radar.cloudflare.com/domains"><u>trending domains</u></a>, and domain rank information. It can even create charts. Here’s a chat where we ask "show me the <a href="https://claude.ai/public/artifacts/34c8a494-abdc-4755-9ca7-cd8e0a8bea41"><u>HTTP traffic from Portugal</u></a> for the last week":</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9yg9Fnkoz6t6QOwUK1a5r/b11756fd82058f04037740678160cc7c/BLOG-2808_7.png" alt="BLOG-2808 7" class="kg-image" width="1999" height="1515" loading="lazy">
 	</figure>
-	<h4><b>Logpush server: </b>Get quick summaries for Logpush job health&nbsp;</h4>
+	<div class="flex anchor relative">
+		<h4 id="logpush-server-get-quick-summaries-for-logpush-job-health"><b>Logpush server: </b>Get quick summaries for Logpush job health&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#logpush-server-get-quick-summaries-for-logpush-job-health" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://developers.cloudflare.com/logs/about"><u>Logpush</u></a> jobs deliver comprehensive logs to your destination of choice, allowing near real-time information processing. The Logpush MCP server can help you analyze your Logpush job results and understand your job health at a high level, allowing you to filter and narrow down for jobs or scenarios you care about. For example, you can ask “provide me with a list of recently failed jobs.” Now, you can quickly find out which jobs are failing with which error message and when, summarized in a human-readable format.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ltuXD2TgEhiblx6aNhm4d/d63b14f151fd3a239b0a3cf0dfb92ebf/BLOG-2808_8.png" alt="BLOG-2808 8" class="kg-image" width="960" height="946" loading="lazy">
 	</figure>
-	<h4><b>AI Gateway server: </b>Check out your AI Gateway logs&nbsp;</h4>
+	<div class="flex anchor relative">
+		<h4 id="ai-gateway-server-check-out-your-ai-gateway-logs"><b>AI Gateway server: </b>Check out your AI Gateway logs&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#ai-gateway-server-check-out-your-ai-gateway-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Use this <a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/ai-gateway"><u>MCP server</u></a> to inspect your <a href="https://www.cloudflare.com/developer-platform/products/ai-gateway">AI Gateway</a> logs and get details about the data from your prompts and the AI models responses. In this example we ask our agent “What is my average latency for my AI Gateway logs in the <i>Cloudflare Radar</i> account?”</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7dYzkZ0cYcXPjFKlhdqkMp/52f2b7e62fe2bb05c91fc563738ddfc2/BLOG-2808_9.png" alt="BLOG-2808 9" class="kg-image" width="549" height="655" loading="lazy">
 	</figure>
-	<h4><b>AutoRAG server:</b> List and search documents on your AutoRAGs</h4>
+	<div class="flex anchor relative">
+		<h4 id="autorag-server-list-and-search-documents-on-your-autorags"><b>AutoRAG server:</b> List and search documents on your AutoRAGs</h4>
+		<a href="https://blog.cloudflare.com/#autorag-server-list-and-search-documents-on-your-autorags" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Having AutoRAG RAGs available to query as MCP tools greatly expands the typical static one-shot retrieval​ and opens doors to use cases where the agent can dynamically decide if and when to retrieve information from one or more <a href="https://www.cloudflare.com/learning/ai/retrieval-augmented-generation-rag">RAGs</a>, combine them with other tools and APIs, cross-check information and generate a much more rich and complete final answer.</p>
 	<p>Here we have a RAG that has a few blog posts that talk about retrocomputers. If we ask "tell me about restoring an amiga 1000 using the blog-celso autorag" the agent will go into a sequence of <a href="https://claude.ai/share/18f1be31-9936-48c0-9de0-151d64f3534e"><u>reasoning steps</u></a>:</p>
 	<ul>
@@ -210,22 +273,50 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Z8BJSvd4x233FPZDePeSk/e59b8676a92f828d32feb1d28381a216/BLOG-2808_10.png" alt="BLOG-2808 10" class="kg-image" width="1999" height="1515" loading="lazy">
 	</figure>
-	<h4><b>Audit Logs server: </b>Query audit logs and generate reports for review</h4>
+	<div class="flex anchor relative">
+		<h4 id="audit-logs-server-query-audit-logs-and-generate-reports-for-review"><b>Audit Logs server: </b>Query audit logs and generate reports for review</h4>
+		<a href="https://blog.cloudflare.com/#audit-logs-server-query-audit-logs-and-generate-reports-for-review" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Audit Logs record detailed information about actions and events within a system, providing a transparent history of all activity. However, because these logs can be large and complex, it may take effort to query and reconstruct a clear sequence of events. The <a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/auditlogs"><u>Audit Logs MCP server</u></a> helps by allowing you to query audit logs and generate reports. Common queries include if anything notable happened in a Cloudflare account under a user around a particular time of the day, or identifying whether any users used API keys to perform actions on the account. For example, you can ask “Were there any suspicious changes made to my Cloudflare account yesterday around lunchtime?” and obtain the following response:&nbsp;</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YdV73LhsCmjdQtOK8U7Ii/89f11db15e079190a234665ac4794754/BLOG-2808_11.png" alt="BLOG-2808 11" class="kg-image" width="1282" height="960" loading="lazy">
 	</figure>
-	<h4><b>DNS Analytics server: </b>Optimize DNS performance and debug issues based on current set up</h4>
+	<div class="flex anchor relative">
+		<h4 id="dns-analytics-server-optimize-dns-performance-and-debug-issues-based-on-current-set-up"><b>DNS Analytics server: </b>Optimize DNS performance and debug issues based on current set up</h4>
+		<a href="https://blog.cloudflare.com/#dns-analytics-server-optimize-dns-performance-and-debug-issues-based-on-current-set-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/application-services/products/analytics"><u>Cloudflare’s DNS Analytics</u></a> provides detailed insights into DNS traffic, which helps you monitor, analyze, and troubleshoot DNS performance and security across your domains. With Cloudflare’s <a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dns-analytics"><u>DNS Analytics MCP server</u></a>, you can review DNS configurations across all domains in your account, access comprehensive DNS performance reports, and receive recommendations for performance improvements. By leveraging documentation, the MCP server can help identify opportunities for improving performance.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3X7w64xQvvFbv24HaFeLDv/3fefb7ff9e912207c5897200beefd26f/image4.png" alt="" class="kg-image" width="1498" height="1514" loading="lazy">
 	</figure>
-	<h4><b>Digital Experience Monitoring server</b>: Get quick insight on critical applications for your organization&nbsp;</h4>
+	<div class="flex anchor relative">
+		<h4 id="digital-experience-monitoring-server-get-quick-insight-on-critical-applications-for-your-organization"><b>Digital Experience Monitoring server</b>: Get quick insight on critical applications for your organization&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#digital-experience-monitoring-server-get-quick-insight-on-critical-applications-for-your-organization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare <a href="https://www.cloudflare.com/learning/performance/what-is-digital-experience-monitoring">Digital Experience Monitoring (DEM)</a> was built to help network professionals understand the performance and availability of their critical applications from self-hosted applications like Jira and Bitbucket to SaaS applications like Figma or Salesforce. The <a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dex-analysis"><u>Digital Experience Monitoring MCP server</u></a> fetches DEM test results to surface performance and availability trends within your Cloudflare One deployment, providing quick insights on users, applications, and the networks they are connected to. You can ask questions like: Which users had the worst experience? What times of the day were applications most and least performant? When do I see the most HTTP status errors? When do I see the shortest, longest, or most instability in the network path?&nbsp;</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Ctxdt7tw04Rfzl9Ihxnkw/fc9c9ab553daa58f59e024dd66dd3dea/BLOG-2808_12.png" alt="BLOG-2808 12" class="kg-image" width="1266" height="1282" loading="lazy">
 	</figure>
-	<h4><b>CASB server</b>: Insights from SaaS Integrations</h4>
+	<div class="flex anchor relative">
+		<h4 id="casb-server-insights-from-saas-integrations"><b>CASB server</b>: Insights from SaaS Integrations</h4>
+		<a href="https://blog.cloudflare.com/#casb-server-insights-from-saas-integrations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/zero-trust/products/casb"><u>Cloudflare CASB</u></a> provides the ability to integrate with your organization’s <a href="https://developers.cloudflare.com/cloudflare-one/applications/casb/casb-integrations"><u>SaaS and cloud applications</u></a> to discover assets and surface any security misconfigurations that may be present. A core task is helping security teams understand information about users, files, and other assets they care about that transcends any one SaaS application. The <a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/cloudflare-one-casb"><u>CASB MCP server</u></a> can explore across users, files, and the many other asset categories to help understand relationships from data that can exist across many different integrations. A common query may include “Tell me about “Frank Meszaros” and what SaaS tools they appear to have accessed”.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3aJOta5YYZ1FqZyHF0wVnx/2c79512fb674eb2762395e5ccaac9700/BLOG-2808_13.png" alt="BLOG-2808 13" class="kg-image" width="1008" height="1148" loading="lazy">

@@ -43,14 +43,28 @@
 			<p>Huffman Encoding: A <a href="https://http2.github.io/http2-spec/compression.html#huffman.code">static Huffman code</a> can be used to encode any string: name or value. This code was computed specifically for HTTP Response/Request headers - ASCII digits and lowercase letters are given shorter encodings. The shortest encoding possible is 5 bits long, therefore the highest compression ratio achievable is 8:5 (or 37.5% smaller).</p>
 		</li>
 	</ul>
-	<h4>HPACK flow</h4>
+	<div class="flex anchor relative">
+		<h4 id="hpack-flow">HPACK flow</h4>
+		<a href="https://blog.cloudflare.com/#hpack-flow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When HPACK needs to encode a header in the format <b><i>name:value</i></b>, it will first look in the static and dynamic dictionaries. If the <b><i>full</i></b> <b>name:value</b> is present, it will simply reference the entry in the dictionary. This will usually take one byte, and in most cases two bytes will suffice! A whole header encoded in a single byte! How crazy is that?</p>
 	<p>Since many headers are repetitive, this strategy has a very high success rate. For example, headers like <b>:authority:</b><a href="https://www.cloudflare.com"><b>www.cloudflare.com</b></a> or the sometimes huge <b>cookie</b> headers are the usual suspects in this case.</p>
 	<p>When HPACK can't match a whole header in a dictionary, it will attempt to find a header with the same <b><i>name</i></b>. Most of the popular header names are present in the static table, for example: <b>content-encoding</b>, <b>cookie</b>, <b>etag</b>. The rest are likely to be repetitive and therefore present in the dynamic table. For example, Cloudflare assigns a unique <b>cf-ray</b> header to each response, and while the value of this field is always different, the name can be reused!</p>
 	<p>If the name was found, it can again be expressed in one or two bytes in most cases, otherwise the name will be encoded using either raw encoding or the Huffman encoding: the shorter of the two. The same goes for the value of the header.</p>
 	<p>We found that the Huffman encoding alone saves almost 30% of header size.</p>
 	<p>Although HPACK does string matching, for the attacker to find the value of a header, they must guess the entire value, instead of a gradual approach that was possible with DEFLATE matching, and was vulnerable to CRIME.</p>
-	<h4>Request Headers</h4>
+	<div class="flex anchor relative">
+		<h4 id="request-headers">Request Headers</h4>
+		<a href="https://blog.cloudflare.com/#request-headers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The gains HPACK provides for HTTP request headers are more significant than for response headers. Request headers get better compression, due to much higher duplication in the headers. For example, here are two requests for our own blog, using Chrome:</p>
 	<h6>Request #1:</h6>
 	<p>**:authority:**blog.cloudflare.com**:method:**GET<b>:path:</b> /**:scheme:**https**accept:**text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<i>/</i>;q=0.8**accept-encoding:**gzip, deflate, sdch, br**accept-language:**en-US,en;q=0.8<b>cookie:</b> 297 byte cookie**upgrade-insecure-requests:**1**user-agent:**Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2853.0 Safari/537.36</p>

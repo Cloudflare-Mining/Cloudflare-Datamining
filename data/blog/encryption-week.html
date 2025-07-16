@@ -42,7 +42,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5On9CC982TmTvvjCUQomUp/bdfe5b43f29344c80fc3a2ead9058973/image01.png" alt="HTTP in Chrome" class="kg-image" width="400" height="194" loading="lazy">
 
 	</figure>
-	<h4>Automatic HTTPS Rewrites: Fixing mixed content automatically</h4>
+	<div class="flex anchor relative">
+		<h4 id="automatic-https-rewrites-fixing-mixed-content-automatically">Automatic HTTPS Rewrites: Fixing mixed content automatically</h4>
+		<a href="https://blog.cloudflare.com/#automatic-https-rewrites-fixing-mixed-content-automatically" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Some mixed content is not mixed content at all. Often, sub-resources are available over HTTPS, but the page’s source has been hardcoded to download them over HTTP. Manually changing “http” to “https” in the page’s source is often enough to fix mixed content in these cases. However, many sites can’t do that because their sites are created dynamically by content management systems or they include third party resources that they have no control over.</p>
 	<p>For Wordpress customers, we tackled this issue by modifying the CloudFlare Wordpress plugin to <a href="https://blog.cloudflare.com/flexible-ssl-wordpress-fixing-mixed-content-errors">automatically rewrite insecure URLs</a>. Building on the success of this approach, we decided to build URL rewriting functionality into CloudFlare itself. The result is a feature called Automatic HTTPS Rewrites, which we are making available to all customers for free this week.</p>
 	<p>CloudFlare customers with Automatic HTTPS Rewrites enabled on their site will have “http" replaced with “https” for all sub-resources that are also available over HTTPS. We use the EFF’s <a href="https://www.eff.org/https-Everywhere">HTTPS Everywhere list</a>, Chrome’s <a href="https://hstspreload.appspot.com">HSTS preload list</a>, and soon our own internal list of HTTPS-enabled domains to determine whether sites can be upgraded. This feature facilitates the seamless upgrade of customer sites to HTTPS, allowing them to take full advantage of Universal SSL. As a bonus, Automatic HTTPS Rewrites also re-writes links from “http://” to “https://” whenever possible, ensuring that web visitors <a href="https://www.cloudflare.com/learning/security/how-to-improve-wordpress-security">stay safe</a> even when they leave your site.</p>

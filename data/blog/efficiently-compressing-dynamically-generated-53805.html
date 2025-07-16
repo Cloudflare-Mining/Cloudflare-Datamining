@@ -52,7 +52,14 @@
 	<p>And as more and more applications use HTTP for APIs there's an opportunity to increase API performance through the use of shared dictionaries of JSON or XML. APIs often contain even more common, repeated parts than HTML as they are intended for machine consumption and change slowly over time (whereas the HTML of a page will change more quickly as designers update the look of a page).</p>
 	<p>Two different proposals have tried to address this in different ways:</p>
 	<p>SDCH and ESI. Neither have achieved acceptance as Internet standards partly because of the added complexity of deploying them.</p>
-	<h4>SDCH</h4>
+	<div class="flex anchor relative">
+		<h4 id="sdch">SDCH</h4>
+		<a href="https://blog.cloudflare.com/#sdch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 2008, a group working at Google proposed a protocol for negotiating shared dictionaries of content so that a web server can compress a page in the knowledge that a web browser has chunks of the page in its cache. The proposal is known as <a href="https://en.wikipedia.org/wiki/Shared_Dictionary_Compression_Over_HTTP">SDCH</a> (Shared Dictionary Compression over HTTP). Current versions of Google Chrome use SDCH to compress Google Search results.</p>
 	<p>This can be seen in the Developer Tools in Google Chrome. Any search request will contain an HTTP header specifying that the browser accepts SDCH compressed pages:</p>
 	<pre class="language-bash"><code class="language-bash">Accept-Encoding: gzip,deflate,sdch</code></pre>
@@ -64,7 +71,14 @@
 	<p>For maximum effectiveness it's desirable to produce a shared dictionary that will be useful in reducing page sizes across a large number of page views. To do this it's necessary to either implement an automatic technique that samples real web traffic and identifies common blocks of HTML, or to determine which pages are most viewed and compute dictionaries for them (perhaps based on specialised knowledge of what parts of the page are common across requests).</p>
 	<p>When automated techniques are used it's important to ensure that when sampling traffic that contains personal information (such as for a logged in user) that personal information does not end up in the dictionary.</p>
 	<p>Although SDCH is powerful when used, these dictionary generation difficulties have prevented its widespread use. The Apache mod_sdch project is inactive and the Google SDCH group has been largely inactive since 2011.</p>
-	<h4>ESI</h4>
+	<div class="flex anchor relative">
+		<h4 id="esi">ESI</h4>
+		<a href="https://blog.cloudflare.com/#esi" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 2001 a consortium of companies proposed addressing both latency and common content with <a href="https://en.wikipedia.org/wiki/Edge_Side_Includes">ESI</a> (Edge Side Includes). Edge Side Includes work by having a web page creator identify unchanging parts of the page and then making these available as separate mini-pages using HTTP.</p>
 	<p>For example, if a page contains a common header and navigation, a web page author might place that in a separate nav.html file and then in a page they are authoring enter the following XML in place of the header and navigation HTML:</p>
 	<pre class="language-bash"><code class="language-bash">\&amp;lt;esi:include src=&amp;quot;http://example.com/nav.html&amp;quot; &amp;quot;continue&amp;quot;/&amp;gt;</code></pre>

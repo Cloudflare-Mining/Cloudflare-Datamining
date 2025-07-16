@@ -71,7 +71,14 @@
 
 	</figure>
 	<p>To get data tied to a past event, simply select the link in the Waiting Room Events table.</p>
-	<h4>User insights</h4>
+	<div class="flex anchor relative">
+		<h4 id="user-insights">User insights</h4>
+		<a href="https://blog.cloudflare.com/#user-insights" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first two metrics–Time in queue and Time on origin–provide insights into your end-users' experience and behavior. &nbsp;The <i>time in queue</i> values help you understand how long queued users waited before accessing your site over the time period selected. The <i>time on origin</i> values shed light on end-user behavior by displaying an estimate of the range of time users spend on your site before leaving. If session renewal is disabled, this time will max out at session_duration and reflect the time at which users are issued a new waiting room cookie. For both metrics, we provide time for both the typical user, represented by a range of the 50th and 75th percentile of users, as well as for the top 5% of users who spend the longest in the queue or on your site.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -80,7 +87,14 @@
 	</figure>
 	<p>The Time in queue and Time on origin are given for the typical user as well as for the 95th percentile of users.</p>
 	<p>If session renewal is disabled, keeping an eye on Time on origin values is especially important. When sessions do not renew, once a user's session has expired, they are given a new waiting room cookie upon their next request. The user will be put at the back of the line if there is active queueing. Otherwise, they will continue browsing, but their session timer will start over and your analytics will never show a Time on origin greater than your configured session duration, even if individual users are on your site longer than the session duration. If session renewal is disabled and the typical time on origin is close to your configured session duration, this could be an indicator you may need to give your users more time to complete their journey before putting them back in line.</p>
-	<h4>Analyze past waiting room traffic</h4>
+	<div class="flex anchor relative">
+		<h4 id="analyze-past-waiting-room-traffic">Analyze past waiting room traffic</h4>
+		<a href="https://blog.cloudflare.com/#analyze-past-waiting-room-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Scrolling down the page, you will find visualizations of your user traffic compared to your waiting room's target thresholds for Total active users and New users per minute. These two settings determine when your waiting room will start queueing as traffic increases. The Total active users setting controls the number of concurrent users on your site, while the New users per minute threshold restricts the flow rate of users onto your site.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -139,7 +153,15 @@
 	</div>
 	<p>At Cloudflare, we love to build on top of our own products. Waiting Room is built on <a href="https://blog.cloudflare.com/building-waiting-room-on-workers-and-durable-objects">Workers and Durable Objects</a>. Workers have the ability to auto-scale based on the request rate. They are built using <a href="https://blog.cloudflare.com/cloud-computing-without-containers">isolates</a> enabling them to spin up hundreds or thousands of isolates within 5 milliseconds without much overhead. Every request that goes to an application behind a waiting room, goes to a Worker.</p>
 	<p>We optimized the way in which we track end users visiting the application while maintaining their position in the queue. Tracking every user individually would incur more overhead in terms of maintaining state, consuming more CPU &amp; memory. Instead, we decided to divide the users into buckets based on the timestamp of the first request made by the end user. For example, all the users who visited a waiting room between 00:00:00 and 00:00:59 for the first time are assigned to the bucket 00:00:00. Every end user gets a unique encrypted cookie on the first request to the waiting room. The contents of the cookie keep getting updated based on the status of the users in the queue. Once the end user is accepted to the origin, we set the cookie expiry to <i>session_duration</i> minutes, which can be set in the dashboard, from the last request timestamp. In the cookie we track the timestamp of when the end user joined the queue which is used in the calculation of time waited in queue.</p>
-	<h4>Collection of metrics in a distributed environment</h4>
+	<div class="flex anchor relative">
+		<h4 id="collection-of-metrics-in-a-distributed-environment">Collection of metrics in a distributed environment</h4>
+		<a href="https://blog.cloudflare.com/#collection-of-metrics-in-a-distributed-environment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5PhNDWwGlL9HyuZhyh5zSK/2efde37fe13c8293cb4d99fd636ec73d/a11.png" alt="The Waiting Room is a distributed system that receives requests from multiple locations around the globe" class="kg-image" width="1600" height="992" loading="lazy">
@@ -169,12 +191,33 @@
 	<p>Intuitively, we decided to store <i>time on origin</i> and <i>total time waited in queue</i> into a histogram distribution so that we would be able to represent the data and calculate quantiles precisely. We used <a href="http://hdrhistogram.org">Hdr Histogram</a> - A High Dynamic Range Histogram for recording the data in histograms. Hdr Histograms are scalable and we were able to record dynamic numbers of values with auto-resizing without inflating CPU, memory or introducing latency. The time to record a value in the Hdr Histograms range from 3-6 nanoseconds. Querying and recording values can be done in constant time. Two histogram data structures can simply be added together into a bigger histogram. Also, the histograms can be compressed and encoded/decoded into base64 strings. This enabled us to scalably pass the data structure within our internal services for further aggregation.</p>
 	<p>The memory footprint of hdr histograms is constant and depends on the size of the bucket, precision and range of the histogram. The size of the bucket we use is the default 32 bits bucket size. The precision of the histogram is set to include up to three significant digits. The histogram has a dynamic range of values enabled through the use of the auto-resize functionality. However, to ensure efficient data storage, a limit of 5,000 recorded points per minute has been imposed. Although this limit was chosen arbitrarily, it has proven to be adequate for storing data points transmitted from the workers to the Durable Objects on a minute-by-minute basis.</p>
 	<p>The requests to the website behind a Waiting Room go to a Cloudflare data center that is close to their <a href="https://www.cloudflare.com/network">location</a>. Our workers from around the world record values in the histogram which is compressed and sent to the data center Durable Object periodically. The histograms from multiple workers are uncompressed and aggregated into a single histogram per data center. The resulting histogram is compressed and sent upstream to the Global Durable objects where the histograms from all data centers receiving traffic are uncompressed and aggregated. The resulting histogram is the final data structure which is used for statistical analysis. We directly query the aggregated histogram for the quantile values. The histogram objects were instantiated once at the start of the service, they were reset after every successful sync with the upstream service.</p>
-	<h4>Writing data to the pipeline</h4>
+	<div class="flex anchor relative">
+		<h4 id="writing-data-to-the-pipeline">Writing data to the pipeline</h4>
+		<a href="https://blog.cloudflare.com/#writing-data-to-the-pipeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The global Durable Object aggregates all the metrics, computes quantiles and sends the data to a worker which is responsible for analytics reporting. This worker reads data from Workers KV in order to get the Waiting Room configurations. All the metrics are aggregated into a single analytics message. These messages are written every minute to Clickhouse. We leveraged an internal version of <a href="https://developers.cloudflare.com/analytics/analytics-engine">Workers Analytics Engine</a> in order to write the data. This allowed us to quickly write our logs to Clickhouse with minimum interactions with all the systems involved in the pipeline.</p>
 	<p>We write analytics events from the runtime in the form of blobs and doubles with a specific schema and the event data gets written to a Clickhouse cluster. We extract the data into a Clickhouse view and apply <a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">ABR</a> to facilitate fast queries at any timescale. You can expand the time range to vary from 30 minutes to 30 days without any lag. ABR adaptively chooses the resolution of data based on the query. For example, it would choose a lower resolution for a long time range and vice versa. As of now, the analytics data is available in the Clickhouse table for 30 days, implying that you can not query data older than 30 days in the dashboard as well.</p>
-	<h4>Sampling</h4>
+	<div class="flex anchor relative">
+		<h4 id="sampling">Sampling</h4>
+		<a href="https://blog.cloudflare.com/#sampling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Waiting Room Analytics samples the data in order to effectively run large queries while providing consistent response times. Indexing the data on Waiting Room id has enabled us to run quicker and more efficient scans, however we still need to elegantly handle unbounded data. To tackle this we use <a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">Adaptive Bit Rate</a> which enables us to write the data at multiple resolutions (100%, 10%, 1%...) and then read the best resolution of the data. The sample rate “adapts” based on how long the query takes to run. If the query takes too long to run in 100% resolution, the next resolution is picked and so on until the first successful result. However, since we pre-process and aggregate data before writing to the pipeline, we expect 100% resolution of data on reads for shorter periods of time (up to 7 days). For a longer time range, the data will be sampled.</p>
-	<h4>Get Waiting Room Analytics via GraphQL API</h4>
+	<div class="flex anchor relative">
+		<h4 id="get-waiting-room-analytics-via-graphql-api">Get Waiting Room Analytics via GraphQL API</h4>
+		<a href="https://blog.cloudflare.com/#get-waiting-room-analytics-via-graphql-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Lastly, to make metrics available to customers and to the Waiting Room dashboard, we exposed the analytics data available in Clickhouse via GraphQL API.</p>
 	<p>If you prefer to build your own dashboards or systems based on waiting room traffic data, then Waiting Room Analytics via GraphQL API is for you. Build your own custom dashboards using the GraphQL framework and use a GraphQL client such as GraphiQL to run queries and explore the schema.</p>
 	<p>The Waiting Room Analytics dataset can be found under the Zones Viewer as waitingRoomAnalyticsAdaptive and waitingRoomAnalyticsAdaptiveGroups. You can filter the dataset per zone, waiting_room_id and the request time period, see the dataset schema under ZoneWaitingRoomAnalyticsAdaptive. You can order the data by ascending or descending order of the metric values.</p>

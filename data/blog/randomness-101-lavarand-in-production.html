@@ -24,7 +24,15 @@
 			</svg>
 		</a>
 	</div>
-	<h4>Randomness in Cryptography</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="randomness-in-cryptography">Randomness in Cryptography</h4>
+		<a href="https://blog.cloudflare.com/#randomness-in-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we’ve <a href="https://blog.cloudflare.com/why-randomness-matters">discussed in the past</a>, cryptography relies on the ability to generate random numbers that are both unpredictable and kept secret from any adversary.</p>
 	<p>But “random” is a pretty tricky term; it’s used in many different fields to mean slightly different things. And like all of those fields, its use in cryptography is very precise. In some fields, a process is random simply if it has the right statistical properties. For example, the digits of pi are said to be random because all sequences of numbers appear with equal frequency (“15” appears as frequently as “38”, “426” appears as frequently as “297”, etc). But for cryptography, this isn’t enough - random numbers must be <i>unpredictable</i>.</p>
 	<p>To understand what <i>unpredictable</i> means, it helps to consider that all cryptography is based on an asymmetry of information. If you’re trying to securely perform some cryptographic operation, then what you’re concerned about is that somebody - an <i>adversary</i> - will try to break your security. The only thing that distinguishes you from the adversary is that you know some things that the adversary does not, and the job of cryptography is to ensure that this asymmetry of information is enough to keep you secure.</p>

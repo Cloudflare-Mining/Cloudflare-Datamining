@@ -137,7 +137,14 @@ IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 		</a>
 	</div>
 	<p>It's necessary to fix this and prevent further attacks. Here is a list of things that should be done.</p>
-	<h4>Memcached Users</h4>
+	<div class="flex anchor relative">
+		<h4 id="memcached-users">Memcached Users</h4>
+		<a href="https://blog.cloudflare.com/#memcached-users" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you are using memcached, please disable UDP support if you are not using it. On memcached startup you can specify <code>--listen 127.0.0.1</code> to listen only to localhost and <code>-U 0</code> to disable UDP completely. <i>By default memcached listens on INADDR_ANY and runs with UDP support ENABLED</i>. Documentation:</p>
 	<ul>
 		<li>
@@ -151,7 +158,14 @@ STAT uptime 41557034
 STAT time 1519734962
 ...</code></pre>
 	<p>If you see non-empty response (like the one above), your server is vulnerable.</p>
-	<h4>System administrators</h4>
+	<div class="flex anchor relative">
+		<h4 id="system-administrators">System administrators</h4>
+		<a href="https://blog.cloudflare.com/#system-administrators" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Please ensure that your memcached servers are firewalled from the internet! To test whether they can be accessed using UDP I recommend the <code>nc</code> example above, to verify if TCP is closed run <code>nmap</code>:</p>
 	<pre class="language-bash"><code class="language-bash">$ nmap TARGET -p 11211 -sU -sS --script memcached-info
 Starting Nmap 7.30 ( https://nmap.org ) at 2018-02-27 12:44 UTC
@@ -173,7 +187,16 @@ PORT      STATE         SERVICE
 |   UDP Port             11211
 |_  Authentication       no
 11211/udp open|filtered memcache</code></pre>
-	<h4>Internet Service Providers</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="internet-service-providers">Internet Service Providers</h4>
+		<a href="https://blog.cloudflare.com/#internet-service-providers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Dmq5baGJDRlwdmxqz9hHg/b9a8188adb7776dd16a7689d8936baa8/memcached-reflector.png" alt="memcached-reflector" class="kg-image" width="944" height="573" loading="lazy">
@@ -181,7 +204,14 @@ PORT      STATE         SERVICE
 	</figure>
 	<p>In order to defeat such attacks in future, we need to fix vulnerable protocols and also IP spoofing. As long as IP spoofing is permissible on the internet, we'll be in trouble.</p>
 	<p>Help us out by tracking who is behind these attacks. We must know not who has problematic memcached servers, but <i>who sent them queries in the first place</i>. We can't do this without your help!</p>
-	<h4>Developers</h4>
+	<div class="flex anchor relative">
+		<h4 id="developers">Developers</h4>
+		<a href="https://blog.cloudflare.com/#developers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Please please please: Stop using UDP. If you must, please don't enable it by default. If you do not know what an amplification attack is I hereby forbid you from ever typing <code>SOCK_DGRAM</code> into your editor.</p>
 	<p>We've been down this road so many times. DNS, NTP, Chargen, SSDP and now memcached. If you use UDP, you must always respond with strictly a <i>smaller</i> packet size then the request. Otherwise your protocol will be abused. Also remember that people do forget to set up a firewall. Be a nice citizen. Don't invent a UDP-based protocol that lacks authentication of any kind.</p>
 	<div class="flex anchor relative">

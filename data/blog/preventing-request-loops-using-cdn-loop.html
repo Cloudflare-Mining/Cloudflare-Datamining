@@ -20,7 +20,14 @@
 
 	</figure>
 	<p>Then any request sent to the origin would get caught in a loop between the two Proxies (see above). If such a loop goes undetected, then this can quickly eat the computing resources of the two proxies, especially if the request requires a lot of processing at the edge. In these cases, it is conceivable that such an attack could lead to a DoS on one or both of the proxy services. Indeed, a <a href="http://www.icir.org/vern/papers/cdn-loops.NDSS16.pdf">research paper from NDSS 2016</a> showed that such an attack was practical when leveraging multiple CDN providers (including Cloudflare) in the way method shown above.</p>
-	<h4>The original solution</h4>
+	<div class="flex anchor relative">
+		<h4 id="the-original-solution">The original solution</h4>
+		<a href="https://blog.cloudflare.com/#the-original-solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The previous blog post advocated using the Via header on HTTP requests to log the proxy services that had previously processed any previous request. This header is specified in <a href="https://tools.ietf.org/html/rfc7230#section-5.7.1">RFC7230</a> and is purpose-built for providing request loop detection. The idea was that CDN providers would log each time a request came through their edge architecture in the Via header. Any request that arrived at the edge would be checked to see if it previously passed through the same CDN using the value of the Via header. If the header indicated that it had passed through before, then the request could be dropped before any serious processing had taken place.</p>
 	<p>Nick’s previous <a href="https://blog.cloudflare.com/preventing-malicious-request-loops">post</a> finished with a call-to-arms for all services proxying requests to be compliant with the standard.</p>
 	<div class="flex anchor relative">
@@ -75,7 +82,14 @@ CDN-Loop: cdn-info(A)</code></pre>
 	<p>A CDN could also utilise the optional parameters to indicate that a request had been processed:</p>
 	<pre class="language-bash"><code class="language-bash">CDN-Loop: cdn-info(A); processed=1</code></pre>
 	<p>The ability to use different parameters in the header allows for much more granular loop detection and protection. For example, a CDN could drop requests that had previously looped N&gt;1 times, rather than just once. In addition, the advantage of using the CDN-Loop header is that it does not come with legacy baggage. &nbsp;As we experienced previously, loop detection based on the Via header can conflict with existing usage of the header in web server implementations that eventually lead to compression issues and performance degradation. This makes CDN-Loop a viable and effective solution for detecting loop-protection attacks and applying preventions where needed.</p>
-	<h4>Implementing CDN-Loop at Cloudflare</h4>
+	<div class="flex anchor relative">
+		<h4 id="implementing-cdn-loop-at-cloudflare">Implementing CDN-Loop at Cloudflare</h4>
+		<a href="https://blog.cloudflare.com/#implementing-cdn-loop-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The IETF standardisation process welcomes running code and implementation experience in the real world. Cloudflare recently added support for the CDN-Loop header to requests that pass through the Cloudflare edge. This replaces the <code>CF-Connecting-IP</code> and <code>X-Forwarded-For</code> headers as the primary means for establishing loop protection. The structure that Cloudflare uses is similar to the examples above, where <code>cdn-info = cloudflare</code>. Extra parameters can be added to the header to determine how many times a request has been processed and in what manner.</p>
 	<figure class="kg-card kg-image-card ">
 

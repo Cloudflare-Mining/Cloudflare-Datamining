@@ -98,7 +98,14 @@ log.Println(srv.ListenAndServeTLS("", ""))</code></pre>
 	<p>Finally, Go 1.8 <a href="https://github.com/golang/go/issues/14204">introduces <code>IdleTimeout</code></a> which limits server-side the amount of time a Keep-Alive connection will be kept idle before being reused. Before Go 1.8, the <code>ReadTimeout</code> would start ticking again immediately after a request completed, making it very hostile to Keep-Alive connections: the idle time would consume time the client should have been allowed to send the request, causing unexpected timeouts also for fast clients.</p>
 	<p>You should set <code>Read</code>, <code>Write</code> and <code>Idle</code> timeouts when dealing with untrusted clients and/or networks, so that a client can't hold up a connection by being slow to write or read.</p>
 	<p>For detailed background on HTTP/1.1 timeouts (up to Go 1.7) read <a href="https://blog.cloudflare.com/the-complete-guide-to-golang-net-http-timeouts">my post on the Cloudflare blog</a>.</p>
-	<h4>HTTP/2</h4>
+	<div class="flex anchor relative">
+		<h4 id="http-2">HTTP/2</h4>
+		<a href="https://blog.cloudflare.com/#http-2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HTTP/2 is enabled automatically on any Go 1.6+ server if:</p>
 	<ul>
 		<li>
@@ -117,7 +124,14 @@ log.Println(srv.ListenAndServeTLS("", ""))</code></pre>
 	<p>HTTP/2 has a slightly different meaning since the same connection can be serving different requests at the same time, however, they are abstracted to the same set of Server timeouts in Go.</p>
 	<p>Sadly, <code>ReadTimeout</code> breaks HTTP/2 connections in Go 1.7. Instead of being reset for each request it's set once at the beginning of the connection and never reset, breaking all HTTP/2 connections after the <code>ReadTimeout</code> duration. <a href="https://github.com/golang/go/issues/16450">It's fixed in 1.8</a>.</p>
 	<p>Between this and the inclusion of idle time in <code>ReadTimeout</code>, my recommendation is to <b>upgrade to 1.8 as soon as possible</b>.</p>
-	<h4>TCP Keep-Alives</h4>
+	<div class="flex anchor relative">
+		<h4 id="tcp-keep-alives">TCP Keep-Alives</h4>
+		<a href="https://blog.cloudflare.com/#tcp-keep-alives" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you use <code>ListenAndServe</code> (as opposed to passing a <code>net.Listener</code> to <code>Serve</code>, which offers zero protection by default) a TCP Keep-Alive period of three minutes <a href="https://github.com/golang/go/blob/61db2e4efa2a8f558fd3557958d1c86dbbe7d3cc/src/net/http/server.go#L3023-L3039">will be set automatically</a>. That <i>will</i> help with clients that disappear completely off the face of the earth leaving a connection open forever, but I’ve learned not to trust that, and to set timeouts anyway.</p>
 	<p>To begin with, three minutes might be too high, which you can solve by implementing your own <a href="https://github.com/golang/go/blob/61db2e4efa2a8f558fd3557958d1c86dbbe7d3cc/src/net/http/server.go#L3023-L3039"><code>tcpKeepAliveListener</code></a>.</p>
 	<p>More importantly, a Keep-Alive only makes sure that the client is still responding, but does not place an upper limit on how long the connection can be held. A single malicious client can just open as many connections as your server has file descriptors, hold them half-way through the headers, respond to the rare keep-alives, and effectively take down your service.</p>

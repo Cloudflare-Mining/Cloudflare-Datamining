@@ -179,7 +179,14 @@
 	</div>
 	<p>For browsers, an OCSP failure is not the end of the world. Most browsers are configured to soft-fail when an OCSP responder returns an error, so users are unaffected by OCSP server failures. Some Certificate Authorities have had <a href="https://community.letsencrypt.org/t/may-19-2017-ocsp-and-issuance-outage-postmortem/34922">massive multi-day outages</a> in their OCSP servers without affecting the availability of sites that use their certificates.</p>
 	<p>There’s no strong feedback mechanism for broken or slow OCSP servers. This lack of feedback has led to an ecosystem of faulty or unreliable OCSP servers. We experienced this first-hand while developing high-reliability OCSP stapling. In this section, we’ll outline half a dozen unexpected behaviors we found when deploying high-reliability OCSP stapling. A big thanks goes out to all the CAs who fixed the issues we pointed out. CA names redacted to preserve their identities.</p>
-	<h4>CA #1: Non-overlapping periods</h4>
+	<div class="flex anchor relative">
+		<h4 id="ca-1-non-overlapping-periods">CA #1: Non-overlapping periods</h4>
+		<a href="https://blog.cloudflare.com/#ca-1-non-overlapping-periods" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We noticed CA #1 certificates frequently missing their refresh-deadline, and during debugging we were lucky enough to see this:</p>
 	<pre class="language-bash"><code class="language-bash">$ date -u
 Sat Mar  4 02:45:35 UTC 2017
@@ -192,22 +199,57 @@ $ ocspfetch &lt;redacted, customer ID&gt;
 This Update: 2017-03-04 02:45:49 +0000 UTC
 Next Update: 2017-03-04 03:45:49 +0000 UTC</code></pre>
 	<p>It shows that CA #1 had configured their OCSP responders to use an incredibly short validity period with almost no overlap between validity periods, which makes it functionally impossible to always have a fresh OCSP response for their certificates. We contacted them, and they reconfigured the responder to produce new responses every half-interval.</p>
-	<h4>CA #2: Wrong signature algorithm</h4>
+	<div class="flex anchor relative">
+		<h4 id="ca-2-wrong-signature-algorithm">CA #2: Wrong signature algorithm</h4>
+		<a href="https://blog.cloudflare.com/#ca-2-wrong-signature-algorithm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Several certificates from CA #2 started failing with this error:</p>
 	<pre class="language-bash"><code class="language-bash"> bad OCSP signature: crypto/rsa: verification error</code></pre>
 	<p>The issue is that the OCSP claims to be signed with SHA256-RSA, when it is actually signed with SHA1-RSA (and the reverse: indicates SHA1-RSA, actually signed with SHA256-RSA).</p>
-	<h4>CA #3: Malformed OCSP responses</h4>
+	<div class="flex anchor relative">
+		<h4 id="ca-3-malformed-ocsp-responses">CA #3: Malformed OCSP responses</h4>
+		<a href="https://blog.cloudflare.com/#ca-3-malformed-ocsp-responses" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we first started the project, our tool was unable to parse dozens of certificates in our database because of this error</p>
 	<pre class="language-bash"><code class="language-bash">asn1: structure error: integer not minimally-encoded</code></pre>
 	<p>and many OCSP responses that we fetched from the same CA:</p>
 	<pre class="language-bash"><code class="language-bash">parsing ocsp response: bad OCSP signature: asn1: structure error: integer not minimally-encoded</code></pre>
 	<p>What happened was that this CA had begun issuing &lt;1% of certificates with a minor formatting error that rendered them unparseable by Golang’s x509 package. After contacting them directly, they quickly fixed the issue but then we had to patch Golang's parser to be more lenient about encoding bugs.</p>
-	<h4>CA #4: Failed responder behind a load balancer</h4>
+	<div class="flex anchor relative">
+		<h4 id="ca-4-failed-responder-behind-a-load-balancer">CA #4: Failed responder behind a load balancer</h4>
+		<a href="https://blog.cloudflare.com/#ca-4-failed-responder-behind-a-load-balancer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A small number of CA #4’s OCSP responders fell into a "bad state" without them knowing, and would return 404 on every request. Since the CA used load balancing to round-robin requests to a number of responders, it looked like 1 in 6 requests would fail inexplicably.</p>
 	<p>Two times between Jan 2017 and May 2017, this CA also experienced some kind of large data-loss event that caused them to return persistent "Try Later" responses for a large number of requests.</p>
-	<h4>CA #5: Delay between certificate and OCSP responder</h4>
+	<div class="flex anchor relative">
+		<h4 id="ca-5-delay-between-certificate-and-ocsp-responder">CA #5: Delay between certificate and OCSP responder</h4>
+		<a href="https://blog.cloudflare.com/#ca-5-delay-between-certificate-and-ocsp-responder" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When a certificate is issued by CA #5, there is a large delay between the time a certificate is issued and the OCSP responder is able to start returning signed responses. This results in a delay between certificate issance and the availability of OCSP. It has mostly been resolved, but this general pattern is dangerous for OCSP must-staple. There have been some <a href="https://github.com/sleevi/cabforum-docs/pull/2">changes discussed</a> by the <a href="https://cabforum.org">CA/B Forum</a>, an organization that regulates the issuance and management of certificates, to require CAs to offer OCSP soon after issuance.</p>
-	<h4>CA #6: Extra certificates</h4>
+	<div class="flex anchor relative">
+		<h4 id="ca-6-extra-certificates">CA #6: Extra certificates</h4>
+		<a href="https://blog.cloudflare.com/#ca-6-extra-certificates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It is typical to embed only one certificate in an OCSP response, if any. The one embedded certificate is supposed to be a leaf specially issued for signing an intermediate's OCSP responses. However, several CAs embed multiple certificates: the leaf they use for signing OCSP responses, the intermediate itself, and sometimes all the intermediates up to the root certificate.</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusions">Conclusions</h3>

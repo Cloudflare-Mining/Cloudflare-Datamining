@@ -83,7 +83,14 @@ Terraform v0.11.7</code></pre>
 		</a>
 	</div>
 	<p>Now that Terraform is installed, it's time to start using it. Let's assume you have a web server for your domain that's accessible on <code>203.0.113.10</code>. You just signed up your domain, <code>example.com</code>, on Cloudflare and want to manage everything with Terraform.</p>
-	<h4>1. Define your first Terraform config file</h4>
+	<div class="flex anchor relative">
+		<h4 id="1-define-your-first-terraform-config-file">1. Define your first Terraform config file</h4>
+		<a href="https://blog.cloudflare.com/#1-define-your-first-terraform-config-file" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First we'll create a initial Terraform config file. Any files ending in <code>.tf</code> will be processed by Terraform. As you configuration gets more complex you'll want to split the config into separate files and modules, but for now we'll proceed with a single file:</p>
 	<pre class="language-bash"><code class="language-bash">$ cat &gt; cloudflare.tf &lt;&lt;'EOF'
 provider "cloudflare" {
@@ -103,7 +110,15 @@ resource "cloudflare_record" "www" {
   proxied = true
 }
 EOF</code></pre>
-	<h4>2. Initialize Terraform and the Cloudflare provider</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="2-initialize-terraform-and-the-cloudflare-provider">2. Initialize Terraform and the Cloudflare provider</h4>
+		<a href="https://blog.cloudflare.com/#2-initialize-terraform-and-the-cloudflare-provider" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that you've created your basic configuration in HCL let's initialize Terraform and ask it to apply the configuration to Cloudflare. HCL stands for HashiCorp Configuration Lanaguage, and is named after the maker of Terraform.</p>
 	<pre class="language-bash"><code class="language-bash">$ terraform init
 
@@ -138,7 +153,15 @@ $ find .terraform/
 .terraform//plugins/darwin_amd64
 .terraform//plugins/darwin_amd64/lock.json
 .terraform//plugins/darwin_amd64/terraform-provider-cloudflare_v1.0.0_x4</code></pre>
-	<h4>3. Review the execution plan</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="3-review-the-execution-plan">3. Review the execution plan</h4>
+		<a href="https://blog.cloudflare.com/#3-review-the-execution-plan" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the Cloudflare provider installed, let's ask Terraform to show the changes it's planning to make to your Cloudflare account so you can confirm it matches the configuration you intended:</p>
 	<pre class="language-bash"><code class="language-bash">$ terraform plan
 Refreshing Terraform state in-memory prior to plan...
@@ -178,7 +201,14 @@ Note: You didn't specify an "-out" parameter to save this plan, so Terraform
 can't guarantee that exactly these actions will be performed if
 "terraform apply" is subsequently run.</code></pre>
 	<p>As you can see in the above "execution plan”, Terraform is going to create a new DNS record, as requested. Values that you've explicitly specified are displayed, e.g., the value of the <code>A</code> record—<code>203.0.113.10</code>—while values that are derived based on other API calls, e.g., looking up the zone_id, or returned after the object is created, are displayed as <code>&lt;computed&gt;</code>.</p>
-	<h4>4. Applying Your Changes</h4>
+	<div class="flex anchor relative">
+		<h4 id="4-applying-your-changes">4. Applying Your Changes</h4>
+		<a href="https://blog.cloudflare.com/#4-applying-your-changes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The plan command is important, as it allows you to preview the changes for accuracy before actually making them. Once you're comfortable with the execution plan, it's time to apply it:</p>
 	<pre class="language-bash"><code class="language-bash">$ terraform apply --auto-approve
 cloudflare_record.www: Creating...
@@ -199,7 +229,14 @@ cloudflare_record.www: Creation complete after 1s (ID: c38d3103767284e7cd14d5dad
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 </code></pre>
 	<p>Note that I specified –auto-approve on the command line for briefer output; without this flag, Terraform will show you the output of <code>terraform plan</code> and then ask for confirmation before applying it.</p>
-	<h4>Verify the results</h4>
+	<div class="flex anchor relative">
+		<h4 id="verify-the-results">Verify the results</h4>
+		<a href="https://blog.cloudflare.com/#verify-the-results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Logging back into the Cloudflare Dashboard and selecting the DNS tab, I can see the record that was created by Terraform:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -245,7 +282,14 @@ provider "cloudflare" {
   token = "your-api-key"
 }</code></pre>
 	<p>We're now going to store your configuration in GitHub where it can be tracked, peer-reviewed, and rolled back to as needed. But before we do so, we're going to remove your credentials from the Terraform config file so it doesn't get committed to a repository.</p>
-	<h4>1. Use environment variables for authentication</h4>
+	<div class="flex anchor relative">
+		<h4 id="1-use-environment-variables-for-authentication">1. Use environment variables for authentication</h4>
+		<a href="https://blog.cloudflare.com/#1-use-environment-variables-for-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a good security practice we need to remove your Cloudflare credentials from anything that will be committed to a repository. The Cloudflare Terraform provider supports reading these values from the <code>CLOUDFLARE_EMAIL</code> and <code>CLOUDFLARE_TOKEN</code> environment variables, so all we need to do is:</p>
 	<pre class="language-bash"><code class="language-bash">$ sed -ie 's/^.*email =.*$/  # email pulled from $CLOUDFLARE_EMAIL/' cloudflare.tf
 $ sed -ie 's/^.*token =.*$/  # token pulled from $CLOUDFLARE_TOKEN/' cloudflare.tf
@@ -332,7 +376,14 @@ To git@github.com:$GITHUB_USER/cf-config.git
 	</div>
 	<p>Now that you've got a basic website proxied through Cloudflare, it's time to use Terraform to adjust some additional settings on your zone. Below we'll configure some optional HTTPS settings, and then push the updated configuration to GitHub for posterity.</p>
 	<p>We'll use a new git branch for the changes, and then merge it into master before applying. On a team, you might consider using this step as an opportunity for others to review your change before merging and deploying it. Or you may integrate Terraform into your CI/CD system to perform tests automatically using another Cloudflare domain.</p>
-	<h4>1. Create a new branch and append the new zone settings</h4>
+	<div class="flex anchor relative">
+		<h4 id="1-create-a-new-branch-and-append-the-new-zone-settings">1. Create a new branch and append the new zone settings</h4>
+		<a href="https://blog.cloudflare.com/#1-create-a-new-branch-and-append-the-new-zone-settings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here, we modify the Terraform configuration to enable the following settings: <a href="https://www.cloudflare.com/learning-resources/tls-1-3">TLS 1.3</a>, <a href="https://blog.cloudflare.com/how-to-make-your-site-https-only">Always Use HTTPS</a>, <a href="https://blog.cloudflare.com/introducing-strict-ssl-protecting-against-a-man-in-the-middle-attack-on-origin-traffic">Strict SSL mode</a>, and the <a href="https://www.cloudflare.com/waf">Cloudflare WAF</a>. Strict mode requires a valid SSL certificate on your origin, so be sure to use the <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">Cloudflare Origin CA</a> to generate one.</p>
 	<pre class="language-bash"><code class="language-bash">$ git checkout -b step3-https
 Switched to a new branch 'step3-https'
@@ -350,7 +401,15 @@ resource "cloudflare_zone_settings_override" "example-com-settings" {
   }
 }
 EOF</code></pre>
-	<h4>2. Preview and merge the changes</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="2-preview-and-merge-the-changes">2. Preview and merge the changes</h4>
+		<a href="https://blog.cloudflare.com/#2-preview-and-merge-the-changes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's take a look at what Terraform is proposing before we apply it. We filter the <code>terraform plan</code> output to ignore those values that will be "computed”—in this case, settings that will be left at their default values. For brevity from here on out, we'll omit some extranneous Terraform output; if you'd like to see the output exactly as run, please see the <a href="https://developers.cloudflare.com/terraform/tutorial">full tutorial</a>.</p>
 	<pre class="language-bash"><code class="language-bash">$ terraform plan | grep -v "&lt;computed&gt;"
 Refreshing Terraform state in-memory prior to plan...
@@ -401,7 +460,15 @@ Total 3 (delta 1), reused 0 (delta 0)
 remote: Resolving deltas: 100% (1/1), completed with 1 local object.
 To git@github.com:$GITHUB_USER/cf-config.git
    d26f40b..d540600  master -&gt; master</code></pre>
-	<h4>3. Apply and verify the changes</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="3-apply-and-verify-the-changes">3. Apply and verify the changes</h4>
+		<a href="https://blog.cloudflare.com/#3-apply-and-verify-the-changes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before applying the changes, let's see if we can connect with TLS 1.3. Hint: we should <i>not</i> be able to with default settings. If you want to follow along with this test, you'll need to [compile curl against BoringSSL].</p>
 	<pre class="language-bash"><code class="language-bash">$ curl -v --tlsv1.3 https://www.upinatoms.com 2&gt;&amp;1 | grep "SSL connection\|error"
 * error:1000042e:SSL routines:OPENSSL_internal:TLSV1_ALERT_PROTOCOL_VERSION
@@ -476,7 +543,14 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.</code></pre>
 	</div>
 	<p><i>Before proceeding, make sure that your account is enabled for Rate Limiting. If you’re on an Enterprise plan, you should ask your Customer Success Manager to do this; otherwise, you can subscribe to Rate Limiting within the Cloudflare Dashboard.</i></p>
 	<p>With our zone settings locked down, and our site starting to get some more attention, it's unfortunately begun attracting some of the less scrupulous characters on the internet. Our server access logs show attempts to brute force our login page at <code>https://www.example.com/login</code>. Let's see what we can do with Cloudflare's <a href="https://www.cloudflare.com/application-services/products/rate-limiting">rate limiting product</a>) to put a stop to these efforts.</p>
-	<h4>1. Create a new branch and append the rate limiting settings</h4>
+	<div class="flex anchor relative">
+		<h4 id="1-create-a-new-branch-and-append-the-rate-limiting-settings">1. Create a new branch and append the rate limiting settings</h4>
+		<a href="https://blog.cloudflare.com/#1-create-a-new-branch-and-append-the-rate-limiting-settings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After creating a new branch we specify the rate limiting rule:</p>
 	<pre class="language-bash"><code class="language-bash">$ git checkout -b step4-ratelimit
 Switched to a new branch 'step4-ratelimit'
@@ -540,7 +614,14 @@ EOF</code></pre>
 24:   description = "Block failed login attempts (5 in 1 min) for 5 minutes."
 25: }</code></pre>
 	<p>After matching traffic, we set the action for our edge to take. When testing, it's a good idea to set the mode to simulate and review logs before taking enforcement action (see below). The timeout field here indicates that we want to enforce this action for 300 seconds (5 minutes) and the response block indicates what should be sent back to the caller that tripped the rate limit.</p>
-	<h4>2. Preview and merge the changes</h4>
+	<div class="flex anchor relative">
+		<h4 id="2-preview-and-merge-the-changes">2. Preview and merge the changes</h4>
+		<a href="https://blog.cloudflare.com/#2-preview-and-merge-the-changes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As usual, we take a look at the proposed plan before we apply any changes:</p>
 	<pre class="language-bash"><code class="language-bash">$ terraform plan
 ...
@@ -631,7 +712,15 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.</code></pre>
 * cloudflare_rate_limit.login-limit: 1 error(s) occurred:
 
 * cloudflare_rate_limit.login-limit: error creating rate limit for zone: error from makeRequest: HTTP status 400: content "{\n  \"result\": null,\n  \"success\": false,\n  \"errors\": [\n    {\n      \"code\": 10021,\n      \"message\": \"ratelimit.api.not_entitled.account\"\n    }\n  ],\n  \"messages\": []\n}\n"</code></pre>
-	<h4>3. Update the rule to ban (not just simulate)</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="3-update-the-rule-to-ban-not-just-simulate">3. Update the rule to ban (not just simulate)</h4>
+		<a href="https://blog.cloudflare.com/#3-update-the-rule-to-ban-not-just-simulate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After confirming that the rule is triggering as planned in logs (but not yet enforcing), it's time to switch from simulate to ban:</p>
 	<pre class="language-bash"><code class="language-bash">$ git checkout step4-ratelimit
 $ sed -i.bak -e 's/simulate/ban/' cloudflare.tf
@@ -672,7 +761,16 @@ Terraform will perform the following actions:
       action.0.mode: "simulate" =&gt; "ban"
 
 Plan: 0 to add, 1 to change, 0 to destroy.</code></pre>
-	<h4>4. Merge and deploy the updated rule, then push config to GitHub</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="4-merge-and-deploy-the-updated-rule-then-push-config-to-github">4. Merge and deploy the updated rule, then push config to GitHub</h4>
+		<a href="https://blog.cloudflare.com/#4-merge-and-deploy-the-updated-rule-then-push-config-to-github" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">$ git add cloudflare.tf
 
 $ git commit -m "Step 4 - Update /login rate limit rule from 'simulate' to 'ban'."
@@ -703,7 +801,15 @@ cloudflare_rate_limit.login-limit: Modifying... (ID: 8d518c5d6e63406a9466d83cb86
 cloudflare_rate_limit.login-limit: Modifications complete after 0s (ID: 8d518c5d6e63406a9466d83cb8675bb6)
 
 Apply complete! Resources: 0 added, 1 changed, 0 destroyed.</code></pre>
-	<h4>5. Confirm the rule works as expected</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="5-confirm-the-rule-works-as-expected">5. Confirm the rule works as expected</h4>
+		<a href="https://blog.cloudflare.com/#5-confirm-the-rule-works-as-expected" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This step is optional, but it's a good way to demonstrate that the rule is working as expected (note the final <code>429</code> response):</p>
 	<pre class="language-bash"><code class="language-bash">$ for i in {1..6}; do curl -XPOST -d '{"username": "foo", "password": "bar"}' -vso /dev/null https://www.example.com/login 2&gt;&amp;1 | grep "&lt; HTTP"; sleep 1; done
 &lt; HTTP/1.1 401 Unauthorized

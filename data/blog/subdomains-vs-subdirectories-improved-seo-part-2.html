@@ -1,13 +1,41 @@
 <div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/52eWtOy0Q8BkS4fQzHVXJZ/1549609e53a7f9cbe4d555ac982726db/subdomains-vs-subdirectories-improved-seo-part-2.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<h4>Recap</h4>
+	<div class="flex anchor relative">
+		<h4 id="recap">Recap</h4>
+		<a href="https://blog.cloudflare.com/#recap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-best-practices-workers-part-1">Part 1</a>, the merits and tradeoffs of <i>subdirectories</i> and <i>subdomains</i> were discussed. &nbsp;The subdirectory strategy is typically superior to subdomains because subdomains suffer from <i>keyword</i> and <i>backlink dilution</i>. &nbsp;The subdirectory strategy more effectively boosts a site's search rankings by ensuring that every keyword is attributed to the root domain instead of diluting across subdomains.</p>
-	<h4>Subdirectory Strategy without the NGINX</h4>
+	<div class="flex anchor relative">
+		<h4 id="subdirectory-strategy-without-the-nginx">Subdirectory Strategy without the NGINX</h4>
+		<a href="https://blog.cloudflare.com/#subdirectory-strategy-without-the-nginx" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-best-practices-workers-part-1">first part</a>, our friend Bob set up a hosted Ghost blog at <i>bobtopia.coolghosthost.com</i> that he connected to <i>blog.bobtopia.com</i> using a <code>CNAME</code> DNS record. &nbsp;But what if he wanted his blog to live at <i>bobtopia.com/blog</i> to gain the SEO advantages of subdirectories?</p>
 	<p>A reverse proxy like NGINX is normally needed to route traffic from subdirectories to remotely hosted services. &nbsp;We'll demonstrate how to implement the subdirectory strategy with Cloudflare Workers and eliminate our dependency on NGINX. (Cloudflare Workers are <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless">serverless</a> functions that run on the Cloudflare global network.)</p>
-	<h4>Back to Bobtopia</h4>
+	<div class="flex anchor relative">
+		<h4 id="back-to-bobtopia">Back to Bobtopia</h4>
+		<a href="https://blog.cloudflare.com/#back-to-bobtopia" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's write a Worker that proxies traffic from a subdirectory – <i>bobtopia.com/blog –</i> to a remotely hosted platform – <i>bobtopia.coolghosthost.com</i>. &nbsp;This means that if I go to <i>bobtopia.com/blog</i>, I should see the content of <i>bobtopia.coolghosthost.com,</i> but my browser should still think it's on <i>bobtopia.com</i>.</p>
-	<h4>Configuration Options</h4>
+	<div class="flex anchor relative">
+		<h4 id="configuration-options">Configuration Options</h4>
+		<a href="https://blog.cloudflare.com/#configuration-options" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the <a href="https://dash.cloudflare.com/?zone=workers">Workers</a> editor, we'll start a new script with some basic configuration options.</p>
 	<pre class="language-bash"><code class="language-bash">// keep track of all our blog endpoints here
 const myBlog = {
@@ -22,7 +50,14 @@ const myBlog = {
 
 	</figure>
 	<p>Requests are proxied from bobtopia.com/articles to bobtopia.coolghosthost.com (Uh oh... is because the hosted Ghost blog doesn't actually exist)</p>
-	<h4>Request Handlers</h4>
+	<div class="flex anchor relative">
+		<h4 id="request-handlers">Request Handlers</h4>
+		<a href="https://blog.cloudflare.com/#request-handlers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Next, we'll add a request handler:</p>
 	<pre class="language-bash"><code class="language-bash">async function handleRequest(request) {
   return fetch(request)
@@ -113,10 +148,25 @@ async function handleRequest(request) {
 addEventListener("fetch", event =&gt; {
   event.respondWith(handleRequest(event.request))
 })</code></pre>
-	<h4>Caveat</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="caveat">Caveat</h4>
+		<a href="https://blog.cloudflare.com/#caveat" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There is one important caveat about the current implementation that bears mentioning. This script will not work if your hosted service assets are stored in a folder that shares a name with a route on your root domain. &nbsp;For example, if you're serving assets from the root directory of your hosted service, any request made to the <i>bobtopia.com</i> home page will be masked by these asset requests, and the home page won't load.</p>
 	<p>The solution here involves modifying the blog assets block to handle asset requests without using paths. &nbsp;I'll leave it to the reader to solve this, but a more general solution might involve changing <code>myBlog.assetPathnames</code> to <code>myBlog.assetFileExtensions</code>, which is a list of all asset file extensions (like .png and .css). &nbsp;Then, the assets block would handle requests that contain <code>assetFileExtensions</code> instead of <code>assetPathnames</code>.</p>
-	<h4>Conclusion</h4>
+	<div class="flex anchor relative">
+		<h4 id="conclusion">Conclusion</h4>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Bob is now enjoying the same SEO advantages as Alice after converting his subdomains to subdirectories using Cloudflare Workers. &nbsp;Bobs of the world, rejoice!</p>
 	<hr>
 	<p>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev">workers.dev</a>. <i>If you’re already a Cloudflare customer, you can add Workers to your existing website</i> <a href="https://dash.cloudflare.com/workers"><i>here</i></a>.</p>

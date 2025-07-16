@@ -22,11 +22,25 @@
 	</figure>
 	<p><i>A metaphor (Shibuya crossing in Tokyo)</i></p>
 	<p>This isn't a new story, of course. European networks once found themselves in the same (sad) predicament with intra-European traffic exchanged through the United States. Fortunately, with the emergence of European based Internet exchange points (IXPs), nearly all Internet traffic in Europe now remains within Europe. Moreover, many of these exchange points such as <a href="https://ams-ix.net">AMS-IX</a> in Amsterdam, <a href="https://www.de-cix.net">DE-CIX</a> in Frankfurt and <a href="https://www.linx.net">LINX</a> in London, among others, have become some of the biggest in the world (note: CloudFlare is a member of each of these exchanges, as well as 20 others in Europe, and over 80 globally).</p>
-	<h4>As Europe goes, so goes Asia?</h4>
+	<div class="flex anchor relative">
+		<h4 id="as-europe-goes-so-goes-asia">As Europe goes, so goes Asia?</h4>
+		<a href="https://blog.cloudflare.com/#as-europe-goes-so-goes-asia" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Not quite, but things are changing. Unlike Europe, where economies are tens of miles apart, Asian countries are often thousands of miles apart with an ocean in the middle. In addition, where many European countries share the same, or similar languages, Internet content is Asia is highly regional due to higher language barriers.</p>
 	<p>Commercial interests also play a role. The aforementioned incumbent carriers hold significant control over the exchange of Internet traffic in their respective markets. As a means to preserve market power and inhibit competition, many refuse to interconnect with other providers locally. For example, of the two <a href="https://en.wikipedia.org/wiki/Tier_1_network">Tier 1</a> Internet service providers in Asia, NTT Communications (Japan) and Tata (India), neither interconnect with one another in their home markets. If you were to purchase Internet connectivity from Tata in Japan, you would have to send your traffic through Hong Kong to reach NTT's Japanese customers.</p>
 	<p>Despite this, the growth in IXPs in the region is encouraging. Osaka alone has multiple exchange points—JPIX, JPNAP, BBIX and Equinix—providing local interconnection to many Japanese networks. CloudFlare is proud to be a member of each of these exchanges. Because of our Anycast network architecture, all networks connected to us over these exchanges prefer the, now, shorter path to our network in Osaka (more below).</p>
-	<h4>Solving the challenges of the Internet</h4>
+	<div class="flex anchor relative">
+		<h4 id="solving-the-challenges-of-the-internet">Solving the challenges of the Internet</h4>
+		<a href="https://blog.cloudflare.com/#solving-the-challenges-of-the-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you regularly follow our blog you will have noticed that the delivery of applications over the Internet is both remarkably challenging and complex. It takes a global network, direct interconnection with global and regional carriers, significant investment in hardware and infrastructure, and the teams of engineers necessary to build, operate and manage it all, in order to deploy high availability, low latency, and secure applications.</p>
 	<p>Fortunately we've done just this so that you don't have to. In Asia alone CloudFlare maintains direct connectivity to all Tier 1 operators (i.e. NTT and Tata), to major regional incumbents (e.g. Korea Telecom, PCCW, etc.), and nearly 20 Internet exchange points throughout the region.</p>
 	<figure class="kg-card kg-image-card ">

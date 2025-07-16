@@ -136,7 +136,15 @@
 			</svg>
 		</a>
 	</div>
-	<h4>System security</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="system-security">System security</h4>
+		<a href="https://blog.cloudflare.com/#system-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have built our systems to be secure by design. In some cases, this is as simple as ensuring that sensitive data is restricted, or made completely unobtainable. In other cases this has meant building systems in a way that makes them secure against a wide range of common attacks.</p>
 	<p><i>Passwords</i> We store user passwords in a secure database using a complex, salted hash that uses the blowfish based bcrypt() hashing algorithm.</p>
 	<p><i>API Keys</i> We ensure that API keys are unique by generating them using a combination of AES (Rijndael 256), SHA256 and plenty of entropy. Once generated through these hashing algorithms, API Keys are also stored in a secure database that only a handful of people have access to.</p>
@@ -148,10 +156,25 @@
 			</svg>
 		</a>
 	</div>
-	<h4>At the back-end</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="at-the-back-end">At the back-end</h4>
+		<a href="https://blog.cloudflare.com/#at-the-back-end" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All calls to these sensitive databases are audited, and stored in logs that go back to the very beginning of Cloudflare. In one recent audit exercise we were able to review, and determine the exact time an API Key was generated for a customer in 2013. Access to both the audit logs and critical systems, like our databases, is restricted to a handful of senior production engineers and security staff. All staff access is also logged, and stored securely for audit purposes.</p>
 	<p>Finally, all programmatic calls to these databases are made through stored procedures linked to dedicated accounts. Dynamic SQL is not permitted.</p>
-	<h4>In Transit</h4>
+	<div class="flex anchor relative">
+		<h4 id="in-transit">In Transit</h4>
+		<a href="https://blog.cloudflare.com/#in-transit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All connections are made over HTTPS and sensitive tokens or credentials are never exposed in transit.</p>
 	<p>In the User InterfaceTo access your dashboard you need your account email, your password, and <a href="https://blog.cloudflare.com/you-can-now-use-google-authenticator">assuming you enabled it</a>, (you <b>really</b> should if you haven’t) your 2FA code. If all of this is correct, and the IP you are using is one you are known to use, you are logged in. If the IP address isn’t known we send an email alert to your registered email address alerting you to the event.</p>
 	<figure class="kg-card kg-image-card ">

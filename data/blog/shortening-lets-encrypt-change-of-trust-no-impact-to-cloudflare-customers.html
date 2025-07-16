@@ -81,18 +81,46 @@
 	<p>Once DCV tokens are placed, Certificate Authorities (CAs) verify them. CAs conduct this <a href="https://blog.cloudflare.com/secure-certificate-issuance">verification from multiple vantage points</a> to prevent spoofing attempts. However, since these checks are done from multiple countries and ASNs (Autonomous Systems), they may trigger a Cloudflare WAF rule which can cause the DCV check to get blocked. We made sure to update our WAF and security engine to recognize that these requests are coming from a CA to ensure they're never blocked so DCV can be successfully completed.</p>
 	<p>Some customers have CA preferences, due to internal requirements or compliance regulations. To prevent an unauthorized CA from issuing a certificate for a domain, the domain owner can create a Certification Authority Authorization (CAA) DNS record, specifying which CAs are allowed to issue a certificate for that domain. To ensure that customers can always obtain a certificate, we check the CAA records before requesting a certificate to know which CAs we should use. If the CAA records block all of the <a href="https://developers.cloudflare.com/ssl/reference/certificate-authorities">CAs that are available</a> in Cloudflare’s pipeline and the customer has not uploaded a certificate from the CA of their choice, then we add CAA records on our customers’ behalf to ensure that they can get a certificate issued. Where we can, we optimize for preference. Otherwise, it’s our job to prevent an outage by ensuring that there’s always a TLS certificate available for the domain, even if it does not come from a preferred CA.</p>
 	<p>Today, Cloudflare is not a publicly trusted certificate authority, so we rely on the CAs that we use to be highly available. But, 100% uptime is an unrealistic expectation. Instead, our pipeline needs to be prepared in case our CAs become unavailable.</p>
-	<h4>Ensuring that CA-related issues have zero impact on our customer’s ability to obtain a certificate</h4>
+	<div class="flex anchor relative">
+		<h4 id="ensuring-that-ca-related-issues-have-zero-impact-on-our-customers-ability-to-obtain-a-certificate">Ensuring that CA-related issues have zero impact on our customer’s ability to obtain a certificate</h4>
+		<a href="https://blog.cloudflare.com/#ensuring-that-ca-related-issues-have-zero-impact-on-our-customers-ability-to-obtain-a-certificate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, we like to think ahead, which means preventing incidents before they happen. It’s not uncommon for CAs to become unavailable — sometimes this happens because of an outage, but more commonly, CAs have maintenance periods every so often where they become unavailable for some period of time.</p>
 	<p>It’s our job to ensure CA redundancy, which is why we always have multiple CAs ready to issue a certificate, ensuring high availability at all times. If you've noticed different CAs issuing your Universal SSL certificates, that's intentional. We evenly distribute the load across our CAs to avoid any single point of failure. Plus, we keep a close eye on latency and error rates to detect any issues and automatically switch to a different CA that's available and performant. You may not know this, but one of our CAs has around 4 scheduled maintenance periods every month. When this happens, our automated systems kick in seamlessly, keeping everything running smoothly. This works so well that our internal teams don’t get paged anymore because everything <i>just works.</i></p>
-	<h4>Adopting best security practices and modern standards &nbsp;</h4>
+	<div class="flex anchor relative">
+		<h4 id="adopting-best-security-practices-and-modern-standards">Adopting best security practices and modern standards &nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#adopting-best-security-practices-and-modern-standards" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Security has always been, and will continue to be, Cloudflare’s top priority, and so maintaining the highest security standards to safeguard our customer’s data and private keys is crucial.</p>
 	<p>Over the past decade, the <a href="https://cabforum.org">CA/Browser Forum</a> has advocated for reducing certificate lifetimes from 5 years to 90 days as the industry norm. This shift helps minimize the risk of a key compromise. When certificates are renewed every 90 days, their private keys remain valid for only that period, reducing the window of time that a bad actor can make use of the compromised material.</p>
 	<p>We fully embrace this change and have made 90 days the default certificate validity period. This enhances our security posture by ensuring regular key rotations, and has pushed us to develop tools like DCV Delegation that promote <a href="https://www.cloudflare.com/application-services/solutions/certificate-lifecycle-management">automation</a> around frequent certificate renewals, without the added overhead. It’s what enables us to offer certificates with validity periods as low as two weeks, for customers that want to rotate their private keys at a high frequency without any concern that it will lead to certificate renewal failures.</p>
 	<p>Cloudflare has always been at the forefront of new protocols and standards. <a href="https://www.cloudflare.com/press-releases/2014/cloudflare-offers-the-industrys-first-universal-ssl-for-free">It’s no secret</a> that when we support a new protocol, adoption skyrockets. This month, we will be adding <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet">ECDSA</a> support for certificates issued from <a href="https://pki.goog">Google Trust Services</a>. With <a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec">ECDSA</a>, you get the same level of security as RSA but with smaller keys. Smaller keys mean smaller certificates and less data passed around to establish a TLS connection, which results in quicker connections and faster loading times.</p>
-	<h4>Optimizing for future scale</h4>
+	<div class="flex anchor relative">
+		<h4 id="optimizing-for-future-scale">Optimizing for future scale</h4>
+		<a href="https://blog.cloudflare.com/#optimizing-for-future-scale" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, Cloudflare issues almost 1 million certificates per day. With the recent shift towards shorter certificate lifetimes, we continue to improve our pipeline to be more robust. But even if our pipeline can handle the significant load, we still need to rely on our CAs to be able to scale with us. With every CA that we integrate, we instantly become one of their biggest consumers. We hold our CAs to high standards and push them to improve their infrastructure to scale. This doesn’t just benefit Cloudflare’s customers, but it helps the Internet by requiring CAs to handle higher volumes of issuance.</p>
 	<p>And now, with Let’s Encrypt shortening their chain of trust, we’re going to add an additional improvement to our pipeline — one that will ensure the best device compatibility for all.</p>
-	<h4>Supporting all clients — legacy and modern</h4>
+	<div class="flex anchor relative">
+		<h4 id="supporting-all-clients-legacy-and-modern">Supporting all clients — legacy and modern</h4>
+		<a href="https://blog.cloudflare.com/#supporting-all-clients-legacy-and-modern" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The upcoming Let’s Encrypt change will prevent legacy devices from making requests to domains or applications that are protected by a Let’s Encrypt certificate. We don’t want to cut off Internet access from any part of the world, which means that we’re going to continue to provide the best device compatibility to our customers, despite the change.</p>
 	<p>Because of all the recent enhancements, we are able to reduce our reliance on Let’s Encrypt without impacting the reliability or quality of service of our certificate pipeline. One certificate lifecycle (90 days) before the change, we are going to start shifting certificates to use a different CA, one that’s compatible with the devices that will be impacted. By doing this, we’ll mitigate any impact without any action required from our customers. The only customers that will continue to use Let’s Encrypt are ones that have specifically chosen Let’s Encrypt as the CA.</p>
 	<div class="flex anchor relative">
@@ -107,16 +135,44 @@
 	<p>90 days or one certificate lifecycle before the change, we are going to start shifting Let’s Encrypt certificates to use a different certificate authority. We’ll make this change for all products where Cloudflare is responsible for the CA selection, meaning this will be automatically done for customers using Universal SSL and SSL for SaaS with the “default CA” choice.</p>
 	<p>Any customers that have specifically chosen Let’s Encrypt as their CA will receive an email notification with a list of their Let’s Encrypt certificates and information on whether or not we’re seeing requests on those hostnames coming from legacy devices.</p>
 	<p>After September 9th, 2024, Cloudflare will serve all Let’s Encrypt certificates using the ISRG Root X1 chain. Here is what you should expect based on the certificate product that you’re using:</p>
-	<h4>Universal SSL</h4>
+	<div class="flex anchor relative">
+		<h4 id="universal-ssl">Universal SSL</h4>
+		<a href="https://blog.cloudflare.com/#universal-ssl" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With <a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl">Universal SSL</a>, Cloudflare chooses the CA that is used for the domain’s certificate. This gives us the power to choose the best certificate for our customers. <b>If you are using Universal SSL, there are no changes for you to make to prepare for this change</b>. Cloudflare will automatically shift your certificate to use a more compatible CA.</p>
-	<h4>Advanced Certificates</h4>
+	<div class="flex anchor relative">
+		<h4 id="advanced-certificates">Advanced Certificates</h4>
+		<a href="https://blog.cloudflare.com/#advanced-certificates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With <a href="https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager">Advanced Certificate Manager</a>, customers specifically choose which CA they want to use. If Let’s Encrypt was specifically chosen as the CA for a certificate, we will respect the choice, because customers may have specifically chosen this CA due to internal requirements, or because they have implemented certificate pinning, which we highly discourage.</p>
 	<p>If we see that a domain using an Advanced certificate issued from Let’s Encrypt will be impacted by the change, then we will send out email notifications to inform those customers which certificates are using Let’s Encrypt as their CA and whether or not those domains are receiving requests from clients that will be impacted by the change. Customers will be responsible for changing the CA to another provider, if they chose to do so.</p>
-	<h4>SSL for SaaS</h4>
+	<div class="flex anchor relative">
+		<h4 id="ssl-for-saas">SSL for SaaS</h4>
+		<a href="https://blog.cloudflare.com/#ssl-for-saas" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With <a href="https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management">SSL for SaaS</a>, customers have two options: using a default CA, meaning Cloudflare will choose the issuing authority, or specifying which CA to use.</p>
 	<p>If you’re leaving the CA choice up to Cloudflare, then we will automatically use a CA with higher device compatibility.</p>
 	<p>If you’re specifying a certain CA for your custom hostnames, then we will respect that choice. We will send an email out to SaaS providers and platforms to inform them which custom hostnames are receiving requests from legacy devices. Customers will be responsible for changing the CA to another provider, if they chose to do so.</p>
-	<h4>Custom Certificates</h4>
+	<div class="flex anchor relative">
+		<h4 id="custom-certificates">Custom Certificates</h4>
+		<a href="https://blog.cloudflare.com/#custom-certificates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you directly integrate with Let’s Encrypt and use <a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates">Custom Certificates</a> to upload your Let’s Encrypt certs to Cloudflare then your certificates will be bundled with the cross-signed chain, as long as you choose the bundle method “<a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/#compatible">compatible</a>” or “<a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/#modern">modern</a>” and upload those certificates before September 9th, 2024. After September 9th, we will bundle all Let’s Encrypt certificates with the ISRG Root X1 chain. With the “<a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/#user-defined">user-defined</a>” bundle method, we always serve the chain that’s uploaded to Cloudflare. If you upload Let’s Encrypt certificates using this method, you will need to ensure that certificates uploaded after September 30th, 2024, the date of the CA expiration, contain the right certificate chain.</p>
 	<p>In addition, if you control the clients that are connecting to your application, we recommend updating the trust store to include the <a href="https://letsencrypt.org/certificates/#root-certificates">ISRG Root X1</a>. If you use certificate pinning, remove or update your pin. In general, we discourage all customers from pinning their certificates, as this usually leads to issues during certificate renewals or CA changes.</p>
 	<div class="flex anchor relative">

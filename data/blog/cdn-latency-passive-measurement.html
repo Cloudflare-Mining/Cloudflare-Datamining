@@ -77,7 +77,14 @@
 	<p>Heatmap of IXP connections per country for 9 major service providers, according to data from PeeringDB, Euro-IX and Packet Clearing House (PCH) for October 2021.</p>
 	<p>With the above data, we can compute the possible paths between a client AS and the CDN’s data centers and infer the Anycast Catchments using techniques similar to the recent papers by <a href="https://dl.acm.org/doi/10.1145/3452296.3472935">Zhang et al.</a> and <a href="https://dl.acm.org/doi/10.1145/3341617.3326145">Sermpezis and Kotronis</a>, which predict paths by reproducing the Internet inter-domain routing policies. For CDNs that use BGP-based Anycast, we can predict which data center will receive a request based on the possible routing paths between the client and the CDN. &nbsp;For CDNs that rely on DNS-based redirection, we don’t make an inference yet, but we first predict the latency to each data center, and we select the path with the lowest latency assuming that CDN operators manage to offer the path with the smallest latency.</p>
 	<p>The challenge in predicting paths emanates from the incomplete knowledge of the varying routing policies implemented by individual ASes, which are either hosting web clients (for instance an ISP or an <a href="https://www.cloudflare.com/learning/network-layer/enterprise-networking">enterprise network</a>), or are along the path between the CDN and the client’s network. However, in our prediction problem, we can already partition the IP address space to Anycast Catchment regions (as proposed by <a href="https://dl.acm.org/doi/10.1145/3431832.3431834">Schomp and Al-Dalky</a>) based on our extensive data center footprint, which allows us to reverse engineer the routing decisions of client ASes that are visible to Cloudflare. That’s a lot to unpack, so let’s go through an example.</p>
-	<h4>Example</h4>
+	<div class="flex anchor relative">
+		<h4 id="example">Example</h4>
+		<a href="https://blog.cloudflare.com/#example" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First, assume that an ISP has two potential paths to a CDN: one over a transit provider and one through a direct peering connection over an IXP, and each path terminates at a different data center, as shown in the figure below. In the example below, routing through a transit AS incurs a cost, while IXP peering links do not incur transit exchange costs. Therefore, we would predict that the client ISP would use the path to data center 2 through the IXP.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -94,7 +101,14 @@
 		</a>
 	</div>
 	<p>The next step is to estimate the RTT between the client AS and the corresponding CDN location. To this end, we utilize passive RTT measurements from Cloudflare’s own infrastructure. For each of our data centers, we calculate the median TCP RTT for each IP /24 subnet that sends us HTTP requests. We then assume that a request from a given IP subnet to a data center that is common between Cloudflare and another CDN will have a comparable RTT (our approach focuses on the performance of the anycast network and omits host software differences). This assumption is generally true, because the distance between two endpoints is the dominant factor in determining latency. Note that the median RTT is selected to represent client performance. In contrast, the minimum RTT is an indication of closeness to clients (not expected performance). Our approach on estimating latencies is similar to the work of <a href="https://dl.acm.org/doi/10.1145/1177080.1177092">Madhyastha et al.</a> who combined the median RTT of existing measurements with a path prediction technique informed by network topologies to infer end-to-end latencies that cannot be measured directly. While this work reported an accuracy of 65% for arbitrary ASes, we focus on CDNs which, on average, have much smaller paths (most clients are within 1 AS hop) making the path prediction problem significantly easier (as noted by <a href="https://dl.acm.org/doi/10.1145/2815675.2815719">Chiu et al.</a> and <a href="https://dl.acm.org/doi/abs/10.1145/2934872.2959053">Singh and Gill</a>). Also note that for the purposes of RTT estimation, it’s important to predict which CDN data center the request from a client IP will use, not the actual hops along the path.</p>
-	<h4>Example</h4>
+	<div class="flex anchor relative">
+		<h4 id="example">Example</h4>
+		<a href="https://blog.cloudflare.com/#example" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Assume that for a certain IP subnet used by AS3379 (a Greek ISP), the following table shows the median RTT for each Cloudflare data center that receives HTTP requests from that subnet. Note that while requests from an IP typically land at the nearest data center (Athens in that case), some requests may arrive at different data centers due to traffic load management and different <a href="https://www.cloudflare.com/plans">service tiers</a>.</p>
 	<table>
 		<tbody>

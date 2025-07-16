@@ -216,7 +216,14 @@
 		</a>
 	</div>
 	<p>Below are details about the top 3 most common L3/4 DDoS attacks. We provide recommendations on how organizations can avoid becoming a reflection and amplification element, and also recommendations on how to defend against these attacks whilst avoiding impact to legitimate traffic. Cloudflare's customers are protected against these attacks.</p>
-	<h4>DNS Flood Attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="dns-flood-attack">DNS Flood Attack</h4>
+		<a href="https://blog.cloudflare.com/#dns-flood-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><b>Type:</b> Flood</p>
@@ -231,7 +238,14 @@
 			<p><b>How to avoid unintended impact:</b> Avoid blocking all DNS traffic or disabling UDP port 53, which would break normal resolution. Rely on Cloudflare’s DNS-specific protection such as the <a href="https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection"><u>Advanced DNS Protection system</u></a>, and deploy DNSSEC-aware protection to handle TCP-based query floods safely.</p>
 		</li>
 	</ul>
-	<h4>SYN Flood Attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="syn-flood-attack">SYN Flood Attack</h4>
+		<a href="https://blog.cloudflare.com/#syn-flood-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><b>Type:</b> Flood</p>
@@ -246,7 +260,14 @@
 			<p><b>How to avoid unintended impact:</b> Blocking all SYN traffic or applying aggressive timeouts can block real users. Instead, rely on <a href="https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection"><u>Cloudflare’s Advanced TCP protection system</u></a>, which uses SYN rate shaping, anomaly detection, and spoofed-packet filtering to mitigate attacks without affecting genuine client connections.</p>
 		</li>
 	</ul>
-	<h4>UDP DDoS attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="udp-ddos-attack">UDP DDoS attack</h4>
+		<a href="https://blog.cloudflare.com/#udp-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><b>Type</b>: Flood</p>
@@ -283,7 +304,14 @@
 		</a>
 	</div>
 	<p>Below are details about the emerging threats for 2025 Q2, mostly recycling of very old attack vectors. We provide recommendations on how organizations can avoid becoming a reflection and amplification element, and also recommendations on how to defend against these attacks whilst avoiding impact to legitimate traffic. Cloudflare's customers are protected against these attacks.</p>
-	<h4>Teeworlds DDoS Attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="teeworlds-ddos-attack">Teeworlds DDoS Attack</h4>
+		<a href="https://blog.cloudflare.com/#teeworlds-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><b>Type:</b> Flood</p>
@@ -302,7 +330,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/608xA7d6AuPV38WCXWcfxj/1d00cec07300ecd15b99c9ca5d0bb07c/image17.png" alt="Teeworlds Screenshot Jungle. Source: Wikipedia" class="kg-image" width="1600" height="900" loading="lazy">
 	</figure>
 	<p><sup>Teeworlds Screenshot Jungle. Source: </sup><a href="https://commons.wikimedia.org/wiki/File:Teeworlds_Screenshot_Jungle_0.6.1.png"><sup><u>Wikipedia</u></sup></a></p>
-	<h4>RIPv1 DDoS attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="ripv1-ddos-attack">RIPv1 DDoS attack</h4>
+		<a href="https://blog.cloudflare.com/#ripv1-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><b>Type</b>: Reflection + (Low) Amplification</p>
@@ -320,7 +355,14 @@
 			<p><b>How to avoid unintended impact</b>: RIPv1 is mostly obsolete; disabling it is generally safe. If legacy systems rely on it, validate routing behavior before changes.</p>
 		</li>
 	</ul>
-	<h4>RDP DDoS Attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="rdp-ddos-attack">RDP DDoS Attack</h4>
+		<a href="https://blog.cloudflare.com/#rdp-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><b>Type</b>: Reflection + Amplification</p>
@@ -335,7 +377,14 @@
 			<p><b>How to avoid unintended impact</b>: Do not block TCP/3389 globally if RDP is actively used. Instead, restrict RDP access to known IPs or internal networks, or use <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks"><u>Cloudflare Tunnel</u></a> with <a href="https://www.cloudflare.com/en-gb/zero-trust/products/access"><u>Zero Trust Network Access (ZTNA)</u></a> to remove public exposure altogether while maintaining secure access for legitimate users.</p>
 		</li>
 	</ul>
-	<h4>DemonBot DDoS Attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="demonbot-ddos-attack">DemonBot DDoS Attack</h4>
+		<a href="https://blog.cloudflare.com/#demonbot-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><b>Type</b>: Botnet-based Flood</p>
@@ -353,10 +402,24 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/41SKW3kjd0hp7wmySRb7OP/97a59d135cd7c3c975cda581acdec88c/image18.png" alt="" class="kg-image" width="1801" height="1012" loading="lazy">
 	</figure>
-	<h4>VxWorks Flood DDoS Attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="vxworks-flood-ddos-attack">VxWorks Flood DDoS Attack</h4>
+		<a href="https://blog.cloudflare.com/#vxworks-flood-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
-			<h4><b>Type:</b> Flood (IoT-based)</h4>
+			<div class="flex anchor relative">
+				<h4 id="type-flood-iot-based"><b>Type:</b> Flood (IoT-based)</h4>
+				<a href="https://blog.cloudflare.com/#type-flood-iot-based" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+					<svg width="16" height="16" viewBox="0 0 24 24">
+						<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+					</svg>
+				</a>
+			</div>
 		</li>
 		<li>
 			<p><b>How it works:</b> <a href="https://en.wikipedia.org/wiki/VxWorks"><u>VxWorks</u></a> is a real-time operating system (<a href="https://en.wikipedia.org/wiki/Real-time_operating_system"><u>RTOS</u></a>) used in millions of embedded and IoT devices (e.g., routers, industrial controllers). Devices running outdated or misconfigured versions of VxWorks can be compromised and used to launch DDoS attacks. Once infected—often via public exploits or weak credentials—they send high volumes of UDP, TCP, or ICMP traffic to overwhelm targets, similar to traditional IoT botnets.</p>

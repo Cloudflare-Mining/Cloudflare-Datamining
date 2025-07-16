@@ -93,15 +93,36 @@ CMD ["/bin/bash"]</code></pre>
 			<p>slow builds and sporadic test case failures, speeding up our plan for native builds and CI</p>
 		</li>
 	</ul>
-	<h4>LD_LIBRARY_PATH and Friends</h4>
+	<div class="flex anchor relative">
+		<h4 id="ld_library_path-and-friends">LD_LIBRARY_PATH and Friends</h4>
+		<a href="https://blog.cloudflare.com/#ld_library_path-and-friends" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It turns out that <code>LD_LIBRARY_PATH</code> was not the only environment variable that failed to work correctly. <i>All</i> environment variables, either set on the command line or via other means (e.g. <code>export</code>), would fail to propagate into the <code>qemu-user</code> process.</p>
 	<p>Through bisection of known good code, we found that it was the <code>setcap</code> in our Dockerfile which prevented the environment variable passthrough. Unfortunately, this <code>setcap</code> is the same one that allows us to call <code>sudo</code>, so we have a caveat for our developers that they can either run <code>sudo</code> inside their containers, or have environment variable passing, but not both.</p>
-	<h4>Intermittent Go Failures</h4>
+	<div class="flex anchor relative">
+		<h4 id="intermittent-go-failures">Intermittent Go Failures</h4>
+		<a href="https://blog.cloudflare.com/#intermittent-go-failures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With a decent amount of Go code running through our CI system, it was easy to spot a trend of intermittent segfaults.</p>
 	<p>Going on a hunch, we confirmed a hypothesis that non-deterministic failures are generally due to threading issues. Unfortunately, opinion on <a href="https://github.com/golang/go/issues/20763">the issue tracker</a> showed that Go / QEMU incompatibilities aren’t a priority, so we were left without an upstream fix.</p>
 	<p>The workaround we came up with is simple: if the problem is threading-related, limit where the threads can run! When we package our internal <code>go</code> binaries, we add a <a href="https://gist.github.com/ahrex/9a84f32a33aadc197a688d2158d7e2ea"><code>.deb</code> post-install script</a> to detect if we’re running under ARM64 emulation, and if so, reduce the number of CPUs the <code>go</code> binary can run under to one. We lose performance by pinning to one CPU, but this slowdown is negligible when we’re already running under emulation, and slow code is better than non-working code.</p>
 	<p>With the workaround in place, reports of intermittent crashes dropped to zero. Onto the next problem!</p>
-	<h4>Shared Library Mixups</h4>
+	<div class="flex anchor relative">
+		<h4 id="shared-library-mixups">Shared Library Mixups</h4>
+		<a href="https://blog.cloudflare.com/#shared-library-mixups" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We like to be at the forefront of technology. From suggesting improvements to what would become TLS 1.3, to partnering with Mozilla to <a href="https://blog.nightly.mozilla.org/2018/08/28/firefox-nightly-secure-dns-experimental-results">make DNS queries more secure</a>, and everything in between. To be able to support these new technologies, our software has to be at the cutting edge.</p>
 	<p>On the other hand, we also need a reliable platform to build on. One of the reasons we chose Debian is due to its long-term support lifecycle, versus other rolling release operating systems.</p>
 	<p>With these two ideas counterposed, we opted not to overwrite system libraries in <code>/usr/lib</code> with our cutting edge version, but instead supplement the defaults by installing into <code>/usr/local/lib</code>.</p>
@@ -133,7 +154,14 @@ $ cat /etc/ld.so.conf.d/libc.conf
 	<p>By traversing <code>/etc/ld.so.conf.d/</code> in alphabetical order, shared libraries in <code>/usr/local/lib</code> would be loaded before <code>/usr/lib/$(uname -m)-linux-gnu</code> on <code>x86_64</code>, while the opposite is true for <code>arm64</code>!</p>
 	<p>Internal discussion resulted in us not changing the system default search order, but instead use the <a href="https://en.wikipedia.org/wiki/Rpath">linker flag <code>--rpath</code></a> to request the runtime loader to explicitly search our <code>/usr/local/lib</code> location first.</p>
 	<p>This issue applies to both the emulated and physical ARM64 environments, which is a boon for the emulation framework we’ve just put together.</p>
-	<h4>Native Builds and CI</h4>
+	<div class="flex anchor relative">
+		<h4 id="native-builds-and-ci">Native Builds and CI</h4>
+		<a href="https://blog.cloudflare.com/#native-builds-and-ci" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cross- and emulated compilation brought over 99% of our edge codebase, but there were still a handful of packages that did not fit the models we defined. Some packages, e.g. <code>llvm</code>, parallelize their build so well that the cost of userspace emulation slowed the build time to over 6 hours. Other packages called more esoteric functions which QEMU was not prepared to handle.</p>
 	<p>Rather than devote resources to emulating the long tail, we allocated a few ARM64 machines for developer access, and one machine for a native CI agent. Maintainers of the long tail could iterate in peace, knowing their failing test cases were never due to the emulation layer. When ready, CI would pick up their changes and build an official package, post-review.</p>
 	<p>While native compilation is the least error-prone build method, limited supply of machines made this option unattractive; the more machines we allocate for development and CI mean the more machines we take away from our proving grounds.</p>

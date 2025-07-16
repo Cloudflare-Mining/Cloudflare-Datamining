@@ -62,7 +62,14 @@
 		</a>
 	</div>
 	<p>In the third quarter of 2024, we conducted extensive tests on our new Zstandard compression module, focusing on a 24-hour period where we switched the default compression algorithm from Brotli to Zstandard across our Free plan traffic. This experiment spanned billions of requests, covering a wide range of file types and sizes, including HTML, CSS, and JavaScript. The results were very promising, with significant improvements in both compression speed and file size reduction, leading to faster load times and more efficient bandwidth usage.</p>
-	<h4>Compression ratios</h4>
+	<div class="flex anchor relative">
+		<h4 id="compression-ratios">Compression ratios</h4>
+		<a href="https://blog.cloudflare.com/#compression-ratios" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In terms of compression efficiency, Zstandard delivers impressive results. Below are the average compression ratios we observed during our testing.</p>
 	<table>
 		<tbody>
@@ -106,7 +113,14 @@
 
 	</figure>
 	<p>As the table shows, Zstandard achieves an average compression ratio of <b>2.86:1</b>, which is notably higher than gzip's <b>2.56:1</b> and close to Brotli’s <b>3.08:1</b>. While Brotli slightly edges out Zstandard in terms of pure compression ratio, what is particularly exciting is that we are only using Zstandard’s default compression level of 3 (out of 22) on our traffic. In the fourth quarter of 2024, we plan to experiment with higher compression levels and multithreading capabilities to further enhance Zstandard’s performance and optimize results even more.</p>
-	<h4>Compression speeds</h4>
+	<div class="flex anchor relative">
+		<h4 id="compression-speeds">Compression speeds</h4>
+		<a href="https://blog.cloudflare.com/#compression-speeds" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What truly sets Zstandard apart is its speed. Below are the average times to compress data from our traffic-based tests measured in milliseconds:</p>
 	<table>
 		<tbody>
@@ -160,7 +174,14 @@
 		</a>
 	</div>
 	<p>To implement Zstandard compression at Cloudflare, we needed to build it into our Nginx-based service which already handles GZIP and Brotli compression. Nginx is modular by design, with each module performing a specific function, such as compressing a response. Our custom Nginx module leverages Nginx's function 'hooks' — specifically, the header filter and body filter — to implement Zstandard compression.</p>
-	<h4>Header filter</h4>
+	<div class="flex anchor relative">
+		<h4 id="header-filter">Header filter</h4>
+		<a href="https://blog.cloudflare.com/#header-filter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The header filter allows us to access and modify response headers. For example, Cloudflare only compresses responses above a certain size (50 bytes for Zstandard), which is enforced with this code:</p>
 	<pre class="language-C++"><code class="language-C++">if (r-&gt;headers_out.content_length_n != -1 &amp;&amp;
     r-&gt;headers_out.content_length_n &lt; conf-&gt;min_length) {
@@ -173,7 +194,14 @@
     return ngx_http_next_header_filter(r);
 }</code></pre>
 	<p>If the content is already compressed, the module is bypassed, and Nginx proceeds to the next header filter.</p>
-	<h4>Body filter</h4>
+	<div class="flex anchor relative">
+		<h4 id="body-filter">Body filter</h4>
+		<a href="https://blog.cloudflare.com/#body-filter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The body filter hook is where the actual processing of the response body occurs. In our case, this involves compressing the data with the Zstandard encoder and streaming the compressed data back to the client. Since responses can be very large, it's not feasible to buffer the entire response in memory, so we manage internal memory buffers carefully to avoid running out of memory.</p>
 	<p>The Zstandard library is well-suited for streaming compression and provides the <code>ZSTD_compressStream2</code> function:</p>
 	<pre class="language-C++"><code class="language-C++">ZSTDLIB_API size_t ZSTD_compressStream2(ZSTD_CCtx* cctx,
@@ -191,7 +219,14 @@
 }
 </code></pre>
 	<p>This logic allows us to switch from the "ZSTD_e_continue" operation, which feeds more input data into the encoder, to "ZSTD_e_flush", which extracts compressed data from the encoder.</p>
-	<h4>Compression cycle</h4>
+	<div class="flex anchor relative">
+		<h4 id="compression-cycle">Compression cycle</h4>
+		<a href="https://blog.cloudflare.com/#compression-cycle" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The compression module operates in the following cycle:</p>
 	<ol>
 		<li>
@@ -219,7 +254,15 @@
     err = no_memory;
 }
 </code></pre>
-	<h4>Handling backpressure</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="handling-backpressure">Handling backpressure</h4>
+		<a href="https://blog.cloudflare.com/#handling-backpressure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If no buffers are available, it can lead to backpressure — a situation where the Zstandard module generates compressed data faster than the client can receive it. This causes data to become "stuck" inside Nginx, halting further compression due to memory constraints. In such cases, we stop compression and send an empty buffer to the next Nginx module, allowing Nginx to attempt to send the data to the client again. When successful, this frees up memory buffers that our module can reuse, enabling continued streaming of the compressed response without buffering the entire response in memory.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-next-compression-dictionaries">What's next? Compression dictionaries</h3>

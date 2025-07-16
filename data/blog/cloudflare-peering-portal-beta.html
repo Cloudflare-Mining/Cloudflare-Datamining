@@ -65,7 +65,14 @@
 		</a>
 	</div>
 	<p>There are a few different types of peering. The simplest way to conceptualize is plugging in a dedicated cable to exchange data directly between two networks. Practically, there a few ways it happens:</p>
-	<h4>Scenario 1: Private Network Interconnect (PNI)</h4>
+	<div class="flex anchor relative">
+		<h4 id="scenario-1-private-network-interconnect-pni">Scenario 1: Private Network Interconnect (PNI)</h4>
+		<a href="https://blog.cloudflare.com/#scenario-1-private-network-interconnect-pni" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If Cloudflare and the potential peering partner have equipment in the same data center, we can setup a "Private Network Interconnect", which involves dedicated cabling and network configuration.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -73,7 +80,14 @@
 
 	</figure>
 	<p>PNI: Private Network Interconnect</p>
-	<h4>Scenario 2: Internet Exchange Point (IxP)</h4>
+	<div class="flex anchor relative">
+		<h4 id="scenario-2-internet-exchange-point-ixp">Scenario 2: Internet Exchange Point (IxP)</h4>
+		<a href="https://blog.cloudflare.com/#scenario-2-internet-exchange-point-ixp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>An <a href="https://www.cloudflare.com/learning/cdn/glossary/internet-exchange-point-ixp">Internet exchange point (IxP)</a> is a physical location through which Internet companies such as Internet Service Providers (ISPs) and CDNs connect with each other. It typically involves a switching-fabric, that Cloudflare is already connected to. If our potential peering partner is also present in the IxP, setting up peering is a simple as network configuration, with no additional cabling required.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -81,7 +95,14 @@
 
 	</figure>
 	<p>Internet Exchange Point (IxP)</p>
-	<h4>Scenario 3: &nbsp;Hosting a Node</h4>
+	<div class="flex anchor relative">
+		<h4 id="scenario-3-hosting-a-node">Scenario 3: &nbsp;Hosting a Node</h4>
+		<a href="https://blog.cloudflare.com/#scenario-3-hosting-a-node" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are scenarios where neither PNI nor IxP peering is feasible, such as when Cloudflare and our potential partners are not present in the same physical location. In these cases, our partner can request to host Cloudflare equipment in their own data center racks. Once commissioned, the equipment effectively operates as if it were a Cloudflare data center (PoP). The cache will populate and all of our performance and reliability services will execute right there, close to our peering partner's customer.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -89,10 +110,24 @@
 
 	</figure>
 	<p>Hosting a node</p>
-	<h4>So every network should peer all the time?</h4>
+	<div class="flex anchor relative">
+		<h4 id="so-every-network-should-peer-all-the-time">So every network should peer all the time?</h4>
+		<a href="https://blog.cloudflare.com/#so-every-network-should-peer-all-the-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Peering still has some costs - particularly an administrative burden. The Network Administrators have to agree the details. Commercial teams may require contractual agreements. The link has to be monitored. Therefore, most large networks will have a <a href="https://www.cloudflare.com/peering-policy">peering policy</a> and prioritize peering with the networks with which they exchange the most data and will thus generate the most mutual value.</p>
 	<p>This is especially true for hosting nodes. In addition to the configuration and contractual agreements, there is the logistical effort of receiving and configuring equipment.</p>
-	<h4>So when should networks peer with Cloudflare?</h4>
+	<div class="flex anchor relative">
+		<h4 id="so-when-should-networks-peer-with-cloudflare">So when should networks peer with Cloudflare?</h4>
+		<a href="https://blog.cloudflare.com/#so-when-should-networks-peer-with-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Peering Portal - Beta, released today, allows any ASN (Autonomous System Number) network to view detailed statistics on transit data between it and Cloudflare. Existing partners can use it to review existing session data and statistics and prospective partners can use it to estimate potential transit cost savings, performance improvements and the freeing up of upstream bandwidth to use for other traffic.</p>
 	<div class="flex anchor relative">
 		<h3 id="welcome-to-the-peering-portal-beta">Welcome to the Peering Portal - Beta</h3>
@@ -103,7 +138,14 @@
 		</a>
 	</div>
 	<p>The Peering Portal allows both existing and prospective partners to see:</p>
-	<h4>Time Series Traffic Statistics</h4>
+	<div class="flex anchor relative">
+		<h4 id="time-series-traffic-statistics">Time Series Traffic Statistics</h4>
+		<a href="https://blog.cloudflare.com/#time-series-traffic-statistics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This view shows both growth over time, and the relative traffic for each location.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -111,7 +153,14 @@
 
 	</figure>
 	<p>Time series traffic data</p>
-	<h4>Peering Session Statistics</h4>
+	<div class="flex anchor relative">
+		<h4 id="peering-session-statistics">Peering Session Statistics</h4>
+		<a href="https://blog.cloudflare.com/#peering-session-statistics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Peering sessions outline how many sessions are established in various locations.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -119,13 +168,28 @@
 
 	</figure>
 	<p>Session Statistics</p>
-	<h4>Prefix Data</h4>
+	<div class="flex anchor relative">
+		<h4 id="prefix-data">Prefix Data</h4>
+		<a href="https://blog.cloudflare.com/#prefix-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5e9Ukn7x5XJx7aluOrpQOJ/ff546e133108284b01027b5f3aaa0559/public-ixp-sessions-1.png" alt="" class="kg-image" width="2000" height="1220" loading="lazy">
 
 	</figure>
-	<h4>POP Relative Traffic Weighting</h4>
+	<div class="flex anchor relative">
+		<h4 id="pop-relative-traffic-weighting">POP Relative Traffic Weighting</h4>
+		<a href="https://blog.cloudflare.com/#pop-relative-traffic-weighting" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At a glance view of where data flows in- and out- of connections to Cloudflare from your ASN.</p>
 	<figure class="kg-card kg-image-card ">
 

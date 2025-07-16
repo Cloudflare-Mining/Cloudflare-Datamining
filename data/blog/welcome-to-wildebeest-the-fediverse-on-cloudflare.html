@@ -422,7 +422,15 @@ jobs:
         uses: cloudflare/wrangler-action@2.0.0
         with:
           command: pages publish --project-name=wildebeest-${{ env.OWNER_LOWER }} .</code></pre>
-	<h4>Updating Wildebeest</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="updating-wildebeest">Updating Wildebeest</h4>
+		<a href="https://blog.cloudflare.com/#updating-wildebeest" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This workflow runs automatically every time the main branch changes, so updating the Wildebeest is as easy as synchronizing the upstream official repository with the fork. You don't even need to use git commands for that; GitHub provides a convenient Sync button in the UI that you can simply click.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -461,7 +469,14 @@ jobs:
 		</a>
 	</div>
 	<p>Mastodon popularized the Fediverse concept, but many of the underlying technologies used have been around for quite a while. This is one of those rare moments when everything finally comes together to create a working platform that answers an actual use case for Internet users. Let's quickly go through the protocols that Wildebeest had to implement:</p>
-	<h4>ActivityPub</h4>
+	<div class="flex anchor relative">
+		<h4 id="activitypub">ActivityPub</h4>
+		<a href="https://blog.cloudflare.com/#activitypub" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.w3.org/TR/activitypub">ActivityPub</a> is a decentralized social networking protocol and has been around as a W3C recommendation since at least 2018. It defines client APIs for creating and manipulating content and server-to-server APIs for content exchange and notifications, also known as federation. ActivityPub uses <a href="https://www.w3.org/TR/activitystreams-core">ActivityStreams</a>, an even older W3C protocol, for its vocabulary.</p>
 	<p>The concepts of <a href="https://www.w3.org/TR/activitypub/#actors">Actors</a> (profiles), messages or <a href="https://www.w3.org/TR/activitypub/#obj">Objects</a> (the toots), <a href="https://www.w3.org/TR/activitypub/#inbox">inbox</a> (where you receive toots from people you follow), and <a href="https://www.w3.org/TR/activitypub/#outbox">outbox</a> (where you send your toots to the people you follow), to name a few of many other actions and activities, are all defined on the ActivityPub specification.</p>
 	<p>Here’s our folder with the <a href="https://github.com/cloudflare/wildebeest/tree/main/backend/src/activitypub">ActivityPub implementation</a>.</p>
@@ -476,7 +491,15 @@ export async function addObjectInInbox(db, actor, obj) {
 		.run()
 }
 </code></pre>
-	<h4>WebFinger</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="webfinger">WebFinger</h4>
+		<a href="https://blog.cloudflare.com/#webfinger" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>WebFinger is a simple HTTP protocol used to discover information about any entity, like a profile, a server, or a specific feature. It resolves URIs to resource objects.</p>
 	<p>Mastodon uses <a href="https://www.rfc-editor.org/rfc/rfc7033">WebFinger</a> lookups to discover information about remote users. For example, say you want to interact with @<a href="mailto:user@example.com">user@example.com</a>. Your local server would <a href="https://github.com/cloudflare/wildebeest/blob/main/backend/src/webfinger/index.ts">request</a> <a href="https://example.com/.well-known/webfinger?resource=acct%3Auser%40example.com">https://example.com/.well-known/webfinger?resource=acct:user@example.com</a> (using the <a href="https://www.rfc-editor.org/rfc/rfc7565">acct scheme</a>) and get something like this:</p>
 	<pre class="language-json"><code class="language-json">{
@@ -512,7 +535,15 @@ export async function addObjectInInbox(db, actor, obj) {
 	}
 	return new Response(JSON.stringify(res), { headers })
 }</code></pre>
-	<h4>Mastodon API</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="mastodon-api">Mastodon API</h4>
+		<a href="https://blog.cloudflare.com/#mastodon-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, things like setting your server information, profile information, generating timelines, notifications, and searches, are all Mastodon-specific APIs. The Mastodon open-source project defines a catalog of REST APIs, and you can find all the documentation for them on <a href="https://docs.joinmastodon.org/api">their website</a>.</p>
 	<p>Our Mastodon API implementation can be found <a href="https://github.com/cloudflare/wildebeest/tree/main/functions/api">here</a> (REST endpoints) and <a href="https://github.com/cloudflare/wildebeest/tree/main/backend/src/mastodon">here</a> (backend primitives). Here’s an example of Mastodon’s server information <a href="https://docs.joinmastodon.org/methods/instance/#v2">/api/v2/instance</a> implemented by <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/api/v2/instance.ts">Wildebeest</a>:</p>
 	<pre class="language-js"><code class="language-js">export async function handleRequest(domain, db, env) {

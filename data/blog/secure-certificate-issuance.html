@@ -112,7 +112,14 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 
 	</figure>
 	<p>Every device on the Internet uses an IP (Internet Protocol) address as a numerical identifier. IPv6 addresses contain 128 bits and follow a slash notation to indicate the size of the prefix. So, in the network address <b>2001:DB8:1000::/48</b>, “<b>/48</b>” refers to how many bits the network contains. This means that there are 80 bits left that contain the host addresses, for a total of 10,240 host addresses. The smaller the prefix number, the more host addresses remain in the network. With this knowledge, let’s jump into the attacks!</p>
-	<h4>Attack one: Sub-Prefix Attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="attack-one-sub-prefix-attack">Attack one: Sub-Prefix Attack</h4>
+		<a href="https://blog.cloudflare.com/#attack-one-sub-prefix-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When BGP announces a route, the router always prefers to follow the more specific route. So if <b>2001:DB8::/32</b> and <b>2001:DB8:1000::/48</b> are advertised, the router will use the latter as it is the more specific prefix. This becomes a problem when an adversary makes a BGP announcement to a specific IP address while using the victim’s domain IP address. Let’s say the IP address for our victim, leagueofentropy.com, is <b>2001:DB8:1000::1</b> and announced as <b>2001:DB8::/32</b>. If an adversary announces the prefix <b>2001:DB8:1000::/48</b>, then they will capture the victim’s traffic, launching a <i>sub-prefix hijack attack</i>.</p>
 	<p>In an IPv4 attack, such as the <a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies">attack</a> during April 2018, this was /24 and /23 announcements, with the more specific /24 being announced by the nefarious entity. In IPv6, this could be a /48 and /47 announcement. In both scenarios, /24's and /48's are the smallest blocks allowed to be routed globally. In the diagram below, <b>/47</b> is Texas and <b>/48</b> is the more specific Austin, Texas. The new (but nefarious) routes overrode the existing routes for portions of the Internet. The attacker then ran a nefarious DNS server on the normal IP addresses with DNS records pointing at some new nefarious web server instead of the existing server. This attracted the traffic destined for the victim’s domain within the area the nefarious routes were being propagated. The reason this attack was successful was because a more specific prefix is always preferred by the receiving routers.</p>
 	<figure class="kg-card kg-image-card ">
@@ -120,7 +127,14 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1u8kdog1lBPYcQsjARPOkV/03c3da0661363f6fe10e589673c9aeab/1-Traditional-Equally-specific-Sub-Prefix-Attack-KC-0A-_3x.png" alt="" class="kg-image" width="3147" height="1469" loading="lazy">
 
 	</figure>
-	<h4>Attack two: Equally-Specific-Prefix Attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="attack-two-equally-specific-prefix-attack">Attack two: Equally-Specific-Prefix Attack</h4>
+		<a href="https://blog.cloudflare.com/#attack-two-equally-specific-prefix-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the last attack, the adversary was able to hijack traffic by offering a more specific announcement, but what if the victim’s prefix is <b>/48</b> and a sub-prefix attack is not viable? In this case, an attacker would launch an <b>equally-specific-prefix hijack</b>, where the attacker announces the same prefix as the victim. This means that the AS chooses the preferred route between the victim and the adversary’s announcements based on properties like path length. This attack only ever intercepts a portion of the traffic.</p>
 	<figure class="kg-card kg-image-card ">
 

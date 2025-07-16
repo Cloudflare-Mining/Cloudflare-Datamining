@@ -58,22 +58,57 @@
 		</a>
 	</div>
 	<p>One lesson we learned building our developer platform is that running applications at network scale not only helps optimize performance and scale (though obviously that’s a nice benefit!), but even more importantly, creates the right level of abstraction for developers to move fast.</p>
-	<h4>Workers AI for serverless inference</h4>
+	<div class="flex anchor relative">
+		<h4 id="workers-ai-for-serverless-inference">Workers AI for serverless inference</h4>
+		<a href="https://blog.cloudflare.com/#workers-ai-for-serverless-inference" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Kicking things off with our announcement of <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a>, we’re bringing the first truly serverless GPU cloud, to its perfect match — Region Earth. No machine learning expertise, no rummaging for GPUs. Just pick one of our provided models, and go.</p>
 	<p>We’ve put a lot of thought into designing Workers AI to make the experience of deploying a model as smooth as possible.</p>
 	<p>And if you’re deploying any models in the year 2023, chances are, one of them is an <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model">LLM</a>.</p>
-	<h4>Vectorize for… storing vectors!</h4>
+	<div class="flex anchor relative">
+		<h4 id="vectorize-for-storing-vectors">Vectorize for… storing vectors!</h4>
+		<a href="https://blog.cloudflare.com/#vectorize-for-storing-vectors" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To build an end-to-end AI-operated chat bot, you also need a way to present the user with a UI, parse the corpus of information you want to pass it (for example your product catalog), use the model to convert it into <a href="https://www.cloudflare.com/learning/ai/what-are-embeddings">embeddings</a> — and store them somewhere. Up until today, we offered the products you needed for the first two, but the latter — storing embeddings — requires a unique solution: a <a href="https://www.cloudflare.com/learning/ai/what-is-vector-database">vector database</a>.</p>
 	<p>Just as when we announced Workers, we soon after announced Workers KV — there’s little you can do with compute, without access to state. The same is true of AI — to build meaningful AI use cases, you need to give AI access to state. This is where a <a href="https://www.cloudflare.com/learning/ai/what-is-vector-database">vector database</a> comes into play, and why today we’re also excited to announce Vectorize, our own vector database.</p>
-	<h4>AI Gateway for caching, rate limiting and visibility into your AI deployments</h4>
+	<div class="flex anchor relative">
+		<h4 id="ai-gateway-for-caching-rate-limiting-and-visibility-into-your-ai-deployments">AI Gateway for caching, rate limiting and visibility into your AI deployments</h4>
+		<a href="https://blog.cloudflare.com/#ai-gateway-for-caching-rate-limiting-and-visibility-into-your-ai-deployments" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, when we set out to improve something, the first step is always to measure it — if you can’t measure it, how can you improve it? When we heard about customers struggling to reign in AI deployment costs, we thought about how we would approach it — measure it, then improve it.</p>
 	<p>Our AI Gateway helps you do both!</p>
 	<p>Real-time observation capabilities empower proactive management, making it easier to monitor, debug, and fine-tune AI deployments. Leveraging it to cache, rate limit, and monitor AI deployments is essential for optimizing performance and managing costs effectively. By caching frequently used AI responses, it reduces latency and bolsters system reliability, while rate limiting ensures efficient resource allocation, mitigating the challenges of spiraling AI costs.</p>
-	<h4>Collaborating with Meta to bring Llama 2 to our global network</h4>
+	<div class="flex anchor relative">
+		<h4 id="collaborating-with-meta-to-bring-llama-2-to-our-global-network">Collaborating with Meta to bring Llama 2 to our global network</h4>
+		<a href="https://blog.cloudflare.com/#collaborating-with-meta-to-bring-llama-2-to-our-global-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Until recently, the only way to have access to an LLM was through calls to proprietary models. Training LLMs is a serious investment — in time, computing, and financial resources, and thus not something that’s accessible to most developers. Meta’s release of Llama 2, an open-source LLM, has presented an exciting shift, allowing developers to run and deploy their own LLMs. Except of course, one small detail — you still have to have access to a GPU to do so.</p>
 	<p>By making Llama 2 available as a part of the Workers AI catalog, we look forward to giving every developer access to an LLM — no configuration required.</p>
 	<p>Having a running model is, of course, just one component of an AI application.</p>
-	<h4>Leveraging the ONNX runtime to make moving between cloud to edge to device seamless for developers</h4>
+	<div class="flex anchor relative">
+		<h4 id="leveraging-the-onnx-runtime-to-make-moving-between-cloud-to-edge-to-device-seamless-for-developers">Leveraging the ONNX runtime to make moving between cloud to edge to device seamless for developers</h4>
+		<a href="https://blog.cloudflare.com/#leveraging-the-onnx-runtime-to-make-moving-between-cloud-to-edge-to-device-seamless-for-developers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While the edge may be the optimal location for solving many of these problems, we do expect that applications will continue to be deployed at other locations along the spectrum of device, edge and centralized cloud.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -84,7 +119,14 @@
 	<p>The question then becomes: how do you navigate between these locations smoothly?</p>
 	<p>Since our initial release of Constellation (now called Workers AI), one technology we were particularly excited by was the ONNX runtime. The ONNX runtime creates a standardized environment for running models, which makes it possible to run various models across different locations.</p>
 	<p>We already talked about the edge as a great place for running inference itself, but it’s also great as a routing layer to help guide workloads smoothly across all three locations, based on the use case, and what you’re looking to optimize for — be it latency, accuracy, cost, compliance, or privacy.</p>
-	<h4>Partnering with Hugging Face to provide optimized models at your fingertips</h4>
+	<div class="flex anchor relative">
+		<h4 id="partnering-with-hugging-face-to-provide-optimized-models-at-your-fingertips">Partnering with Hugging Face to provide optimized models at your fingertips</h4>
+		<a href="https://blog.cloudflare.com/#partnering-with-hugging-face-to-provide-optimized-models-at-your-fingertips" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There’s nothing of course that can help developers go faster than meeting them where they are, so we are <a href="https://blog.cloudflare.com/partnering-with-hugging-face-deploying-ai-easier-affordable">partnering with Hugging Face</a> to bring serverless inference to available models, right where developers explore them.</p>
 	<div class="flex anchor relative">
 		<h3 id="partnering-with-databricks-to-make-ai-models">Partnering with Databricks to make AI models</h3>
@@ -97,11 +139,32 @@
 	<p>Together with Databricks, we will be bringing the power of MLflow to data scientists and engineers. MLflow is an open-source platform for managing the end-to-end machine learning lifecycle, and this partnership will make it easier for users to deploy and manage <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">ML models</a> at scale. With this partnership, developers building on Cloudflare Workers AI will be able to leverage MLFlow compatible models for easy deployment into Cloudflare’s global network. Developers can use MLflow to efficiently package, implement, deploy and track a model directly into Cloudflare’s serverless developer platform.</p>
 	<p>AI that doesn’t keep your <a href="https://www.cloudflare.com/cio">CIO</a> or CFO or General Counsel up at night</p>
 	<p>Things are moving quickly in AI, and it’s important to give developers the tools they need to get moving, but it’s hard to move fast when there are important considerations to worry about. What about compliance, costs, privacy?</p>
-	<h4>Compliance-friendly AI</h4>
+	<div class="flex anchor relative">
+		<h4 id="compliance-friendly-ai">Compliance-friendly AI</h4>
+		<a href="https://blog.cloudflare.com/#compliance-friendly-ai" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Much as most of us would prefer not to think about it, AI and data residency are becoming increasingly regulated by governments. With governments requiring that data be processed locally or that their residents’ data be stored in-country, businesses have to think about that in the context of where inference workloads run as well. While with regard to latency, the network edge provides the ability to go as wide as possible. When it comes to compliance, the power of a network that spans 300 cities, and an offering like our Data Localization Suite, we enable the granularity required to keep AI deployments local.</p>
-	<h4>Budget-friendly AI</h4>
+	<div class="flex anchor relative">
+		<h4 id="budget-friendly-ai">Budget-friendly AI</h4>
+		<a href="https://blog.cloudflare.com/#budget-friendly-ai" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Talking to many of our friends and colleagues experimenting with AI, one sentiment seems to resonate — AI is expensive. It’s easy to let costs get away before even getting anything into production or realizing value from it. Our intent with our AI platform is to make costs affordable, but perhaps more importantly, only charge you for what you use. Whether you’re using Workers AI directly, or our AI gateway, we want to provide the visibility and tools necessary to prevent AI spend from running away from you.</p>
-	<h4>Privacy-friendly AI</h4>
+	<div class="flex anchor relative">
+		<h4 id="privacy-friendly-ai">Privacy-friendly AI</h4>
+		<a href="https://blog.cloudflare.com/#privacy-friendly-ai" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you’re putting AI front and center of your customer experiences and business operations, you want to be reassured that any data that runs through it is in safe hands. As has always been the case with Cloudflare, we’re taking a privacy-first approach. We can assure our customers that &nbsp; we will not use any customer data passing through Cloudflare for inference to train large language models.</p>
 	<div class="flex anchor relative">
 		<h3 id="no-but-really-were-just-getting-started">No, but really — we’re just getting started</h3>

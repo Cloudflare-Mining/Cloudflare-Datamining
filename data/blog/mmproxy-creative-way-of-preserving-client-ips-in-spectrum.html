@@ -9,14 +9,29 @@
 	<p>This is <a href="https://en.wikipedia.org/wiki/Addressograph">Addressograph</a>. Source <a href="https://upload.wikimedia.org/wikipedia/commons/b/b0/Address-machine-1_%28ru-tech-enc%29.png">Wikipedia</a></p>
 	<p>When building an application level proxy, the first consideration is always about retaining real client source IP addresses. Some protocols make it easy, e.g. HTTP has a defined <code>X-Forwarded-For</code> header<a href="https://blog.cloudflare.com/#fn1">[1]</a>, but there isn't a similar thing for generic TCP tunnels.</p>
 	<p>Others have faced this problem before us, and have devised three general solutions:</p>
-	<h4>(1) Ignore the client IP</h4>
+	<div class="flex anchor relative">
+		<h4 id="1-ignore-the-client-ip">(1) Ignore the client IP</h4>
+		<a href="https://blog.cloudflare.com/#1-ignore-the-client-ip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zazUmVWQqBmngOT2c0nro/bcb758fa95b1439b28c41ee2257b18e8/Screen-Shot-2018-04-15-at-12.26.16-PM.png" alt="Screen-Shot-2018-04-15-at-12.26.16-PM" class="kg-image" width="1522" height="456" loading="lazy">
 
 	</figure>
 	<p>For certain applications it may be okay to ignore the real client IP address. For example, sometimes the client needs to identify itself with a username and password anyway, so the source IP doesn't really matter. In general, it's not a good practice because...</p>
-	<h4>(2) Nonstandard TCP header</h4>
+	<div class="flex anchor relative">
+		<h4 id="2-nonstandard-tcp-header">(2) Nonstandard TCP header</h4>
+		<a href="https://blog.cloudflare.com/#2-nonstandard-tcp-header" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A second method was developed by Akamai: the client IP is saved inside a custom option in the TCP header in the SYN packet. Early implementations of this method weren't conforming to any standards, e.g. using <a href="https://support.radware.com/app/answers/answer_view/a_id/16143/~/client-ip-visibility-from-akamai-servers-appshape%2B%2B-script-sample">option field 28</a>, but recently <a href="https://tools.ietf.org/html/rfc7974">RFC7974</a> was ratified for this option. We don't support this method for a number of reasons:</p>
 	<ul>
 		<li>
@@ -29,7 +44,15 @@
 			<p>It's surprisingly hard to add support for RFC7947 in real world applications. One option is to patch the operating system and overwrite <code>getpeername(2)</code> and <code>accept4(2)</code> syscalls, another is to use <code>getsockopt(TCP_SAVED_SYN)</code> to extract the client IP from a SYN packet in the userspace application. Neither technique is simple.</p>
 		</li>
 	</ul>
-	<h4>(3) Use the PROXY protocol</h4>
+	<div class="flex anchor relative">
+		<h4 id="3-use-the-proxy-protocol">(3) Use the PROXY protocol</h4>
+		<a href="https://blog.cloudflare.com/#3-use-the-proxy-protocol" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1o8aOHx1OoHCBYvExEoE7S/e81802cb18ce686ad50071d3cc4a1de0/Screen-Shot-2018-04-15-at-12.26.04-PM.png" alt="Screen-Shot-2018-04-15-at-12.26.04-PM" class="kg-image" width="1524" height="462" loading="lazy">

@@ -54,13 +54,41 @@
 		</a>
 	</div>
 	<p>For a browser to download a web page over HTTPS, there is a some setup that goes on behind the scenes. Here are the 4 phases that need to happen the first time your browser tries to access a site.</p>
-	<h4>Phase 1: DNS Lookup</h4>
+	<div class="flex anchor relative">
+		<h4 id="phase-1-dns-lookup">Phase 1: DNS Lookup</h4>
+		<a href="https://blog.cloudflare.com/#phase-1-dns-lookup" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Your browser needs to convert the hostname of the website (say blog.cloudflare.com) into an Internet IP address (like 2400:cb00:2048:1::6813:c166 or 104.19.193.102) before it can connect to it. DNS resolvers operated by your ISP usually cache the IP address for popular domains, and latency to your ISP is fairly low, so this step often takes a negligible amount of time.</p>
-	<h4>Phase 2: TCP Handshake (1 round trip)</h4>
+	<div class="flex anchor relative">
+		<h4 id="phase-2-tcp-handshake-1-round-trip">Phase 2: TCP Handshake (1 round trip)</h4>
+		<a href="https://blog.cloudflare.com/#phase-2-tcp-handshake-1-round-trip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The next step is to establish a TCP connection to the server. This phase consists of the client sending a SYN packet to the server, and the server responding with an ACK pack. The details don’t matter as much as the fact that this requires data to be sent from client to server and back. This takes one round trip.</p>
-	<h4>Phase 3: TLS Handshake (2 round trips)</h4>
+	<div class="flex anchor relative">
+		<h4 id="phase-3-tls-handshake-2-round-trips">Phase 3: TLS Handshake (2 round trips)</h4>
+		<a href="https://blog.cloudflare.com/#phase-3-tls-handshake-2-round-trips" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this phase, the client and server exchange cryptographic key material and set up an encrypted connection. For TLS 1.2 and earlier, this takes <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">two round trips</a>.</p>
-	<h4>Phase 4: HTTP (1 round trip)</h4>
+	<div class="flex anchor relative">
+		<h4 id="phase-4-http-1-round-trip">Phase 4: HTTP (1 round trip)</h4>
+		<a href="https://blog.cloudflare.com/#phase-4-http-1-round-trip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once the TLS connection has been established, your browser can send an encrypted HTTP request using it. This can be a GET request for a specific URL such as /, for example. The server will respond with an HTTP response containing the webpage’s HTML and the browser will start displaying the page.</p>
 	<p>Assuming DNS is instantaneous, this leaves 4 round trips before the browser can start showing the page. If you’re visiting a site you’ve recently connected to, the TLS handshake phase can be shortened from two round trips to one with <a href="https://blog.cloudflare.com/tls-session-resumption-full-speed-and-secure">TLS session resumption</a>.</p>
 	<p>This leaves the following minimum wait times:</p>

@@ -20,7 +20,14 @@
 		</a>
 	</div>
 	<p><a href="https://spec.modelcontextprotocol.io/specification/2025-03-26"><u>The MCP spec</u></a> was <a href="https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports"><u>updated</u></a> on March 26 to introduce a new transport mechanism for remote MCP, called <a href="https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/#streamable-http"><u>Streamable HTTP</u></a>. The new transport simplifies how <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai">AI agents</a> can interact with services by using a single HTTP endpoint for sending and receiving responses between the client and the server, replacing the need to implement separate endpoints for initializing the connection and for sending messages.&nbsp;</p>
-	<h4>Upgrading your MCP server to use the new transport method</h4>
+	<div class="flex anchor relative">
+		<h4 id="upgrading-your-mcp-server-to-use-the-new-transport-method">Upgrading your MCP server to use the new transport method</h4>
+		<a href="https://blog.cloudflare.com/#upgrading-your-mcp-server-to-use-the-new-transport-method" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you've already built a remote MCP server on Cloudflare using the Cloudflare Agents SDK, then <a href="https://developers.cloudflare.com/agents/model-context-protocol/transport"><u>adding support for Streamable HTTP</u></a> is straightforward. The SDK has been updated to support both the existing Server-Sent Events (SSE) transport and the new Streamable HTTP transport concurrently.&nbsp;</p>
 	<p>Here's how you can configure your server to handle both transports:​</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">export default {
@@ -57,9 +64,23 @@ export default app</code></pre>
 		</li>
 	</ul>
 	<p>That's it! With these few lines of code, your MCP server will support both transport methods, making it compatible with both existing and new clients.</p>
-	<h4>Using Streamable HTTP from an MCP client</h4>
+	<div class="flex anchor relative">
+		<h4 id="using-streamable-http-from-an-mcp-client">Using Streamable HTTP from an MCP client</h4>
+		<a href="https://blog.cloudflare.com/#using-streamable-http-from-an-mcp-client" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While most MCP clients haven’t yet adopted the new Streamable HTTP transport, you can start testing it today using<a href="https://www.npmjs.com/package/mcp-remote"> mcp-remote</a>, an adapter that lets MCP clients like Claude Desktop that otherwise only support local connections work with remote MCP servers. This tool allows any MCP client to connect to remote MCP servers via either SSE or Streamable HTTP, even if the client doesn't natively support remote connections or the new transport method.&nbsp;</p>
-	<h4>So, what’s new with Streamable HTTP?&nbsp;</h4>
+	<div class="flex anchor relative">
+		<h4 id="so-whats-new-with-streamable-http">So, what’s new with Streamable HTTP?&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#so-whats-new-with-streamable-http" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Initially, remote MCP communication between AI agents and services used a single connection but required interactions with two different endpoints: one endpoint (<code>/sse</code>) to establish a persistent Server-Sent Events (SSE) connection that the client keeps open for receiving responses and updates from the server, and another endpoint (<code>/sse/messages</code>) where the client sends requests for tool calls.&nbsp;</p>
 	<p>While this works, it's like having a conversation with two phones, one for listening and one for speaking. This adds complexity to the setup, makes it harder to scale, and requires connections to be kept open for long periods of time. This is because SSE operates as a persistent one-way channel where servers push updates to clients. If this connection closes prematurely, clients will miss responses or updates sent from the MCP server during long-running operations.&nbsp;</p>
 	<p>The new Streamable HTTP transport addresses these challenges by enabling:&nbsp;</p>
@@ -76,7 +97,14 @@ export default app</code></pre>
 	</ul>
 	<p>Now, when an AI agent wants to call a tool on a remote MCP server, it can do so with a single <code>POST</code> request to one endpoint (<code>/mcp</code>). Depending on the tool call, the server will either respond immediately or decide to upgrade the connection to use SSE to stream responses or notifications as they become available —&nbsp;all over the same request.</p>
 	<p>Our current implementation of Streamable HTTP provides feature parity with the previous SSE transport. We're actively working to implement the full capabilities defined in the specification, including <a href="https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#resumability-and-redelivery"><u>resumability</u></a>, cancellability, and <a href="https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#session-management"><u>session management</u></a> to enable more complex, reliable, and scalable agent-to-agent interactions.&nbsp;</p>
-	<h4>What’s coming next?&nbsp;</h4>
+	<div class="flex anchor relative">
+		<h4 id="whats-coming-next">What’s coming next?&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#whats-coming-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://modelcontextprotocol.io/specification/2025-03-26"><u>MCP specification</u></a> is rapidly evolving, and we're committed to bringing these changes to the Agents SDK to keep your MCP server compatible with all clients. We're actively tracking developments across both transport and authorization, adding support as they land, and maintaining backward compatibility to prevent breaking changes as adoption grows. Our goal is to handle the complexity behind the scenes, so you can stay focused on building great agent experiences.</p>
 	<p>On the transport side, here are some of the improvements coming soon to the Agents SDK:</p>
 	<ul>

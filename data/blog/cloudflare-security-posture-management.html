@@ -40,7 +40,14 @@
 		</a>
 	</div>
 	<p>Without centralized posture management, SaaS applications can feel like the security wild west. They contain a wealth of sensitive information – files, databases, workspaces, designs, invoices, or anything your company needs to operate, but control is limited to the vendor’s settings, leaving you with less visibility and fewer customization options. Moreover, team members are constantly creating, updating, and deleting content that can cause configuration drift and data exposure, such as sharing files publicly, adding PII to non-compliant databases, or giving access to third party integrations. With Cloudflare, you have visibility across your SaaS application fleet in one dashboard.</p>
-	<h4>Posture findings across your SaaS fleet</h4>
+	<div class="flex anchor relative">
+		<h4 id="posture-findings-across-your-saas-fleet">Posture findings across your SaaS fleet</h4>
+		<a href="https://blog.cloudflare.com/#posture-findings-across-your-saas-fleet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>From the account-wide Security Insights, you can review insights for potential SaaS security issues:</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7JRKfYveWKayrMxdLxLvDB/1c3383209462917214ad9dc6584e98fe/2.png" alt="A screenshot of the Security Insights page where examples of SaaS issues types are highlighted with corresponding severity." class="kg-image" width="1999" height="972" loading="lazy">
@@ -71,11 +78,25 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6skScbapgiG31w5qRoTCjG/ba3b069de8cce0c0bfcb9f011a2df954/3.png" alt="A screenshot of the Posture Findings page where examples of SaaS insights types are highlighted with corresponding severity and instances of matches." class="kg-image" width="1726" height="970" loading="lazy">
 	</figure>
 	<p>Additionally, you can create policies to prevent configuration drift in your environment. Prevention-based policies help maintain a secure configuration and compliance standards, while reducing alert fatigue for Security Operations teams, and these policies can prevent the inappropriate movement or exfiltration of sensitive data. Unifying controls and visibility across environments makes it easier to lock down regulated data classes, maintain detailed audit trails via logs, and improve your security posture to reduce the risk of breaches.</p>
-	<h4>How it works: new, real-time SaaS documents discovery</h4>
+	<div class="flex anchor relative">
+		<h4 id="how-it-works-new-real-time-saas-documents-discovery">How it works: new, real-time SaaS documents discovery</h4>
+		<a href="https://blog.cloudflare.com/#how-it-works-new-real-time-saas-documents-discovery" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Delivering SaaS security posture information to our customers requires collecting vast amounts of data from a wide range of platforms. In order to ensure that all the documents living in your SaaS apps (files, designs, etc.) are secure, we need to collect information about their configuration — are they publicly shared, do third-party apps have access, is <a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication"><u>multi-factor authentication (MFA)</u></a> enabled?&nbsp;</p>
 	<p>We previously did this with crawlers, which would pull data from the SaaS APIs. However, we were plagued with rate limits from the SaaS vendors when working with larger datasets. This forced us to work in batches and ramp scanning up and down as the vendors permitted. This led to stale findings and would make remediation cumbersome and unclear – for example, Cloudflare would be reporting that a file is still shared publicly for a short period after the permissions were removed, leading to customer confusion.</p>
 	<p>To fix this, we upgraded our data collection pipeline to be dynamic and real-time, reacting to changes in your environment as they occur, whether it’s a new security finding, an updated asset, or a critical alert from a vendor. We started with our Microsoft asset discovery and <a href="https://developers.cloudflare.com/cloudflare-one/applications/casb/casb-integrations/microsoft-365"><u>posture findings</u></a>, providing you real-time insight into your Microsoft Admin Center, OneDrive, Outlook, and SharePoint configurations. We will be rapidly expanding support to additional SaaS vendors going forward.</p>
-	<h5>Listening for update events from Cloudflare Workers</h5>
+	<div class="flex anchor relative">
+		<h5 id="listening-for-update-events-from-cloudflare-workers">Listening for update events from Cloudflare Workers</h5>
+		<a href="https://blog.cloudflare.com/#listening-for-update-events-from-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Workers serve as the entry point for vendor webhooks, handling asset change notifications from external services. The workflow unfolds as follows:</p>
 	<ul>
 		<li>
@@ -96,7 +117,14 @@
 			</ul>
 		</li>
 	</ul>
-	<h5>CASB Processing: Consumers &amp; Crawlers</h5>
+	<div class="flex anchor relative">
+		<h5 id="casb-processing-consumers-crawlers">CASB Processing: Consumers &amp; Crawlers</h5>
+		<a href="https://blog.cloudflare.com/#casb-processing-consumers-crawlers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once the transformed messages reach the CASB layer, they undergo further processing:</p>
 	<ul>
 		<li>
@@ -119,7 +147,14 @@
 		</a>
 	</div>
 	<p>A unique challenge of securing web applications is that no one size fits all. An asset-aware posture management bridges the gap between a universal security solution and unique business needs, offering tailored recommendations for security teams to protect what matters.</p>
-	<h4>Posture overview from attacks to threats and risks</h4>
+	<div class="flex anchor relative">
+		<h4 id="posture-overview-from-attacks-to-threats-and-risks">Posture overview from attacks to threats and risks</h4>
+		<a href="https://blog.cloudflare.com/#posture-overview-from-attacks-to-threats-and-risks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Starting today, all Cloudflare customers have access to Security Overview, a new landing page customized for each of your onboarded domains. This page aggregates and prioritizes security suggestions across all your web applications:</p>
 	<ol>
 		<li>
@@ -142,7 +177,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YhmhUZbZbAIZryUuTodpV/2b9563ac7768348bb4be46abc5fef7b3/4.png" alt="Visual summary of the new Security Overview page with 5 sections listed in order" class="kg-image" width="1999" height="1732" loading="lazy">
 	</figure>
 	<p>These tailored security suggestions are surfaced based on your traffic profile and business needs, which is made possible by discovering your proxied web assets.</p>
-	<h4>Discovery of web assets</h4>
+	<div class="flex anchor relative">
+		<h4 id="discovery-of-web-assets">Discovery of web assets</h4>
+		<a href="https://blog.cloudflare.com/#discovery-of-web-assets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many web applications, regardless of their industry or use case, require similar functionality: user identification, accepting payment information, etc. By discovering the assets serving this functionality, we can build and run targeted threat detection to protect them in depth.</p>
 	<p>As an example, bot traffic towards marketing pages versus login pages have different business impacts. Content scraping may be happening targeting your marketing materials, which you may or may not want to allow, while credential stuffing on your login page deserves immediate attention.</p>
 	<p>Web assets are described by a list of endpoints; and labelling each of them defines their business goals. A simple example can be <code>POST</code> requests to path <code>/portal/login</code>, which likely describes an API for user authentication. While the <code>GET</code> requests to path <code>/portal/login</code> denote the actual login webpage.</p>
@@ -151,8 +193,23 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jFh9mc7hyryXHIqeQwS9U/25ba022282b43cff9f09700d0ae81c76/5.png" alt="A screenshot of Cloudflare dashboard’s Endpoint Management overview which lists endpoints and labels attached to them" class="kg-image" width="1999" height="1107" loading="lazy">
 	</figure>
 	<p>API Shield customers can already make use of <a href="https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels"><u>endpoint labelling</u></a>. In early Q2 2025, we are adding label discovery and suggestion capabilities, starting with three labels, <code>cf-log-in</code>, <code>cf-sign-up</code>, and <code>cf-rss-feed</code>. All other customers can manually add these labels to the <a href="https://developers.cloudflare.com/api-shield/management-and-monitoring"><u>saved endpoints</u></a>. One example, explained below, is preventing disposable emails from being used during sign-ups.&nbsp;</p>
-	<h4>Always-on threat detection and risk assessment</h4>
-	<h5>Use-case driven threat detection</h5>
+	<div class="flex anchor relative">
+		<h4 id="always-on-threat-detection-and-risk-assessment">Always-on threat detection and risk assessment</h4>
+		<a href="https://blog.cloudflare.com/#always-on-threat-detection-and-risk-assessment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h5 id="use-case-driven-threat-detection">Use-case driven threat detection</h5>
+		<a href="https://blog.cloudflare.com/#use-case-driven-threat-detection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Customers told us that, with the growing excitement around generative AI, they need support to secure this new technology while not hindering innovation. Being able to discover LLM-powered services allows fine-tuning security controls that are relevant for this particular technology, such as inspecting prompts, limit prompting rates based on token usage, etc. In a separate Security Week blog post, we will share how we build Cloudflare Firewall for AI, and how you can easily protect your generative AI workloads.</p>
 	<p>Account fraud detection, which encompasses multiple attack vectors, is another key area that we are focusing on in 2025.</p>
 	<p>On many login and signup pages, a <a href="https://www.cloudflare.com/learning/bots/how-captchas-work"><u>CAPTCHA</u></a> solution is commonly used to only allow human beings through, assuming only bots perform undesirable actions. Put aside that most visual CAPTCHA puzzles can be easily <a href="https://arstechnica.com/ai/2024/09/ai-defeats-traffic-image-captcha-in-another-triumph-of-machine-over-man"><u>solved by AI</u></a> nowadays, such an approach cannot effectively solve the <i>root cause</i> of most account fraud vectors. For example, human beings using disposable emails to sign up single-use accounts to take advantage of signup promotions.</p>
@@ -161,7 +218,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7sJzdnjp9UWrp35Hd3SsGB/db0959b457c555a4a1e93e5515a1e61f/6.png" alt="A screenshot of a security rule configured to block requests when disposal email is detected using a tentative field" class="kg-image" width="1999" height="619" loading="lazy">
 	</figure>
 	<p>Our fast expanding use-case driven threat detections are all running by default, from the first moment you onboarded your traffic to Cloudflare. The instant available detection results can be reviewed through security analytics, helping you make swift informed decisions.</p>
-	<h5>API endpoint risk assessment</h5>
+	<div class="flex anchor relative">
+		<h5 id="api-endpoint-risk-assessment">API endpoint risk assessment</h5>
+		<a href="https://blog.cloudflare.com/#api-endpoint-risk-assessment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>APIs have their own set of risks and vulnerabilities, and today Cloudflare is delivering seven new risk scans through API Posture Management. This new capability of API Shield helps reduce risk by identifying security issues and fixing them early, before APIs are attacked. Because APIs are typically made up of many different backend services, security teams need to pinpoint which backend service is vulnerable so that development teams may remediate the identified issues.</p>
 	<p>Our new API posture management risk scans do exactly that: users can quickly identify which API endpoints are at risk to a number of vulnerabilities, including sensitive data exposure, authentication status, <a href="https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization"><u>Broken Object Level Authorization (BOLA)</u></a> attacks, and more.</p>
 	<p>Authentication Posture is one risk scan you’ll see in the new system. We focused on it to start with because sensitive data is at risk when API authentication is assumed to be enforced but is actually broken. <a href="https://developers.cloudflare.com/api-shield/security/authentication-posture"><u>Authentication Posture</u></a> helps customers identify authentication misconfigurations for APIs and alerts of their presence. This is achieved by scanning for successful requests against the API and noting their authentication status. API Shield scans traffic daily and labels API endpoints that have missing and mixed authentication for further review.</p>

@@ -87,10 +87,24 @@
 	</figure>
 	<p><a href="https://commons.wikimedia.org/wiki/File:Williton_Highbridge_Nursery_topiary_garden.jpg">Creative Commons Attribution-Share Alike 3.0</a></p>
 	<p>In the last two decades, we as a society have learned a lot about how to write secure cryptographic protocols. The parade of cleverly-named attacks from POODLE to Lucky13 to SLOTH to LogJam showed that even TLS 1.2 contains antiquated ideas from the early days of cryptographic design. One of the design goals of TLS 1.3 was to correct previous mistakes by removing potentially dangerous design elements.</p>
-	<h4>Fixing key exchange</h4>
+	<div class="flex anchor relative">
+		<h4 id="fixing-key-exchange">Fixing key exchange</h4>
+		<a href="https://blog.cloudflare.com/#fixing-key-exchange" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TLS is a so-called “hybrid” cryptosystem. This means it uses both symmetric key cryptography (encryption and decryption keys are the same) and public key cryptography (encryption and decryption keys are different). Hybrid schemes are the predominant form of encryption used on the Internet and are used in <a href="https://en.wikipedia.org/wiki/Secure_Shell">SSH</a>, <a href="https://en.wikipedia.org/wiki/IPsec">IPsec</a>, <a href="https://en.wikipedia.org/wiki/Signal_Protocol">Signal</a>, <a href="https://www.wireguard.com">WireGuard</a> and other protocols. In hybrid cryptosystems, public key cryptography is used to establish a shared secret between both parties, and the shared secret is used to create symmetric keys that can be used to encrypt the data exchanged.</p>
 	<p>As a general rule, public key crypto is slow and expensive (microseconds to milliseconds per operation) and symmetric key crypto is fast and cheap (nanoseconds per operation). Hybrid encryption schemes let you send a lot of encrypted data with very little overhead by only doing the expensive part once. Much of the work in TLS 1.3 has been about improving the part of the handshake, where public keys are used to establish symmetric keys.</p>
-	<h4>RSA key exchange</h4>
+	<div class="flex anchor relative">
+		<h4 id="rsa-key-exchange">RSA key exchange</h4>
+		<a href="https://blog.cloudflare.com/#rsa-key-exchange" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The public key portion of TLS is about establishing a shared secret. There are two main ways of doing this with public key cryptography. The simpler way is with public-key encryption: one party encrypts the shared secret with the other party’s public key and sends it along. The other party then uses its private key to decrypt the shared secret and ... voila! They both share the same secret. This technique was discovered in 1977 by Rivest, Shamir and Adelman and is called RSA key exchange. In TLS’s RSA key exchange, the shared secret is decided by the client, who then encrypts it to the server’s public key (extracted from the certificate) and sends it to the server.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -106,7 +120,14 @@
 	<p>Both modes result in the client and server having a shared secret, but RSA mode has a serious downside: it’s not <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">forward secret</a>. That means that if someone records the encrypted conversation and then gets ahold of the RSA private key of the server, they can decrypt the conversation. This even applies if the conversation was recorded and the key is obtained some time well into the future. In a world where national governments are recording encrypted conversations and using exploits like <a href="https://en.wikipedia.org/wiki/Heartbleed">Heartbleed</a> to steal private keys, this is a realistic threat.</p>
 	<p>RSA key exchange has been problematic for some time, and not just because it’s not forward-secret. It’s also notoriously difficult to do correctly. In 1998, Daniel Bleichenbacher discovered a vulnerability in the way RSA encryption was done in SSL and created what’s called the “million-message attack,” which allows an attacker to perform an RSA private key operation with a server’s private key by sending a million or so well-crafted messages and looking for differences in the error codes returned. The attack has been refined over the years and in some cases only requires thousands of messages, making it feasible to do from a laptop. It was recently discovered that major websites (including facebook.com) were also vulnerable to a variant of Bleichenbacher’s attack called the <a href="https://robotattack.org">ROBOT attack</a> as recently as 2017.</p>
 	<p>To reduce the risks caused by non-forward secret connections and million-message attacks, RSA encryption was removed from TLS 1.3, leaving ephemeral Diffie-Hellman as the only key exchange mechanism. Removing RSA key exchange brings other advantages, as we will discuss in the performance section below.</p>
-	<h4>Diffie-Hellman named groups</h4>
+	<div class="flex anchor relative">
+		<h4 id="diffie-hellman-named-groups">Diffie-Hellman named groups</h4>
+		<a href="https://blog.cloudflare.com/#diffie-hellman-named-groups" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When it comes to cryptography, giving too many options leads to the wrong option being chosen. This principle is most evident when it comes to choosing Diffie-Hellman parameters. In previous versions of TLS, the choice of the Diffie-Hellman parameters was up to the participants. This resulted in some implementations choosing incorrectly, resulting in vulnerable implementations being deployed. TLS 1.3 takes this choice away.</p>
 	<p>Diffie-Hellman is a powerful tool, but not all Diffie-Hellman parameters are “safe” to use. The security of Diffie-Hellman depends on the difficulty of a specific mathematical problem called the <a href="https://en.wikipedia.org/wiki/Discrete_logarithm">discrete logarithm problem</a>. If you can solve the discrete logarithm problem for a set of parameters, you can extract the private key and break the security of the protocol. Generally speaking, the bigger the numbers used, the harder it is to solve the discrete logarithm problem. So if you choose small DH parameters, you’re in trouble.</p>
 	<p>The LogJam and WeakDH attacks of 2015 showed that many TLS servers could be tricked into using small numbers for Diffie-Hellman, allowing an attacker to break the security of the protocol and decrypt conversations.</p>
@@ -121,7 +142,14 @@
 		</a>
 	</div>
 	<p>The other half of a hybrid crypto scheme is the actual encryption of data. This is done by combining an authentication code and a symmetric cipher for which each party knows the key. As I’ll describe, there are many ways to encrypt data, most of which are wrong.</p>
-	<h4>CBC mode ciphers</h4>
+	<div class="flex anchor relative">
+		<h4 id="cbc-mode-ciphers">CBC mode ciphers</h4>
+		<a href="https://blog.cloudflare.com/#cbc-mode-ciphers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the last section we described TLS as a hybrid encryption scheme, with a public key part and a symmetric key part. The public key part is not the only one that has caused trouble over the years. The symmetric key portion has also had its fair share of issues. In any secure communication scheme, you need both encryption (to keep things private) and integrity (to make sure people don’t modify, add, or delete pieces of the conversation). Symmetric key encryption is used to provide both encryption and integrity, but in TLS 1.2 and earlier, these two pieces were combined in the wrong way, leading to security vulnerabilities.</p>
 	<p>An algorithm that performs symmetric encryption and decryption is called a symmetric cipher. Symmetric ciphers usually come in two main forms: block ciphers and stream ciphers.</p>
 	<p>A stream cipher takes a fixed-size key and uses it to create a stream of pseudo-random data of arbitrary length, called a key stream. To encrypt with a stream cipher, you take your message and combine it with the key stream by XORing each bit of the key stream with the corresponding bit of your message.. To decrypt, you take the encrypted message and XOR it with the key stream. Examples of pure stream ciphers are RC4 and ChaCha20. Stream ciphers are popular because they’re simple to implement and fast in software.</p>
@@ -156,9 +184,23 @@
 		</a>
 	</div>
 	<p>Another important part of TLS is authentication. In every connection, the server authenticates itself to the client using a digital certificate, which has a public key. In RSA-encryption mode, the server proves its ownership of the private key by decrypting the pre-main secret and computing a MAC over the transcript of the conversation. In Diffie-Hellman mode, the server proves ownership of the private key using a digital signature. If you’ve been following this blog post so far, it should be easy to guess that this was done incorrectly too.</p>
-	<h4>PKCS#1v1.5</h4>
+	<div class="flex anchor relative">
+		<h4 id="pkcs-1v1-5">PKCS#1v1.5</h4>
+		<a href="https://blog.cloudflare.com/#pkcs-1v1-5" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Daniel Bleichenbacher has made a living identifying problems with RSA in TLS. In 2006, he devised a pen-and-paper attack against RSA signatures as used in TLS. It was later discovered that major TLS implemenations including those of NSS and OpenSSL <a href="https://www.ietf.org/mail-archive/web/openpgp/current/msg00999.html">were vulnerable to this attack</a>. This issue again had to do with how difficult it is to implement padding correctly, in this case, the PKCS#1 v1.5 padding used in RSA signatures. In TLS 1.3, PKCS#1 v1.5 is removed in favor of the newer design <a href="https://en.wikipedia.org/wiki/Probabilistic_signature_scheme">RSA-PSS</a>.</p>
-	<h4>Signing the entire transcript</h4>
+	<div class="flex anchor relative">
+		<h4 id="signing-the-entire-transcript">Signing the entire transcript</h4>
+		<a href="https://blog.cloudflare.com/#signing-the-entire-transcript" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We described earlier how the server uses a digital signature to prove that the key exchange hasn’t been tampered with. In TLS 1.2 and earlier, the server’s signature only covers part of the handshake. The other parts of the handshake, specifically the parts that are used to negotiate which symmetric cipher to use, are not signed by the private key. Instead, a symmetric MAC is used to ensure that the handshake was not tampered with. This oversight resulted in a number of high-profile vulnerabilities (FREAK, LogJam, etc.). In TLS 1.3 these are prevented because the server signs the entire handshake transcript.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -195,7 +237,14 @@
 		</a>
 	</div>
 	<p>TLS 1.3 is a much more elegant and secure protocol with the removal of the insecure features listed above. This hedge-trimming allowed the protocol to be simplified in ways that make it easier to understand, and faster.</p>
-	<h4>No more take-out menu</h4>
+	<div class="flex anchor relative">
+		<h4 id="no-more-take-out-menu">No more take-out menu</h4>
+		<a href="https://blog.cloudflare.com/#no-more-take-out-menu" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In previous versions of TLS, the main negotiation mechanism was the ciphersuite. A ciphersuite encompassed almost everything that could be negotiated about a connection:</p>
 	<ul>
 		<li>

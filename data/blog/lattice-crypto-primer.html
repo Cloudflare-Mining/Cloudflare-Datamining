@@ -27,7 +27,14 @@
 	</figure>
 	<p>Alice's secret number is $s$ and her key share is $g^s$; Bob's secret number is $r$ and his key share is $g^r$. Then given their secret and their peer's key share, each can compute $g^{rs}$. The security of this protocol comes from how we choose $g$, $s$, and $r$ and how we do arithmetic. The most efficient instantiation of DH uses elliptic curves.</p>
 	<p>In ML-KEM we replace operations on elliptic curves with <b>matrix </b>operations. It's not quite a drop-in replacement, so we'll need a little linear algebra to make sense of it. But don't worry: we're going to work with Python so we have running code to play with, and we'll use <a href="https://numpy.org"><u>NumPy</u></a> to keep things high level.</p>
-	<h4>All the math we'll need</h4>
+	<div class="flex anchor relative">
+		<h4 id="all-the-math-well-need">All the math we'll need</h4>
+		<a href="https://blog.cloudflare.com/#all-the-math-well-need" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A matrix is just a two-dimensional array of numbers. In NumPy, we can create a matrix as follows (importing <code>numpy</code> as <code>np</code>):</p>
 	<pre class="language-Python"><code class="language-Python">A = np.matrix([[1, 2, 3],
                [4, 5, 6],
@@ -59,7 +66,14 @@
 print(s.T*r % Q)
 # [[2]]</code></pre>
 	<p>The final matrix operation we'll need is <b>matrix addition</b>. If <code>A</code> and <code>B</code> are both <code>N</code>-by-<code>M</code> matrices, then <code>C = (A+B) % Q</code> is the <code>N</code>-by-<code>M</code> matrix for which <code>C[i,j] == (A[i,j]+B[i,j]) % Q</code>. Of course, this only works if the matrices we're adding have the same dimensions.</p>
-	<h4>Warm up</h4>
+	<div class="flex anchor relative">
+		<h4 id="warm-up">Warm up</h4>
+		<a href="https://blog.cloudflare.com/#warm-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Enough maths — let's get to exchanging some keys. We start with the DH diagram from before and swap out the computations with matrix operations. Note that this protocol is not secure, but will be the basis of a secure key exchange mechanism we'll develop in the next section:</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3qRFXuCjStyX8IdRgHogJi/0ea04a675e6b8b52fc74a2375827890c/image6.png" alt="" class="kg-image" width="1220" height="693" loading="lazy">
@@ -138,12 +152,27 @@ def decrypt(sk, ctxt):
 
 # Test
 assert decrypt(sk, encrypt(pk, 1)) == 1</code></pre>
-	<h4>Making the scheme secure (or "What is a lattice?")</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="making-the-scheme-secure-or-what-is-a-lattice">Making the scheme secure (or "What is a lattice?")</h4>
+		<a href="https://blog.cloudflare.com/#making-the-scheme-secure-or-what-is-a-lattice" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By now, you might be wondering what on Earth a lattice even is. We promise we'll define it, but before we do, it'll help to understand why our warm-up scheme is insecure and what it'll take to fix it.</p>
 	<p>Readers familiar with linear algebra may already see the problem: in order for this scheme to be secure, it should be impossible for the attacker to recover the secret key <code>s</code>; but given the public <code>(A,t)</code>, we can immediately solve for <code>s</code> using <a href="https://en.wikipedia.org/wiki/Gaussian_elimination"><u>Gaussian elimination</u></a>.</p>
 	<p>In more detail, if <code>A</code> is invertible, we can write the secret key as <code>A</code><code><sup>-1</sup></code><code>*t == A</code><code><sup>-1</sup></code><code>*(A*s) == (A</code><code><sup>-1</sup></code><code>*A)*s == s,</code> where <code>A</code><code><sup>-1</sup></code> is the inverse of <code>A</code>. (When you multiply a matrix by its inverse, you get the identity matrix <code>I</code>, which simply takes a column vector to itself, i.e., <code>I*s == s.</code>) We can use Gaussian elimination to compute this matrix. Intuitively, all we're doing is solving a set of linear equations, where the entries of <code>s</code> are the unknown variables. (Note that this is possible even if <code>A</code> is not invertible.)</p>
 	<p>In order to make this encryption scheme secure, we need to make it a little... “messier”.</p>
-	<h5>Let's get messy</h5>
+	<div class="flex anchor relative">
+		<h5 id="lets-get-messy">Let's get messy</h5>
+		<a href="https://blog.cloudflare.com/#lets-get-messy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For starters, we need to make it hard to recover the secret key from the public key. Let's try the following: generate another random vector <code>e</code> and add it into <code>A*</code>s. Our key generation algorithm becomes:</p>
 	<pre class="language-Python"><code class="language-Python">def key_gen():
     A = gen_mat(N, N, 0, Q)
@@ -220,7 +249,14 @@ def decrypt(sk, ctxt):
 assert decrypt(sk, encrypt(pk, 0)) == 0
 assert decrypt(sk, encrypt(pk, 1)) == 1</code></pre>
 	<p>Before moving on, try to find parameters for which the scheme works and for which the secret and error vectors seem hard to guess.</p>
-	<h5>Learning with errors</h5>
+	<div class="flex anchor relative">
+		<h5 id="learning-with-errors">Learning with errors</h5>
+		<a href="https://blog.cloudflare.com/#learning-with-errors" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So far we have a functioning encryption scheme for which we've mitigated two attacks, one a key-recovery attack and the other a plaintext-recovery attack. There seems to be no other obvious way of breaking our scheme, unless we choose parameters that are so weak that an attacker can easily guess the secret key s or ciphertext randomness r. Again, these vectors need to be short in order to prevent decryption errors, but not so short that they are easy to guess. (Likewise for the error terms.)</p>
 	<p>Still, there may be other attacks that require a little more sophistication to pull off. For instance, there might be some mathematical analysis we can do to recover, or at least make a good guess of, a portion of the ciphertext randomness. This raises a more fundamental question: in general, how do we establish that cryptosystems like this are actually secure?</p>
 	<p>As a first step, cryptographers like to try and reduce the attack surface. <b>Modern cryptosystems are designed so that the problem of attacking the scheme reduces to solving some other problem that is easier to reason about.</b></p>
@@ -246,7 +282,14 @@ assert decrypt(sk, encrypt(pk, 1)) == 1</code></pre>
 	</ul>
 	<p>The first distribution corresponds to what we actually do in the encryption scheme; in the second, <code>t</code> is just a random vector, and no longer a secret vector at all. We say that the LWE problem is "hard" if no attacker is able to guess the coin flip with probability significantly better than one-half.</p>
 	<p>Our encryption is <i>passively </i>secure — meaning the ciphertext doesn't leak any information about the plaintext — if the LWE problem is hard for the parameters we chose. To see why, notice that both the public key and ciphertext look like LWE instances; if we can replace each instance with an instance of the random distribution, then the ciphertext would be completely independent of the plaintext and therefore leak no information about it at all. Note that, for this argument to go through, we also have to add the error term <code>e3</code> to the ciphertext component <code>v</code>.</p>
-	<h5>Choosing the parameters</h5>
+	<div class="flex anchor relative">
+		<h5 id="choosing-the-parameters">Choosing the parameters</h5>
+		<a href="https://blog.cloudflare.com/#choosing-the-parameters" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We've established that if solving the LWE problem is hard for parameters <code>N</code>, <code>Q</code>, and <code>beta</code>, then so is breaking our public key encryption scheme. What's left for us to do is tune the parameters so that solving LWE is beyond the reach of any attacker we can think of. This is where lattices come in.</p>
 	<h6>Lattices</h6>
 	<p>A <b>lattice </b>is an infinite grid of points in high-dimensional space. A two-dimensional lattice might look something like this:</p>
@@ -313,7 +356,14 @@ dual_hybrid :: rop: ≈2^226.2, red: ≈2^225.4, guess: ≈2^224.9, β: 599, p: 
 arora-gb    :: rop: ≈2^129.4, dreg: 9, mem: ≈2^129.4, t: 4, m: ≈2^64.7</code></pre>
 	<p>We'd have to bump the parameters even further to the scheme to a regime that has comparable security to ML-KEM.</p>
 	<p>Finally, a word of warning: when designing lattice cryptography, determining whether our scheme is secure requires a lot more than estimating the cost of generic attacks on our LWE parameters. In the absence of a mathematical proof of security in a realistic adversarial model, we can't rule out other ways of breaking our scheme. Tread lightly, fair traveler, and bring a friend along for the journey.</p>
-	<h4>Making the scheme efficient</h4>
+	<div class="flex anchor relative">
+		<h4 id="making-the-scheme-efficient">Making the scheme efficient</h4>
+		<a href="https://blog.cloudflare.com/#making-the-scheme-efficient" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that we understand how to encrypt with LWE, let's take a quick look at how to make our scheme efficient.</p>
 	<p>The main problem with our scheme is that we can only encrypt a bit at a time. This is because we had to split the <code>range(Q)</code> into two chunks, one that encodes <code>1</code> and another that encodes <code>0</code>. We could improve the bit rate by splitting the range into more chunks, but this would make decryption errors more likely.</p>
 	<p>Another problem with our scheme is that the runtime depends heavily on our security parameters. Encryption requires <code>O(N</code><code><sup>2</sup></code><code>)</code> multiplications (multiplication is the most expensive part of a secure implementation of modular arithmetic), and in order for our scheme to be secure, we need to make <code>N</code> quite large.</p>
@@ -323,7 +373,14 @@ arora-gb    :: rop: ≈2^129.4, dreg: 9, mem: ≈2^129.4, t: 4, m: ≈2^64.7</co
 	<p>Another advantage of using polynomials is that it significantly reduces the dimension of the matrix without impacting security. Concretely, the most widely used variant of ML-KEM, ML-KEM-768, uses a <code>3</code>-by-<code>3</code> matrix <code>A</code>, so just <code>9 </code>polynomials in total. (Note that $256 \cdot 3 = 768$, hence the name "ML-KEM-768".) However, note that we have to be careful in how we choose the modulus: $X^{256}+1$ is special in that it does not exhibit any algebraic structure that is known to permit attacks.</p>
 	<p>The choices of <code>Q=3329</code> for the coefficient modulus and $X^{256}+1$ for the polynomial modulus have one more benefit. They allow polynomial multiplication to be carried out using the <a href="https://eprint.iacr.org/2024/585"><u>NTT algorithm</u></a>, which massively reduces the number of multiplications and additions we have to perform. In fact, this optimization is a major reason why ML-KEM is sometimes faster in terms of CPU time than key exchange with elliptic curves.</p>
 	<p>We won't get into how NTT works here, except to say that the algorithm will look familiar to you if you've ever implemented RSA. In both cases we use the <a href="https://en.wikipedia.org/wiki/Chinese_remainder_theorem"><u>Chinese Remainder Theorem</u></a> to split multiplication up into multiple, cheaper multiplications with smaller moduli.</p>
-	<h4>From public key encryption to ML-KEM</h4>
+	<div class="flex anchor relative">
+		<h4 id="from-public-key-encryption-to-ml-kem">From public key encryption to ML-KEM</h4>
+		<a href="https://blog.cloudflare.com/#from-public-key-encryption-to-ml-kem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The last step to build ML-KEM is to make the scheme secure against chosen ciphertext attacks (CCA). Currently, it's only secure against chosen plaintext attacks (CPA), which basically means that the ciphertext leaks no information about the plaintext, regardless of the distribution of plaintexts. CCA security is stronger in that it gives the attacker access to <a href="https://en.wikipedia.org/wiki/Adaptive_chosen-ciphertext_attack#Practical_attacks"><u>decryptions of ciphertexts of its choosing</u></a>. (Of course, it's not allowed to decrypt the target ciphertext itself.) The specific transform used in ML-KEM results in a CCA-secure KEM ("Key-Encapsulation Mechanism").</p>
 	<p>Chosen ciphertext attacks might seem a bit abstract, but in fact they formalize a realistic threat model for many applications of KEMs (and public key encryption for that matter). For example, suppose we use the scheme in a protocol in which the server authenticates itself to a client by proving it was able to decrypt a ciphertext generated by the client. In this kind of protocol, the server acts as a sort of "decryption oracle" in which its responses to clients depend on the secret key. Unless the scheme is CCA secure, this oracle can be abused by an attacker to leak information about the secret key over time, allowing it to eventually impersonate the server.</p>
 	<p>ML-KEM incorporates several more optimizations to make it as fast and as compact as possible. For example, instead of generating a random matrix <code>A</code>, we can derive it from a random, 32-byte string (called a "seed") using a hash-based primitive called a XOF ("eXtendable Output Function"), in the case of ML-KEM this XOF is <a href="https://pycryptodome.readthedocs.io/en/latest/src/hash/shake128.html"><u>SHAKE128</u></a>. This significantly reduces the size of the public key.</p>
@@ -343,7 +400,14 @@ arora-gb    :: rop: ≈2^129.4, dreg: 9, mem: ≈2^129.4, t: 4, m: ≈2^64.7</co
 	<p>While this threat is less urgent than the threat to encryption, mitigating it is going to be more complicated. Over the years, we've bolted a number of signatures onto the <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake">TLS handshake</a> in order to meet the evolving requirements of the web <a href="https://en.wikipedia.org/wiki/Public_key_infrastructure"><u>PKI</u></a>. We have PQ alternatives for these signatures, one of which we'll study in this section, but so far these signatures and their public keys are too large (i.e., take up too many bytes) to make comfortable replacements for today's schemes. Barring some breakthrough in <a href="https://blog.cloudflare.com/another-look-at-pq-signatures"><u>NIST's ongoing standardization effort</u></a>, we will have to re-engineer TLS and the web PKI to use fewer signatures.</p>
 	<p>For now, let's dive into the PQ signature scheme we're likely to see deployed first: <a href="https://csrc.nist.gov/pubs/fips/204/final"><u>ML-DSA</u></a>, a.k.a. Dillithium. The design of ML-DSA follows a similar template as ML-KEM. We start by building some intermediate primitive, then we transform that primitive into the primitive we want, in this case a signature scheme.</p>
 	<p>ML-DSA is quite a bit more involved than ML-KEM, so we're going to try to boil it down even further and just try to get across the main ideas.</p>
-	<h4>Warm up</h4>
+	<div class="flex anchor relative">
+		<h4 id="warm-up">Warm up</h4>
+		<a href="https://blog.cloudflare.com/#warm-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Whereas ML-KEM is basically El Gamal encryption with elliptic curves replaced with lattices, ML-DSA is basically the <a href="https://www.zkdocs.com/docs/zkdocs/zero-knowledge-protocols/schnorr"><u>Schnorr identification protocol</u></a> with elliptic curves replaced with lattices. Schnorr's protocol is used by a <b>prover </b>to convince a <b>verifier</b> that it knows the secret key associated with its public key without revealing the secret key itself. The protocol has three moves and is executed with four algorithms:</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7lV5fU3j9rRQ2j2Y4lpW8r/a12908c078ec46e0fa35ef674fcfdb07/image8.png" alt="" class="kg-image" width="1220" height="536" loading="lazy">
@@ -402,7 +466,14 @@ c = challenge()                       # c: verifier -&gt; prover
 (z1, z2) = finish(s1, s2, y1, y2, c)  # (z1, z2): prover -&gt; verifier
 assert verify(A, t, hw, c, z1, z2)    # verifier</code></pre>
 	<p>Notice that the verifier doesn't actually check <code>A*z1 + z2 == c*t + w</code> directly; we have to rearrange the equation so that we can set the commitment to <code>H(w)</code> rather than <code>w</code>. We'll explain the need for hashing in the next section.</p>
-	<h4>Making this scheme secure</h4>
+	<div class="flex anchor relative">
+		<h4 id="making-this-scheme-secure">Making this scheme secure</h4>
+		<a href="https://blog.cloudflare.com/#making-this-scheme-secure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The question of whether this protocol is secure boils down to whether it's possible to impersonate the prover without knowledge of the secret key. Let's put our attacker hat on and poke around.</p>
 	<p>Perhaps there's a way to compute the secret key, either from the public key directly or by eavesdropping on executions of the protocol with the honest prover. If LWE is hard, then clearly there's no way we're going to extract the secret key from the public key <code>t</code>. Likewise, the commitment <code>H(w)</code>doesn't leak any information that would help us extract the secret key from the proof<code> (z1,z2)</code>.</p>
 	<p>Let's take a closer look at the proof. Notice that the vectors <code>(y1,y2)</code> "mask" the secret key vectors, sort of how the shared secret masks the plaintext in ML-KEM. However, there's one big exception: we also scale the secret key vectors by the challenge <code>c</code>.</p>
@@ -430,7 +501,14 @@ for _ in range(10):
 	<p>Here's where things get tricky. Let's refer to the set of possible outputs of <code>challenge() </code>as the <b>challenge space. </b>We need the challenge space to be fairly large, large enough that the probability of outputting the same challenge twice is negligible.</p>
 	<p>Why would such a collision be a problem? It's a little easier to see in the context of digital signatures. Let's say an attacker knows a valid signature for a message <code>m</code>. The signature includes the commitment <code>H(m)</code>, so the attacker also knows the challenge is <code>c == H(H(w),m)</code>. Suppose it manages to find a different message <code>m</code><code><sup>*</sup></code> for which <code>c == H(H(w),m</code><code><sup>*</sup></code><code>)</code>. Then the signature is also valid for m! And this attack is easy to pull off if the challenge space, that is, the set of possible outputs of <code>H</code>, is too small.</p>
 	<p>Unfortunately, we can't make the challenge space larger simply by increasing the size of the modulus <code>Q</code>: the larger the challenge might be, the more information we'd leak about the secret key. We need a new idea.</p>
-	<h5>The best of both worlds</h5>
+	<div class="flex anchor relative">
+		<h5 id="the-best-of-both-worlds">The best of both worlds</h5>
+		<a href="https://blog.cloudflare.com/#the-best-of-both-worlds" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Remember that the hardness of LWE depends on the ratio between <code>beta</code> and <code>Q</code>. This means that <code>y1</code> and <code>y2</code> don't need to be short in absolute terms, but short relative to random vectors.</p>
 	<p>With that in mind, consider the following idea. Let's take a larger modulus, say <code>Q=2**31 - 1</code>, and we'll continue to sample from the same challenge space, <code>range(2**16)</code>.</p>
 	<p>First, notice that <code>z1</code> is now "relatively" short, since its entries are now in <code>range(-gamma, gamma+1)</code>, where <code>gamma = beta*(2**16-1),</code> rather than uniform over <code>range(Q)</code>. Let's also modify <code>initialize()</code> to sample the entries of <code>(y1,y2)</code> from the same range and see what happens:</p>
@@ -462,7 +540,14 @@ for _ in range(10):
 	<p>One problem is that the challenge space is still quite small. With only <code>2**16 </code>challenges to choose from, we're likely to see a collision even after only a handful of protocol executions. We need the challenge space to be much, much larger, say around <code>2**256</code>. But then <code>Q</code> has to be an insanely large number in order for the <code>beta</code> to <code>Q</code> ratio to be secure.</p>
 	<p>ML-DSA is able to side step this problem due to its use of arithmetic over polynomial rings. It uses the same modulus polynomial as ML-KEM, so the challenge is a polynomial with 256 coefficients. The coefficients are chosen carefully so that the challenge space is large, but multiplication by the challenge scales the secret vector by a small amount. Note that we still end up using a slightly larger modulus (<code>Q=8380417</code>) for ML-DSA than for ML-KEM, but only by about twelve bits.</p>
 	<p>However, there is a more fundamental problem here, which is that we haven't completely ruled out that signatures may leak information about the secret key.</p>
-	<h5>Cause and effect</h5>
+	<div class="flex anchor relative">
+		<h5 id="cause-and-effect">Cause and effect</h5>
+		<a href="https://blog.cloudflare.com/#cause-and-effect" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Suppose we run the protocol a number of times, and in each run, we happen to choose a relatively small value for some entry of <code>y1</code>. After enough runs, this would eventually allow us to reconstruct the corresponding entry of <code>s1</code>. To rule this out as a possibility, we need to make <code>y1 </code>even longer. (Likewise for <code>y2</code>.) But how long?</p>
 	<p>Suppose we know that the entries of <code>z1</code> and <code>z2</code> are always in <code>range(-beta_loose,beta_loose+1) </code>for some <code>beta_loose &gt; beta</code>. Then we can <b>simulate </b>an honest run of the protocol as follows:</p>
 	<pre class="language-Rust"><code class="language-Rust">def simulate(A, t):
@@ -508,7 +593,14 @@ assert verify(A, t, hw, c, z1, z2)</code></pre>
 	<p>Interestingly, we should expect aborts to be quite common. The parameters of ML-DSA are tuned so that the protocol runs five times on average before it succeeds.</p>
 	<p>Another interesting point is that the security proof requires us to simulate not only successful protocol runs, but aborted protocol runs as well. More specifically, the protocol simulator must abort with the same probability as the real protocol, which implies that the rejection probability is <i>independent </i>of the secret key.</p>
 	<p>The simulator also needs to be able to produce realistic looking commitments for aborted transcripts. This is exactly why the prover commits to the <i>hash</i> of <code>w </code>rather than <code>w </code> itself: in the security proof, we can easily simulate hashes of random inputs.</p>
-	<h4>Making this scheme efficient</h4>
+	<div class="flex anchor relative">
+		<h4 id="making-this-scheme-efficient">Making this scheme efficient</h4>
+		<a href="https://blog.cloudflare.com/#making-this-scheme-efficient" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>ML-DSA benefits from many of the same optimizations as ML-KEM, including using polynomial rings, NTT for polynomial multiplication, and encoding polynomials with a fixed number of bits. However, ML-DSA has a few more tricks to make things smaller.</p>
 	<p>First, in ML-DSA, instead of the pair of short vectors <code>z1 </code>and <code>z2</code>, the proof consists of a single vector <code>z=c*s1 + y,</code> where <code>y</code> was committed to in the previous step. In turn, we only end up with a single proof vector <code>z</code> rather than two as before. Getting this to work requires a special encoding of the commitment so that we can't compute <code>y</code> from it. ML-DSA uses a related trick to reduce the size of the <code>t</code> vector of the public key, but the details are more complicated.</p>
 	<p>For the parameters we expect to deploy first (ML-DSA-44), the public key is 1312 bytes long and the signature is a whopping 2420 bytes. In contrast to ML-KEM, it is possible to shave off some more bytes. This does not come for free and requires complicating the scheme. An example is <a href="https://eprint.iacr.org/2023/624.pdf"><u>HAETAE</u></a>, which changes the distributions used. <a href="https://github.com/pornin/rust-fn-dsa"><u>Falcon</u></a> takes it a step further with even smaller signatures, using a completely different approach, which although elegant is also more complex to implement.</p>

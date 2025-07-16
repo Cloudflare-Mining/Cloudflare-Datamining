@@ -222,10 +222,26 @@
 			</svg>
 		</a>
 	</div>
-	<h4>OpenSSL</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="openssl">OpenSSL</h4>
+		<a href="https://blog.cloudflare.com/#openssl" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first benchmark I wanted to perform, was OpenSSL version 1.1.1 (development version), using the bundled <code>openssl speed</code> tool. Although we recently switched to BoringSSL, I still prefer OpenSSL for benchmarking, because it has almost equally well optimized assembly code paths for both ARMv8 and the latest Intel processors.</p>
 	<p>In my opinion handcrafted assembly is the best measure of a CPU’s potential, as it bypasses the compiler bias.</p>
-	<h4>Public key cryptography</h4>
+	<div class="flex anchor relative">
+		<h4 id="public-key-cryptography">Public key cryptography</h4>
+		<a href="https://blog.cloudflare.com/#public-key-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5jqlU0sjyAGrZaT2Y1x8JR/9fc0bccc931f0e8f8cbf1c8fcd2bdecf/pub_key_1_core-2.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
@@ -240,7 +256,15 @@
 	<p>Falkor is at a disadvantage here. First, in a single core benchmark, the turbo is engaged, meaning the Intel processors run at a higher frequency. Second, in Broadwell, Intel introduced two special instructions to accelerate big number multiplication: ADCX and ADOX. These perform two independent add-with-carry operations per cycle, whereas ARM can only do one. Similarly, the ARMv8 instruction set does not have a single instruction to perform 64-bit multiplication, instead it uses a pair of MUL and UMULH instructions.</p>
 	<p>Nevertheless, at the SoC level, Falkor wins big time. It is only marginally slower than Skylake at an RSA2048 signature, and only because RSA2048 does not have an optimized implementation for ARM. The <a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec">ECDSA</a> performance is ridiculously fast. A single Centriq chip can satisfy the ECDSA needs of almost any company in the world.</p>
 	<p>It is also very interesting to see Skylake outperform Broadwell by a 30% margin, despite losing the single core benchmark, and only having 20% more cores. This can be explained by more efficient all-core turbo, and improved hyper-threading.</p>
-	<h4>Symmetric key cryptography</h4>
+	<div class="flex anchor relative">
+		<h4 id="symmetric-key-cryptography">Symmetric key cryptography</h4>
+		<a href="https://blog.cloudflare.com/#symmetric-key-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5c1gb11NBOBVq2PyFyxHIJ/05ddba2c522eecce2fe1fceca405c3ac/sym_key_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
@@ -267,7 +291,15 @@
 	<p>Obviously the first benchmark would be the popular zlib library. At Cloudflare, we use an <a href="https://blog.cloudflare.com/cloudflare-fights-cancer">improved version of the library</a>, optimized for 64-bit Intel processors, and although it is written mostly in C, it does use some Intel specific intrinsics. Comparing this optimized version to the generic zlib library wouldn’t be fair. Not to worry, with little effort I <a href="https://github.com/cloudflare/zlib/tree/vlad/aarch64">adapted the library</a> to work very well on the ARMv8 architecture, with the use of NEON and CRC32 intrinsics. In the process it is twice as fast as the generic library for some files.</p>
 	<p>The second benchmark is the emerging brotli library, it is written in C, and allows for a level playing field for all platforms.</p>
 	<p>All the benchmarks are performed on the HTML of <a href="https://blog.cloudflare.com">blog.cloudflare.com</a>, in memory, similar to the way NGINX performs streaming compression. The size of the specific version of the HTML file is 29,329 bytes, making it a good representative of the type of files we usually compress. The parallel benchmark compresses multiple files in parallel, as opposed to compressing a single file on many threads, also similar to the way NGINX works.</p>
-	<h4>gzip</h4>
+	<div class="flex anchor relative">
+		<h4 id="gzip">gzip</h4>
+		<a href="https://blog.cloudflare.com/#gzip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pi68sRQQHPJLXZO5vIbhW/72c6e8568f4d95e3e8d592dd72577ea8/gzip_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
@@ -279,7 +311,15 @@
 
 	</figure>
 	<p>When using gzip, at the single core level Skylake is the clear winner. Despite having lower frequency than Broadwell, it seems that having lower penalty for branch misprediction helps it pull ahead. The Falkor core is not far behind, especially with lower quality settings. At the system level Falkor performs significantly better, thanks to the higher core count. Note how well gzip scales on multiple cores.</p>
-	<h4>brotli</h4>
+	<div class="flex anchor relative">
+		<h4 id="brotli">brotli</h4>
+		<a href="https://blog.cloudflare.com/#brotli" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5LA2CLLkYa9iCe1eQzgs6x/1ff12aa354d80166407fe4f9fd538d78/brot_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
@@ -303,7 +343,14 @@
 		</a>
 	</div>
 	<p>Golang is another very important language for Cloudflare. It is also one of the first languages to offer ARMv8 support, so one would expect good performance. I used some of the built-in benchmarks, but modified them to run on multiple goroutines.</p>
-	<h4>Go crypto</h4>
+	<div class="flex anchor relative">
+		<h4 id="go-crypto">Go crypto</h4>
+		<a href="https://blog.cloudflare.com/#go-crypto" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I would like to start the benchmarks with crypto performance. Thanks to OpenSSL we have good reference numbers, and it is interesting to see just how good the Go library is.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -328,7 +375,14 @@
 	<p>As far as Go crypto is concerned ARM and Intel are not even on the same playground. Go has very optimized assembly code for ECDSA, AES-GCM and Chacha20-Poly1305 on Intel. It also has Intel optimized math functions, used in RSA computations. All those are missing for ARMv8, putting it at a big disadvantage.</p>
 	<p>Nevertheless, the gap can be bridged with a relatively small effort, and we know that with the right optimizations, performance can be on par with OpenSSL. Even a very minor change, such as implementing the function <a href="https://go-review.googlesource.com/c/go/+/76270">addMulVVW</a> in assembly, lead to an over tenfold improvement in RSA performance, putting Falkor ahead of both Broadwell and Skylake, with 8,009 signatures/second.</p>
 	<p>Another interesting thing to note is that on Skylake, the Go Chacha20-Poly1305 code, that uses AVX2 performs almost identically to the OpenSSL AVX512 code, this is again due to AVX2 running at higher clock speeds.</p>
-	<h4>Go gzip</h4>
+	<div class="flex anchor relative">
+		<h4 id="go-gzip">Go gzip</h4>
+		<a href="https://blog.cloudflare.com/#go-gzip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Next in Go performance is gzip. Here again we have a reference point to pretty well optimized code, and we can compare it to Go. In the case of the gzip library, there are no Intel specific optimizations in place.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -341,7 +395,14 @@
 
 	</figure>
 	<p>Gzip performance is pretty good. The single core Falkor performance is way below both Intel processors, but at the system level it manages to outperform Broadwell, and lags behind Skylake. Since we already know that Falkor outperforms both when C is used, it can only mean that Go’s backend for ARMv8 is still pretty immature compared to gcc.</p>
-	<h4>Go regexp</h4>
+	<div class="flex anchor relative">
+		<h4 id="go-regexp">Go regexp</h4>
+		<a href="https://blog.cloudflare.com/#go-regexp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Regexp is widely used in a variety of tasks, so its performance is quite important too. I ran the built-in benchmarks on 32KB strings.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -365,7 +426,14 @@
 	</figure>
 	<p>Go regexp performance is not very good on Falkor. In the medium and hard tests it takes second place, thanks to the higher core count, but Skylake is significantly faster still.</p>
 	<p>Doing some profiling shows that a lot of the time is spent in the function bytes.IndexByte. This function has an assembly implementation for amd64 (runtime.indexbytebody), but generic implementation for Go. The easy regexp tests spend most time in this function, which explains the even wider gap.</p>
-	<h4>Go strings</h4>
+	<div class="flex anchor relative">
+		<h4 id="go-strings">Go strings</h4>
+		<a href="https://blog.cloudflare.com/#go-strings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another important library for a web server is the Go strings library. I only tested the basic Replacer class here.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -378,7 +446,14 @@
 
 	</figure>
 	<p>In this test again, Falkor lags behind, and loses even to Broadwell. Profiling shows significant time is spent in the function runtime.memmove. Guess what? It has a highly optimized assembly code for amd64, that uses AVX2, but only very simple ARM assembly, that copies 8 bytes at a time. By changing three lines in that code, and using the LDP/STP instructions (load pair/store pair) to copy 16 bytes at a time, I improved the performance of memmove by 30%, which resulted in 20% faster EscapeString and UnescapeString performance. And that is just scratching the surface.</p>
-	<h4>Go conclusion</h4>
+	<div class="flex anchor relative">
+		<h4 id="go-conclusion">Go conclusion</h4>
+		<a href="https://blog.cloudflare.com/#go-conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Go support for aarch64 is quite disappointing. I am very happy to say that everything compiles and works flawlessly, but on the performance side, things should get better. Is seems like the enablement effort so far was concentrated on the compiler back end, and the library was left largely untouched. There are a lot of low hanging optimization fruits out there, like my 20-minute fix for <a href="https://go-review.googlesource.com/c/go/+/76270">addMulVVW</a> clearly shows. Qualcomm and other ARMv8 vendors intends to put significant engineering resources to amend this situation, but really anyone can contribute to Go. So if you want to leave your mark, now is the time.</p>
 	<div class="flex anchor relative">
 		<h3 id="luajit">LuaJIT</h3>

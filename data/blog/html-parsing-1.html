@@ -36,11 +36,32 @@
 	</div>
 	<p>When rewriting content through Cloudflare we do not want to impact site performance. The balance in designing a streaming HTML rewriter is to minimise the pause in response byte flow by holding onto as little information as possible whilst retaining the ability to rewrite matching tokens.</p>
 	<p>The difference in requirements compared to an HTML parser used in a browser include:</p>
-	<h4>Output latency</h4>
+	<div class="flex anchor relative">
+		<h4 id="output-latency">Output latency</h4>
+		<a href="https://blog.cloudflare.com/#output-latency" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For browsers, the Document Object Model (DOM) is the end product of the parsing process but in our case we have to parse, rewrite and serialize back to HTML. In the case of Cloudflare’s reverse proxy any content processing on the edge server results in latency between the server and an eyeball. It is desirable to minimize the latency impact of HTML handling, which involves parsing, rewriting and serializing back to HTML. In all of these stages we want to be as fast as possible to minimize latency.</p>
-	<h4>Parser throughput</h4>
+	<div class="flex anchor relative">
+		<h4 id="parser-throughput">Parser throughput</h4>
+		<a href="https://blog.cloudflare.com/#parser-throughput" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s assume that usually browsers rarely need to deal with HTML pages bigger than 1Mb in size and an average page load time is somewhere around 3s at best. HTML parsing is not the main bottleneck of the page loading process as the browser will be blocked on running scripts and loading other render-critical resources. We can roughly estimate that ~3Mbps is an acceptable throughput for browser’s HTML parser. At Cloudflare we have hundreds of megabytes of traffic per CPU, so we need a parser that is faster by an order of magnitude.</p>
-	<h4>Memory limitations</h4>
+	<div class="flex anchor relative">
+		<h4 id="memory-limitations">Memory limitations</h4>
+		<a href="https://blog.cloudflare.com/#memory-limitations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As most users must realise, browsers have the luxury of being able to consume memory. For example, this simple HTML markup when opened in a browser will consume a significant chunk of your system memory before eventually halting a browser tab (and all this memory will be consumed by the parser) :</p>
 	<pre class="language-javascript"><code class="language-javascript">&lt;script&gt;
    document.write('&lt;');
@@ -64,7 +85,14 @@
 		</a>
 	</div>
 	<p>As usual with big projects, it all started pretty innocently.</p>
-	<h4>Find and obfuscate an email</h4>
+	<div class="flex anchor relative">
+		<h4 id="find-and-obfuscate-an-email">Find and obfuscate an email</h4>
+		<a href="https://blog.cloudflare.com/#find-and-obfuscate-an-email" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 2010, Cloudflare decided to provide a feature that would stop popular email scrapers. The basic idea of this protection was to find and obfuscate emails on pages and later decode them back in the browser with injected JavaScript code. Sounds easy, right? You search for anything that looks like an email, encode it and then decode it with some JavaScript magic and present the result to the end-user.</p>
 	<p>However, even such a seemingly simple task already requires solving several issues. First of all, we need to define what an email is, and there is no simple answer. Even the infamous <a href="http://www.ex-parrot.com/~pdw/Mail-RFC822-Address.html">regex</a> supposedly covering the entire RFC is, in fact, outdated and incomplete as the new RFC added lots of valid email constructions, including Unicode support. Let’s not go down that rabbit hole for now and instead focus on a higher-level issue: transforming streaming content.</p>
 	<p>Content from the network comes in packets, which have to be buffered and parsed as HTTP by our servers. You can’t predict how the content will be split, which means you always need to buffer some of it because content that is going to be replaced can be present in multiple input chunks.</p>
@@ -81,7 +109,14 @@
 	<p>Now that we have solved the problem of matching email patterns in text, we need to deal with the fact that they need to be obfuscated on pages. This is when the first hints of HTML “parsing” were introduced.</p>
 	<p>I’ve put “parsing” in quotes because, rather than implementing the whole parser, the email filter (as the module was called) didn’t attempt to replicate the whole HTML grammar, but rather added custom Ragel patterns just for skipping over comments and tags where emails should not be obfuscated.</p>
 	<p>This was a reasonable approach, especially back in 2010 - four years before the HTML5 specification, when all browsers had their own quirks handling of HTML. However, as you can imagine, this approach did not scale well. If you’re trying to work around quirks in other parsers, you start gaining more and more quirks in your own, and then work around these too. Simultaneously, new features started to be added, which also required modifying HTML on the fly (like automatic insertion of Google Analytics script), and an existing module seemed to be the best place for that. It grew to handle more and more tags, operations and syntactic edge cases.</p>
-	<h4>Now let’s minify..</h4>
+	<div class="flex anchor relative">
+		<h4 id="now-lets-minify">Now let’s minify..</h4>
+		<a href="https://blog.cloudflare.com/#now-lets-minify" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 2011, Cloudflare decided to also add minification to allow customers to speed up their websites even if they had not employed minification themselves. For that, we decided to use an existing streaming minifier - <a href="https://github.com/brianpane/jitify-core">jitify</a>. It already had NGINX bindings, which made it a great candidate for integration into the existing pipeline.</p>
 	<p>Unfortunately, just like most other parsers from that time as well as ours described above, it had its own processing rules for HTML, JavaScript and CSS, which weren’t precise but rather tried to parse content on a best-effort basis. This led to us having two independent streaming parsers that were incompatible and could produce bugs either individually or only in combination.</p>
 	<div class="flex anchor relative">
@@ -95,7 +130,14 @@
 	<p>Over the years engineers kept adding new features to the ever-growing state machines, while fixing new bugs arising from imprecise syntax implementations, conflicts between various parsers, and problems in features themselves.</p>
 	<p>By 2016, it was time to get out of the multiple ad hoc parsers business and do things ‘the right way’.</p>
 	<p>The next section(s) will describe how we built our HTML5 compliant parser starting from the specification state machine. Using only this state machine it should have been straight-forward to build a parser. You may be aware that historically the parsing of HTML had not been entirely strict which meant to not break existing implementations the building of an actual DOM was required for parsing. This is not possible for a streaming rewriter so a simulator of the parser feedback was developed. In terms of performance, it is always better not to do something. We then describe why the rewriter can be ‘lazy’ and not perform the expensive encoding and decoding of text when rewriting HTML. The surprisingly difficult problem of deciding if a response is HTML is then detailed.</p>
-	<h4>HTML5</h4>
+	<div class="flex anchor relative">
+		<h4 id="html5">HTML5</h4>
+		<a href="https://blog.cloudflare.com/#html5" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By 2016, HTML5 had defined precise syntax rules for parsing and compatibility with legacy content and custom browser implementations. It was already implemented by all browsers and many 3rd-party implementations.</p>
 	<p>The <a href="https://html.spec.whatwg.org/multipage/parsing.html">HTML5 parsing specification</a> defines basic HTML syntax in the form of a state machine. We already had experience with <a href="http://www.colm.net/open-source/ragel">Ragel</a> for similar use cases, so there was no question about what to use for the new streaming parser. Despite the complexity of the grammar, the translation of the specification to Ragel syntax was straightforward. The code looks simpler than the formal description of the state machine, thanks to the ability to mix regex syntax with explicit transitions.</p>
 	<figure class="kg-card kg-image-card ">
@@ -121,7 +163,14 @@
 	<p>HTML parsing flow as defined by the specification</p>
 	<p>For this reason, most parsers don’t even try to perform streaming parsing and instead take the input as a whole and produce a document tree as an output. This is not something we could do for streaming transformation without adding significant delays to page loading.</p>
 	<p>An existing HTML5 JavaScript parser - <a href="https://github.com/inikulin/parse5">parse5</a> - had already implemented spec-compliant tree parsing using a streaming tokenizer and rewriter. To avoid having to create a full DOM the concept of a “parser feedback simulator” was introduced.</p>
-	<h4>Tree builder feedback</h4>
+	<div class="flex anchor relative">
+		<h4 id="tree-builder-feedback">Tree builder feedback</h4>
+		<a href="https://blog.cloudflare.com/#tree-builder-feedback" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As you can guess from the name, this is a module that aims to simulate a full parser’s feedback to the tokenizer, without actually building the whole DOM, but instead preserving only the required information and context necessary for correctly driving the state machine.</p>
 	<p>After rigorous testing and upstreaming a test runner to parse5, we found this technique to be suitable for the majority of even poorly written pages on the Internet, and employed it in LazyHTML.</p>
 	<figure class="kg-card kg-image-card ">

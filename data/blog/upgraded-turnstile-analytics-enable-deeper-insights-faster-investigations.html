@@ -13,26 +13,54 @@
 		</a>
 	</div>
 	<p>The main motivation behind this release is to provide actionable insights that further strengthen the layers of protection and to give customers the ability to dissect visitor traffic by the most relevant attributes, so that identifying bot behavior patterns becomes easier. New features of Turnstile Analytics include:&nbsp;</p>
-	<h4>Top statistics&nbsp;</h4>
+	<div class="flex anchor relative">
+		<h4 id="top-statistics">Top statistics&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#top-statistics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When you click into widget analytics under Turnstile in the Cloudflare Dashboard, you now have enhanced visibility of TopN statistics, and granular views of your traffic. The new TopN section is where you can view the top statistics of attributes such as hostname, <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system"><u>autonomous system (ASN)</u></a>, user agent, browser, source IP address, country, and OS. This allows customers to analyze traffic at a more granular level and detect potential anomalies or patterns. You can analyze which browsers, user agents, ASNs, and locations generated the most failed challenges, making it easier to detect bot behavior patterns and anomalies in your visitor traffic. Suspicious IP addresses that have a high challenge failure rate can be proactively mitigated through additional security measures. For instance, if you have WAF custom rules in place based on suspicious IP addresses, you can in turn adjust your WAF custom rules based on the trends you see in Turnstile, strengthening your other layers of security even further.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/51u7UF1W6ud6amSeP7c41N/d4a6d17ddc2a7cde024100a308449520/1.png" alt="" class="kg-image" width="1039" height="636" loading="lazy">
 	</figure>
 	<p><sup><i>TopN section of Turnstile Analytics</i></sup></p>
-	<h4>Challenge outcomes</h4>
+	<div class="flex anchor relative">
+		<h4 id="challenge-outcomes">Challenge outcomes</h4>
+		<a href="https://blog.cloudflare.com/#challenge-outcomes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When a visitor encounters Turnstile, it issues a challenge to assess whether the visitor is a human or a bot, based on various signals. The <a href="https://developers.cloudflare.com/turnstile/turnstile-analytics/challenge-outcomes"><u>Challenge outcomes</u></a> section helps you evaluate what portion of your traffic is likely human or likely bots.</p>
 	<p>The ability to easily monitor the effectiveness of Turnstile by looking at trends of Likely Human and Likely Bot metrics is important for peace of mind, knowing that the bots are being blocked and Turnstile is protecting your sites. But it’s also important to track changes in bot activity over time by monitoring challenge success and failure trends and across different attributes. You can detect anomalies in your traffic pattern and solve rates. For example, a sudden drop in solve rate overlaid with a surge in challenge attempts may indicate an attack. It is crucial to monitor bot behaviors and attacks that may be specific to your industry or to your business through Turnstile Analytics and correlate them with your internal security logs to keep your security rules up to date, to easily investigate any attacks, and to find areas of vulnerability.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vAzZrKNrLNzU6jTFoXoDU/43ab17dcd11fe8e972caa838bfd83de0/2.png" alt="" class="kg-image" width="1013" height="1005" loading="lazy">
 	</figure>
 	<p><sup><i>Challenge outcomes section of Turnstile Analytics</i></sup></p>
-	<h4>Solve rates</h4>
+	<div class="flex anchor relative">
+		<h4 id="solve-rates">Solve rates</h4>
+		<a href="https://blog.cloudflare.com/#solve-rates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When the visitor successfully solves the challenge, the <a href="https://developers.cloudflare.com/turnstile/turnstile-analytics/challenge-outcomes/#solve-rates"><u>Solve rates</u></a> section shows how the visitors have solved the challenge. Solve rates can be broken down into <a href="https://developers.cloudflare.com/turnstile/turnstile-analytics/challenge-outcomes/#metrics-1"><u>interactive solves, non-interactive solves, and pre-clearance solves</u></a>. If you are using the <a href="https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types"><u>managed mode</u></a>, for example, you can see how many of your visitors required interaction with the widget and were prompted to check the box for Turnstile to verify that they are human.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1495UrrH51QNwWf0kpwO34/842d72c1f1f39789d5e0e0395f677e9a/3.png" alt="" class="kg-image" width="1016" height="991" loading="lazy">
 	</figure>
 	<p><sup><i>Solve rates section of Turnstile Analytics</i></sup></p>
-	<h4>Token validations</h4>
+	<div class="flex anchor relative">
+		<h4 id="token-validations">Token validations</h4>
+		<a href="https://blog.cloudflare.com/#token-validations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After a visitor successfully completes a Turnstile challenge, a token is generated that must be validated via the Siteverify API. The API response provides the ultimate outcome of our bot determination. Only rendering the widget on the client side without calling the Siteverify API for token validation is an incomplete implementation of Turnstile, and your site will not be protected. The Turnstile token that is returned from the challenge stage <a href="https://developers.cloudflare.com/turnstile/turnstile-analytics/token-validation"><u>must be validated</u></a> via the Siteverify API as we check if the token is valid, whether it has been redeemed already (a single token can only be redeemed once), and whether it has expired.&nbsp;
 	</p>
 	<figure class="kg-card kg-image-card">
@@ -49,7 +77,14 @@
 	</div>
 	<p>Common use cases of Turnstile include protecting login and sign up pages from credential stuffing, account takeover, and fraudulent account creation attacks. Let’s walk through how you can best set up Turnstile on your login pages and interpret your traffic with the new Turnstile analytics.&nbsp;</p>
 	<p>You can set up two separate widgets for your login and sign up page, or you can set up one widget and use the '<a href="https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations"><u>action</u></a>' field to distinguish traffic between these pages. The ‘<a href="https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations"><u>cData</u></a>’ field can be used to pass along custom data to keep track of each individual attempt. This field is useful to track any pertinent information from your business logic such as account ID, session ID, etc. In this case, let’s assume we are passing along a session ID along with the login attempt. This is helpful if you are trying to protect and monitor against account takeover attacks or credential stuffing attacks. cData is a custom data field that is not stored in Cloudflare systems at any time.&nbsp;</p>
-	<h4>Rendering the Turnstile widget</h4>
+	<div class="flex anchor relative">
+		<h4 id="rendering-the-turnstile-widget">Rendering the Turnstile widget</h4>
+		<a href="https://blog.cloudflare.com/#rendering-the-turnstile-widget" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To place the Turnstile widget on your login page:&nbsp;</p>
 	<pre class="language-Rust"><code class="language-Rust">&lt;script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer&gt;&lt;/script&gt;
 &lt;form action="/login" method="POST"&gt;
@@ -61,7 +96,15 @@
   &lt;div class="cf-turnstile" data-sitekey="your-site-key" data-action="signup"&gt;&lt;/div&gt;
   &lt;input type="submit" value="Sign up"&gt;
 &lt;/form&gt;</code></pre>
-	<h4>Validating the Turnstile token with the Siteverify API&nbsp;</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="validating-the-turnstile-token-with-the-siteverify-api">Validating the Turnstile token with the Siteverify API&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#validating-the-turnstile-token-with-the-siteverify-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At this point, you have placed the Turnstile widget in your login page. When a visitor visits this page, a Turnstile challenge will be issued and when the visitor completes the challenge, you will receive a Turnstile token that contains the outcome of the challenge. This must be validated via the Siteverify API like below:&nbsp;</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">// This is the demo secret key. 
 // In production, we recommend you store your secret key(s) safely.
@@ -117,7 +160,14 @@ async function handlePost(request) {
 	<p>If Siteverify returns <code>"success": false</code>, this means that the token was invalid and Turnstile determined the visitor to be a bot. In this case, you have control over what you want the experience to be, such as redirecting the user to a custom error page where they can reach out to support.&nbsp;&nbsp;</p>
 	<p>You can also flag that session (in this case, “session123”) as suspicious and require the account owner to take action. You can implement the UI so that it seems like the bot was successful in logging in to an account, but block any important actions, such as account changes or purchases. Likewise, you can alert the account owner that there has been a suspicious login attempt.&nbsp;</p>
 	<p>Turnstile is a building block to help you build out your security defenses, and you can design your logic to fit your priorities across UI, UX, and security.&nbsp;</p>
-	<h4>Interpreting login page analytics</h4>
+	<div class="flex anchor relative">
+		<h4 id="interpreting-login-page-analytics">Interpreting login page analytics</h4>
+		<a href="https://blog.cloudflare.com/#interpreting-login-page-analytics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The very first thing to monitor is the Top Statistics section to look out for any anomalous traffic characteristics in the “countries”, “source ASN”, and “source user agents” metrics. By seeing the traffic distribution, you can have a better understanding of your visitors and potentially spot any anomalies. At this point, you can also take a look at “Source browsers”, “Source OS”, and “Countries” to see if that aligns with your visitor demographics. If you have a list of suspicious IP addresses that you maintain, you can cross-reference them to see their success and failure rates.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bUtPmM4FbqN9Azh6n43fW/a9eff878603fa095a378697962cec919/7.png" alt="" class="kg-image" width="1999" height="892" loading="lazy">

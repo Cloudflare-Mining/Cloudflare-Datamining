@@ -31,16 +31,37 @@
 	<p>Although we always favor simplicity, privacy-related services, including our own WARP, have seen growing use. Meanwhile, <a href="https://en.wikipedia.org/wiki/Carrier-grade_NAT"><u>carrier-grade network address translation (CGNATs)</u></a> and outbound forward proxies have been widely used for many years.</p>
 	<p>These services often result in multiple users sharing the same IP address, which can lead to legitimate users being challenged unfairly since individual addresses don’t strictly correlate with unique client behavior. Moreover, threat actors have become increasingly adept at anonymizing and dynamically changing their IP addresses using tools like VPNs, proxies, and botnets, further diminishing the reliability of IP addresses as a standalone indicator of malicious activity. Recognising these limitations, it was time for us to revisit Security Level’s logic to reduce the number of false positives being observed.</p>
 	<p>In February 2024, we introduced a new security system that automatically combines the real-time DDoS score with a traffic threshold and a botnet tracking system. The real-time DDoS score is part of our autonomous DDoS detection system, which analyzes traffic patterns to identify potential threats. This system superseded and replaced the existing Security Level logic, and is deployed on all customer traffic, including free plans. After thorough monitoring and analysis over the past year, we have confirmed that these behavior-based mitigation systems provide more accurate results. Notably, we've observed a significant reduction in false positives, demonstrating the limitations of the previous IP address-only logic.</p>
-	<h4>Better botnet tracking</h4>
+	<div class="flex anchor relative">
+		<h4 id="better-botnet-tracking">Better botnet tracking</h4>
+		<a href="https://blog.cloudflare.com/#better-botnet-tracking" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our new logic combines IP address signals with behavioral and threshold indicators to improve the accuracy of botnet detection. While IP addresses alone can be unreliable due to potential false positives, we enhance their utility by integrating them with additional signals. We monitor surges in traffic from known "bad" IP addresses and further refine this data by examining specific properties such as path, accept, and host headers.</p>
 	<p>We also introduced a new botnet tracking system that continuously detects and tracks botnet activity across the Cloudflare network. From our unique vantage point as a <a href="https://w3techs.com/technologies/overview/proxy"><u>reverse proxy for nearly 20% of all websites</u></a>, we maintain a dynamic database of IP addresses associated with botnet activity. This database is continuously updated, enabling us to automatically respond to emerging threats without manual intervention. This effect is visible in the <a href="https://radar.cloudflare.com/security-and-attacks?dateStart=2024-02-01&amp;dateEnd=2024-03-31#mitigated-traffic-sources"><u>Cloudflare Radar chart</u></a> below, as we saw sharp growth in DDoS mitigations in February 2024 as the botnet tracking system was implemented.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3yOP8zoC5ZLVi4WHnXI0jH/ef3fd6ad10e8357b6b4f1bfb90e6d6b6/image4.png" alt="Growth in DDoS mitigations starting February 2024 as the botnet tracking system was released" class="kg-image" width="1600" height="900" loading="lazy">
 	</figure>
-	<h4>What it means for our customers and their users</h4>
+	<div class="flex anchor relative">
+		<h4 id="what-it-means-for-our-customers-and-their-users">What it means for our customers and their users</h4>
+		<a href="https://blog.cloudflare.com/#what-it-means-for-our-customers-and-their-users" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Customers now get better protection while having to manage fewer configurations, and they can rest assured that their online presence remains fully protected. These security measures are integrated and enabled by default across all of our plans, ensuring protection without the need for manual configuration or rule management.
 		This improvement is particularly beneficial for users accessing sites through proxy services or CGNATs, as these setups can sometimes trigger unnecessary security checks, potentially disrupting access to websites.</p>
-	<h4>What’s next</h4>
+	<div class="flex anchor relative">
+		<h4 id="whats-next">What’s next</h4>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our team is looking at defining the next generation of threat scoring mechanisms. This initiative aims to provide our customers with more relevant and effective controls and tools to combat today's and tomorrow's potential security threats.</p>
 	<p>Effective March 17, 2025, we are removing the option to configure manual rules using the threat score parameter in the Cloudflare dashboard. The "I'm Under Attack" mode remains available, allowing users to issue managed challenges to all traffic when needed.</p>
 	<p>By the end of Q1 2026, we anticipate disabling all rules that rely on IP threat score. This means that using the threat score parameter in the Rulesets API and via Terraform won’t be available after the end of the transition period. However, we encourage customers to be proactive and edit or remove the rules containing the threat score parameter starting today.</p>
@@ -59,7 +80,14 @@
 	<p>Building upon our core security features, we're also giving you more control over your encryption: cipher suite selection is now available in the Cloudflare dashboard!&nbsp;</p>
 	<p>When a client initiates a visit to a Cloudflare-protected website, a <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake"><u>TLS handshake</u></a> occurs, where clients present a list of supported <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites"><u>cipher suites</u></a> — cryptographic algorithms crucial for secure connections. While newer algorithms enhance security, balancing this with broad compatibility is key, as some customers prioritise reach by supporting older devices, even with less secure ciphers. To accommodate varied client needs, Cloudflare's default settings emphasise wide compatibility, allowing customers to tailor cipher suite selection based on their priorities: strong security, compliance (PCI DSS, FIPS 140-2), or legacy device support.</p>
 	<p>Previously, customizing cipher suites required multiple API calls, proving cumbersome for many users. Now, Cloudflare introduces Cipher Suite Selection to the dashboard. This feature introduces user-friendly selection flows like security recommendations, compliance presets, and custom selections.&nbsp;&nbsp;</p>
-	<h4>Understanding cipher suites</h4>
+	<div class="flex anchor relative">
+		<h4 id="understanding-cipher-suites">Understanding cipher suites</h4>
+		<a href="https://blog.cloudflare.com/#understanding-cipher-suites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cipher suites are collections of cryptographic algorithms used for key exchange, authentication, encryption, and message integrity, essential for a TLS handshake. During the handshake’s initiation, the client sends a "client hello" message containing a list of supported cipher suites. The server responds with a "server hello" message, choosing a cipher suite from the client's list based on security and compatibility. This chosen cipher suite forms the basis of TLS termination and plays a crucial role in establishing a secure HTTPS connection. Here’s a quick overview of each component:</p>
 	<ul>
 		<li>
@@ -76,7 +104,14 @@
 		</li>
 	</ul>
 	<p><a href="https://www.geeksforgeeks.org/perfect-forward-secrecy"><b><u>Perfect forward secrecy</u></b></a><b> </b>is an important feature of modern cipher suites. It ensures that each session's encryption keys are generated independently, which means that even if a server’s private key is compromised in the future, past communications remain secure.</p>
-	<h4>What we are offering&nbsp;</h4>
+	<div class="flex anchor relative">
+		<h4 id="what-we-are-offering">What we are offering&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#what-we-are-offering" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can find cipher suite configuration under Edge Certificates in your zone’s SSL/TLS dashboard. There, you will be able to view your allow-listed set of cipher suites. </p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fT7BvPow3zvKTl1JYw7yX/8dcd8b797f671b05211defaaf4c4bb83/image5.png" alt="" class="kg-image" width="1999" height="399" loading="lazy">
@@ -136,10 +171,24 @@
 	</figure>
 	<p>Cloudflare's URL Scanner is a tool designed to detect and analyze potential security threats like phishing and malware by scanning and evaluating websites, providing detailed insights into their safety and technology usage. We've leveraged our own <a href="https://developers.cloudflare.com/radar/investigate/url-scanner"><u>URL Scanner</u></a> to enhance our internal <u>Trust &amp; Safety efforts</u>, automating the detection and mitigation of some forms of abuse on our platform. This has not only strengthened our own security posture, but has also directly influenced the development of the new features we're announcing today.&nbsp;</p>
 	<p>Phishing attacks are on the rise across the Internet, and we saw a major opportunity to be "customer zero" for our URL Scanner to address abuse on our own network. By working closely with our Trust &amp; Safety team to understand how the URL Scanner could better identify potential phishing attempts, we've improved the speed and accuracy of our response to abuse reports, making the Internet safer for everyone. Today, we're excited to share the new API version and the latest updates to URL Scanner, which include the ability to scan from specific geographic locations, bulk scanning, search by Indicators of Compromise (IOCs), improved UI and information display, comprehensive IOC listings, advanced sorting options, and more. These features are the result of our own experiences in leveraging URL Scanner to safeguard our platform and our customers, and we're confident that they will prove useful to our security analysts and threat intelligence users.</p>
-	<h4>Scan up to 100 URLs at once by using bulk submissions</h4>
+	<div class="flex anchor relative">
+		<h4 id="scan-up-to-100-urls-at-once-by-using-bulk-submissions">Scan up to 100 URLs at once by using bulk submissions</h4>
+		<a href="https://blog.cloudflare.com/#scan-up-to-100-urls-at-once-by-using-bulk-submissions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Enterprise customers can now conduct routine scans of their web assets to identify emerging vulnerabilities, ensuring that potential threats are addressed proactively, by using the <a href="https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/bulk_create"><u>Bulk Scanning API endpoint</u></a>. Another use case for the bulk scanning functionality is developers leveraging bulk scanning to verify that all URLs your team is accessing are secure and free from potential exploits before launching new websites or updates.</p>
 	<p>Scanning of multiple URLs addresses the specific needs of our users engaged in threat hunting. Many of them maintain extensive lists of URLs that require swift investigation to identify potential threats. Currently, they face the task of submitting these URLs one by one, which not only slows down their workflow but also increases the manual effort involved in their security processes. With the introduction of bulk submission capabilities, users can now submit up to 100 URLs at a time for scanning.&nbsp;</p>
-	<h4>How we built the bulk scanning feature</h4>
+	<div class="flex anchor relative">
+		<h4 id="how-we-built-the-bulk-scanning-feature">How we built the bulk scanning feature</h4>
+		<a href="https://blog.cloudflare.com/#how-we-built-the-bulk-scanning-feature" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s look at a regular workflow:</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6l8aN6xhN4HEfw4ZMi1MT8/5eb62472b42f75487c55b17b3415b584/image6.png" alt="" class="kg-image" width="1999" height="475" loading="lazy">
@@ -152,7 +201,14 @@
 	<p>In this case, there are no Durable Objects involved just yet; the system simply sends each URL in the bulk scan submission as a new message to the queue.</p>
 	<p>Notice that in both of these cases the scan is triggered asynchronously. In the first case, it starts when the Durable Objects alarm fires and, in the second case, when messages in the queue are consumed. While the durable object alarm will always fire in a few seconds, messages in the queue have no predetermined processing time, they may be processed seconds to minutes later, depending on how many messages are already in the queue and how fast the system processes them.</p>
 	<p>When users bulk scan, having the scan done at <i>some </i>point in time is more important than having it done <i>now</i>. When using the regular scan workflow, users are limited in the number of scans per minute they can submit. However, when using bulk scan this is not a concern, and users can simply send all URLs they want to process in a single HTTP request. This comes with the tradeoff that scans may take longer to complete, which is a perfect fit for <a href="https://developers.cloudflare.com/queues"><u>Cloudflare Queues</u></a>. Having the ability to <a href="https://developers.cloudflare.com/queues/configuration/configure-queues/#consumer-worker-configuration"><u>configure</u></a> retries, max batch size, max batch timeouts, and max concurrency is something we’ve found very useful. As the scans are completed asynchronously, users can request the resulting scan reports <a href="https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/get"><u>via the API</u></a>.</p>
-	<h4>Discover related scans and better IOC search</h4>
+	<div class="flex anchor relative">
+		<h4 id="discover-related-scans-and-better-ioc-search">Discover related scans and better IOC search</h4>
+		<a href="https://blog.cloudflare.com/#discover-related-scans-and-better-ioc-search" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <i>Related Scans</i> feature allows <a href="https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/list"><u>API</u></a>, <a href="https://dash.cloudflare.com"><u>Cloudflare dashboard</u></a> and <a href="https://radar.cloudflare.com"><u>Radar</u></a> users alike to view related scans directly within the URL Scanner Report. This helps users analyze and understand the context of a scanned URL by providing insights into similar URLs based on various attributes. Filter and search through URL Scanner reports to retrieve information on related scans, including those with identical favicons, similar HTML structures, and matching IP addresses.</p>
 	<p>The <i>Related Scans</i> tab presents a table with key headers corresponding to four distinct filters. Each entry includes the scanned URL and a direct link to view the detailed scan report, allowing for quick access to further information.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
@@ -181,10 +237,24 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5O55W8CLMrlPANpzkPAUY0/35748cb200feb79de6251c79d2be87f9/image2.png" alt="" class="kg-image" width="1472" height="330" loading="lazy">
 	</figure>
-	<h4>Download HAR files</h4>
+	<div class="flex anchor relative">
+		<h4 id="download-har-files">Download HAR files</h4>
+		<a href="https://blog.cloudflare.com/#download-har-files" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the latest updates to our URL Scanner, users can now download both the <a href="https://en.wikipedia.org/wiki/HAR_(file_format)"><u>HAR (HTTP Archive) file</u></a> and the JSON report from their scans. The <a href="https://blog.cloudflare.com/introducing-har-sanitizer-secure-har-sharing"><u>HAR file</u></a> provides a detailed record of all interactions between the web browser and the scanned website, capturing crucial data such as request and response headers, timings, and status codes. This format is widely recognized in the industry and can be easily analyzed using various tools, making it invaluable for developers and security analysts alike.</p>
 	<p>For instance, a threat intelligence analyst investigating a suspicious URL can download the HAR file to examine the network requests made during the scan. By analyzing this data, they can identify potential malicious behavior, such as unexpected redirects and correlate these findings with other threat intelligence sources. Meanwhile, the JSON report offers a structured overview of the scan results, including security verdicts and associated IOCs, which can be integrated into broader security workflows or automated systems.</p>
-	<h4>New API version</h4>
+	<div class="flex anchor relative">
+		<h4 id="new-api-version">New API version</h4>
+		<a href="https://blog.cloudflare.com/#new-api-version" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, we’re announcing a <a href="https://developers.cloudflare.com/api/operations/urlscanner-create-scan-v2"><u>new version of our API</u></a>, allowing users to transition effortlessly to our service without needing to overhaul their existing workflows. Moving forward, any future features will be integrated into this updated API version, ensuring that users have access to the latest advancements in our URL scanning technology.</p>
 	<p>We understand that many organizations rely on automation and integrations with our previous API version. Therefore, we want to reassure our customers that there will be no immediate deprecation of the old API. Users can continue to use the existing API without disruption, giving them the flexibility to migrate at their own pace. We invite you to try the <a href="https://developers.cloudflare.com/api/operations/urlscanner-create-scan-v2"><u>new API</u></a> today and explore these new features to help with your web security efforts.</p>
 	<div class="flex anchor relative">

@@ -63,7 +63,14 @@
 		</a>
 	</div>
 	<p>DDoS attacks are measured in two dimensions: the number of malicious packets per second (pps) and the attack bandwidth in bits per second (bps).</p>
-	<h4>Rate of Packets (pps)</h4>
+	<div class="flex anchor relative">
+		<h4 id="rate-of-packets-pps">Rate of Packets (pps)</h4>
+		<a href="https://blog.cloudflare.com/#rate-of-packets-pps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The packets per second metric is important, since the processing power required on a router raises proportionally with the pps count. Whenever an attack overwhelms a router’s processing power, we will see a frantic error message like this:</p>
 	<pre class="language-bash"><code class="language-bash">PROBLEM/CRITICAL:
 edge21.sin01.cloudflare.cc router PFE hardware drops
@@ -76,7 +83,14 @@ Fabric drops are increasing at a rate of 329678.81/s.</code></pre>
 
 	</figure>
 	<p>There aren’t many networks in the world that could sustain this rate of attack packets, but our hardware was able to keep up with all the malicious traffic. Our networking team does an excellent job at keeping CloudFlare’s networking hardware up to the task.</p>
-	<h4>Volume in bits (bps)</h4>
+	<div class="flex anchor relative">
+		<h4 id="volume-in-bits-bps">Volume in bits (bps)</h4>
+		<a href="https://blog.cloudflare.com/#volume-in-bits-bps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The other interesting parameter is size of the attack in gigabits per second. Some large DDoS attacks attempt to saturate the network capacity (bps), rather than router processing power (pps). If that happens, we see alerts like this:</p>
 	<pre class="language-bash"><code class="language-bash">PROBLEM/CRITICAL:
 edge112.tel01.cloudflare.cc router interfaces

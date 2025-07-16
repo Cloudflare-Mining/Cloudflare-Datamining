@@ -253,7 +253,14 @@ function g() {
 	</div>
 	<p>Keep in mind that this proposal is in very early stages, and current benchmarks and demos are not representative of the final outcome (which should improve numbers much further).</p>
 	<p>As mentioned earlier, BinaryAST can mark functions that should be parsed lazily ahead of time. By using different levels of lazification in the encoder (<a href="https://github.com/binast/binjs-ref/blob/b72aff7dac7c692a604e91f166028af957cdcda5/crates/binjs_es6/src/lazy.rs#L43">https://github.com/binast/binjs-ref/blob/b72aff7dac7c692a604e91f166028af957cdcda5/crates/binjs_es6/src/lazy.rs#L43</a>) and running tests against some popular JavaScript libraries, we found following speed-ups.</p>
-	<h4>Level 0 (no functions are lazified)</h4>
+	<div class="flex anchor relative">
+		<h4 id="level-0-no-functions-are-lazified">Level 0 (no functions are lazified)</h4>
+		<a href="https://blog.cloudflare.com/#level-0-no-functions-are-lazified" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With lazy parsing disabled in both parsers we got a raw parsing speed improvement of between 3 and 10%.</p>
 	<table>
 		<tbody>
@@ -395,7 +402,14 @@ function g() {
 			</tr>
 		</tbody>
 	</table>
-	<h4>Level 3 (functions up to 3 levels deep are lazified)</h4>
+	<div class="flex anchor relative">
+		<h4 id="level-3-functions-up-to-3-levels-deep-are-lazified">Level 3 (functions up to 3 levels deep are lazified)</h4>
+		<a href="https://blog.cloudflare.com/#level-3-functions-up-to-3-levels-deep-are-lazified" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>But with the lazification set to skip nested functions of up to 3 levels we see much more dramatic improvements in parsing time between 90 and 97%. As mentioned earlier in the post, BinaryAST makes lazy parsing essentially free by completely skipping over the marked functions.</p>
 	<table>
 		<tbody>

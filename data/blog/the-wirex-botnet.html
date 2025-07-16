@@ -149,7 +149,15 @@ User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10_5_7; en-us) AppleWebKit/5
 			</svg>
 		</a>
 	</div>
-	<h4>Identifying C2 domains</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="identifying-c2-domains">Identifying C2 domains</h4>
+		<a href="https://blog.cloudflare.com/#identifying-c2-domains" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Inspection of various decompiled applications revealed multiple sub-domains of a single root domain (<code>axclick[.]store</code>) that were suspected of being a part of the command and control (C2) infrastructure for the botnet.</p>
 	<pre class="language-bash"><code class="language-bash">$ grep http * -R
 com/twdlphqg/app/ExplorationActivity.smali:    const-string v3, "http://u[.]axclick[.]store/"
@@ -167,7 +175,14 @@ com/twdlphqg/app/services/Ryiidrxcjmfb.smali:    const-string v1, "http://g[.]ax
 		</a>
 	</div>
 	<p>Below we’ll cover the relevant pieces individually, using pseudo code based on knowledge gathered from the decompiled APK(s). We’ll then talk about what the pseudo code is doing in more detail as it relates to attack commands and techniques.</p>
-	<h5>Service Runner</h5>
+	<div class="flex anchor relative">
+		<h5 id="service-runner">Service Runner</h5>
+		<a href="https://blog.cloudflare.com/#service-runner" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <code>ServiceRunner</code> component’s role is a means of persistent background execution by injecting the <code>Runnable</code> object type into a timed <code>OS Handler</code>. Because of the nature of a Service in Android environments, the malware can continue to keep running once the app has been launched and placed in the background. Execution will only stop if application is actively terminated by the mobile device user or in the event of a device restart.</p>
 	<pre class="language-bash"><code class="language-bash">Service Runner Pseudo Code
 Class ServiceRunner extends Object {
@@ -175,7 +190,15 @@ Class ServiceRunner extends Object {
         DDoS_Service-&gt;poll_c2();
     }
 }</code></pre>
-	<h4>C2 Response Parser</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="c2-response-parser">C2 Response Parser</h4>
+		<a href="https://blog.cloudflare.com/#c2-response-parser" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <code>AttackCommandParser</code> serves as the callback that is triggered when the C2 <code>WebView</code> detects that a page load has occurred. The parser loads the page’s content and extracts the <code>&lt;title&gt;</code> body as the attack command. Based on observed samples, a payload from the C2 looks like this:</p>
 	<pre class="language-bash"><code class="language-bash">&lt;html&gt;
   &lt;title&gt;
@@ -184,7 +207,15 @@ Class ServiceRunner extends Object {
 &lt;/html&gt;</code></pre>
 	<p>Figure 3: Attack Directive Sample</p>
 	<p>The value extracted from the <code>&lt;title&gt;</code> tag is then tested via <code>String-&gt;contains()</code> to ensure it contains the value token delimiter <code>snewxwri</code>. If the delimiter is found, the content is trimmed of leading or trailing whitespace and then <code>split()</code> into an <code>Array</code> of pieces on the delimiter. The resulting tokens are then used as parameters to be passed to the <code>DDoS_Service-&gt;attack()</code> method.</p>
-	<h5>C2 Response Parser Pseudo Code</h5>
+	<div class="flex anchor relative">
+		<h5 id="c2-response-parser-pseudo-code">C2 Response Parser Pseudo Code</h5>
+		<a href="https://blog.cloudflare.com/#c2-response-parser-pseudo-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">Class AttackCommandParser extends WebViewClient {
     Public function onPageFinished(C2_WebView,C2_url) {
         String pageTitle = C2_WebView-&gt;getTitle();
@@ -198,9 +229,25 @@ Class ServiceRunner extends Object {
         }
     }
 }</code></pre>
-	<h4>DDoS Service</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="ddos-service">DDoS Service</h4>
+		<a href="https://blog.cloudflare.com/#ddos-service" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <code>DDoS_Service</code> component is what runs the show. It has 3 core functions. These responsibilities are to get the Service up and running, provide the <code>poll_c2()</code> method for loading the C2 <code>WebView</code>, and most importantly -- launching attacks. We’ll look at these responsibilities one at a time after presenting the pseudo code.</p>
-	<h4>DDoS Service Pseudo Code</h4>
+	<div class="flex anchor relative">
+		<h4 id="ddos-service-pseudo-code">DDoS Service Pseudo Code</h4>
+		<a href="https://blog.cloudflare.com/#ddos-service-pseudo-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">Class DDoS_Service extends Object {
     Public function onCreate() {
         Handler OS_Handler = new Handler();
@@ -237,11 +284,34 @@ Class ServiceRunner extends Object {
         }
     }
 }</code></pre>
-	<h5>DDoS Service onCreate()</h5>
+
+	<div class="flex anchor relative">
+		<h5 id="ddos-service-oncreate">DDoS Service onCreate()</h5>
+		<a href="https://blog.cloudflare.com/#ddos-service-oncreate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <code>onCreate()</code> method is straightforward: it creates a new <code>android/os/Handler</code> and <code>ServiceRunner</code> instance. The <code>ServiceRunner</code> instance is then hooked into the Handler via a call to <code>postDelayed()</code>. According to <a href="https://developer.android.com/reference/android/os/Handler.html#postDelayed(java.lang.Runnable,%20long)">Android documentation</a>, this “Causes the Runnable r to be added to the message queue, to be run after the specified amount of time elapses.” The second parameter to this method call is the number of milliseconds before the Runnable is invoked. In this sample that value is <code>2</code>, which is a very aggressive timing strategy.</p>
-	<h5>DDoS Service poll_c2()</h5>
+	<div class="flex anchor relative">
+		<h5 id="ddos-service-poll_c2">DDoS Service poll_c2()</h5>
+		<a href="https://blog.cloudflare.com/#ddos-service-poll_c2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <code>poll_c2()</code> method is responsible for continually reloading the <code>WebView</code> with the C2 URL while also hooking the <code>AttackCommandParser WebViewClient</code> into the poller <code>WebView</code> instance. Before polling the C2 domains, the service will clear and disable the cache as well as clear the <code>WebView</code> instance history. These steps are performed to ensure that the client is always getting up-to-date information from the C2 and not being served cache hits from the local device. We’ll see this tactic reused during the analysis of the <code>attack()</code> method as well.</p>
-	<h5>DDoS Service attack()</h5>
+	<div class="flex anchor relative">
+		<h5 id="ddos-service-attack">DDoS Service attack()</h5>
+		<a href="https://blog.cloudflare.com/#ddos-service-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">Public function attack(String target, String userAgent, String referer) {
     HashMap WebViewHeaders = new HashMap();
     WebViewHeaders-&gt;put(“Referer”,referer);
@@ -266,7 +336,14 @@ Class ServiceRunner extends Object {
 	<p>Once the headers are configured, an empty Array of <code>WebView</code> place holders is instantiated, followed by a loop to fill this Array with actual <code>WebView</code> instances. Each instance goes through the same set of configuration processes. The <code>WebView</code> instances created will have their history, saved form data, and cache cleared. The JavaScript capabilities are enabled (this is typically disabled by default for embedded <code>WebViews</code>), the <code>User-Agent</code> string that will be present in the HTTP Headers is overwritten with the value supplied by the C2 attack directive, and the <code>CacheMode</code> set to <code>LOAD_NO_CACHE</code>, which will force the browser instance to bypass local caches and fetch the target URL for each request.</p>
 	<p>In a final attempt to ensure that no cache hits will occur on the device and a that request will be sent to the target, the application also deletes its local <code>webview.db</code> and <code>webviewCache.db</code> files from the device before loading each request.</p>
 	<p>Finally we see the <code>loadUrl()</code> method is called on the newly configured <code>WebView</code> instance using the target URL and customized <code>WebViewHeaders</code> <code>HashMap</code>.</p>
-	<h5>Running the Malware-User Experience</h5>
+	<div class="flex anchor relative">
+		<h5 id="running-the-malware-user-experience">Running the Malware-User Experience</h5>
+		<a href="https://blog.cloudflare.com/#running-the-malware-user-experience" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While many of the identified apps had already been removed from the Google Play store, mirrors remained online from which we could download the APK files. We loaded <code>“twdlphqg”</code> (one of the attacking apps) onto a freshly-reset physical Samsung Galaxy S4 that had been running Lollipop and security patches from 2015.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -297,9 +374,23 @@ Class ServiceRunner extends Object {
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qXojWzQqkV1aOZxInvurc/2d7006b340d7249378011d521990fb8d/pasted-image-4.png" alt="" class="kg-image" width="900" height="1600" loading="lazy">
 
 	</figure>
-	<h5>Ring Ring! DDoS! - Variations in Malicious Apps</h5>
+	<div class="flex anchor relative">
+		<h5 id="ring-ring-ddos-variations-in-malicious-apps">Ring Ring! DDoS! - Variations in Malicious Apps</h5>
+		<a href="https://blog.cloudflare.com/#ring-ring-ddos-variations-in-malicious-apps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We tested multiple applications from this campaign. There were different variations in behavior and user interface and they weren’t all ringtone apps. All tests were conducted on the same phone.</p>
-	<h5>Xryufrix</h5>
+	<div class="flex anchor relative">
+		<h5 id="xryufrix">Xryufrix</h5>
+		<a href="https://blog.cloudflare.com/#xryufrix" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><code>Xryufrix</code> was the top hitter from the DDoS statistics, but when run, its performance was underwhelming. It’s possible there was a compatability issue <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks">preventing</a> it from reaching its full DDoS potential. This app asked for fewer permissions upon initial install, but did ask for the same lock screen related device administrator permissions as <code>twdlphqg</code>. This one pretended to be a YouTube app. When it first opens, it queries the axclick domain for the DDoS attack commands as well as a <code>GET</code> request against <code>p[.]axclick[.]store/?utm_source=tfikztteuic</code>, which returns the Play Store URL of a different app located at <code>market://details?id=com[.]luckybooster[.]app</code>. When the user attempts to play a Youtube video, this app closes, deletes its icon from the app list, and makes itself impossible to execute afterwards, which is possibly the result of a crash. It also opens the Play store download link for the “Luckybooster” app, which did not DDoS when it was run. The <code>xryufrix</code> app does not launch DDoS attacks while the phone is asleep nor does it launch DDoS attacks at any time other than when the app is active.</p>
 	<figure class="kg-card kg-image-card ">
 

@@ -60,7 +60,14 @@ COPY  secret_token.py .
 CMD  gunicorn -b 0.0.0.0:8000 secret_token:app</code></pre>
 	<p></p>
 	<p>This will allow us to define a Docker image, the blueprint for the containers Minikube will build.</p>
-	<h4>Deploying into Minikube</h4>
+	<div class="flex anchor relative">
+		<h4 id="deploying-into-minikube">Deploying into Minikube</h4>
+		<a href="https://blog.cloudflare.com/#deploying-into-minikube" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<blockquote>
 		<p>If you don't have Minikube installed, install it here: <a href="https://kubernetes.io/docs/tasks/tools/install-minikube">https://kubernetes.io/docs/tasks/tools/install-minikube/</a></p>
 	</blockquote>
@@ -108,15 +115,36 @@ $ curl http://$MINIKUBE_IP:32080/api/v1/token/b01323031589</code></pre>
 	<p>The NodePort setup is fine for testing the application locally, but if we want to share this service with others or better simulate how it will work in the real world, we need to expose it to the internet. In most cases, this means running in a cloud environment and dealing with load balancer configuration or setting up an NGINX ingress controller and dealing with network rules and routing. The Cloudflare Argo Tunnel Ingress Controller allows us to route almost anything to a Cloudflare domain, including services running inside of Minikube.</p>
 	<p>In the Kubernetes cluster, an <code>ingress</code> is an object that describes how we want our service exposed on the internet and an <code>ingress-controller</code> is the process that actually exposes it. To install the Cloudflare Ingress Controller, you’ll need to have a Cloudflare domain and an Argo Tunnel certificate, configured with the <code>cloudflared</code> application.</p>
 	<p><code>kubectl run</code> was fine for quickly installing the test application, but for more complex installations, <a href="https://helm.sh">helm</a> is a great tool, and is used to package the Cloudflare agent. Once you have the helm client installed, a simple <code>helm init</code> will configure Minikube to work with it. The chart for the ingress controller is found at the <a href="https://github.com/StackPointCloud/trusted-charts/tree/master/stable/cloudflare-warp-ingress&amp;sa=D&amp;ust=1529959945974000">trusted-charts public repository</a> and can be installed directly from there.</p>
-	<h4>Cloudflared Configuration</h4>
+	<div class="flex anchor relative">
+		<h4 id="cloudflared-configuration">Cloudflared Configuration</h4>
+		<a href="https://blog.cloudflare.com/#cloudflared-configuration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><code>Cloudflared</code> is the end of the tunnel that runs on your machine and proxies traffic to and from your origin server through the tunnel. If you don't have it installed already, the <code>cloudflared</code> application complete quickstart instructions can be found at <a href="https://www.google.com/url?q=https%3A%2F%2Fdevelopers.cloudflare.com%2Fargo-tunnel%2Fquickstart%2Fquickstart%2F&amp;sa=D&amp;ust=1529959945975000">https://developers.cloudflare.com/argo-tunnel/quickstart/quickstart/</a></p>
-	<h4>Installing the Controller with Helm</h4>
+	<div class="flex anchor relative">
+		<h4 id="installing-the-controller-with-helm">Installing the Controller with Helm</h4>
+		<a href="https://blog.cloudflare.com/#installing-the-controller-with-helm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now we will run some commands that define the repository that holds our chart and override a few default values:</p>
 	<pre class="language-undefined"><code class="language-undefined">$ minikube start
 $ export MINIKUBE_IP=$(minikube ip)
 $ curl http://$MINIKUBE_IP:32080/api/v1/token/b01323031589</code></pre>
 	<p>This installation configures two cloudflare-warp-ingress controller replicas so that any service we expose will get two separate tunnels to the Cloudflare edge, paired together in a single pool.</p>
-	<h4>Exposing Our Application with an Ingress</h4>
+	<div class="flex anchor relative">
+		<h4 id="exposing-our-application-with-an-ingress">Exposing Our Application with an Ingress</h4>
+		<a href="https://blog.cloudflare.com/#exposing-our-application-with-an-ingress" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We'll need to write an ingress definition. Create a file called <code>warp-controller.yaml</code>:</p>
 	<pre class="language-undefined"><code class="language-undefined">apiVersion:  extensions/v1beta1  
 kind:  Ingress  
@@ -135,7 +163,16 @@ spec:
 			servicePort:  8000</code></pre>
 	<p>And apply the definition:</p>
 	<pre class="language-undefined"><code class="language-undefined">$ kubectl apply -f service.yaml</code></pre>
-	<h4>Examining the deployment</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="examining-the-deployment">Examining the deployment</h4>
+		<a href="https://blog.cloudflare.com/#examining-the-deployment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-undefined"><code class="language-undefined">$ kubectl get pod</code></pre>
 	<p>Should print:</p>
 	<pre class="language-undefined"><code class="language-undefined">NAME									READY 	STATUS	RESTARTS 	AGE

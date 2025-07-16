@@ -37,7 +37,14 @@
 	<p>One limitation is that this ingress proxy does not support <a href="https://systemd.io"><u>systemd</u></a> socket activation, a mechanism Tubular relies on to integrate with other Cloudflare services on each server. For services that do support systemd socket activation, systemd independently starts the sockets for the owning service and passes them to Tubular, allowing Tubular to easily detect and route traffic to the correct terminating service.</p>
 	<p>Since this integration model is not feasible, an alternative solution was required. This was addressed by introducing a shared Unix domain socket between Tubular and the ingress proxy service on each server. Through this channel,&nbsp; the ingress proxy service explicitly transmits socket information to Tubular, enabling it to correctly register the sockets in its datapath.</p>
 	<p>The final challenge was deploying the Tubular-ingress proxy integration across the fleet of servers without disrupting active connections. As of April 2025, Cloudflare handles an average of 71 million HTTP requests per second, peaking at 100 million. To safely deploy at this scale, the necessary Tubular and ingress proxy configuration changes were staged across all Cloudflare servers without disrupting existing connections. The final step involved adding bindings — IP addresses and ports corresponding to Cloudflare CDN prefixes — to the Tubular configuration. These bindings direct connections through Tubular via the Unix sockets registered during the previous integration step. To minimize risk, bindings were gradually enabled in a controlled rollout across the global fleet.</p>
-	<h4>Tubular data plane in action</h4>
+	<div class="flex anchor relative">
+		<h4 id="tubular-data-plane-in-action">Tubular data plane in action</h4>
+		<a href="https://blog.cloudflare.com/#tubular-data-plane-in-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This high-level representation of the Tubular data plane binds together the Layer 4 protocol (TCP), prefix (192.0.2.0/24 - which is 254 usable IP addresses), and port number 0 (any port). When incoming packets match this combination, they are directed to the correct socket of the service — in this case, Spectrum.​</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5yQpYeTxPM7B8DZwLsQATs/3f488c5b37ef2358eacf779a42ac59d5/image4.png" alt="" class="kg-image" width="1962" height="573" loading="lazy">
@@ -46,7 +53,14 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wWlR9gWb6JEoyZm4iOpgQ/4a59bcab4a6731a53ea235500596c7f5/image1.png" alt="" class="kg-image" width="1962" height="573" loading="lazy">
 	</figure>
-	<h4>Coordination and orchestration at scale&nbsp;</h4>
+	<div class="flex anchor relative">
+		<h4 id="coordination-and-orchestration-at-scale">Coordination and orchestration at scale&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#coordination-and-orchestration-at-scale" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our goal is to achieve a quick transition of IP address prefixes between services when initiated by customers, which requires a high level of coordination. We need to ensure that changes propagate correctly across all servers to maintain stability. Currently, when a customer migrates a prefix between services, there is a 4-6 hour window of uncertainty where incoming packets may be dropped due to a lack of guaranteed routing. To address this, we are actively implementing systems that will reduce this transition time from hours to just a matter of minutes, significantly improving reliability and minimizing disruptions.</p>
 	<div class="flex anchor relative">
 		<h2 id="smarter-ip-address-management">Smarter IP address management</h2>

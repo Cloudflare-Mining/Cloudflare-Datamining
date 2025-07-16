@@ -79,7 +79,14 @@ export default {
 		</a>
 	</div>
 	<p>It may not be obvious at first glance, but bindings neatly solve a number of common security problems in distributed systems.</p>
-	<h4>SSRF is Not A Thing</h4>
+	<div class="flex anchor relative">
+		<h4 id="ssrf-is-not-a-thing">SSRF is Not A Thing</h4>
+		<a href="https://blog.cloudflare.com/#ssrf-is-not-a-thing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Bindings, when used properly, make Workers immune to Server-Side Request Forgery (SSRF) attacks, one of the most common yet deadly security vulnerabilities in application servers today. In an SSRF attack, an attacker tricks a server into making requests to other internal services that only it can see, thus giving the attacker access to those internal services.</p>
 	<p>As an example, imagine we have built a social media application where users are able to set their avatar image. Imagine that, as a convenience, instead of uploading an image from their local disk, a user can instead specify the URL of an image on a third-party server, and the application server will fetch that image to use as the avatar. Sounds reasonable, right? We can imagine the app contains some code like:</p>
 	<pre class="language-js"><code class="language-js">let resp = await fetch(userAvatarUrl);
@@ -89,14 +96,35 @@ await setUserAvatar(data);</code></pre>
 	<p>But using bindings, this is impossible: There is no URL that the attacker can specify to reach the auth service. The application must explicitly use the binding <code>env.AUTH_SERVICE</code> to reach it. The global <code>fetch()</code> function cannot reach the auth service no matter what URL it is given; it can only make requests to the public Internet.</p>
 	<p><b>A legacy caveat:</b> When we originally designed Workers in 2017, the primary use case was implementing a middleware layer in front of an origin server, integrated with Cloudflare's CDN. At the time, <a href="https://developers.cloudflare.com/workers/configuration/bindings">bindings</a> weren't a thing yet, and we were primarily trying to implement the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Workers interface</a>. To that end, we made a design decision: when a Worker runs on Cloudflare in front of some origin server, if you invoke the global <code>fetch()</code> function with a URL that is within your zone's domain, the request will be sent directly to the origin server, bypassing most logic Cloudflare would normally apply to a request received from the Internet. Sadly, this means that Workers which run in front of an origin server are not immune to SSRF – they must worry about it just like traditional servers on private networks must. Although this puts Workers in the same place as most servers, we now see a path to make SSRF a thing you never have to worry about when writing Workers. We will be introducing "origin bindings", &nbsp;where the origin server is represented by an explicit binding. That is, to send a request to your origin, you'd need to do <code>env.ORIGIN.fetch()</code>. Then, the global <code>fetch()</code> function can be restricted to only talk to the public Internet, fully avoiding SSRF. This is a big change and we need to handle backwards-compatibility carefully – expect to see more in the coming months. Meanwhile, for Workers that do not have an origin server behind them, or where the origin server does not rely on Cloudflare for security, global <code>fetch()</code> is SSRF-safe today.</p>
 	<p><b>And a reminder:</b> Requests originating from Workers have a header, <code>CF-Worker</code>, identifying the domain name that owns the Worker. This header is intended for abuse mitigation: if your server is receiving abusive requests from a Worker, it tells you who to blame and gives you a way to filter those requests. This header is not intended for authorization. You should not implement a private API that grants access to your Workers based solely on the <code>CF-Worker</code> header matching your domain. If you do, you may re-open the opportunity for SSRF vulnerabilities within any Worker running on that domain.</p>
-	<h4>You can't leak your API key if there is no API key</h4>
+	<div class="flex anchor relative">
+		<h4 id="you-cant-leak-your-api-key-if-there-is-no-api-key">You can't leak your API key if there is no API key</h4>
+		<a href="https://blog.cloudflare.com/#you-cant-leak-your-api-key-if-there-is-no-api-key" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Usually, if your web app needs access to a protected resource, you will have to obtain some sort of an API key that grants access to the resource. But typically <i>anyone</i> who has this key can access the resource as if they were the Worker. This makes handling auth keys tricky. You can't put it directly in a config file, unless the entire config file is considered a secret. You can't check it into source control – you don't want to publish your keys to GitHub! You probably shouldn't even store the key on your hard drive – what if your laptop is compromised? And so on.</p>
 	<p>Even if you have systems in place to deliver auth keys to services securely (like <a href="https://developers.cloudflare.com/workers/configuration/secrets">Workers Secrets</a>), if the key is just a string, the service itself can easily leak it. For instance, a developer might carelessly insert a log statement for debugging which logs the service's configuration – including keys. Now anyone who can access your logs can discover the secret, and there's probably no practical way to tell if such a leak has occurred.</p>
 	<p>With Workers bindings, we endeavor for bindings to be live objects, <i>not</i> secret keys. For instance, as seen in the first example in this post, when using a Workers KV binding, you never see a key at all. It's therefore impossible for a Worker to accidentally leak access to a KV namespace.</p>
-	<h4>No certificate management</h4>
+	<div class="flex anchor relative">
+		<h4 id="no-certificate-management">No certificate management</h4>
+		<a href="https://blog.cloudflare.com/#no-certificate-management" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is similar to the API key problem, but arguably worse. When internal services talk to each other over a network, you presumably want them to use secure transports, but typically that requires that every service have a certificate and a private key signed by some CA, and clients must be configured to trust that CA. This is all a big pain to manage, and often the result is that developers don't bother; they set up a <a href="https://www.cloudflare.com/learning/cloud/what-is-a-virtual-private-cloud">VPC</a> and assume the network is trusted.</p>
 	<p>In Workers, since all intra-service communications happen over a binding, the system itself can take on all the work of ensuring the transport is secure and goes to the right place.</p>
-	<h4>No frustrating ACL management – but also no lazy "allow all"</h4>
+	<div class="flex anchor relative">
+		<h4 id="no-frustrating-acl-management-but-also-no-lazy-allow-all">No frustrating ACL management – but also no lazy "allow all"</h4>
+		<a href="https://blog.cloudflare.com/#no-frustrating-acl-management-but-also-no-lazy-allow-all" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At this point you might be thinking: Why are we talking about API keys at all? Cloudflare knows which Worker is sending any request. Can't it handle the authentication that way?</p>
 	<p>Consider the earlier example where we imagined that KV namespaces could be opened by name:</p>
 	<pre class="language-js"><code class="language-js">// Imagine KV namespaces could be open by name?
@@ -140,9 +168,23 @@ let myKv = KV.connect("my-kv-namespace");</code></pre>
 		</a>
 	</div>
 	<p>We've seen that bindings improve security in a number of ways. Usually, people expect security and developer friendliness to be a trade-off, with each security measure making life harder for developers. Bindings, however, are entirely the opposite! They actually make life easier!</p>
-	<h4>Easier setup</h4>
+	<div class="flex anchor relative">
+		<h4 id="easier-setup">Easier setup</h4>
+		<a href="https://blog.cloudflare.com/#easier-setup" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we saw in the intro, using a binding reduces setup boilerplate. Instead of receiving an environment variable containing an API key which must be passed into some sort of library, the environment variable itself is an already-initialized client library.</p>
-	<h4>Observability</h4>
+	<div class="flex anchor relative">
+		<h4 id="observability">Observability</h4>
+		<a href="https://blog.cloudflare.com/#observability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Because the system understands what bindings a Worker has, and even exactly when those bindings are exercised, the system can answer a lot of questions that would normally require more manual instrumentation or analysis to answer, such as:</p>
 	<ul>
 		<li>
@@ -155,7 +197,14 @@ let myKv = KV.connect("my-kv-namespace");</code></pre>
 			<p><b>How often does a particular Worker use a particular resource?</b> Since bindings are invoked by calling methods on the binding itself, the system can observe these calls, log them, collect metrics, etc.</p>
 		</li>
 	</ul>
-	<h4>Testability via dependency injection</h4>
+	<div class="flex anchor relative">
+		<h4 id="testability-via-dependency-injection">Testability via dependency injection</h4>
+		<a href="https://blog.cloudflare.com/#testability-via-dependency-injection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When you deploy a test version of your service, you probably want it to operate on test resources rather than real production resources. For instance, you might have a separate testing KV namespace for storage. But, you probably want to deploy exactly the same code to test that you will eventually deploy to production. That means the names of these resources cannot be hard-coded.</p>
 	<p>On traditional platforms, the obvious way to avoid hard-coding resource names is to put the name in an environment variable. Going back to our example from the intro, if KV worked in a traditional way not using bindings, you might end up with code like this:</p>
 	<pre class="language-js"><code class="language-js">// Hypothetical non-binding-based KV.
@@ -172,7 +221,14 @@ let myKv = KV.connect(env.MY_KV_NAMESPACE, env.MY_KV_AUTHKEY);</code></pre>
 	</ul>
 	<p>With bindings, it's impossible to have this problem. Since you can only connect to a KV namespace through a binding, it's always possible to make a separate deployment of the same code which talks to a test namespace instead of production, e.g. using <a href="https://developers.cloudflare.com/workers/wrangler/environments">Wrangler Environments</a>.</p>
 	<p>In the testing world, this is sometimes called "dependency injection". With bindings, dependencies are always injectable.</p>
-	<h4>Adaptability</h4>
+	<div class="flex anchor relative">
+		<h4 id="adaptability">Adaptability</h4>
+		<a href="https://blog.cloudflare.com/#adaptability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Dependency injection isn't just for tests. A service whose dependencies can be changed out easily will be easier to deploy into new environments, including new production environments.</p>
 	<p>Say, for instance, you have a service that authenticates users. Now you are launching a new product, which, for whatever reason, has a separate userbase from the original product. You need to deploy a new version of the auth service that uses a different database to implement a separate user set. As long as all dependencies are injectable, this should be easy.</p>
 	<p>Again, bindings are not the only way to achieve dependency injection, but a bindings-based system will tend to lead developers to write dependency-injectable code by default.</p>
@@ -184,12 +240,27 @@ let myKv = KV.connect(env.MY_KV_NAMESPACE, env.MY_KV_AUTHKEY);</code></pre>
 			</svg>
 		</a>
 	</div>
-	<h4>Has anyone done this before?</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="has-anyone-done-this-before">Has anyone done this before?</h4>
+		<a href="https://blog.cloudflare.com/#has-anyone-done-this-before" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You have. Every time you write code.</p>
 	<p>As it turns out, this approach is used all the time at the programming language level. Bindings are analogous to parameters of a function, or especially parameters to a class constructor. In a memory-safe programming language, you can't access an object unless someone has passed you a pointer or reference to that object. Objects in memory don't have URLs that you use to access them.</p>
 	<p>Programming languages work this way because they are designed to manage complexity, and this proves to be an elegant way to do so. Yet, this style which we're used to using at the programming language level is much less common at the distributed system level. The Cloudflare Workers platform aims to treat the network as one big computer, and so it makes sense to extend programming language concepts across the network.</p>
 	<p>Of course, we're not the first to apply this to distributed systems, either. The paradigm is commonly called "capability-based security", which brings us to the next question…</p>
-	<h4>Is this capability-based security?</h4>
+	<div class="flex anchor relative">
+		<h4 id="is-this-capability-based-security">Is this capability-based security?</h4>
+		<a href="https://blog.cloudflare.com/#is-this-capability-based-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Bindings are very much inspired by capability-based security.</p>
 	<p>At present, bindings are not a complete capability system. In particular, there is currently no particular mechanism for a Worker to pass a binding to another Worker. However, this is something we can definitely imagine adding in the future.</p>
 	<p>Imagine, for instance, you want to call another Worker through a service binding, and as you do, you want to give that other Worker temporary access to a KV namespace for it to operate on. Wouldn't it be nice if you could just pass the object, and have it auto-revoked at the end of the request? In the future, we might introduce a notion of dynamic bindings which can bind to different resources on a per-request basis, where a calling Worker can pass in a particular value to use for a given request.</p>
@@ -205,7 +276,14 @@ let myKv = KV.connect(env.MY_KV_NAMESPACE, env.MY_KV_AUTHKEY);</code></pre>
 			<p>Like a capability, to use a binding, the application must explicitly specify which binding it is trying to use, and <i>only</i> specifies the binding. In particular, the application does <i>not</i> separately specify the name of the resource in any other namespace (no URL, no global ID, etc.). The existence of the binding only affects the application's behavior when the application explicitly invokes that binding.</p>
 		</li>
 	</ul>
-	<h4>Why is env a parameter to fetch(), not global?</h4>
+	<div class="flex anchor relative">
+		<h4 id="why-is-env-a-parameter-to-fetch-not-global">Why is env a parameter to fetch(), not global?</h4>
+		<a href="https://blog.cloudflare.com/#why-is-env-a-parameter-to-fetch-not-global" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is a bit wonky, but the goal is to enable composition of Workers.</p>
 	<p>Imagine you have two Workers, one which implements your API, mapped to api.example.com, and one which serves static assets, mapped to assets.example.com. One day, for whatever reason, you decide you want to combine these two Workers into a single Worker. So you write this code:</p>
 	<pre class="language-js"><code class="language-js">import apiWorker from "api-worker.js";
@@ -270,7 +348,15 @@ export default {
     });
   }
 };</code></pre>
-	<h4>How does a KV binding actually work?</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="how-does-a-kv-binding-actually-work">How does a KV binding actually work?</h4>
+		<a href="https://blog.cloudflare.com/#how-does-a-kv-binding-actually-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Under the hood, a Workers KV binding encapsulates a secret key used to access the corresponding KV namespace. This key is actually the encryption key for the namespace. The key is distributed to the edge along with the Worker's code and configuration, using encrypted storage to keep it safe.</p>
 	<p>Although the key is distributed with the Worker, the Worker itself has no way to access the key. In fact, even the owner of the Cloudflare account cannot see the key – it is simply never revealed outside of Cloudflare's systems. (Cloudflare employees are also prevented from viewing these keys.)</p>
 	<p>Even if an attacker somehow got ahold of the key, it would not be useful to them as-is. Cloudflare's API does not provide any way for a user to upload a raw key to use in a KV binding. The API instead has the client specify the public ID of the namespace they want to use. The deployment system verifies that the KV namespace in question is on the same account as the Worker being uploaded (and that the client is authorized to deploy Workers on said account).</p>

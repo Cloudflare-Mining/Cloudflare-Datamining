@@ -30,18 +30,41 @@
 	<p>Imagine that your company offers a support application that customers can white label and serve from their own domain. Whichever hostname they choose, e.g., support.yourcustomer.site or help.yourcustomer.site, you should instruct them to CNAME to a hostname of your choosing, e.g., whitelabel.yourcompany.ltd.</p>
 	<p>This white label hostname should be set up within your DNS dashboard as an A/AAAA or CNAME record pointing to your origin. Alternatively, you can use a pool of origins to <a href="https://blog.cloudflare.com/cloudflare-traffic-manager-the-details">load balance across</a>. Once that record is in place, you can start instructing customers to CNAME their custom hostname to it. Or if your customers already have CNAME records in place, we can mirror that existing structure so that you don’t have to go back to your customers and request they make a change.</p>
 	<p>In the example below, we show how support.yourcustomer.site, a hostname of your customer with a CNAME pointing to whitelabel.yourcompany.ltd, can be provisioned and live at our edge with SSL certificates in just a couple of minutes.</p>
-	<h4>Confirm the customer's CNAME is in place</h4>
+	<div class="flex anchor relative">
+		<h4 id="confirm-the-customers-cname-is-in-place">Confirm the customer's CNAME is in place</h4>
+		<a href="https://blog.cloudflare.com/#confirm-the-customers-cname-is-in-place" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">$ dig CNAME +short support.yourcustomer.site
 whitelabel.yourcompany.ltd.</code></pre>
 	<p>Alternatively, you can add the CNAME after requesting certificate issuance, but it’s faster if you have it in place to begin with. If you need the certificates issued and live prior to your customer pointing their hostname over, consider using email-based validation.</p>
-	<h4>Demonstrate basic HTTP connectivity (and show expected HTTPS error)</h4>
+	<div class="flex anchor relative">
+		<h4 id="demonstrate-basic-http-connectivity-and-show-expected-https-error">Demonstrate basic HTTP connectivity (and show expected HTTPS error)</h4>
+		<a href="https://blog.cloudflare.com/#demonstrate-basic-http-connectivity-and-show-expected-https-error" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the CNAME in place, we show that HTTP connectivity to our origin is returned as expected and that HTTPS fails (again, expected) due to a certificate error. The reason the connection fails is that Cloudflare is serving the wildcard certificate for *.yourcompany.ltd, as you haven’t yet told us to get a certificate for app.yourcustomer.site.</p>
 	<pre class="language-bash"><code class="language-bash">$ curl http://support.yourcustomer.site
 Hello, support.yourcustomer.site! This response is being served from whitelabel.yourcompany.ltd.</code></pre>
 
 	<pre class="language-bash"><code class="language-bash">$ curl https://support.yourcustomer.site 2&gt;&amp;1|grep chain
 curl: (60) SSL certificate problem: Invalid certificate chain</code></pre>
-	<h4>Make single API call to request SSL certificate issuance</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="make-single-api-call-to-request-ssl-certificate-issuance">Make single API call to request SSL certificate issuance</h4>
+		<a href="https://blog.cloudflare.com/#make-single-api-call-to-request-ssl-certificate-issuance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that the customer CNAME is in place, all you need to do is send us a single API call with the custom hostname to let us know we should expect to terminate TLS traffic there. We’ll take care of the rest.</p>
 	<pre class="language-bash"><code class="language-bash">curl -sXPOST -H "X-Auth-Key: [YOUR KEY]" -H "X-Auth-Email: [YOUR EMAIL]" -H "Content-Type: application/json" https://www.cloudflare.com/api/v4/zones/[YOUR ZONE ID]/custom_hostnames \
 -d '
@@ -51,7 +74,15 @@ curl: (60) SSL certificate problem: Invalid certificate chain</code></pre>
         "type":"dv"
       }
 }' </code></pre>
-	<h4>Demonstrate your customer’s site is accessible over HTTPS</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="demonstrate-your-customers-site-is-accessible-over-https">Demonstrate your customer’s site is accessible over HTTPS</h4>
+		<a href="https://blog.cloudflare.com/#demonstrate-your-customers-site-is-accessible-over-https" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>That’s it! Within a couple of minutes we’ll have validated that hostname with our CA partner, requested two types of certificates be issued—SHA-2/ECDSA signed for modern browsers that support elliptic curve cryptography and SHA-2/RSA <a href="https://blog.cloudflare.com/tls-certificate-optimization-technical-details">to maintain compatibility</a> with older browsers—and pushed it to all <a href="https://www.cloudflare.com/network">110+ PoPs</a> that comprise our edge.</p>
 	<pre class="language-bash"><code class="language-bash">$ curl https://app.yourcustomer.site
 Hello, app.yourcustomer.site! This response is being served from whitelabel.yourcompany.ltd.</code></pre>

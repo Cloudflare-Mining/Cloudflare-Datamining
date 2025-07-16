@@ -15,14 +15,30 @@
 			</svg>
 		</a>
 	</div>
-	<h4>Password Hashing</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="password-hashing">Password Hashing</h4>
+		<a href="https://blog.cloudflare.com/#password-hashing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first one is simple enough to explain; here are 5 hashes (from user passwords), crack them:</p>
 	<pre class="language-txt"><code class="language-txt">$2y$10$TYau45etgP4173/zx1usm.uO34TXAld/8e0/jKC5b0jHCqs/MZGBi
 $2y$10$qQVWugep3jGmh4ZHuHqw8exczy4t8BZ/Jy6H4vnbRiXw.BGwQUrHu
 $2y$10$DuZ0T/Qieif009SdR5HD5OOiFl/WJaDyCDB/ztWIM.1koiDJrN5eu
 $2y$10$0ClJ1I7LQxMNva/NwRa5L.4ly3EHB8eFR5CckXpgRRKAQHXvEL5oS
 $2y$10$LIWMJJgX.Ti9DYrYiaotHuqi34eZ2axl8/i1Cd68GYsYAG02Icwve</code></pre>
-	<h4>HTTP Strict Transport Security</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="http-strict-transport-security">HTTP Strict Transport Security</h4>
+		<a href="https://blog.cloudflare.com/#http-strict-transport-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A website works by redirecting its <code>www.</code> subdomain to a regional subdomain (i.e. <code>uk.</code>), the site uses HSTS to prevent SSLStrip attacks. You can see cURL requests of the headers from the redirects below, how would you practically go about stripping HTTPS in this example?</p>
 	<pre class="language-txt"><code class="language-txt">$ curl -i http://www.example.com
 HTTP/1.1 302 Moved Temporarily
@@ -45,7 +61,15 @@ Cache-Control: no-cache
 Date: Tue, 26 Dec 2017 12:26:53 GMT
 Strict-Transport-Security: max-age=31536000
 ...</code></pre>
-	<h4>AES-256</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="aes-256">AES-256</h4>
+		<a href="https://blog.cloudflare.com/#aes-256" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The following images below are encrypted using AES 256 in CTR mode. Can you work out what the images originally were from?</p>
 	<p><b>1_enc.bmp</b></p>
 	<figure class="kg-card kg-image-card ">
@@ -67,11 +91,33 @@ Strict-Transport-Security: max-age=31536000
 			</svg>
 		</a>
 	</div>
-	<h4>Password Hashing</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="password-hashing">Password Hashing</h4>
+		<a href="https://blog.cloudflare.com/#password-hashing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What kind of hash algorithm has been used here? Given the input is from humans, how would you go about cracking it efficiently?</p>
-	<h4>HTTP Strict Transport Security</h4>
+	<div class="flex anchor relative">
+		<h4 id="http-strict-transport-security">HTTP Strict Transport Security</h4>
+		<a href="https://blog.cloudflare.com/#http-strict-transport-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All the information you could possibly need on this topic is in the following blog post: <a href="https://blog.cloudflare.com/performing-preventing-ssl-stripping-a-plain-english-primer">Performing &amp; Preventing SSL Stripping: A Plain-English Primer</a>.</p>
-	<h4>AES-256</h4>
+	<div class="flex anchor relative">
+		<h4 id="aes-256">AES-256</h4>
+		<a href="https://blog.cloudflare.com/#aes-256" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>From the original images; <code>1.bmp</code> and <code>2.bmp</code>, were encrypted using a command similar to the one below - the only thing which changed each time the command was run was the file names used:</p>
 	<pre class="language-sh"><code class="language-sh">openssl enc -aes-256-ctr -e -in 1.bmp -out 1_enc.bmp -k SomePassword -iv 0010011 -nosalt</code></pre>
 	<p>Another hint; both images are from the same source image, each just has different layers of the same original image.</p>
@@ -83,7 +129,15 @@ Strict-Transport-Security: max-age=31536000
 			</svg>
 		</a>
 	</div>
-	<h4>Password Hashing</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="password-hashing">Password Hashing</h4>
+		<a href="https://blog.cloudflare.com/#password-hashing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The hashes start with a <code>$2y$</code> identifier, this indicates the hash has been created using BCrypt (<code>$2*$</code> usually indicates BCrypt). The hashes also indicate they were generated using a somewhat decent work factor of 10.</p>
 	<p>Despite the recent implementations of the Argon2 key derivation function, BCrypt is still generally considered secure. Although it's unfeasible to crack BCrypt itself, users have likely not been as security conscious when setting passwords.</p>
 	<p>Let's try using a password dictionary to try and crack these hashes, I'll start with a small dictionary of <a href="https://github.com/danielmiessler/SecLists/blob/master/Passwords/10_million_password_list_top_10000.txt">just about 10 000 passwords</a>.</p>
@@ -95,13 +149,36 @@ $2y$10$TYau45etgP4173/zx1usm.uO34TXAld/8e0/jKC5b0jHCqs/MZGBi:password
 $2y$10$qQVWugep3jGmh4ZHuHqw8exczy4t8BZ/Jy6H4vnbRiXw.BGwQUrHu:hotdog
 $2y$10$0ClJ1I7LQxMNva/NwRa5L.4ly3EHB8eFR5CckXpgRRKAQHXvEL5oS:88888888
 $2y$10$LIWMJJgX.Ti9DYrYiaotHuqi34eZ2axl8/i1Cd68GYsYAG02Icwve:hello123</code></pre>
-	<h4>HTTP Strict Transport Security</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="http-strict-transport-security">HTTP Strict Transport Security</h4>
+		<a href="https://blog.cloudflare.com/#http-strict-transport-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first redirect is performed over plain-text HTTP and doesn't have HSTS enabled, but the redirect goes to a subdomain that does have HSTS enabled.</p>
 	<p>If we were to try stripping away the HTTPS in the redirect (i.e. forcibly changing HTTPS to HTTP using an on-path attacker attack), we wouldn't have much luck due to HSTS being enabled on the subdomain we're redirecting to.</p>
 	<p>Instead, we need to rewrite the <code>uk.</code> subdomain to point to a subdomain which doesn't have HSTS enabled, <code>uk_secure.</code> for example. In the worst case, we can simply redirect to an entirely phoney domain. You'll need some degree of DNS interception to do this.</p>
 	<p>From the phoney subdomain or domain, you can then proxy traffic back to the original domain - all the while acting as an on-path attacker for any private information crossing the wire.</p>
-	<h4>AES-256</h4>
-	<h5>Generating Encrypted Files</h5>
+	<div class="flex anchor relative">
+		<h4 id="aes-256">AES-256</h4>
+		<a href="https://blog.cloudflare.com/#aes-256" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h5 id="generating-encrypted-files">Generating Encrypted Files</h5>
+		<a href="https://blog.cloudflare.com/#generating-encrypted-files" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we learn to crack this puzzle, let me explain how I set things up.</p>
 	<p>The original image looked like this:</p>
 	<figure class="kg-card kg-image-card ">
@@ -134,7 +211,14 @@ $2y$10$LIWMJJgX.Ti9DYrYiaotHuqi34eZ2axl8/i1Cd68GYsYAG02Icwve:hello123</code></pr
 		</li>
 	</ul>
 	<p>Using a Hex Editor, I added the headers to ensure the encrypted files were correctly rendered as BMP files. This resulted in the files you saw in the challenge above.</p>
-	<h5>Reversing the Encryption</h5>
+	<div class="flex anchor relative">
+		<h5 id="reversing-the-encryption">Reversing the Encryption</h5>
+		<a href="https://blog.cloudflare.com/#reversing-the-encryption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The critical mistake above is that the encryption key and the nonce are identical. Both ciphertexts were generated from identical nonces using identical keys (unsalted before they were hashed).</p>
 	<p>Additionally, we are using the AES in CTR mode, which vulnerable to the “two-time pad” attack.</p>
 	<p>We firstly run an XOR operation on the two files:</p>

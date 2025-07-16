@@ -34,9 +34,23 @@ headers" class="kg-image" width="299" height="320" loading="lazy">
 		</li>
 	</ul>
 	<p>It is important to emphasize when you <i>do not</i> want to use Cache Everything. If you have any personalized information on the page like login information or credit card information, you do not want to use the Cache Everything option.**What is Browser Cache Expire TTL?**Browser cache expire TTL is the time that CloudFlare instructs a visitor's browser to cache a resource. Until this time expires, the browser will load the resource from its local cache thus speeding up the request significantly. CloudFlare will respect the headers that you give us from your web server, and then we will communicate with the browser based on the time selected in this drop down menu.</p>
-	<h4>Using both Edge Cache Expire TTL and Browser Cache Expire TTL</h4>
+	<div class="flex anchor relative">
+		<h4 id="using-both-edge-cache-expire-ttl-and-browser-cache-expire-ttl">Using both Edge Cache Expire TTL and Browser Cache Expire TTL</h4>
+		<a href="https://blog.cloudflare.com/#using-both-edge-cache-expire-ttl-and-browser-cache-expire-ttl" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When you'd like to have CloudFlare cache your content but want your visitors to always get a fresh copy of the page, you can use the new 'Edge cache expire TTL' setting to express this differentiation. Set a value for 'Edge cache expire TTL' to how often you want the CloudFlare CDN to refresh from your server, and 'Browser cache expire TTL' to how often you want your visitors' browsers to refresh the page content. This is useful when you have a rapidly changing page but still want the benefit of the CloudFlare cache to reduce your server load.</p>
-	<h4>Plan Details</h4>
+	<div class="flex anchor relative">
+		<h4 id="plan-details">Plan Details</h4>
+		<a href="https://blog.cloudflare.com/#plan-details" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare offers a range of edge cache expire TTLs based on plan type:</p>
 	<ul>
 		<li>
@@ -53,7 +67,14 @@ headers" class="kg-image" width="299" height="320" loading="lazy">
 		</li>
 	</ul>
 	<p>A Pro customer may set the refetch time to 1 hour. After 60 minutes, we return to your server for a fresh copy of the resource. Business customers may lower the refetch interval to 30 minutes. Enterprise customers may set this interval as low as 30 seconds.</p>
-	<h4>How to Turn It On</h4>
+	<div class="flex anchor relative">
+		<h4 id="how-to-turn-it-on">How to Turn It On</h4>
+		<a href="https://blog.cloudflare.com/#how-to-turn-it-on" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Login in to your CloudFlare account and choose "Page Rules" from under the gear icon. Enter the URL that you want to Cache Everything (under Custom Caching):</p>
 	<figure class="kg-card kg-image-card ">
 

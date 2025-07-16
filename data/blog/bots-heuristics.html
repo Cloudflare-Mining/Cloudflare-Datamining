@@ -125,7 +125,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5UQd20VnXCnIav1skHiX6i/18e0cf01106601ae7faf18be50d43365/5.png" alt="A Firewall Event from a request with an empty user-agent that now receives a detection ID described as “empty_ua" "="" class=" kg-image" width="1528" height="938" loading="lazy">
 	</figure>
 	<p>In addition to Analytics and Firewall Events, Bot Detection IDs are now available for Bot Management customers to use in Custom Rules, Rate Limiting Rules, Transform Rules, and Workers.&nbsp;</p>
-	<h4>Account takeover detection IDs</h4>
+	<div class="flex anchor relative">
+		<h4 id="account-takeover-detection-ids">Account takeover detection IDs</h4>
+		<a href="https://blog.cloudflare.com/#account-takeover-detection-ids" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One way we’re focused on improving Bot Management for our customers is by surfacing more attack-specific detections. During Birthday Week, we <a href="https://blog.cloudflare.com/a-safer-internet-with-cloudflare"><u>launched Leaked Credentials Check</u></a> for all customers so that security teams could help <a href="https://www.cloudflare.com/zero-trust/solutions/account-takeover-prevention"><u>prevent account takeover (ATO) attacks</u></a> by identifying accounts at risk due to leaked credentials. We’ve now added two more detections that can help Bot Management enterprise customers identify suspicious login activity via specific <a href="https://developers.cloudflare.com/bots/concepts/detection-ids/#account-takeover-detections"><u>detection IDs</u></a> that monitor login attempts and failures on the zone. These detection IDs are not currently affecting the bot score, but will begin to later in 2025. Already, they can help many customers detect more account takeover events now.</p>
 	<p>Detection ID <b>201326592 </b>monitors traffic on a customer website and looks for an anomalous rise in login failures (usually associated with brute force attacks), and ID <b>201326593 </b>looks for an anomalous rise in login attempts (usually associated with credential stuffing).&nbsp;</p>
 	<figure class="kg-card kg-image-card">

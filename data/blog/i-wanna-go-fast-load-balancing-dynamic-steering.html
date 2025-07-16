@@ -46,11 +46,32 @@
 	</div>
 	<p>The first decision we faced was when and how to measure speed. We already probe at regular intervals for uptime from the Cloudflare locations that our customers tell us are relevant for their setup. It was an obvious choice to use our existing health checks and gather the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round trip time (RTT)</a> from there.</p>
 	<p>As pool origins are probed periodically we get RTT information from the edge. The next question was how to use this data to decide which pool is the fastest: we decided to calculate the pool RTT using Exponential Weighted Moving Average (EWMA).</p>
-	<h4>Why did we choose EWMA?</h4>
+	<div class="flex anchor relative">
+		<h4 id="why-did-we-choose-ewma">Why did we choose EWMA?</h4>
+		<a href="https://blog.cloudflare.com/#why-did-we-choose-ewma" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We considered other ways to calculate the RTT such as Simple Moving Average (SMA). Although the RTT calculation is much simpler using SMA, we chose EWMA is because it responds to RTT changes faster than SMA, since it applies more weight to the most recent RTT. Also, it can reduce the noise and help make the trend clearer in a dataset with large variance. Another benefit EWMA has is that stays more true to the trend than other types of moving averages, some of which can over- or under-correct, or others that smooth things out too much.</p>
-	<h4>How does EWMA work?</h4>
+	<div class="flex anchor relative">
+		<h4 id="how-does-ewma-work">How does EWMA work?</h4>
+		<a href="https://blog.cloudflare.com/#how-does-ewma-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>EWMA works by applying weights to the data in such a way that older data weighs less (and therefore becomes less impactful to the result) than more recent data. The weight for a datapoint decreases exponentially for each time period further in the past. The exponential decay is determined by the time bias parameter. When the time bias is set to 1 minute, about 63.2% of the value is coming from the last minute measurements, 23.3% from the minute before that (0.233 = (1 – 0.632) * 0.632), etc. The weight is decreasing exponentially with each passing minute, historical data older than t minutes have weight 1 / exp(t). The most recent minute has weight 63.2%, since 63.2% = 1 – 1 / exp(1).</p>
-	<h4>Actual Implementation</h4>
+	<div class="flex anchor relative">
+		<h4 id="actual-implementation">Actual Implementation</h4>
+		<a href="https://blog.cloudflare.com/#actual-implementation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For every load balancer that has Dynamic Steering enabled, the RTT is calculated independently for each of its pools using an EWMA. We wait for a period of time (default is 10m, but this is configurable) before writing the calculated pool RTT values to our internal key-value store, QuickSilver (QS). This is done to build the RTT profile, which helps reduce the noise in cases of large variance data. From then on, we keep writing the values periodically (default 10m, again this value is tunable) and only if there is a change in RTT value to avoid unnecessary writes to QuickSilver.</p>
 	<div class="flex anchor relative">
 		<h3 id="data-propagation">Data Propagation</h3>

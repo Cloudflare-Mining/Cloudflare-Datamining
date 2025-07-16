@@ -88,7 +88,14 @@
 		</a>
 	</div>
 	<p>We know how hard it can be to deploy another piece of software in your organization, so we’ve worked hard to make deployment easy. To get started, just navigate to our <a href="https://dash.cloudflare.com/sign-up/teams">sign-up page</a> and create an account. If you already have an active account, you can bypass this step and head straight to the <a href="https://dash.teams.cloudflare.com/onboarding">Cloudflare for Teams dashboard</a> where you’ll be dropped directly into our onboarding flow. After you have signed up and configured your team, <a href="https://developers.cloudflare.com/gateway/getting-started-new/onboarding-gateway">setup a Gateway policy</a> and then choose one of the three ways to install the clients to enforce that policy from below:</p>
-	<h4>Self Install‌‌</h4>
+	<div class="flex anchor relative">
+		<h4 id="self-install">Self Install‌‌</h4>
+		<a href="https://blog.cloudflare.com/#self-install" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you are a small organization without an IT department, asking your users to download the client themselves and type in the required settings is the fastest way to get going.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -96,10 +103,25 @@
 
 	</figure>
 	<p>Manually join an organization</p>
-	<h4>Scripted Install‌‌</h4>
+	<div class="flex anchor relative">
+		<h4 id="scripted-install">Scripted Install‌‌</h4>
+		<a href="https://blog.cloudflare.com/#scripted-install" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our desktop installers support the ability to quickly script the installation. In the case of Windows, this is as easy as this command line:</p>
 	<pre class="language-bash"><code class="language-bash">Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="&lt;insert your org&gt;" SERVICE_MODE="warp" ENABLE="true" GATEWAY_UNIQUE_ID="&lt;insert your gateway DoH domain&gt;" SUPPORT_URL=”&lt;mailto or http of your support person&gt;"</code></pre>
-	<h4>Managed Device‌‌</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="managed-device">Managed Device‌‌</h4>
+		<a href="https://blog.cloudflare.com/#managed-device" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Organizations with MDM tools like Intune or JAMF can deploy WARP to their entire fleet of devices from a single operation. Just as you preconfigure all other device settings, WARP can be set so that all end users need to do is login with your team’s identity provider by clicking on the Cloudflare WARP client after it has been deployed.</p>
 	<figure class="kg-card kg-image-card ">
 

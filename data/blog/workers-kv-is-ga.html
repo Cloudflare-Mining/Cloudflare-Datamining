@@ -175,7 +175,14 @@ async function handleBillionsOfRedirects(request) {
 		</a>
 	</div>
 	<p>By far, our most common request was to make it easier to write data to Workers KV. That's why we're releasing three new ways to make that experience even better:</p>
-	<h4>1. Bulk Writes</h4>
+	<div class="flex anchor relative">
+		<h4 id="1-bulk-writes">1. Bulk Writes</h4>
+		<a href="https://blog.cloudflare.com/#1-bulk-writes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you want to import your existing data into Workers KV, you don't want to go through the hassle of sending an HTTP request for <b>every</b> key-value pair. That's why we added a <a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs">bulk endpoint</a> to the Cloudflare API. Now you can upload up to 10,000 pairs (up to 100 MB of data) in a single PUT request.</p>
 	<pre class="language-bash"><code class="language-bash">curl "https://api.cloudflare.com/client/v4/accounts/ \
      $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/bulk" \
@@ -239,7 +246,15 @@ async function zipToJson(response) {
   // You bind your translations namespace to the TRANSLATIONS variable.
   return Promise.all(keys.map(key =&gt; TRANSLATIONS.get(key + "." + lang)))
 }</code></pre>
-	<h4>2. Expiring Keys</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="2-expiring-keys">2. Expiring Keys</h4>
+		<a href="https://blog.cloudflare.com/#2-expiring-keys" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By default, key-value pairs stored in Workers KV last forever. However, sometimes you want your data to auto-delete after a certain amount of time. That's why we're introducing the <code>expiration</code> and <code>expirationTtl</code>options for write operations.</p>
 	<pre class="language-javascript"><code class="language-javascript">// Key expires 60 seconds from now.
 NAMESPACE.put("myKey", "myValue", {expirationTtl: 60})
@@ -289,7 +304,15 @@ async function handleRequest(request) {
   // Otherwise, passthrough the original request.
   return fetch(request)
 }</code></pre>
-	<h4>3. Larger Values</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="3-larger-values">3. Larger Values</h4>
+		<a href="https://blog.cloudflare.com/#3-larger-values" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We've increased our size limit on values from <code>64 kB</code> to <code>2 MB</code>. This is quite useful if you need to store buffer-based or file data in Workers KV.</p>
 	<figure class="kg-card kg-image-card ">
 

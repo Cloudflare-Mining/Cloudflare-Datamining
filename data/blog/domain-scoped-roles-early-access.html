@@ -78,13 +78,29 @@
 		</a>
 	</div>
 	<p>In addition to manually creating inclusion or exclusion lists per user, account owners can also create Domain Groups to allow granting one or more users to a group of domains. Domain Groups can be created from the member invite flow or directly from Account Configurations → <a href="https://dash.cloudflare.com/?account=configurations%2Flists">Lists</a>. When creating a domain group, the user selects the domains to include and, from that point on, the group can be used when inviting a user to the account.</p>
-	<h4>Domain Group Creation Screen</h4>
+	<div class="flex anchor relative">
+		<h4 id="domain-group-creation-screen">Domain Group Creation Screen</h4>
+		<a href="https://blog.cloudflare.com/#domain-group-creation-screen" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZnFUgFHbOn3lqT1oUldtZ/4d4659b882a230af98f51714e337c4da/image4-13.png" alt="Domain Group creation screen showing two domains selected." class="kg-image" width="980" height="857" loading="lazy">
 
 	</figure>
-	<h4>Domain Group selection during member invite</h4>
+	<div class="flex anchor relative">
+		<h4 id="domain-group-selection-during-member-invite">Domain Group selection during member invite</h4>
+		<a href="https://blog.cloudflare.com/#domain-group-selection-during-member-invite" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Wkzbiwso2hdps1g9hj1ff/26b5e13441ba317361b2a61314b266df/image6-4.png" alt="Member invite screen showing the scope of a user’s access being limited to a domain group named, “Test Domains”." class="kg-image" width="869" height="182" loading="lazy">
@@ -100,7 +116,14 @@
 	</div>
 	<p>Domain Scoped Roles is possible because of a new permission system called Bach. Bach provides a policy based system for defining authorization to Cloudflare’s control plane. Authorization defines what someone can do in a system. Bach has been powering API Tokens, but going forward all authorization will use Bach. This gives customers the ability to define more granular permissions and resource scoping. Resources can be any object a user interacts with whether that be accounts, zones, worker environments, or DNS records to name a few.. Whereas before Cloudflare’s <a href="https://blog.cloudflare.com/domain-scoped-roles-early-access/edit">RBAC system</a> relied on assigning a set of roles in which each role defined broad permissions that applied to an entire account, Bach’s policies allow for deeper permission grants that can be scoped to sets of resources.</p>
 	<p>Let’s take a look at the legacy system and how it compares to what Bach supports. Typically, user’s permissions are defined by the ‘roles’ that they are assigned to. These included: ‘Super Administrator’, ‘Administrator’, ‘Cloudflare for Teams’, and ‘Cloudflare Workers Admin’ to name a few. In the legacy system, each of these maps to an explicit set of simple permissions like ‘workers:read’, ‘workers:edit’ or ‘zones:edit’. When requests get made either via the Cloudflare API or the Cloudflare dashboard, Cloudflare’s API Gateway would check to see if, for the endpoint requested, an actor had the correct permissions to perform the action. In order to change a zone setting, the actor would need to have the ‘zone:edit’ permission – which could be granted from one of many roles. Below is what a user with only ‘DNS’ permissions is granted in the legacy system:</p>
-	<h4>Legacy DNS User Role Permissions</h4>
+	<div class="flex anchor relative">
+		<h4 id="legacy-dns-user-role-permissions">Legacy DNS User Role Permissions</h4>
+		<a href="https://blog.cloudflare.com/#legacy-dns-user-role-permissions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<table>
 		<tbody>
 			<tr>

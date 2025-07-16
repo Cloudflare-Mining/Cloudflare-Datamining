@@ -50,13 +50,30 @@
 	<p>We’ve also done work to implement and support additional features in PgBouncer to enforce stricter tenant performance isolation.</p>
 	<p>Previously, PgBouncer would only prevent tenants from exceeding preconfigured limits, not particularly helpful when it’s too late and a user is misbehaving or already has too many connections. PgBouncer now supports enforcing or shrinking per user connection pool limits at runtime, <b>where it is most critically needed</b> to throttle tenants who are issuing a burst of expensive queries, or are hogging connections from other tenants. We’ve also implemented new administrative commands to throttle the maximum connections per user or per pool at runtime.</p>
 	<p>PgBouncer also now supports statically configuring and dynamically enforcing connection limits per connection pool. This feature is extremely important in order to granularly throttle a tenant’s misbehaving connection pool without throttling and reducing availability on its other non-misbehaving pools.</p>
-	<h5>PgBouncer Configuration</h5>
+	<div class="flex anchor relative">
+		<h5 id="pgbouncer-configuration">PgBouncer Configuration</h5>
+		<a href="https://blog.cloudflare.com/#pgbouncer-configuration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">[users]
 dns_service_user = max_user_connections=60
 firewall_service_user = max_user_connections=80
 [pools]
 user1.database1 = pool_size=90</code></pre>
-	<h5>PgBouncer Runtime Commands</h5>
+
+	<div class="flex anchor relative">
+		<h5 id="pgbouncer-runtime-commands">PgBouncer Runtime Commands</h5>
+		<a href="https://blog.cloudflare.com/#pgbouncer-runtime-commands" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">SET USER dns_service_user = ‘max_user_connections=40’;
 SET POOL dns_service_user.dns_db = ‘pool_size=30’;</code></pre>
 	<p>These new features required <a href="https://www.cloudflare.com/learning/cloud/how-to-refactor-applications">major refactoring</a> around how PgBouncer stores users, databases weakly referenced and stored passwords of different users, and how we enforce killing server side connections while still in use.</p>

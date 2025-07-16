@@ -94,13 +94,30 @@
 	</div>
 	<p>Typically, the system level resource consumption of a query is difficult to control and isolate once submitted to the server or database system for execution. However, a common approach is to intercept and throttle connections or queries at the gateway layer, controlling per user/pool traffic characteristics based on system resource consumption.</p>
 	<p>We have implemented connection throttling at our database proxy server/connection pooler, PgBouncer. Previously, PgBouncer’s user level connection limits would not kill existing connections, but only prevent exceeding it. We now support the ability to throttle and kill existing connections owned by each user or each user’s connection pool statically via configuration or at runtime via new administrative commands.</p>
-	<h5>PgBouncer Configuration</h5>
+	<div class="flex anchor relative">
+		<h5 id="pgbouncer-configuration">PgBouncer Configuration</h5>
+		<a href="https://blog.cloudflare.com/#pgbouncer-configuration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">[users]
 dns_service_user = max_user_connections=60
 firewall_service_user = max_user_connections=80
 [pools]
 user1.database1 = pool_size=90</code></pre>
-	<h5>PgBouncer Runtime Commands</h5>
+
+	<div class="flex anchor relative">
+		<h5 id="pgbouncer-runtime-commands">PgBouncer Runtime Commands</h5>
+		<a href="https://blog.cloudflare.com/#pgbouncer-runtime-commands" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">SET USER dns_service_user = ‘max_user_connections=40’;
 SET POOL dns_service_user.dns_db = ‘pool_size=30’;</code></pre>
 	<p>This required major bug fixes, <a href="https://www.cloudflare.com/learning/cloud/how-to-refactor-applications">refactoring</a> and implementation work in our fork of PgBouncer. We’ve also raised multiple pull requests to contribute all of our features to PgBouncer open source. To read about all of our work in PgBouncer, read <a href="https://blog.cloudflare.com/open-sourcing-our-fork-of-pgbouncer">this blog</a>.</p>

@@ -36,7 +36,15 @@
 			</svg>
 		</a>
 	</div>
-	<h4>Stop Concatenating Files</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="stop-concatenating-files">Stop Concatenating Files</h4>
+		<a href="https://blog.cloudflare.com/#stop-concatenating-files" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In HTTP/1.1, web developers often combined all of the CSS for their entire website into a single file. Similarly, JavaScript was also condensed into a single file, and images were combined into a spritesheet. Having a single file for your CSS, JavaScript, and images vastly reduced the amount of HTTP requests, making it a significant performance gain for HTTP/1.1.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -51,7 +59,14 @@
 
 	</figure>
 	<p>Instead of concatenating files, web developers should focus more on optimizing caching policy. By isolating files that change frequently from ones that rarely change, it’s possible to serve as much content as possible from your <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> or the user’s browser cache.</p>
-	<h4>Stop Inlining Assets</h4>
+	<div class="flex anchor relative">
+		<h4 id="stop-inlining-assets">Stop Inlining Assets</h4>
+		<a href="https://blog.cloudflare.com/#stop-inlining-assets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Inlining assets is a special case of file concatenation. It’s the practice of embedding CSS stylesheets, external JavaScript files, and images directly into an HTML page. For example, if you have web page that looks like this:</p>
 	<pre class="language-bash"><code class="language-bash">&lt;html&gt;
   &lt;head&gt;
@@ -83,7 +98,14 @@
 	<p>Inlining means that browsers can’t cache individual assets. If you have CSS declarations that apply to your entire website embedded into every single HTML file, those declarations get sent back from the server every time. This results in redundant bytes being sent over the wire for every page that a user visits.</p>
 	<p>Inlining also has the unfortunate side effect of breaking stream prioritization. Because your CSS, JavaScript, and images are now embedded in your HTML, you’re effectively raising their priority to the same level as HTML content. This means that browsers can’t request assets in their preferred order, potentially increasing time-to-first-paint.</p>
 	<p>Instead of inlining assets, web developers should leverage HTTP/2’s server push functionality. Server push lets your web server say stuff like, "Hold on, you’re going to need this image and this CSS file to render that HTML page you just requested." Conceptually, this is the same as inlining an asset, but it doesn’t break stream prioritization, and it allows you to leverage a CDN and the user’s local browser cache, too.</p>
-	<h4>Stop Sharding Domains</h4>
+	<div class="flex anchor relative">
+		<h4 id="stop-sharding-domains">Stop Sharding Domains</h4>
+		<a href="https://blog.cloudflare.com/#stop-sharding-domains" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Domain sharding is a common technique for tricking browsers into opening more TCP connections than they’re supposed to. Browsers limit the number of connections to a single origin server, but by splitting your website’s assets across multiple domains, you can get it to open an extra set of TCP connections. This helps avoid head-of-line blocking, but it comes with significant tradeoffs.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -101,18 +123,60 @@
 		</a>
 	</div>
 	<p>Fortunately, not everything about web optimization changes in HTTP/2. There’s still several HTTP/1.1 best practices that carry over to HTTP/2. The rest of this article discusses techniques that you should be leveraging regardless of whether you’re optimizing for HTTP/1.1 or HTTP/2.</p>
-	<h4>Keep Reducing DNS Lookups</h4>
+	<div class="flex anchor relative">
+		<h4 id="keep-reducing-dns-lookups">Keep Reducing DNS Lookups</h4>
+		<a href="https://blog.cloudflare.com/#keep-reducing-dns-lookups" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before a browser can request your website’s resources, it needs to find the IP address of your server using the <a href="https://www.cloudflare.com/learning/dns/what-is-dns">domain name system (DNS)</a>. Until the DNS responds, the user is left staring at a blank screen. HTTP/2 is designed to optimize how web browsers communicate with web servers—it doesn’t affect the performance of the domain name system.</p>
 	<p>Since DNS queries can be expensive, especially if you have to start your query at the root nameservers, it’s still prudent to minimize the number of DNS lookups that your website uses. DNS prefetching via a <code>&lt;link rel='dns-prefetch' href='...' /&gt;</code> line in your document’s <code>&lt;head&gt;</code> can help, but it’s not a one-size-fits all solution.</p>
-	<h4>Keep Using a Content Delivery Network</h4>
+	<div class="flex anchor relative">
+		<h4 id="keep-using-a-content-delivery-network">Keep Using a Content Delivery Network</h4>
+		<a href="https://blog.cloudflare.com/#keep-using-a-content-delivery-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It takes around 130ms for light to travel around the circumference of the earth. That’s latency that you <i>can’t</i> get rid of—it’s just physics. The imperfect nature of fiber optic cables and wireless connections, as well as the topology of the global Internet means that it actually takes closer to 300-400ms to transmit a network packet from your computer to a server that’s halfway around the world. User’s can perceive <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">latency</a> as small as 100ms, and the only way to get around the laws of physics is to put your web assets geographically closer to your visitors via a CDN.</p>
-	<h4>Keep Leveraging Browser Caching</h4>
+	<div class="flex anchor relative">
+		<h4 id="keep-leveraging-browser-caching">Keep Leveraging Browser Caching</h4>
+		<a href="https://blog.cloudflare.com/#keep-leveraging-browser-caching" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can take content delivery networks one step further by caching assets in the user’s local browser cache. This avoids any kind of data transfer over the network, aside from a 304 Not Modified response.</p>
-	<h4>Keep Minimizing the Size of HTTP Requests</h4>
+	<div class="flex anchor relative">
+		<h4 id="keep-minimizing-the-size-of-http-requests">Keep Minimizing the Size of HTTP Requests</h4>
+		<a href="https://blog.cloudflare.com/#keep-minimizing-the-size-of-http-requests" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Even though HTTP/2 requests are multiplexed, it takes time to transmit data over the wire. Accordingly, it’s still beneficial to reduce the amount of data you need to transfer. On the request end, this means minimizing the size of cookies, URL and query strings, and referrer URLs as much as possible.</p>
-	<h4>Keep Minimizing the Size of HTTP Responses</h4>
+	<div class="flex anchor relative">
+		<h4 id="keep-minimizing-the-size-of-http-responses">Keep Minimizing the Size of HTTP Responses</h4>
+		<a href="https://blog.cloudflare.com/#keep-minimizing-the-size-of-http-responses" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Of course, this holds true in the opposite direction. As a web developer, you want to make your server’s response as small as possible by minifying HTML, <a href="https://www.cloudflare.com/learning/performance/how-to-minify-css">CSS</a>, and JavaScript Files, optimizing images for the web, and compressing resources with gzip.</p>
-	<h4>Keep Eliminating Unnecessary Redirects</h4>
+	<div class="flex anchor relative">
+		<h4 id="keep-eliminating-unnecessary-redirects">Keep Eliminating Unnecessary Redirects</h4>
+		<a href="https://blog.cloudflare.com/#keep-eliminating-unnecessary-redirects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HTTP 301 and 302 redirects are sometimes a fact of life when migrating to a new platform or re-designing your website, but they should be eliminated wherever possible. Redirects result in an extra round trip from the browser to the server, and this adds unnecessary latency. You should be particularly wary of redirect chains where it takes more than a single redirect to get to the destination URL.</p>
 	<p>Server-side redirects like 301 and 302 responses aren’t ideal, but they aren’t the worst thing in the world, either. They can still be cached locally, so a browser can recognize the URL as a redirect and avoid an unnecessary round trip. Meta refreshes (e.g., <code>&lt;meta http-equiv="refresh"...</code>), on the other hand, are much more costly because they can’t be cached, and they can have performance issues in certain browsers.</p>
 	<div class="flex anchor relative">

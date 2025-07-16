@@ -49,7 +49,14 @@
 	<pre class="language-bash"><code class="language-bash">Link: &lt;/asset/to/push.js&gt;; rel=preload; as=script</code></pre>
 	<p>Those links can be manually added, but they’re already created automatically by many publishing tools or via plugins for popular content management systems (CMS) such as WordPress.</p>
 	<p>Only relative links will be pushed by our edge servers, which means Server Push won’t work with third-party resources.</p>
-	<h4>Disabling Server Push</h4>
+	<div class="flex anchor relative">
+		<h4 id="disabling-server-push">Disabling Server Push</h4>
+		<a href="https://blog.cloudflare.com/#disabling-server-push" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <code>Link</code> header was originally designed to let browsers know that they should preload an asset. If you still need this behavior for legacy reasons, you can append the <code>nopush</code> directive to the header, like so:</p>
 	<pre class="language-bash"><code class="language-bash">Link: &lt;/dont/want/to/push/this.css&gt;; rel=preload; as=style; nopush</code></pre>
 
@@ -85,7 +92,15 @@
 		</a>
 	</div>
 	<p>There are currently several tools and browsers that support Server Push. However, to visualize the performance benefits of the feature, the current <a href="https://www.google.co.uk/chrome/browser/canary.html">Canary</a> version of Google Chrome is the best. Here is an example of a webpage with five images loading with and without Server Push, as depicted in the timeline:</p>
-	<h4>Plain HTTP/2:</h4>
+	<div class="flex anchor relative">
+		<h4 id="plain-http-2">Plain HTTP/2:</h4>
+		<a href="https://blog.cloudflare.com/#plain-http-2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73FpGNBukfaH2eXahBHOx0/7b5fb5b9a0ffb942efb3c3a9d84014d3/Screen-Shot-2016-04-26-at-15-07-53.png" alt="alt" class="kg-image" width="1854" height="314" loading="lazy">
@@ -100,8 +115,23 @@
 	</figure>
 	<p>With Server Push enabled, we can see that the images are delivered while the page is being processed, thus no additional round trip is required. As soon as the images are needed, Chrome matches them with existing Push Promises and immediately uses them.</p>
 	<p>In Canary Chrome, you can also see that the pushed assets are identified in the Initiator column as Push/Other.</p>
-	<h4>Other browsers:</h4>
-	<h4>Firefox</h4>
+	<div class="flex anchor relative">
+		<h4 id="other-browsers">Other browsers:</h4>
+		<a href="https://blog.cloudflare.com/#other-browsers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h4 id="firefox">Firefox</h4>
+		<a href="https://blog.cloudflare.com/#firefox" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Pushed assets will not get a timeline and are identified by a solid grey circle (unlike cached content that is identified by a non-solid circle, and a “cached” indication in the “Transferred tab”).</p>
 	<p><b>Plain HTTP/2:</b></p>
 	<figure class="kg-card kg-image-card ">
@@ -115,7 +145,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24DVYPcTyqoiOthb97LwCh/5d902ead36ff7749c39f007f8ecaf1b8/Screen-Shot-2016-04-26-at-17-25-42.png" alt="alt" class="kg-image" width="1852" height="318" loading="lazy">
 
 	</figure>
-	<h4>Edge</h4>
+	<div class="flex anchor relative">
+		<h4 id="edge">Edge</h4>
+		<a href="https://blog.cloudflare.com/#edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Pushed assets won’t have the yellow bar in the timeline (TTFB), and under the Protocol tab, the protocol will appear as HTTPS and not HTTP/2.</p>
 	<p><b>Plain HTTP/2:</b></p>
 	<figure class="kg-card kg-image-card ">
@@ -129,7 +166,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5JHBwo6FAHhA2xdkbKl07q/e97c0befd3367f6240236ba59324d229/Capture1.PNG.png" alt="alt" class="kg-image" width="1424" height="328" loading="lazy">
 
 	</figure>
-	<h4>Safari</h4>
+	<div class="flex anchor relative">
+		<h4 id="safari">Safari</h4>
+		<a href="https://blog.cloudflare.com/#safari" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Safari browser does not support Server Push at the moment, but support is expected in the near future.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-next-for-http-2">What’s Next For HTTP/2?</h3>

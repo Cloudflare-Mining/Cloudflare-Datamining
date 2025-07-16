@@ -78,7 +78,15 @@
 			<p>The Preprocessing / HTTP interface runs on raw Node.js; and exposes a local HTTPS server. The server does not directly take inbound traffic from the Internet, but sits behind a gateway which controls access to the service.</p>
 		</li>
 	</ul>
-	<h4>Code snippet from Node.js HTTP module</h4>
+	<div class="flex anchor relative">
+		<h4 id="code-snippet-from-node-js-http-module">Code snippet from Node.js HTTP module</h4>
+		<a href="https://blog.cloudflare.com/#code-snippet-from-node-js-http-module" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-javascript"><code class="language-javascript">const server = http.createServer((req, res) =&gt; {
     if (req.url == '/postprocess') {
         if(req.method == 'POST') {
@@ -99,7 +107,16 @@
         res.end('Invalid request. Did you mean to POST to /postprocess? \n');
     }
 });</code></pre>
-	<h4>Code snippet from Node.js logic module</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="code-snippet-from-node-js-logic-module">Code snippet from Node.js logic module</h4>
+		<a href="https://blog.cloudflare.com/#code-snippet-from-node-js-logic-module" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-javascript"><code class="language-javascript">function postProcess (postJson) {
         const ServerVersion = "2.5.17"
         if(postJson != null &amp;&amp; 'operation' in postJson &amp;&amp; 'data' in postJson){
@@ -125,7 +142,16 @@
         else{
                 return {'Error':'Invalid request, invalid JSON format'}
         }</code></pre>
-	<h4>Current State Application Architecture</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="current-state-application-architecture">Current State Application Architecture</h4>
+		<a href="https://blog.cloudflare.com/#current-state-application-architecture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1d6MEhUqu77DDapE41clZn/dea420cdf5233fa5afd3f9b7aaa22280/image4-9.png" alt="" class="kg-image" width="1597" height="659" loading="lazy">
@@ -151,7 +177,15 @@
 			<p>Use Cloudflare Access to authenticate users to our application</p>
 		</li>
 	</ol>
-	<h4>Target State Application Architecture</h4>
+	<div class="flex anchor relative">
+		<h4 id="target-state-application-architecture">Target State Application Architecture</h4>
+		<a href="https://blog.cloudflare.com/#target-state-application-architecture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3XTQxjhc7V7BCNLD6OYtNu/eec3260400209afbf1d7e56f0d753bc4/image3-15.png" alt="" class="kg-image" width="1737" height="766" loading="lazy">
@@ -256,10 +290,25 @@ async function handleRequest(request) {
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ikUB5oJkvyjkScPyyJ8PT/3d4bad9f0b3fc2b9cb1d8bf115f900aa/5.gif" alt="" class="kg-image" width="1399" height="753" loading="lazy">
 
 	</figure>
-	<h4>Shift, Safely!</h4>
+	<div class="flex anchor relative">
+		<h4 id="shift-safely">Shift, Safely!</h4>
+		<a href="https://blog.cloudflare.com/#shift-safely" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With our application up for testing on workers.dev, we finally come to the last and most daunting migration step: cutting over traffic from the legacy application to the new one without any service interruption.</p>
 	<p>Luckily, we had our quick win earlier and are already routing our production traffic through the Cloudflare network (to the legacy application via Argo Tunnels). This provides huge benefits now that we are at the cutover step. Without changing our IP address, SSL configuration, or any other client-facing properties, we can route traffic to the new application with just one wrangler command.</p>
-	<h4>Seamless cutover from Transition to Target state</h4>
+	<div class="flex anchor relative">
+		<h4 id="seamless-cutover-from-transition-to-target-state">Seamless cutover from Transition to Target state</h4>
+		<a href="https://blog.cloudflare.com/#seamless-cutover-from-transition-to-target-state" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7rYqzkjG8iwCxKPNYSbvTH/fd7135b9281f04ae799205a7becb86e6/image14.png" alt="" class="kg-image" width="1999" height="1319" loading="lazy">

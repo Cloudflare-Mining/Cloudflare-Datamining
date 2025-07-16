@@ -1,6 +1,13 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/iokjW2pWsvmwknGeJ73KB/f82fea7e80ace244b75b53b200025bf8/subdomains-vs-subdirectories-best-practices-workers-part-1.jpeg" alt="">
 <div class="post-content lh-copy gray1">
-	<h4>Subdomain vs. Subdirectory: 2 Different SEO Strategies</h4>
+	<div class="flex anchor relative">
+		<h4 id="subdomain-vs-subdirectory-2-different-seo-strategies">Subdomain vs. Subdirectory: 2 Different SEO Strategies</h4>
+		<a href="https://blog.cloudflare.com/#subdomain-vs-subdirectory-2-different-seo-strategies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Alice and Bob are budding blogger buddies who met up at a meetup and purchased some <i>root domains</i> to start writing. &nbsp;Alice bought <i>aliceblogs.com</i> and Bob scooped up <i>bobtopia.com</i>.</p>
 	<p>Alice and Bob decided against WordPress because its what their parents use and purchased subscriptions to a popular cloud-based Ghost blogging platform instead.</p>
 	<p>Bob decides his blog should live at at blog.bobtopia.com – a <i>subdomain</i> of bobtopia.com. Alice keeps it old school and builds hers at <i>aliceblogs.com/blog</i> – a <i>subdirectory</i> of aliceblogs.com.</p>
@@ -10,7 +17,14 @@
 
 	</figure>
 	<p><i>Subdomains</i> and <i>subdirectories</i> are different strategies for instrumenting root domains with new features (think a blog or a storefront). &nbsp;Alice and Bob chose their strategies on a whim, but <i>which strategy is technically better</i>? &nbsp;The short answer is, <i>it depends</i>. But the long answer can actually improve your SEO. &nbsp;In this article, we'll review the merits and tradeoffs of each. In <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-improved-seo-part-2">Part 2</a>, we'll show you how to convert subdomains to subdirectories using <a href="https://blog.cloudflare.com/www.cloudflare.com/workers">Cloudflare Workers</a>.</p>
-	<h4>Setting Up Subdomains and Subdirectories</h4>
+	<div class="flex anchor relative">
+		<h4 id="setting-up-subdomains-and-subdirectories">Setting Up Subdomains and Subdirectories</h4>
+		<a href="https://blog.cloudflare.com/#setting-up-subdomains-and-subdirectories" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Setting up subdirectories is trivial on basic websites. &nbsp;A web server treats its subdirectories (aka subfolders) the same as regular old folders in a file system. &nbsp;In other words, basic sites are already organized using subdirectories out of the box. &nbsp;No set up or configuration is required.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -34,7 +48,14 @@
 	</figure>
 	<p>Configuring a DNS record to point a hosted service at your blog subdomain</p>
 	<p>To recap, subdirectories are already built into simple sites that serve structured content from the same machine, but modern sites often rely on various remote services. &nbsp;Subdomain set up is comparatively easy for sites that take advantage of various hosted cloud-based platforms.</p>
-	<h4>Are Subdomains or Subdirectories Better for SEO?</h4>
+	<div class="flex anchor relative">
+		<h4 id="are-subdomains-or-subdirectories-better-for-seo">Are Subdomains or Subdirectories Better for SEO?</h4>
+		<a href="https://blog.cloudflare.com/#are-subdomains-or-subdirectories-better-for-seo" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Subdomains are neat. If you ask me, <i>blog.bobtopia.com</i> is more appealing than <i>bobtopia.com/blog</i>. But if we want to make an informed decision about the best strategy, where do we look? &nbsp;If we're interested in SEO, we ought to consult the Google Bot.</p>
 	<p>Subdomains and subdirectories are equal in the eyes of the Google Bot, according to Google itself. &nbsp;This means that Alice and Bob have the same chance at ranking in search results. &nbsp;This is because Alice's root domain and Bob's subdomain build their own sets of <i>keywords</i>. &nbsp;Relevant keywords help your audience find your site in a search. There is one important caveat to point out for Bob:</p>
 	<blockquote>
@@ -57,10 +78,24 @@
 	<p>Although search engines have improved at identifying subdomains and attributing keywords back to the root domain, they still have a long way to go. &nbsp;A prudent marketer would avoid risk by assuming search engines will always be bad at cataloguing subdomains.</p>
 	<p>So when would you want to use subdomains? &nbsp;A good use case is for companies who are interested in expanding into foreign markets. &nbsp;Pretend <i>bobtopia.com</i> is an American company whose website is in English. &nbsp;Their English keywords won't rank well in German searches – so they translate their site into German to begin building new keywords on <i>deutsch.bobtopia.com</i>. Erfolg!</p>
 	<p>Other use cases for subdomains include product stratification (think global brands with presence across many markets) and corporate internal tools (think productivity and organization tools that aren't user facing). &nbsp;But unless you're a huge corporation or just finished your Series C round of funding, subdomaining your site into many silos is not helping your SEO.</p>
-	<h4>Conclusion</h4>
+	<div class="flex anchor relative">
+		<h4 id="conclusion">Conclusion</h4>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you're a startup or small business looking to optimize your SEO, consider subdirectories over subdomains. &nbsp;Boosting the authority of your root domain should be a universal goal of any organization. The subdirectory strategy concentrates your keywords onto a single domain while the subdomain strategy spreads your keywords across multiple distinct domains. In a word, the subdirectory strategy results in better root domain authority. Higher domain authority leads to better search rankings which translates to more engagement.</p>
 	<p>Consider the multitude of disruptive PaaS startups with <i>docs.disruptivepaas.com</i> and <i>blog.disruptivepaas.com</i>. &nbsp;Why not switch to <i>disruptivepaas.com/docs</i> and <i>disruptivepaas.com/blog</i> to boost the authority of your root domain with all those docs searches and StackOverflow backlinks?</p>
-	<h4>Want to Switch Your Subdomains to Subdirectories?</h4>
+	<div class="flex anchor relative">
+		<h4 id="want-to-switch-your-subdomains-to-subdirectories">Want to Switch Your Subdomains to Subdirectories?</h4>
+		<a href="https://blog.cloudflare.com/#want-to-switch-your-subdomains-to-subdirectories" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Interested in switching your subdomains to subdirectories without a reverse proxy? In <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-improved-seo-part-2">Part 2</a>, we'll show you how using Cloudflare Workers.</p>
 	<hr>
 	<p>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev">workers.dev</a>. <i>If you’re already a Cloudflare customer, you can add Workers to your existing website</i> <a href="https://dash.cloudflare.com/workers"><i>here</i></a>.</p>

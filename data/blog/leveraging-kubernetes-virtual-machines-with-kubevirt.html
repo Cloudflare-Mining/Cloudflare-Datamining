@@ -67,7 +67,15 @@
 			</svg>
 		</a>
 	</div>
-	<h4>Setup process</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="setup-process">Setup process</h4>
+		<a href="https://blog.cloudflare.com/#setup-process" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our staging clusters are much smaller than our largest production clusters. They also run on bare metal and mirror the configuration we have for each production cluster. This is extremely useful when rolling out new software, operating systems, or kernel changes; however, they miss bugs that only surface at scale. We use KubeVirt to bridge this gap and virtualize Kubernetes clusters with hundreds of nodes and thousands of pods.</p>
 	<p>The setup process for virtualized clusters differs from our bare metal provisioning steps. For bare metal, we use <a href="https://saltproject.io"><u>Salt</u></a> to provision clusters from start to finish. For our virtualized clusters we use <a href="https://www.ansible.com"><u>Ansible</u></a> and <a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm"><u>kubeadm</u></a>.&nbsp; Our bare metal staging clusters are responsible for testing and validating our Salt configuration. The virtualized clusters give us a vanilla Kubernetes environment without any Cloudflare customizations. Having a stock environment in addition to our Salt environment helps us isolate bugs down to a Kubernetes change, a kernel change, or a Cloudflare-specific configuration change.</p>
 	<p>Our virtualized clusters consist of a KubeVirt <a href="https://kubevirt.io/api-reference/v1.2.2/definitions.html#_v1_virtualmachine"><u>VirtualMachine</u></a> object per node. We create three control-plane nodes and any number of worker nodes. Each virtual machine starts out as a vanilla Debian generic <a href="https://cdimage.debian.org/images/cloud"><u>cloud image</u></a>. Using KubeVirt’s <a href="https://kubevirt.io/user-guide/user_workloads/startup_scripts/#cloud-init"><u>cloud-init support</u></a>, the virtual machine downloads an internal <a href="https://www.ansible.com"><u>Ansible</u></a> <a href="https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html"><u>playbook</u></a> which installs a recent kernel, <a href="https://cri-o.io"><u>cri-o</u></a> (the container runtime we use), and <a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm"><u>kubeadm</u></a>.</p>
@@ -106,7 +114,14 @@
     name: crio.service</code></pre>
 	<p><sup><i>Ansible playbook steps to download and install Kubernetes tooling</i></sup></p>
 	<p>Once each node has completed its individual playbook, we can <a href="http://ools/kubeadm/kubeadm-init"><u>initialize</u></a> and <a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-join"><u>join</u></a> nodes to the cluster using another playbook that runs kubeadm. From there the cluster can be accessed by logging into a control plane node using kubectl.</p>
-	<h4>Simulating at scale</h4>
+	<div class="flex anchor relative">
+		<h4 id="simulating-at-scale">Simulating at scale</h4>
+		<a href="https://blog.cloudflare.com/#simulating-at-scale" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When losing 10s or 100s of nodes at once, Kubernetes needs to act quickly to minimize downtime. The sooner it recognizes node failure, the faster it can reroute traffic to healthy pods.</p>
 	<p>Using Kubernetes in KubeVirt we are able to simulate a large cluster undergoing a network cut and observe how Kubernetes reacts. The KubeVirt Kubernetes cluster allows us to rapidly iterate on configuration changes and code patches.</p>
 	<p>The following Ansible playbook task simulates a network segmentation failure where only the control-plane nodes remain online.</p>

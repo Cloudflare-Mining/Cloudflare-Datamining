@@ -72,17 +72,38 @@ h1 {
 
 	</figure>
 	<p>The embedded CSS loads immediately as part of the HTML and the fonts load before the images.</p>
-	<h4>Optimizing CSS delivery</h4>
+	<div class="flex anchor relative">
+		<h4 id="optimizing-css-delivery">Optimizing CSS delivery</h4>
+		<a href="https://blog.cloudflare.com/#optimizing-css-delivery" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For CSS, the easy answer is to just download the CSS file that Google hosts and either serve it yourself directly or place it into the HTML as an embedded stylesheet. The problem with this is that Google fonts serves a browser-specific CSS file that is different for each browser so it can serve newer formats and use newer features, when supported, while still providing custom font support for older browsers.</p>
 	<p>With Cloudflare Workers, we can dynamically replace the external CSS reference with the browser-specific stylesheet content at fetch time when the HTML is requested by the browser. This way, the embedded CSS will always be up to date and support the capabilities of whichever browser is making the request. This completely eliminates any round trips for fetching the CSS for the fonts.</p>
-	<h4>Optimizing font file delivery</h4>
+	<div class="flex anchor relative">
+		<h4 id="optimizing-font-file-delivery">Optimizing font file delivery</h4>
+		<a href="https://blog.cloudflare.com/#optimizing-font-file-delivery" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For the font files themselves, we can eliminate all of the round trips except for the fetch itself by serving the font files directly from the same domain as the HTML. This brings with it the added benefit of serving fonts over the same HTTP/2 connection as the rest of the page resources, allowing them to be prioritized correctly and not compete for bandwidth.</p>
 	<p>Specifically, when we embed the CSS into the HTML response, we rewrite all of the font URLs to use the same domain as the HTML. When those rewritten requests arrive at the worker the URL is transformed back to the original URL served by Google and fetched by the worker (as a proxy). The worker fetches are routed through Cloudflare’s caching infrastructure so they will be cached automatically at the edge. The actual URL rewriting is pretty simple but effective. We take font URLs that look like this:</p>
 	<pre class="language-bash"><code class="language-bash">https://fonts.gstatic.com/s/...</code></pre>
 	<p>and we just prepend the page domain to the front of the URL:</p>
 	<pre class="language-bash"><code class="language-bash">https://www.example.com/fonts.gstatic.com/s/...</code></pre>
 	<p>That way, when they arrive at the edge, the worker can look at the path of a request and know right away that it is a proxy request for a Google font. At this point, rewriting the original URL is trivial. On the extremely odd chance that a page on your site actually has a path that starts with /fonts.gstatic.com/, those resources would break and something else should be appended to the URL to make sure they are unique.</p>
-	<h4>Optimization Results</h4>
+	<div class="flex anchor relative">
+		<h4 id="optimization-results">Optimization Results</h4>
+		<a href="https://blog.cloudflare.com/#optimization-results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In practice, the results can be quite dramatic. On <a href="https://www.perftests.com/googlefonts">this test page</a> for example, the wait time for fonts to become available dropped from 5.5 seconds to 1 second (an 81% improvement!):</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -153,7 +174,14 @@ h1 {
 	</ul>
 	<p>The code here is slightly simplified to make it clearer to understand the flow. The full code on GitHub adds support for an in-memory worker cache for the CSS (in addition to the persistent cache API) and provides query parameters for toggling the HTML rewriting on and off (for testing).</p>
 	<p>The content modification is all done by operating on the HTML as strings (with a combination of regular expressions and string matches). This is much faster and lighter weight than parsing the HTML into a virtual DOM, operating on it and converting back to HTML. It also allows for incremental processing of the HTML as a stream.</p>
-	<h4>Entry Point</h4>
+	<div class="flex anchor relative">
+		<h4 id="entry-point">Entry Point</h4>
+		<a href="https://blog.cloudflare.com/#entry-point" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The addEventListener(“fetch”) call is the main entry point for any worker and houses the JavaScript for intercepting inbound requests. If the handler does nothing, then the requests will be passed through normally and the worker will be out of the path in processing the response. Our goal it to minimize the amount of work that the worker has to do to determine if it is a request that it is interested in.</p>
 	<p>In the case of the proxied font requests, we can just look at the request URL and see that the path starts with /fonts.gstatic.com/. To identify requests for HTML content we can look at the “accept” header on the request. Every major browser I have tested includes text/html on the list of content types that it will accept when requesting a document. On the off chance that there is a browser that doesn’t include it as an accept header, the HTML will just be passed through and returned unmodified. The goal with everything here is to fail-safe and just return unoptimized content for any edge cases that aren’t covered. This way nothing breaks; it just doesn’t get the added performance boost.</p>
 	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", event =&gt; {
@@ -174,7 +202,15 @@ h1 {
  
  }
 })</code></pre>
-	<h4>Request Proxy</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="request-proxy">Request Proxy</h4>
+		<a href="https://blog.cloudflare.com/#request-proxy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The proxying of the font requests is pretty straightforward. Since we are crossing origins it is generally a bad idea to just reuse the existing request object with a new URL. That can leak user data like cookies to a Third-party. Instead, we make a new request, clone a subset of the headers and pass the new fetch request back for the Worker runtime to handle.</p>
 	<p>The fetch path between workers and the outside Internet goes through the Cloudflare cache so the actual font files will only be fetched from Google if they aren’t already in the cache. Even in that case, the connection from Cloudflare’s edge to Google’s font servers is much faster (and more reliable) than the end-user’s connection from the browser. Even on a cache miss, it is an insignificant delay.</p>
 	<pre class="language-javascript"><code class="language-javascript">async function proxyRequest(url, request) {
@@ -226,7 +262,14 @@ h1 {
  return response;
 }</code></pre>
 	<p>In addition to filtering the request headers we also filter the response headers sent back to the browser. If you’re not careful you could end up in a situation where a third-party is setting cookies on your origin or even turning on something like <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">HTTP Strict Transport Security</a> for your site.</p>
-	<h4>Streaming HTML Processing</h4>
+	<div class="flex anchor relative">
+		<h4 id="streaming-html-processing">Streaming HTML Processing</h4>
+		<a href="https://blog.cloudflare.com/#streaming-html-processing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The HTML path is more complicated because we are going to intercept and modify the content itself.</p>
 	<p>In processing the HTML request, the first thing we want to do is make sure it is actually an HTML response. If it is something else, then we should get out of the way and let the response stream back to the browser as it does normally. It is very possible that a PDF document, file download, or even a directly opened image, has a Accept of text/html. It is critical to check the actual content that is being responded with to make sure it is something we want to inspect and possibly modify.</p>
 	<p>The easiest way to modify a response is to just wait for the response to be fully complete, process it as a single block of HTML, and then pass the modified HTML back to the browser:</p>
@@ -257,7 +300,14 @@ h1 {
 		</li>
 	</ul>
 	<p>For our worker we are going to process the HTML stream incrementally as it arrives from the server and pass it through to the browser as soon as possible (and pass-through any content that isn’t utf-8 unmodified).</p>
-	<h5>Processing HTML as a stream</h5>
+	<div class="flex anchor relative">
+		<h5 id="processing-html-as-a-stream">Processing HTML as a stream</h5>
+		<a href="https://blog.cloudflare.com/#processing-html-as-a-stream" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First we are going to look at what it takes to process the HTML stream incrementally. We will leave the character encoding changes out for now to keep things (relatively) simple.</p>
 	<p>To process the stream incrementally, we need to generate a new fetch response to pass back from the worker that uses a TransformStream for its content. That will allow us to pass the response itself back immediately and write to the stream as soon as we have content to add. We pass all of the other headers through unmodified.</p>
 	<pre class="language-javascript"><code class="language-javascript">async function processHtmlRequest(request) {
@@ -349,7 +399,14 @@ h1 {
 	<p>One thing I was initially worried about was having to modify the “content-length” response header from the original response since we are modifying the content. Luckily, the worker takes care of that automatically and it isn’t something you have to implement.</p>
 	<p>There is a try/catch handler around the processing in case something goes horribly wrong with the decode.</p>
 	<p>The actual HTML rewriting is handled in “modifyHtmlChunk”. This is just the logic for processing the incoming data as incremental chunks.</p>
-	<h5>Dealing with character encodings other than UTF-8</h5>
+	<div class="flex anchor relative">
+		<h5 id="dealing-with-character-encodings-other-than-utf-8">Dealing with character encodings other than UTF-8</h5>
+		<a href="https://blog.cloudflare.com/#dealing-with-character-encodings-other-than-utf-8" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We intentionally skipped over handling character encodings other than UTF-8 up until now. To handle arbitrary pages you will need to be able to process other character encodings. The Worker runtime only supports decoding UTF-8 but we need to make sure that we don’t break any content that isn’t UTF-8 (or similar). To do this, we detect the current encoding if it is specified and anything that isn’t UTF-8 is passed through unmodified. In the case that the content type can not be detected we also detect decode errors and pass content through unmodified when they occur.</p>
 	<p>The HTML charset can be specified in the content-type response header or as a <code>&lt;meta charset&gt;</code> tag in the HTML itself.</p>
 	<p>For the response headers it is pretty simple. When we get the original response, see if there is a charset in the content-type header. If there is, extract the current value and if it isn’t a supported charset just pass the response through unmodified.</p>
@@ -501,7 +558,15 @@ h1 {
  }
  return invalid;
 }</code></pre>
-	<h4>HTML Business Logic</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="html-business-logic">HTML Business Logic</h4>
+		<a href="https://blog.cloudflare.com/#html-business-logic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, we can start the actual logic for embedding the font CSS. The basic logic is:</p>
 	<ul>
 		<li>

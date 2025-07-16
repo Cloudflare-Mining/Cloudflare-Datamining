@@ -35,7 +35,14 @@ function sayHi(l){console.log(`Hello ${l??"World"}!`)}sayHi("Internet");
 //Obfuscated
 var h=Q;(function(V,A){var J=Q,p=V();while(!![]){try{var b=-parseInt(J('0x79'))/0x1*(-parseInt(J('0x6e'))/0x2)+-parseInt(J('0x80'))/0x3+parseInt(J('0x76'))/0x4*(-parseInt(J('0x72'))/0x5)+parseInt(J('0x6a'))/0x6+parseInt(J('0x84'))/0x7+-parseInt(J('0x6d'))/0x8*(-parseInt(J('0x7d'))/0x9)+parseInt(J('0x73'))/0xa*(-parseInt(J('0x7c'))/0xb);if(b===A)break;else p['push'](p['shift']());}catch(U){p['push'](p['shift']());}}}(S,0x22097));function sayHi(p){var Y=Q,b=(function(){var W=!![];return function(e,x){var B=W?function(){var m=Q;if(x){var G=x[m('0x71')](e,arguments);return x=null,G;}}:function(){};return W=![],B;};}()),U=b(this,function(){var s=Q,W=typeof window!==s('0x6b')?window:typeof process===s('0x6c')&amp;&amp;typeof require===s('0x7b')&amp;&amp;typeof global==='object'?global:this,e=W['console']=W['console']||{},x=[s('0x78'),s('0x70'),'info',s('0x69'),s('0x77'),'table',s('0x7f')];for(var B=0x0;B&lt;x[s('0x83')];B++){var G=b[s('0x75')][s('0x6f')][s('0x74')](b),t=x[B],X=e[t]||G;G['__proto__']=b[s('0x74')](b),G['toString']=X[s('0x7e')]['bind'](X),e[t]=G;}});U(),console['log'](Y('0x81')+(p??Y('0x7a'))+'!');}sayHi(h('0x82'));function Q(V,A){var p=S();return Q=function(b,U){b=b-0x69;var W=p[b];return W;},Q(V,A);}function S(){var v=['Internet','length','77966Hcxgji','error','1078032RtaGFM','undefined','object','8zrzBEk','244xEPFaR','prototype','warn','apply','10LQgYRU','400TNVOzq','bind','constructor','146612cfnkCX','exception','log','1513TBJIGL','World','function','57541MkoqrR','2362383dtBFrf','toString','trace','647766YvOJOm','Hello\x20'];S=function(){return v;};return S();}</code></pre>
 	<p>With such a variance of styles (and many more), our machine learning solution needs to balance precision (low false positive rate), recall (don’t miss an attack vector), and speed. Here’s how we do it:</p>
-	<h4>Using syntax trees to classify malicious code</h4>
+	<div class="flex anchor relative">
+		<h4 id="using-syntax-trees-to-classify-malicious-code">Using syntax trees to classify malicious code</h4>
+		<a href="https://blog.cloudflare.com/#using-syntax-trees-to-classify-malicious-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>JavaScript files are parsed into <a href="https://en.wikipedia.org/wiki/Tree_(graph_theory)"><u>syntax trees (connected acyclic graphs)</u></a>. These serve as the input to a <a href="https://en.wikipedia.org/wiki/Graph_neural_network"><u>Graph Neural Network (GNN)</u></a>. GNNs are used because they effectively capture the interdependencies (relationships between nodes) in executing code, such as a function calling another function. This contrasts with treating the code as merely a sequence of words — something a code compiler, incidentally, does not do. Another motivation to use GNNs is the <a href="https://dl.acm.org/doi/10.1007/978-3-030-92270-2_57"><u>insight</u></a> that the syntax trees of malicious versus benign JavaScript tend to be different. For example, it’s not rare to find attacks that consist of malicious snippets inserted into, but otherwise isolated from, the rest of a benign base code.</p>
 	<p>To parse the files, the <a href="https://tree-sitter.github.io"><u>tree-sitter library</u></a> was chosen for its speed. One peculiarity of this parser, specialized for text editors, is that it parses out <a href="https://en.wikipedia.org/wiki/Parse_tree"><u>concrete syntax trees (CST)</u></a>. CSTs retain everything from the original text input, including spacing information, comments, and even nodes attempting to repair syntax errors. This differs from <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree"><u>abstract syntax trees (AST)</u></a>, the data structures used in compilers, which have just the essential information to execute the underlying code while ignoring the rest. One key reason for wanting to convert the CST to an AST-like structure, is that it reduces the tree size, which in turn reduces computation and memory usage. To do that, we abstract and filter out unnecessary nodes such as code comments. Consider for instance, how the following snippet</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">x = `result: ${(10+5) *   3}`;;; //this is a comment</code></pre>
@@ -54,7 +61,14 @@ var h=Q;(function(V,A){var J=Q,p=V();while(!![]){try{var b=-parseInt(J('0x79'))/
 	</figure>
 	<p><sup><i>Abstract Syntax Tree (AST) representation of the sample code above. JavaScript escape characters are unescaped.</i></sup></p>
 	<p>Moreover, our vocabulary contains several tokens that are commonly used in obfuscated code, such as double escaped hexadecimal-encoded characters. That, together with the graph structure information, is giving us satisfying results — the model successfully classifies malicious code whether it's obfuscated or not. Analogously, our model’s scores remain stable when applied to plain benign scripts compared to obfuscating them in different ways. In other words, the model’s score on a script is similar to the score on an obfuscated version of the same script. Having said that, some of our model's false positives (FPs) originate from benign but obfuscated code, so we continue to investigate how we can improve our model's intelligence.</p>
-	<h4>Architecting the Graph Neural Network</h4>
+	<div class="flex anchor relative">
+		<h4 id="architecting-the-graph-neural-network">Architecting the Graph Neural Network</h4>
+		<a href="https://blog.cloudflare.com/#architecting-the-graph-neural-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We train a <a href="https://mbernste.github.io/posts/gcn"><u>message-passing graph convolutional network (MPGCN)</u></a> that processes the input trees. The message-passing layers iteratively update each node’s internal representation, encoded in a matrix, by aggregating information from its neighbors (parent and child nodes in the tree). A pooling layer then condenses this matrix into a feature vector, discarding the explicit graph structure (edge connections between nodes). At this point, standard neural network layers, such as fully connected layers, can be applied to progressively refine the representation. Finally, a <a href="https://en.wikipedia.org/wiki/Softmax_function"><u>softmax activation</u></a> layer produces a probability distribution over the four possible classes: benign, magecart, cryptomining, and malware.</p>
 	<p>We use the <a href="https://github.com/tensorflow/gnn"><u>TF-GNN library</u></a> to implement graph neural networks, with <a href="https://keras.io"><u>Keras</u></a> serving as the high-level frontend for model building and training. This works well for us with one exception: <a href="https://github.com/tensorflow/gnn/issues/803#issue-2279602052"><u>TF-GNN does not support sparse matrices / tensors</u></a>. (That lack of support increases memory consumption, which also adds some latency.) Because of this, we are considering switching to <a href="https://pytorch-geometric.readthedocs.io"><u>PyTorch Geometric</u></a> instead.</p>
 	<figure class="kg-card kg-image-card">
@@ -66,7 +80,14 @@ var h=Q;(function(V,A){var J=Q,p=V();while(!![]){try{var b=-parseInt(J('0x79'))/
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/zLPW9kydBIJySfjaN2TTI/d7b9a7f51c1bb501aac2b7a724d62a1d/5.png" alt="" class="kg-image" width="1999" height="1347" loading="lazy">
 	</figure>
 	<p><sup><i>Model inference pipeline to sniff out and alert on malicious JavaScript.</i></sup></p>
-	<h4>Tackling unbalanced data: malicious scripts are the minority</h4>
+	<div class="flex anchor relative">
+		<h4 id="tackling-unbalanced-data-malicious-scripts-are-the-minority">Tackling unbalanced data: malicious scripts are the minority</h4>
+		<a href="https://blog.cloudflare.com/#tackling-unbalanced-data-malicious-scripts-are-the-minority" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finding malicious scripts is like finding a needle in a haystack; they are anomalies among plenty of otherwise benign JavaScript. This naturally results in a highly imbalanced dataset. For example, our Magecart-labeled scripts only account for ~6% of the total dataset.</p>
 	<p>Not only that, but the “benign” category contains an immense variance (and amount) of JavaScript to classify. The lengths of the scripts are highly diverse (ranging from just a few bytes to several megabytes), their coding styles vary widely, some are obfuscated whereas others are not, etc. To make matters worse, malicious payloads are often just small, carefully inserted fragments within an otherwise perfectly valid and functional benign script. This all creates a cacophony of token distributions for an ML model to make sense of.</p>
 	<p>Still, our biggest problem remains finding enough malevolent JavaScript to add to our training dataset. Thus, simplifying it, our strategy for data collection and annotation is two-fold:</p>
@@ -78,7 +99,14 @@ var h=Q;(function(V,A){var J=Q,p=V();while(!![]){try{var b=-parseInt(J('0x79'))/
 			<p>Benign scripts are about quality → the more <i>variance</i>, the merrier. Here we have the opposite situation. Because we can collect so many of them easily, the value is in adding differentiated scripts.</p>
 		</li>
 	</ol>
-	<h5>Learning key scripts only: reduce false positives with minimal annotation time</h5>
+	<div class="flex anchor relative">
+		<h5 id="learning-key-scripts-only-reduce-false-positives-with-minimal-annotation-time">Learning key scripts only: reduce false positives with minimal annotation time</h5>
+		<a href="https://blog.cloudflare.com/#learning-key-scripts-only-reduce-false-positives-with-minimal-annotation-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To filter out semantically-similar scripts (mostly benign), we employed the latest advancements in LLM for generating code <a href="https://www.cloudflare.com/learning/ai/what-are-embeddings"><u>embeddings</u></a>. We added those scripts that are distant enough from each other to our dataset, as measured by <a href="https://developers.cloudflare.com/vectorize/best-practices/create-indexes/#distance-metrics"><u>vector cosine similarity</u></a>. Our methodology is simple — for a batch of potentially new scripts:</p>
 	<ul>
 		<li>
@@ -108,18 +136,46 @@ var h=Q;(function(V,A){var J=Q,p=V();while(!![]){try{var b=-parseInt(J('0x79'))/
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/hHw00ojXE4CdorMQI5b56/897e0e045230522478e0735c3e28ff12/6.png" alt="" class="kg-image" width="1999" height="1551" loading="lazy">
 	</figure>
 	<p><sup><i>2D visualization of scripts projected onto an embedding space, highlighting those sufficiently dissimilar from one another.</i></sup></p>
-	<h4>From the lab, to the real world</h4>
+	<div class="flex anchor relative">
+		<h4 id="from-the-lab-to-the-real-world">From the lab, to the real world</h4>
+		<a href="https://blog.cloudflare.com/#from-the-lab-to-the-real-world" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our latest model in evaluation has both a macro accuracy and an overall malicious precision nearing 99%(!) on our test dataset. So we are done, right? Wrong! The real world is not the same as the lab, where many more variances of benign JavaScript can be seen. To further assure minimum prediction changes between model releases, we follow these three anti-fool measures:</p>
-	<h5>Evaluate metrics uncertainty</h5>
+	<div class="flex anchor relative">
+		<h5 id="evaluate-metrics-uncertainty">Evaluate metrics uncertainty</h5>
+		<a href="https://blog.cloudflare.com/#evaluate-metrics-uncertainty" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First, we thoroughly estimate the <i>uncertainty</i> of our offline evaluation metrics. How accurate are our accuracy metrics themselves? To gauge that, we calculate the <a href="https://en.wikipedia.org/wiki/Standard_error"><u>standard error</u></a> and confidence intervals for our offline metrics (precision, recall, <a href="https://en.wikipedia.org/wiki/F-score"><u>F1 measure</u></a>). To do that, we calculate the model’s predicted scores on the test set once (the original sample), and then generate bootstrapped resamples from it. We use simple random (re-)sampling as it offers us a more conservative estimate of error than stratified or balanced sampling.</p>
 	<p>We would generate 1,000 resamples, each a fraction of 15% resampled from the original test sample, then calculate the metrics for each individual resample. This results in a distribution of sampled data points. We measure its mean, the standard deviation (with <a href="https://en.wikipedia.org/wiki/Standard_deviation#Corrected_sample_standard_deviation"><u>Bessel’s correction</u></a>), and finally the standard error and a <a href="https://en.wikipedia.org/wiki/Confidence_interval"><u>confidence interval</u></a> (CI) (using the percentile method, such as the 2.5 and 97.5 percentiles for a 95% CI). See below for an example of a bootstrapped distribution for precision (P), illustrating that a model’s performance is a continuum rather than a fixed value, and that might exhibit subtly (left-)skewed tails. For some of our internally evaluated models, it can easily happen that some of the sub-sampled metrics decrease by up to 20 percentage points within a 95% confidence range. High standard errors and/or confidence ranges signal needs for model improvement and for improving and increasing our test set.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2x3X2oVv2EfIkLYFrcjLWK/985a685e565f759b7781821595ac4ff7/7.png" alt="" class="kg-image" width="1999" height="1279" loading="lazy">
 	</figure>
 	<p><sup><i>An evaluation metric, here precision (P), might change significantly depending on what’s exactly tested. We thoroughly estimate the metric’s standard error and confidence intervals.</i></sup></p>
-	<h5>Benchmark against massive offline unlabeled dataset</h5>
+	<div class="flex anchor relative">
+		<h5 id="benchmark-against-massive-offline-unlabeled-dataset">Benchmark against massive offline unlabeled dataset</h5>
+		<a href="https://blog.cloudflare.com/#benchmark-against-massive-offline-unlabeled-dataset" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We run our model on the entire corpus of scripts seen by Cloudflare's network and temporarily cached in the last 90 days. By the way, that’s nearly 1 TiB and 26 million different JavaScript files! With that, we can observe the model’s behavior against real traffic, yet completely offline (to ensure no impact to production). We check the malicious prediction rate, latency, throughput, etc. and sample some of the predictions for verification and annotation.</p>
-	<h5>Review in staging and shadow mode</h5>
+	<div class="flex anchor relative">
+		<h5 id="review-in-staging-and-shadow-mode">Review in staging and shadow mode</h5>
+		<a href="https://blog.cloudflare.com/#review-in-staging-and-shadow-mode" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Only after all the previous checks were cleared, we then run this new tentative version in our staging environment. For major model upgrades, we also deploy them in <a href="https://cloud.google.com/architecture/guidelines-for-developing-high-quality-ml-solutions"><u>shadow mode</u></a> (log-only mode) — running on production, alongside our existing model. We study the model’s behavior for a while before finally marking it as production ready, otherwise we go back to the drawing board.</p>
 	<div class="flex anchor relative">
 		<h3 id="ai-inference-at-scale">AI inference at scale</h3>

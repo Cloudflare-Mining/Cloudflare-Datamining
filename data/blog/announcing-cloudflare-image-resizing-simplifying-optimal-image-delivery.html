@@ -53,16 +53,39 @@
 			</svg>
 		</a>
 	</div>
-	<h4>Ecommerce Thumbnails</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="ecommerce-thumbnails">Ecommerce Thumbnails</h4>
+		<a href="https://blog.cloudflare.com/#ecommerce-thumbnails" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Ecommerce sites typically store a high-quality image of each product. &nbsp;From that image, they need to <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">create different variants</a> depending on how that product will be displayed. &nbsp;One example is creating thumbnails for a catalog view. &nbsp;Using Image Resizing, if the high quality image is located here:</p>
 	<p><code>https://example.com/images/shoe123.jpg</code></p>
 	<p>This is how to display a 75x75 pixel thumbnail using Image Resizing:</p>
 	<p><code>&lt;img src="/cdn-cgi/image/width=75,height=75/images/shoe123.jpg"&gt;</code></p>
-	<h4>Responsive Images</h4>
+	<div class="flex anchor relative">
+		<h4 id="responsive-images">Responsive Images</h4>
+		<a href="https://blog.cloudflare.com/#responsive-images" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When tailoring a site to work on various device types and sizes, it’s important to always use correctly sized images. &nbsp;This can be difficult when images are intended to fill a particular percentage of the screen. &nbsp;To solve this problem, can be used.</p>
 	<p>Without Image Resizing, multiple versions of the same image would need to be created and stored. &nbsp;In this example, a single high quality copy of hero.jpg is stored, and Image Resizing is used to resize for each particular size as needed.</p>
 	<pre class="language-bash"><code class="language-bash">&lt;img width="100%" srcset=" /cdn-cgi/image/fit=contain,width=320/assets/hero.jpg 320w, /cdn-cgi/image/fit=contain,width=640/assets/hero.jpg 640w, /cdn-cgi/image/fit=contain,width=960/assets/hero.jpg 960w, /cdn-cgi/image/fit=contain,width=1280/assets/hero.jpg 1280w, /cdn-cgi/image/fit=contain,width=2560/assets/hero.jpg 2560w, " src="/cdn-cgi/image/width=960/assets/hero.jpg"&gt;</code></pre>
-	<h4>Enforce Maximum Size Without Changing URLs</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="enforce-maximum-size-without-changing-urls">Enforce Maximum Size Without Changing URLs</h4>
+		<a href="https://blog.cloudflare.com/#enforce-maximum-size-without-changing-urls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Image Resizing is also <a href="https://developers.cloudflare.com/images/worker">available</a> from within a Cloudflare Worker. <a href="https://www.cloudflare.com/developer-platform/workers">Workers</a> allow you to write code which runs close to your users all around the world. For example, you might wish to add Image Resizing to your images <b>while keeping the same URLs</b>. Your users and client would be able to use the same image URLs as always, but the images will be transparently modified in whatever way you need.</p>
 	<p>You can install a Worker on a route which matches your image URLs, and resize any images larger than a limit:</p>
 	<pre class="language-bash"><code class="language-bash">addEventListener('fetch', event =&gt; {

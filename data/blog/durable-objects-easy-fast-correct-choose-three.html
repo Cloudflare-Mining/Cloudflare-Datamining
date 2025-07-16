@@ -478,7 +478,14 @@ async function getUniqueNumber() {
 	<p>Better yet, <code>put()</code> requests now always complete "instantaneously". A <code>put()</code> simply writes to cache. We rely on output gates ("part 2", above) to prevent the premature confirmation of writes to any external party. Writes will be coalesced (even if you <code>await</code> them), so that the output gate waits only for O(1) network round trips of latency, not O(n).</p>
 	<p>Moreover, because <code>get()</code> and <code>put()</code> now complete instantly in most or all cases, the negative impact of input gates on throughput is largely mitigated, because the gate now spends relatively little time blocked.</p>
 	<p>With Durable Objects built-in caching, our simple code is now <i>just as fast</i> as our code that manually implemented in-memory caching. Combined with input and output gates, our code is now simple, fast, <i>and</i> correct, all at the same time.</p>
-	<h4>Bonus Correctness</h4>
+	<div class="flex anchor relative">
+		<h4 id="bonus-correctness">Bonus Correctness</h4>
+		<a href="https://blog.cloudflare.com/#bonus-correctness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our caching layer provides some bonus consistency guarantees, in addition to performance.</p>
 	<p>First, writes are automatically coalesced. That is, if you perform multiple <code>put()</code> or <code>delete()</code> operations without <code>await</code>ing them or anything else in between, then the operations are automatically grouped together and stored atomically. In the case of a sudden power failure, after coming back up, either all of the writes will have been stored, or none of them will. For example:</p>
 	<pre class="language-javascript"><code class="language-javascript">// Move a value from "foo" to "bar".

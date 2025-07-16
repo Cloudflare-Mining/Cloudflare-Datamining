@@ -17,7 +17,15 @@
 		</a>
 	</div>
 	<p>JSON Schema is a powerful way to describe your JSON data format. It provides <b>complete structural validation</b> and can be used for things like validation of incoming requests. JSON Hyper-Schema further extends this format with links and gives you a way describe your API.</p>
-	<h4>JSON Schema Example</h4>
+	<div class="flex anchor relative">
+		<h4 id="json-schema-example">JSON Schema Example</h4>
+		<a href="https://blog.cloudflare.com/#json-schema-example" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-json"><code class="language-json">{
   "type": "object",
   "properties": {
@@ -34,7 +42,16 @@
     }
   }
 }</code></pre>
-	<h4>Matching JSON</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="matching-json">Matching JSON</h4>
+		<a href="https://blog.cloudflare.com/#matching-json" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-json"><code class="language-json">{
   "name": "John Doe",
   "age": 45,
@@ -80,7 +97,14 @@
 		</li>
 	</ul>
 	<p>We wanted something more modular and extensible that addresses the above issues, while still getting ready-to-go output just with a few commands. So, we created a toolchain based on JSDC and modern JavaScript libraries. This article is not just a description for how to use these tools, but also an explanation of our design decisions. <b>It is described in a bottom-up manner.</b> You can skip to the bottom if you are not interested in the technical discussion and just want to get started using the tools.</p>
-	<h4><a href="https://github.com/cloudflare/json-schema-loader">json-schema-loader</a></h4>
+	<div class="flex anchor relative">
+		<h4 id=""><a href="https://github.com/cloudflare/json-schema-loader">json-schema-loader</a></h4>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>JSON Schema files need to be preprocessed first. <b>The first thing we have to do is to resolve their references (</b><code><b>$ref</b></code><b>).</b> This can be quite a complex task since every schema can have multiple references, some of which are external (referencing even more schemas). Also, when we make a change, we want to only resolve schemas that need to be resolved. We decided to use <a href="https://webpack.github.io">Webpack</a> for this task because a webpack loader has some great properties:</p>
 	<ul>
 		<li>
@@ -102,10 +126,24 @@
 	<p>Our loader uses the 3rd party <a href="https://github.com/BigstickCarpet/json-schema-ref-parser">JSON Schema Ref Parser</a> library. It does not adhere to the JSON Schema specification related to <code>id</code> properties and their ability to change reference scope since it is <a href="https://github.com/json-schema/json-schema/wiki/The-%22id%22-conundrum">ambiguous</a>. However, it does implement the <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> and <a href="https://tools.ietf.org/html/draft-pbryan-zyp-json-ref-03">JSON Reference</a> specifications. What does this mean? You can still combine relative (or absolute) paths with JSON Pointers and use references like:</p>
 	<pre class="language-bash"><code class="language-bash"> "$ref": "./product.json#/definitions/identifier"</code></pre>
 	<p>but <code>id</code>s are simply ignored and the scope is always relative to the root. That makes reasoning about our schemas easier. That being said, a unique root id is still expected for other purposes.</p>
-	<h4><a href="https://github.com/cloudflare/json-schema-example-loader">json-schema-example-loader</a></h4>
+	<div class="flex anchor relative">
+		<h4 id=""><a href="https://github.com/cloudflare/json-schema-example-loader">json-schema-example-loader</a></h4>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, we have resolved schemas. Unfortunately, their structure doesn't really match our final HTML documentation. It can be deeply nested, and we want to present our users with nice examples of API requests and responses. We need to do further transformations. We must remove some original properties and precompute new ones. <b>The goal is to create a data structure that will better fit our UI components.</b> Please check out the <a href="https://github.com/cloudflare/json-schema-example-loader">project page</a> for more details.</p>
 	<p>You might be asking why we use another webpack loader and why this isn't part of our web application instead. The main reason is performance. We do not want to bog down browsers by doing these transformations repeatedly since JSON Schemas can be arbitrarily nested and very complex and the output can be precomputed.</p>
-	<h4><a href="https://github.com/cloudflare/doca-bootstrap-theme">doca-bootstrap-theme</a></h4>
+	<div class="flex anchor relative">
+		<h4 id=""><a href="https://github.com/cloudflare/doca-bootstrap-theme">doca-bootstrap-theme</a></h4>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With both of these webpack loaders, you can easily use your favorite JavaScript framework to build your own application. However, we want to make doc generation accessible even to people who don't have time to build their own app. So, we created a set of templates that match the output of <a href="https://github.com/cloudflare/json-schema-example-loader">json-schema-example-loader</a>. These templates use the popular library <a href="https://facebook.github.io/react">React</a>. Why React?</p>
 	<ul>
 		<li>
@@ -128,7 +166,14 @@
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/maiacoimbra/2318887095/in/photolist-4wUUkZ-jcJ3Zi-2LP5F-6un93i-4rStsx-58wwkE-58swNn-2p9jr4-58shYz-58sjBg-6hh87g-58wDBG-8Q1NSg-5Yua6y-58wqyC-aonbLU-58wHGC-4xUiGv-4S3m1W-5YpQ9n-58tcTV-5YpQSF-9Kv4KE-58thdg-58wNey-9AuY4n-58tfoH-9B1XdE-9U5eSJ-4wV1zV-4sfeTf-58tF8R-58tizR-58x1Fq-4qhVKn-5Yu43U-4xYvCq-4bDKSq-58tbuP-nqcLsb-e1HCp9-danScf-7cx2Zc-vDYJPz-fpe9K-4qa4Cz-74nRWk-58tNyB-58sL3x-8Q1NZc">image</a> by <a href="https://www.flickr.com/photos/maiacoimbra">Maia Coimbra</a></p>
-	<h4><a href="https://github.com/cloudflare/doca">doca</a></h4>
+	<div class="flex anchor relative">
+		<h4 id=""><a href="https://github.com/cloudflare/doca">doca</a></h4>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So, we have loaders and nice UI components. Now, it's time to put it all together. We have something that can do just that! We call it <code>doca</code>. doca is a command-line tool written in Node.js that scaffolds the whole application for you. It is actually pretty simple. It takes fine-tuned webpack/redux/babel based <a href="https://github.com/cloudflare/doca/tree/master/app">application</a>, copies it into a destination of your choice, and does a few simple replacements.</p>
 	<p>Since all hard work is done by webpack loaders and all UI components live in a different theme package, the final app can be pretty minimal. It's not intended to be updated by the <code>doca</code> tool. <b>You should only use </b><code><b>doca</b></code><b> once.</b> Otherwise, it would just rewrite your application, which is not desirable if you made some custom modifications. For example, you might want to add <a href="https://github.com/reactjs/react-router">React Router</a> to create multi-page documentation.</p>
 	<p><code>doca</code> contains webpack configs for development and production modes. You can build a completely static version with no JavaScript. It transforms the output of <a href="https://github.com/cloudflare/json-schema-example-loader">json-schema-example-loader</a> into an immutable data structure (using <a href="https://facebook.github.io/immutable-js">Immutable.js</a>). This brings some nice performance optimizations. This immutable structure is then passed to <a href="https://github.com/cloudflare/doca-bootstrap-theme">doca-bootstrap-theme</a> (the default option). That's it.</p>
@@ -176,7 +221,14 @@
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/29233640@N07/15551695380/in/photolist-pGfvdY-6vJiUQ-gcbx2-gcbAN-gcbtS-gcbqv-nMSXLP-3cFn8d-aAHLji-8qrbWP-nMXwba-qjNLUc-sHC6yq-ixZsvd-qitLjM-ytLaZ-mHXYrK-7jbGNc-a5Rqgb-7ANSGi-o3j7oU-J72L-7TxmXk-eSegHr-5m5Ezm-oTPimo-yabKR-9GBrGo-y5G1x-y5G76-y5GmQ-8DkkKh-y5Ged-cC7bYU-eaRLKr-cyo7c7-7NuihW-9GBqvW-9GBrKb-67Xu2w-9GBqJA-eaRHDe-7hbE7h-rpx2x7-bnz5ki-8N8Q1T-azZwBp-azZCZe-5oS1A8-8RqKno">image</a> by <a href="https://www.flickr.com/photos/29233640@N07">Robert Couse-Baker</a></p>
-	<h4>Getting started</h4>
+	<div class="flex anchor relative">
+		<h4 id="getting-started">Getting started</h4>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The best way how to start is to try our example. It includes two JSON Schemas.</p>
 	<pre class="language-bash"><code class="language-bash">git clone git@github.com:cloudflare/doca.git
 cd doca/example

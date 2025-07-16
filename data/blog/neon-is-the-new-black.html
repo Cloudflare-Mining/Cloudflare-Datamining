@@ -57,7 +57,15 @@ perf report
 			</svg>
 		</a>
 	</div>
-	<h4>encode_mcu_AC_refine</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="encode_mcu_ac_refine">encode_mcu_AC_refine</h4>
+		<a href="https://blog.cloudflare.com/#encode_mcu_ac_refine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's recoup the optimizations we applied to <code>encode_mcu_AC_refine</code> previously. The function has two loops, with the heavier loop performing the following operation:</p>
 	<pre class="language-c"><code class="language-c">for (k = cinfo-&gt;Ss; k &lt;= Se; k++) {
   temp = (*block)[natural_order[k]];
@@ -156,7 +164,14 @@ real    0m4.008s
 user    0m3.770s
 sys     0m0.241s</code></pre>
 	<p>Wow, that is incredible. Over 2X speedup!</p>
-	<h4>encode_mcu_AC_first</h4>
+	<div class="flex anchor relative">
+		<h4 id="encode_mcu_ac_first">encode_mcu_AC_first</h4>
+		<a href="https://blog.cloudflare.com/#encode_mcu_ac_first" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The other function is quite similar, but the logic slightly differs on the first pass:</p>
 	<pre class="language-c"><code class="language-c">temp = (*block)[natural_order[k]];
 if (temp &lt; 0) {
@@ -235,7 +250,14 @@ sys     0m0.241s</code></pre>
 	<p>The intrinsic to use the 4 register variant is <code>vqtbl4q_u8</code>. Interestingly there is an instruction that can lookup 64 bytes in AVX-512, but we don't want to <a href="https://blog.cloudflare.com/on-the-dangers-of-intels-frequency-scaling">use that</a>.</p>
 	<p>The next interesting thing I found, are instructions that can load or store and de/interleave data at the same time. They can load or store up to four registers simultaneously, while de/interleaving two, three or even four elements, of any supported width. The specifics are well presented in <a href="https://community.arm.com/processors/b/blog/posts/coding-for-neon---part-1-load-and-stores">here</a>. The load intrinsics used are of the form: <code>vldNq_uW</code>, where N can be 1,2,3,4 to indicate the interleave factor and W can be 8, 16, 32 or 64. Similarly <code>vldNq_sW</code> is used for signed types.</p>
 	<p>Finally very interesting instructions are the shift left/right and insert <code>SLI</code> and <code>SRI</code>. What they do is they shift the elements left or right, like a regular shift would, however instead of shifting in zero bits, the zeros are replaced with the original bits of the destination register! An intrinsic for that would look like <code>vsliq_n_u16</code> or <code>vsriq_n_u32</code>.</p>
-	<h4>Applying the new instructions</h4>
+	<div class="flex anchor relative">
+		<h4 id="applying-the-new-instructions">Applying the new instructions</h4>
+		<a href="https://blog.cloudflare.com/#applying-the-new-instructions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It might not be visible at first how those new instruction can help. Since I didn't have much time to dig into libjpeg or the jpeg spec, I had to resolve to heuristics.</p>
 	<p>From a quick look it became apparent that <code>*block</code> is defined as an array of 64 16-bit values. <code>natural_order</code> is an array of 32-bit integers that varies in length depending on the real block size, but is always padded with 16 entries. Also, despite the fact that it uses integers, the values are indexes in the range [0..63].</p>
 	<p>Another interesting observation is that blocks of size 64 are the most common by far for both <code>encode_mcu_AC_refine</code> and <code>encode_mcu_AC_first</code>. And it always makes sense to optimize for the most common case.</p>

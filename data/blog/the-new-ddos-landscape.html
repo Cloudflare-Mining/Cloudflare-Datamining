@@ -25,12 +25,26 @@
 	</blockquote>
 	<p>The first thing you need before you can carry out a DDoS Attack is capacity. You need the network resources to be able to overwhelm your victim.</p>
 	<p>To build up capacity, attackers have a few mechanisms at their disposal; three such examples are Botnets, IoT Devices and DNS Amplification:</p>
-	<h4>Botnets</h4>
+	<div class="flex anchor relative">
+		<h4 id="botnets">Botnets</h4>
+		<a href="https://blog.cloudflare.com/#botnets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Computer viruses are deployed for multiple reasons, for example; they can harvest private information from users or blackmail users into paying them money to get their precious files back. Another utility of computer viruses is building capacity to perform DDoS Attacks.</p>
 	<p>A Botnet is a network of infected computers that are centrally controlled by an attacker; these zombie computers can then be used to send spam emails or perform DDoS attacks.</p>
 	<p>Consumers have access to faster Internet than ever before. In November 2016, the average UK broadband upload speed reached 4.3Mbps - this means a Botnet which has infected a little under 2,400 computers can launch an attack of around 10Gbps. Such capacity is plenty enough to saturate the end networks that power most websites online.</p>
 	<p>On August 17th, 2017, multiple networks online were subject to significant attacks from a botnet known as WireX. Researchers from a variety of organisations, including from Akamai, Cloudflare, Flashpoint, Google, Oracle Dyn, RiskIQ, Team Cymru, and other organizations cooperated to combat this botnet - eventually leading to hundreds of Android apps being removed and a process started to remove the malware-ridden apps from all devices.</p>
-	<h4>IoT Devices</h4>
+	<div class="flex anchor relative">
+		<h4 id="iot-devices">IoT Devices</h4>
+		<a href="https://blog.cloudflare.com/#iot-devices" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>More and more of our everyday appliances are being embedded with Internet connectivity. Like other types of technology, they can be taken over with malware and controlled to launch large-scale DDoS attacks.</p>
 	<p>Towards the end of last year, we began to see Internet-connected cameras start to launch <a href="https://blog.cloudflare.com/say-cheese-a-snapshot-of-the-massive-ddos-attacks-coming-from-iot-cameras">large DDoS attacks</a>. The use of video cameras was advantageous to attackers in the sense they needed to be connected to networks with enough bandwidth to be capable of streaming video.</p>
 	<p>Mirai was one such botnet which targeted Internet-connected cameras and Internet routers. It would start by logging into the web dashboard of a device using a table of 60 default usernames and passwords, then installing malware on the device.</p>
@@ -41,7 +55,14 @@
 
 	</figure>
 	<p>Passwords aside, back in May, I blogged specifically about some examples of security risks we are starting to see which are specific to IoT devices: <a href="https://blog.cloudflare.com/iot-security-anti-patterns">IoT Security Anti-Patterns</a>.</p>
-	<h4>DNS Amplification</h4>
+	<div class="flex anchor relative">
+		<h4 id="dns-amplification">DNS Amplification</h4>
+		<a href="https://blog.cloudflare.com/#dns-amplification" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>DNS is the phonebook of the Internet; in order to reach this site, your local computer used DNS to look up which IP Address would serve traffic for <code>blog.cloudflare.com</code>. I can perform this DNS queries from my command line using <code>dig A blog.cloudflare.com</code>:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -134,7 +155,14 @@
 	<p>It remains critical you have a high-capacity DDoS mitigation network in front of your web application; one of the reasons why Application Layer attacks are increasingly attractive to attackers because networks have gotten good at mitigating volumetric attacks at the network layer.</p>
 	<p>Cloudflare has found that whilst performing Application Layer attacks, attackers will sometimes pick cryptographic ciphers that are the hardest for servers to calculate and are not usually accelerated in hardware. What this means is the attackers will try and consume more of your servers resources by actually using the fact you offer encrypted HTTPS connections against you. Having a proxy in front of your web traffic has the added benefit of ensuring that it has to establish a brand new secure connection to your origin web server - effectively meaning you don't have to worry about Presentation Layer attacks.</p>
 	<p>Additionally, offloading services which don't have custom application logic (like DNS) to managed providers can help ensure you have less surface area to worry about at the Application Layer.</p>
-	<h4>Aggressive Caching</h4>
+	<div class="flex anchor relative">
+		<h4 id="aggressive-caching">Aggressive Caching</h4>
+		<a href="https://blog.cloudflare.com/#aggressive-caching" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the ways to make it easier to serve web requests is to use some form of caching. There are multiple forms of caching; however, here I'm going to be talking about how you enable caching for HTTP requests.</p>
 	<p>Suppose you're using a CMS (Content Management System) to update your blog, the vast majority of visitors to your blog will see the identical page to every other visitor. It will only be the when an anonymous visitor logs in or leaves a comment that they will see a page that's dynamic and unlike every other page that's been rendered.</p>
 	<p>Despite the vast majority of HTTP requests to specific URLs being identical, your CMS has to regenerate the page for every single request as if it was brand new. Application Layer DDoS attacks exploit this to amplification to make their attacks more brutal.</p>
@@ -148,7 +176,14 @@
 			<p><a href="https://blog.cloudflare.com/caching-anonymous-page-views">Caching Anonymous Page Views at the Edge with Cloudflare</a></p>
 		</li>
 	</ul>
-	<h4>Rate Limiting</h4>
+	<div class="flex anchor relative">
+		<h4 id="rate-limiting">Rate Limiting</h4>
+		<a href="https://blog.cloudflare.com/#rate-limiting" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Caching isn't enough; non-idempotent HTTP requests like POST, PUT and DELETE are not safe to cache - as such making these requests can bypass caching efforts used to prevent Application Layer DDoS attacks. Additionally, attackers can attempt to vary URLs to bypass advanced caching behaviour.</p>
 	<p>Software exists for web servers to be able to perform rate limiting before anything hits dynamic logic; examples of such tools include <a href="https://www.fail2ban.org/wiki/index.php/Main_Page">Fail2Ban</a> and <a href="https://httpd.apache.org/docs/trunk/mod/mod_ratelimit.html">Apache mod_ratelimit</a>.</p>
 	<p>If you do rate limiting on your server itself, be sure to configure your edge network to cache the rate limit block pages, such that attackers cannot perform Application Layer attackers once blocked. This can be done by caching responses with a 429 status code against a Custom Cache Key based on the IP Address.</p>

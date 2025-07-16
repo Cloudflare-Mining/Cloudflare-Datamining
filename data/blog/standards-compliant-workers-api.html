@@ -234,7 +234,15 @@ dictionary EventInit {
 	<p>Or an <code>AbortSignal</code> that is pre-emptively triggered immediately on creation (these will never actually emit the "abort" event):</p>
 	<p><code>const signal = AbortSignal.abort('for reasons');</code></p>
 	<p>Currently, within Workers, <code>AbortSignal</code> and <code>AbortController</code> has been integrated with the <code>EventTarget</code>, <code>fetch()</code>, and streams APIs in alignment with the relevant standard specifications for each.</p>
-	<h4><b>Using AbortSignal to cancel a fetch()</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="using-abortsignal-to-cancel-a-fetch"><b>Using AbortSignal to cancel a fetch()</b></h4>
+		<a href="https://blog.cloudflare.com/#using-abortsignal-to-cancel-a-fetch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">  const ac = new AbortController();
  
   const res = fetch('https://example.org', {
@@ -333,7 +341,15 @@ const compressedStream = blob.stream().pipeThrough(cs);</code></pre>
 	<p>Last, but absolutely not least, our most significant effort over the past year has been providing new standards compliant implementations of the <code>ReadableStream</code>, <code>WritableStream</code>, and <code>TransformStream</code> APIs.</p>
 	<p>The Workers runtime has always provided an implementation of these objects but they were never fully conformant to the standard. User code was not capable of creating custom <code>ReadableStream</code> and <code>WritableStream</code> instances, and <code>TransformStreams</code> were limited to simple identity pass-throughs of bytes. The implementations have been updated now to near complete compliance with the standard (near complete because we still have a few edge cases and features we are working on).</p>
 	<p>The new streams implementation will be enabled by default in all new Workers as of November 30, 2022, or can be enabled earlier using the <code>streams_enable_constructors</code> and <code>transformstream_enable_standard_constructor</code> compatibility flags.</p>
-	<h4><b>Creating a custom ReadableStream</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="creating-a-custom-readablestream"><b>Creating a custom ReadableStream</b></h4>
+		<a href="https://blog.cloudflare.com/#creating-a-custom-readablestream" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">async function handleRequest(request) {
   const enc = new TextEncoder();
 
@@ -347,7 +363,15 @@ const compressedStream = blob.stream().pipeThrough(cs);</code></pre>
   return new Response(rs);
 }</code></pre>
 	<p>The new implementation supports both "regular" and "bytes" <code>ReadableStream</code> types, supports BYOB readers, and includes performance optimizations for both <code>tee()</code> and <code>pipeThrough()</code>.</p>
-	<h4><b>Creating a custom WritableStream</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="creating-a-custom-writablestream"><b>Creating a custom WritableStream</b></h4>
+		<a href="https://blog.cloudflare.com/#creating-a-custom-writablestream" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">  const ws = new WritableStream({
     write(chunk) {
       console.log(chunk);  // "hello world"
@@ -357,7 +381,15 @@ const compressedStream = blob.stream().pipeThrough(cs);</code></pre>
   const writer = ws.getWriter();
   writer.write("hello world");</code></pre>
 	<p><code>WritableStreams</code> are fairly simple objects that can accept any JavaScript value written to them.</p>
-	<h4><b>Creating a custom TransformStream</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="creating-a-custom-transformstream"><b>Creating a custom TransformStream</b></h4>
+		<a href="https://blog.cloudflare.com/#creating-a-custom-transformstream" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">  const { readable, writable } = new TransformStream({
     transform(chunk, controller) {
       controller.enqueue(chunk.toUpperCase());

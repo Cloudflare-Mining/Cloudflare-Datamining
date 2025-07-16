@@ -18,12 +18,27 @@
 			</svg>
 		</a>
 	</div>
-	<h4>For Individual Sites</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="for-individual-sites">For Individual Sites</h4>
+		<a href="https://blog.cloudflare.com/#for-individual-sites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This was true.. in the mid 1990s, when I placed my first SSL certificate order. All that has changed.</p>
 	<p>Back then, I was a high school student writing software for my friend’s mom’s company. We were getting ready to launch her website and I learned that we needed something called an "SSL certificate" to transact securely online, but I had no idea how to get one.</p>
 	<p>After a bit of research conducted over my blazingly fast <a href="https://en.wikipedia.org/wiki/USRobotics#/media/File:Fax_modem_antigo.jpg">US Robotics Sportster 14.4k</a> modem (we had recently upgraded from the relatively slow MultiTech 9600), I found out that we had to mail the company’s "original" Articles of Incorporation, emblazoned with the State Seal of Massachusetts and signed by company officers, along with a hefty check to some far away office. I asked her what to put for my title, so she shrugged and said "CTO" as that sounded more official and likely to get us approved. A week or so later, the CA <i>finally</i> emailed the certificate.</p>
 	<p>Thankfully, we’ve come a long way since then. Today, you can protect your site with HTTPS in a matter of seconds, for free, either by signing up for Cloudflare or using a CA such as Let’s Encrypt. If you use Cloudflare we’ll renew your certificate automatically, and store it within milliseconds of your users for optimal performance, using our <a href="https://www.cloudflare.com/network">150+ data centers</a> around the world. As an added benefit, once we’re handling your SSL/TLS traffic, you can start using technologies like <a href="https://blog.cloudflare.com/tag/workers">Cloudflare Workers</a> to implement any logic you want at the edge.</p>
-	<h4>For SaaS Providers</h4>
+	<div class="flex anchor relative">
+		<h4 id="for-saas-providers">For SaaS Providers</h4>
+		<a href="https://blog.cloudflare.com/#for-saas-providers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While the "it’s difficult" excuse rings hollow for individual site operators, things do get a bit more challenging when you’re dealing with issuing (and regularly renewing) hundreds, thousands, or even millions of certificates. Such is the case for SaaS providers who write and deploy software on another company’s domain, e.g., <a href="https://blog.example.com">https://blog.example.com</a> or <a href="https://mystore.example">https://mystore.example</a>.</p>
 	<p>The reason that it can seem difficult to manage SSL certificates on behalf of other companies (putting aside performance and scale for a second), is that Certificate Authorities are only supposed to give out SSL certificates for hostnames where the requestor has "demonstrated control". Fortunately, methods such as HTTP-based validation, i.e., placing a random token on a well-defined path that the CA can access, have reduced the burden on the end-customer to a single step.</p>
 	<p>For those that want the benefits of having an edge provider like Cloudflare in front of their servers for acceleration and protection, our <a href="https://www.cloudflare.com/ssl-for-saas-providers">SSL for SaaS</a> product reduces this process to a single API call. Alternatively, those that wish to handle their own issuance, renewal, certificate hosting, and DDoS protection, the HTTP validation method or <a href="https://github.com/ietf-wg-acme/acme">ACME protocol</a> can be used.</p>
@@ -56,10 +71,24 @@
 	<p>Detractors typically think HTTPS is slow for two primary reasons: i) it takes marginally more CPU power to encrypt and decrypt data; and ii) establishing a TLS session takes two network round trips between the browser and the server.</p>
 	<p>Even with decade old hardware, SSL/TLS adds less than 1% of CPU load, as Adam Langley <a href="https://www.imperialviolet.org/2010/06/25/overclocking-ssl.html">explained</a> while debunking the HTTPS performance/cost myth. Today’s processors also come with instruction sets such as AES-NI, that help performance. Further, session resumption technologies reduce the TLS 1.2 overhead and TLS 1.3 aims to <a href="https://blog.cloudflare.com/introducing-0-rtt">eliminate these round-trips</a> entirely.</p>
 	<p>When HTTPS content is served from the edge, typically 10–20 milliseconds away from your users in the case of Cloudflare, SSL/TLS enabled sites are incredibly fast and performant. And even when they are not served from an edge provider it bears repeating that SSL/TLS is not a performance burden! There’s really no excuse not to use it.</p>
-	<h4>Will my site show “Not Secure” on July 23 24*?</h4>
+	<div class="flex anchor relative">
+		<h4 id="will-my-site-show-not-secure-on-july-23-24">Will my site show “Not Secure” on July 23 24*?</h4>
+		<a href="https://blog.cloudflare.com/#will-my-site-show-not-secure-on-july-23-24" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To help you determine if your site is ready for July 23 24*, we’ve built the handy widget shown at the top of the page. Simply type in your domain name (without explicitly specifying "http://" or "https://" to emulate what your visitors typically do) and hit enter.</p>
 	<p>Using a Cloudflare Worker, we’ll connect to your site and check to see if it’s redirected to a secure HTTPS link.</p>
-	<h4>How can I avoid my site showing "Not Secure"?</h4>
+	<div class="flex anchor relative">
+		<h4 id="how-can-i-avoid-my-site-showing-not-secure">How can I avoid my site showing "Not Secure"?</h4>
+		<a href="https://blog.cloudflare.com/#how-can-i-avoid-my-site-showing-not-secure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you'd like to avoid your website showing "Not Secure" in Chrome, all you need to do is obtain an SSL certificate and configure your site to redirect all traffic to HTTPS.</p>
 	<p>If you're using Cloudflare, we’ll take care of the SSL certificate order and renewal for you; take a look at Troy Hunt's excellent video "HTTPS Is Easy!" series here: <a href="https://httpsiseasy.com">https://httpsiseasy.com/</a>. You should be sure to use the "Always use HTTPS" toggle to redirect HTTP visitors to HTTPS:</p>
 	<figure class="kg-card kg-image-card ">
@@ -74,7 +103,14 @@
 
 	</figure>
 	<p>If you're trying to protect your customers' vanity domains that are pointed to your SaaS application, <a href="https://www.cloudflare.com/ssl-for-saas-providers">reach out</a>, and we can help you with this process.</p>
-	<h4>Want to help us secure the web with HTTPS?</h4>
+	<div class="flex anchor relative">
+		<h4 id="want-to-help-us-secure-the-web-with-https">Want to help us secure the web with HTTPS?</h4>
+		<a href="https://blog.cloudflare.com/#want-to-help-us-secure-the-web-with-https" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The team that manages HTTPS and SSL certificate issuance at Cloudflare is hiring, in both Engineering and Product Management. Check out our open positions here:</p>
 	<ul>
 		<li>

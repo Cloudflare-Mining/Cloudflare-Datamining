@@ -50,10 +50,25 @@ var jsonPermissions = await permissionResponse.json();</code></pre>
 	<p>As I wrote earlier, the fetch request actually caches the responses generated when using it. So, subsequent Workers calls can grab user permissions without having to go back to the origin’s endpoint.</p>
 	<p>While the default cache TTL of 4 hours might work for many applications, fetch will also allow you to set an arbitrary TTL to ensure that your users are not granted permissions any longer than necessary. To set a TTL of 300 seconds (note: the free plan has a lower TTL limit of 2 hours or 7200 seconds) you would change the fetch above to be:</p>
 	<pre class="language-javascript"><code class="language-javascript">var permissionResponse = await fetch(permissionRequest, { cf: { cacheTtl: 300 } });</code></pre>
-	<h4>A Note about Caching Sensitive Objects</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="a-note-about-caching-sensitive-objects">A Note about Caching Sensitive Objects</h4>
+		<a href="https://blog.cloudflare.com/#a-note-about-caching-sensitive-objects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you are storing sensitive information (like user permissions) in Cloudflare’s cache, it is always important to keep in mind that the url should never be publicly accessible, but rather only from within a Worker.</p>
 	<p>The Worker set to run in front of <code>api.yoursite.com/user/{uid}</code> should either block all requests to the path from outside of a Cloudflare Worker or check to ensure the request has a valid secret key.</p>
-	<h4>A Note about Using “Super-Secret-Tokens”</h4>
+	<div class="flex anchor relative">
+		<h4 id="a-note-about-using-super-secret-tokens">A Note about Using “Super-Secret-Tokens”</h4>
+		<a href="https://blog.cloudflare.com/#a-note-about-using-super-secret-tokens" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Tokens should be provided in your Worker when uploaded to Cloudflare and verified by your origin on each request. Extremely security conscious readers might be nervous about storing credentials in code, but note that Cloudflare strongly encourages 2FA as well as restricts Worker access to specific accounts. We are also exploring better ways of passing secrets to Workers.</p>
 	<div class="flex anchor relative">
 		<h3 id="common-ways-of-gating-new-features">Common Ways of Gating New Features</h3>
@@ -64,7 +79,14 @@ var jsonPermissions = await permissionResponse.json();</code></pre>
 		</a>
 	</div>
 	<p>Now that you have quickly fetched the user permissions from cache, it’s time to do something with them! There are endless things you could do, but for this post I will cover some of the more common ones including: restricting paths, A/B Testing, and custom routing between origins.</p>
-	<h4>Restricting Paths</h4>
+	<div class="flex anchor relative">
+		<h4 id="restricting-paths">Restricting Paths</h4>
+		<a href="https://blog.cloudflare.com/#restricting-paths" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s say you’re releasing v2 of your current API. You want all users to still be able to send GET and POST requests to v1, but since you’re still performance tuning some new v2 features, only authorized users should be able to POST while everyone can GET. Continuing from the example before, this can be done with Cloudflare using the following code:</p>
 	<pre class="language-javascript"><code class="language-javascript">const apiV2 = jsonPermissions['apiV2'];
 
@@ -125,7 +147,15 @@ if (apiV2) {
     return new Response('Sorry, this page is not yet available.',
         { status: 403, statusText: 'Forbidden' });
 }</code></pre>
-	<h4>Custom Routing Between Origins</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="custom-routing-between-origins">Custom Routing Between Origins</h4>
+		<a href="https://blog.cloudflare.com/#custom-routing-between-origins" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Spinning up a new version of an API or Application sometimes requires spinning up an entirely new origin server. Cloudflare Workers can easily route API calls to separate origins based on paths, headers, or anything else in the request. Here we’ll make sure the user has permission to access v2 of the API and then route the request to the dedicated origin:</p>
 	<pre class="language-javascript"><code class="language-javascript">const apiV2Allowed = jsonPermissions['apiV2Allowed'];
 

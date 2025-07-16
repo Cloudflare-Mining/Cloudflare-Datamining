@@ -357,7 +357,14 @@ buckets:
 	<p>Durable Objects implementation</p>
 	<p>The aggregation is done in two stages: at the data-center level and at the global level.</p>
 	<p><b>Data Center Durable Object</b>When a request comes to a particular location, we can see the corresponding data center by looking at the cf.colo field on the <a href="https://developers.cloudflare.com/workers/runtime-apis/request#incomingrequestcfproperties">request</a>. The Data Center Durable Object keeps track of the number of workers in the data center. It aggregates the state from all those workers. It also responds to workers with important information within a data center like the number of users making requests to a waiting room or number of workers. Frequently, it updates the Global Durable Object and receives information about other data centers as the response.</p>
-	<h4><b>Worker User Slots</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="worker-user-slots"><b>Worker User Slots</b></h4>
+		<a href="https://blog.cloudflare.com/#worker-user-slots" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Above we talked about how a data center gets user slots allocated to it based on the past traffic patterns. If every worker in the data center talks to the Data Center Durable Object on every request, the Durable Object could get overwhelmed. Worker User Slots help us to overcome this problem.</p>
 	<p>Every worker keeps track of the number of users it has let through to the web application and the number of users that it has queued. The worker user slots are the number of users a worker can send to the web application at any point in time. This is calculated from the user slots available for the data center and the worker count in the data center. We divide the total number of user slots available for the data center by the number of workers in the data center to get the user slots available for each worker. If there are two workers and 10 users that can be sent to the web application from the data center, then we allocate five as the budget for each worker. This division is needed because every worker makes its own decisions on whether to send the user to the web application or the waiting room without talking to anyone else.</p>
 	<figure class="kg-card kg-image-card ">
@@ -367,7 +374,14 @@ buckets:
 	</figure>
 	<p>Waiting room inside a data center</p>
 	<p>When the traffic changes, new workers can spin up or old workers can die. The worker count in a data center is dynamic as the traffic to the data center changes. Here we make a trade off similar to the one for inter data center coordination: there is a risk of overshooting the limit if many more workers are created between calls to the Data Center Durable Object. But too many calls to the Data Center Durable Object would make it hard to scale. In this case though, we can use <a href="https://developers.cloudflare.com/workers/runtime-apis/cache">Cache</a> for faster synchronization within the data center.</p>
-	<h4><b>Cache</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="cache"><b>Cache</b></h4>
+		<a href="https://blog.cloudflare.com/#cache" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On every interaction to the Data Center Durable Object, the worker saves a copy of the data it receives to the cache. Every worker frequently talks to the cache to update the state it has in memory with the state in cache. We also adaptively adjust the rate of writes from the workers to the Data Center Durable Object based on the number of workers in the data center. This helps to ensure that we do not take down the Data Center Durable Object when traffic changes.</p>
 	<div class="flex anchor relative">
 		<h3 id="global-durable-object">Global Durable Object</h3>

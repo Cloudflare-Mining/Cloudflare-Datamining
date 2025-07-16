@@ -26,7 +26,14 @@
 		</a>
 	</div>
 	<p>Since getting access to Workers we’ve been experimenting with ways to make our static sites more dynamic without changing all of the smart technology we’ve built to power our network of websites.</p>
-	<h4>Geo-Targeting</h4>
+	<div class="flex anchor relative">
+		<h4 id="geo-targeting">Geo-Targeting</h4>
+		<a href="https://blog.cloudflare.com/#geo-targeting" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We operate static websites around the world in many languages and use Cloudflare to serve them. Users get there from a google search or by clicking a link somewhere else on the Internet. Often, the site they land on may not be a perfect match for interests because the link they clicked wasn’t pointing at the most optimal location. For example, a user in Canada lands on a UK site and sees prices in Pounds Sterling instead of Canadian Dollars or a person in Italy lands on a US site and sees English content instead of Italian.</p>
 	<p>The conundrum of static websites is that the pages load exceptionally fast but once there, we have no further ability to tailor the experience in line with the user's preferences.</p>
 	<p>With Workers, we were able to solve this problem by reading request headers at the edge. Cloudflare detects the origin IP of the incoming request and appends a two-letter country code to a header called <i>‘Cf-Ipcountry.’</i> We were able to write a simple worker that reads this header, checks the country code, and then redirects to the appropriate site version if it exists.</p>
@@ -81,7 +88,14 @@ async function fetchAndApply(request) {
     }
 }</code></pre>
 	<p>A page can now be hidden from the public without major investment in security or authentication technology but is still easy to access for those that need it.</p>
-	<h4>A/B Testing</h4>
+	<div class="flex anchor relative">
+		<h4 id="a-b-testing">A/B Testing</h4>
+		<a href="https://blog.cloudflare.com/#a-b-testing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A vital tool in optimizing traffic is the insight acquired from A/B testing. While there is no shortage of powerful A/B testing tools, most require the addition of a Javascript that alters the UI after page load. In optimal conditions, this can be unnoticeable to the naked eye but not all users have the best internet speeds and some will experience flicker after the page loads. As discussed above, this is a poor experience with negative consequences.</p>
 	<p>We were able to solve this problem with a Worker that makes a call to the A/B testing script URL, fetches the code and redraws the UI before sending the altered response to the user. The result is that users see the variant when the page loads and nothing moves after the first pixel has rendered. &nbsp;</p>
 	<div class="flex anchor relative">

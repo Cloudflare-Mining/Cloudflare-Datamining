@@ -102,7 +102,15 @@ octets without further fragmentation. [...]</code></pre>
 	<p>Customer devices connect through home routers which do NAT (<a href="https://en.wikipedia.org/wiki/Network_address_translation">Network Address Translation</a>) and usually enforce firewall rules. Increasingly often there is more than one NAT installation on the packet path (e.g. <a href="https://en.wikipedia.org/wiki/Carrier-grade_NAT">carrier-grade NAT</a>). Then, the packets hit the ISP infrastructure where there are ISP "middle boxes". They perform all manner of weird things on the traffic: enforce plan caps, throttle connections, perform logging, <a href="https://www.cloudflare.com/learning/security/global-dns-hijacking-threat">hijack DNS requests</a>, implement government-mandated web site bans, force transparent caching or arguably "optimize" the traffic in some other magical way. The middle boxes are used especially by mobile telcos.</p>
 	<p>Similarly, there are often multiple layers between a server and the public internet. Service providers sometimes use <a href="https://en.wikipedia.org/wiki/Anycast#Internet_Protocol_Version_4">Anycast BGP routing</a>. That is: they handle the same IP ranges from multiple physical locations around the world. Within a datacenter on the other hand it's increasingly popular to use ECMP <a href="https://en.wikipedia.org/wiki/Equal-cost_multi-path_routing">Equal Cost Multi Path</a> for load balancing.</p>
 	<p>Each of these layers between a client and server can cause a Path MTU problem. Allow me to illustrate this with four scenarios.</p>
-	<h4>1. Client -&gt; Server DF+ / ICMP</h4>
+	<div class="flex anchor relative">
+		<h4 id="1-client-server-df-icmp">1. Client -&gt; Server DF+ / ICMP</h4>
+		<a href="https://blog.cloudflare.com/#1-client-server-df-icmp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Cz9EAKTmEqN1aqJzKXJSF/2ee1ffefb8509d5c8acc92ac5ed4944c/client-dfp.png" alt="" class="kg-image" width="600" height="149" loading="lazy">
@@ -111,7 +119,15 @@ octets without further fragmentation. [...]</code></pre>
 	<p>In the first scenario, a client uploads some data to the server using TCP so the DF flag is set on all of the packets. If the client fails to predict an appropriate MTU, an intermediate router will drop the big packets and send an ICMP “Packet too big” notification back to the client. These ICMP packets might get dropped by misconfigured customer NAT devices or ISP middle boxes.</p>
 	<p>According to the <a href="https://www.nlnetlabs.nl/downloads/publications/pmtu-black-holes-msc-thesis.pdf">paper by Maikel de Boer and Jeffrey Bosma</a> from 2012 around 5% of IPv4 and 1% of IPv6 hosts block inbound ICMP packets.</p>
 	<p>My experience confirms this. ICMP messages are indeed often dropped for perceived security advantages, but this is relatively easy to fix. A bigger issue is with certain mobile ISPs with weird middle boxes. These often completely ignore ICMP and perform very aggressive connection rewriting. For example Orange Polska not only ignores inbound "Packet too big" ICMP messages, but also rewrites the connection state and <a href="http://lartc.org/howto/lartc.cookbook.mtu-mss.html">clamps the MSS</a> to a non-negotiable 1344 bytes.</p>
-	<h4>2. Client -&gt; Server DF- / fragmentation</h4>
+	<div class="flex anchor relative">
+		<h4 id="2-client-server-df-fragmentation">2. Client -&gt; Server DF- / fragmentation</h4>
+		<a href="https://blog.cloudflare.com/#2-client-server-df-fragmentation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4cc7LrXd6JM9lt0KWGe0m1/0a045a4d544e9f584f7a78e5a8da827b/client-dfm.png" alt="" class="kg-image" width="581" height="137" loading="lazy">
@@ -131,7 +147,15 @@ octets without further fragmentation. [...]</code></pre>
 		</li>
 	</ul>
 	<p>Furthermore, server and router misconfiguration is a significant issue. According to <a href="https://tools.ietf.org/html/rfc7872">RFC7852</a> between 30% and 55% of servers drop IPv6 datagrams containing fragmentation header.</p>
-	<h4>3. Server -&gt; Client DF+ / ICMP</h4>
+	<div class="flex anchor relative">
+		<h4 id="3-server-client-df-icmp">3. Server -&gt; Client DF+ / ICMP</h4>
+		<a href="https://blog.cloudflare.com/#3-server-client-df-icmp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/UtBkyENFMejLCiBYfwpNI/be2227af40a62f1b8764106d4eecaf64/server-dfp.png" alt="" class="kg-image" width="590" height="139" loading="lazy">
@@ -143,7 +167,15 @@ octets without further fragmentation. [...]</code></pre>
 	<p>Missing ICMP “Packet too big” notifications can result in connections stalling and timing out. This is often called a <a href="https://en.wikipedia.org/wiki/Path_MTU_Discovery#Problems_with_PMTUD">PMTU blackhole</a>. To aid this pessimistic case Linux implements a workaround - MTU Probing <a href="http://www.ietf.org/rfc/rfc4821.txt">RFC4821</a>. MTU Probing tries to automatically identify packets dropped due to the wrong MTU, and uses heuristics to tune it. This feature is controlled via a sysctl:</p>
 	<pre class="language-.bash"><code class="language-.bash">$ echo 1 &gt; /proc/sys/net/ipv4/tcp_mtu_probing</code></pre>
 	<p>But MTU probing is not without its own issues. First, it tends to miscategorize congestion-related packet loss as MTU issues. Long running connections tend to end up with a reduced MTU. Secondly, Linux does not implement MTU Probing for IPv6.</p>
-	<h4>4. Server -&gt; Client DF- / fragmentation</h4>
+	<div class="flex anchor relative">
+		<h4 id="4-server-client-df-fragmentation">4. Server -&gt; Client DF- / fragmentation</h4>
+		<a href="https://blog.cloudflare.com/#4-server-client-df-fragmentation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FLqYyctRkLrYYTyDGXcbP/2b79de43fe7add8866faf603b872f975/server-dfm.png" alt="" class="kg-image" width="604" height="126" loading="lazy">
@@ -163,7 +195,14 @@ $ dig +notcp +dnssec DNSKEY org @2001:500:f::1</code></pre>
 			<p><a href="http://www.potaroo.net/ispcol/2017-08/xtn-hdrs.html">IPv6, Large UDP Packets and the DNS</a></p>
 		</li>
 	</ul>
-	<h4>Yet the internet still works!</h4>
+	<div class="flex anchor relative">
+		<h4 id="yet-the-internet-still-works">Yet the internet still works!</h4>
+		<a href="https://blog.cloudflare.com/#yet-the-internet-still-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With all these things going wrong, how does the internet still manage to work?</p>
 	<figure class="kg-card kg-image-card ">
 

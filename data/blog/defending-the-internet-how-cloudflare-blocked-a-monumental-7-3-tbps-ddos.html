@@ -60,7 +60,14 @@
 		</a>
 	</div>
 	<p>Below are details about the various attack vectors seen in this attack, how organizations can avoid becoming a reflection and amplification participant, and recommendations on how to defend against these attacks whilst avoiding impact to legitimate traffic. Cloudflare's customers are protected against these attacks.</p>
-	<h4>UDP DDoS attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="udp-ddos-attack">UDP DDoS attack</h4>
+		<a href="https://blog.cloudflare.com/#udp-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><b>Type</b>: Flood</p>
@@ -75,7 +82,14 @@
 			<p><b>How to avoid unintended impact:</b> Aggressive filtering may disrupt legitimate UDP services such as VoIP, video conferencing, or online games. Apply thresholds carefully.</p>
 		</li>
 	</ul>
-	<h4>QOTD DDoS attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="qotd-ddos-attack">QOTD DDoS attack</h4>
+		<a href="https://blog.cloudflare.com/#qotd-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><b>Type:</b> Reflection + Amplification</p>
@@ -93,7 +107,14 @@
 			<p><b>How to avoid unintended impact:</b> QOTD is an obsolete diagnostic/debugging protocol and is not used by modern applications. Disabling it should not have any negative effect on legitimate services.</p>
 		</li>
 	</ul>
-	<h4>Echo DDoS attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="echo-ddos-attack">Echo DDoS attack</h4>
+		<a href="https://blog.cloudflare.com/#echo-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><b>Type: </b>Reflection + Amplification</p>
@@ -111,7 +132,14 @@
 			<p><b>How to avoid unintended impact: </b>Echo is an obsolete diagnostic tool; disabling or blocking it has no negative effect on modern systems.</p>
 		</li>
 	</ul>
-	<h4>NTP DDoS attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="ntp-ddos-attack">NTP DDoS attack</h4>
+		<a href="https://blog.cloudflare.com/#ntp-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><b>Type: </b>Reflection + Amplification</p>
@@ -129,7 +157,14 @@
 			<p><b>How to avoid unintended impact: </b>Disabling monlist has no effect on time synchronization. However, filtering or blocking UDP/123 could affect time syncing if done too broadly — ensure only untrusted or external sources are blocked.</p>
 		</li>
 	</ul>
-	<h4>Mirai UDP attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="mirai-udp-attack">Mirai UDP attack</h4>
+		<a href="https://blog.cloudflare.com/#mirai-udp-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><b>Type: </b>Flood</p>
@@ -147,7 +182,14 @@
 			<p><b>How to avoid unintended impact:</b> First, understand your network and the type of traffic that you receive, specifically the protocols, their sources and their destinations. Identify services that run over UDP that you want to avoid impacting. Once you have identified those, you can apply rate-limiting in a way that excludes those end points, or takes into account your regular traffic levels. Otherwise, aggressively rate-limiting UDP traffic can impact your legitimate traffic and impact services that run over UDP such as VoIP calls and VPN traffic.</p>
 		</li>
 	</ul>
-	<h4>Portmap DDoS attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="portmap-ddos-attack">Portmap DDoS attack</h4>
+		<a href="https://blog.cloudflare.com/#portmap-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><b>Type:</b> Reflection + Amplification</p>
@@ -165,7 +207,14 @@
 			<p><b>How to avoid unintended impact: </b>Disabling Portmapper may disrupt applications relying on RPC (e.g., Network File System protocol). Validate service dependencies before removal.</p>
 		</li>
 	</ul>
-	<h4>RIPv1 DDoS attack</h4>
+	<div class="flex anchor relative">
+		<h4 id="ripv1-ddos-attack">RIPv1 DDoS attack</h4>
+		<a href="https://blog.cloudflare.com/#ripv1-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><b>Type:</b> Reflection + (Low) Amplification</p>

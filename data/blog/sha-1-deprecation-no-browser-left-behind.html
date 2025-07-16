@@ -17,7 +17,14 @@
 	</div>
 	<p>This isn't the first time we've been through this exercise. The original hashing algorithm used for most certificate signatures in the early days of the web was MD5. In 2008, researchers demonstrated they were able to create a collision, generating a <a href="https://events.ccc.de/congress/2008/Fahrplan/attachments/1251_md5-collisions-1.0.pdf">forged MD5-signed intermediate certificate that could then be used to impersonate any domain on the Internet</a>. It took browser makers until 2013 to fully deprecate MD5 support and switch to the stronger SHA-1 algorithm. The good news was browsers, back to the first versions of Mozilla and Internet Explorer, supported SHA-1 alongside MD5 so the transition, while still painful, left virtually no one behind.</p>
 	<p>Computers keep getting faster and now SHA-1 is increasingly vulnerable to potential collision attacks. The estimate today is that it would likely cost around USD \$700,000 to generate a SHA-1 collision. By 2021, the price is forecast to fall to just USD \$43,000. There’s concern those estimates are optimistic, if anything. To ensure security, it therefore makes sense for modern browsers to deprecate SHA-1 support and move to the more secure SHA-256 algorithm, also known as SHA-2.</p>
-	<h4>SHA-2: This Time It’s Different</h4>
+	<div class="flex anchor relative">
+		<h4 id="sha-2-this-time-its-different">SHA-2: This Time It’s Different</h4>
+		<a href="https://blog.cloudflare.com/#sha-2-this-time-its-different" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unfortunately, unlike with the deprecation of MD5, where SHA-1 was widely available across even legacy browsers, SHA-2 support is more limited. Windows XP older than Service Pack 3, for instance, has no SHA-2 support. In addition, many less than 5-year-old Android phones (pre-Gingerbread) don't support SHA-2 completely. Given how difficult some carriers make it to upgrade phones, many of these legacy phones are still in use today.</p>
 	<p>In a Silicon Valley tech company, where most employees get a new laptop every year and having a 5-year-old phone is unheard of, this may not seem like a problem. But the Internet is used by billions of people around the world and most of them don’t have the latest technology. To understand the impact, we spent the last few weeks testing browser connections to CloudFlare's network for SHA-2 support. We see approximately 1 trillion page views for more than 2.2 billion unique visitors every month, which gives us a pretty representative sample of global traffic.</p>
 	<figure class="kg-card kg-image-card ">
@@ -25,7 +32,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11dNe3uCetrBC0oWKoO4js/2b10be60736439b5800f7bf6ffe66202/image_1-1.png" alt="SHA-1/SHA-2 browser support" class="kg-image" width="720" height="564" loading="lazy">
 
 	</figure>
-	<h4>Global SHA-2 Support, Not Equal</h4>
+	<div class="flex anchor relative">
+		<h4 id="global-sha-2-support-not-equal">Global SHA-2 Support, Not Equal</h4>
+		<a href="https://blog.cloudflare.com/#global-sha-2-support-not-equal" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The seemingly good news is that globally, SHA-2 is supported by at least 98.31% of browsers. Cutting 1.69% off the encrypted Internet may not seem like a lot, but it represents over 37 million people. That's the equivalent of the population of California not having access to encryption unless they upgrade their devices. As SHA-2 only sites proliferate, if these users on SHA-1-only browsers try and access an encrypted site, they’ll see an error page that completely blocks their access.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -248,7 +262,14 @@
 	</table>
 	<p>We double-checked these numbers with other large Internet providers who had conducted similar surveys and confirmed their results were similar.</p>
 	<p>Unfortunately, this list largely overlaps with lists of the <a href="http://data.worldbank.org/indicator/NY.GDP.PCAP.CD?order=wbapi_data_value_2013+wbapi_data_value&amp;sort=asc">poorest</a>, <a href="https://freedomhouse.org/report/special-reports/worst-worst-2012-worlds-most-repressive-societies">most repressive</a>, and <a href="https://en.wikipedia.org/wiki/List_of_ongoing_armed_conflicts">most war torn</a> countries in the world. In other words, after December 31st most of the encrypted web will be cut off from the most vulnerable populations of Internet users who need encryption the most. And, unfortunately, if we're going to bring the next 2 billion Internet users online, a lot of them are going to be doing so on secondhand Android phones, so this problem isn't going away any time soon.</p>
-	<h4>SHA-1 Fallback</h4>
+	<div class="flex anchor relative">
+		<h4 id="sha-1-fallback">SHA-1 Fallback</h4>
+		<a href="https://blog.cloudflare.com/#sha-1-fallback" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The practical solution is to serve SHA-2 signed certificates for modern browsers and fall back to SHA-1 certificates for browsers that cannot support SHA-2. That ensures modern browsers can deprecate SHA-1, but we can continue to support users in the developing world on legacy devices.</p>
 	<p>That's what we have built for CloudFlare's customers. As of today, for all paid CloudFlare customers, we now automatically support SHA-1 fallback. (Free customers' SSL support was already limited to SHA-2 and modern browsers due to the need for SNI.) If you'd prefer not to fall back to SHA-1 you can disable the feature from the Crypto Application in the CloudFlare control panel. This is available for <a href="https://www.cloudflare.com/plans/business">Business</a> and <a href="https://www.cloudflare.com/plans/enterprise">Enterprise</a> customers today, and we’ll be adding support for disabling SHA-1 fallback before the end of the year for Pro customers.</p>
 	<figure class="kg-card kg-image-card ">
@@ -256,7 +277,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6o4W75kwZYSrfUpzxbaaxr/b64e7059ef7501ac2b42674bc4bac57e/disable-standalone.png" alt="image alt text" class="kg-image" width="1926" height="488" loading="lazy">
 
 	</figure>
-	<h4>Who Else Is Falling Back?</h4>
+	<div class="flex anchor relative">
+		<h4 id="who-else-is-falling-back">Who Else Is Falling Back?</h4>
+		<a href="https://blog.cloudflare.com/#who-else-is-falling-back" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare isn't the only company doing this. In order to understand who else is supporting SHA-1 fallback we crawled the world's top 100,000 websites. While it's an exclusive club of sites that support SHA-1 fallback, the results are telling.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -575,7 +603,14 @@
 		</tbody>
 	</table>
 	<p>CloudFlare, as of today, adds another 4,000 sites of the top 100,000 to this soon-to-be-less-exclusive club.</p>
-	<h4>Chicken &amp; Egg: Mozilla</h4>
+	<div class="flex anchor relative">
+		<h4 id="chicken-egg-mozilla">Chicken &amp; Egg: Mozilla</h4>
+		<a href="https://blog.cloudflare.com/#chicken-egg-mozilla" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One example brought home the importance of SHA-1 fallback. Mozilla, the maker of Firefox, has always been a proponent of strong cryptography. Firefox has supported SHA-2 since its first version. As a result, earlier this year they switched their site to an SHA-2 certificate. In retrospect, the results weren't a surprise. The Firefox team has <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1064387#c6">spoken publicly about the drop in downloads they experienced when they moved mozilla.org to only support SHA-2 certificates</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -584,12 +619,26 @@
 	</figure>
 	<p>It's a classic chicken-and-egg problem: customers with legacy browsers can't upgrade if the site where you download the modern browser requires a modern browser. So, as much as it's convenient for those of us with brand-new MacBooks and 4k monitors to say that everyone should just upgrade their browser, the case of Mozilla proves that's literally impossible if we force an SHA-2 only Internet.</p>
 	<p>We worked with the Mozilla team as we developed our SHA-1 fallback feature. They helped us kick the tires on the feature and ensure that we were able to fingerprint connections to deliver the most secure experience possible based on what the browser could support. In the new year, we'll open source the algorithm we're using so even sites that are not on CloudFlare can properly support SHA-1 fallback.</p>
-	<h4>Recommendations</h4>
+	<div class="flex anchor relative">
+		<h4 id="recommendations">Recommendations</h4>
+		<a href="https://blog.cloudflare.com/#recommendations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What should the industry do? <a href="https://www.facebook.com/notes/alex-stamos/the-sha-1-sunset/10153782990367929">Along with Facebook</a>, we propose the following to ensure the most up-to-date security for modern browsers while responsibly supporting legacy clients that can't support SHA-2. First, modern browsers should continue to remove support for SHA-1 certificates. There is no doubt that their security is in question. If a user is running a modern browser, all connections should require SHA-256 or better for the certificate signature algorithm.</p>
 	<p>Second, we urge the CA/B Forum, the industry group that sets encryption policy for certificate authorities and browsers, to create a new class of certificate. Today certificates come in multiple classes: Domain Validated (DV), which can be issued just by proving someone controls a domain; Organization Validated (OV), which can be issued if the domain is validated and some vetting is done on the organization requesting the certificate; and Extended Validation (EV), which require a more thorough vetting of the organization requesting the certificate.</p>
 	<p>We propose a new Legacy Verified (LV) certificate. These certificates would allow legacy signature protocols, such as SHA-1, and only be issued to organizations that can confirm they properly only issue certs based on modern protocols to modern browsers while falling back for legacy browsers.</p>
 	<p>Finally, the organizations that provide SHA-1 fallback support should commit that if a vulnerability is discovered which allows some form of downgrade attack — where a modern browser can be tricked into receiving a certificate signed with an insecure protocol — and the vulnerability cannot be patched then they will withdraw fallback support. The CA/B Forum should make this a requirement of an organization being issued LV certificates.</p>
 	<p>CloudFlare has worked to ensure that we can continue to responsibly provide SHA-1 support for all our paid customers even after the new year. We believe this is critical for ensuring that we don't cut off the world's most vulnerable populations from access to encrypted content online. If you’re not a CloudFlare customer, and you are worried about supporting legacy browsers, make sure you get yourself an SHA-1 certificate before the end of the year. After that, unless our proposal for LV certificates is adopted, if you want to enable encryption for all Internet users it will be too late.</p>
-	<h4>December 23, 2015 Update</h4>
+	<div class="flex anchor relative">
+		<h4 id="december-23-2015-update">December 23, 2015 Update</h4>
+		<a href="https://blog.cloudflare.com/#december-23-2015-update" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Twitter has indicated their <a href="https://blog.twitter.com/2015/sunsetting-sha-1">backing for the proposal</a> to create LV certs.</p>
 </div>

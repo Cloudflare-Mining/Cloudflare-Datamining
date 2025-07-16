@@ -402,7 +402,14 @@
 			</tbody>
 		</table>
 	</div>
-	<h4>AMD EPYC Genoa-X in Cloudflare Gen 12 server</h4>
+	<div class="flex anchor relative">
+		<h4 id="amd-epyc-genoa-x-in-cloudflare-gen-12-server">AMD EPYC Genoa-X in Cloudflare Gen 12 server</h4>
+		<a href="https://blog.cloudflare.com/#amd-epyc-genoa-x-in-cloudflare-gen-12-server" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Each of these CPUs outperforms the previous generation of processors by at least 2x. AMD EPYC 9684X Genoa-X with 3D V-cache technology gave us the greatest performance improvement, at 2.45x, when compared against our Gen 11 servers with AMD EPYC 7713 Milan.</p>
 	<p>Comparing the performance between Genoa-X 9684X and Genoa 9654, we see a ~22.5% performance delta. The primary difference between the two CPUs is the amount of L3 cache available on the CPU. Genoa-X 9684X has 1152 MB of L3 cache, which is three times the Genoa 9654 with 384 MB of L3 cache. Cloudflare workloads benefit from more low level cache being accessible and avoid the much larger latency penalty associated with fetching data from memory.</p>
 	<p>Genoa-X 9684X CPU delivered ~22.5% improved performance consuming the same amount of 400W power compared to Genoa 9654. The 3x larger L3 cache does consume additional power, but only at the expense of sacrificing 3% of highest achievable all core boost frequency on Genoa-X 9684X, a favorable trade-off for Cloudflare workloads.</p>

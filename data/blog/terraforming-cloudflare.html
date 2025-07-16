@@ -95,7 +95,14 @@
 		</a>
 	</div>
 	<p>We decided to implement Terraform resources in different ways, to cover our requirements more efficiently.</p>
-	<h5>1. Static resource</h5>
+	<div class="flex anchor relative">
+		<h5 id="1-static-resource">1. Static resource</h5>
+		<a href="https://blog.cloudflare.com/#1-static-resource" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first thought that came to mind was having one, or multiple <i>.tf</i> files implementing all the resources with hardcoded values assigned to each attribute. It's simple and straightforward, but can have a high maintenance cost if it leads to code copy/paste between environments.</p>
 	<p>So, common settings seem to be a good use case; we chose to implement <i>access_rules</i> Terraform resources accordingly:modules/access_rules/main.tf</p>
 	<pre class="language-bash"><code class="language-bash">resource "cloudflare_access_rule" "no_17" {
@@ -107,7 +114,15 @@
   }
 }
 [...]</code></pre>
-	<h5>2. Parametrized resources</h5>
+
+	<div class="flex anchor relative">
+		<h5 id="2-parametrized-resources">2. Parametrized resources</h5>
+		<a href="https://blog.cloudflare.com/#2-parametrized-resources" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our next step was to add variables to gain flexibility. This is useful when few attributes of a shared resource configuration differ between multiple zones. Most of the configuration remains the same (as described above) and the variable instantiation is added in the Terraform module, while their values are fed through the Terragrunt module, as input variables, or entries inside_.tfvars_ files. The <i>zone_settings_override</i> resource was implemented accordingly:</p>
 	<p>modules/zone_settings/main.tf</p>
 	<pre class="language-bash"><code class="language-bash">resource "cloudflare_zone_settings_override" "zone_settings" {
@@ -141,7 +156,15 @@
 zone_settings_browser_check = "off"
 [...]
 }</code></pre>
-	<h5>3. Dynamic resource</h5>
+
+	<div class="flex anchor relative">
+		<h5 id="3-dynamic-resource">3. Dynamic resource</h5>
+		<a href="https://blog.cloudflare.com/#3-dynamic-resource" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At that point, we thought that a more interesting approach would be to create generic resource templates to manage all instances of a given resource in one place. A template is implemented as a Terraform module and creates each resource dynamically, based on its input: data fed through the Terragrunt modules (/environments in our case), or entries in the tfvars files.</p>
 	<p>We chose to implement the <i>account_member</i> resource this way.modules/account_members/variables.tf</p>
 	<pre class="language-bash"><code class="language-bash">variable "users" {
@@ -284,7 +307,14 @@ resource "cloudflare_rate_limit" "rate_limit" {
 	<p><i>Readability vs functionality</i>: although flexibility is increased and code duplication is reduced, the url transformations have an impact on code's readability and ease of debugging (it took us several minutes to spot a typo). You can imagine this is even worse if you attempt to implement a more complex resource (such as <i>page_rule</i> which is a list of maps with four <i>url</i> attributes).</p>
 	<p>The underlying issue here is that at the point we were implementing our resources, we had to choose maps over objects due to their capability to omit attributes, using the lookup() function (by setting default values). This is a requirement for certain resources such as <i>page_rules</i>: only certain attributes need to be defined (and others ignored).</p>
 	<p>In the end, the context will determine if more complex resources can be implemented with dynamic resources.</p>
-	<h5>4. Sequential resources</h5>
+	<div class="flex anchor relative">
+		<h5 id="4-sequential-resources">4. Sequential resources</h5>
+		<a href="https://blog.cloudflare.com/#4-sequential-resources" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare page rule resource has a specific peculiarity that differentiates it from other types of resources: the <i>priority</i> attribute.When a page rule is applied, it gets a unique id and priority number which corresponds to the order it has been submitted. Although Cloudflare API and terraform provider give the ability to explicitly specify the priority, there is a catch.</p>
 	<p>Terraform doesn't respect the order of resources inside a <i>.tf</i> file (even in a _for each loop!); each resource is randomly picked up and then applied to the provider. So, if page_rule priority is important - as in our case - the submission order counts. The solution is to lock the sequence in which the resources are created through the <i>depends_on</i> meta-attribute:</p>
 	<pre class="language-bash"><code class="language-bash">resource "cloudflare_page_rule" "no_3" {

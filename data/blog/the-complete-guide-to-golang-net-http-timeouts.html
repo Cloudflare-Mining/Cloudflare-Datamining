@@ -43,11 +43,25 @@ log.Println(srv.ListenAndServe())</code></pre>
 	<p>However, when the connection is <a href="https://www.cloudflare.com/learning/ssl/what-is-https">HTTPS</a>, <code>SetWriteDeadline</code> is called <a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L1477-L1483">immediately after Accept</a> so that it also covers the packets written as part of the TLS handshake. Annoyingly, this means that (in that case only) <code>WriteTimeout</code> ends up including the header read and the first byte wait.</p>
 	<p>You should set both timeouts when you deal with untrusted clients and/or networks, so that a client can't hold up a connection by being slow to write or read.</p>
 	<p>Finally, there's <a href="https://golang.org/pkg/net/http/#TimeoutHandler"><code>http.TimeoutHandler</code></a>. It’s not a Server parameter, but a Handler wrapper that limits the maximum duration of <code>ServeHTTP</code> calls. It works by buffering the response, and sending a <i>504 Gateway Timeout</i> instead if the deadline is exceeded. Note that it is <a href="https://github.com/golang/go/issues/15327">broken in 1.6 and fixed in 1.6.2</a>.</p>
-	<h4>http.ListenAndServe is doing it wrong</h4>
+	<div class="flex anchor relative">
+		<h4 id="http-listenandserve-is-doing-it-wrong">http.ListenAndServe is doing it wrong</h4>
+		<a href="https://blog.cloudflare.com/#http-listenandserve-is-doing-it-wrong" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Incidentally, this means that the package-level convenience functions that bypass <code>http.Server</code> like <code>http.ListenAndServe</code>, <code>http.ListenAndServeTLS</code> and <code>http.Serve</code> are unfit for public Internet servers.</p>
 	<p>Those functions leave the Timeouts to their default off value, with no way of enabling them, so if you use them you'll soon be leaking connections and run out of file descriptors. I've made this mistake at least half a dozen times.</p>
 	<p>Instead, create a <code>http.Server</code> instance with ReadTimeout and WriteTimeout and use its corresponding methods, like in the example a few paragraphs above.</p>
-	<h4>About streaming</h4>
+	<div class="flex anchor relative">
+		<h4 id="about-streaming">About streaming</h4>
+		<a href="https://blog.cloudflare.com/#about-streaming" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Very annoyingly, there is no way of accessing the underlying <code>net.Conn</code> from <code>ServeHTTP</code> so a server that intends to stream a response is forced to unset the <code>WriteTimeout</code> (which is also possibly why they are 0 by default). This is because without <code>net.Conn</code> access, there is no way of calling <code>SetWriteDeadline</code> before each <code>Write</code> to implement a proper idle (not absolute) timeout.</p>
 	<p>Also, there's no way to cancel a blocked <code>ResponseWriter.Write</code> since <code>ResponseWriter.Close</code> (which you can access via an interface upgrade) is not documented to unblock a concurrent Write. So there's no way to build a timeout manually with a Timer, either.</p>
 	<p>Sadly, this means that streaming servers can't really defend themselves from a slow-reading client.</p>
@@ -102,7 +116,14 @@ resp, err := c.Get("https://blog.filippo.io/")</code></pre>
 	<p>As far as I can tell, there's no way to limit the time spent sending the request specifically. The time spent reading the request body can be controlled manually with a <code>time.Timer</code> since it happens after the Client method returns (see below for how to cancel a request).</p>
 	<p>Finally, new in 1.7, there's <code>http.Transport.IdleConnTimeout</code>. It does not control a blocking phase of a client request, but how long an idle connection is kept in the connection pool.</p>
 	<p>Note that a Client will follow redirects by default. <code>http.Client.Timeout</code> includes all time spent following redirects, while the granular timeouts are specific for each request, since <code>http.Transport</code> is a lower level system that has no concept of redirects.</p>
-	<h4>Cancel and Context</h4>
+	<div class="flex anchor relative">
+		<h4 id="cancel-and-context">Cancel and Context</h4>
+		<a href="https://blog.cloudflare.com/#cancel-and-context" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><code>net/http</code> offers two ways to cancel a client request: <code>Request.Cancel</code> and, new in 1.7, Context.</p>
 	<p><code>Request.Cancel</code> is an optional channel that when set and then closed causes the request to abort as if the <code>Request.Timeout</code> had been hit. (They are actually implemented through the same mechanism, and while writing this post I <a href="https://github.com/golang/go/issues/16094">found a bug</a> in 1.7 where all cancellations would be returned as timeout errors.)</p>
 	<p>We can use <code>Request.Cancel</code> and <code>time.Timer</code> to build a more granular timeout that allows streaming, pushing the deadline back every time we successfully read some data from the Body:</p>

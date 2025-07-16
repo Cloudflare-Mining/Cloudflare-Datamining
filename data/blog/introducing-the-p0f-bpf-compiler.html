@@ -88,7 +88,14 @@
 			<p><b>Payload class</b>: TCP payload size. Can be <code>0</code> (no data), <code>+</code> (1 or more bytes of data) or <code>*</code>.</p>
 		</li>
 	</ul>
-	<h4>TCP Options format</h4>
+	<div class="flex anchor relative">
+		<h4 id="tcp-options-format">TCP Options format</h4>
+		<a href="https://blog.cloudflare.com/#tcp-options-format" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The following common TCP options are recognised:</p>
 	<ul>
 		<li>
@@ -113,7 +120,14 @@
 			<p><b>eol+x</b>: end of options followed by <code>x</code> bytes of padding</p>
 		</li>
 	</ul>
-	<h4>Quirks</h4>
+	<div class="flex anchor relative">
+		<h4 id="quirks">Quirks</h4>
+		<a href="https://blog.cloudflare.com/#quirks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>p0f describes a number of quirks:</p>
 	<ul>
 		<li>
@@ -375,7 +389,15 @@ l055:
 Chain INPUT (policy DROP 0 packets, 0 bytes)
  pkts bytes target     prot opt in     out     source               destination
     6   240            tcp  --  *      *       0.0.0.0/0            0.0.0.0/0            tcp dpt:80match bpf 0 0 0 0,48 0 0 8,37 35 0 64,37 0 34 29,48 0 0 0,84 0 0 15,21 0 31 5,48 0 0 9,21 0 29 6,40 0 0 6,69 27 0 8191,177 0 0 0,80 0 0 12,116 0 0 4,21 0 23 5,48 0 0 6,69 21 0 128,80 0 0 13,69 19 0 16,64 0 0 8,21 17 0 0,40 0 0 2,2 0 0 3,48 0 0 0,84 0 0 15,36 0 0 4,7 0 0 0,96 0 0 3,28 0 0 0,2 0 0 7,177 0 0 0,80 0 0 12,116 0 0 4,36 0 0 4,7 0 0 0,96 0 0 7,29 0 1 0,6 0 0 65536,6 0 0 0</code></pre>
-	<h4>Closing words</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="closing-words">Closing words</h4>
+		<a href="https://blog.cloudflare.com/#closing-words" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While defending from DDoS attacks is sometimes fun, most often it's a mundane repetitive job. We are constantly working on improving our automatic DDoS mitigation system, but we do not believe there is a strong reason to keep it all secret. We want to help others fighting attacks. Maybe if we all worked together one day we could solve the DDoS problem for all.</p>
 	<p>Releasing our code <a href="https://cloudflare.github.io">open source</a> is an important part of CloudFlare. This blog post and the p0f BPF compiler are part of our effort to open source our DDoS mitigations. We hope others affected by SYN floods will find it useful.</p>
 	<p><i>Do you enjoy playing with low level networking bits? Are you interested in dealing with some of the largest DDoS attacks ever seen?</i><i>If so you should definitely have a look at the </i><a href="https://www.cloudflare.com/join-our-team"><i>opened positions</i></a><i> in our London, San Francisco, Singapore, Champaign (IL) and Austin (TX) offices!</i></p>

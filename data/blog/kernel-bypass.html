@@ -52,15 +52,50 @@ $ watch 'ethtool -S eth2|grep rx'
 	<p>CC BY 2.0 <a href="https://www.flickr.com/photos/londonmatt/11421393074">image</a> by Matt Brown</p>
 	<p>The performance limitations of the Linux kernel network <a href="https://lwn.net/Articles/629155">are nothing new</a>. Over the years there had been <i>many</i> attempts to address them. The most common techniques involve creating specialized API's to aid with receiving packets from the hardware at very high speed. Unfortunately these techniques are in total flux and a single widely adopted approach hasn't emerged yet.</p>
 	<p>Here is a list of the most widely known kernel bypass techniques.</p>
-	<h4>PACKET_MMAP</h4>
+	<div class="flex anchor relative">
+		<h4 id="packet_mmap">PACKET_MMAP</h4>
+		<a href="https://blog.cloudflare.com/#packet_mmap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.kernel.org/doc/Documentation/networking/packet_mmap.txt">Packet_mmap</a> is a Linux API for fast packet sniffing. While it's not strictly a kernel bypass technique, it requires a special place on the list - it's already available in vanilla kernels.</p>
-	<h4>PF_RING</h4>
+	<div class="flex anchor relative">
+		<h4 id="pf_ring">PF_RING</h4>
+		<a href="https://blog.cloudflare.com/#pf_ring" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="http://www.ntop.org/products/packet-capture/pf_ring"><code>PF_RING</code></a> is another known technique that intends to speed up packet capture. Unlike <code>packet_mmap</code>, <code>PF_RING</code> is not in the mainline kernel and requires special modules. With <a href="https://github.com/xtao/PF_RING/tree/master/drivers/ZC/intel">ZC drivers</a> and <a href="http://www.ntop.org/pf_ring/pf_ring-and-transparent-mode"><code>transparent_mode=2</code></a> the packets will only be delivered to the PF_RING client, and not the kernel network stack. Since the kernel is the slow part this ensures the fastest operation.</p>
-	<h4>Snabbswitch</h4>
+	<div class="flex anchor relative">
+		<h4 id="snabbswitch">Snabbswitch</h4>
+		<a href="https://blog.cloudflare.com/#snabbswitch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://github.com/SnabbCo/snabbswitch"><code>Snabbswitch</code></a> is a networking framework in Lua mostly geared towards writing L2 applications. It works by completely taking over a network card, and implements a hardware driver in userspace. It's done on a PCI device level with a form of <a href="https://lwn.net/Articles/232575">userspace IO (UIO)</a>, by mmaping the device registers with sysfs. This allows for very fast operation, but it means the packets completely skip the kernel network stack.</p>
-	<h4>DPDK</h4>
+	<div class="flex anchor relative">
+		<h4 id="dpdk">DPDK</h4>
+		<a href="https://blog.cloudflare.com/#dpdk" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://core.dpdk.org/doc"><code>DPDK</code></a> is a networking framework written in C, created especially for Intel chips. It's similar to <code>snabbswitch</code> in spirit, since it's a full framework and <a href="http://www.slideshare.net/garyachy/dpdk-44585840">relies on UIO</a>.</p>
-	<h4>Netmap</h4>
+	<div class="flex anchor relative">
+		<h4 id="netmap">Netmap</h4>
+		<a href="https://blog.cloudflare.com/#netmap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="http://info.iet.unipi.it/~luigi/netmap"><code>Netmap</code></a> is also a rich framework, but as opposed to UIO techniques it is implemented as a couple of kernel modules. To integrate with networking hardware it requires users to patch the kernel network drivers. The main benefit of the added complexity is a nicely documented, <a href="https://www.freebsd.org/cgi/man.cgi?query=netmap&amp;sektion=4">vendor-agnostic and clean API</a>.</p>
 	<p>Since the goal of kernel bypass is to spare the kernel from processing packets, we can rule out <code>packet_mmap</code>. It doesn't take over the packets - it's just a fast interface for packet sniffing. Similarly, plain <code>PF_RING</code> without ZC modules is unattractive since its main goal is to speed up libpcap.</p>
 	<p>We've already ruled out two techniques, but unfortunately for our workloads none of <a href="http://www.slideshare.net/shemminger/uio-final">the remaining solutions</a> is acceptable either!</p>

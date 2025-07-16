@@ -179,7 +179,14 @@
 		</tbody>
 	</table>
 	<p>With this type of tiering, any genuine users that are just having a hard time remembering their login details whilst also being extremely fast typers will not be fully blocked. Instead, they will first be given out automated JavaScript challenge followed by a traditional CAPTCHA if they hit the next limit. This is a much more user-friendly approach while still securing your login endpoints.</p>
-	<h4>Time-based Firewall</h4>
+	<div class="flex anchor relative">
+		<h4 id="time-based-firewall">Time-based Firewall</h4>
+		<a href="https://blog.cloudflare.com/#time-based-firewall" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our IP Firewall is a powerful feature to block problematic IP addresses from accessing your app. Particularly this is related to repeated abuse, or based on IP Reputation or Threat Intelligence feeds that are integrated at the origin level.</p>
 	<p>While the IP firewall is powerful, maintaining and managing a list of IP addresses which are currently being blocked can be cumbersome. It becomes more complicated if you want to allow blocked IP addresses to “age out” if bad behavior stops after a period of time. This often requires authoring and managing a script and multiple API calls to Cloudflare.</p>
 	<p>The new Rate Limiting Origin Headers feature makes this all so much easier. You can now configure your origin to respond with a Header to trigger a Rate-Limit. To make this happen, we need to generate a Header at the Origin, which is then added to the response to Cloudflare. As we are matching on a static header, we can set a severity level based on the content of the Header. For example, if it was a repeat offender, you could respond with High as the Header value, which could Block for a longer period.</p>
@@ -272,7 +279,14 @@
 		</tbody>
 	</table>
 	<p>Once that Rate-Limit has been created, Cloudflare’s Rate-Limiting will then kick-in immediately when that Header is received.</p>
-	<h4>Enumeration Attacks</h4>
+	<div class="flex anchor relative">
+		<h4 id="enumeration-attacks">Enumeration Attacks</h4>
+		<a href="https://blog.cloudflare.com/#enumeration-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Enumeration attacks are proving to be increasingly popular and pesky to mitigate. With enumeration attacks, attackers identify an expensive operation in your app and hammer at it to tie up resources and slow or crash your app. For example, an app that offers the ability to look up a user profile requires a database lookup to validate whether the user exists. In an enumeration attack, attackers will send a random set of characters to that endpoint in quick succession, causing the database to ground to a halt.</p>
 	<p>Rate Limiting to the rescue!</p>
 	<p>One of our customers was hit with a huge enumeration attack on their platform earlier this year, where the aggressors were trying to do exactly what we described above, in an attempt to overload their database platform. Their Rate Limiting configuration blocked over 100,000,000 bad requests during the 6-hour attack.</p>
@@ -416,7 +430,14 @@
 		</tbody>
 	</table>
 	<p>With this type of tiered defense in place, it means that you can “caution” an offender with a JavaScript challenge or Challenge (Google Captcha), and then “block” them if they continue.</p>
-	<h4>Content Scraping</h4>
+	<div class="flex anchor relative">
+		<h4 id="content-scraping">Content Scraping</h4>
+		<a href="https://blog.cloudflare.com/#content-scraping" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Increasingly, content owners are wrestling with content scraping - malicious bots copying copyrighted images or assets and redistributing or reusing them. For example, we work with an <a href="https://www.cloudflare.com/ecommerce">eCommerce store</a> that uses copyrighted images and their images are appearing elsewhere on the web without their consent. Rate Limiting can help!</p>
 	<p>In their app, each page displays 4 copyrighted images, 1 which is actual size, and 3 which are thumbnails. By looking at logs and user patterns, they determined that most users, at a stretch, would never view more than 10–15 products in a minute, which would equate to 40–60 loads from the images store.</p>
 	<p>They chose to tier their Rate Limiting rules to prevent end users from getting unnecessarily blocked when they were browsing heavily. To block malicious attempts at content scraping can be quite simple, however it does require some forward planning. Placing the rate limit on the right URL is key to insure you are placing the rule on exactly what you are trying to protect and not the broader content. Here’s an example set of rate limits this customer set to protect their images:</p>

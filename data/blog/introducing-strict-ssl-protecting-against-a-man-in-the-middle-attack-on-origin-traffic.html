@@ -93,7 +93,14 @@
 	</div>
 	<p>Until today, CloudFlare offered three options for SSL/TLS for site operators: <a href="https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-Off-Flexible-Full-Full-Strict-mean-">Off, Flexible and Full</a>. They are available in the site’s control panel under “CloudFlare Settings” and in the Page Rules section for a given zone.</p>
 	<p>We are now introducing a new option: Full SSL (Strict). There are now three different modes for enabling SSL: Flexible SSL, Full SSL, and Full SSL (Strict). Below is a description of what the different options mean.</p>
-	<h4>Flexible SSL - front-end over TLS, back-end unencrypted</h4>
+	<div class="flex anchor relative">
+		<h4 id="flexible-ssl-front-end-over-tls-back-end-unencrypted">Flexible SSL - front-end over TLS, back-end unencrypted</h4>
+		<a href="https://blog.cloudflare.com/#flexible-ssl-front-end-over-tls-back-end-unencrypted" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Flexible SSL encrypts all data between your site’s visitors and CloudFlare using TLS configured with best practices such as <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">forward secrecy</a> and <a href="https://blog.cloudflare.com/killing-rc4">more</a>. This is where most threats to web traffic happen: in your coffee shop, by your ISP, and others in the local network. The browser’s certificate validation prevents attackers in these locations. This option is very useful for customers who don’t have TLS configured on their host or can’t enable it because of how they are set up with their hosting provider.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -101,7 +108,14 @@
 
 	</figure>
 	<p>Above: Flexible SSL - front-end over TLS, back-end unencrypted</p>
-	<h4>Full SSL - front-end over TLS, back-end over TLS</h4>
+	<div class="flex anchor relative">
+		<h4 id="full-ssl-front-end-over-tls-back-end-over-tls">Full SSL - front-end over TLS, back-end over TLS</h4>
+		<a href="https://blog.cloudflare.com/#full-ssl-front-end-over-tls-back-end-over-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In Full SSL, the front-end is protected with TLS, and the back-end is encrypted with TLS but the certificate itself is not validated by CloudFlare. This means that a passive attacker listening to the data does not have the ability to read the communication, but an active on-path attacker could potentially intercept the data. This option makes sense for customers who don’t have the ability or the desire to pay for a certificate from a certificate authority but who still want their data to be protected from <a href="https://blog.cloudflare.com/cloudflare-prism-secure-ciphers">mass collection of data</a>.</p>
 	<p>On-path attempts between CloudFlare and the web server are difficult to pull off, but still possible, and we wanted our customers to have the option of protecting their customers against such attackers. Full SSL (Strict) makes sure that CloudFlare validates the certificate chain presented by the web server.</p>
 	<figure class="kg-card kg-image-card ">
@@ -110,7 +124,14 @@
 
 	</figure>
 	<p>Above: Full SSL - front-end over TLS, back-end over TLS</p>
-	<h4>Full SSL (Strict) - front-end over TLS, back-end over TLS (validated)</h4>
+	<div class="flex anchor relative">
+		<h4 id="full-ssl-strict-front-end-over-tls-back-end-over-tls-validated">Full SSL (Strict) - front-end over TLS, back-end over TLS (validated)</h4>
+		<a href="https://blog.cloudflare.com/#full-ssl-strict-front-end-over-tls-back-end-over-tls-validated" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In strict mode, CloudFlare validates the certificate chain on the back-end using its own list of trusted certificate authorities. Customers can enable this globally for their site, or they can have different settings for different subdomains, using Page Rules. CloudFlare’s list is more exclusive than the ones used by the popular browsers. By trusting a smaller and more exclusive list of certificate authorities, we protect our customers against MitM attacks using certificates signed by <a href="http://arstechnica.com/security/2011/09/comodo-hacker-i-hacked-diginotar-too-other-cas-breached">rogue or compromised certificate authorities</a>. We are automatically upgrading customers from Full SSL to Full SSL (Strict) if we determine that their origin server has a valid certificate installed.</p>
 	<figure class="kg-card kg-image-card ">
 

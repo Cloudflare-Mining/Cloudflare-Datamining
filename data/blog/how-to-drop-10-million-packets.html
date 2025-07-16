@@ -58,7 +58,14 @@ p_raw  UNCONN     525157 0      *:vlan100          users:(("tcpdump",pid=23683,f
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oJAi3KKpj9clrG5Abebho/59ed605de89f49183c5b360a4b50d30c/layers.JPG.jpeg" alt="layers" class="kg-image" width="1280" height="782" loading="lazy">
 
 	</figure>
-	<h4>Step 1. Dropping packets in application</h4>
+	<div class="flex anchor relative">
+		<h4 id="step-1-dropping-packets-in-application">Step 1. Dropping packets in application</h4>
+		<a href="https://blog.cloudflare.com/#step-1-dropping-packets-in-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's start with the idea of delivering packets to an application and ignoring them in userspace code. For the test setup, let's make sure our iptables don't affect the performance:</p>
 	<pre class="language-bash"><code class="language-bash">iptables -I PREROUTING -t mangle -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT
 iptables -I PREROUTING -t raw -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT
@@ -92,7 +99,15 @@ Mitigation: __user pointer sanitization
 
 ==&gt; /sys/devices/system/cpu/vulnerabilities/spectre_v2 &lt;==
 Mitigation: Full generic retpoline, IBPB, IBRS_FW</code></pre>
-	<h4>Step 2. Slaughter conntrack</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="step-2-slaughter-conntrack">Step 2. Slaughter conntrack</h4>
+		<a href="https://blog.cloudflare.com/#step-2-slaughter-conntrack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We specifically designed the test - by choosing random source IP and ports - to put stress on the conntrack layer. This can be verified by looking at number of conntrack entries, which during the test is reaching the maximum:</p>
 	<pre class="language-bash"><code class="language-bash">$ conntrack -C
 2095202
@@ -110,13 +125,27 @@ net.netfilter.nf_conntrack_max = 2097152</code></pre>
 packets=331008 bytes=5296128</code></pre>
 	<p>This instantly bumps the application receive performance to 333kpps. Hurray!</p>
 	<p>PS. With SO_BUSY_POLL we can bump the numbers to 470k pps, but this is a subject for another time.</p>
-	<h4>Step 3. BPF drop on a socket</h4>
+	<div class="flex anchor relative">
+		<h4 id="step-3-bpf-drop-on-a-socket">Step 3. BPF drop on a socket</h4>
+		<a href="https://blog.cloudflare.com/#step-3-bpf-drop-on-a-socket" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Going further, why deliver packets to userspace application at all? While this technique is uncommon, we can attach a classical BPF filter to a SOCK_DGRAM socket with <code>setsockopt(SO_ATTACH_FILTER)</code> and program the filter to discard packets in kernel space.</p>
 	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/bpf-drop.c">See the code</a>, to run it:</p>
 	<pre class="language-bash"><code class="language-bash">$ ./bpf-drop
 packets=0 bytes=0</code></pre>
 	<p>With drops in BPF (both Classical as well as extended eBPF have similar performance) we process roughly 512kpps. All of them get dropped in the BPF filter while still in software interrupt mode, which saves us CPU needed to wake up the userspace application.</p>
-	<h4>Step 4. iptables DROP after routing</h4>
+	<div class="flex anchor relative">
+		<h4 id="step-4-iptables-drop-after-routing">Step 4. iptables DROP after routing</h4>
+		<a href="https://blog.cloudflare.com/#step-4-iptables-drop-after-routing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a next step we can simply drop packets in the iptables firewall INPUT chain by adding rule like this:</p>
 	<pre class="language-bash"><code class="language-bash">iptables -I INPUT -d 198.18.0.12 -p udp --dport 1234 -j DROP</code></pre>
 	<p>Remember we disabled conntrack already with <code>-j NOTRACK</code>. These two rules give us 608kpps.</p>
@@ -127,13 +156,27 @@ Chain INPUT (policy DROP 0 packets, 0 bytes)
     pkts      bytes target     prot opt in     out     source               destination
 605.9k/s    26.7m/s DROP       udp  --  *      *       0.0.0.0/0            198.18.0.12          udp dpt:1234</code></pre>
 	<p>600kpps is not bad, but we can do better!</p>
-	<h4>Step 5. iptables DROP in PREROUTING</h4>
+	<div class="flex anchor relative">
+		<h4 id="step-5-iptables-drop-in-prerouting">Step 5. iptables DROP in PREROUTING</h4>
+		<a href="https://blog.cloudflare.com/#step-5-iptables-drop-in-prerouting" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>An even faster technique is to drop packets before they get routed. This rule can do this:</p>
 	<pre class="language-bash"><code class="language-bash">iptables -I PREROUTING -t raw -d 198.18.0.12 -p udp --dport 1234 -j DROP</code></pre>
 	<p>This produces whopping 1.688mpps.</p>
 	<p>This is quite a significant jump in performance, I don't fully understand it. Either our routing layer is unusually complex or there is a bug in our server configuration.</p>
 	<p>In any case - "raw" iptables table is definitely way faster.</p>
-	<h4>Step 6. nftables DROP before CONNTRACK</h4>
+	<div class="flex anchor relative">
+		<h4 id="step-6-nftables-drop-before-conntrack">Step 6. nftables DROP before CONNTRACK</h4>
+		<a href="https://blog.cloudflare.com/#step-6-nftables-drop-before-conntrack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Iptables is considered passé these days. The new kid in town is nftables. See this <a href="https://www.youtube.com/watch?v=9Zr8XqdET1c">video for a technical explanation why</a> nftables is superior. Nftables promises to be faster than gray haired iptables for many reasons, among them is a rumor that retpolines (aka: no speculation for indirect jumps) hurt iptables quite badly.</p>
 	<p>Since this article is not about comparing the nftables vs iptables speed, let's try only the fastest drop I could came up with:</p>
 	<pre class="language-bash"><code class="language-bash">nft add table netdev filter
@@ -151,7 +194,14 @@ table netdev filter {
 }</code></pre>
 	<p>Nftables "ingress" hook yields around 1.53mpps. This is slightly slower than iptables in the PREROUTING layer. This is puzzling - theoretically "ingress" happens before PREROUTING, so should be faster.</p>
 	<p>In our test nftables was slightly slower than iptables, but not by much. Nftables is still better :P</p>
-	<h4>Step 7. tc ingress handler DROP</h4>
+	<div class="flex anchor relative">
+		<h4 id="step-7-tc-ingress-handler-drop">Step 7. tc ingress handler DROP</h4>
+		<a href="https://blog.cloudflare.com/#step-7-tc-ingress-handler-drop" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A somewhat surprising fact is that a tc (traffic control) ingress hook happens before even PREROUTING. tc makes it possible to select packets based on basic criteria and indeed - action drop - them. The syntax is rather hacky, so it's recommended to <a href="https://github.com/netoptimizer/network-testing/blob/master/bin/tc_ingress_drop.sh">use this script</a> to set it up. We need a tiny bit more complex tc match, here is the command line:</p>
 	<pre class="language-bash"><code class="language-bash">tc qdisc add dev vlan100 ingress
 tc filter add dev vlan100 parent ffff: prio 4 protocol ip u32 match ip protocol 17 0xff match ip dport 1234 0xffff match ip dst 198.18.0.0/24 flowid 1:1 action drop
@@ -172,7 +222,14 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
         backlog 0b 0p requeues 0</code></pre>
 	<p>A tc ingress hook with u32 match allows us to drop 1.8mpps on a single CPU. This is brilliant!</p>
 	<p>But we can go even faster...</p>
-	<h4>Step 8. XDP_DROP</h4>
+	<div class="flex anchor relative">
+		<h4 id="step-8-xdp_drop">Step 8. XDP_DROP</h4>
+		<a href="https://blog.cloudflare.com/#step-8-xdp_drop" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, the ultimate weapon is XDP - <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP">eXpress Data Path</a>. With XDP we can run eBPF code in the context of a network driver. Most importantly, this is before the <code>skbuff</code> memory allocation, allowing great speeds.</p>
 	<p>Usually XDP projects have two parts:</p>
 	<ul>

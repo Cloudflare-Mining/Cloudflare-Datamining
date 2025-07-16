@@ -103,14 +103,29 @@ Signature: sig2=:jdq0SqOwHdyHr9+r5jw3iYZH6aNGKijYp/EstF4RQTQdi5N5YYKrD+mCT1HA1nZ
 		</a>
 	</div>
 	<p>Once a crawler is set up, determination of whether content requires payment can happen via two flows:</p>
-	<h4>Reactive (discovery-first)</h4>
+	<div class="flex anchor relative">
+		<h4 id="reactive-discovery-first">Reactive (discovery-first)</h4>
+		<a href="https://blog.cloudflare.com/#reactive-discovery-first" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Should a crawler request a paid URL, Cloudflare returns an <code>HTTP 402 Payment Required</code> response, accompanied by a <code>crawler-price</code> header. This signals that payment is required for the requested resource.</p>
 	<pre class="language-Rust"><code class="language-Rust">HTTP 402 Payment Required
 crawler-price: USD XX.XX</code></pre>
 	<p>&nbsp;The crawler can then decide to retry the request, this time including a <code>crawler-exact-price</code> header to indicate agreement to pay the configured price.</p>
 	<pre class="language-Rust"><code class="language-Rust">GET /example.html
 crawler-exact-price: USD XX.XX </code></pre>
-	<h4>Proactive (intent-first)</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="proactive-intent-first">Proactive (intent-first)</h4>
+		<a href="https://blog.cloudflare.com/#proactive-intent-first" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Alternatively, a crawler can preemptively include a <code>crawler-max-price</code> header in its initial request.</p>
 	<pre class="language-Rust"><code class="language-Rust">GET /example.html
 crawler-max-price: USD XX.XX</code></pre>

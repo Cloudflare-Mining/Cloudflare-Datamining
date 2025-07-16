@@ -16,7 +16,14 @@
 		</a>
 	</div>
 	<p>Prior to our Auckland and Melbourne data centers, a failure in Sydney meant a shift in traffic to the West Coast of the US or Southeast Asia adding significant, and noticeable, latency to our users' applications (<i>spoiler:</i> it now fails over to Auckland and Melbourne with minimal latency!). But before we get to how the Kiwi's and Australia's "second city" saved the day, it is important to understand how the Internet "works" in Oceania. As we set out to create resiliency in-region, we considered several options:</p>
-	<h4>Plan A: Second (redundant) data center in Sydney</h4>
+	<div class="flex anchor relative">
+		<h4 id="plan-a-second-redundant-data-center-in-sydney">Plan A: Second (redundant) data center in Sydney</h4>
+		<a href="https://blog.cloudflare.com/#plan-a-second-redundant-data-center-in-sydney" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At first blush a second facility in Sydney would seem to solve most imaginable failure scenarios (perhaps save a nuclear one). However, when it comes to the Internet, things are rarely intuitive. Australia, at least in the context of the Internet, is very Sydney-centric. The vast majority of traffic from Australia to the rest of the Internet passes through a single data center (which just so happens to be the same exact facility in which we are currently located). Even if we were to make a redundant deployment in a completely separate facility, traffic to that facility would still have to pass through the same potential point of failure: our current facility. Not to mention, a second facility in Sydney would neither reduce latency and improve performance for a larger subset of Internet users in the region nor localize our traffic any further than it already was. It also wouldn't have opened up any new peering opportunities which, as we've explained in a prior <a href="https://blog.cloudflare.com/cloudflare-joins-three-more-peering-exchanges-in-australia">blog post</a>, is of immense importance to the performance and overall health of our network.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -24,7 +31,14 @@
 
 	</figure>
 	<p><i>Not enough redundancy. No performance gain from status quo.</i></p>
-	<h4>Plan B: Add a data center in Auckland</h4>
+	<div class="flex anchor relative">
+		<h4 id="plan-b-add-a-data-center-in-auckland">Plan B: Add a data center in Auckland</h4>
+		<a href="https://blog.cloudflare.com/#plan-b-add-a-data-center-in-auckland" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Out of left pitch came Auckland. Although not an obvious choice, Auckland is rather uniquely situated to provide redundancy in-region as a result of how many operators have constructed their networks: by building or buying a 3 drop ring between New Zealand-Australia, Australia-USA, and USA-New Zealand.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -39,7 +53,14 @@
 	</figure>
 	<p><i>Redundancy and performance gains versus the status quo.</i></p>
 	<p>But why stop there?</p>
-	<h4>Plan C: Add a data center in Auckland AND Melbourne</h4>
+	<div class="flex anchor relative">
+		<h4 id="plan-c-add-a-data-center-in-auckland-and-melbourne">Plan C: Add a data center in Auckland AND Melbourne</h4>
+		<a href="https://blog.cloudflare.com/#plan-c-add-a-data-center-in-auckland-and-melbourne" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Despite achieving the desired level of redundancy and performance gains in New Zealand through our own version of the <a href="https://en.wikipedia.org/wiki/Trans-Tasman_Travel_Arrangement">Trans-Tasman arrangement</a>, we figured that both Kiwi’s and Aussies would prefer not to have the others' redundancy deposited at their doorstep. So, along came Melbourne as a complement to Auckland. Our Melbourne data center offers the same benefits of content localization and performance improvement for Internet users south of the border, as well as domestic redundancy in the case of a data center failure.</p>
 	<figure class="kg-card kg-image-card ">
 

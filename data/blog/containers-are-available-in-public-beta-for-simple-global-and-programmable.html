@@ -30,7 +30,14 @@
 	<p>Let’s take a deeper look at Containers, using an example use case: code sandboxing.</p>
 	<p>Let’s imagine that you want to run user-generated (or AI-generated) code as part of a platform you’re building. To do this, you want to spin up containers on demand. Each user needs their own isolated container, the users are distributed globally, and you need to start each container quickly so the users aren’t waiting.</p>
 	<p>You can set this up easily on Cloudflare Containers.</p>
-	<h4>Configuring a Container</h4>
+	<div class="flex anchor relative">
+		<h4 id="configuring-a-container">Configuring a Container</h4>
+		<a href="https://blog.cloudflare.com/#configuring-a-container" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In your Worker, use the <a href="https://github.com/cloudflare/containers"><u>Container class</u></a> and <a href="https://developers.cloudflare.com//workers/wrangler/configuration/#containers"><u>wrangler.jsonc</u></a> to declare some basic configuration, such as your Container’s default port, a sleep timeout, and which image to use, then route to it via the Worker.</p>
 	<p>For each unique ID passed to the Container’s binding, Cloudflare will spin up a new Container instance and route requests to it. When a new instance is requested, Cloudflare picks the best location across our global network where we’ve pre-provisioned a ready-to-go container. This means that you can deploy a container close to an end user no matter where they are. And the initial container start takes just a few seconds. You don’t have to worry about routing, provisioning, or scaling.</p>
 	<p>This example Worker will route requests to a unique container instance for each sandbox ID given at the path <code>/sandbox/ID</code> and will be handled by standard Worker JavaScript otherwise:</p>
@@ -54,7 +61,15 @@ export default {
     return myWorkerRequestHandler(request);
   },
 };</code></pre>
-	<h4>Familiar and easy development workflow with <code>wrangler dev</code></h4>
+
+	<div class="flex anchor relative">
+		<h4 id="familiar-and-easy-development-workflow-with-wrangler-dev">Familiar and easy development workflow with <code>wrangler dev</code></h4>
+		<a href="https://blog.cloudflare.com/#familiar-and-easy-development-workflow-with-wrangler-dev" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To configure which container image to use, you can provide an image URL in wrangler config or a path to a local Dockerfile.&nbsp;</p>
 	<p>This config tells wrangler to use a locally defined image:</p>
 	<pre class="language-JSON"><code class="language-JSON">"containers": [
@@ -66,10 +81,24 @@ export default {
   }
 ]</code></pre>
 	<p>When developing your application, you just run <code>wrangler dev</code> and the container image will be automatically built and routable via your local Worker. This makes it easy to iterate on container code while making changes to your Worker at the same time. When you want to rebuild your image, just press “R” on your keyboard from your terminal running <code>wrangler dev</code>, and the Container is rebuilt and restarted.</p>
-	<h4>Shipping your Container-enabled Worker to production with <code>wrangler deploy</code></h4>
+	<div class="flex anchor relative">
+		<h4 id="shipping-your-container-enabled-worker-to-production-with-wrangler-deploy">Shipping your Container-enabled Worker to production with <code>wrangler deploy</code></h4>
+		<a href="https://blog.cloudflare.com/#shipping-your-container-enabled-worker-to-production-with-wrangler-deploy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When it’s time to deploy, just run <code>wrangler deploy</code>. Wrangler will push your image to your account, then it will be provisioned in various locations across Cloudflare’s global network.</p>
 	<p>You don’t have to worry about “artifact management”, or distribution, or auth, or jump through hoops to integrate your container with Workers. You just write your code and deploy it.</p>
-	<h4>Observability is built-in</h4>
+	<div class="flex anchor relative">
+		<h4 id="observability-is-built-in">Observability is built-in</h4>
+		<a href="https://blog.cloudflare.com/#observability-is-built-in" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once your Container is in production, you have the visibility you need into how things are going, with end-to-end <a href="https://www.cloudflare.com/developer-platform/products/workers-observability">observability</a>.&nbsp;</p>
 	<p>From the Cloudflare dashboard, you can easily track status and resource usage across Container instances with built-in metrics:</p>
 	<figure class="kg-card kg-image-card">
@@ -80,7 +109,14 @@ export default {
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2AusbmokynDaErssVFyu4A/3bb617ff9c2e488cdaee20612cb6bd15/image3.png" alt="" class="kg-image" width="1999" height="1142" loading="lazy">
 	</figure>
-	<h4>Try it yourself</h4>
+	<div class="flex anchor relative">
+		<h4 id="try-it-yourself">Try it yourself</h4>
+		<a href="https://blog.cloudflare.com/#try-it-yourself" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Want to give it a shot? Check out <a href="https://github.com/craigsdennis/sandboxing-day-containers"><u>this example Worker for running sandboxed code</u></a> in a Container, and deploy it with one click.</p>
 	<p>Or better yet, if you have an image sitting around that you’ve been dying to deploy to Cloudflare, you can get started with <a href="https://developers.cloudflare.com//containers/get-started"><u>our docs here</u></a>.&nbsp;</p>
 	<div class="flex anchor relative">

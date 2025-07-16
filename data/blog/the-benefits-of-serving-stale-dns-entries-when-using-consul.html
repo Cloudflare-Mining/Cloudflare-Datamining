@@ -104,7 +104,14 @@ service1.query.consul. 30 IN A 192.0.2.1
  
 ;; Query time: 503 msec</code></pre>
 	<p>Notice that Unbound waited 500ms before returning a response, which was the value we configured. This also shows that the dump cache method does not return expired entries even though they are present. So far so good.</p>
-	<h5><b>Test - Unbound could serve stale records from cache indefinitely</b></h5>
+	<div class="flex anchor relative">
+		<h5 id="test-unbound-could-serve-stale-records-from-cache-indefinitely"><b>Test - Unbound could serve stale records from cache indefinitely</b></h5>
+		<a href="https://blog.cloudflare.com/#test-unbound-could-serve-stale-records-from-cache-indefinitely" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After 3600 seconds pass we again try to resolve the same name:</p>
 	<pre class="language-bash"><code class="language-bash">➜ dig  service1.sd. @127.0.0.1
  
@@ -112,7 +119,14 @@ service1.query.consul. 30 IN A 192.0.2.1
 ;; global options: +cmd
 ;; connection timed out; no servers could be reached</code></pre>
 	<p>Dig gave up on waiting for a response from Unbound. So we see that after the configured time, Unbound will indeed stop serving the stale record, even if it has been requested recently. This is due to <i>serve-expired-ttl: 3600</i> and <i>serve-expired-ttl-reset</i> being set to "no" by default. These options were not available when we first tried Unbound’s stale cache.</p>
-	<h5><b>Test - Unbound serves negative/incomplete information from the expired cache</b></h5>
+	<div class="flex anchor relative">
+		<h5 id="test-unbound-serves-negative-incomplete-information-from-the-expired-cache"><b>Test - Unbound serves negative/incomplete information from the expired cache</b></h5>
+		<a href="https://blog.cloudflare.com/#test-unbound-serves-negative-incomplete-information-from-the-expired-cache" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since the record we are resolving includes a CNAME and an A record with different TTLs, we will try to see if Unbound can be made to return an incomplete chain (CNAME with no A record).</p>
 	<p>We start by having both entries in cache, and block connections to the Consul resolver. We then remove from the cache the A entry:</p>
 	<pre class="language-bash"><code class="language-bash">$ /usr/sbin/unbound-control flush_type service1.query.consul. A
@@ -171,7 +185,14 @@ service2.service.consul. 58 IN A 192.0.2.200
 ;; WHEN: Sat Jan 02 13:00:39 WET 2021
 ;; MSG SIZE  rcvd: 89</code></pre>
 	<p>We can see that the first attempt was served from the stale cache, since the address was already changed on Consul to <i>192.0.2.200</i>, and the query time was 500ms. The next attempt was served from the fresh cache, hence the 0ms response time, and so we know that the cache was refreshed in the background.</p>
-	<h4><b>Test notes</b></h4>
+	<div class="flex anchor relative">
+		<h4 id="test-notes"><b>Test notes</b></h4>
+		<a href="https://blog.cloudflare.com/#test-notes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All the test scenarios completed successfully, even though we did find an <a href="https://github.com/NLnetLabs/unbound/issues/394">issue</a> that has since been fixed upstream. We realised that the prefetching logic blocked the cache while it attempted to refresh the entry, which prevented stale entries from being served if the upstream was unresponsive. This fix is included in version 1.13.1.</p>
 	<div class="flex anchor relative">
 		<h2 id="deployment-status">Deployment status</h2>

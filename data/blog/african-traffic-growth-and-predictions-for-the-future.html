@@ -35,7 +35,14 @@
 	</div>
 	<p>We wondered if the Internet usage increased when we set-up a datacenter in a region which was previously not well served.</p>
 	<p>It was surprising to see a fast growth in the following months in each of the countries we turn on our equipment. We took into account bandwidth and also quantity of information exchanged. The increase in bandwidth usually leads to an increase in usage.</p>
-	<h4>Why is bandwidth increasing with lower latency?</h4>
+	<div class="flex anchor relative">
+		<h4 id="why-is-bandwidth-increasing-with-lower-latency">Why is bandwidth increasing with lower latency?</h4>
+		<a href="https://blog.cloudflare.com/#why-is-bandwidth-increasing-with-lower-latency" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Bandwidth is the maximum rate information can be transferred over a link. The interpretation of maximum depends on the type of transmission.</p>
 	<p>The explanation why the rate is dependent on latency comes from the TCP protocol specification on which run most of the web applications. Every transmission ends with an acknowledgement, to determine if the data was correctly received. The next transmission will begin after the sender receives the acknowledgement. This means while the acknowledgement is transmitting, nothing is actually being received. The difference of data received over time is the transfer rate.</p>
 	<p>This is summarized in the following diagram:</p>
@@ -45,7 +52,14 @@
 
 	</figure>
 	<p>With the most common algorithms, the amount of data sent before an acknowledgment increases until an error appears. Any link will drop packets: whether there is a transmission issue (wireless and perturbations) or a processing issue (router dropping packets to reduce load). This contributes never reaching the maximum bandwidth of a link. This is why above 80 milliseconds latency, performances start to worsen drastically. Coast to coast in the USA is around 70 milliseconds. Paris to London is 10 milliseconds. <a href="https://en.wikipedia.org/wiki/Performance-enhancing_proxy#Split_TCP">Satellites connections implement proxies</a> to allow sustainable throughput despite 600 milliseconds round-time-trip.</p>
-	<h4>Why is the amount of requests increasing with higher bandwidth?</h4>
+	<div class="flex anchor relative">
+		<h4 id="why-is-the-amount-of-requests-increasing-with-higher-bandwidth">Why is the amount of requests increasing with higher bandwidth?</h4>
+		<a href="https://blog.cloudflare.com/#why-is-the-amount-of-requests-increasing-with-higher-bandwidth" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The explanation is behavioral. If an Internet connection is slow and frustrating, chances are we will use it only if we are forced to. While getting access to the content immediately, people are likely to fetch more content and click on links.</p>
 	<p>The following chart shows the growth of requests from a country after every datacenter turn up. Traffic is normalized on the latest value (July 2018).</p>
 	<p>Djibouti shows the biggest increase in traffic after the launch.</p>

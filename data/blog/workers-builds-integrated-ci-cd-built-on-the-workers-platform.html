@@ -66,7 +66,14 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6RUDJI7IYIlzcX4qjF9EYY/7e959b7a4489a41d275d74d634389f31/BLOG-2594_4.png" alt="BLOG-2594 4" class="kg-image" width="1999" height="1109" loading="lazy">
 	</figure>
-	<h4>Scheduler DO</h4>
+	<div class="flex anchor relative">
+		<h4 id="scheduler-do">Scheduler DO</h4>
+		<a href="https://blog.cloudflare.com/#scheduler-do" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Scheduler DO class is relatively simple. Using <a href="https://developers.cloudflare.com/durable-objects/api/alarms"><u>Durable Objects Alarms</u></a>, it is triggered every second to pull up a list of user build configurations that are ready to be started. For each of those builds, the Scheduler creates an instance of our other DO Class, the Build Buddy.&nbsp;</p>
 	<pre class="language-javascript"><code class="language-javascript">import { DurableObject } from 'cloudflare:workers'
 
@@ -125,13 +132,35 @@ export class BuildScheduler extends DurableObject {
    }
 }
 </code></pre>
-	<h4>Build Buddy DO</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="build-buddy-do">Build Buddy DO</h4>
+		<a href="https://blog.cloudflare.com/#build-buddy-do" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Build Buddy DO class is what we use to manage each individual build from the time it begins initializing to when it is stopped. Every build has a buddy for life!</p>
 	<p>Upon creation of a Build Buddy DO instance, the Scheduler immediately calls <code>startBuild()</code> on the instance. The <code>startBuild()</code> method is responsible for fetching all metadata and secrets needed to run a build, and then kicking off a build on Cloudflare’s container platform (<a href="https://blog.cloudflare.com/container-platform-preview"><u>not public yet, but coming soon</u></a>!).&nbsp;</p>
 	<p>As the containerized build runs, it reports back to the Build Buddy, sending status updates and logs for the Build Buddy to deal with.&nbsp;</p>
-	<h5>Build status</h5>
+	<div class="flex anchor relative">
+		<h5 id="build-status">Build status</h5>
+		<a href="https://blog.cloudflare.com/#build-status" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a build progresses, it reports its own status back to Build Buddy, sending updates when it has finished initializing, has completed successfully, or been terminated by the user. The Build Buddy is responsible for handling this incoming information from the containerized build, writing status updates to the database (via a Hyperdrive binding) so that users can see the status of their build in the Cloudflare dashboard.</p>
-	<h5>Build logs</h5>
+	<div class="flex anchor relative">
+		<h5 id="build-logs">Build logs</h5>
+		<a href="https://blog.cloudflare.com/#build-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A running build generates output logs that are important to store and surface to the user. The containerized build flushes these logs to the Build Buddy every second, which, in turn, stores those logs in <a href="https://developers.cloudflare.com/durable-objects/api/storage-api"><u>DO storage</u></a>.&nbsp;</p>
 	<p>The decision to use Durable Object storage here makes it easy to multicast logs to multiple clients efficiently, and allows us to use the same API for both streaming logs and viewing historical logs.&nbsp;</p>
 	<p>// build-management-app.ts</p>
@@ -250,7 +279,15 @@ export class BuildBuddy extends DurableObject {
    return env.BUILD_BUDDY.get(id)
 }
 </code></pre>
-	<h5>Alarms</h5>
+
+	<div class="flex anchor relative">
+		<h5 id="alarms">Alarms</h5>
+		<a href="https://blog.cloudflare.com/#alarms" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We utilize <a href="https://developers.cloudflare.com/durable-objects/api/alarms"><u>alarms</u></a> in the Build Buddy to check that a build has a healthy startup and to terminate any builds that run longer than 20 minutes.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="how-else-have-we-leveraged-the-developer-platform">How else have we leveraged the Developer Platform?</h2>

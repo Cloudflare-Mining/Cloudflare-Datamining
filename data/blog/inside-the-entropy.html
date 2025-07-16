@@ -36,7 +36,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LcFWOh6MsFEqmYrGB6PXa/f87eb05da963db50a5f8a0a24d260d76/combined-entropy-_2x.png" alt="" class="kg-image" width="1600" height="1060" loading="lazy">
 
 	</figure>
-	<h4>Sampling randomness</h4>
+	<div class="flex anchor relative">
+		<h4 id="sampling-randomness">Sampling randomness</h4>
+		<a href="https://blog.cloudflare.com/#sampling-randomness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To sample randomness, let’s first identify the appropriate sources. There are many natural phenomena that one can use:</p>
 	<ul>
 		<li>
@@ -109,7 +116,14 @@
 	</div>
 	<p>At a high-level, the DKG procedure creates a distributed secret key that is formed of <code>n</code> different key pairs <code>(vk_i, sk_i)</code>, each one being held by the entity <code>i</code> in the system. These key pairs will eventually be used to instantiate a <code>(t,n)</code>-threshold signature scheme (we will discuss this more later). In essence, <code>t</code> of the entities will be able to combine to construct a valid signature on any message.</p>
 	<p>To think about how this might work, consider a distributed key generation scheme that creates <code>n</code> distributed keys that are going to be represented by pizzas. Each pizza is split into <code>n</code> slices and one slice from each is secretly passed to one of the participants. Each entity receives one slice from each of the different pizzas (<code>n</code> in total) and combines these slices to form their own pizza. Each combined pizza is unique and secret for each entity, representing their own key pair.</p>
-	<h4>Mathematical intuition</h4>
+	<div class="flex anchor relative">
+		<h4 id="mathematical-intuition">Mathematical intuition</h4>
+		<a href="https://blog.cloudflare.com/#mathematical-intuition" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Mathematically speaking, and rather than thinking about pizzas, we can describe the underlying phenomenon by reconstructing lines or curves on a graph. We can take two coordinates on a <code>(x,y)</code> plane and immediately (and uniquely) define a line with the equation <code>y = ax+b</code>. For example, the points <code>(2,3)</code> and <code>(4,7)</code> immediately define a line with gradient <code>(7-3)/(4/2) = 2</code> so <code>a=2</code>. You can then derive the <code>b</code> coefficient as <code>-1</code> by evaluating either of the coordinates in the equation <code>y = 2x + b</code>. By <i>uniquely</i>, we mean that only the line <code>y = 2x -1</code> satisfies the two coordinates that are chosen; no other choice of <code>a</code> or <code>b</code> fits.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -127,7 +141,14 @@
 	<p>What we are ultimately trying to show is that this approach scales for curves of degree <code>n</code> (of the form <code>y = a_n x^n + … a_1 x + a_0</code>). So, if we take <code>n+1</code> coordinates on the <code>(x,y)</code> plane, then we can uniquely reconstruct the curve of this form entirely. Such degree <code>n</code> equations are also known as <i>polynomials</i> of degree <code>n</code>.</p>
 	<p>In order to generalise the approach to general degrees we need some kind of formula. This formula should take <code>n+1</code> pairs of coordinates and return a polynomial of degree <code>n</code>. Fortunately, such a formula exists without us having to derive it ourselves, it is known as the <a href="https://en.wikipedia.org/wiki/Lagrange_polynomial#Definition"><i>Lagrange interpolation polynomial</i></a>. Using the formula in the link, we can reconstruct any <code>n</code> degree polynomial using <code>n+1</code> unique pairs of coordinates.</p>
 	<p>Going back to pizzas temporarily, it will become clear in the next section how this Lagrange interpolation procedure essentially describes the dissemination of one slice (corresponding to <code>(x,y)</code> coordinates) taken from a single pizza (the entire <code>n-1</code> degree polynomial) among <code>n</code> participants. Running this procedure <code>n</code> times in parallel allows each entity to construct their entire pizza (or the eventual key pair).</p>
-	<h4>Back to key generation</h4>
+	<div class="flex anchor relative">
+		<h4 id="back-to-key-generation">Back to key generation</h4>
+		<a href="https://blog.cloudflare.com/#back-to-key-generation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Intuitively, in the DKG procedure we want to distribute <code>n</code> key pairs among <code>n</code> participants. This effectively means running <code>n</code> parallel instances of a <code>t</code>-out-of-<code>n</code> <a href="https://en.wikipedia.org/wiki/Shamir's_Secret_Sharing">Shamir Secret Sharing</a> scheme. This secret sharing scheme is built entirely upon the polynomial interpolation technique that we described above.</p>
 	<p>In a single instance, we take the secret key to be the first coefficient of a polynomial of degree <code>t-1</code> and the public key is a published value that depends on this secret key, but does not reveal the actual coefficient. Think of RSA, where we have a number <code>N = pq</code> for secret large prime numbers <code>p,q</code>, where <code>N</code> is public but does not reveal the actual factorisation. Notice that if the polynomial is reconstructed using the interpolation technique above, then we immediately learn the secret key, because the first coefficient will be made explicit.</p>
 	<p>Each secret sharing scheme publishes shares, where each share is a different evaluation of the polynomial (dependent on the entity <code>i</code> receiving the key share). These evaluations are essentially coordinates on the <code>(x,y)</code> plane.</p>

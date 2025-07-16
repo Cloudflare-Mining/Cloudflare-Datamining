@@ -33,7 +33,14 @@
 	</div>
 	<p>In traditional cloud architecture, stateless application servers run business logic and communicate over the network to a database. Even if the network is local, database requests still incur latency, typically measured in milliseconds.</p>
 	<p>When a Durable Object uses SQLite, SQLite is invoked as a library. This means the database code runs not just on the same machine as the DO, not just in the same process, but in the very same thread. Latency is effectively zero, because there is no communication barrier between the application and SQLite. A query can complete in microseconds.</p>
-	<h4>Reads and writes are synchronous</h4>
+	<div class="flex anchor relative">
+		<h4 id="reads-and-writes-are-synchronous">Reads and writes are synchronous</h4>
+		<a href="https://blog.cloudflare.com/#reads-and-writes-are-synchronous" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The SQL query API in DOs does not require you to await results — they are returned synchronously:</p>
 	<pre class="language-javascript"><code class="language-javascript">// No awaits!
 let cursor = sql.exec("SELECT name, email FROM users");
@@ -45,7 +52,14 @@ for (let user of cursor) {
 	<p>It's OK! The database content is probably cached in memory already, and SQLite is being called as a library in the same thread as the application, so the query often actually won't spend any time at all waiting for I/O. Even if it does have to go to disk, it's a local SSD. You might as well consider the local disk as just another layer in the memory cache hierarchy: L5 cache, if you will. In any case, it will respond quickly.</p>
 	<p>Meanwhile, synchronous queries provide some big benefits. First, the logistics of asynchronous event loops have a cost, so in the common case where the data is already in memory, a synchronous query will actually complete faster than an async one.</p>
 	<p>More importantly, though, synchronous queries help you avoid subtle bugs. Any time your application awaits a promise, it's possible that some other code executes while you wait. The state of the world may have changed by the time your await completes. Maybe even other SQL queries were executed. This can lead to subtle bugs that are hard to reproduce because they require events to happen at just the wrong time. With a synchronous API, though, none of that can happen. Your code always executes in the order you wrote it, uninterrupted.</p>
-	<h4>Fast writes with Output Gates</h4>
+	<div class="flex anchor relative">
+		<h4 id="fast-writes-with-output-gates">Fast writes with Output Gates</h4>
+		<a href="https://blog.cloudflare.com/#fast-writes-with-output-gates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Database experts might have a deeper objection to synchronous queries: Yes, caching may mean we can perform reads and writes very fast. However, in the case of a write, just writing to cache isn't good enough. Before we return success to our client, we must <i>confirm</i> that the write is actually <i>durable</i>, that is, it has actually made it onto disk or network storage such that it cannot be lost if the power suddenly goes out.</p>
 	<p>Normally, a database would confirm all writes before returning to the application. So if the query is successful, it is confirmed. But confirming writes can be slow, because it requires waiting for the underlying storage medium to respond. Normally, this is OK because the write is performed asynchronously, so the program can go on and work on other things while it waits for the write to finish. It looks kind of like this:</p>
 	<figure class="kg-card kg-image-card">
@@ -77,7 +91,14 @@ for (let user of cursor) {
 		</li>
 	</ul>
 	<p>With Output Gates, we get the ease-of-use of synchronous writes, while also getting lower latency and no loss of throughput.</p>
-	<h4>N+1 selects? No problem.</h4>
+	<div class="flex anchor relative">
+		<h4 id="n-1-selects-no-problem">N+1 selects? No problem.</h4>
+		<a href="https://blog.cloudflare.com/#n-1-selects-no-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Zero-latency queries aren't just faster, they allow you to structure your code differently, often making it simpler. A classic example is the "N+1 selects" or "N+1 queries" problem. Let's illustrate this problem with an example:</p>
 	<pre class="language-javascript"><code class="language-javascript">// N+1 SELECTs example
 
@@ -106,7 +127,14 @@ let docs = sql.exec(`
 	<p>Here we've used SQL features to turn our 101 queries into one query. Great! Except, what does it mean? We used an inner join, which is not to be confused with a left, right, or cross join. What's the difference? Honestly, I have no idea! I had to look up joins just to write this example and I'm already confused.</p>
 	<p>Well, good news: You don't need to figure it out. Because <b>when using SQLite as a library, the first example above </b><b><i>works just fine</i></b><b>.</b> It'll perform about the same as the second fancy version.</p>
 	<p>More generally, when using SQLite as a library, you don't have to learn how to do fancy things in SQL syntax. Your logic can be in regular old application code in your programming language of choice, orchestrating the most basic SQL queries that are easy to learn. It's fine. <a href="https://www.sqlite.org/np1queryprob.html"><u>The creators of SQLite have made this point themselves.</u></a></p>
-	<h4>Point-in-Time Recovery</h4>
+	<div class="flex anchor relative">
+		<h4 id="point-in-time-recovery">Point-in-Time Recovery</h4>
+		<a href="https://blog.cloudflare.com/#point-in-time-recovery" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While not necessarily related to speed, SQLite-backed Durable Objects offer another feature: any object can be reverted to the state it had at any point in time in the last 30 days. So if you accidentally execute a buggy query that corrupts all your data, don't worry: you can recover. There's no need to opt into this feature in advance; it's on by default for all SQLite-backed DOs. See the <a href="https://developers.cloudflare.com/durable-objects/api/storage-api/#point-in-time-recovery"><u>docs</u></a> for details.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-do-i-use-it">How do I use it?</h2>
@@ -189,7 +217,14 @@ new_sqlite_classes = ["FlightSeating"]
 </code></pre>
 	<p>SQLite-backed objects also support the existing <a href="https://developers.cloudflare.com/durable-objects/api/transactional-storage-api"><u>key/value-based storage API</u></a>: KV data is stored into a hidden table in the SQLite database. So, existing applications built on DOs will work when deployed using SQLite-backed objects.</p>
 	<p>However, because SQLite-backed objects are based on an all-new storage backend, it is currently not possible to switch an existing deployed DO class to use SQLite. You must ask for SQLite when initially deploying the new DO class; you cannot change it later. We plan to begin migrating existing DOs to the new storage backend in 2025.</p>
-	<h4>Pricing</h4>
+	<div class="flex anchor relative">
+		<h4 id="pricing">Pricing</h4>
+		<a href="https://blog.cloudflare.com/#pricing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve kept <a href="https://developers.cloudflare.com/durable-objects/platform/pricing/#sql-storage-billing"><u>pricing</u></a> for SQLite-in-DO similar to D1, Cloudflare’s serverless SQL database, by billing for SQL queries (based on rows) and SQL storage. SQL storage per object is limited to 1 GB during the beta period, and will be increased to 10 GB on general availability. DO <a href="https://developers.cloudflare.com/durable-objects/platform/pricing/#billing-metrics"><u>requests and duration billing</u></a> are unchanged and apply to all DOs regardless of storage backend.&nbsp;</p>
 	<p>During the initial beta, billing is not enabled for SQL queries (rows read and rows written) and SQL storage. SQLite-backed objects will incur charges for requests and duration. We plan to enable SQL billing in the first half of 2025 with advance notice.</p>
 	<style type="text/css">
@@ -309,18 +344,40 @@ new_sqlite_classes = ["FlightSeating"]
 		<p><i>Local disk is fast and randomly-accessible, but expensive and prone to disk failures. Object storage (like </i><a href="https://developers.cloudflare.com/r2"><i><u>R2</u></i></a><i>) is cheap and durable, but much slower than local disk and not designed for database-like access patterns. Can we get the best of both worlds by using a local disk as a cache on top of object storage?</i></p>
 	</blockquote>
 	<p>So, how does it work?</p>
-	<h4>The mismatch in functionality between local disk and object storage</h4>
+	<div class="flex anchor relative">
+		<h4 id="the-mismatch-in-functionality-between-local-disk-and-object-storage">The mismatch in functionality between local disk and object storage</h4>
+		<a href="https://blog.cloudflare.com/#the-mismatch-in-functionality-between-local-disk-and-object-storage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A SQLite database on disk tends to undergo many small changes in rapid succession. Any row of the database might be updated by any particular query, but the database is designed to avoid rewriting parts that didn't change. Read queries may randomly access any part of the database. Assuming the right indexes exist to support the query, they should not require reading parts of the database that aren't relevant to the results, and should complete in microseconds.</p>
 	<p>Object storage, on the other hand, is designed for an entirely different usage model: you upload an entire "object" (blob of bytes) at a time, and download an entire blob at a time. Each blob has a different name. For maximum efficiency, blobs should be fairly large, from hundreds of kilobytes to gigabytes in size. Latency is relatively high, measured in tens or hundreds of milliseconds.</p>
 	<p>So how do we back up our SQLite database to object storage? An obviously naive strategy would be to simply make a copy of the database files from time to time and upload it as a new "object". But, uploading the database on every change — and making the application wait for the upload to complete — would obviously be way too slow. We could choose to upload the database only occasionally — say, every 10 minutes — but this means in the case of a disk failure, we could lose up to 10 minutes of changes. Data loss is, uh, bad! And even then, for most databases, it's likely that most of the data doesn't change every 10 minutes, so we'd be uploading the same data over and over again.</p>
-	<h4>Trick one: Upload a log of changes</h4>
+	<div class="flex anchor relative">
+		<h4 id="trick-one-upload-a-log-of-changes">Trick one: Upload a log of changes</h4>
+		<a href="https://blog.cloudflare.com/#trick-one-upload-a-log-of-changes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Instead of uploading the entire database, SRS records a log of <i>changes</i>, and uploads those.</p>
 	<p>Conveniently, SQLite itself already has a concept of a change log: the <a href="https://www.sqlite.org/wal.html"><u>Write-Ahead Log, or WAL</u></a>. SRS always configures SQLite to use WAL mode. In this mode, any changes made to the database are first written to a separate log file. From time to time, the database is "checkpointed", merging the changes back into the main database file. The WAL format is <a href="https://www.sqlite.org/fileformat2.html#the_write_ahead_log"><u>well-documented</u></a> and easy to understand: it's just a sequence of "frames", where each frame is an instruction to write some bytes to a particular offset in the database file.</p>
 	<p>SRS monitors changes to the WAL file (by hooking <a href="https://www.sqlite.org/vfs.html"><u>SQLite's VFS</u></a> to intercept file writes) to discover the changes being made to the database, and uploads those to object storage.</p>
 	<p>Unfortunately, SRS cannot simply upload every single change as a separate "object", as this would result in too many objects, each of which would be inefficiently small. Instead, SRS batches changes over a period of up to 10 seconds, or up to 16 MB worth, whichever happens first, then uploads the whole batch as a single object.</p>
 	<p>When reconstructing a database from object storage, we must download the series of change batches and replay them in order. Of course, if the database has undergone many changes over a long period of time, this can get expensive. In order to limit how far back it needs to look, SRS also occasionally uploads a snapshot of the entire content of the database. SRS will decide to upload a snapshot any time that the total size of logs since the last snapshot exceeds the size of the database itself. This heuristic implies that the total amount of data that SRS must download to reconstruct a database is limited to no more than twice the size of the database. Since we can delete data from object storage that is older than the latest snapshot, this also means that our total stored data is capped to 2x the database size.</p>
 	<p>Credit where credit is due: This idea — uploading WAL batches and snapshots to object storage — was inspired by <a href="https://litestream.io"><u>Litestream</u></a>, although our implementation is different.</p>
-	<h4>Trick two: Relay through other servers in our global network</h4>
+	<div class="flex anchor relative">
+		<h4 id="trick-two-relay-through-other-servers-in-our-global-network">Trick two: Relay through other servers in our global network</h4>
+		<a href="https://blog.cloudflare.com/#trick-two-relay-through-other-servers-in-our-global-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/D6uKAW3oEkzgAMKwYmQwr/453ce6d752339fb73022eb32e0e7b792/BLOG-2536_8.png" alt="BLOG-2536 8" class="kg-image" width="1200" height="452" loading="lazy">
 	</figure>
@@ -330,7 +387,14 @@ new_sqlite_classes = ["FlightSeating"]
 	<p>However, if the follower never receives the persisted notification, then, after some timeout, the follower itself will upload the change to object storage. Thus, if the machine running the database suddenly fails, as long as at least one follower is still running, it will ensure that all confirmed writes are safely persisted.</p>
 	<p>Each of a database's five followers is located in a different physical data center. Cloudflare's network consists of hundreds of data centers around the world, which means it is always easy for us to find four other data centers nearby any Durable Object (in addition to the one it is running in). In order for a confirmed write to be lost, then, at least four different machines in at least three different physical buildings would have to fail simultaneously (three of the five followers, plus the Durable Object's host machine). Of course, anything can happen, but this is exceedingly unlikely.</p>
 	<p>Followers also come in handy when a Durable Object's host machine is unresponsive. We may not know for sure if the machine has died completely, or if it is still running and responding to some clients but not others. We cannot start up a new instance of the DO until we know for sure that the previous instance is dead – or, at least, that it can no longer confirm writes, since the old and new instances could then confirm contradictory writes. To deal with this situation, if we can't reach the DO's host, we can instead try to contact its followers. If we can contact at least three of the five followers, and tell them to stop confirming writes for the unreachable DO instance, then we know that instance is unable to confirm any more writes going forward. We can then safely start up a new instance to replace the unreachable one.</p>
-	<h4>Bonus feature: Point-in-Time Recovery</h4>
+	<div class="flex anchor relative">
+		<h4 id="bonus-feature-point-in-time-recovery">Bonus feature: Point-in-Time Recovery</h4>
+		<a href="https://blog.cloudflare.com/#bonus-feature-point-in-time-recovery" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I mentioned earlier that SQLite-backed Durable Objects can be asked to revert their state to any time in the last 30 days. How does this work?</p>
 	<p>This was actually an accidental feature that fell out of SRS's design. Since SRS stores a complete log of changes made to the database, we can restore to any point in time by replaying the change log from the last snapshot. The only thing we have to do is make sure we don't delete those logs too soon.</p>
 	<p>Normally, whenever a snapshot is uploaded, all previous logs and snapshots can then be deleted. But instead of deleting them immediately, SRS merely marks them for deletion 30 days later. In the meantime, if a point-in-time recovery is requested, the data is still there to work from.</p>

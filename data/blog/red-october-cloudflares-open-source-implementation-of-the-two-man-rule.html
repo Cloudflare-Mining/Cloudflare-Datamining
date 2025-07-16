@@ -41,9 +41,23 @@
 	</div>
 	<p>Red October was designed from cryptographic first principles, combining trusted and understood algorithms in known ways. CloudFlare is also opening the source of the server to allow others to analyze its design.</p>
 	<p>Red October is based on combinatorial techniques and trusted cryptographic primitives. We investigated using complicated secret primitives like <a href="https://en.wikipedia.org/wiki/Shamir's_Secret_Sharing">Shamir's sharing scheme</a>, but we found that a simpler combinatorial approach based on primitives from Go's standard library was preferable to implementing a mathematical algorithm from scratch. Red October uses <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">128-bit AES</a>, <a href="https://en.wikipedia.org/wiki/RSA_(algorithm)">2048-bit RSA</a> and <a href="https://en.wikipedia.org/wiki/Scrypt">scrypt</a> as its cryptographic primitives.</p>
-	<h4>Creating an account</h4>
+	<div class="flex anchor relative">
+		<h4 id="creating-an-account">Creating an account</h4>
+		<a href="https://blog.cloudflare.com/#creating-an-account" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Each user is assigned a unique, randomly-generated RSA key pair when creating an account on a Red October server. The private key is encrypted with a password key derived from the user’s password and salt using scrypt. The public key is stored unencrypted in the vault with the encrypted private key.</p>
-	<h4>Encrypting data</h4>
+	<div class="flex anchor relative">
+		<h4 id="encrypting-data">Encrypting data</h4>
+		<a href="https://blog.cloudflare.com/#encrypting-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When asked to encrypt a piece of data, the server generates a random 128-bit AES key. This key is used to encrypt the data. For each user that is allowed to decrypt the data, a user-specific key encryption key is chosen. For each unique pair of users, the data key is doubly encrypted, once with the key encryption key of each user. The key encryption keys are then encrypted with the public RSA key associated with their account. The encrypted data, the set of doubly-encrypted data keys, and the RSA-encrypted key encryption keys are all bundled together and returned. The encrypted data is never stored on the server.</p>
 	<figure class="kg-card kg-image-card ">
 

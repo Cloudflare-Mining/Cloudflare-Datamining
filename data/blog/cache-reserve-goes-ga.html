@@ -62,7 +62,14 @@
 		</a>
 	</div>
 	<p>Since we’ve last <a href="https://blog.cloudflare.com/cache-reserve-open-beta">blogged</a> about Cache Reserve we have made three important updates to the product that improve the quality of life for users.</p>
-	<h4>New analytics</h4>
+	<div class="flex anchor relative">
+		<h4 id="new-analytics">New analytics</h4>
+		<a href="https://blog.cloudflare.com/#new-analytics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Previously, Cache Reserve analytics provided views of how much storage had been used by a particular website and estimates of the number of operations used in a particular time period. We’ve improved analytics to be more similar to traditional cache analytics, allowing customers to view storage and operations in a customized time series from the cache analytics dashboard.</p>
 	<p>Additionally, the updated Cache Reserve analytics will provide you an estimate of how much egress you’re saving by using the product.</p>
 	<p>In the coming months we will also provide greater visibility into the largest and most requested items being served from Cache Reserve.</p>
@@ -71,7 +78,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5iCtq5lq4aebz2tPsNfn1g/032549ab5220306641ed6177f9572507/Screenshot-2023-10-08-at-7.45.35-PM.png" alt="" class="kg-image" width="1600" height="979" loading="lazy">
 
 	</figure>
-	<h4>Cache Reserve delete storage</h4>
+	<div class="flex anchor relative">
+		<h4 id="cache-reserve-delete-storage">Cache Reserve delete storage</h4>
+		<a href="https://blog.cloudflare.com/#cache-reserve-delete-storage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cache Reserve users who want to change, remove or stop using their Reserve altogether have asked for a simple way to wipe their storage without impacting their use of Cloudflare’s traditional edge cache. Previously clearing Cache Reserve would be achieved by purging content. This could be problematic because purging also wipes content cached in the traditional edge cache which could lead to additional origin fetches and egress fees.</p>
 	<p>We’ve built in a new way for customers to completely remove their Cache Reserve storage with the push of a button, which can be found in the Cache Reserve <a href="https://dash.cloudflare.com/caching/cache-reserve">dashboard</a>. When performing this action you will need to wait until Cache Reserve is cleared before re-enabling. This period can differ depending on how much is stored in your Cache Reserve, but in general can take around 24 hours. &nbsp;</p>
 	<p>The Cache Reserve delete button differs from purging. <b>Purge</b> will still allow for you to invalidate resources across <i>all</i> of Cloudflare’s Caches — including both Cache Reserve and the edge cache with a single request. The Cache Reserve delete button will actively remove the entire storage in the Reserve only. Currently, this action can be performed for the entire Cache Reserve storage associated with a zone.</p>
@@ -80,7 +94,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3wDOQHqMtcZNilIEwbhM6e/52d8fe60c0aec1ddc97cbe0d53b98ce6/Screenshot-2023-10-08-at-7.46.10-PM.png" alt="" class="kg-image" width="1600" height="274" loading="lazy">
 
 	</figure>
-	<h4>Integration into Cache Rules</h4>
+	<div class="flex anchor relative">
+		<h4 id="integration-into-cache-rules">Integration into Cache Rules</h4>
+		<a href="https://blog.cloudflare.com/#integration-into-cache-rules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the most requested Cache Reserve features we heard from early adopters is the ability to specify what parts of their website should be eligible for storage in Cache Reserve. Previously, when a user enabled Cache Reserve, all of a website’s assets that were <a href="https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/#cache-reserve-asset-eligibility">eligible</a> for Cache Reserve could be stored in the Reserve. For egress sensitive customers, this is the path we still recommend. However, for customers that really want to customize what is eligible for Cache Reserve, you can now use <a href="https://dash.cloudflare.com/caching/cache-rules">Cache Rules</a> to specify assets that should be stored in Cache Reserve based on the usual Cache Rules fields (hostnames, paths, URLs, etc.) and also by using specific new rules configurations like the minimum size of a resource. For example, you can specify that all assets that should be written to Cache Reserve have a minimum size of 100kb. By using the new rules functionality, Cache Reserve customers can customize how their Reserve is built while still maintaining utilization of the edge cache, and saving even more money.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 

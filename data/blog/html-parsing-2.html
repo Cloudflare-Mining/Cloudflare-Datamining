@@ -43,7 +43,14 @@
 		</a>
 	</div>
 	<p>We needed something new, designed with Workers requirements in mind, using a language with the native speed and safety guarantees (it’s incredibly easy to shoot yourself in the foot doing parsing). Rust was the obvious choice as it provides the native speed and the best guarantee of memory safety which minimises the attack surface of untrusted input. Wherever possible the Low Output Latency HTML rewriter (LOL HTML) uses all the previous optimizations developed for LazyHTML such as tag name hashing.</p>
-	<h4>Dual-parser architecture</h4>
+	<div class="flex anchor relative">
+		<h4 id="dual-parser-architecture">Dual-parser architecture</h4>
+		<a href="https://blog.cloudflare.com/#dual-parser-architecture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Most developers are familiar and prefer to use CSS selector-based APIs (as in Cheerio, jQuery or DOM itself) for HTML mutation tasks. We decided to base our API on CSS selectors as well. Although this meant additional implementation complexity, the decision created even more opportunities for parsing optimizations.</p>
 	<p>As selectors define the scope of the content that should be rewritten, we realised we can skip the content that is not in this scope and not produce tokens for it. This not only significantly speeds up the parsing itself, but also avoids the performance burden of the back and forth interactions with the JavaScript VM. As ever the best optimization is not to do something.</p>
 	<figure class="kg-card kg-image-card ">
@@ -78,7 +85,14 @@
 }</code></pre>
 	<p>The DSL program gets expanded by the Rust compiler into not quite as beautiful, but extremely efficient Rust code.</p>
 	<p>We no longer need to reimplement the code that drives the parsing process for each of our parsers. All we need to do is to define different action implementations for each. In the case of the tag scanner, the majority of these actions are a no-op, so the Rust compiler does the NFA optimization job for us: it optimizes away state branches with no-op actions and even whole states if all of the branches have no-op actions. Now that’s cool.</p>
-	<h4>Byte slice processing optimisations</h4>
+	<div class="flex anchor relative">
+		<h4 id="byte-slice-processing-optimisations">Byte slice processing optimisations</h4>
+		<a href="https://blog.cloudflare.com/#byte-slice-processing-optimisations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Moving to a memory-safe language provided new challenges. Rust has great memory safety mechanisms, however sometimes they have a runtime performance cost.</p>
 	<p>The task of the parser is to scan through the input and find the boundaries of lexical units of the language - tokens and their internal parts. For example, an HTML start tag token consists of multiple parts: a byte slice of input that represents the tag name and multiple pairs of input slices that represent attributes and values:</p>
 	<pre class="language-rust"><code class="language-rust">struct StartTagToken&lt;'i&gt; {
@@ -105,10 +119,24 @@
 	</figure>
 	<p>Average parsing time depending on the input size - lower is better</p>
 	<p>LOL HTML’s tag scanner is typically twice as fast as LazyHTML and the lexer has comparable performance, outperforming LazyHTML on bigger inputs. Both are a few times faster than the tokenizer from <a href="https://github.com/servo/html5ever">html5ever</a> - another parser implemented in Rust used in the Mozilla’s Servo browser engine.</p>
-	<h4>CSS selector matching VM</h4>
+	<div class="flex anchor relative">
+		<h4 id="css-selector-matching-vm">CSS selector matching VM</h4>
+		<a href="https://blog.cloudflare.com/#css-selector-matching-vm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With an impressively fast parser on our hands we had only one thing missing - the CSS selector matcher. Initially we thought we could just use Servo’s <a href="https://crates.io/crates/selectors">CSS selector matching engine</a> for this purpose. After a couple of days of experimentation it turned out that it is not quite suitable for our task.</p>
 	<p>It did not work well with our dual parser architecture. We first need to to match just a tag name from the tag scanner, and then, if we fail, query the lexer for the attributes. The selectors library wasn’t designed with this architecture in mind so we needed ugly hacks to bail out from matching in case of insufficient information. It was inefficient as we needed to start matching again after the bailout doing twice the work. There were other problems, such as the integration of lazy character decoding and integration of tag name comparison using tag name hashes.</p>
-	<h5>Matching direction</h5>
+	<div class="flex anchor relative">
+		<h5 id="matching-direction">Matching direction</h5>
+		<a href="https://blog.cloudflare.com/#matching-direction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The main problem encountered was the need to backtrack all the open elements for matching. Browsers match selectors from right to left and traverse all ancestors of an element. This <a href="https://stackoverflow.com/a/5813672">StackOverflow</a> has a good explanation of why they do it this way. We would need to store information about all open elements and their attributes - something that we can’t do while operating with tight memory constraints. This matching approach would be inefficient for our case - unlike browsers, we expect to have just a few selectors and a lot of elements. In this case it is much more efficient to match selectors from left to right.</p>
 	<p>And this is when we had a revelation. Consider the following CSS selector:</p>
 	<pre class="language-css"><code class="language-css">body &gt; div.foo  img[alt] &gt; div.foo ul</code></pre>
@@ -148,7 +176,14 @@
 	<p>There is a very well known abstraction to express these relations - regular expressions. The selector replacing combinators can be replaced with a regular expression syntax:</p>
 	<pre class="language-perl"><code class="language-perl">ab.*cb.*d</code></pre>
 	<p>We transformed our CSS selector into a regular expression that can be executed on the sequence of start tag tokens. Note that not all CSS selectors can be converted to such a regular grammar and the input on which we match has some specifics, which we’ll discuss later. However, it was a good starting point: it allowed us to express a significant subset of selectors.</p>
-	<h5>Implementing a Virtual Machine</h5>
+	<div class="flex anchor relative">
+		<h5 id="implementing-a-virtual-machine">Implementing a Virtual Machine</h5>
+		<a href="https://blog.cloudflare.com/#implementing-a-virtual-machine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Next, we started looking at non-backtracking algorithms for regular expressions. The virtual machine approach seemed suitable for our task as it was possible to have a non-backtracking implementation that was flexible enough to work around differences between real regular expression matching on strings and our abstraction.</p>
 	<p>VM-based regular expression matching is implemented as one of the engines in many regular expression libraries such as regexp2 and Rust’s regex. The basic idea is that instead of building an NFA or DFA for a regular expression it is instead converted into DSL assembly language with instructions later executed by the virtual machine - regular expressions are treated as programs that accept strings for matching.</p>
 	<p>Since the VM program is just a representation of <a href="https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton#NFA_with_%CE%B5-moves">NFA with ε-transitions</a> it can exist in multiple states simultaneously during the execution, or, in other words, spawns multiple threads. The regular expression matches if one or more states succeed.</p>
@@ -222,7 +257,14 @@ L2: expect d
 	</figure>
 	<p>which instructs VM to jump to instruction at index 1, effectively rolling back to matching the <i>div</i> component of the selector.</p>
 	<p>We mentioned earlier that we can bail out from the matching process if we only have a tag name from the tag scanner and we need to obtain more information by running the lexer? With a VM approach it is as easy as stopping the execution of the current instruction and resuming it later when we get the required information.</p>
-	<h5>Duplicate selectors</h5>
+	<div class="flex anchor relative">
+		<h5 id="duplicate-selectors">Duplicate selectors</h5>
+		<a href="https://blog.cloudflare.com/#duplicate-selectors" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we need a separate program for each selector we need to match, how can we stop the same simple components doing the same job? The AST for our selector matching program is a <a href="https://en.wikipedia.org/wiki/Radix_tree">radix tree</a>-like structure whose edge labels are simple selector components and nodes are hierarchical combinators.For example for the following selectors:</p>
 	<pre class="language-css"><code class="language-css">body &gt; div &gt; link[rel]
 body &gt; span
@@ -234,7 +276,14 @@ body &gt; span a</code></pre>
 
 	</figure>
 	<p>If selectors have common prefixes we can match them just once for all these selectors. In the compilation process, we flatten this structure into a vector of instructions.</p>
-	<h5>[not] JIT-compilation</h5>
+	<div class="flex anchor relative">
+		<h5 id="not-jit-compilation">[not] JIT-compilation</h5>
+		<a href="https://blog.cloudflare.com/#not-jit-compilation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For performance reasons compiled instructions are macro-instructions - they incorporate multiple basic VM instruction calls. This way the VM can execute only one macro instruction per input token. Each of the macro instructions compiled using the so-called “<a href="https://blog.cloudflare.com/building-fast-interpreters-in-rust/#-not-jit-compilation">[not] JIT-compilation</a>” (the same approach to the compilation is used in our other Rust project - wirefilter).</p>
 	<p>Internally the macro instruction contains <code>expect</code> and following <code>jmp</code>, <code>hereditary_jmp</code> and <code>match</code> basic instructions. In that sense macro-instructions resemble <a href="https://en.wikipedia.org/wiki/Microcode">microcode</a> making it easy to suspend execution of a macro instruction if we need to request attributes information from the lexer.</p>
 	<div class="flex anchor relative">

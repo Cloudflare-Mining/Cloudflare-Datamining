@@ -104,9 +104,23 @@
 		</a>
 	</div>
 	<p>Fragments are entirely encapsulated, so they can control what they own and what they make available to other fragments.</p>
-	<h4><i>Fragments can be developed and deployed independently</i></h4>
+	<div class="flex anchor relative">
+		<h4 id="fragments-can-be-developed-and-deployed-independently"><i>Fragments can be developed and deployed independently</i></h4>
+		<a href="https://blog.cloudflare.com/#fragments-can-be-developed-and-deployed-independently" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Updating one of the fragments is as simple as redeploying that fragment. The next request to the main application will use the new fragment. Also, fragments can host their own assets (client-side JavaScript, images, etc.), which are streamed through their parent fragment to the browser.</p>
-	<h4><i>Server-only code is not sent to the browser</i></h4>
+	<div class="flex anchor relative">
+		<h4 id="server-only-code-is-not-sent-to-the-browser"><i>Server-only code is not sent to the browser</i></h4>
+		<a href="https://blog.cloudflare.com/#server-only-code-is-not-sent-to-the-browser" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As well as reducing the cost of downloading unnecessary code to the browser, security sensitive code that is only needed for server-side rendering the fragment is never exposed to other fragments and is not downloaded to the browser. Also, features can be safely hidden behind feature flags in a fragment, allowing more flexibility with rolling out new behavior safely.</p>
 	<div class="flex anchor relative">
 		<h3 id="composability">Composability</h3>

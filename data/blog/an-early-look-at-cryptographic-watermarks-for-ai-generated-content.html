@@ -104,7 +104,14 @@
 		</a>
 	</div>
 	<p><a href="https://en.wikipedia.org/wiki/Stable_Diffusion"><u>Stable Diffusion</u></a> is a model used for image generation that takes as input a tensor of normally distributed floating point numbers called a <b>latent</b>. The model uses the user's prompt to "denoise" the latent tensor over a number of iterations, then converts the final version of the latent to an image.</p>
-	<h4>Approximating the initial latent</h4>
+	<div class="flex anchor relative">
+		<h4 id="approximating-the-initial-latent">Approximating the initial latent</h4>
+		<a href="https://blog.cloudflare.com/#approximating-the-initial-latent" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Diffusion inversion is an iterative process that returns an exact or approximate initial latent by reversing the sampling process that generated an image. Inversion for text to image diffusion models is a relatively new area of research. A common application of diffusion inversion is <a href="https://arxiv.org/abs/2211.09794"><u>editing images by text prompts</u></a>.</p>
 	<p><a href="https://arxiv.org/abs/2010.02502"><u>Denoising Diffusion Implicit Models (DDIMs)</u></a> are iterative, implicit probabilistic models that can generate high quality images using a faster sampling process than other approaches, as it only requires a relatively small number of timesteps to generate a sample. This makes <a href="https://arxiv.org/abs/2211.09794"><u>DDIM Inversion</u></a> a popular inversion technique because it is computationally fast, as it requires only a few timesteps to return an approximate initial latent of a generated image. Despite its popularity, it has some known limitations and can be <a href="https://arxiv.org/abs/2312.12540v5"><u>problematic to use for tasks where exact image reproduction is required</u></a>. These limitations have led researchers to explore techniques that produce <a href="https://arxiv.org/abs/2311.18387"><u>exact initial latents</u></a>. However, since watermarks based on pseudorandom codes can tolerate errors, it's worth investigating whether DDIM Inversion suffices for our purposes.</p>
 	<p>Before we can generate an approximate initial latent, we need a generated image. To do this we use a pretrained Stable Diffusion model that uses a DDIM scheduler. The scheduler performs the “denoising” process that generates an image from a random noise seed (initial latent). By default, the pipeline computes random latents; when embedding a watermark we will generate this latent ourselves as described in the next section. The Stable Diffusion pipelines in the code snippets below sets the number of inference steps to 50. This parameter controls the number of steps the denoising process takes. 50 steps provides a nice balance between speed and image quality.</p>
@@ -141,7 +148,15 @@ image_latent = convert_pil_to_latents(pipe, img)
 # Invert the sampling process that generated the image with an empty prompt
 inverted_latent, _ = pipe('', output_type='latent', latents=image_latent,  
                           num_inference_steps=50, return_dict=False)</code></pre>
-	<h4>Embedding the code</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="embedding-the-code">Embedding the code</h4>
+		<a href="https://blog.cloudflare.com/#embedding-the-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The initial latent used for stable diffusion consists of a bunch of floating point numbers, each independently and <a href="https://en.wikipedia.org/wiki/Normal_distribution"><u>normally</u></a> distributed with a mean of zero.</p>
 	<p>The following observation is from a <a href="https://arxiv.org/pdf/2410.07369"><u>recent evaluation</u></a> of the watermark of Christ and Gunn for stable diffusion. (There they used a more sophisticated but expensive inversion method than DDIM.) Observe that the probability that each number is negative is equal to the probability that the number is positive. Likewise, if the code is indeed pseudorandom, then each bit of the codeword is computationally indistinguishable from a bit that is one with probability ½ and zero with probability ½.</p>
 	<p>To embed the codeword in the latent, we just set the sign of each number according to the corresponding bit of the codeword:</p>
@@ -206,7 +221,14 @@ with np.nditer(inverted_latent.cpu().numpy()) as it:
     if decode(k, inverted_codeword) == m:
          watermark_verified = True</code></pre>
 	<p>This should work in theory given the error-correcting properties of the code. But does it work in practice?</p>
-	<h4>Evaluation</h4>
+	<div class="flex anchor relative">
+		<h4 id="evaluation">Evaluation</h4>
+		<a href="https://blog.cloudflare.com/#evaluation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A good approximate initial latent is one that is very similar to the original latent that generated an image.&nbsp; Given our embedding of a codeword into the latent, we define similarity as latents that have a high percentage of overlapping or matching signs.</p>
 	<p>To get a feel for this difference, we can visualize it by comparing a generated image to the same image, but with the inverted latent (these images are unwatermarked):</p>
 	<figure class="kg-card kg-image-card">
@@ -227,7 +249,14 @@ with np.nditer(inverted_latent.cpu().numpy()) as it:
 	<p>One obvious idea to try is to compose a plain error-correcting code with some cryptographic primitive to make the code pseudorandom. For instance, we might use some standard authenticated encryption scheme, like <a href="https://datatracker.ietf.org/doc/html/rfc8452"><u>AES-GCM-SIV</u></a>, to encrypt <code>m</code>, then apply an error correcting code to the ciphertext. (The watermarking key would be the encryption key.) This "encrypt-then-encode" composition seems natural because encryption schemes are already designed so that their ciphertexts are pseudorandom. Unfortunately, error correcting codes are generally highly structured, and this structure would be betrayed by the codeword, even when applied to a (pseudo)random input.</p>
 	<p>The dual composition, "encode-then-encrypt", also doesn't work. If the ciphertext is non-malleable, as in AES-GCM-SIV, then we wouldn't be able to tolerate any number of bit flips. On the other hand, if the ciphertext were malleable, as in <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_(CTR)"><u>AES-CTR</u></a>, then the attacker would be able to forge codewords by manipulating a known codeword in a targeted manner.</p>
 	<p>The strategy of Christ-Gunn-2024 is to modify an existing error-correcting code to make it pseudorandom.</p>
-	<h4>Pseudorandom LDPC codes</h4>
+	<div class="flex anchor relative">
+		<h4 id="pseudorandom-ldpc-codes">Pseudorandom LDPC codes</h4>
+		<a href="https://blog.cloudflare.com/#pseudorandom-ldpc-codes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Their starting point is the widely used <a href="https://en.wikipedia.org/wiki/Low-density_parity-check_code"><u>Low-Density Parity-Check (LDPC) code</u></a>. This code is defined by a <b>parity check</b> matrix <code>P</code> with and a corresponding <b>generator</b> matrix <code>G</code>. The parity check matrix has bit entries and might look something like this:</p>
 	<pre class="language-Python"><code class="language-Python">import numpy as np
 P = np.matrix([[1, 0, 1],
@@ -242,12 +271,26 @@ P = np.matrix([[1, 0, 1],
 	<p>To get a feel for how things might go wrong, consider what happens if the attacker manages to guess one of the rows of the parity check matrix<code> P</code>. When we take the dot product of this row with a codeword, then the output will be 0 with high probability. (By definition, <code>c</code> is a codeword if the sum of the dot products of <code>c </code>with each row of <code>P</code> is small.) But if we take the dot product of this row with a random bit string, then we should expect to see 0 with probability roughly ½. This gives us a way of distinguishing codewords from random bit strings.</p>
 	<p>Guessing a row of <code>P</code> is easy if the matrix is too sparse. In the extreme case, if each row has only one bit set, then there are only <code>n</code> possible values for that row, where <code>n</code> is the number of columns of <code>P</code>. On the other hand, making <code>P</code> too dense will degrade the code's ability to detect bit flips.</p>
 	<p>Similarly, it may be easy to guess a row of <code>P</code> if the length of the codeword itself (<code>n</code>) is too small. Thus, in order for this code to be pseudorandom, it is necessary (but not sufficient) for the number of possible parity check matrices to be so large that exhaustively searching for <code>P</code> is not feasible. This can be done by increasing the size of the codeword or tolerating fewer bit flips.</p>
-	<h4>Pseudorandom codes from PRFs</h4>
+	<div class="flex anchor relative">
+		<h4 id="pseudorandom-codes-from-prfs">Pseudorandom codes from PRFs</h4>
+		<a href="https://blog.cloudflare.com/#pseudorandom-codes-from-prfs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another approach to constructing pseudorandom codes comes from <a href="https://eprint.iacr.org/2024/898"><u>a 2024 preprint</u></a> from Noah Golowich and Ankur Moitra. Their starting point is a common cryptographic primitive called a pseudorandom function (PRF). They require a PRF that takes as input a key <code>k</code>, a bit string <code>x</code> of length <code>m</code> and outputs a bit, denoted <code>F(k,m)</code>.</p>
 	<p>Suppose our codewords are <code>x</code><code><sub>1</sub></code>, ⁣<code>w</code><code><sub>1</sub></code><code>=F(k,x</code><code><sub>1</sub></code><code>)</code>, …,<code> x</code><code><sub>n</sub></code>,<code> w</code><code><sub>n</sub></code><code>=F(k,x</code><code><sub>n</sub></code><code>) </code>where <code>x</code><code><sub>1</sub></code>, …, <code>x</code><code><sub>n</sub></code> are random <code>m</code>-bit strings. (Notice that the codeword length is <code>(m+1)*n</code>.) To verify if a string is a codeword, we parse the codeword into <code>x</code><code><sub>1</sub></code>, <code>w</code><code><sub>1</sub></code>, …, <code>x</code><code><sub>n</sub></code>, <code>w</code><code><sub>n</sub></code><code> </code>and check if <code>w</code><code><sub>i</sub></code><code> = F(k,x</code><code><sub>i</sub></code><code>)</code> for all <code>i</code>. If the number of checks that pass is sufficiently high, then the string is likely a codeword.</p>
 	<p>It's easy to see that this code is pseudorandom if the output of <code>F</code> is pseudorandom. However, it's not very robust: to make the <code>i</code>-th check fail, we just need to flip a single bit, <code>w</code><code><sub>i</sub></code>. The attacker just needs to flip a sufficient number of these bits to cause verification to fail. To defeat this attack, the encoder permutes the bits of the codeword with a secret, random permutation. That way the attacker has to guess the position of a sufficient number of <code>w</code><code><sub>i</sub></code>s in the permuted bit string. (A bit more is required to make this scheme provably robust, but this is the idea.)</p>
 	<p>Note that the number of bit flips we can tolerate with this scheme depends significantly on the number of PRF checks. This in turn determines the length of the codeword, so we may only get a reasonable degree of robustness for longer codewords. Note that we can increase the number of PRF checks by decreasing the length <code>m</code> of the <code>x</code><code><sub>i</sub></code>s, but making these strings too short is detrimental for pseudorandomness. (What happens if we happen to randomly pick <code>x</code><code><sub>i</sub></code><code>==x</code><code><sub>j</sub></code><code> </code>for <code>i!=j</code>?)</p>
-	<h4>Are these schemes practical?</h4>
+	<div class="flex anchor relative">
+		<h4 id="are-these-schemes-practical">Are these schemes practical?</h4>
+		<a href="https://blog.cloudflare.com/#are-these-schemes-practical" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In our own experiments with Stable Diffusion, we were able to tune the LDPC code to tolerate up to 33% of the codeword bits being mangled, which is likely more than sufficient for robustness in practice. However, achieving this required making the parity check matrix so sparse that the code is not strongly pseudorandom. Thus, the resulting watermark cannot be considered cryptographically undetectable. Among the parameter sets for which the code is plausibly pseudorandom, we didn't find any for which the code tolerates more than 5% bit flips.</p>
 	<p>Our findings were similar for the PRF-based code: with plausibly pseudorandom parameters, we couldn't tune the code to tolerate more than 1% bit flips. Like the LDPC code, we can crank this higher by sacrificing pseudorandomness, but we weren't able to crack 5% with any parameters we tried.</p>
 	<p>There are a few ways to think about this.</p>

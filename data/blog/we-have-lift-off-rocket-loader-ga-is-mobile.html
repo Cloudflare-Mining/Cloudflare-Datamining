@@ -50,7 +50,14 @@
 
 	</figure>
 	<p>Try running a lighthouse audit on your website and see what opportunities you get.</p>
-	<h4>The march of the scripts</h4>
+	<div class="flex anchor relative">
+		<h4 id="the-march-of-the-scripts">The march of the scripts</h4>
+		<a href="https://blog.cloudflare.com/#the-march-of-the-scripts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now is a good time to quantify the spread of JavaScript on the web. Using the excellent <a href="https://httparchive.org">HTTP Archive</a> project we can review the make up of the Alexa top 500k websites over the years. Using <a href="https://httparchive.org/reports/state-of-javascript?start=2011_06_01&amp;end=2018_05_01">their data</a>, we can see that the median number of JavaScripts on mobile has increased from 5, at Rocket Loader’s launch in June 2011, increasing nearly four fold to a whopping 19 JavaScripts in May 2018. So most of us have plenty of JavaScript on our websites and there’s a good chance it will be very high on the list of performance opportunities you can seize to improve your visitors’ experience.</p>
 	<p>Implementing this recommendation would require you to make changes to your origin application’s code to asynchronously load, defer or inline your scripts. In some cases this might not be possible because you don’t control your application’s code or have the expertise to implement these strategies. Rocket Loader to the rescue!</p>
 	<div class="flex anchor relative">
@@ -74,7 +81,14 @@
 
 	</figure>
 	<p>New Rocket Loader prioritises paint time by locating the JavaScripts inside your HTML page and hiding them from the browser temporarily during the page load. This allows the browser to continue parsing the rest of your HTML and begin discovering other assets such as CSS &amp; images that are required to render your page. Once that has completed, Rocket Loader dynamically inserts the scripts back into the page and so the browser can load these.</p>
-	<h4>Enabling Rocket Loader</h4>
+	<div class="flex anchor relative">
+		<h4 id="enabling-rocket-loader">Enabling Rocket Loader</h4>
+		<a href="https://blog.cloudflare.com/#enabling-rocket-loader" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This bit is quite labour-intensive, so watch closely:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -102,7 +116,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/48gHKjbXHuGJ4m2pn1yOBx/85ebab62116894cf848d044d1999344f/Lighthouse-performance-audit-with-Rocket-Loader.png" alt="Lighthouse performance audit with Rocket Loader" class="kg-image" width="818" height="109" loading="lazy">
 
 	</figure>
-	<h4>Let’s get Real (User Measurement)</h4>
+	<div class="flex anchor relative">
+		<h4 id="lets-get-real-user-measurement">Let’s get Real (User Measurement)</h4>
+		<a href="https://blog.cloudflare.com/#lets-get-real-user-measurement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To measure this with real users &amp; devices, last week we ran a simple A/B test on <a href="https://www.cloudflare.com">www.cloudflare.com</a> where 50% of page views were optimised using Rocket Loader so we could compare performance with and without it enabled. As shown by the lighthouse audits above, our main website is a great use-case for Rocket Loader because while we do use a lot of JavaScript for some interactive aspects of our pages, most important to our visitors is reading information about Cloudflare’s network, products &amp; features. So in short, content should be prioritised over JavaScript.</p>
 	<p>To illustrate the changes we observed, below is a graph of the Time To First Contentful Paint (TTFCP) for <a href="https://www.cloudflare.com">www.cloudflare.com</a> visits by real users during our test. TTFCP measures the first time something in the Document Object Model (DOM) is painted on the page. For websites that are primarily for consumption of content rather than heavy interactions, this is a closer representation of a user’s perception of your website speed than measuring load time.</p>
 	<figure class="kg-card kg-image-card ">
@@ -137,12 +158,33 @@
 			<p>Compliant with stricter Content Security Policies (CSP)</p>
 		</li>
 	</ul>
-	<h4>More mobile users now get optimised</h4>
+	<div class="flex anchor relative">
+		<h4 id="more-mobile-users-now-get-optimised">More mobile users now get optimised</h4>
+		<a href="https://blog.cloudflare.com/#more-mobile-users-now-get-optimised" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve already predicted that by the end of 2018 mobile usage will reach 60%. Additionally as of July 2018 Google will begin using page speed in <a href="https://webmasters.googleblog.com/2018/01/using-page-speed-in-mobile-search.html">mobile search ranking</a>. With that in mind providing a fast experience for mobile devices is more important than ever.</p>
 	<p>Rocket Loader beta was first launched back in 2012 at a time when mobile device usage on the web was around 15%. That version of Rocket Loader intercepted JavaScript on the page, and executed it in a virtual sandbox: a world familiar, but with behavior changed behind the scenes. Unfortunately, the technique we chose to create this virtual sandbox didn't work well on all mobile browsers. That was considered an undesirable but acceptable trade off 6 years ago, but today it’s vital customers can leverage this technique on mobile. Thanks to the reduced complexity of our approach, new Rocket Loader works on over 93%<a href="https://blog.cloudflare.com/#fn1">[1:1]</a> of mobile devices in use today. For those devices that are not compatible, we simply deliver the website normally without this optimisation.</p>
-	<h4>Leaner &amp; Meaner</h4>
+	<div class="flex anchor relative">
+		<h4 id="leaner-meaner">Leaner &amp; Meaner</h4>
+		<a href="https://blog.cloudflare.com/#leaner-meaner" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>New Rocket Loader’s JS weighs in at a lightweight 2.3KB. We did some <a href="https://blog.cloudflare.com/making-page-load-even-faster">extensive refactoring</a> during 2017 that reduced the size of the JS required to run Rocket Loader from 47KB to 32KB and saved a staggering 213 terabytes of transfer across the globe. Due to the simplicity of the way New Rocket Loader works rocket-loader.min.js resulting in a JS file that is less than 10% of the size, saving approximately another 417 Terabytes of transfer each year when Rocket Loader does its thing.<a href="https://blog.cloudflare.com/#fn2">[2]</a></p>
-	<h4>Compatibility with Content Security Policy</h4>
+	<div class="flex anchor relative">
+		<h4 id="compatibility-with-content-security-policy">Compatibility with Content Security Policy</h4>
+		<a href="https://blog.cloudflare.com/#compatibility-with-content-security-policy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>New Rocket Loader does not modify the content of your JavaScript, it only changes the time at which it is loaded which means it plays nicely with any Content Security Policy (CSP) you have defined. With Rocket Loader beta, if you wanted to set a CSP that only allowed execution scripts hosted on your domain you would need to disable Rocket Loader as that would also combine &amp; load external JavaScripts through your domain. New Rocket Loader does not use this approach and instead lets the browser load &amp; cache the files normally. As we also enable HTTP/2 for all of our customers, any first party scripts will load over a single TCP connection, and 3rd party scripts are still asynchronously loaded meaning we can optimise their loading without proxying this content. All of this means modifying your CSP to accommodate Rocket Loader is as simple as allowing <code>script-src</code> for <code>https://ajax.cloudflare.com</code> so that Rocket Loader itself can load.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-can-i-enable-new-rocket-loader">How can I enable new Rocket Loader?</h3>

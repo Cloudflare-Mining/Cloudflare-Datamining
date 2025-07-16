@@ -31,7 +31,14 @@
 			<p>Fully automated generators which, provided with a grammar, can generate a fully working parser for you (examples are <a href="https://github.com/kevinmehall/rust-peg">peg</a>, <a href="https://github.com/pest-parser/pest">pest</a>, <a href="https://github.com/lalrpop/lalrpop">LALRPOP</a>, etc.).</p>
 		</li>
 	</ol>
-	<h4>Wireshark syntax</h4>
+	<div class="flex anchor relative">
+		<h4 id="wireshark-syntax">Wireshark syntax</h4>
+		<a href="https://blog.cloudflare.com/#wireshark-syntax" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>But before trying to figure out which approach would work best for us, let’s take a look at some of the simple <a href="https://wiki.wireshark.org/DisplayFilters">official Wireshark examples</a>, to understand what we’re dealing with:</p>
 	<ul>
 		<li>
@@ -89,7 +96,14 @@
 		</li>
 	</ul>
 	<p>We could also do the same with ethernet address, defined as a separate type in Wireshark, but, for simplicity, we represent it as a regular byte sequence in our implementation, so there is no ambiguity here.</p>
-	<h4>Choosing a parsing approach</h4>
+	<div class="flex anchor relative">
+		<h4 id="choosing-a-parsing-approach">Choosing a parsing approach</h4>
+		<a href="https://blog.cloudflare.com/#choosing-a-parsing-approach" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is an interesting syntax design decision. It means that we need to store a mapping between field names and types ahead of time - a Scheme, as we call it - and use it for contextual parsing. This restriction also immediately rules out many if not most parser generators.</p>
 	<p>We could still use one of the more sophisticated ones (like LALRPOP) that allow replacing the default regex-based lexer with your own custom code, but at that point we’re so close to having a full parser for our DSL that the complexity outweighs any benefits of using a black-box parser generator.</p>
 	<p>Instead, we went with a manual parsing approach. While (for a good reason) this might sound scary in unsafe languages like C / C++, in Rust all strings are bounds checked by default. Rust also provides a rich string manipulation API, which we can use to build more complex helpers, eventually ending up with a full parser.</p>
@@ -147,7 +161,14 @@ let input = expect(input, ")")?;</code></pre>
 	<p>The <code>ExecutionContext</code> is pretty similar to a <code>Scheme</code>, but instead of mapping arbitrary field names to their types, it maps them to the runtime input values provided by the caller.</p>
 	<p>As with <code>Scheme</code>, initially <code>ExecutionContext</code> used an internal <code>HashMap</code> for registering these arbitrary <code>String</code> -&gt; <code>RhsValue</code> mappings. During the <code>execute</code> call, the AST implementation would evaluate itself recursively, and look up each field reference in this map, either returning a value or raising an error on missing slots and type mismatches.</p>
 	<p>This worked well enough for an initial implementation, but using a <code>HashMap</code> has a non-trivial cost which we would like to eliminate. We already used a more efficient hasher - <code>[Fnv](https://github.com/servo/rust-fnv)</code> - because we are in control of all keys and so are not worried about hash DoS attacks, but there was still more we could do.</p>
-	<h4>Speeding up field access</h4>
+	<div class="flex anchor relative">
+		<h4 id="speeding-up-field-access">Speeding up field access</h4>
+		<a href="https://blog.cloudflare.com/#speeding-up-field-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If we look at the data structures involved, we can see that the scheme is always well-defined in advance, and all our runtime values in the execution engine are expected to eventually match it, even if the order or a precise set of fields is not guaranteed:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -193,7 +214,14 @@ test parsing  ... bench:     192,037 ns/iter (+/- 21,538)</code></pre>
 	<pre class="language-bash"><code class="language-bash">test matching ... bench:       1,227 ns/iter (+/- 29)
 test parsing  ... bench:     197,574 ns/iter (+/- 16,568)</code></pre>
 	<p>This change also improved the usability of our API, as any type errors are now detected and reported much earlier, when the values are just being set on the context, and not delayed until filter execution.</p>
-	<h4>[not] JIT compilation</h4>
+	<div class="flex anchor relative">
+		<h4 id="not-jit-compilation">[not] JIT compilation</h4>
+		<a href="https://blog.cloudflare.com/#not-jit-compilation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Of course, as with any respectable DSL, one of the other ideas we had from the beginning was “...at some point we’ll add native compilation to make everything super-fast, it’s just a matter of time...”.</p>
 	<p>In practice, however, native compilation is a complicated matter, but not due to lack of tools.</p>
 	<p>First of all, there is question of storage for the native code. We could compile each filter statically into some sort of a library and publish to a key-value store, but that would not be easy to maintain:</p>
@@ -219,7 +247,14 @@ test parsing  ... bench:     197,574 ns/iter (+/- 16,568)</code></pre>
 	<p>With JIT compilers though, it’s different as you’re now compiling things the moment they’re used and cache the native code only for a limited time. Turns out, generating native code can be rather expensive, so you must be absolutely sure that the compilation cost doesn’t offset any benefits you might gain from the native execution speedup.</p>
 	<p>I’ve talked a bit more about this at <a href="https://www.meetup.com/rust-atx">Rust Austin meetup</a> and, I believe, this topic deserves a separate blog post so won’t go into much more details here, but feel free to check out the slides: <a href="https://www.slideshare.net/RReverser/building-fast-interpreters-in-rust">https://www.slideshare.net/RReverser/building-fast-interpreters-in-rust</a>. Oh, and if you’re in Austin, you should pop into our office for the next meetup!</p>
 	<p>Let’s get back to our original question: is there anything else we can do to get the best balance between security, runtime performance and compilation cost? Turns out, there is.</p>
-	<h4>Dynamic dispatch and closures to the rescue</h4>
+	<div class="flex anchor relative">
+		<h4 id="dynamic-dispatch-and-closures-to-the-rescue">Dynamic dispatch and closures to the rescue</h4>
+		<a href="https://blog.cloudflare.com/#dynamic-dispatch-and-closures-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Introducing <code>Fn</code> trait!</p>
 	<p>In Rust, the <code>Fn</code> trait and friends (<code>FnMut</code>, <code>FnOnce</code>) are automatically implemented on eligible functions and closures. In case of a simple <code>Fn</code> case the restriction is that they must not modify their captured environment and can only borrow from it.</p>
 	<p>Normally, you would want to use it in generic contexts to support arbitrary callbacks with given argument and return types. This is important because in Rust, each function and closure implements a unique type and any generic usage would compile down to a specific call just to that function.</p>

@@ -469,7 +469,14 @@ class TerraformRunner extends DurableObject {
 	<p>Comparing containers and functions services on paper is always going to be an apples to oranges exercise, and results can vary so much depending on use case. But to share a real example of our own, a year ago when Cloudflare acquired Baselime, Baselime was a heavy user of AWS Lambda. By moving to Cloudflare, <a href="https://blog.cloudflare.com/80-percent-lower-cloud-cost-how-baselime-moved-from-aws-to-cloudflare"><u>they lowered their cloud compute bill by 80%</u></a>.</p>
 	<p>Below we wanted to share one representative example that compares costs for an application that uses both containers and serverless functions together. It’d be easy for us to come up with a contrived example that uses containers sub-optimally on another platform, for the wrong types of workloads. We won’t do that here. We know that navigating cloud costs can be challenging, and that cost is a critical part of deciding what type of compute to use for which pieces of your application.</p>
 	<p>In the example below, we’ll compare Cloudflare Containers + Workers against Google Cloud Run, a very well-regarded container platform that we’ve been impressed by.</p>
-	<h4>Example application</h4>
+	<div class="flex anchor relative">
+		<h4 id="example-application">Example application</h4>
+		<a href="https://blog.cloudflare.com/#example-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Imagine that you run an application that serves 50 million requests per month, and each request consumes an average 500 ms of wall-time. Requests to this application are not all the same though — half the requests require a container, and the other half can be served just using serverless functions.</p>
 	<table>
 		<tbody>
@@ -526,7 +533,14 @@ class TerraformRunner extends DurableObject {
 			</tr>
 		</tbody>
 	</table>
-	<h4>Container pricing</h4>
+	<div class="flex anchor relative">
+		<h4 id="container-pricing">Container pricing</h4>
+		<a href="https://blog.cloudflare.com/#container-pricing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On both Cloud Run and Cloudflare Containers, a container can serve multiple requests. On some platforms, such as AWS Lambda, each container instance is limited to a single request, pushing cost up significantly as request count grows. In this scenario, 50 requests can run simultaneously on a container with 4 GB memory and half of a vCPU. This means that to serve 25 million requests of 500ms each, we need 625,000 seconds worth of compute</p>
 	<p>In this example, traffic is bursty and we want to avoid paying for idle-time, so we’ll use Cloud Run’s request-based pricing.</p>
 	<table>
@@ -587,7 +601,14 @@ class TerraformRunner extends DurableObject {
 	</table>
 	<p><sup><i>* Comparison does not include free tiers for either provider and uses a single Tier 1 GCP region</i></sup></p>
 	<p>Compute pricing for both platforms are comparable. But as we showed earlier in this post, Containers on Cloudflare run anywhere, on-demand, without configuring and managing regions. Each container has a programmable sidecar with its own database, backed by Durable Objects. It’s the depth of integration with the rest of the platform that makes containers on Cloudflare uniquely programmable.</p>
-	<h4>Function pricing</h4>
+	<div class="flex anchor relative">
+		<h4 id="function-pricing">Function pricing</h4>
+		<a href="https://blog.cloudflare.com/#function-pricing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The other requests can be served with less compute, and code written in <a href="https://developers.cloudflare.com/workers/languages/javascript"><u>JavaScript</u></a>, <a href="https://developers.cloudflare.com/workers/languages/typescript"><u>TypeScript</u></a>, <a href="https://developers.cloudflare.com/workers/languages/python"><u>Python</u></a> or <a href="https://developers.cloudflare.com/workers/languages/rust"><u>Rust</u></a>, so we’ll use Workers and Cloud Run Functions.</p>
 	<p>These 25 million requests also run for 500 ms each, and each request spends 480 ms waiting on I/O. This means that Workers will <a href="https://blog.cloudflare.com/workers-pricing-scale-to-zero"><u>only charge for 20 ms of “CPU-time”</u></a>, the time that the Worker actually spends using compute. This ratio of low CPU time to high wall time is extremely common when building AI apps that make inference requests, or even when just building REST APIs and other business logic. Most time is spent waiting on I/O. Based on our data, we typically see Workers use less than 5 ms of CPU time per request vs seconds of wall time (waiting on APIs or I/O).</p>
 	<p>The Cloud Run Function will use an instance with 0.083 vCPU and 128 MB memory and charge on both CPU-s and GiB-s for the full 500 ms of wall-time.</p>
@@ -641,7 +662,14 @@ class TerraformRunner extends DurableObject {
 	<p><sup><i>* Comparison does not include free tiers and uses a single Tier 1 GCP region.</i></sup></p>
 	<p>This comparison assumes you have configured Google Cloud Run Functions with a max of 20 concurrent requests per instance. On Google Cloud Run Functions, the maximum number of concurrent requests an instance can handle varies based on the efficiency of your function, and your own tolerance for tail latency that can be introduced by traffic spikes.&nbsp;</p>
 	<p>Workers automatically scale horizontally, don’t require you to configure concurrency settings (and hope to get it right), and can run in <a href="https://www.cloudflare.com/en-gb/network"><u>over 300 locations</u></a>.</p>
-	<h4>A holistic view of costs</h4>
+	<div class="flex anchor relative">
+		<h4 id="a-holistic-view-of-costs">A holistic view of costs</h4>
+		<a href="https://blog.cloudflare.com/#a-holistic-view-of-costs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The most important cost metric is the total cost of developing and running an application. And the only way to get the best results is to use the right compute for the job. So the question boils down to friction and integration. How easily can you integrate the ideal building blocks together?</p>
 	<p>As more and more software makes use of <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai">generative AI</a>, and makes inference requests to LLMs, modern applications must communicate and integrate with a myriad of services. Most systems are increasingly real-time and chatty, often holding open long-lived connections, performing tasks in parallel. Running an instance of an application in a VM or container and calling it a day might have worked 10 years ago, but when we talk to developers in 2025, they are most often bringing many forms of compute to the table for particular use cases.</p>
 	<p>This shows the importance of picking a platform where you can seamlessly shift traffic from one source of compute to another. If you want to <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit"><u>rate-limit</u></a>, <a href="https://blog.cloudflare.com/full-stack-development-on-cloudflare-workers"><u>serve server-side rendered pages, API responses and static assets</u></a>, handle authentication and authorization, make<a href="https://developers.cloudflare.com/workers-ai"><u> inference requests to AI models</u></a>, run core business logic via <a href="https://blog.cloudflare.com/workflows-ga-production-ready-durable-execution"><u>Workflows</u></a>, or <a href="https://blog.cloudflare.com/cloudflare-acquires-arroyo-pipelines-streaming-ingestion-beta"><u>ingest streaming data</u></a>, just handle the request in Workers. Save the heavier compute only for where it is actually the only option. With Cloudflare Workers and Containers, this is as simple as an if-else statement in your Worker. This makes it easy to pick the right tool for the job.</p>

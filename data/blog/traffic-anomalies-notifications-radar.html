@@ -75,7 +75,14 @@
 		</a>
 	</div>
 	<p>Timely knowledge about Internet “events”, such as drops in traffic or routing issues, are potentially of interest to multiple audiences. Customer service or help desk agents can use the information to help diagnose customer/user complaints about application performance or availability. Similarly, network administrators can use the information to better understand the state of the Internet outside their network. And civil society organizations can use the information to inform action plans aimed at maintaining communications and protecting human rights in areas of conflict or instability. With the new notifications functionality also being launched today, you can subscribe to be notified about observed traffic anomalies, confirmed Internet outages, route leaks, or route hijacks, at a country or autonomous system level. In the following sections, we discuss how to subscribe to and configure notifications, as well as the information contained within the various types of notifications.</p>
-	<h4>Subscribing to notifications</h4>
+	<div class="flex anchor relative">
+		<h4 id="subscribing-to-notifications">Subscribing to notifications</h4>
+		<a href="https://blog.cloudflare.com/#subscribing-to-notifications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Note that you need to log in to the <a href="https://dash.cloudflare.com">Cloudflare dashboard</a> to subscribe to and configure notifications. No purchase of Cloudflare services is necessary — just a verified email address is required to set up an account. While we would have preferred to not require a login, it enables us to take advantage of Cloudflare’s existing notifications engine, allowing us to avoid having to dedicate time and resources to building a separate one just for Radar. If you don’t already have a Cloudflare account, visit <a href="https://dash.cloudflare.com/sign-up">https://dash.cloudflare.com/sign-up</a> to create one. Enter your username and a unique strong password, click “Sign Up”, and follow the instructions in the verification email to activate your account. (Once you’ve activated your account, we also suggest activating <a href="https://www.cloudflare.com/learning/access-management/what-is-two-factor-authentication">two-factor authentication (2FA)</a> as an additional security measure.)</p>
 	<p>Once you have set up and activated your account, you are ready to start creating and configuring notifications. The first step is to look for the Notifications (bullhorn) icon – the presence of this icon means that notifications are available for that metric — in the Traffic, Routing, and Outage Center sections on Cloudflare Radar. If you are on a country or ASN-scoped traffic or routing page, the notification subscription will be scoped to that entity.</p>
 	<figure class="kg-card kg-image-card ">
@@ -155,7 +162,14 @@
 
 	</figure>
 	<p>It is worth mentioning that advanced users can also create and configure notifications through the <a href="https://developers.cloudflare.com/api/operations/notification-policies-create-a-notification-policy">Cloudflare API Notification policies endpoint</a>, but we will not review that process within this blog post.</p>
-	<h4>Notification messages</h4>
+	<div class="flex anchor relative">
+		<h4 id="notification-messages">Notification messages</h4>
+		<a href="https://blog.cloudflare.com/#notification-messages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Example notification email messages are shown below for the various types of events. Each contains key information like the type of event, affected entities, and start time — additional relevant information is included depending on the event type. Each email includes both plaintext and HTML versions to accommodate multiple types of email clients. (Final production emails may vary slightly from those shown below.)</p>
 	<figure class="kg-card kg-image-card ">
 

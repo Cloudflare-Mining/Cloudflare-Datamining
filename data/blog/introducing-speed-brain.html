@@ -35,15 +35,43 @@
 	</div>
 	<p>We know what you’re thinking. We’ve had prefetching for years. There have even been several speculative prefetching efforts in the past. You’ve heard this all before. How is this different now?</p>
 	<p>You’re right, of course. Over the years, there has been a constant effort by developers and browser vendors to optimize page load times and enhance user experience across the web. Numerous techniques have been developed, spanning various layers of the Internet stack — from optimizing network layer connectivity to preloading application content closer to the client.</p>
-	<h4>Early prefetching: lack of data and flexibility</h4>
+	<div class="flex anchor relative">
+		<h4 id="early-prefetching-lack-of-data-and-flexibility">Early prefetching: lack of data and flexibility</h4>
+		<a href="https://blog.cloudflare.com/#early-prefetching-lack-of-data-and-flexibility" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Web prefetching has been one such technique that has existed for more than a decade. It is based on the assumption that certain subresources are likely to be needed in the near future, so why not fetch them proactively? This could include anything from HTML pages to images, stylesheets, or scripts that the user might need as they navigate through a website. In fact, the core concept of speculative execution is not new, as it's a general technique that's been employed in various areas of computer science for years, with <a href="https://en.wikipedia.org/wiki/Branch_predictor"><u>branch prediction</u></a> in CPUs as a prime example.</p>
 	<p>In the early days of the web, several custom prefetching solutions emerged to enhance performance. For example, in 2005, Google introduced the <a href="https://google.fandom.com/wiki/Google_Web_Accelerator"><u>Google Web Accelerator</u></a>, a client-side application aimed at speeding up browsing for broadband users. Though innovative, the project was short-lived due to privacy and compatibility issues (we will describe how Speed Brain is different below). Predictive prefetching at that time lacked the data insights and API support for capturing user behavior, especially those handling sensitive actions like deletions or purchases.</p>
-	<h4>Static lists and manual effort</h4>
+	<div class="flex anchor relative">
+		<h4 id="static-lists-and-manual-effort">Static lists and manual effort</h4>
+		<a href="https://blog.cloudflare.com/#static-lists-and-manual-effort" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Traditionally, prefetching has been accomplished through the use of the <code>&lt;link rel="prefetch"&gt;</code> attribute as one of the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/prefetch"><u>Resource Hints</u></a>. Developers had to manually specify the attribute on each page for each resource they wanted the browser to preemptively fetch and cache in memory. This manual effort has not only been laborious but developers often lacked insight into what resources should be prefetched, which reduced the quality of their specified hints.</p>
 	<p>In a similar vein, <a href="https://developers.cloudflare.com/speed/optimization/content/prefetch-urls"><u>Cloudflare has offered a URL prefetching feature since 2015</u></a>. Instead of prefetching in browser cache, Cloudflare allows customers to prefetch a static list of resources into the CDN cache. The feature allows prefetching resources in advance of when they are actually needed, usually during idle time or when network conditions are favorable. However, similar concerns apply for CDN prefetching, since customers have to manually decide on what resources are good candidates for prefetching for each page they own. If misconfigured, static link prefetching can be a <a href="https://en.wiktionary.org/wiki/footgun"><u>footgun</u></a>, causing the web page load time to actually slow down.</p>
-	<h4>Server Push and its struggles</h4>
+	<div class="flex anchor relative">
+		<h4 id="server-push-and-its-struggles">Server Push and its struggles</h4>
+		<a href="https://blog.cloudflare.com/#server-push-and-its-struggles" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://datatracker.ietf.org/doc/html/rfc9113#name-server-push"><u>HTTP/2’s "server push"</u></a> was another attempt to improve web performance by pushing resources to the client before they were requested. In theory, this would reduce latency by eliminating the need for additional round trips for future assets. However, the server-centric dictatorial nature of "pushing" resources to the client raised significant challenges, primarily due to lack of context about what was already cached in the browser. This not only wasted bandwidth but had the potential to slow down the delivery of critical resources, like base HTML and CSS, due to race conditions on browser fetches when rendering the page. The <a href="https://datatracker.ietf.org/doc/html/draft-kazuho-h2-cache-digest-01"><u>proposed solution of cache digests</u></a>, which would have informed servers about client cache contents, never gained widespread implementation, leaving servers to push resources blindly. <a href="https://developer.chrome.com/blog/removing-push"><u>In October 2022, Google Chrome removed Server Push support</u></a>, and in September 2024, <a href="https://groups.google.com/a/mozilla.org/g/dev-platform/c/vU9hJg343U8/m/4cZsHz7TAQAJ"><u>Firefox followed suit</u></a>.</p>
-	<h4>A step forward with Early Hints</h4>
+	<div class="flex anchor relative">
+		<h4 id="a-step-forward-with-early-hints">A step forward with Early Hints</h4>
+		<a href="https://blog.cloudflare.com/#a-step-forward-with-early-hints" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a successor, <a href="https://datatracker.ietf.org/doc/html/rfc8297"><u>Early Hints</u></a> was specified in 2017 but not widely adopted until 2022, when <a href="https://blog.cloudflare.com/early-hints"><u>we partnered with browsers and key customers to deploy it</u></a>. It offers a more efficient alternative by "hinting" to clients which resources to load, allowing better prioritization based on what the browser needs. Specifically, the server sends a 103 Early Hints HTTP status code with a list of key page assets that the browser should start loading while the main response is still being prepared. This gives the browser a head start in fetching essential resources and avoids redundant preloading if assets are already cached. Although Early Hints doesn't adapt to user behaviors or dynamic page conditions (yet), its use is primarily limited to preloading specific assets rather than full web pages — in particular, cases where there is a long server “think time” to produce HTML.</p>
 	<p>As the web evolves, tools that can handle complex, dynamic user interactions will become increasingly important to balance the performance gains of speculative execution with its potential drawbacks for end-users. For years Cloudflare has offered performance-based solutions that adapt to user behavior and work to balance the speed and correctness decisions across the Internet like <a href="https://www.cloudflare.com/application-services/products/argo-smart-routing"><u>Argo Smart Routing</u></a>, <a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation"><u>Smart Tiered Cache</u></a>, and <a href="https://developers.cloudflare.com/workers/configuration/smart-placement"><u>Smart Placement</u></a>. Today we take another step forward toward an adaptable framework for serving content lightning-fast.&nbsp;</p>
 	<div class="flex anchor relative">
@@ -60,9 +88,23 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Fu2ADDum0Pp9e5kq94Jd4/3eba0ffc4d94c42af67d4e9c1c708a29/BLOG-2422_3.png" alt="BLOG-2422 3" class="kg-image" width="1999" height="756" loading="lazy">
 	</figure>
 	<p>The idea seems simple enough, but <a href="https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API#unsafe_prefetching"><u>prefetching comes with challenges</u></a>, as some prefetched content may never end up being used. With the initial release of Speed Brain, we have designed a solution with guardrails that addresses two important but distinct issues that limited previous speculation efforts — <i>stale prefetch configuration</i> and <i>incorrect prefetching. </i>The Speculation Rules API configuration we have chosen for this initial release has been carefully designed to balance safety of prefetching while still maintaining broad applicability of rules for the entire site.</p>
-	<h4>Stale prefetch configuration</h4>
+	<div class="flex anchor relative">
+		<h4 id="stale-prefetch-configuration">Stale prefetch configuration</h4>
+		<a href="https://blog.cloudflare.com/#stale-prefetch-configuration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As websites inevitably change over time, static prefetch configurations often become outdated, leading to inefficient or ineffective prefetching. This has been especially true for techniques like the rel=prefetch attribute or static CDN prefetching URL sets, which have required developers to manually maintain relevant prefetchable URL lists for each page of their website. Most static prefetch lists are based on developer intuition rather than real user navigation data, potentially missing important prefetch opportunities or wasting resources on unnecessary prefetches.&nbsp;</p>
-	<h4>Incorrect prefetching</h4>
+	<div class="flex anchor relative">
+		<h4 id="incorrect-prefetching">Incorrect prefetching</h4>
+		<a href="https://blog.cloudflare.com/#incorrect-prefetching" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since prefetch requests are just like normal requests except with a `sec-purpose` HTTP request header, they incur the same overhead on the client, network, and server. However, the crucial difference is that prefetch requests anticipate user behavior and the response might not end up being used, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API#unsafe_prefetching"><u>so all that overhead might be wasted</u></a>. This makes prefetch accuracy extremely important — that is, maximizing the percentage of prefetched pages that end up being viewed by the user. Incorrect prefetching can lead to inefficiencies and unneeded costs, such as caching resources that aren't requested, or wasting bandwidth and network resources, which is especially critical on metered mobile networks or in low-bandwidth environments.</p>
 	<div class="flex anchor relative">
 		<h3 id="guardrails">Guardrails</h3>
@@ -85,11 +127,26 @@
   }]
 }
 </code></pre>
-	<h5>
-		Document Rules</h5>
+
+	<div class="flex anchor relative">
+		<h5 id="document-rules">
+			Document Rules</h5>
+		<a href="https://blog.cloudflare.com/#document-rules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://developer.chrome.com/blog/speculation-rules-improvements"><u>Document Rules</u></a>, indicated by "source": "document" and the "where" key in the configuration, allows prefetching to be applied dynamically over the entire web page. This eliminates the need for a predefined static URL list for prefetching. Hence, we remove the problem of <i>stale prefetch configuration</i> as prefetch candidate links are determined based on the active page structure.</p>
 	<p>Our use of "relative_to": "document" in the where clause instructs the browser to limit prefetching to same-site links. This has the added bonus of allowing our implementation to avoid cross-origin prefetches to avoid any privacy implications for users, as it doesn’t follow them around the web.&nbsp;</p>
-	<h5>Eagerness</h5>
+	<div class="flex anchor relative">
+		<h5 id="eagerness">Eagerness</h5>
+		<a href="https://blog.cloudflare.com/#eagerness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://developer.chrome.com/docs/web-platform/prerender-pages#eagerness"><u>Eagerness</u></a> controls how aggressively the browser prefetches content. There are four possible settings:</p>
 	<ul>
 		<li>

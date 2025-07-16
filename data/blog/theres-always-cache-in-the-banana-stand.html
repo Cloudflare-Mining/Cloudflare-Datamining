@@ -20,15 +20,43 @@
 	<p><i>1) the origin should give the best instructions it can on when to treat content as stale.</i></p>
 	<p><i>2) the origin can tell the edge when it has made a change to content that makes content stale.</i></p>
 	<p>Cache-Control headers allow servers and administrators to give explicit instructions to the edge on how to handle content.</p>
-	<h4>Challenges of Storing Ephemeral Content (or: No Stale Bananas)</h4>
+	<div class="flex anchor relative">
+		<h4 id="challenges-of-storing-ephemeral-content-or-no-stale-bananas">Challenges of Storing Ephemeral Content (or: No Stale Bananas)</h4>
+		<a href="https://blog.cloudflare.com/#challenges-of-storing-ephemeral-content-or-no-stale-bananas" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When using an edge cache like Cloudflare in-between your origin and visitors, the origin server no longer has direct control over the cached assets being served. Internet standards allow for the origin to emit Cache-Control headers with each response it serves. These headers give intermediate and browser caches fine-grained instruction over how content should be cached.</p>
 	<p>The current RFC covering these directives (and HTTP caching in general) is <a href="https://tools.ietf.org/html/rfc7234">RFC 7234</a>. It’s worth a skim if you’re into this kind of stuff. The relevant section on Response Cache-Control is laid out in <a href="https://tools.ietf.org/html/rfc7234#section-5.2.2">section 5.2.2</a> of that document. In addition, some interesting extensions to the core directives were defined in <a href="https://tools.ietf.org/html/rfc5861">RFC 5861</a>, covering how caches should behave when origins are unreachable or in the process of being revalidated against.</p>
-	<h4>To put this in terms of bananas:</h4>
+	<div class="flex anchor relative">
+		<h4 id="to-put-this-in-terms-of-bananas">To put this in terms of bananas:</h4>
+		<a href="https://blog.cloudflare.com/#to-put-this-in-terms-of-bananas" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>George Michael sells bananas at a small stand. He receives a shipment of bananas for resale from Anthony’s Banana Company (ABC) on Monday. Anthony’s Banana Company serves as the origin for bananas for stores spread across the country. ABC is keenly interested in protecting their brand; they want people to associate them with only the freshest, perfectly ripe bananas with no stale or spoiled fruit to their name.</p>
 	<p>To ensure freshness, ABC provides explicit instructions to its vendors and eaters of its bananas. Bananas can’t be held longer than 3 days before sale to prevent overripening/staleness. Past 3 days, if a customer tries to buy a banana, George Michael must call ABC to revalidate that the bananas are fresh. If ABC can’t be reached, the bananas must not be sold.</p>
-	<h4>To put this in terms of banana meme SVGs:</h4>
+	<div class="flex anchor relative">
+		<h4 id="to-put-this-in-terms-of-banana-meme-svgs">To put this in terms of banana meme SVGs:</h4>
+		<a href="https://blog.cloudflare.com/#to-put-this-in-terms-of-banana-meme-svgs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Kari uses Cloudflare to cache banana meme SVGs at edge locations around the world to reduce visitor latency. Banana memes should only be cached for up to 3 days to prevent the memes from going stale. Past 3 days, if a visitor requests bananameme.com, Cloudflare must make a revalidation request to the bananameme.com origin. If the request to origin fails, Cloudflare must serve the visitor an error page instead of their zesty meme.</p>
-	<h4>If only ABC and Kari had strong support for Cache-Control response headers!</h4>
+	<div class="flex anchor relative">
+		<h4 id="if-only-abc-and-kari-had-strong-support-for-cache-control-response-headers">If only ABC and Kari had strong support for Cache-Control response headers!</h4>
+		<a href="https://blog.cloudflare.com/#if-only-abc-and-kari-had-strong-support-for-cache-control-response-headers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If they did, they could serve their banana related assets with the following header:</p>
 	<p><code>Cache-Control: public, max-age=259200, proxy-revalidate</code></p>
 	<p>Public means this banana is allowed to be served from an edge cache. Max-age=259200 means it can stay in cache for up to 3 days (3 days * 24 hours * 60 minutes * 60 seconds = 259200). Proxy-revalidate means the edge cache must revalidate the content with the origin when that expiration time is up, no exceptions.</p>

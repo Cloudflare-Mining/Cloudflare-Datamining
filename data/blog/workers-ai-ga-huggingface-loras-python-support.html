@@ -17,12 +17,33 @@
 		</a>
 	</div>
 	<p>Today, we’re excited to announce that our Workers AI inference platform is now Generally Available. After months of being in open beta, we’ve improved our service with greater reliability and performance, unveiled pricing, and added many more models to our catalog.</p>
-	<h4>Improved performance &amp; reliability</h4>
+	<div class="flex anchor relative">
+		<h4 id="improved-performance-reliability">Improved performance &amp; reliability</h4>
+		<a href="https://blog.cloudflare.com/#improved-performance-reliability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With Workers AI, our goal is to make AI inference as reliable and easy to use as the rest of Cloudflare’s network. Under the hood, we’ve upgraded the load balancing that is built into Workers AI. Requests can now be routed to more GPUs in more cities, and each city is aware of the total available capacity for AI inference. If the request would have to wait in a queue in the current city, it can instead be routed to another location, getting results back to you faster when traffic is high. With this, we’ve increased rate limits across all our models – most LLMs now have a of 300 requests per minute, up from 50 requests per minute during our beta phase. Smaller models have a limit of 1500-3000 requests per minute. Check out our <a href="https://developers.cloudflare.com/workers-ai/platform/limits">Developer Docs for the rate limits</a> of individual models.</p>
-	<h4>Lowering costs on popular models</h4>
+	<div class="flex anchor relative">
+		<h4 id="lowering-costs-on-popular-models">Lowering costs on popular models</h4>
+		<a href="https://blog.cloudflare.com/#lowering-costs-on-popular-models" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Alongside our GA of Workers AI, we published a <a href="https://ai.cloudflare.com/#pricing-calculator">pricing calculator</a> for our 10 non-beta models earlier this month. We want Workers AI to be one of the most affordable and accessible solutions to run <a href="https://www.cloudflare.com/learning/ai/inference-vs-training">inference</a>, so we added a few optimizations to our models to make them more affordable. Now, Llama 2 is over 7x cheaper and Mistral 7B is over 14x cheaper to run than we had initially <a href="https://developers.cloudflare.com/workers-ai/platform/pricing">published</a> on March 1. We want to continue to be the best platform for AI inference and will continue to roll out optimizations to our customers when we can.</p>
 	<p>As a reminder, our billing for Workers AI started on April 1st for our non-beta models, while beta models remain free and unlimited. We offer 10,000 <a href="https://blog.cloudflare.com/workers-ai#:~:text=may%20be%20wondering%20%E2%80%94-,what%E2%80%99s%20a%20neuron">neurons</a> per day for free to all customers. Workers Free customers will encounter a hard rate limit after 10,000 neurons in 24 hours while Workers Paid customers will incur usage at $0.011 per 1000 additional neurons. &nbsp;Read our <a href="https://developers.cloudflare.com/workers-ai/platform/pricing">Workers AI Pricing Developer Docs</a> for the most up-to-date information on pricing.</p>
-	<h4>New dashboard and playground</h4>
+	<div class="flex anchor relative">
+		<h4 id="new-dashboard-and-playground">New dashboard and playground</h4>
+		<a href="https://blog.cloudflare.com/#new-dashboard-and-playground" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Lastly, we’ve revamped our <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fworkers-ai">Workers AI dashboard</a> and <a href="https://playground.ai.cloudflare.com">AI playground</a>. The Workers AI page in the Cloudflare dashboard now shows analytics for usage across models, including neuron calculations to help you better predict pricing. The AI playground lets you quickly test and compare different models and configure prompts and parameters. We hope these new tools help developers start building on Workers AI seamlessly – go try them out!</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -133,7 +154,14 @@ compatibility_flags = ["python_workers"]</code></pre>
 	</figure>
 	<p>Our <a href="https://blog.cloudflare.com/announcing-ai-gateway">AI Gateway</a> product helps developers better control and observe their AI applications, with analytics, caching, rate limiting, and more. We are continuing to add more providers to the product, including Anthropic, Google Vertex, and Perplexity, which we’re excited to announce today. We quietly rolled out Azure and Amazon Bedrock support in December 2023, which means that the most popular providers are now supported via AI Gateway, including Workers AI itself.</p>
 	<p>Take a look at our <a href="https://developers.cloudflare.com/ai-gateway">Developer Docs</a> to get started with AI Gateway.</p>
-	<h4>Coming soon: Persistent Logs</h4>
+	<div class="flex anchor relative">
+		<h4 id="coming-soon-persistent-logs">Coming soon: Persistent Logs</h4>
+		<a href="https://blog.cloudflare.com/#coming-soon-persistent-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In Q2 of 2024, we will be adding persistent logs so that you can push your logs (including prompts and responses) to object storage, custom metadata so that you can tag requests with user IDs or other identifiers, and secrets management so that you can securely manage your application’s API keys.</p>
 	<p>We want AI Gateway to be the control plane for your AI applications, allowing developers to dynamically evaluate and route requests to different models and providers. With our persistent logs feature, we want to enable developers to use their logged data to fine-tune models in one click, eventually running the fine-tune job and the fine-tuned model directly on our Workers AI platform. AI Gateway is just one product in our AI toolkit, but we’re excited about the workflows and use cases it can unlock for developers building on our platform, and we hope you’re excited about it too.</p>
 	<div class="flex anchor relative">

@@ -237,7 +237,14 @@ npm run preview</code></pre>
   http.coffee   # HTTP requesting, parsing, and responding
   util.coffee   # util methods and extensions</code></pre>
 	<p>If you've feeling adventurous, I've included a simplified version of my API code that you can browse through below. If you look at each file, you'll have a fully working implementation by the end! Otherwise, you can continue reading to learn about my deployment and analysis of the APIs impact.</p>
-	<h4><code>http.coffee</code></h4>
+	<div class="flex anchor relative">
+		<h4 id="http-coffee"><code>http.coffee</code></h4>
+		<a href="https://blog.cloudflare.com/#http-coffee" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since our API will be making several HTTP requests, it's a good idea to code some common <code>request</code> and <code>respond</code> methods that can be reused among multiple requests. At the very least, we need to support parsing JSON or base64 responses and sending JSON or string data back to the client.</p>
 	<pre class="language-coffeescript"><code class="language-coffeescript"># Send a Http request and get a response.
 #
@@ -329,7 +336,15 @@ export coerce = (code) -&gt;
     "400-404": 10 # Cache for 10 secs.
     "405-599": -1 # Do not cache at all.
   cacheKey: url # Cache lookup key, defaults to the request URL.</code></pre>
-	<h4><code>mojang.coffee</code></h4>
+
+	<div class="flex anchor relative">
+		<h4 id="mojang-coffee"><code>mojang.coffee</code></h4>
+		<a href="https://blog.cloudflare.com/#mojang-coffee" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that we have code to send and parse requests, we can create an interface to retrieve data from the upstream APIs. It's good to note that there should be no mutation logic in this file, it's purpose is just to get the old APIs, not change them.</p>
 	<pre class="language-coffeescript"><code class="language-coffeescript">import { get } from "./http"
 
@@ -354,7 +369,15 @@ export uuidToUsernameHistory = (id) -&gt;
 # @returns {[err, json]} - An error or the session profile.
 export uuidToProfile = (id) -&gt;
   get("https://sessionserver.mojang.com/session/minecraft/profile/#{id}", json: true)</code></pre>
-	<h4><code>api.coffee</code></h4>
+
+	<div class="flex anchor relative">
+		<h4 id="api-coffee"><code>api.coffee</code></h4>
+		<a href="https://blog.cloudflare.com/#api-coffee" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is where the bulk of our API logic will reside. I've broken up the process into 3 interdependent tasks that are executed in order:</p>
 	<ol>
 		<li>
@@ -448,7 +471,15 @@ textures = (profile) -&gt;
       skin: {url: skinUrl, data: skin}
       cape: {url: capeUrl, data: cape} if capeUrl
     [null, texture]</code></pre>
-	<h4><code>index.coffee</code></h4>
+
+	<div class="flex anchor relative">
+		<h4 id="index-coffee"><code>index.coffee</code></h4>
+		<a href="https://blog.cloudflare.com/#index-coffee" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now, we parse the request's route and respond with the corresponding API.</p>
 	<pre class="language-coffeescript"><code class="language-coffeescript">import "./util"
 import { notFound } from "./http"
@@ -473,7 +504,15 @@ v1 = (method, id) -&gt;
   else if method == "user"
     [err, res] = await user(id)
   err || res || notFound("unknown v1 route '#{method}'")</code></pre>
-	<h4><code>util.coffee</code></h4>
+
+	<div class="flex anchor relative">
+		<h4 id="util-coffee"><code>util.coffee</code></h4>
+		<a href="https://blog.cloudflare.com/#util-coffee" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, we'll add some prototype extensions that we used along the way.</p>
 	<pre class="language-coffeescript"><code class="language-coffeescript"># Insert a string at a given index.
 #

@@ -89,7 +89,14 @@
 	</blockquote>
 	<p>There were certainly outliers though, sometimes with Cloudflare vastly underperforming compared to our existing infrastructure, and sometimes with it vastly outperforming it. So, we decided to do a deeper dive into two markets.</p>
 	<p>We chose Germany — with a variety of internet access technologies and speeds — and Singapore, whose citizens are blessed with high-speed connections of 500Mbps or more, with 1Gbps being quite common. Crucially, we have existing servers located at major internet exchanges in both Germany and Singapore, that are capable of dealing with very high-speed connections.</p>
-	<h4>Deep dive: Germany</h4>
+	<div class="flex anchor relative">
+		<h4 id="deep-dive-germany">Deep dive: Germany</h4>
+		<a href="https://blog.cloudflare.com/#deep-dive-germany" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In Germany, we saw quite a few instances of peak hour performance dips to both Cloudflare and our existing infrastructure. As an example, here’s the average performance of Deutsche Telekom’s 100Mbps users during early November 2018:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -105,7 +112,14 @@
 
 	</figure>
 	<p><i>Figure 2 - A single Vodafone Kabel Deutschland 200Mbps user's performance to Cloudflare (blue) and our existing M-Lab Frankfurt server (red).</i></p>
-	<h4>Deep dive: Singapore</h4>
+	<div class="flex anchor relative">
+		<h4 id="deep-dive-singapore">Deep dive: Singapore</h4>
+		<a href="https://blog.cloudflare.com/#deep-dive-singapore" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many of our Singaporean users are lucky enough to have a 1Gbps fibre-to-the-home service. However, we know from experience that the peering issues Singapore can mean that performance can be extremely variable, depending on the route your traffic takes. What we found was rather interesting.</p>
 	<p><i>MyRepublic</i></p>
 	<figure class="kg-card kg-image-card ">

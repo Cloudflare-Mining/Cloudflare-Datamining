@@ -47,9 +47,23 @@
 	</ol>
 	<p>Fonts are a bit of a special case in that they are needed to draw the text on the screen but the browser won’t know that it needs to load a font until it is actually ready to draw the text to the screen. So they are discovered pretty late. As a result they are generally given a very high priority once they are discovered but aren’t known about until fairly late in the loading process.</p>
 	<p>Chrome also applies some special treatment to images that are visible in the current browser viewport (part of the page visible on the screen). Once the styles have been applied and the page has been laid out it will give visible images a much higher priority and load them in order from largest to smallest.</p>
-	<h4>HTTP/1.x prioritization</h4>
+	<div class="flex anchor relative">
+		<h4 id="http-1-x-prioritization">HTTP/1.x prioritization</h4>
+		<a href="https://blog.cloudflare.com/#http-1-x-prioritization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With HTTP/1.x, each connection to a server can support one request at a time (practically anyway as no browser supports <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.2.2">pipelining</a>) and most browsers will open up to 6 connections at a time to each server. The browser maintains a prioritized list of the content it needs and makes the requests to each server as a connection becomes available. When a high-priority piece of content is discovered it is moved to the front of a list and when the next connection becomes available it is requested.</p>
-	<h4>HTTP/2 prioritization</h4>
+	<div class="flex anchor relative">
+		<h4 id="http-2-prioritization">HTTP/2 prioritization</h4>
+		<a href="https://blog.cloudflare.com/#http-2-prioritization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With HTTP/2, the browser uses a single connection and the requests are multiplexed over the connection as separate “streams”. The requests are all sent to the server as soon as they are discovered along with some prioritization information to let the server know the preferred ordering of the responses. It is then up to the server to do its best to deliver the most important responses first, followed by lower priority responses. When a high priority request comes in to the server, it should immediately jump ahead of the lower priority responses, even mid-response. The actual priority scheme implemented by HTTP/2 allows for parallel downloads with weighting between them and more complicated schemes. For now it is easiest to just think about it as a priority ordering of the resources.</p>
 	<p>Most servers that support prioritization will send data for the highest priority responses for which it has data available. But if the most important response takes longer to generate than lower priority responses, the server may end up starting to send data for a lower priority response and then interrupt its stream when the higher priority response becomes available. That way it can avoid wasting available bandwidth and head-of-line blocking where a slow response holds everything else up.</p>
 	<figure class="kg-card kg-image-card ">
@@ -68,7 +82,14 @@
 		</a>
 	</div>
 	<p>Excessive buffering is pretty much the nemesis for HTTP/2 because it directly impacts the ability for a server to be nimble in responding to priority shifts. It is not unusual for there to be megabytes-worth of buffering between the server and the browser which is larger than most websites. Practically that means that the responses will get delivered in whatever order they become available on the server. It is not unusual to have a critical resource (like a font or a render-blocking script in the <code>&lt;head&gt;</code> of a document) delayed by megabytes of lower priority images. For the end-user this translates to seconds or even minutes of delay rendering the page.</p>
-	<h4>TCP send buffers</h4>
+	<div class="flex anchor relative">
+		<h4 id="tcp-send-buffers">TCP send buffers</h4>
+		<a href="https://blog.cloudflare.com/#tcp-send-buffers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first layer of buffering between the server and the browser is in the server itself. The operating system maintains a TCP send buffer that the server writes data into. Once the data is in the buffer then the operating system takes care of delivering the data as-needed (pulling from the buffer as data is sent and signaling to the server when the buffer needs more data). A large buffer also reduces CPU load because it reduces the amount of writing that the server has to do to the connection.</p>
 	<p>The actual size of the send buffer needs to be big enough to keep a copy of all of the data that has been sent to the browser but has yet to be acknowledged in case a packet gets dropped and some data needs to be retransmitted. Too small of a buffer will prevent the server from being able to max-out the connection bandwidth to the client (and is a common cause of slow downloads over long distances). In the case of HTTP/1.x (and a lot of other protocols), the data is delivered in bulk in a known-order and tuning the buffers to be as big as possible has no downside other than the increase in memory use (trading off memory for CPU). Increasing the TCP send buffer sizes is an effective way to increase the throughput of a web server.</p>
 	<p>For HTTP/2, the problem with large send buffers is that it limits the nimbleness of the server to adjust the data it is sending on a connection as high priority responses become available. Once the response data has been written into the TCP send buffer it is beyond the server’s control and has been committed to be delivered in the order it is written.</p>
@@ -79,7 +100,14 @@
 	</figure>
 	<p>High-priority resource queued behind low-priority resources in the TCP send buffer.</p>
 	<p><b>The optimal send buffer size for HTTP/2 is the minimal amount of data required to fully utilize the available bandwidth to the browser</b> (which is different for every connection and changes over time even for a single connection). Practically you’d want the buffer to be slightly bigger to allow for some time between when the server is signaled that more data is needed and when the server writes the additional data.</p>
-	<h4>TCP_NOTSENT_LOWAT</h4>
+	<div class="flex anchor relative">
+		<h4 id="tcp_notsent_lowat">TCP_NOTSENT_LOWAT</h4>
+		<a href="https://blog.cloudflare.com/#tcp_notsent_lowat" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://lwn.net/Articles/560082">TCP_NOTSENT_LOWAT</a> is a socket option that allows configuration of the send buffer so that it is always the optimal size plus a fixed additional buffer. You provide a buffer size (X) which is the additional amount of size you’d like in addition to the minimal needed to fully utilize the connection and it dynamically adjusts the TCP send buffer to always be X bytes larger than the current connection congestion window. The congestion window is the TCP stack’s estimate of the amount of data that needs to be in-flight on the network to fully utilize the connection.</p>
 	<p>TCP_NOTSENT_LOWAT can be configured in code on a socket-by-socket basis if the web server software supports it or system-wide using the net.ipv4.tcp_notsent_lowat sysctl:</p>
 	<pre class="language-bash"><code class="language-bash">    net.ipv4.tcp_notsent_lowat = 16384</code></pre>
@@ -90,7 +118,14 @@
 
 	</figure>
 	<p>High-priority resource ready to send with minimal TCP buffering.</p>
-	<h4>Bufferbloat</h4>
+	<div class="flex anchor relative">
+		<h4 id="bufferbloat">Bufferbloat</h4>
+		<a href="https://blog.cloudflare.com/#bufferbloat" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Beyond buffering on the server, the network connection between the server and the browser can act as a buffer. It is increasingly common for networking gear to have large buffers that absorb data that is sent faster than the receiving side can consume it. This is generally referred to as <a href="https://www.bufferbloat.net/projects/bloat/wiki/Introduction">Bufferbloat</a>. I hedged my explanation of the effectiveness of tcp_notsent_lowat a little bit in that it is based on the current congestion window which is an estimate of the optimal amount of in-flight data needed but not necessarily the actual optimal amount of in-flight data.</p>
 	<p>The buffers in the network can be quite large at times (megabytes) and they interact very poorly with the congestion control algorithms usually used by TCP. Most classic congestion-control algorithms determine the congestion window by watching for packet loss. Once a packet is dropped then it knows there was too much data on the network and it scales back from there. With Bufferbloat that limit is raised artificially high because the buffers are absorbing the extra packets beyond what is needed to saturate the connection. As a result, the TCP stack ends up calculating a congestion window that spikes to much larger than the actual size needed, then drops to significantly smaller once the buffers are saturated and a packet is dropped and the cycle repeats.</p>
 	<figure class="kg-card kg-image-card ">
@@ -115,7 +150,14 @@
 
 	</figure>
 	<p>Responses queued in network buffers.</p>
-	<h4>BBR congestion control</h4>
+	<div class="flex anchor relative">
+		<h4 id="bbr-congestion-control">BBR congestion control</h4>
+		<a href="https://blog.cloudflare.com/#bbr-congestion-control" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://cloud.google.com/blog/products/gcp/tcp-bbr-congestion-control-comes-to-gcp-your-internet-just-got-faster">BBR</a> is a new congestion control algorithm from Google that uses changes in packet delays to model the congestion instead of waiting for packets to drop. Once it sees that packets are taking longer to be acknowledged it assumes it has saturated the connection and packets have started to buffer. As a result the congestion window is often very close to the optimal needed to keep the connection fully utilized while also avoiding Bufferbloat. BBR was merged into the Linux kernel in version 4.9 and can be configured through sysctl:</p>
 	<pre class="language-bash"><code class="language-bash">    net.core.default_qdisc = fq
     net.ipv4.tcp_congestion_control = bbr</code></pre>

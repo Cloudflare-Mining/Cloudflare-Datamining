@@ -114,17 +114,39 @@
 			</svg>
 		</a>
 	</div>
-	<h4>Election auditing</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="election-auditing">Election auditing</h4>
+		<a href="https://blog.cloudflare.com/#election-auditing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the US, most elections are followed by an audit to verify they were unbiased and conducted fairly. Robust auditing systems increase voter confidence by improving election officials’ ability to respond effectively to allegations of fraud, and to detect bugs in the system.</p>
 	<p>Currently, most election ballots and precincts are randomly chosen by election officials. This approach is potentially vulnerable to bias by a corrupt insider who might select certain precincts to present a preferred outcome. Even in a situation where every voter district was tampered with, by using a robust, distributed, and most importantly, <i>unpredictable and unbiasable</i> beacon, election auditors can trust that a small sample of districts is enough to audit, as long as an attacker cannot predict district selection.</p>
 	<p>In Chile, election poll workers are randomly selected from a pool of eligible voters. The University of Chile’s Random UChile <a href="https://random.uchile.cl/en">project</a> has been working on a prototype that uses their randomness beacon for this process. Alejandro Hevia, leader of Random UChile, believes that for election auditing, public randomness is important for transparency and distributed randomness gives people the ability to trust the unlikeliness that <i>multiple</i> contributors to the beacon colluded, as opposed to trusting a single entity.</p>
-	<h4>Lotteries</h4>
+	<div class="flex anchor relative">
+		<h4 id="lotteries">Lotteries</h4>
+		<a href="https://blog.cloudflare.com/#lotteries" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>From 2005 to 2014, the information security director for the Multi-State Lottery Association, Eddie Tipton, <a href="https://www.nytimes.com/interactive/2018/05/03/magazine/money-issue-iowa-lottery-fraud-mystery.html">rigged a random number generator</a> and won the lottery <b>six</b> times!</p>
 	<p>Tipton could predict the winning numbers by skipping the standard random seeding process. He was able to insert into the function of the random number generator code that checked the date, day of the week, and time. If these three variables did not align, the random number generator used radioactive material and a Geiger counter to generate a random seed. If the variables aligned as surreptitiously programmed, which usually only happened once a year, then it would generate the seed using a 7-variable formula fed into a <a href="https://en.wikipedia.org/wiki/Mersenne_Twister">Mersenne Twister</a>, a <i>pseudo</i> random-number generator.</p>
 	<p>Tipton knew these 7 variables. He knew the small pool of numbers that might be the seed. This knowledge allowed him to predict the results of the Mersenne Twister. This is a scam which a <b>distributed randomness beacon</b> can make substantially more difficult, if not impossible.</p>
 	<p>Rob Sand, the former Iowa Assistant Attorney General and current Iowa State Auditor who prosecuted the Tipton cases, is also an advocate for improved controls. He said:</p>
 	<p><i>“There is no excuse for an industry that rakes in $80 billion in annual revenue not to use the most sophisticated, truly random means available to ensure integrity.”</i></p>
-	<h4>Distributed ledger platforms</h4>
+	<div class="flex anchor relative">
+		<h4 id="distributed-ledger-platforms">Distributed ledger platforms</h4>
+		<a href="https://blog.cloudflare.com/#distributed-ledger-platforms" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In many cryptocurrencies and blockchain-based distributed computing platforms, such as <a href="https://en.wikipedia.org/wiki/Ethereum">Ethereum</a>, there is often a need for random selection at the application layer. One solution to prevent bias for such a random selection is to use a distributed randomness beacon like drand to generate the random value. Justin Drake, researcher at the <a href="https://www.ethereum.org">Ethereum Foundation</a>, believes "randomness from a drand-type federation could be a particularly good match for real-time decentralized applications on Ethereum such as live gaming and gambling". This is due to the possibility to deliver ultra-low latency randomness applicable for a broad range of application where public randomness is required.</p>
 	<figure class="kg-card kg-image-card ">
 

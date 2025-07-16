@@ -34,7 +34,14 @@
 	</div>
 	<p>Those that have used Cache Rules know that they are intuitive and work similarly to our other <a href="https://developers.cloudflare.com/ruleset-engine">ruleset engine</a> products. User-defined criteria like URLs or request headers are evaluated, and if matching a specified value, the Cloudflare caching configuration is obeyed. Each Cache Rule depends on fields, operators, and values. For all the different options available, you should see our Cache Rules <a href="https://developers.cloudflare.com/cache/about/cache-rules">documentation</a>.</p>
 	<p>Below are two examples of how to deploy different strategies to customize your cache. These examples only show the tip-of-the-iceberg of what’s possible with Cache Rules, so we encourage you to try them out and let us know what you think.</p>
-	<h4>Example: Cached content is updated at a regular cadence</h4>
+	<div class="flex anchor relative">
+		<h4 id="example-cached-content-is-updated-at-a-regular-cadence">Example: Cached content is updated at a regular cadence</h4>
+		<a href="https://blog.cloudflare.com/#example-cached-content-is-updated-at-a-regular-cadence" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As an example, let’s say that Acme Corp wants to update their caching strategy. They want to customize their cache to take advantage of certain request headers and use the presence of those request headers to be the criteria that decides when to apply different cache rules. The first thing they’d need to decide is what information should be used to trigger the specific rule. This is defined in the <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/expressions">expression</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -42,14 +49,28 @@
 
 	</figure>
 	<p>Once the triggering criteria is defined Acme Corp should next determine how they want to customize their cache.</p>
-	<h4>Content changing quickly</h4>
+	<div class="flex anchor relative">
+		<h4 id="content-changing-quickly">Content changing quickly</h4>
+		<a href="https://blog.cloudflare.com/#content-changing-quickly" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The most common cache strategy is to update the <a href="https://developers.cloudflare.com/cache/how-to/cache-rules/#create-cache-rules-in-the-dashboard">Edge Cache TTL</a>. If Acme Corp thinks a particular piece of content on their website might change quickly, they can alter the time Cloudflare should consider a resource eligible to be served from cache to be shorter. This way Cloudflare would go back to the origin more frequently to <a href="https://developers.cloudflare.com/cache/concepts/cache-control/#:~:text=If%20the%20content%20is%20stale%20in%20Cloudflare%E2%80%99s%20cache%2C%20Cloudflare%20attempts%20to%20revalidate%20the%20content%20with%20the%20origin%20before%20serving%20the%20response%20to%20the%20client.">revalidate and update the content</a>. The Edge Cache TTL section is also where Acme Corp can define a resource’s TTL based on the status code Cloudflare gets back from their origin, and what Cloudflare should cache if there aren’t any cache-control instructions sent from Acme’s origin server.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2swqQzRX7v3UropZSNRbjH/86bac883296e8c5502e6b5a08e5b5df9/Screenshot-2023-10-08-at-4.14.17-PM.png" alt="" class="kg-image" width="1600" height="955" loading="lazy">
 
 	</figure>
-	<h4>Content changing slowly</h4>
+	<div class="flex anchor relative">
+		<h4 id="content-changing-slowly">Content changing slowly</h4>
+		<a href="https://blog.cloudflare.com/#content-changing-slowly" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On the other hand, if Acme Corp had a lot of content that did not change very frequently (like a favicon or logo) and they preferred to serve that from Cloudflare’s cache instead of their origin, they can define which content should be eligible for <a href="https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve">Cache Reserve</a> with a new Cache Rule. Cache Reserve reduces egress fees by storing assets persistently in Cloudflare's cache for an extended period of time.</p>
 	<p>Traditionally when a user would enable Cache Reserve, their entire zone would be eligible to be written to Cache Reserve. For customers that care about saving origin <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees">egress fees</a> on all resources on their website, this is still the best path forward. But for customers that want to have additional control over precisely what assets should be part of their Cache Reserve or even what size of assets should be eligible, the Cache Reserve Eligibility Rule provides additional knobs so that customers can precisely increase their cache hits and reduce origin egress in a customized manner. Note that this rule requires a Cache Reserve subscription.</p>
 	<figure class="kg-card kg-image-card ">

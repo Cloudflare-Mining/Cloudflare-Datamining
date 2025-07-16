@@ -76,14 +76,28 @@
 		</a>
 	</div>
 	<p>Our automated Gatebot system is also tasked with mitigating L7 HTTP floods using request attributes as anomaly indicators. Mitigations can come in the form of actions such as JavaScript challenges, <a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha">CAPTCHAs</a>, Rate Limits (429), or Blocks (403) which are served back to the client as an error or challenge page. This form of mitigation at L7 allows the request to pass through TCP and TLS to the HTTP web server. During very rate-intensive attacks our servers can waste a lot of CPU and bandwidth as seen in the attack examples below.</p>
-	<h4>Example #1 - Highly Distributed DDoS Attack Targeting A Customer Website</h4>
+	<div class="flex anchor relative">
+		<h4 id="example-1-highly-distributed-ddos-attack-targeting-a-customer-website">Example #1 - Highly Distributed DDoS Attack Targeting A Customer Website</h4>
+		<a href="https://blog.cloudflare.com/#example-1-highly-distributed-ddos-attack-targeting-a-customer-website" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In July 2019, Cloudflare mitigated an HTTP DDoS attack that peaked at 1.4M requests per second. While this isn’t the most rate-intensive attack that we’ve seen, what is interesting is that the attack originated from almost 1.1M unique IP addresses. These were actual clients with the ability to complete a TCP and HTTPS handshake, they were not spoofed IP addresses. As it turns out, responding (rather than dropping at the network level) to over a million clients at a max rate of 1.4M requests per second can be quite costly.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UUvQ1d0uGOr7ILfBNIsts/dd12332efe537986109a1cde82f598ab/wPpbtCFQ-gxCLJjqL60kk1aWKMhyj2lBRZ5hD6rpdpnNMArwjEb6_UVLVbDs7SHe3y6R8fT2dMy_wb83MyZlSNB2hC8GqXcK2MPBVjoQS_cqcMkD7OVJfkh2nRQQ.png" alt="" class="kg-image" width="1600" height="671" loading="lazy">
 
 	</figure>
-	<h4>Example #2 - Rate-Intensive DDoS Attack Targeting A Customer Website</h4>
+	<div class="flex anchor relative">
+		<h4 id="example-2-rate-intensive-ddos-attack-targeting-a-customer-website">Example #2 - Rate-Intensive DDoS Attack Targeting A Customer Website</h4>
+		<a href="https://blog.cloudflare.com/#example-2-rate-intensive-ddos-attack-targeting-a-customer-website" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The second attack took place in September 2019. We mitigated an HTTP DDoS attack that peaked and persisted just below 5M requests per second for a little over an hour. What’s interesting is the sustained capability of the attacker to reach those rates from only 371K unique IPs (also not spoofed).</p>
 	<figure class="kg-card kg-image-card ">
 

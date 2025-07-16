@@ -203,24 +203,53 @@
 	</ul>
 	<p>It digs deeper into what I explained above. Only the last mile ISPs can perform the source IP filtering and prevent IP spoofing. The internet carriers can't really do much about it.</p>
 	<p>Or can they?</p>
-	<h4>Internet Carriers</h4>
+	<div class="flex anchor relative">
+		<h4 id="internet-carriers">Internet Carriers</h4>
+		<a href="https://blog.cloudflare.com/#internet-carriers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It turns out internet carriers can help. There are two things they can do.</p>
 	<p>First, they can clean up their networks, and set their filtering right. While it's impossible to ensure that nobody else spoofed FooCorp's 192.0.2.0/24, 2001:db8::/48 ranges, it is totally possible to make sure that FooCorp can't spoof others!</p>
 	<p>It's not trivial though. In principle, the IP ranges of FooCorp can change over time, but such events should require informing carriers, presenting <a href="http://www.ksfiber.net/wp-content/uploads/Sample-BGP-LetterOfAgency.pdf">Letter of Authorization</a> and validating <a href="https://www.apnic.net/manage-ip/apnic-services/routing-registry">IRR databases</a> (see also <a href="http://www.radb.net/features">RADb</a>).</p>
 	<p>Next, while large Tier 1 and Tier 2 providers can't do source IP filtering, they can help with investigations. Remember - during large amplification attacks, the attacker spoofs <i>the victim</i> IP ranges. During attacks large carriers should help with debugging and be able to identify which of their paying customers pretended to be the victim!</p>
 	<p>To be able to do this some carriers maintain internal netflow/IPFIX infrastructure. The community should start asking the carriers tough questions - do you have visibility into who spoofed traffic? Do you do netflow internally and can you effectively use it?</p>
 	<p>I'm sure Github would like to know who faked their source IPs in order to generate 1.3Tbps amplification.</p>
-	<h4>Internet Exchanges</h4>
+	<div class="flex anchor relative">
+		<h4 id="internet-exchanges">Internet Exchanges</h4>
+		<a href="https://blog.cloudflare.com/#internet-exchanges" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Internet exchanges face the same attribution issue. When spoofing happens, it's often impossible to figure out which participant originated it. Internet exchanges should put together tools allowing participants to trace who originated the spoofed traffic.</p>
 	<p>Some internet exchanges do this already, but most don't.</p>
-	<h4>Hardware vendors</h4>
+	<div class="flex anchor relative">
+		<h4 id="hardware-vendors">Hardware vendors</h4>
+		<a href="https://blog.cloudflare.com/#hardware-vendors" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A common technique to prohibit IP spoofing is called <a href="https://en.wikipedia.org/wiki/Reverse_path_forwarding#Unicast_RPF_confusion">Strict uRPF</a>. While it can't be used on the Tier 1 layer, since it assumes internet routing symmetry, uRPF definitely is useful in last-mile deployments.</p>
 	<p>Vendors should ship their hardware with secure defaults. Things like "DHCP Snooping" and "IP Source Verify" should be enabled by default on switches, and "Strict uRPF" on routers. Read more in this <a href="https://www.internetsociety.org/wp-content/uploads/2017/08/ISOC-AntiSpoofing-20150909-en-2.pdf">paper by Internet Society</a>.</p>
 	<p>On the same note, if you are using Linux for routing you can turn on strict uRPF with sysctl:</p>
 	<pre class="language-bash"><code class="language-bash">for fname in /proc/sys/net/ipv4/conf/*/rp_filter; do\
     echo 1 | sudo tee $fname; \
 done</code></pre>
-	<h4>You</h4>
+
+	<div class="flex anchor relative">
+		<h4 id="you">You</h4>
+		<a href="https://blog.cloudflare.com/#you" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, everyone else can help the <a href="https://www.caida.org/projects/spoofer">"Spoofer" project</a> run by <a href="http://www.caida.org/home">caida.org</a>. "Spoofer" assesses networks by running an agent on your laptop, periodically probing the network.</p>
 	<p>Users, especially heavy travelers, might consider installing the agent software to help Caida to get greater coverage of end-user ISPs.</p>
 	<div class="flex anchor relative">

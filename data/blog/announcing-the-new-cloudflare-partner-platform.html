@@ -72,7 +72,14 @@
 		1. Tenants: an abstraction on top of our existing accounts and users for easier management<br>
 		2. Subscriptions: a new way of packaging and provisioning services<br>
 	</p><!--kg-card-end: html-->
-	<h4>Tenants</h4>
+	<div class="flex anchor relative">
+		<h4 id="tenants">Tenants</h4>
+		<a href="https://blog.cloudflare.com/#tenants" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>An absolute necessity for partners is the ability to provision accounts for each of their customers. Normally the only way to get a Cloudflare account is to sign up on the dashboard. We needed a way for partners to be able to create end customer accounts at their discretion to support their specific onboarding needs. This also ensures proper separation of ownership between customers and allows end customers to access the Cloudflare dashboard directly.</p>
 	<p>With the introduction of tenants, our data model now looks like the following:</p>
 	<figure class="kg-card kg-image-card ">
@@ -82,7 +89,14 @@
 	</figure>
 	<p>Cloudflare Resource Data Model</p>
 	<p>Tenants provide partners the ability to create and manage the accounts for their customers. Each account created is a separate container of resources (zones, workers, etc) for each of customer. Users can be invited to each account as necessary for self service management, while the partner retains control of the capabilities enabled for each account. How a partner manages those capabilities brings us to the second major system that makes up the new partner platform.</p>
-	<h4>Subscriptions</h4>
+	<div class="flex anchor relative">
+		<h4 id="subscriptions">Subscriptions</h4>
+		<a href="https://blog.cloudflare.com/#subscriptions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While not as obvious as the need for account provisioning, the ability to package and provision services is critical to providing differentiated offerings for partners of Cloudflare. One drawback of our old partner platform was the difficulty in ensuring new products and services were available to those partners. As Cloudflare grew, it reached the point where new paid services could not be added into the existing partner platform.</p>
 	<p>With subscriptions, this is no longer the case. What started as just a way to provision services for IBM, has now grown into the standard of how all customer services are provisioned at Cloudflare. Whether you purchase services through IBM CIS or buy Cloudflare Workers in our dashboard, behind the scenes, Subscriptions is what ensures you get exactly the right services enabled.</p>
 	<p>Enough talk, let’s show things in action!</p>
@@ -110,7 +124,14 @@
 			<p>Service Configuration</p>
 		</li>
 	</ol>
-	<h4>1) Provisioning Customer Accounts</h4>
+	<div class="flex anchor relative">
+		<h4 id="1-provisioning-customer-accounts">1) Provisioning Customer Accounts</h4>
+		<a href="https://blog.cloudflare.com/#1-provisioning-customer-accounts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When onboarding customers, you want each to have their own Cloudflare account. This ensures one customer can not affect any resources belonging to another. By making a `POST /accounts` request, you can create an account for an individual customer.</p>
 	<p>Request:</p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST \
@@ -136,7 +157,14 @@
     "messages": []
 }</code></pre>
 	<p>This new account is owned by the partner. It can be managed by API, or in the UI by the partner or any additional administrators that are invited.</p>
-	<h4>2) Granting Customer Access</h4>
+	<div class="flex anchor relative">
+		<h4 id="2-granting-customer-access">2) Granting Customer Access</h4>
+		<a href="https://blog.cloudflare.com/#2-granting-customer-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that the customer’s account is created, let’s give them access to it. This step uses existing APIs and if you have shared access to a Cloudflare account before, then you have already done this.</p>
 	<p>Request:</p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST \
@@ -184,7 +212,14 @@
     "messages": []
 }</code></pre>
 	<p>Alternatively, you can do this in the UI, from the <a href="https://dash.cloudflare.com/?account=members">Members section</a> for the newly created account.</p>
-	<h4>3) Enabling Services</h4>
+	<div class="flex anchor relative">
+		<h4 id="3-enabling-services">3) Enabling Services</h4>
+		<a href="https://blog.cloudflare.com/#3-enabling-services" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now the fun part! With the ability to provision subscriptions, you can enable paid services for your customers. Before we do that though, we will create a zone so we can attach a zone subscription to it.</p>
 	<p>Adding a zone as a partner is no different than adding a zone as a regular customer. It can also be done by the customer.</p>
 	<p>Request:</p>
@@ -327,7 +362,14 @@
     "api_version": "2.0.0"
 }</code></pre>
 	<p>Now that the customer is set up with an account, zone, and zone subscription, the only thing left is configuring the resources appropriately.</p>
-	<h4>4) Service Configuration</h4>
+	<div class="flex anchor relative">
+		<h4 id="4-service-configuration">4) Service Configuration</h4>
+		<a href="https://blog.cloudflare.com/#4-service-configuration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Service configuration can be done by either you, the partner, or the end customer. Most commonly, DNS records need to be added, security settings verified and updated, and customizations made. These can all be done either through our <a href="https://api.cloudflare.com">Client v4 APIs</a> or the <a href="https://dash.cloudflare.com">Cloudflare Dashboard</a>.</p>
 	<p>Once that is done, the customer is all set!</p>
 	<div class="flex anchor relative">
