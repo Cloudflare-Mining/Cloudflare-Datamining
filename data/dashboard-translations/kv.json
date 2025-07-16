@@ -32,5 +32,12 @@
 	"kv.metrics.operations.timeseries_chart.request_count": "Request count",
 	"kv.metrics.operations.request_count.title": "Requests",
 	"kv.config.connect.title": "Connect your Worker to KV",
-	"kv.config.connect.description": "Connect to KV from your Worker using the KV namespace binding. Configure the KV binding in your Wrangler configuration file with the ID of your KV namespace. Then, access the binding variable within your Worker code to store and retrieve key-value pairs."
+	"kv.config.connect.description": "Connect to KV from your Worker using the KV namespace binding. Configure the KV binding in your Wrangler configuration file with the ID of your KV namespace. Then, access the binding variable within your Worker code to store and retrieve key-value pairs.",
+	"kv.settings.general.title": "General",
+	"kv.settings.general.delete.description": "Permanently delete this KV namespace and all of its key-value pairs.",
+	"kv.settings.general.rename.title": "Rename namespace",
+	"kv.settings.general.rename.description": "Change the name of this KV namespace.",
+	"kv.settings.general.rename.available": "Namespace %{name} is available.",
+	"kv.settings.general.rename.error.max_length": "Namespace name must be 63 characters or less.",
+	"kv.settings.general.rename.error.name_in_use": "A namespace with this name already exists."
 }
